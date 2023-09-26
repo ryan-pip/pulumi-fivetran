@@ -1,15 +1,16 @@
 {
     "name": "fivetran",
+    "displayName": "Fivetran",
     "description": "A Pulumi package for creating and managing fivetran cloud resources.",
     "keywords": [
         "pulumi",
         "fivetran",
-        "category/cloud"
+        "category/utility"
     ],
     "homepage": "https://www.pulumi.com",
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`fivetran` Terraform Provider](https://github.com/fivetran/terraform-provider-fivetran).",
-    "repository": "https://github.com/pulumi/pulumi-fivetran",
+    "repository": "https://github.com/ryan-packer/pulumi-fivetran",
     "pluginDownloadURL": "github://api.github.com/ryan-pip",
     "publisher": "Pulumi",
     "meta": {
@@ -29,7 +30,7 @@
         },
         "nodejs": {
             "packageDescription": "A Pulumi package for creating and managing fivetran cloud resources.",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/fivetran/terraform-provider-fivetran)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-fivetran` repo](https://github.com/pulumi/pulumi-fivetran/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-fivetran` repo](https://github.com/fivetran/terraform-provider-fivetran/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/fivetran/terraform-provider-fivetran)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-fivetran` repo](https://github.com/ryan-packer/pulumi-fivetran/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-fivetran` repo](https://github.com/fivetran/terraform-provider-fivetran/issues).",
             "dependencies": {
                 "@pulumi/pulumi": "^3.0.0"
             },
@@ -44,7 +45,7 @@
             "requires": {
                 "pulumi": "\u003e=3.0.0,\u003c4.0.0"
             },
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/fivetran/terraform-provider-fivetran)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-fivetran` repo](https://github.com/pulumi/pulumi-fivetran/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-fivetran` repo](https://github.com/fivetran/terraform-provider-fivetran/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/fivetran/terraform-provider-fivetran)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-fivetran` repo](https://github.com/ryan-packer/pulumi-fivetran/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-fivetran` repo](https://github.com/fivetran/terraform-provider-fivetran/issues).",
             "compatibility": "tfbridge20",
             "pyproject": {}
         }
