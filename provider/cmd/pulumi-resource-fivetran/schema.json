@@ -2240,6 +2240,68 @@
             },
             "type": "object"
         },
+        "fivetran:index/ConnectorSchemaConfigSchema:ConnectorSchemaConfigSchema": {
+            "properties": {
+                "enabled": {
+                    "type": "string",
+                    "description": "The boolean value specifying whether the sync for the schema into the destination is enabled.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The schema name within your destination in accordance with Fivetran conventional rules.\n"
+                },
+                "tables": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/fivetran:index/ConnectorSchemaConfigSchemaTable:ConnectorSchemaConfigSchemaTable"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "fivetran:index/ConnectorSchemaConfigSchemaTable:ConnectorSchemaConfigSchemaTable": {
+            "properties": {
+                "columns": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/fivetran:index/ConnectorSchemaConfigSchemaTableColumn:ConnectorSchemaConfigSchemaTableColumn"
+                    }
+                },
+                "enabled": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "syncMode": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "fivetran:index/ConnectorSchemaConfigSchemaTableColumn:ConnectorSchemaConfigSchemaTableColumn": {
+            "properties": {
+                "enabled": {
+                    "type": "string"
+                },
+                "hashed": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
         "fivetran:index/DbtProjectModel:DbtProjectModel": {
             "properties": {
                 "id": {
@@ -2506,68 +2568,6 @@
                     ]
                 }
             }
-        },
-        "fivetran:index/SchemaConfigSchema:SchemaConfigSchema": {
-            "properties": {
-                "enabled": {
-                    "type": "string",
-                    "description": "The boolean value specifying whether the sync for the schema into the destination is enabled.\n"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "The schema name within your destination in accordance with Fivetran conventional rules.\n"
-                },
-                "tables": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/fivetran:index/SchemaConfigSchemaTable:SchemaConfigSchemaTable"
-                    }
-                }
-            },
-            "type": "object",
-            "required": [
-                "name"
-            ]
-        },
-        "fivetran:index/SchemaConfigSchemaTable:SchemaConfigSchemaTable": {
-            "properties": {
-                "columns": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/fivetran:index/SchemaConfigSchemaTableColumn:SchemaConfigSchemaTableColumn"
-                    }
-                },
-                "enabled": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "syncMode": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "name"
-            ]
-        },
-        "fivetran:index/SchemaConfigSchemaTableColumn:SchemaConfigSchemaTableColumn": {
-            "properties": {
-                "enabled": {
-                    "type": "string"
-                },
-                "hashed": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                }
-            },
-            "type": "object",
-            "required": [
-                "name"
-            ]
         },
         "fivetran:index/getConnectorConfig:getConnectorConfig": {
             "properties": {
@@ -6028,6 +6028,68 @@
                 "type": "object"
             }
         },
+        "fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig": {
+            "description": "##  ---\n\npage_title: \"Resource: fivetran.ConnectorSchemaConfig\"\n---\n\n# Resource: fivetran.ConnectorSchemaConfig\n\nThis resource allows you to manage the Standard Configuration settings of a connector:\n - Define the schema change handling settings\n - Enable and disable schemas, tables, and columns\n\nThe resource is in **ALPHA** state. The resource schema and behavior are subject to change without prior notice.\n\nKnown issues:\n - Definition of `sync_mode` for table causes infinite drifting changes in plan\n\n## Usage guide\n\nNote that all configuration settings are aligned to the `schema_change_handling` settings,  except the settings explicitly specified in `schema`.\nIn `schema`, you only override the default settings defined by the chosen `schema_change_handling` option. The default value for the `enabled` attribute is `true` so it can be omitted when you want to enable schemas, tables, or columns.\nThe allowed `schema_change_handling` options are as follows:\n- `ALLOW_ALL`- all schemas, tables and columns are ENABLED by default. You only need  to explicitly specify DISABLED items or hashed tables\n- `BLOCK_ALL` - all schemas, tables and columns are DISABLED by default, the configuration only specifies ENABLED items\n- `ALLOW_COLUMNS` - all schemas and tables are DISABLED by default, but all columns are ENABLED by default, the configuration specifies ENABLED schemas and tables, and DISABLED columns\n\nNote that system-enabled tables and columns (such as primary and foreign key columns, and [system tables and columns](https://fivetran.com/docs/getting-started/system-columns-and-tables)) are synced regardless of the `schema_change_handling` settings and configuration. You can only disable non-locked columns in the system-enabled tables. If the configuration specifies any system tables or locked system table columns as disabled ( `enabled = \"false\"`), the provider just ignores these statements.\n\n## Usage examples\n\n### Example for the ALLOW_ALL option\n\nIn `schema`,  you only need to specify schemas and columns you want to disable (`enabled = \"false\"`) and tables you want to disable or hash (`hashed = \"true\"`).\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.ConnectorSchemaConfig;\nimport com.pulumi.fivetran.ConnectorSchemaConfigArgs;\nimport com.pulumi.fivetran.inputs.ConnectorSchemaConfigSchemaArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var schema = new ConnectorSchemaConfig(\"schema\", ConnectorSchemaConfigArgs.builder()        \n            .connectorId(\"connector_id\")\n            .schemas(            \n                ConnectorSchemaConfigSchemaArgs.builder()\n                    .name(\"schema_name\")\n                    .tables(                    \n                        ConnectorSchemaConfigSchemaTableArgs.builder()\n                            .column(                            \n                                %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),\n                                %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                            .name(\"table_name\")\n                            .build(),\n                        ConnectorSchemaConfigSchemaTableArgs.builder()\n                            .enabled(\"false\")\n                            .name(\"blocked_table_name\")\n                            .build())\n                    .build(),\n                ConnectorSchemaConfigSchemaArgs.builder()\n                    .enabled(\"false\")\n                    .name(\"blocked_schema\")\n                    .build())\n            .schemaChangeHandling(\"ALLOW_ALL\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  schema:\n    type: fivetran:ConnectorSchemaConfig\n    properties:\n      connectorId: connector_id\n      schemas:\n        - name: schema_name\n          tables:\n            - column:\n                - hashed: 'true'\n                  name: hashed_column_name\n                - enabled: 'false'\n                  name: blocked_column_name\n              name: table_name\n            - enabled: 'false'\n              name: blocked_table_name\n        - enabled: 'false'\n          name: blocked_schema\n      schemaChangeHandling: ALLOW_ALL\n```\n\nThe configuration resulting from the example request is as follows:\n- All new and existing schemas except `blocked_schema` are enabled\n- All new and existing tables in the `schema_name` schema except the `blocked_table_name` table are enabled\n- All new and existing columns in the`table_name` of the `schema_name` schema except the `blocked_column_name` column are enabled\n- The `hashed_column_name` column is hashed in the `table_name` table in the `schema_name` schema\n- All new schemas, tables, and columns are enabled once captured by the connector during the sync except those disabled by the system\n\n### Example for the BLOCK_ALL option\n\nAll schemas, tables, and columns specified in `schema` are enabled by default (the default value for the `\"enabled\"` parameter is `true`).\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.ConnectorSchemaConfig;\nimport com.pulumi.fivetran.ConnectorSchemaConfigArgs;\nimport com.pulumi.fivetran.inputs.ConnectorSchemaConfigSchemaArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var schema = new ConnectorSchemaConfig(\"schema\", ConnectorSchemaConfigArgs.builder()        \n            .connectorId(\"connector_id\")\n            .schemas(            \n                ConnectorSchemaConfigSchemaArgs.builder()\n                    .name(\"schema_name\")\n                    .tables(                    \n                        ConnectorSchemaConfigSchemaTableArgs.builder()\n                            .column(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                            .name(\"table_name\")\n                            .build(),\n                        ConnectorSchemaConfigSchemaTableArgs.builder()\n                            .name(\"enabled_table_name\")\n                            .build())\n                    .build(),\n                ConnectorSchemaConfigSchemaArgs.builder()\n                    .name(\"enabled_schema_name\")\n                    .build())\n            .schemaChangeHandling(\"BLOCK_ALL\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  schema:\n    type: fivetran:ConnectorSchemaConfig\n    properties:\n      connectorId: connector_id\n      schemas:\n        - name: schema_name\n          tables:\n            - column:\n                - hashed: 'true'\n                  name: hashed_column_name\n              name: table_name\n            - name: enabled_table_name\n        - name: enabled_schema_name\n      schemaChangeHandling: BLOCK_ALL\n```\n\nThe configuration resulting from the example request is as follows:\n\n- All new and existing schemas except  the `enabled_schema` and `schema_name` are disabled\n- Only system-enabled tables and columns are enabled in the `enabled_schema_name` schema\n- All new and existing tables in the `schema_name` schema except  the `enabled_table_name`, `table_name` tables and system tables are disabled\n- All new and existing columns in the `table_name` table of the `schema_name` schema are disabled except the `hashed_column_name` column and system columns \n- The `hashed_column_name` column in the `table_name`  table the `schema_name` schema is hashed\n- All new columns except the system-enabled columns, all schemas and tables are disabled once captured by the connector during the sync\n\n### Example for the ALLOW_COLUMNS option\n\nIn `schema`,  you only need to specify schemas and tables you want to enable `enabled = \"true\"`) and columns you want to disable (`enabled = \"false\"`) or hash (`hashed = \"true\"`).\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.ConnectorSchemaConfig;\nimport com.pulumi.fivetran.ConnectorSchemaConfigArgs;\nimport com.pulumi.fivetran.inputs.ConnectorSchemaConfigSchemaArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var schema = new ConnectorSchemaConfig(\"schema\", ConnectorSchemaConfigArgs.builder()        \n            .connectorId(\"connector_id\")\n            .schemas(            \n                ConnectorSchemaConfigSchemaArgs.builder()\n                    .name(\"schema_name\")\n                    .tables(                    \n                        ConnectorSchemaConfigSchemaTableArgs.builder()\n                            .column(                            \n                                %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),\n                                %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                            .name(\"table_name\")\n                            .build(),\n                        ConnectorSchemaConfigSchemaTableArgs.builder()\n                            .name(\"enabled_table_name\")\n                            .build())\n                    .build(),\n                ConnectorSchemaConfigSchemaArgs.builder()\n                    .name(\"enabled_schema_name\")\n                    .build())\n            .schemaChangeHandling(\"ALLOW_COLUMNS\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  schema:\n    type: fivetran:ConnectorSchemaConfig\n    properties:\n      connectorId: connector_id\n      schemas:\n        - name: schema_name\n          tables:\n            - column:\n                - hashed: 'true'\n                  name: hashed_column_name\n                - enabled: 'false'\n                  name: disabled_columns_name\n              name: table_name\n            - name: enabled_table_name\n        - name: enabled_schema_name\n      schemaChangeHandling: ALLOW_COLUMNS\n```\n\nThe configuration resulting from the example request is as follows:\n\n- All specified existing schemas and tables are enabled and all columns inside them are enabled by default, unless `enabled = \"false\"` is specified for the column\n- All new and existing schemas except the `enabled_schema_name` and `schema_name` are disabled\n- Only system-enabled tables and columns would be enabled in  the`enabled_schema_name` schema\n- All new and existing tables in the `schema_name` schema except the `enabled_table_name`, `table_name` and system-enabled tables are disabled\n- All new and existing columns in the`table_name` table of the `schema_name` schema except the `disabled_columns_name` and system-enabled columns are enabled\n- The `hashed_column_name` would be hashed in table `table_name` in schema `schema_name`\n- All new non system-enabled tables/schemas would be disabled once captured by connector on sync\n- All new non system-enabled columns inside enabled tables (including system enabled-tables) would be enabled once captured by connector on sync\n\n\u003ca id=\"nestedblock--nonlocked\"\u003e\u003c/a\u003e\n### Non-locked table column management in system-enabled tables\n\nYou cannot manage system-enabled tables, but you can manage its non-locked columns. For example, your schema `schema_name` has a system-enabled table `system_enabled_table` that can't be disabled, and you want to disable one of its columns named `columns_name`:\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.ConnectorSchemaConfig;\nimport com.pulumi.fivetran.ConnectorSchemaConfigArgs;\nimport com.pulumi.fivetran.inputs.ConnectorSchemaConfigSchemaArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var schema = new ConnectorSchemaConfig(\"schema\", ConnectorSchemaConfigArgs.builder()        \n            .connectorId(\"connector_id\")\n            .schemas(ConnectorSchemaConfigSchemaArgs.builder()\n                .name(\"schema_name\")\n                .tables(ConnectorSchemaConfigSchemaTableArgs.builder()\n                    .column(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                    .name(\"system_enabled_table\")\n                    .build())\n                .build())\n            .schemaChangeHandling(\"ALLOW_COLUMNS\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  schema:\n    type: fivetran:ConnectorSchemaConfig\n    properties:\n      connectorId: connector_id\n      schemas:\n        - name: schema_name\n          tables:\n            - column:\n                - enabled: 'false'\n                  name: columns_name\n              name: system_enabled_table\n      schemaChangeHandling: ALLOW_COLUMNS\n```\n\n\n## Import\n\n1. To import an existing `fivetran_connector_schema_config` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard. 2. Retrieve all connectors in a particular group using the [fivetran_group_connectors data source](/docs/data-sources/group_connectors). To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 3. Define an empty resource in your `.tf` configurationhcl resource \"fivetran_connector_schema_config\" \"my_imported_connector_schema_config\" { }\n\n```sh\n $ pulumi import fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig\n\nRun the `terraform import` command\n```\n\n\n\n```sh\n $ pulumi import fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig my_imported_connector_schema_config {your Fivetran Connector ID}\n```\n\n 5.\n\nUse the `terraform state show` command to get the values from the stateterraform state show 'fivetran_connector_schema_config.my_imported_connector_schema_config' 6. Copy the values and paste them to your `.tf` configuration. ",
+            "properties": {
+                "connectorId": {
+                    "type": "string",
+                    "description": "The unique identifier for the connector within the Fivetran system.\n"
+                },
+                "schemaChangeHandling": {
+                    "type": "string"
+                },
+                "schemas": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/fivetran:index/ConnectorSchemaConfigSchema:ConnectorSchemaConfigSchema"
+                    }
+                }
+            },
+            "required": [
+                "connectorId",
+                "schemaChangeHandling"
+            ],
+            "inputProperties": {
+                "connectorId": {
+                    "type": "string",
+                    "description": "The unique identifier for the connector within the Fivetran system.\n",
+                    "willReplaceOnChanges": true
+                },
+                "schemaChangeHandling": {
+                    "type": "string"
+                },
+                "schemas": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/fivetran:index/ConnectorSchemaConfigSchema:ConnectorSchemaConfigSchema"
+                    }
+                }
+            },
+            "requiredInputs": [
+                "connectorId",
+                "schemaChangeHandling"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ConnectorSchemaConfig resources.\n",
+                "properties": {
+                    "connectorId": {
+                        "type": "string",
+                        "description": "The unique identifier for the connector within the Fivetran system.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "schemaChangeHandling": {
+                        "type": "string"
+                    },
+                    "schemas": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/ConnectorSchemaConfigSchema:ConnectorSchemaConfigSchema"
+                        }
+                    }
+                },
+                "type": "object"
+            }
+        },
         "fivetran:index/dbtProject:DbtProject": {
             "description": "Resource is in ALPHA state.\n\nThis resource allows you to add, manage and delete dbt Projects in your account. \n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst project = new fivetran.DbtProject(\"project\", {\n    dbtVersion: \"1.4.1\",\n    defaultSchema: \"default_schema\",\n    environmentVars: [\"environment_var=value\"],\n    groupId: \"group_id\",\n    projectConfig: {\n        folderPath: \"/dbt/project/folder/path\",\n        gitBranch: \"main\",\n        gitRemoteUrl: \"your_git_remote_url\",\n    },\n    targetName: \"target_name\",\n    threads: 8,\n    type: \"GIT\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nproject = fivetran.DbtProject(\"project\",\n    dbt_version=\"1.4.1\",\n    default_schema=\"default_schema\",\n    environment_vars=[\"environment_var=value\"],\n    group_id=\"group_id\",\n    project_config=fivetran.DbtProjectProjectConfigArgs(\n        folder_path=\"/dbt/project/folder/path\",\n        git_branch=\"main\",\n        git_remote_url=\"your_git_remote_url\",\n    ),\n    target_name=\"target_name\",\n    threads=8,\n    type=\"GIT\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var project = new Fivetran.DbtProject(\"project\", new()\n    {\n        DbtVersion = \"1.4.1\",\n        DefaultSchema = \"default_schema\",\n        EnvironmentVars = new[]\n        {\n            \"environment_var=value\",\n        },\n        GroupId = \"group_id\",\n        ProjectConfig = new Fivetran.Inputs.DbtProjectProjectConfigArgs\n        {\n            FolderPath = \"/dbt/project/folder/path\",\n            GitBranch = \"main\",\n            GitRemoteUrl = \"your_git_remote_url\",\n        },\n        TargetName = \"target_name\",\n        Threads = 8,\n        Type = \"GIT\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewDbtProject(ctx, \"project\", \u0026fivetran.DbtProjectArgs{\n\t\t\tDbtVersion:    pulumi.String(\"1.4.1\"),\n\t\t\tDefaultSchema: pulumi.String(\"default_schema\"),\n\t\t\tEnvironmentVars: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"environment_var=value\"),\n\t\t\t},\n\t\t\tGroupId: pulumi.String(\"group_id\"),\n\t\t\tProjectConfig: \u0026fivetran.DbtProjectProjectConfigArgs{\n\t\t\t\tFolderPath:   pulumi.String(\"/dbt/project/folder/path\"),\n\t\t\t\tGitBranch:    pulumi.String(\"main\"),\n\t\t\t\tGitRemoteUrl: pulumi.String(\"your_git_remote_url\"),\n\t\t\t},\n\t\t\tTargetName: pulumi.String(\"target_name\"),\n\t\t\tThreads:    pulumi.Int(8),\n\t\t\tType:       pulumi.String(\"GIT\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.DbtProject;\nimport com.pulumi.fivetran.DbtProjectArgs;\nimport com.pulumi.fivetran.inputs.DbtProjectProjectConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var project = new DbtProject(\"project\", DbtProjectArgs.builder()        \n            .dbtVersion(\"1.4.1\")\n            .defaultSchema(\"default_schema\")\n            .environmentVars(\"environment_var=value\")\n            .groupId(\"group_id\")\n            .projectConfig(DbtProjectProjectConfigArgs.builder()\n                .folderPath(\"/dbt/project/folder/path\")\n                .gitBranch(\"main\")\n                .gitRemoteUrl(\"your_git_remote_url\")\n                .build())\n            .targetName(\"target_name\")\n            .threads(8)\n            .type(\"GIT\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  project:\n    type: fivetran:DbtProject\n    properties:\n      dbtVersion: 1.4.1\n      defaultSchema: default_schema\n      environmentVars:\n        - environment_var=value\n      groupId: group_id\n      projectConfig:\n        folderPath: /dbt/project/folder/path\n        gitBranch: main\n        gitRemoteUrl: your_git_remote_url\n      targetName: target_name\n      threads: 8\n      type: GIT\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n1. To import an existing `fivetran_dbt_project` resource into your Terraform state, you need to get **Dbt Project ID** via API call `GET https://api.fivetran.com/v1/dbt/projects` to retrieve available projects. 2. Fetch project details for particular `project-id` using `GET https://api.fivetran.com/v1/dbt/projects/{project-id}` to ensure that this is the project you want to import. 3. Define an empty resource in your `.tf` configurationhcl resource \"fivetran_dbt_project\" \"my_imported_fivetran_dbt_project\" { }\n\n```sh\n $ pulumi import fivetran:index/dbtProject:DbtProject\n\nRun the `terraform import` command\n```\n\n\n\n```sh\n $ pulumi import fivetran:index/dbtProject:DbtProject my_imported_fivetran_dbt_project {Dbt Project ID}\n```\n\n 4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_dbt_project.my_imported_fivetran_dbt_project' 5. Copy the values and paste them to your `.tf` configuration. ",
             "properties": {
@@ -6614,68 +6676,6 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/fivetran:index/GroupUsersUser:GroupUsersUser"
-                        }
-                    }
-                },
-                "type": "object"
-            }
-        },
-        "fivetran:index/schemaConfig:SchemaConfig": {
-            "description": "##  ---\n\npage_title: \"Resource: fivetran.SchemaConfig\"\n---\n\n# Resource: fivetran.SchemaConfig\n\nThis resource allows you to manage the Standard Configuration settings of a connector:\n - Define the schema change handling settings\n - Enable and disable schemas, tables, and columns\n\nThe resource is in **ALPHA** state. The resource schema and behavior are subject to change without prior notice.\n\nKnown issues:\n - Definition of `sync_mode` for table causes infinite drifting changes in plan\n\n## Usage guide\n\nNote that all configuration settings are aligned to the `schema_change_handling` settings,  except the settings explicitly specified in `schema`.\nIn `schema`, you only override the default settings defined by the chosen `schema_change_handling` option. The default value for the `enabled` attribute is `true` so it can be omitted when you want to enable schemas, tables, or columns.\nThe allowed `schema_change_handling` options are as follows:\n- `ALLOW_ALL`- all schemas, tables and columns are ENABLED by default. You only need  to explicitly specify DISABLED items or hashed tables\n- `BLOCK_ALL` - all schemas, tables and columns are DISABLED by default, the configuration only specifies ENABLED items\n- `ALLOW_COLUMNS` - all schemas and tables are DISABLED by default, but all columns are ENABLED by default, the configuration specifies ENABLED schemas and tables, and DISABLED columns\n\nNote that system-enabled tables and columns (such as primary and foreign key columns, and [system tables and columns](https://fivetran.com/docs/getting-started/system-columns-and-tables)) are synced regardless of the `schema_change_handling` settings and configuration. You can only disable non-locked columns in the system-enabled tables. If the configuration specifies any system tables or locked system table columns as disabled ( `enabled = \"false\"`), the provider just ignores these statements.\n\n## Usage examples\n\n### Example for the ALLOW_ALL option\n\nIn `schema`,  you only need to specify schemas and columns you want to disable (`enabled = \"false\"`) and tables you want to disable or hash (`hashed = \"true\"`).\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.SchemaConfig;\nimport com.pulumi.fivetran.SchemaConfigArgs;\nimport com.pulumi.fivetran.inputs.SchemaConfigSchemaArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var schema = new SchemaConfig(\"schema\", SchemaConfigArgs.builder()        \n            .connectorId(\"connector_id\")\n            .schemas(            \n                SchemaConfigSchemaArgs.builder()\n                    .name(\"schema_name\")\n                    .tables(                    \n                        SchemaConfigSchemaTableArgs.builder()\n                            .column(                            \n                                %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),\n                                %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                            .name(\"table_name\")\n                            .build(),\n                        SchemaConfigSchemaTableArgs.builder()\n                            .enabled(\"false\")\n                            .name(\"blocked_table_name\")\n                            .build())\n                    .build(),\n                SchemaConfigSchemaArgs.builder()\n                    .enabled(\"false\")\n                    .name(\"blocked_schema\")\n                    .build())\n            .schemaChangeHandling(\"ALLOW_ALL\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  schema:\n    type: fivetran:SchemaConfig\n    properties:\n      connectorId: connector_id\n      schemas:\n        - name: schema_name\n          tables:\n            - column:\n                - hashed: 'true'\n                  name: hashed_column_name\n                - enabled: 'false'\n                  name: blocked_column_name\n              name: table_name\n            - enabled: 'false'\n              name: blocked_table_name\n        - enabled: 'false'\n          name: blocked_schema\n      schemaChangeHandling: ALLOW_ALL\n```\n\nThe configuration resulting from the example request is as follows:\n- All new and existing schemas except `blocked_schema` are enabled\n- All new and existing tables in the `schema_name` schema except the `blocked_table_name` table are enabled\n- All new and existing columns in the`table_name` of the `schema_name` schema except the `blocked_column_name` column are enabled\n- The `hashed_column_name` column is hashed in the `table_name` table in the `schema_name` schema\n- All new schemas, tables, and columns are enabled once captured by the connector during the sync except those disabled by the system\n\n### Example for the BLOCK_ALL option\n\nAll schemas, tables, and columns specified in `schema` are enabled by default (the default value for the `\"enabled\"` parameter is `true`).\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.SchemaConfig;\nimport com.pulumi.fivetran.SchemaConfigArgs;\nimport com.pulumi.fivetran.inputs.SchemaConfigSchemaArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var schema = new SchemaConfig(\"schema\", SchemaConfigArgs.builder()        \n            .connectorId(\"connector_id\")\n            .schemas(            \n                SchemaConfigSchemaArgs.builder()\n                    .name(\"schema_name\")\n                    .tables(                    \n                        SchemaConfigSchemaTableArgs.builder()\n                            .column(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                            .name(\"table_name\")\n                            .build(),\n                        SchemaConfigSchemaTableArgs.builder()\n                            .name(\"enabled_table_name\")\n                            .build())\n                    .build(),\n                SchemaConfigSchemaArgs.builder()\n                    .name(\"enabled_schema_name\")\n                    .build())\n            .schemaChangeHandling(\"BLOCK_ALL\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  schema:\n    type: fivetran:SchemaConfig\n    properties:\n      connectorId: connector_id\n      schemas:\n        - name: schema_name\n          tables:\n            - column:\n                - hashed: 'true'\n                  name: hashed_column_name\n              name: table_name\n            - name: enabled_table_name\n        - name: enabled_schema_name\n      schemaChangeHandling: BLOCK_ALL\n```\n\nThe configuration resulting from the example request is as follows:\n\n- All new and existing schemas except  the `enabled_schema` and `schema_name` are disabled\n- Only system-enabled tables and columns are enabled in the `enabled_schema_name` schema\n- All new and existing tables in the `schema_name` schema except  the `enabled_table_name`, `table_name` tables and system tables are disabled\n- All new and existing columns in the `table_name` table of the `schema_name` schema are disabled except the `hashed_column_name` column and system columns \n- The `hashed_column_name` column in the `table_name`  table the `schema_name` schema is hashed\n- All new columns except the system-enabled columns, all schemas and tables are disabled once captured by the connector during the sync\n\n### Example for the ALLOW_COLUMNS option\n\nIn `schema`,  you only need to specify schemas and tables you want to enable `enabled = \"true\"`) and columns you want to disable (`enabled = \"false\"`) or hash (`hashed = \"true\"`).\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.SchemaConfig;\nimport com.pulumi.fivetran.SchemaConfigArgs;\nimport com.pulumi.fivetran.inputs.SchemaConfigSchemaArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var schema = new SchemaConfig(\"schema\", SchemaConfigArgs.builder()        \n            .connectorId(\"connector_id\")\n            .schemas(            \n                SchemaConfigSchemaArgs.builder()\n                    .name(\"schema_name\")\n                    .tables(                    \n                        SchemaConfigSchemaTableArgs.builder()\n                            .column(                            \n                                %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),\n                                %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                            .name(\"table_name\")\n                            .build(),\n                        SchemaConfigSchemaTableArgs.builder()\n                            .name(\"enabled_table_name\")\n                            .build())\n                    .build(),\n                SchemaConfigSchemaArgs.builder()\n                    .name(\"enabled_schema_name\")\n                    .build())\n            .schemaChangeHandling(\"ALLOW_COLUMNS\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  schema:\n    type: fivetran:SchemaConfig\n    properties:\n      connectorId: connector_id\n      schemas:\n        - name: schema_name\n          tables:\n            - column:\n                - hashed: 'true'\n                  name: hashed_column_name\n                - enabled: 'false'\n                  name: disabled_columns_name\n              name: table_name\n            - name: enabled_table_name\n        - name: enabled_schema_name\n      schemaChangeHandling: ALLOW_COLUMNS\n```\n\nThe configuration resulting from the example request is as follows:\n\n- All specified existing schemas and tables are enabled and all columns inside them are enabled by default, unless `enabled = \"false\"` is specified for the column\n- All new and existing schemas except the `enabled_schema_name` and `schema_name` are disabled\n- Only system-enabled tables and columns would be enabled in  the`enabled_schema_name` schema\n- All new and existing tables in the `schema_name` schema except the `enabled_table_name`, `table_name` and system-enabled tables are disabled\n- All new and existing columns in the`table_name` table of the `schema_name` schema except the `disabled_columns_name` and system-enabled columns are enabled\n- The `hashed_column_name` would be hashed in table `table_name` in schema `schema_name`\n- All new non system-enabled tables/schemas would be disabled once captured by connector on sync\n- All new non system-enabled columns inside enabled tables (including system enabled-tables) would be enabled once captured by connector on sync\n\n\u003ca id=\"nestedblock--nonlocked\"\u003e\u003c/a\u003e\n### Non-locked table column management in system-enabled tables\n\nYou cannot manage system-enabled tables, but you can manage its non-locked columns. For example, your schema `schema_name` has a system-enabled table `system_enabled_table` that can't be disabled, and you want to disable one of its columns named `columns_name`:\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.SchemaConfig;\nimport com.pulumi.fivetran.SchemaConfigArgs;\nimport com.pulumi.fivetran.inputs.SchemaConfigSchemaArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var schema = new SchemaConfig(\"schema\", SchemaConfigArgs.builder()        \n            .connectorId(\"connector_id\")\n            .schemas(SchemaConfigSchemaArgs.builder()\n                .name(\"schema_name\")\n                .tables(SchemaConfigSchemaTableArgs.builder()\n                    .column(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                    .name(\"system_enabled_table\")\n                    .build())\n                .build())\n            .schemaChangeHandling(\"ALLOW_COLUMNS\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  schema:\n    type: fivetran:SchemaConfig\n    properties:\n      connectorId: connector_id\n      schemas:\n        - name: schema_name\n          tables:\n            - column:\n                - enabled: 'false'\n                  name: columns_name\n              name: system_enabled_table\n      schemaChangeHandling: ALLOW_COLUMNS\n```\n\n\n## Import\n\n1. To import an existing `fivetran_connector_schema_config` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard. 2. Retrieve all connectors in a particular group using the [fivetran_group_connectors data source](/docs/data-sources/group_connectors). To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 3. Define an empty resource in your `.tf` configurationhcl resource \"fivetran_connector_schema_config\" \"my_imported_connector_schema_config\" { }\n\n```sh\n $ pulumi import fivetran:index/schemaConfig:SchemaConfig\n\nRun the `terraform import` command\n```\n\n\n\n```sh\n $ pulumi import fivetran:index/schemaConfig:SchemaConfig my_imported_connector_schema_config {your Fivetran Connector ID}\n```\n\n 5.\n\nUse the `terraform state show` command to get the values from the stateterraform state show 'fivetran_connector_schema_config.my_imported_connector_schema_config' 6. Copy the values and paste them to your `.tf` configuration. ",
-            "properties": {
-                "connectorId": {
-                    "type": "string",
-                    "description": "The unique identifier for the connector within the Fivetran system.\n"
-                },
-                "schemaChangeHandling": {
-                    "type": "string"
-                },
-                "schemas": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/fivetran:index/SchemaConfigSchema:SchemaConfigSchema"
-                    }
-                }
-            },
-            "required": [
-                "connectorId",
-                "schemaChangeHandling"
-            ],
-            "inputProperties": {
-                "connectorId": {
-                    "type": "string",
-                    "description": "The unique identifier for the connector within the Fivetran system.\n",
-                    "willReplaceOnChanges": true
-                },
-                "schemaChangeHandling": {
-                    "type": "string"
-                },
-                "schemas": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/fivetran:index/SchemaConfigSchema:SchemaConfigSchema"
-                    }
-                }
-            },
-            "requiredInputs": [
-                "connectorId",
-                "schemaChangeHandling"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering SchemaConfig resources.\n",
-                "properties": {
-                    "connectorId": {
-                        "type": "string",
-                        "description": "The unique identifier for the connector within the Fivetran system.\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "schemaChangeHandling": {
-                        "type": "string"
-                    },
-                    "schemas": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/fivetran:index/SchemaConfigSchema:SchemaConfigSchema"
                         }
                     }
                 },

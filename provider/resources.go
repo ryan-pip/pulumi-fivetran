@@ -98,7 +98,7 @@ func Provider() tfbridge.ProviderInfo {
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"fivetran_connector":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Connector")},
 			"fivetran_connector_schedule":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ConnectorSchedule")},
-			"fivetran_connector_schema_config": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SchemaConfig")},
+			"fivetran_connector_schema_config": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ConnectorSchemaConfig")},
 			"fivetran_dbt_project":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "DbtProject")},
 			"fivetran_dbt_transformation": {
 				Tok: tfbridge.MakeResource(mainPkg, mainMod, "DbtTransformation"),
