@@ -22,14 +22,14 @@ __all__ = [
     'ConnectorConfigReportArgs',
     'ConnectorConfigSecretsListArgs',
     'ConnectorDestinationSchemaArgs',
+    'ConnectorSchemaConfigSchemaArgs',
+    'ConnectorSchemaConfigSchemaTableArgs',
+    'ConnectorSchemaConfigSchemaTableColumnArgs',
     'DbtProjectModelArgs',
     'DbtProjectProjectConfigArgs',
     'DbtTransformationScheduleArgs',
     'DestinationConfigArgs',
     'GroupUsersUserArgs',
-    'SchemaConfigSchemaArgs',
-    'SchemaConfigSchemaTableArgs',
-    'SchemaConfigSchemaTableColumnArgs',
     'GetConnectorConfigArgs',
     'GetConnectorConfigAccountsRedditAdArgs',
     'GetConnectorConfigAdobeAnalyticsConfigurationArgs',
@@ -6067,6 +6067,148 @@ class ConnectorDestinationSchemaArgs:
 
 
 @pulumi.input_type
+class ConnectorSchemaConfigSchemaArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 enabled: Optional[pulumi.Input[str]] = None,
+                 tables: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaTableArgs']]]] = None):
+        """
+        :param pulumi.Input[str] name: The schema name within your destination in accordance with Fivetran conventional rules.
+        :param pulumi.Input[str] enabled: The boolean value specifying whether the sync for the schema into the destination is enabled.
+        """
+        pulumi.set(__self__, "name", name)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if tables is not None:
+            pulumi.set(__self__, "tables", tables)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The schema name within your destination in accordance with Fivetran conventional rules.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[str]]:
+        """
+        The boolean value specifying whether the sync for the schema into the destination is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaTableArgs']]]]:
+        return pulumi.get(self, "tables")
+
+    @tables.setter
+    def tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaTableArgs']]]]):
+        pulumi.set(self, "tables", value)
+
+
+@pulumi.input_type
+class ConnectorSchemaConfigSchemaTableArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaTableColumnArgs']]]] = None,
+                 enabled: Optional[pulumi.Input[str]] = None,
+                 sync_mode: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "name", name)
+        if columns is not None:
+            pulumi.set(__self__, "columns", columns)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if sync_mode is not None:
+            pulumi.set(__self__, "sync_mode", sync_mode)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaTableColumnArgs']]]]:
+        return pulumi.get(self, "columns")
+
+    @columns.setter
+    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaTableColumnArgs']]]]):
+        pulumi.set(self, "columns", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="syncMode")
+    def sync_mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "sync_mode")
+
+    @sync_mode.setter
+    def sync_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sync_mode", value)
+
+
+@pulumi.input_type
+class ConnectorSchemaConfigSchemaTableColumnArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 enabled: Optional[pulumi.Input[str]] = None,
+                 hashed: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "name", name)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if hashed is not None:
+            pulumi.set(__self__, "hashed", hashed)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def hashed(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "hashed")
+
+    @hashed.setter
+    def hashed(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hashed", value)
+
+
+@pulumi.input_type
 class DbtProjectModelArgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[str]] = None,
@@ -6816,148 +6958,6 @@ class GroupUsersUserArgs:
     @id.setter
     def id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "id", value)
-
-
-@pulumi.input_type
-class SchemaConfigSchemaArgs:
-    def __init__(__self__, *,
-                 name: pulumi.Input[str],
-                 enabled: Optional[pulumi.Input[str]] = None,
-                 tables: Optional[pulumi.Input[Sequence[pulumi.Input['SchemaConfigSchemaTableArgs']]]] = None):
-        """
-        :param pulumi.Input[str] name: The schema name within your destination in accordance with Fivetran conventional rules.
-        :param pulumi.Input[str] enabled: The boolean value specifying whether the sync for the schema into the destination is enabled.
-        """
-        pulumi.set(__self__, "name", name)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-        if tables is not None:
-            pulumi.set(__self__, "tables", tables)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        The schema name within your destination in accordance with Fivetran conventional rules.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[str]]:
-        """
-        The boolean value specifying whether the sync for the schema into the destination is enabled.
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "enabled", value)
-
-    @property
-    @pulumi.getter
-    def tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SchemaConfigSchemaTableArgs']]]]:
-        return pulumi.get(self, "tables")
-
-    @tables.setter
-    def tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SchemaConfigSchemaTableArgs']]]]):
-        pulumi.set(self, "tables", value)
-
-
-@pulumi.input_type
-class SchemaConfigSchemaTableArgs:
-    def __init__(__self__, *,
-                 name: pulumi.Input[str],
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['SchemaConfigSchemaTableColumnArgs']]]] = None,
-                 enabled: Optional[pulumi.Input[str]] = None,
-                 sync_mode: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "name", name)
-        if columns is not None:
-            pulumi.set(__self__, "columns", columns)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-        if sync_mode is not None:
-            pulumi.set(__self__, "sync_mode", sync_mode)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SchemaConfigSchemaTableColumnArgs']]]]:
-        return pulumi.get(self, "columns")
-
-    @columns.setter
-    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SchemaConfigSchemaTableColumnArgs']]]]):
-        pulumi.set(self, "columns", value)
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "enabled", value)
-
-    @property
-    @pulumi.getter(name="syncMode")
-    def sync_mode(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "sync_mode")
-
-    @sync_mode.setter
-    def sync_mode(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "sync_mode", value)
-
-
-@pulumi.input_type
-class SchemaConfigSchemaTableColumnArgs:
-    def __init__(__self__, *,
-                 name: pulumi.Input[str],
-                 enabled: Optional[pulumi.Input[str]] = None,
-                 hashed: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "name", name)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-        if hashed is not None:
-            pulumi.set(__self__, "hashed", hashed)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "enabled", value)
-
-    @property
-    @pulumi.getter
-    def hashed(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "hashed")
-
-    @hashed.setter
-    def hashed(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "hashed", value)
 
 
 @pulumi.input_type

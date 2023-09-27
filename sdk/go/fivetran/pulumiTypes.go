@@ -8443,6 +8443,408 @@ func (o ConnectorDestinationSchemaPtrOutput) Table() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ConnectorSchemaConfigSchema struct {
+	// The boolean value specifying whether the sync for the schema into the destination is enabled.
+	Enabled *string `pulumi:"enabled"`
+	// The schema name within your destination in accordance with Fivetran conventional rules.
+	Name   string                             `pulumi:"name"`
+	Tables []ConnectorSchemaConfigSchemaTable `pulumi:"tables"`
+}
+
+// ConnectorSchemaConfigSchemaInput is an input type that accepts ConnectorSchemaConfigSchemaArgs and ConnectorSchemaConfigSchemaOutput values.
+// You can construct a concrete instance of `ConnectorSchemaConfigSchemaInput` via:
+//
+//	ConnectorSchemaConfigSchemaArgs{...}
+type ConnectorSchemaConfigSchemaInput interface {
+	pulumi.Input
+
+	ToConnectorSchemaConfigSchemaOutput() ConnectorSchemaConfigSchemaOutput
+	ToConnectorSchemaConfigSchemaOutputWithContext(context.Context) ConnectorSchemaConfigSchemaOutput
+}
+
+type ConnectorSchemaConfigSchemaArgs struct {
+	// The boolean value specifying whether the sync for the schema into the destination is enabled.
+	Enabled pulumi.StringPtrInput `pulumi:"enabled"`
+	// The schema name within your destination in accordance with Fivetran conventional rules.
+	Name   pulumi.StringInput                         `pulumi:"name"`
+	Tables ConnectorSchemaConfigSchemaTableArrayInput `pulumi:"tables"`
+}
+
+func (ConnectorSchemaConfigSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorSchemaConfigSchema)(nil)).Elem()
+}
+
+func (i ConnectorSchemaConfigSchemaArgs) ToConnectorSchemaConfigSchemaOutput() ConnectorSchemaConfigSchemaOutput {
+	return i.ToConnectorSchemaConfigSchemaOutputWithContext(context.Background())
+}
+
+func (i ConnectorSchemaConfigSchemaArgs) ToConnectorSchemaConfigSchemaOutputWithContext(ctx context.Context) ConnectorSchemaConfigSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorSchemaConfigSchemaOutput)
+}
+
+func (i ConnectorSchemaConfigSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorSchemaConfigSchema] {
+	return pulumix.Output[ConnectorSchemaConfigSchema]{
+		OutputState: i.ToConnectorSchemaConfigSchemaOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConnectorSchemaConfigSchemaArrayInput is an input type that accepts ConnectorSchemaConfigSchemaArray and ConnectorSchemaConfigSchemaArrayOutput values.
+// You can construct a concrete instance of `ConnectorSchemaConfigSchemaArrayInput` via:
+//
+//	ConnectorSchemaConfigSchemaArray{ ConnectorSchemaConfigSchemaArgs{...} }
+type ConnectorSchemaConfigSchemaArrayInput interface {
+	pulumi.Input
+
+	ToConnectorSchemaConfigSchemaArrayOutput() ConnectorSchemaConfigSchemaArrayOutput
+	ToConnectorSchemaConfigSchemaArrayOutputWithContext(context.Context) ConnectorSchemaConfigSchemaArrayOutput
+}
+
+type ConnectorSchemaConfigSchemaArray []ConnectorSchemaConfigSchemaInput
+
+func (ConnectorSchemaConfigSchemaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorSchemaConfigSchema)(nil)).Elem()
+}
+
+func (i ConnectorSchemaConfigSchemaArray) ToConnectorSchemaConfigSchemaArrayOutput() ConnectorSchemaConfigSchemaArrayOutput {
+	return i.ToConnectorSchemaConfigSchemaArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectorSchemaConfigSchemaArray) ToConnectorSchemaConfigSchemaArrayOutputWithContext(ctx context.Context) ConnectorSchemaConfigSchemaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorSchemaConfigSchemaArrayOutput)
+}
+
+func (i ConnectorSchemaConfigSchemaArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorSchemaConfigSchema] {
+	return pulumix.Output[[]ConnectorSchemaConfigSchema]{
+		OutputState: i.ToConnectorSchemaConfigSchemaArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConnectorSchemaConfigSchemaOutput struct{ *pulumi.OutputState }
+
+func (ConnectorSchemaConfigSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorSchemaConfigSchema)(nil)).Elem()
+}
+
+func (o ConnectorSchemaConfigSchemaOutput) ToConnectorSchemaConfigSchemaOutput() ConnectorSchemaConfigSchemaOutput {
+	return o
+}
+
+func (o ConnectorSchemaConfigSchemaOutput) ToConnectorSchemaConfigSchemaOutputWithContext(ctx context.Context) ConnectorSchemaConfigSchemaOutput {
+	return o
+}
+
+func (o ConnectorSchemaConfigSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorSchemaConfigSchema] {
+	return pulumix.Output[ConnectorSchemaConfigSchema]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The boolean value specifying whether the sync for the schema into the destination is enabled.
+func (o ConnectorSchemaConfigSchemaOutput) Enabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorSchemaConfigSchema) *string { return v.Enabled }).(pulumi.StringPtrOutput)
+}
+
+// The schema name within your destination in accordance with Fivetran conventional rules.
+func (o ConnectorSchemaConfigSchemaOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorSchemaConfigSchema) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ConnectorSchemaConfigSchemaOutput) Tables() ConnectorSchemaConfigSchemaTableArrayOutput {
+	return o.ApplyT(func(v ConnectorSchemaConfigSchema) []ConnectorSchemaConfigSchemaTable { return v.Tables }).(ConnectorSchemaConfigSchemaTableArrayOutput)
+}
+
+type ConnectorSchemaConfigSchemaArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectorSchemaConfigSchemaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorSchemaConfigSchema)(nil)).Elem()
+}
+
+func (o ConnectorSchemaConfigSchemaArrayOutput) ToConnectorSchemaConfigSchemaArrayOutput() ConnectorSchemaConfigSchemaArrayOutput {
+	return o
+}
+
+func (o ConnectorSchemaConfigSchemaArrayOutput) ToConnectorSchemaConfigSchemaArrayOutputWithContext(ctx context.Context) ConnectorSchemaConfigSchemaArrayOutput {
+	return o
+}
+
+func (o ConnectorSchemaConfigSchemaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorSchemaConfigSchema] {
+	return pulumix.Output[[]ConnectorSchemaConfigSchema]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConnectorSchemaConfigSchemaArrayOutput) Index(i pulumi.IntInput) ConnectorSchemaConfigSchemaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorSchemaConfigSchema {
+		return vs[0].([]ConnectorSchemaConfigSchema)[vs[1].(int)]
+	}).(ConnectorSchemaConfigSchemaOutput)
+}
+
+type ConnectorSchemaConfigSchemaTable struct {
+	Columns  []ConnectorSchemaConfigSchemaTableColumn `pulumi:"columns"`
+	Enabled  *string                                  `pulumi:"enabled"`
+	Name     string                                   `pulumi:"name"`
+	SyncMode *string                                  `pulumi:"syncMode"`
+}
+
+// ConnectorSchemaConfigSchemaTableInput is an input type that accepts ConnectorSchemaConfigSchemaTableArgs and ConnectorSchemaConfigSchemaTableOutput values.
+// You can construct a concrete instance of `ConnectorSchemaConfigSchemaTableInput` via:
+//
+//	ConnectorSchemaConfigSchemaTableArgs{...}
+type ConnectorSchemaConfigSchemaTableInput interface {
+	pulumi.Input
+
+	ToConnectorSchemaConfigSchemaTableOutput() ConnectorSchemaConfigSchemaTableOutput
+	ToConnectorSchemaConfigSchemaTableOutputWithContext(context.Context) ConnectorSchemaConfigSchemaTableOutput
+}
+
+type ConnectorSchemaConfigSchemaTableArgs struct {
+	Columns  ConnectorSchemaConfigSchemaTableColumnArrayInput `pulumi:"columns"`
+	Enabled  pulumi.StringPtrInput                            `pulumi:"enabled"`
+	Name     pulumi.StringInput                               `pulumi:"name"`
+	SyncMode pulumi.StringPtrInput                            `pulumi:"syncMode"`
+}
+
+func (ConnectorSchemaConfigSchemaTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorSchemaConfigSchemaTable)(nil)).Elem()
+}
+
+func (i ConnectorSchemaConfigSchemaTableArgs) ToConnectorSchemaConfigSchemaTableOutput() ConnectorSchemaConfigSchemaTableOutput {
+	return i.ToConnectorSchemaConfigSchemaTableOutputWithContext(context.Background())
+}
+
+func (i ConnectorSchemaConfigSchemaTableArgs) ToConnectorSchemaConfigSchemaTableOutputWithContext(ctx context.Context) ConnectorSchemaConfigSchemaTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorSchemaConfigSchemaTableOutput)
+}
+
+func (i ConnectorSchemaConfigSchemaTableArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorSchemaConfigSchemaTable] {
+	return pulumix.Output[ConnectorSchemaConfigSchemaTable]{
+		OutputState: i.ToConnectorSchemaConfigSchemaTableOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConnectorSchemaConfigSchemaTableArrayInput is an input type that accepts ConnectorSchemaConfigSchemaTableArray and ConnectorSchemaConfigSchemaTableArrayOutput values.
+// You can construct a concrete instance of `ConnectorSchemaConfigSchemaTableArrayInput` via:
+//
+//	ConnectorSchemaConfigSchemaTableArray{ ConnectorSchemaConfigSchemaTableArgs{...} }
+type ConnectorSchemaConfigSchemaTableArrayInput interface {
+	pulumi.Input
+
+	ToConnectorSchemaConfigSchemaTableArrayOutput() ConnectorSchemaConfigSchemaTableArrayOutput
+	ToConnectorSchemaConfigSchemaTableArrayOutputWithContext(context.Context) ConnectorSchemaConfigSchemaTableArrayOutput
+}
+
+type ConnectorSchemaConfigSchemaTableArray []ConnectorSchemaConfigSchemaTableInput
+
+func (ConnectorSchemaConfigSchemaTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorSchemaConfigSchemaTable)(nil)).Elem()
+}
+
+func (i ConnectorSchemaConfigSchemaTableArray) ToConnectorSchemaConfigSchemaTableArrayOutput() ConnectorSchemaConfigSchemaTableArrayOutput {
+	return i.ToConnectorSchemaConfigSchemaTableArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectorSchemaConfigSchemaTableArray) ToConnectorSchemaConfigSchemaTableArrayOutputWithContext(ctx context.Context) ConnectorSchemaConfigSchemaTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorSchemaConfigSchemaTableArrayOutput)
+}
+
+func (i ConnectorSchemaConfigSchemaTableArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorSchemaConfigSchemaTable] {
+	return pulumix.Output[[]ConnectorSchemaConfigSchemaTable]{
+		OutputState: i.ToConnectorSchemaConfigSchemaTableArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConnectorSchemaConfigSchemaTableOutput struct{ *pulumi.OutputState }
+
+func (ConnectorSchemaConfigSchemaTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorSchemaConfigSchemaTable)(nil)).Elem()
+}
+
+func (o ConnectorSchemaConfigSchemaTableOutput) ToConnectorSchemaConfigSchemaTableOutput() ConnectorSchemaConfigSchemaTableOutput {
+	return o
+}
+
+func (o ConnectorSchemaConfigSchemaTableOutput) ToConnectorSchemaConfigSchemaTableOutputWithContext(ctx context.Context) ConnectorSchemaConfigSchemaTableOutput {
+	return o
+}
+
+func (o ConnectorSchemaConfigSchemaTableOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorSchemaConfigSchemaTable] {
+	return pulumix.Output[ConnectorSchemaConfigSchemaTable]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConnectorSchemaConfigSchemaTableOutput) Columns() ConnectorSchemaConfigSchemaTableColumnArrayOutput {
+	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTable) []ConnectorSchemaConfigSchemaTableColumn { return v.Columns }).(ConnectorSchemaConfigSchemaTableColumnArrayOutput)
+}
+
+func (o ConnectorSchemaConfigSchemaTableOutput) Enabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTable) *string { return v.Enabled }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorSchemaConfigSchemaTableOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTable) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ConnectorSchemaConfigSchemaTableOutput) SyncMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTable) *string { return v.SyncMode }).(pulumi.StringPtrOutput)
+}
+
+type ConnectorSchemaConfigSchemaTableArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectorSchemaConfigSchemaTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorSchemaConfigSchemaTable)(nil)).Elem()
+}
+
+func (o ConnectorSchemaConfigSchemaTableArrayOutput) ToConnectorSchemaConfigSchemaTableArrayOutput() ConnectorSchemaConfigSchemaTableArrayOutput {
+	return o
+}
+
+func (o ConnectorSchemaConfigSchemaTableArrayOutput) ToConnectorSchemaConfigSchemaTableArrayOutputWithContext(ctx context.Context) ConnectorSchemaConfigSchemaTableArrayOutput {
+	return o
+}
+
+func (o ConnectorSchemaConfigSchemaTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorSchemaConfigSchemaTable] {
+	return pulumix.Output[[]ConnectorSchemaConfigSchemaTable]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConnectorSchemaConfigSchemaTableArrayOutput) Index(i pulumi.IntInput) ConnectorSchemaConfigSchemaTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorSchemaConfigSchemaTable {
+		return vs[0].([]ConnectorSchemaConfigSchemaTable)[vs[1].(int)]
+	}).(ConnectorSchemaConfigSchemaTableOutput)
+}
+
+type ConnectorSchemaConfigSchemaTableColumn struct {
+	Enabled *string `pulumi:"enabled"`
+	Hashed  *string `pulumi:"hashed"`
+	Name    string  `pulumi:"name"`
+}
+
+// ConnectorSchemaConfigSchemaTableColumnInput is an input type that accepts ConnectorSchemaConfigSchemaTableColumnArgs and ConnectorSchemaConfigSchemaTableColumnOutput values.
+// You can construct a concrete instance of `ConnectorSchemaConfigSchemaTableColumnInput` via:
+//
+//	ConnectorSchemaConfigSchemaTableColumnArgs{...}
+type ConnectorSchemaConfigSchemaTableColumnInput interface {
+	pulumi.Input
+
+	ToConnectorSchemaConfigSchemaTableColumnOutput() ConnectorSchemaConfigSchemaTableColumnOutput
+	ToConnectorSchemaConfigSchemaTableColumnOutputWithContext(context.Context) ConnectorSchemaConfigSchemaTableColumnOutput
+}
+
+type ConnectorSchemaConfigSchemaTableColumnArgs struct {
+	Enabled pulumi.StringPtrInput `pulumi:"enabled"`
+	Hashed  pulumi.StringPtrInput `pulumi:"hashed"`
+	Name    pulumi.StringInput    `pulumi:"name"`
+}
+
+func (ConnectorSchemaConfigSchemaTableColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorSchemaConfigSchemaTableColumn)(nil)).Elem()
+}
+
+func (i ConnectorSchemaConfigSchemaTableColumnArgs) ToConnectorSchemaConfigSchemaTableColumnOutput() ConnectorSchemaConfigSchemaTableColumnOutput {
+	return i.ToConnectorSchemaConfigSchemaTableColumnOutputWithContext(context.Background())
+}
+
+func (i ConnectorSchemaConfigSchemaTableColumnArgs) ToConnectorSchemaConfigSchemaTableColumnOutputWithContext(ctx context.Context) ConnectorSchemaConfigSchemaTableColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorSchemaConfigSchemaTableColumnOutput)
+}
+
+func (i ConnectorSchemaConfigSchemaTableColumnArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorSchemaConfigSchemaTableColumn] {
+	return pulumix.Output[ConnectorSchemaConfigSchemaTableColumn]{
+		OutputState: i.ToConnectorSchemaConfigSchemaTableColumnOutputWithContext(ctx).OutputState,
+	}
+}
+
+// ConnectorSchemaConfigSchemaTableColumnArrayInput is an input type that accepts ConnectorSchemaConfigSchemaTableColumnArray and ConnectorSchemaConfigSchemaTableColumnArrayOutput values.
+// You can construct a concrete instance of `ConnectorSchemaConfigSchemaTableColumnArrayInput` via:
+//
+//	ConnectorSchemaConfigSchemaTableColumnArray{ ConnectorSchemaConfigSchemaTableColumnArgs{...} }
+type ConnectorSchemaConfigSchemaTableColumnArrayInput interface {
+	pulumi.Input
+
+	ToConnectorSchemaConfigSchemaTableColumnArrayOutput() ConnectorSchemaConfigSchemaTableColumnArrayOutput
+	ToConnectorSchemaConfigSchemaTableColumnArrayOutputWithContext(context.Context) ConnectorSchemaConfigSchemaTableColumnArrayOutput
+}
+
+type ConnectorSchemaConfigSchemaTableColumnArray []ConnectorSchemaConfigSchemaTableColumnInput
+
+func (ConnectorSchemaConfigSchemaTableColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorSchemaConfigSchemaTableColumn)(nil)).Elem()
+}
+
+func (i ConnectorSchemaConfigSchemaTableColumnArray) ToConnectorSchemaConfigSchemaTableColumnArrayOutput() ConnectorSchemaConfigSchemaTableColumnArrayOutput {
+	return i.ToConnectorSchemaConfigSchemaTableColumnArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectorSchemaConfigSchemaTableColumnArray) ToConnectorSchemaConfigSchemaTableColumnArrayOutputWithContext(ctx context.Context) ConnectorSchemaConfigSchemaTableColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorSchemaConfigSchemaTableColumnArrayOutput)
+}
+
+func (i ConnectorSchemaConfigSchemaTableColumnArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorSchemaConfigSchemaTableColumn] {
+	return pulumix.Output[[]ConnectorSchemaConfigSchemaTableColumn]{
+		OutputState: i.ToConnectorSchemaConfigSchemaTableColumnArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConnectorSchemaConfigSchemaTableColumnOutput struct{ *pulumi.OutputState }
+
+func (ConnectorSchemaConfigSchemaTableColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorSchemaConfigSchemaTableColumn)(nil)).Elem()
+}
+
+func (o ConnectorSchemaConfigSchemaTableColumnOutput) ToConnectorSchemaConfigSchemaTableColumnOutput() ConnectorSchemaConfigSchemaTableColumnOutput {
+	return o
+}
+
+func (o ConnectorSchemaConfigSchemaTableColumnOutput) ToConnectorSchemaConfigSchemaTableColumnOutputWithContext(ctx context.Context) ConnectorSchemaConfigSchemaTableColumnOutput {
+	return o
+}
+
+func (o ConnectorSchemaConfigSchemaTableColumnOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorSchemaConfigSchemaTableColumn] {
+	return pulumix.Output[ConnectorSchemaConfigSchemaTableColumn]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConnectorSchemaConfigSchemaTableColumnOutput) Enabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTableColumn) *string { return v.Enabled }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorSchemaConfigSchemaTableColumnOutput) Hashed() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTableColumn) *string { return v.Hashed }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorSchemaConfigSchemaTableColumnOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTableColumn) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ConnectorSchemaConfigSchemaTableColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectorSchemaConfigSchemaTableColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorSchemaConfigSchemaTableColumn)(nil)).Elem()
+}
+
+func (o ConnectorSchemaConfigSchemaTableColumnArrayOutput) ToConnectorSchemaConfigSchemaTableColumnArrayOutput() ConnectorSchemaConfigSchemaTableColumnArrayOutput {
+	return o
+}
+
+func (o ConnectorSchemaConfigSchemaTableColumnArrayOutput) ToConnectorSchemaConfigSchemaTableColumnArrayOutputWithContext(ctx context.Context) ConnectorSchemaConfigSchemaTableColumnArrayOutput {
+	return o
+}
+
+func (o ConnectorSchemaConfigSchemaTableColumnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorSchemaConfigSchemaTableColumn] {
+	return pulumix.Output[[]ConnectorSchemaConfigSchemaTableColumn]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConnectorSchemaConfigSchemaTableColumnArrayOutput) Index(i pulumi.IntInput) ConnectorSchemaConfigSchemaTableColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorSchemaConfigSchemaTableColumn {
+		return vs[0].([]ConnectorSchemaConfigSchemaTableColumn)[vs[1].(int)]
+	}).(ConnectorSchemaConfigSchemaTableColumnOutput)
+}
+
 type DbtProjectModel struct {
 	// The unique identifier for the dbt Model within the Fivetran system.
 	Id *string `pulumi:"id"`
@@ -9886,408 +10288,6 @@ func (o GroupUsersUserArrayOutput) Index(i pulumi.IntInput) GroupUsersUserOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GroupUsersUser {
 		return vs[0].([]GroupUsersUser)[vs[1].(int)]
 	}).(GroupUsersUserOutput)
-}
-
-type SchemaConfigSchema struct {
-	// The boolean value specifying whether the sync for the schema into the destination is enabled.
-	Enabled *string `pulumi:"enabled"`
-	// The schema name within your destination in accordance with Fivetran conventional rules.
-	Name   string                    `pulumi:"name"`
-	Tables []SchemaConfigSchemaTable `pulumi:"tables"`
-}
-
-// SchemaConfigSchemaInput is an input type that accepts SchemaConfigSchemaArgs and SchemaConfigSchemaOutput values.
-// You can construct a concrete instance of `SchemaConfigSchemaInput` via:
-//
-//	SchemaConfigSchemaArgs{...}
-type SchemaConfigSchemaInput interface {
-	pulumi.Input
-
-	ToSchemaConfigSchemaOutput() SchemaConfigSchemaOutput
-	ToSchemaConfigSchemaOutputWithContext(context.Context) SchemaConfigSchemaOutput
-}
-
-type SchemaConfigSchemaArgs struct {
-	// The boolean value specifying whether the sync for the schema into the destination is enabled.
-	Enabled pulumi.StringPtrInput `pulumi:"enabled"`
-	// The schema name within your destination in accordance with Fivetran conventional rules.
-	Name   pulumi.StringInput                `pulumi:"name"`
-	Tables SchemaConfigSchemaTableArrayInput `pulumi:"tables"`
-}
-
-func (SchemaConfigSchemaArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SchemaConfigSchema)(nil)).Elem()
-}
-
-func (i SchemaConfigSchemaArgs) ToSchemaConfigSchemaOutput() SchemaConfigSchemaOutput {
-	return i.ToSchemaConfigSchemaOutputWithContext(context.Background())
-}
-
-func (i SchemaConfigSchemaArgs) ToSchemaConfigSchemaOutputWithContext(ctx context.Context) SchemaConfigSchemaOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchemaConfigSchemaOutput)
-}
-
-func (i SchemaConfigSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[SchemaConfigSchema] {
-	return pulumix.Output[SchemaConfigSchema]{
-		OutputState: i.ToSchemaConfigSchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
-// SchemaConfigSchemaArrayInput is an input type that accepts SchemaConfigSchemaArray and SchemaConfigSchemaArrayOutput values.
-// You can construct a concrete instance of `SchemaConfigSchemaArrayInput` via:
-//
-//	SchemaConfigSchemaArray{ SchemaConfigSchemaArgs{...} }
-type SchemaConfigSchemaArrayInput interface {
-	pulumi.Input
-
-	ToSchemaConfigSchemaArrayOutput() SchemaConfigSchemaArrayOutput
-	ToSchemaConfigSchemaArrayOutputWithContext(context.Context) SchemaConfigSchemaArrayOutput
-}
-
-type SchemaConfigSchemaArray []SchemaConfigSchemaInput
-
-func (SchemaConfigSchemaArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SchemaConfigSchema)(nil)).Elem()
-}
-
-func (i SchemaConfigSchemaArray) ToSchemaConfigSchemaArrayOutput() SchemaConfigSchemaArrayOutput {
-	return i.ToSchemaConfigSchemaArrayOutputWithContext(context.Background())
-}
-
-func (i SchemaConfigSchemaArray) ToSchemaConfigSchemaArrayOutputWithContext(ctx context.Context) SchemaConfigSchemaArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchemaConfigSchemaArrayOutput)
-}
-
-func (i SchemaConfigSchemaArray) ToOutput(ctx context.Context) pulumix.Output[[]SchemaConfigSchema] {
-	return pulumix.Output[[]SchemaConfigSchema]{
-		OutputState: i.ToSchemaConfigSchemaArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type SchemaConfigSchemaOutput struct{ *pulumi.OutputState }
-
-func (SchemaConfigSchemaOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SchemaConfigSchema)(nil)).Elem()
-}
-
-func (o SchemaConfigSchemaOutput) ToSchemaConfigSchemaOutput() SchemaConfigSchemaOutput {
-	return o
-}
-
-func (o SchemaConfigSchemaOutput) ToSchemaConfigSchemaOutputWithContext(ctx context.Context) SchemaConfigSchemaOutput {
-	return o
-}
-
-func (o SchemaConfigSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[SchemaConfigSchema] {
-	return pulumix.Output[SchemaConfigSchema]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The boolean value specifying whether the sync for the schema into the destination is enabled.
-func (o SchemaConfigSchemaOutput) Enabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SchemaConfigSchema) *string { return v.Enabled }).(pulumi.StringPtrOutput)
-}
-
-// The schema name within your destination in accordance with Fivetran conventional rules.
-func (o SchemaConfigSchemaOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v SchemaConfigSchema) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o SchemaConfigSchemaOutput) Tables() SchemaConfigSchemaTableArrayOutput {
-	return o.ApplyT(func(v SchemaConfigSchema) []SchemaConfigSchemaTable { return v.Tables }).(SchemaConfigSchemaTableArrayOutput)
-}
-
-type SchemaConfigSchemaArrayOutput struct{ *pulumi.OutputState }
-
-func (SchemaConfigSchemaArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SchemaConfigSchema)(nil)).Elem()
-}
-
-func (o SchemaConfigSchemaArrayOutput) ToSchemaConfigSchemaArrayOutput() SchemaConfigSchemaArrayOutput {
-	return o
-}
-
-func (o SchemaConfigSchemaArrayOutput) ToSchemaConfigSchemaArrayOutputWithContext(ctx context.Context) SchemaConfigSchemaArrayOutput {
-	return o
-}
-
-func (o SchemaConfigSchemaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SchemaConfigSchema] {
-	return pulumix.Output[[]SchemaConfigSchema]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o SchemaConfigSchemaArrayOutput) Index(i pulumi.IntInput) SchemaConfigSchemaOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SchemaConfigSchema {
-		return vs[0].([]SchemaConfigSchema)[vs[1].(int)]
-	}).(SchemaConfigSchemaOutput)
-}
-
-type SchemaConfigSchemaTable struct {
-	Columns  []SchemaConfigSchemaTableColumn `pulumi:"columns"`
-	Enabled  *string                         `pulumi:"enabled"`
-	Name     string                          `pulumi:"name"`
-	SyncMode *string                         `pulumi:"syncMode"`
-}
-
-// SchemaConfigSchemaTableInput is an input type that accepts SchemaConfigSchemaTableArgs and SchemaConfigSchemaTableOutput values.
-// You can construct a concrete instance of `SchemaConfigSchemaTableInput` via:
-//
-//	SchemaConfigSchemaTableArgs{...}
-type SchemaConfigSchemaTableInput interface {
-	pulumi.Input
-
-	ToSchemaConfigSchemaTableOutput() SchemaConfigSchemaTableOutput
-	ToSchemaConfigSchemaTableOutputWithContext(context.Context) SchemaConfigSchemaTableOutput
-}
-
-type SchemaConfigSchemaTableArgs struct {
-	Columns  SchemaConfigSchemaTableColumnArrayInput `pulumi:"columns"`
-	Enabled  pulumi.StringPtrInput                   `pulumi:"enabled"`
-	Name     pulumi.StringInput                      `pulumi:"name"`
-	SyncMode pulumi.StringPtrInput                   `pulumi:"syncMode"`
-}
-
-func (SchemaConfigSchemaTableArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SchemaConfigSchemaTable)(nil)).Elem()
-}
-
-func (i SchemaConfigSchemaTableArgs) ToSchemaConfigSchemaTableOutput() SchemaConfigSchemaTableOutput {
-	return i.ToSchemaConfigSchemaTableOutputWithContext(context.Background())
-}
-
-func (i SchemaConfigSchemaTableArgs) ToSchemaConfigSchemaTableOutputWithContext(ctx context.Context) SchemaConfigSchemaTableOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchemaConfigSchemaTableOutput)
-}
-
-func (i SchemaConfigSchemaTableArgs) ToOutput(ctx context.Context) pulumix.Output[SchemaConfigSchemaTable] {
-	return pulumix.Output[SchemaConfigSchemaTable]{
-		OutputState: i.ToSchemaConfigSchemaTableOutputWithContext(ctx).OutputState,
-	}
-}
-
-// SchemaConfigSchemaTableArrayInput is an input type that accepts SchemaConfigSchemaTableArray and SchemaConfigSchemaTableArrayOutput values.
-// You can construct a concrete instance of `SchemaConfigSchemaTableArrayInput` via:
-//
-//	SchemaConfigSchemaTableArray{ SchemaConfigSchemaTableArgs{...} }
-type SchemaConfigSchemaTableArrayInput interface {
-	pulumi.Input
-
-	ToSchemaConfigSchemaTableArrayOutput() SchemaConfigSchemaTableArrayOutput
-	ToSchemaConfigSchemaTableArrayOutputWithContext(context.Context) SchemaConfigSchemaTableArrayOutput
-}
-
-type SchemaConfigSchemaTableArray []SchemaConfigSchemaTableInput
-
-func (SchemaConfigSchemaTableArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SchemaConfigSchemaTable)(nil)).Elem()
-}
-
-func (i SchemaConfigSchemaTableArray) ToSchemaConfigSchemaTableArrayOutput() SchemaConfigSchemaTableArrayOutput {
-	return i.ToSchemaConfigSchemaTableArrayOutputWithContext(context.Background())
-}
-
-func (i SchemaConfigSchemaTableArray) ToSchemaConfigSchemaTableArrayOutputWithContext(ctx context.Context) SchemaConfigSchemaTableArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchemaConfigSchemaTableArrayOutput)
-}
-
-func (i SchemaConfigSchemaTableArray) ToOutput(ctx context.Context) pulumix.Output[[]SchemaConfigSchemaTable] {
-	return pulumix.Output[[]SchemaConfigSchemaTable]{
-		OutputState: i.ToSchemaConfigSchemaTableArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type SchemaConfigSchemaTableOutput struct{ *pulumi.OutputState }
-
-func (SchemaConfigSchemaTableOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SchemaConfigSchemaTable)(nil)).Elem()
-}
-
-func (o SchemaConfigSchemaTableOutput) ToSchemaConfigSchemaTableOutput() SchemaConfigSchemaTableOutput {
-	return o
-}
-
-func (o SchemaConfigSchemaTableOutput) ToSchemaConfigSchemaTableOutputWithContext(ctx context.Context) SchemaConfigSchemaTableOutput {
-	return o
-}
-
-func (o SchemaConfigSchemaTableOutput) ToOutput(ctx context.Context) pulumix.Output[SchemaConfigSchemaTable] {
-	return pulumix.Output[SchemaConfigSchemaTable]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o SchemaConfigSchemaTableOutput) Columns() SchemaConfigSchemaTableColumnArrayOutput {
-	return o.ApplyT(func(v SchemaConfigSchemaTable) []SchemaConfigSchemaTableColumn { return v.Columns }).(SchemaConfigSchemaTableColumnArrayOutput)
-}
-
-func (o SchemaConfigSchemaTableOutput) Enabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SchemaConfigSchemaTable) *string { return v.Enabled }).(pulumi.StringPtrOutput)
-}
-
-func (o SchemaConfigSchemaTableOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v SchemaConfigSchemaTable) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o SchemaConfigSchemaTableOutput) SyncMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SchemaConfigSchemaTable) *string { return v.SyncMode }).(pulumi.StringPtrOutput)
-}
-
-type SchemaConfigSchemaTableArrayOutput struct{ *pulumi.OutputState }
-
-func (SchemaConfigSchemaTableArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SchemaConfigSchemaTable)(nil)).Elem()
-}
-
-func (o SchemaConfigSchemaTableArrayOutput) ToSchemaConfigSchemaTableArrayOutput() SchemaConfigSchemaTableArrayOutput {
-	return o
-}
-
-func (o SchemaConfigSchemaTableArrayOutput) ToSchemaConfigSchemaTableArrayOutputWithContext(ctx context.Context) SchemaConfigSchemaTableArrayOutput {
-	return o
-}
-
-func (o SchemaConfigSchemaTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SchemaConfigSchemaTable] {
-	return pulumix.Output[[]SchemaConfigSchemaTable]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o SchemaConfigSchemaTableArrayOutput) Index(i pulumi.IntInput) SchemaConfigSchemaTableOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SchemaConfigSchemaTable {
-		return vs[0].([]SchemaConfigSchemaTable)[vs[1].(int)]
-	}).(SchemaConfigSchemaTableOutput)
-}
-
-type SchemaConfigSchemaTableColumn struct {
-	Enabled *string `pulumi:"enabled"`
-	Hashed  *string `pulumi:"hashed"`
-	Name    string  `pulumi:"name"`
-}
-
-// SchemaConfigSchemaTableColumnInput is an input type that accepts SchemaConfigSchemaTableColumnArgs and SchemaConfigSchemaTableColumnOutput values.
-// You can construct a concrete instance of `SchemaConfigSchemaTableColumnInput` via:
-//
-//	SchemaConfigSchemaTableColumnArgs{...}
-type SchemaConfigSchemaTableColumnInput interface {
-	pulumi.Input
-
-	ToSchemaConfigSchemaTableColumnOutput() SchemaConfigSchemaTableColumnOutput
-	ToSchemaConfigSchemaTableColumnOutputWithContext(context.Context) SchemaConfigSchemaTableColumnOutput
-}
-
-type SchemaConfigSchemaTableColumnArgs struct {
-	Enabled pulumi.StringPtrInput `pulumi:"enabled"`
-	Hashed  pulumi.StringPtrInput `pulumi:"hashed"`
-	Name    pulumi.StringInput    `pulumi:"name"`
-}
-
-func (SchemaConfigSchemaTableColumnArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SchemaConfigSchemaTableColumn)(nil)).Elem()
-}
-
-func (i SchemaConfigSchemaTableColumnArgs) ToSchemaConfigSchemaTableColumnOutput() SchemaConfigSchemaTableColumnOutput {
-	return i.ToSchemaConfigSchemaTableColumnOutputWithContext(context.Background())
-}
-
-func (i SchemaConfigSchemaTableColumnArgs) ToSchemaConfigSchemaTableColumnOutputWithContext(ctx context.Context) SchemaConfigSchemaTableColumnOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchemaConfigSchemaTableColumnOutput)
-}
-
-func (i SchemaConfigSchemaTableColumnArgs) ToOutput(ctx context.Context) pulumix.Output[SchemaConfigSchemaTableColumn] {
-	return pulumix.Output[SchemaConfigSchemaTableColumn]{
-		OutputState: i.ToSchemaConfigSchemaTableColumnOutputWithContext(ctx).OutputState,
-	}
-}
-
-// SchemaConfigSchemaTableColumnArrayInput is an input type that accepts SchemaConfigSchemaTableColumnArray and SchemaConfigSchemaTableColumnArrayOutput values.
-// You can construct a concrete instance of `SchemaConfigSchemaTableColumnArrayInput` via:
-//
-//	SchemaConfigSchemaTableColumnArray{ SchemaConfigSchemaTableColumnArgs{...} }
-type SchemaConfigSchemaTableColumnArrayInput interface {
-	pulumi.Input
-
-	ToSchemaConfigSchemaTableColumnArrayOutput() SchemaConfigSchemaTableColumnArrayOutput
-	ToSchemaConfigSchemaTableColumnArrayOutputWithContext(context.Context) SchemaConfigSchemaTableColumnArrayOutput
-}
-
-type SchemaConfigSchemaTableColumnArray []SchemaConfigSchemaTableColumnInput
-
-func (SchemaConfigSchemaTableColumnArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SchemaConfigSchemaTableColumn)(nil)).Elem()
-}
-
-func (i SchemaConfigSchemaTableColumnArray) ToSchemaConfigSchemaTableColumnArrayOutput() SchemaConfigSchemaTableColumnArrayOutput {
-	return i.ToSchemaConfigSchemaTableColumnArrayOutputWithContext(context.Background())
-}
-
-func (i SchemaConfigSchemaTableColumnArray) ToSchemaConfigSchemaTableColumnArrayOutputWithContext(ctx context.Context) SchemaConfigSchemaTableColumnArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SchemaConfigSchemaTableColumnArrayOutput)
-}
-
-func (i SchemaConfigSchemaTableColumnArray) ToOutput(ctx context.Context) pulumix.Output[[]SchemaConfigSchemaTableColumn] {
-	return pulumix.Output[[]SchemaConfigSchemaTableColumn]{
-		OutputState: i.ToSchemaConfigSchemaTableColumnArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
-type SchemaConfigSchemaTableColumnOutput struct{ *pulumi.OutputState }
-
-func (SchemaConfigSchemaTableColumnOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SchemaConfigSchemaTableColumn)(nil)).Elem()
-}
-
-func (o SchemaConfigSchemaTableColumnOutput) ToSchemaConfigSchemaTableColumnOutput() SchemaConfigSchemaTableColumnOutput {
-	return o
-}
-
-func (o SchemaConfigSchemaTableColumnOutput) ToSchemaConfigSchemaTableColumnOutputWithContext(ctx context.Context) SchemaConfigSchemaTableColumnOutput {
-	return o
-}
-
-func (o SchemaConfigSchemaTableColumnOutput) ToOutput(ctx context.Context) pulumix.Output[SchemaConfigSchemaTableColumn] {
-	return pulumix.Output[SchemaConfigSchemaTableColumn]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o SchemaConfigSchemaTableColumnOutput) Enabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SchemaConfigSchemaTableColumn) *string { return v.Enabled }).(pulumi.StringPtrOutput)
-}
-
-func (o SchemaConfigSchemaTableColumnOutput) Hashed() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SchemaConfigSchemaTableColumn) *string { return v.Hashed }).(pulumi.StringPtrOutput)
-}
-
-func (o SchemaConfigSchemaTableColumnOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v SchemaConfigSchemaTableColumn) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type SchemaConfigSchemaTableColumnArrayOutput struct{ *pulumi.OutputState }
-
-func (SchemaConfigSchemaTableColumnArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SchemaConfigSchemaTableColumn)(nil)).Elem()
-}
-
-func (o SchemaConfigSchemaTableColumnArrayOutput) ToSchemaConfigSchemaTableColumnArrayOutput() SchemaConfigSchemaTableColumnArrayOutput {
-	return o
-}
-
-func (o SchemaConfigSchemaTableColumnArrayOutput) ToSchemaConfigSchemaTableColumnArrayOutputWithContext(ctx context.Context) SchemaConfigSchemaTableColumnArrayOutput {
-	return o
-}
-
-func (o SchemaConfigSchemaTableColumnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SchemaConfigSchemaTableColumn] {
-	return pulumix.Output[[]SchemaConfigSchemaTableColumn]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o SchemaConfigSchemaTableColumnArrayOutput) Index(i pulumi.IntInput) SchemaConfigSchemaTableColumnOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SchemaConfigSchemaTableColumn {
-		return vs[0].([]SchemaConfigSchemaTableColumn)[vs[1].(int)]
-	}).(SchemaConfigSchemaTableColumnOutput)
 }
 
 type GetConnectorConfig struct {
@@ -17406,6 +17406,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigSecretsListArrayInput)(nil)).Elem(), ConnectorConfigSecretsListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorDestinationSchemaInput)(nil)).Elem(), ConnectorDestinationSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorDestinationSchemaPtrInput)(nil)).Elem(), ConnectorDestinationSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorSchemaConfigSchemaInput)(nil)).Elem(), ConnectorSchemaConfigSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorSchemaConfigSchemaArrayInput)(nil)).Elem(), ConnectorSchemaConfigSchemaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorSchemaConfigSchemaTableInput)(nil)).Elem(), ConnectorSchemaConfigSchemaTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorSchemaConfigSchemaTableArrayInput)(nil)).Elem(), ConnectorSchemaConfigSchemaTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorSchemaConfigSchemaTableColumnInput)(nil)).Elem(), ConnectorSchemaConfigSchemaTableColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorSchemaConfigSchemaTableColumnArrayInput)(nil)).Elem(), ConnectorSchemaConfigSchemaTableColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbtProjectModelInput)(nil)).Elem(), DbtProjectModelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbtProjectModelArrayInput)(nil)).Elem(), DbtProjectModelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbtProjectProjectConfigInput)(nil)).Elem(), DbtProjectProjectConfigArgs{})
@@ -17416,12 +17422,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationConfigPtrInput)(nil)).Elem(), DestinationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupUsersUserInput)(nil)).Elem(), GroupUsersUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupUsersUserArrayInput)(nil)).Elem(), GroupUsersUserArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SchemaConfigSchemaInput)(nil)).Elem(), SchemaConfigSchemaArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SchemaConfigSchemaArrayInput)(nil)).Elem(), SchemaConfigSchemaArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SchemaConfigSchemaTableInput)(nil)).Elem(), SchemaConfigSchemaTableArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SchemaConfigSchemaTableArrayInput)(nil)).Elem(), SchemaConfigSchemaTableArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SchemaConfigSchemaTableColumnInput)(nil)).Elem(), SchemaConfigSchemaTableColumnArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SchemaConfigSchemaTableColumnArrayInput)(nil)).Elem(), SchemaConfigSchemaTableColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorConfigInput)(nil)).Elem(), GetConnectorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorConfigArrayInput)(nil)).Elem(), GetConnectorConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorConfigAccountsRedditAdInput)(nil)).Elem(), GetConnectorConfigAccountsRedditAdArgs{})
@@ -17502,6 +17502,12 @@ func init() {
 	pulumi.RegisterOutputType(ConnectorConfigSecretsListArrayOutput{})
 	pulumi.RegisterOutputType(ConnectorDestinationSchemaOutput{})
 	pulumi.RegisterOutputType(ConnectorDestinationSchemaPtrOutput{})
+	pulumi.RegisterOutputType(ConnectorSchemaConfigSchemaOutput{})
+	pulumi.RegisterOutputType(ConnectorSchemaConfigSchemaArrayOutput{})
+	pulumi.RegisterOutputType(ConnectorSchemaConfigSchemaTableOutput{})
+	pulumi.RegisterOutputType(ConnectorSchemaConfigSchemaTableArrayOutput{})
+	pulumi.RegisterOutputType(ConnectorSchemaConfigSchemaTableColumnOutput{})
+	pulumi.RegisterOutputType(ConnectorSchemaConfigSchemaTableColumnArrayOutput{})
 	pulumi.RegisterOutputType(DbtProjectModelOutput{})
 	pulumi.RegisterOutputType(DbtProjectModelArrayOutput{})
 	pulumi.RegisterOutputType(DbtProjectProjectConfigOutput{})
@@ -17512,12 +17518,6 @@ func init() {
 	pulumi.RegisterOutputType(DestinationConfigPtrOutput{})
 	pulumi.RegisterOutputType(GroupUsersUserOutput{})
 	pulumi.RegisterOutputType(GroupUsersUserArrayOutput{})
-	pulumi.RegisterOutputType(SchemaConfigSchemaOutput{})
-	pulumi.RegisterOutputType(SchemaConfigSchemaArrayOutput{})
-	pulumi.RegisterOutputType(SchemaConfigSchemaTableOutput{})
-	pulumi.RegisterOutputType(SchemaConfigSchemaTableArrayOutput{})
-	pulumi.RegisterOutputType(SchemaConfigSchemaTableColumnOutput{})
-	pulumi.RegisterOutputType(SchemaConfigSchemaTableColumnArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorConfigOutput{})
 	pulumi.RegisterOutputType(GetConnectorConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorConfigAccountsRedditAdOutput{})

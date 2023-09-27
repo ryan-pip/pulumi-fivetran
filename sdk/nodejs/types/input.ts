@@ -537,6 +537,31 @@ export interface ConnectorDestinationSchema {
     table?: pulumi.Input<string>;
 }
 
+export interface ConnectorSchemaConfigSchema {
+    /**
+     * The boolean value specifying whether the sync for the schema into the destination is enabled.
+     */
+    enabled?: pulumi.Input<string>;
+    /**
+     * The schema name within your destination in accordance with Fivetran conventional rules.
+     */
+    name: pulumi.Input<string>;
+    tables?: pulumi.Input<pulumi.Input<inputs.ConnectorSchemaConfigSchemaTable>[]>;
+}
+
+export interface ConnectorSchemaConfigSchemaTable {
+    columns?: pulumi.Input<pulumi.Input<inputs.ConnectorSchemaConfigSchemaTableColumn>[]>;
+    enabled?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+    syncMode?: pulumi.Input<string>;
+}
+
+export interface ConnectorSchemaConfigSchemaTableColumn {
+    enabled?: pulumi.Input<string>;
+    hashed?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+}
+
 export interface DbtProjectModel {
     /**
      * The unique identifier for the dbt Model within the Fivetran system.
@@ -2614,29 +2639,4 @@ export interface GroupUsersUser {
      * The group role that you would like to assign this new user to. Supported group roles: ‘Destination Administrator‘, ‘Destination Reviewer‘, ‘Destination Analyst‘, ‘Connector Creator‘, or a custom destination role
      */
     role: pulumi.Input<string>;
-}
-
-export interface SchemaConfigSchema {
-    /**
-     * The boolean value specifying whether the sync for the schema into the destination is enabled.
-     */
-    enabled?: pulumi.Input<string>;
-    /**
-     * The schema name within your destination in accordance with Fivetran conventional rules.
-     */
-    name: pulumi.Input<string>;
-    tables?: pulumi.Input<pulumi.Input<inputs.SchemaConfigSchemaTable>[]>;
-}
-
-export interface SchemaConfigSchemaTable {
-    columns?: pulumi.Input<pulumi.Input<inputs.SchemaConfigSchemaTableColumn>[]>;
-    enabled?: pulumi.Input<string>;
-    name: pulumi.Input<string>;
-    syncMode?: pulumi.Input<string>;
-}
-
-export interface SchemaConfigSchemaTableColumn {
-    enabled?: pulumi.Input<string>;
-    hashed?: pulumi.Input<string>;
-    name: pulumi.Input<string>;
 }

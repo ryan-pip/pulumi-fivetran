@@ -537,6 +537,31 @@ export interface ConnectorDestinationSchema {
     table?: string;
 }
 
+export interface ConnectorSchemaConfigSchema {
+    /**
+     * The boolean value specifying whether the sync for the schema into the destination is enabled.
+     */
+    enabled?: string;
+    /**
+     * The schema name within your destination in accordance with Fivetran conventional rules.
+     */
+    name: string;
+    tables?: outputs.ConnectorSchemaConfigSchemaTable[];
+}
+
+export interface ConnectorSchemaConfigSchemaTable {
+    columns?: outputs.ConnectorSchemaConfigSchemaTableColumn[];
+    enabled?: string;
+    name: string;
+    syncMode?: string;
+}
+
+export interface ConnectorSchemaConfigSchemaTableColumn {
+    enabled?: string;
+    hashed?: string;
+    name: string;
+}
+
 export interface DbtProjectModel {
     /**
      * The unique identifier for the dbt Model within the Fivetran system.
@@ -1710,30 +1735,5 @@ export interface GroupUsersUser {
      * The group role that you would like to assign this new user to. Supported group roles: ‘Destination Administrator‘, ‘Destination Reviewer‘, ‘Destination Analyst‘, ‘Connector Creator‘, or a custom destination role
      */
     role: string;
-}
-
-export interface SchemaConfigSchema {
-    /**
-     * The boolean value specifying whether the sync for the schema into the destination is enabled.
-     */
-    enabled?: string;
-    /**
-     * The schema name within your destination in accordance with Fivetran conventional rules.
-     */
-    name: string;
-    tables?: outputs.SchemaConfigSchemaTable[];
-}
-
-export interface SchemaConfigSchemaTable {
-    columns?: outputs.SchemaConfigSchemaTableColumn[];
-    enabled?: string;
-    name: string;
-    syncMode?: string;
-}
-
-export interface SchemaConfigSchemaTableColumn {
-    enabled?: string;
-    hashed?: string;
-    name: string;
 }
 

@@ -7,6 +7,7 @@ import typing
 # Export this package's modules as members:
 from .connector import *
 from .connector_schedule import *
+from .connector_schema_config import *
 from .dbt_project import *
 from .dbt_transformation import *
 from .destination import *
@@ -28,7 +29,6 @@ from .get_webhooks import *
 from .group import *
 from .group_users import *
 from .provider import *
-from .schema_config import *
 from .user import *
 from .webhook import *
 from ._inputs import *
@@ -58,6 +58,14 @@ _utilities.register(
   "fqn": "pulumi_fivetran",
   "classes": {
    "fivetran:index/connectorSchedule:ConnectorSchedule": "ConnectorSchedule"
+  }
+ },
+ {
+  "pkg": "fivetran",
+  "mod": "index/connectorSchemaConfig",
+  "fqn": "pulumi_fivetran",
+  "classes": {
+   "fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig": "ConnectorSchemaConfig"
   }
  },
  {
@@ -98,14 +106,6 @@ _utilities.register(
   "fqn": "pulumi_fivetran",
   "classes": {
    "fivetran:index/groupUsers:GroupUsers": "GroupUsers"
-  }
- },
- {
-  "pkg": "fivetran",
-  "mod": "index/schemaConfig",
-  "fqn": "pulumi_fivetran",
-  "classes": {
-   "fivetran:index/schemaConfig:SchemaConfig": "SchemaConfig"
   }
  },
  {

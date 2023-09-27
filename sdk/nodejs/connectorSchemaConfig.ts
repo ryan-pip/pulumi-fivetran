@@ -9,10 +9,10 @@ import * as utilities from "./utilities";
 /**
  * ## ---
  *
- * page_title: "Resource: fivetran.SchemaConfig"
+ * page_title: "Resource: fivetran.ConnectorSchemaConfig"
  * ---
  *
- * # Resource: fivetran.SchemaConfig
+ * # Resource: fivetran.ConnectorSchemaConfig
  *
  * This resource allows you to manage the Standard Configuration settings of a connector:
  *  - Define the schema change handling settings
@@ -41,22 +41,22 @@ import * as utilities from "./utilities";
  * 1. To import an existing `fivetran_connector_schema_config` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard. 2. Retrieve all connectors in a particular group using the [fivetran_group_connectors data source](/docs/data-sources/group_connectors). To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_connector_schema_config" "my_imported_connector_schema_config" { }
  *
  * ```sh
- *  $ pulumi import fivetran:index/schemaConfig:SchemaConfig
+ *  $ pulumi import fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig
  *
  * Run the `terraform import` command
  * ```
  *
  * ```sh
- *  $ pulumi import fivetran:index/schemaConfig:SchemaConfig my_imported_connector_schema_config {your Fivetran Connector ID}
+ *  $ pulumi import fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig my_imported_connector_schema_config {your Fivetran Connector ID}
  * ```
  *
  * 5.  
  *
  * Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_connector_schema_config.my_imported_connector_schema_config' 6. Copy the values and paste them to your `.tf` configuration.
  */
-export class SchemaConfig extends pulumi.CustomResource {
+export class ConnectorSchemaConfig extends pulumi.CustomResource {
     /**
-     * Get an existing SchemaConfig resource's state with the given name, ID, and optional extra
+     * Get an existing ConnectorSchemaConfig resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -64,22 +64,22 @@ export class SchemaConfig extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SchemaConfigState, opts?: pulumi.CustomResourceOptions): SchemaConfig {
-        return new SchemaConfig(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ConnectorSchemaConfigState, opts?: pulumi.CustomResourceOptions): ConnectorSchemaConfig {
+        return new ConnectorSchemaConfig(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'fivetran:index/schemaConfig:SchemaConfig';
+    public static readonly __pulumiType = 'fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig';
 
     /**
-     * Returns true if the given object is an instance of SchemaConfig.  This is designed to work even
+     * Returns true if the given object is an instance of ConnectorSchemaConfig.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is SchemaConfig {
+    public static isInstance(obj: any): obj is ConnectorSchemaConfig {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === SchemaConfig.__pulumiType;
+        return obj['__pulumiType'] === ConnectorSchemaConfig.__pulumiType;
     }
 
     /**
@@ -87,26 +87,26 @@ export class SchemaConfig extends pulumi.CustomResource {
      */
     public readonly connectorId!: pulumi.Output<string>;
     public readonly schemaChangeHandling!: pulumi.Output<string>;
-    public readonly schemas!: pulumi.Output<outputs.SchemaConfigSchema[] | undefined>;
+    public readonly schemas!: pulumi.Output<outputs.ConnectorSchemaConfigSchema[] | undefined>;
 
     /**
-     * Create a SchemaConfig resource with the given unique name, arguments, and options.
+     * Create a ConnectorSchemaConfig resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: SchemaConfigArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: SchemaConfigArgs | SchemaConfigState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: ConnectorSchemaConfigArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: ConnectorSchemaConfigArgs | ConnectorSchemaConfigState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as SchemaConfigState | undefined;
+            const state = argsOrState as ConnectorSchemaConfigState | undefined;
             resourceInputs["connectorId"] = state ? state.connectorId : undefined;
             resourceInputs["schemaChangeHandling"] = state ? state.schemaChangeHandling : undefined;
             resourceInputs["schemas"] = state ? state.schemas : undefined;
         } else {
-            const args = argsOrState as SchemaConfigArgs | undefined;
+            const args = argsOrState as ConnectorSchemaConfigArgs | undefined;
             if ((!args || args.connectorId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'connectorId'");
             }
@@ -118,30 +118,30 @@ export class SchemaConfig extends pulumi.CustomResource {
             resourceInputs["schemas"] = args ? args.schemas : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(SchemaConfig.__pulumiType, name, resourceInputs, opts);
+        super(ConnectorSchemaConfig.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering SchemaConfig resources.
+ * Input properties used for looking up and filtering ConnectorSchemaConfig resources.
  */
-export interface SchemaConfigState {
+export interface ConnectorSchemaConfigState {
     /**
      * The unique identifier for the connector within the Fivetran system.
      */
     connectorId?: pulumi.Input<string>;
     schemaChangeHandling?: pulumi.Input<string>;
-    schemas?: pulumi.Input<pulumi.Input<inputs.SchemaConfigSchema>[]>;
+    schemas?: pulumi.Input<pulumi.Input<inputs.ConnectorSchemaConfigSchema>[]>;
 }
 
 /**
- * The set of arguments for constructing a SchemaConfig resource.
+ * The set of arguments for constructing a ConnectorSchemaConfig resource.
  */
-export interface SchemaConfigArgs {
+export interface ConnectorSchemaConfigArgs {
     /**
      * The unique identifier for the connector within the Fivetran system.
      */
     connectorId: pulumi.Input<string>;
     schemaChangeHandling: pulumi.Input<string>;
-    schemas?: pulumi.Input<pulumi.Input<inputs.SchemaConfigSchema>[]>;
+    schemas?: pulumi.Input<pulumi.Input<inputs.ConnectorSchemaConfigSchema>[]>;
 }

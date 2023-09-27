@@ -15,6 +15,11 @@ export type ConnectorSchedule = import("./connectorSchedule").ConnectorSchedule;
 export const ConnectorSchedule: typeof import("./connectorSchedule").ConnectorSchedule = null as any;
 utilities.lazyLoad(exports, ["ConnectorSchedule"], () => require("./connectorSchedule"));
 
+export { ConnectorSchemaConfigArgs, ConnectorSchemaConfigState } from "./connectorSchemaConfig";
+export type ConnectorSchemaConfig = import("./connectorSchemaConfig").ConnectorSchemaConfig;
+export const ConnectorSchemaConfig: typeof import("./connectorSchemaConfig").ConnectorSchemaConfig = null as any;
+utilities.lazyLoad(exports, ["ConnectorSchemaConfig"], () => require("./connectorSchemaConfig"));
+
 export { DbtProjectArgs, DbtProjectState } from "./dbtProject";
 export type DbtProject = import("./dbtProject").DbtProject;
 export const DbtProject: typeof import("./dbtProject").DbtProject = null as any;
@@ -120,11 +125,6 @@ export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
 utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 
-export { SchemaConfigArgs, SchemaConfigState } from "./schemaConfig";
-export type SchemaConfig = import("./schemaConfig").SchemaConfig;
-export const SchemaConfig: typeof import("./schemaConfig").SchemaConfig = null as any;
-utilities.lazyLoad(exports, ["SchemaConfig"], () => require("./schemaConfig"));
-
 export { UserArgs, UserState } from "./user";
 export type User = import("./user").User;
 export const User: typeof import("./user").User = null as any;
@@ -153,6 +153,8 @@ const _module = {
                 return new Connector(name, <any>undefined, { urn })
             case "fivetran:index/connectorSchedule:ConnectorSchedule":
                 return new ConnectorSchedule(name, <any>undefined, { urn })
+            case "fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig":
+                return new ConnectorSchemaConfig(name, <any>undefined, { urn })
             case "fivetran:index/dbtProject:DbtProject":
                 return new DbtProject(name, <any>undefined, { urn })
             case "fivetran:index/dbtTransformation:DbtTransformation":
@@ -163,8 +165,6 @@ const _module = {
                 return new Group(name, <any>undefined, { urn })
             case "fivetran:index/groupUsers:GroupUsers":
                 return new GroupUsers(name, <any>undefined, { urn })
-            case "fivetran:index/schemaConfig:SchemaConfig":
-                return new SchemaConfig(name, <any>undefined, { urn })
             case "fivetran:index/user:User":
                 return new User(name, <any>undefined, { urn })
             case "fivetran:index/webhook:Webhook":
@@ -176,12 +176,12 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("fivetran", "index/connector", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/connectorSchedule", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/connectorSchemaConfig", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/dbtProject", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/dbtTransformation", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/destination", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/group", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/groupUsers", _module)
-pulumi.runtime.registerResourceModule("fivetran", "index/schemaConfig", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/user", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/webhook", _module)
 pulumi.runtime.registerResourcePackage("fivetran", {
