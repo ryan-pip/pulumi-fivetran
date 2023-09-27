@@ -14,20 +14,20 @@ import * as utilities from "./utilities";
  * You can retrieve all webhooks using the [fivetran_webhooks data source](/docs/data-sources/webhooks). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_webhook" "my_imported_fivetran_webhook" { }
  *
  * ```sh
- *  $ pulumi import fivetran:index/fivetranConnectorWebhook:FivetranConnectorWebhook
+ *  $ pulumi import fivetran:index/webhook:Webhook
  *
  * Run the `terraform import` command
  * ```
  *
  * ```sh
- *  $ pulumi import fivetran:index/fivetranConnectorWebhook:FivetranConnectorWebhook my_imported_fivetran_webhook {webhook_id}
+ *  $ pulumi import fivetran:index/webhook:Webhook my_imported_fivetran_webhook {webhook_id}
  * ```
  *
  *  4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_webhook.my_imported_fivetran_webhook' 5. Copy the values and paste them to your `.tf` configuration.
  */
-export class FivetranConnectorWebhook extends pulumi.CustomResource {
+export class Webhook extends pulumi.CustomResource {
     /**
-     * Get an existing FivetranConnectorWebhook resource's state with the given name, ID, and optional extra
+     * Get an existing Webhook resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -35,22 +35,22 @@ export class FivetranConnectorWebhook extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: FivetranConnectorWebhookState, opts?: pulumi.CustomResourceOptions): FivetranConnectorWebhook {
-        return new FivetranConnectorWebhook(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: WebhookState, opts?: pulumi.CustomResourceOptions): Webhook {
+        return new Webhook(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'fivetran:index/fivetranConnectorWebhook:FivetranConnectorWebhook';
+    public static readonly __pulumiType = 'fivetran:index/webhook:Webhook';
 
     /**
-     * Returns true if the given object is an instance of FivetranConnectorWebhook.  This is designed to work even
+     * Returns true if the given object is an instance of Webhook.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is FivetranConnectorWebhook {
+    public static isInstance(obj: any): obj is Webhook {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === FivetranConnectorWebhook.__pulumiType;
+        return obj['__pulumiType'] === Webhook.__pulumiType;
     }
 
     /**
@@ -91,18 +91,18 @@ export class FivetranConnectorWebhook extends pulumi.CustomResource {
     public readonly url!: pulumi.Output<string>;
 
     /**
-     * Create a FivetranConnectorWebhook resource with the given unique name, arguments, and options.
+     * Create a Webhook resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: FivetranConnectorWebhookArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: FivetranConnectorWebhookArgs | FivetranConnectorWebhookState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: WebhookArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: WebhookArgs | WebhookState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as FivetranConnectorWebhookState | undefined;
+            const state = argsOrState as WebhookState | undefined;
             resourceInputs["active"] = state ? state.active : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["createdBy"] = state ? state.createdBy : undefined;
@@ -113,7 +113,7 @@ export class FivetranConnectorWebhook extends pulumi.CustomResource {
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
         } else {
-            const args = argsOrState as FivetranConnectorWebhookArgs | undefined;
+            const args = argsOrState as WebhookArgs | undefined;
             if ((!args || args.active === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'active'");
             }
@@ -142,14 +142,14 @@ export class FivetranConnectorWebhook extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["secret"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(FivetranConnectorWebhook.__pulumiType, name, resourceInputs, opts);
+        super(Webhook.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering FivetranConnectorWebhook resources.
+ * Input properties used for looking up and filtering Webhook resources.
  */
-export interface FivetranConnectorWebhookState {
+export interface WebhookState {
     /**
      * Boolean, if set to true, webhooks are immediately sent in response to events
      */
@@ -189,9 +189,9 @@ export interface FivetranConnectorWebhookState {
 }
 
 /**
- * The set of arguments for constructing a FivetranConnectorWebhook resource.
+ * The set of arguments for constructing a Webhook resource.
  */
-export interface FivetranConnectorWebhookArgs {
+export interface WebhookArgs {
     /**
      * Boolean, if set to true, webhooks are immediately sent in response to events
      */

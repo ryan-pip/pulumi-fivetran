@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['FivetranConnectorScheduleArgs', 'FivetranConnectorSchedule']
+__all__ = ['ConnectorScheduleArgs', 'ConnectorSchedule']
 
 @pulumi.input_type
-class FivetranConnectorScheduleArgs:
+class ConnectorScheduleArgs:
     def __init__(__self__, *,
                  connector_id: pulumi.Input[str],
                  daily_sync_time: Optional[pulumi.Input[str]] = None,
@@ -21,7 +21,7 @@ class FivetranConnectorScheduleArgs:
                  schedule_type: Optional[pulumi.Input[str]] = None,
                  sync_frequency: Optional[pulumi.Input[str]] = None):
         """
-        The set of arguments for constructing a FivetranConnectorSchedule resource.
+        The set of arguments for constructing a ConnectorSchedule resource.
         :param pulumi.Input[str] connector_id: The unique identifier for the connector
         :param pulumi.Input[str] daily_sync_time: The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time
         :param pulumi.Input[str] pause_after_trial: Specifies whether the connector should be paused after the free trial period has ended
@@ -115,7 +115,7 @@ class FivetranConnectorScheduleArgs:
 
 
 @pulumi.input_type
-class _FivetranConnectorScheduleState:
+class _ConnectorScheduleState:
     def __init__(__self__, *,
                  connector_id: Optional[pulumi.Input[str]] = None,
                  daily_sync_time: Optional[pulumi.Input[str]] = None,
@@ -124,7 +124,7 @@ class _FivetranConnectorScheduleState:
                  schedule_type: Optional[pulumi.Input[str]] = None,
                  sync_frequency: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering FivetranConnectorSchedule resources.
+        Input properties used for looking up and filtering ConnectorSchedule resources.
         :param pulumi.Input[str] connector_id: The unique identifier for the connector
         :param pulumi.Input[str] daily_sync_time: The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time
         :param pulumi.Input[str] pause_after_trial: Specifies whether the connector should be paused after the free trial period has ended
@@ -218,7 +218,7 @@ class _FivetranConnectorScheduleState:
         pulumi.set(self, "sync_frequency", value)
 
 
-class FivetranConnectorSchedule(pulumi.CustomResource):
+class ConnectorSchedule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -239,7 +239,7 @@ class FivetranConnectorSchedule(pulumi.CustomResource):
         import pulumi
         import pulumi_fivetran as fivetran
 
-        my_connector_schedule = fivetran.FivetranConnectorSchedule("myConnectorSchedule",
+        my_connector_schedule = fivetran.ConnectorSchedule("myConnectorSchedule",
             connector_id=fivetran_connector["my_connector"]["id"],
             sync_frequency="1440",
             daily_sync_time="03:00",
@@ -291,7 +291,7 @@ class FivetranConnectorSchedule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: FivetranConnectorScheduleArgs,
+                 args: ConnectorScheduleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         -This resource allows you to manage connectors schedule: pause/unpause connector, set daily_sync_time and sync_frequency.
@@ -302,7 +302,7 @@ class FivetranConnectorSchedule(pulumi.CustomResource):
         import pulumi
         import pulumi_fivetran as fivetran
 
-        my_connector_schedule = fivetran.FivetranConnectorSchedule("myConnectorSchedule",
+        my_connector_schedule = fivetran.ConnectorSchedule("myConnectorSchedule",
             connector_id=fivetran_connector["my_connector"]["id"],
             sync_frequency="1440",
             daily_sync_time="03:00",
@@ -342,12 +342,12 @@ class FivetranConnectorSchedule(pulumi.CustomResource):
         = "auto" } -> NOTEYou can't have several resources managing the same `connector_id`. They will be in conflict ater each `apply`.
 
         :param str resource_name: The name of the resource.
-        :param FivetranConnectorScheduleArgs args: The arguments to use to populate this resource's properties.
+        :param ConnectorScheduleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(FivetranConnectorScheduleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ConnectorScheduleArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -369,7 +369,7 @@ class FivetranConnectorSchedule(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = FivetranConnectorScheduleArgs.__new__(FivetranConnectorScheduleArgs)
+            __props__ = ConnectorScheduleArgs.__new__(ConnectorScheduleArgs)
 
             if connector_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connector_id'")
@@ -379,8 +379,8 @@ class FivetranConnectorSchedule(pulumi.CustomResource):
             __props__.__dict__["paused"] = paused
             __props__.__dict__["schedule_type"] = schedule_type
             __props__.__dict__["sync_frequency"] = sync_frequency
-        super(FivetranConnectorSchedule, __self__).__init__(
-            'fivetran:index/fivetranConnectorSchedule:FivetranConnectorSchedule',
+        super(ConnectorSchedule, __self__).__init__(
+            'fivetran:index/connectorSchedule:ConnectorSchedule',
             resource_name,
             __props__,
             opts)
@@ -394,9 +394,9 @@ class FivetranConnectorSchedule(pulumi.CustomResource):
             pause_after_trial: Optional[pulumi.Input[str]] = None,
             paused: Optional[pulumi.Input[str]] = None,
             schedule_type: Optional[pulumi.Input[str]] = None,
-            sync_frequency: Optional[pulumi.Input[str]] = None) -> 'FivetranConnectorSchedule':
+            sync_frequency: Optional[pulumi.Input[str]] = None) -> 'ConnectorSchedule':
         """
-        Get an existing FivetranConnectorSchedule resource's state with the given name, id, and optional extra
+        Get an existing ConnectorSchedule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -411,7 +411,7 @@ class FivetranConnectorSchedule(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _FivetranConnectorScheduleState.__new__(_FivetranConnectorScheduleState)
+        __props__ = _ConnectorScheduleState.__new__(_ConnectorScheduleState)
 
         __props__.__dict__["connector_id"] = connector_id
         __props__.__dict__["daily_sync_time"] = daily_sync_time
@@ -419,7 +419,7 @@ class FivetranConnectorSchedule(pulumi.CustomResource):
         __props__.__dict__["paused"] = paused
         __props__.__dict__["schedule_type"] = schedule_type
         __props__.__dict__["sync_frequency"] = sync_frequency
-        return FivetranConnectorSchedule(resource_name, opts=opts, __props__=__props__)
+        return ConnectorSchedule(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="connectorId")

@@ -11,12 +11,12 @@ from . import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['FivetranConnectorDestinationArgs', 'FivetranConnectorDestination']
+__all__ = ['DestinationArgs', 'Destination']
 
 @pulumi.input_type
-class FivetranConnectorDestinationArgs:
+class DestinationArgs:
     def __init__(__self__, *,
-                 config: pulumi.Input['FivetranConnectorDestinationConfigArgs'],
+                 config: pulumi.Input['DestinationConfigArgs'],
                  group_id: pulumi.Input[str],
                  region: pulumi.Input[str],
                  service: pulumi.Input[str],
@@ -25,7 +25,7 @@ class FivetranConnectorDestinationArgs:
                  trust_certificates: Optional[pulumi.Input[bool]] = None,
                  trust_fingerprints: Optional[pulumi.Input[bool]] = None):
         """
-        The set of arguments for constructing a FivetranConnectorDestination resource.
+        The set of arguments for constructing a Destination resource.
         :param pulumi.Input[str] group_id: The unique identifier for the Group within the Fivetran system.
         :param pulumi.Input[str] region: Data processing location. This is where Fivetran will operate and run computation on data.
         :param pulumi.Input[str] service: The destination type name within the Fivetran system.
@@ -48,11 +48,11 @@ class FivetranConnectorDestinationArgs:
 
     @property
     @pulumi.getter
-    def config(self) -> pulumi.Input['FivetranConnectorDestinationConfigArgs']:
+    def config(self) -> pulumi.Input['DestinationConfigArgs']:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: pulumi.Input['FivetranConnectorDestinationConfigArgs']):
+    def config(self, value: pulumi.Input['DestinationConfigArgs']):
         pulumi.set(self, "config", value)
 
     @property
@@ -141,9 +141,9 @@ class FivetranConnectorDestinationArgs:
 
 
 @pulumi.input_type
-class _FivetranConnectorDestinationState:
+class _DestinationState:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input['FivetranConnectorDestinationConfigArgs']] = None,
+                 config: Optional[pulumi.Input['DestinationConfigArgs']] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  last_updated: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -154,7 +154,7 @@ class _FivetranConnectorDestinationState:
                  trust_certificates: Optional[pulumi.Input[bool]] = None,
                  trust_fingerprints: Optional[pulumi.Input[bool]] = None):
         """
-        Input properties used for looking up and filtering FivetranConnectorDestination resources.
+        Input properties used for looking up and filtering Destination resources.
         :param pulumi.Input[str] group_id: The unique identifier for the Group within the Fivetran system.
         :param pulumi.Input[str] region: Data processing location. This is where Fivetran will operate and run computation on data.
         :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
@@ -187,11 +187,11 @@ class _FivetranConnectorDestinationState:
 
     @property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['FivetranConnectorDestinationConfigArgs']]:
+    def config(self) -> Optional[pulumi.Input['DestinationConfigArgs']]:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['FivetranConnectorDestinationConfigArgs']]):
+    def config(self, value: Optional[pulumi.Input['DestinationConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @property
@@ -300,12 +300,12 @@ class _FivetranConnectorDestinationState:
         pulumi.set(self, "trust_fingerprints", value)
 
 
-class FivetranConnectorDestination(pulumi.CustomResource):
+class Destination(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['FivetranConnectorDestinationConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[pulumi.InputType['DestinationConfigArgs']]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  run_setup_tests: Optional[pulumi.Input[bool]] = None,
@@ -320,13 +320,13 @@ class FivetranConnectorDestination(pulumi.CustomResource):
         1. To import an existing `fivetran_destination` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_destination" "my_imported_destination" { }
 
         ```sh
-         $ pulumi import fivetran:index/fivetranConnectorDestination:FivetranConnectorDestination
+         $ pulumi import fivetran:index/destination:Destination
 
         Run the `terraform import` command with the following parameters
         ```
 
         ```sh
-         $ pulumi import fivetran:index/fivetranConnectorDestination:FivetranConnectorDestination my_imported_destination {your Destination Group ID}
+         $ pulumi import fivetran:index/destination:Destination my_imported_destination {your Destination Group ID}
         ```
 
          4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_destination.my_imported_destination' 5. Copy the values and paste them to your `.tf` configuration. -> The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/destinations/config) for reference to find the properties you need to keep in the `config` section.
@@ -345,7 +345,7 @@ class FivetranConnectorDestination(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: FivetranConnectorDestinationArgs,
+                 args: DestinationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Import
@@ -353,24 +353,24 @@ class FivetranConnectorDestination(pulumi.CustomResource):
         1. To import an existing `fivetran_destination` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_destination" "my_imported_destination" { }
 
         ```sh
-         $ pulumi import fivetran:index/fivetranConnectorDestination:FivetranConnectorDestination
+         $ pulumi import fivetran:index/destination:Destination
 
         Run the `terraform import` command with the following parameters
         ```
 
         ```sh
-         $ pulumi import fivetran:index/fivetranConnectorDestination:FivetranConnectorDestination my_imported_destination {your Destination Group ID}
+         $ pulumi import fivetran:index/destination:Destination my_imported_destination {your Destination Group ID}
         ```
 
          4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_destination.my_imported_destination' 5. Copy the values and paste them to your `.tf` configuration. -> The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/destinations/config) for reference to find the properties you need to keep in the `config` section.
 
         :param str resource_name: The name of the resource.
-        :param FivetranConnectorDestinationArgs args: The arguments to use to populate this resource's properties.
+        :param DestinationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(FivetranConnectorDestinationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DestinationArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -379,7 +379,7 @@ class FivetranConnectorDestination(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['FivetranConnectorDestinationConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[pulumi.InputType['DestinationConfigArgs']]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  run_setup_tests: Optional[pulumi.Input[bool]] = None,
@@ -394,7 +394,7 @@ class FivetranConnectorDestination(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = FivetranConnectorDestinationArgs.__new__(FivetranConnectorDestinationArgs)
+            __props__ = DestinationArgs.__new__(DestinationArgs)
 
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
@@ -416,8 +416,8 @@ class FivetranConnectorDestination(pulumi.CustomResource):
             __props__.__dict__["trust_fingerprints"] = trust_fingerprints
             __props__.__dict__["last_updated"] = None
             __props__.__dict__["setup_status"] = None
-        super(FivetranConnectorDestination, __self__).__init__(
-            'fivetran:index/fivetranConnectorDestination:FivetranConnectorDestination',
+        super(Destination, __self__).__init__(
+            'fivetran:index/destination:Destination',
             resource_name,
             __props__,
             opts)
@@ -426,7 +426,7 @@ class FivetranConnectorDestination(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: Optional[pulumi.Input[pulumi.InputType['FivetranConnectorDestinationConfigArgs']]] = None,
+            config: Optional[pulumi.Input[pulumi.InputType['DestinationConfigArgs']]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
             last_updated: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -435,9 +435,9 @@ class FivetranConnectorDestination(pulumi.CustomResource):
             setup_status: Optional[pulumi.Input[str]] = None,
             time_zone_offset: Optional[pulumi.Input[str]] = None,
             trust_certificates: Optional[pulumi.Input[bool]] = None,
-            trust_fingerprints: Optional[pulumi.Input[bool]] = None) -> 'FivetranConnectorDestination':
+            trust_fingerprints: Optional[pulumi.Input[bool]] = None) -> 'Destination':
         """
-        Get an existing FivetranConnectorDestination resource's state with the given name, id, and optional extra
+        Get an existing Destination resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -454,7 +454,7 @@ class FivetranConnectorDestination(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _FivetranConnectorDestinationState.__new__(_FivetranConnectorDestinationState)
+        __props__ = _DestinationState.__new__(_DestinationState)
 
         __props__.__dict__["config"] = config
         __props__.__dict__["group_id"] = group_id
@@ -466,11 +466,11 @@ class FivetranConnectorDestination(pulumi.CustomResource):
         __props__.__dict__["time_zone_offset"] = time_zone_offset
         __props__.__dict__["trust_certificates"] = trust_certificates
         __props__.__dict__["trust_fingerprints"] = trust_fingerprints
-        return FivetranConnectorDestination(resource_name, opts=opts, __props__=__props__)
+        return Destination(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
-    def config(self) -> pulumi.Output['outputs.FivetranConnectorDestinationConfig']:
+    def config(self) -> pulumi.Output['outputs.DestinationConfig']:
         return pulumi.get(self, "config")
 
     @property

@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
  *
- * const user = new fivetran.FivetranConnectorUser("user", {
+ * const user = new fivetran.User("user", {
  *     email: "user@email.address.com",
  *     familyName: "Doe",
  *     givenName: "John",
@@ -28,20 +28,20 @@ import * as utilities from "./utilities";
  * You can retrieve all users using the [fivetran_users data source](/docs/data-sources/users). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_user" "my_imported_fivetran_user" { }
  *
  * ```sh
- *  $ pulumi import fivetran:index/fivetranConnectorUser:FivetranConnectorUser
+ *  $ pulumi import fivetran:index/user:User
  *
  * Run the `terraform import` command
  * ```
  *
  * ```sh
- *  $ pulumi import fivetran:index/fivetranConnectorUser:FivetranConnectorUser my_imported_fivetran_user {user_id}
+ *  $ pulumi import fivetran:index/user:User my_imported_fivetran_user {user_id}
  * ```
  *
  *  4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_user.my_imported_fivetran_user' 5. Copy the values and paste them to your `.tf` configuration.
  */
-export class FivetranConnectorUser extends pulumi.CustomResource {
+export class User extends pulumi.CustomResource {
     /**
-     * Get an existing FivetranConnectorUser resource's state with the given name, ID, and optional extra
+     * Get an existing User resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -49,22 +49,22 @@ export class FivetranConnectorUser extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: FivetranConnectorUserState, opts?: pulumi.CustomResourceOptions): FivetranConnectorUser {
-        return new FivetranConnectorUser(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: UserState, opts?: pulumi.CustomResourceOptions): User {
+        return new User(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'fivetran:index/fivetranConnectorUser:FivetranConnectorUser';
+    public static readonly __pulumiType = 'fivetran:index/user:User';
 
     /**
-     * Returns true if the given object is an instance of FivetranConnectorUser.  This is designed to work even
+     * Returns true if the given object is an instance of User.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is FivetranConnectorUser {
+    public static isInstance(obj: any): obj is User {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === FivetranConnectorUser.__pulumiType;
+        return obj['__pulumiType'] === User.__pulumiType;
     }
 
     /**
@@ -110,18 +110,18 @@ export class FivetranConnectorUser extends pulumi.CustomResource {
     public /*out*/ readonly verified!: pulumi.Output<boolean>;
 
     /**
-     * Create a FivetranConnectorUser resource with the given unique name, arguments, and options.
+     * Create a User resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: FivetranConnectorUserArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: FivetranConnectorUserArgs | FivetranConnectorUserState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: UserArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: UserArgs | UserState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as FivetranConnectorUserState | undefined;
+            const state = argsOrState as UserState | undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["email"] = state ? state.email : undefined;
             resourceInputs["familyName"] = state ? state.familyName : undefined;
@@ -134,7 +134,7 @@ export class FivetranConnectorUser extends pulumi.CustomResource {
             resourceInputs["role"] = state ? state.role : undefined;
             resourceInputs["verified"] = state ? state.verified : undefined;
         } else {
-            const args = argsOrState as FivetranConnectorUserArgs | undefined;
+            const args = argsOrState as UserArgs | undefined;
             if ((!args || args.email === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'email'");
             }
@@ -157,14 +157,14 @@ export class FivetranConnectorUser extends pulumi.CustomResource {
             resourceInputs["verified"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(FivetranConnectorUser.__pulumiType, name, resourceInputs, opts);
+        super(User.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering FivetranConnectorUser resources.
+ * Input properties used for looking up and filtering User resources.
  */
-export interface FivetranConnectorUserState {
+export interface UserState {
     /**
      * The timestamp that the user created their Fivetran account
      */
@@ -209,9 +209,9 @@ export interface FivetranConnectorUserState {
 }
 
 /**
- * The set of arguments for constructing a FivetranConnectorUser resource.
+ * The set of arguments for constructing a User resource.
  */
-export interface FivetranConnectorUserArgs {
+export interface UserArgs {
     /**
      * The email address that the user has associated with their user profile.
      */

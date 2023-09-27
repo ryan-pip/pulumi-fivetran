@@ -11,26 +11,26 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
-    'FivetranConnectorAuth',
-    'FivetranConnectorAuthClientAccess',
-    'FivetranConnectorConfig',
-    'FivetranConnectorConfigAccountsRedditAd',
-    'FivetranConnectorConfigAdobeAnalyticsConfiguration',
-    'FivetranConnectorConfigAppIdsAppsflyer',
-    'FivetranConnectorConfigCustomReport',
-    'FivetranConnectorConfigCustomTable',
-    'FivetranConnectorConfigProjectCredential',
-    'FivetranConnectorConfigReport',
-    'FivetranConnectorConfigSecretsList',
-    'FivetranConnectorDbtProjectModel',
-    'FivetranConnectorDbtProjectProjectConfig',
-    'FivetranConnectorDbtTransformationSchedule',
-    'FivetranConnectorDestinationConfig',
-    'FivetranConnectorDestinationSchema',
-    'FivetranConnectorGroupUsersUser',
-    'FivetranConnectorSchemaConfigSchema',
-    'FivetranConnectorSchemaConfigSchemaTable',
-    'FivetranConnectorSchemaConfigSchemaTableColumn',
+    'ConnectorAuth',
+    'ConnectorAuthClientAccess',
+    'ConnectorConfig',
+    'ConnectorConfigAccountsRedditAd',
+    'ConnectorConfigAdobeAnalyticsConfiguration',
+    'ConnectorConfigAppIdsAppsflyer',
+    'ConnectorConfigCustomReport',
+    'ConnectorConfigCustomTable',
+    'ConnectorConfigProjectCredential',
+    'ConnectorConfigReport',
+    'ConnectorConfigSecretsList',
+    'ConnectorDestinationSchema',
+    'DbtProjectModel',
+    'DbtProjectProjectConfig',
+    'DbtTransformationSchedule',
+    'DestinationConfig',
+    'GroupUsersUser',
+    'SchemaConfigSchema',
+    'SchemaConfigSchemaTable',
+    'SchemaConfigSchemaTableColumn',
     'GetConnectorConfigResult',
     'GetConnectorConfigAccountsRedditAdResult',
     'GetConnectorConfigAdobeAnalyticsConfigurationResult',
@@ -62,7 +62,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class FivetranConnectorAuth(dict):
+class ConnectorAuth(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -76,19 +76,19 @@ class FivetranConnectorAuth(dict):
             suggest = "refresh_token"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FivetranConnectorAuth. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorAuth. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        FivetranConnectorAuth.__key_warning(key)
+        ConnectorAuth.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        FivetranConnectorAuth.__key_warning(key)
+        ConnectorAuth.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
                  access_token: Optional[str] = None,
-                 client_access: Optional['outputs.FivetranConnectorAuthClientAccess'] = None,
+                 client_access: Optional['outputs.ConnectorAuthClientAccess'] = None,
                  realm_id: Optional[str] = None,
                  refresh_token: Optional[str] = None):
         if access_token is not None:
@@ -107,7 +107,7 @@ class FivetranConnectorAuth(dict):
 
     @property
     @pulumi.getter(name="clientAccess")
-    def client_access(self) -> Optional['outputs.FivetranConnectorAuthClientAccess']:
+    def client_access(self) -> Optional['outputs.ConnectorAuthClientAccess']:
         return pulumi.get(self, "client_access")
 
     @property
@@ -122,7 +122,7 @@ class FivetranConnectorAuth(dict):
 
 
 @pulumi.output_type
-class FivetranConnectorAuthClientAccess(dict):
+class ConnectorAuthClientAccess(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -136,14 +136,14 @@ class FivetranConnectorAuthClientAccess(dict):
             suggest = "user_agent"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FivetranConnectorAuthClientAccess. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorAuthClientAccess. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        FivetranConnectorAuthClientAccess.__key_warning(key)
+        ConnectorAuthClientAccess.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        FivetranConnectorAuthClientAccess.__key_warning(key)
+        ConnectorAuthClientAccess.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -182,7 +182,7 @@ class FivetranConnectorAuthClientAccess(dict):
 
 
 @pulumi.output_type
-class FivetranConnectorConfig(dict):
+class ConnectorConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -908,14 +908,14 @@ class FivetranConnectorConfig(dict):
             suggest = "ws_certificate"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FivetranConnectorConfig. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorConfig. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        FivetranConnectorConfig.__key_warning(key)
+        ConnectorConfig.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        FivetranConnectorConfig.__key_warning(key)
+        ConnectorConfig.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -939,14 +939,14 @@ class FivetranConnectorConfig(dict):
                  account_name: Optional[str] = None,
                  account_sync_mode: Optional[str] = None,
                  accounts: Optional[Sequence[str]] = None,
-                 accounts_reddit_ads: Optional[Sequence['outputs.FivetranConnectorConfigAccountsRedditAd']] = None,
+                 accounts_reddit_ads: Optional[Sequence['outputs.ConnectorConfigAccountsRedditAd']] = None,
                  accounts_sync_mode: Optional[str] = None,
                  action_breakdowns: Optional[Sequence[str]] = None,
                  action_report_time: Optional[str] = None,
                  ad_analytics: Optional[str] = None,
                  ad_unit_view: Optional[str] = None,
                  admin_api_key: Optional[str] = None,
-                 adobe_analytics_configurations: Optional[Sequence['outputs.FivetranConnectorConfigAdobeAnalyticsConfiguration']] = None,
+                 adobe_analytics_configurations: Optional[Sequence['outputs.ConnectorConfigAdobeAnalyticsConfiguration']] = None,
                  advertisables: Optional[Sequence[str]] = None,
                  advertisers: Optional[Sequence[str]] = None,
                  advertisers_ids: Optional[Sequence[str]] = None,
@@ -974,7 +974,7 @@ class FivetranConnectorConfig(dict):
                  api_version: Optional[str] = None,
                  app_id: Optional[str] = None,
                  app_ids: Optional[Sequence[str]] = None,
-                 app_ids_appsflyers: Optional[Sequence['outputs.FivetranConnectorConfigAppIdsAppsflyer']] = None,
+                 app_ids_appsflyers: Optional[Sequence['outputs.ConnectorConfigAppIdsAppsflyer']] = None,
                  app_specific_password: Optional[str] = None,
                  app_sync_mode: Optional[str] = None,
                  append_file_option: Optional[str] = None,
@@ -1047,8 +1047,8 @@ class FivetranConnectorConfig(dict):
                  custom_events: Optional[Sequence[str]] = None,
                  custom_field_ids: Optional[Sequence[str]] = None,
                  custom_floodlight_variables: Optional[Sequence[str]] = None,
-                 custom_reports: Optional[Sequence['outputs.FivetranConnectorConfigCustomReport']] = None,
-                 custom_tables: Optional[Sequence['outputs.FivetranConnectorConfigCustomTable']] = None,
+                 custom_reports: Optional[Sequence['outputs.ConnectorConfigCustomReport']] = None,
+                 custom_tables: Optional[Sequence['outputs.ConnectorConfigCustomTable']] = None,
                  customer_id: Optional[str] = None,
                  customer_list_id: Optional[str] = None,
                  daily_api_call_limit: Optional[str] = None,
@@ -1186,7 +1186,7 @@ class FivetranConnectorConfig(dict):
                  primary_keys: Optional[Sequence[str]] = None,
                  private_key: Optional[str] = None,
                  profiles: Optional[Sequence[str]] = None,
-                 project_credentials: Optional[Sequence['outputs.FivetranConnectorConfigProjectCredential']] = None,
+                 project_credentials: Optional[Sequence['outputs.ConnectorConfigProjectCredential']] = None,
                  project_id: Optional[str] = None,
                  projects: Optional[Sequence[str]] = None,
                  properties: Optional[Sequence[str]] = None,
@@ -1204,7 +1204,7 @@ class FivetranConnectorConfig(dict):
                  report_timezone: Optional[str] = None,
                  report_type: Optional[str] = None,
                  report_url: Optional[str] = None,
-                 reports: Optional[Sequence['outputs.FivetranConnectorConfigReport']] = None,
+                 reports: Optional[Sequence['outputs.ConnectorConfigReport']] = None,
                  reports_linkedin_ads: Optional[Sequence[str]] = None,
                  repositories: Optional[Sequence[str]] = None,
                  resource_token: Optional[str] = None,
@@ -1244,7 +1244,7 @@ class FivetranConnectorConfig(dict):
                  secret: Optional[str] = None,
                  secret_key: Optional[str] = None,
                  secrets: Optional[str] = None,
-                 secrets_lists: Optional[Sequence['outputs.FivetranConnectorConfigSecretsList']] = None,
+                 secrets_lists: Optional[Sequence['outputs.ConnectorConfigSecretsList']] = None,
                  security_protocol: Optional[str] = None,
                  segments: Optional[Sequence[str]] = None,
                  selected_exports: Optional[Sequence[str]] = None,
@@ -2318,7 +2318,7 @@ class FivetranConnectorConfig(dict):
 
     @property
     @pulumi.getter(name="accountsRedditAds")
-    def accounts_reddit_ads(self) -> Optional[Sequence['outputs.FivetranConnectorConfigAccountsRedditAd']]:
+    def accounts_reddit_ads(self) -> Optional[Sequence['outputs.ConnectorConfigAccountsRedditAd']]:
         return pulumi.get(self, "accounts_reddit_ads")
 
     @property
@@ -2353,7 +2353,7 @@ class FivetranConnectorConfig(dict):
 
     @property
     @pulumi.getter(name="adobeAnalyticsConfigurations")
-    def adobe_analytics_configurations(self) -> Optional[Sequence['outputs.FivetranConnectorConfigAdobeAnalyticsConfiguration']]:
+    def adobe_analytics_configurations(self) -> Optional[Sequence['outputs.ConnectorConfigAdobeAnalyticsConfiguration']]:
         return pulumi.get(self, "adobe_analytics_configurations")
 
     @property
@@ -2493,7 +2493,7 @@ class FivetranConnectorConfig(dict):
 
     @property
     @pulumi.getter(name="appIdsAppsflyers")
-    def app_ids_appsflyers(self) -> Optional[Sequence['outputs.FivetranConnectorConfigAppIdsAppsflyer']]:
+    def app_ids_appsflyers(self) -> Optional[Sequence['outputs.ConnectorConfigAppIdsAppsflyer']]:
         return pulumi.get(self, "app_ids_appsflyers")
 
     @property
@@ -2858,12 +2858,12 @@ class FivetranConnectorConfig(dict):
 
     @property
     @pulumi.getter(name="customReports")
-    def custom_reports(self) -> Optional[Sequence['outputs.FivetranConnectorConfigCustomReport']]:
+    def custom_reports(self) -> Optional[Sequence['outputs.ConnectorConfigCustomReport']]:
         return pulumi.get(self, "custom_reports")
 
     @property
     @pulumi.getter(name="customTables")
-    def custom_tables(self) -> Optional[Sequence['outputs.FivetranConnectorConfigCustomTable']]:
+    def custom_tables(self) -> Optional[Sequence['outputs.ConnectorConfigCustomTable']]:
         return pulumi.get(self, "custom_tables")
 
     @property
@@ -3553,7 +3553,7 @@ class FivetranConnectorConfig(dict):
 
     @property
     @pulumi.getter(name="projectCredentials")
-    def project_credentials(self) -> Optional[Sequence['outputs.FivetranConnectorConfigProjectCredential']]:
+    def project_credentials(self) -> Optional[Sequence['outputs.ConnectorConfigProjectCredential']]:
         return pulumi.get(self, "project_credentials")
 
     @property
@@ -3643,7 +3643,7 @@ class FivetranConnectorConfig(dict):
 
     @property
     @pulumi.getter
-    def reports(self) -> Optional[Sequence['outputs.FivetranConnectorConfigReport']]:
+    def reports(self) -> Optional[Sequence['outputs.ConnectorConfigReport']]:
         return pulumi.get(self, "reports")
 
     @property
@@ -3843,7 +3843,7 @@ class FivetranConnectorConfig(dict):
 
     @property
     @pulumi.getter(name="secretsLists")
-    def secrets_lists(self) -> Optional[Sequence['outputs.FivetranConnectorConfigSecretsList']]:
+    def secrets_lists(self) -> Optional[Sequence['outputs.ConnectorConfigSecretsList']]:
         return pulumi.get(self, "secrets_lists")
 
     @property
@@ -4378,7 +4378,7 @@ class FivetranConnectorConfig(dict):
 
 
 @pulumi.output_type
-class FivetranConnectorConfigAccountsRedditAd(dict):
+class ConnectorConfigAccountsRedditAd(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None):
         if name is not None:
@@ -4391,7 +4391,7 @@ class FivetranConnectorConfigAccountsRedditAd(dict):
 
 
 @pulumi.output_type
-class FivetranConnectorConfigAdobeAnalyticsConfiguration(dict):
+class ConnectorConfigAdobeAnalyticsConfiguration(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4403,14 +4403,14 @@ class FivetranConnectorConfigAdobeAnalyticsConfiguration(dict):
             suggest = "sync_mode"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FivetranConnectorConfigAdobeAnalyticsConfiguration. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorConfigAdobeAnalyticsConfiguration. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        FivetranConnectorConfigAdobeAnalyticsConfiguration.__key_warning(key)
+        ConnectorConfigAdobeAnalyticsConfiguration.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        FivetranConnectorConfigAdobeAnalyticsConfiguration.__key_warning(key)
+        ConnectorConfigAdobeAnalyticsConfiguration.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -4473,7 +4473,7 @@ class FivetranConnectorConfigAdobeAnalyticsConfiguration(dict):
 
 
 @pulumi.output_type
-class FivetranConnectorConfigAppIdsAppsflyer(dict):
+class ConnectorConfigAppIdsAppsflyer(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4481,14 +4481,14 @@ class FivetranConnectorConfigAppIdsAppsflyer(dict):
             suggest = "app_id"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FivetranConnectorConfigAppIdsAppsflyer. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorConfigAppIdsAppsflyer. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        FivetranConnectorConfigAppIdsAppsflyer.__key_warning(key)
+        ConnectorConfigAppIdsAppsflyer.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        FivetranConnectorConfigAppIdsAppsflyer.__key_warning(key)
+        ConnectorConfigAppIdsAppsflyer.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -4503,7 +4503,7 @@ class FivetranConnectorConfigAppIdsAppsflyer(dict):
 
 
 @pulumi.output_type
-class FivetranConnectorConfigCustomReport(dict):
+class ConnectorConfigCustomReport(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4523,14 +4523,14 @@ class FivetranConnectorConfigCustomReport(dict):
             suggest = "table_name"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FivetranConnectorConfigCustomReport. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorConfigCustomReport. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        FivetranConnectorConfigCustomReport.__key_warning(key)
+        ConnectorConfigCustomReport.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        FivetranConnectorConfigCustomReport.__key_warning(key)
+        ConnectorConfigCustomReport.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -4633,7 +4633,7 @@ class FivetranConnectorConfigCustomReport(dict):
 
 
 @pulumi.output_type
-class FivetranConnectorConfigCustomTable(dict):
+class ConnectorConfigCustomTable(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4655,14 +4655,14 @@ class FivetranConnectorConfigCustomTable(dict):
             suggest = "view_attribution_window"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FivetranConnectorConfigCustomTable. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorConfigCustomTable. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        FivetranConnectorConfigCustomTable.__key_warning(key)
+        ConnectorConfigCustomTable.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        FivetranConnectorConfigCustomTable.__key_warning(key)
+        ConnectorConfigCustomTable.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -4765,7 +4765,7 @@ class FivetranConnectorConfigCustomTable(dict):
 
 
 @pulumi.output_type
-class FivetranConnectorConfigProjectCredential(dict):
+class ConnectorConfigProjectCredential(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4775,14 +4775,14 @@ class FivetranConnectorConfigProjectCredential(dict):
             suggest = "secret_key"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FivetranConnectorConfigProjectCredential. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorConfigProjectCredential. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        FivetranConnectorConfigProjectCredential.__key_warning(key)
+        ConnectorConfigProjectCredential.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        FivetranConnectorConfigProjectCredential.__key_warning(key)
+        ConnectorConfigProjectCredential.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -4813,7 +4813,7 @@ class FivetranConnectorConfigProjectCredential(dict):
 
 
 @pulumi.output_type
-class FivetranConnectorConfigReport(dict):
+class ConnectorConfigReport(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4833,14 +4833,14 @@ class FivetranConnectorConfigReport(dict):
             suggest = "segment_ids"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FivetranConnectorConfigReport. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorConfigReport. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        FivetranConnectorConfigReport.__key_warning(key)
+        ConnectorConfigReport.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        FivetranConnectorConfigReport.__key_warning(key)
+        ConnectorConfigReport.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -4967,7 +4967,7 @@ class FivetranConnectorConfigReport(dict):
 
 
 @pulumi.output_type
-class FivetranConnectorConfigSecretsList(dict):
+class ConnectorConfigSecretsList(dict):
     def __init__(__self__, *,
                  key: Optional[str] = None,
                  value: Optional[str] = None):
@@ -4988,7 +4988,36 @@ class FivetranConnectorConfigSecretsList(dict):
 
 
 @pulumi.output_type
-class FivetranConnectorDbtProjectModel(dict):
+class ConnectorDestinationSchema(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 prefix: Optional[str] = None,
+                 table: Optional[str] = None):
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if table is not None:
+            pulumi.set(__self__, "table", table)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[str]:
+        return pulumi.get(self, "prefix")
+
+    @property
+    @pulumi.getter
+    def table(self) -> Optional[str]:
+        return pulumi.get(self, "table")
+
+
+@pulumi.output_type
+class DbtProjectModel(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -4996,14 +5025,14 @@ class FivetranConnectorDbtProjectModel(dict):
             suggest = "model_name"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FivetranConnectorDbtProjectModel. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in DbtProjectModel. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        FivetranConnectorDbtProjectModel.__key_warning(key)
+        DbtProjectModel.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        FivetranConnectorDbtProjectModel.__key_warning(key)
+        DbtProjectModel.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -5048,7 +5077,7 @@ class FivetranConnectorDbtProjectModel(dict):
 
 
 @pulumi.output_type
-class FivetranConnectorDbtProjectProjectConfig(dict):
+class DbtProjectProjectConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5060,14 +5089,14 @@ class FivetranConnectorDbtProjectProjectConfig(dict):
             suggest = "git_remote_url"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FivetranConnectorDbtProjectProjectConfig. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in DbtProjectProjectConfig. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        FivetranConnectorDbtProjectProjectConfig.__key_warning(key)
+        DbtProjectProjectConfig.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        FivetranConnectorDbtProjectProjectConfig.__key_warning(key)
+        DbtProjectProjectConfig.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -5112,7 +5141,7 @@ class FivetranConnectorDbtProjectProjectConfig(dict):
 
 
 @pulumi.output_type
-class FivetranConnectorDbtTransformationSchedule(dict):
+class DbtTransformationSchedule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5124,14 +5153,14 @@ class FivetranConnectorDbtTransformationSchedule(dict):
             suggest = "time_of_day"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FivetranConnectorDbtTransformationSchedule. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in DbtTransformationSchedule. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        FivetranConnectorDbtTransformationSchedule.__key_warning(key)
+        DbtTransformationSchedule.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        FivetranConnectorDbtTransformationSchedule.__key_warning(key)
+        DbtTransformationSchedule.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -5187,7 +5216,7 @@ class FivetranConnectorDbtTransformationSchedule(dict):
 
 
 @pulumi.output_type
-class FivetranConnectorDestinationConfig(dict):
+class DestinationConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5235,14 +5264,14 @@ class FivetranConnectorDestinationConfig(dict):
             suggest = "tunnel_user"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FivetranConnectorDestinationConfig. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in DestinationConfig. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        FivetranConnectorDestinationConfig.__key_warning(key)
+        DestinationConfig.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        FivetranConnectorDestinationConfig.__key_warning(key)
+        DestinationConfig.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -5635,36 +5664,7 @@ class FivetranConnectorDestinationConfig(dict):
 
 
 @pulumi.output_type
-class FivetranConnectorDestinationSchema(dict):
-    def __init__(__self__, *,
-                 name: Optional[str] = None,
-                 prefix: Optional[str] = None,
-                 table: Optional[str] = None):
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if prefix is not None:
-            pulumi.set(__self__, "prefix", prefix)
-        if table is not None:
-            pulumi.set(__self__, "table", table)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def prefix(self) -> Optional[str]:
-        return pulumi.get(self, "prefix")
-
-    @property
-    @pulumi.getter
-    def table(self) -> Optional[str]:
-        return pulumi.get(self, "table")
-
-
-@pulumi.output_type
-class FivetranConnectorGroupUsersUser(dict):
+class GroupUsersUser(dict):
     def __init__(__self__, *,
                  email: str,
                  role: str,
@@ -5705,11 +5705,11 @@ class FivetranConnectorGroupUsersUser(dict):
 
 
 @pulumi.output_type
-class FivetranConnectorSchemaConfigSchema(dict):
+class SchemaConfigSchema(dict):
     def __init__(__self__, *,
                  name: str,
                  enabled: Optional[str] = None,
-                 tables: Optional[Sequence['outputs.FivetranConnectorSchemaConfigSchemaTable']] = None):
+                 tables: Optional[Sequence['outputs.SchemaConfigSchemaTable']] = None):
         """
         :param str name: The schema name within your destination in accordance with Fivetran conventional rules.
         :param str enabled: The boolean value specifying whether the sync for the schema into the destination is enabled.
@@ -5738,12 +5738,12 @@ class FivetranConnectorSchemaConfigSchema(dict):
 
     @property
     @pulumi.getter
-    def tables(self) -> Optional[Sequence['outputs.FivetranConnectorSchemaConfigSchemaTable']]:
+    def tables(self) -> Optional[Sequence['outputs.SchemaConfigSchemaTable']]:
         return pulumi.get(self, "tables")
 
 
 @pulumi.output_type
-class FivetranConnectorSchemaConfigSchemaTable(dict):
+class SchemaConfigSchemaTable(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5751,19 +5751,19 @@ class FivetranConnectorSchemaConfigSchemaTable(dict):
             suggest = "sync_mode"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FivetranConnectorSchemaConfigSchemaTable. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in SchemaConfigSchemaTable. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        FivetranConnectorSchemaConfigSchemaTable.__key_warning(key)
+        SchemaConfigSchemaTable.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        FivetranConnectorSchemaConfigSchemaTable.__key_warning(key)
+        SchemaConfigSchemaTable.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
                  name: str,
-                 columns: Optional[Sequence['outputs.FivetranConnectorSchemaConfigSchemaTableColumn']] = None,
+                 columns: Optional[Sequence['outputs.SchemaConfigSchemaTableColumn']] = None,
                  enabled: Optional[str] = None,
                  sync_mode: Optional[str] = None):
         pulumi.set(__self__, "name", name)
@@ -5781,7 +5781,7 @@ class FivetranConnectorSchemaConfigSchemaTable(dict):
 
     @property
     @pulumi.getter
-    def columns(self) -> Optional[Sequence['outputs.FivetranConnectorSchemaConfigSchemaTableColumn']]:
+    def columns(self) -> Optional[Sequence['outputs.SchemaConfigSchemaTableColumn']]:
         return pulumi.get(self, "columns")
 
     @property
@@ -5796,7 +5796,7 @@ class FivetranConnectorSchemaConfigSchemaTable(dict):
 
 
 @pulumi.output_type
-class FivetranConnectorSchemaConfigSchemaTableColumn(dict):
+class SchemaConfigSchemaTableColumn(dict):
     def __init__(__self__, *,
                  name: str,
                  enabled: Optional[str] = None,

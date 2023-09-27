@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.GetDbtTransformation(ctx, &fivetran.GetDbtTransformationArgs{
+//			_, err := fivetran.LookupDbtTransformation(ctx, &fivetran.LookupDbtTransformationArgs{
 //				Id: "transformation_id",
 //			}, nil)
 //			if err != nil {
@@ -39,9 +39,9 @@ import (
 //	}
 //
 // ```
-func GetDbtTransformation(ctx *pulumi.Context, args *GetDbtTransformationArgs, opts ...pulumi.InvokeOption) (*GetDbtTransformationResult, error) {
+func LookupDbtTransformation(ctx *pulumi.Context, args *LookupDbtTransformationArgs, opts ...pulumi.InvokeOption) (*LookupDbtTransformationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetDbtTransformationResult
+	var rv LookupDbtTransformationResult
 	err := ctx.Invoke("fivetran:index/getDbtTransformation:getDbtTransformation", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -50,13 +50,13 @@ func GetDbtTransformation(ctx *pulumi.Context, args *GetDbtTransformationArgs, o
 }
 
 // A collection of arguments for invoking getDbtTransformation.
-type GetDbtTransformationArgs struct {
+type LookupDbtTransformationArgs struct {
 	// The ID of this resource.
 	Id string `pulumi:"id"`
 }
 
 // A collection of values returned by getDbtTransformation.
-type GetDbtTransformationResult struct {
+type LookupDbtTransformationResult struct {
 	// Identifiers of related connectors.
 	ConnectorIds []string `pulumi:"connectorIds"`
 	// The timestamp of the dbt Transformation creation.
@@ -81,105 +81,105 @@ type GetDbtTransformationResult struct {
 	Schedules []GetDbtTransformationSchedule `pulumi:"schedules"`
 }
 
-func GetDbtTransformationOutput(ctx *pulumi.Context, args GetDbtTransformationOutputArgs, opts ...pulumi.InvokeOption) GetDbtTransformationResultOutput {
+func LookupDbtTransformationOutput(ctx *pulumi.Context, args LookupDbtTransformationOutputArgs, opts ...pulumi.InvokeOption) LookupDbtTransformationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDbtTransformationResult, error) {
-			args := v.(GetDbtTransformationArgs)
-			r, err := GetDbtTransformation(ctx, &args, opts...)
-			var s GetDbtTransformationResult
+		ApplyT(func(v interface{}) (LookupDbtTransformationResult, error) {
+			args := v.(LookupDbtTransformationArgs)
+			r, err := LookupDbtTransformation(ctx, &args, opts...)
+			var s LookupDbtTransformationResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(GetDbtTransformationResultOutput)
+		}).(LookupDbtTransformationResultOutput)
 }
 
 // A collection of arguments for invoking getDbtTransformation.
-type GetDbtTransformationOutputArgs struct {
+type LookupDbtTransformationOutputArgs struct {
 	// The ID of this resource.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
-func (GetDbtTransformationOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDbtTransformationArgs)(nil)).Elem()
+func (LookupDbtTransformationOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDbtTransformationArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getDbtTransformation.
-type GetDbtTransformationResultOutput struct{ *pulumi.OutputState }
+type LookupDbtTransformationResultOutput struct{ *pulumi.OutputState }
 
-func (GetDbtTransformationResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDbtTransformationResult)(nil)).Elem()
+func (LookupDbtTransformationResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDbtTransformationResult)(nil)).Elem()
 }
 
-func (o GetDbtTransformationResultOutput) ToGetDbtTransformationResultOutput() GetDbtTransformationResultOutput {
+func (o LookupDbtTransformationResultOutput) ToLookupDbtTransformationResultOutput() LookupDbtTransformationResultOutput {
 	return o
 }
 
-func (o GetDbtTransformationResultOutput) ToGetDbtTransformationResultOutputWithContext(ctx context.Context) GetDbtTransformationResultOutput {
+func (o LookupDbtTransformationResultOutput) ToLookupDbtTransformationResultOutputWithContext(ctx context.Context) LookupDbtTransformationResultOutput {
 	return o
 }
 
-func (o GetDbtTransformationResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDbtTransformationResult] {
-	return pulumix.Output[GetDbtTransformationResult]{
+func (o LookupDbtTransformationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDbtTransformationResult] {
+	return pulumix.Output[LookupDbtTransformationResult]{
 		OutputState: o.OutputState,
 	}
 }
 
 // Identifiers of related connectors.
-func (o GetDbtTransformationResultOutput) ConnectorIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetDbtTransformationResult) []string { return v.ConnectorIds }).(pulumi.StringArrayOutput)
+func (o LookupDbtTransformationResultOutput) ConnectorIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupDbtTransformationResult) []string { return v.ConnectorIds }).(pulumi.StringArrayOutput)
 }
 
 // The timestamp of the dbt Transformation creation.
-func (o GetDbtTransformationResultOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbtTransformationResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+func (o LookupDbtTransformationResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDbtTransformationResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 // The unique identifier for the dbt Model within the Fivetran system.
-func (o GetDbtTransformationResultOutput) DbtModelId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbtTransformationResult) string { return v.DbtModelId }).(pulumi.StringOutput)
+func (o LookupDbtTransformationResultOutput) DbtModelId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDbtTransformationResult) string { return v.DbtModelId }).(pulumi.StringOutput)
 }
 
 // Target dbt Model name.
-func (o GetDbtTransformationResultOutput) DbtModelName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbtTransformationResult) string { return v.DbtModelName }).(pulumi.StringOutput)
+func (o LookupDbtTransformationResultOutput) DbtModelName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDbtTransformationResult) string { return v.DbtModelName }).(pulumi.StringOutput)
 }
 
 // The unique identifier for the dbt Project within the Fivetran system.
-func (o GetDbtTransformationResultOutput) DbtProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbtTransformationResult) string { return v.DbtProjectId }).(pulumi.StringOutput)
+func (o LookupDbtTransformationResultOutput) DbtProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDbtTransformationResult) string { return v.DbtProjectId }).(pulumi.StringOutput)
 }
 
 // The ID of this resource.
-func (o GetDbtTransformationResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbtTransformationResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupDbtTransformationResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDbtTransformationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Identifiers of related models.
-func (o GetDbtTransformationResultOutput) ModelIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetDbtTransformationResult) []string { return v.ModelIds }).(pulumi.StringArrayOutput)
+func (o LookupDbtTransformationResultOutput) ModelIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupDbtTransformationResult) []string { return v.ModelIds }).(pulumi.StringArrayOutput)
 }
 
 // The dbt Model name.
-func (o GetDbtTransformationResultOutput) OutputModelName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbtTransformationResult) string { return v.OutputModelName }).(pulumi.StringOutput)
+func (o LookupDbtTransformationResultOutput) OutputModelName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDbtTransformationResult) string { return v.OutputModelName }).(pulumi.StringOutput)
 }
 
 // The field indicating whether the transformation will be created in paused state. By default, the value is false.
-func (o GetDbtTransformationResultOutput) Paused() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetDbtTransformationResult) bool { return v.Paused }).(pulumi.BoolOutput)
+func (o LookupDbtTransformationResultOutput) Paused() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDbtTransformationResult) bool { return v.Paused }).(pulumi.BoolOutput)
 }
 
 // The field indicating whether the tests have been configured for dbt Transformation. By default, the value is false.
-func (o GetDbtTransformationResultOutput) RunTests() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetDbtTransformationResult) bool { return v.RunTests }).(pulumi.BoolOutput)
+func (o LookupDbtTransformationResultOutput) RunTests() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDbtTransformationResult) bool { return v.RunTests }).(pulumi.BoolOutput)
 }
 
 // dbt Transformation schedule parameters.
-func (o GetDbtTransformationResultOutput) Schedules() GetDbtTransformationScheduleArrayOutput {
-	return o.ApplyT(func(v GetDbtTransformationResult) []GetDbtTransformationSchedule { return v.Schedules }).(GetDbtTransformationScheduleArrayOutput)
+func (o LookupDbtTransformationResultOutput) Schedules() GetDbtTransformationScheduleArrayOutput {
+	return o.ApplyT(func(v LookupDbtTransformationResult) []GetDbtTransformationSchedule { return v.Schedules }).(GetDbtTransformationScheduleArrayOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetDbtTransformationResultOutput{})
+	pulumi.RegisterOutputType(LookupDbtTransformationResultOutput{})
 }

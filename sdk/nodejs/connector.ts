@@ -11,9 +11,9 @@ import * as utilities from "./utilities";
  *
  * ### How to authorize connector
  */
-export class FivetranConnector extends pulumi.CustomResource {
+export class Connector extends pulumi.CustomResource {
     /**
-     * Get an existing FivetranConnector resource's state with the given name, ID, and optional extra
+     * Get an existing Connector resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -21,26 +21,26 @@ export class FivetranConnector extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: FivetranConnectorState, opts?: pulumi.CustomResourceOptions): FivetranConnector {
-        return new FivetranConnector(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ConnectorState, opts?: pulumi.CustomResourceOptions): Connector {
+        return new Connector(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'fivetran:index/fivetranConnector:FivetranConnector';
+    public static readonly __pulumiType = 'fivetran:index/connector:Connector';
 
     /**
-     * Returns true if the given object is an instance of FivetranConnector.  This is designed to work even
+     * Returns true if the given object is an instance of Connector.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is FivetranConnector {
+    public static isInstance(obj: any): obj is Connector {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === FivetranConnector.__pulumiType;
+        return obj['__pulumiType'] === Connector.__pulumiType;
     }
 
-    public readonly auth!: pulumi.Output<outputs.FivetranConnectorAuth | undefined>;
-    public readonly config!: pulumi.Output<outputs.FivetranConnectorConfig>;
+    public readonly auth!: pulumi.Output<outputs.ConnectorAuth | undefined>;
+    public readonly config!: pulumi.Output<outputs.ConnectorConfig>;
     /**
      * The unique identifier of the user who has created the connector in your account
      */
@@ -49,7 +49,7 @@ export class FivetranConnector extends pulumi.CustomResource {
      * The timestamp of the time the connector was created in your account
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
-    public readonly destinationSchema!: pulumi.Output<outputs.FivetranConnectorDestinationSchema>;
+    public readonly destinationSchema!: pulumi.Output<outputs.ConnectorDestinationSchema>;
     /**
      * The unique identifier for the Group (Destination) within the Fivetran system.
      */
@@ -82,18 +82,18 @@ export class FivetranConnector extends pulumi.CustomResource {
     public readonly trustFingerprints!: pulumi.Output<string | undefined>;
 
     /**
-     * Create a FivetranConnector resource with the given unique name, arguments, and options.
+     * Create a Connector resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: FivetranConnectorArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: FivetranConnectorArgs | FivetranConnectorState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: ConnectorArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: ConnectorArgs | ConnectorState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as FivetranConnectorState | undefined;
+            const state = argsOrState as ConnectorState | undefined;
             resourceInputs["auth"] = state ? state.auth : undefined;
             resourceInputs["config"] = state ? state.config : undefined;
             resourceInputs["connectedBy"] = state ? state.connectedBy : undefined;
@@ -107,7 +107,7 @@ export class FivetranConnector extends pulumi.CustomResource {
             resourceInputs["trustCertificates"] = state ? state.trustCertificates : undefined;
             resourceInputs["trustFingerprints"] = state ? state.trustFingerprints : undefined;
         } else {
-            const args = argsOrState as FivetranConnectorArgs | undefined;
+            const args = argsOrState as ConnectorArgs | undefined;
             if ((!args || args.destinationSchema === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'destinationSchema'");
             }
@@ -131,16 +131,16 @@ export class FivetranConnector extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(FivetranConnector.__pulumiType, name, resourceInputs, opts);
+        super(Connector.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering FivetranConnector resources.
+ * Input properties used for looking up and filtering Connector resources.
  */
-export interface FivetranConnectorState {
-    auth?: pulumi.Input<inputs.FivetranConnectorAuth>;
-    config?: pulumi.Input<inputs.FivetranConnectorConfig>;
+export interface ConnectorState {
+    auth?: pulumi.Input<inputs.ConnectorAuth>;
+    config?: pulumi.Input<inputs.ConnectorConfig>;
     /**
      * The unique identifier of the user who has created the connector in your account
      */
@@ -149,7 +149,7 @@ export interface FivetranConnectorState {
      * The timestamp of the time the connector was created in your account
      */
     createdAt?: pulumi.Input<string>;
-    destinationSchema?: pulumi.Input<inputs.FivetranConnectorDestinationSchema>;
+    destinationSchema?: pulumi.Input<inputs.ConnectorDestinationSchema>;
     /**
      * The unique identifier for the Group (Destination) within the Fivetran system.
      */
@@ -183,12 +183,12 @@ export interface FivetranConnectorState {
 }
 
 /**
- * The set of arguments for constructing a FivetranConnector resource.
+ * The set of arguments for constructing a Connector resource.
  */
-export interface FivetranConnectorArgs {
-    auth?: pulumi.Input<inputs.FivetranConnectorAuth>;
-    config?: pulumi.Input<inputs.FivetranConnectorConfig>;
-    destinationSchema: pulumi.Input<inputs.FivetranConnectorDestinationSchema>;
+export interface ConnectorArgs {
+    auth?: pulumi.Input<inputs.ConnectorAuth>;
+    config?: pulumi.Input<inputs.ConnectorConfig>;
+    destinationSchema: pulumi.Input<inputs.ConnectorDestinationSchema>;
     /**
      * The unique identifier for the Group (Destination) within the Fivetran system.
      */

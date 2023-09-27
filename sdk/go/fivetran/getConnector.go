@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.GetConnector(ctx, &fivetran.GetConnectorArgs{
+//			_, err := fivetran.LookupConnector(ctx, &fivetran.LookupConnectorArgs{
 //				Id: "anonymous_mystery",
 //			}, nil)
 //			if err != nil {
@@ -39,9 +39,9 @@ import (
 //	}
 //
 // ```
-func GetConnector(ctx *pulumi.Context, args *GetConnectorArgs, opts ...pulumi.InvokeOption) (*GetConnectorResult, error) {
+func LookupConnector(ctx *pulumi.Context, args *LookupConnectorArgs, opts ...pulumi.InvokeOption) (*LookupConnectorResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetConnectorResult
+	var rv LookupConnectorResult
 	err := ctx.Invoke("fivetran:index/getConnector:getConnector", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -50,13 +50,13 @@ func GetConnector(ctx *pulumi.Context, args *GetConnectorArgs, opts ...pulumi.In
 }
 
 // A collection of arguments for invoking getConnector.
-type GetConnectorArgs struct {
+type LookupConnectorArgs struct {
 	Configs []GetConnectorConfig `pulumi:"configs"`
 	Id      string               `pulumi:"id"`
 }
 
 // A collection of values returned by getConnector.
-type GetConnectorResult struct {
+type LookupConnectorResult struct {
 	Configs            []GetConnectorConfig            `pulumi:"configs"`
 	ConnectedBy        string                          `pulumi:"connectedBy"`
 	CreatedAt          string                          `pulumi:"createdAt"`
@@ -76,118 +76,118 @@ type GetConnectorResult struct {
 	SyncFrequency      string                          `pulumi:"syncFrequency"`
 }
 
-func GetConnectorOutput(ctx *pulumi.Context, args GetConnectorOutputArgs, opts ...pulumi.InvokeOption) GetConnectorResultOutput {
+func LookupConnectorOutput(ctx *pulumi.Context, args LookupConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetConnectorResult, error) {
-			args := v.(GetConnectorArgs)
-			r, err := GetConnector(ctx, &args, opts...)
-			var s GetConnectorResult
+		ApplyT(func(v interface{}) (LookupConnectorResult, error) {
+			args := v.(LookupConnectorArgs)
+			r, err := LookupConnector(ctx, &args, opts...)
+			var s LookupConnectorResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(GetConnectorResultOutput)
+		}).(LookupConnectorResultOutput)
 }
 
 // A collection of arguments for invoking getConnector.
-type GetConnectorOutputArgs struct {
+type LookupConnectorOutputArgs struct {
 	Configs GetConnectorConfigArrayInput `pulumi:"configs"`
 	Id      pulumi.StringInput           `pulumi:"id"`
 }
 
-func (GetConnectorOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetConnectorArgs)(nil)).Elem()
+func (LookupConnectorOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupConnectorArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getConnector.
-type GetConnectorResultOutput struct{ *pulumi.OutputState }
+type LookupConnectorResultOutput struct{ *pulumi.OutputState }
 
-func (GetConnectorResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetConnectorResult)(nil)).Elem()
+func (LookupConnectorResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupConnectorResult)(nil)).Elem()
 }
 
-func (o GetConnectorResultOutput) ToGetConnectorResultOutput() GetConnectorResultOutput {
+func (o LookupConnectorResultOutput) ToLookupConnectorResultOutput() LookupConnectorResultOutput {
 	return o
 }
 
-func (o GetConnectorResultOutput) ToGetConnectorResultOutputWithContext(ctx context.Context) GetConnectorResultOutput {
+func (o LookupConnectorResultOutput) ToLookupConnectorResultOutputWithContext(ctx context.Context) LookupConnectorResultOutput {
 	return o
 }
 
-func (o GetConnectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectorResult] {
-	return pulumix.Output[GetConnectorResult]{
+func (o LookupConnectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConnectorResult] {
+	return pulumix.Output[LookupConnectorResult]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o GetConnectorResultOutput) Configs() GetConnectorConfigArrayOutput {
-	return o.ApplyT(func(v GetConnectorResult) []GetConnectorConfig { return v.Configs }).(GetConnectorConfigArrayOutput)
+func (o LookupConnectorResultOutput) Configs() GetConnectorConfigArrayOutput {
+	return o.ApplyT(func(v LookupConnectorResult) []GetConnectorConfig { return v.Configs }).(GetConnectorConfigArrayOutput)
 }
 
-func (o GetConnectorResultOutput) ConnectedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectorResult) string { return v.ConnectedBy }).(pulumi.StringOutput)
+func (o LookupConnectorResultOutput) ConnectedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectorResult) string { return v.ConnectedBy }).(pulumi.StringOutput)
 }
 
-func (o GetConnectorResultOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectorResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+func (o LookupConnectorResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectorResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-func (o GetConnectorResultOutput) DailySyncTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectorResult) string { return v.DailySyncTime }).(pulumi.StringOutput)
+func (o LookupConnectorResultOutput) DailySyncTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectorResult) string { return v.DailySyncTime }).(pulumi.StringOutput)
 }
 
-func (o GetConnectorResultOutput) DestinationSchemas() GetConnectorDestinationSchemaArrayOutput {
-	return o.ApplyT(func(v GetConnectorResult) []GetConnectorDestinationSchema { return v.DestinationSchemas }).(GetConnectorDestinationSchemaArrayOutput)
+func (o LookupConnectorResultOutput) DestinationSchemas() GetConnectorDestinationSchemaArrayOutput {
+	return o.ApplyT(func(v LookupConnectorResult) []GetConnectorDestinationSchema { return v.DestinationSchemas }).(GetConnectorDestinationSchemaArrayOutput)
 }
 
-func (o GetConnectorResultOutput) FailedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectorResult) string { return v.FailedAt }).(pulumi.StringOutput)
+func (o LookupConnectorResultOutput) FailedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectorResult) string { return v.FailedAt }).(pulumi.StringOutput)
 }
 
-func (o GetConnectorResultOutput) GroupId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectorResult) string { return v.GroupId }).(pulumi.StringOutput)
+func (o LookupConnectorResultOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectorResult) string { return v.GroupId }).(pulumi.StringOutput)
 }
 
-func (o GetConnectorResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectorResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupConnectorResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetConnectorResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectorResult) string { return v.Name }).(pulumi.StringOutput)
+func (o LookupConnectorResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o GetConnectorResultOutput) PauseAfterTrial() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectorResult) string { return v.PauseAfterTrial }).(pulumi.StringOutput)
+func (o LookupConnectorResultOutput) PauseAfterTrial() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectorResult) string { return v.PauseAfterTrial }).(pulumi.StringOutput)
 }
 
-func (o GetConnectorResultOutput) Paused() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectorResult) string { return v.Paused }).(pulumi.StringOutput)
+func (o LookupConnectorResultOutput) Paused() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectorResult) string { return v.Paused }).(pulumi.StringOutput)
 }
 
-func (o GetConnectorResultOutput) ScheduleType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectorResult) string { return v.ScheduleType }).(pulumi.StringOutput)
+func (o LookupConnectorResultOutput) ScheduleType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectorResult) string { return v.ScheduleType }).(pulumi.StringOutput)
 }
 
-func (o GetConnectorResultOutput) Service() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectorResult) string { return v.Service }).(pulumi.StringOutput)
+func (o LookupConnectorResultOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectorResult) string { return v.Service }).(pulumi.StringOutput)
 }
 
-func (o GetConnectorResultOutput) ServiceVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectorResult) string { return v.ServiceVersion }).(pulumi.StringOutput)
+func (o LookupConnectorResultOutput) ServiceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectorResult) string { return v.ServiceVersion }).(pulumi.StringOutput)
 }
 
-func (o GetConnectorResultOutput) Statuses() GetConnectorStatusArrayOutput {
-	return o.ApplyT(func(v GetConnectorResult) []GetConnectorStatus { return v.Statuses }).(GetConnectorStatusArrayOutput)
+func (o LookupConnectorResultOutput) Statuses() GetConnectorStatusArrayOutput {
+	return o.ApplyT(func(v LookupConnectorResult) []GetConnectorStatus { return v.Statuses }).(GetConnectorStatusArrayOutput)
 }
 
-func (o GetConnectorResultOutput) SucceededAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectorResult) string { return v.SucceededAt }).(pulumi.StringOutput)
+func (o LookupConnectorResultOutput) SucceededAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectorResult) string { return v.SucceededAt }).(pulumi.StringOutput)
 }
 
-func (o GetConnectorResultOutput) SyncFrequency() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectorResult) string { return v.SyncFrequency }).(pulumi.StringOutput)
+func (o LookupConnectorResultOutput) SyncFrequency() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectorResult) string { return v.SyncFrequency }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetConnectorResultOutput{})
+	pulumi.RegisterOutputType(LookupConnectorResultOutput{})
 }

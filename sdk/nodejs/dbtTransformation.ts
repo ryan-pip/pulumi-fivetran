@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
  *
- * const transformation = new fivetran.FivetranConnectorDbtTransformation("transformation", {
+ * const transformation = new fivetran.DbtTransformation("transformation", {
  *     dbtModelName: "dbt_model_name",
  *     dbtProjectId: "dbt_project_id",
  *     paused: false,
@@ -39,20 +39,20 @@ import * as utilities from "./utilities";
  * 1. To import an existing `fivetran_dbt_transformation` resource into your Terraform state, you need to get **Transformation ID** on the transformation page in your Fivetran dashboard. 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_dbt_transformation" "my_imported_fivetran_dbt_transformation" { }
  *
  * ```sh
- *  $ pulumi import fivetran:index/fivetranConnectorDbtTransformation:FivetranConnectorDbtTransformation
+ *  $ pulumi import fivetran:index/dbtTransformation:DbtTransformation
  *
  * Run the `terraform import` command
  * ```
  *
  * ```sh
- *  $ pulumi import fivetran:index/fivetranConnectorDbtTransformation:FivetranConnectorDbtTransformation my_imported_fivetran_dbt_transformation {Transformation ID}
+ *  $ pulumi import fivetran:index/dbtTransformation:DbtTransformation my_imported_fivetran_dbt_transformation {Transformation ID}
  * ```
  *
  *  4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_dbt_transformation.my_imported_fivetran_dbt_transformation' 5. Copy the values and paste them to your `.tf` configuration.
  */
-export class FivetranConnectorDbtTransformation extends pulumi.CustomResource {
+export class DbtTransformation extends pulumi.CustomResource {
     /**
-     * Get an existing FivetranConnectorDbtTransformation resource's state with the given name, ID, and optional extra
+     * Get an existing DbtTransformation resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -60,22 +60,22 @@ export class FivetranConnectorDbtTransformation extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: FivetranConnectorDbtTransformationState, opts?: pulumi.CustomResourceOptions): FivetranConnectorDbtTransformation {
-        return new FivetranConnectorDbtTransformation(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DbtTransformationState, opts?: pulumi.CustomResourceOptions): DbtTransformation {
+        return new DbtTransformation(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'fivetran:index/fivetranConnectorDbtTransformation:FivetranConnectorDbtTransformation';
+    public static readonly __pulumiType = 'fivetran:index/dbtTransformation:DbtTransformation';
 
     /**
-     * Returns true if the given object is an instance of FivetranConnectorDbtTransformation.  This is designed to work even
+     * Returns true if the given object is an instance of DbtTransformation.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is FivetranConnectorDbtTransformation {
+    public static isInstance(obj: any): obj is DbtTransformation {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === FivetranConnectorDbtTransformation.__pulumiType;
+        return obj['__pulumiType'] === DbtTransformation.__pulumiType;
     }
 
     /**
@@ -117,21 +117,21 @@ export class FivetranConnectorDbtTransformation extends pulumi.CustomResource {
     /**
      * dbt Transformation schedule parameters.
      */
-    public readonly schedule!: pulumi.Output<outputs.FivetranConnectorDbtTransformationSchedule>;
+    public readonly schedule!: pulumi.Output<outputs.DbtTransformationSchedule>;
 
     /**
-     * Create a FivetranConnectorDbtTransformation resource with the given unique name, arguments, and options.
+     * Create a DbtTransformation resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: FivetranConnectorDbtTransformationArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: FivetranConnectorDbtTransformationArgs | FivetranConnectorDbtTransformationState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: DbtTransformationArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: DbtTransformationArgs | DbtTransformationState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as FivetranConnectorDbtTransformationState | undefined;
+            const state = argsOrState as DbtTransformationState | undefined;
             resourceInputs["connectorIds"] = state ? state.connectorIds : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["dbtModelId"] = state ? state.dbtModelId : undefined;
@@ -143,7 +143,7 @@ export class FivetranConnectorDbtTransformation extends pulumi.CustomResource {
             resourceInputs["runTests"] = state ? state.runTests : undefined;
             resourceInputs["schedule"] = state ? state.schedule : undefined;
         } else {
-            const args = argsOrState as FivetranConnectorDbtTransformationArgs | undefined;
+            const args = argsOrState as DbtTransformationArgs | undefined;
             if ((!args || args.dbtModelName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbtModelName'");
             }
@@ -171,14 +171,14 @@ export class FivetranConnectorDbtTransformation extends pulumi.CustomResource {
             resourceInputs["outputModelName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(FivetranConnectorDbtTransformation.__pulumiType, name, resourceInputs, opts);
+        super(DbtTransformation.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering FivetranConnectorDbtTransformation resources.
+ * Input properties used for looking up and filtering DbtTransformation resources.
  */
-export interface FivetranConnectorDbtTransformationState {
+export interface DbtTransformationState {
     /**
      * Identifiers of related connectors.
      */
@@ -218,13 +218,13 @@ export interface FivetranConnectorDbtTransformationState {
     /**
      * dbt Transformation schedule parameters.
      */
-    schedule?: pulumi.Input<inputs.FivetranConnectorDbtTransformationSchedule>;
+    schedule?: pulumi.Input<inputs.DbtTransformationSchedule>;
 }
 
 /**
- * The set of arguments for constructing a FivetranConnectorDbtTransformation resource.
+ * The set of arguments for constructing a DbtTransformation resource.
  */
-export interface FivetranConnectorDbtTransformationArgs {
+export interface DbtTransformationArgs {
     /**
      * Target dbt Model name.
      */
@@ -244,5 +244,5 @@ export interface FivetranConnectorDbtTransformationArgs {
     /**
      * dbt Transformation schedule parameters.
      */
-    schedule: pulumi.Input<inputs.FivetranConnectorDbtTransformationSchedule>;
+    schedule: pulumi.Input<inputs.DbtTransformationSchedule>;
 }

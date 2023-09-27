@@ -14,174 +14,174 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-type FivetranConnectorAuth struct {
-	AccessToken  *string                            `pulumi:"accessToken"`
-	ClientAccess *FivetranConnectorAuthClientAccess `pulumi:"clientAccess"`
-	RealmId      *string                            `pulumi:"realmId"`
-	RefreshToken *string                            `pulumi:"refreshToken"`
+type ConnectorAuth struct {
+	AccessToken  *string                    `pulumi:"accessToken"`
+	ClientAccess *ConnectorAuthClientAccess `pulumi:"clientAccess"`
+	RealmId      *string                    `pulumi:"realmId"`
+	RefreshToken *string                    `pulumi:"refreshToken"`
 }
 
-// FivetranConnectorAuthInput is an input type that accepts FivetranConnectorAuthArgs and FivetranConnectorAuthOutput values.
-// You can construct a concrete instance of `FivetranConnectorAuthInput` via:
+// ConnectorAuthInput is an input type that accepts ConnectorAuthArgs and ConnectorAuthOutput values.
+// You can construct a concrete instance of `ConnectorAuthInput` via:
 //
-//	FivetranConnectorAuthArgs{...}
-type FivetranConnectorAuthInput interface {
+//	ConnectorAuthArgs{...}
+type ConnectorAuthInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorAuthOutput() FivetranConnectorAuthOutput
-	ToFivetranConnectorAuthOutputWithContext(context.Context) FivetranConnectorAuthOutput
+	ToConnectorAuthOutput() ConnectorAuthOutput
+	ToConnectorAuthOutputWithContext(context.Context) ConnectorAuthOutput
 }
 
-type FivetranConnectorAuthArgs struct {
-	AccessToken  pulumi.StringPtrInput                     `pulumi:"accessToken"`
-	ClientAccess FivetranConnectorAuthClientAccessPtrInput `pulumi:"clientAccess"`
-	RealmId      pulumi.StringPtrInput                     `pulumi:"realmId"`
-	RefreshToken pulumi.StringPtrInput                     `pulumi:"refreshToken"`
+type ConnectorAuthArgs struct {
+	AccessToken  pulumi.StringPtrInput             `pulumi:"accessToken"`
+	ClientAccess ConnectorAuthClientAccessPtrInput `pulumi:"clientAccess"`
+	RealmId      pulumi.StringPtrInput             `pulumi:"realmId"`
+	RefreshToken pulumi.StringPtrInput             `pulumi:"refreshToken"`
 }
 
-func (FivetranConnectorAuthArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorAuth)(nil)).Elem()
+func (ConnectorAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorAuth)(nil)).Elem()
 }
 
-func (i FivetranConnectorAuthArgs) ToFivetranConnectorAuthOutput() FivetranConnectorAuthOutput {
-	return i.ToFivetranConnectorAuthOutputWithContext(context.Background())
+func (i ConnectorAuthArgs) ToConnectorAuthOutput() ConnectorAuthOutput {
+	return i.ToConnectorAuthOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorAuthArgs) ToFivetranConnectorAuthOutputWithContext(ctx context.Context) FivetranConnectorAuthOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorAuthOutput)
+func (i ConnectorAuthArgs) ToConnectorAuthOutputWithContext(ctx context.Context) ConnectorAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAuthOutput)
 }
 
-func (i FivetranConnectorAuthArgs) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorAuth] {
-	return pulumix.Output[FivetranConnectorAuth]{
-		OutputState: i.ToFivetranConnectorAuthOutputWithContext(ctx).OutputState,
+func (i ConnectorAuthArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorAuth] {
+	return pulumix.Output[ConnectorAuth]{
+		OutputState: i.ToConnectorAuthOutputWithContext(ctx).OutputState,
 	}
 }
 
-func (i FivetranConnectorAuthArgs) ToFivetranConnectorAuthPtrOutput() FivetranConnectorAuthPtrOutput {
-	return i.ToFivetranConnectorAuthPtrOutputWithContext(context.Background())
+func (i ConnectorAuthArgs) ToConnectorAuthPtrOutput() ConnectorAuthPtrOutput {
+	return i.ToConnectorAuthPtrOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorAuthArgs) ToFivetranConnectorAuthPtrOutputWithContext(ctx context.Context) FivetranConnectorAuthPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorAuthOutput).ToFivetranConnectorAuthPtrOutputWithContext(ctx)
+func (i ConnectorAuthArgs) ToConnectorAuthPtrOutputWithContext(ctx context.Context) ConnectorAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAuthOutput).ToConnectorAuthPtrOutputWithContext(ctx)
 }
 
-// FivetranConnectorAuthPtrInput is an input type that accepts FivetranConnectorAuthArgs, FivetranConnectorAuthPtr and FivetranConnectorAuthPtrOutput values.
-// You can construct a concrete instance of `FivetranConnectorAuthPtrInput` via:
+// ConnectorAuthPtrInput is an input type that accepts ConnectorAuthArgs, ConnectorAuthPtr and ConnectorAuthPtrOutput values.
+// You can construct a concrete instance of `ConnectorAuthPtrInput` via:
 //
-//	        FivetranConnectorAuthArgs{...}
+//	        ConnectorAuthArgs{...}
 //
 //	or:
 //
 //	        nil
-type FivetranConnectorAuthPtrInput interface {
+type ConnectorAuthPtrInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorAuthPtrOutput() FivetranConnectorAuthPtrOutput
-	ToFivetranConnectorAuthPtrOutputWithContext(context.Context) FivetranConnectorAuthPtrOutput
+	ToConnectorAuthPtrOutput() ConnectorAuthPtrOutput
+	ToConnectorAuthPtrOutputWithContext(context.Context) ConnectorAuthPtrOutput
 }
 
-type fivetranConnectorAuthPtrType FivetranConnectorAuthArgs
+type connectorAuthPtrType ConnectorAuthArgs
 
-func FivetranConnectorAuthPtr(v *FivetranConnectorAuthArgs) FivetranConnectorAuthPtrInput {
-	return (*fivetranConnectorAuthPtrType)(v)
+func ConnectorAuthPtr(v *ConnectorAuthArgs) ConnectorAuthPtrInput {
+	return (*connectorAuthPtrType)(v)
 }
 
-func (*fivetranConnectorAuthPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FivetranConnectorAuth)(nil)).Elem()
+func (*connectorAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorAuth)(nil)).Elem()
 }
 
-func (i *fivetranConnectorAuthPtrType) ToFivetranConnectorAuthPtrOutput() FivetranConnectorAuthPtrOutput {
-	return i.ToFivetranConnectorAuthPtrOutputWithContext(context.Background())
+func (i *connectorAuthPtrType) ToConnectorAuthPtrOutput() ConnectorAuthPtrOutput {
+	return i.ToConnectorAuthPtrOutputWithContext(context.Background())
 }
 
-func (i *fivetranConnectorAuthPtrType) ToFivetranConnectorAuthPtrOutputWithContext(ctx context.Context) FivetranConnectorAuthPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorAuthPtrOutput)
+func (i *connectorAuthPtrType) ToConnectorAuthPtrOutputWithContext(ctx context.Context) ConnectorAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAuthPtrOutput)
 }
 
-func (i *fivetranConnectorAuthPtrType) ToOutput(ctx context.Context) pulumix.Output[*FivetranConnectorAuth] {
-	return pulumix.Output[*FivetranConnectorAuth]{
-		OutputState: i.ToFivetranConnectorAuthPtrOutputWithContext(ctx).OutputState,
+func (i *connectorAuthPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectorAuth] {
+	return pulumix.Output[*ConnectorAuth]{
+		OutputState: i.ToConnectorAuthPtrOutputWithContext(ctx).OutputState,
 	}
 }
 
-type FivetranConnectorAuthOutput struct{ *pulumi.OutputState }
+type ConnectorAuthOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorAuthOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorAuth)(nil)).Elem()
+func (ConnectorAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorAuth)(nil)).Elem()
 }
 
-func (o FivetranConnectorAuthOutput) ToFivetranConnectorAuthOutput() FivetranConnectorAuthOutput {
+func (o ConnectorAuthOutput) ToConnectorAuthOutput() ConnectorAuthOutput {
 	return o
 }
 
-func (o FivetranConnectorAuthOutput) ToFivetranConnectorAuthOutputWithContext(ctx context.Context) FivetranConnectorAuthOutput {
+func (o ConnectorAuthOutput) ToConnectorAuthOutputWithContext(ctx context.Context) ConnectorAuthOutput {
 	return o
 }
 
-func (o FivetranConnectorAuthOutput) ToFivetranConnectorAuthPtrOutput() FivetranConnectorAuthPtrOutput {
-	return o.ToFivetranConnectorAuthPtrOutputWithContext(context.Background())
+func (o ConnectorAuthOutput) ToConnectorAuthPtrOutput() ConnectorAuthPtrOutput {
+	return o.ToConnectorAuthPtrOutputWithContext(context.Background())
 }
 
-func (o FivetranConnectorAuthOutput) ToFivetranConnectorAuthPtrOutputWithContext(ctx context.Context) FivetranConnectorAuthPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FivetranConnectorAuth) *FivetranConnectorAuth {
+func (o ConnectorAuthOutput) ToConnectorAuthPtrOutputWithContext(ctx context.Context) ConnectorAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorAuth) *ConnectorAuth {
 		return &v
-	}).(FivetranConnectorAuthPtrOutput)
+	}).(ConnectorAuthPtrOutput)
 }
 
-func (o FivetranConnectorAuthOutput) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorAuth] {
-	return pulumix.Output[FivetranConnectorAuth]{
+func (o ConnectorAuthOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorAuth] {
+	return pulumix.Output[ConnectorAuth]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorAuthOutput) AccessToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorAuth) *string { return v.AccessToken }).(pulumi.StringPtrOutput)
+func (o ConnectorAuthOutput) AccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorAuth) *string { return v.AccessToken }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorAuthOutput) ClientAccess() FivetranConnectorAuthClientAccessPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorAuth) *FivetranConnectorAuthClientAccess { return v.ClientAccess }).(FivetranConnectorAuthClientAccessPtrOutput)
+func (o ConnectorAuthOutput) ClientAccess() ConnectorAuthClientAccessPtrOutput {
+	return o.ApplyT(func(v ConnectorAuth) *ConnectorAuthClientAccess { return v.ClientAccess }).(ConnectorAuthClientAccessPtrOutput)
 }
 
-func (o FivetranConnectorAuthOutput) RealmId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorAuth) *string { return v.RealmId }).(pulumi.StringPtrOutput)
+func (o ConnectorAuthOutput) RealmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorAuth) *string { return v.RealmId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorAuthOutput) RefreshToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorAuth) *string { return v.RefreshToken }).(pulumi.StringPtrOutput)
+func (o ConnectorAuthOutput) RefreshToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorAuth) *string { return v.RefreshToken }).(pulumi.StringPtrOutput)
 }
 
-type FivetranConnectorAuthPtrOutput struct{ *pulumi.OutputState }
+type ConnectorAuthPtrOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorAuthPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FivetranConnectorAuth)(nil)).Elem()
+func (ConnectorAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorAuth)(nil)).Elem()
 }
 
-func (o FivetranConnectorAuthPtrOutput) ToFivetranConnectorAuthPtrOutput() FivetranConnectorAuthPtrOutput {
+func (o ConnectorAuthPtrOutput) ToConnectorAuthPtrOutput() ConnectorAuthPtrOutput {
 	return o
 }
 
-func (o FivetranConnectorAuthPtrOutput) ToFivetranConnectorAuthPtrOutputWithContext(ctx context.Context) FivetranConnectorAuthPtrOutput {
+func (o ConnectorAuthPtrOutput) ToConnectorAuthPtrOutputWithContext(ctx context.Context) ConnectorAuthPtrOutput {
 	return o
 }
 
-func (o FivetranConnectorAuthPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FivetranConnectorAuth] {
-	return pulumix.Output[*FivetranConnectorAuth]{
+func (o ConnectorAuthPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectorAuth] {
+	return pulumix.Output[*ConnectorAuth]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorAuthPtrOutput) Elem() FivetranConnectorAuthOutput {
-	return o.ApplyT(func(v *FivetranConnectorAuth) FivetranConnectorAuth {
+func (o ConnectorAuthPtrOutput) Elem() ConnectorAuthOutput {
+	return o.ApplyT(func(v *ConnectorAuth) ConnectorAuth {
 		if v != nil {
 			return *v
 		}
-		var ret FivetranConnectorAuth
+		var ret ConnectorAuth
 		return ret
-	}).(FivetranConnectorAuthOutput)
+	}).(ConnectorAuthOutput)
 }
 
-func (o FivetranConnectorAuthPtrOutput) AccessToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorAuth) *string {
+func (o ConnectorAuthPtrOutput) AccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAuth) *string {
 		if v == nil {
 			return nil
 		}
@@ -189,17 +189,17 @@ func (o FivetranConnectorAuthPtrOutput) AccessToken() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorAuthPtrOutput) ClientAccess() FivetranConnectorAuthClientAccessPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorAuth) *FivetranConnectorAuthClientAccess {
+func (o ConnectorAuthPtrOutput) ClientAccess() ConnectorAuthClientAccessPtrOutput {
+	return o.ApplyT(func(v *ConnectorAuth) *ConnectorAuthClientAccess {
 		if v == nil {
 			return nil
 		}
 		return v.ClientAccess
-	}).(FivetranConnectorAuthClientAccessPtrOutput)
+	}).(ConnectorAuthClientAccessPtrOutput)
 }
 
-func (o FivetranConnectorAuthPtrOutput) RealmId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorAuth) *string {
+func (o ConnectorAuthPtrOutput) RealmId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAuth) *string {
 		if v == nil {
 			return nil
 		}
@@ -207,8 +207,8 @@ func (o FivetranConnectorAuthPtrOutput) RealmId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorAuthPtrOutput) RefreshToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorAuth) *string {
+func (o ConnectorAuthPtrOutput) RefreshToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAuth) *string {
 		if v == nil {
 			return nil
 		}
@@ -216,174 +216,174 @@ func (o FivetranConnectorAuthPtrOutput) RefreshToken() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type FivetranConnectorAuthClientAccess struct {
+type ConnectorAuthClientAccess struct {
 	ClientId       *string `pulumi:"clientId"`
 	ClientSecret   *string `pulumi:"clientSecret"`
 	DeveloperToken *string `pulumi:"developerToken"`
 	UserAgent      *string `pulumi:"userAgent"`
 }
 
-// FivetranConnectorAuthClientAccessInput is an input type that accepts FivetranConnectorAuthClientAccessArgs and FivetranConnectorAuthClientAccessOutput values.
-// You can construct a concrete instance of `FivetranConnectorAuthClientAccessInput` via:
+// ConnectorAuthClientAccessInput is an input type that accepts ConnectorAuthClientAccessArgs and ConnectorAuthClientAccessOutput values.
+// You can construct a concrete instance of `ConnectorAuthClientAccessInput` via:
 //
-//	FivetranConnectorAuthClientAccessArgs{...}
-type FivetranConnectorAuthClientAccessInput interface {
+//	ConnectorAuthClientAccessArgs{...}
+type ConnectorAuthClientAccessInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorAuthClientAccessOutput() FivetranConnectorAuthClientAccessOutput
-	ToFivetranConnectorAuthClientAccessOutputWithContext(context.Context) FivetranConnectorAuthClientAccessOutput
+	ToConnectorAuthClientAccessOutput() ConnectorAuthClientAccessOutput
+	ToConnectorAuthClientAccessOutputWithContext(context.Context) ConnectorAuthClientAccessOutput
 }
 
-type FivetranConnectorAuthClientAccessArgs struct {
+type ConnectorAuthClientAccessArgs struct {
 	ClientId       pulumi.StringPtrInput `pulumi:"clientId"`
 	ClientSecret   pulumi.StringPtrInput `pulumi:"clientSecret"`
 	DeveloperToken pulumi.StringPtrInput `pulumi:"developerToken"`
 	UserAgent      pulumi.StringPtrInput `pulumi:"userAgent"`
 }
 
-func (FivetranConnectorAuthClientAccessArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorAuthClientAccess)(nil)).Elem()
+func (ConnectorAuthClientAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorAuthClientAccess)(nil)).Elem()
 }
 
-func (i FivetranConnectorAuthClientAccessArgs) ToFivetranConnectorAuthClientAccessOutput() FivetranConnectorAuthClientAccessOutput {
-	return i.ToFivetranConnectorAuthClientAccessOutputWithContext(context.Background())
+func (i ConnectorAuthClientAccessArgs) ToConnectorAuthClientAccessOutput() ConnectorAuthClientAccessOutput {
+	return i.ToConnectorAuthClientAccessOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorAuthClientAccessArgs) ToFivetranConnectorAuthClientAccessOutputWithContext(ctx context.Context) FivetranConnectorAuthClientAccessOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorAuthClientAccessOutput)
+func (i ConnectorAuthClientAccessArgs) ToConnectorAuthClientAccessOutputWithContext(ctx context.Context) ConnectorAuthClientAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAuthClientAccessOutput)
 }
 
-func (i FivetranConnectorAuthClientAccessArgs) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorAuthClientAccess] {
-	return pulumix.Output[FivetranConnectorAuthClientAccess]{
-		OutputState: i.ToFivetranConnectorAuthClientAccessOutputWithContext(ctx).OutputState,
+func (i ConnectorAuthClientAccessArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorAuthClientAccess] {
+	return pulumix.Output[ConnectorAuthClientAccess]{
+		OutputState: i.ToConnectorAuthClientAccessOutputWithContext(ctx).OutputState,
 	}
 }
 
-func (i FivetranConnectorAuthClientAccessArgs) ToFivetranConnectorAuthClientAccessPtrOutput() FivetranConnectorAuthClientAccessPtrOutput {
-	return i.ToFivetranConnectorAuthClientAccessPtrOutputWithContext(context.Background())
+func (i ConnectorAuthClientAccessArgs) ToConnectorAuthClientAccessPtrOutput() ConnectorAuthClientAccessPtrOutput {
+	return i.ToConnectorAuthClientAccessPtrOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorAuthClientAccessArgs) ToFivetranConnectorAuthClientAccessPtrOutputWithContext(ctx context.Context) FivetranConnectorAuthClientAccessPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorAuthClientAccessOutput).ToFivetranConnectorAuthClientAccessPtrOutputWithContext(ctx)
+func (i ConnectorAuthClientAccessArgs) ToConnectorAuthClientAccessPtrOutputWithContext(ctx context.Context) ConnectorAuthClientAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAuthClientAccessOutput).ToConnectorAuthClientAccessPtrOutputWithContext(ctx)
 }
 
-// FivetranConnectorAuthClientAccessPtrInput is an input type that accepts FivetranConnectorAuthClientAccessArgs, FivetranConnectorAuthClientAccessPtr and FivetranConnectorAuthClientAccessPtrOutput values.
-// You can construct a concrete instance of `FivetranConnectorAuthClientAccessPtrInput` via:
+// ConnectorAuthClientAccessPtrInput is an input type that accepts ConnectorAuthClientAccessArgs, ConnectorAuthClientAccessPtr and ConnectorAuthClientAccessPtrOutput values.
+// You can construct a concrete instance of `ConnectorAuthClientAccessPtrInput` via:
 //
-//	        FivetranConnectorAuthClientAccessArgs{...}
+//	        ConnectorAuthClientAccessArgs{...}
 //
 //	or:
 //
 //	        nil
-type FivetranConnectorAuthClientAccessPtrInput interface {
+type ConnectorAuthClientAccessPtrInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorAuthClientAccessPtrOutput() FivetranConnectorAuthClientAccessPtrOutput
-	ToFivetranConnectorAuthClientAccessPtrOutputWithContext(context.Context) FivetranConnectorAuthClientAccessPtrOutput
+	ToConnectorAuthClientAccessPtrOutput() ConnectorAuthClientAccessPtrOutput
+	ToConnectorAuthClientAccessPtrOutputWithContext(context.Context) ConnectorAuthClientAccessPtrOutput
 }
 
-type fivetranConnectorAuthClientAccessPtrType FivetranConnectorAuthClientAccessArgs
+type connectorAuthClientAccessPtrType ConnectorAuthClientAccessArgs
 
-func FivetranConnectorAuthClientAccessPtr(v *FivetranConnectorAuthClientAccessArgs) FivetranConnectorAuthClientAccessPtrInput {
-	return (*fivetranConnectorAuthClientAccessPtrType)(v)
+func ConnectorAuthClientAccessPtr(v *ConnectorAuthClientAccessArgs) ConnectorAuthClientAccessPtrInput {
+	return (*connectorAuthClientAccessPtrType)(v)
 }
 
-func (*fivetranConnectorAuthClientAccessPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FivetranConnectorAuthClientAccess)(nil)).Elem()
+func (*connectorAuthClientAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorAuthClientAccess)(nil)).Elem()
 }
 
-func (i *fivetranConnectorAuthClientAccessPtrType) ToFivetranConnectorAuthClientAccessPtrOutput() FivetranConnectorAuthClientAccessPtrOutput {
-	return i.ToFivetranConnectorAuthClientAccessPtrOutputWithContext(context.Background())
+func (i *connectorAuthClientAccessPtrType) ToConnectorAuthClientAccessPtrOutput() ConnectorAuthClientAccessPtrOutput {
+	return i.ToConnectorAuthClientAccessPtrOutputWithContext(context.Background())
 }
 
-func (i *fivetranConnectorAuthClientAccessPtrType) ToFivetranConnectorAuthClientAccessPtrOutputWithContext(ctx context.Context) FivetranConnectorAuthClientAccessPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorAuthClientAccessPtrOutput)
+func (i *connectorAuthClientAccessPtrType) ToConnectorAuthClientAccessPtrOutputWithContext(ctx context.Context) ConnectorAuthClientAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAuthClientAccessPtrOutput)
 }
 
-func (i *fivetranConnectorAuthClientAccessPtrType) ToOutput(ctx context.Context) pulumix.Output[*FivetranConnectorAuthClientAccess] {
-	return pulumix.Output[*FivetranConnectorAuthClientAccess]{
-		OutputState: i.ToFivetranConnectorAuthClientAccessPtrOutputWithContext(ctx).OutputState,
+func (i *connectorAuthClientAccessPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectorAuthClientAccess] {
+	return pulumix.Output[*ConnectorAuthClientAccess]{
+		OutputState: i.ToConnectorAuthClientAccessPtrOutputWithContext(ctx).OutputState,
 	}
 }
 
-type FivetranConnectorAuthClientAccessOutput struct{ *pulumi.OutputState }
+type ConnectorAuthClientAccessOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorAuthClientAccessOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorAuthClientAccess)(nil)).Elem()
+func (ConnectorAuthClientAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorAuthClientAccess)(nil)).Elem()
 }
 
-func (o FivetranConnectorAuthClientAccessOutput) ToFivetranConnectorAuthClientAccessOutput() FivetranConnectorAuthClientAccessOutput {
+func (o ConnectorAuthClientAccessOutput) ToConnectorAuthClientAccessOutput() ConnectorAuthClientAccessOutput {
 	return o
 }
 
-func (o FivetranConnectorAuthClientAccessOutput) ToFivetranConnectorAuthClientAccessOutputWithContext(ctx context.Context) FivetranConnectorAuthClientAccessOutput {
+func (o ConnectorAuthClientAccessOutput) ToConnectorAuthClientAccessOutputWithContext(ctx context.Context) ConnectorAuthClientAccessOutput {
 	return o
 }
 
-func (o FivetranConnectorAuthClientAccessOutput) ToFivetranConnectorAuthClientAccessPtrOutput() FivetranConnectorAuthClientAccessPtrOutput {
-	return o.ToFivetranConnectorAuthClientAccessPtrOutputWithContext(context.Background())
+func (o ConnectorAuthClientAccessOutput) ToConnectorAuthClientAccessPtrOutput() ConnectorAuthClientAccessPtrOutput {
+	return o.ToConnectorAuthClientAccessPtrOutputWithContext(context.Background())
 }
 
-func (o FivetranConnectorAuthClientAccessOutput) ToFivetranConnectorAuthClientAccessPtrOutputWithContext(ctx context.Context) FivetranConnectorAuthClientAccessPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FivetranConnectorAuthClientAccess) *FivetranConnectorAuthClientAccess {
+func (o ConnectorAuthClientAccessOutput) ToConnectorAuthClientAccessPtrOutputWithContext(ctx context.Context) ConnectorAuthClientAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorAuthClientAccess) *ConnectorAuthClientAccess {
 		return &v
-	}).(FivetranConnectorAuthClientAccessPtrOutput)
+	}).(ConnectorAuthClientAccessPtrOutput)
 }
 
-func (o FivetranConnectorAuthClientAccessOutput) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorAuthClientAccess] {
-	return pulumix.Output[FivetranConnectorAuthClientAccess]{
+func (o ConnectorAuthClientAccessOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorAuthClientAccess] {
+	return pulumix.Output[ConnectorAuthClientAccess]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorAuthClientAccessOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorAuthClientAccess) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+func (o ConnectorAuthClientAccessOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorAuthClientAccess) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorAuthClientAccessOutput) ClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorAuthClientAccess) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+func (o ConnectorAuthClientAccessOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorAuthClientAccess) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorAuthClientAccessOutput) DeveloperToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorAuthClientAccess) *string { return v.DeveloperToken }).(pulumi.StringPtrOutput)
+func (o ConnectorAuthClientAccessOutput) DeveloperToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorAuthClientAccess) *string { return v.DeveloperToken }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorAuthClientAccessOutput) UserAgent() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorAuthClientAccess) *string { return v.UserAgent }).(pulumi.StringPtrOutput)
+func (o ConnectorAuthClientAccessOutput) UserAgent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorAuthClientAccess) *string { return v.UserAgent }).(pulumi.StringPtrOutput)
 }
 
-type FivetranConnectorAuthClientAccessPtrOutput struct{ *pulumi.OutputState }
+type ConnectorAuthClientAccessPtrOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorAuthClientAccessPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FivetranConnectorAuthClientAccess)(nil)).Elem()
+func (ConnectorAuthClientAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorAuthClientAccess)(nil)).Elem()
 }
 
-func (o FivetranConnectorAuthClientAccessPtrOutput) ToFivetranConnectorAuthClientAccessPtrOutput() FivetranConnectorAuthClientAccessPtrOutput {
+func (o ConnectorAuthClientAccessPtrOutput) ToConnectorAuthClientAccessPtrOutput() ConnectorAuthClientAccessPtrOutput {
 	return o
 }
 
-func (o FivetranConnectorAuthClientAccessPtrOutput) ToFivetranConnectorAuthClientAccessPtrOutputWithContext(ctx context.Context) FivetranConnectorAuthClientAccessPtrOutput {
+func (o ConnectorAuthClientAccessPtrOutput) ToConnectorAuthClientAccessPtrOutputWithContext(ctx context.Context) ConnectorAuthClientAccessPtrOutput {
 	return o
 }
 
-func (o FivetranConnectorAuthClientAccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FivetranConnectorAuthClientAccess] {
-	return pulumix.Output[*FivetranConnectorAuthClientAccess]{
+func (o ConnectorAuthClientAccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectorAuthClientAccess] {
+	return pulumix.Output[*ConnectorAuthClientAccess]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorAuthClientAccessPtrOutput) Elem() FivetranConnectorAuthClientAccessOutput {
-	return o.ApplyT(func(v *FivetranConnectorAuthClientAccess) FivetranConnectorAuthClientAccess {
+func (o ConnectorAuthClientAccessPtrOutput) Elem() ConnectorAuthClientAccessOutput {
+	return o.ApplyT(func(v *ConnectorAuthClientAccess) ConnectorAuthClientAccess {
 		if v != nil {
 			return *v
 		}
-		var ret FivetranConnectorAuthClientAccess
+		var ret ConnectorAuthClientAccess
 		return ret
-	}).(FivetranConnectorAuthClientAccessOutput)
+	}).(ConnectorAuthClientAccessOutput)
 }
 
-func (o FivetranConnectorAuthClientAccessPtrOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorAuthClientAccess) *string {
+func (o ConnectorAuthClientAccessPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAuthClientAccess) *string {
 		if v == nil {
 			return nil
 		}
@@ -391,8 +391,8 @@ func (o FivetranConnectorAuthClientAccessPtrOutput) ClientId() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorAuthClientAccessPtrOutput) ClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorAuthClientAccess) *string {
+func (o ConnectorAuthClientAccessPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAuthClientAccess) *string {
 		if v == nil {
 			return nil
 		}
@@ -400,8 +400,8 @@ func (o FivetranConnectorAuthClientAccessPtrOutput) ClientSecret() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorAuthClientAccessPtrOutput) DeveloperToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorAuthClientAccess) *string {
+func (o ConnectorAuthClientAccessPtrOutput) DeveloperToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAuthClientAccess) *string {
 		if v == nil {
 			return nil
 		}
@@ -409,8 +409,8 @@ func (o FivetranConnectorAuthClientAccessPtrOutput) DeveloperToken() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorAuthClientAccessPtrOutput) UserAgent() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorAuthClientAccess) *string {
+func (o ConnectorAuthClientAccessPtrOutput) UserAgent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAuthClientAccess) *string {
 		if v == nil {
 			return nil
 		}
@@ -418,2746 +418,2744 @@ func (o FivetranConnectorAuthClientAccessPtrOutput) UserAgent() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-type FivetranConnectorConfig struct {
-	AbsConnectionMethod                    *string                                              `pulumi:"absConnectionMethod"`
-	AbsConnectionString                    *string                                              `pulumi:"absConnectionString"`
-	AbsContainerAddress                    *string                                              `pulumi:"absContainerAddress"`
-	AbsContainerName                       *string                                              `pulumi:"absContainerName"`
-	AbsHostIp                              *string                                              `pulumi:"absHostIp"`
-	AbsHostUser                            *string                                              `pulumi:"absHostUser"`
-	AbsPrefix                              *string                                              `pulumi:"absPrefix"`
-	AbsPublicKey                           *string                                              `pulumi:"absPublicKey"`
-	AccessKey                              *string                                              `pulumi:"accessKey"`
-	AccessKeyId                            *string                                              `pulumi:"accessKeyId"`
-	AccessKeySecret                        *string                                              `pulumi:"accessKeySecret"`
-	AccessToken                            *string                                              `pulumi:"accessToken"`
-	AccessType                             *string                                              `pulumi:"accessType"`
-	Account                                *string                                              `pulumi:"account"`
-	AccountId                              *string                                              `pulumi:"accountId"`
-	AccountIds                             []string                                             `pulumi:"accountIds"`
-	AccountKey                             *string                                              `pulumi:"accountKey"`
-	AccountName                            *string                                              `pulumi:"accountName"`
-	AccountSyncMode                        *string                                              `pulumi:"accountSyncMode"`
-	Accounts                               []string                                             `pulumi:"accounts"`
-	AccountsRedditAds                      []FivetranConnectorConfigAccountsRedditAd            `pulumi:"accountsRedditAds"`
-	AccountsSyncMode                       *string                                              `pulumi:"accountsSyncMode"`
-	ActionBreakdowns                       []string                                             `pulumi:"actionBreakdowns"`
-	ActionReportTime                       *string                                              `pulumi:"actionReportTime"`
-	AdAnalytics                            *string                                              `pulumi:"adAnalytics"`
-	AdUnitView                             *string                                              `pulumi:"adUnitView"`
-	AdminApiKey                            *string                                              `pulumi:"adminApiKey"`
-	AdobeAnalyticsConfigurations           []FivetranConnectorConfigAdobeAnalyticsConfiguration `pulumi:"adobeAnalyticsConfigurations"`
-	Advertisables                          []string                                             `pulumi:"advertisables"`
-	Advertisers                            []string                                             `pulumi:"advertisers"`
-	AdvertisersIds                         []string                                             `pulumi:"advertisersIds"`
-	AdvertisersSyncMode                    *string                                              `pulumi:"advertisersSyncMode"`
-	AgentHost                              *string                                              `pulumi:"agentHost"`
-	AgentOraHome                           *string                                              `pulumi:"agentOraHome"`
-	AgentPassword                          *string                                              `pulumi:"agentPassword"`
-	AgentPort                              *string                                              `pulumi:"agentPort"`
-	AgentPublicCert                        *string                                              `pulumi:"agentPublicCert"`
-	AgentUser                              *string                                              `pulumi:"agentUser"`
-	Aggregation                            *string                                              `pulumi:"aggregation"`
-	AlwaysEncrypted                        *string                                              `pulumi:"alwaysEncrypted"`
-	ApiAccessToken                         *string                                              `pulumi:"apiAccessToken"`
-	ApiId                                  *string                                              `pulumi:"apiId"`
-	ApiKey                                 *string                                              `pulumi:"apiKey"`
-	ApiKeys                                []string                                             `pulumi:"apiKeys"`
-	ApiQuota                               *string                                              `pulumi:"apiQuota"`
-	ApiRequestsPerMinute                   *string                                              `pulumi:"apiRequestsPerMinute"`
-	ApiSecret                              *string                                              `pulumi:"apiSecret"`
-	ApiSecretKey                           *string                                              `pulumi:"apiSecretKey"`
-	ApiToken                               *string                                              `pulumi:"apiToken"`
-	ApiType                                *string                                              `pulumi:"apiType"`
-	ApiUrl                                 *string                                              `pulumi:"apiUrl"`
-	ApiUsage                               *string                                              `pulumi:"apiUsage"`
-	ApiVersion                             *string                                              `pulumi:"apiVersion"`
-	AppId                                  *string                                              `pulumi:"appId"`
-	AppIds                                 []string                                             `pulumi:"appIds"`
-	AppIdsAppsflyers                       []FivetranConnectorConfigAppIdsAppsflyer             `pulumi:"appIdsAppsflyers"`
-	AppSpecificPassword                    *string                                              `pulumi:"appSpecificPassword"`
-	AppSyncMode                            *string                                              `pulumi:"appSyncMode"`
-	AppendFileOption                       *string                                              `pulumi:"appendFileOption"`
-	ApplicationKey                         *string                                              `pulumi:"applicationKey"`
-	Apps                                   []string                                             `pulumi:"apps"`
-	ArchiveLogFormat                       *string                                              `pulumi:"archiveLogFormat"`
-	ArchiveLogPath                         *string                                              `pulumi:"archiveLogPath"`
-	ArchivePattern                         *string                                              `pulumi:"archivePattern"`
-	AreSoapCredentialsProvided             *string                                              `pulumi:"areSoapCredentialsProvided"`
-	AsbIp                                  *string                                              `pulumi:"asbIp"`
-	AsmOption                              *string                                              `pulumi:"asmOption"`
-	AsmOracleHome                          *string                                              `pulumi:"asmOracleHome"`
-	AsmPassword                            *string                                              `pulumi:"asmPassword"`
-	AsmTns                                 *string                                              `pulumi:"asmTns"`
-	AsmUser                                *string                                              `pulumi:"asmUser"`
-	AttributionWindow                      *string                                              `pulumi:"attributionWindow"`
-	AttributionWindowSize                  *string                                              `pulumi:"attributionWindowSize"`
-	Auth                                   *string                                              `pulumi:"auth"`
-	AuthMethod                             *string                                              `pulumi:"authMethod"`
-	AuthMode                               *string                                              `pulumi:"authMode"`
-	AuthType                               *string                                              `pulumi:"authType"`
-	AuthorizationMethod                    *string                                              `pulumi:"authorizationMethod"`
-	AwsRegionCode                          *string                                              `pulumi:"awsRegionCode"`
-	BaseCurrency                           *string                                              `pulumi:"baseCurrency"`
-	BaseDomain                             *string                                              `pulumi:"baseDomain"`
-	BaseId                                 *string                                              `pulumi:"baseId"`
-	BaseUrl                                *string                                              `pulumi:"baseUrl"`
-	BearerToken                            *string                                              `pulumi:"bearerToken"`
-	BlobSasUrl                             *string                                              `pulumi:"blobSasUrl"`
-	Breakdowns                             []string                                             `pulumi:"breakdowns"`
-	Bucket                                 *string                                              `pulumi:"bucket"`
-	BucketName                             *string                                              `pulumi:"bucketName"`
-	BucketService                          *string                                              `pulumi:"bucketService"`
-	BusinessId                             *string                                              `pulumi:"businessId"`
-	BusinessUnitId                         *string                                              `pulumi:"businessUnitId"`
-	Certificate                            *string                                              `pulumi:"certificate"`
-	ClickAttributionWindow                 *string                                              `pulumi:"clickAttributionWindow"`
-	ClientCert                             *string                                              `pulumi:"clientCert"`
-	ClientCertKey                          *string                                              `pulumi:"clientCertKey"`
-	ClientId                               *string                                              `pulumi:"clientId"`
-	ClientKey                              *string                                              `pulumi:"clientKey"`
-	ClientName                             *string                                              `pulumi:"clientName"`
-	ClientSecret                           *string                                              `pulumi:"clientSecret"`
-	CloudStorageType                       *string                                              `pulumi:"cloudStorageType"`
-	Columns                                []string                                             `pulumi:"columns"`
-	CompanyId                              *string                                              `pulumi:"companyId"`
-	CompanyKey                             *string                                              `pulumi:"companyKey"`
-	Compression                            *string                                              `pulumi:"compression"`
-	ConfigMethod                           *string                                              `pulumi:"configMethod"`
-	ConfigRepositoryUrl                    *string                                              `pulumi:"configRepositoryUrl"`
-	ConfigType                             *string                                              `pulumi:"configType"`
-	ConnectingUser                         *string                                              `pulumi:"connectingUser"`
-	ConnectingUserEmail                    *string                                              `pulumi:"connectingUserEmail"`
-	ConnectionMethod                       *string                                              `pulumi:"connectionMethod"`
-	ConnectionString                       *string                                              `pulumi:"connectionString"`
-	ConnectionType                         *string                                              `pulumi:"connectionType"`
-	ConsumerGroup                          *string                                              `pulumi:"consumerGroup"`
-	ConsumerKey                            *string                                              `pulumi:"consumerKey"`
-	ConsumerSecret                         *string                                              `pulumi:"consumerSecret"`
-	ContainerAddress                       *string                                              `pulumi:"containerAddress"`
-	ContainerName                          *string                                              `pulumi:"containerName"`
-	ContentOwnerId                         *string                                              `pulumi:"contentOwnerId"`
-	ConversationWebhookUrl                 *string                                              `pulumi:"conversationWebhookUrl"`
-	ConversionDimensions                   []string                                             `pulumi:"conversionDimensions"`
-	ConversionReportTime                   *string                                              `pulumi:"conversionReportTime"`
-	ConversionWindowSize                   *string                                              `pulumi:"conversionWindowSize"`
-	CsvDefinition                          *string                                              `pulumi:"csvDefinition"`
-	Currency                               *string                                              `pulumi:"currency"`
-	CustomEventSyncMode                    *string                                              `pulumi:"customEventSyncMode"`
-	CustomEvents                           []string                                             `pulumi:"customEvents"`
-	CustomFieldIds                         []string                                             `pulumi:"customFieldIds"`
-	CustomFloodlightVariables              []string                                             `pulumi:"customFloodlightVariables"`
-	CustomReports                          []FivetranConnectorConfigCustomReport                `pulumi:"customReports"`
-	CustomTables                           []FivetranConnectorConfigCustomTable                 `pulumi:"customTables"`
-	CustomerId                             *string                                              `pulumi:"customerId"`
-	CustomerListId                         *string                                              `pulumi:"customerListId"`
-	DailyApiCallLimit                      *string                                              `pulumi:"dailyApiCallLimit"`
-	DataAccessMethod                       *string                                              `pulumi:"dataAccessMethod"`
-	DataCenter                             *string                                              `pulumi:"dataCenter"`
-	DataSetName                            *string                                              `pulumi:"dataSetName"`
-	Database                               *string                                              `pulumi:"database"`
-	DatasetId                              *string                                              `pulumi:"datasetId"`
-	Datasource                             *string                                              `pulumi:"datasource"`
-	DateGranularity                        *string                                              `pulumi:"dateGranularity"`
-	Delimiter                              *string                                              `pulumi:"delimiter"`
-	DimensionAttributes                    []string                                             `pulumi:"dimensionAttributes"`
-	Dimensions                             []string                                             `pulumi:"dimensions"`
-	Domain                                 *string                                              `pulumi:"domain"`
-	DomainHostName                         *string                                              `pulumi:"domainHostName"`
-	DomainName                             *string                                              `pulumi:"domainName"`
-	DomainType                             *string                                              `pulumi:"domainType"`
-	Elements                               []string                                             `pulumi:"elements"`
-	Email                                  *string                                              `pulumi:"email"`
-	EmptyHeader                            *string                                              `pulumi:"emptyHeader"`
-	EnableAllDimensionCombinations         *string                                              `pulumi:"enableAllDimensionCombinations"`
-	EnableArchiveLogOnly                   *string                                              `pulumi:"enableArchiveLogOnly"`
-	EnableEnrichments                      *string                                              `pulumi:"enableEnrichments"`
-	EnableExports                          *string                                              `pulumi:"enableExports"`
-	EnableTde                              *string                                              `pulumi:"enableTde"`
-	EncodedPublicKey                       *string                                              `pulumi:"encodedPublicKey"`
-	EncryptionKey                          *string                                              `pulumi:"encryptionKey"`
-	Endpoint                               *string                                              `pulumi:"endpoint"`
-	EngagementAttributionWindow            *string                                              `pulumi:"engagementAttributionWindow"`
-	EnrichedExport                         *string                                              `pulumi:"enrichedExport"`
-	EntityId                               *string                                              `pulumi:"entityId"`
-	Environment                            *string                                              `pulumi:"environment"`
-	EscapeChar                             *string                                              `pulumi:"escapeChar"`
-	EuRegion                               *string                                              `pulumi:"euRegion"`
-	Events                                 []string                                             `pulumi:"events"`
-	ExportStorageType                      *string                                              `pulumi:"exportStorageType"`
-	ExternalId                             *string                                              `pulumi:"externalId"`
-	Fields                                 []string                                             `pulumi:"fields"`
-	FileType                               *string                                              `pulumi:"fileType"`
-	Filter                                 *string                                              `pulumi:"filter"`
-	FinanceAccountSyncMode                 *string                                              `pulumi:"financeAccountSyncMode"`
-	FinanceAccounts                        []string                                             `pulumi:"financeAccounts"`
-	Folder                                 *string                                              `pulumi:"folder"`
-	FolderId                               *string                                              `pulumi:"folderId"`
-	FolderPath                             *string                                              `pulumi:"folderPath"`
-	ForecastId                             *string                                              `pulumi:"forecastId"`
-	FtpHost                                *string                                              `pulumi:"ftpHost"`
-	FtpPassword                            *string                                              `pulumi:"ftpPassword"`
-	FtpPort                                *string                                              `pulumi:"ftpPort"`
-	FtpUser                                *string                                              `pulumi:"ftpUser"`
-	Function                               *string                                              `pulumi:"function"`
-	FunctionApp                            *string                                              `pulumi:"functionApp"`
-	FunctionKey                            *string                                              `pulumi:"functionKey"`
-	FunctionName                           *string                                              `pulumi:"functionName"`
-	FunctionTrigger                        *string                                              `pulumi:"functionTrigger"`
-	GcsBucket                              *string                                              `pulumi:"gcsBucket"`
-	GcsFolder                              *string                                              `pulumi:"gcsFolder"`
-	GroupName                              *string                                              `pulumi:"groupName"`
-	HasManagePermissions                   *string                                              `pulumi:"hasManagePermissions"`
-	HomeFolder                             *string                                              `pulumi:"homeFolder"`
-	Host                                   *string                                              `pulumi:"host"`
-	HostIp                                 *string                                              `pulumi:"hostIp"`
-	HostUser                               *string                                              `pulumi:"hostUser"`
-	Hosts                                  []string                                             `pulumi:"hosts"`
-	Identity                               *string                                              `pulumi:"identity"`
-	Instance                               *string                                              `pulumi:"instance"`
-	InstanceNumber                         *string                                              `pulumi:"instanceNumber"`
-	InstanceUrl                            *string                                              `pulumi:"instanceUrl"`
-	IntegrationKey                         *string                                              `pulumi:"integrationKey"`
-	IsAccountLevelConnector                *string                                              `pulumi:"isAccountLevelConnector"`
-	IsAuth2Enabled                         *string                                              `pulumi:"isAuth2Enabled"`
-	IsCustomApiCredentials                 *string                                              `pulumi:"isCustomApiCredentials"`
-	IsFtps                                 *string                                              `pulumi:"isFtps"`
-	IsKeypair                              *string                                              `pulumi:"isKeypair"`
-	IsMultiEntityFeatureEnabled            *string                                              `pulumi:"isMultiEntityFeatureEnabled"`
-	IsNewPackage                           *string                                              `pulumi:"isNewPackage"`
-	IsPrivateKeyEncrypted                  *string                                              `pulumi:"isPrivateKeyEncrypted"`
-	IsPrivateLinkRequired                  *string                                              `pulumi:"isPrivateLinkRequired"`
-	IsPublic                               *string                                              `pulumi:"isPublic"`
-	IsSailthruConnectEnabled               *string                                              `pulumi:"isSailthruConnectEnabled"`
-	IsSecure                               *string                                              `pulumi:"isSecure"`
-	IsSingleTableMode                      *string                                              `pulumi:"isSingleTableMode"`
-	IsVendor                               *string                                              `pulumi:"isVendor"`
-	JsonDeliveryMode                       *string                                              `pulumi:"jsonDeliveryMode"`
-	Key                                    *string                                              `pulumi:"key"`
-	KeyPassword                            *string                                              `pulumi:"keyPassword"`
-	KeyStoreType                           *string                                              `pulumi:"keyStoreType"`
-	Keystore                               *string                                              `pulumi:"keystore"`
-	KeystorePassword                       *string                                              `pulumi:"keystorePassword"`
-	LastSyncedChangesUtc_                  *string                                              `pulumi:"lastSyncedChangesUtc_"`
-	LatestVersion                          *string                                              `pulumi:"latestVersion"`
-	LineSeparator                          *string                                              `pulumi:"lineSeparator"`
-	ListStrategy                           *string                                              `pulumi:"listStrategy"`
-	ListSyncMode                           *string                                              `pulumi:"listSyncMode"`
-	LogJournal                             *string                                              `pulumi:"logJournal"`
-	LogJournalSchema                       *string                                              `pulumi:"logJournalSchema"`
-	Login                                  *string                                              `pulumi:"login"`
-	LoginPassword                          *string                                              `pulumi:"loginPassword"`
-	ManagerAccounts                        []string                                             `pulumi:"managerAccounts"`
-	MerchantId                             *string                                              `pulumi:"merchantId"`
-	MessageType                            *string                                              `pulumi:"messageType"`
-	Metrics                                []string                                             `pulumi:"metrics"`
-	NamedRange                             *string                                              `pulumi:"namedRange"`
-	Namespace                              *string                                              `pulumi:"namespace"`
-	NetworkCode                            *string                                              `pulumi:"networkCode"`
-	NullSequence                           *string                                              `pulumi:"nullSequence"`
-	OauthToken                             *string                                              `pulumi:"oauthToken"`
-	OauthTokenSecret                       *string                                              `pulumi:"oauthTokenSecret"`
-	OnError                                *string                                              `pulumi:"onError"`
-	OnPremise                              *string                                              `pulumi:"onPremise"`
-	Organization                           *string                                              `pulumi:"organization"`
-	OrganizationId                         *string                                              `pulumi:"organizationId"`
-	Organizations                          []string                                             `pulumi:"organizations"`
-	PackedModeTables                       []string                                             `pulumi:"packedModeTables"`
-	PackingMode                            *string                                              `pulumi:"packingMode"`
-	Pages                                  []string                                             `pulumi:"pages"`
-	Partners                               []string                                             `pulumi:"partners"`
-	Passphrase                             *string                                              `pulumi:"passphrase"`
-	Password                               *string                                              `pulumi:"password"`
-	Pat                                    *string                                              `pulumi:"pat"`
-	Path                                   *string                                              `pulumi:"path"`
-	Pattern                                *string                                              `pulumi:"pattern"`
-	PdbName                                *string                                              `pulumi:"pdbName"`
-	PemCertificate                         *string                                              `pulumi:"pemCertificate"`
-	PemPrivateKey                          *string                                              `pulumi:"pemPrivateKey"`
-	PerInteractionDimensions               []string                                             `pulumi:"perInteractionDimensions"`
-	PersonalAccessToken                    *string                                              `pulumi:"personalAccessToken"`
-	PgpPassPhrase                          *string                                              `pulumi:"pgpPassPhrase"`
-	PgpSecretKey                           *string                                              `pulumi:"pgpSecretKey"`
-	PhoneNumber                            *string                                              `pulumi:"phoneNumber"`
-	Port                                   *string                                              `pulumi:"port"`
-	PostClickAttributionWindowSize         *string                                              `pulumi:"postClickAttributionWindowSize"`
-	PrebuiltReport                         *string                                              `pulumi:"prebuiltReport"`
-	Prefix                                 *string                                              `pulumi:"prefix"`
-	PrimaryKeys                            []string                                             `pulumi:"primaryKeys"`
-	PrivateKey                             *string                                              `pulumi:"privateKey"`
-	Profiles                               []string                                             `pulumi:"profiles"`
-	ProjectCredentials                     []FivetranConnectorConfigProjectCredential           `pulumi:"projectCredentials"`
-	ProjectId                              *string                                              `pulumi:"projectId"`
-	Projects                               []string                                             `pulumi:"projects"`
-	Properties                             []string                                             `pulumi:"properties"`
-	PublicKey                              *string                                              `pulumi:"publicKey"`
-	PublicationName                        *string                                              `pulumi:"publicationName"`
-	QueryId                                *string                                              `pulumi:"queryId"`
-	QueryParamValue                        *string                                              `pulumi:"queryParamValue"`
-	RefreshTokenExpiresAt                  *string                                              `pulumi:"refreshTokenExpiresAt"`
-	Region                                 *string                                              `pulumi:"region"`
-	ReplicaId                              *string                                              `pulumi:"replicaId"`
-	ReplicationSlot                        *string                                              `pulumi:"replicationSlot"`
-	ReportConfigurationIds                 []string                                             `pulumi:"reportConfigurationIds"`
-	ReportFormatType                       *string                                              `pulumi:"reportFormatType"`
-	ReportSuites                           []string                                             `pulumi:"reportSuites"`
-	ReportTimezone                         *string                                              `pulumi:"reportTimezone"`
-	ReportType                             *string                                              `pulumi:"reportType"`
-	ReportUrl                              *string                                              `pulumi:"reportUrl"`
-	Reports                                []FivetranConnectorConfigReport                      `pulumi:"reports"`
-	ReportsLinkedinAds                     []string                                             `pulumi:"reportsLinkedinAds"`
-	Repositories                           []string                                             `pulumi:"repositories"`
-	ResourceToken                          *string                                              `pulumi:"resourceToken"`
-	ResourceUrl                            *string                                              `pulumi:"resourceUrl"`
-	RestApiLimit                           *string                                              `pulumi:"restApiLimit"`
-	RfcLibraryPath                         *string                                              `pulumi:"rfcLibraryPath"`
-	Role                                   *string                                              `pulumi:"role"`
-	RoleArn                                *string                                              `pulumi:"roleArn"`
-	RollbackWindowSize                     *string                                              `pulumi:"rollbackWindowSize"`
-	S3Bucket                               *string                                              `pulumi:"s3Bucket"`
-	S3ExportBucket                         *string                                              `pulumi:"s3ExportBucket"`
-	S3ExportFolder                         *string                                              `pulumi:"s3ExportFolder"`
-	S3ExportRoleArn                        *string                                              `pulumi:"s3ExportRoleArn"`
-	S3RoleArn                              *string                                              `pulumi:"s3RoleArn"`
-	S3bucket                               *string                                              `pulumi:"s3bucket"`
-	S3externalId                           *string                                              `pulumi:"s3externalId"`
-	S3folder                               *string                                              `pulumi:"s3folder"`
-	S3path                                 *string                                              `pulumi:"s3path"`
-	S3roleArn                              *string                                              `pulumi:"s3roleArn"`
-	SalesAccountSyncMode                   *string                                              `pulumi:"salesAccountSyncMode"`
-	SalesAccounts                          []string                                             `pulumi:"salesAccounts"`
-	SalesforceSecurityToken                *string                                              `pulumi:"salesforceSecurityToken"`
-	SandboxAccount                         *string                                              `pulumi:"sandboxAccount"`
-	SapSchema                              *string                                              `pulumi:"sapSchema"`
-	SapUser                                *string                                              `pulumi:"sapUser"`
-	SaslMechanism                          *string                                              `pulumi:"saslMechanism"`
-	SaslPlainKey                           *string                                              `pulumi:"saslPlainKey"`
-	SaslPlainSecret                        *string                                              `pulumi:"saslPlainSecret"`
-	SaslScram256Key                        *string                                              `pulumi:"saslScram256Key"`
-	SaslScram256Secret                     *string                                              `pulumi:"saslScram256Secret"`
-	SaslScram512Key                        *string                                              `pulumi:"saslScram512Key"`
-	SaslScram512Secret                     *string                                              `pulumi:"saslScram512Secret"`
-	SchemaRegistryCredentialsSource        *string                                              `pulumi:"schemaRegistryCredentialsSource"`
-	SchemaRegistryKey                      *string                                              `pulumi:"schemaRegistryKey"`
-	SchemaRegistrySecret                   *string                                              `pulumi:"schemaRegistrySecret"`
-	SchemaRegistryUrls                     []string                                             `pulumi:"schemaRegistryUrls"`
-	Secret                                 *string                                              `pulumi:"secret"`
-	SecretKey                              *string                                              `pulumi:"secretKey"`
-	Secrets                                *string                                              `pulumi:"secrets"`
-	SecretsLists                           []FivetranConnectorConfigSecretsList                 `pulumi:"secretsLists"`
-	SecurityProtocol                       *string                                              `pulumi:"securityProtocol"`
-	Segments                               []string                                             `pulumi:"segments"`
-	SelectedExports                        []string                                             `pulumi:"selectedExports"`
-	SenderId                               *string                                              `pulumi:"senderId"`
-	SenderPassword                         *string                                              `pulumi:"senderPassword"`
-	ServerUrl                              *string                                              `pulumi:"serverUrl"`
-	Servers                                []string                                             `pulumi:"servers"`
-	ServiceAccount                         *string                                              `pulumi:"serviceAccount"`
-	ServiceAccountEmail                    *string                                              `pulumi:"serviceAccountEmail"`
-	ServiceAccountKey                      *string                                              `pulumi:"serviceAccountKey"`
-	ServiceVersion                         *string                                              `pulumi:"serviceVersion"`
-	SftpHost                               *string                                              `pulumi:"sftpHost"`
-	SftpIsKeyPair                          *string                                              `pulumi:"sftpIsKeyPair"`
-	SftpPassword                           *string                                              `pulumi:"sftpPassword"`
-	SftpPort                               *string                                              `pulumi:"sftpPort"`
-	SftpPublicKey                          *string                                              `pulumi:"sftpPublicKey"`
-	SftpUser                               *string                                              `pulumi:"sftpUser"`
-	ShareUrl                               *string                                              `pulumi:"shareUrl"`
-	SheetId                                *string                                              `pulumi:"sheetId"`
-	Shop                                   *string                                              `pulumi:"shop"`
-	ShortCode                              *string                                              `pulumi:"shortCode"`
-	ShowRecordsWithNoMetrics               *string                                              `pulumi:"showRecordsWithNoMetrics"`
-	Sid                                    *string                                              `pulumi:"sid"`
-	SignerPublicKey                        *string                                              `pulumi:"signerPublicKey"`
-	SiteAddress                            *string                                              `pulumi:"siteAddress"`
-	SiteId                                 *string                                              `pulumi:"siteId"`
-	SiteName                               *string                                              `pulumi:"siteName"`
-	SiteUrls                               []string                                             `pulumi:"siteUrls"`
-	SkipAfter                              *string                                              `pulumi:"skipAfter"`
-	SkipBefore                             *string                                              `pulumi:"skipBefore"`
-	SoapUri                                *string                                              `pulumi:"soapUri"`
-	SocialDataSyncTimeframe                *string                                              `pulumi:"socialDataSyncTimeframe"`
-	Source                                 *string                                              `pulumi:"source"`
-	StoreHash                              *string                                              `pulumi:"storeHash"`
-	SubDomain                              *string                                              `pulumi:"subDomain"`
-	Subdomain                              *string                                              `pulumi:"subdomain"`
-	SubscriberName                         *string                                              `pulumi:"subscriberName"`
-	Subscription                           *string                                              `pulumi:"subscription"`
-	SupportConnectedAccountsSync           *string                                              `pulumi:"supportConnectedAccountsSync"`
-	SupportNestedColumns                   *string                                              `pulumi:"supportNestedColumns"`
-	SurveyIds                              *string                                              `pulumi:"surveyIds"`
-	SwipeAttributionWindow                 *string                                              `pulumi:"swipeAttributionWindow"`
-	SyncDataLocker                         *string                                              `pulumi:"syncDataLocker"`
-	SyncFormat                             *string                                              `pulumi:"syncFormat"`
-	SyncFormulaFields                      *string                                              `pulumi:"syncFormulaFields"`
-	SyncMetadata                           *string                                              `pulumi:"syncMetadata"`
-	SyncMethod                             *string                                              `pulumi:"syncMethod"`
-	SyncMode                               *string                                              `pulumi:"syncMode"`
-	SyncMultipleAccounts                   *string                                              `pulumi:"syncMultipleAccounts"`
-	SyncPackMode                           *string                                              `pulumi:"syncPackMode"`
-	SyncPullApi                            *string                                              `pulumi:"syncPullApi"`
-	SyncType                               *string                                              `pulumi:"syncType"`
-	TableName                              *string                                              `pulumi:"tableName"`
-	TdeCertificate                         *string                                              `pulumi:"tdeCertificate"`
-	TdeCertificateName                     *string                                              `pulumi:"tdeCertificateName"`
-	TdePassword                            *string                                              `pulumi:"tdePassword"`
-	TdePrivateKey                          *string                                              `pulumi:"tdePrivateKey"`
-	TeamId                                 *string                                              `pulumi:"teamId"`
-	TechnicalAccountId                     *string                                              `pulumi:"technicalAccountId"`
-	TemplateLabels                         []string                                             `pulumi:"templateLabels"`
-	TenantId                               *string                                              `pulumi:"tenantId"`
-	TestTableName                          *string                                              `pulumi:"testTableName"`
-	TimeZone                               *string                                              `pulumi:"timeZone"`
-	TimeframeMonths                        *string                                              `pulumi:"timeframeMonths"`
-	Tns                                    *string                                              `pulumi:"tns"`
-	TokenAuthenticatedContainer            *string                                              `pulumi:"tokenAuthenticatedContainer"`
-	TokenAuthenticatedDatabase             *string                                              `pulumi:"tokenAuthenticatedDatabase"`
-	TokenId                                *string                                              `pulumi:"tokenId"`
-	TokenKey                               *string                                              `pulumi:"tokenKey"`
-	TokenSecret                            *string                                              `pulumi:"tokenSecret"`
-	TokenSecretKey                         *string                                              `pulumi:"tokenSecretKey"`
-	Topics                                 []string                                             `pulumi:"topics"`
-	TrustStoreType                         *string                                              `pulumi:"trustStoreType"`
-	TrustedCert                            *string                                              `pulumi:"trustedCert"`
-	Truststore                             *string                                              `pulumi:"truststore"`
-	TunnelHost                             *string                                              `pulumi:"tunnelHost"`
-	TunnelPort                             *string                                              `pulumi:"tunnelPort"`
-	TunnelUser                             *string                                              `pulumi:"tunnelUser"`
-	UniqueId                               *string                                              `pulumi:"uniqueId"`
-	UpdateConfigOnEachSync                 *string                                              `pulumi:"updateConfigOnEachSync"`
-	UpdateMethod                           *string                                              `pulumi:"updateMethod"`
-	Uri                                    *string                                              `pulumi:"uri"`
-	UseApiKeys                             *string                                              `pulumi:"useApiKeys"`
-	UseCustomerBucket                      *string                                              `pulumi:"useCustomerBucket"`
-	UseOracleRac                           *string                                              `pulumi:"useOracleRac"`
-	UsePgpEncryptionOptions                *string                                              `pulumi:"usePgpEncryptionOptions"`
-	UseServiceAccount                      *string                                              `pulumi:"useServiceAccount"`
-	UseTemplateLabels                      *string                                              `pulumi:"useTemplateLabels"`
-	UseWebhooks                            *string                                              `pulumi:"useWebhooks"`
-	UseWorkspace                           *string                                              `pulumi:"useWorkspace"`
-	User                                   *string                                              `pulumi:"user"`
-	UserId                                 *string                                              `pulumi:"userId"`
-	UserKey                                *string                                              `pulumi:"userKey"`
-	UserName                               *string                                              `pulumi:"userName"`
-	UserProfiles                           []string                                             `pulumi:"userProfiles"`
-	Username                               *string                                              `pulumi:"username"`
-	ViewAttributionWindow                  *string                                              `pulumi:"viewAttributionWindow"`
-	ViewThroughAttributionWindowSize       *string                                              `pulumi:"viewThroughAttributionWindowSize"`
-	WebhookEndpoint                        *string                                              `pulumi:"webhookEndpoint"`
-	WebhookKey                             *string                                              `pulumi:"webhookKey"`
-	WebhookUrl                             *string                                              `pulumi:"webhookUrl"`
-	WordPressSiteIdOrWoocommerceDomainName *string                                              `pulumi:"wordPressSiteIdOrWoocommerceDomainName"`
-	WorkspaceName                          *string                                              `pulumi:"workspaceName"`
-	WorkspaceSameAsSource                  *string                                              `pulumi:"workspaceSameAsSource"`
-	WorkspaceSchema                        *string                                              `pulumi:"workspaceSchema"`
-	WsCertificate                          *string                                              `pulumi:"wsCertificate"`
+type ConnectorConfig struct {
+	AbsConnectionMethod                    *string                                      `pulumi:"absConnectionMethod"`
+	AbsConnectionString                    *string                                      `pulumi:"absConnectionString"`
+	AbsContainerAddress                    *string                                      `pulumi:"absContainerAddress"`
+	AbsContainerName                       *string                                      `pulumi:"absContainerName"`
+	AbsHostIp                              *string                                      `pulumi:"absHostIp"`
+	AbsHostUser                            *string                                      `pulumi:"absHostUser"`
+	AbsPrefix                              *string                                      `pulumi:"absPrefix"`
+	AbsPublicKey                           *string                                      `pulumi:"absPublicKey"`
+	AccessKey                              *string                                      `pulumi:"accessKey"`
+	AccessKeyId                            *string                                      `pulumi:"accessKeyId"`
+	AccessKeySecret                        *string                                      `pulumi:"accessKeySecret"`
+	AccessToken                            *string                                      `pulumi:"accessToken"`
+	AccessType                             *string                                      `pulumi:"accessType"`
+	Account                                *string                                      `pulumi:"account"`
+	AccountId                              *string                                      `pulumi:"accountId"`
+	AccountIds                             []string                                     `pulumi:"accountIds"`
+	AccountKey                             *string                                      `pulumi:"accountKey"`
+	AccountName                            *string                                      `pulumi:"accountName"`
+	AccountSyncMode                        *string                                      `pulumi:"accountSyncMode"`
+	Accounts                               []string                                     `pulumi:"accounts"`
+	AccountsRedditAds                      []ConnectorConfigAccountsRedditAd            `pulumi:"accountsRedditAds"`
+	AccountsSyncMode                       *string                                      `pulumi:"accountsSyncMode"`
+	ActionBreakdowns                       []string                                     `pulumi:"actionBreakdowns"`
+	ActionReportTime                       *string                                      `pulumi:"actionReportTime"`
+	AdAnalytics                            *string                                      `pulumi:"adAnalytics"`
+	AdUnitView                             *string                                      `pulumi:"adUnitView"`
+	AdminApiKey                            *string                                      `pulumi:"adminApiKey"`
+	AdobeAnalyticsConfigurations           []ConnectorConfigAdobeAnalyticsConfiguration `pulumi:"adobeAnalyticsConfigurations"`
+	Advertisables                          []string                                     `pulumi:"advertisables"`
+	Advertisers                            []string                                     `pulumi:"advertisers"`
+	AdvertisersIds                         []string                                     `pulumi:"advertisersIds"`
+	AdvertisersSyncMode                    *string                                      `pulumi:"advertisersSyncMode"`
+	AgentHost                              *string                                      `pulumi:"agentHost"`
+	AgentOraHome                           *string                                      `pulumi:"agentOraHome"`
+	AgentPassword                          *string                                      `pulumi:"agentPassword"`
+	AgentPort                              *string                                      `pulumi:"agentPort"`
+	AgentPublicCert                        *string                                      `pulumi:"agentPublicCert"`
+	AgentUser                              *string                                      `pulumi:"agentUser"`
+	Aggregation                            *string                                      `pulumi:"aggregation"`
+	AlwaysEncrypted                        *string                                      `pulumi:"alwaysEncrypted"`
+	ApiAccessToken                         *string                                      `pulumi:"apiAccessToken"`
+	ApiId                                  *string                                      `pulumi:"apiId"`
+	ApiKey                                 *string                                      `pulumi:"apiKey"`
+	ApiKeys                                []string                                     `pulumi:"apiKeys"`
+	ApiQuota                               *string                                      `pulumi:"apiQuota"`
+	ApiRequestsPerMinute                   *string                                      `pulumi:"apiRequestsPerMinute"`
+	ApiSecret                              *string                                      `pulumi:"apiSecret"`
+	ApiSecretKey                           *string                                      `pulumi:"apiSecretKey"`
+	ApiToken                               *string                                      `pulumi:"apiToken"`
+	ApiType                                *string                                      `pulumi:"apiType"`
+	ApiUrl                                 *string                                      `pulumi:"apiUrl"`
+	ApiUsage                               *string                                      `pulumi:"apiUsage"`
+	ApiVersion                             *string                                      `pulumi:"apiVersion"`
+	AppId                                  *string                                      `pulumi:"appId"`
+	AppIds                                 []string                                     `pulumi:"appIds"`
+	AppIdsAppsflyers                       []ConnectorConfigAppIdsAppsflyer             `pulumi:"appIdsAppsflyers"`
+	AppSpecificPassword                    *string                                      `pulumi:"appSpecificPassword"`
+	AppSyncMode                            *string                                      `pulumi:"appSyncMode"`
+	AppendFileOption                       *string                                      `pulumi:"appendFileOption"`
+	ApplicationKey                         *string                                      `pulumi:"applicationKey"`
+	Apps                                   []string                                     `pulumi:"apps"`
+	ArchiveLogFormat                       *string                                      `pulumi:"archiveLogFormat"`
+	ArchiveLogPath                         *string                                      `pulumi:"archiveLogPath"`
+	ArchivePattern                         *string                                      `pulumi:"archivePattern"`
+	AreSoapCredentialsProvided             *string                                      `pulumi:"areSoapCredentialsProvided"`
+	AsbIp                                  *string                                      `pulumi:"asbIp"`
+	AsmOption                              *string                                      `pulumi:"asmOption"`
+	AsmOracleHome                          *string                                      `pulumi:"asmOracleHome"`
+	AsmPassword                            *string                                      `pulumi:"asmPassword"`
+	AsmTns                                 *string                                      `pulumi:"asmTns"`
+	AsmUser                                *string                                      `pulumi:"asmUser"`
+	AttributionWindow                      *string                                      `pulumi:"attributionWindow"`
+	AttributionWindowSize                  *string                                      `pulumi:"attributionWindowSize"`
+	Auth                                   *string                                      `pulumi:"auth"`
+	AuthMethod                             *string                                      `pulumi:"authMethod"`
+	AuthMode                               *string                                      `pulumi:"authMode"`
+	AuthType                               *string                                      `pulumi:"authType"`
+	AuthorizationMethod                    *string                                      `pulumi:"authorizationMethod"`
+	AwsRegionCode                          *string                                      `pulumi:"awsRegionCode"`
+	BaseCurrency                           *string                                      `pulumi:"baseCurrency"`
+	BaseDomain                             *string                                      `pulumi:"baseDomain"`
+	BaseId                                 *string                                      `pulumi:"baseId"`
+	BaseUrl                                *string                                      `pulumi:"baseUrl"`
+	BearerToken                            *string                                      `pulumi:"bearerToken"`
+	BlobSasUrl                             *string                                      `pulumi:"blobSasUrl"`
+	Breakdowns                             []string                                     `pulumi:"breakdowns"`
+	Bucket                                 *string                                      `pulumi:"bucket"`
+	BucketName                             *string                                      `pulumi:"bucketName"`
+	BucketService                          *string                                      `pulumi:"bucketService"`
+	BusinessId                             *string                                      `pulumi:"businessId"`
+	BusinessUnitId                         *string                                      `pulumi:"businessUnitId"`
+	Certificate                            *string                                      `pulumi:"certificate"`
+	ClickAttributionWindow                 *string                                      `pulumi:"clickAttributionWindow"`
+	ClientCert                             *string                                      `pulumi:"clientCert"`
+	ClientCertKey                          *string                                      `pulumi:"clientCertKey"`
+	ClientId                               *string                                      `pulumi:"clientId"`
+	ClientKey                              *string                                      `pulumi:"clientKey"`
+	ClientName                             *string                                      `pulumi:"clientName"`
+	ClientSecret                           *string                                      `pulumi:"clientSecret"`
+	CloudStorageType                       *string                                      `pulumi:"cloudStorageType"`
+	Columns                                []string                                     `pulumi:"columns"`
+	CompanyId                              *string                                      `pulumi:"companyId"`
+	CompanyKey                             *string                                      `pulumi:"companyKey"`
+	Compression                            *string                                      `pulumi:"compression"`
+	ConfigMethod                           *string                                      `pulumi:"configMethod"`
+	ConfigRepositoryUrl                    *string                                      `pulumi:"configRepositoryUrl"`
+	ConfigType                             *string                                      `pulumi:"configType"`
+	ConnectingUser                         *string                                      `pulumi:"connectingUser"`
+	ConnectingUserEmail                    *string                                      `pulumi:"connectingUserEmail"`
+	ConnectionMethod                       *string                                      `pulumi:"connectionMethod"`
+	ConnectionString                       *string                                      `pulumi:"connectionString"`
+	ConnectionType                         *string                                      `pulumi:"connectionType"`
+	ConsumerGroup                          *string                                      `pulumi:"consumerGroup"`
+	ConsumerKey                            *string                                      `pulumi:"consumerKey"`
+	ConsumerSecret                         *string                                      `pulumi:"consumerSecret"`
+	ContainerAddress                       *string                                      `pulumi:"containerAddress"`
+	ContainerName                          *string                                      `pulumi:"containerName"`
+	ContentOwnerId                         *string                                      `pulumi:"contentOwnerId"`
+	ConversationWebhookUrl                 *string                                      `pulumi:"conversationWebhookUrl"`
+	ConversionDimensions                   []string                                     `pulumi:"conversionDimensions"`
+	ConversionReportTime                   *string                                      `pulumi:"conversionReportTime"`
+	ConversionWindowSize                   *string                                      `pulumi:"conversionWindowSize"`
+	CsvDefinition                          *string                                      `pulumi:"csvDefinition"`
+	Currency                               *string                                      `pulumi:"currency"`
+	CustomEventSyncMode                    *string                                      `pulumi:"customEventSyncMode"`
+	CustomEvents                           []string                                     `pulumi:"customEvents"`
+	CustomFieldIds                         []string                                     `pulumi:"customFieldIds"`
+	CustomFloodlightVariables              []string                                     `pulumi:"customFloodlightVariables"`
+	CustomReports                          []ConnectorConfigCustomReport                `pulumi:"customReports"`
+	CustomTables                           []ConnectorConfigCustomTable                 `pulumi:"customTables"`
+	CustomerId                             *string                                      `pulumi:"customerId"`
+	CustomerListId                         *string                                      `pulumi:"customerListId"`
+	DailyApiCallLimit                      *string                                      `pulumi:"dailyApiCallLimit"`
+	DataAccessMethod                       *string                                      `pulumi:"dataAccessMethod"`
+	DataCenter                             *string                                      `pulumi:"dataCenter"`
+	DataSetName                            *string                                      `pulumi:"dataSetName"`
+	Database                               *string                                      `pulumi:"database"`
+	DatasetId                              *string                                      `pulumi:"datasetId"`
+	Datasource                             *string                                      `pulumi:"datasource"`
+	DateGranularity                        *string                                      `pulumi:"dateGranularity"`
+	Delimiter                              *string                                      `pulumi:"delimiter"`
+	DimensionAttributes                    []string                                     `pulumi:"dimensionAttributes"`
+	Dimensions                             []string                                     `pulumi:"dimensions"`
+	Domain                                 *string                                      `pulumi:"domain"`
+	DomainHostName                         *string                                      `pulumi:"domainHostName"`
+	DomainName                             *string                                      `pulumi:"domainName"`
+	DomainType                             *string                                      `pulumi:"domainType"`
+	Elements                               []string                                     `pulumi:"elements"`
+	Email                                  *string                                      `pulumi:"email"`
+	EmptyHeader                            *string                                      `pulumi:"emptyHeader"`
+	EnableAllDimensionCombinations         *string                                      `pulumi:"enableAllDimensionCombinations"`
+	EnableArchiveLogOnly                   *string                                      `pulumi:"enableArchiveLogOnly"`
+	EnableEnrichments                      *string                                      `pulumi:"enableEnrichments"`
+	EnableExports                          *string                                      `pulumi:"enableExports"`
+	EnableTde                              *string                                      `pulumi:"enableTde"`
+	EncodedPublicKey                       *string                                      `pulumi:"encodedPublicKey"`
+	EncryptionKey                          *string                                      `pulumi:"encryptionKey"`
+	Endpoint                               *string                                      `pulumi:"endpoint"`
+	EngagementAttributionWindow            *string                                      `pulumi:"engagementAttributionWindow"`
+	EnrichedExport                         *string                                      `pulumi:"enrichedExport"`
+	EntityId                               *string                                      `pulumi:"entityId"`
+	Environment                            *string                                      `pulumi:"environment"`
+	EscapeChar                             *string                                      `pulumi:"escapeChar"`
+	EuRegion                               *string                                      `pulumi:"euRegion"`
+	Events                                 []string                                     `pulumi:"events"`
+	ExportStorageType                      *string                                      `pulumi:"exportStorageType"`
+	ExternalId                             *string                                      `pulumi:"externalId"`
+	Fields                                 []string                                     `pulumi:"fields"`
+	FileType                               *string                                      `pulumi:"fileType"`
+	Filter                                 *string                                      `pulumi:"filter"`
+	FinanceAccountSyncMode                 *string                                      `pulumi:"financeAccountSyncMode"`
+	FinanceAccounts                        []string                                     `pulumi:"financeAccounts"`
+	Folder                                 *string                                      `pulumi:"folder"`
+	FolderId                               *string                                      `pulumi:"folderId"`
+	FolderPath                             *string                                      `pulumi:"folderPath"`
+	ForecastId                             *string                                      `pulumi:"forecastId"`
+	FtpHost                                *string                                      `pulumi:"ftpHost"`
+	FtpPassword                            *string                                      `pulumi:"ftpPassword"`
+	FtpPort                                *string                                      `pulumi:"ftpPort"`
+	FtpUser                                *string                                      `pulumi:"ftpUser"`
+	Function                               *string                                      `pulumi:"function"`
+	FunctionApp                            *string                                      `pulumi:"functionApp"`
+	FunctionKey                            *string                                      `pulumi:"functionKey"`
+	FunctionName                           *string                                      `pulumi:"functionName"`
+	FunctionTrigger                        *string                                      `pulumi:"functionTrigger"`
+	GcsBucket                              *string                                      `pulumi:"gcsBucket"`
+	GcsFolder                              *string                                      `pulumi:"gcsFolder"`
+	GroupName                              *string                                      `pulumi:"groupName"`
+	HasManagePermissions                   *string                                      `pulumi:"hasManagePermissions"`
+	HomeFolder                             *string                                      `pulumi:"homeFolder"`
+	Host                                   *string                                      `pulumi:"host"`
+	HostIp                                 *string                                      `pulumi:"hostIp"`
+	HostUser                               *string                                      `pulumi:"hostUser"`
+	Hosts                                  []string                                     `pulumi:"hosts"`
+	Identity                               *string                                      `pulumi:"identity"`
+	Instance                               *string                                      `pulumi:"instance"`
+	InstanceNumber                         *string                                      `pulumi:"instanceNumber"`
+	InstanceUrl                            *string                                      `pulumi:"instanceUrl"`
+	IntegrationKey                         *string                                      `pulumi:"integrationKey"`
+	IsAccountLevelConnector                *string                                      `pulumi:"isAccountLevelConnector"`
+	IsAuth2Enabled                         *string                                      `pulumi:"isAuth2Enabled"`
+	IsCustomApiCredentials                 *string                                      `pulumi:"isCustomApiCredentials"`
+	IsFtps                                 *string                                      `pulumi:"isFtps"`
+	IsKeypair                              *string                                      `pulumi:"isKeypair"`
+	IsMultiEntityFeatureEnabled            *string                                      `pulumi:"isMultiEntityFeatureEnabled"`
+	IsNewPackage                           *string                                      `pulumi:"isNewPackage"`
+	IsPrivateKeyEncrypted                  *string                                      `pulumi:"isPrivateKeyEncrypted"`
+	IsPrivateLinkRequired                  *string                                      `pulumi:"isPrivateLinkRequired"`
+	IsPublic                               *string                                      `pulumi:"isPublic"`
+	IsSailthruConnectEnabled               *string                                      `pulumi:"isSailthruConnectEnabled"`
+	IsSecure                               *string                                      `pulumi:"isSecure"`
+	IsSingleTableMode                      *string                                      `pulumi:"isSingleTableMode"`
+	IsVendor                               *string                                      `pulumi:"isVendor"`
+	JsonDeliveryMode                       *string                                      `pulumi:"jsonDeliveryMode"`
+	Key                                    *string                                      `pulumi:"key"`
+	KeyPassword                            *string                                      `pulumi:"keyPassword"`
+	KeyStoreType                           *string                                      `pulumi:"keyStoreType"`
+	Keystore                               *string                                      `pulumi:"keystore"`
+	KeystorePassword                       *string                                      `pulumi:"keystorePassword"`
+	LastSyncedChangesUtc_                  *string                                      `pulumi:"lastSyncedChangesUtc_"`
+	LatestVersion                          *string                                      `pulumi:"latestVersion"`
+	LineSeparator                          *string                                      `pulumi:"lineSeparator"`
+	ListStrategy                           *string                                      `pulumi:"listStrategy"`
+	ListSyncMode                           *string                                      `pulumi:"listSyncMode"`
+	LogJournal                             *string                                      `pulumi:"logJournal"`
+	LogJournalSchema                       *string                                      `pulumi:"logJournalSchema"`
+	Login                                  *string                                      `pulumi:"login"`
+	LoginPassword                          *string                                      `pulumi:"loginPassword"`
+	ManagerAccounts                        []string                                     `pulumi:"managerAccounts"`
+	MerchantId                             *string                                      `pulumi:"merchantId"`
+	MessageType                            *string                                      `pulumi:"messageType"`
+	Metrics                                []string                                     `pulumi:"metrics"`
+	NamedRange                             *string                                      `pulumi:"namedRange"`
+	Namespace                              *string                                      `pulumi:"namespace"`
+	NetworkCode                            *string                                      `pulumi:"networkCode"`
+	NullSequence                           *string                                      `pulumi:"nullSequence"`
+	OauthToken                             *string                                      `pulumi:"oauthToken"`
+	OauthTokenSecret                       *string                                      `pulumi:"oauthTokenSecret"`
+	OnError                                *string                                      `pulumi:"onError"`
+	OnPremise                              *string                                      `pulumi:"onPremise"`
+	Organization                           *string                                      `pulumi:"organization"`
+	OrganizationId                         *string                                      `pulumi:"organizationId"`
+	Organizations                          []string                                     `pulumi:"organizations"`
+	PackedModeTables                       []string                                     `pulumi:"packedModeTables"`
+	PackingMode                            *string                                      `pulumi:"packingMode"`
+	Pages                                  []string                                     `pulumi:"pages"`
+	Partners                               []string                                     `pulumi:"partners"`
+	Passphrase                             *string                                      `pulumi:"passphrase"`
+	Password                               *string                                      `pulumi:"password"`
+	Pat                                    *string                                      `pulumi:"pat"`
+	Path                                   *string                                      `pulumi:"path"`
+	Pattern                                *string                                      `pulumi:"pattern"`
+	PdbName                                *string                                      `pulumi:"pdbName"`
+	PemCertificate                         *string                                      `pulumi:"pemCertificate"`
+	PemPrivateKey                          *string                                      `pulumi:"pemPrivateKey"`
+	PerInteractionDimensions               []string                                     `pulumi:"perInteractionDimensions"`
+	PersonalAccessToken                    *string                                      `pulumi:"personalAccessToken"`
+	PgpPassPhrase                          *string                                      `pulumi:"pgpPassPhrase"`
+	PgpSecretKey                           *string                                      `pulumi:"pgpSecretKey"`
+	PhoneNumber                            *string                                      `pulumi:"phoneNumber"`
+	Port                                   *string                                      `pulumi:"port"`
+	PostClickAttributionWindowSize         *string                                      `pulumi:"postClickAttributionWindowSize"`
+	PrebuiltReport                         *string                                      `pulumi:"prebuiltReport"`
+	Prefix                                 *string                                      `pulumi:"prefix"`
+	PrimaryKeys                            []string                                     `pulumi:"primaryKeys"`
+	PrivateKey                             *string                                      `pulumi:"privateKey"`
+	Profiles                               []string                                     `pulumi:"profiles"`
+	ProjectCredentials                     []ConnectorConfigProjectCredential           `pulumi:"projectCredentials"`
+	ProjectId                              *string                                      `pulumi:"projectId"`
+	Projects                               []string                                     `pulumi:"projects"`
+	Properties                             []string                                     `pulumi:"properties"`
+	PublicKey                              *string                                      `pulumi:"publicKey"`
+	PublicationName                        *string                                      `pulumi:"publicationName"`
+	QueryId                                *string                                      `pulumi:"queryId"`
+	QueryParamValue                        *string                                      `pulumi:"queryParamValue"`
+	RefreshTokenExpiresAt                  *string                                      `pulumi:"refreshTokenExpiresAt"`
+	Region                                 *string                                      `pulumi:"region"`
+	ReplicaId                              *string                                      `pulumi:"replicaId"`
+	ReplicationSlot                        *string                                      `pulumi:"replicationSlot"`
+	ReportConfigurationIds                 []string                                     `pulumi:"reportConfigurationIds"`
+	ReportFormatType                       *string                                      `pulumi:"reportFormatType"`
+	ReportSuites                           []string                                     `pulumi:"reportSuites"`
+	ReportTimezone                         *string                                      `pulumi:"reportTimezone"`
+	ReportType                             *string                                      `pulumi:"reportType"`
+	ReportUrl                              *string                                      `pulumi:"reportUrl"`
+	Reports                                []ConnectorConfigReport                      `pulumi:"reports"`
+	ReportsLinkedinAds                     []string                                     `pulumi:"reportsLinkedinAds"`
+	Repositories                           []string                                     `pulumi:"repositories"`
+	ResourceToken                          *string                                      `pulumi:"resourceToken"`
+	ResourceUrl                            *string                                      `pulumi:"resourceUrl"`
+	RestApiLimit                           *string                                      `pulumi:"restApiLimit"`
+	RfcLibraryPath                         *string                                      `pulumi:"rfcLibraryPath"`
+	Role                                   *string                                      `pulumi:"role"`
+	RoleArn                                *string                                      `pulumi:"roleArn"`
+	RollbackWindowSize                     *string                                      `pulumi:"rollbackWindowSize"`
+	S3Bucket                               *string                                      `pulumi:"s3Bucket"`
+	S3ExportBucket                         *string                                      `pulumi:"s3ExportBucket"`
+	S3ExportFolder                         *string                                      `pulumi:"s3ExportFolder"`
+	S3ExportRoleArn                        *string                                      `pulumi:"s3ExportRoleArn"`
+	S3RoleArn                              *string                                      `pulumi:"s3RoleArn"`
+	S3bucket                               *string                                      `pulumi:"s3bucket"`
+	S3externalId                           *string                                      `pulumi:"s3externalId"`
+	S3folder                               *string                                      `pulumi:"s3folder"`
+	S3path                                 *string                                      `pulumi:"s3path"`
+	S3roleArn                              *string                                      `pulumi:"s3roleArn"`
+	SalesAccountSyncMode                   *string                                      `pulumi:"salesAccountSyncMode"`
+	SalesAccounts                          []string                                     `pulumi:"salesAccounts"`
+	SalesforceSecurityToken                *string                                      `pulumi:"salesforceSecurityToken"`
+	SandboxAccount                         *string                                      `pulumi:"sandboxAccount"`
+	SapSchema                              *string                                      `pulumi:"sapSchema"`
+	SapUser                                *string                                      `pulumi:"sapUser"`
+	SaslMechanism                          *string                                      `pulumi:"saslMechanism"`
+	SaslPlainKey                           *string                                      `pulumi:"saslPlainKey"`
+	SaslPlainSecret                        *string                                      `pulumi:"saslPlainSecret"`
+	SaslScram256Key                        *string                                      `pulumi:"saslScram256Key"`
+	SaslScram256Secret                     *string                                      `pulumi:"saslScram256Secret"`
+	SaslScram512Key                        *string                                      `pulumi:"saslScram512Key"`
+	SaslScram512Secret                     *string                                      `pulumi:"saslScram512Secret"`
+	SchemaRegistryCredentialsSource        *string                                      `pulumi:"schemaRegistryCredentialsSource"`
+	SchemaRegistryKey                      *string                                      `pulumi:"schemaRegistryKey"`
+	SchemaRegistrySecret                   *string                                      `pulumi:"schemaRegistrySecret"`
+	SchemaRegistryUrls                     []string                                     `pulumi:"schemaRegistryUrls"`
+	Secret                                 *string                                      `pulumi:"secret"`
+	SecretKey                              *string                                      `pulumi:"secretKey"`
+	Secrets                                *string                                      `pulumi:"secrets"`
+	SecretsLists                           []ConnectorConfigSecretsList                 `pulumi:"secretsLists"`
+	SecurityProtocol                       *string                                      `pulumi:"securityProtocol"`
+	Segments                               []string                                     `pulumi:"segments"`
+	SelectedExports                        []string                                     `pulumi:"selectedExports"`
+	SenderId                               *string                                      `pulumi:"senderId"`
+	SenderPassword                         *string                                      `pulumi:"senderPassword"`
+	ServerUrl                              *string                                      `pulumi:"serverUrl"`
+	Servers                                []string                                     `pulumi:"servers"`
+	ServiceAccount                         *string                                      `pulumi:"serviceAccount"`
+	ServiceAccountEmail                    *string                                      `pulumi:"serviceAccountEmail"`
+	ServiceAccountKey                      *string                                      `pulumi:"serviceAccountKey"`
+	ServiceVersion                         *string                                      `pulumi:"serviceVersion"`
+	SftpHost                               *string                                      `pulumi:"sftpHost"`
+	SftpIsKeyPair                          *string                                      `pulumi:"sftpIsKeyPair"`
+	SftpPassword                           *string                                      `pulumi:"sftpPassword"`
+	SftpPort                               *string                                      `pulumi:"sftpPort"`
+	SftpPublicKey                          *string                                      `pulumi:"sftpPublicKey"`
+	SftpUser                               *string                                      `pulumi:"sftpUser"`
+	ShareUrl                               *string                                      `pulumi:"shareUrl"`
+	SheetId                                *string                                      `pulumi:"sheetId"`
+	Shop                                   *string                                      `pulumi:"shop"`
+	ShortCode                              *string                                      `pulumi:"shortCode"`
+	ShowRecordsWithNoMetrics               *string                                      `pulumi:"showRecordsWithNoMetrics"`
+	Sid                                    *string                                      `pulumi:"sid"`
+	SignerPublicKey                        *string                                      `pulumi:"signerPublicKey"`
+	SiteAddress                            *string                                      `pulumi:"siteAddress"`
+	SiteId                                 *string                                      `pulumi:"siteId"`
+	SiteName                               *string                                      `pulumi:"siteName"`
+	SiteUrls                               []string                                     `pulumi:"siteUrls"`
+	SkipAfter                              *string                                      `pulumi:"skipAfter"`
+	SkipBefore                             *string                                      `pulumi:"skipBefore"`
+	SoapUri                                *string                                      `pulumi:"soapUri"`
+	SocialDataSyncTimeframe                *string                                      `pulumi:"socialDataSyncTimeframe"`
+	Source                                 *string                                      `pulumi:"source"`
+	StoreHash                              *string                                      `pulumi:"storeHash"`
+	SubDomain                              *string                                      `pulumi:"subDomain"`
+	Subdomain                              *string                                      `pulumi:"subdomain"`
+	SubscriberName                         *string                                      `pulumi:"subscriberName"`
+	Subscription                           *string                                      `pulumi:"subscription"`
+	SupportConnectedAccountsSync           *string                                      `pulumi:"supportConnectedAccountsSync"`
+	SupportNestedColumns                   *string                                      `pulumi:"supportNestedColumns"`
+	SurveyIds                              *string                                      `pulumi:"surveyIds"`
+	SwipeAttributionWindow                 *string                                      `pulumi:"swipeAttributionWindow"`
+	SyncDataLocker                         *string                                      `pulumi:"syncDataLocker"`
+	SyncFormat                             *string                                      `pulumi:"syncFormat"`
+	SyncFormulaFields                      *string                                      `pulumi:"syncFormulaFields"`
+	SyncMetadata                           *string                                      `pulumi:"syncMetadata"`
+	SyncMethod                             *string                                      `pulumi:"syncMethod"`
+	SyncMode                               *string                                      `pulumi:"syncMode"`
+	SyncMultipleAccounts                   *string                                      `pulumi:"syncMultipleAccounts"`
+	SyncPackMode                           *string                                      `pulumi:"syncPackMode"`
+	SyncPullApi                            *string                                      `pulumi:"syncPullApi"`
+	SyncType                               *string                                      `pulumi:"syncType"`
+	TableName                              *string                                      `pulumi:"tableName"`
+	TdeCertificate                         *string                                      `pulumi:"tdeCertificate"`
+	TdeCertificateName                     *string                                      `pulumi:"tdeCertificateName"`
+	TdePassword                            *string                                      `pulumi:"tdePassword"`
+	TdePrivateKey                          *string                                      `pulumi:"tdePrivateKey"`
+	TeamId                                 *string                                      `pulumi:"teamId"`
+	TechnicalAccountId                     *string                                      `pulumi:"technicalAccountId"`
+	TemplateLabels                         []string                                     `pulumi:"templateLabels"`
+	TenantId                               *string                                      `pulumi:"tenantId"`
+	TestTableName                          *string                                      `pulumi:"testTableName"`
+	TimeZone                               *string                                      `pulumi:"timeZone"`
+	TimeframeMonths                        *string                                      `pulumi:"timeframeMonths"`
+	Tns                                    *string                                      `pulumi:"tns"`
+	TokenAuthenticatedContainer            *string                                      `pulumi:"tokenAuthenticatedContainer"`
+	TokenAuthenticatedDatabase             *string                                      `pulumi:"tokenAuthenticatedDatabase"`
+	TokenId                                *string                                      `pulumi:"tokenId"`
+	TokenKey                               *string                                      `pulumi:"tokenKey"`
+	TokenSecret                            *string                                      `pulumi:"tokenSecret"`
+	TokenSecretKey                         *string                                      `pulumi:"tokenSecretKey"`
+	Topics                                 []string                                     `pulumi:"topics"`
+	TrustStoreType                         *string                                      `pulumi:"trustStoreType"`
+	TrustedCert                            *string                                      `pulumi:"trustedCert"`
+	Truststore                             *string                                      `pulumi:"truststore"`
+	TunnelHost                             *string                                      `pulumi:"tunnelHost"`
+	TunnelPort                             *string                                      `pulumi:"tunnelPort"`
+	TunnelUser                             *string                                      `pulumi:"tunnelUser"`
+	UniqueId                               *string                                      `pulumi:"uniqueId"`
+	UpdateConfigOnEachSync                 *string                                      `pulumi:"updateConfigOnEachSync"`
+	UpdateMethod                           *string                                      `pulumi:"updateMethod"`
+	Uri                                    *string                                      `pulumi:"uri"`
+	UseApiKeys                             *string                                      `pulumi:"useApiKeys"`
+	UseCustomerBucket                      *string                                      `pulumi:"useCustomerBucket"`
+	UseOracleRac                           *string                                      `pulumi:"useOracleRac"`
+	UsePgpEncryptionOptions                *string                                      `pulumi:"usePgpEncryptionOptions"`
+	UseServiceAccount                      *string                                      `pulumi:"useServiceAccount"`
+	UseTemplateLabels                      *string                                      `pulumi:"useTemplateLabels"`
+	UseWebhooks                            *string                                      `pulumi:"useWebhooks"`
+	UseWorkspace                           *string                                      `pulumi:"useWorkspace"`
+	User                                   *string                                      `pulumi:"user"`
+	UserId                                 *string                                      `pulumi:"userId"`
+	UserKey                                *string                                      `pulumi:"userKey"`
+	UserName                               *string                                      `pulumi:"userName"`
+	UserProfiles                           []string                                     `pulumi:"userProfiles"`
+	Username                               *string                                      `pulumi:"username"`
+	ViewAttributionWindow                  *string                                      `pulumi:"viewAttributionWindow"`
+	ViewThroughAttributionWindowSize       *string                                      `pulumi:"viewThroughAttributionWindowSize"`
+	WebhookEndpoint                        *string                                      `pulumi:"webhookEndpoint"`
+	WebhookKey                             *string                                      `pulumi:"webhookKey"`
+	WebhookUrl                             *string                                      `pulumi:"webhookUrl"`
+	WordPressSiteIdOrWoocommerceDomainName *string                                      `pulumi:"wordPressSiteIdOrWoocommerceDomainName"`
+	WorkspaceName                          *string                                      `pulumi:"workspaceName"`
+	WorkspaceSameAsSource                  *string                                      `pulumi:"workspaceSameAsSource"`
+	WorkspaceSchema                        *string                                      `pulumi:"workspaceSchema"`
+	WsCertificate                          *string                                      `pulumi:"wsCertificate"`
 }
 
-// FivetranConnectorConfigInput is an input type that accepts FivetranConnectorConfigArgs and FivetranConnectorConfigOutput values.
-// You can construct a concrete instance of `FivetranConnectorConfigInput` via:
+// ConnectorConfigInput is an input type that accepts ConnectorConfigArgs and ConnectorConfigOutput values.
+// You can construct a concrete instance of `ConnectorConfigInput` via:
 //
-//	FivetranConnectorConfigArgs{...}
-type FivetranConnectorConfigInput interface {
+//	ConnectorConfigArgs{...}
+type ConnectorConfigInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorConfigOutput() FivetranConnectorConfigOutput
-	ToFivetranConnectorConfigOutputWithContext(context.Context) FivetranConnectorConfigOutput
+	ToConnectorConfigOutput() ConnectorConfigOutput
+	ToConnectorConfigOutputWithContext(context.Context) ConnectorConfigOutput
 }
 
-type FivetranConnectorConfigArgs struct {
-	AbsConnectionMethod                    pulumi.StringPtrInput                                        `pulumi:"absConnectionMethod"`
-	AbsConnectionString                    pulumi.StringPtrInput                                        `pulumi:"absConnectionString"`
-	AbsContainerAddress                    pulumi.StringPtrInput                                        `pulumi:"absContainerAddress"`
-	AbsContainerName                       pulumi.StringPtrInput                                        `pulumi:"absContainerName"`
-	AbsHostIp                              pulumi.StringPtrInput                                        `pulumi:"absHostIp"`
-	AbsHostUser                            pulumi.StringPtrInput                                        `pulumi:"absHostUser"`
-	AbsPrefix                              pulumi.StringPtrInput                                        `pulumi:"absPrefix"`
-	AbsPublicKey                           pulumi.StringPtrInput                                        `pulumi:"absPublicKey"`
-	AccessKey                              pulumi.StringPtrInput                                        `pulumi:"accessKey"`
-	AccessKeyId                            pulumi.StringPtrInput                                        `pulumi:"accessKeyId"`
-	AccessKeySecret                        pulumi.StringPtrInput                                        `pulumi:"accessKeySecret"`
-	AccessToken                            pulumi.StringPtrInput                                        `pulumi:"accessToken"`
-	AccessType                             pulumi.StringPtrInput                                        `pulumi:"accessType"`
-	Account                                pulumi.StringPtrInput                                        `pulumi:"account"`
-	AccountId                              pulumi.StringPtrInput                                        `pulumi:"accountId"`
-	AccountIds                             pulumi.StringArrayInput                                      `pulumi:"accountIds"`
-	AccountKey                             pulumi.StringPtrInput                                        `pulumi:"accountKey"`
-	AccountName                            pulumi.StringPtrInput                                        `pulumi:"accountName"`
-	AccountSyncMode                        pulumi.StringPtrInput                                        `pulumi:"accountSyncMode"`
-	Accounts                               pulumi.StringArrayInput                                      `pulumi:"accounts"`
-	AccountsRedditAds                      FivetranConnectorConfigAccountsRedditAdArrayInput            `pulumi:"accountsRedditAds"`
-	AccountsSyncMode                       pulumi.StringPtrInput                                        `pulumi:"accountsSyncMode"`
-	ActionBreakdowns                       pulumi.StringArrayInput                                      `pulumi:"actionBreakdowns"`
-	ActionReportTime                       pulumi.StringPtrInput                                        `pulumi:"actionReportTime"`
-	AdAnalytics                            pulumi.StringPtrInput                                        `pulumi:"adAnalytics"`
-	AdUnitView                             pulumi.StringPtrInput                                        `pulumi:"adUnitView"`
-	AdminApiKey                            pulumi.StringPtrInput                                        `pulumi:"adminApiKey"`
-	AdobeAnalyticsConfigurations           FivetranConnectorConfigAdobeAnalyticsConfigurationArrayInput `pulumi:"adobeAnalyticsConfigurations"`
-	Advertisables                          pulumi.StringArrayInput                                      `pulumi:"advertisables"`
-	Advertisers                            pulumi.StringArrayInput                                      `pulumi:"advertisers"`
-	AdvertisersIds                         pulumi.StringArrayInput                                      `pulumi:"advertisersIds"`
-	AdvertisersSyncMode                    pulumi.StringPtrInput                                        `pulumi:"advertisersSyncMode"`
-	AgentHost                              pulumi.StringPtrInput                                        `pulumi:"agentHost"`
-	AgentOraHome                           pulumi.StringPtrInput                                        `pulumi:"agentOraHome"`
-	AgentPassword                          pulumi.StringPtrInput                                        `pulumi:"agentPassword"`
-	AgentPort                              pulumi.StringPtrInput                                        `pulumi:"agentPort"`
-	AgentPublicCert                        pulumi.StringPtrInput                                        `pulumi:"agentPublicCert"`
-	AgentUser                              pulumi.StringPtrInput                                        `pulumi:"agentUser"`
-	Aggregation                            pulumi.StringPtrInput                                        `pulumi:"aggregation"`
-	AlwaysEncrypted                        pulumi.StringPtrInput                                        `pulumi:"alwaysEncrypted"`
-	ApiAccessToken                         pulumi.StringPtrInput                                        `pulumi:"apiAccessToken"`
-	ApiId                                  pulumi.StringPtrInput                                        `pulumi:"apiId"`
-	ApiKey                                 pulumi.StringPtrInput                                        `pulumi:"apiKey"`
-	ApiKeys                                pulumi.StringArrayInput                                      `pulumi:"apiKeys"`
-	ApiQuota                               pulumi.StringPtrInput                                        `pulumi:"apiQuota"`
-	ApiRequestsPerMinute                   pulumi.StringPtrInput                                        `pulumi:"apiRequestsPerMinute"`
-	ApiSecret                              pulumi.StringPtrInput                                        `pulumi:"apiSecret"`
-	ApiSecretKey                           pulumi.StringPtrInput                                        `pulumi:"apiSecretKey"`
-	ApiToken                               pulumi.StringPtrInput                                        `pulumi:"apiToken"`
-	ApiType                                pulumi.StringPtrInput                                        `pulumi:"apiType"`
-	ApiUrl                                 pulumi.StringPtrInput                                        `pulumi:"apiUrl"`
-	ApiUsage                               pulumi.StringPtrInput                                        `pulumi:"apiUsage"`
-	ApiVersion                             pulumi.StringPtrInput                                        `pulumi:"apiVersion"`
-	AppId                                  pulumi.StringPtrInput                                        `pulumi:"appId"`
-	AppIds                                 pulumi.StringArrayInput                                      `pulumi:"appIds"`
-	AppIdsAppsflyers                       FivetranConnectorConfigAppIdsAppsflyerArrayInput             `pulumi:"appIdsAppsflyers"`
-	AppSpecificPassword                    pulumi.StringPtrInput                                        `pulumi:"appSpecificPassword"`
-	AppSyncMode                            pulumi.StringPtrInput                                        `pulumi:"appSyncMode"`
-	AppendFileOption                       pulumi.StringPtrInput                                        `pulumi:"appendFileOption"`
-	ApplicationKey                         pulumi.StringPtrInput                                        `pulumi:"applicationKey"`
-	Apps                                   pulumi.StringArrayInput                                      `pulumi:"apps"`
-	ArchiveLogFormat                       pulumi.StringPtrInput                                        `pulumi:"archiveLogFormat"`
-	ArchiveLogPath                         pulumi.StringPtrInput                                        `pulumi:"archiveLogPath"`
-	ArchivePattern                         pulumi.StringPtrInput                                        `pulumi:"archivePattern"`
-	AreSoapCredentialsProvided             pulumi.StringPtrInput                                        `pulumi:"areSoapCredentialsProvided"`
-	AsbIp                                  pulumi.StringPtrInput                                        `pulumi:"asbIp"`
-	AsmOption                              pulumi.StringPtrInput                                        `pulumi:"asmOption"`
-	AsmOracleHome                          pulumi.StringPtrInput                                        `pulumi:"asmOracleHome"`
-	AsmPassword                            pulumi.StringPtrInput                                        `pulumi:"asmPassword"`
-	AsmTns                                 pulumi.StringPtrInput                                        `pulumi:"asmTns"`
-	AsmUser                                pulumi.StringPtrInput                                        `pulumi:"asmUser"`
-	AttributionWindow                      pulumi.StringPtrInput                                        `pulumi:"attributionWindow"`
-	AttributionWindowSize                  pulumi.StringPtrInput                                        `pulumi:"attributionWindowSize"`
-	Auth                                   pulumi.StringPtrInput                                        `pulumi:"auth"`
-	AuthMethod                             pulumi.StringPtrInput                                        `pulumi:"authMethod"`
-	AuthMode                               pulumi.StringPtrInput                                        `pulumi:"authMode"`
-	AuthType                               pulumi.StringPtrInput                                        `pulumi:"authType"`
-	AuthorizationMethod                    pulumi.StringPtrInput                                        `pulumi:"authorizationMethod"`
-	AwsRegionCode                          pulumi.StringPtrInput                                        `pulumi:"awsRegionCode"`
-	BaseCurrency                           pulumi.StringPtrInput                                        `pulumi:"baseCurrency"`
-	BaseDomain                             pulumi.StringPtrInput                                        `pulumi:"baseDomain"`
-	BaseId                                 pulumi.StringPtrInput                                        `pulumi:"baseId"`
-	BaseUrl                                pulumi.StringPtrInput                                        `pulumi:"baseUrl"`
-	BearerToken                            pulumi.StringPtrInput                                        `pulumi:"bearerToken"`
-	BlobSasUrl                             pulumi.StringPtrInput                                        `pulumi:"blobSasUrl"`
-	Breakdowns                             pulumi.StringArrayInput                                      `pulumi:"breakdowns"`
-	Bucket                                 pulumi.StringPtrInput                                        `pulumi:"bucket"`
-	BucketName                             pulumi.StringPtrInput                                        `pulumi:"bucketName"`
-	BucketService                          pulumi.StringPtrInput                                        `pulumi:"bucketService"`
-	BusinessId                             pulumi.StringPtrInput                                        `pulumi:"businessId"`
-	BusinessUnitId                         pulumi.StringPtrInput                                        `pulumi:"businessUnitId"`
-	Certificate                            pulumi.StringPtrInput                                        `pulumi:"certificate"`
-	ClickAttributionWindow                 pulumi.StringPtrInput                                        `pulumi:"clickAttributionWindow"`
-	ClientCert                             pulumi.StringPtrInput                                        `pulumi:"clientCert"`
-	ClientCertKey                          pulumi.StringPtrInput                                        `pulumi:"clientCertKey"`
-	ClientId                               pulumi.StringPtrInput                                        `pulumi:"clientId"`
-	ClientKey                              pulumi.StringPtrInput                                        `pulumi:"clientKey"`
-	ClientName                             pulumi.StringPtrInput                                        `pulumi:"clientName"`
-	ClientSecret                           pulumi.StringPtrInput                                        `pulumi:"clientSecret"`
-	CloudStorageType                       pulumi.StringPtrInput                                        `pulumi:"cloudStorageType"`
-	Columns                                pulumi.StringArrayInput                                      `pulumi:"columns"`
-	CompanyId                              pulumi.StringPtrInput                                        `pulumi:"companyId"`
-	CompanyKey                             pulumi.StringPtrInput                                        `pulumi:"companyKey"`
-	Compression                            pulumi.StringPtrInput                                        `pulumi:"compression"`
-	ConfigMethod                           pulumi.StringPtrInput                                        `pulumi:"configMethod"`
-	ConfigRepositoryUrl                    pulumi.StringPtrInput                                        `pulumi:"configRepositoryUrl"`
-	ConfigType                             pulumi.StringPtrInput                                        `pulumi:"configType"`
-	ConnectingUser                         pulumi.StringPtrInput                                        `pulumi:"connectingUser"`
-	ConnectingUserEmail                    pulumi.StringPtrInput                                        `pulumi:"connectingUserEmail"`
-	ConnectionMethod                       pulumi.StringPtrInput                                        `pulumi:"connectionMethod"`
-	ConnectionString                       pulumi.StringPtrInput                                        `pulumi:"connectionString"`
-	ConnectionType                         pulumi.StringPtrInput                                        `pulumi:"connectionType"`
-	ConsumerGroup                          pulumi.StringPtrInput                                        `pulumi:"consumerGroup"`
-	ConsumerKey                            pulumi.StringPtrInput                                        `pulumi:"consumerKey"`
-	ConsumerSecret                         pulumi.StringPtrInput                                        `pulumi:"consumerSecret"`
-	ContainerAddress                       pulumi.StringPtrInput                                        `pulumi:"containerAddress"`
-	ContainerName                          pulumi.StringPtrInput                                        `pulumi:"containerName"`
-	ContentOwnerId                         pulumi.StringPtrInput                                        `pulumi:"contentOwnerId"`
-	ConversationWebhookUrl                 pulumi.StringPtrInput                                        `pulumi:"conversationWebhookUrl"`
-	ConversionDimensions                   pulumi.StringArrayInput                                      `pulumi:"conversionDimensions"`
-	ConversionReportTime                   pulumi.StringPtrInput                                        `pulumi:"conversionReportTime"`
-	ConversionWindowSize                   pulumi.StringPtrInput                                        `pulumi:"conversionWindowSize"`
-	CsvDefinition                          pulumi.StringPtrInput                                        `pulumi:"csvDefinition"`
-	Currency                               pulumi.StringPtrInput                                        `pulumi:"currency"`
-	CustomEventSyncMode                    pulumi.StringPtrInput                                        `pulumi:"customEventSyncMode"`
-	CustomEvents                           pulumi.StringArrayInput                                      `pulumi:"customEvents"`
-	CustomFieldIds                         pulumi.StringArrayInput                                      `pulumi:"customFieldIds"`
-	CustomFloodlightVariables              pulumi.StringArrayInput                                      `pulumi:"customFloodlightVariables"`
-	CustomReports                          FivetranConnectorConfigCustomReportArrayInput                `pulumi:"customReports"`
-	CustomTables                           FivetranConnectorConfigCustomTableArrayInput                 `pulumi:"customTables"`
-	CustomerId                             pulumi.StringPtrInput                                        `pulumi:"customerId"`
-	CustomerListId                         pulumi.StringPtrInput                                        `pulumi:"customerListId"`
-	DailyApiCallLimit                      pulumi.StringPtrInput                                        `pulumi:"dailyApiCallLimit"`
-	DataAccessMethod                       pulumi.StringPtrInput                                        `pulumi:"dataAccessMethod"`
-	DataCenter                             pulumi.StringPtrInput                                        `pulumi:"dataCenter"`
-	DataSetName                            pulumi.StringPtrInput                                        `pulumi:"dataSetName"`
-	Database                               pulumi.StringPtrInput                                        `pulumi:"database"`
-	DatasetId                              pulumi.StringPtrInput                                        `pulumi:"datasetId"`
-	Datasource                             pulumi.StringPtrInput                                        `pulumi:"datasource"`
-	DateGranularity                        pulumi.StringPtrInput                                        `pulumi:"dateGranularity"`
-	Delimiter                              pulumi.StringPtrInput                                        `pulumi:"delimiter"`
-	DimensionAttributes                    pulumi.StringArrayInput                                      `pulumi:"dimensionAttributes"`
-	Dimensions                             pulumi.StringArrayInput                                      `pulumi:"dimensions"`
-	Domain                                 pulumi.StringPtrInput                                        `pulumi:"domain"`
-	DomainHostName                         pulumi.StringPtrInput                                        `pulumi:"domainHostName"`
-	DomainName                             pulumi.StringPtrInput                                        `pulumi:"domainName"`
-	DomainType                             pulumi.StringPtrInput                                        `pulumi:"domainType"`
-	Elements                               pulumi.StringArrayInput                                      `pulumi:"elements"`
-	Email                                  pulumi.StringPtrInput                                        `pulumi:"email"`
-	EmptyHeader                            pulumi.StringPtrInput                                        `pulumi:"emptyHeader"`
-	EnableAllDimensionCombinations         pulumi.StringPtrInput                                        `pulumi:"enableAllDimensionCombinations"`
-	EnableArchiveLogOnly                   pulumi.StringPtrInput                                        `pulumi:"enableArchiveLogOnly"`
-	EnableEnrichments                      pulumi.StringPtrInput                                        `pulumi:"enableEnrichments"`
-	EnableExports                          pulumi.StringPtrInput                                        `pulumi:"enableExports"`
-	EnableTde                              pulumi.StringPtrInput                                        `pulumi:"enableTde"`
-	EncodedPublicKey                       pulumi.StringPtrInput                                        `pulumi:"encodedPublicKey"`
-	EncryptionKey                          pulumi.StringPtrInput                                        `pulumi:"encryptionKey"`
-	Endpoint                               pulumi.StringPtrInput                                        `pulumi:"endpoint"`
-	EngagementAttributionWindow            pulumi.StringPtrInput                                        `pulumi:"engagementAttributionWindow"`
-	EnrichedExport                         pulumi.StringPtrInput                                        `pulumi:"enrichedExport"`
-	EntityId                               pulumi.StringPtrInput                                        `pulumi:"entityId"`
-	Environment                            pulumi.StringPtrInput                                        `pulumi:"environment"`
-	EscapeChar                             pulumi.StringPtrInput                                        `pulumi:"escapeChar"`
-	EuRegion                               pulumi.StringPtrInput                                        `pulumi:"euRegion"`
-	Events                                 pulumi.StringArrayInput                                      `pulumi:"events"`
-	ExportStorageType                      pulumi.StringPtrInput                                        `pulumi:"exportStorageType"`
-	ExternalId                             pulumi.StringPtrInput                                        `pulumi:"externalId"`
-	Fields                                 pulumi.StringArrayInput                                      `pulumi:"fields"`
-	FileType                               pulumi.StringPtrInput                                        `pulumi:"fileType"`
-	Filter                                 pulumi.StringPtrInput                                        `pulumi:"filter"`
-	FinanceAccountSyncMode                 pulumi.StringPtrInput                                        `pulumi:"financeAccountSyncMode"`
-	FinanceAccounts                        pulumi.StringArrayInput                                      `pulumi:"financeAccounts"`
-	Folder                                 pulumi.StringPtrInput                                        `pulumi:"folder"`
-	FolderId                               pulumi.StringPtrInput                                        `pulumi:"folderId"`
-	FolderPath                             pulumi.StringPtrInput                                        `pulumi:"folderPath"`
-	ForecastId                             pulumi.StringPtrInput                                        `pulumi:"forecastId"`
-	FtpHost                                pulumi.StringPtrInput                                        `pulumi:"ftpHost"`
-	FtpPassword                            pulumi.StringPtrInput                                        `pulumi:"ftpPassword"`
-	FtpPort                                pulumi.StringPtrInput                                        `pulumi:"ftpPort"`
-	FtpUser                                pulumi.StringPtrInput                                        `pulumi:"ftpUser"`
-	Function                               pulumi.StringPtrInput                                        `pulumi:"function"`
-	FunctionApp                            pulumi.StringPtrInput                                        `pulumi:"functionApp"`
-	FunctionKey                            pulumi.StringPtrInput                                        `pulumi:"functionKey"`
-	FunctionName                           pulumi.StringPtrInput                                        `pulumi:"functionName"`
-	FunctionTrigger                        pulumi.StringPtrInput                                        `pulumi:"functionTrigger"`
-	GcsBucket                              pulumi.StringPtrInput                                        `pulumi:"gcsBucket"`
-	GcsFolder                              pulumi.StringPtrInput                                        `pulumi:"gcsFolder"`
-	GroupName                              pulumi.StringPtrInput                                        `pulumi:"groupName"`
-	HasManagePermissions                   pulumi.StringPtrInput                                        `pulumi:"hasManagePermissions"`
-	HomeFolder                             pulumi.StringPtrInput                                        `pulumi:"homeFolder"`
-	Host                                   pulumi.StringPtrInput                                        `pulumi:"host"`
-	HostIp                                 pulumi.StringPtrInput                                        `pulumi:"hostIp"`
-	HostUser                               pulumi.StringPtrInput                                        `pulumi:"hostUser"`
-	Hosts                                  pulumi.StringArrayInput                                      `pulumi:"hosts"`
-	Identity                               pulumi.StringPtrInput                                        `pulumi:"identity"`
-	Instance                               pulumi.StringPtrInput                                        `pulumi:"instance"`
-	InstanceNumber                         pulumi.StringPtrInput                                        `pulumi:"instanceNumber"`
-	InstanceUrl                            pulumi.StringPtrInput                                        `pulumi:"instanceUrl"`
-	IntegrationKey                         pulumi.StringPtrInput                                        `pulumi:"integrationKey"`
-	IsAccountLevelConnector                pulumi.StringPtrInput                                        `pulumi:"isAccountLevelConnector"`
-	IsAuth2Enabled                         pulumi.StringPtrInput                                        `pulumi:"isAuth2Enabled"`
-	IsCustomApiCredentials                 pulumi.StringPtrInput                                        `pulumi:"isCustomApiCredentials"`
-	IsFtps                                 pulumi.StringPtrInput                                        `pulumi:"isFtps"`
-	IsKeypair                              pulumi.StringPtrInput                                        `pulumi:"isKeypair"`
-	IsMultiEntityFeatureEnabled            pulumi.StringPtrInput                                        `pulumi:"isMultiEntityFeatureEnabled"`
-	IsNewPackage                           pulumi.StringPtrInput                                        `pulumi:"isNewPackage"`
-	IsPrivateKeyEncrypted                  pulumi.StringPtrInput                                        `pulumi:"isPrivateKeyEncrypted"`
-	IsPrivateLinkRequired                  pulumi.StringPtrInput                                        `pulumi:"isPrivateLinkRequired"`
-	IsPublic                               pulumi.StringPtrInput                                        `pulumi:"isPublic"`
-	IsSailthruConnectEnabled               pulumi.StringPtrInput                                        `pulumi:"isSailthruConnectEnabled"`
-	IsSecure                               pulumi.StringPtrInput                                        `pulumi:"isSecure"`
-	IsSingleTableMode                      pulumi.StringPtrInput                                        `pulumi:"isSingleTableMode"`
-	IsVendor                               pulumi.StringPtrInput                                        `pulumi:"isVendor"`
-	JsonDeliveryMode                       pulumi.StringPtrInput                                        `pulumi:"jsonDeliveryMode"`
-	Key                                    pulumi.StringPtrInput                                        `pulumi:"key"`
-	KeyPassword                            pulumi.StringPtrInput                                        `pulumi:"keyPassword"`
-	KeyStoreType                           pulumi.StringPtrInput                                        `pulumi:"keyStoreType"`
-	Keystore                               pulumi.StringPtrInput                                        `pulumi:"keystore"`
-	KeystorePassword                       pulumi.StringPtrInput                                        `pulumi:"keystorePassword"`
-	LastSyncedChangesUtc_                  pulumi.StringPtrInput                                        `pulumi:"lastSyncedChangesUtc_"`
-	LatestVersion                          pulumi.StringPtrInput                                        `pulumi:"latestVersion"`
-	LineSeparator                          pulumi.StringPtrInput                                        `pulumi:"lineSeparator"`
-	ListStrategy                           pulumi.StringPtrInput                                        `pulumi:"listStrategy"`
-	ListSyncMode                           pulumi.StringPtrInput                                        `pulumi:"listSyncMode"`
-	LogJournal                             pulumi.StringPtrInput                                        `pulumi:"logJournal"`
-	LogJournalSchema                       pulumi.StringPtrInput                                        `pulumi:"logJournalSchema"`
-	Login                                  pulumi.StringPtrInput                                        `pulumi:"login"`
-	LoginPassword                          pulumi.StringPtrInput                                        `pulumi:"loginPassword"`
-	ManagerAccounts                        pulumi.StringArrayInput                                      `pulumi:"managerAccounts"`
-	MerchantId                             pulumi.StringPtrInput                                        `pulumi:"merchantId"`
-	MessageType                            pulumi.StringPtrInput                                        `pulumi:"messageType"`
-	Metrics                                pulumi.StringArrayInput                                      `pulumi:"metrics"`
-	NamedRange                             pulumi.StringPtrInput                                        `pulumi:"namedRange"`
-	Namespace                              pulumi.StringPtrInput                                        `pulumi:"namespace"`
-	NetworkCode                            pulumi.StringPtrInput                                        `pulumi:"networkCode"`
-	NullSequence                           pulumi.StringPtrInput                                        `pulumi:"nullSequence"`
-	OauthToken                             pulumi.StringPtrInput                                        `pulumi:"oauthToken"`
-	OauthTokenSecret                       pulumi.StringPtrInput                                        `pulumi:"oauthTokenSecret"`
-	OnError                                pulumi.StringPtrInput                                        `pulumi:"onError"`
-	OnPremise                              pulumi.StringPtrInput                                        `pulumi:"onPremise"`
-	Organization                           pulumi.StringPtrInput                                        `pulumi:"organization"`
-	OrganizationId                         pulumi.StringPtrInput                                        `pulumi:"organizationId"`
-	Organizations                          pulumi.StringArrayInput                                      `pulumi:"organizations"`
-	PackedModeTables                       pulumi.StringArrayInput                                      `pulumi:"packedModeTables"`
-	PackingMode                            pulumi.StringPtrInput                                        `pulumi:"packingMode"`
-	Pages                                  pulumi.StringArrayInput                                      `pulumi:"pages"`
-	Partners                               pulumi.StringArrayInput                                      `pulumi:"partners"`
-	Passphrase                             pulumi.StringPtrInput                                        `pulumi:"passphrase"`
-	Password                               pulumi.StringPtrInput                                        `pulumi:"password"`
-	Pat                                    pulumi.StringPtrInput                                        `pulumi:"pat"`
-	Path                                   pulumi.StringPtrInput                                        `pulumi:"path"`
-	Pattern                                pulumi.StringPtrInput                                        `pulumi:"pattern"`
-	PdbName                                pulumi.StringPtrInput                                        `pulumi:"pdbName"`
-	PemCertificate                         pulumi.StringPtrInput                                        `pulumi:"pemCertificate"`
-	PemPrivateKey                          pulumi.StringPtrInput                                        `pulumi:"pemPrivateKey"`
-	PerInteractionDimensions               pulumi.StringArrayInput                                      `pulumi:"perInteractionDimensions"`
-	PersonalAccessToken                    pulumi.StringPtrInput                                        `pulumi:"personalAccessToken"`
-	PgpPassPhrase                          pulumi.StringPtrInput                                        `pulumi:"pgpPassPhrase"`
-	PgpSecretKey                           pulumi.StringPtrInput                                        `pulumi:"pgpSecretKey"`
-	PhoneNumber                            pulumi.StringPtrInput                                        `pulumi:"phoneNumber"`
-	Port                                   pulumi.StringPtrInput                                        `pulumi:"port"`
-	PostClickAttributionWindowSize         pulumi.StringPtrInput                                        `pulumi:"postClickAttributionWindowSize"`
-	PrebuiltReport                         pulumi.StringPtrInput                                        `pulumi:"prebuiltReport"`
-	Prefix                                 pulumi.StringPtrInput                                        `pulumi:"prefix"`
-	PrimaryKeys                            pulumi.StringArrayInput                                      `pulumi:"primaryKeys"`
-	PrivateKey                             pulumi.StringPtrInput                                        `pulumi:"privateKey"`
-	Profiles                               pulumi.StringArrayInput                                      `pulumi:"profiles"`
-	ProjectCredentials                     FivetranConnectorConfigProjectCredentialArrayInput           `pulumi:"projectCredentials"`
-	ProjectId                              pulumi.StringPtrInput                                        `pulumi:"projectId"`
-	Projects                               pulumi.StringArrayInput                                      `pulumi:"projects"`
-	Properties                             pulumi.StringArrayInput                                      `pulumi:"properties"`
-	PublicKey                              pulumi.StringPtrInput                                        `pulumi:"publicKey"`
-	PublicationName                        pulumi.StringPtrInput                                        `pulumi:"publicationName"`
-	QueryId                                pulumi.StringPtrInput                                        `pulumi:"queryId"`
-	QueryParamValue                        pulumi.StringPtrInput                                        `pulumi:"queryParamValue"`
-	RefreshTokenExpiresAt                  pulumi.StringPtrInput                                        `pulumi:"refreshTokenExpiresAt"`
-	Region                                 pulumi.StringPtrInput                                        `pulumi:"region"`
-	ReplicaId                              pulumi.StringPtrInput                                        `pulumi:"replicaId"`
-	ReplicationSlot                        pulumi.StringPtrInput                                        `pulumi:"replicationSlot"`
-	ReportConfigurationIds                 pulumi.StringArrayInput                                      `pulumi:"reportConfigurationIds"`
-	ReportFormatType                       pulumi.StringPtrInput                                        `pulumi:"reportFormatType"`
-	ReportSuites                           pulumi.StringArrayInput                                      `pulumi:"reportSuites"`
-	ReportTimezone                         pulumi.StringPtrInput                                        `pulumi:"reportTimezone"`
-	ReportType                             pulumi.StringPtrInput                                        `pulumi:"reportType"`
-	ReportUrl                              pulumi.StringPtrInput                                        `pulumi:"reportUrl"`
-	Reports                                FivetranConnectorConfigReportArrayInput                      `pulumi:"reports"`
-	ReportsLinkedinAds                     pulumi.StringArrayInput                                      `pulumi:"reportsLinkedinAds"`
-	Repositories                           pulumi.StringArrayInput                                      `pulumi:"repositories"`
-	ResourceToken                          pulumi.StringPtrInput                                        `pulumi:"resourceToken"`
-	ResourceUrl                            pulumi.StringPtrInput                                        `pulumi:"resourceUrl"`
-	RestApiLimit                           pulumi.StringPtrInput                                        `pulumi:"restApiLimit"`
-	RfcLibraryPath                         pulumi.StringPtrInput                                        `pulumi:"rfcLibraryPath"`
-	Role                                   pulumi.StringPtrInput                                        `pulumi:"role"`
-	RoleArn                                pulumi.StringPtrInput                                        `pulumi:"roleArn"`
-	RollbackWindowSize                     pulumi.StringPtrInput                                        `pulumi:"rollbackWindowSize"`
-	S3Bucket                               pulumi.StringPtrInput                                        `pulumi:"s3Bucket"`
-	S3ExportBucket                         pulumi.StringPtrInput                                        `pulumi:"s3ExportBucket"`
-	S3ExportFolder                         pulumi.StringPtrInput                                        `pulumi:"s3ExportFolder"`
-	S3ExportRoleArn                        pulumi.StringPtrInput                                        `pulumi:"s3ExportRoleArn"`
-	S3RoleArn                              pulumi.StringPtrInput                                        `pulumi:"s3RoleArn"`
-	S3bucket                               pulumi.StringPtrInput                                        `pulumi:"s3bucket"`
-	S3externalId                           pulumi.StringPtrInput                                        `pulumi:"s3externalId"`
-	S3folder                               pulumi.StringPtrInput                                        `pulumi:"s3folder"`
-	S3path                                 pulumi.StringPtrInput                                        `pulumi:"s3path"`
-	S3roleArn                              pulumi.StringPtrInput                                        `pulumi:"s3roleArn"`
-	SalesAccountSyncMode                   pulumi.StringPtrInput                                        `pulumi:"salesAccountSyncMode"`
-	SalesAccounts                          pulumi.StringArrayInput                                      `pulumi:"salesAccounts"`
-	SalesforceSecurityToken                pulumi.StringPtrInput                                        `pulumi:"salesforceSecurityToken"`
-	SandboxAccount                         pulumi.StringPtrInput                                        `pulumi:"sandboxAccount"`
-	SapSchema                              pulumi.StringPtrInput                                        `pulumi:"sapSchema"`
-	SapUser                                pulumi.StringPtrInput                                        `pulumi:"sapUser"`
-	SaslMechanism                          pulumi.StringPtrInput                                        `pulumi:"saslMechanism"`
-	SaslPlainKey                           pulumi.StringPtrInput                                        `pulumi:"saslPlainKey"`
-	SaslPlainSecret                        pulumi.StringPtrInput                                        `pulumi:"saslPlainSecret"`
-	SaslScram256Key                        pulumi.StringPtrInput                                        `pulumi:"saslScram256Key"`
-	SaslScram256Secret                     pulumi.StringPtrInput                                        `pulumi:"saslScram256Secret"`
-	SaslScram512Key                        pulumi.StringPtrInput                                        `pulumi:"saslScram512Key"`
-	SaslScram512Secret                     pulumi.StringPtrInput                                        `pulumi:"saslScram512Secret"`
-	SchemaRegistryCredentialsSource        pulumi.StringPtrInput                                        `pulumi:"schemaRegistryCredentialsSource"`
-	SchemaRegistryKey                      pulumi.StringPtrInput                                        `pulumi:"schemaRegistryKey"`
-	SchemaRegistrySecret                   pulumi.StringPtrInput                                        `pulumi:"schemaRegistrySecret"`
-	SchemaRegistryUrls                     pulumi.StringArrayInput                                      `pulumi:"schemaRegistryUrls"`
-	Secret                                 pulumi.StringPtrInput                                        `pulumi:"secret"`
-	SecretKey                              pulumi.StringPtrInput                                        `pulumi:"secretKey"`
-	Secrets                                pulumi.StringPtrInput                                        `pulumi:"secrets"`
-	SecretsLists                           FivetranConnectorConfigSecretsListArrayInput                 `pulumi:"secretsLists"`
-	SecurityProtocol                       pulumi.StringPtrInput                                        `pulumi:"securityProtocol"`
-	Segments                               pulumi.StringArrayInput                                      `pulumi:"segments"`
-	SelectedExports                        pulumi.StringArrayInput                                      `pulumi:"selectedExports"`
-	SenderId                               pulumi.StringPtrInput                                        `pulumi:"senderId"`
-	SenderPassword                         pulumi.StringPtrInput                                        `pulumi:"senderPassword"`
-	ServerUrl                              pulumi.StringPtrInput                                        `pulumi:"serverUrl"`
-	Servers                                pulumi.StringArrayInput                                      `pulumi:"servers"`
-	ServiceAccount                         pulumi.StringPtrInput                                        `pulumi:"serviceAccount"`
-	ServiceAccountEmail                    pulumi.StringPtrInput                                        `pulumi:"serviceAccountEmail"`
-	ServiceAccountKey                      pulumi.StringPtrInput                                        `pulumi:"serviceAccountKey"`
-	ServiceVersion                         pulumi.StringPtrInput                                        `pulumi:"serviceVersion"`
-	SftpHost                               pulumi.StringPtrInput                                        `pulumi:"sftpHost"`
-	SftpIsKeyPair                          pulumi.StringPtrInput                                        `pulumi:"sftpIsKeyPair"`
-	SftpPassword                           pulumi.StringPtrInput                                        `pulumi:"sftpPassword"`
-	SftpPort                               pulumi.StringPtrInput                                        `pulumi:"sftpPort"`
-	SftpPublicKey                          pulumi.StringPtrInput                                        `pulumi:"sftpPublicKey"`
-	SftpUser                               pulumi.StringPtrInput                                        `pulumi:"sftpUser"`
-	ShareUrl                               pulumi.StringPtrInput                                        `pulumi:"shareUrl"`
-	SheetId                                pulumi.StringPtrInput                                        `pulumi:"sheetId"`
-	Shop                                   pulumi.StringPtrInput                                        `pulumi:"shop"`
-	ShortCode                              pulumi.StringPtrInput                                        `pulumi:"shortCode"`
-	ShowRecordsWithNoMetrics               pulumi.StringPtrInput                                        `pulumi:"showRecordsWithNoMetrics"`
-	Sid                                    pulumi.StringPtrInput                                        `pulumi:"sid"`
-	SignerPublicKey                        pulumi.StringPtrInput                                        `pulumi:"signerPublicKey"`
-	SiteAddress                            pulumi.StringPtrInput                                        `pulumi:"siteAddress"`
-	SiteId                                 pulumi.StringPtrInput                                        `pulumi:"siteId"`
-	SiteName                               pulumi.StringPtrInput                                        `pulumi:"siteName"`
-	SiteUrls                               pulumi.StringArrayInput                                      `pulumi:"siteUrls"`
-	SkipAfter                              pulumi.StringPtrInput                                        `pulumi:"skipAfter"`
-	SkipBefore                             pulumi.StringPtrInput                                        `pulumi:"skipBefore"`
-	SoapUri                                pulumi.StringPtrInput                                        `pulumi:"soapUri"`
-	SocialDataSyncTimeframe                pulumi.StringPtrInput                                        `pulumi:"socialDataSyncTimeframe"`
-	Source                                 pulumi.StringPtrInput                                        `pulumi:"source"`
-	StoreHash                              pulumi.StringPtrInput                                        `pulumi:"storeHash"`
-	SubDomain                              pulumi.StringPtrInput                                        `pulumi:"subDomain"`
-	Subdomain                              pulumi.StringPtrInput                                        `pulumi:"subdomain"`
-	SubscriberName                         pulumi.StringPtrInput                                        `pulumi:"subscriberName"`
-	Subscription                           pulumi.StringPtrInput                                        `pulumi:"subscription"`
-	SupportConnectedAccountsSync           pulumi.StringPtrInput                                        `pulumi:"supportConnectedAccountsSync"`
-	SupportNestedColumns                   pulumi.StringPtrInput                                        `pulumi:"supportNestedColumns"`
-	SurveyIds                              pulumi.StringPtrInput                                        `pulumi:"surveyIds"`
-	SwipeAttributionWindow                 pulumi.StringPtrInput                                        `pulumi:"swipeAttributionWindow"`
-	SyncDataLocker                         pulumi.StringPtrInput                                        `pulumi:"syncDataLocker"`
-	SyncFormat                             pulumi.StringPtrInput                                        `pulumi:"syncFormat"`
-	SyncFormulaFields                      pulumi.StringPtrInput                                        `pulumi:"syncFormulaFields"`
-	SyncMetadata                           pulumi.StringPtrInput                                        `pulumi:"syncMetadata"`
-	SyncMethod                             pulumi.StringPtrInput                                        `pulumi:"syncMethod"`
-	SyncMode                               pulumi.StringPtrInput                                        `pulumi:"syncMode"`
-	SyncMultipleAccounts                   pulumi.StringPtrInput                                        `pulumi:"syncMultipleAccounts"`
-	SyncPackMode                           pulumi.StringPtrInput                                        `pulumi:"syncPackMode"`
-	SyncPullApi                            pulumi.StringPtrInput                                        `pulumi:"syncPullApi"`
-	SyncType                               pulumi.StringPtrInput                                        `pulumi:"syncType"`
-	TableName                              pulumi.StringPtrInput                                        `pulumi:"tableName"`
-	TdeCertificate                         pulumi.StringPtrInput                                        `pulumi:"tdeCertificate"`
-	TdeCertificateName                     pulumi.StringPtrInput                                        `pulumi:"tdeCertificateName"`
-	TdePassword                            pulumi.StringPtrInput                                        `pulumi:"tdePassword"`
-	TdePrivateKey                          pulumi.StringPtrInput                                        `pulumi:"tdePrivateKey"`
-	TeamId                                 pulumi.StringPtrInput                                        `pulumi:"teamId"`
-	TechnicalAccountId                     pulumi.StringPtrInput                                        `pulumi:"technicalAccountId"`
-	TemplateLabels                         pulumi.StringArrayInput                                      `pulumi:"templateLabels"`
-	TenantId                               pulumi.StringPtrInput                                        `pulumi:"tenantId"`
-	TestTableName                          pulumi.StringPtrInput                                        `pulumi:"testTableName"`
-	TimeZone                               pulumi.StringPtrInput                                        `pulumi:"timeZone"`
-	TimeframeMonths                        pulumi.StringPtrInput                                        `pulumi:"timeframeMonths"`
-	Tns                                    pulumi.StringPtrInput                                        `pulumi:"tns"`
-	TokenAuthenticatedContainer            pulumi.StringPtrInput                                        `pulumi:"tokenAuthenticatedContainer"`
-	TokenAuthenticatedDatabase             pulumi.StringPtrInput                                        `pulumi:"tokenAuthenticatedDatabase"`
-	TokenId                                pulumi.StringPtrInput                                        `pulumi:"tokenId"`
-	TokenKey                               pulumi.StringPtrInput                                        `pulumi:"tokenKey"`
-	TokenSecret                            pulumi.StringPtrInput                                        `pulumi:"tokenSecret"`
-	TokenSecretKey                         pulumi.StringPtrInput                                        `pulumi:"tokenSecretKey"`
-	Topics                                 pulumi.StringArrayInput                                      `pulumi:"topics"`
-	TrustStoreType                         pulumi.StringPtrInput                                        `pulumi:"trustStoreType"`
-	TrustedCert                            pulumi.StringPtrInput                                        `pulumi:"trustedCert"`
-	Truststore                             pulumi.StringPtrInput                                        `pulumi:"truststore"`
-	TunnelHost                             pulumi.StringPtrInput                                        `pulumi:"tunnelHost"`
-	TunnelPort                             pulumi.StringPtrInput                                        `pulumi:"tunnelPort"`
-	TunnelUser                             pulumi.StringPtrInput                                        `pulumi:"tunnelUser"`
-	UniqueId                               pulumi.StringPtrInput                                        `pulumi:"uniqueId"`
-	UpdateConfigOnEachSync                 pulumi.StringPtrInput                                        `pulumi:"updateConfigOnEachSync"`
-	UpdateMethod                           pulumi.StringPtrInput                                        `pulumi:"updateMethod"`
-	Uri                                    pulumi.StringPtrInput                                        `pulumi:"uri"`
-	UseApiKeys                             pulumi.StringPtrInput                                        `pulumi:"useApiKeys"`
-	UseCustomerBucket                      pulumi.StringPtrInput                                        `pulumi:"useCustomerBucket"`
-	UseOracleRac                           pulumi.StringPtrInput                                        `pulumi:"useOracleRac"`
-	UsePgpEncryptionOptions                pulumi.StringPtrInput                                        `pulumi:"usePgpEncryptionOptions"`
-	UseServiceAccount                      pulumi.StringPtrInput                                        `pulumi:"useServiceAccount"`
-	UseTemplateLabels                      pulumi.StringPtrInput                                        `pulumi:"useTemplateLabels"`
-	UseWebhooks                            pulumi.StringPtrInput                                        `pulumi:"useWebhooks"`
-	UseWorkspace                           pulumi.StringPtrInput                                        `pulumi:"useWorkspace"`
-	User                                   pulumi.StringPtrInput                                        `pulumi:"user"`
-	UserId                                 pulumi.StringPtrInput                                        `pulumi:"userId"`
-	UserKey                                pulumi.StringPtrInput                                        `pulumi:"userKey"`
-	UserName                               pulumi.StringPtrInput                                        `pulumi:"userName"`
-	UserProfiles                           pulumi.StringArrayInput                                      `pulumi:"userProfiles"`
-	Username                               pulumi.StringPtrInput                                        `pulumi:"username"`
-	ViewAttributionWindow                  pulumi.StringPtrInput                                        `pulumi:"viewAttributionWindow"`
-	ViewThroughAttributionWindowSize       pulumi.StringPtrInput                                        `pulumi:"viewThroughAttributionWindowSize"`
-	WebhookEndpoint                        pulumi.StringPtrInput                                        `pulumi:"webhookEndpoint"`
-	WebhookKey                             pulumi.StringPtrInput                                        `pulumi:"webhookKey"`
-	WebhookUrl                             pulumi.StringPtrInput                                        `pulumi:"webhookUrl"`
-	WordPressSiteIdOrWoocommerceDomainName pulumi.StringPtrInput                                        `pulumi:"wordPressSiteIdOrWoocommerceDomainName"`
-	WorkspaceName                          pulumi.StringPtrInput                                        `pulumi:"workspaceName"`
-	WorkspaceSameAsSource                  pulumi.StringPtrInput                                        `pulumi:"workspaceSameAsSource"`
-	WorkspaceSchema                        pulumi.StringPtrInput                                        `pulumi:"workspaceSchema"`
-	WsCertificate                          pulumi.StringPtrInput                                        `pulumi:"wsCertificate"`
+type ConnectorConfigArgs struct {
+	AbsConnectionMethod                    pulumi.StringPtrInput                                `pulumi:"absConnectionMethod"`
+	AbsConnectionString                    pulumi.StringPtrInput                                `pulumi:"absConnectionString"`
+	AbsContainerAddress                    pulumi.StringPtrInput                                `pulumi:"absContainerAddress"`
+	AbsContainerName                       pulumi.StringPtrInput                                `pulumi:"absContainerName"`
+	AbsHostIp                              pulumi.StringPtrInput                                `pulumi:"absHostIp"`
+	AbsHostUser                            pulumi.StringPtrInput                                `pulumi:"absHostUser"`
+	AbsPrefix                              pulumi.StringPtrInput                                `pulumi:"absPrefix"`
+	AbsPublicKey                           pulumi.StringPtrInput                                `pulumi:"absPublicKey"`
+	AccessKey                              pulumi.StringPtrInput                                `pulumi:"accessKey"`
+	AccessKeyId                            pulumi.StringPtrInput                                `pulumi:"accessKeyId"`
+	AccessKeySecret                        pulumi.StringPtrInput                                `pulumi:"accessKeySecret"`
+	AccessToken                            pulumi.StringPtrInput                                `pulumi:"accessToken"`
+	AccessType                             pulumi.StringPtrInput                                `pulumi:"accessType"`
+	Account                                pulumi.StringPtrInput                                `pulumi:"account"`
+	AccountId                              pulumi.StringPtrInput                                `pulumi:"accountId"`
+	AccountIds                             pulumi.StringArrayInput                              `pulumi:"accountIds"`
+	AccountKey                             pulumi.StringPtrInput                                `pulumi:"accountKey"`
+	AccountName                            pulumi.StringPtrInput                                `pulumi:"accountName"`
+	AccountSyncMode                        pulumi.StringPtrInput                                `pulumi:"accountSyncMode"`
+	Accounts                               pulumi.StringArrayInput                              `pulumi:"accounts"`
+	AccountsRedditAds                      ConnectorConfigAccountsRedditAdArrayInput            `pulumi:"accountsRedditAds"`
+	AccountsSyncMode                       pulumi.StringPtrInput                                `pulumi:"accountsSyncMode"`
+	ActionBreakdowns                       pulumi.StringArrayInput                              `pulumi:"actionBreakdowns"`
+	ActionReportTime                       pulumi.StringPtrInput                                `pulumi:"actionReportTime"`
+	AdAnalytics                            pulumi.StringPtrInput                                `pulumi:"adAnalytics"`
+	AdUnitView                             pulumi.StringPtrInput                                `pulumi:"adUnitView"`
+	AdminApiKey                            pulumi.StringPtrInput                                `pulumi:"adminApiKey"`
+	AdobeAnalyticsConfigurations           ConnectorConfigAdobeAnalyticsConfigurationArrayInput `pulumi:"adobeAnalyticsConfigurations"`
+	Advertisables                          pulumi.StringArrayInput                              `pulumi:"advertisables"`
+	Advertisers                            pulumi.StringArrayInput                              `pulumi:"advertisers"`
+	AdvertisersIds                         pulumi.StringArrayInput                              `pulumi:"advertisersIds"`
+	AdvertisersSyncMode                    pulumi.StringPtrInput                                `pulumi:"advertisersSyncMode"`
+	AgentHost                              pulumi.StringPtrInput                                `pulumi:"agentHost"`
+	AgentOraHome                           pulumi.StringPtrInput                                `pulumi:"agentOraHome"`
+	AgentPassword                          pulumi.StringPtrInput                                `pulumi:"agentPassword"`
+	AgentPort                              pulumi.StringPtrInput                                `pulumi:"agentPort"`
+	AgentPublicCert                        pulumi.StringPtrInput                                `pulumi:"agentPublicCert"`
+	AgentUser                              pulumi.StringPtrInput                                `pulumi:"agentUser"`
+	Aggregation                            pulumi.StringPtrInput                                `pulumi:"aggregation"`
+	AlwaysEncrypted                        pulumi.StringPtrInput                                `pulumi:"alwaysEncrypted"`
+	ApiAccessToken                         pulumi.StringPtrInput                                `pulumi:"apiAccessToken"`
+	ApiId                                  pulumi.StringPtrInput                                `pulumi:"apiId"`
+	ApiKey                                 pulumi.StringPtrInput                                `pulumi:"apiKey"`
+	ApiKeys                                pulumi.StringArrayInput                              `pulumi:"apiKeys"`
+	ApiQuota                               pulumi.StringPtrInput                                `pulumi:"apiQuota"`
+	ApiRequestsPerMinute                   pulumi.StringPtrInput                                `pulumi:"apiRequestsPerMinute"`
+	ApiSecret                              pulumi.StringPtrInput                                `pulumi:"apiSecret"`
+	ApiSecretKey                           pulumi.StringPtrInput                                `pulumi:"apiSecretKey"`
+	ApiToken                               pulumi.StringPtrInput                                `pulumi:"apiToken"`
+	ApiType                                pulumi.StringPtrInput                                `pulumi:"apiType"`
+	ApiUrl                                 pulumi.StringPtrInput                                `pulumi:"apiUrl"`
+	ApiUsage                               pulumi.StringPtrInput                                `pulumi:"apiUsage"`
+	ApiVersion                             pulumi.StringPtrInput                                `pulumi:"apiVersion"`
+	AppId                                  pulumi.StringPtrInput                                `pulumi:"appId"`
+	AppIds                                 pulumi.StringArrayInput                              `pulumi:"appIds"`
+	AppIdsAppsflyers                       ConnectorConfigAppIdsAppsflyerArrayInput             `pulumi:"appIdsAppsflyers"`
+	AppSpecificPassword                    pulumi.StringPtrInput                                `pulumi:"appSpecificPassword"`
+	AppSyncMode                            pulumi.StringPtrInput                                `pulumi:"appSyncMode"`
+	AppendFileOption                       pulumi.StringPtrInput                                `pulumi:"appendFileOption"`
+	ApplicationKey                         pulumi.StringPtrInput                                `pulumi:"applicationKey"`
+	Apps                                   pulumi.StringArrayInput                              `pulumi:"apps"`
+	ArchiveLogFormat                       pulumi.StringPtrInput                                `pulumi:"archiveLogFormat"`
+	ArchiveLogPath                         pulumi.StringPtrInput                                `pulumi:"archiveLogPath"`
+	ArchivePattern                         pulumi.StringPtrInput                                `pulumi:"archivePattern"`
+	AreSoapCredentialsProvided             pulumi.StringPtrInput                                `pulumi:"areSoapCredentialsProvided"`
+	AsbIp                                  pulumi.StringPtrInput                                `pulumi:"asbIp"`
+	AsmOption                              pulumi.StringPtrInput                                `pulumi:"asmOption"`
+	AsmOracleHome                          pulumi.StringPtrInput                                `pulumi:"asmOracleHome"`
+	AsmPassword                            pulumi.StringPtrInput                                `pulumi:"asmPassword"`
+	AsmTns                                 pulumi.StringPtrInput                                `pulumi:"asmTns"`
+	AsmUser                                pulumi.StringPtrInput                                `pulumi:"asmUser"`
+	AttributionWindow                      pulumi.StringPtrInput                                `pulumi:"attributionWindow"`
+	AttributionWindowSize                  pulumi.StringPtrInput                                `pulumi:"attributionWindowSize"`
+	Auth                                   pulumi.StringPtrInput                                `pulumi:"auth"`
+	AuthMethod                             pulumi.StringPtrInput                                `pulumi:"authMethod"`
+	AuthMode                               pulumi.StringPtrInput                                `pulumi:"authMode"`
+	AuthType                               pulumi.StringPtrInput                                `pulumi:"authType"`
+	AuthorizationMethod                    pulumi.StringPtrInput                                `pulumi:"authorizationMethod"`
+	AwsRegionCode                          pulumi.StringPtrInput                                `pulumi:"awsRegionCode"`
+	BaseCurrency                           pulumi.StringPtrInput                                `pulumi:"baseCurrency"`
+	BaseDomain                             pulumi.StringPtrInput                                `pulumi:"baseDomain"`
+	BaseId                                 pulumi.StringPtrInput                                `pulumi:"baseId"`
+	BaseUrl                                pulumi.StringPtrInput                                `pulumi:"baseUrl"`
+	BearerToken                            pulumi.StringPtrInput                                `pulumi:"bearerToken"`
+	BlobSasUrl                             pulumi.StringPtrInput                                `pulumi:"blobSasUrl"`
+	Breakdowns                             pulumi.StringArrayInput                              `pulumi:"breakdowns"`
+	Bucket                                 pulumi.StringPtrInput                                `pulumi:"bucket"`
+	BucketName                             pulumi.StringPtrInput                                `pulumi:"bucketName"`
+	BucketService                          pulumi.StringPtrInput                                `pulumi:"bucketService"`
+	BusinessId                             pulumi.StringPtrInput                                `pulumi:"businessId"`
+	BusinessUnitId                         pulumi.StringPtrInput                                `pulumi:"businessUnitId"`
+	Certificate                            pulumi.StringPtrInput                                `pulumi:"certificate"`
+	ClickAttributionWindow                 pulumi.StringPtrInput                                `pulumi:"clickAttributionWindow"`
+	ClientCert                             pulumi.StringPtrInput                                `pulumi:"clientCert"`
+	ClientCertKey                          pulumi.StringPtrInput                                `pulumi:"clientCertKey"`
+	ClientId                               pulumi.StringPtrInput                                `pulumi:"clientId"`
+	ClientKey                              pulumi.StringPtrInput                                `pulumi:"clientKey"`
+	ClientName                             pulumi.StringPtrInput                                `pulumi:"clientName"`
+	ClientSecret                           pulumi.StringPtrInput                                `pulumi:"clientSecret"`
+	CloudStorageType                       pulumi.StringPtrInput                                `pulumi:"cloudStorageType"`
+	Columns                                pulumi.StringArrayInput                              `pulumi:"columns"`
+	CompanyId                              pulumi.StringPtrInput                                `pulumi:"companyId"`
+	CompanyKey                             pulumi.StringPtrInput                                `pulumi:"companyKey"`
+	Compression                            pulumi.StringPtrInput                                `pulumi:"compression"`
+	ConfigMethod                           pulumi.StringPtrInput                                `pulumi:"configMethod"`
+	ConfigRepositoryUrl                    pulumi.StringPtrInput                                `pulumi:"configRepositoryUrl"`
+	ConfigType                             pulumi.StringPtrInput                                `pulumi:"configType"`
+	ConnectingUser                         pulumi.StringPtrInput                                `pulumi:"connectingUser"`
+	ConnectingUserEmail                    pulumi.StringPtrInput                                `pulumi:"connectingUserEmail"`
+	ConnectionMethod                       pulumi.StringPtrInput                                `pulumi:"connectionMethod"`
+	ConnectionString                       pulumi.StringPtrInput                                `pulumi:"connectionString"`
+	ConnectionType                         pulumi.StringPtrInput                                `pulumi:"connectionType"`
+	ConsumerGroup                          pulumi.StringPtrInput                                `pulumi:"consumerGroup"`
+	ConsumerKey                            pulumi.StringPtrInput                                `pulumi:"consumerKey"`
+	ConsumerSecret                         pulumi.StringPtrInput                                `pulumi:"consumerSecret"`
+	ContainerAddress                       pulumi.StringPtrInput                                `pulumi:"containerAddress"`
+	ContainerName                          pulumi.StringPtrInput                                `pulumi:"containerName"`
+	ContentOwnerId                         pulumi.StringPtrInput                                `pulumi:"contentOwnerId"`
+	ConversationWebhookUrl                 pulumi.StringPtrInput                                `pulumi:"conversationWebhookUrl"`
+	ConversionDimensions                   pulumi.StringArrayInput                              `pulumi:"conversionDimensions"`
+	ConversionReportTime                   pulumi.StringPtrInput                                `pulumi:"conversionReportTime"`
+	ConversionWindowSize                   pulumi.StringPtrInput                                `pulumi:"conversionWindowSize"`
+	CsvDefinition                          pulumi.StringPtrInput                                `pulumi:"csvDefinition"`
+	Currency                               pulumi.StringPtrInput                                `pulumi:"currency"`
+	CustomEventSyncMode                    pulumi.StringPtrInput                                `pulumi:"customEventSyncMode"`
+	CustomEvents                           pulumi.StringArrayInput                              `pulumi:"customEvents"`
+	CustomFieldIds                         pulumi.StringArrayInput                              `pulumi:"customFieldIds"`
+	CustomFloodlightVariables              pulumi.StringArrayInput                              `pulumi:"customFloodlightVariables"`
+	CustomReports                          ConnectorConfigCustomReportArrayInput                `pulumi:"customReports"`
+	CustomTables                           ConnectorConfigCustomTableArrayInput                 `pulumi:"customTables"`
+	CustomerId                             pulumi.StringPtrInput                                `pulumi:"customerId"`
+	CustomerListId                         pulumi.StringPtrInput                                `pulumi:"customerListId"`
+	DailyApiCallLimit                      pulumi.StringPtrInput                                `pulumi:"dailyApiCallLimit"`
+	DataAccessMethod                       pulumi.StringPtrInput                                `pulumi:"dataAccessMethod"`
+	DataCenter                             pulumi.StringPtrInput                                `pulumi:"dataCenter"`
+	DataSetName                            pulumi.StringPtrInput                                `pulumi:"dataSetName"`
+	Database                               pulumi.StringPtrInput                                `pulumi:"database"`
+	DatasetId                              pulumi.StringPtrInput                                `pulumi:"datasetId"`
+	Datasource                             pulumi.StringPtrInput                                `pulumi:"datasource"`
+	DateGranularity                        pulumi.StringPtrInput                                `pulumi:"dateGranularity"`
+	Delimiter                              pulumi.StringPtrInput                                `pulumi:"delimiter"`
+	DimensionAttributes                    pulumi.StringArrayInput                              `pulumi:"dimensionAttributes"`
+	Dimensions                             pulumi.StringArrayInput                              `pulumi:"dimensions"`
+	Domain                                 pulumi.StringPtrInput                                `pulumi:"domain"`
+	DomainHostName                         pulumi.StringPtrInput                                `pulumi:"domainHostName"`
+	DomainName                             pulumi.StringPtrInput                                `pulumi:"domainName"`
+	DomainType                             pulumi.StringPtrInput                                `pulumi:"domainType"`
+	Elements                               pulumi.StringArrayInput                              `pulumi:"elements"`
+	Email                                  pulumi.StringPtrInput                                `pulumi:"email"`
+	EmptyHeader                            pulumi.StringPtrInput                                `pulumi:"emptyHeader"`
+	EnableAllDimensionCombinations         pulumi.StringPtrInput                                `pulumi:"enableAllDimensionCombinations"`
+	EnableArchiveLogOnly                   pulumi.StringPtrInput                                `pulumi:"enableArchiveLogOnly"`
+	EnableEnrichments                      pulumi.StringPtrInput                                `pulumi:"enableEnrichments"`
+	EnableExports                          pulumi.StringPtrInput                                `pulumi:"enableExports"`
+	EnableTde                              pulumi.StringPtrInput                                `pulumi:"enableTde"`
+	EncodedPublicKey                       pulumi.StringPtrInput                                `pulumi:"encodedPublicKey"`
+	EncryptionKey                          pulumi.StringPtrInput                                `pulumi:"encryptionKey"`
+	Endpoint                               pulumi.StringPtrInput                                `pulumi:"endpoint"`
+	EngagementAttributionWindow            pulumi.StringPtrInput                                `pulumi:"engagementAttributionWindow"`
+	EnrichedExport                         pulumi.StringPtrInput                                `pulumi:"enrichedExport"`
+	EntityId                               pulumi.StringPtrInput                                `pulumi:"entityId"`
+	Environment                            pulumi.StringPtrInput                                `pulumi:"environment"`
+	EscapeChar                             pulumi.StringPtrInput                                `pulumi:"escapeChar"`
+	EuRegion                               pulumi.StringPtrInput                                `pulumi:"euRegion"`
+	Events                                 pulumi.StringArrayInput                              `pulumi:"events"`
+	ExportStorageType                      pulumi.StringPtrInput                                `pulumi:"exportStorageType"`
+	ExternalId                             pulumi.StringPtrInput                                `pulumi:"externalId"`
+	Fields                                 pulumi.StringArrayInput                              `pulumi:"fields"`
+	FileType                               pulumi.StringPtrInput                                `pulumi:"fileType"`
+	Filter                                 pulumi.StringPtrInput                                `pulumi:"filter"`
+	FinanceAccountSyncMode                 pulumi.StringPtrInput                                `pulumi:"financeAccountSyncMode"`
+	FinanceAccounts                        pulumi.StringArrayInput                              `pulumi:"financeAccounts"`
+	Folder                                 pulumi.StringPtrInput                                `pulumi:"folder"`
+	FolderId                               pulumi.StringPtrInput                                `pulumi:"folderId"`
+	FolderPath                             pulumi.StringPtrInput                                `pulumi:"folderPath"`
+	ForecastId                             pulumi.StringPtrInput                                `pulumi:"forecastId"`
+	FtpHost                                pulumi.StringPtrInput                                `pulumi:"ftpHost"`
+	FtpPassword                            pulumi.StringPtrInput                                `pulumi:"ftpPassword"`
+	FtpPort                                pulumi.StringPtrInput                                `pulumi:"ftpPort"`
+	FtpUser                                pulumi.StringPtrInput                                `pulumi:"ftpUser"`
+	Function                               pulumi.StringPtrInput                                `pulumi:"function"`
+	FunctionApp                            pulumi.StringPtrInput                                `pulumi:"functionApp"`
+	FunctionKey                            pulumi.StringPtrInput                                `pulumi:"functionKey"`
+	FunctionName                           pulumi.StringPtrInput                                `pulumi:"functionName"`
+	FunctionTrigger                        pulumi.StringPtrInput                                `pulumi:"functionTrigger"`
+	GcsBucket                              pulumi.StringPtrInput                                `pulumi:"gcsBucket"`
+	GcsFolder                              pulumi.StringPtrInput                                `pulumi:"gcsFolder"`
+	GroupName                              pulumi.StringPtrInput                                `pulumi:"groupName"`
+	HasManagePermissions                   pulumi.StringPtrInput                                `pulumi:"hasManagePermissions"`
+	HomeFolder                             pulumi.StringPtrInput                                `pulumi:"homeFolder"`
+	Host                                   pulumi.StringPtrInput                                `pulumi:"host"`
+	HostIp                                 pulumi.StringPtrInput                                `pulumi:"hostIp"`
+	HostUser                               pulumi.StringPtrInput                                `pulumi:"hostUser"`
+	Hosts                                  pulumi.StringArrayInput                              `pulumi:"hosts"`
+	Identity                               pulumi.StringPtrInput                                `pulumi:"identity"`
+	Instance                               pulumi.StringPtrInput                                `pulumi:"instance"`
+	InstanceNumber                         pulumi.StringPtrInput                                `pulumi:"instanceNumber"`
+	InstanceUrl                            pulumi.StringPtrInput                                `pulumi:"instanceUrl"`
+	IntegrationKey                         pulumi.StringPtrInput                                `pulumi:"integrationKey"`
+	IsAccountLevelConnector                pulumi.StringPtrInput                                `pulumi:"isAccountLevelConnector"`
+	IsAuth2Enabled                         pulumi.StringPtrInput                                `pulumi:"isAuth2Enabled"`
+	IsCustomApiCredentials                 pulumi.StringPtrInput                                `pulumi:"isCustomApiCredentials"`
+	IsFtps                                 pulumi.StringPtrInput                                `pulumi:"isFtps"`
+	IsKeypair                              pulumi.StringPtrInput                                `pulumi:"isKeypair"`
+	IsMultiEntityFeatureEnabled            pulumi.StringPtrInput                                `pulumi:"isMultiEntityFeatureEnabled"`
+	IsNewPackage                           pulumi.StringPtrInput                                `pulumi:"isNewPackage"`
+	IsPrivateKeyEncrypted                  pulumi.StringPtrInput                                `pulumi:"isPrivateKeyEncrypted"`
+	IsPrivateLinkRequired                  pulumi.StringPtrInput                                `pulumi:"isPrivateLinkRequired"`
+	IsPublic                               pulumi.StringPtrInput                                `pulumi:"isPublic"`
+	IsSailthruConnectEnabled               pulumi.StringPtrInput                                `pulumi:"isSailthruConnectEnabled"`
+	IsSecure                               pulumi.StringPtrInput                                `pulumi:"isSecure"`
+	IsSingleTableMode                      pulumi.StringPtrInput                                `pulumi:"isSingleTableMode"`
+	IsVendor                               pulumi.StringPtrInput                                `pulumi:"isVendor"`
+	JsonDeliveryMode                       pulumi.StringPtrInput                                `pulumi:"jsonDeliveryMode"`
+	Key                                    pulumi.StringPtrInput                                `pulumi:"key"`
+	KeyPassword                            pulumi.StringPtrInput                                `pulumi:"keyPassword"`
+	KeyStoreType                           pulumi.StringPtrInput                                `pulumi:"keyStoreType"`
+	Keystore                               pulumi.StringPtrInput                                `pulumi:"keystore"`
+	KeystorePassword                       pulumi.StringPtrInput                                `pulumi:"keystorePassword"`
+	LastSyncedChangesUtc_                  pulumi.StringPtrInput                                `pulumi:"lastSyncedChangesUtc_"`
+	LatestVersion                          pulumi.StringPtrInput                                `pulumi:"latestVersion"`
+	LineSeparator                          pulumi.StringPtrInput                                `pulumi:"lineSeparator"`
+	ListStrategy                           pulumi.StringPtrInput                                `pulumi:"listStrategy"`
+	ListSyncMode                           pulumi.StringPtrInput                                `pulumi:"listSyncMode"`
+	LogJournal                             pulumi.StringPtrInput                                `pulumi:"logJournal"`
+	LogJournalSchema                       pulumi.StringPtrInput                                `pulumi:"logJournalSchema"`
+	Login                                  pulumi.StringPtrInput                                `pulumi:"login"`
+	LoginPassword                          pulumi.StringPtrInput                                `pulumi:"loginPassword"`
+	ManagerAccounts                        pulumi.StringArrayInput                              `pulumi:"managerAccounts"`
+	MerchantId                             pulumi.StringPtrInput                                `pulumi:"merchantId"`
+	MessageType                            pulumi.StringPtrInput                                `pulumi:"messageType"`
+	Metrics                                pulumi.StringArrayInput                              `pulumi:"metrics"`
+	NamedRange                             pulumi.StringPtrInput                                `pulumi:"namedRange"`
+	Namespace                              pulumi.StringPtrInput                                `pulumi:"namespace"`
+	NetworkCode                            pulumi.StringPtrInput                                `pulumi:"networkCode"`
+	NullSequence                           pulumi.StringPtrInput                                `pulumi:"nullSequence"`
+	OauthToken                             pulumi.StringPtrInput                                `pulumi:"oauthToken"`
+	OauthTokenSecret                       pulumi.StringPtrInput                                `pulumi:"oauthTokenSecret"`
+	OnError                                pulumi.StringPtrInput                                `pulumi:"onError"`
+	OnPremise                              pulumi.StringPtrInput                                `pulumi:"onPremise"`
+	Organization                           pulumi.StringPtrInput                                `pulumi:"organization"`
+	OrganizationId                         pulumi.StringPtrInput                                `pulumi:"organizationId"`
+	Organizations                          pulumi.StringArrayInput                              `pulumi:"organizations"`
+	PackedModeTables                       pulumi.StringArrayInput                              `pulumi:"packedModeTables"`
+	PackingMode                            pulumi.StringPtrInput                                `pulumi:"packingMode"`
+	Pages                                  pulumi.StringArrayInput                              `pulumi:"pages"`
+	Partners                               pulumi.StringArrayInput                              `pulumi:"partners"`
+	Passphrase                             pulumi.StringPtrInput                                `pulumi:"passphrase"`
+	Password                               pulumi.StringPtrInput                                `pulumi:"password"`
+	Pat                                    pulumi.StringPtrInput                                `pulumi:"pat"`
+	Path                                   pulumi.StringPtrInput                                `pulumi:"path"`
+	Pattern                                pulumi.StringPtrInput                                `pulumi:"pattern"`
+	PdbName                                pulumi.StringPtrInput                                `pulumi:"pdbName"`
+	PemCertificate                         pulumi.StringPtrInput                                `pulumi:"pemCertificate"`
+	PemPrivateKey                          pulumi.StringPtrInput                                `pulumi:"pemPrivateKey"`
+	PerInteractionDimensions               pulumi.StringArrayInput                              `pulumi:"perInteractionDimensions"`
+	PersonalAccessToken                    pulumi.StringPtrInput                                `pulumi:"personalAccessToken"`
+	PgpPassPhrase                          pulumi.StringPtrInput                                `pulumi:"pgpPassPhrase"`
+	PgpSecretKey                           pulumi.StringPtrInput                                `pulumi:"pgpSecretKey"`
+	PhoneNumber                            pulumi.StringPtrInput                                `pulumi:"phoneNumber"`
+	Port                                   pulumi.StringPtrInput                                `pulumi:"port"`
+	PostClickAttributionWindowSize         pulumi.StringPtrInput                                `pulumi:"postClickAttributionWindowSize"`
+	PrebuiltReport                         pulumi.StringPtrInput                                `pulumi:"prebuiltReport"`
+	Prefix                                 pulumi.StringPtrInput                                `pulumi:"prefix"`
+	PrimaryKeys                            pulumi.StringArrayInput                              `pulumi:"primaryKeys"`
+	PrivateKey                             pulumi.StringPtrInput                                `pulumi:"privateKey"`
+	Profiles                               pulumi.StringArrayInput                              `pulumi:"profiles"`
+	ProjectCredentials                     ConnectorConfigProjectCredentialArrayInput           `pulumi:"projectCredentials"`
+	ProjectId                              pulumi.StringPtrInput                                `pulumi:"projectId"`
+	Projects                               pulumi.StringArrayInput                              `pulumi:"projects"`
+	Properties                             pulumi.StringArrayInput                              `pulumi:"properties"`
+	PublicKey                              pulumi.StringPtrInput                                `pulumi:"publicKey"`
+	PublicationName                        pulumi.StringPtrInput                                `pulumi:"publicationName"`
+	QueryId                                pulumi.StringPtrInput                                `pulumi:"queryId"`
+	QueryParamValue                        pulumi.StringPtrInput                                `pulumi:"queryParamValue"`
+	RefreshTokenExpiresAt                  pulumi.StringPtrInput                                `pulumi:"refreshTokenExpiresAt"`
+	Region                                 pulumi.StringPtrInput                                `pulumi:"region"`
+	ReplicaId                              pulumi.StringPtrInput                                `pulumi:"replicaId"`
+	ReplicationSlot                        pulumi.StringPtrInput                                `pulumi:"replicationSlot"`
+	ReportConfigurationIds                 pulumi.StringArrayInput                              `pulumi:"reportConfigurationIds"`
+	ReportFormatType                       pulumi.StringPtrInput                                `pulumi:"reportFormatType"`
+	ReportSuites                           pulumi.StringArrayInput                              `pulumi:"reportSuites"`
+	ReportTimezone                         pulumi.StringPtrInput                                `pulumi:"reportTimezone"`
+	ReportType                             pulumi.StringPtrInput                                `pulumi:"reportType"`
+	ReportUrl                              pulumi.StringPtrInput                                `pulumi:"reportUrl"`
+	Reports                                ConnectorConfigReportArrayInput                      `pulumi:"reports"`
+	ReportsLinkedinAds                     pulumi.StringArrayInput                              `pulumi:"reportsLinkedinAds"`
+	Repositories                           pulumi.StringArrayInput                              `pulumi:"repositories"`
+	ResourceToken                          pulumi.StringPtrInput                                `pulumi:"resourceToken"`
+	ResourceUrl                            pulumi.StringPtrInput                                `pulumi:"resourceUrl"`
+	RestApiLimit                           pulumi.StringPtrInput                                `pulumi:"restApiLimit"`
+	RfcLibraryPath                         pulumi.StringPtrInput                                `pulumi:"rfcLibraryPath"`
+	Role                                   pulumi.StringPtrInput                                `pulumi:"role"`
+	RoleArn                                pulumi.StringPtrInput                                `pulumi:"roleArn"`
+	RollbackWindowSize                     pulumi.StringPtrInput                                `pulumi:"rollbackWindowSize"`
+	S3Bucket                               pulumi.StringPtrInput                                `pulumi:"s3Bucket"`
+	S3ExportBucket                         pulumi.StringPtrInput                                `pulumi:"s3ExportBucket"`
+	S3ExportFolder                         pulumi.StringPtrInput                                `pulumi:"s3ExportFolder"`
+	S3ExportRoleArn                        pulumi.StringPtrInput                                `pulumi:"s3ExportRoleArn"`
+	S3RoleArn                              pulumi.StringPtrInput                                `pulumi:"s3RoleArn"`
+	S3bucket                               pulumi.StringPtrInput                                `pulumi:"s3bucket"`
+	S3externalId                           pulumi.StringPtrInput                                `pulumi:"s3externalId"`
+	S3folder                               pulumi.StringPtrInput                                `pulumi:"s3folder"`
+	S3path                                 pulumi.StringPtrInput                                `pulumi:"s3path"`
+	S3roleArn                              pulumi.StringPtrInput                                `pulumi:"s3roleArn"`
+	SalesAccountSyncMode                   pulumi.StringPtrInput                                `pulumi:"salesAccountSyncMode"`
+	SalesAccounts                          pulumi.StringArrayInput                              `pulumi:"salesAccounts"`
+	SalesforceSecurityToken                pulumi.StringPtrInput                                `pulumi:"salesforceSecurityToken"`
+	SandboxAccount                         pulumi.StringPtrInput                                `pulumi:"sandboxAccount"`
+	SapSchema                              pulumi.StringPtrInput                                `pulumi:"sapSchema"`
+	SapUser                                pulumi.StringPtrInput                                `pulumi:"sapUser"`
+	SaslMechanism                          pulumi.StringPtrInput                                `pulumi:"saslMechanism"`
+	SaslPlainKey                           pulumi.StringPtrInput                                `pulumi:"saslPlainKey"`
+	SaslPlainSecret                        pulumi.StringPtrInput                                `pulumi:"saslPlainSecret"`
+	SaslScram256Key                        pulumi.StringPtrInput                                `pulumi:"saslScram256Key"`
+	SaslScram256Secret                     pulumi.StringPtrInput                                `pulumi:"saslScram256Secret"`
+	SaslScram512Key                        pulumi.StringPtrInput                                `pulumi:"saslScram512Key"`
+	SaslScram512Secret                     pulumi.StringPtrInput                                `pulumi:"saslScram512Secret"`
+	SchemaRegistryCredentialsSource        pulumi.StringPtrInput                                `pulumi:"schemaRegistryCredentialsSource"`
+	SchemaRegistryKey                      pulumi.StringPtrInput                                `pulumi:"schemaRegistryKey"`
+	SchemaRegistrySecret                   pulumi.StringPtrInput                                `pulumi:"schemaRegistrySecret"`
+	SchemaRegistryUrls                     pulumi.StringArrayInput                              `pulumi:"schemaRegistryUrls"`
+	Secret                                 pulumi.StringPtrInput                                `pulumi:"secret"`
+	SecretKey                              pulumi.StringPtrInput                                `pulumi:"secretKey"`
+	Secrets                                pulumi.StringPtrInput                                `pulumi:"secrets"`
+	SecretsLists                           ConnectorConfigSecretsListArrayInput                 `pulumi:"secretsLists"`
+	SecurityProtocol                       pulumi.StringPtrInput                                `pulumi:"securityProtocol"`
+	Segments                               pulumi.StringArrayInput                              `pulumi:"segments"`
+	SelectedExports                        pulumi.StringArrayInput                              `pulumi:"selectedExports"`
+	SenderId                               pulumi.StringPtrInput                                `pulumi:"senderId"`
+	SenderPassword                         pulumi.StringPtrInput                                `pulumi:"senderPassword"`
+	ServerUrl                              pulumi.StringPtrInput                                `pulumi:"serverUrl"`
+	Servers                                pulumi.StringArrayInput                              `pulumi:"servers"`
+	ServiceAccount                         pulumi.StringPtrInput                                `pulumi:"serviceAccount"`
+	ServiceAccountEmail                    pulumi.StringPtrInput                                `pulumi:"serviceAccountEmail"`
+	ServiceAccountKey                      pulumi.StringPtrInput                                `pulumi:"serviceAccountKey"`
+	ServiceVersion                         pulumi.StringPtrInput                                `pulumi:"serviceVersion"`
+	SftpHost                               pulumi.StringPtrInput                                `pulumi:"sftpHost"`
+	SftpIsKeyPair                          pulumi.StringPtrInput                                `pulumi:"sftpIsKeyPair"`
+	SftpPassword                           pulumi.StringPtrInput                                `pulumi:"sftpPassword"`
+	SftpPort                               pulumi.StringPtrInput                                `pulumi:"sftpPort"`
+	SftpPublicKey                          pulumi.StringPtrInput                                `pulumi:"sftpPublicKey"`
+	SftpUser                               pulumi.StringPtrInput                                `pulumi:"sftpUser"`
+	ShareUrl                               pulumi.StringPtrInput                                `pulumi:"shareUrl"`
+	SheetId                                pulumi.StringPtrInput                                `pulumi:"sheetId"`
+	Shop                                   pulumi.StringPtrInput                                `pulumi:"shop"`
+	ShortCode                              pulumi.StringPtrInput                                `pulumi:"shortCode"`
+	ShowRecordsWithNoMetrics               pulumi.StringPtrInput                                `pulumi:"showRecordsWithNoMetrics"`
+	Sid                                    pulumi.StringPtrInput                                `pulumi:"sid"`
+	SignerPublicKey                        pulumi.StringPtrInput                                `pulumi:"signerPublicKey"`
+	SiteAddress                            pulumi.StringPtrInput                                `pulumi:"siteAddress"`
+	SiteId                                 pulumi.StringPtrInput                                `pulumi:"siteId"`
+	SiteName                               pulumi.StringPtrInput                                `pulumi:"siteName"`
+	SiteUrls                               pulumi.StringArrayInput                              `pulumi:"siteUrls"`
+	SkipAfter                              pulumi.StringPtrInput                                `pulumi:"skipAfter"`
+	SkipBefore                             pulumi.StringPtrInput                                `pulumi:"skipBefore"`
+	SoapUri                                pulumi.StringPtrInput                                `pulumi:"soapUri"`
+	SocialDataSyncTimeframe                pulumi.StringPtrInput                                `pulumi:"socialDataSyncTimeframe"`
+	Source                                 pulumi.StringPtrInput                                `pulumi:"source"`
+	StoreHash                              pulumi.StringPtrInput                                `pulumi:"storeHash"`
+	SubDomain                              pulumi.StringPtrInput                                `pulumi:"subDomain"`
+	Subdomain                              pulumi.StringPtrInput                                `pulumi:"subdomain"`
+	SubscriberName                         pulumi.StringPtrInput                                `pulumi:"subscriberName"`
+	Subscription                           pulumi.StringPtrInput                                `pulumi:"subscription"`
+	SupportConnectedAccountsSync           pulumi.StringPtrInput                                `pulumi:"supportConnectedAccountsSync"`
+	SupportNestedColumns                   pulumi.StringPtrInput                                `pulumi:"supportNestedColumns"`
+	SurveyIds                              pulumi.StringPtrInput                                `pulumi:"surveyIds"`
+	SwipeAttributionWindow                 pulumi.StringPtrInput                                `pulumi:"swipeAttributionWindow"`
+	SyncDataLocker                         pulumi.StringPtrInput                                `pulumi:"syncDataLocker"`
+	SyncFormat                             pulumi.StringPtrInput                                `pulumi:"syncFormat"`
+	SyncFormulaFields                      pulumi.StringPtrInput                                `pulumi:"syncFormulaFields"`
+	SyncMetadata                           pulumi.StringPtrInput                                `pulumi:"syncMetadata"`
+	SyncMethod                             pulumi.StringPtrInput                                `pulumi:"syncMethod"`
+	SyncMode                               pulumi.StringPtrInput                                `pulumi:"syncMode"`
+	SyncMultipleAccounts                   pulumi.StringPtrInput                                `pulumi:"syncMultipleAccounts"`
+	SyncPackMode                           pulumi.StringPtrInput                                `pulumi:"syncPackMode"`
+	SyncPullApi                            pulumi.StringPtrInput                                `pulumi:"syncPullApi"`
+	SyncType                               pulumi.StringPtrInput                                `pulumi:"syncType"`
+	TableName                              pulumi.StringPtrInput                                `pulumi:"tableName"`
+	TdeCertificate                         pulumi.StringPtrInput                                `pulumi:"tdeCertificate"`
+	TdeCertificateName                     pulumi.StringPtrInput                                `pulumi:"tdeCertificateName"`
+	TdePassword                            pulumi.StringPtrInput                                `pulumi:"tdePassword"`
+	TdePrivateKey                          pulumi.StringPtrInput                                `pulumi:"tdePrivateKey"`
+	TeamId                                 pulumi.StringPtrInput                                `pulumi:"teamId"`
+	TechnicalAccountId                     pulumi.StringPtrInput                                `pulumi:"technicalAccountId"`
+	TemplateLabels                         pulumi.StringArrayInput                              `pulumi:"templateLabels"`
+	TenantId                               pulumi.StringPtrInput                                `pulumi:"tenantId"`
+	TestTableName                          pulumi.StringPtrInput                                `pulumi:"testTableName"`
+	TimeZone                               pulumi.StringPtrInput                                `pulumi:"timeZone"`
+	TimeframeMonths                        pulumi.StringPtrInput                                `pulumi:"timeframeMonths"`
+	Tns                                    pulumi.StringPtrInput                                `pulumi:"tns"`
+	TokenAuthenticatedContainer            pulumi.StringPtrInput                                `pulumi:"tokenAuthenticatedContainer"`
+	TokenAuthenticatedDatabase             pulumi.StringPtrInput                                `pulumi:"tokenAuthenticatedDatabase"`
+	TokenId                                pulumi.StringPtrInput                                `pulumi:"tokenId"`
+	TokenKey                               pulumi.StringPtrInput                                `pulumi:"tokenKey"`
+	TokenSecret                            pulumi.StringPtrInput                                `pulumi:"tokenSecret"`
+	TokenSecretKey                         pulumi.StringPtrInput                                `pulumi:"tokenSecretKey"`
+	Topics                                 pulumi.StringArrayInput                              `pulumi:"topics"`
+	TrustStoreType                         pulumi.StringPtrInput                                `pulumi:"trustStoreType"`
+	TrustedCert                            pulumi.StringPtrInput                                `pulumi:"trustedCert"`
+	Truststore                             pulumi.StringPtrInput                                `pulumi:"truststore"`
+	TunnelHost                             pulumi.StringPtrInput                                `pulumi:"tunnelHost"`
+	TunnelPort                             pulumi.StringPtrInput                                `pulumi:"tunnelPort"`
+	TunnelUser                             pulumi.StringPtrInput                                `pulumi:"tunnelUser"`
+	UniqueId                               pulumi.StringPtrInput                                `pulumi:"uniqueId"`
+	UpdateConfigOnEachSync                 pulumi.StringPtrInput                                `pulumi:"updateConfigOnEachSync"`
+	UpdateMethod                           pulumi.StringPtrInput                                `pulumi:"updateMethod"`
+	Uri                                    pulumi.StringPtrInput                                `pulumi:"uri"`
+	UseApiKeys                             pulumi.StringPtrInput                                `pulumi:"useApiKeys"`
+	UseCustomerBucket                      pulumi.StringPtrInput                                `pulumi:"useCustomerBucket"`
+	UseOracleRac                           pulumi.StringPtrInput                                `pulumi:"useOracleRac"`
+	UsePgpEncryptionOptions                pulumi.StringPtrInput                                `pulumi:"usePgpEncryptionOptions"`
+	UseServiceAccount                      pulumi.StringPtrInput                                `pulumi:"useServiceAccount"`
+	UseTemplateLabels                      pulumi.StringPtrInput                                `pulumi:"useTemplateLabels"`
+	UseWebhooks                            pulumi.StringPtrInput                                `pulumi:"useWebhooks"`
+	UseWorkspace                           pulumi.StringPtrInput                                `pulumi:"useWorkspace"`
+	User                                   pulumi.StringPtrInput                                `pulumi:"user"`
+	UserId                                 pulumi.StringPtrInput                                `pulumi:"userId"`
+	UserKey                                pulumi.StringPtrInput                                `pulumi:"userKey"`
+	UserName                               pulumi.StringPtrInput                                `pulumi:"userName"`
+	UserProfiles                           pulumi.StringArrayInput                              `pulumi:"userProfiles"`
+	Username                               pulumi.StringPtrInput                                `pulumi:"username"`
+	ViewAttributionWindow                  pulumi.StringPtrInput                                `pulumi:"viewAttributionWindow"`
+	ViewThroughAttributionWindowSize       pulumi.StringPtrInput                                `pulumi:"viewThroughAttributionWindowSize"`
+	WebhookEndpoint                        pulumi.StringPtrInput                                `pulumi:"webhookEndpoint"`
+	WebhookKey                             pulumi.StringPtrInput                                `pulumi:"webhookKey"`
+	WebhookUrl                             pulumi.StringPtrInput                                `pulumi:"webhookUrl"`
+	WordPressSiteIdOrWoocommerceDomainName pulumi.StringPtrInput                                `pulumi:"wordPressSiteIdOrWoocommerceDomainName"`
+	WorkspaceName                          pulumi.StringPtrInput                                `pulumi:"workspaceName"`
+	WorkspaceSameAsSource                  pulumi.StringPtrInput                                `pulumi:"workspaceSameAsSource"`
+	WorkspaceSchema                        pulumi.StringPtrInput                                `pulumi:"workspaceSchema"`
+	WsCertificate                          pulumi.StringPtrInput                                `pulumi:"wsCertificate"`
 }
 
-func (FivetranConnectorConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorConfig)(nil)).Elem()
+func (ConnectorConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorConfig)(nil)).Elem()
 }
 
-func (i FivetranConnectorConfigArgs) ToFivetranConnectorConfigOutput() FivetranConnectorConfigOutput {
-	return i.ToFivetranConnectorConfigOutputWithContext(context.Background())
+func (i ConnectorConfigArgs) ToConnectorConfigOutput() ConnectorConfigOutput {
+	return i.ToConnectorConfigOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorConfigArgs) ToFivetranConnectorConfigOutputWithContext(ctx context.Context) FivetranConnectorConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorConfigOutput)
+func (i ConnectorConfigArgs) ToConnectorConfigOutputWithContext(ctx context.Context) ConnectorConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigOutput)
 }
 
-func (i FivetranConnectorConfigArgs) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorConfig] {
-	return pulumix.Output[FivetranConnectorConfig]{
-		OutputState: i.ToFivetranConnectorConfigOutputWithContext(ctx).OutputState,
+func (i ConnectorConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfig] {
+	return pulumix.Output[ConnectorConfig]{
+		OutputState: i.ToConnectorConfigOutputWithContext(ctx).OutputState,
 	}
 }
 
-func (i FivetranConnectorConfigArgs) ToFivetranConnectorConfigPtrOutput() FivetranConnectorConfigPtrOutput {
-	return i.ToFivetranConnectorConfigPtrOutputWithContext(context.Background())
+func (i ConnectorConfigArgs) ToConnectorConfigPtrOutput() ConnectorConfigPtrOutput {
+	return i.ToConnectorConfigPtrOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorConfigArgs) ToFivetranConnectorConfigPtrOutputWithContext(ctx context.Context) FivetranConnectorConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorConfigOutput).ToFivetranConnectorConfigPtrOutputWithContext(ctx)
+func (i ConnectorConfigArgs) ToConnectorConfigPtrOutputWithContext(ctx context.Context) ConnectorConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigOutput).ToConnectorConfigPtrOutputWithContext(ctx)
 }
 
-// FivetranConnectorConfigPtrInput is an input type that accepts FivetranConnectorConfigArgs, FivetranConnectorConfigPtr and FivetranConnectorConfigPtrOutput values.
-// You can construct a concrete instance of `FivetranConnectorConfigPtrInput` via:
+// ConnectorConfigPtrInput is an input type that accepts ConnectorConfigArgs, ConnectorConfigPtr and ConnectorConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectorConfigPtrInput` via:
 //
-//	        FivetranConnectorConfigArgs{...}
+//	        ConnectorConfigArgs{...}
 //
 //	or:
 //
 //	        nil
-type FivetranConnectorConfigPtrInput interface {
+type ConnectorConfigPtrInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorConfigPtrOutput() FivetranConnectorConfigPtrOutput
-	ToFivetranConnectorConfigPtrOutputWithContext(context.Context) FivetranConnectorConfigPtrOutput
+	ToConnectorConfigPtrOutput() ConnectorConfigPtrOutput
+	ToConnectorConfigPtrOutputWithContext(context.Context) ConnectorConfigPtrOutput
 }
 
-type fivetranConnectorConfigPtrType FivetranConnectorConfigArgs
+type connectorConfigPtrType ConnectorConfigArgs
 
-func FivetranConnectorConfigPtr(v *FivetranConnectorConfigArgs) FivetranConnectorConfigPtrInput {
-	return (*fivetranConnectorConfigPtrType)(v)
+func ConnectorConfigPtr(v *ConnectorConfigArgs) ConnectorConfigPtrInput {
+	return (*connectorConfigPtrType)(v)
 }
 
-func (*fivetranConnectorConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FivetranConnectorConfig)(nil)).Elem()
+func (*connectorConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorConfig)(nil)).Elem()
 }
 
-func (i *fivetranConnectorConfigPtrType) ToFivetranConnectorConfigPtrOutput() FivetranConnectorConfigPtrOutput {
-	return i.ToFivetranConnectorConfigPtrOutputWithContext(context.Background())
+func (i *connectorConfigPtrType) ToConnectorConfigPtrOutput() ConnectorConfigPtrOutput {
+	return i.ToConnectorConfigPtrOutputWithContext(context.Background())
 }
 
-func (i *fivetranConnectorConfigPtrType) ToFivetranConnectorConfigPtrOutputWithContext(ctx context.Context) FivetranConnectorConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorConfigPtrOutput)
+func (i *connectorConfigPtrType) ToConnectorConfigPtrOutputWithContext(ctx context.Context) ConnectorConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigPtrOutput)
 }
 
-func (i *fivetranConnectorConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*FivetranConnectorConfig] {
-	return pulumix.Output[*FivetranConnectorConfig]{
-		OutputState: i.ToFivetranConnectorConfigPtrOutputWithContext(ctx).OutputState,
+func (i *connectorConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectorConfig] {
+	return pulumix.Output[*ConnectorConfig]{
+		OutputState: i.ToConnectorConfigPtrOutputWithContext(ctx).OutputState,
 	}
 }
 
-type FivetranConnectorConfigOutput struct{ *pulumi.OutputState }
+type ConnectorConfigOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorConfig)(nil)).Elem()
+func (ConnectorConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorConfig)(nil)).Elem()
 }
 
-func (o FivetranConnectorConfigOutput) ToFivetranConnectorConfigOutput() FivetranConnectorConfigOutput {
+func (o ConnectorConfigOutput) ToConnectorConfigOutput() ConnectorConfigOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigOutput) ToFivetranConnectorConfigOutputWithContext(ctx context.Context) FivetranConnectorConfigOutput {
+func (o ConnectorConfigOutput) ToConnectorConfigOutputWithContext(ctx context.Context) ConnectorConfigOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigOutput) ToFivetranConnectorConfigPtrOutput() FivetranConnectorConfigPtrOutput {
-	return o.ToFivetranConnectorConfigPtrOutputWithContext(context.Background())
+func (o ConnectorConfigOutput) ToConnectorConfigPtrOutput() ConnectorConfigPtrOutput {
+	return o.ToConnectorConfigPtrOutputWithContext(context.Background())
 }
 
-func (o FivetranConnectorConfigOutput) ToFivetranConnectorConfigPtrOutputWithContext(ctx context.Context) FivetranConnectorConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FivetranConnectorConfig) *FivetranConnectorConfig {
+func (o ConnectorConfigOutput) ToConnectorConfigPtrOutputWithContext(ctx context.Context) ConnectorConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorConfig) *ConnectorConfig {
 		return &v
-	}).(FivetranConnectorConfigPtrOutput)
+	}).(ConnectorConfigPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorConfig] {
-	return pulumix.Output[FivetranConnectorConfig]{
+func (o ConnectorConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfig] {
+	return pulumix.Output[ConnectorConfig]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorConfigOutput) AbsConnectionMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AbsConnectionMethod }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AbsConnectionMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AbsConnectionMethod }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AbsConnectionString() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AbsConnectionString }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AbsConnectionString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AbsConnectionString }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AbsContainerAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AbsContainerAddress }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AbsContainerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AbsContainerAddress }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AbsContainerName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AbsContainerName }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AbsContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AbsContainerName }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AbsHostIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AbsHostIp }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AbsHostIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AbsHostIp }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AbsHostUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AbsHostUser }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AbsHostUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AbsHostUser }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AbsPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AbsPrefix }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AbsPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AbsPrefix }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AbsPublicKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AbsPublicKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AbsPublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AbsPublicKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AccessKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AccessKeyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AccessKeyId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AccessKeyId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AccessKeySecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AccessKeySecret }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AccessKeySecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AccessKeySecret }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AccessToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AccessToken }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AccessToken }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AccessType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AccessType }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AccessType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AccessType }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Account() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Account }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Account() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Account }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AccountIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.AccountIds }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) AccountIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.AccountIds }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AccountKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AccountKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AccountKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AccountKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AccountName }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AccountName }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AccountSyncMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AccountSyncMode }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AccountSyncMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AccountSyncMode }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Accounts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.Accounts }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) Accounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.Accounts }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AccountsRedditAds() FivetranConnectorConfigAccountsRedditAdArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []FivetranConnectorConfigAccountsRedditAd { return v.AccountsRedditAds }).(FivetranConnectorConfigAccountsRedditAdArrayOutput)
+func (o ConnectorConfigOutput) AccountsRedditAds() ConnectorConfigAccountsRedditAdArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []ConnectorConfigAccountsRedditAd { return v.AccountsRedditAds }).(ConnectorConfigAccountsRedditAdArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AccountsSyncMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AccountsSyncMode }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AccountsSyncMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AccountsSyncMode }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ActionBreakdowns() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.ActionBreakdowns }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) ActionBreakdowns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.ActionBreakdowns }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ActionReportTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ActionReportTime }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ActionReportTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ActionReportTime }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AdAnalytics() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AdAnalytics }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AdAnalytics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AdAnalytics }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AdUnitView() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AdUnitView }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AdUnitView() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AdUnitView }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AdminApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AdminApiKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AdminApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AdminApiKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AdobeAnalyticsConfigurations() FivetranConnectorConfigAdobeAnalyticsConfigurationArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []FivetranConnectorConfigAdobeAnalyticsConfiguration {
+func (o ConnectorConfigOutput) AdobeAnalyticsConfigurations() ConnectorConfigAdobeAnalyticsConfigurationArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []ConnectorConfigAdobeAnalyticsConfiguration {
 		return v.AdobeAnalyticsConfigurations
-	}).(FivetranConnectorConfigAdobeAnalyticsConfigurationArrayOutput)
+	}).(ConnectorConfigAdobeAnalyticsConfigurationArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Advertisables() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.Advertisables }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) Advertisables() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.Advertisables }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Advertisers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.Advertisers }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) Advertisers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.Advertisers }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AdvertisersIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.AdvertisersIds }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) AdvertisersIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.AdvertisersIds }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AdvertisersSyncMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AdvertisersSyncMode }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AdvertisersSyncMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AdvertisersSyncMode }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AgentHost() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AgentHost }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AgentHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AgentHost }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AgentOraHome() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AgentOraHome }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AgentOraHome() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AgentOraHome }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AgentPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AgentPassword }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AgentPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AgentPassword }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AgentPort() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AgentPort }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AgentPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AgentPort }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AgentPublicCert() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AgentPublicCert }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AgentPublicCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AgentPublicCert }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AgentUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AgentUser }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AgentUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AgentUser }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Aggregation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Aggregation }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Aggregation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Aggregation }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AlwaysEncrypted() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AlwaysEncrypted }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AlwaysEncrypted() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AlwaysEncrypted }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ApiAccessToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ApiAccessToken }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ApiAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ApiAccessToken }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ApiId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ApiId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ApiId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ApiId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ApiKeys() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.ApiKeys }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) ApiKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.ApiKeys }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ApiQuota() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ApiQuota }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ApiQuota() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ApiQuota }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ApiRequestsPerMinute() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ApiRequestsPerMinute }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ApiRequestsPerMinute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ApiRequestsPerMinute }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ApiSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ApiSecret }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ApiSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ApiSecret }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ApiSecretKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ApiSecretKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ApiSecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ApiSecretKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ApiToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ApiToken }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ApiToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ApiToken }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ApiType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ApiType }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ApiType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ApiType }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ApiUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ApiUrl }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ApiUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ApiUrl }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ApiUsage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ApiUsage }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ApiUsage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ApiUsage }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ApiVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ApiVersion }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AppId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AppId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AppId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AppId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AppIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.AppIds }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) AppIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.AppIds }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AppIdsAppsflyers() FivetranConnectorConfigAppIdsAppsflyerArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []FivetranConnectorConfigAppIdsAppsflyer { return v.AppIdsAppsflyers }).(FivetranConnectorConfigAppIdsAppsflyerArrayOutput)
+func (o ConnectorConfigOutput) AppIdsAppsflyers() ConnectorConfigAppIdsAppsflyerArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []ConnectorConfigAppIdsAppsflyer { return v.AppIdsAppsflyers }).(ConnectorConfigAppIdsAppsflyerArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AppSpecificPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AppSpecificPassword }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AppSpecificPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AppSpecificPassword }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AppSyncMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AppSyncMode }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AppSyncMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AppSyncMode }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AppendFileOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AppendFileOption }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AppendFileOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AppendFileOption }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ApplicationKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ApplicationKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ApplicationKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ApplicationKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Apps() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.Apps }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) Apps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.Apps }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ArchiveLogFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ArchiveLogFormat }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ArchiveLogFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ArchiveLogFormat }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ArchiveLogPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ArchiveLogPath }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ArchiveLogPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ArchiveLogPath }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ArchivePattern() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ArchivePattern }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ArchivePattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ArchivePattern }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AreSoapCredentialsProvided() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AreSoapCredentialsProvided }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AreSoapCredentialsProvided() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AreSoapCredentialsProvided }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AsbIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AsbIp }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AsbIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AsbIp }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AsmOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AsmOption }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AsmOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AsmOption }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AsmOracleHome() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AsmOracleHome }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AsmOracleHome() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AsmOracleHome }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AsmPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AsmPassword }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AsmPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AsmPassword }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AsmTns() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AsmTns }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AsmTns() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AsmTns }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AsmUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AsmUser }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AsmUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AsmUser }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AttributionWindow() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AttributionWindow }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AttributionWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AttributionWindow }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AttributionWindowSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AttributionWindowSize }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AttributionWindowSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AttributionWindowSize }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Auth() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Auth }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Auth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Auth }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AuthMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AuthMethod }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AuthMethod }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AuthMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AuthMode }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AuthMode }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AuthType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AuthType }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AuthType }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AuthorizationMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AuthorizationMethod }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AuthorizationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AuthorizationMethod }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) AwsRegionCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.AwsRegionCode }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) AwsRegionCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.AwsRegionCode }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) BaseCurrency() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.BaseCurrency }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) BaseCurrency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.BaseCurrency }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) BaseDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.BaseDomain }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) BaseDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.BaseDomain }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) BaseId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.BaseId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) BaseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.BaseId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) BaseUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.BaseUrl }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) BaseUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.BaseUrl }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) BearerToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.BearerToken }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) BearerToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.BearerToken }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) BlobSasUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.BlobSasUrl }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) BlobSasUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.BlobSasUrl }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Breakdowns() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.Breakdowns }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) Breakdowns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.Breakdowns }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Bucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Bucket }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Bucket }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) BucketName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.BucketName }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) BucketService() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.BucketService }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) BucketService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.BucketService }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) BusinessId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.BusinessId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) BusinessId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.BusinessId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) BusinessUnitId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.BusinessUnitId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) BusinessUnitId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.BusinessUnitId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Certificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Certificate }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Certificate }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ClickAttributionWindow() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ClickAttributionWindow }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ClickAttributionWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ClickAttributionWindow }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ClientCert() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ClientCert }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ClientCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ClientCert }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ClientCertKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ClientCertKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ClientCertKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ClientCertKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ClientKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ClientName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ClientName }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ClientName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ClientName }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) CloudStorageType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.CloudStorageType }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) CloudStorageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.CloudStorageType }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Columns() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.Columns }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) Columns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.Columns }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) CompanyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.CompanyId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) CompanyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.CompanyId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) CompanyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.CompanyKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) CompanyKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.CompanyKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Compression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Compression }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Compression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Compression }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ConfigMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ConfigMethod }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ConfigMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ConfigMethod }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ConfigRepositoryUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ConfigRepositoryUrl }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ConfigRepositoryUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ConfigRepositoryUrl }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ConfigType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ConfigType }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ConfigType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ConfigType }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ConnectingUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ConnectingUser }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ConnectingUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ConnectingUser }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ConnectingUserEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ConnectingUserEmail }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ConnectingUserEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ConnectingUserEmail }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ConnectionMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ConnectionMethod }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ConnectionMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ConnectionMethod }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ConnectionString() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ConnectionString }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ConnectionString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ConnectionString }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ConnectionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ConnectionType }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ConnectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ConnectionType }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ConsumerGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ConsumerGroup }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ConsumerGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ConsumerGroup }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ConsumerKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ConsumerKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ConsumerKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ConsumerKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ConsumerSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ConsumerSecret }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ConsumerSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ConsumerSecret }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ContainerAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ContainerAddress }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ContainerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ContainerAddress }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ContainerName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ContainerName }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ContainerName }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ContentOwnerId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ContentOwnerId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ContentOwnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ContentOwnerId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ConversationWebhookUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ConversationWebhookUrl }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ConversationWebhookUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ConversationWebhookUrl }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ConversionDimensions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.ConversionDimensions }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) ConversionDimensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.ConversionDimensions }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ConversionReportTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ConversionReportTime }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ConversionReportTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ConversionReportTime }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ConversionWindowSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ConversionWindowSize }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ConversionWindowSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ConversionWindowSize }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) CsvDefinition() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.CsvDefinition }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) CsvDefinition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.CsvDefinition }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Currency() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Currency }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Currency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Currency }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) CustomEventSyncMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.CustomEventSyncMode }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) CustomEventSyncMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.CustomEventSyncMode }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) CustomEvents() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.CustomEvents }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) CustomEvents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.CustomEvents }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) CustomFieldIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.CustomFieldIds }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) CustomFieldIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.CustomFieldIds }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) CustomFloodlightVariables() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.CustomFloodlightVariables }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) CustomFloodlightVariables() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.CustomFloodlightVariables }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) CustomReports() FivetranConnectorConfigCustomReportArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []FivetranConnectorConfigCustomReport { return v.CustomReports }).(FivetranConnectorConfigCustomReportArrayOutput)
+func (o ConnectorConfigOutput) CustomReports() ConnectorConfigCustomReportArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []ConnectorConfigCustomReport { return v.CustomReports }).(ConnectorConfigCustomReportArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) CustomTables() FivetranConnectorConfigCustomTableArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []FivetranConnectorConfigCustomTable { return v.CustomTables }).(FivetranConnectorConfigCustomTableArrayOutput)
+func (o ConnectorConfigOutput) CustomTables() ConnectorConfigCustomTableArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []ConnectorConfigCustomTable { return v.CustomTables }).(ConnectorConfigCustomTableArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) CustomerId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.CustomerId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) CustomerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.CustomerId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) CustomerListId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.CustomerListId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) CustomerListId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.CustomerListId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) DailyApiCallLimit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.DailyApiCallLimit }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) DailyApiCallLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.DailyApiCallLimit }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) DataAccessMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.DataAccessMethod }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) DataAccessMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.DataAccessMethod }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) DataCenter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.DataCenter }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) DataCenter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.DataCenter }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) DataSetName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.DataSetName }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) DataSetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.DataSetName }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Database() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Database }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Database }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) DatasetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.DatasetId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.DatasetId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Datasource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Datasource }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Datasource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Datasource }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) DateGranularity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.DateGranularity }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) DateGranularity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.DateGranularity }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Delimiter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Delimiter }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Delimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Delimiter }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) DimensionAttributes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.DimensionAttributes }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) DimensionAttributes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.DimensionAttributes }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Dimensions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.Dimensions }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) Dimensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.Dimensions }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Domain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Domain }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) DomainHostName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.DomainHostName }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) DomainHostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.DomainHostName }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) DomainName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.DomainName }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.DomainName }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) DomainType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.DomainType }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) DomainType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.DomainType }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Elements() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.Elements }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) Elements() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.Elements }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Email() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Email }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Email }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) EmptyHeader() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.EmptyHeader }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) EmptyHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.EmptyHeader }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) EnableAllDimensionCombinations() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.EnableAllDimensionCombinations }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) EnableAllDimensionCombinations() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.EnableAllDimensionCombinations }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) EnableArchiveLogOnly() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.EnableArchiveLogOnly }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) EnableArchiveLogOnly() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.EnableArchiveLogOnly }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) EnableEnrichments() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.EnableEnrichments }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) EnableEnrichments() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.EnableEnrichments }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) EnableExports() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.EnableExports }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) EnableExports() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.EnableExports }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) EnableTde() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.EnableTde }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) EnableTde() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.EnableTde }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) EncodedPublicKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.EncodedPublicKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) EncodedPublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.EncodedPublicKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) EncryptionKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.EncryptionKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) EncryptionKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.EncryptionKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Endpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) EngagementAttributionWindow() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.EngagementAttributionWindow }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) EngagementAttributionWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.EngagementAttributionWindow }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) EnrichedExport() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.EnrichedExport }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) EnrichedExport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.EnrichedExport }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) EntityId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.EntityId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) EntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.EntityId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Environment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Environment }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Environment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Environment }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) EscapeChar() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.EscapeChar }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) EscapeChar() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.EscapeChar }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) EuRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.EuRegion }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) EuRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.EuRegion }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Events() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.Events }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) Events() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.Events }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ExportStorageType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ExportStorageType }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ExportStorageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ExportStorageType }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ExternalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ExternalId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ExternalId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Fields() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.Fields }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) Fields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.Fields }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) FileType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.FileType }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) FileType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.FileType }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Filter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Filter }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) FinanceAccountSyncMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.FinanceAccountSyncMode }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) FinanceAccountSyncMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.FinanceAccountSyncMode }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) FinanceAccounts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.FinanceAccounts }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) FinanceAccounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.FinanceAccounts }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Folder() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Folder }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Folder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Folder }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) FolderId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.FolderId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) FolderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.FolderId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) FolderPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.FolderPath }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) FolderPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.FolderPath }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ForecastId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ForecastId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ForecastId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ForecastId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) FtpHost() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.FtpHost }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) FtpHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.FtpHost }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) FtpPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.FtpPassword }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) FtpPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.FtpPassword }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) FtpPort() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.FtpPort }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) FtpPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.FtpPort }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) FtpUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.FtpUser }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) FtpUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.FtpUser }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Function() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Function }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Function() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Function }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) FunctionApp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.FunctionApp }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) FunctionApp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.FunctionApp }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) FunctionKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.FunctionKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) FunctionKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.FunctionKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) FunctionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.FunctionName }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) FunctionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.FunctionName }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) FunctionTrigger() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.FunctionTrigger }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) FunctionTrigger() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.FunctionTrigger }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) GcsBucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.GcsBucket }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) GcsBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.GcsBucket }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) GcsFolder() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.GcsFolder }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) GcsFolder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.GcsFolder }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) GroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.GroupName }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) GroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.GroupName }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) HasManagePermissions() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.HasManagePermissions }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) HasManagePermissions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.HasManagePermissions }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) HomeFolder() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.HomeFolder }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) HomeFolder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.HomeFolder }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Host }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) HostIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.HostIp }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) HostIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.HostIp }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) HostUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.HostUser }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) HostUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.HostUser }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Hosts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.Hosts }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) Hosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.Hosts }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Identity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Identity }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Identity }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Instance() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Instance }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Instance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Instance }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) InstanceNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.InstanceNumber }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) InstanceNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.InstanceNumber }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) InstanceUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.InstanceUrl }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) InstanceUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.InstanceUrl }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) IntegrationKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.IntegrationKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) IntegrationKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.IntegrationKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) IsAccountLevelConnector() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.IsAccountLevelConnector }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) IsAccountLevelConnector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.IsAccountLevelConnector }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) IsAuth2Enabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.IsAuth2Enabled }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) IsAuth2Enabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.IsAuth2Enabled }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) IsCustomApiCredentials() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.IsCustomApiCredentials }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) IsCustomApiCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.IsCustomApiCredentials }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) IsFtps() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.IsFtps }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) IsFtps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.IsFtps }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) IsKeypair() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.IsKeypair }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) IsKeypair() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.IsKeypair }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) IsMultiEntityFeatureEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.IsMultiEntityFeatureEnabled }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) IsMultiEntityFeatureEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.IsMultiEntityFeatureEnabled }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) IsNewPackage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.IsNewPackage }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) IsNewPackage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.IsNewPackage }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) IsPrivateKeyEncrypted() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.IsPrivateKeyEncrypted }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) IsPrivateKeyEncrypted() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.IsPrivateKeyEncrypted }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) IsPrivateLinkRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.IsPrivateLinkRequired }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) IsPrivateLinkRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.IsPrivateLinkRequired }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) IsPublic() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.IsPublic }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) IsPublic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.IsPublic }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) IsSailthruConnectEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.IsSailthruConnectEnabled }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) IsSailthruConnectEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.IsSailthruConnectEnabled }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) IsSecure() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.IsSecure }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) IsSecure() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.IsSecure }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) IsSingleTableMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.IsSingleTableMode }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) IsSingleTableMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.IsSingleTableMode }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) IsVendor() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.IsVendor }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) IsVendor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.IsVendor }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) JsonDeliveryMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.JsonDeliveryMode }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) JsonDeliveryMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.JsonDeliveryMode }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Key }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) KeyPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.KeyPassword }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) KeyPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.KeyPassword }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) KeyStoreType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.KeyStoreType }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) KeyStoreType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.KeyStoreType }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Keystore() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Keystore }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Keystore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Keystore }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) KeystorePassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.KeystorePassword }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) KeystorePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.KeystorePassword }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) LastSyncedChangesUtc_() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.LastSyncedChangesUtc_ }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) LastSyncedChangesUtc_() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.LastSyncedChangesUtc_ }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) LatestVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.LatestVersion }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) LatestVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.LatestVersion }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) LineSeparator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.LineSeparator }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) LineSeparator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.LineSeparator }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ListStrategy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ListStrategy }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ListStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ListStrategy }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ListSyncMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ListSyncMode }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ListSyncMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ListSyncMode }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) LogJournal() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.LogJournal }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) LogJournal() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.LogJournal }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) LogJournalSchema() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.LogJournalSchema }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) LogJournalSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.LogJournalSchema }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Login() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Login }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Login() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Login }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) LoginPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.LoginPassword }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) LoginPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.LoginPassword }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ManagerAccounts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.ManagerAccounts }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) ManagerAccounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.ManagerAccounts }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) MerchantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.MerchantId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) MerchantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.MerchantId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) MessageType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.MessageType }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) MessageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.MessageType }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Metrics() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.Metrics }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) Metrics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.Metrics }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) NamedRange() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.NamedRange }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) NamedRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.NamedRange }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Namespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) NetworkCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.NetworkCode }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) NetworkCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.NetworkCode }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) NullSequence() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.NullSequence }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) NullSequence() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.NullSequence }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) OauthToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.OauthToken }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) OauthToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.OauthToken }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) OauthTokenSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.OauthTokenSecret }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) OauthTokenSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.OauthTokenSecret }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) OnError() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.OnError }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) OnError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.OnError }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) OnPremise() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.OnPremise }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) OnPremise() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.OnPremise }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Organization() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Organization }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Organization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Organization }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) OrganizationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.OrganizationId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) OrganizationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.OrganizationId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Organizations() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.Organizations }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) Organizations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.Organizations }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) PackedModeTables() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.PackedModeTables }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) PackedModeTables() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.PackedModeTables }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) PackingMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.PackingMode }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) PackingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.PackingMode }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Pages() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.Pages }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) Pages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.Pages }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Partners() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.Partners }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) Partners() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.Partners }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Passphrase() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Passphrase }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Passphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Passphrase }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Password }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Pat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Pat }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Pat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Pat }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Path }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Pattern() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Pattern }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Pattern }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) PdbName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.PdbName }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) PdbName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.PdbName }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) PemCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.PemCertificate }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) PemCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.PemCertificate }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) PemPrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.PemPrivateKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) PemPrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.PemPrivateKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) PerInteractionDimensions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.PerInteractionDimensions }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) PerInteractionDimensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.PerInteractionDimensions }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) PersonalAccessToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.PersonalAccessToken }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) PersonalAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.PersonalAccessToken }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) PgpPassPhrase() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.PgpPassPhrase }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) PgpPassPhrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.PgpPassPhrase }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) PgpSecretKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.PgpSecretKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) PgpSecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.PgpSecretKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) PhoneNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.PhoneNumber }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.PhoneNumber }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Port() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Port }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) PostClickAttributionWindowSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.PostClickAttributionWindowSize }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) PostClickAttributionWindowSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.PostClickAttributionWindowSize }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) PrebuiltReport() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.PrebuiltReport }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) PrebuiltReport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.PrebuiltReport }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) PrimaryKeys() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.PrimaryKeys }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) PrimaryKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.PrimaryKeys }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) PrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Profiles() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.Profiles }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) Profiles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.Profiles }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ProjectCredentials() FivetranConnectorConfigProjectCredentialArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []FivetranConnectorConfigProjectCredential {
-		return v.ProjectCredentials
-	}).(FivetranConnectorConfigProjectCredentialArrayOutput)
+func (o ConnectorConfigOutput) ProjectCredentials() ConnectorConfigProjectCredentialArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []ConnectorConfigProjectCredential { return v.ProjectCredentials }).(ConnectorConfigProjectCredentialArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Projects() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.Projects }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) Projects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.Projects }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Properties() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.Properties }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) Properties() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.Properties }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) PublicKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) PublicationName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.PublicationName }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) PublicationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.PublicationName }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) QueryId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.QueryId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) QueryId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.QueryId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) QueryParamValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.QueryParamValue }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) QueryParamValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.QueryParamValue }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) RefreshTokenExpiresAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.RefreshTokenExpiresAt }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) RefreshTokenExpiresAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.RefreshTokenExpiresAt }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ReplicaId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ReplicaId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ReplicaId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ReplicaId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ReplicationSlot() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ReplicationSlot }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ReplicationSlot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ReplicationSlot }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ReportConfigurationIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.ReportConfigurationIds }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) ReportConfigurationIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.ReportConfigurationIds }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ReportFormatType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ReportFormatType }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ReportFormatType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ReportFormatType }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ReportSuites() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.ReportSuites }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) ReportSuites() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.ReportSuites }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ReportTimezone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ReportTimezone }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ReportTimezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ReportTimezone }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ReportType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ReportType }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ReportType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ReportType }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ReportUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ReportUrl }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ReportUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ReportUrl }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Reports() FivetranConnectorConfigReportArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []FivetranConnectorConfigReport { return v.Reports }).(FivetranConnectorConfigReportArrayOutput)
+func (o ConnectorConfigOutput) Reports() ConnectorConfigReportArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []ConnectorConfigReport { return v.Reports }).(ConnectorConfigReportArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ReportsLinkedinAds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.ReportsLinkedinAds }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) ReportsLinkedinAds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.ReportsLinkedinAds }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Repositories() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.Repositories }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) Repositories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.Repositories }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ResourceToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ResourceToken }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ResourceToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ResourceToken }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ResourceUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ResourceUrl }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ResourceUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ResourceUrl }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) RestApiLimit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.RestApiLimit }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) RestApiLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.RestApiLimit }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) RfcLibraryPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.RfcLibraryPath }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) RfcLibraryPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.RfcLibraryPath }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Role }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) RoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) RollbackWindowSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.RollbackWindowSize }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) RollbackWindowSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.RollbackWindowSize }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) S3Bucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.S3Bucket }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) S3Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.S3Bucket }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) S3ExportBucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.S3ExportBucket }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) S3ExportBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.S3ExportBucket }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) S3ExportFolder() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.S3ExportFolder }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) S3ExportFolder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.S3ExportFolder }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) S3ExportRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.S3ExportRoleArn }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) S3ExportRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.S3ExportRoleArn }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) S3RoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.S3RoleArn }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) S3RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.S3RoleArn }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) S3bucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.S3bucket }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) S3bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.S3bucket }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) S3externalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.S3externalId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) S3externalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.S3externalId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) S3folder() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.S3folder }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) S3folder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.S3folder }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) S3path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.S3path }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) S3path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.S3path }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) S3roleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.S3roleArn }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) S3roleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.S3roleArn }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SalesAccountSyncMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SalesAccountSyncMode }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SalesAccountSyncMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SalesAccountSyncMode }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SalesAccounts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.SalesAccounts }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) SalesAccounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.SalesAccounts }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SalesforceSecurityToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SalesforceSecurityToken }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SalesforceSecurityToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SalesforceSecurityToken }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SandboxAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SandboxAccount }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SandboxAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SandboxAccount }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SapSchema() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SapSchema }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SapSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SapSchema }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SapUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SapUser }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SapUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SapUser }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SaslMechanism() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SaslMechanism }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SaslMechanism() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SaslMechanism }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SaslPlainKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SaslPlainKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SaslPlainKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SaslPlainKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SaslPlainSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SaslPlainSecret }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SaslPlainSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SaslPlainSecret }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SaslScram256Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SaslScram256Key }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SaslScram256Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SaslScram256Key }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SaslScram256Secret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SaslScram256Secret }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SaslScram256Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SaslScram256Secret }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SaslScram512Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SaslScram512Key }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SaslScram512Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SaslScram512Key }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SaslScram512Secret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SaslScram512Secret }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SaslScram512Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SaslScram512Secret }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SchemaRegistryCredentialsSource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SchemaRegistryCredentialsSource }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SchemaRegistryCredentialsSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SchemaRegistryCredentialsSource }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SchemaRegistryKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SchemaRegistryKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SchemaRegistryKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SchemaRegistryKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SchemaRegistrySecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SchemaRegistrySecret }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SchemaRegistrySecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SchemaRegistrySecret }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SchemaRegistryUrls() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.SchemaRegistryUrls }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) SchemaRegistryUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.SchemaRegistryUrls }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Secret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Secret }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Secret }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SecretKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Secrets() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Secrets }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Secrets() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Secrets }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SecretsLists() FivetranConnectorConfigSecretsListArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []FivetranConnectorConfigSecretsList { return v.SecretsLists }).(FivetranConnectorConfigSecretsListArrayOutput)
+func (o ConnectorConfigOutput) SecretsLists() ConnectorConfigSecretsListArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []ConnectorConfigSecretsList { return v.SecretsLists }).(ConnectorConfigSecretsListArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SecurityProtocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SecurityProtocol }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SecurityProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SecurityProtocol }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Segments() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.Segments }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) Segments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.Segments }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SelectedExports() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.SelectedExports }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) SelectedExports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.SelectedExports }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SenderId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SenderId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SenderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SenderId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SenderPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SenderPassword }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SenderPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SenderPassword }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ServerUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ServerUrl }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ServerUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ServerUrl }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Servers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.Servers }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.Servers }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ServiceAccountKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ServiceAccountKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ServiceAccountKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ServiceAccountKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ServiceVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ServiceVersion }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ServiceVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ServiceVersion }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SftpHost() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SftpHost }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SftpHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SftpHost }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SftpIsKeyPair() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SftpIsKeyPair }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SftpIsKeyPair() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SftpIsKeyPair }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SftpPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SftpPassword }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SftpPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SftpPassword }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SftpPort() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SftpPort }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SftpPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SftpPort }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SftpPublicKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SftpPublicKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SftpPublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SftpPublicKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SftpUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SftpUser }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SftpUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SftpUser }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ShareUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ShareUrl }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ShareUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ShareUrl }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SheetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SheetId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SheetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SheetId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Shop() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Shop }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Shop() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Shop }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ShortCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ShortCode }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ShortCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ShortCode }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ShowRecordsWithNoMetrics() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ShowRecordsWithNoMetrics }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ShowRecordsWithNoMetrics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ShowRecordsWithNoMetrics }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Sid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Sid }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Sid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Sid }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SignerPublicKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SignerPublicKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SignerPublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SignerPublicKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SiteAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SiteAddress }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SiteAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SiteAddress }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SiteId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SiteId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SiteId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SiteId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SiteName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SiteName }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SiteName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SiteName }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SiteUrls() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.SiteUrls }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) SiteUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.SiteUrls }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SkipAfter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SkipAfter }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SkipAfter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SkipAfter }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SkipBefore() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SkipBefore }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SkipBefore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SkipBefore }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SoapUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SoapUri }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SoapUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SoapUri }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SocialDataSyncTimeframe() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SocialDataSyncTimeframe }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SocialDataSyncTimeframe() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SocialDataSyncTimeframe }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Source() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Source }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) StoreHash() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.StoreHash }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) StoreHash() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.StoreHash }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SubDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SubDomain }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SubDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SubDomain }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Subdomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SubscriberName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SubscriberName }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SubscriberName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SubscriberName }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Subscription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Subscription }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Subscription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Subscription }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SupportConnectedAccountsSync() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SupportConnectedAccountsSync }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SupportConnectedAccountsSync() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SupportConnectedAccountsSync }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SupportNestedColumns() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SupportNestedColumns }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SupportNestedColumns() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SupportNestedColumns }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SurveyIds() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SurveyIds }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SurveyIds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SurveyIds }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SwipeAttributionWindow() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SwipeAttributionWindow }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SwipeAttributionWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SwipeAttributionWindow }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SyncDataLocker() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SyncDataLocker }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SyncDataLocker() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SyncDataLocker }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SyncFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SyncFormat }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SyncFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SyncFormat }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SyncFormulaFields() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SyncFormulaFields }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SyncFormulaFields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SyncFormulaFields }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SyncMetadata() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SyncMetadata }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SyncMetadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SyncMetadata }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SyncMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SyncMethod }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SyncMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SyncMethod }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SyncMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SyncMode }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SyncMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SyncMode }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SyncMultipleAccounts() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SyncMultipleAccounts }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SyncMultipleAccounts() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SyncMultipleAccounts }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SyncPackMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SyncPackMode }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SyncPackMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SyncPackMode }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SyncPullApi() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SyncPullApi }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SyncPullApi() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SyncPullApi }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) SyncType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.SyncType }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) SyncType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.SyncType }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) TableName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.TableName }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) TableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.TableName }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) TdeCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.TdeCertificate }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) TdeCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.TdeCertificate }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) TdeCertificateName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.TdeCertificateName }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) TdeCertificateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.TdeCertificateName }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) TdePassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.TdePassword }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) TdePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.TdePassword }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) TdePrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.TdePrivateKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) TdePrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.TdePrivateKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) TeamId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.TeamId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) TeamId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.TeamId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) TechnicalAccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.TechnicalAccountId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) TechnicalAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.TechnicalAccountId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) TemplateLabels() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.TemplateLabels }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) TemplateLabels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.TemplateLabels }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) TestTableName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.TestTableName }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) TestTableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.TestTableName }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) TimeZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) TimeframeMonths() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.TimeframeMonths }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) TimeframeMonths() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.TimeframeMonths }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Tns() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Tns }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Tns() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Tns }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) TokenAuthenticatedContainer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.TokenAuthenticatedContainer }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) TokenAuthenticatedContainer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.TokenAuthenticatedContainer }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) TokenAuthenticatedDatabase() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.TokenAuthenticatedDatabase }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) TokenAuthenticatedDatabase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.TokenAuthenticatedDatabase }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) TokenId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.TokenId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) TokenId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.TokenId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) TokenKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.TokenKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) TokenKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.TokenKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) TokenSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.TokenSecret }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) TokenSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.TokenSecret }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) TokenSecretKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.TokenSecretKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) TokenSecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.TokenSecretKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Topics() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.Topics }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) Topics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.Topics }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) TrustStoreType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.TrustStoreType }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) TrustStoreType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.TrustStoreType }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) TrustedCert() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.TrustedCert }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) TrustedCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.TrustedCert }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Truststore() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Truststore }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Truststore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Truststore }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) TunnelHost() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.TunnelHost }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) TunnelHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.TunnelHost }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) TunnelPort() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.TunnelPort }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) TunnelPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.TunnelPort }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) TunnelUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.TunnelUser }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) TunnelUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.TunnelUser }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) UniqueId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.UniqueId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) UniqueId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.UniqueId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) UpdateConfigOnEachSync() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.UpdateConfigOnEachSync }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) UpdateConfigOnEachSync() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.UpdateConfigOnEachSync }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) UpdateMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.UpdateMethod }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) UpdateMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.UpdateMethod }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Uri }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) UseApiKeys() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.UseApiKeys }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) UseApiKeys() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.UseApiKeys }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) UseCustomerBucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.UseCustomerBucket }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) UseCustomerBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.UseCustomerBucket }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) UseOracleRac() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.UseOracleRac }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) UseOracleRac() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.UseOracleRac }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) UsePgpEncryptionOptions() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.UsePgpEncryptionOptions }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) UsePgpEncryptionOptions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.UsePgpEncryptionOptions }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) UseServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.UseServiceAccount }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) UseServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.UseServiceAccount }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) UseTemplateLabels() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.UseTemplateLabels }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) UseTemplateLabels() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.UseTemplateLabels }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) UseWebhooks() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.UseWebhooks }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) UseWebhooks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.UseWebhooks }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) UseWorkspace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.UseWorkspace }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) UseWorkspace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.UseWorkspace }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) User() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.User }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.User }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) UserId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.UserId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) UserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.UserId }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) UserKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.UserKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) UserKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.UserKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) UserName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.UserName }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) UserProfiles() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) []string { return v.UserProfiles }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigOutput) UserProfiles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfig) []string { return v.UserProfiles }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.Username }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ViewAttributionWindow() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ViewAttributionWindow }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ViewAttributionWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ViewAttributionWindow }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) ViewThroughAttributionWindowSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.ViewThroughAttributionWindowSize }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) ViewThroughAttributionWindowSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.ViewThroughAttributionWindowSize }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) WebhookEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.WebhookEndpoint }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) WebhookEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.WebhookEndpoint }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) WebhookKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.WebhookKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) WebhookKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.WebhookKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) WebhookUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.WebhookUrl }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) WebhookUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.WebhookUrl }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) WordPressSiteIdOrWoocommerceDomainName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.WordPressSiteIdOrWoocommerceDomainName }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) WordPressSiteIdOrWoocommerceDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.WordPressSiteIdOrWoocommerceDomainName }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) WorkspaceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.WorkspaceName }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) WorkspaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.WorkspaceName }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) WorkspaceSameAsSource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.WorkspaceSameAsSource }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) WorkspaceSameAsSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.WorkspaceSameAsSource }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) WorkspaceSchema() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.WorkspaceSchema }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) WorkspaceSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.WorkspaceSchema }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigOutput) WsCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfig) *string { return v.WsCertificate }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigOutput) WsCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfig) *string { return v.WsCertificate }).(pulumi.StringPtrOutput)
 }
 
-type FivetranConnectorConfigPtrOutput struct{ *pulumi.OutputState }
+type ConnectorConfigPtrOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FivetranConnectorConfig)(nil)).Elem()
+func (ConnectorConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorConfig)(nil)).Elem()
 }
 
-func (o FivetranConnectorConfigPtrOutput) ToFivetranConnectorConfigPtrOutput() FivetranConnectorConfigPtrOutput {
+func (o ConnectorConfigPtrOutput) ToConnectorConfigPtrOutput() ConnectorConfigPtrOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigPtrOutput) ToFivetranConnectorConfigPtrOutputWithContext(ctx context.Context) FivetranConnectorConfigPtrOutput {
+func (o ConnectorConfigPtrOutput) ToConnectorConfigPtrOutputWithContext(ctx context.Context) ConnectorConfigPtrOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FivetranConnectorConfig] {
-	return pulumix.Output[*FivetranConnectorConfig]{
+func (o ConnectorConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectorConfig] {
+	return pulumix.Output[*ConnectorConfig]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorConfigPtrOutput) Elem() FivetranConnectorConfigOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) FivetranConnectorConfig {
+func (o ConnectorConfigPtrOutput) Elem() ConnectorConfigOutput {
+	return o.ApplyT(func(v *ConnectorConfig) ConnectorConfig {
 		if v != nil {
 			return *v
 		}
-		var ret FivetranConnectorConfig
+		var ret ConnectorConfig
 		return ret
-	}).(FivetranConnectorConfigOutput)
+	}).(ConnectorConfigOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AbsConnectionMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AbsConnectionMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3165,8 +3163,8 @@ func (o FivetranConnectorConfigPtrOutput) AbsConnectionMethod() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AbsConnectionString() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AbsConnectionString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3174,8 +3172,8 @@ func (o FivetranConnectorConfigPtrOutput) AbsConnectionString() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AbsContainerAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AbsContainerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3183,8 +3181,8 @@ func (o FivetranConnectorConfigPtrOutput) AbsContainerAddress() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AbsContainerName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AbsContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3192,8 +3190,8 @@ func (o FivetranConnectorConfigPtrOutput) AbsContainerName() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AbsHostIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AbsHostIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3201,8 +3199,8 @@ func (o FivetranConnectorConfigPtrOutput) AbsHostIp() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AbsHostUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AbsHostUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3210,8 +3208,8 @@ func (o FivetranConnectorConfigPtrOutput) AbsHostUser() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AbsPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AbsPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3219,8 +3217,8 @@ func (o FivetranConnectorConfigPtrOutput) AbsPrefix() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AbsPublicKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AbsPublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3228,8 +3226,8 @@ func (o FivetranConnectorConfigPtrOutput) AbsPublicKey() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AccessKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3237,8 +3235,8 @@ func (o FivetranConnectorConfigPtrOutput) AccessKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AccessKeyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3246,8 +3244,8 @@ func (o FivetranConnectorConfigPtrOutput) AccessKeyId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AccessKeySecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AccessKeySecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3255,8 +3253,8 @@ func (o FivetranConnectorConfigPtrOutput) AccessKeySecret() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AccessToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3264,8 +3262,8 @@ func (o FivetranConnectorConfigPtrOutput) AccessToken() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AccessType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AccessType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3273,8 +3271,8 @@ func (o FivetranConnectorConfigPtrOutput) AccessType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Account() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Account() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3282,8 +3280,8 @@ func (o FivetranConnectorConfigPtrOutput) Account() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3291,8 +3289,8 @@ func (o FivetranConnectorConfigPtrOutput) AccountId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AccountIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) AccountIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -3300,8 +3298,8 @@ func (o FivetranConnectorConfigPtrOutput) AccountIds() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AccountKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AccountKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3309,8 +3307,8 @@ func (o FivetranConnectorConfigPtrOutput) AccountKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AccountName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AccountName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3318,8 +3316,8 @@ func (o FivetranConnectorConfigPtrOutput) AccountName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AccountSyncMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AccountSyncMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3327,8 +3325,8 @@ func (o FivetranConnectorConfigPtrOutput) AccountSyncMode() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Accounts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) Accounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -3336,17 +3334,17 @@ func (o FivetranConnectorConfigPtrOutput) Accounts() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AccountsRedditAds() FivetranConnectorConfigAccountsRedditAdArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []FivetranConnectorConfigAccountsRedditAd {
+func (o ConnectorConfigPtrOutput) AccountsRedditAds() ConnectorConfigAccountsRedditAdArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []ConnectorConfigAccountsRedditAd {
 		if v == nil {
 			return nil
 		}
 		return v.AccountsRedditAds
-	}).(FivetranConnectorConfigAccountsRedditAdArrayOutput)
+	}).(ConnectorConfigAccountsRedditAdArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AccountsSyncMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AccountsSyncMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3354,8 +3352,8 @@ func (o FivetranConnectorConfigPtrOutput) AccountsSyncMode() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ActionBreakdowns() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) ActionBreakdowns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -3363,8 +3361,8 @@ func (o FivetranConnectorConfigPtrOutput) ActionBreakdowns() pulumi.StringArrayO
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ActionReportTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ActionReportTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3372,8 +3370,8 @@ func (o FivetranConnectorConfigPtrOutput) ActionReportTime() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AdAnalytics() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AdAnalytics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3381,8 +3379,8 @@ func (o FivetranConnectorConfigPtrOutput) AdAnalytics() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AdUnitView() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AdUnitView() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3390,8 +3388,8 @@ func (o FivetranConnectorConfigPtrOutput) AdUnitView() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AdminApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AdminApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3399,17 +3397,17 @@ func (o FivetranConnectorConfigPtrOutput) AdminApiKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AdobeAnalyticsConfigurations() FivetranConnectorConfigAdobeAnalyticsConfigurationArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []FivetranConnectorConfigAdobeAnalyticsConfiguration {
+func (o ConnectorConfigPtrOutput) AdobeAnalyticsConfigurations() ConnectorConfigAdobeAnalyticsConfigurationArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []ConnectorConfigAdobeAnalyticsConfiguration {
 		if v == nil {
 			return nil
 		}
 		return v.AdobeAnalyticsConfigurations
-	}).(FivetranConnectorConfigAdobeAnalyticsConfigurationArrayOutput)
+	}).(ConnectorConfigAdobeAnalyticsConfigurationArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Advertisables() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) Advertisables() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -3417,8 +3415,8 @@ func (o FivetranConnectorConfigPtrOutput) Advertisables() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Advertisers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) Advertisers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -3426,8 +3424,8 @@ func (o FivetranConnectorConfigPtrOutput) Advertisers() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AdvertisersIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) AdvertisersIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -3435,8 +3433,8 @@ func (o FivetranConnectorConfigPtrOutput) AdvertisersIds() pulumi.StringArrayOut
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AdvertisersSyncMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AdvertisersSyncMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3444,8 +3442,8 @@ func (o FivetranConnectorConfigPtrOutput) AdvertisersSyncMode() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AgentHost() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AgentHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3453,8 +3451,8 @@ func (o FivetranConnectorConfigPtrOutput) AgentHost() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AgentOraHome() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AgentOraHome() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3462,8 +3460,8 @@ func (o FivetranConnectorConfigPtrOutput) AgentOraHome() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AgentPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AgentPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3471,8 +3469,8 @@ func (o FivetranConnectorConfigPtrOutput) AgentPassword() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AgentPort() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AgentPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3480,8 +3478,8 @@ func (o FivetranConnectorConfigPtrOutput) AgentPort() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AgentPublicCert() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AgentPublicCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3489,8 +3487,8 @@ func (o FivetranConnectorConfigPtrOutput) AgentPublicCert() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AgentUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AgentUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3498,8 +3496,8 @@ func (o FivetranConnectorConfigPtrOutput) AgentUser() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Aggregation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Aggregation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3507,8 +3505,8 @@ func (o FivetranConnectorConfigPtrOutput) Aggregation() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AlwaysEncrypted() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AlwaysEncrypted() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3516,8 +3514,8 @@ func (o FivetranConnectorConfigPtrOutput) AlwaysEncrypted() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ApiAccessToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ApiAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3525,8 +3523,8 @@ func (o FivetranConnectorConfigPtrOutput) ApiAccessToken() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ApiId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ApiId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3534,8 +3532,8 @@ func (o FivetranConnectorConfigPtrOutput) ApiId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3543,8 +3541,8 @@ func (o FivetranConnectorConfigPtrOutput) ApiKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ApiKeys() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) ApiKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -3552,8 +3550,8 @@ func (o FivetranConnectorConfigPtrOutput) ApiKeys() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ApiQuota() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ApiQuota() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3561,8 +3559,8 @@ func (o FivetranConnectorConfigPtrOutput) ApiQuota() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ApiRequestsPerMinute() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ApiRequestsPerMinute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3570,8 +3568,8 @@ func (o FivetranConnectorConfigPtrOutput) ApiRequestsPerMinute() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ApiSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ApiSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3579,8 +3577,8 @@ func (o FivetranConnectorConfigPtrOutput) ApiSecret() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ApiSecretKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ApiSecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3588,8 +3586,8 @@ func (o FivetranConnectorConfigPtrOutput) ApiSecretKey() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ApiToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ApiToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3597,8 +3595,8 @@ func (o FivetranConnectorConfigPtrOutput) ApiToken() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ApiType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ApiType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3606,8 +3604,8 @@ func (o FivetranConnectorConfigPtrOutput) ApiType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ApiUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ApiUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3615,8 +3613,8 @@ func (o FivetranConnectorConfigPtrOutput) ApiUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ApiUsage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ApiUsage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3624,8 +3622,8 @@ func (o FivetranConnectorConfigPtrOutput) ApiUsage() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ApiVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ApiVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3633,8 +3631,8 @@ func (o FivetranConnectorConfigPtrOutput) ApiVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AppId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AppId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3642,8 +3640,8 @@ func (o FivetranConnectorConfigPtrOutput) AppId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AppIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) AppIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -3651,17 +3649,17 @@ func (o FivetranConnectorConfigPtrOutput) AppIds() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AppIdsAppsflyers() FivetranConnectorConfigAppIdsAppsflyerArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []FivetranConnectorConfigAppIdsAppsflyer {
+func (o ConnectorConfigPtrOutput) AppIdsAppsflyers() ConnectorConfigAppIdsAppsflyerArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []ConnectorConfigAppIdsAppsflyer {
 		if v == nil {
 			return nil
 		}
 		return v.AppIdsAppsflyers
-	}).(FivetranConnectorConfigAppIdsAppsflyerArrayOutput)
+	}).(ConnectorConfigAppIdsAppsflyerArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AppSpecificPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AppSpecificPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3669,8 +3667,8 @@ func (o FivetranConnectorConfigPtrOutput) AppSpecificPassword() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AppSyncMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AppSyncMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3678,8 +3676,8 @@ func (o FivetranConnectorConfigPtrOutput) AppSyncMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AppendFileOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AppendFileOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3687,8 +3685,8 @@ func (o FivetranConnectorConfigPtrOutput) AppendFileOption() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ApplicationKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ApplicationKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3696,8 +3694,8 @@ func (o FivetranConnectorConfigPtrOutput) ApplicationKey() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Apps() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) Apps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -3705,8 +3703,8 @@ func (o FivetranConnectorConfigPtrOutput) Apps() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ArchiveLogFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ArchiveLogFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3714,8 +3712,8 @@ func (o FivetranConnectorConfigPtrOutput) ArchiveLogFormat() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ArchiveLogPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ArchiveLogPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3723,8 +3721,8 @@ func (o FivetranConnectorConfigPtrOutput) ArchiveLogPath() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ArchivePattern() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ArchivePattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3732,8 +3730,8 @@ func (o FivetranConnectorConfigPtrOutput) ArchivePattern() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AreSoapCredentialsProvided() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AreSoapCredentialsProvided() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3741,8 +3739,8 @@ func (o FivetranConnectorConfigPtrOutput) AreSoapCredentialsProvided() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AsbIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AsbIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3750,8 +3748,8 @@ func (o FivetranConnectorConfigPtrOutput) AsbIp() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AsmOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AsmOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3759,8 +3757,8 @@ func (o FivetranConnectorConfigPtrOutput) AsmOption() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AsmOracleHome() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AsmOracleHome() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3768,8 +3766,8 @@ func (o FivetranConnectorConfigPtrOutput) AsmOracleHome() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AsmPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AsmPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3777,8 +3775,8 @@ func (o FivetranConnectorConfigPtrOutput) AsmPassword() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AsmTns() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AsmTns() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3786,8 +3784,8 @@ func (o FivetranConnectorConfigPtrOutput) AsmTns() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AsmUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AsmUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3795,8 +3793,8 @@ func (o FivetranConnectorConfigPtrOutput) AsmUser() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AttributionWindow() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AttributionWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3804,8 +3802,8 @@ func (o FivetranConnectorConfigPtrOutput) AttributionWindow() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AttributionWindowSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AttributionWindowSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3813,8 +3811,8 @@ func (o FivetranConnectorConfigPtrOutput) AttributionWindowSize() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Auth() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Auth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3822,8 +3820,8 @@ func (o FivetranConnectorConfigPtrOutput) Auth() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AuthMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3831,8 +3829,8 @@ func (o FivetranConnectorConfigPtrOutput) AuthMethod() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AuthMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3840,8 +3838,8 @@ func (o FivetranConnectorConfigPtrOutput) AuthMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AuthType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3849,8 +3847,8 @@ func (o FivetranConnectorConfigPtrOutput) AuthType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AuthorizationMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AuthorizationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3858,8 +3856,8 @@ func (o FivetranConnectorConfigPtrOutput) AuthorizationMethod() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) AwsRegionCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) AwsRegionCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3867,8 +3865,8 @@ func (o FivetranConnectorConfigPtrOutput) AwsRegionCode() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) BaseCurrency() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) BaseCurrency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3876,8 +3874,8 @@ func (o FivetranConnectorConfigPtrOutput) BaseCurrency() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) BaseDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) BaseDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3885,8 +3883,8 @@ func (o FivetranConnectorConfigPtrOutput) BaseDomain() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) BaseId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) BaseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3894,8 +3892,8 @@ func (o FivetranConnectorConfigPtrOutput) BaseId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) BaseUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) BaseUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3903,8 +3901,8 @@ func (o FivetranConnectorConfigPtrOutput) BaseUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) BearerToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) BearerToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3912,8 +3910,8 @@ func (o FivetranConnectorConfigPtrOutput) BearerToken() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) BlobSasUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) BlobSasUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3921,8 +3919,8 @@ func (o FivetranConnectorConfigPtrOutput) BlobSasUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Breakdowns() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) Breakdowns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -3930,8 +3928,8 @@ func (o FivetranConnectorConfigPtrOutput) Breakdowns() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Bucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3939,8 +3937,8 @@ func (o FivetranConnectorConfigPtrOutput) Bucket() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) BucketName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3948,8 +3946,8 @@ func (o FivetranConnectorConfigPtrOutput) BucketName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) BucketService() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) BucketService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3957,8 +3955,8 @@ func (o FivetranConnectorConfigPtrOutput) BucketService() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) BusinessId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) BusinessId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3966,8 +3964,8 @@ func (o FivetranConnectorConfigPtrOutput) BusinessId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) BusinessUnitId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) BusinessUnitId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3975,8 +3973,8 @@ func (o FivetranConnectorConfigPtrOutput) BusinessUnitId() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Certificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3984,8 +3982,8 @@ func (o FivetranConnectorConfigPtrOutput) Certificate() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ClickAttributionWindow() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ClickAttributionWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -3993,8 +3991,8 @@ func (o FivetranConnectorConfigPtrOutput) ClickAttributionWindow() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ClientCert() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ClientCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4002,8 +4000,8 @@ func (o FivetranConnectorConfigPtrOutput) ClientCert() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ClientCertKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ClientCertKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4011,8 +4009,8 @@ func (o FivetranConnectorConfigPtrOutput) ClientCertKey() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4020,8 +4018,8 @@ func (o FivetranConnectorConfigPtrOutput) ClientId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ClientKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4029,8 +4027,8 @@ func (o FivetranConnectorConfigPtrOutput) ClientKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ClientName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ClientName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4038,8 +4036,8 @@ func (o FivetranConnectorConfigPtrOutput) ClientName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4047,8 +4045,8 @@ func (o FivetranConnectorConfigPtrOutput) ClientSecret() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) CloudStorageType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) CloudStorageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4056,8 +4054,8 @@ func (o FivetranConnectorConfigPtrOutput) CloudStorageType() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Columns() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) Columns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -4065,8 +4063,8 @@ func (o FivetranConnectorConfigPtrOutput) Columns() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) CompanyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) CompanyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4074,8 +4072,8 @@ func (o FivetranConnectorConfigPtrOutput) CompanyId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) CompanyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) CompanyKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4083,8 +4081,8 @@ func (o FivetranConnectorConfigPtrOutput) CompanyKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Compression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Compression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4092,8 +4090,8 @@ func (o FivetranConnectorConfigPtrOutput) Compression() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ConfigMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ConfigMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4101,8 +4099,8 @@ func (o FivetranConnectorConfigPtrOutput) ConfigMethod() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ConfigRepositoryUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ConfigRepositoryUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4110,8 +4108,8 @@ func (o FivetranConnectorConfigPtrOutput) ConfigRepositoryUrl() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ConfigType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ConfigType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4119,8 +4117,8 @@ func (o FivetranConnectorConfigPtrOutput) ConfigType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ConnectingUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ConnectingUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4128,8 +4126,8 @@ func (o FivetranConnectorConfigPtrOutput) ConnectingUser() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ConnectingUserEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ConnectingUserEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4137,8 +4135,8 @@ func (o FivetranConnectorConfigPtrOutput) ConnectingUserEmail() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ConnectionMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ConnectionMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4146,8 +4144,8 @@ func (o FivetranConnectorConfigPtrOutput) ConnectionMethod() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ConnectionString() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ConnectionString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4155,8 +4153,8 @@ func (o FivetranConnectorConfigPtrOutput) ConnectionString() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ConnectionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ConnectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4164,8 +4162,8 @@ func (o FivetranConnectorConfigPtrOutput) ConnectionType() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ConsumerGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ConsumerGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4173,8 +4171,8 @@ func (o FivetranConnectorConfigPtrOutput) ConsumerGroup() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ConsumerKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ConsumerKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4182,8 +4180,8 @@ func (o FivetranConnectorConfigPtrOutput) ConsumerKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ConsumerSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ConsumerSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4191,8 +4189,8 @@ func (o FivetranConnectorConfigPtrOutput) ConsumerSecret() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ContainerAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ContainerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4200,8 +4198,8 @@ func (o FivetranConnectorConfigPtrOutput) ContainerAddress() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ContainerName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ContainerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4209,8 +4207,8 @@ func (o FivetranConnectorConfigPtrOutput) ContainerName() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ContentOwnerId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ContentOwnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4218,8 +4216,8 @@ func (o FivetranConnectorConfigPtrOutput) ContentOwnerId() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ConversationWebhookUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ConversationWebhookUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4227,8 +4225,8 @@ func (o FivetranConnectorConfigPtrOutput) ConversationWebhookUrl() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ConversionDimensions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) ConversionDimensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -4236,8 +4234,8 @@ func (o FivetranConnectorConfigPtrOutput) ConversionDimensions() pulumi.StringAr
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ConversionReportTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ConversionReportTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4245,8 +4243,8 @@ func (o FivetranConnectorConfigPtrOutput) ConversionReportTime() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ConversionWindowSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ConversionWindowSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4254,8 +4252,8 @@ func (o FivetranConnectorConfigPtrOutput) ConversionWindowSize() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) CsvDefinition() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) CsvDefinition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4263,8 +4261,8 @@ func (o FivetranConnectorConfigPtrOutput) CsvDefinition() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Currency() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Currency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4272,8 +4270,8 @@ func (o FivetranConnectorConfigPtrOutput) Currency() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) CustomEventSyncMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) CustomEventSyncMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4281,8 +4279,8 @@ func (o FivetranConnectorConfigPtrOutput) CustomEventSyncMode() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) CustomEvents() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) CustomEvents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -4290,8 +4288,8 @@ func (o FivetranConnectorConfigPtrOutput) CustomEvents() pulumi.StringArrayOutpu
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) CustomFieldIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) CustomFieldIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -4299,8 +4297,8 @@ func (o FivetranConnectorConfigPtrOutput) CustomFieldIds() pulumi.StringArrayOut
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) CustomFloodlightVariables() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) CustomFloodlightVariables() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -4308,26 +4306,26 @@ func (o FivetranConnectorConfigPtrOutput) CustomFloodlightVariables() pulumi.Str
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) CustomReports() FivetranConnectorConfigCustomReportArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []FivetranConnectorConfigCustomReport {
+func (o ConnectorConfigPtrOutput) CustomReports() ConnectorConfigCustomReportArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []ConnectorConfigCustomReport {
 		if v == nil {
 			return nil
 		}
 		return v.CustomReports
-	}).(FivetranConnectorConfigCustomReportArrayOutput)
+	}).(ConnectorConfigCustomReportArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) CustomTables() FivetranConnectorConfigCustomTableArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []FivetranConnectorConfigCustomTable {
+func (o ConnectorConfigPtrOutput) CustomTables() ConnectorConfigCustomTableArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []ConnectorConfigCustomTable {
 		if v == nil {
 			return nil
 		}
 		return v.CustomTables
-	}).(FivetranConnectorConfigCustomTableArrayOutput)
+	}).(ConnectorConfigCustomTableArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) CustomerId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) CustomerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4335,8 +4333,8 @@ func (o FivetranConnectorConfigPtrOutput) CustomerId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) CustomerListId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) CustomerListId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4344,8 +4342,8 @@ func (o FivetranConnectorConfigPtrOutput) CustomerListId() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) DailyApiCallLimit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) DailyApiCallLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4353,8 +4351,8 @@ func (o FivetranConnectorConfigPtrOutput) DailyApiCallLimit() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) DataAccessMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) DataAccessMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4362,8 +4360,8 @@ func (o FivetranConnectorConfigPtrOutput) DataAccessMethod() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) DataCenter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) DataCenter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4371,8 +4369,8 @@ func (o FivetranConnectorConfigPtrOutput) DataCenter() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) DataSetName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) DataSetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4380,8 +4378,8 @@ func (o FivetranConnectorConfigPtrOutput) DataSetName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Database() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4389,8 +4387,8 @@ func (o FivetranConnectorConfigPtrOutput) Database() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) DatasetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4398,8 +4396,8 @@ func (o FivetranConnectorConfigPtrOutput) DatasetId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Datasource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Datasource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4407,8 +4405,8 @@ func (o FivetranConnectorConfigPtrOutput) Datasource() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) DateGranularity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) DateGranularity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4416,8 +4414,8 @@ func (o FivetranConnectorConfigPtrOutput) DateGranularity() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Delimiter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Delimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4425,8 +4423,8 @@ func (o FivetranConnectorConfigPtrOutput) Delimiter() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) DimensionAttributes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) DimensionAttributes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -4434,8 +4432,8 @@ func (o FivetranConnectorConfigPtrOutput) DimensionAttributes() pulumi.StringArr
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Dimensions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) Dimensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -4443,8 +4441,8 @@ func (o FivetranConnectorConfigPtrOutput) Dimensions() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Domain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4452,8 +4450,8 @@ func (o FivetranConnectorConfigPtrOutput) Domain() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) DomainHostName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) DomainHostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4461,8 +4459,8 @@ func (o FivetranConnectorConfigPtrOutput) DomainHostName() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) DomainName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4470,8 +4468,8 @@ func (o FivetranConnectorConfigPtrOutput) DomainName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) DomainType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) DomainType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4479,8 +4477,8 @@ func (o FivetranConnectorConfigPtrOutput) DomainType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Elements() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) Elements() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -4488,8 +4486,8 @@ func (o FivetranConnectorConfigPtrOutput) Elements() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Email() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4497,8 +4495,8 @@ func (o FivetranConnectorConfigPtrOutput) Email() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) EmptyHeader() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) EmptyHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4506,8 +4504,8 @@ func (o FivetranConnectorConfigPtrOutput) EmptyHeader() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) EnableAllDimensionCombinations() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) EnableAllDimensionCombinations() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4515,8 +4513,8 @@ func (o FivetranConnectorConfigPtrOutput) EnableAllDimensionCombinations() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) EnableArchiveLogOnly() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) EnableArchiveLogOnly() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4524,8 +4522,8 @@ func (o FivetranConnectorConfigPtrOutput) EnableArchiveLogOnly() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) EnableEnrichments() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) EnableEnrichments() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4533,8 +4531,8 @@ func (o FivetranConnectorConfigPtrOutput) EnableEnrichments() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) EnableExports() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) EnableExports() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4542,8 +4540,8 @@ func (o FivetranConnectorConfigPtrOutput) EnableExports() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) EnableTde() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) EnableTde() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4551,8 +4549,8 @@ func (o FivetranConnectorConfigPtrOutput) EnableTde() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) EncodedPublicKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) EncodedPublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4560,8 +4558,8 @@ func (o FivetranConnectorConfigPtrOutput) EncodedPublicKey() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) EncryptionKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) EncryptionKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4569,8 +4567,8 @@ func (o FivetranConnectorConfigPtrOutput) EncryptionKey() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Endpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4578,8 +4576,8 @@ func (o FivetranConnectorConfigPtrOutput) Endpoint() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) EngagementAttributionWindow() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) EngagementAttributionWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4587,8 +4585,8 @@ func (o FivetranConnectorConfigPtrOutput) EngagementAttributionWindow() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) EnrichedExport() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) EnrichedExport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4596,8 +4594,8 @@ func (o FivetranConnectorConfigPtrOutput) EnrichedExport() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) EntityId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) EntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4605,8 +4603,8 @@ func (o FivetranConnectorConfigPtrOutput) EntityId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Environment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Environment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4614,8 +4612,8 @@ func (o FivetranConnectorConfigPtrOutput) Environment() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) EscapeChar() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) EscapeChar() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4623,8 +4621,8 @@ func (o FivetranConnectorConfigPtrOutput) EscapeChar() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) EuRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) EuRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4632,8 +4630,8 @@ func (o FivetranConnectorConfigPtrOutput) EuRegion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Events() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) Events() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -4641,8 +4639,8 @@ func (o FivetranConnectorConfigPtrOutput) Events() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ExportStorageType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ExportStorageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4650,8 +4648,8 @@ func (o FivetranConnectorConfigPtrOutput) ExportStorageType() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ExternalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4659,8 +4657,8 @@ func (o FivetranConnectorConfigPtrOutput) ExternalId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Fields() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) Fields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -4668,8 +4666,8 @@ func (o FivetranConnectorConfigPtrOutput) Fields() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) FileType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) FileType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4677,8 +4675,8 @@ func (o FivetranConnectorConfigPtrOutput) FileType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Filter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4686,8 +4684,8 @@ func (o FivetranConnectorConfigPtrOutput) Filter() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) FinanceAccountSyncMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) FinanceAccountSyncMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4695,8 +4693,8 @@ func (o FivetranConnectorConfigPtrOutput) FinanceAccountSyncMode() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) FinanceAccounts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) FinanceAccounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -4704,8 +4702,8 @@ func (o FivetranConnectorConfigPtrOutput) FinanceAccounts() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Folder() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Folder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4713,8 +4711,8 @@ func (o FivetranConnectorConfigPtrOutput) Folder() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) FolderId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) FolderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4722,8 +4720,8 @@ func (o FivetranConnectorConfigPtrOutput) FolderId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) FolderPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) FolderPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4731,8 +4729,8 @@ func (o FivetranConnectorConfigPtrOutput) FolderPath() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ForecastId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ForecastId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4740,8 +4738,8 @@ func (o FivetranConnectorConfigPtrOutput) ForecastId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) FtpHost() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) FtpHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4749,8 +4747,8 @@ func (o FivetranConnectorConfigPtrOutput) FtpHost() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) FtpPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) FtpPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4758,8 +4756,8 @@ func (o FivetranConnectorConfigPtrOutput) FtpPassword() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) FtpPort() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) FtpPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4767,8 +4765,8 @@ func (o FivetranConnectorConfigPtrOutput) FtpPort() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) FtpUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) FtpUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4776,8 +4774,8 @@ func (o FivetranConnectorConfigPtrOutput) FtpUser() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Function() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Function() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4785,8 +4783,8 @@ func (o FivetranConnectorConfigPtrOutput) Function() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) FunctionApp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) FunctionApp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4794,8 +4792,8 @@ func (o FivetranConnectorConfigPtrOutput) FunctionApp() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) FunctionKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) FunctionKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4803,8 +4801,8 @@ func (o FivetranConnectorConfigPtrOutput) FunctionKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) FunctionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) FunctionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4812,8 +4810,8 @@ func (o FivetranConnectorConfigPtrOutput) FunctionName() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) FunctionTrigger() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) FunctionTrigger() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4821,8 +4819,8 @@ func (o FivetranConnectorConfigPtrOutput) FunctionTrigger() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) GcsBucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) GcsBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4830,8 +4828,8 @@ func (o FivetranConnectorConfigPtrOutput) GcsBucket() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) GcsFolder() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) GcsFolder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4839,8 +4837,8 @@ func (o FivetranConnectorConfigPtrOutput) GcsFolder() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) GroupName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) GroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4848,8 +4846,8 @@ func (o FivetranConnectorConfigPtrOutput) GroupName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) HasManagePermissions() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) HasManagePermissions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4857,8 +4855,8 @@ func (o FivetranConnectorConfigPtrOutput) HasManagePermissions() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) HomeFolder() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) HomeFolder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4866,8 +4864,8 @@ func (o FivetranConnectorConfigPtrOutput) HomeFolder() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4875,8 +4873,8 @@ func (o FivetranConnectorConfigPtrOutput) Host() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) HostIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) HostIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4884,8 +4882,8 @@ func (o FivetranConnectorConfigPtrOutput) HostIp() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) HostUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) HostUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4893,8 +4891,8 @@ func (o FivetranConnectorConfigPtrOutput) HostUser() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Hosts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) Hosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -4902,8 +4900,8 @@ func (o FivetranConnectorConfigPtrOutput) Hosts() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Identity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4911,8 +4909,8 @@ func (o FivetranConnectorConfigPtrOutput) Identity() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Instance() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Instance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4920,8 +4918,8 @@ func (o FivetranConnectorConfigPtrOutput) Instance() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) InstanceNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) InstanceNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4929,8 +4927,8 @@ func (o FivetranConnectorConfigPtrOutput) InstanceNumber() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) InstanceUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) InstanceUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4938,8 +4936,8 @@ func (o FivetranConnectorConfigPtrOutput) InstanceUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) IntegrationKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) IntegrationKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4947,8 +4945,8 @@ func (o FivetranConnectorConfigPtrOutput) IntegrationKey() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) IsAccountLevelConnector() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) IsAccountLevelConnector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4956,8 +4954,8 @@ func (o FivetranConnectorConfigPtrOutput) IsAccountLevelConnector() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) IsAuth2Enabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) IsAuth2Enabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4965,8 +4963,8 @@ func (o FivetranConnectorConfigPtrOutput) IsAuth2Enabled() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) IsCustomApiCredentials() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) IsCustomApiCredentials() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4974,8 +4972,8 @@ func (o FivetranConnectorConfigPtrOutput) IsCustomApiCredentials() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) IsFtps() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) IsFtps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4983,8 +4981,8 @@ func (o FivetranConnectorConfigPtrOutput) IsFtps() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) IsKeypair() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) IsKeypair() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -4992,8 +4990,8 @@ func (o FivetranConnectorConfigPtrOutput) IsKeypair() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) IsMultiEntityFeatureEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) IsMultiEntityFeatureEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5001,8 +4999,8 @@ func (o FivetranConnectorConfigPtrOutput) IsMultiEntityFeatureEnabled() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) IsNewPackage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) IsNewPackage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5010,8 +5008,8 @@ func (o FivetranConnectorConfigPtrOutput) IsNewPackage() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) IsPrivateKeyEncrypted() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) IsPrivateKeyEncrypted() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5019,8 +5017,8 @@ func (o FivetranConnectorConfigPtrOutput) IsPrivateKeyEncrypted() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) IsPrivateLinkRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) IsPrivateLinkRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5028,8 +5026,8 @@ func (o FivetranConnectorConfigPtrOutput) IsPrivateLinkRequired() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) IsPublic() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) IsPublic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5037,8 +5035,8 @@ func (o FivetranConnectorConfigPtrOutput) IsPublic() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) IsSailthruConnectEnabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) IsSailthruConnectEnabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5046,8 +5044,8 @@ func (o FivetranConnectorConfigPtrOutput) IsSailthruConnectEnabled() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) IsSecure() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) IsSecure() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5055,8 +5053,8 @@ func (o FivetranConnectorConfigPtrOutput) IsSecure() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) IsSingleTableMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) IsSingleTableMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5064,8 +5062,8 @@ func (o FivetranConnectorConfigPtrOutput) IsSingleTableMode() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) IsVendor() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) IsVendor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5073,8 +5071,8 @@ func (o FivetranConnectorConfigPtrOutput) IsVendor() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) JsonDeliveryMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) JsonDeliveryMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5082,8 +5080,8 @@ func (o FivetranConnectorConfigPtrOutput) JsonDeliveryMode() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5091,8 +5089,8 @@ func (o FivetranConnectorConfigPtrOutput) Key() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) KeyPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) KeyPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5100,8 +5098,8 @@ func (o FivetranConnectorConfigPtrOutput) KeyPassword() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) KeyStoreType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) KeyStoreType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5109,8 +5107,8 @@ func (o FivetranConnectorConfigPtrOutput) KeyStoreType() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Keystore() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Keystore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5118,8 +5116,8 @@ func (o FivetranConnectorConfigPtrOutput) Keystore() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) KeystorePassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) KeystorePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5127,8 +5125,8 @@ func (o FivetranConnectorConfigPtrOutput) KeystorePassword() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) LastSyncedChangesUtc_() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) LastSyncedChangesUtc_() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5136,8 +5134,8 @@ func (o FivetranConnectorConfigPtrOutput) LastSyncedChangesUtc_() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) LatestVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) LatestVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5145,8 +5143,8 @@ func (o FivetranConnectorConfigPtrOutput) LatestVersion() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) LineSeparator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) LineSeparator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5154,8 +5152,8 @@ func (o FivetranConnectorConfigPtrOutput) LineSeparator() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ListStrategy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ListStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5163,8 +5161,8 @@ func (o FivetranConnectorConfigPtrOutput) ListStrategy() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ListSyncMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ListSyncMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5172,8 +5170,8 @@ func (o FivetranConnectorConfigPtrOutput) ListSyncMode() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) LogJournal() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) LogJournal() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5181,8 +5179,8 @@ func (o FivetranConnectorConfigPtrOutput) LogJournal() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) LogJournalSchema() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) LogJournalSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5190,8 +5188,8 @@ func (o FivetranConnectorConfigPtrOutput) LogJournalSchema() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Login() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Login() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5199,8 +5197,8 @@ func (o FivetranConnectorConfigPtrOutput) Login() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) LoginPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) LoginPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5208,8 +5206,8 @@ func (o FivetranConnectorConfigPtrOutput) LoginPassword() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ManagerAccounts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) ManagerAccounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -5217,8 +5215,8 @@ func (o FivetranConnectorConfigPtrOutput) ManagerAccounts() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) MerchantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) MerchantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5226,8 +5224,8 @@ func (o FivetranConnectorConfigPtrOutput) MerchantId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) MessageType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) MessageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5235,8 +5233,8 @@ func (o FivetranConnectorConfigPtrOutput) MessageType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Metrics() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) Metrics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -5244,8 +5242,8 @@ func (o FivetranConnectorConfigPtrOutput) Metrics() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) NamedRange() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) NamedRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5253,8 +5251,8 @@ func (o FivetranConnectorConfigPtrOutput) NamedRange() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Namespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5262,8 +5260,8 @@ func (o FivetranConnectorConfigPtrOutput) Namespace() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) NetworkCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) NetworkCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5271,8 +5269,8 @@ func (o FivetranConnectorConfigPtrOutput) NetworkCode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) NullSequence() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) NullSequence() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5280,8 +5278,8 @@ func (o FivetranConnectorConfigPtrOutput) NullSequence() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) OauthToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) OauthToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5289,8 +5287,8 @@ func (o FivetranConnectorConfigPtrOutput) OauthToken() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) OauthTokenSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) OauthTokenSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5298,8 +5296,8 @@ func (o FivetranConnectorConfigPtrOutput) OauthTokenSecret() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) OnError() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) OnError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5307,8 +5305,8 @@ func (o FivetranConnectorConfigPtrOutput) OnError() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) OnPremise() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) OnPremise() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5316,8 +5314,8 @@ func (o FivetranConnectorConfigPtrOutput) OnPremise() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Organization() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Organization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5325,8 +5323,8 @@ func (o FivetranConnectorConfigPtrOutput) Organization() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) OrganizationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) OrganizationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5334,8 +5332,8 @@ func (o FivetranConnectorConfigPtrOutput) OrganizationId() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Organizations() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) Organizations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -5343,8 +5341,8 @@ func (o FivetranConnectorConfigPtrOutput) Organizations() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) PackedModeTables() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) PackedModeTables() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -5352,8 +5350,8 @@ func (o FivetranConnectorConfigPtrOutput) PackedModeTables() pulumi.StringArrayO
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) PackingMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) PackingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5361,8 +5359,8 @@ func (o FivetranConnectorConfigPtrOutput) PackingMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Pages() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) Pages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -5370,8 +5368,8 @@ func (o FivetranConnectorConfigPtrOutput) Pages() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Partners() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) Partners() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -5379,8 +5377,8 @@ func (o FivetranConnectorConfigPtrOutput) Partners() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Passphrase() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Passphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5388,8 +5386,8 @@ func (o FivetranConnectorConfigPtrOutput) Passphrase() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5397,8 +5395,8 @@ func (o FivetranConnectorConfigPtrOutput) Password() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Pat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Pat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5406,8 +5404,8 @@ func (o FivetranConnectorConfigPtrOutput) Pat() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5415,8 +5413,8 @@ func (o FivetranConnectorConfigPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Pattern() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5424,8 +5422,8 @@ func (o FivetranConnectorConfigPtrOutput) Pattern() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) PdbName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) PdbName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5433,8 +5431,8 @@ func (o FivetranConnectorConfigPtrOutput) PdbName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) PemCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) PemCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5442,8 +5440,8 @@ func (o FivetranConnectorConfigPtrOutput) PemCertificate() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) PemPrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) PemPrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5451,8 +5449,8 @@ func (o FivetranConnectorConfigPtrOutput) PemPrivateKey() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) PerInteractionDimensions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) PerInteractionDimensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -5460,8 +5458,8 @@ func (o FivetranConnectorConfigPtrOutput) PerInteractionDimensions() pulumi.Stri
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) PersonalAccessToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) PersonalAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5469,8 +5467,8 @@ func (o FivetranConnectorConfigPtrOutput) PersonalAccessToken() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) PgpPassPhrase() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) PgpPassPhrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5478,8 +5476,8 @@ func (o FivetranConnectorConfigPtrOutput) PgpPassPhrase() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) PgpSecretKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) PgpSecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5487,8 +5485,8 @@ func (o FivetranConnectorConfigPtrOutput) PgpSecretKey() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) PhoneNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5496,8 +5494,8 @@ func (o FivetranConnectorConfigPtrOutput) PhoneNumber() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Port() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5505,8 +5503,8 @@ func (o FivetranConnectorConfigPtrOutput) Port() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) PostClickAttributionWindowSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) PostClickAttributionWindowSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5514,8 +5512,8 @@ func (o FivetranConnectorConfigPtrOutput) PostClickAttributionWindowSize() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) PrebuiltReport() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) PrebuiltReport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5523,8 +5521,8 @@ func (o FivetranConnectorConfigPtrOutput) PrebuiltReport() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5532,8 +5530,8 @@ func (o FivetranConnectorConfigPtrOutput) Prefix() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) PrimaryKeys() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) PrimaryKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -5541,8 +5539,8 @@ func (o FivetranConnectorConfigPtrOutput) PrimaryKeys() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) PrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5550,8 +5548,8 @@ func (o FivetranConnectorConfigPtrOutput) PrivateKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Profiles() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) Profiles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -5559,17 +5557,17 @@ func (o FivetranConnectorConfigPtrOutput) Profiles() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ProjectCredentials() FivetranConnectorConfigProjectCredentialArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []FivetranConnectorConfigProjectCredential {
+func (o ConnectorConfigPtrOutput) ProjectCredentials() ConnectorConfigProjectCredentialArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []ConnectorConfigProjectCredential {
 		if v == nil {
 			return nil
 		}
 		return v.ProjectCredentials
-	}).(FivetranConnectorConfigProjectCredentialArrayOutput)
+	}).(ConnectorConfigProjectCredentialArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5577,8 +5575,8 @@ func (o FivetranConnectorConfigPtrOutput) ProjectId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Projects() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) Projects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -5586,8 +5584,8 @@ func (o FivetranConnectorConfigPtrOutput) Projects() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Properties() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) Properties() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -5595,8 +5593,8 @@ func (o FivetranConnectorConfigPtrOutput) Properties() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) PublicKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5604,8 +5602,8 @@ func (o FivetranConnectorConfigPtrOutput) PublicKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) PublicationName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) PublicationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5613,8 +5611,8 @@ func (o FivetranConnectorConfigPtrOutput) PublicationName() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) QueryId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) QueryId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5622,8 +5620,8 @@ func (o FivetranConnectorConfigPtrOutput) QueryId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) QueryParamValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) QueryParamValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5631,8 +5629,8 @@ func (o FivetranConnectorConfigPtrOutput) QueryParamValue() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) RefreshTokenExpiresAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) RefreshTokenExpiresAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5640,8 +5638,8 @@ func (o FivetranConnectorConfigPtrOutput) RefreshTokenExpiresAt() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5649,8 +5647,8 @@ func (o FivetranConnectorConfigPtrOutput) Region() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ReplicaId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ReplicaId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5658,8 +5656,8 @@ func (o FivetranConnectorConfigPtrOutput) ReplicaId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ReplicationSlot() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ReplicationSlot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5667,8 +5665,8 @@ func (o FivetranConnectorConfigPtrOutput) ReplicationSlot() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ReportConfigurationIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) ReportConfigurationIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -5676,8 +5674,8 @@ func (o FivetranConnectorConfigPtrOutput) ReportConfigurationIds() pulumi.String
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ReportFormatType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ReportFormatType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5685,8 +5683,8 @@ func (o FivetranConnectorConfigPtrOutput) ReportFormatType() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ReportSuites() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) ReportSuites() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -5694,8 +5692,8 @@ func (o FivetranConnectorConfigPtrOutput) ReportSuites() pulumi.StringArrayOutpu
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ReportTimezone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ReportTimezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5703,8 +5701,8 @@ func (o FivetranConnectorConfigPtrOutput) ReportTimezone() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ReportType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ReportType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5712,8 +5710,8 @@ func (o FivetranConnectorConfigPtrOutput) ReportType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ReportUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ReportUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5721,17 +5719,17 @@ func (o FivetranConnectorConfigPtrOutput) ReportUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Reports() FivetranConnectorConfigReportArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []FivetranConnectorConfigReport {
+func (o ConnectorConfigPtrOutput) Reports() ConnectorConfigReportArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []ConnectorConfigReport {
 		if v == nil {
 			return nil
 		}
 		return v.Reports
-	}).(FivetranConnectorConfigReportArrayOutput)
+	}).(ConnectorConfigReportArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ReportsLinkedinAds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) ReportsLinkedinAds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -5739,8 +5737,8 @@ func (o FivetranConnectorConfigPtrOutput) ReportsLinkedinAds() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Repositories() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) Repositories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -5748,8 +5746,8 @@ func (o FivetranConnectorConfigPtrOutput) Repositories() pulumi.StringArrayOutpu
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ResourceToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ResourceToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5757,8 +5755,8 @@ func (o FivetranConnectorConfigPtrOutput) ResourceToken() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ResourceUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ResourceUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5766,8 +5764,8 @@ func (o FivetranConnectorConfigPtrOutput) ResourceUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) RestApiLimit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) RestApiLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5775,8 +5773,8 @@ func (o FivetranConnectorConfigPtrOutput) RestApiLimit() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) RfcLibraryPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) RfcLibraryPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5784,8 +5782,8 @@ func (o FivetranConnectorConfigPtrOutput) RfcLibraryPath() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5793,8 +5791,8 @@ func (o FivetranConnectorConfigPtrOutput) Role() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) RoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5802,8 +5800,8 @@ func (o FivetranConnectorConfigPtrOutput) RoleArn() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) RollbackWindowSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) RollbackWindowSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5811,8 +5809,8 @@ func (o FivetranConnectorConfigPtrOutput) RollbackWindowSize() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) S3Bucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) S3Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5820,8 +5818,8 @@ func (o FivetranConnectorConfigPtrOutput) S3Bucket() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) S3ExportBucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) S3ExportBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5829,8 +5827,8 @@ func (o FivetranConnectorConfigPtrOutput) S3ExportBucket() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) S3ExportFolder() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) S3ExportFolder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5838,8 +5836,8 @@ func (o FivetranConnectorConfigPtrOutput) S3ExportFolder() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) S3ExportRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) S3ExportRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5847,8 +5845,8 @@ func (o FivetranConnectorConfigPtrOutput) S3ExportRoleArn() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) S3RoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) S3RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5856,8 +5854,8 @@ func (o FivetranConnectorConfigPtrOutput) S3RoleArn() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) S3bucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) S3bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5865,8 +5863,8 @@ func (o FivetranConnectorConfigPtrOutput) S3bucket() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) S3externalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) S3externalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5874,8 +5872,8 @@ func (o FivetranConnectorConfigPtrOutput) S3externalId() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) S3folder() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) S3folder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5883,8 +5881,8 @@ func (o FivetranConnectorConfigPtrOutput) S3folder() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) S3path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) S3path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5892,8 +5890,8 @@ func (o FivetranConnectorConfigPtrOutput) S3path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) S3roleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) S3roleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5901,8 +5899,8 @@ func (o FivetranConnectorConfigPtrOutput) S3roleArn() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SalesAccountSyncMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SalesAccountSyncMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5910,8 +5908,8 @@ func (o FivetranConnectorConfigPtrOutput) SalesAccountSyncMode() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SalesAccounts() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) SalesAccounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -5919,8 +5917,8 @@ func (o FivetranConnectorConfigPtrOutput) SalesAccounts() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SalesforceSecurityToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SalesforceSecurityToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5928,8 +5926,8 @@ func (o FivetranConnectorConfigPtrOutput) SalesforceSecurityToken() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SandboxAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SandboxAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5937,8 +5935,8 @@ func (o FivetranConnectorConfigPtrOutput) SandboxAccount() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SapSchema() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SapSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5946,8 +5944,8 @@ func (o FivetranConnectorConfigPtrOutput) SapSchema() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SapUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SapUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5955,8 +5953,8 @@ func (o FivetranConnectorConfigPtrOutput) SapUser() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SaslMechanism() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SaslMechanism() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5964,8 +5962,8 @@ func (o FivetranConnectorConfigPtrOutput) SaslMechanism() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SaslPlainKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SaslPlainKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5973,8 +5971,8 @@ func (o FivetranConnectorConfigPtrOutput) SaslPlainKey() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SaslPlainSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SaslPlainSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5982,8 +5980,8 @@ func (o FivetranConnectorConfigPtrOutput) SaslPlainSecret() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SaslScram256Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SaslScram256Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -5991,8 +5989,8 @@ func (o FivetranConnectorConfigPtrOutput) SaslScram256Key() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SaslScram256Secret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SaslScram256Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6000,8 +5998,8 @@ func (o FivetranConnectorConfigPtrOutput) SaslScram256Secret() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SaslScram512Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SaslScram512Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6009,8 +6007,8 @@ func (o FivetranConnectorConfigPtrOutput) SaslScram512Key() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SaslScram512Secret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SaslScram512Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6018,8 +6016,8 @@ func (o FivetranConnectorConfigPtrOutput) SaslScram512Secret() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SchemaRegistryCredentialsSource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SchemaRegistryCredentialsSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6027,8 +6025,8 @@ func (o FivetranConnectorConfigPtrOutput) SchemaRegistryCredentialsSource() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SchemaRegistryKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SchemaRegistryKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6036,8 +6034,8 @@ func (o FivetranConnectorConfigPtrOutput) SchemaRegistryKey() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SchemaRegistrySecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SchemaRegistrySecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6045,8 +6043,8 @@ func (o FivetranConnectorConfigPtrOutput) SchemaRegistrySecret() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SchemaRegistryUrls() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) SchemaRegistryUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -6054,8 +6052,8 @@ func (o FivetranConnectorConfigPtrOutput) SchemaRegistryUrls() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Secret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6063,8 +6061,8 @@ func (o FivetranConnectorConfigPtrOutput) Secret() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SecretKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6072,8 +6070,8 @@ func (o FivetranConnectorConfigPtrOutput) SecretKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Secrets() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Secrets() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6081,17 +6079,17 @@ func (o FivetranConnectorConfigPtrOutput) Secrets() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SecretsLists() FivetranConnectorConfigSecretsListArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []FivetranConnectorConfigSecretsList {
+func (o ConnectorConfigPtrOutput) SecretsLists() ConnectorConfigSecretsListArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []ConnectorConfigSecretsList {
 		if v == nil {
 			return nil
 		}
 		return v.SecretsLists
-	}).(FivetranConnectorConfigSecretsListArrayOutput)
+	}).(ConnectorConfigSecretsListArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SecurityProtocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SecurityProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6099,8 +6097,8 @@ func (o FivetranConnectorConfigPtrOutput) SecurityProtocol() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Segments() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) Segments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -6108,8 +6106,8 @@ func (o FivetranConnectorConfigPtrOutput) Segments() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SelectedExports() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) SelectedExports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -6117,8 +6115,8 @@ func (o FivetranConnectorConfigPtrOutput) SelectedExports() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SenderId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SenderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6126,8 +6124,8 @@ func (o FivetranConnectorConfigPtrOutput) SenderId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SenderPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SenderPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6135,8 +6133,8 @@ func (o FivetranConnectorConfigPtrOutput) SenderPassword() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ServerUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ServerUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6144,8 +6142,8 @@ func (o FivetranConnectorConfigPtrOutput) ServerUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Servers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -6153,8 +6151,8 @@ func (o FivetranConnectorConfigPtrOutput) Servers() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6162,8 +6160,8 @@ func (o FivetranConnectorConfigPtrOutput) ServiceAccount() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6171,8 +6169,8 @@ func (o FivetranConnectorConfigPtrOutput) ServiceAccountEmail() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ServiceAccountKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ServiceAccountKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6180,8 +6178,8 @@ func (o FivetranConnectorConfigPtrOutput) ServiceAccountKey() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ServiceVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ServiceVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6189,8 +6187,8 @@ func (o FivetranConnectorConfigPtrOutput) ServiceVersion() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SftpHost() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SftpHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6198,8 +6196,8 @@ func (o FivetranConnectorConfigPtrOutput) SftpHost() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SftpIsKeyPair() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SftpIsKeyPair() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6207,8 +6205,8 @@ func (o FivetranConnectorConfigPtrOutput) SftpIsKeyPair() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SftpPassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SftpPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6216,8 +6214,8 @@ func (o FivetranConnectorConfigPtrOutput) SftpPassword() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SftpPort() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SftpPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6225,8 +6223,8 @@ func (o FivetranConnectorConfigPtrOutput) SftpPort() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SftpPublicKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SftpPublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6234,8 +6232,8 @@ func (o FivetranConnectorConfigPtrOutput) SftpPublicKey() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SftpUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SftpUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6243,8 +6241,8 @@ func (o FivetranConnectorConfigPtrOutput) SftpUser() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ShareUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ShareUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6252,8 +6250,8 @@ func (o FivetranConnectorConfigPtrOutput) ShareUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SheetId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SheetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6261,8 +6259,8 @@ func (o FivetranConnectorConfigPtrOutput) SheetId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Shop() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Shop() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6270,8 +6268,8 @@ func (o FivetranConnectorConfigPtrOutput) Shop() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ShortCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ShortCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6279,8 +6277,8 @@ func (o FivetranConnectorConfigPtrOutput) ShortCode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ShowRecordsWithNoMetrics() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ShowRecordsWithNoMetrics() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6288,8 +6286,8 @@ func (o FivetranConnectorConfigPtrOutput) ShowRecordsWithNoMetrics() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Sid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Sid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6297,8 +6295,8 @@ func (o FivetranConnectorConfigPtrOutput) Sid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SignerPublicKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SignerPublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6306,8 +6304,8 @@ func (o FivetranConnectorConfigPtrOutput) SignerPublicKey() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SiteAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SiteAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6315,8 +6313,8 @@ func (o FivetranConnectorConfigPtrOutput) SiteAddress() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SiteId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SiteId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6324,8 +6322,8 @@ func (o FivetranConnectorConfigPtrOutput) SiteId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SiteName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SiteName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6333,8 +6331,8 @@ func (o FivetranConnectorConfigPtrOutput) SiteName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SiteUrls() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) SiteUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -6342,8 +6340,8 @@ func (o FivetranConnectorConfigPtrOutput) SiteUrls() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SkipAfter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SkipAfter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6351,8 +6349,8 @@ func (o FivetranConnectorConfigPtrOutput) SkipAfter() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SkipBefore() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SkipBefore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6360,8 +6358,8 @@ func (o FivetranConnectorConfigPtrOutput) SkipBefore() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SoapUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SoapUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6369,8 +6367,8 @@ func (o FivetranConnectorConfigPtrOutput) SoapUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SocialDataSyncTimeframe() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SocialDataSyncTimeframe() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6378,8 +6376,8 @@ func (o FivetranConnectorConfigPtrOutput) SocialDataSyncTimeframe() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Source() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6387,8 +6385,8 @@ func (o FivetranConnectorConfigPtrOutput) Source() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) StoreHash() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) StoreHash() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6396,8 +6394,8 @@ func (o FivetranConnectorConfigPtrOutput) StoreHash() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SubDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SubDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6405,8 +6403,8 @@ func (o FivetranConnectorConfigPtrOutput) SubDomain() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Subdomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6414,8 +6412,8 @@ func (o FivetranConnectorConfigPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SubscriberName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SubscriberName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6423,8 +6421,8 @@ func (o FivetranConnectorConfigPtrOutput) SubscriberName() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Subscription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Subscription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6432,8 +6430,8 @@ func (o FivetranConnectorConfigPtrOutput) Subscription() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SupportConnectedAccountsSync() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SupportConnectedAccountsSync() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6441,8 +6439,8 @@ func (o FivetranConnectorConfigPtrOutput) SupportConnectedAccountsSync() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SupportNestedColumns() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SupportNestedColumns() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6450,8 +6448,8 @@ func (o FivetranConnectorConfigPtrOutput) SupportNestedColumns() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SurveyIds() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SurveyIds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6459,8 +6457,8 @@ func (o FivetranConnectorConfigPtrOutput) SurveyIds() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SwipeAttributionWindow() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SwipeAttributionWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6468,8 +6466,8 @@ func (o FivetranConnectorConfigPtrOutput) SwipeAttributionWindow() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SyncDataLocker() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SyncDataLocker() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6477,8 +6475,8 @@ func (o FivetranConnectorConfigPtrOutput) SyncDataLocker() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SyncFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SyncFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6486,8 +6484,8 @@ func (o FivetranConnectorConfigPtrOutput) SyncFormat() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SyncFormulaFields() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SyncFormulaFields() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6495,8 +6493,8 @@ func (o FivetranConnectorConfigPtrOutput) SyncFormulaFields() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SyncMetadata() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SyncMetadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6504,8 +6502,8 @@ func (o FivetranConnectorConfigPtrOutput) SyncMetadata() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SyncMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SyncMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6513,8 +6511,8 @@ func (o FivetranConnectorConfigPtrOutput) SyncMethod() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SyncMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SyncMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6522,8 +6520,8 @@ func (o FivetranConnectorConfigPtrOutput) SyncMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SyncMultipleAccounts() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SyncMultipleAccounts() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6531,8 +6529,8 @@ func (o FivetranConnectorConfigPtrOutput) SyncMultipleAccounts() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SyncPackMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SyncPackMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6540,8 +6538,8 @@ func (o FivetranConnectorConfigPtrOutput) SyncPackMode() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SyncPullApi() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SyncPullApi() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6549,8 +6547,8 @@ func (o FivetranConnectorConfigPtrOutput) SyncPullApi() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) SyncType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) SyncType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6558,8 +6556,8 @@ func (o FivetranConnectorConfigPtrOutput) SyncType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) TableName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) TableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6567,8 +6565,8 @@ func (o FivetranConnectorConfigPtrOutput) TableName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) TdeCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) TdeCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6576,8 +6574,8 @@ func (o FivetranConnectorConfigPtrOutput) TdeCertificate() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) TdeCertificateName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) TdeCertificateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6585,8 +6583,8 @@ func (o FivetranConnectorConfigPtrOutput) TdeCertificateName() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) TdePassword() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) TdePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6594,8 +6592,8 @@ func (o FivetranConnectorConfigPtrOutput) TdePassword() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) TdePrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) TdePrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6603,8 +6601,8 @@ func (o FivetranConnectorConfigPtrOutput) TdePrivateKey() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) TeamId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) TeamId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6612,8 +6610,8 @@ func (o FivetranConnectorConfigPtrOutput) TeamId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) TechnicalAccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) TechnicalAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6621,8 +6619,8 @@ func (o FivetranConnectorConfigPtrOutput) TechnicalAccountId() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) TemplateLabels() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) TemplateLabels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -6630,8 +6628,8 @@ func (o FivetranConnectorConfigPtrOutput) TemplateLabels() pulumi.StringArrayOut
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6639,8 +6637,8 @@ func (o FivetranConnectorConfigPtrOutput) TenantId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) TestTableName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) TestTableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6648,8 +6646,8 @@ func (o FivetranConnectorConfigPtrOutput) TestTableName() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) TimeZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6657,8 +6655,8 @@ func (o FivetranConnectorConfigPtrOutput) TimeZone() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) TimeframeMonths() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) TimeframeMonths() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6666,8 +6664,8 @@ func (o FivetranConnectorConfigPtrOutput) TimeframeMonths() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Tns() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Tns() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6675,8 +6673,8 @@ func (o FivetranConnectorConfigPtrOutput) Tns() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) TokenAuthenticatedContainer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) TokenAuthenticatedContainer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6684,8 +6682,8 @@ func (o FivetranConnectorConfigPtrOutput) TokenAuthenticatedContainer() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) TokenAuthenticatedDatabase() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) TokenAuthenticatedDatabase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6693,8 +6691,8 @@ func (o FivetranConnectorConfigPtrOutput) TokenAuthenticatedDatabase() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) TokenId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) TokenId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6702,8 +6700,8 @@ func (o FivetranConnectorConfigPtrOutput) TokenId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) TokenKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) TokenKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6711,8 +6709,8 @@ func (o FivetranConnectorConfigPtrOutput) TokenKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) TokenSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) TokenSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6720,8 +6718,8 @@ func (o FivetranConnectorConfigPtrOutput) TokenSecret() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) TokenSecretKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) TokenSecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6729,8 +6727,8 @@ func (o FivetranConnectorConfigPtrOutput) TokenSecretKey() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Topics() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) Topics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -6738,8 +6736,8 @@ func (o FivetranConnectorConfigPtrOutput) Topics() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) TrustStoreType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) TrustStoreType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6747,8 +6745,8 @@ func (o FivetranConnectorConfigPtrOutput) TrustStoreType() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) TrustedCert() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) TrustedCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6756,8 +6754,8 @@ func (o FivetranConnectorConfigPtrOutput) TrustedCert() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Truststore() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Truststore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6765,8 +6763,8 @@ func (o FivetranConnectorConfigPtrOutput) Truststore() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) TunnelHost() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) TunnelHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6774,8 +6772,8 @@ func (o FivetranConnectorConfigPtrOutput) TunnelHost() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) TunnelPort() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) TunnelPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6783,8 +6781,8 @@ func (o FivetranConnectorConfigPtrOutput) TunnelPort() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) TunnelUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) TunnelUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6792,8 +6790,8 @@ func (o FivetranConnectorConfigPtrOutput) TunnelUser() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) UniqueId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) UniqueId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6801,8 +6799,8 @@ func (o FivetranConnectorConfigPtrOutput) UniqueId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) UpdateConfigOnEachSync() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) UpdateConfigOnEachSync() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6810,8 +6808,8 @@ func (o FivetranConnectorConfigPtrOutput) UpdateConfigOnEachSync() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) UpdateMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) UpdateMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6819,8 +6817,8 @@ func (o FivetranConnectorConfigPtrOutput) UpdateMethod() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6828,8 +6826,8 @@ func (o FivetranConnectorConfigPtrOutput) Uri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) UseApiKeys() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) UseApiKeys() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6837,8 +6835,8 @@ func (o FivetranConnectorConfigPtrOutput) UseApiKeys() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) UseCustomerBucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) UseCustomerBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6846,8 +6844,8 @@ func (o FivetranConnectorConfigPtrOutput) UseCustomerBucket() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) UseOracleRac() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) UseOracleRac() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6855,8 +6853,8 @@ func (o FivetranConnectorConfigPtrOutput) UseOracleRac() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) UsePgpEncryptionOptions() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) UsePgpEncryptionOptions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6864,8 +6862,8 @@ func (o FivetranConnectorConfigPtrOutput) UsePgpEncryptionOptions() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) UseServiceAccount() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) UseServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6873,8 +6871,8 @@ func (o FivetranConnectorConfigPtrOutput) UseServiceAccount() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) UseTemplateLabels() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) UseTemplateLabels() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6882,8 +6880,8 @@ func (o FivetranConnectorConfigPtrOutput) UseTemplateLabels() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) UseWebhooks() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) UseWebhooks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6891,8 +6889,8 @@ func (o FivetranConnectorConfigPtrOutput) UseWebhooks() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) UseWorkspace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) UseWorkspace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6900,8 +6898,8 @@ func (o FivetranConnectorConfigPtrOutput) UseWorkspace() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) User() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6909,8 +6907,8 @@ func (o FivetranConnectorConfigPtrOutput) User() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) UserId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) UserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6918,8 +6916,8 @@ func (o FivetranConnectorConfigPtrOutput) UserId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) UserKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) UserKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6927,8 +6925,8 @@ func (o FivetranConnectorConfigPtrOutput) UserKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) UserName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6936,8 +6934,8 @@ func (o FivetranConnectorConfigPtrOutput) UserName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) UserProfiles() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) []string {
+func (o ConnectorConfigPtrOutput) UserProfiles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectorConfig) []string {
 		if v == nil {
 			return nil
 		}
@@ -6945,8 +6943,8 @@ func (o FivetranConnectorConfigPtrOutput) UserProfiles() pulumi.StringArrayOutpu
 	}).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6954,8 +6952,8 @@ func (o FivetranConnectorConfigPtrOutput) Username() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ViewAttributionWindow() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ViewAttributionWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6963,8 +6961,8 @@ func (o FivetranConnectorConfigPtrOutput) ViewAttributionWindow() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) ViewThroughAttributionWindowSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) ViewThroughAttributionWindowSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6972,8 +6970,8 @@ func (o FivetranConnectorConfigPtrOutput) ViewThroughAttributionWindowSize() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) WebhookEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) WebhookEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6981,8 +6979,8 @@ func (o FivetranConnectorConfigPtrOutput) WebhookEndpoint() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) WebhookKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) WebhookKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6990,8 +6988,8 @@ func (o FivetranConnectorConfigPtrOutput) WebhookKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) WebhookUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) WebhookUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -6999,8 +6997,8 @@ func (o FivetranConnectorConfigPtrOutput) WebhookUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) WordPressSiteIdOrWoocommerceDomainName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) WordPressSiteIdOrWoocommerceDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -7008,8 +7006,8 @@ func (o FivetranConnectorConfigPtrOutput) WordPressSiteIdOrWoocommerceDomainName
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) WorkspaceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) WorkspaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -7017,8 +7015,8 @@ func (o FivetranConnectorConfigPtrOutput) WorkspaceName() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) WorkspaceSameAsSource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) WorkspaceSameAsSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -7026,8 +7024,8 @@ func (o FivetranConnectorConfigPtrOutput) WorkspaceSameAsSource() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) WorkspaceSchema() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) WorkspaceSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -7035,8 +7033,8 @@ func (o FivetranConnectorConfigPtrOutput) WorkspaceSchema() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigPtrOutput) WsCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorConfig) *string {
+func (o ConnectorConfigPtrOutput) WsCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -7044,125 +7042,125 @@ func (o FivetranConnectorConfigPtrOutput) WsCertificate() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-type FivetranConnectorConfigAccountsRedditAd struct {
+type ConnectorConfigAccountsRedditAd struct {
 	Name *string `pulumi:"name"`
 }
 
-// FivetranConnectorConfigAccountsRedditAdInput is an input type that accepts FivetranConnectorConfigAccountsRedditAdArgs and FivetranConnectorConfigAccountsRedditAdOutput values.
-// You can construct a concrete instance of `FivetranConnectorConfigAccountsRedditAdInput` via:
+// ConnectorConfigAccountsRedditAdInput is an input type that accepts ConnectorConfigAccountsRedditAdArgs and ConnectorConfigAccountsRedditAdOutput values.
+// You can construct a concrete instance of `ConnectorConfigAccountsRedditAdInput` via:
 //
-//	FivetranConnectorConfigAccountsRedditAdArgs{...}
-type FivetranConnectorConfigAccountsRedditAdInput interface {
+//	ConnectorConfigAccountsRedditAdArgs{...}
+type ConnectorConfigAccountsRedditAdInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorConfigAccountsRedditAdOutput() FivetranConnectorConfigAccountsRedditAdOutput
-	ToFivetranConnectorConfigAccountsRedditAdOutputWithContext(context.Context) FivetranConnectorConfigAccountsRedditAdOutput
+	ToConnectorConfigAccountsRedditAdOutput() ConnectorConfigAccountsRedditAdOutput
+	ToConnectorConfigAccountsRedditAdOutputWithContext(context.Context) ConnectorConfigAccountsRedditAdOutput
 }
 
-type FivetranConnectorConfigAccountsRedditAdArgs struct {
+type ConnectorConfigAccountsRedditAdArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
-func (FivetranConnectorConfigAccountsRedditAdArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorConfigAccountsRedditAd)(nil)).Elem()
+func (ConnectorConfigAccountsRedditAdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorConfigAccountsRedditAd)(nil)).Elem()
 }
 
-func (i FivetranConnectorConfigAccountsRedditAdArgs) ToFivetranConnectorConfigAccountsRedditAdOutput() FivetranConnectorConfigAccountsRedditAdOutput {
-	return i.ToFivetranConnectorConfigAccountsRedditAdOutputWithContext(context.Background())
+func (i ConnectorConfigAccountsRedditAdArgs) ToConnectorConfigAccountsRedditAdOutput() ConnectorConfigAccountsRedditAdOutput {
+	return i.ToConnectorConfigAccountsRedditAdOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorConfigAccountsRedditAdArgs) ToFivetranConnectorConfigAccountsRedditAdOutputWithContext(ctx context.Context) FivetranConnectorConfigAccountsRedditAdOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorConfigAccountsRedditAdOutput)
+func (i ConnectorConfigAccountsRedditAdArgs) ToConnectorConfigAccountsRedditAdOutputWithContext(ctx context.Context) ConnectorConfigAccountsRedditAdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigAccountsRedditAdOutput)
 }
 
-func (i FivetranConnectorConfigAccountsRedditAdArgs) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorConfigAccountsRedditAd] {
-	return pulumix.Output[FivetranConnectorConfigAccountsRedditAd]{
-		OutputState: i.ToFivetranConnectorConfigAccountsRedditAdOutputWithContext(ctx).OutputState,
+func (i ConnectorConfigAccountsRedditAdArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigAccountsRedditAd] {
+	return pulumix.Output[ConnectorConfigAccountsRedditAd]{
+		OutputState: i.ToConnectorConfigAccountsRedditAdOutputWithContext(ctx).OutputState,
 	}
 }
 
-// FivetranConnectorConfigAccountsRedditAdArrayInput is an input type that accepts FivetranConnectorConfigAccountsRedditAdArray and FivetranConnectorConfigAccountsRedditAdArrayOutput values.
-// You can construct a concrete instance of `FivetranConnectorConfigAccountsRedditAdArrayInput` via:
+// ConnectorConfigAccountsRedditAdArrayInput is an input type that accepts ConnectorConfigAccountsRedditAdArray and ConnectorConfigAccountsRedditAdArrayOutput values.
+// You can construct a concrete instance of `ConnectorConfigAccountsRedditAdArrayInput` via:
 //
-//	FivetranConnectorConfigAccountsRedditAdArray{ FivetranConnectorConfigAccountsRedditAdArgs{...} }
-type FivetranConnectorConfigAccountsRedditAdArrayInput interface {
+//	ConnectorConfigAccountsRedditAdArray{ ConnectorConfigAccountsRedditAdArgs{...} }
+type ConnectorConfigAccountsRedditAdArrayInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorConfigAccountsRedditAdArrayOutput() FivetranConnectorConfigAccountsRedditAdArrayOutput
-	ToFivetranConnectorConfigAccountsRedditAdArrayOutputWithContext(context.Context) FivetranConnectorConfigAccountsRedditAdArrayOutput
+	ToConnectorConfigAccountsRedditAdArrayOutput() ConnectorConfigAccountsRedditAdArrayOutput
+	ToConnectorConfigAccountsRedditAdArrayOutputWithContext(context.Context) ConnectorConfigAccountsRedditAdArrayOutput
 }
 
-type FivetranConnectorConfigAccountsRedditAdArray []FivetranConnectorConfigAccountsRedditAdInput
+type ConnectorConfigAccountsRedditAdArray []ConnectorConfigAccountsRedditAdInput
 
-func (FivetranConnectorConfigAccountsRedditAdArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FivetranConnectorConfigAccountsRedditAd)(nil)).Elem()
+func (ConnectorConfigAccountsRedditAdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorConfigAccountsRedditAd)(nil)).Elem()
 }
 
-func (i FivetranConnectorConfigAccountsRedditAdArray) ToFivetranConnectorConfigAccountsRedditAdArrayOutput() FivetranConnectorConfigAccountsRedditAdArrayOutput {
-	return i.ToFivetranConnectorConfigAccountsRedditAdArrayOutputWithContext(context.Background())
+func (i ConnectorConfigAccountsRedditAdArray) ToConnectorConfigAccountsRedditAdArrayOutput() ConnectorConfigAccountsRedditAdArrayOutput {
+	return i.ToConnectorConfigAccountsRedditAdArrayOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorConfigAccountsRedditAdArray) ToFivetranConnectorConfigAccountsRedditAdArrayOutputWithContext(ctx context.Context) FivetranConnectorConfigAccountsRedditAdArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorConfigAccountsRedditAdArrayOutput)
+func (i ConnectorConfigAccountsRedditAdArray) ToConnectorConfigAccountsRedditAdArrayOutputWithContext(ctx context.Context) ConnectorConfigAccountsRedditAdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigAccountsRedditAdArrayOutput)
 }
 
-func (i FivetranConnectorConfigAccountsRedditAdArray) ToOutput(ctx context.Context) pulumix.Output[[]FivetranConnectorConfigAccountsRedditAd] {
-	return pulumix.Output[[]FivetranConnectorConfigAccountsRedditAd]{
-		OutputState: i.ToFivetranConnectorConfigAccountsRedditAdArrayOutputWithContext(ctx).OutputState,
+func (i ConnectorConfigAccountsRedditAdArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigAccountsRedditAd] {
+	return pulumix.Output[[]ConnectorConfigAccountsRedditAd]{
+		OutputState: i.ToConnectorConfigAccountsRedditAdArrayOutputWithContext(ctx).OutputState,
 	}
 }
 
-type FivetranConnectorConfigAccountsRedditAdOutput struct{ *pulumi.OutputState }
+type ConnectorConfigAccountsRedditAdOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorConfigAccountsRedditAdOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorConfigAccountsRedditAd)(nil)).Elem()
+func (ConnectorConfigAccountsRedditAdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorConfigAccountsRedditAd)(nil)).Elem()
 }
 
-func (o FivetranConnectorConfigAccountsRedditAdOutput) ToFivetranConnectorConfigAccountsRedditAdOutput() FivetranConnectorConfigAccountsRedditAdOutput {
+func (o ConnectorConfigAccountsRedditAdOutput) ToConnectorConfigAccountsRedditAdOutput() ConnectorConfigAccountsRedditAdOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigAccountsRedditAdOutput) ToFivetranConnectorConfigAccountsRedditAdOutputWithContext(ctx context.Context) FivetranConnectorConfigAccountsRedditAdOutput {
+func (o ConnectorConfigAccountsRedditAdOutput) ToConnectorConfigAccountsRedditAdOutputWithContext(ctx context.Context) ConnectorConfigAccountsRedditAdOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigAccountsRedditAdOutput) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorConfigAccountsRedditAd] {
-	return pulumix.Output[FivetranConnectorConfigAccountsRedditAd]{
+func (o ConnectorConfigAccountsRedditAdOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigAccountsRedditAd] {
+	return pulumix.Output[ConnectorConfigAccountsRedditAd]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorConfigAccountsRedditAdOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigAccountsRedditAd) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigAccountsRedditAdOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigAccountsRedditAd) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-type FivetranConnectorConfigAccountsRedditAdArrayOutput struct{ *pulumi.OutputState }
+type ConnectorConfigAccountsRedditAdArrayOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorConfigAccountsRedditAdArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FivetranConnectorConfigAccountsRedditAd)(nil)).Elem()
+func (ConnectorConfigAccountsRedditAdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorConfigAccountsRedditAd)(nil)).Elem()
 }
 
-func (o FivetranConnectorConfigAccountsRedditAdArrayOutput) ToFivetranConnectorConfigAccountsRedditAdArrayOutput() FivetranConnectorConfigAccountsRedditAdArrayOutput {
+func (o ConnectorConfigAccountsRedditAdArrayOutput) ToConnectorConfigAccountsRedditAdArrayOutput() ConnectorConfigAccountsRedditAdArrayOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigAccountsRedditAdArrayOutput) ToFivetranConnectorConfigAccountsRedditAdArrayOutputWithContext(ctx context.Context) FivetranConnectorConfigAccountsRedditAdArrayOutput {
+func (o ConnectorConfigAccountsRedditAdArrayOutput) ToConnectorConfigAccountsRedditAdArrayOutputWithContext(ctx context.Context) ConnectorConfigAccountsRedditAdArrayOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigAccountsRedditAdArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FivetranConnectorConfigAccountsRedditAd] {
-	return pulumix.Output[[]FivetranConnectorConfigAccountsRedditAd]{
+func (o ConnectorConfigAccountsRedditAdArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigAccountsRedditAd] {
+	return pulumix.Output[[]ConnectorConfigAccountsRedditAd]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorConfigAccountsRedditAdArrayOutput) Index(i pulumi.IntInput) FivetranConnectorConfigAccountsRedditAdOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FivetranConnectorConfigAccountsRedditAd {
-		return vs[0].([]FivetranConnectorConfigAccountsRedditAd)[vs[1].(int)]
-	}).(FivetranConnectorConfigAccountsRedditAdOutput)
+func (o ConnectorConfigAccountsRedditAdArrayOutput) Index(i pulumi.IntInput) ConnectorConfigAccountsRedditAdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorConfigAccountsRedditAd {
+		return vs[0].([]ConnectorConfigAccountsRedditAd)[vs[1].(int)]
+	}).(ConnectorConfigAccountsRedditAdOutput)
 }
 
-type FivetranConnectorConfigAdobeAnalyticsConfiguration struct {
+type ConnectorConfigAdobeAnalyticsConfiguration struct {
 	CalculatedMetrics []string `pulumi:"calculatedMetrics"`
 	Elements          []string `pulumi:"elements"`
 	Metrics           []string `pulumi:"metrics"`
@@ -7172,18 +7170,18 @@ type FivetranConnectorConfigAdobeAnalyticsConfiguration struct {
 	Table             *string  `pulumi:"table"`
 }
 
-// FivetranConnectorConfigAdobeAnalyticsConfigurationInput is an input type that accepts FivetranConnectorConfigAdobeAnalyticsConfigurationArgs and FivetranConnectorConfigAdobeAnalyticsConfigurationOutput values.
-// You can construct a concrete instance of `FivetranConnectorConfigAdobeAnalyticsConfigurationInput` via:
+// ConnectorConfigAdobeAnalyticsConfigurationInput is an input type that accepts ConnectorConfigAdobeAnalyticsConfigurationArgs and ConnectorConfigAdobeAnalyticsConfigurationOutput values.
+// You can construct a concrete instance of `ConnectorConfigAdobeAnalyticsConfigurationInput` via:
 //
-//	FivetranConnectorConfigAdobeAnalyticsConfigurationArgs{...}
-type FivetranConnectorConfigAdobeAnalyticsConfigurationInput interface {
+//	ConnectorConfigAdobeAnalyticsConfigurationArgs{...}
+type ConnectorConfigAdobeAnalyticsConfigurationInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorConfigAdobeAnalyticsConfigurationOutput() FivetranConnectorConfigAdobeAnalyticsConfigurationOutput
-	ToFivetranConnectorConfigAdobeAnalyticsConfigurationOutputWithContext(context.Context) FivetranConnectorConfigAdobeAnalyticsConfigurationOutput
+	ToConnectorConfigAdobeAnalyticsConfigurationOutput() ConnectorConfigAdobeAnalyticsConfigurationOutput
+	ToConnectorConfigAdobeAnalyticsConfigurationOutputWithContext(context.Context) ConnectorConfigAdobeAnalyticsConfigurationOutput
 }
 
-type FivetranConnectorConfigAdobeAnalyticsConfigurationArgs struct {
+type ConnectorConfigAdobeAnalyticsConfigurationArgs struct {
 	CalculatedMetrics pulumi.StringArrayInput `pulumi:"calculatedMetrics"`
 	Elements          pulumi.StringArrayInput `pulumi:"elements"`
 	Metrics           pulumi.StringArrayInput `pulumi:"metrics"`
@@ -7193,248 +7191,248 @@ type FivetranConnectorConfigAdobeAnalyticsConfigurationArgs struct {
 	Table             pulumi.StringPtrInput   `pulumi:"table"`
 }
 
-func (FivetranConnectorConfigAdobeAnalyticsConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorConfigAdobeAnalyticsConfiguration)(nil)).Elem()
+func (ConnectorConfigAdobeAnalyticsConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorConfigAdobeAnalyticsConfiguration)(nil)).Elem()
 }
 
-func (i FivetranConnectorConfigAdobeAnalyticsConfigurationArgs) ToFivetranConnectorConfigAdobeAnalyticsConfigurationOutput() FivetranConnectorConfigAdobeAnalyticsConfigurationOutput {
-	return i.ToFivetranConnectorConfigAdobeAnalyticsConfigurationOutputWithContext(context.Background())
+func (i ConnectorConfigAdobeAnalyticsConfigurationArgs) ToConnectorConfigAdobeAnalyticsConfigurationOutput() ConnectorConfigAdobeAnalyticsConfigurationOutput {
+	return i.ToConnectorConfigAdobeAnalyticsConfigurationOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorConfigAdobeAnalyticsConfigurationArgs) ToFivetranConnectorConfigAdobeAnalyticsConfigurationOutputWithContext(ctx context.Context) FivetranConnectorConfigAdobeAnalyticsConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorConfigAdobeAnalyticsConfigurationOutput)
+func (i ConnectorConfigAdobeAnalyticsConfigurationArgs) ToConnectorConfigAdobeAnalyticsConfigurationOutputWithContext(ctx context.Context) ConnectorConfigAdobeAnalyticsConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigAdobeAnalyticsConfigurationOutput)
 }
 
-func (i FivetranConnectorConfigAdobeAnalyticsConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorConfigAdobeAnalyticsConfiguration] {
-	return pulumix.Output[FivetranConnectorConfigAdobeAnalyticsConfiguration]{
-		OutputState: i.ToFivetranConnectorConfigAdobeAnalyticsConfigurationOutputWithContext(ctx).OutputState,
+func (i ConnectorConfigAdobeAnalyticsConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigAdobeAnalyticsConfiguration] {
+	return pulumix.Output[ConnectorConfigAdobeAnalyticsConfiguration]{
+		OutputState: i.ToConnectorConfigAdobeAnalyticsConfigurationOutputWithContext(ctx).OutputState,
 	}
 }
 
-// FivetranConnectorConfigAdobeAnalyticsConfigurationArrayInput is an input type that accepts FivetranConnectorConfigAdobeAnalyticsConfigurationArray and FivetranConnectorConfigAdobeAnalyticsConfigurationArrayOutput values.
-// You can construct a concrete instance of `FivetranConnectorConfigAdobeAnalyticsConfigurationArrayInput` via:
+// ConnectorConfigAdobeAnalyticsConfigurationArrayInput is an input type that accepts ConnectorConfigAdobeAnalyticsConfigurationArray and ConnectorConfigAdobeAnalyticsConfigurationArrayOutput values.
+// You can construct a concrete instance of `ConnectorConfigAdobeAnalyticsConfigurationArrayInput` via:
 //
-//	FivetranConnectorConfigAdobeAnalyticsConfigurationArray{ FivetranConnectorConfigAdobeAnalyticsConfigurationArgs{...} }
-type FivetranConnectorConfigAdobeAnalyticsConfigurationArrayInput interface {
+//	ConnectorConfigAdobeAnalyticsConfigurationArray{ ConnectorConfigAdobeAnalyticsConfigurationArgs{...} }
+type ConnectorConfigAdobeAnalyticsConfigurationArrayInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorConfigAdobeAnalyticsConfigurationArrayOutput() FivetranConnectorConfigAdobeAnalyticsConfigurationArrayOutput
-	ToFivetranConnectorConfigAdobeAnalyticsConfigurationArrayOutputWithContext(context.Context) FivetranConnectorConfigAdobeAnalyticsConfigurationArrayOutput
+	ToConnectorConfigAdobeAnalyticsConfigurationArrayOutput() ConnectorConfigAdobeAnalyticsConfigurationArrayOutput
+	ToConnectorConfigAdobeAnalyticsConfigurationArrayOutputWithContext(context.Context) ConnectorConfigAdobeAnalyticsConfigurationArrayOutput
 }
 
-type FivetranConnectorConfigAdobeAnalyticsConfigurationArray []FivetranConnectorConfigAdobeAnalyticsConfigurationInput
+type ConnectorConfigAdobeAnalyticsConfigurationArray []ConnectorConfigAdobeAnalyticsConfigurationInput
 
-func (FivetranConnectorConfigAdobeAnalyticsConfigurationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FivetranConnectorConfigAdobeAnalyticsConfiguration)(nil)).Elem()
+func (ConnectorConfigAdobeAnalyticsConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorConfigAdobeAnalyticsConfiguration)(nil)).Elem()
 }
 
-func (i FivetranConnectorConfigAdobeAnalyticsConfigurationArray) ToFivetranConnectorConfigAdobeAnalyticsConfigurationArrayOutput() FivetranConnectorConfigAdobeAnalyticsConfigurationArrayOutput {
-	return i.ToFivetranConnectorConfigAdobeAnalyticsConfigurationArrayOutputWithContext(context.Background())
+func (i ConnectorConfigAdobeAnalyticsConfigurationArray) ToConnectorConfigAdobeAnalyticsConfigurationArrayOutput() ConnectorConfigAdobeAnalyticsConfigurationArrayOutput {
+	return i.ToConnectorConfigAdobeAnalyticsConfigurationArrayOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorConfigAdobeAnalyticsConfigurationArray) ToFivetranConnectorConfigAdobeAnalyticsConfigurationArrayOutputWithContext(ctx context.Context) FivetranConnectorConfigAdobeAnalyticsConfigurationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorConfigAdobeAnalyticsConfigurationArrayOutput)
+func (i ConnectorConfigAdobeAnalyticsConfigurationArray) ToConnectorConfigAdobeAnalyticsConfigurationArrayOutputWithContext(ctx context.Context) ConnectorConfigAdobeAnalyticsConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigAdobeAnalyticsConfigurationArrayOutput)
 }
 
-func (i FivetranConnectorConfigAdobeAnalyticsConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]FivetranConnectorConfigAdobeAnalyticsConfiguration] {
-	return pulumix.Output[[]FivetranConnectorConfigAdobeAnalyticsConfiguration]{
-		OutputState: i.ToFivetranConnectorConfigAdobeAnalyticsConfigurationArrayOutputWithContext(ctx).OutputState,
+func (i ConnectorConfigAdobeAnalyticsConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigAdobeAnalyticsConfiguration] {
+	return pulumix.Output[[]ConnectorConfigAdobeAnalyticsConfiguration]{
+		OutputState: i.ToConnectorConfigAdobeAnalyticsConfigurationArrayOutputWithContext(ctx).OutputState,
 	}
 }
 
-type FivetranConnectorConfigAdobeAnalyticsConfigurationOutput struct{ *pulumi.OutputState }
+type ConnectorConfigAdobeAnalyticsConfigurationOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorConfigAdobeAnalyticsConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorConfigAdobeAnalyticsConfiguration)(nil)).Elem()
+func (ConnectorConfigAdobeAnalyticsConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorConfigAdobeAnalyticsConfiguration)(nil)).Elem()
 }
 
-func (o FivetranConnectorConfigAdobeAnalyticsConfigurationOutput) ToFivetranConnectorConfigAdobeAnalyticsConfigurationOutput() FivetranConnectorConfigAdobeAnalyticsConfigurationOutput {
+func (o ConnectorConfigAdobeAnalyticsConfigurationOutput) ToConnectorConfigAdobeAnalyticsConfigurationOutput() ConnectorConfigAdobeAnalyticsConfigurationOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigAdobeAnalyticsConfigurationOutput) ToFivetranConnectorConfigAdobeAnalyticsConfigurationOutputWithContext(ctx context.Context) FivetranConnectorConfigAdobeAnalyticsConfigurationOutput {
+func (o ConnectorConfigAdobeAnalyticsConfigurationOutput) ToConnectorConfigAdobeAnalyticsConfigurationOutputWithContext(ctx context.Context) ConnectorConfigAdobeAnalyticsConfigurationOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigAdobeAnalyticsConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorConfigAdobeAnalyticsConfiguration] {
-	return pulumix.Output[FivetranConnectorConfigAdobeAnalyticsConfiguration]{
+func (o ConnectorConfigAdobeAnalyticsConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigAdobeAnalyticsConfiguration] {
+	return pulumix.Output[ConnectorConfigAdobeAnalyticsConfiguration]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorConfigAdobeAnalyticsConfigurationOutput) CalculatedMetrics() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigAdobeAnalyticsConfiguration) []string { return v.CalculatedMetrics }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigAdobeAnalyticsConfigurationOutput) CalculatedMetrics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigAdobeAnalyticsConfiguration) []string { return v.CalculatedMetrics }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigAdobeAnalyticsConfigurationOutput) Elements() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigAdobeAnalyticsConfiguration) []string { return v.Elements }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigAdobeAnalyticsConfigurationOutput) Elements() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigAdobeAnalyticsConfiguration) []string { return v.Elements }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigAdobeAnalyticsConfigurationOutput) Metrics() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigAdobeAnalyticsConfiguration) []string { return v.Metrics }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigAdobeAnalyticsConfigurationOutput) Metrics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigAdobeAnalyticsConfiguration) []string { return v.Metrics }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigAdobeAnalyticsConfigurationOutput) ReportSuites() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigAdobeAnalyticsConfiguration) []string { return v.ReportSuites }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigAdobeAnalyticsConfigurationOutput) ReportSuites() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigAdobeAnalyticsConfiguration) []string { return v.ReportSuites }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigAdobeAnalyticsConfigurationOutput) Segments() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigAdobeAnalyticsConfiguration) []string { return v.Segments }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigAdobeAnalyticsConfigurationOutput) Segments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigAdobeAnalyticsConfiguration) []string { return v.Segments }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigAdobeAnalyticsConfigurationOutput) SyncMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigAdobeAnalyticsConfiguration) *string { return v.SyncMode }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigAdobeAnalyticsConfigurationOutput) SyncMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigAdobeAnalyticsConfiguration) *string { return v.SyncMode }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigAdobeAnalyticsConfigurationOutput) Table() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigAdobeAnalyticsConfiguration) *string { return v.Table }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigAdobeAnalyticsConfigurationOutput) Table() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigAdobeAnalyticsConfiguration) *string { return v.Table }).(pulumi.StringPtrOutput)
 }
 
-type FivetranConnectorConfigAdobeAnalyticsConfigurationArrayOutput struct{ *pulumi.OutputState }
+type ConnectorConfigAdobeAnalyticsConfigurationArrayOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorConfigAdobeAnalyticsConfigurationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FivetranConnectorConfigAdobeAnalyticsConfiguration)(nil)).Elem()
+func (ConnectorConfigAdobeAnalyticsConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorConfigAdobeAnalyticsConfiguration)(nil)).Elem()
 }
 
-func (o FivetranConnectorConfigAdobeAnalyticsConfigurationArrayOutput) ToFivetranConnectorConfigAdobeAnalyticsConfigurationArrayOutput() FivetranConnectorConfigAdobeAnalyticsConfigurationArrayOutput {
+func (o ConnectorConfigAdobeAnalyticsConfigurationArrayOutput) ToConnectorConfigAdobeAnalyticsConfigurationArrayOutput() ConnectorConfigAdobeAnalyticsConfigurationArrayOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigAdobeAnalyticsConfigurationArrayOutput) ToFivetranConnectorConfigAdobeAnalyticsConfigurationArrayOutputWithContext(ctx context.Context) FivetranConnectorConfigAdobeAnalyticsConfigurationArrayOutput {
+func (o ConnectorConfigAdobeAnalyticsConfigurationArrayOutput) ToConnectorConfigAdobeAnalyticsConfigurationArrayOutputWithContext(ctx context.Context) ConnectorConfigAdobeAnalyticsConfigurationArrayOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigAdobeAnalyticsConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FivetranConnectorConfigAdobeAnalyticsConfiguration] {
-	return pulumix.Output[[]FivetranConnectorConfigAdobeAnalyticsConfiguration]{
+func (o ConnectorConfigAdobeAnalyticsConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigAdobeAnalyticsConfiguration] {
+	return pulumix.Output[[]ConnectorConfigAdobeAnalyticsConfiguration]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorConfigAdobeAnalyticsConfigurationArrayOutput) Index(i pulumi.IntInput) FivetranConnectorConfigAdobeAnalyticsConfigurationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FivetranConnectorConfigAdobeAnalyticsConfiguration {
-		return vs[0].([]FivetranConnectorConfigAdobeAnalyticsConfiguration)[vs[1].(int)]
-	}).(FivetranConnectorConfigAdobeAnalyticsConfigurationOutput)
+func (o ConnectorConfigAdobeAnalyticsConfigurationArrayOutput) Index(i pulumi.IntInput) ConnectorConfigAdobeAnalyticsConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorConfigAdobeAnalyticsConfiguration {
+		return vs[0].([]ConnectorConfigAdobeAnalyticsConfiguration)[vs[1].(int)]
+	}).(ConnectorConfigAdobeAnalyticsConfigurationOutput)
 }
 
-type FivetranConnectorConfigAppIdsAppsflyer struct {
+type ConnectorConfigAppIdsAppsflyer struct {
 	AppId *string `pulumi:"appId"`
 }
 
-// FivetranConnectorConfigAppIdsAppsflyerInput is an input type that accepts FivetranConnectorConfigAppIdsAppsflyerArgs and FivetranConnectorConfigAppIdsAppsflyerOutput values.
-// You can construct a concrete instance of `FivetranConnectorConfigAppIdsAppsflyerInput` via:
+// ConnectorConfigAppIdsAppsflyerInput is an input type that accepts ConnectorConfigAppIdsAppsflyerArgs and ConnectorConfigAppIdsAppsflyerOutput values.
+// You can construct a concrete instance of `ConnectorConfigAppIdsAppsflyerInput` via:
 //
-//	FivetranConnectorConfigAppIdsAppsflyerArgs{...}
-type FivetranConnectorConfigAppIdsAppsflyerInput interface {
+//	ConnectorConfigAppIdsAppsflyerArgs{...}
+type ConnectorConfigAppIdsAppsflyerInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorConfigAppIdsAppsflyerOutput() FivetranConnectorConfigAppIdsAppsflyerOutput
-	ToFivetranConnectorConfigAppIdsAppsflyerOutputWithContext(context.Context) FivetranConnectorConfigAppIdsAppsflyerOutput
+	ToConnectorConfigAppIdsAppsflyerOutput() ConnectorConfigAppIdsAppsflyerOutput
+	ToConnectorConfigAppIdsAppsflyerOutputWithContext(context.Context) ConnectorConfigAppIdsAppsflyerOutput
 }
 
-type FivetranConnectorConfigAppIdsAppsflyerArgs struct {
+type ConnectorConfigAppIdsAppsflyerArgs struct {
 	AppId pulumi.StringPtrInput `pulumi:"appId"`
 }
 
-func (FivetranConnectorConfigAppIdsAppsflyerArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorConfigAppIdsAppsflyer)(nil)).Elem()
+func (ConnectorConfigAppIdsAppsflyerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorConfigAppIdsAppsflyer)(nil)).Elem()
 }
 
-func (i FivetranConnectorConfigAppIdsAppsflyerArgs) ToFivetranConnectorConfigAppIdsAppsflyerOutput() FivetranConnectorConfigAppIdsAppsflyerOutput {
-	return i.ToFivetranConnectorConfigAppIdsAppsflyerOutputWithContext(context.Background())
+func (i ConnectorConfigAppIdsAppsflyerArgs) ToConnectorConfigAppIdsAppsflyerOutput() ConnectorConfigAppIdsAppsflyerOutput {
+	return i.ToConnectorConfigAppIdsAppsflyerOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorConfigAppIdsAppsflyerArgs) ToFivetranConnectorConfigAppIdsAppsflyerOutputWithContext(ctx context.Context) FivetranConnectorConfigAppIdsAppsflyerOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorConfigAppIdsAppsflyerOutput)
+func (i ConnectorConfigAppIdsAppsflyerArgs) ToConnectorConfigAppIdsAppsflyerOutputWithContext(ctx context.Context) ConnectorConfigAppIdsAppsflyerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigAppIdsAppsflyerOutput)
 }
 
-func (i FivetranConnectorConfigAppIdsAppsflyerArgs) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorConfigAppIdsAppsflyer] {
-	return pulumix.Output[FivetranConnectorConfigAppIdsAppsflyer]{
-		OutputState: i.ToFivetranConnectorConfigAppIdsAppsflyerOutputWithContext(ctx).OutputState,
+func (i ConnectorConfigAppIdsAppsflyerArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigAppIdsAppsflyer] {
+	return pulumix.Output[ConnectorConfigAppIdsAppsflyer]{
+		OutputState: i.ToConnectorConfigAppIdsAppsflyerOutputWithContext(ctx).OutputState,
 	}
 }
 
-// FivetranConnectorConfigAppIdsAppsflyerArrayInput is an input type that accepts FivetranConnectorConfigAppIdsAppsflyerArray and FivetranConnectorConfigAppIdsAppsflyerArrayOutput values.
-// You can construct a concrete instance of `FivetranConnectorConfigAppIdsAppsflyerArrayInput` via:
+// ConnectorConfigAppIdsAppsflyerArrayInput is an input type that accepts ConnectorConfigAppIdsAppsflyerArray and ConnectorConfigAppIdsAppsflyerArrayOutput values.
+// You can construct a concrete instance of `ConnectorConfigAppIdsAppsflyerArrayInput` via:
 //
-//	FivetranConnectorConfigAppIdsAppsflyerArray{ FivetranConnectorConfigAppIdsAppsflyerArgs{...} }
-type FivetranConnectorConfigAppIdsAppsflyerArrayInput interface {
+//	ConnectorConfigAppIdsAppsflyerArray{ ConnectorConfigAppIdsAppsflyerArgs{...} }
+type ConnectorConfigAppIdsAppsflyerArrayInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorConfigAppIdsAppsflyerArrayOutput() FivetranConnectorConfigAppIdsAppsflyerArrayOutput
-	ToFivetranConnectorConfigAppIdsAppsflyerArrayOutputWithContext(context.Context) FivetranConnectorConfigAppIdsAppsflyerArrayOutput
+	ToConnectorConfigAppIdsAppsflyerArrayOutput() ConnectorConfigAppIdsAppsflyerArrayOutput
+	ToConnectorConfigAppIdsAppsflyerArrayOutputWithContext(context.Context) ConnectorConfigAppIdsAppsflyerArrayOutput
 }
 
-type FivetranConnectorConfigAppIdsAppsflyerArray []FivetranConnectorConfigAppIdsAppsflyerInput
+type ConnectorConfigAppIdsAppsflyerArray []ConnectorConfigAppIdsAppsflyerInput
 
-func (FivetranConnectorConfigAppIdsAppsflyerArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FivetranConnectorConfigAppIdsAppsflyer)(nil)).Elem()
+func (ConnectorConfigAppIdsAppsflyerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorConfigAppIdsAppsflyer)(nil)).Elem()
 }
 
-func (i FivetranConnectorConfigAppIdsAppsflyerArray) ToFivetranConnectorConfigAppIdsAppsflyerArrayOutput() FivetranConnectorConfigAppIdsAppsflyerArrayOutput {
-	return i.ToFivetranConnectorConfigAppIdsAppsflyerArrayOutputWithContext(context.Background())
+func (i ConnectorConfigAppIdsAppsflyerArray) ToConnectorConfigAppIdsAppsflyerArrayOutput() ConnectorConfigAppIdsAppsflyerArrayOutput {
+	return i.ToConnectorConfigAppIdsAppsflyerArrayOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorConfigAppIdsAppsflyerArray) ToFivetranConnectorConfigAppIdsAppsflyerArrayOutputWithContext(ctx context.Context) FivetranConnectorConfigAppIdsAppsflyerArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorConfigAppIdsAppsflyerArrayOutput)
+func (i ConnectorConfigAppIdsAppsflyerArray) ToConnectorConfigAppIdsAppsflyerArrayOutputWithContext(ctx context.Context) ConnectorConfigAppIdsAppsflyerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigAppIdsAppsflyerArrayOutput)
 }
 
-func (i FivetranConnectorConfigAppIdsAppsflyerArray) ToOutput(ctx context.Context) pulumix.Output[[]FivetranConnectorConfigAppIdsAppsflyer] {
-	return pulumix.Output[[]FivetranConnectorConfigAppIdsAppsflyer]{
-		OutputState: i.ToFivetranConnectorConfigAppIdsAppsflyerArrayOutputWithContext(ctx).OutputState,
+func (i ConnectorConfigAppIdsAppsflyerArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigAppIdsAppsflyer] {
+	return pulumix.Output[[]ConnectorConfigAppIdsAppsflyer]{
+		OutputState: i.ToConnectorConfigAppIdsAppsflyerArrayOutputWithContext(ctx).OutputState,
 	}
 }
 
-type FivetranConnectorConfigAppIdsAppsflyerOutput struct{ *pulumi.OutputState }
+type ConnectorConfigAppIdsAppsflyerOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorConfigAppIdsAppsflyerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorConfigAppIdsAppsflyer)(nil)).Elem()
+func (ConnectorConfigAppIdsAppsflyerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorConfigAppIdsAppsflyer)(nil)).Elem()
 }
 
-func (o FivetranConnectorConfigAppIdsAppsflyerOutput) ToFivetranConnectorConfigAppIdsAppsflyerOutput() FivetranConnectorConfigAppIdsAppsflyerOutput {
+func (o ConnectorConfigAppIdsAppsflyerOutput) ToConnectorConfigAppIdsAppsflyerOutput() ConnectorConfigAppIdsAppsflyerOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigAppIdsAppsflyerOutput) ToFivetranConnectorConfigAppIdsAppsflyerOutputWithContext(ctx context.Context) FivetranConnectorConfigAppIdsAppsflyerOutput {
+func (o ConnectorConfigAppIdsAppsflyerOutput) ToConnectorConfigAppIdsAppsflyerOutputWithContext(ctx context.Context) ConnectorConfigAppIdsAppsflyerOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigAppIdsAppsflyerOutput) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorConfigAppIdsAppsflyer] {
-	return pulumix.Output[FivetranConnectorConfigAppIdsAppsflyer]{
+func (o ConnectorConfigAppIdsAppsflyerOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigAppIdsAppsflyer] {
+	return pulumix.Output[ConnectorConfigAppIdsAppsflyer]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorConfigAppIdsAppsflyerOutput) AppId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigAppIdsAppsflyer) *string { return v.AppId }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigAppIdsAppsflyerOutput) AppId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigAppIdsAppsflyer) *string { return v.AppId }).(pulumi.StringPtrOutput)
 }
 
-type FivetranConnectorConfigAppIdsAppsflyerArrayOutput struct{ *pulumi.OutputState }
+type ConnectorConfigAppIdsAppsflyerArrayOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorConfigAppIdsAppsflyerArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FivetranConnectorConfigAppIdsAppsflyer)(nil)).Elem()
+func (ConnectorConfigAppIdsAppsflyerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorConfigAppIdsAppsflyer)(nil)).Elem()
 }
 
-func (o FivetranConnectorConfigAppIdsAppsflyerArrayOutput) ToFivetranConnectorConfigAppIdsAppsflyerArrayOutput() FivetranConnectorConfigAppIdsAppsflyerArrayOutput {
+func (o ConnectorConfigAppIdsAppsflyerArrayOutput) ToConnectorConfigAppIdsAppsflyerArrayOutput() ConnectorConfigAppIdsAppsflyerArrayOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigAppIdsAppsflyerArrayOutput) ToFivetranConnectorConfigAppIdsAppsflyerArrayOutputWithContext(ctx context.Context) FivetranConnectorConfigAppIdsAppsflyerArrayOutput {
+func (o ConnectorConfigAppIdsAppsflyerArrayOutput) ToConnectorConfigAppIdsAppsflyerArrayOutputWithContext(ctx context.Context) ConnectorConfigAppIdsAppsflyerArrayOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigAppIdsAppsflyerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FivetranConnectorConfigAppIdsAppsflyer] {
-	return pulumix.Output[[]FivetranConnectorConfigAppIdsAppsflyer]{
+func (o ConnectorConfigAppIdsAppsflyerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigAppIdsAppsflyer] {
+	return pulumix.Output[[]ConnectorConfigAppIdsAppsflyer]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorConfigAppIdsAppsflyerArrayOutput) Index(i pulumi.IntInput) FivetranConnectorConfigAppIdsAppsflyerOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FivetranConnectorConfigAppIdsAppsflyer {
-		return vs[0].([]FivetranConnectorConfigAppIdsAppsflyer)[vs[1].(int)]
-	}).(FivetranConnectorConfigAppIdsAppsflyerOutput)
+func (o ConnectorConfigAppIdsAppsflyerArrayOutput) Index(i pulumi.IntInput) ConnectorConfigAppIdsAppsflyerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorConfigAppIdsAppsflyer {
+		return vs[0].([]ConnectorConfigAppIdsAppsflyer)[vs[1].(int)]
+	}).(ConnectorConfigAppIdsAppsflyerOutput)
 }
 
-type FivetranConnectorConfigCustomReport struct {
+type ConnectorConfigCustomReport struct {
 	Aggregate                 *string  `pulumi:"aggregate"`
 	ConversionsReportIncluded *string  `pulumi:"conversionsReportIncluded"`
 	CustomEventsIncluded      *string  `pulumi:"customEventsIncluded"`
@@ -7449,18 +7447,18 @@ type FivetranConnectorConfigCustomReport struct {
 	TableName                 *string  `pulumi:"tableName"`
 }
 
-// FivetranConnectorConfigCustomReportInput is an input type that accepts FivetranConnectorConfigCustomReportArgs and FivetranConnectorConfigCustomReportOutput values.
-// You can construct a concrete instance of `FivetranConnectorConfigCustomReportInput` via:
+// ConnectorConfigCustomReportInput is an input type that accepts ConnectorConfigCustomReportArgs and ConnectorConfigCustomReportOutput values.
+// You can construct a concrete instance of `ConnectorConfigCustomReportInput` via:
 //
-//	FivetranConnectorConfigCustomReportArgs{...}
-type FivetranConnectorConfigCustomReportInput interface {
+//	ConnectorConfigCustomReportArgs{...}
+type ConnectorConfigCustomReportInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorConfigCustomReportOutput() FivetranConnectorConfigCustomReportOutput
-	ToFivetranConnectorConfigCustomReportOutputWithContext(context.Context) FivetranConnectorConfigCustomReportOutput
+	ToConnectorConfigCustomReportOutput() ConnectorConfigCustomReportOutput
+	ToConnectorConfigCustomReportOutputWithContext(context.Context) ConnectorConfigCustomReportOutput
 }
 
-type FivetranConnectorConfigCustomReportArgs struct {
+type ConnectorConfigCustomReportArgs struct {
 	Aggregate                 pulumi.StringPtrInput   `pulumi:"aggregate"`
 	ConversionsReportIncluded pulumi.StringPtrInput   `pulumi:"conversionsReportIncluded"`
 	CustomEventsIncluded      pulumi.StringPtrInput   `pulumi:"customEventsIncluded"`
@@ -7475,150 +7473,150 @@ type FivetranConnectorConfigCustomReportArgs struct {
 	TableName                 pulumi.StringPtrInput   `pulumi:"tableName"`
 }
 
-func (FivetranConnectorConfigCustomReportArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorConfigCustomReport)(nil)).Elem()
+func (ConnectorConfigCustomReportArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorConfigCustomReport)(nil)).Elem()
 }
 
-func (i FivetranConnectorConfigCustomReportArgs) ToFivetranConnectorConfigCustomReportOutput() FivetranConnectorConfigCustomReportOutput {
-	return i.ToFivetranConnectorConfigCustomReportOutputWithContext(context.Background())
+func (i ConnectorConfigCustomReportArgs) ToConnectorConfigCustomReportOutput() ConnectorConfigCustomReportOutput {
+	return i.ToConnectorConfigCustomReportOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorConfigCustomReportArgs) ToFivetranConnectorConfigCustomReportOutputWithContext(ctx context.Context) FivetranConnectorConfigCustomReportOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorConfigCustomReportOutput)
+func (i ConnectorConfigCustomReportArgs) ToConnectorConfigCustomReportOutputWithContext(ctx context.Context) ConnectorConfigCustomReportOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigCustomReportOutput)
 }
 
-func (i FivetranConnectorConfigCustomReportArgs) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorConfigCustomReport] {
-	return pulumix.Output[FivetranConnectorConfigCustomReport]{
-		OutputState: i.ToFivetranConnectorConfigCustomReportOutputWithContext(ctx).OutputState,
+func (i ConnectorConfigCustomReportArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigCustomReport] {
+	return pulumix.Output[ConnectorConfigCustomReport]{
+		OutputState: i.ToConnectorConfigCustomReportOutputWithContext(ctx).OutputState,
 	}
 }
 
-// FivetranConnectorConfigCustomReportArrayInput is an input type that accepts FivetranConnectorConfigCustomReportArray and FivetranConnectorConfigCustomReportArrayOutput values.
-// You can construct a concrete instance of `FivetranConnectorConfigCustomReportArrayInput` via:
+// ConnectorConfigCustomReportArrayInput is an input type that accepts ConnectorConfigCustomReportArray and ConnectorConfigCustomReportArrayOutput values.
+// You can construct a concrete instance of `ConnectorConfigCustomReportArrayInput` via:
 //
-//	FivetranConnectorConfigCustomReportArray{ FivetranConnectorConfigCustomReportArgs{...} }
-type FivetranConnectorConfigCustomReportArrayInput interface {
+//	ConnectorConfigCustomReportArray{ ConnectorConfigCustomReportArgs{...} }
+type ConnectorConfigCustomReportArrayInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorConfigCustomReportArrayOutput() FivetranConnectorConfigCustomReportArrayOutput
-	ToFivetranConnectorConfigCustomReportArrayOutputWithContext(context.Context) FivetranConnectorConfigCustomReportArrayOutput
+	ToConnectorConfigCustomReportArrayOutput() ConnectorConfigCustomReportArrayOutput
+	ToConnectorConfigCustomReportArrayOutputWithContext(context.Context) ConnectorConfigCustomReportArrayOutput
 }
 
-type FivetranConnectorConfigCustomReportArray []FivetranConnectorConfigCustomReportInput
+type ConnectorConfigCustomReportArray []ConnectorConfigCustomReportInput
 
-func (FivetranConnectorConfigCustomReportArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FivetranConnectorConfigCustomReport)(nil)).Elem()
+func (ConnectorConfigCustomReportArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorConfigCustomReport)(nil)).Elem()
 }
 
-func (i FivetranConnectorConfigCustomReportArray) ToFivetranConnectorConfigCustomReportArrayOutput() FivetranConnectorConfigCustomReportArrayOutput {
-	return i.ToFivetranConnectorConfigCustomReportArrayOutputWithContext(context.Background())
+func (i ConnectorConfigCustomReportArray) ToConnectorConfigCustomReportArrayOutput() ConnectorConfigCustomReportArrayOutput {
+	return i.ToConnectorConfigCustomReportArrayOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorConfigCustomReportArray) ToFivetranConnectorConfigCustomReportArrayOutputWithContext(ctx context.Context) FivetranConnectorConfigCustomReportArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorConfigCustomReportArrayOutput)
+func (i ConnectorConfigCustomReportArray) ToConnectorConfigCustomReportArrayOutputWithContext(ctx context.Context) ConnectorConfigCustomReportArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigCustomReportArrayOutput)
 }
 
-func (i FivetranConnectorConfigCustomReportArray) ToOutput(ctx context.Context) pulumix.Output[[]FivetranConnectorConfigCustomReport] {
-	return pulumix.Output[[]FivetranConnectorConfigCustomReport]{
-		OutputState: i.ToFivetranConnectorConfigCustomReportArrayOutputWithContext(ctx).OutputState,
+func (i ConnectorConfigCustomReportArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigCustomReport] {
+	return pulumix.Output[[]ConnectorConfigCustomReport]{
+		OutputState: i.ToConnectorConfigCustomReportArrayOutputWithContext(ctx).OutputState,
 	}
 }
 
-type FivetranConnectorConfigCustomReportOutput struct{ *pulumi.OutputState }
+type ConnectorConfigCustomReportOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorConfigCustomReportOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorConfigCustomReport)(nil)).Elem()
+func (ConnectorConfigCustomReportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorConfigCustomReport)(nil)).Elem()
 }
 
-func (o FivetranConnectorConfigCustomReportOutput) ToFivetranConnectorConfigCustomReportOutput() FivetranConnectorConfigCustomReportOutput {
+func (o ConnectorConfigCustomReportOutput) ToConnectorConfigCustomReportOutput() ConnectorConfigCustomReportOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigCustomReportOutput) ToFivetranConnectorConfigCustomReportOutputWithContext(ctx context.Context) FivetranConnectorConfigCustomReportOutput {
+func (o ConnectorConfigCustomReportOutput) ToConnectorConfigCustomReportOutputWithContext(ctx context.Context) ConnectorConfigCustomReportOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigCustomReportOutput) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorConfigCustomReport] {
-	return pulumix.Output[FivetranConnectorConfigCustomReport]{
+func (o ConnectorConfigCustomReportOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigCustomReport] {
+	return pulumix.Output[ConnectorConfigCustomReport]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorConfigCustomReportOutput) Aggregate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigCustomReport) *string { return v.Aggregate }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigCustomReportOutput) Aggregate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomReport) *string { return v.Aggregate }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigCustomReportOutput) ConversionsReportIncluded() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigCustomReport) *string { return v.ConversionsReportIncluded }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigCustomReportOutput) ConversionsReportIncluded() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomReport) *string { return v.ConversionsReportIncluded }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigCustomReportOutput) CustomEventsIncluded() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigCustomReport) *string { return v.CustomEventsIncluded }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigCustomReportOutput) CustomEventsIncluded() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomReport) *string { return v.CustomEventsIncluded }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigCustomReportOutput) Dimensions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigCustomReport) []string { return v.Dimensions }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigCustomReportOutput) Dimensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomReport) []string { return v.Dimensions }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigCustomReportOutput) EventNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigCustomReport) []string { return v.EventNames }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigCustomReportOutput) EventNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomReport) []string { return v.EventNames }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigCustomReportOutput) Level() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigCustomReport) *string { return v.Level }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigCustomReportOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomReport) *string { return v.Level }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigCustomReportOutput) Metrics() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigCustomReport) []string { return v.Metrics }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigCustomReportOutput) Metrics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomReport) []string { return v.Metrics }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigCustomReportOutput) ReportFields() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigCustomReport) []string { return v.ReportFields }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigCustomReportOutput) ReportFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomReport) []string { return v.ReportFields }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigCustomReportOutput) ReportName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigCustomReport) *string { return v.ReportName }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigCustomReportOutput) ReportName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomReport) *string { return v.ReportName }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigCustomReportOutput) ReportType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigCustomReport) *string { return v.ReportType }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigCustomReportOutput) ReportType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomReport) *string { return v.ReportType }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigCustomReportOutput) Segmentation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigCustomReport) *string { return v.Segmentation }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigCustomReportOutput) Segmentation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomReport) *string { return v.Segmentation }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigCustomReportOutput) TableName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigCustomReport) *string { return v.TableName }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigCustomReportOutput) TableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomReport) *string { return v.TableName }).(pulumi.StringPtrOutput)
 }
 
-type FivetranConnectorConfigCustomReportArrayOutput struct{ *pulumi.OutputState }
+type ConnectorConfigCustomReportArrayOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorConfigCustomReportArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FivetranConnectorConfigCustomReport)(nil)).Elem()
+func (ConnectorConfigCustomReportArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorConfigCustomReport)(nil)).Elem()
 }
 
-func (o FivetranConnectorConfigCustomReportArrayOutput) ToFivetranConnectorConfigCustomReportArrayOutput() FivetranConnectorConfigCustomReportArrayOutput {
+func (o ConnectorConfigCustomReportArrayOutput) ToConnectorConfigCustomReportArrayOutput() ConnectorConfigCustomReportArrayOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigCustomReportArrayOutput) ToFivetranConnectorConfigCustomReportArrayOutputWithContext(ctx context.Context) FivetranConnectorConfigCustomReportArrayOutput {
+func (o ConnectorConfigCustomReportArrayOutput) ToConnectorConfigCustomReportArrayOutputWithContext(ctx context.Context) ConnectorConfigCustomReportArrayOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigCustomReportArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FivetranConnectorConfigCustomReport] {
-	return pulumix.Output[[]FivetranConnectorConfigCustomReport]{
+func (o ConnectorConfigCustomReportArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigCustomReport] {
+	return pulumix.Output[[]ConnectorConfigCustomReport]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorConfigCustomReportArrayOutput) Index(i pulumi.IntInput) FivetranConnectorConfigCustomReportOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FivetranConnectorConfigCustomReport {
-		return vs[0].([]FivetranConnectorConfigCustomReport)[vs[1].(int)]
-	}).(FivetranConnectorConfigCustomReportOutput)
+func (o ConnectorConfigCustomReportArrayOutput) Index(i pulumi.IntInput) ConnectorConfigCustomReportOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorConfigCustomReport {
+		return vs[0].([]ConnectorConfigCustomReport)[vs[1].(int)]
+	}).(ConnectorConfigCustomReportOutput)
 }
 
-type FivetranConnectorConfigCustomTable struct {
+type ConnectorConfigCustomTable struct {
 	ActionBreakdowns             []string `pulumi:"actionBreakdowns"`
 	ActionReportTime             *string  `pulumi:"actionReportTime"`
 	Aggregation                  *string  `pulumi:"aggregation"`
@@ -7633,18 +7631,18 @@ type FivetranConnectorConfigCustomTable struct {
 	ViewAttributionWindow        *string  `pulumi:"viewAttributionWindow"`
 }
 
-// FivetranConnectorConfigCustomTableInput is an input type that accepts FivetranConnectorConfigCustomTableArgs and FivetranConnectorConfigCustomTableOutput values.
-// You can construct a concrete instance of `FivetranConnectorConfigCustomTableInput` via:
+// ConnectorConfigCustomTableInput is an input type that accepts ConnectorConfigCustomTableArgs and ConnectorConfigCustomTableOutput values.
+// You can construct a concrete instance of `ConnectorConfigCustomTableInput` via:
 //
-//	FivetranConnectorConfigCustomTableArgs{...}
-type FivetranConnectorConfigCustomTableInput interface {
+//	ConnectorConfigCustomTableArgs{...}
+type ConnectorConfigCustomTableInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorConfigCustomTableOutput() FivetranConnectorConfigCustomTableOutput
-	ToFivetranConnectorConfigCustomTableOutputWithContext(context.Context) FivetranConnectorConfigCustomTableOutput
+	ToConnectorConfigCustomTableOutput() ConnectorConfigCustomTableOutput
+	ToConnectorConfigCustomTableOutputWithContext(context.Context) ConnectorConfigCustomTableOutput
 }
 
-type FivetranConnectorConfigCustomTableArgs struct {
+type ConnectorConfigCustomTableArgs struct {
 	ActionBreakdowns             pulumi.StringArrayInput `pulumi:"actionBreakdowns"`
 	ActionReportTime             pulumi.StringPtrInput   `pulumi:"actionReportTime"`
 	Aggregation                  pulumi.StringPtrInput   `pulumi:"aggregation"`
@@ -7659,280 +7657,280 @@ type FivetranConnectorConfigCustomTableArgs struct {
 	ViewAttributionWindow        pulumi.StringPtrInput   `pulumi:"viewAttributionWindow"`
 }
 
-func (FivetranConnectorConfigCustomTableArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorConfigCustomTable)(nil)).Elem()
+func (ConnectorConfigCustomTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorConfigCustomTable)(nil)).Elem()
 }
 
-func (i FivetranConnectorConfigCustomTableArgs) ToFivetranConnectorConfigCustomTableOutput() FivetranConnectorConfigCustomTableOutput {
-	return i.ToFivetranConnectorConfigCustomTableOutputWithContext(context.Background())
+func (i ConnectorConfigCustomTableArgs) ToConnectorConfigCustomTableOutput() ConnectorConfigCustomTableOutput {
+	return i.ToConnectorConfigCustomTableOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorConfigCustomTableArgs) ToFivetranConnectorConfigCustomTableOutputWithContext(ctx context.Context) FivetranConnectorConfigCustomTableOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorConfigCustomTableOutput)
+func (i ConnectorConfigCustomTableArgs) ToConnectorConfigCustomTableOutputWithContext(ctx context.Context) ConnectorConfigCustomTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigCustomTableOutput)
 }
 
-func (i FivetranConnectorConfigCustomTableArgs) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorConfigCustomTable] {
-	return pulumix.Output[FivetranConnectorConfigCustomTable]{
-		OutputState: i.ToFivetranConnectorConfigCustomTableOutputWithContext(ctx).OutputState,
+func (i ConnectorConfigCustomTableArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigCustomTable] {
+	return pulumix.Output[ConnectorConfigCustomTable]{
+		OutputState: i.ToConnectorConfigCustomTableOutputWithContext(ctx).OutputState,
 	}
 }
 
-// FivetranConnectorConfigCustomTableArrayInput is an input type that accepts FivetranConnectorConfigCustomTableArray and FivetranConnectorConfigCustomTableArrayOutput values.
-// You can construct a concrete instance of `FivetranConnectorConfigCustomTableArrayInput` via:
+// ConnectorConfigCustomTableArrayInput is an input type that accepts ConnectorConfigCustomTableArray and ConnectorConfigCustomTableArrayOutput values.
+// You can construct a concrete instance of `ConnectorConfigCustomTableArrayInput` via:
 //
-//	FivetranConnectorConfigCustomTableArray{ FivetranConnectorConfigCustomTableArgs{...} }
-type FivetranConnectorConfigCustomTableArrayInput interface {
+//	ConnectorConfigCustomTableArray{ ConnectorConfigCustomTableArgs{...} }
+type ConnectorConfigCustomTableArrayInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorConfigCustomTableArrayOutput() FivetranConnectorConfigCustomTableArrayOutput
-	ToFivetranConnectorConfigCustomTableArrayOutputWithContext(context.Context) FivetranConnectorConfigCustomTableArrayOutput
+	ToConnectorConfigCustomTableArrayOutput() ConnectorConfigCustomTableArrayOutput
+	ToConnectorConfigCustomTableArrayOutputWithContext(context.Context) ConnectorConfigCustomTableArrayOutput
 }
 
-type FivetranConnectorConfigCustomTableArray []FivetranConnectorConfigCustomTableInput
+type ConnectorConfigCustomTableArray []ConnectorConfigCustomTableInput
 
-func (FivetranConnectorConfigCustomTableArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FivetranConnectorConfigCustomTable)(nil)).Elem()
+func (ConnectorConfigCustomTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorConfigCustomTable)(nil)).Elem()
 }
 
-func (i FivetranConnectorConfigCustomTableArray) ToFivetranConnectorConfigCustomTableArrayOutput() FivetranConnectorConfigCustomTableArrayOutput {
-	return i.ToFivetranConnectorConfigCustomTableArrayOutputWithContext(context.Background())
+func (i ConnectorConfigCustomTableArray) ToConnectorConfigCustomTableArrayOutput() ConnectorConfigCustomTableArrayOutput {
+	return i.ToConnectorConfigCustomTableArrayOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorConfigCustomTableArray) ToFivetranConnectorConfigCustomTableArrayOutputWithContext(ctx context.Context) FivetranConnectorConfigCustomTableArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorConfigCustomTableArrayOutput)
+func (i ConnectorConfigCustomTableArray) ToConnectorConfigCustomTableArrayOutputWithContext(ctx context.Context) ConnectorConfigCustomTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigCustomTableArrayOutput)
 }
 
-func (i FivetranConnectorConfigCustomTableArray) ToOutput(ctx context.Context) pulumix.Output[[]FivetranConnectorConfigCustomTable] {
-	return pulumix.Output[[]FivetranConnectorConfigCustomTable]{
-		OutputState: i.ToFivetranConnectorConfigCustomTableArrayOutputWithContext(ctx).OutputState,
+func (i ConnectorConfigCustomTableArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigCustomTable] {
+	return pulumix.Output[[]ConnectorConfigCustomTable]{
+		OutputState: i.ToConnectorConfigCustomTableArrayOutputWithContext(ctx).OutputState,
 	}
 }
 
-type FivetranConnectorConfigCustomTableOutput struct{ *pulumi.OutputState }
+type ConnectorConfigCustomTableOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorConfigCustomTableOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorConfigCustomTable)(nil)).Elem()
+func (ConnectorConfigCustomTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorConfigCustomTable)(nil)).Elem()
 }
 
-func (o FivetranConnectorConfigCustomTableOutput) ToFivetranConnectorConfigCustomTableOutput() FivetranConnectorConfigCustomTableOutput {
+func (o ConnectorConfigCustomTableOutput) ToConnectorConfigCustomTableOutput() ConnectorConfigCustomTableOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigCustomTableOutput) ToFivetranConnectorConfigCustomTableOutputWithContext(ctx context.Context) FivetranConnectorConfigCustomTableOutput {
+func (o ConnectorConfigCustomTableOutput) ToConnectorConfigCustomTableOutputWithContext(ctx context.Context) ConnectorConfigCustomTableOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigCustomTableOutput) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorConfigCustomTable] {
-	return pulumix.Output[FivetranConnectorConfigCustomTable]{
+func (o ConnectorConfigCustomTableOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigCustomTable] {
+	return pulumix.Output[ConnectorConfigCustomTable]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorConfigCustomTableOutput) ActionBreakdowns() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigCustomTable) []string { return v.ActionBreakdowns }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigCustomTableOutput) ActionBreakdowns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomTable) []string { return v.ActionBreakdowns }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigCustomTableOutput) ActionReportTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigCustomTable) *string { return v.ActionReportTime }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigCustomTableOutput) ActionReportTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomTable) *string { return v.ActionReportTime }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigCustomTableOutput) Aggregation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigCustomTable) *string { return v.Aggregation }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigCustomTableOutput) Aggregation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomTable) *string { return v.Aggregation }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigCustomTableOutput) Breakdowns() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigCustomTable) []string { return v.Breakdowns }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigCustomTableOutput) Breakdowns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomTable) []string { return v.Breakdowns }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigCustomTableOutput) ClickAttributionWindow() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigCustomTable) *string { return v.ClickAttributionWindow }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigCustomTableOutput) ClickAttributionWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomTable) *string { return v.ClickAttributionWindow }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigCustomTableOutput) ConfigType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigCustomTable) *string { return v.ConfigType }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigCustomTableOutput) ConfigType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomTable) *string { return v.ConfigType }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigCustomTableOutput) Fields() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigCustomTable) []string { return v.Fields }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigCustomTableOutput) Fields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomTable) []string { return v.Fields }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigCustomTableOutput) Level() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigCustomTable) *string { return v.Level }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigCustomTableOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomTable) *string { return v.Level }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigCustomTableOutput) PrebuiltReportName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigCustomTable) *string { return v.PrebuiltReportName }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigCustomTableOutput) PrebuiltReportName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomTable) *string { return v.PrebuiltReportName }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigCustomTableOutput) TableName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigCustomTable) *string { return v.TableName }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigCustomTableOutput) TableName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomTable) *string { return v.TableName }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigCustomTableOutput) UseUnifiedAttributionSetting() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigCustomTable) *string { return v.UseUnifiedAttributionSetting }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigCustomTableOutput) UseUnifiedAttributionSetting() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomTable) *string { return v.UseUnifiedAttributionSetting }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigCustomTableOutput) ViewAttributionWindow() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigCustomTable) *string { return v.ViewAttributionWindow }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigCustomTableOutput) ViewAttributionWindow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigCustomTable) *string { return v.ViewAttributionWindow }).(pulumi.StringPtrOutput)
 }
 
-type FivetranConnectorConfigCustomTableArrayOutput struct{ *pulumi.OutputState }
+type ConnectorConfigCustomTableArrayOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorConfigCustomTableArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FivetranConnectorConfigCustomTable)(nil)).Elem()
+func (ConnectorConfigCustomTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorConfigCustomTable)(nil)).Elem()
 }
 
-func (o FivetranConnectorConfigCustomTableArrayOutput) ToFivetranConnectorConfigCustomTableArrayOutput() FivetranConnectorConfigCustomTableArrayOutput {
+func (o ConnectorConfigCustomTableArrayOutput) ToConnectorConfigCustomTableArrayOutput() ConnectorConfigCustomTableArrayOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigCustomTableArrayOutput) ToFivetranConnectorConfigCustomTableArrayOutputWithContext(ctx context.Context) FivetranConnectorConfigCustomTableArrayOutput {
+func (o ConnectorConfigCustomTableArrayOutput) ToConnectorConfigCustomTableArrayOutputWithContext(ctx context.Context) ConnectorConfigCustomTableArrayOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigCustomTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FivetranConnectorConfigCustomTable] {
-	return pulumix.Output[[]FivetranConnectorConfigCustomTable]{
+func (o ConnectorConfigCustomTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigCustomTable] {
+	return pulumix.Output[[]ConnectorConfigCustomTable]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorConfigCustomTableArrayOutput) Index(i pulumi.IntInput) FivetranConnectorConfigCustomTableOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FivetranConnectorConfigCustomTable {
-		return vs[0].([]FivetranConnectorConfigCustomTable)[vs[1].(int)]
-	}).(FivetranConnectorConfigCustomTableOutput)
+func (o ConnectorConfigCustomTableArrayOutput) Index(i pulumi.IntInput) ConnectorConfigCustomTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorConfigCustomTable {
+		return vs[0].([]ConnectorConfigCustomTable)[vs[1].(int)]
+	}).(ConnectorConfigCustomTableOutput)
 }
 
-type FivetranConnectorConfigProjectCredential struct {
+type ConnectorConfigProjectCredential struct {
 	ApiKey    *string `pulumi:"apiKey"`
 	Project   *string `pulumi:"project"`
 	SecretKey *string `pulumi:"secretKey"`
 }
 
-// FivetranConnectorConfigProjectCredentialInput is an input type that accepts FivetranConnectorConfigProjectCredentialArgs and FivetranConnectorConfigProjectCredentialOutput values.
-// You can construct a concrete instance of `FivetranConnectorConfigProjectCredentialInput` via:
+// ConnectorConfigProjectCredentialInput is an input type that accepts ConnectorConfigProjectCredentialArgs and ConnectorConfigProjectCredentialOutput values.
+// You can construct a concrete instance of `ConnectorConfigProjectCredentialInput` via:
 //
-//	FivetranConnectorConfigProjectCredentialArgs{...}
-type FivetranConnectorConfigProjectCredentialInput interface {
+//	ConnectorConfigProjectCredentialArgs{...}
+type ConnectorConfigProjectCredentialInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorConfigProjectCredentialOutput() FivetranConnectorConfigProjectCredentialOutput
-	ToFivetranConnectorConfigProjectCredentialOutputWithContext(context.Context) FivetranConnectorConfigProjectCredentialOutput
+	ToConnectorConfigProjectCredentialOutput() ConnectorConfigProjectCredentialOutput
+	ToConnectorConfigProjectCredentialOutputWithContext(context.Context) ConnectorConfigProjectCredentialOutput
 }
 
-type FivetranConnectorConfigProjectCredentialArgs struct {
+type ConnectorConfigProjectCredentialArgs struct {
 	ApiKey    pulumi.StringPtrInput `pulumi:"apiKey"`
 	Project   pulumi.StringPtrInput `pulumi:"project"`
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
 }
 
-func (FivetranConnectorConfigProjectCredentialArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorConfigProjectCredential)(nil)).Elem()
+func (ConnectorConfigProjectCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorConfigProjectCredential)(nil)).Elem()
 }
 
-func (i FivetranConnectorConfigProjectCredentialArgs) ToFivetranConnectorConfigProjectCredentialOutput() FivetranConnectorConfigProjectCredentialOutput {
-	return i.ToFivetranConnectorConfigProjectCredentialOutputWithContext(context.Background())
+func (i ConnectorConfigProjectCredentialArgs) ToConnectorConfigProjectCredentialOutput() ConnectorConfigProjectCredentialOutput {
+	return i.ToConnectorConfigProjectCredentialOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorConfigProjectCredentialArgs) ToFivetranConnectorConfigProjectCredentialOutputWithContext(ctx context.Context) FivetranConnectorConfigProjectCredentialOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorConfigProjectCredentialOutput)
+func (i ConnectorConfigProjectCredentialArgs) ToConnectorConfigProjectCredentialOutputWithContext(ctx context.Context) ConnectorConfigProjectCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigProjectCredentialOutput)
 }
 
-func (i FivetranConnectorConfigProjectCredentialArgs) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorConfigProjectCredential] {
-	return pulumix.Output[FivetranConnectorConfigProjectCredential]{
-		OutputState: i.ToFivetranConnectorConfigProjectCredentialOutputWithContext(ctx).OutputState,
+func (i ConnectorConfigProjectCredentialArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigProjectCredential] {
+	return pulumix.Output[ConnectorConfigProjectCredential]{
+		OutputState: i.ToConnectorConfigProjectCredentialOutputWithContext(ctx).OutputState,
 	}
 }
 
-// FivetranConnectorConfigProjectCredentialArrayInput is an input type that accepts FivetranConnectorConfigProjectCredentialArray and FivetranConnectorConfigProjectCredentialArrayOutput values.
-// You can construct a concrete instance of `FivetranConnectorConfigProjectCredentialArrayInput` via:
+// ConnectorConfigProjectCredentialArrayInput is an input type that accepts ConnectorConfigProjectCredentialArray and ConnectorConfigProjectCredentialArrayOutput values.
+// You can construct a concrete instance of `ConnectorConfigProjectCredentialArrayInput` via:
 //
-//	FivetranConnectorConfigProjectCredentialArray{ FivetranConnectorConfigProjectCredentialArgs{...} }
-type FivetranConnectorConfigProjectCredentialArrayInput interface {
+//	ConnectorConfigProjectCredentialArray{ ConnectorConfigProjectCredentialArgs{...} }
+type ConnectorConfigProjectCredentialArrayInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorConfigProjectCredentialArrayOutput() FivetranConnectorConfigProjectCredentialArrayOutput
-	ToFivetranConnectorConfigProjectCredentialArrayOutputWithContext(context.Context) FivetranConnectorConfigProjectCredentialArrayOutput
+	ToConnectorConfigProjectCredentialArrayOutput() ConnectorConfigProjectCredentialArrayOutput
+	ToConnectorConfigProjectCredentialArrayOutputWithContext(context.Context) ConnectorConfigProjectCredentialArrayOutput
 }
 
-type FivetranConnectorConfigProjectCredentialArray []FivetranConnectorConfigProjectCredentialInput
+type ConnectorConfigProjectCredentialArray []ConnectorConfigProjectCredentialInput
 
-func (FivetranConnectorConfigProjectCredentialArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FivetranConnectorConfigProjectCredential)(nil)).Elem()
+func (ConnectorConfigProjectCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorConfigProjectCredential)(nil)).Elem()
 }
 
-func (i FivetranConnectorConfigProjectCredentialArray) ToFivetranConnectorConfigProjectCredentialArrayOutput() FivetranConnectorConfigProjectCredentialArrayOutput {
-	return i.ToFivetranConnectorConfigProjectCredentialArrayOutputWithContext(context.Background())
+func (i ConnectorConfigProjectCredentialArray) ToConnectorConfigProjectCredentialArrayOutput() ConnectorConfigProjectCredentialArrayOutput {
+	return i.ToConnectorConfigProjectCredentialArrayOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorConfigProjectCredentialArray) ToFivetranConnectorConfigProjectCredentialArrayOutputWithContext(ctx context.Context) FivetranConnectorConfigProjectCredentialArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorConfigProjectCredentialArrayOutput)
+func (i ConnectorConfigProjectCredentialArray) ToConnectorConfigProjectCredentialArrayOutputWithContext(ctx context.Context) ConnectorConfigProjectCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigProjectCredentialArrayOutput)
 }
 
-func (i FivetranConnectorConfigProjectCredentialArray) ToOutput(ctx context.Context) pulumix.Output[[]FivetranConnectorConfigProjectCredential] {
-	return pulumix.Output[[]FivetranConnectorConfigProjectCredential]{
-		OutputState: i.ToFivetranConnectorConfigProjectCredentialArrayOutputWithContext(ctx).OutputState,
+func (i ConnectorConfigProjectCredentialArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigProjectCredential] {
+	return pulumix.Output[[]ConnectorConfigProjectCredential]{
+		OutputState: i.ToConnectorConfigProjectCredentialArrayOutputWithContext(ctx).OutputState,
 	}
 }
 
-type FivetranConnectorConfigProjectCredentialOutput struct{ *pulumi.OutputState }
+type ConnectorConfigProjectCredentialOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorConfigProjectCredentialOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorConfigProjectCredential)(nil)).Elem()
+func (ConnectorConfigProjectCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorConfigProjectCredential)(nil)).Elem()
 }
 
-func (o FivetranConnectorConfigProjectCredentialOutput) ToFivetranConnectorConfigProjectCredentialOutput() FivetranConnectorConfigProjectCredentialOutput {
+func (o ConnectorConfigProjectCredentialOutput) ToConnectorConfigProjectCredentialOutput() ConnectorConfigProjectCredentialOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigProjectCredentialOutput) ToFivetranConnectorConfigProjectCredentialOutputWithContext(ctx context.Context) FivetranConnectorConfigProjectCredentialOutput {
+func (o ConnectorConfigProjectCredentialOutput) ToConnectorConfigProjectCredentialOutputWithContext(ctx context.Context) ConnectorConfigProjectCredentialOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigProjectCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorConfigProjectCredential] {
-	return pulumix.Output[FivetranConnectorConfigProjectCredential]{
+func (o ConnectorConfigProjectCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigProjectCredential] {
+	return pulumix.Output[ConnectorConfigProjectCredential]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorConfigProjectCredentialOutput) ApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigProjectCredential) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigProjectCredentialOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigProjectCredential) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigProjectCredentialOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigProjectCredential) *string { return v.Project }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigProjectCredentialOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigProjectCredential) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigProjectCredentialOutput) SecretKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigProjectCredential) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigProjectCredentialOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigProjectCredential) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
 
-type FivetranConnectorConfigProjectCredentialArrayOutput struct{ *pulumi.OutputState }
+type ConnectorConfigProjectCredentialArrayOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorConfigProjectCredentialArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FivetranConnectorConfigProjectCredential)(nil)).Elem()
+func (ConnectorConfigProjectCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorConfigProjectCredential)(nil)).Elem()
 }
 
-func (o FivetranConnectorConfigProjectCredentialArrayOutput) ToFivetranConnectorConfigProjectCredentialArrayOutput() FivetranConnectorConfigProjectCredentialArrayOutput {
+func (o ConnectorConfigProjectCredentialArrayOutput) ToConnectorConfigProjectCredentialArrayOutput() ConnectorConfigProjectCredentialArrayOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigProjectCredentialArrayOutput) ToFivetranConnectorConfigProjectCredentialArrayOutputWithContext(ctx context.Context) FivetranConnectorConfigProjectCredentialArrayOutput {
+func (o ConnectorConfigProjectCredentialArrayOutput) ToConnectorConfigProjectCredentialArrayOutputWithContext(ctx context.Context) ConnectorConfigProjectCredentialArrayOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigProjectCredentialArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FivetranConnectorConfigProjectCredential] {
-	return pulumix.Output[[]FivetranConnectorConfigProjectCredential]{
+func (o ConnectorConfigProjectCredentialArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigProjectCredential] {
+	return pulumix.Output[[]ConnectorConfigProjectCredential]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorConfigProjectCredentialArrayOutput) Index(i pulumi.IntInput) FivetranConnectorConfigProjectCredentialOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FivetranConnectorConfigProjectCredential {
-		return vs[0].([]FivetranConnectorConfigProjectCredential)[vs[1].(int)]
-	}).(FivetranConnectorConfigProjectCredentialOutput)
+func (o ConnectorConfigProjectCredentialArrayOutput) Index(i pulumi.IntInput) ConnectorConfigProjectCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorConfigProjectCredential {
+		return vs[0].([]ConnectorConfigProjectCredential)[vs[1].(int)]
+	}).(ConnectorConfigProjectCredentialOutput)
 }
 
-type FivetranConnectorConfigReport struct {
+type ConnectorConfigReport struct {
 	Aggregation     *string  `pulumi:"aggregation"`
 	Attributes      []string `pulumi:"attributes"`
 	ConfigType      *string  `pulumi:"configType"`
@@ -7950,18 +7948,18 @@ type FivetranConnectorConfigReport struct {
 	Table           *string  `pulumi:"table"`
 }
 
-// FivetranConnectorConfigReportInput is an input type that accepts FivetranConnectorConfigReportArgs and FivetranConnectorConfigReportOutput values.
-// You can construct a concrete instance of `FivetranConnectorConfigReportInput` via:
+// ConnectorConfigReportInput is an input type that accepts ConnectorConfigReportArgs and ConnectorConfigReportOutput values.
+// You can construct a concrete instance of `ConnectorConfigReportInput` via:
 //
-//	FivetranConnectorConfigReportArgs{...}
-type FivetranConnectorConfigReportInput interface {
+//	ConnectorConfigReportArgs{...}
+type ConnectorConfigReportInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorConfigReportOutput() FivetranConnectorConfigReportOutput
-	ToFivetranConnectorConfigReportOutputWithContext(context.Context) FivetranConnectorConfigReportOutput
+	ToConnectorConfigReportOutput() ConnectorConfigReportOutput
+	ToConnectorConfigReportOutputWithContext(context.Context) ConnectorConfigReportOutput
 }
 
-type FivetranConnectorConfigReportArgs struct {
+type ConnectorConfigReportArgs struct {
 	Aggregation     pulumi.StringPtrInput   `pulumi:"aggregation"`
 	Attributes      pulumi.StringArrayInput `pulumi:"attributes"`
 	ConfigType      pulumi.StringPtrInput   `pulumi:"configType"`
@@ -7979,286 +7977,473 @@ type FivetranConnectorConfigReportArgs struct {
 	Table           pulumi.StringPtrInput   `pulumi:"table"`
 }
 
-func (FivetranConnectorConfigReportArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorConfigReport)(nil)).Elem()
+func (ConnectorConfigReportArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorConfigReport)(nil)).Elem()
 }
 
-func (i FivetranConnectorConfigReportArgs) ToFivetranConnectorConfigReportOutput() FivetranConnectorConfigReportOutput {
-	return i.ToFivetranConnectorConfigReportOutputWithContext(context.Background())
+func (i ConnectorConfigReportArgs) ToConnectorConfigReportOutput() ConnectorConfigReportOutput {
+	return i.ToConnectorConfigReportOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorConfigReportArgs) ToFivetranConnectorConfigReportOutputWithContext(ctx context.Context) FivetranConnectorConfigReportOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorConfigReportOutput)
+func (i ConnectorConfigReportArgs) ToConnectorConfigReportOutputWithContext(ctx context.Context) ConnectorConfigReportOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigReportOutput)
 }
 
-func (i FivetranConnectorConfigReportArgs) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorConfigReport] {
-	return pulumix.Output[FivetranConnectorConfigReport]{
-		OutputState: i.ToFivetranConnectorConfigReportOutputWithContext(ctx).OutputState,
+func (i ConnectorConfigReportArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigReport] {
+	return pulumix.Output[ConnectorConfigReport]{
+		OutputState: i.ToConnectorConfigReportOutputWithContext(ctx).OutputState,
 	}
 }
 
-// FivetranConnectorConfigReportArrayInput is an input type that accepts FivetranConnectorConfigReportArray and FivetranConnectorConfigReportArrayOutput values.
-// You can construct a concrete instance of `FivetranConnectorConfigReportArrayInput` via:
+// ConnectorConfigReportArrayInput is an input type that accepts ConnectorConfigReportArray and ConnectorConfigReportArrayOutput values.
+// You can construct a concrete instance of `ConnectorConfigReportArrayInput` via:
 //
-//	FivetranConnectorConfigReportArray{ FivetranConnectorConfigReportArgs{...} }
-type FivetranConnectorConfigReportArrayInput interface {
+//	ConnectorConfigReportArray{ ConnectorConfigReportArgs{...} }
+type ConnectorConfigReportArrayInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorConfigReportArrayOutput() FivetranConnectorConfigReportArrayOutput
-	ToFivetranConnectorConfigReportArrayOutputWithContext(context.Context) FivetranConnectorConfigReportArrayOutput
+	ToConnectorConfigReportArrayOutput() ConnectorConfigReportArrayOutput
+	ToConnectorConfigReportArrayOutputWithContext(context.Context) ConnectorConfigReportArrayOutput
 }
 
-type FivetranConnectorConfigReportArray []FivetranConnectorConfigReportInput
+type ConnectorConfigReportArray []ConnectorConfigReportInput
 
-func (FivetranConnectorConfigReportArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FivetranConnectorConfigReport)(nil)).Elem()
+func (ConnectorConfigReportArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorConfigReport)(nil)).Elem()
 }
 
-func (i FivetranConnectorConfigReportArray) ToFivetranConnectorConfigReportArrayOutput() FivetranConnectorConfigReportArrayOutput {
-	return i.ToFivetranConnectorConfigReportArrayOutputWithContext(context.Background())
+func (i ConnectorConfigReportArray) ToConnectorConfigReportArrayOutput() ConnectorConfigReportArrayOutput {
+	return i.ToConnectorConfigReportArrayOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorConfigReportArray) ToFivetranConnectorConfigReportArrayOutputWithContext(ctx context.Context) FivetranConnectorConfigReportArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorConfigReportArrayOutput)
+func (i ConnectorConfigReportArray) ToConnectorConfigReportArrayOutputWithContext(ctx context.Context) ConnectorConfigReportArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigReportArrayOutput)
 }
 
-func (i FivetranConnectorConfigReportArray) ToOutput(ctx context.Context) pulumix.Output[[]FivetranConnectorConfigReport] {
-	return pulumix.Output[[]FivetranConnectorConfigReport]{
-		OutputState: i.ToFivetranConnectorConfigReportArrayOutputWithContext(ctx).OutputState,
+func (i ConnectorConfigReportArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigReport] {
+	return pulumix.Output[[]ConnectorConfigReport]{
+		OutputState: i.ToConnectorConfigReportArrayOutputWithContext(ctx).OutputState,
 	}
 }
 
-type FivetranConnectorConfigReportOutput struct{ *pulumi.OutputState }
+type ConnectorConfigReportOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorConfigReportOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorConfigReport)(nil)).Elem()
+func (ConnectorConfigReportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorConfigReport)(nil)).Elem()
 }
 
-func (o FivetranConnectorConfigReportOutput) ToFivetranConnectorConfigReportOutput() FivetranConnectorConfigReportOutput {
+func (o ConnectorConfigReportOutput) ToConnectorConfigReportOutput() ConnectorConfigReportOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigReportOutput) ToFivetranConnectorConfigReportOutputWithContext(ctx context.Context) FivetranConnectorConfigReportOutput {
+func (o ConnectorConfigReportOutput) ToConnectorConfigReportOutputWithContext(ctx context.Context) ConnectorConfigReportOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigReportOutput) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorConfigReport] {
-	return pulumix.Output[FivetranConnectorConfigReport]{
+func (o ConnectorConfigReportOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigReport] {
+	return pulumix.Output[ConnectorConfigReport]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorConfigReportOutput) Aggregation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigReport) *string { return v.Aggregation }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigReportOutput) Aggregation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) *string { return v.Aggregation }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigReportOutput) Attributes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigReport) []string { return v.Attributes }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigReportOutput) Attributes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) []string { return v.Attributes }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigReportOutput) ConfigType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigReport) *string { return v.ConfigType }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigReportOutput) ConfigType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) *string { return v.ConfigType }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigReportOutput) Dimensions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigReport) []string { return v.Dimensions }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigReportOutput) Dimensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) []string { return v.Dimensions }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigReportOutput) Fields() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigReport) []string { return v.Fields }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigReportOutput) Fields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) []string { return v.Fields }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigReportOutput) Filter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigReport) *string { return v.Filter }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigReportOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigReportOutput) FilterFieldName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigReport) *string { return v.FilterFieldName }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigReportOutput) FilterFieldName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) *string { return v.FilterFieldName }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigReportOutput) FilterValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigReport) *string { return v.FilterValue }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigReportOutput) FilterValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) *string { return v.FilterValue }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigReportOutput) Metrics() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigReport) []string { return v.Metrics }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigReportOutput) Metrics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) []string { return v.Metrics }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigReportOutput) PrebuiltReport() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigReport) *string { return v.PrebuiltReport }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigReportOutput) PrebuiltReport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) *string { return v.PrebuiltReport }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigReportOutput) ReportType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigReport) *string { return v.ReportType }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigReportOutput) ReportType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) *string { return v.ReportType }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigReportOutput) SearchTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigReport) []string { return v.SearchTypes }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigReportOutput) SearchTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) []string { return v.SearchTypes }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigReportOutput) SegmentIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigReport) []string { return v.SegmentIds }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigReportOutput) SegmentIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) []string { return v.SegmentIds }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigReportOutput) Segments() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigReport) []string { return v.Segments }).(pulumi.StringArrayOutput)
+func (o ConnectorConfigReportOutput) Segments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) []string { return v.Segments }).(pulumi.StringArrayOutput)
 }
 
-func (o FivetranConnectorConfigReportOutput) Table() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigReport) *string { return v.Table }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigReportOutput) Table() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigReport) *string { return v.Table }).(pulumi.StringPtrOutput)
 }
 
-type FivetranConnectorConfigReportArrayOutput struct{ *pulumi.OutputState }
+type ConnectorConfigReportArrayOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorConfigReportArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FivetranConnectorConfigReport)(nil)).Elem()
+func (ConnectorConfigReportArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorConfigReport)(nil)).Elem()
 }
 
-func (o FivetranConnectorConfigReportArrayOutput) ToFivetranConnectorConfigReportArrayOutput() FivetranConnectorConfigReportArrayOutput {
+func (o ConnectorConfigReportArrayOutput) ToConnectorConfigReportArrayOutput() ConnectorConfigReportArrayOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigReportArrayOutput) ToFivetranConnectorConfigReportArrayOutputWithContext(ctx context.Context) FivetranConnectorConfigReportArrayOutput {
+func (o ConnectorConfigReportArrayOutput) ToConnectorConfigReportArrayOutputWithContext(ctx context.Context) ConnectorConfigReportArrayOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigReportArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FivetranConnectorConfigReport] {
-	return pulumix.Output[[]FivetranConnectorConfigReport]{
+func (o ConnectorConfigReportArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigReport] {
+	return pulumix.Output[[]ConnectorConfigReport]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorConfigReportArrayOutput) Index(i pulumi.IntInput) FivetranConnectorConfigReportOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FivetranConnectorConfigReport {
-		return vs[0].([]FivetranConnectorConfigReport)[vs[1].(int)]
-	}).(FivetranConnectorConfigReportOutput)
+func (o ConnectorConfigReportArrayOutput) Index(i pulumi.IntInput) ConnectorConfigReportOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorConfigReport {
+		return vs[0].([]ConnectorConfigReport)[vs[1].(int)]
+	}).(ConnectorConfigReportOutput)
 }
 
-type FivetranConnectorConfigSecretsList struct {
+type ConnectorConfigSecretsList struct {
 	Key   *string `pulumi:"key"`
 	Value *string `pulumi:"value"`
 }
 
-// FivetranConnectorConfigSecretsListInput is an input type that accepts FivetranConnectorConfigSecretsListArgs and FivetranConnectorConfigSecretsListOutput values.
-// You can construct a concrete instance of `FivetranConnectorConfigSecretsListInput` via:
+// ConnectorConfigSecretsListInput is an input type that accepts ConnectorConfigSecretsListArgs and ConnectorConfigSecretsListOutput values.
+// You can construct a concrete instance of `ConnectorConfigSecretsListInput` via:
 //
-//	FivetranConnectorConfigSecretsListArgs{...}
-type FivetranConnectorConfigSecretsListInput interface {
+//	ConnectorConfigSecretsListArgs{...}
+type ConnectorConfigSecretsListInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorConfigSecretsListOutput() FivetranConnectorConfigSecretsListOutput
-	ToFivetranConnectorConfigSecretsListOutputWithContext(context.Context) FivetranConnectorConfigSecretsListOutput
+	ToConnectorConfigSecretsListOutput() ConnectorConfigSecretsListOutput
+	ToConnectorConfigSecretsListOutputWithContext(context.Context) ConnectorConfigSecretsListOutput
 }
 
-type FivetranConnectorConfigSecretsListArgs struct {
+type ConnectorConfigSecretsListArgs struct {
 	Key   pulumi.StringPtrInput `pulumi:"key"`
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
-func (FivetranConnectorConfigSecretsListArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorConfigSecretsList)(nil)).Elem()
+func (ConnectorConfigSecretsListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorConfigSecretsList)(nil)).Elem()
 }
 
-func (i FivetranConnectorConfigSecretsListArgs) ToFivetranConnectorConfigSecretsListOutput() FivetranConnectorConfigSecretsListOutput {
-	return i.ToFivetranConnectorConfigSecretsListOutputWithContext(context.Background())
+func (i ConnectorConfigSecretsListArgs) ToConnectorConfigSecretsListOutput() ConnectorConfigSecretsListOutput {
+	return i.ToConnectorConfigSecretsListOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorConfigSecretsListArgs) ToFivetranConnectorConfigSecretsListOutputWithContext(ctx context.Context) FivetranConnectorConfigSecretsListOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorConfigSecretsListOutput)
+func (i ConnectorConfigSecretsListArgs) ToConnectorConfigSecretsListOutputWithContext(ctx context.Context) ConnectorConfigSecretsListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigSecretsListOutput)
 }
 
-func (i FivetranConnectorConfigSecretsListArgs) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorConfigSecretsList] {
-	return pulumix.Output[FivetranConnectorConfigSecretsList]{
-		OutputState: i.ToFivetranConnectorConfigSecretsListOutputWithContext(ctx).OutputState,
+func (i ConnectorConfigSecretsListArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigSecretsList] {
+	return pulumix.Output[ConnectorConfigSecretsList]{
+		OutputState: i.ToConnectorConfigSecretsListOutputWithContext(ctx).OutputState,
 	}
 }
 
-// FivetranConnectorConfigSecretsListArrayInput is an input type that accepts FivetranConnectorConfigSecretsListArray and FivetranConnectorConfigSecretsListArrayOutput values.
-// You can construct a concrete instance of `FivetranConnectorConfigSecretsListArrayInput` via:
+// ConnectorConfigSecretsListArrayInput is an input type that accepts ConnectorConfigSecretsListArray and ConnectorConfigSecretsListArrayOutput values.
+// You can construct a concrete instance of `ConnectorConfigSecretsListArrayInput` via:
 //
-//	FivetranConnectorConfigSecretsListArray{ FivetranConnectorConfigSecretsListArgs{...} }
-type FivetranConnectorConfigSecretsListArrayInput interface {
+//	ConnectorConfigSecretsListArray{ ConnectorConfigSecretsListArgs{...} }
+type ConnectorConfigSecretsListArrayInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorConfigSecretsListArrayOutput() FivetranConnectorConfigSecretsListArrayOutput
-	ToFivetranConnectorConfigSecretsListArrayOutputWithContext(context.Context) FivetranConnectorConfigSecretsListArrayOutput
+	ToConnectorConfigSecretsListArrayOutput() ConnectorConfigSecretsListArrayOutput
+	ToConnectorConfigSecretsListArrayOutputWithContext(context.Context) ConnectorConfigSecretsListArrayOutput
 }
 
-type FivetranConnectorConfigSecretsListArray []FivetranConnectorConfigSecretsListInput
+type ConnectorConfigSecretsListArray []ConnectorConfigSecretsListInput
 
-func (FivetranConnectorConfigSecretsListArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FivetranConnectorConfigSecretsList)(nil)).Elem()
+func (ConnectorConfigSecretsListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorConfigSecretsList)(nil)).Elem()
 }
 
-func (i FivetranConnectorConfigSecretsListArray) ToFivetranConnectorConfigSecretsListArrayOutput() FivetranConnectorConfigSecretsListArrayOutput {
-	return i.ToFivetranConnectorConfigSecretsListArrayOutputWithContext(context.Background())
+func (i ConnectorConfigSecretsListArray) ToConnectorConfigSecretsListArrayOutput() ConnectorConfigSecretsListArrayOutput {
+	return i.ToConnectorConfigSecretsListArrayOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorConfigSecretsListArray) ToFivetranConnectorConfigSecretsListArrayOutputWithContext(ctx context.Context) FivetranConnectorConfigSecretsListArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorConfigSecretsListArrayOutput)
+func (i ConnectorConfigSecretsListArray) ToConnectorConfigSecretsListArrayOutputWithContext(ctx context.Context) ConnectorConfigSecretsListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorConfigSecretsListArrayOutput)
 }
 
-func (i FivetranConnectorConfigSecretsListArray) ToOutput(ctx context.Context) pulumix.Output[[]FivetranConnectorConfigSecretsList] {
-	return pulumix.Output[[]FivetranConnectorConfigSecretsList]{
-		OutputState: i.ToFivetranConnectorConfigSecretsListArrayOutputWithContext(ctx).OutputState,
+func (i ConnectorConfigSecretsListArray) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigSecretsList] {
+	return pulumix.Output[[]ConnectorConfigSecretsList]{
+		OutputState: i.ToConnectorConfigSecretsListArrayOutputWithContext(ctx).OutputState,
 	}
 }
 
-type FivetranConnectorConfigSecretsListOutput struct{ *pulumi.OutputState }
+type ConnectorConfigSecretsListOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorConfigSecretsListOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorConfigSecretsList)(nil)).Elem()
+func (ConnectorConfigSecretsListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorConfigSecretsList)(nil)).Elem()
 }
 
-func (o FivetranConnectorConfigSecretsListOutput) ToFivetranConnectorConfigSecretsListOutput() FivetranConnectorConfigSecretsListOutput {
+func (o ConnectorConfigSecretsListOutput) ToConnectorConfigSecretsListOutput() ConnectorConfigSecretsListOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigSecretsListOutput) ToFivetranConnectorConfigSecretsListOutputWithContext(ctx context.Context) FivetranConnectorConfigSecretsListOutput {
+func (o ConnectorConfigSecretsListOutput) ToConnectorConfigSecretsListOutputWithContext(ctx context.Context) ConnectorConfigSecretsListOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigSecretsListOutput) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorConfigSecretsList] {
-	return pulumix.Output[FivetranConnectorConfigSecretsList]{
+func (o ConnectorConfigSecretsListOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorConfigSecretsList] {
+	return pulumix.Output[ConnectorConfigSecretsList]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorConfigSecretsListOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigSecretsList) *string { return v.Key }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigSecretsListOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigSecretsList) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorConfigSecretsListOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorConfigSecretsList) *string { return v.Value }).(pulumi.StringPtrOutput)
+func (o ConnectorConfigSecretsListOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorConfigSecretsList) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-type FivetranConnectorConfigSecretsListArrayOutput struct{ *pulumi.OutputState }
+type ConnectorConfigSecretsListArrayOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorConfigSecretsListArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FivetranConnectorConfigSecretsList)(nil)).Elem()
+func (ConnectorConfigSecretsListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorConfigSecretsList)(nil)).Elem()
 }
 
-func (o FivetranConnectorConfigSecretsListArrayOutput) ToFivetranConnectorConfigSecretsListArrayOutput() FivetranConnectorConfigSecretsListArrayOutput {
+func (o ConnectorConfigSecretsListArrayOutput) ToConnectorConfigSecretsListArrayOutput() ConnectorConfigSecretsListArrayOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigSecretsListArrayOutput) ToFivetranConnectorConfigSecretsListArrayOutputWithContext(ctx context.Context) FivetranConnectorConfigSecretsListArrayOutput {
+func (o ConnectorConfigSecretsListArrayOutput) ToConnectorConfigSecretsListArrayOutputWithContext(ctx context.Context) ConnectorConfigSecretsListArrayOutput {
 	return o
 }
 
-func (o FivetranConnectorConfigSecretsListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FivetranConnectorConfigSecretsList] {
-	return pulumix.Output[[]FivetranConnectorConfigSecretsList]{
+func (o ConnectorConfigSecretsListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorConfigSecretsList] {
+	return pulumix.Output[[]ConnectorConfigSecretsList]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorConfigSecretsListArrayOutput) Index(i pulumi.IntInput) FivetranConnectorConfigSecretsListOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FivetranConnectorConfigSecretsList {
-		return vs[0].([]FivetranConnectorConfigSecretsList)[vs[1].(int)]
-	}).(FivetranConnectorConfigSecretsListOutput)
+func (o ConnectorConfigSecretsListArrayOutput) Index(i pulumi.IntInput) ConnectorConfigSecretsListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorConfigSecretsList {
+		return vs[0].([]ConnectorConfigSecretsList)[vs[1].(int)]
+	}).(ConnectorConfigSecretsListOutput)
 }
 
-type FivetranConnectorDbtProjectModel struct {
+type ConnectorDestinationSchema struct {
+	Name   *string `pulumi:"name"`
+	Prefix *string `pulumi:"prefix"`
+	Table  *string `pulumi:"table"`
+}
+
+// ConnectorDestinationSchemaInput is an input type that accepts ConnectorDestinationSchemaArgs and ConnectorDestinationSchemaOutput values.
+// You can construct a concrete instance of `ConnectorDestinationSchemaInput` via:
+//
+//	ConnectorDestinationSchemaArgs{...}
+type ConnectorDestinationSchemaInput interface {
+	pulumi.Input
+
+	ToConnectorDestinationSchemaOutput() ConnectorDestinationSchemaOutput
+	ToConnectorDestinationSchemaOutputWithContext(context.Context) ConnectorDestinationSchemaOutput
+}
+
+type ConnectorDestinationSchemaArgs struct {
+	Name   pulumi.StringPtrInput `pulumi:"name"`
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+	Table  pulumi.StringPtrInput `pulumi:"table"`
+}
+
+func (ConnectorDestinationSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorDestinationSchema)(nil)).Elem()
+}
+
+func (i ConnectorDestinationSchemaArgs) ToConnectorDestinationSchemaOutput() ConnectorDestinationSchemaOutput {
+	return i.ToConnectorDestinationSchemaOutputWithContext(context.Background())
+}
+
+func (i ConnectorDestinationSchemaArgs) ToConnectorDestinationSchemaOutputWithContext(ctx context.Context) ConnectorDestinationSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorDestinationSchemaOutput)
+}
+
+func (i ConnectorDestinationSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectorDestinationSchema] {
+	return pulumix.Output[ConnectorDestinationSchema]{
+		OutputState: i.ToConnectorDestinationSchemaOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ConnectorDestinationSchemaArgs) ToConnectorDestinationSchemaPtrOutput() ConnectorDestinationSchemaPtrOutput {
+	return i.ToConnectorDestinationSchemaPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectorDestinationSchemaArgs) ToConnectorDestinationSchemaPtrOutputWithContext(ctx context.Context) ConnectorDestinationSchemaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorDestinationSchemaOutput).ToConnectorDestinationSchemaPtrOutputWithContext(ctx)
+}
+
+// ConnectorDestinationSchemaPtrInput is an input type that accepts ConnectorDestinationSchemaArgs, ConnectorDestinationSchemaPtr and ConnectorDestinationSchemaPtrOutput values.
+// You can construct a concrete instance of `ConnectorDestinationSchemaPtrInput` via:
+//
+//	        ConnectorDestinationSchemaArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectorDestinationSchemaPtrInput interface {
+	pulumi.Input
+
+	ToConnectorDestinationSchemaPtrOutput() ConnectorDestinationSchemaPtrOutput
+	ToConnectorDestinationSchemaPtrOutputWithContext(context.Context) ConnectorDestinationSchemaPtrOutput
+}
+
+type connectorDestinationSchemaPtrType ConnectorDestinationSchemaArgs
+
+func ConnectorDestinationSchemaPtr(v *ConnectorDestinationSchemaArgs) ConnectorDestinationSchemaPtrInput {
+	return (*connectorDestinationSchemaPtrType)(v)
+}
+
+func (*connectorDestinationSchemaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorDestinationSchema)(nil)).Elem()
+}
+
+func (i *connectorDestinationSchemaPtrType) ToConnectorDestinationSchemaPtrOutput() ConnectorDestinationSchemaPtrOutput {
+	return i.ToConnectorDestinationSchemaPtrOutputWithContext(context.Background())
+}
+
+func (i *connectorDestinationSchemaPtrType) ToConnectorDestinationSchemaPtrOutputWithContext(ctx context.Context) ConnectorDestinationSchemaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorDestinationSchemaPtrOutput)
+}
+
+func (i *connectorDestinationSchemaPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConnectorDestinationSchema] {
+	return pulumix.Output[*ConnectorDestinationSchema]{
+		OutputState: i.ToConnectorDestinationSchemaPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ConnectorDestinationSchemaOutput struct{ *pulumi.OutputState }
+
+func (ConnectorDestinationSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorDestinationSchema)(nil)).Elem()
+}
+
+func (o ConnectorDestinationSchemaOutput) ToConnectorDestinationSchemaOutput() ConnectorDestinationSchemaOutput {
+	return o
+}
+
+func (o ConnectorDestinationSchemaOutput) ToConnectorDestinationSchemaOutputWithContext(ctx context.Context) ConnectorDestinationSchemaOutput {
+	return o
+}
+
+func (o ConnectorDestinationSchemaOutput) ToConnectorDestinationSchemaPtrOutput() ConnectorDestinationSchemaPtrOutput {
+	return o.ToConnectorDestinationSchemaPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectorDestinationSchemaOutput) ToConnectorDestinationSchemaPtrOutputWithContext(ctx context.Context) ConnectorDestinationSchemaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorDestinationSchema) *ConnectorDestinationSchema {
+		return &v
+	}).(ConnectorDestinationSchemaPtrOutput)
+}
+
+func (o ConnectorDestinationSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorDestinationSchema] {
+	return pulumix.Output[ConnectorDestinationSchema]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConnectorDestinationSchemaOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorDestinationSchema) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorDestinationSchemaOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorDestinationSchema) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorDestinationSchemaOutput) Table() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorDestinationSchema) *string { return v.Table }).(pulumi.StringPtrOutput)
+}
+
+type ConnectorDestinationSchemaPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectorDestinationSchemaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorDestinationSchema)(nil)).Elem()
+}
+
+func (o ConnectorDestinationSchemaPtrOutput) ToConnectorDestinationSchemaPtrOutput() ConnectorDestinationSchemaPtrOutput {
+	return o
+}
+
+func (o ConnectorDestinationSchemaPtrOutput) ToConnectorDestinationSchemaPtrOutputWithContext(ctx context.Context) ConnectorDestinationSchemaPtrOutput {
+	return o
+}
+
+func (o ConnectorDestinationSchemaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectorDestinationSchema] {
+	return pulumix.Output[*ConnectorDestinationSchema]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ConnectorDestinationSchemaPtrOutput) Elem() ConnectorDestinationSchemaOutput {
+	return o.ApplyT(func(v *ConnectorDestinationSchema) ConnectorDestinationSchema {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorDestinationSchema
+		return ret
+	}).(ConnectorDestinationSchemaOutput)
+}
+
+func (o ConnectorDestinationSchemaPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorDestinationSchema) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorDestinationSchemaPtrOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorDestinationSchema) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectorDestinationSchemaPtrOutput) Table() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorDestinationSchema) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Table
+	}).(pulumi.StringPtrOutput)
+}
+
+type DbtProjectModel struct {
 	// The unique identifier for the dbt Model within the Fivetran system.
 	Id *string `pulumi:"id"`
 	// The dbt Model name.
@@ -8267,18 +8452,18 @@ type FivetranConnectorDbtProjectModel struct {
 	Scheduled *bool `pulumi:"scheduled"`
 }
 
-// FivetranConnectorDbtProjectModelInput is an input type that accepts FivetranConnectorDbtProjectModelArgs and FivetranConnectorDbtProjectModelOutput values.
-// You can construct a concrete instance of `FivetranConnectorDbtProjectModelInput` via:
+// DbtProjectModelInput is an input type that accepts DbtProjectModelArgs and DbtProjectModelOutput values.
+// You can construct a concrete instance of `DbtProjectModelInput` via:
 //
-//	FivetranConnectorDbtProjectModelArgs{...}
-type FivetranConnectorDbtProjectModelInput interface {
+//	DbtProjectModelArgs{...}
+type DbtProjectModelInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorDbtProjectModelOutput() FivetranConnectorDbtProjectModelOutput
-	ToFivetranConnectorDbtProjectModelOutputWithContext(context.Context) FivetranConnectorDbtProjectModelOutput
+	ToDbtProjectModelOutput() DbtProjectModelOutput
+	ToDbtProjectModelOutputWithContext(context.Context) DbtProjectModelOutput
 }
 
-type FivetranConnectorDbtProjectModelArgs struct {
+type DbtProjectModelArgs struct {
 	// The unique identifier for the dbt Model within the Fivetran system.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The dbt Model name.
@@ -8287,117 +8472,117 @@ type FivetranConnectorDbtProjectModelArgs struct {
 	Scheduled pulumi.BoolPtrInput `pulumi:"scheduled"`
 }
 
-func (FivetranConnectorDbtProjectModelArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorDbtProjectModel)(nil)).Elem()
+func (DbtProjectModelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbtProjectModel)(nil)).Elem()
 }
 
-func (i FivetranConnectorDbtProjectModelArgs) ToFivetranConnectorDbtProjectModelOutput() FivetranConnectorDbtProjectModelOutput {
-	return i.ToFivetranConnectorDbtProjectModelOutputWithContext(context.Background())
+func (i DbtProjectModelArgs) ToDbtProjectModelOutput() DbtProjectModelOutput {
+	return i.ToDbtProjectModelOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorDbtProjectModelArgs) ToFivetranConnectorDbtProjectModelOutputWithContext(ctx context.Context) FivetranConnectorDbtProjectModelOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorDbtProjectModelOutput)
+func (i DbtProjectModelArgs) ToDbtProjectModelOutputWithContext(ctx context.Context) DbtProjectModelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbtProjectModelOutput)
 }
 
-func (i FivetranConnectorDbtProjectModelArgs) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorDbtProjectModel] {
-	return pulumix.Output[FivetranConnectorDbtProjectModel]{
-		OutputState: i.ToFivetranConnectorDbtProjectModelOutputWithContext(ctx).OutputState,
+func (i DbtProjectModelArgs) ToOutput(ctx context.Context) pulumix.Output[DbtProjectModel] {
+	return pulumix.Output[DbtProjectModel]{
+		OutputState: i.ToDbtProjectModelOutputWithContext(ctx).OutputState,
 	}
 }
 
-// FivetranConnectorDbtProjectModelArrayInput is an input type that accepts FivetranConnectorDbtProjectModelArray and FivetranConnectorDbtProjectModelArrayOutput values.
-// You can construct a concrete instance of `FivetranConnectorDbtProjectModelArrayInput` via:
+// DbtProjectModelArrayInput is an input type that accepts DbtProjectModelArray and DbtProjectModelArrayOutput values.
+// You can construct a concrete instance of `DbtProjectModelArrayInput` via:
 //
-//	FivetranConnectorDbtProjectModelArray{ FivetranConnectorDbtProjectModelArgs{...} }
-type FivetranConnectorDbtProjectModelArrayInput interface {
+//	DbtProjectModelArray{ DbtProjectModelArgs{...} }
+type DbtProjectModelArrayInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorDbtProjectModelArrayOutput() FivetranConnectorDbtProjectModelArrayOutput
-	ToFivetranConnectorDbtProjectModelArrayOutputWithContext(context.Context) FivetranConnectorDbtProjectModelArrayOutput
+	ToDbtProjectModelArrayOutput() DbtProjectModelArrayOutput
+	ToDbtProjectModelArrayOutputWithContext(context.Context) DbtProjectModelArrayOutput
 }
 
-type FivetranConnectorDbtProjectModelArray []FivetranConnectorDbtProjectModelInput
+type DbtProjectModelArray []DbtProjectModelInput
 
-func (FivetranConnectorDbtProjectModelArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FivetranConnectorDbtProjectModel)(nil)).Elem()
+func (DbtProjectModelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DbtProjectModel)(nil)).Elem()
 }
 
-func (i FivetranConnectorDbtProjectModelArray) ToFivetranConnectorDbtProjectModelArrayOutput() FivetranConnectorDbtProjectModelArrayOutput {
-	return i.ToFivetranConnectorDbtProjectModelArrayOutputWithContext(context.Background())
+func (i DbtProjectModelArray) ToDbtProjectModelArrayOutput() DbtProjectModelArrayOutput {
+	return i.ToDbtProjectModelArrayOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorDbtProjectModelArray) ToFivetranConnectorDbtProjectModelArrayOutputWithContext(ctx context.Context) FivetranConnectorDbtProjectModelArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorDbtProjectModelArrayOutput)
+func (i DbtProjectModelArray) ToDbtProjectModelArrayOutputWithContext(ctx context.Context) DbtProjectModelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbtProjectModelArrayOutput)
 }
 
-func (i FivetranConnectorDbtProjectModelArray) ToOutput(ctx context.Context) pulumix.Output[[]FivetranConnectorDbtProjectModel] {
-	return pulumix.Output[[]FivetranConnectorDbtProjectModel]{
-		OutputState: i.ToFivetranConnectorDbtProjectModelArrayOutputWithContext(ctx).OutputState,
+func (i DbtProjectModelArray) ToOutput(ctx context.Context) pulumix.Output[[]DbtProjectModel] {
+	return pulumix.Output[[]DbtProjectModel]{
+		OutputState: i.ToDbtProjectModelArrayOutputWithContext(ctx).OutputState,
 	}
 }
 
-type FivetranConnectorDbtProjectModelOutput struct{ *pulumi.OutputState }
+type DbtProjectModelOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorDbtProjectModelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorDbtProjectModel)(nil)).Elem()
+func (DbtProjectModelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbtProjectModel)(nil)).Elem()
 }
 
-func (o FivetranConnectorDbtProjectModelOutput) ToFivetranConnectorDbtProjectModelOutput() FivetranConnectorDbtProjectModelOutput {
+func (o DbtProjectModelOutput) ToDbtProjectModelOutput() DbtProjectModelOutput {
 	return o
 }
 
-func (o FivetranConnectorDbtProjectModelOutput) ToFivetranConnectorDbtProjectModelOutputWithContext(ctx context.Context) FivetranConnectorDbtProjectModelOutput {
+func (o DbtProjectModelOutput) ToDbtProjectModelOutputWithContext(ctx context.Context) DbtProjectModelOutput {
 	return o
 }
 
-func (o FivetranConnectorDbtProjectModelOutput) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorDbtProjectModel] {
-	return pulumix.Output[FivetranConnectorDbtProjectModel]{
+func (o DbtProjectModelOutput) ToOutput(ctx context.Context) pulumix.Output[DbtProjectModel] {
+	return pulumix.Output[DbtProjectModel]{
 		OutputState: o.OutputState,
 	}
 }
 
 // The unique identifier for the dbt Model within the Fivetran system.
-func (o FivetranConnectorDbtProjectModelOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDbtProjectModel) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o DbtProjectModelOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbtProjectModel) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // The dbt Model name.
-func (o FivetranConnectorDbtProjectModelOutput) ModelName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDbtProjectModel) *string { return v.ModelName }).(pulumi.StringPtrOutput)
+func (o DbtProjectModelOutput) ModelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbtProjectModel) *string { return v.ModelName }).(pulumi.StringPtrOutput)
 }
 
 // Boolean specifying whether the model is selected for execution.
-func (o FivetranConnectorDbtProjectModelOutput) Scheduled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDbtProjectModel) *bool { return v.Scheduled }).(pulumi.BoolPtrOutput)
+func (o DbtProjectModelOutput) Scheduled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DbtProjectModel) *bool { return v.Scheduled }).(pulumi.BoolPtrOutput)
 }
 
-type FivetranConnectorDbtProjectModelArrayOutput struct{ *pulumi.OutputState }
+type DbtProjectModelArrayOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorDbtProjectModelArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FivetranConnectorDbtProjectModel)(nil)).Elem()
+func (DbtProjectModelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DbtProjectModel)(nil)).Elem()
 }
 
-func (o FivetranConnectorDbtProjectModelArrayOutput) ToFivetranConnectorDbtProjectModelArrayOutput() FivetranConnectorDbtProjectModelArrayOutput {
+func (o DbtProjectModelArrayOutput) ToDbtProjectModelArrayOutput() DbtProjectModelArrayOutput {
 	return o
 }
 
-func (o FivetranConnectorDbtProjectModelArrayOutput) ToFivetranConnectorDbtProjectModelArrayOutputWithContext(ctx context.Context) FivetranConnectorDbtProjectModelArrayOutput {
+func (o DbtProjectModelArrayOutput) ToDbtProjectModelArrayOutputWithContext(ctx context.Context) DbtProjectModelArrayOutput {
 	return o
 }
 
-func (o FivetranConnectorDbtProjectModelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FivetranConnectorDbtProjectModel] {
-	return pulumix.Output[[]FivetranConnectorDbtProjectModel]{
+func (o DbtProjectModelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DbtProjectModel] {
+	return pulumix.Output[[]DbtProjectModel]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorDbtProjectModelArrayOutput) Index(i pulumi.IntInput) FivetranConnectorDbtProjectModelOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FivetranConnectorDbtProjectModel {
-		return vs[0].([]FivetranConnectorDbtProjectModel)[vs[1].(int)]
-	}).(FivetranConnectorDbtProjectModelOutput)
+func (o DbtProjectModelArrayOutput) Index(i pulumi.IntInput) DbtProjectModelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DbtProjectModel {
+		return vs[0].([]DbtProjectModel)[vs[1].(int)]
+	}).(DbtProjectModelOutput)
 }
 
-type FivetranConnectorDbtProjectProjectConfig struct {
+type DbtProjectProjectConfig struct {
 	// Folder in Git repo with your dbt project.
 	FolderPath *string `pulumi:"folderPath"`
 	// Git branch.
@@ -8406,18 +8591,18 @@ type FivetranConnectorDbtProjectProjectConfig struct {
 	GitRemoteUrl *string `pulumi:"gitRemoteUrl"`
 }
 
-// FivetranConnectorDbtProjectProjectConfigInput is an input type that accepts FivetranConnectorDbtProjectProjectConfigArgs and FivetranConnectorDbtProjectProjectConfigOutput values.
-// You can construct a concrete instance of `FivetranConnectorDbtProjectProjectConfigInput` via:
+// DbtProjectProjectConfigInput is an input type that accepts DbtProjectProjectConfigArgs and DbtProjectProjectConfigOutput values.
+// You can construct a concrete instance of `DbtProjectProjectConfigInput` via:
 //
-//	FivetranConnectorDbtProjectProjectConfigArgs{...}
-type FivetranConnectorDbtProjectProjectConfigInput interface {
+//	DbtProjectProjectConfigArgs{...}
+type DbtProjectProjectConfigInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorDbtProjectProjectConfigOutput() FivetranConnectorDbtProjectProjectConfigOutput
-	ToFivetranConnectorDbtProjectProjectConfigOutputWithContext(context.Context) FivetranConnectorDbtProjectProjectConfigOutput
+	ToDbtProjectProjectConfigOutput() DbtProjectProjectConfigOutput
+	ToDbtProjectProjectConfigOutputWithContext(context.Context) DbtProjectProjectConfigOutput
 }
 
-type FivetranConnectorDbtProjectProjectConfigArgs struct {
+type DbtProjectProjectConfigArgs struct {
 	// Folder in Git repo with your dbt project.
 	FolderPath pulumi.StringPtrInput `pulumi:"folderPath"`
 	// Git branch.
@@ -8426,149 +8611,149 @@ type FivetranConnectorDbtProjectProjectConfigArgs struct {
 	GitRemoteUrl pulumi.StringPtrInput `pulumi:"gitRemoteUrl"`
 }
 
-func (FivetranConnectorDbtProjectProjectConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorDbtProjectProjectConfig)(nil)).Elem()
+func (DbtProjectProjectConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbtProjectProjectConfig)(nil)).Elem()
 }
 
-func (i FivetranConnectorDbtProjectProjectConfigArgs) ToFivetranConnectorDbtProjectProjectConfigOutput() FivetranConnectorDbtProjectProjectConfigOutput {
-	return i.ToFivetranConnectorDbtProjectProjectConfigOutputWithContext(context.Background())
+func (i DbtProjectProjectConfigArgs) ToDbtProjectProjectConfigOutput() DbtProjectProjectConfigOutput {
+	return i.ToDbtProjectProjectConfigOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorDbtProjectProjectConfigArgs) ToFivetranConnectorDbtProjectProjectConfigOutputWithContext(ctx context.Context) FivetranConnectorDbtProjectProjectConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorDbtProjectProjectConfigOutput)
+func (i DbtProjectProjectConfigArgs) ToDbtProjectProjectConfigOutputWithContext(ctx context.Context) DbtProjectProjectConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbtProjectProjectConfigOutput)
 }
 
-func (i FivetranConnectorDbtProjectProjectConfigArgs) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorDbtProjectProjectConfig] {
-	return pulumix.Output[FivetranConnectorDbtProjectProjectConfig]{
-		OutputState: i.ToFivetranConnectorDbtProjectProjectConfigOutputWithContext(ctx).OutputState,
+func (i DbtProjectProjectConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DbtProjectProjectConfig] {
+	return pulumix.Output[DbtProjectProjectConfig]{
+		OutputState: i.ToDbtProjectProjectConfigOutputWithContext(ctx).OutputState,
 	}
 }
 
-func (i FivetranConnectorDbtProjectProjectConfigArgs) ToFivetranConnectorDbtProjectProjectConfigPtrOutput() FivetranConnectorDbtProjectProjectConfigPtrOutput {
-	return i.ToFivetranConnectorDbtProjectProjectConfigPtrOutputWithContext(context.Background())
+func (i DbtProjectProjectConfigArgs) ToDbtProjectProjectConfigPtrOutput() DbtProjectProjectConfigPtrOutput {
+	return i.ToDbtProjectProjectConfigPtrOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorDbtProjectProjectConfigArgs) ToFivetranConnectorDbtProjectProjectConfigPtrOutputWithContext(ctx context.Context) FivetranConnectorDbtProjectProjectConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorDbtProjectProjectConfigOutput).ToFivetranConnectorDbtProjectProjectConfigPtrOutputWithContext(ctx)
+func (i DbtProjectProjectConfigArgs) ToDbtProjectProjectConfigPtrOutputWithContext(ctx context.Context) DbtProjectProjectConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbtProjectProjectConfigOutput).ToDbtProjectProjectConfigPtrOutputWithContext(ctx)
 }
 
-// FivetranConnectorDbtProjectProjectConfigPtrInput is an input type that accepts FivetranConnectorDbtProjectProjectConfigArgs, FivetranConnectorDbtProjectProjectConfigPtr and FivetranConnectorDbtProjectProjectConfigPtrOutput values.
-// You can construct a concrete instance of `FivetranConnectorDbtProjectProjectConfigPtrInput` via:
+// DbtProjectProjectConfigPtrInput is an input type that accepts DbtProjectProjectConfigArgs, DbtProjectProjectConfigPtr and DbtProjectProjectConfigPtrOutput values.
+// You can construct a concrete instance of `DbtProjectProjectConfigPtrInput` via:
 //
-//	        FivetranConnectorDbtProjectProjectConfigArgs{...}
+//	        DbtProjectProjectConfigArgs{...}
 //
 //	or:
 //
 //	        nil
-type FivetranConnectorDbtProjectProjectConfigPtrInput interface {
+type DbtProjectProjectConfigPtrInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorDbtProjectProjectConfigPtrOutput() FivetranConnectorDbtProjectProjectConfigPtrOutput
-	ToFivetranConnectorDbtProjectProjectConfigPtrOutputWithContext(context.Context) FivetranConnectorDbtProjectProjectConfigPtrOutput
+	ToDbtProjectProjectConfigPtrOutput() DbtProjectProjectConfigPtrOutput
+	ToDbtProjectProjectConfigPtrOutputWithContext(context.Context) DbtProjectProjectConfigPtrOutput
 }
 
-type fivetranConnectorDbtProjectProjectConfigPtrType FivetranConnectorDbtProjectProjectConfigArgs
+type dbtProjectProjectConfigPtrType DbtProjectProjectConfigArgs
 
-func FivetranConnectorDbtProjectProjectConfigPtr(v *FivetranConnectorDbtProjectProjectConfigArgs) FivetranConnectorDbtProjectProjectConfigPtrInput {
-	return (*fivetranConnectorDbtProjectProjectConfigPtrType)(v)
+func DbtProjectProjectConfigPtr(v *DbtProjectProjectConfigArgs) DbtProjectProjectConfigPtrInput {
+	return (*dbtProjectProjectConfigPtrType)(v)
 }
 
-func (*fivetranConnectorDbtProjectProjectConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FivetranConnectorDbtProjectProjectConfig)(nil)).Elem()
+func (*dbtProjectProjectConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbtProjectProjectConfig)(nil)).Elem()
 }
 
-func (i *fivetranConnectorDbtProjectProjectConfigPtrType) ToFivetranConnectorDbtProjectProjectConfigPtrOutput() FivetranConnectorDbtProjectProjectConfigPtrOutput {
-	return i.ToFivetranConnectorDbtProjectProjectConfigPtrOutputWithContext(context.Background())
+func (i *dbtProjectProjectConfigPtrType) ToDbtProjectProjectConfigPtrOutput() DbtProjectProjectConfigPtrOutput {
+	return i.ToDbtProjectProjectConfigPtrOutputWithContext(context.Background())
 }
 
-func (i *fivetranConnectorDbtProjectProjectConfigPtrType) ToFivetranConnectorDbtProjectProjectConfigPtrOutputWithContext(ctx context.Context) FivetranConnectorDbtProjectProjectConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorDbtProjectProjectConfigPtrOutput)
+func (i *dbtProjectProjectConfigPtrType) ToDbtProjectProjectConfigPtrOutputWithContext(ctx context.Context) DbtProjectProjectConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbtProjectProjectConfigPtrOutput)
 }
 
-func (i *fivetranConnectorDbtProjectProjectConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*FivetranConnectorDbtProjectProjectConfig] {
-	return pulumix.Output[*FivetranConnectorDbtProjectProjectConfig]{
-		OutputState: i.ToFivetranConnectorDbtProjectProjectConfigPtrOutputWithContext(ctx).OutputState,
+func (i *dbtProjectProjectConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DbtProjectProjectConfig] {
+	return pulumix.Output[*DbtProjectProjectConfig]{
+		OutputState: i.ToDbtProjectProjectConfigPtrOutputWithContext(ctx).OutputState,
 	}
 }
 
-type FivetranConnectorDbtProjectProjectConfigOutput struct{ *pulumi.OutputState }
+type DbtProjectProjectConfigOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorDbtProjectProjectConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorDbtProjectProjectConfig)(nil)).Elem()
+func (DbtProjectProjectConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbtProjectProjectConfig)(nil)).Elem()
 }
 
-func (o FivetranConnectorDbtProjectProjectConfigOutput) ToFivetranConnectorDbtProjectProjectConfigOutput() FivetranConnectorDbtProjectProjectConfigOutput {
+func (o DbtProjectProjectConfigOutput) ToDbtProjectProjectConfigOutput() DbtProjectProjectConfigOutput {
 	return o
 }
 
-func (o FivetranConnectorDbtProjectProjectConfigOutput) ToFivetranConnectorDbtProjectProjectConfigOutputWithContext(ctx context.Context) FivetranConnectorDbtProjectProjectConfigOutput {
+func (o DbtProjectProjectConfigOutput) ToDbtProjectProjectConfigOutputWithContext(ctx context.Context) DbtProjectProjectConfigOutput {
 	return o
 }
 
-func (o FivetranConnectorDbtProjectProjectConfigOutput) ToFivetranConnectorDbtProjectProjectConfigPtrOutput() FivetranConnectorDbtProjectProjectConfigPtrOutput {
-	return o.ToFivetranConnectorDbtProjectProjectConfigPtrOutputWithContext(context.Background())
+func (o DbtProjectProjectConfigOutput) ToDbtProjectProjectConfigPtrOutput() DbtProjectProjectConfigPtrOutput {
+	return o.ToDbtProjectProjectConfigPtrOutputWithContext(context.Background())
 }
 
-func (o FivetranConnectorDbtProjectProjectConfigOutput) ToFivetranConnectorDbtProjectProjectConfigPtrOutputWithContext(ctx context.Context) FivetranConnectorDbtProjectProjectConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FivetranConnectorDbtProjectProjectConfig) *FivetranConnectorDbtProjectProjectConfig {
+func (o DbtProjectProjectConfigOutput) ToDbtProjectProjectConfigPtrOutputWithContext(ctx context.Context) DbtProjectProjectConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DbtProjectProjectConfig) *DbtProjectProjectConfig {
 		return &v
-	}).(FivetranConnectorDbtProjectProjectConfigPtrOutput)
+	}).(DbtProjectProjectConfigPtrOutput)
 }
 
-func (o FivetranConnectorDbtProjectProjectConfigOutput) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorDbtProjectProjectConfig] {
-	return pulumix.Output[FivetranConnectorDbtProjectProjectConfig]{
+func (o DbtProjectProjectConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DbtProjectProjectConfig] {
+	return pulumix.Output[DbtProjectProjectConfig]{
 		OutputState: o.OutputState,
 	}
 }
 
 // Folder in Git repo with your dbt project.
-func (o FivetranConnectorDbtProjectProjectConfigOutput) FolderPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDbtProjectProjectConfig) *string { return v.FolderPath }).(pulumi.StringPtrOutput)
+func (o DbtProjectProjectConfigOutput) FolderPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbtProjectProjectConfig) *string { return v.FolderPath }).(pulumi.StringPtrOutput)
 }
 
 // Git branch.
-func (o FivetranConnectorDbtProjectProjectConfigOutput) GitBranch() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDbtProjectProjectConfig) *string { return v.GitBranch }).(pulumi.StringPtrOutput)
+func (o DbtProjectProjectConfigOutput) GitBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbtProjectProjectConfig) *string { return v.GitBranch }).(pulumi.StringPtrOutput)
 }
 
 // Git remote URL with your dbt project.
-func (o FivetranConnectorDbtProjectProjectConfigOutput) GitRemoteUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDbtProjectProjectConfig) *string { return v.GitRemoteUrl }).(pulumi.StringPtrOutput)
+func (o DbtProjectProjectConfigOutput) GitRemoteUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbtProjectProjectConfig) *string { return v.GitRemoteUrl }).(pulumi.StringPtrOutput)
 }
 
-type FivetranConnectorDbtProjectProjectConfigPtrOutput struct{ *pulumi.OutputState }
+type DbtProjectProjectConfigPtrOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorDbtProjectProjectConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FivetranConnectorDbtProjectProjectConfig)(nil)).Elem()
+func (DbtProjectProjectConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbtProjectProjectConfig)(nil)).Elem()
 }
 
-func (o FivetranConnectorDbtProjectProjectConfigPtrOutput) ToFivetranConnectorDbtProjectProjectConfigPtrOutput() FivetranConnectorDbtProjectProjectConfigPtrOutput {
+func (o DbtProjectProjectConfigPtrOutput) ToDbtProjectProjectConfigPtrOutput() DbtProjectProjectConfigPtrOutput {
 	return o
 }
 
-func (o FivetranConnectorDbtProjectProjectConfigPtrOutput) ToFivetranConnectorDbtProjectProjectConfigPtrOutputWithContext(ctx context.Context) FivetranConnectorDbtProjectProjectConfigPtrOutput {
+func (o DbtProjectProjectConfigPtrOutput) ToDbtProjectProjectConfigPtrOutputWithContext(ctx context.Context) DbtProjectProjectConfigPtrOutput {
 	return o
 }
 
-func (o FivetranConnectorDbtProjectProjectConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FivetranConnectorDbtProjectProjectConfig] {
-	return pulumix.Output[*FivetranConnectorDbtProjectProjectConfig]{
+func (o DbtProjectProjectConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DbtProjectProjectConfig] {
+	return pulumix.Output[*DbtProjectProjectConfig]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorDbtProjectProjectConfigPtrOutput) Elem() FivetranConnectorDbtProjectProjectConfigOutput {
-	return o.ApplyT(func(v *FivetranConnectorDbtProjectProjectConfig) FivetranConnectorDbtProjectProjectConfig {
+func (o DbtProjectProjectConfigPtrOutput) Elem() DbtProjectProjectConfigOutput {
+	return o.ApplyT(func(v *DbtProjectProjectConfig) DbtProjectProjectConfig {
 		if v != nil {
 			return *v
 		}
-		var ret FivetranConnectorDbtProjectProjectConfig
+		var ret DbtProjectProjectConfig
 		return ret
-	}).(FivetranConnectorDbtProjectProjectConfigOutput)
+	}).(DbtProjectProjectConfigOutput)
 }
 
 // Folder in Git repo with your dbt project.
-func (o FivetranConnectorDbtProjectProjectConfigPtrOutput) FolderPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDbtProjectProjectConfig) *string {
+func (o DbtProjectProjectConfigPtrOutput) FolderPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbtProjectProjectConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -8577,8 +8762,8 @@ func (o FivetranConnectorDbtProjectProjectConfigPtrOutput) FolderPath() pulumi.S
 }
 
 // Git branch.
-func (o FivetranConnectorDbtProjectProjectConfigPtrOutput) GitBranch() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDbtProjectProjectConfig) *string {
+func (o DbtProjectProjectConfigPtrOutput) GitBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbtProjectProjectConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -8587,8 +8772,8 @@ func (o FivetranConnectorDbtProjectProjectConfigPtrOutput) GitBranch() pulumi.St
 }
 
 // Git remote URL with your dbt project.
-func (o FivetranConnectorDbtProjectProjectConfigPtrOutput) GitRemoteUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDbtProjectProjectConfig) *string {
+func (o DbtProjectProjectConfigPtrOutput) GitRemoteUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbtProjectProjectConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -8596,7 +8781,7 @@ func (o FivetranConnectorDbtProjectProjectConfigPtrOutput) GitRemoteUrl() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-type FivetranConnectorDbtTransformationSchedule struct {
+type DbtTransformationSchedule struct {
 	// The set of the days of the week the transformation should be launched on. The following values are supported: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
 	DaysOfWeeks []string `pulumi:"daysOfWeeks"`
 	// The time interval in minutes between subsequent transformation runs.
@@ -8607,18 +8792,18 @@ type FivetranConnectorDbtTransformationSchedule struct {
 	TimeOfDay *string `pulumi:"timeOfDay"`
 }
 
-// FivetranConnectorDbtTransformationScheduleInput is an input type that accepts FivetranConnectorDbtTransformationScheduleArgs and FivetranConnectorDbtTransformationScheduleOutput values.
-// You can construct a concrete instance of `FivetranConnectorDbtTransformationScheduleInput` via:
+// DbtTransformationScheduleInput is an input type that accepts DbtTransformationScheduleArgs and DbtTransformationScheduleOutput values.
+// You can construct a concrete instance of `DbtTransformationScheduleInput` via:
 //
-//	FivetranConnectorDbtTransformationScheduleArgs{...}
-type FivetranConnectorDbtTransformationScheduleInput interface {
+//	DbtTransformationScheduleArgs{...}
+type DbtTransformationScheduleInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorDbtTransformationScheduleOutput() FivetranConnectorDbtTransformationScheduleOutput
-	ToFivetranConnectorDbtTransformationScheduleOutputWithContext(context.Context) FivetranConnectorDbtTransformationScheduleOutput
+	ToDbtTransformationScheduleOutput() DbtTransformationScheduleOutput
+	ToDbtTransformationScheduleOutputWithContext(context.Context) DbtTransformationScheduleOutput
 }
 
-type FivetranConnectorDbtTransformationScheduleArgs struct {
+type DbtTransformationScheduleArgs struct {
 	// The set of the days of the week the transformation should be launched on. The following values are supported: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
 	DaysOfWeeks pulumi.StringArrayInput `pulumi:"daysOfWeeks"`
 	// The time interval in minutes between subsequent transformation runs.
@@ -8629,154 +8814,154 @@ type FivetranConnectorDbtTransformationScheduleArgs struct {
 	TimeOfDay pulumi.StringPtrInput `pulumi:"timeOfDay"`
 }
 
-func (FivetranConnectorDbtTransformationScheduleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorDbtTransformationSchedule)(nil)).Elem()
+func (DbtTransformationScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbtTransformationSchedule)(nil)).Elem()
 }
 
-func (i FivetranConnectorDbtTransformationScheduleArgs) ToFivetranConnectorDbtTransformationScheduleOutput() FivetranConnectorDbtTransformationScheduleOutput {
-	return i.ToFivetranConnectorDbtTransformationScheduleOutputWithContext(context.Background())
+func (i DbtTransformationScheduleArgs) ToDbtTransformationScheduleOutput() DbtTransformationScheduleOutput {
+	return i.ToDbtTransformationScheduleOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorDbtTransformationScheduleArgs) ToFivetranConnectorDbtTransformationScheduleOutputWithContext(ctx context.Context) FivetranConnectorDbtTransformationScheduleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorDbtTransformationScheduleOutput)
+func (i DbtTransformationScheduleArgs) ToDbtTransformationScheduleOutputWithContext(ctx context.Context) DbtTransformationScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbtTransformationScheduleOutput)
 }
 
-func (i FivetranConnectorDbtTransformationScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorDbtTransformationSchedule] {
-	return pulumix.Output[FivetranConnectorDbtTransformationSchedule]{
-		OutputState: i.ToFivetranConnectorDbtTransformationScheduleOutputWithContext(ctx).OutputState,
+func (i DbtTransformationScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[DbtTransformationSchedule] {
+	return pulumix.Output[DbtTransformationSchedule]{
+		OutputState: i.ToDbtTransformationScheduleOutputWithContext(ctx).OutputState,
 	}
 }
 
-func (i FivetranConnectorDbtTransformationScheduleArgs) ToFivetranConnectorDbtTransformationSchedulePtrOutput() FivetranConnectorDbtTransformationSchedulePtrOutput {
-	return i.ToFivetranConnectorDbtTransformationSchedulePtrOutputWithContext(context.Background())
+func (i DbtTransformationScheduleArgs) ToDbtTransformationSchedulePtrOutput() DbtTransformationSchedulePtrOutput {
+	return i.ToDbtTransformationSchedulePtrOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorDbtTransformationScheduleArgs) ToFivetranConnectorDbtTransformationSchedulePtrOutputWithContext(ctx context.Context) FivetranConnectorDbtTransformationSchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorDbtTransformationScheduleOutput).ToFivetranConnectorDbtTransformationSchedulePtrOutputWithContext(ctx)
+func (i DbtTransformationScheduleArgs) ToDbtTransformationSchedulePtrOutputWithContext(ctx context.Context) DbtTransformationSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbtTransformationScheduleOutput).ToDbtTransformationSchedulePtrOutputWithContext(ctx)
 }
 
-// FivetranConnectorDbtTransformationSchedulePtrInput is an input type that accepts FivetranConnectorDbtTransformationScheduleArgs, FivetranConnectorDbtTransformationSchedulePtr and FivetranConnectorDbtTransformationSchedulePtrOutput values.
-// You can construct a concrete instance of `FivetranConnectorDbtTransformationSchedulePtrInput` via:
+// DbtTransformationSchedulePtrInput is an input type that accepts DbtTransformationScheduleArgs, DbtTransformationSchedulePtr and DbtTransformationSchedulePtrOutput values.
+// You can construct a concrete instance of `DbtTransformationSchedulePtrInput` via:
 //
-//	        FivetranConnectorDbtTransformationScheduleArgs{...}
+//	        DbtTransformationScheduleArgs{...}
 //
 //	or:
 //
 //	        nil
-type FivetranConnectorDbtTransformationSchedulePtrInput interface {
+type DbtTransformationSchedulePtrInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorDbtTransformationSchedulePtrOutput() FivetranConnectorDbtTransformationSchedulePtrOutput
-	ToFivetranConnectorDbtTransformationSchedulePtrOutputWithContext(context.Context) FivetranConnectorDbtTransformationSchedulePtrOutput
+	ToDbtTransformationSchedulePtrOutput() DbtTransformationSchedulePtrOutput
+	ToDbtTransformationSchedulePtrOutputWithContext(context.Context) DbtTransformationSchedulePtrOutput
 }
 
-type fivetranConnectorDbtTransformationSchedulePtrType FivetranConnectorDbtTransformationScheduleArgs
+type dbtTransformationSchedulePtrType DbtTransformationScheduleArgs
 
-func FivetranConnectorDbtTransformationSchedulePtr(v *FivetranConnectorDbtTransformationScheduleArgs) FivetranConnectorDbtTransformationSchedulePtrInput {
-	return (*fivetranConnectorDbtTransformationSchedulePtrType)(v)
+func DbtTransformationSchedulePtr(v *DbtTransformationScheduleArgs) DbtTransformationSchedulePtrInput {
+	return (*dbtTransformationSchedulePtrType)(v)
 }
 
-func (*fivetranConnectorDbtTransformationSchedulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FivetranConnectorDbtTransformationSchedule)(nil)).Elem()
+func (*dbtTransformationSchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbtTransformationSchedule)(nil)).Elem()
 }
 
-func (i *fivetranConnectorDbtTransformationSchedulePtrType) ToFivetranConnectorDbtTransformationSchedulePtrOutput() FivetranConnectorDbtTransformationSchedulePtrOutput {
-	return i.ToFivetranConnectorDbtTransformationSchedulePtrOutputWithContext(context.Background())
+func (i *dbtTransformationSchedulePtrType) ToDbtTransformationSchedulePtrOutput() DbtTransformationSchedulePtrOutput {
+	return i.ToDbtTransformationSchedulePtrOutputWithContext(context.Background())
 }
 
-func (i *fivetranConnectorDbtTransformationSchedulePtrType) ToFivetranConnectorDbtTransformationSchedulePtrOutputWithContext(ctx context.Context) FivetranConnectorDbtTransformationSchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorDbtTransformationSchedulePtrOutput)
+func (i *dbtTransformationSchedulePtrType) ToDbtTransformationSchedulePtrOutputWithContext(ctx context.Context) DbtTransformationSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbtTransformationSchedulePtrOutput)
 }
 
-func (i *fivetranConnectorDbtTransformationSchedulePtrType) ToOutput(ctx context.Context) pulumix.Output[*FivetranConnectorDbtTransformationSchedule] {
-	return pulumix.Output[*FivetranConnectorDbtTransformationSchedule]{
-		OutputState: i.ToFivetranConnectorDbtTransformationSchedulePtrOutputWithContext(ctx).OutputState,
+func (i *dbtTransformationSchedulePtrType) ToOutput(ctx context.Context) pulumix.Output[*DbtTransformationSchedule] {
+	return pulumix.Output[*DbtTransformationSchedule]{
+		OutputState: i.ToDbtTransformationSchedulePtrOutputWithContext(ctx).OutputState,
 	}
 }
 
-type FivetranConnectorDbtTransformationScheduleOutput struct{ *pulumi.OutputState }
+type DbtTransformationScheduleOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorDbtTransformationScheduleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorDbtTransformationSchedule)(nil)).Elem()
+func (DbtTransformationScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbtTransformationSchedule)(nil)).Elem()
 }
 
-func (o FivetranConnectorDbtTransformationScheduleOutput) ToFivetranConnectorDbtTransformationScheduleOutput() FivetranConnectorDbtTransformationScheduleOutput {
+func (o DbtTransformationScheduleOutput) ToDbtTransformationScheduleOutput() DbtTransformationScheduleOutput {
 	return o
 }
 
-func (o FivetranConnectorDbtTransformationScheduleOutput) ToFivetranConnectorDbtTransformationScheduleOutputWithContext(ctx context.Context) FivetranConnectorDbtTransformationScheduleOutput {
+func (o DbtTransformationScheduleOutput) ToDbtTransformationScheduleOutputWithContext(ctx context.Context) DbtTransformationScheduleOutput {
 	return o
 }
 
-func (o FivetranConnectorDbtTransformationScheduleOutput) ToFivetranConnectorDbtTransformationSchedulePtrOutput() FivetranConnectorDbtTransformationSchedulePtrOutput {
-	return o.ToFivetranConnectorDbtTransformationSchedulePtrOutputWithContext(context.Background())
+func (o DbtTransformationScheduleOutput) ToDbtTransformationSchedulePtrOutput() DbtTransformationSchedulePtrOutput {
+	return o.ToDbtTransformationSchedulePtrOutputWithContext(context.Background())
 }
 
-func (o FivetranConnectorDbtTransformationScheduleOutput) ToFivetranConnectorDbtTransformationSchedulePtrOutputWithContext(ctx context.Context) FivetranConnectorDbtTransformationSchedulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FivetranConnectorDbtTransformationSchedule) *FivetranConnectorDbtTransformationSchedule {
+func (o DbtTransformationScheduleOutput) ToDbtTransformationSchedulePtrOutputWithContext(ctx context.Context) DbtTransformationSchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DbtTransformationSchedule) *DbtTransformationSchedule {
 		return &v
-	}).(FivetranConnectorDbtTransformationSchedulePtrOutput)
+	}).(DbtTransformationSchedulePtrOutput)
 }
 
-func (o FivetranConnectorDbtTransformationScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorDbtTransformationSchedule] {
-	return pulumix.Output[FivetranConnectorDbtTransformationSchedule]{
+func (o DbtTransformationScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[DbtTransformationSchedule] {
+	return pulumix.Output[DbtTransformationSchedule]{
 		OutputState: o.OutputState,
 	}
 }
 
 // The set of the days of the week the transformation should be launched on. The following values are supported: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
-func (o FivetranConnectorDbtTransformationScheduleOutput) DaysOfWeeks() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorDbtTransformationSchedule) []string { return v.DaysOfWeeks }).(pulumi.StringArrayOutput)
+func (o DbtTransformationScheduleOutput) DaysOfWeeks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DbtTransformationSchedule) []string { return v.DaysOfWeeks }).(pulumi.StringArrayOutput)
 }
 
 // The time interval in minutes between subsequent transformation runs.
-func (o FivetranConnectorDbtTransformationScheduleOutput) Interval() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDbtTransformationSchedule) *int { return v.Interval }).(pulumi.IntPtrOutput)
+func (o DbtTransformationScheduleOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DbtTransformationSchedule) *int { return v.Interval }).(pulumi.IntPtrOutput)
 }
 
 // The type of the schedule to run the dbt Transformation on. The following values are supported: INTEGRATED, TIME*OF*DAY, INTERVAL. For INTEGRATED schedule type, interval and time*of*day values are ignored and only the days*of*week parameter values are taken into account (but may be empty or null). For TIME*OF*DAY schedule type, the interval parameter value is ignored and the time*of*day values is taken into account along with days*of*week value. For INTERVAL schedule type, time*of*day value is ignored and the interval parameter value is taken into account along with days*of*week value.
-func (o FivetranConnectorDbtTransformationScheduleOutput) ScheduleType() pulumi.StringOutput {
-	return o.ApplyT(func(v FivetranConnectorDbtTransformationSchedule) string { return v.ScheduleType }).(pulumi.StringOutput)
+func (o DbtTransformationScheduleOutput) ScheduleType() pulumi.StringOutput {
+	return o.ApplyT(func(v DbtTransformationSchedule) string { return v.ScheduleType }).(pulumi.StringOutput)
 }
 
 // The time of the day the transformation should be launched at. Supported values are: "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"
-func (o FivetranConnectorDbtTransformationScheduleOutput) TimeOfDay() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDbtTransformationSchedule) *string { return v.TimeOfDay }).(pulumi.StringPtrOutput)
+func (o DbtTransformationScheduleOutput) TimeOfDay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbtTransformationSchedule) *string { return v.TimeOfDay }).(pulumi.StringPtrOutput)
 }
 
-type FivetranConnectorDbtTransformationSchedulePtrOutput struct{ *pulumi.OutputState }
+type DbtTransformationSchedulePtrOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorDbtTransformationSchedulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FivetranConnectorDbtTransformationSchedule)(nil)).Elem()
+func (DbtTransformationSchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbtTransformationSchedule)(nil)).Elem()
 }
 
-func (o FivetranConnectorDbtTransformationSchedulePtrOutput) ToFivetranConnectorDbtTransformationSchedulePtrOutput() FivetranConnectorDbtTransformationSchedulePtrOutput {
+func (o DbtTransformationSchedulePtrOutput) ToDbtTransformationSchedulePtrOutput() DbtTransformationSchedulePtrOutput {
 	return o
 }
 
-func (o FivetranConnectorDbtTransformationSchedulePtrOutput) ToFivetranConnectorDbtTransformationSchedulePtrOutputWithContext(ctx context.Context) FivetranConnectorDbtTransformationSchedulePtrOutput {
+func (o DbtTransformationSchedulePtrOutput) ToDbtTransformationSchedulePtrOutputWithContext(ctx context.Context) DbtTransformationSchedulePtrOutput {
 	return o
 }
 
-func (o FivetranConnectorDbtTransformationSchedulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FivetranConnectorDbtTransformationSchedule] {
-	return pulumix.Output[*FivetranConnectorDbtTransformationSchedule]{
+func (o DbtTransformationSchedulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DbtTransformationSchedule] {
+	return pulumix.Output[*DbtTransformationSchedule]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorDbtTransformationSchedulePtrOutput) Elem() FivetranConnectorDbtTransformationScheduleOutput {
-	return o.ApplyT(func(v *FivetranConnectorDbtTransformationSchedule) FivetranConnectorDbtTransformationSchedule {
+func (o DbtTransformationSchedulePtrOutput) Elem() DbtTransformationScheduleOutput {
+	return o.ApplyT(func(v *DbtTransformationSchedule) DbtTransformationSchedule {
 		if v != nil {
 			return *v
 		}
-		var ret FivetranConnectorDbtTransformationSchedule
+		var ret DbtTransformationSchedule
 		return ret
-	}).(FivetranConnectorDbtTransformationScheduleOutput)
+	}).(DbtTransformationScheduleOutput)
 }
 
 // The set of the days of the week the transformation should be launched on. The following values are supported: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
-func (o FivetranConnectorDbtTransformationSchedulePtrOutput) DaysOfWeeks() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FivetranConnectorDbtTransformationSchedule) []string {
+func (o DbtTransformationSchedulePtrOutput) DaysOfWeeks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DbtTransformationSchedule) []string {
 		if v == nil {
 			return nil
 		}
@@ -8785,8 +8970,8 @@ func (o FivetranConnectorDbtTransformationSchedulePtrOutput) DaysOfWeeks() pulum
 }
 
 // The time interval in minutes between subsequent transformation runs.
-func (o FivetranConnectorDbtTransformationSchedulePtrOutput) Interval() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDbtTransformationSchedule) *int {
+func (o DbtTransformationSchedulePtrOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DbtTransformationSchedule) *int {
 		if v == nil {
 			return nil
 		}
@@ -8795,8 +8980,8 @@ func (o FivetranConnectorDbtTransformationSchedulePtrOutput) Interval() pulumi.I
 }
 
 // The type of the schedule to run the dbt Transformation on. The following values are supported: INTEGRATED, TIME*OF*DAY, INTERVAL. For INTEGRATED schedule type, interval and time*of*day values are ignored and only the days*of*week parameter values are taken into account (but may be empty or null). For TIME*OF*DAY schedule type, the interval parameter value is ignored and the time*of*day values is taken into account along with days*of*week value. For INTERVAL schedule type, time*of*day value is ignored and the interval parameter value is taken into account along with days*of*week value.
-func (o FivetranConnectorDbtTransformationSchedulePtrOutput) ScheduleType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDbtTransformationSchedule) *string {
+func (o DbtTransformationSchedulePtrOutput) ScheduleType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbtTransformationSchedule) *string {
 		if v == nil {
 			return nil
 		}
@@ -8805,8 +8990,8 @@ func (o FivetranConnectorDbtTransformationSchedulePtrOutput) ScheduleType() pulu
 }
 
 // The time of the day the transformation should be launched at. Supported values are: "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"
-func (o FivetranConnectorDbtTransformationSchedulePtrOutput) TimeOfDay() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDbtTransformationSchedule) *string {
+func (o DbtTransformationSchedulePtrOutput) TimeOfDay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbtTransformationSchedule) *string {
 		if v == nil {
 			return nil
 		}
@@ -8814,7 +8999,7 @@ func (o FivetranConnectorDbtTransformationSchedulePtrOutput) TimeOfDay() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-type FivetranConnectorDestinationConfig struct {
+type DestinationConfig struct {
 	// The connector authorization settings. Check possible config formats in [create method](https://www.terraform.io/openapi/reference/v1/operation/create_connector/)
 	Auth *string `pulumi:"auth"`
 	// Authentication type. Default value: `PASSWORD`.
@@ -8881,18 +9066,18 @@ type FivetranConnectorDestinationConfig struct {
 	User *string `pulumi:"user"`
 }
 
-// FivetranConnectorDestinationConfigInput is an input type that accepts FivetranConnectorDestinationConfigArgs and FivetranConnectorDestinationConfigOutput values.
-// You can construct a concrete instance of `FivetranConnectorDestinationConfigInput` via:
+// DestinationConfigInput is an input type that accepts DestinationConfigArgs and DestinationConfigOutput values.
+// You can construct a concrete instance of `DestinationConfigInput` via:
 //
-//	FivetranConnectorDestinationConfigArgs{...}
-type FivetranConnectorDestinationConfigInput interface {
+//	DestinationConfigArgs{...}
+type DestinationConfigInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorDestinationConfigOutput() FivetranConnectorDestinationConfigOutput
-	ToFivetranConnectorDestinationConfigOutputWithContext(context.Context) FivetranConnectorDestinationConfigOutput
+	ToDestinationConfigOutput() DestinationConfigOutput
+	ToDestinationConfigOutputWithContext(context.Context) DestinationConfigOutput
 }
 
-type FivetranConnectorDestinationConfigArgs struct {
+type DestinationConfigArgs struct {
 	// The connector authorization settings. Check possible config formats in [create method](https://www.terraform.io/openapi/reference/v1/operation/create_connector/)
 	Auth pulumi.StringPtrInput `pulumi:"auth"`
 	// Authentication type. Default value: `PASSWORD`.
@@ -8959,294 +9144,294 @@ type FivetranConnectorDestinationConfigArgs struct {
 	User pulumi.StringPtrInput `pulumi:"user"`
 }
 
-func (FivetranConnectorDestinationConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorDestinationConfig)(nil)).Elem()
+func (DestinationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DestinationConfig)(nil)).Elem()
 }
 
-func (i FivetranConnectorDestinationConfigArgs) ToFivetranConnectorDestinationConfigOutput() FivetranConnectorDestinationConfigOutput {
-	return i.ToFivetranConnectorDestinationConfigOutputWithContext(context.Background())
+func (i DestinationConfigArgs) ToDestinationConfigOutput() DestinationConfigOutput {
+	return i.ToDestinationConfigOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorDestinationConfigArgs) ToFivetranConnectorDestinationConfigOutputWithContext(ctx context.Context) FivetranConnectorDestinationConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorDestinationConfigOutput)
+func (i DestinationConfigArgs) ToDestinationConfigOutputWithContext(ctx context.Context) DestinationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DestinationConfigOutput)
 }
 
-func (i FivetranConnectorDestinationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorDestinationConfig] {
-	return pulumix.Output[FivetranConnectorDestinationConfig]{
-		OutputState: i.ToFivetranConnectorDestinationConfigOutputWithContext(ctx).OutputState,
+func (i DestinationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DestinationConfig] {
+	return pulumix.Output[DestinationConfig]{
+		OutputState: i.ToDestinationConfigOutputWithContext(ctx).OutputState,
 	}
 }
 
-func (i FivetranConnectorDestinationConfigArgs) ToFivetranConnectorDestinationConfigPtrOutput() FivetranConnectorDestinationConfigPtrOutput {
-	return i.ToFivetranConnectorDestinationConfigPtrOutputWithContext(context.Background())
+func (i DestinationConfigArgs) ToDestinationConfigPtrOutput() DestinationConfigPtrOutput {
+	return i.ToDestinationConfigPtrOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorDestinationConfigArgs) ToFivetranConnectorDestinationConfigPtrOutputWithContext(ctx context.Context) FivetranConnectorDestinationConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorDestinationConfigOutput).ToFivetranConnectorDestinationConfigPtrOutputWithContext(ctx)
+func (i DestinationConfigArgs) ToDestinationConfigPtrOutputWithContext(ctx context.Context) DestinationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DestinationConfigOutput).ToDestinationConfigPtrOutputWithContext(ctx)
 }
 
-// FivetranConnectorDestinationConfigPtrInput is an input type that accepts FivetranConnectorDestinationConfigArgs, FivetranConnectorDestinationConfigPtr and FivetranConnectorDestinationConfigPtrOutput values.
-// You can construct a concrete instance of `FivetranConnectorDestinationConfigPtrInput` via:
+// DestinationConfigPtrInput is an input type that accepts DestinationConfigArgs, DestinationConfigPtr and DestinationConfigPtrOutput values.
+// You can construct a concrete instance of `DestinationConfigPtrInput` via:
 //
-//	        FivetranConnectorDestinationConfigArgs{...}
+//	        DestinationConfigArgs{...}
 //
 //	or:
 //
 //	        nil
-type FivetranConnectorDestinationConfigPtrInput interface {
+type DestinationConfigPtrInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorDestinationConfigPtrOutput() FivetranConnectorDestinationConfigPtrOutput
-	ToFivetranConnectorDestinationConfigPtrOutputWithContext(context.Context) FivetranConnectorDestinationConfigPtrOutput
+	ToDestinationConfigPtrOutput() DestinationConfigPtrOutput
+	ToDestinationConfigPtrOutputWithContext(context.Context) DestinationConfigPtrOutput
 }
 
-type fivetranConnectorDestinationConfigPtrType FivetranConnectorDestinationConfigArgs
+type destinationConfigPtrType DestinationConfigArgs
 
-func FivetranConnectorDestinationConfigPtr(v *FivetranConnectorDestinationConfigArgs) FivetranConnectorDestinationConfigPtrInput {
-	return (*fivetranConnectorDestinationConfigPtrType)(v)
+func DestinationConfigPtr(v *DestinationConfigArgs) DestinationConfigPtrInput {
+	return (*destinationConfigPtrType)(v)
 }
 
-func (*fivetranConnectorDestinationConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FivetranConnectorDestinationConfig)(nil)).Elem()
+func (*destinationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DestinationConfig)(nil)).Elem()
 }
 
-func (i *fivetranConnectorDestinationConfigPtrType) ToFivetranConnectorDestinationConfigPtrOutput() FivetranConnectorDestinationConfigPtrOutput {
-	return i.ToFivetranConnectorDestinationConfigPtrOutputWithContext(context.Background())
+func (i *destinationConfigPtrType) ToDestinationConfigPtrOutput() DestinationConfigPtrOutput {
+	return i.ToDestinationConfigPtrOutputWithContext(context.Background())
 }
 
-func (i *fivetranConnectorDestinationConfigPtrType) ToFivetranConnectorDestinationConfigPtrOutputWithContext(ctx context.Context) FivetranConnectorDestinationConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorDestinationConfigPtrOutput)
+func (i *destinationConfigPtrType) ToDestinationConfigPtrOutputWithContext(ctx context.Context) DestinationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DestinationConfigPtrOutput)
 }
 
-func (i *fivetranConnectorDestinationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*FivetranConnectorDestinationConfig] {
-	return pulumix.Output[*FivetranConnectorDestinationConfig]{
-		OutputState: i.ToFivetranConnectorDestinationConfigPtrOutputWithContext(ctx).OutputState,
+func (i *destinationConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DestinationConfig] {
+	return pulumix.Output[*DestinationConfig]{
+		OutputState: i.ToDestinationConfigPtrOutputWithContext(ctx).OutputState,
 	}
 }
 
-type FivetranConnectorDestinationConfigOutput struct{ *pulumi.OutputState }
+type DestinationConfigOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorDestinationConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorDestinationConfig)(nil)).Elem()
+func (DestinationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DestinationConfig)(nil)).Elem()
 }
 
-func (o FivetranConnectorDestinationConfigOutput) ToFivetranConnectorDestinationConfigOutput() FivetranConnectorDestinationConfigOutput {
+func (o DestinationConfigOutput) ToDestinationConfigOutput() DestinationConfigOutput {
 	return o
 }
 
-func (o FivetranConnectorDestinationConfigOutput) ToFivetranConnectorDestinationConfigOutputWithContext(ctx context.Context) FivetranConnectorDestinationConfigOutput {
+func (o DestinationConfigOutput) ToDestinationConfigOutputWithContext(ctx context.Context) DestinationConfigOutput {
 	return o
 }
 
-func (o FivetranConnectorDestinationConfigOutput) ToFivetranConnectorDestinationConfigPtrOutput() FivetranConnectorDestinationConfigPtrOutput {
-	return o.ToFivetranConnectorDestinationConfigPtrOutputWithContext(context.Background())
+func (o DestinationConfigOutput) ToDestinationConfigPtrOutput() DestinationConfigPtrOutput {
+	return o.ToDestinationConfigPtrOutputWithContext(context.Background())
 }
 
-func (o FivetranConnectorDestinationConfigOutput) ToFivetranConnectorDestinationConfigPtrOutputWithContext(ctx context.Context) FivetranConnectorDestinationConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FivetranConnectorDestinationConfig) *FivetranConnectorDestinationConfig {
+func (o DestinationConfigOutput) ToDestinationConfigPtrOutputWithContext(ctx context.Context) DestinationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DestinationConfig) *DestinationConfig {
 		return &v
-	}).(FivetranConnectorDestinationConfigPtrOutput)
+	}).(DestinationConfigPtrOutput)
 }
 
-func (o FivetranConnectorDestinationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorDestinationConfig] {
-	return pulumix.Output[FivetranConnectorDestinationConfig]{
+func (o DestinationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DestinationConfig] {
+	return pulumix.Output[DestinationConfig]{
 		OutputState: o.OutputState,
 	}
 }
 
 // The connector authorization settings. Check possible config formats in [create method](https://www.terraform.io/openapi/reference/v1/operation/create_connector/)
-func (o FivetranConnectorDestinationConfigOutput) Auth() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.Auth }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) Auth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.Auth }).(pulumi.StringPtrOutput)
 }
 
 // Authentication type. Default value: `PASSWORD`.
-func (o FivetranConnectorDestinationConfigOutput) AuthType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.AuthType }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.AuthType }).(pulumi.StringPtrOutput)
 }
 
 // Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
-func (o FivetranConnectorDestinationConfigOutput) Bucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.Bucket }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.Bucket }).(pulumi.StringPtrOutput)
 }
 
 // Catalog name
-func (o FivetranConnectorDestinationConfigOutput) Catalog() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.Catalog }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) Catalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.Catalog }).(pulumi.StringPtrOutput)
 }
 
 // Cluster ID. Must be populated if `connectionType` is set to `SshTunnel` and `authType` is set to `IAM`.
-func (o FivetranConnectorDestinationConfigOutput) ClusterId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
 }
 
 // Cluster region. Must be populated if `connectionType` is set to `SshTunnel` and `authType` is set to `IAM`.
-func (o FivetranConnectorDestinationConfigOutput) ClusterRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.ClusterRegion }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) ClusterRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.ClusterRegion }).(pulumi.StringPtrOutput)
 }
 
 // Connection method. Default value: `Directly`.
-func (o FivetranConnectorDestinationConfigOutput) ConnectionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.ConnectionType }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) ConnectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.ConnectionType }).(pulumi.StringPtrOutput)
 }
 
 // Whether to create external tables
-func (o FivetranConnectorDestinationConfigOutput) CreateExternalTables() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.CreateExternalTables }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) CreateExternalTables() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.CreateExternalTables }).(pulumi.StringPtrOutput)
 }
 
 // Data location. Datasets will reside in this location.
-func (o FivetranConnectorDestinationConfigOutput) DataSetLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.DataSetLocation }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) DataSetLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.DataSetLocation }).(pulumi.StringPtrOutput)
 }
 
 // Database name
-func (o FivetranConnectorDestinationConfigOutput) Database() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.Database }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.Database }).(pulumi.StringPtrOutput)
 }
 
 // External location to store Delta tables. Default value: `""`  (null). By default, the external tables will reside in the `/{schema}/{table}` path, and if you specify an external location in the `{externalLocation}/{schema}/{table}` path.
-func (o FivetranConnectorDestinationConfigOutput) ExternalLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.ExternalLocation }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) ExternalLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.ExternalLocation }).(pulumi.StringPtrOutput)
 }
 
 // ARN of the role which you created with different required policy mentioned in our setup guide
-func (o FivetranConnectorDestinationConfigOutput) FivetranRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.FivetranRoleArn }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) FivetranRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.FivetranRoleArn }).(pulumi.StringPtrOutput)
 }
 
 // Server name
-func (o FivetranConnectorDestinationConfigOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.Host }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
 // HTTP path
-func (o FivetranConnectorDestinationConfigOutput) HttpPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.HttpPath }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) HttpPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.HttpPath }).(pulumi.StringPtrOutput)
 }
 
 // Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.
-func (o FivetranConnectorDestinationConfigOutput) IsPrivateKeyEncrypted() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.IsPrivateKeyEncrypted }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) IsPrivateKeyEncrypted() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.IsPrivateKeyEncrypted }).(pulumi.StringPtrOutput)
 }
 
 // In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
-func (o FivetranConnectorDestinationConfigOutput) Passphrase() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.Passphrase }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) Passphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.Passphrase }).(pulumi.StringPtrOutput)
 }
 
 // Database user password
-func (o FivetranConnectorDestinationConfigOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.Password }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 // Personal access token
-func (o FivetranConnectorDestinationConfigOutput) PersonalAccessToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.PersonalAccessToken }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) PersonalAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.PersonalAccessToken }).(pulumi.StringPtrOutput)
 }
 
 // Server port number
-func (o FivetranConnectorDestinationConfigOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o DestinationConfigOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
 // Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
-func (o FivetranConnectorDestinationConfigOutput) PrefixPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.PrefixPath }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) PrefixPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.PrefixPath }).(pulumi.StringPtrOutput)
 }
 
 // Private access key.  The field should be specified if authentication type is `KEY_PAIR`.
-func (o FivetranConnectorDestinationConfigOutput) PrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
 }
 
 // BigQuery project ID
-func (o FivetranConnectorDestinationConfigOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
 // Public key to grant Fivetran SSH access to git repository.
-func (o FivetranConnectorDestinationConfigOutput) PublicKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
 }
 
 // Region of your AWS S3 bucket
-func (o FivetranConnectorDestinationConfigOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 // The group role that you would like to assign this new user to. Supported group roles: ‘Destination Administrator‘, ‘Destination Reviewer‘, ‘Destination Analyst‘, ‘Connector Creator‘, or a custom destination role
-func (o FivetranConnectorDestinationConfigOutput) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.Role }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
 
 // Role ARN with Redshift permissions. Required if authentication type is `IAM`.
-func (o FivetranConnectorDestinationConfigOutput) RoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
 }
 
 // Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.
-func (o FivetranConnectorDestinationConfigOutput) SecretKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
 
 // Server name
-func (o FivetranConnectorDestinationConfigOutput) ServerHostName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.ServerHostName }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) ServerHostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.ServerHostName }).(pulumi.StringPtrOutput)
 }
 
 // SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
-func (o FivetranConnectorDestinationConfigOutput) TunnelHost() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.TunnelHost }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) TunnelHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.TunnelHost }).(pulumi.StringPtrOutput)
 }
 
 // SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
-func (o FivetranConnectorDestinationConfigOutput) TunnelPort() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.TunnelPort }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) TunnelPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.TunnelPort }).(pulumi.StringPtrOutput)
 }
 
 // SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
-func (o FivetranConnectorDestinationConfigOutput) TunnelUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.TunnelUser }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) TunnelUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.TunnelUser }).(pulumi.StringPtrOutput)
 }
 
 // Database user name
-func (o FivetranConnectorDestinationConfigOutput) User() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationConfig) *string { return v.User }).(pulumi.StringPtrOutput)
+func (o DestinationConfigOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.User }).(pulumi.StringPtrOutput)
 }
 
-type FivetranConnectorDestinationConfigPtrOutput struct{ *pulumi.OutputState }
+type DestinationConfigPtrOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorDestinationConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FivetranConnectorDestinationConfig)(nil)).Elem()
+func (DestinationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DestinationConfig)(nil)).Elem()
 }
 
-func (o FivetranConnectorDestinationConfigPtrOutput) ToFivetranConnectorDestinationConfigPtrOutput() FivetranConnectorDestinationConfigPtrOutput {
+func (o DestinationConfigPtrOutput) ToDestinationConfigPtrOutput() DestinationConfigPtrOutput {
 	return o
 }
 
-func (o FivetranConnectorDestinationConfigPtrOutput) ToFivetranConnectorDestinationConfigPtrOutputWithContext(ctx context.Context) FivetranConnectorDestinationConfigPtrOutput {
+func (o DestinationConfigPtrOutput) ToDestinationConfigPtrOutputWithContext(ctx context.Context) DestinationConfigPtrOutput {
 	return o
 }
 
-func (o FivetranConnectorDestinationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FivetranConnectorDestinationConfig] {
-	return pulumix.Output[*FivetranConnectorDestinationConfig]{
+func (o DestinationConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DestinationConfig] {
+	return pulumix.Output[*DestinationConfig]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorDestinationConfigPtrOutput) Elem() FivetranConnectorDestinationConfigOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) FivetranConnectorDestinationConfig {
+func (o DestinationConfigPtrOutput) Elem() DestinationConfigOutput {
+	return o.ApplyT(func(v *DestinationConfig) DestinationConfig {
 		if v != nil {
 			return *v
 		}
-		var ret FivetranConnectorDestinationConfig
+		var ret DestinationConfig
 		return ret
-	}).(FivetranConnectorDestinationConfigOutput)
+	}).(DestinationConfigOutput)
 }
 
 // The connector authorization settings. Check possible config formats in [create method](https://www.terraform.io/openapi/reference/v1/operation/create_connector/)
-func (o FivetranConnectorDestinationConfigPtrOutput) Auth() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) Auth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9255,8 +9440,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) Auth() pulumi.StringPtrOutp
 }
 
 // Authentication type. Default value: `PASSWORD`.
-func (o FivetranConnectorDestinationConfigPtrOutput) AuthType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9265,8 +9450,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) AuthType() pulumi.StringPtr
 }
 
 // Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
-func (o FivetranConnectorDestinationConfigPtrOutput) Bucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9275,8 +9460,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) Bucket() pulumi.StringPtrOu
 }
 
 // Catalog name
-func (o FivetranConnectorDestinationConfigPtrOutput) Catalog() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) Catalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9285,8 +9470,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) Catalog() pulumi.StringPtrO
 }
 
 // Cluster ID. Must be populated if `connectionType` is set to `SshTunnel` and `authType` is set to `IAM`.
-func (o FivetranConnectorDestinationConfigPtrOutput) ClusterId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9295,8 +9480,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) ClusterId() pulumi.StringPt
 }
 
 // Cluster region. Must be populated if `connectionType` is set to `SshTunnel` and `authType` is set to `IAM`.
-func (o FivetranConnectorDestinationConfigPtrOutput) ClusterRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) ClusterRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9305,8 +9490,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) ClusterRegion() pulumi.Stri
 }
 
 // Connection method. Default value: `Directly`.
-func (o FivetranConnectorDestinationConfigPtrOutput) ConnectionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) ConnectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9315,8 +9500,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) ConnectionType() pulumi.Str
 }
 
 // Whether to create external tables
-func (o FivetranConnectorDestinationConfigPtrOutput) CreateExternalTables() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) CreateExternalTables() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9325,8 +9510,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) CreateExternalTables() pulu
 }
 
 // Data location. Datasets will reside in this location.
-func (o FivetranConnectorDestinationConfigPtrOutput) DataSetLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) DataSetLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9335,8 +9520,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) DataSetLocation() pulumi.St
 }
 
 // Database name
-func (o FivetranConnectorDestinationConfigPtrOutput) Database() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9345,8 +9530,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) Database() pulumi.StringPtr
 }
 
 // External location to store Delta tables. Default value: `""`  (null). By default, the external tables will reside in the `/{schema}/{table}` path, and if you specify an external location in the `{externalLocation}/{schema}/{table}` path.
-func (o FivetranConnectorDestinationConfigPtrOutput) ExternalLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) ExternalLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9355,8 +9540,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) ExternalLocation() pulumi.S
 }
 
 // ARN of the role which you created with different required policy mentioned in our setup guide
-func (o FivetranConnectorDestinationConfigPtrOutput) FivetranRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) FivetranRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9365,8 +9550,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) FivetranRoleArn() pulumi.St
 }
 
 // Server name
-func (o FivetranConnectorDestinationConfigPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9375,8 +9560,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) Host() pulumi.StringPtrOutp
 }
 
 // HTTP path
-func (o FivetranConnectorDestinationConfigPtrOutput) HttpPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) HttpPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9385,8 +9570,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) HttpPath() pulumi.StringPtr
 }
 
 // Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.
-func (o FivetranConnectorDestinationConfigPtrOutput) IsPrivateKeyEncrypted() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) IsPrivateKeyEncrypted() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9395,8 +9580,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) IsPrivateKeyEncrypted() pul
 }
 
 // In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
-func (o FivetranConnectorDestinationConfigPtrOutput) Passphrase() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) Passphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9405,8 +9590,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) Passphrase() pulumi.StringP
 }
 
 // Database user password
-func (o FivetranConnectorDestinationConfigPtrOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9415,8 +9600,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) Password() pulumi.StringPtr
 }
 
 // Personal access token
-func (o FivetranConnectorDestinationConfigPtrOutput) PersonalAccessToken() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) PersonalAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9425,8 +9610,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) PersonalAccessToken() pulum
 }
 
 // Server port number
-func (o FivetranConnectorDestinationConfigPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *int {
+func (o DestinationConfigPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *int {
 		if v == nil {
 			return nil
 		}
@@ -9435,8 +9620,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) Port() pulumi.IntPtrOutput 
 }
 
 // Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
-func (o FivetranConnectorDestinationConfigPtrOutput) PrefixPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) PrefixPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9445,8 +9630,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) PrefixPath() pulumi.StringP
 }
 
 // Private access key.  The field should be specified if authentication type is `KEY_PAIR`.
-func (o FivetranConnectorDestinationConfigPtrOutput) PrivateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9455,8 +9640,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) PrivateKey() pulumi.StringP
 }
 
 // BigQuery project ID
-func (o FivetranConnectorDestinationConfigPtrOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9465,8 +9650,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) ProjectId() pulumi.StringPt
 }
 
 // Public key to grant Fivetran SSH access to git repository.
-func (o FivetranConnectorDestinationConfigPtrOutput) PublicKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9475,8 +9660,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) PublicKey() pulumi.StringPt
 }
 
 // Region of your AWS S3 bucket
-func (o FivetranConnectorDestinationConfigPtrOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9485,8 +9670,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) Region() pulumi.StringPtrOu
 }
 
 // The group role that you would like to assign this new user to. Supported group roles: ‘Destination Administrator‘, ‘Destination Reviewer‘, ‘Destination Analyst‘, ‘Connector Creator‘, or a custom destination role
-func (o FivetranConnectorDestinationConfigPtrOutput) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9495,8 +9680,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) Role() pulumi.StringPtrOutp
 }
 
 // Role ARN with Redshift permissions. Required if authentication type is `IAM`.
-func (o FivetranConnectorDestinationConfigPtrOutput) RoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9505,8 +9690,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) RoleArn() pulumi.StringPtrO
 }
 
 // Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.
-func (o FivetranConnectorDestinationConfigPtrOutput) SecretKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9515,8 +9700,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) SecretKey() pulumi.StringPt
 }
 
 // Server name
-func (o FivetranConnectorDestinationConfigPtrOutput) ServerHostName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) ServerHostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9525,8 +9710,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) ServerHostName() pulumi.Str
 }
 
 // SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
-func (o FivetranConnectorDestinationConfigPtrOutput) TunnelHost() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) TunnelHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9535,8 +9720,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) TunnelHost() pulumi.StringP
 }
 
 // SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
-func (o FivetranConnectorDestinationConfigPtrOutput) TunnelPort() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) TunnelPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9545,8 +9730,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) TunnelPort() pulumi.StringP
 }
 
 // SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
-func (o FivetranConnectorDestinationConfigPtrOutput) TunnelUser() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) TunnelUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9555,8 +9740,8 @@ func (o FivetranConnectorDestinationConfigPtrOutput) TunnelUser() pulumi.StringP
 }
 
 // Database user name
-func (o FivetranConnectorDestinationConfigPtrOutput) User() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationConfig) *string {
+func (o DestinationConfigPtrOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
 			return nil
 		}
@@ -9564,194 +9749,7 @@ func (o FivetranConnectorDestinationConfigPtrOutput) User() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-type FivetranConnectorDestinationSchema struct {
-	Name   *string `pulumi:"name"`
-	Prefix *string `pulumi:"prefix"`
-	Table  *string `pulumi:"table"`
-}
-
-// FivetranConnectorDestinationSchemaInput is an input type that accepts FivetranConnectorDestinationSchemaArgs and FivetranConnectorDestinationSchemaOutput values.
-// You can construct a concrete instance of `FivetranConnectorDestinationSchemaInput` via:
-//
-//	FivetranConnectorDestinationSchemaArgs{...}
-type FivetranConnectorDestinationSchemaInput interface {
-	pulumi.Input
-
-	ToFivetranConnectorDestinationSchemaOutput() FivetranConnectorDestinationSchemaOutput
-	ToFivetranConnectorDestinationSchemaOutputWithContext(context.Context) FivetranConnectorDestinationSchemaOutput
-}
-
-type FivetranConnectorDestinationSchemaArgs struct {
-	Name   pulumi.StringPtrInput `pulumi:"name"`
-	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	Table  pulumi.StringPtrInput `pulumi:"table"`
-}
-
-func (FivetranConnectorDestinationSchemaArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorDestinationSchema)(nil)).Elem()
-}
-
-func (i FivetranConnectorDestinationSchemaArgs) ToFivetranConnectorDestinationSchemaOutput() FivetranConnectorDestinationSchemaOutput {
-	return i.ToFivetranConnectorDestinationSchemaOutputWithContext(context.Background())
-}
-
-func (i FivetranConnectorDestinationSchemaArgs) ToFivetranConnectorDestinationSchemaOutputWithContext(ctx context.Context) FivetranConnectorDestinationSchemaOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorDestinationSchemaOutput)
-}
-
-func (i FivetranConnectorDestinationSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorDestinationSchema] {
-	return pulumix.Output[FivetranConnectorDestinationSchema]{
-		OutputState: i.ToFivetranConnectorDestinationSchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
-func (i FivetranConnectorDestinationSchemaArgs) ToFivetranConnectorDestinationSchemaPtrOutput() FivetranConnectorDestinationSchemaPtrOutput {
-	return i.ToFivetranConnectorDestinationSchemaPtrOutputWithContext(context.Background())
-}
-
-func (i FivetranConnectorDestinationSchemaArgs) ToFivetranConnectorDestinationSchemaPtrOutputWithContext(ctx context.Context) FivetranConnectorDestinationSchemaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorDestinationSchemaOutput).ToFivetranConnectorDestinationSchemaPtrOutputWithContext(ctx)
-}
-
-// FivetranConnectorDestinationSchemaPtrInput is an input type that accepts FivetranConnectorDestinationSchemaArgs, FivetranConnectorDestinationSchemaPtr and FivetranConnectorDestinationSchemaPtrOutput values.
-// You can construct a concrete instance of `FivetranConnectorDestinationSchemaPtrInput` via:
-//
-//	        FivetranConnectorDestinationSchemaArgs{...}
-//
-//	or:
-//
-//	        nil
-type FivetranConnectorDestinationSchemaPtrInput interface {
-	pulumi.Input
-
-	ToFivetranConnectorDestinationSchemaPtrOutput() FivetranConnectorDestinationSchemaPtrOutput
-	ToFivetranConnectorDestinationSchemaPtrOutputWithContext(context.Context) FivetranConnectorDestinationSchemaPtrOutput
-}
-
-type fivetranConnectorDestinationSchemaPtrType FivetranConnectorDestinationSchemaArgs
-
-func FivetranConnectorDestinationSchemaPtr(v *FivetranConnectorDestinationSchemaArgs) FivetranConnectorDestinationSchemaPtrInput {
-	return (*fivetranConnectorDestinationSchemaPtrType)(v)
-}
-
-func (*fivetranConnectorDestinationSchemaPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FivetranConnectorDestinationSchema)(nil)).Elem()
-}
-
-func (i *fivetranConnectorDestinationSchemaPtrType) ToFivetranConnectorDestinationSchemaPtrOutput() FivetranConnectorDestinationSchemaPtrOutput {
-	return i.ToFivetranConnectorDestinationSchemaPtrOutputWithContext(context.Background())
-}
-
-func (i *fivetranConnectorDestinationSchemaPtrType) ToFivetranConnectorDestinationSchemaPtrOutputWithContext(ctx context.Context) FivetranConnectorDestinationSchemaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorDestinationSchemaPtrOutput)
-}
-
-func (i *fivetranConnectorDestinationSchemaPtrType) ToOutput(ctx context.Context) pulumix.Output[*FivetranConnectorDestinationSchema] {
-	return pulumix.Output[*FivetranConnectorDestinationSchema]{
-		OutputState: i.ToFivetranConnectorDestinationSchemaPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
-type FivetranConnectorDestinationSchemaOutput struct{ *pulumi.OutputState }
-
-func (FivetranConnectorDestinationSchemaOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorDestinationSchema)(nil)).Elem()
-}
-
-func (o FivetranConnectorDestinationSchemaOutput) ToFivetranConnectorDestinationSchemaOutput() FivetranConnectorDestinationSchemaOutput {
-	return o
-}
-
-func (o FivetranConnectorDestinationSchemaOutput) ToFivetranConnectorDestinationSchemaOutputWithContext(ctx context.Context) FivetranConnectorDestinationSchemaOutput {
-	return o
-}
-
-func (o FivetranConnectorDestinationSchemaOutput) ToFivetranConnectorDestinationSchemaPtrOutput() FivetranConnectorDestinationSchemaPtrOutput {
-	return o.ToFivetranConnectorDestinationSchemaPtrOutputWithContext(context.Background())
-}
-
-func (o FivetranConnectorDestinationSchemaOutput) ToFivetranConnectorDestinationSchemaPtrOutputWithContext(ctx context.Context) FivetranConnectorDestinationSchemaPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FivetranConnectorDestinationSchema) *FivetranConnectorDestinationSchema {
-		return &v
-	}).(FivetranConnectorDestinationSchemaPtrOutput)
-}
-
-func (o FivetranConnectorDestinationSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorDestinationSchema] {
-	return pulumix.Output[FivetranConnectorDestinationSchema]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o FivetranConnectorDestinationSchemaOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationSchema) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-func (o FivetranConnectorDestinationSchemaOutput) Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationSchema) *string { return v.Prefix }).(pulumi.StringPtrOutput)
-}
-
-func (o FivetranConnectorDestinationSchemaOutput) Table() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorDestinationSchema) *string { return v.Table }).(pulumi.StringPtrOutput)
-}
-
-type FivetranConnectorDestinationSchemaPtrOutput struct{ *pulumi.OutputState }
-
-func (FivetranConnectorDestinationSchemaPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FivetranConnectorDestinationSchema)(nil)).Elem()
-}
-
-func (o FivetranConnectorDestinationSchemaPtrOutput) ToFivetranConnectorDestinationSchemaPtrOutput() FivetranConnectorDestinationSchemaPtrOutput {
-	return o
-}
-
-func (o FivetranConnectorDestinationSchemaPtrOutput) ToFivetranConnectorDestinationSchemaPtrOutputWithContext(ctx context.Context) FivetranConnectorDestinationSchemaPtrOutput {
-	return o
-}
-
-func (o FivetranConnectorDestinationSchemaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FivetranConnectorDestinationSchema] {
-	return pulumix.Output[*FivetranConnectorDestinationSchema]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o FivetranConnectorDestinationSchemaPtrOutput) Elem() FivetranConnectorDestinationSchemaOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationSchema) FivetranConnectorDestinationSchema {
-		if v != nil {
-			return *v
-		}
-		var ret FivetranConnectorDestinationSchema
-		return ret
-	}).(FivetranConnectorDestinationSchemaOutput)
-}
-
-func (o FivetranConnectorDestinationSchemaPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationSchema) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o FivetranConnectorDestinationSchemaPtrOutput) Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationSchema) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Prefix
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o FivetranConnectorDestinationSchemaPtrOutput) Table() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FivetranConnectorDestinationSchema) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Table
-	}).(pulumi.StringPtrOutput)
-}
-
-type FivetranConnectorGroupUsersUser struct {
+type GroupUsersUser struct {
 	// The email address that the user has associated with their user profile.
 	Email string `pulumi:"email"`
 	// The unique identifier for the user within the account.
@@ -9760,18 +9758,18 @@ type FivetranConnectorGroupUsersUser struct {
 	Role string `pulumi:"role"`
 }
 
-// FivetranConnectorGroupUsersUserInput is an input type that accepts FivetranConnectorGroupUsersUserArgs and FivetranConnectorGroupUsersUserOutput values.
-// You can construct a concrete instance of `FivetranConnectorGroupUsersUserInput` via:
+// GroupUsersUserInput is an input type that accepts GroupUsersUserArgs and GroupUsersUserOutput values.
+// You can construct a concrete instance of `GroupUsersUserInput` via:
 //
-//	FivetranConnectorGroupUsersUserArgs{...}
-type FivetranConnectorGroupUsersUserInput interface {
+//	GroupUsersUserArgs{...}
+type GroupUsersUserInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorGroupUsersUserOutput() FivetranConnectorGroupUsersUserOutput
-	ToFivetranConnectorGroupUsersUserOutputWithContext(context.Context) FivetranConnectorGroupUsersUserOutput
+	ToGroupUsersUserOutput() GroupUsersUserOutput
+	ToGroupUsersUserOutputWithContext(context.Context) GroupUsersUserOutput
 }
 
-type FivetranConnectorGroupUsersUserArgs struct {
+type GroupUsersUserArgs struct {
 	// The email address that the user has associated with their user profile.
 	Email pulumi.StringInput `pulumi:"email"`
 	// The unique identifier for the user within the account.
@@ -9780,520 +9778,516 @@ type FivetranConnectorGroupUsersUserArgs struct {
 	Role pulumi.StringInput `pulumi:"role"`
 }
 
-func (FivetranConnectorGroupUsersUserArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorGroupUsersUser)(nil)).Elem()
+func (GroupUsersUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupUsersUser)(nil)).Elem()
 }
 
-func (i FivetranConnectorGroupUsersUserArgs) ToFivetranConnectorGroupUsersUserOutput() FivetranConnectorGroupUsersUserOutput {
-	return i.ToFivetranConnectorGroupUsersUserOutputWithContext(context.Background())
+func (i GroupUsersUserArgs) ToGroupUsersUserOutput() GroupUsersUserOutput {
+	return i.ToGroupUsersUserOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorGroupUsersUserArgs) ToFivetranConnectorGroupUsersUserOutputWithContext(ctx context.Context) FivetranConnectorGroupUsersUserOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorGroupUsersUserOutput)
+func (i GroupUsersUserArgs) ToGroupUsersUserOutputWithContext(ctx context.Context) GroupUsersUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupUsersUserOutput)
 }
 
-func (i FivetranConnectorGroupUsersUserArgs) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorGroupUsersUser] {
-	return pulumix.Output[FivetranConnectorGroupUsersUser]{
-		OutputState: i.ToFivetranConnectorGroupUsersUserOutputWithContext(ctx).OutputState,
+func (i GroupUsersUserArgs) ToOutput(ctx context.Context) pulumix.Output[GroupUsersUser] {
+	return pulumix.Output[GroupUsersUser]{
+		OutputState: i.ToGroupUsersUserOutputWithContext(ctx).OutputState,
 	}
 }
 
-// FivetranConnectorGroupUsersUserArrayInput is an input type that accepts FivetranConnectorGroupUsersUserArray and FivetranConnectorGroupUsersUserArrayOutput values.
-// You can construct a concrete instance of `FivetranConnectorGroupUsersUserArrayInput` via:
+// GroupUsersUserArrayInput is an input type that accepts GroupUsersUserArray and GroupUsersUserArrayOutput values.
+// You can construct a concrete instance of `GroupUsersUserArrayInput` via:
 //
-//	FivetranConnectorGroupUsersUserArray{ FivetranConnectorGroupUsersUserArgs{...} }
-type FivetranConnectorGroupUsersUserArrayInput interface {
+//	GroupUsersUserArray{ GroupUsersUserArgs{...} }
+type GroupUsersUserArrayInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorGroupUsersUserArrayOutput() FivetranConnectorGroupUsersUserArrayOutput
-	ToFivetranConnectorGroupUsersUserArrayOutputWithContext(context.Context) FivetranConnectorGroupUsersUserArrayOutput
+	ToGroupUsersUserArrayOutput() GroupUsersUserArrayOutput
+	ToGroupUsersUserArrayOutputWithContext(context.Context) GroupUsersUserArrayOutput
 }
 
-type FivetranConnectorGroupUsersUserArray []FivetranConnectorGroupUsersUserInput
+type GroupUsersUserArray []GroupUsersUserInput
 
-func (FivetranConnectorGroupUsersUserArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FivetranConnectorGroupUsersUser)(nil)).Elem()
+func (GroupUsersUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GroupUsersUser)(nil)).Elem()
 }
 
-func (i FivetranConnectorGroupUsersUserArray) ToFivetranConnectorGroupUsersUserArrayOutput() FivetranConnectorGroupUsersUserArrayOutput {
-	return i.ToFivetranConnectorGroupUsersUserArrayOutputWithContext(context.Background())
+func (i GroupUsersUserArray) ToGroupUsersUserArrayOutput() GroupUsersUserArrayOutput {
+	return i.ToGroupUsersUserArrayOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorGroupUsersUserArray) ToFivetranConnectorGroupUsersUserArrayOutputWithContext(ctx context.Context) FivetranConnectorGroupUsersUserArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorGroupUsersUserArrayOutput)
+func (i GroupUsersUserArray) ToGroupUsersUserArrayOutputWithContext(ctx context.Context) GroupUsersUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupUsersUserArrayOutput)
 }
 
-func (i FivetranConnectorGroupUsersUserArray) ToOutput(ctx context.Context) pulumix.Output[[]FivetranConnectorGroupUsersUser] {
-	return pulumix.Output[[]FivetranConnectorGroupUsersUser]{
-		OutputState: i.ToFivetranConnectorGroupUsersUserArrayOutputWithContext(ctx).OutputState,
+func (i GroupUsersUserArray) ToOutput(ctx context.Context) pulumix.Output[[]GroupUsersUser] {
+	return pulumix.Output[[]GroupUsersUser]{
+		OutputState: i.ToGroupUsersUserArrayOutputWithContext(ctx).OutputState,
 	}
 }
 
-type FivetranConnectorGroupUsersUserOutput struct{ *pulumi.OutputState }
+type GroupUsersUserOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorGroupUsersUserOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorGroupUsersUser)(nil)).Elem()
+func (GroupUsersUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupUsersUser)(nil)).Elem()
 }
 
-func (o FivetranConnectorGroupUsersUserOutput) ToFivetranConnectorGroupUsersUserOutput() FivetranConnectorGroupUsersUserOutput {
+func (o GroupUsersUserOutput) ToGroupUsersUserOutput() GroupUsersUserOutput {
 	return o
 }
 
-func (o FivetranConnectorGroupUsersUserOutput) ToFivetranConnectorGroupUsersUserOutputWithContext(ctx context.Context) FivetranConnectorGroupUsersUserOutput {
+func (o GroupUsersUserOutput) ToGroupUsersUserOutputWithContext(ctx context.Context) GroupUsersUserOutput {
 	return o
 }
 
-func (o FivetranConnectorGroupUsersUserOutput) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorGroupUsersUser] {
-	return pulumix.Output[FivetranConnectorGroupUsersUser]{
+func (o GroupUsersUserOutput) ToOutput(ctx context.Context) pulumix.Output[GroupUsersUser] {
+	return pulumix.Output[GroupUsersUser]{
 		OutputState: o.OutputState,
 	}
 }
 
 // The email address that the user has associated with their user profile.
-func (o FivetranConnectorGroupUsersUserOutput) Email() pulumi.StringOutput {
-	return o.ApplyT(func(v FivetranConnectorGroupUsersUser) string { return v.Email }).(pulumi.StringOutput)
+func (o GroupUsersUserOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GroupUsersUser) string { return v.Email }).(pulumi.StringOutput)
 }
 
 // The unique identifier for the user within the account.
-func (o FivetranConnectorGroupUsersUserOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorGroupUsersUser) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o GroupUsersUserOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupUsersUser) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // The group role that you would like to assign this new user to. Supported group roles: ‘Destination Administrator‘, ‘Destination Reviewer‘, ‘Destination Analyst‘, ‘Connector Creator‘, or a custom destination role
-func (o FivetranConnectorGroupUsersUserOutput) Role() pulumi.StringOutput {
-	return o.ApplyT(func(v FivetranConnectorGroupUsersUser) string { return v.Role }).(pulumi.StringOutput)
+func (o GroupUsersUserOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GroupUsersUser) string { return v.Role }).(pulumi.StringOutput)
 }
 
-type FivetranConnectorGroupUsersUserArrayOutput struct{ *pulumi.OutputState }
+type GroupUsersUserArrayOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorGroupUsersUserArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FivetranConnectorGroupUsersUser)(nil)).Elem()
+func (GroupUsersUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GroupUsersUser)(nil)).Elem()
 }
 
-func (o FivetranConnectorGroupUsersUserArrayOutput) ToFivetranConnectorGroupUsersUserArrayOutput() FivetranConnectorGroupUsersUserArrayOutput {
+func (o GroupUsersUserArrayOutput) ToGroupUsersUserArrayOutput() GroupUsersUserArrayOutput {
 	return o
 }
 
-func (o FivetranConnectorGroupUsersUserArrayOutput) ToFivetranConnectorGroupUsersUserArrayOutputWithContext(ctx context.Context) FivetranConnectorGroupUsersUserArrayOutput {
+func (o GroupUsersUserArrayOutput) ToGroupUsersUserArrayOutputWithContext(ctx context.Context) GroupUsersUserArrayOutput {
 	return o
 }
 
-func (o FivetranConnectorGroupUsersUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FivetranConnectorGroupUsersUser] {
-	return pulumix.Output[[]FivetranConnectorGroupUsersUser]{
+func (o GroupUsersUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GroupUsersUser] {
+	return pulumix.Output[[]GroupUsersUser]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorGroupUsersUserArrayOutput) Index(i pulumi.IntInput) FivetranConnectorGroupUsersUserOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FivetranConnectorGroupUsersUser {
-		return vs[0].([]FivetranConnectorGroupUsersUser)[vs[1].(int)]
-	}).(FivetranConnectorGroupUsersUserOutput)
+func (o GroupUsersUserArrayOutput) Index(i pulumi.IntInput) GroupUsersUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GroupUsersUser {
+		return vs[0].([]GroupUsersUser)[vs[1].(int)]
+	}).(GroupUsersUserOutput)
 }
 
-type FivetranConnectorSchemaConfigSchema struct {
+type SchemaConfigSchema struct {
 	// The boolean value specifying whether the sync for the schema into the destination is enabled.
 	Enabled *string `pulumi:"enabled"`
 	// The schema name within your destination in accordance with Fivetran conventional rules.
-	Name   string                                     `pulumi:"name"`
-	Tables []FivetranConnectorSchemaConfigSchemaTable `pulumi:"tables"`
+	Name   string                    `pulumi:"name"`
+	Tables []SchemaConfigSchemaTable `pulumi:"tables"`
 }
 
-// FivetranConnectorSchemaConfigSchemaInput is an input type that accepts FivetranConnectorSchemaConfigSchemaArgs and FivetranConnectorSchemaConfigSchemaOutput values.
-// You can construct a concrete instance of `FivetranConnectorSchemaConfigSchemaInput` via:
+// SchemaConfigSchemaInput is an input type that accepts SchemaConfigSchemaArgs and SchemaConfigSchemaOutput values.
+// You can construct a concrete instance of `SchemaConfigSchemaInput` via:
 //
-//	FivetranConnectorSchemaConfigSchemaArgs{...}
-type FivetranConnectorSchemaConfigSchemaInput interface {
+//	SchemaConfigSchemaArgs{...}
+type SchemaConfigSchemaInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorSchemaConfigSchemaOutput() FivetranConnectorSchemaConfigSchemaOutput
-	ToFivetranConnectorSchemaConfigSchemaOutputWithContext(context.Context) FivetranConnectorSchemaConfigSchemaOutput
+	ToSchemaConfigSchemaOutput() SchemaConfigSchemaOutput
+	ToSchemaConfigSchemaOutputWithContext(context.Context) SchemaConfigSchemaOutput
 }
 
-type FivetranConnectorSchemaConfigSchemaArgs struct {
+type SchemaConfigSchemaArgs struct {
 	// The boolean value specifying whether the sync for the schema into the destination is enabled.
 	Enabled pulumi.StringPtrInput `pulumi:"enabled"`
 	// The schema name within your destination in accordance with Fivetran conventional rules.
-	Name   pulumi.StringInput                                 `pulumi:"name"`
-	Tables FivetranConnectorSchemaConfigSchemaTableArrayInput `pulumi:"tables"`
+	Name   pulumi.StringInput                `pulumi:"name"`
+	Tables SchemaConfigSchemaTableArrayInput `pulumi:"tables"`
 }
 
-func (FivetranConnectorSchemaConfigSchemaArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorSchemaConfigSchema)(nil)).Elem()
+func (SchemaConfigSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaConfigSchema)(nil)).Elem()
 }
 
-func (i FivetranConnectorSchemaConfigSchemaArgs) ToFivetranConnectorSchemaConfigSchemaOutput() FivetranConnectorSchemaConfigSchemaOutput {
-	return i.ToFivetranConnectorSchemaConfigSchemaOutputWithContext(context.Background())
+func (i SchemaConfigSchemaArgs) ToSchemaConfigSchemaOutput() SchemaConfigSchemaOutput {
+	return i.ToSchemaConfigSchemaOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorSchemaConfigSchemaArgs) ToFivetranConnectorSchemaConfigSchemaOutputWithContext(ctx context.Context) FivetranConnectorSchemaConfigSchemaOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorSchemaConfigSchemaOutput)
+func (i SchemaConfigSchemaArgs) ToSchemaConfigSchemaOutputWithContext(ctx context.Context) SchemaConfigSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaConfigSchemaOutput)
 }
 
-func (i FivetranConnectorSchemaConfigSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorSchemaConfigSchema] {
-	return pulumix.Output[FivetranConnectorSchemaConfigSchema]{
-		OutputState: i.ToFivetranConnectorSchemaConfigSchemaOutputWithContext(ctx).OutputState,
+func (i SchemaConfigSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[SchemaConfigSchema] {
+	return pulumix.Output[SchemaConfigSchema]{
+		OutputState: i.ToSchemaConfigSchemaOutputWithContext(ctx).OutputState,
 	}
 }
 
-// FivetranConnectorSchemaConfigSchemaArrayInput is an input type that accepts FivetranConnectorSchemaConfigSchemaArray and FivetranConnectorSchemaConfigSchemaArrayOutput values.
-// You can construct a concrete instance of `FivetranConnectorSchemaConfigSchemaArrayInput` via:
+// SchemaConfigSchemaArrayInput is an input type that accepts SchemaConfigSchemaArray and SchemaConfigSchemaArrayOutput values.
+// You can construct a concrete instance of `SchemaConfigSchemaArrayInput` via:
 //
-//	FivetranConnectorSchemaConfigSchemaArray{ FivetranConnectorSchemaConfigSchemaArgs{...} }
-type FivetranConnectorSchemaConfigSchemaArrayInput interface {
+//	SchemaConfigSchemaArray{ SchemaConfigSchemaArgs{...} }
+type SchemaConfigSchemaArrayInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorSchemaConfigSchemaArrayOutput() FivetranConnectorSchemaConfigSchemaArrayOutput
-	ToFivetranConnectorSchemaConfigSchemaArrayOutputWithContext(context.Context) FivetranConnectorSchemaConfigSchemaArrayOutput
+	ToSchemaConfigSchemaArrayOutput() SchemaConfigSchemaArrayOutput
+	ToSchemaConfigSchemaArrayOutputWithContext(context.Context) SchemaConfigSchemaArrayOutput
 }
 
-type FivetranConnectorSchemaConfigSchemaArray []FivetranConnectorSchemaConfigSchemaInput
+type SchemaConfigSchemaArray []SchemaConfigSchemaInput
 
-func (FivetranConnectorSchemaConfigSchemaArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FivetranConnectorSchemaConfigSchema)(nil)).Elem()
+func (SchemaConfigSchemaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SchemaConfigSchema)(nil)).Elem()
 }
 
-func (i FivetranConnectorSchemaConfigSchemaArray) ToFivetranConnectorSchemaConfigSchemaArrayOutput() FivetranConnectorSchemaConfigSchemaArrayOutput {
-	return i.ToFivetranConnectorSchemaConfigSchemaArrayOutputWithContext(context.Background())
+func (i SchemaConfigSchemaArray) ToSchemaConfigSchemaArrayOutput() SchemaConfigSchemaArrayOutput {
+	return i.ToSchemaConfigSchemaArrayOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorSchemaConfigSchemaArray) ToFivetranConnectorSchemaConfigSchemaArrayOutputWithContext(ctx context.Context) FivetranConnectorSchemaConfigSchemaArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorSchemaConfigSchemaArrayOutput)
+func (i SchemaConfigSchemaArray) ToSchemaConfigSchemaArrayOutputWithContext(ctx context.Context) SchemaConfigSchemaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaConfigSchemaArrayOutput)
 }
 
-func (i FivetranConnectorSchemaConfigSchemaArray) ToOutput(ctx context.Context) pulumix.Output[[]FivetranConnectorSchemaConfigSchema] {
-	return pulumix.Output[[]FivetranConnectorSchemaConfigSchema]{
-		OutputState: i.ToFivetranConnectorSchemaConfigSchemaArrayOutputWithContext(ctx).OutputState,
+func (i SchemaConfigSchemaArray) ToOutput(ctx context.Context) pulumix.Output[[]SchemaConfigSchema] {
+	return pulumix.Output[[]SchemaConfigSchema]{
+		OutputState: i.ToSchemaConfigSchemaArrayOutputWithContext(ctx).OutputState,
 	}
 }
 
-type FivetranConnectorSchemaConfigSchemaOutput struct{ *pulumi.OutputState }
+type SchemaConfigSchemaOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorSchemaConfigSchemaOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorSchemaConfigSchema)(nil)).Elem()
+func (SchemaConfigSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaConfigSchema)(nil)).Elem()
 }
 
-func (o FivetranConnectorSchemaConfigSchemaOutput) ToFivetranConnectorSchemaConfigSchemaOutput() FivetranConnectorSchemaConfigSchemaOutput {
+func (o SchemaConfigSchemaOutput) ToSchemaConfigSchemaOutput() SchemaConfigSchemaOutput {
 	return o
 }
 
-func (o FivetranConnectorSchemaConfigSchemaOutput) ToFivetranConnectorSchemaConfigSchemaOutputWithContext(ctx context.Context) FivetranConnectorSchemaConfigSchemaOutput {
+func (o SchemaConfigSchemaOutput) ToSchemaConfigSchemaOutputWithContext(ctx context.Context) SchemaConfigSchemaOutput {
 	return o
 }
 
-func (o FivetranConnectorSchemaConfigSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorSchemaConfigSchema] {
-	return pulumix.Output[FivetranConnectorSchemaConfigSchema]{
+func (o SchemaConfigSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[SchemaConfigSchema] {
+	return pulumix.Output[SchemaConfigSchema]{
 		OutputState: o.OutputState,
 	}
 }
 
 // The boolean value specifying whether the sync for the schema into the destination is enabled.
-func (o FivetranConnectorSchemaConfigSchemaOutput) Enabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorSchemaConfigSchema) *string { return v.Enabled }).(pulumi.StringPtrOutput)
+func (o SchemaConfigSchemaOutput) Enabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SchemaConfigSchema) *string { return v.Enabled }).(pulumi.StringPtrOutput)
 }
 
 // The schema name within your destination in accordance with Fivetran conventional rules.
-func (o FivetranConnectorSchemaConfigSchemaOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v FivetranConnectorSchemaConfigSchema) string { return v.Name }).(pulumi.StringOutput)
+func (o SchemaConfigSchemaOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SchemaConfigSchema) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o FivetranConnectorSchemaConfigSchemaOutput) Tables() FivetranConnectorSchemaConfigSchemaTableArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorSchemaConfigSchema) []FivetranConnectorSchemaConfigSchemaTable {
-		return v.Tables
-	}).(FivetranConnectorSchemaConfigSchemaTableArrayOutput)
+func (o SchemaConfigSchemaOutput) Tables() SchemaConfigSchemaTableArrayOutput {
+	return o.ApplyT(func(v SchemaConfigSchema) []SchemaConfigSchemaTable { return v.Tables }).(SchemaConfigSchemaTableArrayOutput)
 }
 
-type FivetranConnectorSchemaConfigSchemaArrayOutput struct{ *pulumi.OutputState }
+type SchemaConfigSchemaArrayOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorSchemaConfigSchemaArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FivetranConnectorSchemaConfigSchema)(nil)).Elem()
+func (SchemaConfigSchemaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SchemaConfigSchema)(nil)).Elem()
 }
 
-func (o FivetranConnectorSchemaConfigSchemaArrayOutput) ToFivetranConnectorSchemaConfigSchemaArrayOutput() FivetranConnectorSchemaConfigSchemaArrayOutput {
+func (o SchemaConfigSchemaArrayOutput) ToSchemaConfigSchemaArrayOutput() SchemaConfigSchemaArrayOutput {
 	return o
 }
 
-func (o FivetranConnectorSchemaConfigSchemaArrayOutput) ToFivetranConnectorSchemaConfigSchemaArrayOutputWithContext(ctx context.Context) FivetranConnectorSchemaConfigSchemaArrayOutput {
+func (o SchemaConfigSchemaArrayOutput) ToSchemaConfigSchemaArrayOutputWithContext(ctx context.Context) SchemaConfigSchemaArrayOutput {
 	return o
 }
 
-func (o FivetranConnectorSchemaConfigSchemaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FivetranConnectorSchemaConfigSchema] {
-	return pulumix.Output[[]FivetranConnectorSchemaConfigSchema]{
+func (o SchemaConfigSchemaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SchemaConfigSchema] {
+	return pulumix.Output[[]SchemaConfigSchema]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorSchemaConfigSchemaArrayOutput) Index(i pulumi.IntInput) FivetranConnectorSchemaConfigSchemaOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FivetranConnectorSchemaConfigSchema {
-		return vs[0].([]FivetranConnectorSchemaConfigSchema)[vs[1].(int)]
-	}).(FivetranConnectorSchemaConfigSchemaOutput)
+func (o SchemaConfigSchemaArrayOutput) Index(i pulumi.IntInput) SchemaConfigSchemaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SchemaConfigSchema {
+		return vs[0].([]SchemaConfigSchema)[vs[1].(int)]
+	}).(SchemaConfigSchemaOutput)
 }
 
-type FivetranConnectorSchemaConfigSchemaTable struct {
-	Columns  []FivetranConnectorSchemaConfigSchemaTableColumn `pulumi:"columns"`
-	Enabled  *string                                          `pulumi:"enabled"`
-	Name     string                                           `pulumi:"name"`
-	SyncMode *string                                          `pulumi:"syncMode"`
+type SchemaConfigSchemaTable struct {
+	Columns  []SchemaConfigSchemaTableColumn `pulumi:"columns"`
+	Enabled  *string                         `pulumi:"enabled"`
+	Name     string                          `pulumi:"name"`
+	SyncMode *string                         `pulumi:"syncMode"`
 }
 
-// FivetranConnectorSchemaConfigSchemaTableInput is an input type that accepts FivetranConnectorSchemaConfigSchemaTableArgs and FivetranConnectorSchemaConfigSchemaTableOutput values.
-// You can construct a concrete instance of `FivetranConnectorSchemaConfigSchemaTableInput` via:
+// SchemaConfigSchemaTableInput is an input type that accepts SchemaConfigSchemaTableArgs and SchemaConfigSchemaTableOutput values.
+// You can construct a concrete instance of `SchemaConfigSchemaTableInput` via:
 //
-//	FivetranConnectorSchemaConfigSchemaTableArgs{...}
-type FivetranConnectorSchemaConfigSchemaTableInput interface {
+//	SchemaConfigSchemaTableArgs{...}
+type SchemaConfigSchemaTableInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorSchemaConfigSchemaTableOutput() FivetranConnectorSchemaConfigSchemaTableOutput
-	ToFivetranConnectorSchemaConfigSchemaTableOutputWithContext(context.Context) FivetranConnectorSchemaConfigSchemaTableOutput
+	ToSchemaConfigSchemaTableOutput() SchemaConfigSchemaTableOutput
+	ToSchemaConfigSchemaTableOutputWithContext(context.Context) SchemaConfigSchemaTableOutput
 }
 
-type FivetranConnectorSchemaConfigSchemaTableArgs struct {
-	Columns  FivetranConnectorSchemaConfigSchemaTableColumnArrayInput `pulumi:"columns"`
-	Enabled  pulumi.StringPtrInput                                    `pulumi:"enabled"`
-	Name     pulumi.StringInput                                       `pulumi:"name"`
-	SyncMode pulumi.StringPtrInput                                    `pulumi:"syncMode"`
+type SchemaConfigSchemaTableArgs struct {
+	Columns  SchemaConfigSchemaTableColumnArrayInput `pulumi:"columns"`
+	Enabled  pulumi.StringPtrInput                   `pulumi:"enabled"`
+	Name     pulumi.StringInput                      `pulumi:"name"`
+	SyncMode pulumi.StringPtrInput                   `pulumi:"syncMode"`
 }
 
-func (FivetranConnectorSchemaConfigSchemaTableArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorSchemaConfigSchemaTable)(nil)).Elem()
+func (SchemaConfigSchemaTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaConfigSchemaTable)(nil)).Elem()
 }
 
-func (i FivetranConnectorSchemaConfigSchemaTableArgs) ToFivetranConnectorSchemaConfigSchemaTableOutput() FivetranConnectorSchemaConfigSchemaTableOutput {
-	return i.ToFivetranConnectorSchemaConfigSchemaTableOutputWithContext(context.Background())
+func (i SchemaConfigSchemaTableArgs) ToSchemaConfigSchemaTableOutput() SchemaConfigSchemaTableOutput {
+	return i.ToSchemaConfigSchemaTableOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorSchemaConfigSchemaTableArgs) ToFivetranConnectorSchemaConfigSchemaTableOutputWithContext(ctx context.Context) FivetranConnectorSchemaConfigSchemaTableOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorSchemaConfigSchemaTableOutput)
+func (i SchemaConfigSchemaTableArgs) ToSchemaConfigSchemaTableOutputWithContext(ctx context.Context) SchemaConfigSchemaTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaConfigSchemaTableOutput)
 }
 
-func (i FivetranConnectorSchemaConfigSchemaTableArgs) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorSchemaConfigSchemaTable] {
-	return pulumix.Output[FivetranConnectorSchemaConfigSchemaTable]{
-		OutputState: i.ToFivetranConnectorSchemaConfigSchemaTableOutputWithContext(ctx).OutputState,
+func (i SchemaConfigSchemaTableArgs) ToOutput(ctx context.Context) pulumix.Output[SchemaConfigSchemaTable] {
+	return pulumix.Output[SchemaConfigSchemaTable]{
+		OutputState: i.ToSchemaConfigSchemaTableOutputWithContext(ctx).OutputState,
 	}
 }
 
-// FivetranConnectorSchemaConfigSchemaTableArrayInput is an input type that accepts FivetranConnectorSchemaConfigSchemaTableArray and FivetranConnectorSchemaConfigSchemaTableArrayOutput values.
-// You can construct a concrete instance of `FivetranConnectorSchemaConfigSchemaTableArrayInput` via:
+// SchemaConfigSchemaTableArrayInput is an input type that accepts SchemaConfigSchemaTableArray and SchemaConfigSchemaTableArrayOutput values.
+// You can construct a concrete instance of `SchemaConfigSchemaTableArrayInput` via:
 //
-//	FivetranConnectorSchemaConfigSchemaTableArray{ FivetranConnectorSchemaConfigSchemaTableArgs{...} }
-type FivetranConnectorSchemaConfigSchemaTableArrayInput interface {
+//	SchemaConfigSchemaTableArray{ SchemaConfigSchemaTableArgs{...} }
+type SchemaConfigSchemaTableArrayInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorSchemaConfigSchemaTableArrayOutput() FivetranConnectorSchemaConfigSchemaTableArrayOutput
-	ToFivetranConnectorSchemaConfigSchemaTableArrayOutputWithContext(context.Context) FivetranConnectorSchemaConfigSchemaTableArrayOutput
+	ToSchemaConfigSchemaTableArrayOutput() SchemaConfigSchemaTableArrayOutput
+	ToSchemaConfigSchemaTableArrayOutputWithContext(context.Context) SchemaConfigSchemaTableArrayOutput
 }
 
-type FivetranConnectorSchemaConfigSchemaTableArray []FivetranConnectorSchemaConfigSchemaTableInput
+type SchemaConfigSchemaTableArray []SchemaConfigSchemaTableInput
 
-func (FivetranConnectorSchemaConfigSchemaTableArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FivetranConnectorSchemaConfigSchemaTable)(nil)).Elem()
+func (SchemaConfigSchemaTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SchemaConfigSchemaTable)(nil)).Elem()
 }
 
-func (i FivetranConnectorSchemaConfigSchemaTableArray) ToFivetranConnectorSchemaConfigSchemaTableArrayOutput() FivetranConnectorSchemaConfigSchemaTableArrayOutput {
-	return i.ToFivetranConnectorSchemaConfigSchemaTableArrayOutputWithContext(context.Background())
+func (i SchemaConfigSchemaTableArray) ToSchemaConfigSchemaTableArrayOutput() SchemaConfigSchemaTableArrayOutput {
+	return i.ToSchemaConfigSchemaTableArrayOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorSchemaConfigSchemaTableArray) ToFivetranConnectorSchemaConfigSchemaTableArrayOutputWithContext(ctx context.Context) FivetranConnectorSchemaConfigSchemaTableArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorSchemaConfigSchemaTableArrayOutput)
+func (i SchemaConfigSchemaTableArray) ToSchemaConfigSchemaTableArrayOutputWithContext(ctx context.Context) SchemaConfigSchemaTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaConfigSchemaTableArrayOutput)
 }
 
-func (i FivetranConnectorSchemaConfigSchemaTableArray) ToOutput(ctx context.Context) pulumix.Output[[]FivetranConnectorSchemaConfigSchemaTable] {
-	return pulumix.Output[[]FivetranConnectorSchemaConfigSchemaTable]{
-		OutputState: i.ToFivetranConnectorSchemaConfigSchemaTableArrayOutputWithContext(ctx).OutputState,
+func (i SchemaConfigSchemaTableArray) ToOutput(ctx context.Context) pulumix.Output[[]SchemaConfigSchemaTable] {
+	return pulumix.Output[[]SchemaConfigSchemaTable]{
+		OutputState: i.ToSchemaConfigSchemaTableArrayOutputWithContext(ctx).OutputState,
 	}
 }
 
-type FivetranConnectorSchemaConfigSchemaTableOutput struct{ *pulumi.OutputState }
+type SchemaConfigSchemaTableOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorSchemaConfigSchemaTableOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorSchemaConfigSchemaTable)(nil)).Elem()
+func (SchemaConfigSchemaTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaConfigSchemaTable)(nil)).Elem()
 }
 
-func (o FivetranConnectorSchemaConfigSchemaTableOutput) ToFivetranConnectorSchemaConfigSchemaTableOutput() FivetranConnectorSchemaConfigSchemaTableOutput {
+func (o SchemaConfigSchemaTableOutput) ToSchemaConfigSchemaTableOutput() SchemaConfigSchemaTableOutput {
 	return o
 }
 
-func (o FivetranConnectorSchemaConfigSchemaTableOutput) ToFivetranConnectorSchemaConfigSchemaTableOutputWithContext(ctx context.Context) FivetranConnectorSchemaConfigSchemaTableOutput {
+func (o SchemaConfigSchemaTableOutput) ToSchemaConfigSchemaTableOutputWithContext(ctx context.Context) SchemaConfigSchemaTableOutput {
 	return o
 }
 
-func (o FivetranConnectorSchemaConfigSchemaTableOutput) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorSchemaConfigSchemaTable] {
-	return pulumix.Output[FivetranConnectorSchemaConfigSchemaTable]{
+func (o SchemaConfigSchemaTableOutput) ToOutput(ctx context.Context) pulumix.Output[SchemaConfigSchemaTable] {
+	return pulumix.Output[SchemaConfigSchemaTable]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorSchemaConfigSchemaTableOutput) Columns() FivetranConnectorSchemaConfigSchemaTableColumnArrayOutput {
-	return o.ApplyT(func(v FivetranConnectorSchemaConfigSchemaTable) []FivetranConnectorSchemaConfigSchemaTableColumn {
-		return v.Columns
-	}).(FivetranConnectorSchemaConfigSchemaTableColumnArrayOutput)
+func (o SchemaConfigSchemaTableOutput) Columns() SchemaConfigSchemaTableColumnArrayOutput {
+	return o.ApplyT(func(v SchemaConfigSchemaTable) []SchemaConfigSchemaTableColumn { return v.Columns }).(SchemaConfigSchemaTableColumnArrayOutput)
 }
 
-func (o FivetranConnectorSchemaConfigSchemaTableOutput) Enabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorSchemaConfigSchemaTable) *string { return v.Enabled }).(pulumi.StringPtrOutput)
+func (o SchemaConfigSchemaTableOutput) Enabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SchemaConfigSchemaTable) *string { return v.Enabled }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorSchemaConfigSchemaTableOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v FivetranConnectorSchemaConfigSchemaTable) string { return v.Name }).(pulumi.StringOutput)
+func (o SchemaConfigSchemaTableOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SchemaConfigSchemaTable) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o FivetranConnectorSchemaConfigSchemaTableOutput) SyncMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorSchemaConfigSchemaTable) *string { return v.SyncMode }).(pulumi.StringPtrOutput)
+func (o SchemaConfigSchemaTableOutput) SyncMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SchemaConfigSchemaTable) *string { return v.SyncMode }).(pulumi.StringPtrOutput)
 }
 
-type FivetranConnectorSchemaConfigSchemaTableArrayOutput struct{ *pulumi.OutputState }
+type SchemaConfigSchemaTableArrayOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorSchemaConfigSchemaTableArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FivetranConnectorSchemaConfigSchemaTable)(nil)).Elem()
+func (SchemaConfigSchemaTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SchemaConfigSchemaTable)(nil)).Elem()
 }
 
-func (o FivetranConnectorSchemaConfigSchemaTableArrayOutput) ToFivetranConnectorSchemaConfigSchemaTableArrayOutput() FivetranConnectorSchemaConfigSchemaTableArrayOutput {
+func (o SchemaConfigSchemaTableArrayOutput) ToSchemaConfigSchemaTableArrayOutput() SchemaConfigSchemaTableArrayOutput {
 	return o
 }
 
-func (o FivetranConnectorSchemaConfigSchemaTableArrayOutput) ToFivetranConnectorSchemaConfigSchemaTableArrayOutputWithContext(ctx context.Context) FivetranConnectorSchemaConfigSchemaTableArrayOutput {
+func (o SchemaConfigSchemaTableArrayOutput) ToSchemaConfigSchemaTableArrayOutputWithContext(ctx context.Context) SchemaConfigSchemaTableArrayOutput {
 	return o
 }
 
-func (o FivetranConnectorSchemaConfigSchemaTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FivetranConnectorSchemaConfigSchemaTable] {
-	return pulumix.Output[[]FivetranConnectorSchemaConfigSchemaTable]{
+func (o SchemaConfigSchemaTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SchemaConfigSchemaTable] {
+	return pulumix.Output[[]SchemaConfigSchemaTable]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorSchemaConfigSchemaTableArrayOutput) Index(i pulumi.IntInput) FivetranConnectorSchemaConfigSchemaTableOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FivetranConnectorSchemaConfigSchemaTable {
-		return vs[0].([]FivetranConnectorSchemaConfigSchemaTable)[vs[1].(int)]
-	}).(FivetranConnectorSchemaConfigSchemaTableOutput)
+func (o SchemaConfigSchemaTableArrayOutput) Index(i pulumi.IntInput) SchemaConfigSchemaTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SchemaConfigSchemaTable {
+		return vs[0].([]SchemaConfigSchemaTable)[vs[1].(int)]
+	}).(SchemaConfigSchemaTableOutput)
 }
 
-type FivetranConnectorSchemaConfigSchemaTableColumn struct {
+type SchemaConfigSchemaTableColumn struct {
 	Enabled *string `pulumi:"enabled"`
 	Hashed  *string `pulumi:"hashed"`
 	Name    string  `pulumi:"name"`
 }
 
-// FivetranConnectorSchemaConfigSchemaTableColumnInput is an input type that accepts FivetranConnectorSchemaConfigSchemaTableColumnArgs and FivetranConnectorSchemaConfigSchemaTableColumnOutput values.
-// You can construct a concrete instance of `FivetranConnectorSchemaConfigSchemaTableColumnInput` via:
+// SchemaConfigSchemaTableColumnInput is an input type that accepts SchemaConfigSchemaTableColumnArgs and SchemaConfigSchemaTableColumnOutput values.
+// You can construct a concrete instance of `SchemaConfigSchemaTableColumnInput` via:
 //
-//	FivetranConnectorSchemaConfigSchemaTableColumnArgs{...}
-type FivetranConnectorSchemaConfigSchemaTableColumnInput interface {
+//	SchemaConfigSchemaTableColumnArgs{...}
+type SchemaConfigSchemaTableColumnInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorSchemaConfigSchemaTableColumnOutput() FivetranConnectorSchemaConfigSchemaTableColumnOutput
-	ToFivetranConnectorSchemaConfigSchemaTableColumnOutputWithContext(context.Context) FivetranConnectorSchemaConfigSchemaTableColumnOutput
+	ToSchemaConfigSchemaTableColumnOutput() SchemaConfigSchemaTableColumnOutput
+	ToSchemaConfigSchemaTableColumnOutputWithContext(context.Context) SchemaConfigSchemaTableColumnOutput
 }
 
-type FivetranConnectorSchemaConfigSchemaTableColumnArgs struct {
+type SchemaConfigSchemaTableColumnArgs struct {
 	Enabled pulumi.StringPtrInput `pulumi:"enabled"`
 	Hashed  pulumi.StringPtrInput `pulumi:"hashed"`
 	Name    pulumi.StringInput    `pulumi:"name"`
 }
 
-func (FivetranConnectorSchemaConfigSchemaTableColumnArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorSchemaConfigSchemaTableColumn)(nil)).Elem()
+func (SchemaConfigSchemaTableColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaConfigSchemaTableColumn)(nil)).Elem()
 }
 
-func (i FivetranConnectorSchemaConfigSchemaTableColumnArgs) ToFivetranConnectorSchemaConfigSchemaTableColumnOutput() FivetranConnectorSchemaConfigSchemaTableColumnOutput {
-	return i.ToFivetranConnectorSchemaConfigSchemaTableColumnOutputWithContext(context.Background())
+func (i SchemaConfigSchemaTableColumnArgs) ToSchemaConfigSchemaTableColumnOutput() SchemaConfigSchemaTableColumnOutput {
+	return i.ToSchemaConfigSchemaTableColumnOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorSchemaConfigSchemaTableColumnArgs) ToFivetranConnectorSchemaConfigSchemaTableColumnOutputWithContext(ctx context.Context) FivetranConnectorSchemaConfigSchemaTableColumnOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorSchemaConfigSchemaTableColumnOutput)
+func (i SchemaConfigSchemaTableColumnArgs) ToSchemaConfigSchemaTableColumnOutputWithContext(ctx context.Context) SchemaConfigSchemaTableColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaConfigSchemaTableColumnOutput)
 }
 
-func (i FivetranConnectorSchemaConfigSchemaTableColumnArgs) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorSchemaConfigSchemaTableColumn] {
-	return pulumix.Output[FivetranConnectorSchemaConfigSchemaTableColumn]{
-		OutputState: i.ToFivetranConnectorSchemaConfigSchemaTableColumnOutputWithContext(ctx).OutputState,
+func (i SchemaConfigSchemaTableColumnArgs) ToOutput(ctx context.Context) pulumix.Output[SchemaConfigSchemaTableColumn] {
+	return pulumix.Output[SchemaConfigSchemaTableColumn]{
+		OutputState: i.ToSchemaConfigSchemaTableColumnOutputWithContext(ctx).OutputState,
 	}
 }
 
-// FivetranConnectorSchemaConfigSchemaTableColumnArrayInput is an input type that accepts FivetranConnectorSchemaConfigSchemaTableColumnArray and FivetranConnectorSchemaConfigSchemaTableColumnArrayOutput values.
-// You can construct a concrete instance of `FivetranConnectorSchemaConfigSchemaTableColumnArrayInput` via:
+// SchemaConfigSchemaTableColumnArrayInput is an input type that accepts SchemaConfigSchemaTableColumnArray and SchemaConfigSchemaTableColumnArrayOutput values.
+// You can construct a concrete instance of `SchemaConfigSchemaTableColumnArrayInput` via:
 //
-//	FivetranConnectorSchemaConfigSchemaTableColumnArray{ FivetranConnectorSchemaConfigSchemaTableColumnArgs{...} }
-type FivetranConnectorSchemaConfigSchemaTableColumnArrayInput interface {
+//	SchemaConfigSchemaTableColumnArray{ SchemaConfigSchemaTableColumnArgs{...} }
+type SchemaConfigSchemaTableColumnArrayInput interface {
 	pulumi.Input
 
-	ToFivetranConnectorSchemaConfigSchemaTableColumnArrayOutput() FivetranConnectorSchemaConfigSchemaTableColumnArrayOutput
-	ToFivetranConnectorSchemaConfigSchemaTableColumnArrayOutputWithContext(context.Context) FivetranConnectorSchemaConfigSchemaTableColumnArrayOutput
+	ToSchemaConfigSchemaTableColumnArrayOutput() SchemaConfigSchemaTableColumnArrayOutput
+	ToSchemaConfigSchemaTableColumnArrayOutputWithContext(context.Context) SchemaConfigSchemaTableColumnArrayOutput
 }
 
-type FivetranConnectorSchemaConfigSchemaTableColumnArray []FivetranConnectorSchemaConfigSchemaTableColumnInput
+type SchemaConfigSchemaTableColumnArray []SchemaConfigSchemaTableColumnInput
 
-func (FivetranConnectorSchemaConfigSchemaTableColumnArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FivetranConnectorSchemaConfigSchemaTableColumn)(nil)).Elem()
+func (SchemaConfigSchemaTableColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SchemaConfigSchemaTableColumn)(nil)).Elem()
 }
 
-func (i FivetranConnectorSchemaConfigSchemaTableColumnArray) ToFivetranConnectorSchemaConfigSchemaTableColumnArrayOutput() FivetranConnectorSchemaConfigSchemaTableColumnArrayOutput {
-	return i.ToFivetranConnectorSchemaConfigSchemaTableColumnArrayOutputWithContext(context.Background())
+func (i SchemaConfigSchemaTableColumnArray) ToSchemaConfigSchemaTableColumnArrayOutput() SchemaConfigSchemaTableColumnArrayOutput {
+	return i.ToSchemaConfigSchemaTableColumnArrayOutputWithContext(context.Background())
 }
 
-func (i FivetranConnectorSchemaConfigSchemaTableColumnArray) ToFivetranConnectorSchemaConfigSchemaTableColumnArrayOutputWithContext(ctx context.Context) FivetranConnectorSchemaConfigSchemaTableColumnArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FivetranConnectorSchemaConfigSchemaTableColumnArrayOutput)
+func (i SchemaConfigSchemaTableColumnArray) ToSchemaConfigSchemaTableColumnArrayOutputWithContext(ctx context.Context) SchemaConfigSchemaTableColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SchemaConfigSchemaTableColumnArrayOutput)
 }
 
-func (i FivetranConnectorSchemaConfigSchemaTableColumnArray) ToOutput(ctx context.Context) pulumix.Output[[]FivetranConnectorSchemaConfigSchemaTableColumn] {
-	return pulumix.Output[[]FivetranConnectorSchemaConfigSchemaTableColumn]{
-		OutputState: i.ToFivetranConnectorSchemaConfigSchemaTableColumnArrayOutputWithContext(ctx).OutputState,
+func (i SchemaConfigSchemaTableColumnArray) ToOutput(ctx context.Context) pulumix.Output[[]SchemaConfigSchemaTableColumn] {
+	return pulumix.Output[[]SchemaConfigSchemaTableColumn]{
+		OutputState: i.ToSchemaConfigSchemaTableColumnArrayOutputWithContext(ctx).OutputState,
 	}
 }
 
-type FivetranConnectorSchemaConfigSchemaTableColumnOutput struct{ *pulumi.OutputState }
+type SchemaConfigSchemaTableColumnOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorSchemaConfigSchemaTableColumnOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FivetranConnectorSchemaConfigSchemaTableColumn)(nil)).Elem()
+func (SchemaConfigSchemaTableColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaConfigSchemaTableColumn)(nil)).Elem()
 }
 
-func (o FivetranConnectorSchemaConfigSchemaTableColumnOutput) ToFivetranConnectorSchemaConfigSchemaTableColumnOutput() FivetranConnectorSchemaConfigSchemaTableColumnOutput {
+func (o SchemaConfigSchemaTableColumnOutput) ToSchemaConfigSchemaTableColumnOutput() SchemaConfigSchemaTableColumnOutput {
 	return o
 }
 
-func (o FivetranConnectorSchemaConfigSchemaTableColumnOutput) ToFivetranConnectorSchemaConfigSchemaTableColumnOutputWithContext(ctx context.Context) FivetranConnectorSchemaConfigSchemaTableColumnOutput {
+func (o SchemaConfigSchemaTableColumnOutput) ToSchemaConfigSchemaTableColumnOutputWithContext(ctx context.Context) SchemaConfigSchemaTableColumnOutput {
 	return o
 }
 
-func (o FivetranConnectorSchemaConfigSchemaTableColumnOutput) ToOutput(ctx context.Context) pulumix.Output[FivetranConnectorSchemaConfigSchemaTableColumn] {
-	return pulumix.Output[FivetranConnectorSchemaConfigSchemaTableColumn]{
+func (o SchemaConfigSchemaTableColumnOutput) ToOutput(ctx context.Context) pulumix.Output[SchemaConfigSchemaTableColumn] {
+	return pulumix.Output[SchemaConfigSchemaTableColumn]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorSchemaConfigSchemaTableColumnOutput) Enabled() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorSchemaConfigSchemaTableColumn) *string { return v.Enabled }).(pulumi.StringPtrOutput)
+func (o SchemaConfigSchemaTableColumnOutput) Enabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SchemaConfigSchemaTableColumn) *string { return v.Enabled }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorSchemaConfigSchemaTableColumnOutput) Hashed() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FivetranConnectorSchemaConfigSchemaTableColumn) *string { return v.Hashed }).(pulumi.StringPtrOutput)
+func (o SchemaConfigSchemaTableColumnOutput) Hashed() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SchemaConfigSchemaTableColumn) *string { return v.Hashed }).(pulumi.StringPtrOutput)
 }
 
-func (o FivetranConnectorSchemaConfigSchemaTableColumnOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v FivetranConnectorSchemaConfigSchemaTableColumn) string { return v.Name }).(pulumi.StringOutput)
+func (o SchemaConfigSchemaTableColumnOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SchemaConfigSchemaTableColumn) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type FivetranConnectorSchemaConfigSchemaTableColumnArrayOutput struct{ *pulumi.OutputState }
+type SchemaConfigSchemaTableColumnArrayOutput struct{ *pulumi.OutputState }
 
-func (FivetranConnectorSchemaConfigSchemaTableColumnArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FivetranConnectorSchemaConfigSchemaTableColumn)(nil)).Elem()
+func (SchemaConfigSchemaTableColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SchemaConfigSchemaTableColumn)(nil)).Elem()
 }
 
-func (o FivetranConnectorSchemaConfigSchemaTableColumnArrayOutput) ToFivetranConnectorSchemaConfigSchemaTableColumnArrayOutput() FivetranConnectorSchemaConfigSchemaTableColumnArrayOutput {
+func (o SchemaConfigSchemaTableColumnArrayOutput) ToSchemaConfigSchemaTableColumnArrayOutput() SchemaConfigSchemaTableColumnArrayOutput {
 	return o
 }
 
-func (o FivetranConnectorSchemaConfigSchemaTableColumnArrayOutput) ToFivetranConnectorSchemaConfigSchemaTableColumnArrayOutputWithContext(ctx context.Context) FivetranConnectorSchemaConfigSchemaTableColumnArrayOutput {
+func (o SchemaConfigSchemaTableColumnArrayOutput) ToSchemaConfigSchemaTableColumnArrayOutputWithContext(ctx context.Context) SchemaConfigSchemaTableColumnArrayOutput {
 	return o
 }
 
-func (o FivetranConnectorSchemaConfigSchemaTableColumnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FivetranConnectorSchemaConfigSchemaTableColumn] {
-	return pulumix.Output[[]FivetranConnectorSchemaConfigSchemaTableColumn]{
+func (o SchemaConfigSchemaTableColumnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SchemaConfigSchemaTableColumn] {
+	return pulumix.Output[[]SchemaConfigSchemaTableColumn]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o FivetranConnectorSchemaConfigSchemaTableColumnArrayOutput) Index(i pulumi.IntInput) FivetranConnectorSchemaConfigSchemaTableColumnOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FivetranConnectorSchemaConfigSchemaTableColumn {
-		return vs[0].([]FivetranConnectorSchemaConfigSchemaTableColumn)[vs[1].(int)]
-	}).(FivetranConnectorSchemaConfigSchemaTableColumnOutput)
+func (o SchemaConfigSchemaTableColumnArrayOutput) Index(i pulumi.IntInput) SchemaConfigSchemaTableColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SchemaConfigSchemaTableColumn {
+		return vs[0].([]SchemaConfigSchemaTableColumn)[vs[1].(int)]
+	}).(SchemaConfigSchemaTableColumnOutput)
 }
 
 type GetConnectorConfig struct {
@@ -17388,46 +17382,46 @@ func (o GetWebhooksWebhookArrayOutput) Index(i pulumi.IntInput) GetWebhooksWebho
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorAuthInput)(nil)).Elem(), FivetranConnectorAuthArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorAuthPtrInput)(nil)).Elem(), FivetranConnectorAuthArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorAuthClientAccessInput)(nil)).Elem(), FivetranConnectorAuthClientAccessArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorAuthClientAccessPtrInput)(nil)).Elem(), FivetranConnectorAuthClientAccessArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorConfigInput)(nil)).Elem(), FivetranConnectorConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorConfigPtrInput)(nil)).Elem(), FivetranConnectorConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorConfigAccountsRedditAdInput)(nil)).Elem(), FivetranConnectorConfigAccountsRedditAdArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorConfigAccountsRedditAdArrayInput)(nil)).Elem(), FivetranConnectorConfigAccountsRedditAdArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorConfigAdobeAnalyticsConfigurationInput)(nil)).Elem(), FivetranConnectorConfigAdobeAnalyticsConfigurationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorConfigAdobeAnalyticsConfigurationArrayInput)(nil)).Elem(), FivetranConnectorConfigAdobeAnalyticsConfigurationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorConfigAppIdsAppsflyerInput)(nil)).Elem(), FivetranConnectorConfigAppIdsAppsflyerArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorConfigAppIdsAppsflyerArrayInput)(nil)).Elem(), FivetranConnectorConfigAppIdsAppsflyerArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorConfigCustomReportInput)(nil)).Elem(), FivetranConnectorConfigCustomReportArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorConfigCustomReportArrayInput)(nil)).Elem(), FivetranConnectorConfigCustomReportArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorConfigCustomTableInput)(nil)).Elem(), FivetranConnectorConfigCustomTableArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorConfigCustomTableArrayInput)(nil)).Elem(), FivetranConnectorConfigCustomTableArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorConfigProjectCredentialInput)(nil)).Elem(), FivetranConnectorConfigProjectCredentialArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorConfigProjectCredentialArrayInput)(nil)).Elem(), FivetranConnectorConfigProjectCredentialArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorConfigReportInput)(nil)).Elem(), FivetranConnectorConfigReportArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorConfigReportArrayInput)(nil)).Elem(), FivetranConnectorConfigReportArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorConfigSecretsListInput)(nil)).Elem(), FivetranConnectorConfigSecretsListArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorConfigSecretsListArrayInput)(nil)).Elem(), FivetranConnectorConfigSecretsListArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorDbtProjectModelInput)(nil)).Elem(), FivetranConnectorDbtProjectModelArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorDbtProjectModelArrayInput)(nil)).Elem(), FivetranConnectorDbtProjectModelArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorDbtProjectProjectConfigInput)(nil)).Elem(), FivetranConnectorDbtProjectProjectConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorDbtProjectProjectConfigPtrInput)(nil)).Elem(), FivetranConnectorDbtProjectProjectConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorDbtTransformationScheduleInput)(nil)).Elem(), FivetranConnectorDbtTransformationScheduleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorDbtTransformationSchedulePtrInput)(nil)).Elem(), FivetranConnectorDbtTransformationScheduleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorDestinationConfigInput)(nil)).Elem(), FivetranConnectorDestinationConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorDestinationConfigPtrInput)(nil)).Elem(), FivetranConnectorDestinationConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorDestinationSchemaInput)(nil)).Elem(), FivetranConnectorDestinationSchemaArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorDestinationSchemaPtrInput)(nil)).Elem(), FivetranConnectorDestinationSchemaArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorGroupUsersUserInput)(nil)).Elem(), FivetranConnectorGroupUsersUserArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorGroupUsersUserArrayInput)(nil)).Elem(), FivetranConnectorGroupUsersUserArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorSchemaConfigSchemaInput)(nil)).Elem(), FivetranConnectorSchemaConfigSchemaArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorSchemaConfigSchemaArrayInput)(nil)).Elem(), FivetranConnectorSchemaConfigSchemaArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorSchemaConfigSchemaTableInput)(nil)).Elem(), FivetranConnectorSchemaConfigSchemaTableArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorSchemaConfigSchemaTableArrayInput)(nil)).Elem(), FivetranConnectorSchemaConfigSchemaTableArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorSchemaConfigSchemaTableColumnInput)(nil)).Elem(), FivetranConnectorSchemaConfigSchemaTableColumnArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FivetranConnectorSchemaConfigSchemaTableColumnArrayInput)(nil)).Elem(), FivetranConnectorSchemaConfigSchemaTableColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAuthInput)(nil)).Elem(), ConnectorAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAuthPtrInput)(nil)).Elem(), ConnectorAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAuthClientAccessInput)(nil)).Elem(), ConnectorAuthClientAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAuthClientAccessPtrInput)(nil)).Elem(), ConnectorAuthClientAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigInput)(nil)).Elem(), ConnectorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigPtrInput)(nil)).Elem(), ConnectorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigAccountsRedditAdInput)(nil)).Elem(), ConnectorConfigAccountsRedditAdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigAccountsRedditAdArrayInput)(nil)).Elem(), ConnectorConfigAccountsRedditAdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigAdobeAnalyticsConfigurationInput)(nil)).Elem(), ConnectorConfigAdobeAnalyticsConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigAdobeAnalyticsConfigurationArrayInput)(nil)).Elem(), ConnectorConfigAdobeAnalyticsConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigAppIdsAppsflyerInput)(nil)).Elem(), ConnectorConfigAppIdsAppsflyerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigAppIdsAppsflyerArrayInput)(nil)).Elem(), ConnectorConfigAppIdsAppsflyerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigCustomReportInput)(nil)).Elem(), ConnectorConfigCustomReportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigCustomReportArrayInput)(nil)).Elem(), ConnectorConfigCustomReportArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigCustomTableInput)(nil)).Elem(), ConnectorConfigCustomTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigCustomTableArrayInput)(nil)).Elem(), ConnectorConfigCustomTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigProjectCredentialInput)(nil)).Elem(), ConnectorConfigProjectCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigProjectCredentialArrayInput)(nil)).Elem(), ConnectorConfigProjectCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigReportInput)(nil)).Elem(), ConnectorConfigReportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigReportArrayInput)(nil)).Elem(), ConnectorConfigReportArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigSecretsListInput)(nil)).Elem(), ConnectorConfigSecretsListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorConfigSecretsListArrayInput)(nil)).Elem(), ConnectorConfigSecretsListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorDestinationSchemaInput)(nil)).Elem(), ConnectorDestinationSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorDestinationSchemaPtrInput)(nil)).Elem(), ConnectorDestinationSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbtProjectModelInput)(nil)).Elem(), DbtProjectModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbtProjectModelArrayInput)(nil)).Elem(), DbtProjectModelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbtProjectProjectConfigInput)(nil)).Elem(), DbtProjectProjectConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbtProjectProjectConfigPtrInput)(nil)).Elem(), DbtProjectProjectConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbtTransformationScheduleInput)(nil)).Elem(), DbtTransformationScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbtTransformationSchedulePtrInput)(nil)).Elem(), DbtTransformationScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DestinationConfigInput)(nil)).Elem(), DestinationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DestinationConfigPtrInput)(nil)).Elem(), DestinationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupUsersUserInput)(nil)).Elem(), GroupUsersUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupUsersUserArrayInput)(nil)).Elem(), GroupUsersUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchemaConfigSchemaInput)(nil)).Elem(), SchemaConfigSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchemaConfigSchemaArrayInput)(nil)).Elem(), SchemaConfigSchemaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchemaConfigSchemaTableInput)(nil)).Elem(), SchemaConfigSchemaTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchemaConfigSchemaTableArrayInput)(nil)).Elem(), SchemaConfigSchemaTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchemaConfigSchemaTableColumnInput)(nil)).Elem(), SchemaConfigSchemaTableColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SchemaConfigSchemaTableColumnArrayInput)(nil)).Elem(), SchemaConfigSchemaTableColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorConfigInput)(nil)).Elem(), GetConnectorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorConfigArrayInput)(nil)).Elem(), GetConnectorConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorConfigAccountsRedditAdInput)(nil)).Elem(), GetConnectorConfigAccountsRedditAdArgs{})
@@ -17484,46 +17478,46 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserArrayInput)(nil)).Elem(), GetUsersUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWebhooksWebhookInput)(nil)).Elem(), GetWebhooksWebhookArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWebhooksWebhookArrayInput)(nil)).Elem(), GetWebhooksWebhookArray{})
-	pulumi.RegisterOutputType(FivetranConnectorAuthOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorAuthPtrOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorAuthClientAccessOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorAuthClientAccessPtrOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorConfigOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorConfigPtrOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorConfigAccountsRedditAdOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorConfigAccountsRedditAdArrayOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorConfigAdobeAnalyticsConfigurationOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorConfigAdobeAnalyticsConfigurationArrayOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorConfigAppIdsAppsflyerOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorConfigAppIdsAppsflyerArrayOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorConfigCustomReportOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorConfigCustomReportArrayOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorConfigCustomTableOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorConfigCustomTableArrayOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorConfigProjectCredentialOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorConfigProjectCredentialArrayOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorConfigReportOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorConfigReportArrayOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorConfigSecretsListOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorConfigSecretsListArrayOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorDbtProjectModelOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorDbtProjectModelArrayOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorDbtProjectProjectConfigOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorDbtProjectProjectConfigPtrOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorDbtTransformationScheduleOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorDbtTransformationSchedulePtrOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorDestinationConfigOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorDestinationConfigPtrOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorDestinationSchemaOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorDestinationSchemaPtrOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorGroupUsersUserOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorGroupUsersUserArrayOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorSchemaConfigSchemaOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorSchemaConfigSchemaArrayOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorSchemaConfigSchemaTableOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorSchemaConfigSchemaTableArrayOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorSchemaConfigSchemaTableColumnOutput{})
-	pulumi.RegisterOutputType(FivetranConnectorSchemaConfigSchemaTableColumnArrayOutput{})
+	pulumi.RegisterOutputType(ConnectorAuthOutput{})
+	pulumi.RegisterOutputType(ConnectorAuthPtrOutput{})
+	pulumi.RegisterOutputType(ConnectorAuthClientAccessOutput{})
+	pulumi.RegisterOutputType(ConnectorAuthClientAccessPtrOutput{})
+	pulumi.RegisterOutputType(ConnectorConfigOutput{})
+	pulumi.RegisterOutputType(ConnectorConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConnectorConfigAccountsRedditAdOutput{})
+	pulumi.RegisterOutputType(ConnectorConfigAccountsRedditAdArrayOutput{})
+	pulumi.RegisterOutputType(ConnectorConfigAdobeAnalyticsConfigurationOutput{})
+	pulumi.RegisterOutputType(ConnectorConfigAdobeAnalyticsConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(ConnectorConfigAppIdsAppsflyerOutput{})
+	pulumi.RegisterOutputType(ConnectorConfigAppIdsAppsflyerArrayOutput{})
+	pulumi.RegisterOutputType(ConnectorConfigCustomReportOutput{})
+	pulumi.RegisterOutputType(ConnectorConfigCustomReportArrayOutput{})
+	pulumi.RegisterOutputType(ConnectorConfigCustomTableOutput{})
+	pulumi.RegisterOutputType(ConnectorConfigCustomTableArrayOutput{})
+	pulumi.RegisterOutputType(ConnectorConfigProjectCredentialOutput{})
+	pulumi.RegisterOutputType(ConnectorConfigProjectCredentialArrayOutput{})
+	pulumi.RegisterOutputType(ConnectorConfigReportOutput{})
+	pulumi.RegisterOutputType(ConnectorConfigReportArrayOutput{})
+	pulumi.RegisterOutputType(ConnectorConfigSecretsListOutput{})
+	pulumi.RegisterOutputType(ConnectorConfigSecretsListArrayOutput{})
+	pulumi.RegisterOutputType(ConnectorDestinationSchemaOutput{})
+	pulumi.RegisterOutputType(ConnectorDestinationSchemaPtrOutput{})
+	pulumi.RegisterOutputType(DbtProjectModelOutput{})
+	pulumi.RegisterOutputType(DbtProjectModelArrayOutput{})
+	pulumi.RegisterOutputType(DbtProjectProjectConfigOutput{})
+	pulumi.RegisterOutputType(DbtProjectProjectConfigPtrOutput{})
+	pulumi.RegisterOutputType(DbtTransformationScheduleOutput{})
+	pulumi.RegisterOutputType(DbtTransformationSchedulePtrOutput{})
+	pulumi.RegisterOutputType(DestinationConfigOutput{})
+	pulumi.RegisterOutputType(DestinationConfigPtrOutput{})
+	pulumi.RegisterOutputType(GroupUsersUserOutput{})
+	pulumi.RegisterOutputType(GroupUsersUserArrayOutput{})
+	pulumi.RegisterOutputType(SchemaConfigSchemaOutput{})
+	pulumi.RegisterOutputType(SchemaConfigSchemaArrayOutput{})
+	pulumi.RegisterOutputType(SchemaConfigSchemaTableOutput{})
+	pulumi.RegisterOutputType(SchemaConfigSchemaTableArrayOutput{})
+	pulumi.RegisterOutputType(SchemaConfigSchemaTableColumnOutput{})
+	pulumi.RegisterOutputType(SchemaConfigSchemaTableColumnArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorConfigOutput{})
 	pulumi.RegisterOutputType(GetConnectorConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorConfigAccountsRedditAdOutput{})

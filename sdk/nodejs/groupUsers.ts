@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
  *
- * const groupUsers = new fivetran.FivetranConnectorGroupUsers("groupUsers", {
+ * const groupUsers = new fivetran.GroupUsers("groupUsers", {
  *     groupId: fivetran_group.group.id,
  *     users: [
  *         {
@@ -30,9 +30,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export class FivetranConnectorGroupUsers extends pulumi.CustomResource {
+export class GroupUsers extends pulumi.CustomResource {
     /**
-     * Get an existing FivetranConnectorGroupUsers resource's state with the given name, ID, and optional extra
+     * Get an existing GroupUsers resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -40,22 +40,22 @@ export class FivetranConnectorGroupUsers extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: FivetranConnectorGroupUsersState, opts?: pulumi.CustomResourceOptions): FivetranConnectorGroupUsers {
-        return new FivetranConnectorGroupUsers(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GroupUsersState, opts?: pulumi.CustomResourceOptions): GroupUsers {
+        return new GroupUsers(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'fivetran:index/fivetranConnectorGroupUsers:FivetranConnectorGroupUsers';
+    public static readonly __pulumiType = 'fivetran:index/groupUsers:GroupUsers';
 
     /**
-     * Returns true if the given object is an instance of FivetranConnectorGroupUsers.  This is designed to work even
+     * Returns true if the given object is an instance of GroupUsers.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is FivetranConnectorGroupUsers {
+    public static isInstance(obj: any): obj is GroupUsers {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === FivetranConnectorGroupUsers.__pulumiType;
+        return obj['__pulumiType'] === GroupUsers.__pulumiType;
     }
 
     /**
@@ -63,26 +63,26 @@ export class FivetranConnectorGroupUsers extends pulumi.CustomResource {
      */
     public readonly groupId!: pulumi.Output<string>;
     public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
-    public readonly users!: pulumi.Output<outputs.FivetranConnectorGroupUsersUser[] | undefined>;
+    public readonly users!: pulumi.Output<outputs.GroupUsersUser[] | undefined>;
 
     /**
-     * Create a FivetranConnectorGroupUsers resource with the given unique name, arguments, and options.
+     * Create a GroupUsers resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: FivetranConnectorGroupUsersArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: FivetranConnectorGroupUsersArgs | FivetranConnectorGroupUsersState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: GroupUsersArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: GroupUsersArgs | GroupUsersState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as FivetranConnectorGroupUsersState | undefined;
+            const state = argsOrState as GroupUsersState | undefined;
             resourceInputs["groupId"] = state ? state.groupId : undefined;
             resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
             resourceInputs["users"] = state ? state.users : undefined;
         } else {
-            const args = argsOrState as FivetranConnectorGroupUsersArgs | undefined;
+            const args = argsOrState as GroupUsersArgs | undefined;
             if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
@@ -91,29 +91,29 @@ export class FivetranConnectorGroupUsers extends pulumi.CustomResource {
             resourceInputs["lastUpdated"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(FivetranConnectorGroupUsers.__pulumiType, name, resourceInputs, opts);
+        super(GroupUsers.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering FivetranConnectorGroupUsers resources.
+ * Input properties used for looking up and filtering GroupUsers resources.
  */
-export interface FivetranConnectorGroupUsersState {
+export interface GroupUsersState {
     /**
      * The unique identifier for the Group within the Fivetran system.
      */
     groupId?: pulumi.Input<string>;
     lastUpdated?: pulumi.Input<string>;
-    users?: pulumi.Input<pulumi.Input<inputs.FivetranConnectorGroupUsersUser>[]>;
+    users?: pulumi.Input<pulumi.Input<inputs.GroupUsersUser>[]>;
 }
 
 /**
- * The set of arguments for constructing a FivetranConnectorGroupUsers resource.
+ * The set of arguments for constructing a GroupUsers resource.
  */
-export interface FivetranConnectorGroupUsersArgs {
+export interface GroupUsersArgs {
     /**
      * The unique identifier for the Group within the Fivetran system.
      */
     groupId: pulumi.Input<string>;
-    users?: pulumi.Input<pulumi.Input<inputs.FivetranConnectorGroupUsersUser>[]>;
+    users?: pulumi.Input<pulumi.Input<inputs.GroupUsersUser>[]>;
 }

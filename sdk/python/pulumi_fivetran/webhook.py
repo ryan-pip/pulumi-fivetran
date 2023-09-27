@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['FivetranConnectorWebhookArgs', 'FivetranConnectorWebhook']
+__all__ = ['WebhookArgs', 'Webhook']
 
 @pulumi.input_type
-class FivetranConnectorWebhookArgs:
+class WebhookArgs:
     def __init__(__self__, *,
                  active: pulumi.Input[bool],
                  events: pulumi.Input[Sequence[pulumi.Input[str]]],
@@ -22,7 +22,7 @@ class FivetranConnectorWebhookArgs:
                  group_id: Optional[pulumi.Input[str]] = None,
                  run_tests: Optional[pulumi.Input[bool]] = None):
         """
-        The set of arguments for constructing a FivetranConnectorWebhook resource.
+        The set of arguments for constructing a Webhook resource.
         :param pulumi.Input[bool] active: Boolean, if set to true, webhooks are immediately sent in response to events
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events: The array of event types
         :param pulumi.Input[str] secret: The secret string used for payload signing and masked in the response.
@@ -127,7 +127,7 @@ class FivetranConnectorWebhookArgs:
 
 
 @pulumi.input_type
-class _FivetranConnectorWebhookState:
+class _WebhookState:
     def __init__(__self__, *,
                  active: Optional[pulumi.Input[bool]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
@@ -139,7 +139,7 @@ class _FivetranConnectorWebhookState:
                  type: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering FivetranConnectorWebhook resources.
+        Input properties used for looking up and filtering Webhook resources.
         :param pulumi.Input[bool] active: Boolean, if set to true, webhooks are immediately sent in response to events
         :param pulumi.Input[str] created_at: The webhook creation timestamp
         :param pulumi.Input[str] created_by: The ID of the user who created the webhook.
@@ -278,7 +278,7 @@ class _FivetranConnectorWebhookState:
         pulumi.set(self, "url", value)
 
 
-class FivetranConnectorWebhook(pulumi.CustomResource):
+class Webhook(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -301,13 +301,13 @@ class FivetranConnectorWebhook(pulumi.CustomResource):
         You can retrieve all webhooks using the [fivetran_webhooks data source](/docs/data-sources/webhooks). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_webhook" "my_imported_fivetran_webhook" { }
 
         ```sh
-         $ pulumi import fivetran:index/fivetranConnectorWebhook:FivetranConnectorWebhook
+         $ pulumi import fivetran:index/webhook:Webhook
 
         Run the `terraform import` command
         ```
 
         ```sh
-         $ pulumi import fivetran:index/fivetranConnectorWebhook:FivetranConnectorWebhook my_imported_fivetran_webhook {webhook_id}
+         $ pulumi import fivetran:index/webhook:Webhook my_imported_fivetran_webhook {webhook_id}
         ```
 
          4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_webhook.my_imported_fivetran_webhook' 5. Copy the values and paste them to your `.tf` configuration.
@@ -326,7 +326,7 @@ class FivetranConnectorWebhook(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: FivetranConnectorWebhookArgs,
+                 args: WebhookArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource allows you to create, update, and delete webhooks.
@@ -338,24 +338,24 @@ class FivetranConnectorWebhook(pulumi.CustomResource):
         You can retrieve all webhooks using the [fivetran_webhooks data source](/docs/data-sources/webhooks). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_webhook" "my_imported_fivetran_webhook" { }
 
         ```sh
-         $ pulumi import fivetran:index/fivetranConnectorWebhook:FivetranConnectorWebhook
+         $ pulumi import fivetran:index/webhook:Webhook
 
         Run the `terraform import` command
         ```
 
         ```sh
-         $ pulumi import fivetran:index/fivetranConnectorWebhook:FivetranConnectorWebhook my_imported_fivetran_webhook {webhook_id}
+         $ pulumi import fivetran:index/webhook:Webhook my_imported_fivetran_webhook {webhook_id}
         ```
 
          4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_webhook.my_imported_fivetran_webhook' 5. Copy the values and paste them to your `.tf` configuration.
 
         :param str resource_name: The name of the resource.
-        :param FivetranConnectorWebhookArgs args: The arguments to use to populate this resource's properties.
+        :param WebhookArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(FivetranConnectorWebhookArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(WebhookArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -378,7 +378,7 @@ class FivetranConnectorWebhook(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = FivetranConnectorWebhookArgs.__new__(FivetranConnectorWebhookArgs)
+            __props__ = WebhookArgs.__new__(WebhookArgs)
 
             if active is None and not opts.urn:
                 raise TypeError("Missing required property 'active'")
@@ -401,8 +401,8 @@ class FivetranConnectorWebhook(pulumi.CustomResource):
             __props__.__dict__["created_by"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secret"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
-        super(FivetranConnectorWebhook, __self__).__init__(
-            'fivetran:index/fivetranConnectorWebhook:FivetranConnectorWebhook',
+        super(Webhook, __self__).__init__(
+            'fivetran:index/webhook:Webhook',
             resource_name,
             __props__,
             opts)
@@ -419,9 +419,9 @@ class FivetranConnectorWebhook(pulumi.CustomResource):
             run_tests: Optional[pulumi.Input[bool]] = None,
             secret: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
-            url: Optional[pulumi.Input[str]] = None) -> 'FivetranConnectorWebhook':
+            url: Optional[pulumi.Input[str]] = None) -> 'Webhook':
         """
-        Get an existing FivetranConnectorWebhook resource's state with the given name, id, and optional extra
+        Get an existing Webhook resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -439,7 +439,7 @@ class FivetranConnectorWebhook(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _FivetranConnectorWebhookState.__new__(_FivetranConnectorWebhookState)
+        __props__ = _WebhookState.__new__(_WebhookState)
 
         __props__.__dict__["active"] = active
         __props__.__dict__["created_at"] = created_at
@@ -450,7 +450,7 @@ class FivetranConnectorWebhook(pulumi.CustomResource):
         __props__.__dict__["secret"] = secret
         __props__.__dict__["type"] = type
         __props__.__dict__["url"] = url
-        return FivetranConnectorWebhook(resource_name, opts=opts, __props__=__props__)
+        return Webhook(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

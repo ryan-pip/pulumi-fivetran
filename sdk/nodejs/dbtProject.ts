@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
  *
- * const project = new fivetran.FivetranConnectorDbtProject("project", {
+ * const project = new fivetran.DbtProject("project", {
  *     dbtVersion: "1.4.1",
  *     defaultSchema: "default_schema",
  *     environmentVars: ["environment_var=value"],
@@ -38,20 +38,20 @@ import * as utilities from "./utilities";
  * 1. To import an existing `fivetran_dbt_project` resource into your Terraform state, you need to get **Dbt Project ID** via API call `GET https://api.fivetran.com/v1/dbt/projects` to retrieve available projects. 2. Fetch project details for particular `project-id` using `GET https://api.fivetran.com/v1/dbt/projects/{project-id}` to ensure that this is the project you want to import. 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_dbt_project" "my_imported_fivetran_dbt_project" { }
  *
  * ```sh
- *  $ pulumi import fivetran:index/fivetranConnectorDbtProject:FivetranConnectorDbtProject
+ *  $ pulumi import fivetran:index/dbtProject:DbtProject
  *
  * Run the `terraform import` command
  * ```
  *
  * ```sh
- *  $ pulumi import fivetran:index/fivetranConnectorDbtProject:FivetranConnectorDbtProject my_imported_fivetran_dbt_project {Dbt Project ID}
+ *  $ pulumi import fivetran:index/dbtProject:DbtProject my_imported_fivetran_dbt_project {Dbt Project ID}
  * ```
  *
  *  4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_dbt_project.my_imported_fivetran_dbt_project' 5. Copy the values and paste them to your `.tf` configuration.
  */
-export class FivetranConnectorDbtProject extends pulumi.CustomResource {
+export class DbtProject extends pulumi.CustomResource {
     /**
-     * Get an existing FivetranConnectorDbtProject resource's state with the given name, ID, and optional extra
+     * Get an existing DbtProject resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -59,22 +59,22 @@ export class FivetranConnectorDbtProject extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: FivetranConnectorDbtProjectState, opts?: pulumi.CustomResourceOptions): FivetranConnectorDbtProject {
-        return new FivetranConnectorDbtProject(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DbtProjectState, opts?: pulumi.CustomResourceOptions): DbtProject {
+        return new DbtProject(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'fivetran:index/fivetranConnectorDbtProject:FivetranConnectorDbtProject';
+    public static readonly __pulumiType = 'fivetran:index/dbtProject:DbtProject';
 
     /**
-     * Returns true if the given object is an instance of FivetranConnectorDbtProject.  This is designed to work even
+     * Returns true if the given object is an instance of DbtProject.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is FivetranConnectorDbtProject {
+    public static isInstance(obj: any): obj is DbtProject {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === FivetranConnectorDbtProject.__pulumiType;
+        return obj['__pulumiType'] === DbtProject.__pulumiType;
     }
 
     /**
@@ -105,11 +105,11 @@ export class FivetranConnectorDbtProject extends pulumi.CustomResource {
     /**
      * The collection of dbt Models.
      */
-    public readonly models!: pulumi.Output<outputs.FivetranConnectorDbtProjectModel[]>;
+    public readonly models!: pulumi.Output<outputs.DbtProjectModel[]>;
     /**
      * Type specific dbt Project configuration parameters.
      */
-    public readonly projectConfig!: pulumi.Output<outputs.FivetranConnectorDbtProjectProjectConfig>;
+    public readonly projectConfig!: pulumi.Output<outputs.DbtProjectProjectConfig>;
     /**
      * Public key to grant Fivetran SSH access to git repository.
      */
@@ -132,18 +132,18 @@ export class FivetranConnectorDbtProject extends pulumi.CustomResource {
     public readonly type!: pulumi.Output<string>;
 
     /**
-     * Create a FivetranConnectorDbtProject resource with the given unique name, arguments, and options.
+     * Create a DbtProject resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: FivetranConnectorDbtProjectArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: FivetranConnectorDbtProjectArgs | FivetranConnectorDbtProjectState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: DbtProjectArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: DbtProjectArgs | DbtProjectState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as FivetranConnectorDbtProjectState | undefined;
+            const state = argsOrState as DbtProjectState | undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["createdById"] = state ? state.createdById : undefined;
             resourceInputs["dbtVersion"] = state ? state.dbtVersion : undefined;
@@ -159,7 +159,7 @@ export class FivetranConnectorDbtProject extends pulumi.CustomResource {
             resourceInputs["threads"] = state ? state.threads : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
-            const args = argsOrState as FivetranConnectorDbtProjectArgs | undefined;
+            const args = argsOrState as DbtProjectArgs | undefined;
             if ((!args || args.dbtVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbtVersion'");
             }
@@ -188,14 +188,14 @@ export class FivetranConnectorDbtProject extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(FivetranConnectorDbtProject.__pulumiType, name, resourceInputs, opts);
+        super(DbtProject.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering FivetranConnectorDbtProject resources.
+ * Input properties used for looking up and filtering DbtProject resources.
  */
-export interface FivetranConnectorDbtProjectState {
+export interface DbtProjectState {
     /**
      * The timestamp of the dbt Project creation.
      */
@@ -224,11 +224,11 @@ export interface FivetranConnectorDbtProjectState {
     /**
      * The collection of dbt Models.
      */
-    models?: pulumi.Input<pulumi.Input<inputs.FivetranConnectorDbtProjectModel>[]>;
+    models?: pulumi.Input<pulumi.Input<inputs.DbtProjectModel>[]>;
     /**
      * Type specific dbt Project configuration parameters.
      */
-    projectConfig?: pulumi.Input<inputs.FivetranConnectorDbtProjectProjectConfig>;
+    projectConfig?: pulumi.Input<inputs.DbtProjectProjectConfig>;
     /**
      * Public key to grant Fivetran SSH access to git repository.
      */
@@ -252,9 +252,9 @@ export interface FivetranConnectorDbtProjectState {
 }
 
 /**
- * The set of arguments for constructing a FivetranConnectorDbtProject resource.
+ * The set of arguments for constructing a DbtProject resource.
  */
-export interface FivetranConnectorDbtProjectArgs {
+export interface DbtProjectArgs {
     /**
      * The version of dbt that should run the project. We support the following versions: 0.18.0 - 0.18.2, 0.19.0 - 0.19.2, 0.20.0 - 0.20.2, 0.21.0 - 0.21.1, 1.0.0, 1.0.1, 1.0.3 - 1.0.9, 1.1.0 - 1.1.3, 1.2.0 - 1.2.4, 1.3.0 - 1.3.2, 1.4.1.
      */
@@ -275,11 +275,11 @@ export interface FivetranConnectorDbtProjectArgs {
     /**
      * The collection of dbt Models.
      */
-    models?: pulumi.Input<pulumi.Input<inputs.FivetranConnectorDbtProjectModel>[]>;
+    models?: pulumi.Input<pulumi.Input<inputs.DbtProjectModel>[]>;
     /**
      * Type specific dbt Project configuration parameters.
      */
-    projectConfig: pulumi.Input<inputs.FivetranConnectorDbtProjectProjectConfig>;
+    projectConfig: pulumi.Input<inputs.DbtProjectProjectConfig>;
     /**
      * Target name to set or override the value from the deployment.yaml
      */

@@ -21,26 +21,26 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "fivetran:index/fivetranConnector:FivetranConnector":
-		r = &FivetranConnector{}
-	case "fivetran:index/fivetranConnectorDbtProject:FivetranConnectorDbtProject":
-		r = &FivetranConnectorDbtProject{}
-	case "fivetran:index/fivetranConnectorDbtTransformation:FivetranConnectorDbtTransformation":
-		r = &FivetranConnectorDbtTransformation{}
-	case "fivetran:index/fivetranConnectorDestination:FivetranConnectorDestination":
-		r = &FivetranConnectorDestination{}
-	case "fivetran:index/fivetranConnectorGroup:FivetranConnectorGroup":
-		r = &FivetranConnectorGroup{}
-	case "fivetran:index/fivetranConnectorGroupUsers:FivetranConnectorGroupUsers":
-		r = &FivetranConnectorGroupUsers{}
-	case "fivetran:index/fivetranConnectorSchedule:FivetranConnectorSchedule":
-		r = &FivetranConnectorSchedule{}
-	case "fivetran:index/fivetranConnectorSchemaConfig:FivetranConnectorSchemaConfig":
-		r = &FivetranConnectorSchemaConfig{}
-	case "fivetran:index/fivetranConnectorUser:FivetranConnectorUser":
-		r = &FivetranConnectorUser{}
-	case "fivetran:index/fivetranConnectorWebhook:FivetranConnectorWebhook":
-		r = &FivetranConnectorWebhook{}
+	case "fivetran:index/connector:Connector":
+		r = &Connector{}
+	case "fivetran:index/connectorSchedule:ConnectorSchedule":
+		r = &ConnectorSchedule{}
+	case "fivetran:index/dbtProject:DbtProject":
+		r = &DbtProject{}
+	case "fivetran:index/dbtTransformation:DbtTransformation":
+		r = &DbtTransformation{}
+	case "fivetran:index/destination:Destination":
+		r = &Destination{}
+	case "fivetran:index/group:Group":
+		r = &Group{}
+	case "fivetran:index/groupUsers:GroupUsers":
+		r = &GroupUsers{}
+	case "fivetran:index/schemaConfig:SchemaConfig":
+		r = &SchemaConfig{}
+	case "fivetran:index/user:User":
+		r = &User{}
+	case "fivetran:index/webhook:Webhook":
+		r = &Webhook{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -74,52 +74,52 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"fivetran",
-		"index/fivetranConnector",
+		"index/connector",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"fivetran",
-		"index/fivetranConnectorDbtProject",
+		"index/connectorSchedule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"fivetran",
-		"index/fivetranConnectorDbtTransformation",
+		"index/dbtProject",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"fivetran",
-		"index/fivetranConnectorDestination",
+		"index/dbtTransformation",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"fivetran",
-		"index/fivetranConnectorGroup",
+		"index/destination",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"fivetran",
-		"index/fivetranConnectorGroupUsers",
+		"index/group",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"fivetran",
-		"index/fivetranConnectorSchedule",
+		"index/groupUsers",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"fivetran",
-		"index/fivetranConnectorSchemaConfig",
+		"index/schemaConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"fivetran",
-		"index/fivetranConnectorUser",
+		"index/user",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"fivetran",
-		"index/fivetranConnectorWebhook",
+		"index/webhook",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

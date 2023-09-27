@@ -9,14 +9,14 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['FivetranConnectorGroupArgs', 'FivetranConnectorGroup']
+__all__ = ['GroupArgs', 'Group']
 
 @pulumi.input_type
-class FivetranConnectorGroupArgs:
+class GroupArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        The set of arguments for constructing a FivetranConnectorGroup resource.
+        The set of arguments for constructing a Group resource.
         :param pulumi.Input[str] name: The name of the group within your account.
         """
         if name is not None:
@@ -36,13 +36,13 @@ class FivetranConnectorGroupArgs:
 
 
 @pulumi.input_type
-class _FivetranConnectorGroupState:
+class _GroupState:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[str]] = None,
                  last_updated: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering FivetranConnectorGroup resources.
+        Input properties used for looking up and filtering Group resources.
         :param pulumi.Input[str] created_at: The timestamp of when the group was created in your account.
         :param pulumi.Input[str] name: The name of the group within your account.
         """
@@ -87,7 +87,7 @@ class _FivetranConnectorGroupState:
         pulumi.set(self, "name", value)
 
 
-class FivetranConnectorGroup(pulumi.CustomResource):
+class Group(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -103,7 +103,7 @@ class FivetranConnectorGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_fivetran as fivetran
 
-        group = fivetran.FivetranConnectorGroup("group")
+        group = fivetran.Group("group")
         ```
 
         ## Import
@@ -111,13 +111,13 @@ class FivetranConnectorGroup(pulumi.CustomResource):
         1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_group" "my_imported_fivetran_group" { }
 
         ```sh
-         $ pulumi import fivetran:index/fivetranConnectorGroup:FivetranConnectorGroup
+         $ pulumi import fivetran:index/group:Group
 
         Run the `terraform import` command
         ```
 
         ```sh
-         $ pulumi import fivetran:index/fivetranConnectorGroup:FivetranConnectorGroup my_imported_fivetran_group {your Destination Group ID}
+         $ pulumi import fivetran:index/group:Group my_imported_fivetran_group {your Destination Group ID}
         ```
 
          4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_group.my_imported_fivetran_group' 5. Copy the values and paste them to your `.tf` configuration.
@@ -130,7 +130,7 @@ class FivetranConnectorGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[FivetranConnectorGroupArgs] = None,
+                 args: Optional[GroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource allows you to create, update, and delete groups.
@@ -141,7 +141,7 @@ class FivetranConnectorGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_fivetran as fivetran
 
-        group = fivetran.FivetranConnectorGroup("group")
+        group = fivetran.Group("group")
         ```
 
         ## Import
@@ -149,24 +149,24 @@ class FivetranConnectorGroup(pulumi.CustomResource):
         1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_group" "my_imported_fivetran_group" { }
 
         ```sh
-         $ pulumi import fivetran:index/fivetranConnectorGroup:FivetranConnectorGroup
+         $ pulumi import fivetran:index/group:Group
 
         Run the `terraform import` command
         ```
 
         ```sh
-         $ pulumi import fivetran:index/fivetranConnectorGroup:FivetranConnectorGroup my_imported_fivetran_group {your Destination Group ID}
+         $ pulumi import fivetran:index/group:Group my_imported_fivetran_group {your Destination Group ID}
         ```
 
          4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_group.my_imported_fivetran_group' 5. Copy the values and paste them to your `.tf` configuration.
 
         :param str resource_name: The name of the resource.
-        :param FivetranConnectorGroupArgs args: The arguments to use to populate this resource's properties.
+        :param GroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(FivetranConnectorGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(GroupArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -183,13 +183,13 @@ class FivetranConnectorGroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = FivetranConnectorGroupArgs.__new__(FivetranConnectorGroupArgs)
+            __props__ = GroupArgs.__new__(GroupArgs)
 
             __props__.__dict__["name"] = name
             __props__.__dict__["created_at"] = None
             __props__.__dict__["last_updated"] = None
-        super(FivetranConnectorGroup, __self__).__init__(
-            'fivetran:index/fivetranConnectorGroup:FivetranConnectorGroup',
+        super(Group, __self__).__init__(
+            'fivetran:index/group:Group',
             resource_name,
             __props__,
             opts)
@@ -200,9 +200,9 @@ class FivetranConnectorGroup(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             last_updated: Optional[pulumi.Input[str]] = None,
-            name: Optional[pulumi.Input[str]] = None) -> 'FivetranConnectorGroup':
+            name: Optional[pulumi.Input[str]] = None) -> 'Group':
         """
-        Get an existing FivetranConnectorGroup resource's state with the given name, id, and optional extra
+        Get an existing Group resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -213,12 +213,12 @@ class FivetranConnectorGroup(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _FivetranConnectorGroupState.__new__(_FivetranConnectorGroupState)
+        __props__ = _GroupState.__new__(_GroupState)
 
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["last_updated"] = last_updated
         __props__.__dict__["name"] = name
-        return FivetranConnectorGroup(resource_name, opts=opts, __props__=__props__)
+        return Group(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="createdAt")

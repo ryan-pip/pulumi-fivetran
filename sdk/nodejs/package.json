@@ -5,10 +5,10 @@
     "keywords": [
         "pulumi",
         "fivetran",
-        "category/cloud"
+        "category/utility"
     ],
     "homepage": "https://www.pulumi.com",
-    "repository": "https://github.com/pulumi/pulumi-fivetran",
+    "repository": "https://github.com/ryan-packer/pulumi-fivetran",
     "license": "Apache-2.0",
     "scripts": {
         "build": "tsc"
@@ -23,6 +23,7 @@
     },
     "pulumi": {
         "resource": true,
-        "name": "fivetran"
+        "name": "fivetran",
+        "server": "github://api.github.com/ryan-pip"
     }
 }

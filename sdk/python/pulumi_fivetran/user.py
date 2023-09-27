@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['FivetranConnectorUserArgs', 'FivetranConnectorUser']
+__all__ = ['UserArgs', 'User']
 
 @pulumi.input_type
-class FivetranConnectorUserArgs:
+class UserArgs:
     def __init__(__self__, *,
                  email: pulumi.Input[str],
                  family_name: pulumi.Input[str],
@@ -21,7 +21,7 @@ class FivetranConnectorUserArgs:
                  picture: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None):
         """
-        The set of arguments for constructing a FivetranConnectorUser resource.
+        The set of arguments for constructing a User resource.
         :param pulumi.Input[str] email: The email address that the user has associated with their user profile.
         :param pulumi.Input[str] family_name: The last name of the user.
         :param pulumi.Input[str] given_name: The first name of the user.
@@ -113,7 +113,7 @@ class FivetranConnectorUserArgs:
 
 
 @pulumi.input_type
-class _FivetranConnectorUserState:
+class _UserState:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[str]] = None,
                  email: Optional[pulumi.Input[str]] = None,
@@ -127,7 +127,7 @@ class _FivetranConnectorUserState:
                  role: Optional[pulumi.Input[str]] = None,
                  verified: Optional[pulumi.Input[bool]] = None):
         """
-        Input properties used for looking up and filtering FivetranConnectorUser resources.
+        Input properties used for looking up and filtering User resources.
         :param pulumi.Input[str] created_at: The timestamp that the user created their Fivetran account
         :param pulumi.Input[str] email: The email address that the user has associated with their user profile.
         :param pulumi.Input[str] family_name: The last name of the user.
@@ -292,7 +292,7 @@ class _FivetranConnectorUserState:
         pulumi.set(self, "verified", value)
 
 
-class FivetranConnectorUser(pulumi.CustomResource):
+class User(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -313,7 +313,7 @@ class FivetranConnectorUser(pulumi.CustomResource):
         import pulumi
         import pulumi_fivetran as fivetran
 
-        user = fivetran.FivetranConnectorUser("user",
+        user = fivetran.User("user",
             email="user@email.address.com",
             family_name="Doe",
             given_name="John",
@@ -327,13 +327,13 @@ class FivetranConnectorUser(pulumi.CustomResource):
         You can retrieve all users using the [fivetran_users data source](/docs/data-sources/users). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_user" "my_imported_fivetran_user" { }
 
         ```sh
-         $ pulumi import fivetran:index/fivetranConnectorUser:FivetranConnectorUser
+         $ pulumi import fivetran:index/user:User
 
         Run the `terraform import` command
         ```
 
         ```sh
-         $ pulumi import fivetran:index/fivetranConnectorUser:FivetranConnectorUser my_imported_fivetran_user {user_id}
+         $ pulumi import fivetran:index/user:User my_imported_fivetran_user {user_id}
         ```
 
          4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_user.my_imported_fivetran_user' 5. Copy the values and paste them to your `.tf` configuration.
@@ -351,7 +351,7 @@ class FivetranConnectorUser(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: FivetranConnectorUserArgs,
+                 args: UserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         -This resource allows you to create, update, and delete users.
@@ -362,7 +362,7 @@ class FivetranConnectorUser(pulumi.CustomResource):
         import pulumi
         import pulumi_fivetran as fivetran
 
-        user = fivetran.FivetranConnectorUser("user",
+        user = fivetran.User("user",
             email="user@email.address.com",
             family_name="Doe",
             given_name="John",
@@ -376,24 +376,24 @@ class FivetranConnectorUser(pulumi.CustomResource):
         You can retrieve all users using the [fivetran_users data source](/docs/data-sources/users). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_user" "my_imported_fivetran_user" { }
 
         ```sh
-         $ pulumi import fivetran:index/fivetranConnectorUser:FivetranConnectorUser
+         $ pulumi import fivetran:index/user:User
 
         Run the `terraform import` command
         ```
 
         ```sh
-         $ pulumi import fivetran:index/fivetranConnectorUser:FivetranConnectorUser my_imported_fivetran_user {user_id}
+         $ pulumi import fivetran:index/user:User my_imported_fivetran_user {user_id}
         ```
 
          4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_user.my_imported_fivetran_user' 5. Copy the values and paste them to your `.tf` configuration.
 
         :param str resource_name: The name of the resource.
-        :param FivetranConnectorUserArgs args: The arguments to use to populate this resource's properties.
+        :param UserArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(FivetranConnectorUserArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(UserArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -415,7 +415,7 @@ class FivetranConnectorUser(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = FivetranConnectorUserArgs.__new__(FivetranConnectorUserArgs)
+            __props__ = UserArgs.__new__(UserArgs)
 
             if email is None and not opts.urn:
                 raise TypeError("Missing required property 'email'")
@@ -434,8 +434,8 @@ class FivetranConnectorUser(pulumi.CustomResource):
             __props__.__dict__["last_updated"] = None
             __props__.__dict__["logged_in_at"] = None
             __props__.__dict__["verified"] = None
-        super(FivetranConnectorUser, __self__).__init__(
-            'fivetran:index/fivetranConnectorUser:FivetranConnectorUser',
+        super(User, __self__).__init__(
+            'fivetran:index/user:User',
             resource_name,
             __props__,
             opts)
@@ -454,9 +454,9 @@ class FivetranConnectorUser(pulumi.CustomResource):
             phone: Optional[pulumi.Input[str]] = None,
             picture: Optional[pulumi.Input[str]] = None,
             role: Optional[pulumi.Input[str]] = None,
-            verified: Optional[pulumi.Input[bool]] = None) -> 'FivetranConnectorUser':
+            verified: Optional[pulumi.Input[bool]] = None) -> 'User':
         """
-        Get an existing FivetranConnectorUser resource's state with the given name, id, and optional extra
+        Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -475,7 +475,7 @@ class FivetranConnectorUser(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _FivetranConnectorUserState.__new__(_FivetranConnectorUserState)
+        __props__ = _UserState.__new__(_UserState)
 
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["email"] = email
@@ -488,7 +488,7 @@ class FivetranConnectorUser(pulumi.CustomResource):
         __props__.__dict__["picture"] = picture
         __props__.__dict__["role"] = role
         __props__.__dict__["verified"] = verified
-        return FivetranConnectorUser(resource_name, opts=opts, __props__=__props__)
+        return User(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="createdAt")

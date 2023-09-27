@@ -12,20 +12,20 @@ import * as utilities from "./utilities";
  * 1. To import an existing `fivetran_destination` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_destination" "my_imported_destination" { }
  *
  * ```sh
- *  $ pulumi import fivetran:index/fivetranConnectorDestination:FivetranConnectorDestination
+ *  $ pulumi import fivetran:index/destination:Destination
  *
  * Run the `terraform import` command with the following parameters
  * ```
  *
  * ```sh
- *  $ pulumi import fivetran:index/fivetranConnectorDestination:FivetranConnectorDestination my_imported_destination {your Destination Group ID}
+ *  $ pulumi import fivetran:index/destination:Destination my_imported_destination {your Destination Group ID}
  * ```
  *
  *  4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_destination.my_imported_destination' 5. Copy the values and paste them to your `.tf` configuration. -> The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/destinations/config) for reference to find the properties you need to keep in the `config` section.
  */
-export class FivetranConnectorDestination extends pulumi.CustomResource {
+export class Destination extends pulumi.CustomResource {
     /**
-     * Get an existing FivetranConnectorDestination resource's state with the given name, ID, and optional extra
+     * Get an existing Destination resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -33,25 +33,25 @@ export class FivetranConnectorDestination extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: FivetranConnectorDestinationState, opts?: pulumi.CustomResourceOptions): FivetranConnectorDestination {
-        return new FivetranConnectorDestination(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DestinationState, opts?: pulumi.CustomResourceOptions): Destination {
+        return new Destination(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'fivetran:index/fivetranConnectorDestination:FivetranConnectorDestination';
+    public static readonly __pulumiType = 'fivetran:index/destination:Destination';
 
     /**
-     * Returns true if the given object is an instance of FivetranConnectorDestination.  This is designed to work even
+     * Returns true if the given object is an instance of Destination.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is FivetranConnectorDestination {
+    public static isInstance(obj: any): obj is Destination {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === FivetranConnectorDestination.__pulumiType;
+        return obj['__pulumiType'] === Destination.__pulumiType;
     }
 
-    public readonly config!: pulumi.Output<outputs.FivetranConnectorDestinationConfig>;
+    public readonly config!: pulumi.Output<outputs.DestinationConfig>;
     /**
      * The unique identifier for the Group within the Fivetran system.
      */
@@ -87,18 +87,18 @@ export class FivetranConnectorDestination extends pulumi.CustomResource {
     public readonly trustFingerprints!: pulumi.Output<boolean | undefined>;
 
     /**
-     * Create a FivetranConnectorDestination resource with the given unique name, arguments, and options.
+     * Create a Destination resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: FivetranConnectorDestinationArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: FivetranConnectorDestinationArgs | FivetranConnectorDestinationState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: DestinationArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: DestinationArgs | DestinationState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as FivetranConnectorDestinationState | undefined;
+            const state = argsOrState as DestinationState | undefined;
             resourceInputs["config"] = state ? state.config : undefined;
             resourceInputs["groupId"] = state ? state.groupId : undefined;
             resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
@@ -110,7 +110,7 @@ export class FivetranConnectorDestination extends pulumi.CustomResource {
             resourceInputs["trustCertificates"] = state ? state.trustCertificates : undefined;
             resourceInputs["trustFingerprints"] = state ? state.trustFingerprints : undefined;
         } else {
-            const args = argsOrState as FivetranConnectorDestinationArgs | undefined;
+            const args = argsOrState as DestinationArgs | undefined;
             if ((!args || args.config === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'config'");
             }
@@ -138,15 +138,15 @@ export class FivetranConnectorDestination extends pulumi.CustomResource {
             resourceInputs["setupStatus"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(FivetranConnectorDestination.__pulumiType, name, resourceInputs, opts);
+        super(Destination.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering FivetranConnectorDestination resources.
+ * Input properties used for looking up and filtering Destination resources.
  */
-export interface FivetranConnectorDestinationState {
-    config?: pulumi.Input<inputs.FivetranConnectorDestinationConfig>;
+export interface DestinationState {
+    config?: pulumi.Input<inputs.DestinationConfig>;
     /**
      * The unique identifier for the Group within the Fivetran system.
      */
@@ -183,10 +183,10 @@ export interface FivetranConnectorDestinationState {
 }
 
 /**
- * The set of arguments for constructing a FivetranConnectorDestination resource.
+ * The set of arguments for constructing a Destination resource.
  */
-export interface FivetranConnectorDestinationArgs {
-    config: pulumi.Input<inputs.FivetranConnectorDestinationConfig>;
+export interface DestinationArgs {
+    config: pulumi.Input<inputs.DestinationConfig>;
     /**
      * The unique identifier for the Group within the Fivetran system.
      */

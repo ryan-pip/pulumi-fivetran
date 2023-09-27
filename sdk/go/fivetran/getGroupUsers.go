@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.GetGroupUsers(ctx, &fivetran.GetGroupUsersArgs{
+//			_, err := fivetran.LookupGroupUsers(ctx, &fivetran.LookupGroupUsersArgs{
 //				Id: "anonymous_mystery",
 //			}, nil)
 //			if err != nil {
@@ -39,9 +39,9 @@ import (
 //	}
 //
 // ```
-func GetGroupUsers(ctx *pulumi.Context, args *GetGroupUsersArgs, opts ...pulumi.InvokeOption) (*GetGroupUsersResult, error) {
+func LookupGroupUsers(ctx *pulumi.Context, args *LookupGroupUsersArgs, opts ...pulumi.InvokeOption) (*LookupGroupUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetGroupUsersResult
+	var rv LookupGroupUsersResult
 	err := ctx.Invoke("fivetran:index/getGroupUsers:getGroupUsers", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -50,73 +50,73 @@ func GetGroupUsers(ctx *pulumi.Context, args *GetGroupUsersArgs, opts ...pulumi.
 }
 
 // A collection of arguments for invoking getGroupUsers.
-type GetGroupUsersArgs struct {
+type LookupGroupUsersArgs struct {
 	// The unique identifier for the group within the Fivetran system. Data-source will represent a set of users who has membership in this group.
 	Id    string              `pulumi:"id"`
 	Users []GetGroupUsersUser `pulumi:"users"`
 }
 
 // A collection of values returned by getGroupUsers.
-type GetGroupUsersResult struct {
+type LookupGroupUsersResult struct {
 	// The unique identifier for the group within the Fivetran system. Data-source will represent a set of users who has membership in this group.
 	Id    string              `pulumi:"id"`
 	Users []GetGroupUsersUser `pulumi:"users"`
 }
 
-func GetGroupUsersOutput(ctx *pulumi.Context, args GetGroupUsersOutputArgs, opts ...pulumi.InvokeOption) GetGroupUsersResultOutput {
+func LookupGroupUsersOutput(ctx *pulumi.Context, args LookupGroupUsersOutputArgs, opts ...pulumi.InvokeOption) LookupGroupUsersResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetGroupUsersResult, error) {
-			args := v.(GetGroupUsersArgs)
-			r, err := GetGroupUsers(ctx, &args, opts...)
-			var s GetGroupUsersResult
+		ApplyT(func(v interface{}) (LookupGroupUsersResult, error) {
+			args := v.(LookupGroupUsersArgs)
+			r, err := LookupGroupUsers(ctx, &args, opts...)
+			var s LookupGroupUsersResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(GetGroupUsersResultOutput)
+		}).(LookupGroupUsersResultOutput)
 }
 
 // A collection of arguments for invoking getGroupUsers.
-type GetGroupUsersOutputArgs struct {
+type LookupGroupUsersOutputArgs struct {
 	// The unique identifier for the group within the Fivetran system. Data-source will represent a set of users who has membership in this group.
 	Id    pulumi.StringInput          `pulumi:"id"`
 	Users GetGroupUsersUserArrayInput `pulumi:"users"`
 }
 
-func (GetGroupUsersOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGroupUsersArgs)(nil)).Elem()
+func (LookupGroupUsersOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGroupUsersArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getGroupUsers.
-type GetGroupUsersResultOutput struct{ *pulumi.OutputState }
+type LookupGroupUsersResultOutput struct{ *pulumi.OutputState }
 
-func (GetGroupUsersResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGroupUsersResult)(nil)).Elem()
+func (LookupGroupUsersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGroupUsersResult)(nil)).Elem()
 }
 
-func (o GetGroupUsersResultOutput) ToGetGroupUsersResultOutput() GetGroupUsersResultOutput {
+func (o LookupGroupUsersResultOutput) ToLookupGroupUsersResultOutput() LookupGroupUsersResultOutput {
 	return o
 }
 
-func (o GetGroupUsersResultOutput) ToGetGroupUsersResultOutputWithContext(ctx context.Context) GetGroupUsersResultOutput {
+func (o LookupGroupUsersResultOutput) ToLookupGroupUsersResultOutputWithContext(ctx context.Context) LookupGroupUsersResultOutput {
 	return o
 }
 
-func (o GetGroupUsersResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupUsersResult] {
-	return pulumix.Output[GetGroupUsersResult]{
+func (o LookupGroupUsersResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGroupUsersResult] {
+	return pulumix.Output[LookupGroupUsersResult]{
 		OutputState: o.OutputState,
 	}
 }
 
 // The unique identifier for the group within the Fivetran system. Data-source will represent a set of users who has membership in this group.
-func (o GetGroupUsersResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGroupUsersResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupGroupUsersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupUsersResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetGroupUsersResultOutput) Users() GetGroupUsersUserArrayOutput {
-	return o.ApplyT(func(v GetGroupUsersResult) []GetGroupUsersUser { return v.Users }).(GetGroupUsersUserArrayOutput)
+func (o LookupGroupUsersResultOutput) Users() GetGroupUsersUserArrayOutput {
+	return o.ApplyT(func(v LookupGroupUsersResult) []GetGroupUsersUser { return v.Users }).(GetGroupUsersUserArrayOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetGroupUsersResultOutput{})
+	pulumi.RegisterOutputType(LookupGroupUsersResultOutput{})
 }

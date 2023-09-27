@@ -5,21 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
-export interface FivetranConnectorAuth {
+export interface ConnectorAuth {
     accessToken?: string;
-    clientAccess?: outputs.FivetranConnectorAuthClientAccess;
+    clientAccess?: outputs.ConnectorAuthClientAccess;
     realmId?: string;
     refreshToken?: string;
 }
 
-export interface FivetranConnectorAuthClientAccess {
+export interface ConnectorAuthClientAccess {
     clientId?: string;
     clientSecret?: string;
     developerToken?: string;
     userAgent?: string;
 }
 
-export interface FivetranConnectorConfig {
+export interface ConnectorConfig {
     absConnectionMethod?: string;
     absConnectionString: string;
     absContainerAddress?: string;
@@ -40,14 +40,14 @@ export interface FivetranConnectorConfig {
     accountName?: string;
     accountSyncMode?: string;
     accounts?: string[];
-    accountsRedditAds?: outputs.FivetranConnectorConfigAccountsRedditAd[];
+    accountsRedditAds?: outputs.ConnectorConfigAccountsRedditAd[];
     accountsSyncMode?: string;
     actionBreakdowns?: string[];
     actionReportTime: string;
     adAnalytics?: string;
     adUnitView?: string;
     adminApiKey?: string;
-    adobeAnalyticsConfigurations?: outputs.FivetranConnectorConfigAdobeAnalyticsConfiguration[];
+    adobeAnalyticsConfigurations?: outputs.ConnectorConfigAdobeAnalyticsConfiguration[];
     advertisables?: string[];
     advertisers?: string[];
     advertisersIds?: string[];
@@ -75,7 +75,7 @@ export interface FivetranConnectorConfig {
     apiVersion: string;
     appId?: string;
     appIds?: string[];
-    appIdsAppsflyers?: outputs.FivetranConnectorConfigAppIdsAppsflyer[];
+    appIdsAppsflyers?: outputs.ConnectorConfigAppIdsAppsflyer[];
     appSpecificPassword?: string;
     appSyncMode: string;
     appendFileOption: string;
@@ -148,8 +148,8 @@ export interface FivetranConnectorConfig {
     customEvents?: string[];
     customFieldIds?: string[];
     customFloodlightVariables?: string[];
-    customReports?: outputs.FivetranConnectorConfigCustomReport[];
-    customTables?: outputs.FivetranConnectorConfigCustomTable[];
+    customReports?: outputs.ConnectorConfigCustomReport[];
+    customTables?: outputs.ConnectorConfigCustomTable[];
     customerId: string;
     customerListId: string;
     dailyApiCallLimit: string;
@@ -287,7 +287,7 @@ export interface FivetranConnectorConfig {
     primaryKeys?: string[];
     privateKey: string;
     profiles?: string[];
-    projectCredentials?: outputs.FivetranConnectorConfigProjectCredential[];
+    projectCredentials?: outputs.ConnectorConfigProjectCredential[];
     projectId: string;
     projects?: string[];
     properties?: string[];
@@ -305,7 +305,7 @@ export interface FivetranConnectorConfig {
     reportTimezone?: string;
     reportType: string;
     reportUrl: string;
-    reports?: outputs.FivetranConnectorConfigReport[];
+    reports?: outputs.ConnectorConfigReport[];
     reportsLinkedinAds?: string[];
     repositories?: string[];
     resourceToken?: string;
@@ -345,7 +345,7 @@ export interface FivetranConnectorConfig {
     secret: string;
     secretKey: string;
     secrets: string;
-    secretsLists?: outputs.FivetranConnectorConfigSecretsList[];
+    secretsLists?: outputs.ConnectorConfigSecretsList[];
     securityProtocol: string;
     segments?: string[];
     selectedExports?: string[];
@@ -454,11 +454,11 @@ export interface FivetranConnectorConfig {
     wsCertificate?: string;
 }
 
-export interface FivetranConnectorConfigAccountsRedditAd {
+export interface ConnectorConfigAccountsRedditAd {
     name?: string;
 }
 
-export interface FivetranConnectorConfigAdobeAnalyticsConfiguration {
+export interface ConnectorConfigAdobeAnalyticsConfiguration {
     calculatedMetrics?: string[];
     elements?: string[];
     metrics?: string[];
@@ -468,11 +468,11 @@ export interface FivetranConnectorConfigAdobeAnalyticsConfiguration {
     table?: string;
 }
 
-export interface FivetranConnectorConfigAppIdsAppsflyer {
+export interface ConnectorConfigAppIdsAppsflyer {
     appId?: string;
 }
 
-export interface FivetranConnectorConfigCustomReport {
+export interface ConnectorConfigCustomReport {
     aggregate?: string;
     conversionsReportIncluded: string;
     customEventsIncluded: string;
@@ -487,7 +487,7 @@ export interface FivetranConnectorConfigCustomReport {
     tableName?: string;
 }
 
-export interface FivetranConnectorConfigCustomTable {
+export interface ConnectorConfigCustomTable {
     actionBreakdowns?: string[];
     actionReportTime: string;
     aggregation: string;
@@ -502,13 +502,13 @@ export interface FivetranConnectorConfigCustomTable {
     viewAttributionWindow: string;
 }
 
-export interface FivetranConnectorConfigProjectCredential {
+export interface ConnectorConfigProjectCredential {
     apiKey: string;
     project: string;
     secretKey: string;
 }
 
-export interface FivetranConnectorConfigReport {
+export interface ConnectorConfigReport {
     aggregation?: string;
     attributes?: string[];
     configType: string;
@@ -526,12 +526,18 @@ export interface FivetranConnectorConfigReport {
     table: string;
 }
 
-export interface FivetranConnectorConfigSecretsList {
+export interface ConnectorConfigSecretsList {
     key: string;
     value: string;
 }
 
-export interface FivetranConnectorDbtProjectModel {
+export interface ConnectorDestinationSchema {
+    name?: string;
+    prefix?: string;
+    table?: string;
+}
+
+export interface DbtProjectModel {
     /**
      * The unique identifier for the dbt Model within the Fivetran system.
      */
@@ -546,7 +552,7 @@ export interface FivetranConnectorDbtProjectModel {
     scheduled: boolean;
 }
 
-export interface FivetranConnectorDbtProjectProjectConfig {
+export interface DbtProjectProjectConfig {
     /**
      * Folder in Git repo with your dbt project.
      */
@@ -561,7 +567,7 @@ export interface FivetranConnectorDbtProjectProjectConfig {
     gitRemoteUrl: string;
 }
 
-export interface FivetranConnectorDbtTransformationSchedule {
+export interface DbtTransformationSchedule {
     /**
      * The set of the days of the week the transformation should be launched on. The following values are supported: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
      */
@@ -580,7 +586,7 @@ export interface FivetranConnectorDbtTransformationSchedule {
     timeOfDay: string;
 }
 
-export interface FivetranConnectorDestinationConfig {
+export interface DestinationConfig {
     /**
      * The connector authorization settings. Check possible config formats in [create method](https://www.terraform.io/openapi/reference/v1/operation/create_connector/)
      */
@@ -709,52 +715,6 @@ export interface FivetranConnectorDestinationConfig {
      * Database user name
      */
     user?: string;
-}
-
-export interface FivetranConnectorDestinationSchema {
-    name?: string;
-    prefix?: string;
-    table?: string;
-}
-
-export interface FivetranConnectorGroupUsersUser {
-    /**
-     * The email address that the user has associated with their user profile.
-     */
-    email: string;
-    /**
-     * The unique identifier for the user within the account.
-     */
-    id: string;
-    /**
-     * The group role that you would like to assign this new user to. Supported group roles: ‘Destination Administrator‘, ‘Destination Reviewer‘, ‘Destination Analyst‘, ‘Connector Creator‘, or a custom destination role
-     */
-    role: string;
-}
-
-export interface FivetranConnectorSchemaConfigSchema {
-    /**
-     * The boolean value specifying whether the sync for the schema into the destination is enabled.
-     */
-    enabled?: string;
-    /**
-     * The schema name within your destination in accordance with Fivetran conventional rules.
-     */
-    name: string;
-    tables?: outputs.FivetranConnectorSchemaConfigSchemaTable[];
-}
-
-export interface FivetranConnectorSchemaConfigSchemaTable {
-    columns?: outputs.FivetranConnectorSchemaConfigSchemaTableColumn[];
-    enabled?: string;
-    name: string;
-    syncMode?: string;
-}
-
-export interface FivetranConnectorSchemaConfigSchemaTableColumn {
-    enabled?: string;
-    hashed?: string;
-    name: string;
 }
 
 export interface GetConnectorConfig {
@@ -1735,5 +1695,45 @@ export interface GetWebhooksWebhook {
      * Your webhooks URL endpoint for your application
      */
     url: string;
+}
+
+export interface GroupUsersUser {
+    /**
+     * The email address that the user has associated with their user profile.
+     */
+    email: string;
+    /**
+     * The unique identifier for the user within the account.
+     */
+    id: string;
+    /**
+     * The group role that you would like to assign this new user to. Supported group roles: ‘Destination Administrator‘, ‘Destination Reviewer‘, ‘Destination Analyst‘, ‘Connector Creator‘, or a custom destination role
+     */
+    role: string;
+}
+
+export interface SchemaConfigSchema {
+    /**
+     * The boolean value specifying whether the sync for the schema into the destination is enabled.
+     */
+    enabled?: string;
+    /**
+     * The schema name within your destination in accordance with Fivetran conventional rules.
+     */
+    name: string;
+    tables?: outputs.SchemaConfigSchemaTable[];
+}
+
+export interface SchemaConfigSchemaTable {
+    columns?: outputs.SchemaConfigSchemaTableColumn[];
+    enabled?: string;
+    name: string;
+    syncMode?: string;
+}
+
+export interface SchemaConfigSchemaTableColumn {
+    enabled?: string;
+    hashed?: string;
+    name: string;
 }
 

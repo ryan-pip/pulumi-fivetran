@@ -11,21 +11,21 @@ from . import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['FivetranConnectorArgs', 'FivetranConnector']
+__all__ = ['ConnectorArgs', 'Connector']
 
 @pulumi.input_type
-class FivetranConnectorArgs:
+class ConnectorArgs:
     def __init__(__self__, *,
-                 destination_schema: pulumi.Input['FivetranConnectorDestinationSchemaArgs'],
+                 destination_schema: pulumi.Input['ConnectorDestinationSchemaArgs'],
                  group_id: pulumi.Input[str],
                  service: pulumi.Input[str],
-                 auth: Optional[pulumi.Input['FivetranConnectorAuthArgs']] = None,
-                 config: Optional[pulumi.Input['FivetranConnectorConfigArgs']] = None,
+                 auth: Optional[pulumi.Input['ConnectorAuthArgs']] = None,
+                 config: Optional[pulumi.Input['ConnectorConfigArgs']] = None,
                  run_setup_tests: Optional[pulumi.Input[str]] = None,
                  trust_certificates: Optional[pulumi.Input[str]] = None,
                  trust_fingerprints: Optional[pulumi.Input[str]] = None):
         """
-        The set of arguments for constructing a FivetranConnector resource.
+        The set of arguments for constructing a Connector resource.
         :param pulumi.Input[str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
         :param pulumi.Input[str] service: The connector type name within the Fivetran system.
         :param pulumi.Input[str] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
@@ -52,11 +52,11 @@ class FivetranConnectorArgs:
 
     @property
     @pulumi.getter(name="destinationSchema")
-    def destination_schema(self) -> pulumi.Input['FivetranConnectorDestinationSchemaArgs']:
+    def destination_schema(self) -> pulumi.Input['ConnectorDestinationSchemaArgs']:
         return pulumi.get(self, "destination_schema")
 
     @destination_schema.setter
-    def destination_schema(self, value: pulumi.Input['FivetranConnectorDestinationSchemaArgs']):
+    def destination_schema(self, value: pulumi.Input['ConnectorDestinationSchemaArgs']):
         pulumi.set(self, "destination_schema", value)
 
     @property
@@ -85,20 +85,20 @@ class FivetranConnectorArgs:
 
     @property
     @pulumi.getter
-    def auth(self) -> Optional[pulumi.Input['FivetranConnectorAuthArgs']]:
+    def auth(self) -> Optional[pulumi.Input['ConnectorAuthArgs']]:
         return pulumi.get(self, "auth")
 
     @auth.setter
-    def auth(self, value: Optional[pulumi.Input['FivetranConnectorAuthArgs']]):
+    def auth(self, value: Optional[pulumi.Input['ConnectorAuthArgs']]):
         pulumi.set(self, "auth", value)
 
     @property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['FivetranConnectorConfigArgs']]:
+    def config(self) -> Optional[pulumi.Input['ConnectorConfigArgs']]:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['FivetranConnectorConfigArgs']]):
+    def config(self, value: Optional[pulumi.Input['ConnectorConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @property
@@ -143,13 +143,13 @@ class FivetranConnectorArgs:
 
 
 @pulumi.input_type
-class _FivetranConnectorState:
+class _ConnectorState:
     def __init__(__self__, *,
-                 auth: Optional[pulumi.Input['FivetranConnectorAuthArgs']] = None,
-                 config: Optional[pulumi.Input['FivetranConnectorConfigArgs']] = None,
+                 auth: Optional[pulumi.Input['ConnectorAuthArgs']] = None,
+                 config: Optional[pulumi.Input['ConnectorConfigArgs']] = None,
                  connected_by: Optional[pulumi.Input[str]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
-                 destination_schema: Optional[pulumi.Input['FivetranConnectorDestinationSchemaArgs']] = None,
+                 destination_schema: Optional[pulumi.Input['ConnectorDestinationSchemaArgs']] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  last_updated: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -158,7 +158,7 @@ class _FivetranConnectorState:
                  trust_certificates: Optional[pulumi.Input[str]] = None,
                  trust_fingerprints: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering FivetranConnector resources.
+        Input properties used for looking up and filtering Connector resources.
         :param pulumi.Input[str] connected_by: The unique identifier of the user who has created the connector in your account
         :param pulumi.Input[str] created_at: The timestamp of the time the connector was created in your account
         :param pulumi.Input[str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
@@ -200,20 +200,20 @@ class _FivetranConnectorState:
 
     @property
     @pulumi.getter
-    def auth(self) -> Optional[pulumi.Input['FivetranConnectorAuthArgs']]:
+    def auth(self) -> Optional[pulumi.Input['ConnectorAuthArgs']]:
         return pulumi.get(self, "auth")
 
     @auth.setter
-    def auth(self, value: Optional[pulumi.Input['FivetranConnectorAuthArgs']]):
+    def auth(self, value: Optional[pulumi.Input['ConnectorAuthArgs']]):
         pulumi.set(self, "auth", value)
 
     @property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['FivetranConnectorConfigArgs']]:
+    def config(self) -> Optional[pulumi.Input['ConnectorConfigArgs']]:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['FivetranConnectorConfigArgs']]):
+    def config(self, value: Optional[pulumi.Input['ConnectorConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @property
@@ -242,11 +242,11 @@ class _FivetranConnectorState:
 
     @property
     @pulumi.getter(name="destinationSchema")
-    def destination_schema(self) -> Optional[pulumi.Input['FivetranConnectorDestinationSchemaArgs']]:
+    def destination_schema(self) -> Optional[pulumi.Input['ConnectorDestinationSchemaArgs']]:
         return pulumi.get(self, "destination_schema")
 
     @destination_schema.setter
-    def destination_schema(self, value: Optional[pulumi.Input['FivetranConnectorDestinationSchemaArgs']]):
+    def destination_schema(self, value: Optional[pulumi.Input['ConnectorDestinationSchemaArgs']]):
         pulumi.set(self, "destination_schema", value)
 
     @property
@@ -336,14 +336,14 @@ class _FivetranConnectorState:
         pulumi.set(self, "trust_fingerprints", value)
 
 
-class FivetranConnector(pulumi.CustomResource):
+class Connector(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth: Optional[pulumi.Input[pulumi.InputType['FivetranConnectorAuthArgs']]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['FivetranConnectorConfigArgs']]] = None,
-                 destination_schema: Optional[pulumi.Input[pulumi.InputType['FivetranConnectorDestinationSchemaArgs']]] = None,
+                 auth: Optional[pulumi.Input[pulumi.InputType['ConnectorAuthArgs']]] = None,
+                 config: Optional[pulumi.Input[pulumi.InputType['ConnectorConfigArgs']]] = None,
+                 destination_schema: Optional[pulumi.Input[pulumi.InputType['ConnectorDestinationSchemaArgs']]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  run_setup_tests: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
@@ -371,7 +371,7 @@ class FivetranConnector(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: FivetranConnectorArgs,
+                 args: ConnectorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Import
@@ -379,12 +379,12 @@ class FivetranConnector(pulumi.CustomResource):
         ### How to authorize connector
 
         :param str resource_name: The name of the resource.
-        :param FivetranConnectorArgs args: The arguments to use to populate this resource's properties.
+        :param ConnectorArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(FivetranConnectorArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ConnectorArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -393,9 +393,9 @@ class FivetranConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth: Optional[pulumi.Input[pulumi.InputType['FivetranConnectorAuthArgs']]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['FivetranConnectorConfigArgs']]] = None,
-                 destination_schema: Optional[pulumi.Input[pulumi.InputType['FivetranConnectorDestinationSchemaArgs']]] = None,
+                 auth: Optional[pulumi.Input[pulumi.InputType['ConnectorAuthArgs']]] = None,
+                 config: Optional[pulumi.Input[pulumi.InputType['ConnectorConfigArgs']]] = None,
+                 destination_schema: Optional[pulumi.Input[pulumi.InputType['ConnectorDestinationSchemaArgs']]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  run_setup_tests: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
@@ -408,7 +408,7 @@ class FivetranConnector(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = FivetranConnectorArgs.__new__(FivetranConnectorArgs)
+            __props__ = ConnectorArgs.__new__(ConnectorArgs)
 
             __props__.__dict__["auth"] = auth
             __props__.__dict__["config"] = config
@@ -428,8 +428,8 @@ class FivetranConnector(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["last_updated"] = None
             __props__.__dict__["name"] = None
-        super(FivetranConnector, __self__).__init__(
-            'fivetran:index/fivetranConnector:FivetranConnector',
+        super(Connector, __self__).__init__(
+            'fivetran:index/connector:Connector',
             resource_name,
             __props__,
             opts)
@@ -438,20 +438,20 @@ class FivetranConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auth: Optional[pulumi.Input[pulumi.InputType['FivetranConnectorAuthArgs']]] = None,
-            config: Optional[pulumi.Input[pulumi.InputType['FivetranConnectorConfigArgs']]] = None,
+            auth: Optional[pulumi.Input[pulumi.InputType['ConnectorAuthArgs']]] = None,
+            config: Optional[pulumi.Input[pulumi.InputType['ConnectorConfigArgs']]] = None,
             connected_by: Optional[pulumi.Input[str]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
-            destination_schema: Optional[pulumi.Input[pulumi.InputType['FivetranConnectorDestinationSchemaArgs']]] = None,
+            destination_schema: Optional[pulumi.Input[pulumi.InputType['ConnectorDestinationSchemaArgs']]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
             last_updated: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             run_setup_tests: Optional[pulumi.Input[str]] = None,
             service: Optional[pulumi.Input[str]] = None,
             trust_certificates: Optional[pulumi.Input[str]] = None,
-            trust_fingerprints: Optional[pulumi.Input[str]] = None) -> 'FivetranConnector':
+            trust_fingerprints: Optional[pulumi.Input[str]] = None) -> 'Connector':
         """
-        Get an existing FivetranConnector resource's state with the given name, id, and optional extra
+        Get an existing Connector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -473,7 +473,7 @@ class FivetranConnector(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _FivetranConnectorState.__new__(_FivetranConnectorState)
+        __props__ = _ConnectorState.__new__(_ConnectorState)
 
         __props__.__dict__["auth"] = auth
         __props__.__dict__["config"] = config
@@ -487,16 +487,16 @@ class FivetranConnector(pulumi.CustomResource):
         __props__.__dict__["service"] = service
         __props__.__dict__["trust_certificates"] = trust_certificates
         __props__.__dict__["trust_fingerprints"] = trust_fingerprints
-        return FivetranConnector(resource_name, opts=opts, __props__=__props__)
+        return Connector(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
-    def auth(self) -> pulumi.Output[Optional['outputs.FivetranConnectorAuth']]:
+    def auth(self) -> pulumi.Output[Optional['outputs.ConnectorAuth']]:
         return pulumi.get(self, "auth")
 
     @property
     @pulumi.getter
-    def config(self) -> pulumi.Output['outputs.FivetranConnectorConfig']:
+    def config(self) -> pulumi.Output['outputs.ConnectorConfig']:
         return pulumi.get(self, "config")
 
     @property
@@ -517,7 +517,7 @@ class FivetranConnector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="destinationSchema")
-    def destination_schema(self) -> pulumi.Output['outputs.FivetranConnectorDestinationSchema']:
+    def destination_schema(self) -> pulumi.Output['outputs.ConnectorDestinationSchema']:
         return pulumi.get(self, "destination_schema")
 
     @property

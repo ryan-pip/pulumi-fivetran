@@ -5,55 +5,30 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export { FivetranConnectorArgs, FivetranConnectorState } from "./fivetranConnector";
-export type FivetranConnector = import("./fivetranConnector").FivetranConnector;
-export const FivetranConnector: typeof import("./fivetranConnector").FivetranConnector = null as any;
-utilities.lazyLoad(exports, ["FivetranConnector"], () => require("./fivetranConnector"));
+export { ConnectorArgs, ConnectorState } from "./connector";
+export type Connector = import("./connector").Connector;
+export const Connector: typeof import("./connector").Connector = null as any;
+utilities.lazyLoad(exports, ["Connector"], () => require("./connector"));
 
-export { FivetranConnectorDbtProjectArgs, FivetranConnectorDbtProjectState } from "./fivetranConnectorDbtProject";
-export type FivetranConnectorDbtProject = import("./fivetranConnectorDbtProject").FivetranConnectorDbtProject;
-export const FivetranConnectorDbtProject: typeof import("./fivetranConnectorDbtProject").FivetranConnectorDbtProject = null as any;
-utilities.lazyLoad(exports, ["FivetranConnectorDbtProject"], () => require("./fivetranConnectorDbtProject"));
+export { ConnectorScheduleArgs, ConnectorScheduleState } from "./connectorSchedule";
+export type ConnectorSchedule = import("./connectorSchedule").ConnectorSchedule;
+export const ConnectorSchedule: typeof import("./connectorSchedule").ConnectorSchedule = null as any;
+utilities.lazyLoad(exports, ["ConnectorSchedule"], () => require("./connectorSchedule"));
 
-export { FivetranConnectorDbtTransformationArgs, FivetranConnectorDbtTransformationState } from "./fivetranConnectorDbtTransformation";
-export type FivetranConnectorDbtTransformation = import("./fivetranConnectorDbtTransformation").FivetranConnectorDbtTransformation;
-export const FivetranConnectorDbtTransformation: typeof import("./fivetranConnectorDbtTransformation").FivetranConnectorDbtTransformation = null as any;
-utilities.lazyLoad(exports, ["FivetranConnectorDbtTransformation"], () => require("./fivetranConnectorDbtTransformation"));
+export { DbtProjectArgs, DbtProjectState } from "./dbtProject";
+export type DbtProject = import("./dbtProject").DbtProject;
+export const DbtProject: typeof import("./dbtProject").DbtProject = null as any;
+utilities.lazyLoad(exports, ["DbtProject"], () => require("./dbtProject"));
 
-export { FivetranConnectorDestinationArgs, FivetranConnectorDestinationState } from "./fivetranConnectorDestination";
-export type FivetranConnectorDestination = import("./fivetranConnectorDestination").FivetranConnectorDestination;
-export const FivetranConnectorDestination: typeof import("./fivetranConnectorDestination").FivetranConnectorDestination = null as any;
-utilities.lazyLoad(exports, ["FivetranConnectorDestination"], () => require("./fivetranConnectorDestination"));
+export { DbtTransformationArgs, DbtTransformationState } from "./dbtTransformation";
+export type DbtTransformation = import("./dbtTransformation").DbtTransformation;
+export const DbtTransformation: typeof import("./dbtTransformation").DbtTransformation = null as any;
+utilities.lazyLoad(exports, ["DbtTransformation"], () => require("./dbtTransformation"));
 
-export { FivetranConnectorGroupArgs, FivetranConnectorGroupState } from "./fivetranConnectorGroup";
-export type FivetranConnectorGroup = import("./fivetranConnectorGroup").FivetranConnectorGroup;
-export const FivetranConnectorGroup: typeof import("./fivetranConnectorGroup").FivetranConnectorGroup = null as any;
-utilities.lazyLoad(exports, ["FivetranConnectorGroup"], () => require("./fivetranConnectorGroup"));
-
-export { FivetranConnectorGroupUsersArgs, FivetranConnectorGroupUsersState } from "./fivetranConnectorGroupUsers";
-export type FivetranConnectorGroupUsers = import("./fivetranConnectorGroupUsers").FivetranConnectorGroupUsers;
-export const FivetranConnectorGroupUsers: typeof import("./fivetranConnectorGroupUsers").FivetranConnectorGroupUsers = null as any;
-utilities.lazyLoad(exports, ["FivetranConnectorGroupUsers"], () => require("./fivetranConnectorGroupUsers"));
-
-export { FivetranConnectorScheduleArgs, FivetranConnectorScheduleState } from "./fivetranConnectorSchedule";
-export type FivetranConnectorSchedule = import("./fivetranConnectorSchedule").FivetranConnectorSchedule;
-export const FivetranConnectorSchedule: typeof import("./fivetranConnectorSchedule").FivetranConnectorSchedule = null as any;
-utilities.lazyLoad(exports, ["FivetranConnectorSchedule"], () => require("./fivetranConnectorSchedule"));
-
-export { FivetranConnectorSchemaConfigArgs, FivetranConnectorSchemaConfigState } from "./fivetranConnectorSchemaConfig";
-export type FivetranConnectorSchemaConfig = import("./fivetranConnectorSchemaConfig").FivetranConnectorSchemaConfig;
-export const FivetranConnectorSchemaConfig: typeof import("./fivetranConnectorSchemaConfig").FivetranConnectorSchemaConfig = null as any;
-utilities.lazyLoad(exports, ["FivetranConnectorSchemaConfig"], () => require("./fivetranConnectorSchemaConfig"));
-
-export { FivetranConnectorUserArgs, FivetranConnectorUserState } from "./fivetranConnectorUser";
-export type FivetranConnectorUser = import("./fivetranConnectorUser").FivetranConnectorUser;
-export const FivetranConnectorUser: typeof import("./fivetranConnectorUser").FivetranConnectorUser = null as any;
-utilities.lazyLoad(exports, ["FivetranConnectorUser"], () => require("./fivetranConnectorUser"));
-
-export { FivetranConnectorWebhookArgs, FivetranConnectorWebhookState } from "./fivetranConnectorWebhook";
-export type FivetranConnectorWebhook = import("./fivetranConnectorWebhook").FivetranConnectorWebhook;
-export const FivetranConnectorWebhook: typeof import("./fivetranConnectorWebhook").FivetranConnectorWebhook = null as any;
-utilities.lazyLoad(exports, ["FivetranConnectorWebhook"], () => require("./fivetranConnectorWebhook"));
+export { DestinationArgs, DestinationState } from "./destination";
+export type Destination = import("./destination").Destination;
+export const Destination: typeof import("./destination").Destination = null as any;
+utilities.lazyLoad(exports, ["Destination"], () => require("./destination"));
 
 export { GetConnectorArgs, GetConnectorResult, GetConnectorOutputArgs } from "./getConnector";
 export const getConnector: typeof import("./getConnector").getConnector = null as any;
@@ -130,10 +105,35 @@ export const getWebhooks: typeof import("./getWebhooks").getWebhooks = null as a
 export const getWebhooksOutput: typeof import("./getWebhooks").getWebhooksOutput = null as any;
 utilities.lazyLoad(exports, ["getWebhooks","getWebhooksOutput"], () => require("./getWebhooks"));
 
+export { GroupArgs, GroupState } from "./group";
+export type Group = import("./group").Group;
+export const Group: typeof import("./group").Group = null as any;
+utilities.lazyLoad(exports, ["Group"], () => require("./group"));
+
+export { GroupUsersArgs, GroupUsersState } from "./groupUsers";
+export type GroupUsers = import("./groupUsers").GroupUsers;
+export const GroupUsers: typeof import("./groupUsers").GroupUsers = null as any;
+utilities.lazyLoad(exports, ["GroupUsers"], () => require("./groupUsers"));
+
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
 utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+
+export { SchemaConfigArgs, SchemaConfigState } from "./schemaConfig";
+export type SchemaConfig = import("./schemaConfig").SchemaConfig;
+export const SchemaConfig: typeof import("./schemaConfig").SchemaConfig = null as any;
+utilities.lazyLoad(exports, ["SchemaConfig"], () => require("./schemaConfig"));
+
+export { UserArgs, UserState } from "./user";
+export type User = import("./user").User;
+export const User: typeof import("./user").User = null as any;
+utilities.lazyLoad(exports, ["User"], () => require("./user"));
+
+export { WebhookArgs, WebhookState } from "./webhook";
+export type Webhook = import("./webhook").Webhook;
+export const Webhook: typeof import("./webhook").Webhook = null as any;
+utilities.lazyLoad(exports, ["Webhook"], () => require("./webhook"));
 
 
 // Export sub-modules:
@@ -149,41 +149,41 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "fivetran:index/fivetranConnector:FivetranConnector":
-                return new FivetranConnector(name, <any>undefined, { urn })
-            case "fivetran:index/fivetranConnectorDbtProject:FivetranConnectorDbtProject":
-                return new FivetranConnectorDbtProject(name, <any>undefined, { urn })
-            case "fivetran:index/fivetranConnectorDbtTransformation:FivetranConnectorDbtTransformation":
-                return new FivetranConnectorDbtTransformation(name, <any>undefined, { urn })
-            case "fivetran:index/fivetranConnectorDestination:FivetranConnectorDestination":
-                return new FivetranConnectorDestination(name, <any>undefined, { urn })
-            case "fivetran:index/fivetranConnectorGroup:FivetranConnectorGroup":
-                return new FivetranConnectorGroup(name, <any>undefined, { urn })
-            case "fivetran:index/fivetranConnectorGroupUsers:FivetranConnectorGroupUsers":
-                return new FivetranConnectorGroupUsers(name, <any>undefined, { urn })
-            case "fivetran:index/fivetranConnectorSchedule:FivetranConnectorSchedule":
-                return new FivetranConnectorSchedule(name, <any>undefined, { urn })
-            case "fivetran:index/fivetranConnectorSchemaConfig:FivetranConnectorSchemaConfig":
-                return new FivetranConnectorSchemaConfig(name, <any>undefined, { urn })
-            case "fivetran:index/fivetranConnectorUser:FivetranConnectorUser":
-                return new FivetranConnectorUser(name, <any>undefined, { urn })
-            case "fivetran:index/fivetranConnectorWebhook:FivetranConnectorWebhook":
-                return new FivetranConnectorWebhook(name, <any>undefined, { urn })
+            case "fivetran:index/connector:Connector":
+                return new Connector(name, <any>undefined, { urn })
+            case "fivetran:index/connectorSchedule:ConnectorSchedule":
+                return new ConnectorSchedule(name, <any>undefined, { urn })
+            case "fivetran:index/dbtProject:DbtProject":
+                return new DbtProject(name, <any>undefined, { urn })
+            case "fivetran:index/dbtTransformation:DbtTransformation":
+                return new DbtTransformation(name, <any>undefined, { urn })
+            case "fivetran:index/destination:Destination":
+                return new Destination(name, <any>undefined, { urn })
+            case "fivetran:index/group:Group":
+                return new Group(name, <any>undefined, { urn })
+            case "fivetran:index/groupUsers:GroupUsers":
+                return new GroupUsers(name, <any>undefined, { urn })
+            case "fivetran:index/schemaConfig:SchemaConfig":
+                return new SchemaConfig(name, <any>undefined, { urn })
+            case "fivetran:index/user:User":
+                return new User(name, <any>undefined, { urn })
+            case "fivetran:index/webhook:Webhook":
+                return new Webhook(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("fivetran", "index/fivetranConnector", _module)
-pulumi.runtime.registerResourceModule("fivetran", "index/fivetranConnectorDbtProject", _module)
-pulumi.runtime.registerResourceModule("fivetran", "index/fivetranConnectorDbtTransformation", _module)
-pulumi.runtime.registerResourceModule("fivetran", "index/fivetranConnectorDestination", _module)
-pulumi.runtime.registerResourceModule("fivetran", "index/fivetranConnectorGroup", _module)
-pulumi.runtime.registerResourceModule("fivetran", "index/fivetranConnectorGroupUsers", _module)
-pulumi.runtime.registerResourceModule("fivetran", "index/fivetranConnectorSchedule", _module)
-pulumi.runtime.registerResourceModule("fivetran", "index/fivetranConnectorSchemaConfig", _module)
-pulumi.runtime.registerResourceModule("fivetran", "index/fivetranConnectorUser", _module)
-pulumi.runtime.registerResourceModule("fivetran", "index/fivetranConnectorWebhook", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/connector", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/connectorSchedule", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/dbtProject", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/dbtTransformation", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/destination", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/group", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/groupUsers", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/schemaConfig", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/user", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/webhook", _module)
 pulumi.runtime.registerResourcePackage("fivetran", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

@@ -11,15 +11,15 @@ from . import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['FivetranConnectorGroupUsersArgs', 'FivetranConnectorGroupUsers']
+__all__ = ['GroupUsersArgs', 'GroupUsers']
 
 @pulumi.input_type
-class FivetranConnectorGroupUsersArgs:
+class GroupUsersArgs:
     def __init__(__self__, *,
                  group_id: pulumi.Input[str],
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorGroupUsersUserArgs']]]] = None):
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input['GroupUsersUserArgs']]]] = None):
         """
-        The set of arguments for constructing a FivetranConnectorGroupUsers resource.
+        The set of arguments for constructing a GroupUsers resource.
         :param pulumi.Input[str] group_id: The unique identifier for the Group within the Fivetran system.
         """
         pulumi.set(__self__, "group_id", group_id)
@@ -40,22 +40,22 @@ class FivetranConnectorGroupUsersArgs:
 
     @property
     @pulumi.getter
-    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorGroupUsersUserArgs']]]]:
+    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupUsersUserArgs']]]]:
         return pulumi.get(self, "users")
 
     @users.setter
-    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorGroupUsersUserArgs']]]]):
+    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GroupUsersUserArgs']]]]):
         pulumi.set(self, "users", value)
 
 
 @pulumi.input_type
-class _FivetranConnectorGroupUsersState:
+class _GroupUsersState:
     def __init__(__self__, *,
                  group_id: Optional[pulumi.Input[str]] = None,
                  last_updated: Optional[pulumi.Input[str]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorGroupUsersUserArgs']]]] = None):
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input['GroupUsersUserArgs']]]] = None):
         """
-        Input properties used for looking up and filtering FivetranConnectorGroupUsers resources.
+        Input properties used for looking up and filtering GroupUsers resources.
         :param pulumi.Input[str] group_id: The unique identifier for the Group within the Fivetran system.
         """
         if group_id is not None:
@@ -88,21 +88,21 @@ class _FivetranConnectorGroupUsersState:
 
     @property
     @pulumi.getter
-    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorGroupUsersUserArgs']]]]:
+    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupUsersUserArgs']]]]:
         return pulumi.get(self, "users")
 
     @users.setter
-    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorGroupUsersUserArgs']]]]):
+    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GroupUsersUserArgs']]]]):
         pulumi.set(self, "users", value)
 
 
-class FivetranConnectorGroupUsers(pulumi.CustomResource):
+class GroupUsers(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FivetranConnectorGroupUsersUserArgs']]]]] = None,
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupUsersUserArgs']]]]] = None,
                  __props__=None):
         """
         This resource allows you to create, update, and delete user memberships in groups.
@@ -113,14 +113,14 @@ class FivetranConnectorGroupUsers(pulumi.CustomResource):
         import pulumi
         import pulumi_fivetran as fivetran
 
-        group_users = fivetran.FivetranConnectorGroupUsers("groupUsers",
+        group_users = fivetran.GroupUsers("groupUsers",
             group_id=fivetran_group["group"]["id"],
             users=[
-                fivetran.FivetranConnectorGroupUsersUserArgs(
+                fivetran.GroupUsersUserArgs(
                     email="mail@example.com",
                     role="Destination Analyst",
                 ),
-                fivetran.FivetranConnectorGroupUsersUserArgs(
+                fivetran.GroupUsersUserArgs(
                     email="another_mail@example.com",
                     role="Destination Analyst",
                 ),
@@ -135,7 +135,7 @@ class FivetranConnectorGroupUsers(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: FivetranConnectorGroupUsersArgs,
+                 args: GroupUsersArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource allows you to create, update, and delete user memberships in groups.
@@ -146,14 +146,14 @@ class FivetranConnectorGroupUsers(pulumi.CustomResource):
         import pulumi
         import pulumi_fivetran as fivetran
 
-        group_users = fivetran.FivetranConnectorGroupUsers("groupUsers",
+        group_users = fivetran.GroupUsers("groupUsers",
             group_id=fivetran_group["group"]["id"],
             users=[
-                fivetran.FivetranConnectorGroupUsersUserArgs(
+                fivetran.GroupUsersUserArgs(
                     email="mail@example.com",
                     role="Destination Analyst",
                 ),
-                fivetran.FivetranConnectorGroupUsersUserArgs(
+                fivetran.GroupUsersUserArgs(
                     email="another_mail@example.com",
                     role="Destination Analyst",
                 ),
@@ -161,12 +161,12 @@ class FivetranConnectorGroupUsers(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param FivetranConnectorGroupUsersArgs args: The arguments to use to populate this resource's properties.
+        :param GroupUsersArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(FivetranConnectorGroupUsersArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(GroupUsersArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -176,7 +176,7 @@ class FivetranConnectorGroupUsers(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FivetranConnectorGroupUsersUserArgs']]]]] = None,
+                 users: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupUsersUserArgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -184,15 +184,15 @@ class FivetranConnectorGroupUsers(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = FivetranConnectorGroupUsersArgs.__new__(FivetranConnectorGroupUsersArgs)
+            __props__ = GroupUsersArgs.__new__(GroupUsersArgs)
 
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
             __props__.__dict__["group_id"] = group_id
             __props__.__dict__["users"] = users
             __props__.__dict__["last_updated"] = None
-        super(FivetranConnectorGroupUsers, __self__).__init__(
-            'fivetran:index/fivetranConnectorGroupUsers:FivetranConnectorGroupUsers',
+        super(GroupUsers, __self__).__init__(
+            'fivetran:index/groupUsers:GroupUsers',
             resource_name,
             __props__,
             opts)
@@ -203,9 +203,9 @@ class FivetranConnectorGroupUsers(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             group_id: Optional[pulumi.Input[str]] = None,
             last_updated: Optional[pulumi.Input[str]] = None,
-            users: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FivetranConnectorGroupUsersUserArgs']]]]] = None) -> 'FivetranConnectorGroupUsers':
+            users: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupUsersUserArgs']]]]] = None) -> 'GroupUsers':
         """
-        Get an existing FivetranConnectorGroupUsers resource's state with the given name, id, and optional extra
+        Get an existing GroupUsers resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -215,12 +215,12 @@ class FivetranConnectorGroupUsers(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _FivetranConnectorGroupUsersState.__new__(_FivetranConnectorGroupUsersState)
+        __props__ = _GroupUsersState.__new__(_GroupUsersState)
 
         __props__.__dict__["group_id"] = group_id
         __props__.__dict__["last_updated"] = last_updated
         __props__.__dict__["users"] = users
-        return FivetranConnectorGroupUsers(resource_name, opts=opts, __props__=__props__)
+        return GroupUsers(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="groupId")
@@ -237,6 +237,6 @@ class FivetranConnectorGroupUsers(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def users(self) -> pulumi.Output[Optional[Sequence['outputs.FivetranConnectorGroupUsersUser']]]:
+    def users(self) -> pulumi.Output[Optional[Sequence['outputs.GroupUsersUser']]]:
         return pulumi.get(self, "users")
 

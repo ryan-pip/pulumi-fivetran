@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.GetDbtProject(ctx, &fivetran.GetDbtProjectArgs{
+//			_, err := fivetran.LookupDbtProject(ctx, &fivetran.LookupDbtProjectArgs{
 //				Id: "project_id",
 //			}, nil)
 //			if err != nil {
@@ -39,9 +39,9 @@ import (
 //	}
 //
 // ```
-func GetDbtProject(ctx *pulumi.Context, args *GetDbtProjectArgs, opts ...pulumi.InvokeOption) (*GetDbtProjectResult, error) {
+func LookupDbtProject(ctx *pulumi.Context, args *LookupDbtProjectArgs, opts ...pulumi.InvokeOption) (*LookupDbtProjectResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetDbtProjectResult
+	var rv LookupDbtProjectResult
 	err := ctx.Invoke("fivetran:index/getDbtProject:getDbtProject", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -50,7 +50,7 @@ func GetDbtProject(ctx *pulumi.Context, args *GetDbtProjectArgs, opts ...pulumi.
 }
 
 // A collection of arguments for invoking getDbtProject.
-type GetDbtProjectArgs struct {
+type LookupDbtProjectArgs struct {
 	// The unique identifier for the dbt Project within the Fivetran system.
 	Id string `pulumi:"id"`
 	// The collection of dbt Models.
@@ -58,7 +58,7 @@ type GetDbtProjectArgs struct {
 }
 
 // A collection of values returned by getDbtProject.
-type GetDbtProjectResult struct {
+type LookupDbtProjectResult struct {
 	// The timestamp of the dbt Project creation.
 	CreatedAt string `pulumi:"createdAt"`
 	// The unique identifier for the User within the Fivetran system who created the dbt Project.
@@ -88,121 +88,121 @@ type GetDbtProjectResult struct {
 	Type string `pulumi:"type"`
 }
 
-func GetDbtProjectOutput(ctx *pulumi.Context, args GetDbtProjectOutputArgs, opts ...pulumi.InvokeOption) GetDbtProjectResultOutput {
+func LookupDbtProjectOutput(ctx *pulumi.Context, args LookupDbtProjectOutputArgs, opts ...pulumi.InvokeOption) LookupDbtProjectResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDbtProjectResult, error) {
-			args := v.(GetDbtProjectArgs)
-			r, err := GetDbtProject(ctx, &args, opts...)
-			var s GetDbtProjectResult
+		ApplyT(func(v interface{}) (LookupDbtProjectResult, error) {
+			args := v.(LookupDbtProjectArgs)
+			r, err := LookupDbtProject(ctx, &args, opts...)
+			var s LookupDbtProjectResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(GetDbtProjectResultOutput)
+		}).(LookupDbtProjectResultOutput)
 }
 
 // A collection of arguments for invoking getDbtProject.
-type GetDbtProjectOutputArgs struct {
+type LookupDbtProjectOutputArgs struct {
 	// The unique identifier for the dbt Project within the Fivetran system.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The collection of dbt Models.
 	Models GetDbtProjectModelArrayInput `pulumi:"models"`
 }
 
-func (GetDbtProjectOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDbtProjectArgs)(nil)).Elem()
+func (LookupDbtProjectOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDbtProjectArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getDbtProject.
-type GetDbtProjectResultOutput struct{ *pulumi.OutputState }
+type LookupDbtProjectResultOutput struct{ *pulumi.OutputState }
 
-func (GetDbtProjectResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDbtProjectResult)(nil)).Elem()
+func (LookupDbtProjectResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDbtProjectResult)(nil)).Elem()
 }
 
-func (o GetDbtProjectResultOutput) ToGetDbtProjectResultOutput() GetDbtProjectResultOutput {
+func (o LookupDbtProjectResultOutput) ToLookupDbtProjectResultOutput() LookupDbtProjectResultOutput {
 	return o
 }
 
-func (o GetDbtProjectResultOutput) ToGetDbtProjectResultOutputWithContext(ctx context.Context) GetDbtProjectResultOutput {
+func (o LookupDbtProjectResultOutput) ToLookupDbtProjectResultOutputWithContext(ctx context.Context) LookupDbtProjectResultOutput {
 	return o
 }
 
-func (o GetDbtProjectResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDbtProjectResult] {
-	return pulumix.Output[GetDbtProjectResult]{
+func (o LookupDbtProjectResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDbtProjectResult] {
+	return pulumix.Output[LookupDbtProjectResult]{
 		OutputState: o.OutputState,
 	}
 }
 
 // The timestamp of the dbt Project creation.
-func (o GetDbtProjectResultOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbtProjectResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+func (o LookupDbtProjectResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDbtProjectResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 // The unique identifier for the User within the Fivetran system who created the dbt Project.
-func (o GetDbtProjectResultOutput) CreatedById() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbtProjectResult) string { return v.CreatedById }).(pulumi.StringOutput)
+func (o LookupDbtProjectResultOutput) CreatedById() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDbtProjectResult) string { return v.CreatedById }).(pulumi.StringOutput)
 }
 
 // The version of dbt that should run the project. We support the following versions: 0.18.0 - 0.18.2, 0.19.0 - 0.19.2, 0.20.0 - 0.20.2, 0.21.0 - 0.21.1, 1.0.0, 1.0.1, 1.0.3 - 1.0.9, 1.1.0 - 1.1.3, 1.2.0 - 1.2.4, 1.3.0 - 1.3.2, 1.4.1.
-func (o GetDbtProjectResultOutput) DbtVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbtProjectResult) string { return v.DbtVersion }).(pulumi.StringOutput)
+func (o LookupDbtProjectResultOutput) DbtVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDbtProjectResult) string { return v.DbtVersion }).(pulumi.StringOutput)
 }
 
 // Default schema in destination. This production schema will contain your transformed data.
-func (o GetDbtProjectResultOutput) DefaultSchema() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbtProjectResult) string { return v.DefaultSchema }).(pulumi.StringOutput)
+func (o LookupDbtProjectResultOutput) DefaultSchema() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDbtProjectResult) string { return v.DefaultSchema }).(pulumi.StringOutput)
 }
 
-func (o GetDbtProjectResultOutput) EnvironmentVars() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetDbtProjectResult) []string { return v.EnvironmentVars }).(pulumi.StringArrayOutput)
+func (o LookupDbtProjectResultOutput) EnvironmentVars() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupDbtProjectResult) []string { return v.EnvironmentVars }).(pulumi.StringArrayOutput)
 }
 
 // The unique identifier for the group within the Fivetran system.
-func (o GetDbtProjectResultOutput) GroupId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbtProjectResult) string { return v.GroupId }).(pulumi.StringOutput)
+func (o LookupDbtProjectResultOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDbtProjectResult) string { return v.GroupId }).(pulumi.StringOutput)
 }
 
 // The unique identifier for the dbt Project within the Fivetran system.
-func (o GetDbtProjectResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbtProjectResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupDbtProjectResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDbtProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The collection of dbt Models.
-func (o GetDbtProjectResultOutput) Models() GetDbtProjectModelArrayOutput {
-	return o.ApplyT(func(v GetDbtProjectResult) []GetDbtProjectModel { return v.Models }).(GetDbtProjectModelArrayOutput)
+func (o LookupDbtProjectResultOutput) Models() GetDbtProjectModelArrayOutput {
+	return o.ApplyT(func(v LookupDbtProjectResult) []GetDbtProjectModel { return v.Models }).(GetDbtProjectModelArrayOutput)
 }
 
 // Type specific dbt Project configuration parameters.
-func (o GetDbtProjectResultOutput) ProjectConfigs() GetDbtProjectProjectConfigArrayOutput {
-	return o.ApplyT(func(v GetDbtProjectResult) []GetDbtProjectProjectConfig { return v.ProjectConfigs }).(GetDbtProjectProjectConfigArrayOutput)
+func (o LookupDbtProjectResultOutput) ProjectConfigs() GetDbtProjectProjectConfigArrayOutput {
+	return o.ApplyT(func(v LookupDbtProjectResult) []GetDbtProjectProjectConfig { return v.ProjectConfigs }).(GetDbtProjectProjectConfigArrayOutput)
 }
 
 // Public key to grant Fivetran SSH access to git repository.
-func (o GetDbtProjectResultOutput) PublicKey() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbtProjectResult) string { return v.PublicKey }).(pulumi.StringOutput)
+func (o LookupDbtProjectResultOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDbtProjectResult) string { return v.PublicKey }).(pulumi.StringOutput)
 }
 
 // Status of dbt Project (NOT_READY, READY, ERROR).
-func (o GetDbtProjectResultOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbtProjectResult) string { return v.Status }).(pulumi.StringOutput)
+func (o LookupDbtProjectResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDbtProjectResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // Target name to set or override the value from the deployment.yaml
-func (o GetDbtProjectResultOutput) TargetName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbtProjectResult) string { return v.TargetName }).(pulumi.StringOutput)
+func (o LookupDbtProjectResultOutput) TargetName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDbtProjectResult) string { return v.TargetName }).(pulumi.StringOutput)
 }
 
 // The number of threads dbt will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
-func (o GetDbtProjectResultOutput) Threads() pulumi.IntOutput {
-	return o.ApplyT(func(v GetDbtProjectResult) int { return v.Threads }).(pulumi.IntOutput)
+func (o LookupDbtProjectResultOutput) Threads() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDbtProjectResult) int { return v.Threads }).(pulumi.IntOutput)
 }
 
 // Type of dbt Project. Currently only `GIT` supported. Empty value will be considered as default (GIT).
-func (o GetDbtProjectResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbtProjectResult) string { return v.Type }).(pulumi.StringOutput)
+func (o LookupDbtProjectResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDbtProjectResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetDbtProjectResultOutput{})
+	pulumi.RegisterOutputType(LookupDbtProjectResultOutput{})
 }

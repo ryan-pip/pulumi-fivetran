@@ -23,10 +23,10 @@ setup(name='pulumi_fivetran',
       description="A Pulumi package for creating and managing fivetran cloud resources.",
       long_description=readme(),
       long_description_content_type='text/markdown',
-      keywords='pulumi fivetran category/cloud',
+      keywords='pulumi fivetran category/utility',
       url='https://www.pulumi.com',
       project_urls={
-          'Repository': 'https://github.com/pulumi/pulumi-fivetran'
+          'Repository': 'https://github.com/ryan-packer/pulumi-fivetran'
       },
       license='Apache-2.0',
       packages=find_packages(),

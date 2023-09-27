@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.GetDestination(ctx, &fivetran.GetDestinationArgs{
+//			_, err := fivetran.LookupDestination(ctx, &fivetran.LookupDestinationArgs{
 //				Id: "anonymous_mystery",
 //			}, nil)
 //			if err != nil {
@@ -39,9 +39,9 @@ import (
 //	}
 //
 // ```
-func GetDestination(ctx *pulumi.Context, args *GetDestinationArgs, opts ...pulumi.InvokeOption) (*GetDestinationResult, error) {
+func LookupDestination(ctx *pulumi.Context, args *LookupDestinationArgs, opts ...pulumi.InvokeOption) (*LookupDestinationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetDestinationResult
+	var rv LookupDestinationResult
 	err := ctx.Invoke("fivetran:index/getDestination:getDestination", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -50,14 +50,14 @@ func GetDestination(ctx *pulumi.Context, args *GetDestinationArgs, opts ...pulum
 }
 
 // A collection of arguments for invoking getDestination.
-type GetDestinationArgs struct {
+type LookupDestinationArgs struct {
 	Configs []GetDestinationConfig `pulumi:"configs"`
 	// The unique identifier for the destination within the Fivetran system
 	Id string `pulumi:"id"`
 }
 
 // A collection of values returned by getDestination.
-type GetDestinationResult struct {
+type LookupDestinationResult struct {
 	Configs []GetDestinationConfig `pulumi:"configs"`
 	// The unique identifier for the Group within the Fivetran system.
 	GroupId string `pulumi:"groupId"`
@@ -73,85 +73,85 @@ type GetDestinationResult struct {
 	TimeZoneOffset string `pulumi:"timeZoneOffset"`
 }
 
-func GetDestinationOutput(ctx *pulumi.Context, args GetDestinationOutputArgs, opts ...pulumi.InvokeOption) GetDestinationResultOutput {
+func LookupDestinationOutput(ctx *pulumi.Context, args LookupDestinationOutputArgs, opts ...pulumi.InvokeOption) LookupDestinationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDestinationResult, error) {
-			args := v.(GetDestinationArgs)
-			r, err := GetDestination(ctx, &args, opts...)
-			var s GetDestinationResult
+		ApplyT(func(v interface{}) (LookupDestinationResult, error) {
+			args := v.(LookupDestinationArgs)
+			r, err := LookupDestination(ctx, &args, opts...)
+			var s LookupDestinationResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(GetDestinationResultOutput)
+		}).(LookupDestinationResultOutput)
 }
 
 // A collection of arguments for invoking getDestination.
-type GetDestinationOutputArgs struct {
+type LookupDestinationOutputArgs struct {
 	Configs GetDestinationConfigArrayInput `pulumi:"configs"`
 	// The unique identifier for the destination within the Fivetran system
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
-func (GetDestinationOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDestinationArgs)(nil)).Elem()
+func (LookupDestinationOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDestinationArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getDestination.
-type GetDestinationResultOutput struct{ *pulumi.OutputState }
+type LookupDestinationResultOutput struct{ *pulumi.OutputState }
 
-func (GetDestinationResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDestinationResult)(nil)).Elem()
+func (LookupDestinationResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDestinationResult)(nil)).Elem()
 }
 
-func (o GetDestinationResultOutput) ToGetDestinationResultOutput() GetDestinationResultOutput {
+func (o LookupDestinationResultOutput) ToLookupDestinationResultOutput() LookupDestinationResultOutput {
 	return o
 }
 
-func (o GetDestinationResultOutput) ToGetDestinationResultOutputWithContext(ctx context.Context) GetDestinationResultOutput {
+func (o LookupDestinationResultOutput) ToLookupDestinationResultOutputWithContext(ctx context.Context) LookupDestinationResultOutput {
 	return o
 }
 
-func (o GetDestinationResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDestinationResult] {
-	return pulumix.Output[GetDestinationResult]{
+func (o LookupDestinationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDestinationResult] {
+	return pulumix.Output[LookupDestinationResult]{
 		OutputState: o.OutputState,
 	}
 }
 
-func (o GetDestinationResultOutput) Configs() GetDestinationConfigArrayOutput {
-	return o.ApplyT(func(v GetDestinationResult) []GetDestinationConfig { return v.Configs }).(GetDestinationConfigArrayOutput)
+func (o LookupDestinationResultOutput) Configs() GetDestinationConfigArrayOutput {
+	return o.ApplyT(func(v LookupDestinationResult) []GetDestinationConfig { return v.Configs }).(GetDestinationConfigArrayOutput)
 }
 
 // The unique identifier for the Group within the Fivetran system.
-func (o GetDestinationResultOutput) GroupId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDestinationResult) string { return v.GroupId }).(pulumi.StringOutput)
+func (o LookupDestinationResultOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDestinationResult) string { return v.GroupId }).(pulumi.StringOutput)
 }
 
 // The unique identifier for the destination within the Fivetran system
-func (o GetDestinationResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDestinationResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupDestinationResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDestinationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Data processing location. This is where Fivetran will operate and run computation on data.
-func (o GetDestinationResultOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDestinationResult) string { return v.Region }).(pulumi.StringOutput)
+func (o LookupDestinationResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDestinationResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
 // The destination type name within the Fivetran system
-func (o GetDestinationResultOutput) Service() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDestinationResult) string { return v.Service }).(pulumi.StringOutput)
+func (o LookupDestinationResultOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDestinationResult) string { return v.Service }).(pulumi.StringOutput)
 }
 
 // Destination setup status
-func (o GetDestinationResultOutput) SetupStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDestinationResult) string { return v.SetupStatus }).(pulumi.StringOutput)
+func (o LookupDestinationResultOutput) SetupStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDestinationResult) string { return v.SetupStatus }).(pulumi.StringOutput)
 }
 
 // Determines the time zone for the Fivetran sync schedule.
-func (o GetDestinationResultOutput) TimeZoneOffset() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDestinationResult) string { return v.TimeZoneOffset }).(pulumi.StringOutput)
+func (o LookupDestinationResultOutput) TimeZoneOffset() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDestinationResult) string { return v.TimeZoneOffset }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetDestinationResultOutput{})
+	pulumi.RegisterOutputType(LookupDestinationResultOutput{})
 }

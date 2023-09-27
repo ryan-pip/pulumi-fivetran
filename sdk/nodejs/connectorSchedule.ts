@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
  *
- * const myConnectorSchedule = new fivetran.FivetranConnectorSchedule("myConnectorSchedule", {
+ * const myConnectorSchedule = new fivetran.ConnectorSchedule("myConnectorSchedule", {
  *     connectorId: fivetran_connector.my_connector.id,
  *     syncFrequency: "1440",
  *     dailySyncTime: "03:00",
@@ -53,9 +53,9 @@ import * as utilities from "./utilities";
  *
  * = "auto" } -> NOTEYou can't have several resources managing the same `connector_id`. They will be in conflict ater each `apply`.
  */
-export class FivetranConnectorSchedule extends pulumi.CustomResource {
+export class ConnectorSchedule extends pulumi.CustomResource {
     /**
-     * Get an existing FivetranConnectorSchedule resource's state with the given name, ID, and optional extra
+     * Get an existing ConnectorSchedule resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -63,22 +63,22 @@ export class FivetranConnectorSchedule extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: FivetranConnectorScheduleState, opts?: pulumi.CustomResourceOptions): FivetranConnectorSchedule {
-        return new FivetranConnectorSchedule(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ConnectorScheduleState, opts?: pulumi.CustomResourceOptions): ConnectorSchedule {
+        return new ConnectorSchedule(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'fivetran:index/fivetranConnectorSchedule:FivetranConnectorSchedule';
+    public static readonly __pulumiType = 'fivetran:index/connectorSchedule:ConnectorSchedule';
 
     /**
-     * Returns true if the given object is an instance of FivetranConnectorSchedule.  This is designed to work even
+     * Returns true if the given object is an instance of ConnectorSchedule.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is FivetranConnectorSchedule {
+    public static isInstance(obj: any): obj is ConnectorSchedule {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === FivetranConnectorSchedule.__pulumiType;
+        return obj['__pulumiType'] === ConnectorSchedule.__pulumiType;
     }
 
     /**
@@ -107,18 +107,18 @@ export class FivetranConnectorSchedule extends pulumi.CustomResource {
     public readonly syncFrequency!: pulumi.Output<string>;
 
     /**
-     * Create a FivetranConnectorSchedule resource with the given unique name, arguments, and options.
+     * Create a ConnectorSchedule resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: FivetranConnectorScheduleArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: FivetranConnectorScheduleArgs | FivetranConnectorScheduleState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: ConnectorScheduleArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: ConnectorScheduleArgs | ConnectorScheduleState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as FivetranConnectorScheduleState | undefined;
+            const state = argsOrState as ConnectorScheduleState | undefined;
             resourceInputs["connectorId"] = state ? state.connectorId : undefined;
             resourceInputs["dailySyncTime"] = state ? state.dailySyncTime : undefined;
             resourceInputs["pauseAfterTrial"] = state ? state.pauseAfterTrial : undefined;
@@ -126,7 +126,7 @@ export class FivetranConnectorSchedule extends pulumi.CustomResource {
             resourceInputs["scheduleType"] = state ? state.scheduleType : undefined;
             resourceInputs["syncFrequency"] = state ? state.syncFrequency : undefined;
         } else {
-            const args = argsOrState as FivetranConnectorScheduleArgs | undefined;
+            const args = argsOrState as ConnectorScheduleArgs | undefined;
             if ((!args || args.connectorId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'connectorId'");
             }
@@ -138,14 +138,14 @@ export class FivetranConnectorSchedule extends pulumi.CustomResource {
             resourceInputs["syncFrequency"] = args ? args.syncFrequency : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(FivetranConnectorSchedule.__pulumiType, name, resourceInputs, opts);
+        super(ConnectorSchedule.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering FivetranConnectorSchedule resources.
+ * Input properties used for looking up and filtering ConnectorSchedule resources.
  */
-export interface FivetranConnectorScheduleState {
+export interface ConnectorScheduleState {
     /**
      * The unique identifier for the connector
      */
@@ -173,9 +173,9 @@ export interface FivetranConnectorScheduleState {
 }
 
 /**
- * The set of arguments for constructing a FivetranConnectorSchedule resource.
+ * The set of arguments for constructing a ConnectorSchedule resource.
  */
-export interface FivetranConnectorScheduleArgs {
+export interface ConnectorScheduleArgs {
     /**
      * The unique identifier for the connector
      */

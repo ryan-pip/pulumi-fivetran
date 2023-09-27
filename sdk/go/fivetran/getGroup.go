@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.GetGroup(ctx, &fivetran.GetGroupArgs{
+//			_, err := fivetran.LookupGroup(ctx, &fivetran.LookupGroupArgs{
 //				Id: "anonymous_mystery",
 //			}, nil)
 //			if err != nil {
@@ -39,9 +39,9 @@ import (
 //	}
 //
 // ```
-func GetGroup(ctx *pulumi.Context, args *GetGroupArgs, opts ...pulumi.InvokeOption) (*GetGroupResult, error) {
+func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.InvokeOption) (*LookupGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetGroupResult
+	var rv LookupGroupResult
 	err := ctx.Invoke("fivetran:index/getGroup:getGroup", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -50,13 +50,13 @@ func GetGroup(ctx *pulumi.Context, args *GetGroupArgs, opts ...pulumi.InvokeOpti
 }
 
 // A collection of arguments for invoking getGroup.
-type GetGroupArgs struct {
+type LookupGroupArgs struct {
 	// The unique identifier for the group within the Fivetran system.
 	Id string `pulumi:"id"`
 }
 
 // A collection of values returned by getGroup.
-type GetGroupResult struct {
+type LookupGroupResult struct {
 	// The timestamp of when the group was created in your account.
 	CreatedAt string `pulumi:"createdAt"`
 	// The unique identifier for the group within the Fivetran system.
@@ -65,65 +65,65 @@ type GetGroupResult struct {
 	Name string `pulumi:"name"`
 }
 
-func GetGroupOutput(ctx *pulumi.Context, args GetGroupOutputArgs, opts ...pulumi.InvokeOption) GetGroupResultOutput {
+func LookupGroupOutput(ctx *pulumi.Context, args LookupGroupOutputArgs, opts ...pulumi.InvokeOption) LookupGroupResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetGroupResult, error) {
-			args := v.(GetGroupArgs)
-			r, err := GetGroup(ctx, &args, opts...)
-			var s GetGroupResult
+		ApplyT(func(v interface{}) (LookupGroupResult, error) {
+			args := v.(LookupGroupArgs)
+			r, err := LookupGroup(ctx, &args, opts...)
+			var s LookupGroupResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(GetGroupResultOutput)
+		}).(LookupGroupResultOutput)
 }
 
 // A collection of arguments for invoking getGroup.
-type GetGroupOutputArgs struct {
+type LookupGroupOutputArgs struct {
 	// The unique identifier for the group within the Fivetran system.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
-func (GetGroupOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGroupArgs)(nil)).Elem()
+func (LookupGroupOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGroupArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getGroup.
-type GetGroupResultOutput struct{ *pulumi.OutputState }
+type LookupGroupResultOutput struct{ *pulumi.OutputState }
 
-func (GetGroupResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGroupResult)(nil)).Elem()
+func (LookupGroupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGroupResult)(nil)).Elem()
 }
 
-func (o GetGroupResultOutput) ToGetGroupResultOutput() GetGroupResultOutput {
+func (o LookupGroupResultOutput) ToLookupGroupResultOutput() LookupGroupResultOutput {
 	return o
 }
 
-func (o GetGroupResultOutput) ToGetGroupResultOutputWithContext(ctx context.Context) GetGroupResultOutput {
+func (o LookupGroupResultOutput) ToLookupGroupResultOutputWithContext(ctx context.Context) LookupGroupResultOutput {
 	return o
 }
 
-func (o GetGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupResult] {
-	return pulumix.Output[GetGroupResult]{
+func (o LookupGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGroupResult] {
+	return pulumix.Output[LookupGroupResult]{
 		OutputState: o.OutputState,
 	}
 }
 
 // The timestamp of when the group was created in your account.
-func (o GetGroupResultOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGroupResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+func (o LookupGroupResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 // The unique identifier for the group within the Fivetran system.
-func (o GetGroupResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGroupResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The name of the group within your account.
-func (o GetGroupResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGroupResult) string { return v.Name }).(pulumi.StringOutput)
+func (o LookupGroupResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetGroupResultOutput{})
+	pulumi.RegisterOutputType(LookupGroupResultOutput{})
 }

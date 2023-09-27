@@ -5,21 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
-export interface FivetranConnectorAuth {
+export interface ConnectorAuth {
     accessToken?: pulumi.Input<string>;
-    clientAccess?: pulumi.Input<inputs.FivetranConnectorAuthClientAccess>;
+    clientAccess?: pulumi.Input<inputs.ConnectorAuthClientAccess>;
     realmId?: pulumi.Input<string>;
     refreshToken?: pulumi.Input<string>;
 }
 
-export interface FivetranConnectorAuthClientAccess {
+export interface ConnectorAuthClientAccess {
     clientId?: pulumi.Input<string>;
     clientSecret?: pulumi.Input<string>;
     developerToken?: pulumi.Input<string>;
     userAgent?: pulumi.Input<string>;
 }
 
-export interface FivetranConnectorConfig {
+export interface ConnectorConfig {
     absConnectionMethod?: pulumi.Input<string>;
     absConnectionString?: pulumi.Input<string>;
     absContainerAddress?: pulumi.Input<string>;
@@ -40,14 +40,14 @@ export interface FivetranConnectorConfig {
     accountName?: pulumi.Input<string>;
     accountSyncMode?: pulumi.Input<string>;
     accounts?: pulumi.Input<pulumi.Input<string>[]>;
-    accountsRedditAds?: pulumi.Input<pulumi.Input<inputs.FivetranConnectorConfigAccountsRedditAd>[]>;
+    accountsRedditAds?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigAccountsRedditAd>[]>;
     accountsSyncMode?: pulumi.Input<string>;
     actionBreakdowns?: pulumi.Input<pulumi.Input<string>[]>;
     actionReportTime?: pulumi.Input<string>;
     adAnalytics?: pulumi.Input<string>;
     adUnitView?: pulumi.Input<string>;
     adminApiKey?: pulumi.Input<string>;
-    adobeAnalyticsConfigurations?: pulumi.Input<pulumi.Input<inputs.FivetranConnectorConfigAdobeAnalyticsConfiguration>[]>;
+    adobeAnalyticsConfigurations?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigAdobeAnalyticsConfiguration>[]>;
     advertisables?: pulumi.Input<pulumi.Input<string>[]>;
     advertisers?: pulumi.Input<pulumi.Input<string>[]>;
     advertisersIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -75,7 +75,7 @@ export interface FivetranConnectorConfig {
     apiVersion?: pulumi.Input<string>;
     appId?: pulumi.Input<string>;
     appIds?: pulumi.Input<pulumi.Input<string>[]>;
-    appIdsAppsflyers?: pulumi.Input<pulumi.Input<inputs.FivetranConnectorConfigAppIdsAppsflyer>[]>;
+    appIdsAppsflyers?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigAppIdsAppsflyer>[]>;
     appSpecificPassword?: pulumi.Input<string>;
     appSyncMode?: pulumi.Input<string>;
     appendFileOption?: pulumi.Input<string>;
@@ -148,8 +148,8 @@ export interface FivetranConnectorConfig {
     customEvents?: pulumi.Input<pulumi.Input<string>[]>;
     customFieldIds?: pulumi.Input<pulumi.Input<string>[]>;
     customFloodlightVariables?: pulumi.Input<pulumi.Input<string>[]>;
-    customReports?: pulumi.Input<pulumi.Input<inputs.FivetranConnectorConfigCustomReport>[]>;
-    customTables?: pulumi.Input<pulumi.Input<inputs.FivetranConnectorConfigCustomTable>[]>;
+    customReports?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigCustomReport>[]>;
+    customTables?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigCustomTable>[]>;
     customerId?: pulumi.Input<string>;
     customerListId?: pulumi.Input<string>;
     dailyApiCallLimit?: pulumi.Input<string>;
@@ -287,7 +287,7 @@ export interface FivetranConnectorConfig {
     primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
     privateKey?: pulumi.Input<string>;
     profiles?: pulumi.Input<pulumi.Input<string>[]>;
-    projectCredentials?: pulumi.Input<pulumi.Input<inputs.FivetranConnectorConfigProjectCredential>[]>;
+    projectCredentials?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigProjectCredential>[]>;
     projectId?: pulumi.Input<string>;
     projects?: pulumi.Input<pulumi.Input<string>[]>;
     properties?: pulumi.Input<pulumi.Input<string>[]>;
@@ -305,7 +305,7 @@ export interface FivetranConnectorConfig {
     reportTimezone?: pulumi.Input<string>;
     reportType?: pulumi.Input<string>;
     reportUrl?: pulumi.Input<string>;
-    reports?: pulumi.Input<pulumi.Input<inputs.FivetranConnectorConfigReport>[]>;
+    reports?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigReport>[]>;
     reportsLinkedinAds?: pulumi.Input<pulumi.Input<string>[]>;
     repositories?: pulumi.Input<pulumi.Input<string>[]>;
     resourceToken?: pulumi.Input<string>;
@@ -345,7 +345,7 @@ export interface FivetranConnectorConfig {
     secret?: pulumi.Input<string>;
     secretKey?: pulumi.Input<string>;
     secrets?: pulumi.Input<string>;
-    secretsLists?: pulumi.Input<pulumi.Input<inputs.FivetranConnectorConfigSecretsList>[]>;
+    secretsLists?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigSecretsList>[]>;
     securityProtocol?: pulumi.Input<string>;
     segments?: pulumi.Input<pulumi.Input<string>[]>;
     selectedExports?: pulumi.Input<pulumi.Input<string>[]>;
@@ -454,11 +454,11 @@ export interface FivetranConnectorConfig {
     wsCertificate?: pulumi.Input<string>;
 }
 
-export interface FivetranConnectorConfigAccountsRedditAd {
+export interface ConnectorConfigAccountsRedditAd {
     name?: pulumi.Input<string>;
 }
 
-export interface FivetranConnectorConfigAdobeAnalyticsConfiguration {
+export interface ConnectorConfigAdobeAnalyticsConfiguration {
     calculatedMetrics?: pulumi.Input<pulumi.Input<string>[]>;
     elements?: pulumi.Input<pulumi.Input<string>[]>;
     metrics?: pulumi.Input<pulumi.Input<string>[]>;
@@ -468,11 +468,11 @@ export interface FivetranConnectorConfigAdobeAnalyticsConfiguration {
     table?: pulumi.Input<string>;
 }
 
-export interface FivetranConnectorConfigAppIdsAppsflyer {
+export interface ConnectorConfigAppIdsAppsflyer {
     appId?: pulumi.Input<string>;
 }
 
-export interface FivetranConnectorConfigCustomReport {
+export interface ConnectorConfigCustomReport {
     aggregate?: pulumi.Input<string>;
     conversionsReportIncluded?: pulumi.Input<string>;
     customEventsIncluded?: pulumi.Input<string>;
@@ -487,7 +487,7 @@ export interface FivetranConnectorConfigCustomReport {
     tableName?: pulumi.Input<string>;
 }
 
-export interface FivetranConnectorConfigCustomTable {
+export interface ConnectorConfigCustomTable {
     actionBreakdowns?: pulumi.Input<pulumi.Input<string>[]>;
     actionReportTime?: pulumi.Input<string>;
     aggregation?: pulumi.Input<string>;
@@ -502,13 +502,13 @@ export interface FivetranConnectorConfigCustomTable {
     viewAttributionWindow?: pulumi.Input<string>;
 }
 
-export interface FivetranConnectorConfigProjectCredential {
+export interface ConnectorConfigProjectCredential {
     apiKey?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     secretKey?: pulumi.Input<string>;
 }
 
-export interface FivetranConnectorConfigReport {
+export interface ConnectorConfigReport {
     aggregation?: pulumi.Input<string>;
     attributes?: pulumi.Input<pulumi.Input<string>[]>;
     configType?: pulumi.Input<string>;
@@ -526,12 +526,18 @@ export interface FivetranConnectorConfigReport {
     table?: pulumi.Input<string>;
 }
 
-export interface FivetranConnectorConfigSecretsList {
+export interface ConnectorConfigSecretsList {
     key?: pulumi.Input<string>;
     value?: pulumi.Input<string>;
 }
 
-export interface FivetranConnectorDbtProjectModel {
+export interface ConnectorDestinationSchema {
+    name?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string>;
+    table?: pulumi.Input<string>;
+}
+
+export interface DbtProjectModel {
     /**
      * The unique identifier for the dbt Model within the Fivetran system.
      */
@@ -546,7 +552,7 @@ export interface FivetranConnectorDbtProjectModel {
     scheduled?: pulumi.Input<boolean>;
 }
 
-export interface FivetranConnectorDbtProjectProjectConfig {
+export interface DbtProjectProjectConfig {
     /**
      * Folder in Git repo with your dbt project.
      */
@@ -561,7 +567,7 @@ export interface FivetranConnectorDbtProjectProjectConfig {
     gitRemoteUrl?: pulumi.Input<string>;
 }
 
-export interface FivetranConnectorDbtTransformationSchedule {
+export interface DbtTransformationSchedule {
     /**
      * The set of the days of the week the transformation should be launched on. The following values are supported: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
      */
@@ -580,7 +586,7 @@ export interface FivetranConnectorDbtTransformationSchedule {
     timeOfDay?: pulumi.Input<string>;
 }
 
-export interface FivetranConnectorDestinationConfig {
+export interface DestinationConfig {
     /**
      * The connector authorization settings. Check possible config formats in [create method](https://www.terraform.io/openapi/reference/v1/operation/create_connector/)
      */
@@ -709,52 +715,6 @@ export interface FivetranConnectorDestinationConfig {
      * Database user name
      */
     user?: pulumi.Input<string>;
-}
-
-export interface FivetranConnectorDestinationSchema {
-    name?: pulumi.Input<string>;
-    prefix?: pulumi.Input<string>;
-    table?: pulumi.Input<string>;
-}
-
-export interface FivetranConnectorGroupUsersUser {
-    /**
-     * The email address that the user has associated with their user profile.
-     */
-    email: pulumi.Input<string>;
-    /**
-     * The unique identifier for the user within the account.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * The group role that you would like to assign this new user to. Supported group roles: ‘Destination Administrator‘, ‘Destination Reviewer‘, ‘Destination Analyst‘, ‘Connector Creator‘, or a custom destination role
-     */
-    role: pulumi.Input<string>;
-}
-
-export interface FivetranConnectorSchemaConfigSchema {
-    /**
-     * The boolean value specifying whether the sync for the schema into the destination is enabled.
-     */
-    enabled?: pulumi.Input<string>;
-    /**
-     * The schema name within your destination in accordance with Fivetran conventional rules.
-     */
-    name: pulumi.Input<string>;
-    tables?: pulumi.Input<pulumi.Input<inputs.FivetranConnectorSchemaConfigSchemaTable>[]>;
-}
-
-export interface FivetranConnectorSchemaConfigSchemaTable {
-    columns?: pulumi.Input<pulumi.Input<inputs.FivetranConnectorSchemaConfigSchemaTableColumn>[]>;
-    enabled?: pulumi.Input<string>;
-    name: pulumi.Input<string>;
-    syncMode?: pulumi.Input<string>;
-}
-
-export interface FivetranConnectorSchemaConfigSchemaTableColumn {
-    enabled?: pulumi.Input<string>;
-    hashed?: pulumi.Input<string>;
-    name: pulumi.Input<string>;
 }
 
 export interface GetConnectorConfig {
@@ -2639,4 +2599,44 @@ export interface GetWebhooksWebhookArgs {
      * Your webhooks URL endpoint for your application
      */
     url?: pulumi.Input<string>;
+}
+
+export interface GroupUsersUser {
+    /**
+     * The email address that the user has associated with their user profile.
+     */
+    email: pulumi.Input<string>;
+    /**
+     * The unique identifier for the user within the account.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The group role that you would like to assign this new user to. Supported group roles: ‘Destination Administrator‘, ‘Destination Reviewer‘, ‘Destination Analyst‘, ‘Connector Creator‘, or a custom destination role
+     */
+    role: pulumi.Input<string>;
+}
+
+export interface SchemaConfigSchema {
+    /**
+     * The boolean value specifying whether the sync for the schema into the destination is enabled.
+     */
+    enabled?: pulumi.Input<string>;
+    /**
+     * The schema name within your destination in accordance with Fivetran conventional rules.
+     */
+    name: pulumi.Input<string>;
+    tables?: pulumi.Input<pulumi.Input<inputs.SchemaConfigSchemaTable>[]>;
+}
+
+export interface SchemaConfigSchemaTable {
+    columns?: pulumi.Input<pulumi.Input<inputs.SchemaConfigSchemaTableColumn>[]>;
+    enabled?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+    syncMode?: pulumi.Input<string>;
+}
+
+export interface SchemaConfigSchemaTableColumn {
+    enabled?: pulumi.Input<string>;
+    hashed?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
 }

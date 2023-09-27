@@ -11,16 +11,16 @@ from . import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['FivetranConnectorSchemaConfigArgs', 'FivetranConnectorSchemaConfig']
+__all__ = ['SchemaConfigArgs', 'SchemaConfig']
 
 @pulumi.input_type
-class FivetranConnectorSchemaConfigArgs:
+class SchemaConfigArgs:
     def __init__(__self__, *,
                  connector_id: pulumi.Input[str],
                  schema_change_handling: pulumi.Input[str],
-                 schemas: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorSchemaConfigSchemaArgs']]]] = None):
+                 schemas: Optional[pulumi.Input[Sequence[pulumi.Input['SchemaConfigSchemaArgs']]]] = None):
         """
-        The set of arguments for constructing a FivetranConnectorSchemaConfig resource.
+        The set of arguments for constructing a SchemaConfig resource.
         :param pulumi.Input[str] connector_id: The unique identifier for the connector within the Fivetran system.
         """
         pulumi.set(__self__, "connector_id", connector_id)
@@ -51,22 +51,22 @@ class FivetranConnectorSchemaConfigArgs:
 
     @property
     @pulumi.getter
-    def schemas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorSchemaConfigSchemaArgs']]]]:
+    def schemas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SchemaConfigSchemaArgs']]]]:
         return pulumi.get(self, "schemas")
 
     @schemas.setter
-    def schemas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorSchemaConfigSchemaArgs']]]]):
+    def schemas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SchemaConfigSchemaArgs']]]]):
         pulumi.set(self, "schemas", value)
 
 
 @pulumi.input_type
-class _FivetranConnectorSchemaConfigState:
+class _SchemaConfigState:
     def __init__(__self__, *,
                  connector_id: Optional[pulumi.Input[str]] = None,
                  schema_change_handling: Optional[pulumi.Input[str]] = None,
-                 schemas: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorSchemaConfigSchemaArgs']]]] = None):
+                 schemas: Optional[pulumi.Input[Sequence[pulumi.Input['SchemaConfigSchemaArgs']]]] = None):
         """
-        Input properties used for looking up and filtering FivetranConnectorSchemaConfig resources.
+        Input properties used for looking up and filtering SchemaConfig resources.
         :param pulumi.Input[str] connector_id: The unique identifier for the connector within the Fivetran system.
         """
         if connector_id is not None:
@@ -99,30 +99,30 @@ class _FivetranConnectorSchemaConfigState:
 
     @property
     @pulumi.getter
-    def schemas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorSchemaConfigSchemaArgs']]]]:
+    def schemas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SchemaConfigSchemaArgs']]]]:
         return pulumi.get(self, "schemas")
 
     @schemas.setter
-    def schemas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorSchemaConfigSchemaArgs']]]]):
+    def schemas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SchemaConfigSchemaArgs']]]]):
         pulumi.set(self, "schemas", value)
 
 
-class FivetranConnectorSchemaConfig(pulumi.CustomResource):
+class SchemaConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connector_id: Optional[pulumi.Input[str]] = None,
                  schema_change_handling: Optional[pulumi.Input[str]] = None,
-                 schemas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FivetranConnectorSchemaConfigSchemaArgs']]]]] = None,
+                 schemas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SchemaConfigSchemaArgs']]]]] = None,
                  __props__=None):
         """
         ## ---
 
-        page_title: "Resource: FivetranConnectorSchemaConfig"
+        page_title: "Resource: SchemaConfig"
         ---
 
-        # Resource: FivetranConnectorSchemaConfig
+        # Resource: SchemaConfig
 
         This resource allows you to manage the Standard Configuration settings of a connector:
          - Define the schema change handling settings
@@ -151,13 +151,13 @@ class FivetranConnectorSchemaConfig(pulumi.CustomResource):
         1. To import an existing `fivetran_connector_schema_config` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard. 2. Retrieve all connectors in a particular group using the [fivetran_group_connectors data source](/docs/data-sources/group_connectors). To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_connector_schema_config" "my_imported_connector_schema_config" { }
 
         ```sh
-         $ pulumi import fivetran:index/fivetranConnectorSchemaConfig:FivetranConnectorSchemaConfig
+         $ pulumi import fivetran:index/schemaConfig:SchemaConfig
 
         Run the `terraform import` command
         ```
 
         ```sh
-         $ pulumi import fivetran:index/fivetranConnectorSchemaConfig:FivetranConnectorSchemaConfig my_imported_connector_schema_config {your Fivetran Connector ID}
+         $ pulumi import fivetran:index/schemaConfig:SchemaConfig my_imported_connector_schema_config {your Fivetran Connector ID}
         ```
 
         5.  
@@ -172,15 +172,15 @@ class FivetranConnectorSchemaConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: FivetranConnectorSchemaConfigArgs,
+                 args: SchemaConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## ---
 
-        page_title: "Resource: FivetranConnectorSchemaConfig"
+        page_title: "Resource: SchemaConfig"
         ---
 
-        # Resource: FivetranConnectorSchemaConfig
+        # Resource: SchemaConfig
 
         This resource allows you to manage the Standard Configuration settings of a connector:
          - Define the schema change handling settings
@@ -209,13 +209,13 @@ class FivetranConnectorSchemaConfig(pulumi.CustomResource):
         1. To import an existing `fivetran_connector_schema_config` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard. 2. Retrieve all connectors in a particular group using the [fivetran_group_connectors data source](/docs/data-sources/group_connectors). To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_connector_schema_config" "my_imported_connector_schema_config" { }
 
         ```sh
-         $ pulumi import fivetran:index/fivetranConnectorSchemaConfig:FivetranConnectorSchemaConfig
+         $ pulumi import fivetran:index/schemaConfig:SchemaConfig
 
         Run the `terraform import` command
         ```
 
         ```sh
-         $ pulumi import fivetran:index/fivetranConnectorSchemaConfig:FivetranConnectorSchemaConfig my_imported_connector_schema_config {your Fivetran Connector ID}
+         $ pulumi import fivetran:index/schemaConfig:SchemaConfig my_imported_connector_schema_config {your Fivetran Connector ID}
         ```
 
         5.  
@@ -223,12 +223,12 @@ class FivetranConnectorSchemaConfig(pulumi.CustomResource):
         Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_connector_schema_config.my_imported_connector_schema_config' 6. Copy the values and paste them to your `.tf` configuration.
 
         :param str resource_name: The name of the resource.
-        :param FivetranConnectorSchemaConfigArgs args: The arguments to use to populate this resource's properties.
+        :param SchemaConfigArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(FivetranConnectorSchemaConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SchemaConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -239,7 +239,7 @@ class FivetranConnectorSchemaConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connector_id: Optional[pulumi.Input[str]] = None,
                  schema_change_handling: Optional[pulumi.Input[str]] = None,
-                 schemas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FivetranConnectorSchemaConfigSchemaArgs']]]]] = None,
+                 schemas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SchemaConfigSchemaArgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -247,7 +247,7 @@ class FivetranConnectorSchemaConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = FivetranConnectorSchemaConfigArgs.__new__(FivetranConnectorSchemaConfigArgs)
+            __props__ = SchemaConfigArgs.__new__(SchemaConfigArgs)
 
             if connector_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connector_id'")
@@ -256,8 +256,8 @@ class FivetranConnectorSchemaConfig(pulumi.CustomResource):
                 raise TypeError("Missing required property 'schema_change_handling'")
             __props__.__dict__["schema_change_handling"] = schema_change_handling
             __props__.__dict__["schemas"] = schemas
-        super(FivetranConnectorSchemaConfig, __self__).__init__(
-            'fivetran:index/fivetranConnectorSchemaConfig:FivetranConnectorSchemaConfig',
+        super(SchemaConfig, __self__).__init__(
+            'fivetran:index/schemaConfig:SchemaConfig',
             resource_name,
             __props__,
             opts)
@@ -268,9 +268,9 @@ class FivetranConnectorSchemaConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             connector_id: Optional[pulumi.Input[str]] = None,
             schema_change_handling: Optional[pulumi.Input[str]] = None,
-            schemas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FivetranConnectorSchemaConfigSchemaArgs']]]]] = None) -> 'FivetranConnectorSchemaConfig':
+            schemas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SchemaConfigSchemaArgs']]]]] = None) -> 'SchemaConfig':
         """
-        Get an existing FivetranConnectorSchemaConfig resource's state with the given name, id, and optional extra
+        Get an existing SchemaConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -280,12 +280,12 @@ class FivetranConnectorSchemaConfig(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _FivetranConnectorSchemaConfigState.__new__(_FivetranConnectorSchemaConfigState)
+        __props__ = _SchemaConfigState.__new__(_SchemaConfigState)
 
         __props__.__dict__["connector_id"] = connector_id
         __props__.__dict__["schema_change_handling"] = schema_change_handling
         __props__.__dict__["schemas"] = schemas
-        return FivetranConnectorSchemaConfig(resource_name, opts=opts, __props__=__props__)
+        return SchemaConfig(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="connectorId")
@@ -302,6 +302,6 @@ class FivetranConnectorSchemaConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def schemas(self) -> pulumi.Output[Optional[Sequence['outputs.FivetranConnectorSchemaConfigSchema']]]:
+    def schemas(self) -> pulumi.Output[Optional[Sequence['outputs.SchemaConfigSchema']]]:
         return pulumi.get(self, "schemas")
 

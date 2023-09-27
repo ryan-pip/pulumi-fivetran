@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@pulumi/fivetran";
  *
- * const group = new fivetran.FivetranConnectorGroup("group", {});
+ * const group = new fivetran.Group("group", {});
  * ```
  *
  * ## Import
@@ -21,20 +21,20 @@ import * as utilities from "./utilities";
  * 1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_group" "my_imported_fivetran_group" { }
  *
  * ```sh
- *  $ pulumi import fivetran:index/fivetranConnectorGroup:FivetranConnectorGroup
+ *  $ pulumi import fivetran:index/group:Group
  *
  * Run the `terraform import` command
  * ```
  *
  * ```sh
- *  $ pulumi import fivetran:index/fivetranConnectorGroup:FivetranConnectorGroup my_imported_fivetran_group {your Destination Group ID}
+ *  $ pulumi import fivetran:index/group:Group my_imported_fivetran_group {your Destination Group ID}
  * ```
  *
  *  4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_group.my_imported_fivetran_group' 5. Copy the values and paste them to your `.tf` configuration.
  */
-export class FivetranConnectorGroup extends pulumi.CustomResource {
+export class Group extends pulumi.CustomResource {
     /**
-     * Get an existing FivetranConnectorGroup resource's state with the given name, ID, and optional extra
+     * Get an existing Group resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -42,22 +42,22 @@ export class FivetranConnectorGroup extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: FivetranConnectorGroupState, opts?: pulumi.CustomResourceOptions): FivetranConnectorGroup {
-        return new FivetranConnectorGroup(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GroupState, opts?: pulumi.CustomResourceOptions): Group {
+        return new Group(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'fivetran:index/fivetranConnectorGroup:FivetranConnectorGroup';
+    public static readonly __pulumiType = 'fivetran:index/group:Group';
 
     /**
-     * Returns true if the given object is an instance of FivetranConnectorGroup.  This is designed to work even
+     * Returns true if the given object is an instance of Group.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is FivetranConnectorGroup {
+    public static isInstance(obj: any): obj is Group {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === FivetranConnectorGroup.__pulumiType;
+        return obj['__pulumiType'] === Group.__pulumiType;
     }
 
     /**
@@ -71,36 +71,36 @@ export class FivetranConnectorGroup extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
 
     /**
-     * Create a FivetranConnectorGroup resource with the given unique name, arguments, and options.
+     * Create a Group resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: FivetranConnectorGroupArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: FivetranConnectorGroupArgs | FivetranConnectorGroupState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args?: GroupArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: GroupArgs | GroupState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as FivetranConnectorGroupState | undefined;
+            const state = argsOrState as GroupState | undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
         } else {
-            const args = argsOrState as FivetranConnectorGroupArgs | undefined;
+            const args = argsOrState as GroupArgs | undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["lastUpdated"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(FivetranConnectorGroup.__pulumiType, name, resourceInputs, opts);
+        super(Group.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering FivetranConnectorGroup resources.
+ * Input properties used for looking up and filtering Group resources.
  */
-export interface FivetranConnectorGroupState {
+export interface GroupState {
     /**
      * The timestamp of when the group was created in your account.
      */
@@ -113,9 +113,9 @@ export interface FivetranConnectorGroupState {
 }
 
 /**
- * The set of arguments for constructing a FivetranConnectorGroup resource.
+ * The set of arguments for constructing a Group resource.
  */
-export interface FivetranConnectorGroupArgs {
+export interface GroupArgs {
     /**
      * The name of the group within your account.
      */

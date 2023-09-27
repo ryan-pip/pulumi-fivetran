@@ -11,23 +11,23 @@ from . import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['FivetranConnectorDbtTransformationArgs', 'FivetranConnectorDbtTransformation']
+__all__ = ['DbtTransformationArgs', 'DbtTransformation']
 
 @pulumi.input_type
-class FivetranConnectorDbtTransformationArgs:
+class DbtTransformationArgs:
     def __init__(__self__, *,
                  dbt_model_name: pulumi.Input[str],
                  dbt_project_id: pulumi.Input[str],
                  paused: pulumi.Input[bool],
                  run_tests: pulumi.Input[bool],
-                 schedule: pulumi.Input['FivetranConnectorDbtTransformationScheduleArgs']):
+                 schedule: pulumi.Input['DbtTransformationScheduleArgs']):
         """
-        The set of arguments for constructing a FivetranConnectorDbtTransformation resource.
+        The set of arguments for constructing a DbtTransformation resource.
         :param pulumi.Input[str] dbt_model_name: Target dbt Model name.
         :param pulumi.Input[str] dbt_project_id: The unique identifier for the dbt Project within the Fivetran system.
         :param pulumi.Input[bool] paused: The field indicating whether the transformation will be created in paused state. By default, the value is false.
         :param pulumi.Input[bool] run_tests: The field indicating whether the tests have been configured for dbt Transformation. By default, the value is false.
-        :param pulumi.Input['FivetranConnectorDbtTransformationScheduleArgs'] schedule: dbt Transformation schedule parameters.
+        :param pulumi.Input['DbtTransformationScheduleArgs'] schedule: dbt Transformation schedule parameters.
         """
         pulumi.set(__self__, "dbt_model_name", dbt_model_name)
         pulumi.set(__self__, "dbt_project_id", dbt_project_id)
@@ -85,19 +85,19 @@ class FivetranConnectorDbtTransformationArgs:
 
     @property
     @pulumi.getter
-    def schedule(self) -> pulumi.Input['FivetranConnectorDbtTransformationScheduleArgs']:
+    def schedule(self) -> pulumi.Input['DbtTransformationScheduleArgs']:
         """
         dbt Transformation schedule parameters.
         """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: pulumi.Input['FivetranConnectorDbtTransformationScheduleArgs']):
+    def schedule(self, value: pulumi.Input['DbtTransformationScheduleArgs']):
         pulumi.set(self, "schedule", value)
 
 
 @pulumi.input_type
-class _FivetranConnectorDbtTransformationState:
+class _DbtTransformationState:
     def __init__(__self__, *,
                  connector_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
@@ -108,9 +108,9 @@ class _FivetranConnectorDbtTransformationState:
                  output_model_name: Optional[pulumi.Input[str]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  run_tests: Optional[pulumi.Input[bool]] = None,
-                 schedule: Optional[pulumi.Input['FivetranConnectorDbtTransformationScheduleArgs']] = None):
+                 schedule: Optional[pulumi.Input['DbtTransformationScheduleArgs']] = None):
         """
-        Input properties used for looking up and filtering FivetranConnectorDbtTransformation resources.
+        Input properties used for looking up and filtering DbtTransformation resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] connector_ids: Identifiers of related connectors.
         :param pulumi.Input[str] created_at: The timestamp of the dbt Transformation creation.
         :param pulumi.Input[str] dbt_model_id: The unique identifier for the dbt Model within the Fivetran system.
@@ -120,7 +120,7 @@ class _FivetranConnectorDbtTransformationState:
         :param pulumi.Input[str] output_model_name: The dbt Model name.
         :param pulumi.Input[bool] paused: The field indicating whether the transformation will be created in paused state. By default, the value is false.
         :param pulumi.Input[bool] run_tests: The field indicating whether the tests have been configured for dbt Transformation. By default, the value is false.
-        :param pulumi.Input['FivetranConnectorDbtTransformationScheduleArgs'] schedule: dbt Transformation schedule parameters.
+        :param pulumi.Input['DbtTransformationScheduleArgs'] schedule: dbt Transformation schedule parameters.
         """
         if connector_ids is not None:
             pulumi.set(__self__, "connector_ids", connector_ids)
@@ -253,18 +253,18 @@ class _FivetranConnectorDbtTransformationState:
 
     @property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input['FivetranConnectorDbtTransformationScheduleArgs']]:
+    def schedule(self) -> Optional[pulumi.Input['DbtTransformationScheduleArgs']]:
         """
         dbt Transformation schedule parameters.
         """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input['FivetranConnectorDbtTransformationScheduleArgs']]):
+    def schedule(self, value: Optional[pulumi.Input['DbtTransformationScheduleArgs']]):
         pulumi.set(self, "schedule", value)
 
 
-class FivetranConnectorDbtTransformation(pulumi.CustomResource):
+class DbtTransformation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -273,7 +273,7 @@ class FivetranConnectorDbtTransformation(pulumi.CustomResource):
                  dbt_project_id: Optional[pulumi.Input[str]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  run_tests: Optional[pulumi.Input[bool]] = None,
-                 schedule: Optional[pulumi.Input[pulumi.InputType['FivetranConnectorDbtTransformationScheduleArgs']]] = None,
+                 schedule: Optional[pulumi.Input[pulumi.InputType['DbtTransformationScheduleArgs']]] = None,
                  __props__=None):
         """
         Resource is in ALPHA state.
@@ -287,12 +287,12 @@ class FivetranConnectorDbtTransformation(pulumi.CustomResource):
         import pulumi
         import pulumi_fivetran as fivetran
 
-        transformation = fivetran.FivetranConnectorDbtTransformation("transformation",
+        transformation = fivetran.DbtTransformation("transformation",
             dbt_model_name="dbt_model_name",
             dbt_project_id="dbt_project_id",
             paused=False,
             run_tests=False,
-            schedule=fivetran.FivetranConnectorDbtTransformationScheduleArgs(
+            schedule=fivetran.DbtTransformationScheduleArgs(
                 days_of_weeks=[
                     "MONDAY",
                     "SATURDAY",
@@ -307,13 +307,13 @@ class FivetranConnectorDbtTransformation(pulumi.CustomResource):
         1. To import an existing `fivetran_dbt_transformation` resource into your Terraform state, you need to get **Transformation ID** on the transformation page in your Fivetran dashboard. 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_dbt_transformation" "my_imported_fivetran_dbt_transformation" { }
 
         ```sh
-         $ pulumi import fivetran:index/fivetranConnectorDbtTransformation:FivetranConnectorDbtTransformation
+         $ pulumi import fivetran:index/dbtTransformation:DbtTransformation
 
         Run the `terraform import` command
         ```
 
         ```sh
-         $ pulumi import fivetran:index/fivetranConnectorDbtTransformation:FivetranConnectorDbtTransformation my_imported_fivetran_dbt_transformation {Transformation ID}
+         $ pulumi import fivetran:index/dbtTransformation:DbtTransformation my_imported_fivetran_dbt_transformation {Transformation ID}
         ```
 
          4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_dbt_transformation.my_imported_fivetran_dbt_transformation' 5. Copy the values and paste them to your `.tf` configuration.
@@ -324,13 +324,13 @@ class FivetranConnectorDbtTransformation(pulumi.CustomResource):
         :param pulumi.Input[str] dbt_project_id: The unique identifier for the dbt Project within the Fivetran system.
         :param pulumi.Input[bool] paused: The field indicating whether the transformation will be created in paused state. By default, the value is false.
         :param pulumi.Input[bool] run_tests: The field indicating whether the tests have been configured for dbt Transformation. By default, the value is false.
-        :param pulumi.Input[pulumi.InputType['FivetranConnectorDbtTransformationScheduleArgs']] schedule: dbt Transformation schedule parameters.
+        :param pulumi.Input[pulumi.InputType['DbtTransformationScheduleArgs']] schedule: dbt Transformation schedule parameters.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: FivetranConnectorDbtTransformationArgs,
+                 args: DbtTransformationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource is in ALPHA state.
@@ -344,12 +344,12 @@ class FivetranConnectorDbtTransformation(pulumi.CustomResource):
         import pulumi
         import pulumi_fivetran as fivetran
 
-        transformation = fivetran.FivetranConnectorDbtTransformation("transformation",
+        transformation = fivetran.DbtTransformation("transformation",
             dbt_model_name="dbt_model_name",
             dbt_project_id="dbt_project_id",
             paused=False,
             run_tests=False,
-            schedule=fivetran.FivetranConnectorDbtTransformationScheduleArgs(
+            schedule=fivetran.DbtTransformationScheduleArgs(
                 days_of_weeks=[
                     "MONDAY",
                     "SATURDAY",
@@ -364,24 +364,24 @@ class FivetranConnectorDbtTransformation(pulumi.CustomResource):
         1. To import an existing `fivetran_dbt_transformation` resource into your Terraform state, you need to get **Transformation ID** on the transformation page in your Fivetran dashboard. 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_dbt_transformation" "my_imported_fivetran_dbt_transformation" { }
 
         ```sh
-         $ pulumi import fivetran:index/fivetranConnectorDbtTransformation:FivetranConnectorDbtTransformation
+         $ pulumi import fivetran:index/dbtTransformation:DbtTransformation
 
         Run the `terraform import` command
         ```
 
         ```sh
-         $ pulumi import fivetran:index/fivetranConnectorDbtTransformation:FivetranConnectorDbtTransformation my_imported_fivetran_dbt_transformation {Transformation ID}
+         $ pulumi import fivetran:index/dbtTransformation:DbtTransformation my_imported_fivetran_dbt_transformation {Transformation ID}
         ```
 
          4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_dbt_transformation.my_imported_fivetran_dbt_transformation' 5. Copy the values and paste them to your `.tf` configuration.
 
         :param str resource_name: The name of the resource.
-        :param FivetranConnectorDbtTransformationArgs args: The arguments to use to populate this resource's properties.
+        :param DbtTransformationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(FivetranConnectorDbtTransformationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DbtTransformationArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -394,7 +394,7 @@ class FivetranConnectorDbtTransformation(pulumi.CustomResource):
                  dbt_project_id: Optional[pulumi.Input[str]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  run_tests: Optional[pulumi.Input[bool]] = None,
-                 schedule: Optional[pulumi.Input[pulumi.InputType['FivetranConnectorDbtTransformationScheduleArgs']]] = None,
+                 schedule: Optional[pulumi.Input[pulumi.InputType['DbtTransformationScheduleArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -402,7 +402,7 @@ class FivetranConnectorDbtTransformation(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = FivetranConnectorDbtTransformationArgs.__new__(FivetranConnectorDbtTransformationArgs)
+            __props__ = DbtTransformationArgs.__new__(DbtTransformationArgs)
 
             if dbt_model_name is None and not opts.urn:
                 raise TypeError("Missing required property 'dbt_model_name'")
@@ -424,8 +424,8 @@ class FivetranConnectorDbtTransformation(pulumi.CustomResource):
             __props__.__dict__["dbt_model_id"] = None
             __props__.__dict__["model_ids"] = None
             __props__.__dict__["output_model_name"] = None
-        super(FivetranConnectorDbtTransformation, __self__).__init__(
-            'fivetran:index/fivetranConnectorDbtTransformation:FivetranConnectorDbtTransformation',
+        super(DbtTransformation, __self__).__init__(
+            'fivetran:index/dbtTransformation:DbtTransformation',
             resource_name,
             __props__,
             opts)
@@ -443,9 +443,9 @@ class FivetranConnectorDbtTransformation(pulumi.CustomResource):
             output_model_name: Optional[pulumi.Input[str]] = None,
             paused: Optional[pulumi.Input[bool]] = None,
             run_tests: Optional[pulumi.Input[bool]] = None,
-            schedule: Optional[pulumi.Input[pulumi.InputType['FivetranConnectorDbtTransformationScheduleArgs']]] = None) -> 'FivetranConnectorDbtTransformation':
+            schedule: Optional[pulumi.Input[pulumi.InputType['DbtTransformationScheduleArgs']]] = None) -> 'DbtTransformation':
         """
-        Get an existing FivetranConnectorDbtTransformation resource's state with the given name, id, and optional extra
+        Get an existing DbtTransformation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -460,11 +460,11 @@ class FivetranConnectorDbtTransformation(pulumi.CustomResource):
         :param pulumi.Input[str] output_model_name: The dbt Model name.
         :param pulumi.Input[bool] paused: The field indicating whether the transformation will be created in paused state. By default, the value is false.
         :param pulumi.Input[bool] run_tests: The field indicating whether the tests have been configured for dbt Transformation. By default, the value is false.
-        :param pulumi.Input[pulumi.InputType['FivetranConnectorDbtTransformationScheduleArgs']] schedule: dbt Transformation schedule parameters.
+        :param pulumi.Input[pulumi.InputType['DbtTransformationScheduleArgs']] schedule: dbt Transformation schedule parameters.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _FivetranConnectorDbtTransformationState.__new__(_FivetranConnectorDbtTransformationState)
+        __props__ = _DbtTransformationState.__new__(_DbtTransformationState)
 
         __props__.__dict__["connector_ids"] = connector_ids
         __props__.__dict__["created_at"] = created_at
@@ -476,7 +476,7 @@ class FivetranConnectorDbtTransformation(pulumi.CustomResource):
         __props__.__dict__["paused"] = paused
         __props__.__dict__["run_tests"] = run_tests
         __props__.__dict__["schedule"] = schedule
-        return FivetranConnectorDbtTransformation(resource_name, opts=opts, __props__=__props__)
+        return DbtTransformation(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="connectorIds")
@@ -552,7 +552,7 @@ class FivetranConnectorDbtTransformation(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def schedule(self) -> pulumi.Output['outputs.FivetranConnectorDbtTransformationSchedule']:
+    def schedule(self) -> pulumi.Output['outputs.DbtTransformationSchedule']:
         """
         dbt Transformation schedule parameters.
         """

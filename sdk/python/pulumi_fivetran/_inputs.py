@@ -10,26 +10,26 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
-    'FivetranConnectorAuthArgs',
-    'FivetranConnectorAuthClientAccessArgs',
-    'FivetranConnectorConfigArgs',
-    'FivetranConnectorConfigAccountsRedditAdArgs',
-    'FivetranConnectorConfigAdobeAnalyticsConfigurationArgs',
-    'FivetranConnectorConfigAppIdsAppsflyerArgs',
-    'FivetranConnectorConfigCustomReportArgs',
-    'FivetranConnectorConfigCustomTableArgs',
-    'FivetranConnectorConfigProjectCredentialArgs',
-    'FivetranConnectorConfigReportArgs',
-    'FivetranConnectorConfigSecretsListArgs',
-    'FivetranConnectorDbtProjectModelArgs',
-    'FivetranConnectorDbtProjectProjectConfigArgs',
-    'FivetranConnectorDbtTransformationScheduleArgs',
-    'FivetranConnectorDestinationConfigArgs',
-    'FivetranConnectorDestinationSchemaArgs',
-    'FivetranConnectorGroupUsersUserArgs',
-    'FivetranConnectorSchemaConfigSchemaArgs',
-    'FivetranConnectorSchemaConfigSchemaTableArgs',
-    'FivetranConnectorSchemaConfigSchemaTableColumnArgs',
+    'ConnectorAuthArgs',
+    'ConnectorAuthClientAccessArgs',
+    'ConnectorConfigArgs',
+    'ConnectorConfigAccountsRedditAdArgs',
+    'ConnectorConfigAdobeAnalyticsConfigurationArgs',
+    'ConnectorConfigAppIdsAppsflyerArgs',
+    'ConnectorConfigCustomReportArgs',
+    'ConnectorConfigCustomTableArgs',
+    'ConnectorConfigProjectCredentialArgs',
+    'ConnectorConfigReportArgs',
+    'ConnectorConfigSecretsListArgs',
+    'ConnectorDestinationSchemaArgs',
+    'DbtProjectModelArgs',
+    'DbtProjectProjectConfigArgs',
+    'DbtTransformationScheduleArgs',
+    'DestinationConfigArgs',
+    'GroupUsersUserArgs',
+    'SchemaConfigSchemaArgs',
+    'SchemaConfigSchemaTableArgs',
+    'SchemaConfigSchemaTableColumnArgs',
     'GetConnectorConfigArgs',
     'GetConnectorConfigAccountsRedditAdArgs',
     'GetConnectorConfigAdobeAnalyticsConfigurationArgs',
@@ -55,10 +55,10 @@ __all__ = [
 ]
 
 @pulumi.input_type
-class FivetranConnectorAuthArgs:
+class ConnectorAuthArgs:
     def __init__(__self__, *,
                  access_token: Optional[pulumi.Input[str]] = None,
-                 client_access: Optional[pulumi.Input['FivetranConnectorAuthClientAccessArgs']] = None,
+                 client_access: Optional[pulumi.Input['ConnectorAuthClientAccessArgs']] = None,
                  realm_id: Optional[pulumi.Input[str]] = None,
                  refresh_token: Optional[pulumi.Input[str]] = None):
         if access_token is not None:
@@ -81,11 +81,11 @@ class FivetranConnectorAuthArgs:
 
     @property
     @pulumi.getter(name="clientAccess")
-    def client_access(self) -> Optional[pulumi.Input['FivetranConnectorAuthClientAccessArgs']]:
+    def client_access(self) -> Optional[pulumi.Input['ConnectorAuthClientAccessArgs']]:
         return pulumi.get(self, "client_access")
 
     @client_access.setter
-    def client_access(self, value: Optional[pulumi.Input['FivetranConnectorAuthClientAccessArgs']]):
+    def client_access(self, value: Optional[pulumi.Input['ConnectorAuthClientAccessArgs']]):
         pulumi.set(self, "client_access", value)
 
     @property
@@ -108,7 +108,7 @@ class FivetranConnectorAuthArgs:
 
 
 @pulumi.input_type
-class FivetranConnectorAuthClientAccessArgs:
+class ConnectorAuthClientAccessArgs:
     def __init__(__self__, *,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
@@ -161,7 +161,7 @@ class FivetranConnectorAuthClientAccessArgs:
 
 
 @pulumi.input_type
-class FivetranConnectorConfigArgs:
+class ConnectorConfigArgs:
     def __init__(__self__, *,
                  abs_connection_method: Optional[pulumi.Input[str]] = None,
                  abs_connection_string: Optional[pulumi.Input[str]] = None,
@@ -183,14 +183,14 @@ class FivetranConnectorConfigArgs:
                  account_name: Optional[pulumi.Input[str]] = None,
                  account_sync_mode: Optional[pulumi.Input[str]] = None,
                  accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 accounts_reddit_ads: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorConfigAccountsRedditAdArgs']]]] = None,
+                 accounts_reddit_ads: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigAccountsRedditAdArgs']]]] = None,
                  accounts_sync_mode: Optional[pulumi.Input[str]] = None,
                  action_breakdowns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  action_report_time: Optional[pulumi.Input[str]] = None,
                  ad_analytics: Optional[pulumi.Input[str]] = None,
                  ad_unit_view: Optional[pulumi.Input[str]] = None,
                  admin_api_key: Optional[pulumi.Input[str]] = None,
-                 adobe_analytics_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorConfigAdobeAnalyticsConfigurationArgs']]]] = None,
+                 adobe_analytics_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigAdobeAnalyticsConfigurationArgs']]]] = None,
                  advertisables: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  advertisers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  advertisers_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -218,7 +218,7 @@ class FivetranConnectorConfigArgs:
                  api_version: Optional[pulumi.Input[str]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  app_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 app_ids_appsflyers: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorConfigAppIdsAppsflyerArgs']]]] = None,
+                 app_ids_appsflyers: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigAppIdsAppsflyerArgs']]]] = None,
                  app_specific_password: Optional[pulumi.Input[str]] = None,
                  app_sync_mode: Optional[pulumi.Input[str]] = None,
                  append_file_option: Optional[pulumi.Input[str]] = None,
@@ -291,8 +291,8 @@ class FivetranConnectorConfigArgs:
                  custom_events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  custom_field_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  custom_floodlight_variables: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 custom_reports: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorConfigCustomReportArgs']]]] = None,
-                 custom_tables: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorConfigCustomTableArgs']]]] = None,
+                 custom_reports: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigCustomReportArgs']]]] = None,
+                 custom_tables: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigCustomTableArgs']]]] = None,
                  customer_id: Optional[pulumi.Input[str]] = None,
                  customer_list_id: Optional[pulumi.Input[str]] = None,
                  daily_api_call_limit: Optional[pulumi.Input[str]] = None,
@@ -430,7 +430,7 @@ class FivetranConnectorConfigArgs:
                  primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
                  profiles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 project_credentials: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorConfigProjectCredentialArgs']]]] = None,
+                 project_credentials: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigProjectCredentialArgs']]]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -448,7 +448,7 @@ class FivetranConnectorConfigArgs:
                  report_timezone: Optional[pulumi.Input[str]] = None,
                  report_type: Optional[pulumi.Input[str]] = None,
                  report_url: Optional[pulumi.Input[str]] = None,
-                 reports: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorConfigReportArgs']]]] = None,
+                 reports: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigReportArgs']]]] = None,
                  reports_linkedin_ads: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  repositories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_token: Optional[pulumi.Input[str]] = None,
@@ -488,7 +488,7 @@ class FivetranConnectorConfigArgs:
                  secret: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
                  secrets: Optional[pulumi.Input[str]] = None,
-                 secrets_lists: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorConfigSecretsListArgs']]]] = None,
+                 secrets_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigSecretsListArgs']]]] = None,
                  security_protocol: Optional[pulumi.Input[str]] = None,
                  segments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  selected_exports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1642,11 +1642,11 @@ class FivetranConnectorConfigArgs:
 
     @property
     @pulumi.getter(name="accountsRedditAds")
-    def accounts_reddit_ads(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorConfigAccountsRedditAdArgs']]]]:
+    def accounts_reddit_ads(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigAccountsRedditAdArgs']]]]:
         return pulumi.get(self, "accounts_reddit_ads")
 
     @accounts_reddit_ads.setter
-    def accounts_reddit_ads(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorConfigAccountsRedditAdArgs']]]]):
+    def accounts_reddit_ads(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigAccountsRedditAdArgs']]]]):
         pulumi.set(self, "accounts_reddit_ads", value)
 
     @property
@@ -1705,11 +1705,11 @@ class FivetranConnectorConfigArgs:
 
     @property
     @pulumi.getter(name="adobeAnalyticsConfigurations")
-    def adobe_analytics_configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorConfigAdobeAnalyticsConfigurationArgs']]]]:
+    def adobe_analytics_configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigAdobeAnalyticsConfigurationArgs']]]]:
         return pulumi.get(self, "adobe_analytics_configurations")
 
     @adobe_analytics_configurations.setter
-    def adobe_analytics_configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorConfigAdobeAnalyticsConfigurationArgs']]]]):
+    def adobe_analytics_configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigAdobeAnalyticsConfigurationArgs']]]]):
         pulumi.set(self, "adobe_analytics_configurations", value)
 
     @property
@@ -1957,11 +1957,11 @@ class FivetranConnectorConfigArgs:
 
     @property
     @pulumi.getter(name="appIdsAppsflyers")
-    def app_ids_appsflyers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorConfigAppIdsAppsflyerArgs']]]]:
+    def app_ids_appsflyers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigAppIdsAppsflyerArgs']]]]:
         return pulumi.get(self, "app_ids_appsflyers")
 
     @app_ids_appsflyers.setter
-    def app_ids_appsflyers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorConfigAppIdsAppsflyerArgs']]]]):
+    def app_ids_appsflyers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigAppIdsAppsflyerArgs']]]]):
         pulumi.set(self, "app_ids_appsflyers", value)
 
     @property
@@ -2614,20 +2614,20 @@ class FivetranConnectorConfigArgs:
 
     @property
     @pulumi.getter(name="customReports")
-    def custom_reports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorConfigCustomReportArgs']]]]:
+    def custom_reports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigCustomReportArgs']]]]:
         return pulumi.get(self, "custom_reports")
 
     @custom_reports.setter
-    def custom_reports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorConfigCustomReportArgs']]]]):
+    def custom_reports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigCustomReportArgs']]]]):
         pulumi.set(self, "custom_reports", value)
 
     @property
     @pulumi.getter(name="customTables")
-    def custom_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorConfigCustomTableArgs']]]]:
+    def custom_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigCustomTableArgs']]]]:
         return pulumi.get(self, "custom_tables")
 
     @custom_tables.setter
-    def custom_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorConfigCustomTableArgs']]]]):
+    def custom_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigCustomTableArgs']]]]):
         pulumi.set(self, "custom_tables", value)
 
     @property
@@ -3865,11 +3865,11 @@ class FivetranConnectorConfigArgs:
 
     @property
     @pulumi.getter(name="projectCredentials")
-    def project_credentials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorConfigProjectCredentialArgs']]]]:
+    def project_credentials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigProjectCredentialArgs']]]]:
         return pulumi.get(self, "project_credentials")
 
     @project_credentials.setter
-    def project_credentials(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorConfigProjectCredentialArgs']]]]):
+    def project_credentials(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigProjectCredentialArgs']]]]):
         pulumi.set(self, "project_credentials", value)
 
     @property
@@ -4027,11 +4027,11 @@ class FivetranConnectorConfigArgs:
 
     @property
     @pulumi.getter
-    def reports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorConfigReportArgs']]]]:
+    def reports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigReportArgs']]]]:
         return pulumi.get(self, "reports")
 
     @reports.setter
-    def reports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorConfigReportArgs']]]]):
+    def reports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigReportArgs']]]]):
         pulumi.set(self, "reports", value)
 
     @property
@@ -4387,11 +4387,11 @@ class FivetranConnectorConfigArgs:
 
     @property
     @pulumi.getter(name="secretsLists")
-    def secrets_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorConfigSecretsListArgs']]]]:
+    def secrets_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigSecretsListArgs']]]]:
         return pulumi.get(self, "secrets_lists")
 
     @secrets_lists.setter
-    def secrets_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorConfigSecretsListArgs']]]]):
+    def secrets_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigSecretsListArgs']]]]):
         pulumi.set(self, "secrets_lists", value)
 
     @property
@@ -5350,7 +5350,7 @@ class FivetranConnectorConfigArgs:
 
 
 @pulumi.input_type
-class FivetranConnectorConfigAccountsRedditAdArgs:
+class ConnectorConfigAccountsRedditAdArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None):
         if name is not None:
@@ -5367,7 +5367,7 @@ class FivetranConnectorConfigAccountsRedditAdArgs:
 
 
 @pulumi.input_type
-class FivetranConnectorConfigAdobeAnalyticsConfigurationArgs:
+class ConnectorConfigAdobeAnalyticsConfigurationArgs:
     def __init__(__self__, *,
                  calculated_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  elements: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -5456,7 +5456,7 @@ class FivetranConnectorConfigAdobeAnalyticsConfigurationArgs:
 
 
 @pulumi.input_type
-class FivetranConnectorConfigAppIdsAppsflyerArgs:
+class ConnectorConfigAppIdsAppsflyerArgs:
     def __init__(__self__, *,
                  app_id: Optional[pulumi.Input[str]] = None):
         if app_id is not None:
@@ -5473,7 +5473,7 @@ class FivetranConnectorConfigAppIdsAppsflyerArgs:
 
 
 @pulumi.input_type
-class FivetranConnectorConfigCustomReportArgs:
+class ConnectorConfigCustomReportArgs:
     def __init__(__self__, *,
                  aggregate: Optional[pulumi.Input[str]] = None,
                  conversions_report_included: Optional[pulumi.Input[str]] = None,
@@ -5622,7 +5622,7 @@ class FivetranConnectorConfigCustomReportArgs:
 
 
 @pulumi.input_type
-class FivetranConnectorConfigCustomTableArgs:
+class ConnectorConfigCustomTableArgs:
     def __init__(__self__, *,
                  action_breakdowns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  action_report_time: Optional[pulumi.Input[str]] = None,
@@ -5771,7 +5771,7 @@ class FivetranConnectorConfigCustomTableArgs:
 
 
 @pulumi.input_type
-class FivetranConnectorConfigProjectCredentialArgs:
+class ConnectorConfigProjectCredentialArgs:
     def __init__(__self__, *,
                  api_key: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -5812,7 +5812,7 @@ class FivetranConnectorConfigProjectCredentialArgs:
 
 
 @pulumi.input_type
-class FivetranConnectorConfigReportArgs:
+class ConnectorConfigReportArgs:
     def __init__(__self__, *,
                  aggregation: Optional[pulumi.Input[str]] = None,
                  attributes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -5997,7 +5997,7 @@ class FivetranConnectorConfigReportArgs:
 
 
 @pulumi.input_type
-class FivetranConnectorConfigSecretsListArgs:
+class ConnectorConfigSecretsListArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
@@ -6026,7 +6026,48 @@ class FivetranConnectorConfigSecretsListArgs:
 
 
 @pulumi.input_type
-class FivetranConnectorDbtProjectModelArgs:
+class ConnectorDestinationSchemaArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 prefix: Optional[pulumi.Input[str]] = None,
+                 table: Optional[pulumi.Input[str]] = None):
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if table is not None:
+            pulumi.set(__self__, "table", table)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefix", value)
+
+    @property
+    @pulumi.getter
+    def table(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "table")
+
+    @table.setter
+    def table(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "table", value)
+
+
+@pulumi.input_type
+class DbtProjectModelArgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[str]] = None,
                  model_name: Optional[pulumi.Input[str]] = None,
@@ -6081,7 +6122,7 @@ class FivetranConnectorDbtProjectModelArgs:
 
 
 @pulumi.input_type
-class FivetranConnectorDbtProjectProjectConfigArgs:
+class DbtProjectProjectConfigArgs:
     def __init__(__self__, *,
                  folder_path: Optional[pulumi.Input[str]] = None,
                  git_branch: Optional[pulumi.Input[str]] = None,
@@ -6136,7 +6177,7 @@ class FivetranConnectorDbtProjectProjectConfigArgs:
 
 
 @pulumi.input_type
-class FivetranConnectorDbtTransformationScheduleArgs:
+class DbtTransformationScheduleArgs:
     def __init__(__self__, *,
                  schedule_type: pulumi.Input[str],
                  days_of_weeks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -6206,7 +6247,7 @@ class FivetranConnectorDbtTransformationScheduleArgs:
 
 
 @pulumi.input_type
-class FivetranConnectorDestinationConfigArgs:
+class DestinationConfigArgs:
     def __init__(__self__, *,
                  auth: Optional[pulumi.Input[str]] = None,
                  auth_type: Optional[pulumi.Input[str]] = None,
@@ -6725,48 +6766,7 @@ class FivetranConnectorDestinationConfigArgs:
 
 
 @pulumi.input_type
-class FivetranConnectorDestinationSchemaArgs:
-    def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None,
-                 prefix: Optional[pulumi.Input[str]] = None,
-                 table: Optional[pulumi.Input[str]] = None):
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if prefix is not None:
-            pulumi.set(__self__, "prefix", prefix)
-        if table is not None:
-            pulumi.set(__self__, "table", table)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def prefix(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "prefix")
-
-    @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "prefix", value)
-
-    @property
-    @pulumi.getter
-    def table(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "table")
-
-    @table.setter
-    def table(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "table", value)
-
-
-@pulumi.input_type
-class FivetranConnectorGroupUsersUserArgs:
+class GroupUsersUserArgs:
     def __init__(__self__, *,
                  email: pulumi.Input[str],
                  role: pulumi.Input[str],
@@ -6819,11 +6819,11 @@ class FivetranConnectorGroupUsersUserArgs:
 
 
 @pulumi.input_type
-class FivetranConnectorSchemaConfigSchemaArgs:
+class SchemaConfigSchemaArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  enabled: Optional[pulumi.Input[str]] = None,
-                 tables: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorSchemaConfigSchemaTableArgs']]]] = None):
+                 tables: Optional[pulumi.Input[Sequence[pulumi.Input['SchemaConfigSchemaTableArgs']]]] = None):
         """
         :param pulumi.Input[str] name: The schema name within your destination in accordance with Fivetran conventional rules.
         :param pulumi.Input[str] enabled: The boolean value specifying whether the sync for the schema into the destination is enabled.
@@ -6860,19 +6860,19 @@ class FivetranConnectorSchemaConfigSchemaArgs:
 
     @property
     @pulumi.getter
-    def tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorSchemaConfigSchemaTableArgs']]]]:
+    def tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SchemaConfigSchemaTableArgs']]]]:
         return pulumi.get(self, "tables")
 
     @tables.setter
-    def tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorSchemaConfigSchemaTableArgs']]]]):
+    def tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SchemaConfigSchemaTableArgs']]]]):
         pulumi.set(self, "tables", value)
 
 
 @pulumi.input_type
-class FivetranConnectorSchemaConfigSchemaTableArgs:
+class SchemaConfigSchemaTableArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorSchemaConfigSchemaTableColumnArgs']]]] = None,
+                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['SchemaConfigSchemaTableColumnArgs']]]] = None,
                  enabled: Optional[pulumi.Input[str]] = None,
                  sync_mode: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "name", name)
@@ -6894,11 +6894,11 @@ class FivetranConnectorSchemaConfigSchemaTableArgs:
 
     @property
     @pulumi.getter
-    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorSchemaConfigSchemaTableColumnArgs']]]]:
+    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SchemaConfigSchemaTableColumnArgs']]]]:
         return pulumi.get(self, "columns")
 
     @columns.setter
-    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorSchemaConfigSchemaTableColumnArgs']]]]):
+    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SchemaConfigSchemaTableColumnArgs']]]]):
         pulumi.set(self, "columns", value)
 
     @property
@@ -6921,7 +6921,7 @@ class FivetranConnectorSchemaConfigSchemaTableArgs:
 
 
 @pulumi.input_type
-class FivetranConnectorSchemaConfigSchemaTableColumnArgs:
+class SchemaConfigSchemaTableColumnArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  enabled: Optional[pulumi.Input[str]] = None,

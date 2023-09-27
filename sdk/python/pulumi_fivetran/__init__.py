@@ -5,16 +5,11 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
-from .fivetran_connector import *
-from .fivetran_connector_dbt_project import *
-from .fivetran_connector_dbt_transformation import *
-from .fivetran_connector_destination import *
-from .fivetran_connector_group import *
-from .fivetran_connector_group_users import *
-from .fivetran_connector_schedule import *
-from .fivetran_connector_schema_config import *
-from .fivetran_connector_user import *
-from .fivetran_connector_webhook import *
+from .connector import *
+from .connector_schedule import *
+from .dbt_project import *
+from .dbt_transformation import *
+from .destination import *
 from .get_connector import *
 from .get_connectors_metadata import *
 from .get_dbt_models import *
@@ -30,7 +25,12 @@ from .get_user import *
 from .get_users import *
 from .get_webhook import *
 from .get_webhooks import *
+from .group import *
+from .group_users import *
 from .provider import *
+from .schema_config import *
+from .user import *
+from .webhook import *
 from ._inputs import *
 from . import outputs
 
@@ -46,82 +46,82 @@ _utilities.register(
 [
  {
   "pkg": "fivetran",
-  "mod": "index/fivetranConnector",
+  "mod": "index/connector",
   "fqn": "pulumi_fivetran",
   "classes": {
-   "fivetran:index/fivetranConnector:FivetranConnector": "FivetranConnector"
+   "fivetran:index/connector:Connector": "Connector"
   }
  },
  {
   "pkg": "fivetran",
-  "mod": "index/fivetranConnectorDbtProject",
+  "mod": "index/connectorSchedule",
   "fqn": "pulumi_fivetran",
   "classes": {
-   "fivetran:index/fivetranConnectorDbtProject:FivetranConnectorDbtProject": "FivetranConnectorDbtProject"
+   "fivetran:index/connectorSchedule:ConnectorSchedule": "ConnectorSchedule"
   }
  },
  {
   "pkg": "fivetran",
-  "mod": "index/fivetranConnectorDbtTransformation",
+  "mod": "index/dbtProject",
   "fqn": "pulumi_fivetran",
   "classes": {
-   "fivetran:index/fivetranConnectorDbtTransformation:FivetranConnectorDbtTransformation": "FivetranConnectorDbtTransformation"
+   "fivetran:index/dbtProject:DbtProject": "DbtProject"
   }
  },
  {
   "pkg": "fivetran",
-  "mod": "index/fivetranConnectorDestination",
+  "mod": "index/dbtTransformation",
   "fqn": "pulumi_fivetran",
   "classes": {
-   "fivetran:index/fivetranConnectorDestination:FivetranConnectorDestination": "FivetranConnectorDestination"
+   "fivetran:index/dbtTransformation:DbtTransformation": "DbtTransformation"
   }
  },
  {
   "pkg": "fivetran",
-  "mod": "index/fivetranConnectorGroup",
+  "mod": "index/destination",
   "fqn": "pulumi_fivetran",
   "classes": {
-   "fivetran:index/fivetranConnectorGroup:FivetranConnectorGroup": "FivetranConnectorGroup"
+   "fivetran:index/destination:Destination": "Destination"
   }
  },
  {
   "pkg": "fivetran",
-  "mod": "index/fivetranConnectorGroupUsers",
+  "mod": "index/group",
   "fqn": "pulumi_fivetran",
   "classes": {
-   "fivetran:index/fivetranConnectorGroupUsers:FivetranConnectorGroupUsers": "FivetranConnectorGroupUsers"
+   "fivetran:index/group:Group": "Group"
   }
  },
  {
   "pkg": "fivetran",
-  "mod": "index/fivetranConnectorSchedule",
+  "mod": "index/groupUsers",
   "fqn": "pulumi_fivetran",
   "classes": {
-   "fivetran:index/fivetranConnectorSchedule:FivetranConnectorSchedule": "FivetranConnectorSchedule"
+   "fivetran:index/groupUsers:GroupUsers": "GroupUsers"
   }
  },
  {
   "pkg": "fivetran",
-  "mod": "index/fivetranConnectorSchemaConfig",
+  "mod": "index/schemaConfig",
   "fqn": "pulumi_fivetran",
   "classes": {
-   "fivetran:index/fivetranConnectorSchemaConfig:FivetranConnectorSchemaConfig": "FivetranConnectorSchemaConfig"
+   "fivetran:index/schemaConfig:SchemaConfig": "SchemaConfig"
   }
  },
  {
   "pkg": "fivetran",
-  "mod": "index/fivetranConnectorUser",
+  "mod": "index/user",
   "fqn": "pulumi_fivetran",
   "classes": {
-   "fivetran:index/fivetranConnectorUser:FivetranConnectorUser": "FivetranConnectorUser"
+   "fivetran:index/user:User": "User"
   }
  },
  {
   "pkg": "fivetran",
-  "mod": "index/fivetranConnectorWebhook",
+  "mod": "index/webhook",
   "fqn": "pulumi_fivetran",
   "classes": {
-   "fivetran:index/fivetranConnectorWebhook:FivetranConnectorWebhook": "FivetranConnectorWebhook"
+   "fivetran:index/webhook:Webhook": "Webhook"
   }
  }
 ]

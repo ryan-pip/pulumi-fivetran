@@ -11,29 +11,29 @@ from . import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['FivetranConnectorDbtProjectArgs', 'FivetranConnectorDbtProject']
+__all__ = ['DbtProjectArgs', 'DbtProject']
 
 @pulumi.input_type
-class FivetranConnectorDbtProjectArgs:
+class DbtProjectArgs:
     def __init__(__self__, *,
                  dbt_version: pulumi.Input[str],
                  default_schema: pulumi.Input[str],
                  group_id: pulumi.Input[str],
-                 project_config: pulumi.Input['FivetranConnectorDbtProjectProjectConfigArgs'],
+                 project_config: pulumi.Input['DbtProjectProjectConfigArgs'],
                  ensure_readiness: Optional[pulumi.Input[bool]] = None,
                  environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 models: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorDbtProjectModelArgs']]]] = None,
+                 models: Optional[pulumi.Input[Sequence[pulumi.Input['DbtProjectModelArgs']]]] = None,
                  target_name: Optional[pulumi.Input[str]] = None,
                  threads: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        The set of arguments for constructing a FivetranConnectorDbtProject resource.
+        The set of arguments for constructing a DbtProject resource.
         :param pulumi.Input[str] dbt_version: The version of dbt that should run the project. We support the following versions: 0.18.0 - 0.18.2, 0.19.0 - 0.19.2, 0.20.0 - 0.20.2, 0.21.0 - 0.21.1, 1.0.0, 1.0.1, 1.0.3 - 1.0.9, 1.1.0 - 1.1.3, 1.2.0 - 1.2.4, 1.3.0 - 1.3.2, 1.4.1.
         :param pulumi.Input[str] default_schema: Default schema in destination. This production schema will contain your transformed data.
         :param pulumi.Input[str] group_id: The unique identifier for the group within the Fivetran system.
-        :param pulumi.Input['FivetranConnectorDbtProjectProjectConfigArgs'] project_config: Type specific dbt Project configuration parameters.
+        :param pulumi.Input['DbtProjectProjectConfigArgs'] project_config: Type specific dbt Project configuration parameters.
         :param pulumi.Input[bool] ensure_readiness: Should resource wait for project to finish initialization. Default value: true.
-        :param pulumi.Input[Sequence[pulumi.Input['FivetranConnectorDbtProjectModelArgs']]] models: The collection of dbt Models.
+        :param pulumi.Input[Sequence[pulumi.Input['DbtProjectModelArgs']]] models: The collection of dbt Models.
         :param pulumi.Input[str] target_name: Target name to set or override the value from the deployment.yaml
         :param pulumi.Input[int] threads: The number of threads dbt will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
         :param pulumi.Input[str] type: Type of dbt Project. Currently only `GIT` supported. Empty value will be considered as default (GIT).
@@ -93,14 +93,14 @@ class FivetranConnectorDbtProjectArgs:
 
     @property
     @pulumi.getter(name="projectConfig")
-    def project_config(self) -> pulumi.Input['FivetranConnectorDbtProjectProjectConfigArgs']:
+    def project_config(self) -> pulumi.Input['DbtProjectProjectConfigArgs']:
         """
         Type specific dbt Project configuration parameters.
         """
         return pulumi.get(self, "project_config")
 
     @project_config.setter
-    def project_config(self, value: pulumi.Input['FivetranConnectorDbtProjectProjectConfigArgs']):
+    def project_config(self, value: pulumi.Input['DbtProjectProjectConfigArgs']):
         pulumi.set(self, "project_config", value)
 
     @property
@@ -126,14 +126,14 @@ class FivetranConnectorDbtProjectArgs:
 
     @property
     @pulumi.getter
-    def models(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorDbtProjectModelArgs']]]]:
+    def models(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DbtProjectModelArgs']]]]:
         """
         The collection of dbt Models.
         """
         return pulumi.get(self, "models")
 
     @models.setter
-    def models(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorDbtProjectModelArgs']]]]):
+    def models(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DbtProjectModelArgs']]]]):
         pulumi.set(self, "models", value)
 
     @property
@@ -174,7 +174,7 @@ class FivetranConnectorDbtProjectArgs:
 
 
 @pulumi.input_type
-class _FivetranConnectorDbtProjectState:
+class _DbtProjectState:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[str]] = None,
                  created_by_id: Optional[pulumi.Input[str]] = None,
@@ -183,23 +183,23 @@ class _FivetranConnectorDbtProjectState:
                  ensure_readiness: Optional[pulumi.Input[bool]] = None,
                  environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
-                 models: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorDbtProjectModelArgs']]]] = None,
-                 project_config: Optional[pulumi.Input['FivetranConnectorDbtProjectProjectConfigArgs']] = None,
+                 models: Optional[pulumi.Input[Sequence[pulumi.Input['DbtProjectModelArgs']]]] = None,
+                 project_config: Optional[pulumi.Input['DbtProjectProjectConfigArgs']] = None,
                  public_key: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  target_name: Optional[pulumi.Input[str]] = None,
                  threads: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering FivetranConnectorDbtProject resources.
+        Input properties used for looking up and filtering DbtProject resources.
         :param pulumi.Input[str] created_at: The timestamp of the dbt Project creation.
         :param pulumi.Input[str] created_by_id: The unique identifier for the User within the Fivetran system who created the dbt Project.
         :param pulumi.Input[str] dbt_version: The version of dbt that should run the project. We support the following versions: 0.18.0 - 0.18.2, 0.19.0 - 0.19.2, 0.20.0 - 0.20.2, 0.21.0 - 0.21.1, 1.0.0, 1.0.1, 1.0.3 - 1.0.9, 1.1.0 - 1.1.3, 1.2.0 - 1.2.4, 1.3.0 - 1.3.2, 1.4.1.
         :param pulumi.Input[str] default_schema: Default schema in destination. This production schema will contain your transformed data.
         :param pulumi.Input[bool] ensure_readiness: Should resource wait for project to finish initialization. Default value: true.
         :param pulumi.Input[str] group_id: The unique identifier for the group within the Fivetran system.
-        :param pulumi.Input[Sequence[pulumi.Input['FivetranConnectorDbtProjectModelArgs']]] models: The collection of dbt Models.
-        :param pulumi.Input['FivetranConnectorDbtProjectProjectConfigArgs'] project_config: Type specific dbt Project configuration parameters.
+        :param pulumi.Input[Sequence[pulumi.Input['DbtProjectModelArgs']]] models: The collection of dbt Models.
+        :param pulumi.Input['DbtProjectProjectConfigArgs'] project_config: Type specific dbt Project configuration parameters.
         :param pulumi.Input[str] public_key: Public key to grant Fivetran SSH access to git repository.
         :param pulumi.Input[str] status: Status of dbt Project (NOT_READY, READY, ERROR).
         :param pulumi.Input[str] target_name: Target name to set or override the value from the deployment.yaml
@@ -318,26 +318,26 @@ class _FivetranConnectorDbtProjectState:
 
     @property
     @pulumi.getter
-    def models(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorDbtProjectModelArgs']]]]:
+    def models(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DbtProjectModelArgs']]]]:
         """
         The collection of dbt Models.
         """
         return pulumi.get(self, "models")
 
     @models.setter
-    def models(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FivetranConnectorDbtProjectModelArgs']]]]):
+    def models(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DbtProjectModelArgs']]]]):
         pulumi.set(self, "models", value)
 
     @property
     @pulumi.getter(name="projectConfig")
-    def project_config(self) -> Optional[pulumi.Input['FivetranConnectorDbtProjectProjectConfigArgs']]:
+    def project_config(self) -> Optional[pulumi.Input['DbtProjectProjectConfigArgs']]:
         """
         Type specific dbt Project configuration parameters.
         """
         return pulumi.get(self, "project_config")
 
     @project_config.setter
-    def project_config(self, value: Optional[pulumi.Input['FivetranConnectorDbtProjectProjectConfigArgs']]):
+    def project_config(self, value: Optional[pulumi.Input['DbtProjectProjectConfigArgs']]):
         pulumi.set(self, "project_config", value)
 
     @property
@@ -401,7 +401,7 @@ class _FivetranConnectorDbtProjectState:
         pulumi.set(self, "type", value)
 
 
-class FivetranConnectorDbtProject(pulumi.CustomResource):
+class DbtProject(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -411,8 +411,8 @@ class FivetranConnectorDbtProject(pulumi.CustomResource):
                  ensure_readiness: Optional[pulumi.Input[bool]] = None,
                  environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
-                 models: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FivetranConnectorDbtProjectModelArgs']]]]] = None,
-                 project_config: Optional[pulumi.Input[pulumi.InputType['FivetranConnectorDbtProjectProjectConfigArgs']]] = None,
+                 models: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbtProjectModelArgs']]]]] = None,
+                 project_config: Optional[pulumi.Input[pulumi.InputType['DbtProjectProjectConfigArgs']]] = None,
                  target_name: Optional[pulumi.Input[str]] = None,
                  threads: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -428,12 +428,12 @@ class FivetranConnectorDbtProject(pulumi.CustomResource):
         import pulumi
         import pulumi_fivetran as fivetran
 
-        project = fivetran.FivetranConnectorDbtProject("project",
+        project = fivetran.DbtProject("project",
             dbt_version="1.4.1",
             default_schema="default_schema",
             environment_vars=["environment_var=value"],
             group_id="group_id",
-            project_config=fivetran.FivetranConnectorDbtProjectProjectConfigArgs(
+            project_config=fivetran.DbtProjectProjectConfigArgs(
                 folder_path="/dbt/project/folder/path",
                 git_branch="main",
                 git_remote_url="your_git_remote_url",
@@ -448,13 +448,13 @@ class FivetranConnectorDbtProject(pulumi.CustomResource):
         1. To import an existing `fivetran_dbt_project` resource into your Terraform state, you need to get **Dbt Project ID** via API call `GET https://api.fivetran.com/v1/dbt/projects` to retrieve available projects. 2. Fetch project details for particular `project-id` using `GET https://api.fivetran.com/v1/dbt/projects/{project-id}` to ensure that this is the project you want to import. 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_dbt_project" "my_imported_fivetran_dbt_project" { }
 
         ```sh
-         $ pulumi import fivetran:index/fivetranConnectorDbtProject:FivetranConnectorDbtProject
+         $ pulumi import fivetran:index/dbtProject:DbtProject
 
         Run the `terraform import` command
         ```
 
         ```sh
-         $ pulumi import fivetran:index/fivetranConnectorDbtProject:FivetranConnectorDbtProject my_imported_fivetran_dbt_project {Dbt Project ID}
+         $ pulumi import fivetran:index/dbtProject:DbtProject my_imported_fivetran_dbt_project {Dbt Project ID}
         ```
 
          4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_dbt_project.my_imported_fivetran_dbt_project' 5. Copy the values and paste them to your `.tf` configuration.
@@ -465,8 +465,8 @@ class FivetranConnectorDbtProject(pulumi.CustomResource):
         :param pulumi.Input[str] default_schema: Default schema in destination. This production schema will contain your transformed data.
         :param pulumi.Input[bool] ensure_readiness: Should resource wait for project to finish initialization. Default value: true.
         :param pulumi.Input[str] group_id: The unique identifier for the group within the Fivetran system.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FivetranConnectorDbtProjectModelArgs']]]] models: The collection of dbt Models.
-        :param pulumi.Input[pulumi.InputType['FivetranConnectorDbtProjectProjectConfigArgs']] project_config: Type specific dbt Project configuration parameters.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbtProjectModelArgs']]]] models: The collection of dbt Models.
+        :param pulumi.Input[pulumi.InputType['DbtProjectProjectConfigArgs']] project_config: Type specific dbt Project configuration parameters.
         :param pulumi.Input[str] target_name: Target name to set or override the value from the deployment.yaml
         :param pulumi.Input[int] threads: The number of threads dbt will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
         :param pulumi.Input[str] type: Type of dbt Project. Currently only `GIT` supported. Empty value will be considered as default (GIT).
@@ -475,7 +475,7 @@ class FivetranConnectorDbtProject(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: FivetranConnectorDbtProjectArgs,
+                 args: DbtProjectArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource is in ALPHA state.
@@ -488,12 +488,12 @@ class FivetranConnectorDbtProject(pulumi.CustomResource):
         import pulumi
         import pulumi_fivetran as fivetran
 
-        project = fivetran.FivetranConnectorDbtProject("project",
+        project = fivetran.DbtProject("project",
             dbt_version="1.4.1",
             default_schema="default_schema",
             environment_vars=["environment_var=value"],
             group_id="group_id",
-            project_config=fivetran.FivetranConnectorDbtProjectProjectConfigArgs(
+            project_config=fivetran.DbtProjectProjectConfigArgs(
                 folder_path="/dbt/project/folder/path",
                 git_branch="main",
                 git_remote_url="your_git_remote_url",
@@ -508,24 +508,24 @@ class FivetranConnectorDbtProject(pulumi.CustomResource):
         1. To import an existing `fivetran_dbt_project` resource into your Terraform state, you need to get **Dbt Project ID** via API call `GET https://api.fivetran.com/v1/dbt/projects` to retrieve available projects. 2. Fetch project details for particular `project-id` using `GET https://api.fivetran.com/v1/dbt/projects/{project-id}` to ensure that this is the project you want to import. 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_dbt_project" "my_imported_fivetran_dbt_project" { }
 
         ```sh
-         $ pulumi import fivetran:index/fivetranConnectorDbtProject:FivetranConnectorDbtProject
+         $ pulumi import fivetran:index/dbtProject:DbtProject
 
         Run the `terraform import` command
         ```
 
         ```sh
-         $ pulumi import fivetran:index/fivetranConnectorDbtProject:FivetranConnectorDbtProject my_imported_fivetran_dbt_project {Dbt Project ID}
+         $ pulumi import fivetran:index/dbtProject:DbtProject my_imported_fivetran_dbt_project {Dbt Project ID}
         ```
 
          4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_dbt_project.my_imported_fivetran_dbt_project' 5. Copy the values and paste them to your `.tf` configuration.
 
         :param str resource_name: The name of the resource.
-        :param FivetranConnectorDbtProjectArgs args: The arguments to use to populate this resource's properties.
+        :param DbtProjectArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(FivetranConnectorDbtProjectArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DbtProjectArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -539,8 +539,8 @@ class FivetranConnectorDbtProject(pulumi.CustomResource):
                  ensure_readiness: Optional[pulumi.Input[bool]] = None,
                  environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
-                 models: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FivetranConnectorDbtProjectModelArgs']]]]] = None,
-                 project_config: Optional[pulumi.Input[pulumi.InputType['FivetranConnectorDbtProjectProjectConfigArgs']]] = None,
+                 models: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbtProjectModelArgs']]]]] = None,
+                 project_config: Optional[pulumi.Input[pulumi.InputType['DbtProjectProjectConfigArgs']]] = None,
                  target_name: Optional[pulumi.Input[str]] = None,
                  threads: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -551,7 +551,7 @@ class FivetranConnectorDbtProject(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = FivetranConnectorDbtProjectArgs.__new__(FivetranConnectorDbtProjectArgs)
+            __props__ = DbtProjectArgs.__new__(DbtProjectArgs)
 
             if dbt_version is None and not opts.urn:
                 raise TypeError("Missing required property 'dbt_version'")
@@ -575,8 +575,8 @@ class FivetranConnectorDbtProject(pulumi.CustomResource):
             __props__.__dict__["created_by_id"] = None
             __props__.__dict__["public_key"] = None
             __props__.__dict__["status"] = None
-        super(FivetranConnectorDbtProject, __self__).__init__(
-            'fivetran:index/fivetranConnectorDbtProject:FivetranConnectorDbtProject',
+        super(DbtProject, __self__).__init__(
+            'fivetran:index/dbtProject:DbtProject',
             resource_name,
             __props__,
             opts)
@@ -592,15 +592,15 @@ class FivetranConnectorDbtProject(pulumi.CustomResource):
             ensure_readiness: Optional[pulumi.Input[bool]] = None,
             environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
-            models: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FivetranConnectorDbtProjectModelArgs']]]]] = None,
-            project_config: Optional[pulumi.Input[pulumi.InputType['FivetranConnectorDbtProjectProjectConfigArgs']]] = None,
+            models: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbtProjectModelArgs']]]]] = None,
+            project_config: Optional[pulumi.Input[pulumi.InputType['DbtProjectProjectConfigArgs']]] = None,
             public_key: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             target_name: Optional[pulumi.Input[str]] = None,
             threads: Optional[pulumi.Input[int]] = None,
-            type: Optional[pulumi.Input[str]] = None) -> 'FivetranConnectorDbtProject':
+            type: Optional[pulumi.Input[str]] = None) -> 'DbtProject':
         """
-        Get an existing FivetranConnectorDbtProject resource's state with the given name, id, and optional extra
+        Get an existing DbtProject resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -612,8 +612,8 @@ class FivetranConnectorDbtProject(pulumi.CustomResource):
         :param pulumi.Input[str] default_schema: Default schema in destination. This production schema will contain your transformed data.
         :param pulumi.Input[bool] ensure_readiness: Should resource wait for project to finish initialization. Default value: true.
         :param pulumi.Input[str] group_id: The unique identifier for the group within the Fivetran system.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FivetranConnectorDbtProjectModelArgs']]]] models: The collection of dbt Models.
-        :param pulumi.Input[pulumi.InputType['FivetranConnectorDbtProjectProjectConfigArgs']] project_config: Type specific dbt Project configuration parameters.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DbtProjectModelArgs']]]] models: The collection of dbt Models.
+        :param pulumi.Input[pulumi.InputType['DbtProjectProjectConfigArgs']] project_config: Type specific dbt Project configuration parameters.
         :param pulumi.Input[str] public_key: Public key to grant Fivetran SSH access to git repository.
         :param pulumi.Input[str] status: Status of dbt Project (NOT_READY, READY, ERROR).
         :param pulumi.Input[str] target_name: Target name to set or override the value from the deployment.yaml
@@ -622,7 +622,7 @@ class FivetranConnectorDbtProject(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _FivetranConnectorDbtProjectState.__new__(_FivetranConnectorDbtProjectState)
+        __props__ = _DbtProjectState.__new__(_DbtProjectState)
 
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["created_by_id"] = created_by_id
@@ -638,7 +638,7 @@ class FivetranConnectorDbtProject(pulumi.CustomResource):
         __props__.__dict__["target_name"] = target_name
         __props__.__dict__["threads"] = threads
         __props__.__dict__["type"] = type
-        return FivetranConnectorDbtProject(resource_name, opts=opts, __props__=__props__)
+        return DbtProject(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -695,7 +695,7 @@ class FivetranConnectorDbtProject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def models(self) -> pulumi.Output[Sequence['outputs.FivetranConnectorDbtProjectModel']]:
+    def models(self) -> pulumi.Output[Sequence['outputs.DbtProjectModel']]:
         """
         The collection of dbt Models.
         """
@@ -703,7 +703,7 @@ class FivetranConnectorDbtProject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectConfig")
-    def project_config(self) -> pulumi.Output['outputs.FivetranConnectorDbtProjectProjectConfig']:
+    def project_config(self) -> pulumi.Output['outputs.DbtProjectProjectConfig']:
         """
         Type specific dbt Project configuration parameters.
         """
