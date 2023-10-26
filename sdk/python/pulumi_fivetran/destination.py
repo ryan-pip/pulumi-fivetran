@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,24 +27,59 @@ class DestinationArgs:
         """
         The set of arguments for constructing a Destination resource.
         :param pulumi.Input[str] group_id: The unique identifier for the Group within the Fivetran system.
-        :param pulumi.Input[str] region: Data processing location. This is where Fivetran will operate and run computation on data.
+        :param pulumi.Input[str] region: Region of your AWS S3 bucket
         :param pulumi.Input[str] service: The destination type name within the Fivetran system.
         :param pulumi.Input[str] time_zone_offset: Determines the time zone for the Fivetran sync schedule.
         :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
         :param pulumi.Input[bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
         :param pulumi.Input[bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
-        pulumi.set(__self__, "config", config)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "service", service)
-        pulumi.set(__self__, "time_zone_offset", time_zone_offset)
+        DestinationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config=config,
+            group_id=group_id,
+            region=region,
+            service=service,
+            time_zone_offset=time_zone_offset,
+            run_setup_tests=run_setup_tests,
+            trust_certificates=trust_certificates,
+            trust_fingerprints=trust_fingerprints,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config: pulumi.Input['DestinationConfigArgs'],
+             group_id: pulumi.Input[str],
+             region: pulumi.Input[str],
+             service: pulumi.Input[str],
+             time_zone_offset: pulumi.Input[str],
+             run_setup_tests: Optional[pulumi.Input[bool]] = None,
+             trust_certificates: Optional[pulumi.Input[bool]] = None,
+             trust_fingerprints: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'timeZoneOffset' in kwargs:
+            time_zone_offset = kwargs['timeZoneOffset']
+        if 'runSetupTests' in kwargs:
+            run_setup_tests = kwargs['runSetupTests']
+        if 'trustCertificates' in kwargs:
+            trust_certificates = kwargs['trustCertificates']
+        if 'trustFingerprints' in kwargs:
+            trust_fingerprints = kwargs['trustFingerprints']
+
+        _setter("config", config)
+        _setter("group_id", group_id)
+        _setter("region", region)
+        _setter("service", service)
+        _setter("time_zone_offset", time_zone_offset)
         if run_setup_tests is not None:
-            pulumi.set(__self__, "run_setup_tests", run_setup_tests)
+            _setter("run_setup_tests", run_setup_tests)
         if trust_certificates is not None:
-            pulumi.set(__self__, "trust_certificates", trust_certificates)
+            _setter("trust_certificates", trust_certificates)
         if trust_fingerprints is not None:
-            pulumi.set(__self__, "trust_fingerprints", trust_fingerprints)
+            _setter("trust_fingerprints", trust_fingerprints)
 
     @property
     @pulumi.getter
@@ -71,7 +106,7 @@ class DestinationArgs:
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
         """
-        Data processing location. This is where Fivetran will operate and run computation on data.
+        Region of your AWS S3 bucket
         """
         return pulumi.get(self, "region")
 
@@ -156,7 +191,7 @@ class _DestinationState:
         """
         Input properties used for looking up and filtering Destination resources.
         :param pulumi.Input[str] group_id: The unique identifier for the Group within the Fivetran system.
-        :param pulumi.Input[str] region: Data processing location. This is where Fivetran will operate and run computation on data.
+        :param pulumi.Input[str] region: Region of your AWS S3 bucket
         :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
         :param pulumi.Input[str] service: The destination type name within the Fivetran system.
         :param pulumi.Input[str] setup_status: Destination setup status
@@ -164,26 +199,69 @@ class _DestinationState:
         :param pulumi.Input[bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
         :param pulumi.Input[bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
+        _DestinationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config=config,
+            group_id=group_id,
+            last_updated=last_updated,
+            region=region,
+            run_setup_tests=run_setup_tests,
+            service=service,
+            setup_status=setup_status,
+            time_zone_offset=time_zone_offset,
+            trust_certificates=trust_certificates,
+            trust_fingerprints=trust_fingerprints,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config: Optional[pulumi.Input['DestinationConfigArgs']] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             last_updated: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             run_setup_tests: Optional[pulumi.Input[bool]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             setup_status: Optional[pulumi.Input[str]] = None,
+             time_zone_offset: Optional[pulumi.Input[str]] = None,
+             trust_certificates: Optional[pulumi.Input[bool]] = None,
+             trust_fingerprints: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'lastUpdated' in kwargs:
+            last_updated = kwargs['lastUpdated']
+        if 'runSetupTests' in kwargs:
+            run_setup_tests = kwargs['runSetupTests']
+        if 'setupStatus' in kwargs:
+            setup_status = kwargs['setupStatus']
+        if 'timeZoneOffset' in kwargs:
+            time_zone_offset = kwargs['timeZoneOffset']
+        if 'trustCertificates' in kwargs:
+            trust_certificates = kwargs['trustCertificates']
+        if 'trustFingerprints' in kwargs:
+            trust_fingerprints = kwargs['trustFingerprints']
+
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if last_updated is not None:
-            pulumi.set(__self__, "last_updated", last_updated)
+            _setter("last_updated", last_updated)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if run_setup_tests is not None:
-            pulumi.set(__self__, "run_setup_tests", run_setup_tests)
+            _setter("run_setup_tests", run_setup_tests)
         if service is not None:
-            pulumi.set(__self__, "service", service)
+            _setter("service", service)
         if setup_status is not None:
-            pulumi.set(__self__, "setup_status", setup_status)
+            _setter("setup_status", setup_status)
         if time_zone_offset is not None:
-            pulumi.set(__self__, "time_zone_offset", time_zone_offset)
+            _setter("time_zone_offset", time_zone_offset)
         if trust_certificates is not None:
-            pulumi.set(__self__, "trust_certificates", trust_certificates)
+            _setter("trust_certificates", trust_certificates)
         if trust_fingerprints is not None:
-            pulumi.set(__self__, "trust_fingerprints", trust_fingerprints)
+            _setter("trust_fingerprints", trust_fingerprints)
 
     @property
     @pulumi.getter
@@ -219,7 +297,7 @@ class _DestinationState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        Data processing location. This is where Fivetran will operate and run computation on data.
+        Region of your AWS S3 bucket
         """
         return pulumi.get(self, "region")
 
@@ -334,7 +412,7 @@ class Destination(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group_id: The unique identifier for the Group within the Fivetran system.
-        :param pulumi.Input[str] region: Data processing location. This is where Fivetran will operate and run computation on data.
+        :param pulumi.Input[str] region: Region of your AWS S3 bucket
         :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
         :param pulumi.Input[str] service: The destination type name within the Fivetran system.
         :param pulumi.Input[str] time_zone_offset: Determines the time zone for the Fivetran sync schedule.
@@ -374,6 +452,10 @@ class Destination(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DestinationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -396,6 +478,11 @@ class Destination(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DestinationArgs.__new__(DestinationArgs)
 
+            if config is not None and not isinstance(config, DestinationConfigArgs):
+                config = config or {}
+                def _setter(key, value):
+                    config[key] = value
+                DestinationConfigArgs._configure(_setter, **config)
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
@@ -444,7 +531,7 @@ class Destination(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group_id: The unique identifier for the Group within the Fivetran system.
-        :param pulumi.Input[str] region: Data processing location. This is where Fivetran will operate and run computation on data.
+        :param pulumi.Input[str] region: Region of your AWS S3 bucket
         :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
         :param pulumi.Input[str] service: The destination type name within the Fivetran system.
         :param pulumi.Input[str] setup_status: Destination setup status
@@ -490,7 +577,7 @@ class Destination(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        Data processing location. This is where Fivetran will operate and run computation on data.
+        Region of your AWS S3 bucket
         """
         return pulumi.get(self, "region")
 

@@ -6,12 +6,13 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
     'ConnectorAuthArgs',
     'ConnectorAuthClientAccessArgs',
+    'ConnectorCertificatesCertificateArgs',
     'ConnectorConfigArgs',
     'ConnectorConfigAccountsRedditAdArgs',
     'ConnectorConfigAdobeAnalyticsConfigurationArgs',
@@ -22,14 +23,22 @@ __all__ = [
     'ConnectorConfigReportArgs',
     'ConnectorConfigSecretsListArgs',
     'ConnectorDestinationSchemaArgs',
+    'ConnectorFingerprintsFingerprintArgs',
     'ConnectorSchemaConfigSchemaArgs',
     'ConnectorSchemaConfigSchemaTableArgs',
     'ConnectorSchemaConfigSchemaTableColumnArgs',
     'DbtProjectModelArgs',
     'DbtProjectProjectConfigArgs',
     'DbtTransformationScheduleArgs',
+    'DestinationCertificatesCertificateArgs',
     'DestinationConfigArgs',
+    'DestinationFingerprintsFingerprintArgs',
+    'ExternalLoggingConfigArgs',
     'GroupUsersUserArgs',
+    'TeamConnectorMembershipConnectorArgs',
+    'TeamGroupMembershipGroupArgs',
+    'TeamUserMembershipUserArgs',
+    'GetConnectorCertificatesCertificateArgs',
     'GetConnectorConfigArgs',
     'GetConnectorConfigAccountsRedditAdArgs',
     'GetConnectorConfigAdobeAnalyticsConfigurationArgs',
@@ -39,17 +48,29 @@ __all__ = [
     'GetConnectorConfigProjectCredentialArgs',
     'GetConnectorConfigReportArgs',
     'GetConnectorConfigSecretsListArgs',
+    'GetConnectorFingerprintsFingerprintArgs',
     'GetConnectorsMetadataSourceArgs',
     'GetDbtModelsModelArgs',
     'GetDbtProjectModelArgs',
     'GetDbtProjectsProjectArgs',
+    'GetDestinationCertificatesCertificateArgs',
     'GetDestinationConfigArgs',
+    'GetDestinationFingerprintsFingerprintArgs',
+    'GetExternalLoggingConfigArgs',
     'GetGroupConnectorsConnectorArgs',
     'GetGroupConnectorsConnectorStatusArgs',
     'GetGroupConnectorsConnectorStatusTaskArgs',
     'GetGroupConnectorsConnectorStatusWarningArgs',
     'GetGroupUsersUserArgs',
     'GetGroupsGroupArgs',
+    'GetMetadataColumnsMetadataColumnArgs',
+    'GetMetadataSchemasMetadataSchemaArgs',
+    'GetMetadataTablesMetadataTableArgs',
+    'GetRolesRoleArgs',
+    'GetTeamConnectorMembershipsConnectorArgs',
+    'GetTeamGroupMembershipsGroupArgs',
+    'GetTeamUserMembershipsUserArgs',
+    'GetTeamsTeamArgs',
     'GetUsersUserArgs',
     'GetWebhooksWebhookArgs',
 ]
@@ -61,14 +82,39 @@ class ConnectorAuthArgs:
                  client_access: Optional[pulumi.Input['ConnectorAuthClientAccessArgs']] = None,
                  realm_id: Optional[pulumi.Input[str]] = None,
                  refresh_token: Optional[pulumi.Input[str]] = None):
+        ConnectorAuthArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_token=access_token,
+            client_access=client_access,
+            realm_id=realm_id,
+            refresh_token=refresh_token,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_token: Optional[pulumi.Input[str]] = None,
+             client_access: Optional[pulumi.Input['ConnectorAuthClientAccessArgs']] = None,
+             realm_id: Optional[pulumi.Input[str]] = None,
+             refresh_token: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessToken' in kwargs:
+            access_token = kwargs['accessToken']
+        if 'clientAccess' in kwargs:
+            client_access = kwargs['clientAccess']
+        if 'realmId' in kwargs:
+            realm_id = kwargs['realmId']
+        if 'refreshToken' in kwargs:
+            refresh_token = kwargs['refreshToken']
+
         if access_token is not None:
-            pulumi.set(__self__, "access_token", access_token)
+            _setter("access_token", access_token)
         if client_access is not None:
-            pulumi.set(__self__, "client_access", client_access)
+            _setter("client_access", client_access)
         if realm_id is not None:
-            pulumi.set(__self__, "realm_id", realm_id)
+            _setter("realm_id", realm_id)
         if refresh_token is not None:
-            pulumi.set(__self__, "refresh_token", refresh_token)
+            _setter("refresh_token", refresh_token)
 
     @property
     @pulumi.getter(name="accessToken")
@@ -114,14 +160,39 @@ class ConnectorAuthClientAccessArgs:
                  client_secret: Optional[pulumi.Input[str]] = None,
                  developer_token: Optional[pulumi.Input[str]] = None,
                  user_agent: Optional[pulumi.Input[str]] = None):
+        ConnectorAuthClientAccessArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            client_id=client_id,
+            client_secret=client_secret,
+            developer_token=developer_token,
+            user_agent=user_agent,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             client_id: Optional[pulumi.Input[str]] = None,
+             client_secret: Optional[pulumi.Input[str]] = None,
+             developer_token: Optional[pulumi.Input[str]] = None,
+             user_agent: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if 'developerToken' in kwargs:
+            developer_token = kwargs['developerToken']
+        if 'userAgent' in kwargs:
+            user_agent = kwargs['userAgent']
+
         if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
+            _setter("client_id", client_id)
         if client_secret is not None:
-            pulumi.set(__self__, "client_secret", client_secret)
+            _setter("client_secret", client_secret)
         if developer_token is not None:
-            pulumi.set(__self__, "developer_token", developer_token)
+            _setter("developer_token", developer_token)
         if user_agent is not None:
-            pulumi.set(__self__, "user_agent", user_agent)
+            _setter("user_agent", user_agent)
 
     @property
     @pulumi.getter(name="clientId")
@@ -158,6 +229,190 @@ class ConnectorAuthClientAccessArgs:
     @user_agent.setter
     def user_agent(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_agent", value)
+
+
+@pulumi.input_type
+class ConnectorCertificatesCertificateArgs:
+    def __init__(__self__, *,
+                 encoded_cert: pulumi.Input[str],
+                 hash: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None,
+                 public_key: Optional[pulumi.Input[str]] = None,
+                 sha1: Optional[pulumi.Input[str]] = None,
+                 sha256: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 validated_by: Optional[pulumi.Input[str]] = None,
+                 validated_date: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] encoded_cert: Base64 encoded certificate.
+        :param pulumi.Input[str] hash: Hash of the fingerprint.
+        :param pulumi.Input[str] name: Certificate name.
+        :param pulumi.Input[str] public_key: Certificate public key.
+        :param pulumi.Input[str] sha1: Certificate sha1.
+        :param pulumi.Input[str] sha256: Certificate sha256.
+        :param pulumi.Input[str] type: Certificate type.
+        :param pulumi.Input[str] validated_by: User name who validated the certificate.
+        :param pulumi.Input[str] validated_date: The date when the certificate was approved.
+        """
+        ConnectorCertificatesCertificateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            encoded_cert=encoded_cert,
+            hash=hash,
+            name=name,
+            public_key=public_key,
+            sha1=sha1,
+            sha256=sha256,
+            type=type,
+            validated_by=validated_by,
+            validated_date=validated_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             encoded_cert: pulumi.Input[str],
+             hash: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             public_key: Optional[pulumi.Input[str]] = None,
+             sha1: Optional[pulumi.Input[str]] = None,
+             sha256: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             validated_by: Optional[pulumi.Input[str]] = None,
+             validated_date: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'encodedCert' in kwargs:
+            encoded_cert = kwargs['encodedCert']
+        if 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if 'validatedBy' in kwargs:
+            validated_by = kwargs['validatedBy']
+        if 'validatedDate' in kwargs:
+            validated_date = kwargs['validatedDate']
+
+        _setter("encoded_cert", encoded_cert)
+        _setter("hash", hash)
+        if name is not None:
+            _setter("name", name)
+        if public_key is not None:
+            _setter("public_key", public_key)
+        if sha1 is not None:
+            _setter("sha1", sha1)
+        if sha256 is not None:
+            _setter("sha256", sha256)
+        if type is not None:
+            _setter("type", type)
+        if validated_by is not None:
+            _setter("validated_by", validated_by)
+        if validated_date is not None:
+            _setter("validated_date", validated_date)
+
+    @property
+    @pulumi.getter(name="encodedCert")
+    def encoded_cert(self) -> pulumi.Input[str]:
+        """
+        Base64 encoded certificate.
+        """
+        return pulumi.get(self, "encoded_cert")
+
+    @encoded_cert.setter
+    def encoded_cert(self, value: pulumi.Input[str]):
+        pulumi.set(self, "encoded_cert", value)
+
+    @property
+    @pulumi.getter
+    def hash(self) -> pulumi.Input[str]:
+        """
+        Hash of the fingerprint.
+        """
+        return pulumi.get(self, "hash")
+
+    @hash.setter
+    def hash(self, value: pulumi.Input[str]):
+        pulumi.set(self, "hash", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Certificate name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Certificate public key.
+        """
+        return pulumi.get(self, "public_key")
+
+    @public_key.setter
+    def public_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_key", value)
+
+    @property
+    @pulumi.getter
+    def sha1(self) -> Optional[pulumi.Input[str]]:
+        """
+        Certificate sha1.
+        """
+        return pulumi.get(self, "sha1")
+
+    @sha1.setter
+    def sha1(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sha1", value)
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> Optional[pulumi.Input[str]]:
+        """
+        Certificate sha256.
+        """
+        return pulumi.get(self, "sha256")
+
+    @sha256.setter
+    def sha256(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sha256", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Certificate type.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="validatedBy")
+    def validated_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name who validated the certificate.
+        """
+        return pulumi.get(self, "validated_by")
+
+    @validated_by.setter
+    def validated_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "validated_by", value)
+
+    @property
+    @pulumi.getter(name="validatedDate")
+    def validated_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date when the certificate was approved.
+        """
+        return pulumi.get(self, "validated_date")
+
+    @validated_date.setter
+    def validated_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "validated_date", value)
 
 
 @pulumi.input_type
@@ -256,6 +511,7 @@ class ConnectorConfigArgs:
                  business_unit_id: Optional[pulumi.Input[str]] = None,
                  certificate: Optional[pulumi.Input[str]] = None,
                  click_attribution_window: Optional[pulumi.Input[str]] = None,
+                 client: Optional[pulumi.Input[str]] = None,
                  client_cert: Optional[pulumi.Input[str]] = None,
                  client_cert_key: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
@@ -266,6 +522,8 @@ class ConnectorConfigArgs:
                  columns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  company_id: Optional[pulumi.Input[str]] = None,
                  company_key: Optional[pulumi.Input[str]] = None,
+                 company_request_token: Optional[pulumi.Input[str]] = None,
+                 company_uuid: Optional[pulumi.Input[str]] = None,
                  compression: Optional[pulumi.Input[str]] = None,
                  config_method: Optional[pulumi.Input[str]] = None,
                  config_repository_url: Optional[pulumi.Input[str]] = None,
@@ -382,7 +640,7 @@ class ConnectorConfigArgs:
                  key_store_type: Optional[pulumi.Input[str]] = None,
                  keystore: Optional[pulumi.Input[str]] = None,
                  keystore_password: Optional[pulumi.Input[str]] = None,
-                 last_synced_changes_utc_: Optional[pulumi.Input[str]] = None,
+                 last_synced_changes_utc: Optional[pulumi.Input[str]] = None,
                  latest_version: Optional[pulumi.Input[str]] = None,
                  line_separator: Optional[pulumi.Input[str]] = None,
                  list_strategy: Optional[pulumi.Input[str]] = None,
@@ -413,6 +671,8 @@ class ConnectorConfigArgs:
                  passphrase: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  pat: Optional[pulumi.Input[str]] = None,
+                 pat_name: Optional[pulumi.Input[str]] = None,
+                 pat_secret: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  pattern: Optional[pulumi.Input[str]] = None,
                  pdb_name: Optional[pulumi.Input[str]] = None,
@@ -494,6 +754,7 @@ class ConnectorConfigArgs:
                  selected_exports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  sender_id: Optional[pulumi.Input[str]] = None,
                  sender_password: Optional[pulumi.Input[str]] = None,
+                 server_address: Optional[pulumi.Input[str]] = None,
                  server_url: Optional[pulumi.Input[str]] = None,
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
@@ -541,6 +802,7 @@ class ConnectorConfigArgs:
                  sync_pack_mode: Optional[pulumi.Input[str]] = None,
                  sync_pull_api: Optional[pulumi.Input[str]] = None,
                  sync_type: Optional[pulumi.Input[str]] = None,
+                 sysnr: Optional[pulumi.Input[str]] = None,
                  table_name: Optional[pulumi.Input[str]] = None,
                  tde_certificate: Optional[pulumi.Input[str]] = None,
                  tde_certificate_name: Optional[pulumi.Input[str]] = None,
@@ -595,870 +857,2499 @@ class ConnectorConfigArgs:
                  workspace_same_as_source: Optional[pulumi.Input[str]] = None,
                  workspace_schema: Optional[pulumi.Input[str]] = None,
                  ws_certificate: Optional[pulumi.Input[str]] = None):
+        ConnectorConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            abs_connection_method=abs_connection_method,
+            abs_connection_string=abs_connection_string,
+            abs_container_address=abs_container_address,
+            abs_container_name=abs_container_name,
+            abs_host_ip=abs_host_ip,
+            abs_host_user=abs_host_user,
+            abs_prefix=abs_prefix,
+            abs_public_key=abs_public_key,
+            access_key=access_key,
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            access_token=access_token,
+            access_type=access_type,
+            account=account,
+            account_id=account_id,
+            account_ids=account_ids,
+            account_key=account_key,
+            account_name=account_name,
+            account_sync_mode=account_sync_mode,
+            accounts=accounts,
+            accounts_reddit_ads=accounts_reddit_ads,
+            accounts_sync_mode=accounts_sync_mode,
+            action_breakdowns=action_breakdowns,
+            action_report_time=action_report_time,
+            ad_analytics=ad_analytics,
+            ad_unit_view=ad_unit_view,
+            admin_api_key=admin_api_key,
+            adobe_analytics_configurations=adobe_analytics_configurations,
+            advertisables=advertisables,
+            advertisers=advertisers,
+            advertisers_ids=advertisers_ids,
+            advertisers_sync_mode=advertisers_sync_mode,
+            agent_host=agent_host,
+            agent_ora_home=agent_ora_home,
+            agent_password=agent_password,
+            agent_port=agent_port,
+            agent_public_cert=agent_public_cert,
+            agent_user=agent_user,
+            aggregation=aggregation,
+            always_encrypted=always_encrypted,
+            api_access_token=api_access_token,
+            api_id=api_id,
+            api_key=api_key,
+            api_keys=api_keys,
+            api_quota=api_quota,
+            api_requests_per_minute=api_requests_per_minute,
+            api_secret=api_secret,
+            api_secret_key=api_secret_key,
+            api_token=api_token,
+            api_type=api_type,
+            api_url=api_url,
+            api_usage=api_usage,
+            api_version=api_version,
+            app_id=app_id,
+            app_ids=app_ids,
+            app_ids_appsflyers=app_ids_appsflyers,
+            app_specific_password=app_specific_password,
+            app_sync_mode=app_sync_mode,
+            append_file_option=append_file_option,
+            application_key=application_key,
+            apps=apps,
+            archive_log_format=archive_log_format,
+            archive_log_path=archive_log_path,
+            archive_pattern=archive_pattern,
+            are_soap_credentials_provided=are_soap_credentials_provided,
+            asb_ip=asb_ip,
+            asm_option=asm_option,
+            asm_oracle_home=asm_oracle_home,
+            asm_password=asm_password,
+            asm_tns=asm_tns,
+            asm_user=asm_user,
+            attribution_window=attribution_window,
+            attribution_window_size=attribution_window_size,
+            auth=auth,
+            auth_method=auth_method,
+            auth_mode=auth_mode,
+            auth_type=auth_type,
+            authorization_method=authorization_method,
+            aws_region_code=aws_region_code,
+            base_currency=base_currency,
+            base_domain=base_domain,
+            base_id=base_id,
+            base_url=base_url,
+            bearer_token=bearer_token,
+            blob_sas_url=blob_sas_url,
+            breakdowns=breakdowns,
+            bucket=bucket,
+            bucket_name=bucket_name,
+            bucket_service=bucket_service,
+            business_id=business_id,
+            business_unit_id=business_unit_id,
+            certificate=certificate,
+            click_attribution_window=click_attribution_window,
+            client=client,
+            client_cert=client_cert,
+            client_cert_key=client_cert_key,
+            client_id=client_id,
+            client_key=client_key,
+            client_name=client_name,
+            client_secret=client_secret,
+            cloud_storage_type=cloud_storage_type,
+            columns=columns,
+            company_id=company_id,
+            company_key=company_key,
+            company_request_token=company_request_token,
+            company_uuid=company_uuid,
+            compression=compression,
+            config_method=config_method,
+            config_repository_url=config_repository_url,
+            config_type=config_type,
+            connecting_user=connecting_user,
+            connecting_user_email=connecting_user_email,
+            connection_method=connection_method,
+            connection_string=connection_string,
+            connection_type=connection_type,
+            consumer_group=consumer_group,
+            consumer_key=consumer_key,
+            consumer_secret=consumer_secret,
+            container_address=container_address,
+            container_name=container_name,
+            content_owner_id=content_owner_id,
+            conversation_webhook_url=conversation_webhook_url,
+            conversion_dimensions=conversion_dimensions,
+            conversion_report_time=conversion_report_time,
+            conversion_window_size=conversion_window_size,
+            csv_definition=csv_definition,
+            currency=currency,
+            custom_event_sync_mode=custom_event_sync_mode,
+            custom_events=custom_events,
+            custom_field_ids=custom_field_ids,
+            custom_floodlight_variables=custom_floodlight_variables,
+            custom_reports=custom_reports,
+            custom_tables=custom_tables,
+            customer_id=customer_id,
+            customer_list_id=customer_list_id,
+            daily_api_call_limit=daily_api_call_limit,
+            data_access_method=data_access_method,
+            data_center=data_center,
+            data_set_name=data_set_name,
+            database=database,
+            dataset_id=dataset_id,
+            datasource=datasource,
+            date_granularity=date_granularity,
+            delimiter=delimiter,
+            dimension_attributes=dimension_attributes,
+            dimensions=dimensions,
+            domain=domain,
+            domain_host_name=domain_host_name,
+            domain_name=domain_name,
+            domain_type=domain_type,
+            elements=elements,
+            email=email,
+            empty_header=empty_header,
+            enable_all_dimension_combinations=enable_all_dimension_combinations,
+            enable_archive_log_only=enable_archive_log_only,
+            enable_enrichments=enable_enrichments,
+            enable_exports=enable_exports,
+            enable_tde=enable_tde,
+            encoded_public_key=encoded_public_key,
+            encryption_key=encryption_key,
+            endpoint=endpoint,
+            engagement_attribution_window=engagement_attribution_window,
+            enriched_export=enriched_export,
+            entity_id=entity_id,
+            environment=environment,
+            escape_char=escape_char,
+            eu_region=eu_region,
+            events=events,
+            export_storage_type=export_storage_type,
+            external_id=external_id,
+            fields=fields,
+            file_type=file_type,
+            filter=filter,
+            finance_account_sync_mode=finance_account_sync_mode,
+            finance_accounts=finance_accounts,
+            folder=folder,
+            folder_id=folder_id,
+            folder_path=folder_path,
+            forecast_id=forecast_id,
+            ftp_host=ftp_host,
+            ftp_password=ftp_password,
+            ftp_port=ftp_port,
+            ftp_user=ftp_user,
+            function=function,
+            function_app=function_app,
+            function_key=function_key,
+            function_name=function_name,
+            function_trigger=function_trigger,
+            gcs_bucket=gcs_bucket,
+            gcs_folder=gcs_folder,
+            group_name=group_name,
+            has_manage_permissions=has_manage_permissions,
+            home_folder=home_folder,
+            host=host,
+            host_ip=host_ip,
+            host_user=host_user,
+            hosts=hosts,
+            identity=identity,
+            instance=instance,
+            instance_number=instance_number,
+            instance_url=instance_url,
+            integration_key=integration_key,
+            is_account_level_connector=is_account_level_connector,
+            is_auth2_enabled=is_auth2_enabled,
+            is_custom_api_credentials=is_custom_api_credentials,
+            is_ftps=is_ftps,
+            is_keypair=is_keypair,
+            is_multi_entity_feature_enabled=is_multi_entity_feature_enabled,
+            is_new_package=is_new_package,
+            is_private_key_encrypted=is_private_key_encrypted,
+            is_private_link_required=is_private_link_required,
+            is_public=is_public,
+            is_sailthru_connect_enabled=is_sailthru_connect_enabled,
+            is_secure=is_secure,
+            is_single_table_mode=is_single_table_mode,
+            is_vendor=is_vendor,
+            json_delivery_mode=json_delivery_mode,
+            key=key,
+            key_password=key_password,
+            key_store_type=key_store_type,
+            keystore=keystore,
+            keystore_password=keystore_password,
+            last_synced_changes_utc=last_synced_changes_utc,
+            latest_version=latest_version,
+            line_separator=line_separator,
+            list_strategy=list_strategy,
+            list_sync_mode=list_sync_mode,
+            log_journal=log_journal,
+            log_journal_schema=log_journal_schema,
+            login=login,
+            login_password=login_password,
+            manager_accounts=manager_accounts,
+            merchant_id=merchant_id,
+            message_type=message_type,
+            metrics=metrics,
+            named_range=named_range,
+            namespace=namespace,
+            network_code=network_code,
+            null_sequence=null_sequence,
+            oauth_token=oauth_token,
+            oauth_token_secret=oauth_token_secret,
+            on_error=on_error,
+            on_premise=on_premise,
+            organization=organization,
+            organization_id=organization_id,
+            organizations=organizations,
+            packed_mode_tables=packed_mode_tables,
+            packing_mode=packing_mode,
+            pages=pages,
+            partners=partners,
+            passphrase=passphrase,
+            password=password,
+            pat=pat,
+            pat_name=pat_name,
+            pat_secret=pat_secret,
+            path=path,
+            pattern=pattern,
+            pdb_name=pdb_name,
+            pem_certificate=pem_certificate,
+            pem_private_key=pem_private_key,
+            per_interaction_dimensions=per_interaction_dimensions,
+            personal_access_token=personal_access_token,
+            pgp_pass_phrase=pgp_pass_phrase,
+            pgp_secret_key=pgp_secret_key,
+            phone_number=phone_number,
+            port=port,
+            post_click_attribution_window_size=post_click_attribution_window_size,
+            prebuilt_report=prebuilt_report,
+            prefix=prefix,
+            primary_keys=primary_keys,
+            private_key=private_key,
+            profiles=profiles,
+            project_credentials=project_credentials,
+            project_id=project_id,
+            projects=projects,
+            properties=properties,
+            public_key=public_key,
+            publication_name=publication_name,
+            query_id=query_id,
+            query_param_value=query_param_value,
+            refresh_token_expires_at=refresh_token_expires_at,
+            region=region,
+            replica_id=replica_id,
+            replication_slot=replication_slot,
+            report_configuration_ids=report_configuration_ids,
+            report_format_type=report_format_type,
+            report_suites=report_suites,
+            report_timezone=report_timezone,
+            report_type=report_type,
+            report_url=report_url,
+            reports=reports,
+            reports_linkedin_ads=reports_linkedin_ads,
+            repositories=repositories,
+            resource_token=resource_token,
+            resource_url=resource_url,
+            rest_api_limit=rest_api_limit,
+            rfc_library_path=rfc_library_path,
+            role=role,
+            role_arn=role_arn,
+            rollback_window_size=rollback_window_size,
+            s3_bucket=s3_bucket,
+            s3_export_bucket=s3_export_bucket,
+            s3_export_folder=s3_export_folder,
+            s3_export_role_arn=s3_export_role_arn,
+            s3_role_arn=s3_role_arn,
+            s3bucket=s3bucket,
+            s3external_id=s3external_id,
+            s3folder=s3folder,
+            s3path=s3path,
+            s3role_arn=s3role_arn,
+            sales_account_sync_mode=sales_account_sync_mode,
+            sales_accounts=sales_accounts,
+            salesforce_security_token=salesforce_security_token,
+            sandbox_account=sandbox_account,
+            sap_schema=sap_schema,
+            sap_user=sap_user,
+            sasl_mechanism=sasl_mechanism,
+            sasl_plain_key=sasl_plain_key,
+            sasl_plain_secret=sasl_plain_secret,
+            sasl_scram256_key=sasl_scram256_key,
+            sasl_scram256_secret=sasl_scram256_secret,
+            sasl_scram512_key=sasl_scram512_key,
+            sasl_scram512_secret=sasl_scram512_secret,
+            schema_registry_credentials_source=schema_registry_credentials_source,
+            schema_registry_key=schema_registry_key,
+            schema_registry_secret=schema_registry_secret,
+            schema_registry_urls=schema_registry_urls,
+            secret=secret,
+            secret_key=secret_key,
+            secrets=secrets,
+            secrets_lists=secrets_lists,
+            security_protocol=security_protocol,
+            segments=segments,
+            selected_exports=selected_exports,
+            sender_id=sender_id,
+            sender_password=sender_password,
+            server_address=server_address,
+            server_url=server_url,
+            servers=servers,
+            service_account=service_account,
+            service_account_email=service_account_email,
+            service_account_key=service_account_key,
+            service_version=service_version,
+            sftp_host=sftp_host,
+            sftp_is_key_pair=sftp_is_key_pair,
+            sftp_password=sftp_password,
+            sftp_port=sftp_port,
+            sftp_public_key=sftp_public_key,
+            sftp_user=sftp_user,
+            share_url=share_url,
+            sheet_id=sheet_id,
+            shop=shop,
+            short_code=short_code,
+            show_records_with_no_metrics=show_records_with_no_metrics,
+            sid=sid,
+            signer_public_key=signer_public_key,
+            site_address=site_address,
+            site_id=site_id,
+            site_name=site_name,
+            site_urls=site_urls,
+            skip_after=skip_after,
+            skip_before=skip_before,
+            soap_uri=soap_uri,
+            social_data_sync_timeframe=social_data_sync_timeframe,
+            source=source,
+            store_hash=store_hash,
+            sub_domain=sub_domain,
+            subdomain=subdomain,
+            subscriber_name=subscriber_name,
+            subscription=subscription,
+            support_connected_accounts_sync=support_connected_accounts_sync,
+            support_nested_columns=support_nested_columns,
+            survey_ids=survey_ids,
+            swipe_attribution_window=swipe_attribution_window,
+            sync_data_locker=sync_data_locker,
+            sync_format=sync_format,
+            sync_formula_fields=sync_formula_fields,
+            sync_metadata=sync_metadata,
+            sync_method=sync_method,
+            sync_mode=sync_mode,
+            sync_multiple_accounts=sync_multiple_accounts,
+            sync_pack_mode=sync_pack_mode,
+            sync_pull_api=sync_pull_api,
+            sync_type=sync_type,
+            sysnr=sysnr,
+            table_name=table_name,
+            tde_certificate=tde_certificate,
+            tde_certificate_name=tde_certificate_name,
+            tde_password=tde_password,
+            tde_private_key=tde_private_key,
+            team_id=team_id,
+            technical_account_id=technical_account_id,
+            template_labels=template_labels,
+            tenant_id=tenant_id,
+            test_table_name=test_table_name,
+            time_zone=time_zone,
+            timeframe_months=timeframe_months,
+            tns=tns,
+            token_authenticated_container=token_authenticated_container,
+            token_authenticated_database=token_authenticated_database,
+            token_id=token_id,
+            token_key=token_key,
+            token_secret=token_secret,
+            token_secret_key=token_secret_key,
+            topics=topics,
+            trust_store_type=trust_store_type,
+            trusted_cert=trusted_cert,
+            truststore=truststore,
+            tunnel_host=tunnel_host,
+            tunnel_port=tunnel_port,
+            tunnel_user=tunnel_user,
+            unique_id=unique_id,
+            update_config_on_each_sync=update_config_on_each_sync,
+            update_method=update_method,
+            uri=uri,
+            use_api_keys=use_api_keys,
+            use_customer_bucket=use_customer_bucket,
+            use_oracle_rac=use_oracle_rac,
+            use_pgp_encryption_options=use_pgp_encryption_options,
+            use_service_account=use_service_account,
+            use_template_labels=use_template_labels,
+            use_webhooks=use_webhooks,
+            use_workspace=use_workspace,
+            user=user,
+            user_id=user_id,
+            user_key=user_key,
+            user_name=user_name,
+            user_profiles=user_profiles,
+            username=username,
+            view_attribution_window=view_attribution_window,
+            view_through_attribution_window_size=view_through_attribution_window_size,
+            webhook_endpoint=webhook_endpoint,
+            webhook_key=webhook_key,
+            webhook_url=webhook_url,
+            word_press_site_id_or_woocommerce_domain_name=word_press_site_id_or_woocommerce_domain_name,
+            workspace_name=workspace_name,
+            workspace_same_as_source=workspace_same_as_source,
+            workspace_schema=workspace_schema,
+            ws_certificate=ws_certificate,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             abs_connection_method: Optional[pulumi.Input[str]] = None,
+             abs_connection_string: Optional[pulumi.Input[str]] = None,
+             abs_container_address: Optional[pulumi.Input[str]] = None,
+             abs_container_name: Optional[pulumi.Input[str]] = None,
+             abs_host_ip: Optional[pulumi.Input[str]] = None,
+             abs_host_user: Optional[pulumi.Input[str]] = None,
+             abs_prefix: Optional[pulumi.Input[str]] = None,
+             abs_public_key: Optional[pulumi.Input[str]] = None,
+             access_key: Optional[pulumi.Input[str]] = None,
+             access_key_id: Optional[pulumi.Input[str]] = None,
+             access_key_secret: Optional[pulumi.Input[str]] = None,
+             access_token: Optional[pulumi.Input[str]] = None,
+             access_type: Optional[pulumi.Input[str]] = None,
+             account: Optional[pulumi.Input[str]] = None,
+             account_id: Optional[pulumi.Input[str]] = None,
+             account_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             account_key: Optional[pulumi.Input[str]] = None,
+             account_name: Optional[pulumi.Input[str]] = None,
+             account_sync_mode: Optional[pulumi.Input[str]] = None,
+             accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             accounts_reddit_ads: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigAccountsRedditAdArgs']]]] = None,
+             accounts_sync_mode: Optional[pulumi.Input[str]] = None,
+             action_breakdowns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             action_report_time: Optional[pulumi.Input[str]] = None,
+             ad_analytics: Optional[pulumi.Input[str]] = None,
+             ad_unit_view: Optional[pulumi.Input[str]] = None,
+             admin_api_key: Optional[pulumi.Input[str]] = None,
+             adobe_analytics_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigAdobeAnalyticsConfigurationArgs']]]] = None,
+             advertisables: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             advertisers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             advertisers_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             advertisers_sync_mode: Optional[pulumi.Input[str]] = None,
+             agent_host: Optional[pulumi.Input[str]] = None,
+             agent_ora_home: Optional[pulumi.Input[str]] = None,
+             agent_password: Optional[pulumi.Input[str]] = None,
+             agent_port: Optional[pulumi.Input[str]] = None,
+             agent_public_cert: Optional[pulumi.Input[str]] = None,
+             agent_user: Optional[pulumi.Input[str]] = None,
+             aggregation: Optional[pulumi.Input[str]] = None,
+             always_encrypted: Optional[pulumi.Input[str]] = None,
+             api_access_token: Optional[pulumi.Input[str]] = None,
+             api_id: Optional[pulumi.Input[str]] = None,
+             api_key: Optional[pulumi.Input[str]] = None,
+             api_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             api_quota: Optional[pulumi.Input[str]] = None,
+             api_requests_per_minute: Optional[pulumi.Input[str]] = None,
+             api_secret: Optional[pulumi.Input[str]] = None,
+             api_secret_key: Optional[pulumi.Input[str]] = None,
+             api_token: Optional[pulumi.Input[str]] = None,
+             api_type: Optional[pulumi.Input[str]] = None,
+             api_url: Optional[pulumi.Input[str]] = None,
+             api_usage: Optional[pulumi.Input[str]] = None,
+             api_version: Optional[pulumi.Input[str]] = None,
+             app_id: Optional[pulumi.Input[str]] = None,
+             app_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             app_ids_appsflyers: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigAppIdsAppsflyerArgs']]]] = None,
+             app_specific_password: Optional[pulumi.Input[str]] = None,
+             app_sync_mode: Optional[pulumi.Input[str]] = None,
+             append_file_option: Optional[pulumi.Input[str]] = None,
+             application_key: Optional[pulumi.Input[str]] = None,
+             apps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             archive_log_format: Optional[pulumi.Input[str]] = None,
+             archive_log_path: Optional[pulumi.Input[str]] = None,
+             archive_pattern: Optional[pulumi.Input[str]] = None,
+             are_soap_credentials_provided: Optional[pulumi.Input[str]] = None,
+             asb_ip: Optional[pulumi.Input[str]] = None,
+             asm_option: Optional[pulumi.Input[str]] = None,
+             asm_oracle_home: Optional[pulumi.Input[str]] = None,
+             asm_password: Optional[pulumi.Input[str]] = None,
+             asm_tns: Optional[pulumi.Input[str]] = None,
+             asm_user: Optional[pulumi.Input[str]] = None,
+             attribution_window: Optional[pulumi.Input[str]] = None,
+             attribution_window_size: Optional[pulumi.Input[str]] = None,
+             auth: Optional[pulumi.Input[str]] = None,
+             auth_method: Optional[pulumi.Input[str]] = None,
+             auth_mode: Optional[pulumi.Input[str]] = None,
+             auth_type: Optional[pulumi.Input[str]] = None,
+             authorization_method: Optional[pulumi.Input[str]] = None,
+             aws_region_code: Optional[pulumi.Input[str]] = None,
+             base_currency: Optional[pulumi.Input[str]] = None,
+             base_domain: Optional[pulumi.Input[str]] = None,
+             base_id: Optional[pulumi.Input[str]] = None,
+             base_url: Optional[pulumi.Input[str]] = None,
+             bearer_token: Optional[pulumi.Input[str]] = None,
+             blob_sas_url: Optional[pulumi.Input[str]] = None,
+             breakdowns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             bucket: Optional[pulumi.Input[str]] = None,
+             bucket_name: Optional[pulumi.Input[str]] = None,
+             bucket_service: Optional[pulumi.Input[str]] = None,
+             business_id: Optional[pulumi.Input[str]] = None,
+             business_unit_id: Optional[pulumi.Input[str]] = None,
+             certificate: Optional[pulumi.Input[str]] = None,
+             click_attribution_window: Optional[pulumi.Input[str]] = None,
+             client: Optional[pulumi.Input[str]] = None,
+             client_cert: Optional[pulumi.Input[str]] = None,
+             client_cert_key: Optional[pulumi.Input[str]] = None,
+             client_id: Optional[pulumi.Input[str]] = None,
+             client_key: Optional[pulumi.Input[str]] = None,
+             client_name: Optional[pulumi.Input[str]] = None,
+             client_secret: Optional[pulumi.Input[str]] = None,
+             cloud_storage_type: Optional[pulumi.Input[str]] = None,
+             columns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             company_id: Optional[pulumi.Input[str]] = None,
+             company_key: Optional[pulumi.Input[str]] = None,
+             company_request_token: Optional[pulumi.Input[str]] = None,
+             company_uuid: Optional[pulumi.Input[str]] = None,
+             compression: Optional[pulumi.Input[str]] = None,
+             config_method: Optional[pulumi.Input[str]] = None,
+             config_repository_url: Optional[pulumi.Input[str]] = None,
+             config_type: Optional[pulumi.Input[str]] = None,
+             connecting_user: Optional[pulumi.Input[str]] = None,
+             connecting_user_email: Optional[pulumi.Input[str]] = None,
+             connection_method: Optional[pulumi.Input[str]] = None,
+             connection_string: Optional[pulumi.Input[str]] = None,
+             connection_type: Optional[pulumi.Input[str]] = None,
+             consumer_group: Optional[pulumi.Input[str]] = None,
+             consumer_key: Optional[pulumi.Input[str]] = None,
+             consumer_secret: Optional[pulumi.Input[str]] = None,
+             container_address: Optional[pulumi.Input[str]] = None,
+             container_name: Optional[pulumi.Input[str]] = None,
+             content_owner_id: Optional[pulumi.Input[str]] = None,
+             conversation_webhook_url: Optional[pulumi.Input[str]] = None,
+             conversion_dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             conversion_report_time: Optional[pulumi.Input[str]] = None,
+             conversion_window_size: Optional[pulumi.Input[str]] = None,
+             csv_definition: Optional[pulumi.Input[str]] = None,
+             currency: Optional[pulumi.Input[str]] = None,
+             custom_event_sync_mode: Optional[pulumi.Input[str]] = None,
+             custom_events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             custom_field_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             custom_floodlight_variables: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             custom_reports: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigCustomReportArgs']]]] = None,
+             custom_tables: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigCustomTableArgs']]]] = None,
+             customer_id: Optional[pulumi.Input[str]] = None,
+             customer_list_id: Optional[pulumi.Input[str]] = None,
+             daily_api_call_limit: Optional[pulumi.Input[str]] = None,
+             data_access_method: Optional[pulumi.Input[str]] = None,
+             data_center: Optional[pulumi.Input[str]] = None,
+             data_set_name: Optional[pulumi.Input[str]] = None,
+             database: Optional[pulumi.Input[str]] = None,
+             dataset_id: Optional[pulumi.Input[str]] = None,
+             datasource: Optional[pulumi.Input[str]] = None,
+             date_granularity: Optional[pulumi.Input[str]] = None,
+             delimiter: Optional[pulumi.Input[str]] = None,
+             dimension_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             domain: Optional[pulumi.Input[str]] = None,
+             domain_host_name: Optional[pulumi.Input[str]] = None,
+             domain_name: Optional[pulumi.Input[str]] = None,
+             domain_type: Optional[pulumi.Input[str]] = None,
+             elements: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             email: Optional[pulumi.Input[str]] = None,
+             empty_header: Optional[pulumi.Input[str]] = None,
+             enable_all_dimension_combinations: Optional[pulumi.Input[str]] = None,
+             enable_archive_log_only: Optional[pulumi.Input[str]] = None,
+             enable_enrichments: Optional[pulumi.Input[str]] = None,
+             enable_exports: Optional[pulumi.Input[str]] = None,
+             enable_tde: Optional[pulumi.Input[str]] = None,
+             encoded_public_key: Optional[pulumi.Input[str]] = None,
+             encryption_key: Optional[pulumi.Input[str]] = None,
+             endpoint: Optional[pulumi.Input[str]] = None,
+             engagement_attribution_window: Optional[pulumi.Input[str]] = None,
+             enriched_export: Optional[pulumi.Input[str]] = None,
+             entity_id: Optional[pulumi.Input[str]] = None,
+             environment: Optional[pulumi.Input[str]] = None,
+             escape_char: Optional[pulumi.Input[str]] = None,
+             eu_region: Optional[pulumi.Input[str]] = None,
+             events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             export_storage_type: Optional[pulumi.Input[str]] = None,
+             external_id: Optional[pulumi.Input[str]] = None,
+             fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             file_type: Optional[pulumi.Input[str]] = None,
+             filter: Optional[pulumi.Input[str]] = None,
+             finance_account_sync_mode: Optional[pulumi.Input[str]] = None,
+             finance_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             folder: Optional[pulumi.Input[str]] = None,
+             folder_id: Optional[pulumi.Input[str]] = None,
+             folder_path: Optional[pulumi.Input[str]] = None,
+             forecast_id: Optional[pulumi.Input[str]] = None,
+             ftp_host: Optional[pulumi.Input[str]] = None,
+             ftp_password: Optional[pulumi.Input[str]] = None,
+             ftp_port: Optional[pulumi.Input[str]] = None,
+             ftp_user: Optional[pulumi.Input[str]] = None,
+             function: Optional[pulumi.Input[str]] = None,
+             function_app: Optional[pulumi.Input[str]] = None,
+             function_key: Optional[pulumi.Input[str]] = None,
+             function_name: Optional[pulumi.Input[str]] = None,
+             function_trigger: Optional[pulumi.Input[str]] = None,
+             gcs_bucket: Optional[pulumi.Input[str]] = None,
+             gcs_folder: Optional[pulumi.Input[str]] = None,
+             group_name: Optional[pulumi.Input[str]] = None,
+             has_manage_permissions: Optional[pulumi.Input[str]] = None,
+             home_folder: Optional[pulumi.Input[str]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             host_ip: Optional[pulumi.Input[str]] = None,
+             host_user: Optional[pulumi.Input[str]] = None,
+             hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             identity: Optional[pulumi.Input[str]] = None,
+             instance: Optional[pulumi.Input[str]] = None,
+             instance_number: Optional[pulumi.Input[str]] = None,
+             instance_url: Optional[pulumi.Input[str]] = None,
+             integration_key: Optional[pulumi.Input[str]] = None,
+             is_account_level_connector: Optional[pulumi.Input[str]] = None,
+             is_auth2_enabled: Optional[pulumi.Input[str]] = None,
+             is_custom_api_credentials: Optional[pulumi.Input[str]] = None,
+             is_ftps: Optional[pulumi.Input[str]] = None,
+             is_keypair: Optional[pulumi.Input[str]] = None,
+             is_multi_entity_feature_enabled: Optional[pulumi.Input[str]] = None,
+             is_new_package: Optional[pulumi.Input[str]] = None,
+             is_private_key_encrypted: Optional[pulumi.Input[str]] = None,
+             is_private_link_required: Optional[pulumi.Input[str]] = None,
+             is_public: Optional[pulumi.Input[str]] = None,
+             is_sailthru_connect_enabled: Optional[pulumi.Input[str]] = None,
+             is_secure: Optional[pulumi.Input[str]] = None,
+             is_single_table_mode: Optional[pulumi.Input[str]] = None,
+             is_vendor: Optional[pulumi.Input[str]] = None,
+             json_delivery_mode: Optional[pulumi.Input[str]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             key_password: Optional[pulumi.Input[str]] = None,
+             key_store_type: Optional[pulumi.Input[str]] = None,
+             keystore: Optional[pulumi.Input[str]] = None,
+             keystore_password: Optional[pulumi.Input[str]] = None,
+             last_synced_changes_utc: Optional[pulumi.Input[str]] = None,
+             latest_version: Optional[pulumi.Input[str]] = None,
+             line_separator: Optional[pulumi.Input[str]] = None,
+             list_strategy: Optional[pulumi.Input[str]] = None,
+             list_sync_mode: Optional[pulumi.Input[str]] = None,
+             log_journal: Optional[pulumi.Input[str]] = None,
+             log_journal_schema: Optional[pulumi.Input[str]] = None,
+             login: Optional[pulumi.Input[str]] = None,
+             login_password: Optional[pulumi.Input[str]] = None,
+             manager_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             merchant_id: Optional[pulumi.Input[str]] = None,
+             message_type: Optional[pulumi.Input[str]] = None,
+             metrics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             named_range: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             network_code: Optional[pulumi.Input[str]] = None,
+             null_sequence: Optional[pulumi.Input[str]] = None,
+             oauth_token: Optional[pulumi.Input[str]] = None,
+             oauth_token_secret: Optional[pulumi.Input[str]] = None,
+             on_error: Optional[pulumi.Input[str]] = None,
+             on_premise: Optional[pulumi.Input[str]] = None,
+             organization: Optional[pulumi.Input[str]] = None,
+             organization_id: Optional[pulumi.Input[str]] = None,
+             organizations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             packed_mode_tables: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             packing_mode: Optional[pulumi.Input[str]] = None,
+             pages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             partners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             passphrase: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             pat: Optional[pulumi.Input[str]] = None,
+             pat_name: Optional[pulumi.Input[str]] = None,
+             pat_secret: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             pattern: Optional[pulumi.Input[str]] = None,
+             pdb_name: Optional[pulumi.Input[str]] = None,
+             pem_certificate: Optional[pulumi.Input[str]] = None,
+             pem_private_key: Optional[pulumi.Input[str]] = None,
+             per_interaction_dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             personal_access_token: Optional[pulumi.Input[str]] = None,
+             pgp_pass_phrase: Optional[pulumi.Input[str]] = None,
+             pgp_secret_key: Optional[pulumi.Input[str]] = None,
+             phone_number: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[str]] = None,
+             post_click_attribution_window_size: Optional[pulumi.Input[str]] = None,
+             prebuilt_report: Optional[pulumi.Input[str]] = None,
+             prefix: Optional[pulumi.Input[str]] = None,
+             primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             private_key: Optional[pulumi.Input[str]] = None,
+             profiles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             project_credentials: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigProjectCredentialArgs']]]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             public_key: Optional[pulumi.Input[str]] = None,
+             publication_name: Optional[pulumi.Input[str]] = None,
+             query_id: Optional[pulumi.Input[str]] = None,
+             query_param_value: Optional[pulumi.Input[str]] = None,
+             refresh_token_expires_at: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             replica_id: Optional[pulumi.Input[str]] = None,
+             replication_slot: Optional[pulumi.Input[str]] = None,
+             report_configuration_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             report_format_type: Optional[pulumi.Input[str]] = None,
+             report_suites: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             report_timezone: Optional[pulumi.Input[str]] = None,
+             report_type: Optional[pulumi.Input[str]] = None,
+             report_url: Optional[pulumi.Input[str]] = None,
+             reports: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigReportArgs']]]] = None,
+             reports_linkedin_ads: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             repositories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             resource_token: Optional[pulumi.Input[str]] = None,
+             resource_url: Optional[pulumi.Input[str]] = None,
+             rest_api_limit: Optional[pulumi.Input[str]] = None,
+             rfc_library_path: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             role_arn: Optional[pulumi.Input[str]] = None,
+             rollback_window_size: Optional[pulumi.Input[str]] = None,
+             s3_bucket: Optional[pulumi.Input[str]] = None,
+             s3_export_bucket: Optional[pulumi.Input[str]] = None,
+             s3_export_folder: Optional[pulumi.Input[str]] = None,
+             s3_export_role_arn: Optional[pulumi.Input[str]] = None,
+             s3_role_arn: Optional[pulumi.Input[str]] = None,
+             s3bucket: Optional[pulumi.Input[str]] = None,
+             s3external_id: Optional[pulumi.Input[str]] = None,
+             s3folder: Optional[pulumi.Input[str]] = None,
+             s3path: Optional[pulumi.Input[str]] = None,
+             s3role_arn: Optional[pulumi.Input[str]] = None,
+             sales_account_sync_mode: Optional[pulumi.Input[str]] = None,
+             sales_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             salesforce_security_token: Optional[pulumi.Input[str]] = None,
+             sandbox_account: Optional[pulumi.Input[str]] = None,
+             sap_schema: Optional[pulumi.Input[str]] = None,
+             sap_user: Optional[pulumi.Input[str]] = None,
+             sasl_mechanism: Optional[pulumi.Input[str]] = None,
+             sasl_plain_key: Optional[pulumi.Input[str]] = None,
+             sasl_plain_secret: Optional[pulumi.Input[str]] = None,
+             sasl_scram256_key: Optional[pulumi.Input[str]] = None,
+             sasl_scram256_secret: Optional[pulumi.Input[str]] = None,
+             sasl_scram512_key: Optional[pulumi.Input[str]] = None,
+             sasl_scram512_secret: Optional[pulumi.Input[str]] = None,
+             schema_registry_credentials_source: Optional[pulumi.Input[str]] = None,
+             schema_registry_key: Optional[pulumi.Input[str]] = None,
+             schema_registry_secret: Optional[pulumi.Input[str]] = None,
+             schema_registry_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             secret: Optional[pulumi.Input[str]] = None,
+             secret_key: Optional[pulumi.Input[str]] = None,
+             secrets: Optional[pulumi.Input[str]] = None,
+             secrets_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorConfigSecretsListArgs']]]] = None,
+             security_protocol: Optional[pulumi.Input[str]] = None,
+             segments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             selected_exports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             sender_id: Optional[pulumi.Input[str]] = None,
+             sender_password: Optional[pulumi.Input[str]] = None,
+             server_address: Optional[pulumi.Input[str]] = None,
+             server_url: Optional[pulumi.Input[str]] = None,
+             servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             service_account: Optional[pulumi.Input[str]] = None,
+             service_account_email: Optional[pulumi.Input[str]] = None,
+             service_account_key: Optional[pulumi.Input[str]] = None,
+             service_version: Optional[pulumi.Input[str]] = None,
+             sftp_host: Optional[pulumi.Input[str]] = None,
+             sftp_is_key_pair: Optional[pulumi.Input[str]] = None,
+             sftp_password: Optional[pulumi.Input[str]] = None,
+             sftp_port: Optional[pulumi.Input[str]] = None,
+             sftp_public_key: Optional[pulumi.Input[str]] = None,
+             sftp_user: Optional[pulumi.Input[str]] = None,
+             share_url: Optional[pulumi.Input[str]] = None,
+             sheet_id: Optional[pulumi.Input[str]] = None,
+             shop: Optional[pulumi.Input[str]] = None,
+             short_code: Optional[pulumi.Input[str]] = None,
+             show_records_with_no_metrics: Optional[pulumi.Input[str]] = None,
+             sid: Optional[pulumi.Input[str]] = None,
+             signer_public_key: Optional[pulumi.Input[str]] = None,
+             site_address: Optional[pulumi.Input[str]] = None,
+             site_id: Optional[pulumi.Input[str]] = None,
+             site_name: Optional[pulumi.Input[str]] = None,
+             site_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             skip_after: Optional[pulumi.Input[str]] = None,
+             skip_before: Optional[pulumi.Input[str]] = None,
+             soap_uri: Optional[pulumi.Input[str]] = None,
+             social_data_sync_timeframe: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             store_hash: Optional[pulumi.Input[str]] = None,
+             sub_domain: Optional[pulumi.Input[str]] = None,
+             subdomain: Optional[pulumi.Input[str]] = None,
+             subscriber_name: Optional[pulumi.Input[str]] = None,
+             subscription: Optional[pulumi.Input[str]] = None,
+             support_connected_accounts_sync: Optional[pulumi.Input[str]] = None,
+             support_nested_columns: Optional[pulumi.Input[str]] = None,
+             survey_ids: Optional[pulumi.Input[str]] = None,
+             swipe_attribution_window: Optional[pulumi.Input[str]] = None,
+             sync_data_locker: Optional[pulumi.Input[str]] = None,
+             sync_format: Optional[pulumi.Input[str]] = None,
+             sync_formula_fields: Optional[pulumi.Input[str]] = None,
+             sync_metadata: Optional[pulumi.Input[str]] = None,
+             sync_method: Optional[pulumi.Input[str]] = None,
+             sync_mode: Optional[pulumi.Input[str]] = None,
+             sync_multiple_accounts: Optional[pulumi.Input[str]] = None,
+             sync_pack_mode: Optional[pulumi.Input[str]] = None,
+             sync_pull_api: Optional[pulumi.Input[str]] = None,
+             sync_type: Optional[pulumi.Input[str]] = None,
+             sysnr: Optional[pulumi.Input[str]] = None,
+             table_name: Optional[pulumi.Input[str]] = None,
+             tde_certificate: Optional[pulumi.Input[str]] = None,
+             tde_certificate_name: Optional[pulumi.Input[str]] = None,
+             tde_password: Optional[pulumi.Input[str]] = None,
+             tde_private_key: Optional[pulumi.Input[str]] = None,
+             team_id: Optional[pulumi.Input[str]] = None,
+             technical_account_id: Optional[pulumi.Input[str]] = None,
+             template_labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             test_table_name: Optional[pulumi.Input[str]] = None,
+             time_zone: Optional[pulumi.Input[str]] = None,
+             timeframe_months: Optional[pulumi.Input[str]] = None,
+             tns: Optional[pulumi.Input[str]] = None,
+             token_authenticated_container: Optional[pulumi.Input[str]] = None,
+             token_authenticated_database: Optional[pulumi.Input[str]] = None,
+             token_id: Optional[pulumi.Input[str]] = None,
+             token_key: Optional[pulumi.Input[str]] = None,
+             token_secret: Optional[pulumi.Input[str]] = None,
+             token_secret_key: Optional[pulumi.Input[str]] = None,
+             topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             trust_store_type: Optional[pulumi.Input[str]] = None,
+             trusted_cert: Optional[pulumi.Input[str]] = None,
+             truststore: Optional[pulumi.Input[str]] = None,
+             tunnel_host: Optional[pulumi.Input[str]] = None,
+             tunnel_port: Optional[pulumi.Input[str]] = None,
+             tunnel_user: Optional[pulumi.Input[str]] = None,
+             unique_id: Optional[pulumi.Input[str]] = None,
+             update_config_on_each_sync: Optional[pulumi.Input[str]] = None,
+             update_method: Optional[pulumi.Input[str]] = None,
+             uri: Optional[pulumi.Input[str]] = None,
+             use_api_keys: Optional[pulumi.Input[str]] = None,
+             use_customer_bucket: Optional[pulumi.Input[str]] = None,
+             use_oracle_rac: Optional[pulumi.Input[str]] = None,
+             use_pgp_encryption_options: Optional[pulumi.Input[str]] = None,
+             use_service_account: Optional[pulumi.Input[str]] = None,
+             use_template_labels: Optional[pulumi.Input[str]] = None,
+             use_webhooks: Optional[pulumi.Input[str]] = None,
+             use_workspace: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             user_key: Optional[pulumi.Input[str]] = None,
+             user_name: Optional[pulumi.Input[str]] = None,
+             user_profiles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             view_attribution_window: Optional[pulumi.Input[str]] = None,
+             view_through_attribution_window_size: Optional[pulumi.Input[str]] = None,
+             webhook_endpoint: Optional[pulumi.Input[str]] = None,
+             webhook_key: Optional[pulumi.Input[str]] = None,
+             webhook_url: Optional[pulumi.Input[str]] = None,
+             word_press_site_id_or_woocommerce_domain_name: Optional[pulumi.Input[str]] = None,
+             workspace_name: Optional[pulumi.Input[str]] = None,
+             workspace_same_as_source: Optional[pulumi.Input[str]] = None,
+             workspace_schema: Optional[pulumi.Input[str]] = None,
+             ws_certificate: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'absConnectionMethod' in kwargs:
+            abs_connection_method = kwargs['absConnectionMethod']
+        if 'absConnectionString' in kwargs:
+            abs_connection_string = kwargs['absConnectionString']
+        if 'absContainerAddress' in kwargs:
+            abs_container_address = kwargs['absContainerAddress']
+        if 'absContainerName' in kwargs:
+            abs_container_name = kwargs['absContainerName']
+        if 'absHostIp' in kwargs:
+            abs_host_ip = kwargs['absHostIp']
+        if 'absHostUser' in kwargs:
+            abs_host_user = kwargs['absHostUser']
+        if 'absPrefix' in kwargs:
+            abs_prefix = kwargs['absPrefix']
+        if 'absPublicKey' in kwargs:
+            abs_public_key = kwargs['absPublicKey']
+        if 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if 'accessKeyId' in kwargs:
+            access_key_id = kwargs['accessKeyId']
+        if 'accessKeySecret' in kwargs:
+            access_key_secret = kwargs['accessKeySecret']
+        if 'accessToken' in kwargs:
+            access_token = kwargs['accessToken']
+        if 'accessType' in kwargs:
+            access_type = kwargs['accessType']
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'accountIds' in kwargs:
+            account_ids = kwargs['accountIds']
+        if 'accountKey' in kwargs:
+            account_key = kwargs['accountKey']
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'accountSyncMode' in kwargs:
+            account_sync_mode = kwargs['accountSyncMode']
+        if 'accountsRedditAds' in kwargs:
+            accounts_reddit_ads = kwargs['accountsRedditAds']
+        if 'accountsSyncMode' in kwargs:
+            accounts_sync_mode = kwargs['accountsSyncMode']
+        if 'actionBreakdowns' in kwargs:
+            action_breakdowns = kwargs['actionBreakdowns']
+        if 'actionReportTime' in kwargs:
+            action_report_time = kwargs['actionReportTime']
+        if 'adAnalytics' in kwargs:
+            ad_analytics = kwargs['adAnalytics']
+        if 'adUnitView' in kwargs:
+            ad_unit_view = kwargs['adUnitView']
+        if 'adminApiKey' in kwargs:
+            admin_api_key = kwargs['adminApiKey']
+        if 'adobeAnalyticsConfigurations' in kwargs:
+            adobe_analytics_configurations = kwargs['adobeAnalyticsConfigurations']
+        if 'advertisersIds' in kwargs:
+            advertisers_ids = kwargs['advertisersIds']
+        if 'advertisersSyncMode' in kwargs:
+            advertisers_sync_mode = kwargs['advertisersSyncMode']
+        if 'agentHost' in kwargs:
+            agent_host = kwargs['agentHost']
+        if 'agentOraHome' in kwargs:
+            agent_ora_home = kwargs['agentOraHome']
+        if 'agentPassword' in kwargs:
+            agent_password = kwargs['agentPassword']
+        if 'agentPort' in kwargs:
+            agent_port = kwargs['agentPort']
+        if 'agentPublicCert' in kwargs:
+            agent_public_cert = kwargs['agentPublicCert']
+        if 'agentUser' in kwargs:
+            agent_user = kwargs['agentUser']
+        if 'alwaysEncrypted' in kwargs:
+            always_encrypted = kwargs['alwaysEncrypted']
+        if 'apiAccessToken' in kwargs:
+            api_access_token = kwargs['apiAccessToken']
+        if 'apiId' in kwargs:
+            api_id = kwargs['apiId']
+        if 'apiKey' in kwargs:
+            api_key = kwargs['apiKey']
+        if 'apiKeys' in kwargs:
+            api_keys = kwargs['apiKeys']
+        if 'apiQuota' in kwargs:
+            api_quota = kwargs['apiQuota']
+        if 'apiRequestsPerMinute' in kwargs:
+            api_requests_per_minute = kwargs['apiRequestsPerMinute']
+        if 'apiSecret' in kwargs:
+            api_secret = kwargs['apiSecret']
+        if 'apiSecretKey' in kwargs:
+            api_secret_key = kwargs['apiSecretKey']
+        if 'apiToken' in kwargs:
+            api_token = kwargs['apiToken']
+        if 'apiType' in kwargs:
+            api_type = kwargs['apiType']
+        if 'apiUrl' in kwargs:
+            api_url = kwargs['apiUrl']
+        if 'apiUsage' in kwargs:
+            api_usage = kwargs['apiUsage']
+        if 'apiVersion' in kwargs:
+            api_version = kwargs['apiVersion']
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'appIds' in kwargs:
+            app_ids = kwargs['appIds']
+        if 'appIdsAppsflyers' in kwargs:
+            app_ids_appsflyers = kwargs['appIdsAppsflyers']
+        if 'appSpecificPassword' in kwargs:
+            app_specific_password = kwargs['appSpecificPassword']
+        if 'appSyncMode' in kwargs:
+            app_sync_mode = kwargs['appSyncMode']
+        if 'appendFileOption' in kwargs:
+            append_file_option = kwargs['appendFileOption']
+        if 'applicationKey' in kwargs:
+            application_key = kwargs['applicationKey']
+        if 'archiveLogFormat' in kwargs:
+            archive_log_format = kwargs['archiveLogFormat']
+        if 'archiveLogPath' in kwargs:
+            archive_log_path = kwargs['archiveLogPath']
+        if 'archivePattern' in kwargs:
+            archive_pattern = kwargs['archivePattern']
+        if 'areSoapCredentialsProvided' in kwargs:
+            are_soap_credentials_provided = kwargs['areSoapCredentialsProvided']
+        if 'asbIp' in kwargs:
+            asb_ip = kwargs['asbIp']
+        if 'asmOption' in kwargs:
+            asm_option = kwargs['asmOption']
+        if 'asmOracleHome' in kwargs:
+            asm_oracle_home = kwargs['asmOracleHome']
+        if 'asmPassword' in kwargs:
+            asm_password = kwargs['asmPassword']
+        if 'asmTns' in kwargs:
+            asm_tns = kwargs['asmTns']
+        if 'asmUser' in kwargs:
+            asm_user = kwargs['asmUser']
+        if 'attributionWindow' in kwargs:
+            attribution_window = kwargs['attributionWindow']
+        if 'attributionWindowSize' in kwargs:
+            attribution_window_size = kwargs['attributionWindowSize']
+        if 'authMethod' in kwargs:
+            auth_method = kwargs['authMethod']
+        if 'authMode' in kwargs:
+            auth_mode = kwargs['authMode']
+        if 'authType' in kwargs:
+            auth_type = kwargs['authType']
+        if 'authorizationMethod' in kwargs:
+            authorization_method = kwargs['authorizationMethod']
+        if 'awsRegionCode' in kwargs:
+            aws_region_code = kwargs['awsRegionCode']
+        if 'baseCurrency' in kwargs:
+            base_currency = kwargs['baseCurrency']
+        if 'baseDomain' in kwargs:
+            base_domain = kwargs['baseDomain']
+        if 'baseId' in kwargs:
+            base_id = kwargs['baseId']
+        if 'baseUrl' in kwargs:
+            base_url = kwargs['baseUrl']
+        if 'bearerToken' in kwargs:
+            bearer_token = kwargs['bearerToken']
+        if 'blobSasUrl' in kwargs:
+            blob_sas_url = kwargs['blobSasUrl']
+        if 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if 'bucketService' in kwargs:
+            bucket_service = kwargs['bucketService']
+        if 'businessId' in kwargs:
+            business_id = kwargs['businessId']
+        if 'businessUnitId' in kwargs:
+            business_unit_id = kwargs['businessUnitId']
+        if 'clickAttributionWindow' in kwargs:
+            click_attribution_window = kwargs['clickAttributionWindow']
+        if 'clientCert' in kwargs:
+            client_cert = kwargs['clientCert']
+        if 'clientCertKey' in kwargs:
+            client_cert_key = kwargs['clientCertKey']
+        if 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+        if 'clientName' in kwargs:
+            client_name = kwargs['clientName']
+        if 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if 'cloudStorageType' in kwargs:
+            cloud_storage_type = kwargs['cloudStorageType']
+        if 'companyId' in kwargs:
+            company_id = kwargs['companyId']
+        if 'companyKey' in kwargs:
+            company_key = kwargs['companyKey']
+        if 'companyRequestToken' in kwargs:
+            company_request_token = kwargs['companyRequestToken']
+        if 'companyUuid' in kwargs:
+            company_uuid = kwargs['companyUuid']
+        if 'configMethod' in kwargs:
+            config_method = kwargs['configMethod']
+        if 'configRepositoryUrl' in kwargs:
+            config_repository_url = kwargs['configRepositoryUrl']
+        if 'configType' in kwargs:
+            config_type = kwargs['configType']
+        if 'connectingUser' in kwargs:
+            connecting_user = kwargs['connectingUser']
+        if 'connectingUserEmail' in kwargs:
+            connecting_user_email = kwargs['connectingUserEmail']
+        if 'connectionMethod' in kwargs:
+            connection_method = kwargs['connectionMethod']
+        if 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if 'connectionType' in kwargs:
+            connection_type = kwargs['connectionType']
+        if 'consumerGroup' in kwargs:
+            consumer_group = kwargs['consumerGroup']
+        if 'consumerKey' in kwargs:
+            consumer_key = kwargs['consumerKey']
+        if 'consumerSecret' in kwargs:
+            consumer_secret = kwargs['consumerSecret']
+        if 'containerAddress' in kwargs:
+            container_address = kwargs['containerAddress']
+        if 'containerName' in kwargs:
+            container_name = kwargs['containerName']
+        if 'contentOwnerId' in kwargs:
+            content_owner_id = kwargs['contentOwnerId']
+        if 'conversationWebhookUrl' in kwargs:
+            conversation_webhook_url = kwargs['conversationWebhookUrl']
+        if 'conversionDimensions' in kwargs:
+            conversion_dimensions = kwargs['conversionDimensions']
+        if 'conversionReportTime' in kwargs:
+            conversion_report_time = kwargs['conversionReportTime']
+        if 'conversionWindowSize' in kwargs:
+            conversion_window_size = kwargs['conversionWindowSize']
+        if 'csvDefinition' in kwargs:
+            csv_definition = kwargs['csvDefinition']
+        if 'customEventSyncMode' in kwargs:
+            custom_event_sync_mode = kwargs['customEventSyncMode']
+        if 'customEvents' in kwargs:
+            custom_events = kwargs['customEvents']
+        if 'customFieldIds' in kwargs:
+            custom_field_ids = kwargs['customFieldIds']
+        if 'customFloodlightVariables' in kwargs:
+            custom_floodlight_variables = kwargs['customFloodlightVariables']
+        if 'customReports' in kwargs:
+            custom_reports = kwargs['customReports']
+        if 'customTables' in kwargs:
+            custom_tables = kwargs['customTables']
+        if 'customerId' in kwargs:
+            customer_id = kwargs['customerId']
+        if 'customerListId' in kwargs:
+            customer_list_id = kwargs['customerListId']
+        if 'dailyApiCallLimit' in kwargs:
+            daily_api_call_limit = kwargs['dailyApiCallLimit']
+        if 'dataAccessMethod' in kwargs:
+            data_access_method = kwargs['dataAccessMethod']
+        if 'dataCenter' in kwargs:
+            data_center = kwargs['dataCenter']
+        if 'dataSetName' in kwargs:
+            data_set_name = kwargs['dataSetName']
+        if 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if 'dateGranularity' in kwargs:
+            date_granularity = kwargs['dateGranularity']
+        if 'dimensionAttributes' in kwargs:
+            dimension_attributes = kwargs['dimensionAttributes']
+        if 'domainHostName' in kwargs:
+            domain_host_name = kwargs['domainHostName']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'domainType' in kwargs:
+            domain_type = kwargs['domainType']
+        if 'emptyHeader' in kwargs:
+            empty_header = kwargs['emptyHeader']
+        if 'enableAllDimensionCombinations' in kwargs:
+            enable_all_dimension_combinations = kwargs['enableAllDimensionCombinations']
+        if 'enableArchiveLogOnly' in kwargs:
+            enable_archive_log_only = kwargs['enableArchiveLogOnly']
+        if 'enableEnrichments' in kwargs:
+            enable_enrichments = kwargs['enableEnrichments']
+        if 'enableExports' in kwargs:
+            enable_exports = kwargs['enableExports']
+        if 'enableTde' in kwargs:
+            enable_tde = kwargs['enableTde']
+        if 'encodedPublicKey' in kwargs:
+            encoded_public_key = kwargs['encodedPublicKey']
+        if 'encryptionKey' in kwargs:
+            encryption_key = kwargs['encryptionKey']
+        if 'engagementAttributionWindow' in kwargs:
+            engagement_attribution_window = kwargs['engagementAttributionWindow']
+        if 'enrichedExport' in kwargs:
+            enriched_export = kwargs['enrichedExport']
+        if 'entityId' in kwargs:
+            entity_id = kwargs['entityId']
+        if 'escapeChar' in kwargs:
+            escape_char = kwargs['escapeChar']
+        if 'euRegion' in kwargs:
+            eu_region = kwargs['euRegion']
+        if 'exportStorageType' in kwargs:
+            export_storage_type = kwargs['exportStorageType']
+        if 'externalId' in kwargs:
+            external_id = kwargs['externalId']
+        if 'fileType' in kwargs:
+            file_type = kwargs['fileType']
+        if 'financeAccountSyncMode' in kwargs:
+            finance_account_sync_mode = kwargs['financeAccountSyncMode']
+        if 'financeAccounts' in kwargs:
+            finance_accounts = kwargs['financeAccounts']
+        if 'folderId' in kwargs:
+            folder_id = kwargs['folderId']
+        if 'folderPath' in kwargs:
+            folder_path = kwargs['folderPath']
+        if 'forecastId' in kwargs:
+            forecast_id = kwargs['forecastId']
+        if 'ftpHost' in kwargs:
+            ftp_host = kwargs['ftpHost']
+        if 'ftpPassword' in kwargs:
+            ftp_password = kwargs['ftpPassword']
+        if 'ftpPort' in kwargs:
+            ftp_port = kwargs['ftpPort']
+        if 'ftpUser' in kwargs:
+            ftp_user = kwargs['ftpUser']
+        if 'functionApp' in kwargs:
+            function_app = kwargs['functionApp']
+        if 'functionKey' in kwargs:
+            function_key = kwargs['functionKey']
+        if 'functionName' in kwargs:
+            function_name = kwargs['functionName']
+        if 'functionTrigger' in kwargs:
+            function_trigger = kwargs['functionTrigger']
+        if 'gcsBucket' in kwargs:
+            gcs_bucket = kwargs['gcsBucket']
+        if 'gcsFolder' in kwargs:
+            gcs_folder = kwargs['gcsFolder']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'hasManagePermissions' in kwargs:
+            has_manage_permissions = kwargs['hasManagePermissions']
+        if 'homeFolder' in kwargs:
+            home_folder = kwargs['homeFolder']
+        if 'hostIp' in kwargs:
+            host_ip = kwargs['hostIp']
+        if 'hostUser' in kwargs:
+            host_user = kwargs['hostUser']
+        if 'instanceNumber' in kwargs:
+            instance_number = kwargs['instanceNumber']
+        if 'instanceUrl' in kwargs:
+            instance_url = kwargs['instanceUrl']
+        if 'integrationKey' in kwargs:
+            integration_key = kwargs['integrationKey']
+        if 'isAccountLevelConnector' in kwargs:
+            is_account_level_connector = kwargs['isAccountLevelConnector']
+        if 'isAuth2Enabled' in kwargs:
+            is_auth2_enabled = kwargs['isAuth2Enabled']
+        if 'isCustomApiCredentials' in kwargs:
+            is_custom_api_credentials = kwargs['isCustomApiCredentials']
+        if 'isFtps' in kwargs:
+            is_ftps = kwargs['isFtps']
+        if 'isKeypair' in kwargs:
+            is_keypair = kwargs['isKeypair']
+        if 'isMultiEntityFeatureEnabled' in kwargs:
+            is_multi_entity_feature_enabled = kwargs['isMultiEntityFeatureEnabled']
+        if 'isNewPackage' in kwargs:
+            is_new_package = kwargs['isNewPackage']
+        if 'isPrivateKeyEncrypted' in kwargs:
+            is_private_key_encrypted = kwargs['isPrivateKeyEncrypted']
+        if 'isPrivateLinkRequired' in kwargs:
+            is_private_link_required = kwargs['isPrivateLinkRequired']
+        if 'isPublic' in kwargs:
+            is_public = kwargs['isPublic']
+        if 'isSailthruConnectEnabled' in kwargs:
+            is_sailthru_connect_enabled = kwargs['isSailthruConnectEnabled']
+        if 'isSecure' in kwargs:
+            is_secure = kwargs['isSecure']
+        if 'isSingleTableMode' in kwargs:
+            is_single_table_mode = kwargs['isSingleTableMode']
+        if 'isVendor' in kwargs:
+            is_vendor = kwargs['isVendor']
+        if 'jsonDeliveryMode' in kwargs:
+            json_delivery_mode = kwargs['jsonDeliveryMode']
+        if 'keyPassword' in kwargs:
+            key_password = kwargs['keyPassword']
+        if 'keyStoreType' in kwargs:
+            key_store_type = kwargs['keyStoreType']
+        if 'keystorePassword' in kwargs:
+            keystore_password = kwargs['keystorePassword']
+        if 'latestVersion' in kwargs:
+            latest_version = kwargs['latestVersion']
+        if 'lineSeparator' in kwargs:
+            line_separator = kwargs['lineSeparator']
+        if 'listStrategy' in kwargs:
+            list_strategy = kwargs['listStrategy']
+        if 'listSyncMode' in kwargs:
+            list_sync_mode = kwargs['listSyncMode']
+        if 'logJournal' in kwargs:
+            log_journal = kwargs['logJournal']
+        if 'logJournalSchema' in kwargs:
+            log_journal_schema = kwargs['logJournalSchema']
+        if 'loginPassword' in kwargs:
+            login_password = kwargs['loginPassword']
+        if 'managerAccounts' in kwargs:
+            manager_accounts = kwargs['managerAccounts']
+        if 'merchantId' in kwargs:
+            merchant_id = kwargs['merchantId']
+        if 'messageType' in kwargs:
+            message_type = kwargs['messageType']
+        if 'namedRange' in kwargs:
+            named_range = kwargs['namedRange']
+        if 'networkCode' in kwargs:
+            network_code = kwargs['networkCode']
+        if 'nullSequence' in kwargs:
+            null_sequence = kwargs['nullSequence']
+        if 'oauthToken' in kwargs:
+            oauth_token = kwargs['oauthToken']
+        if 'oauthTokenSecret' in kwargs:
+            oauth_token_secret = kwargs['oauthTokenSecret']
+        if 'onError' in kwargs:
+            on_error = kwargs['onError']
+        if 'onPremise' in kwargs:
+            on_premise = kwargs['onPremise']
+        if 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+        if 'packedModeTables' in kwargs:
+            packed_mode_tables = kwargs['packedModeTables']
+        if 'packingMode' in kwargs:
+            packing_mode = kwargs['packingMode']
+        if 'patName' in kwargs:
+            pat_name = kwargs['patName']
+        if 'patSecret' in kwargs:
+            pat_secret = kwargs['patSecret']
+        if 'pdbName' in kwargs:
+            pdb_name = kwargs['pdbName']
+        if 'pemCertificate' in kwargs:
+            pem_certificate = kwargs['pemCertificate']
+        if 'pemPrivateKey' in kwargs:
+            pem_private_key = kwargs['pemPrivateKey']
+        if 'perInteractionDimensions' in kwargs:
+            per_interaction_dimensions = kwargs['perInteractionDimensions']
+        if 'personalAccessToken' in kwargs:
+            personal_access_token = kwargs['personalAccessToken']
+        if 'pgpPassPhrase' in kwargs:
+            pgp_pass_phrase = kwargs['pgpPassPhrase']
+        if 'pgpSecretKey' in kwargs:
+            pgp_secret_key = kwargs['pgpSecretKey']
+        if 'phoneNumber' in kwargs:
+            phone_number = kwargs['phoneNumber']
+        if 'postClickAttributionWindowSize' in kwargs:
+            post_click_attribution_window_size = kwargs['postClickAttributionWindowSize']
+        if 'prebuiltReport' in kwargs:
+            prebuilt_report = kwargs['prebuiltReport']
+        if 'primaryKeys' in kwargs:
+            primary_keys = kwargs['primaryKeys']
+        if 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if 'projectCredentials' in kwargs:
+            project_credentials = kwargs['projectCredentials']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if 'publicationName' in kwargs:
+            publication_name = kwargs['publicationName']
+        if 'queryId' in kwargs:
+            query_id = kwargs['queryId']
+        if 'queryParamValue' in kwargs:
+            query_param_value = kwargs['queryParamValue']
+        if 'refreshTokenExpiresAt' in kwargs:
+            refresh_token_expires_at = kwargs['refreshTokenExpiresAt']
+        if 'replicaId' in kwargs:
+            replica_id = kwargs['replicaId']
+        if 'replicationSlot' in kwargs:
+            replication_slot = kwargs['replicationSlot']
+        if 'reportConfigurationIds' in kwargs:
+            report_configuration_ids = kwargs['reportConfigurationIds']
+        if 'reportFormatType' in kwargs:
+            report_format_type = kwargs['reportFormatType']
+        if 'reportSuites' in kwargs:
+            report_suites = kwargs['reportSuites']
+        if 'reportTimezone' in kwargs:
+            report_timezone = kwargs['reportTimezone']
+        if 'reportType' in kwargs:
+            report_type = kwargs['reportType']
+        if 'reportUrl' in kwargs:
+            report_url = kwargs['reportUrl']
+        if 'reportsLinkedinAds' in kwargs:
+            reports_linkedin_ads = kwargs['reportsLinkedinAds']
+        if 'resourceToken' in kwargs:
+            resource_token = kwargs['resourceToken']
+        if 'resourceUrl' in kwargs:
+            resource_url = kwargs['resourceUrl']
+        if 'restApiLimit' in kwargs:
+            rest_api_limit = kwargs['restApiLimit']
+        if 'rfcLibraryPath' in kwargs:
+            rfc_library_path = kwargs['rfcLibraryPath']
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if 'rollbackWindowSize' in kwargs:
+            rollback_window_size = kwargs['rollbackWindowSize']
+        if 's3Bucket' in kwargs:
+            s3_bucket = kwargs['s3Bucket']
+        if 's3ExportBucket' in kwargs:
+            s3_export_bucket = kwargs['s3ExportBucket']
+        if 's3ExportFolder' in kwargs:
+            s3_export_folder = kwargs['s3ExportFolder']
+        if 's3ExportRoleArn' in kwargs:
+            s3_export_role_arn = kwargs['s3ExportRoleArn']
+        if 's3RoleArn' in kwargs:
+            s3_role_arn = kwargs['s3RoleArn']
+        if 's3externalId' in kwargs:
+            s3external_id = kwargs['s3externalId']
+        if 's3roleArn' in kwargs:
+            s3role_arn = kwargs['s3roleArn']
+        if 'salesAccountSyncMode' in kwargs:
+            sales_account_sync_mode = kwargs['salesAccountSyncMode']
+        if 'salesAccounts' in kwargs:
+            sales_accounts = kwargs['salesAccounts']
+        if 'salesforceSecurityToken' in kwargs:
+            salesforce_security_token = kwargs['salesforceSecurityToken']
+        if 'sandboxAccount' in kwargs:
+            sandbox_account = kwargs['sandboxAccount']
+        if 'sapSchema' in kwargs:
+            sap_schema = kwargs['sapSchema']
+        if 'sapUser' in kwargs:
+            sap_user = kwargs['sapUser']
+        if 'saslMechanism' in kwargs:
+            sasl_mechanism = kwargs['saslMechanism']
+        if 'saslPlainKey' in kwargs:
+            sasl_plain_key = kwargs['saslPlainKey']
+        if 'saslPlainSecret' in kwargs:
+            sasl_plain_secret = kwargs['saslPlainSecret']
+        if 'saslScram256Key' in kwargs:
+            sasl_scram256_key = kwargs['saslScram256Key']
+        if 'saslScram256Secret' in kwargs:
+            sasl_scram256_secret = kwargs['saslScram256Secret']
+        if 'saslScram512Key' in kwargs:
+            sasl_scram512_key = kwargs['saslScram512Key']
+        if 'saslScram512Secret' in kwargs:
+            sasl_scram512_secret = kwargs['saslScram512Secret']
+        if 'schemaRegistryCredentialsSource' in kwargs:
+            schema_registry_credentials_source = kwargs['schemaRegistryCredentialsSource']
+        if 'schemaRegistryKey' in kwargs:
+            schema_registry_key = kwargs['schemaRegistryKey']
+        if 'schemaRegistrySecret' in kwargs:
+            schema_registry_secret = kwargs['schemaRegistrySecret']
+        if 'schemaRegistryUrls' in kwargs:
+            schema_registry_urls = kwargs['schemaRegistryUrls']
+        if 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if 'secretsLists' in kwargs:
+            secrets_lists = kwargs['secretsLists']
+        if 'securityProtocol' in kwargs:
+            security_protocol = kwargs['securityProtocol']
+        if 'selectedExports' in kwargs:
+            selected_exports = kwargs['selectedExports']
+        if 'senderId' in kwargs:
+            sender_id = kwargs['senderId']
+        if 'senderPassword' in kwargs:
+            sender_password = kwargs['senderPassword']
+        if 'serverAddress' in kwargs:
+            server_address = kwargs['serverAddress']
+        if 'serverUrl' in kwargs:
+            server_url = kwargs['serverUrl']
+        if 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+        if 'serviceAccountKey' in kwargs:
+            service_account_key = kwargs['serviceAccountKey']
+        if 'serviceVersion' in kwargs:
+            service_version = kwargs['serviceVersion']
+        if 'sftpHost' in kwargs:
+            sftp_host = kwargs['sftpHost']
+        if 'sftpIsKeyPair' in kwargs:
+            sftp_is_key_pair = kwargs['sftpIsKeyPair']
+        if 'sftpPassword' in kwargs:
+            sftp_password = kwargs['sftpPassword']
+        if 'sftpPort' in kwargs:
+            sftp_port = kwargs['sftpPort']
+        if 'sftpPublicKey' in kwargs:
+            sftp_public_key = kwargs['sftpPublicKey']
+        if 'sftpUser' in kwargs:
+            sftp_user = kwargs['sftpUser']
+        if 'shareUrl' in kwargs:
+            share_url = kwargs['shareUrl']
+        if 'sheetId' in kwargs:
+            sheet_id = kwargs['sheetId']
+        if 'shortCode' in kwargs:
+            short_code = kwargs['shortCode']
+        if 'showRecordsWithNoMetrics' in kwargs:
+            show_records_with_no_metrics = kwargs['showRecordsWithNoMetrics']
+        if 'signerPublicKey' in kwargs:
+            signer_public_key = kwargs['signerPublicKey']
+        if 'siteAddress' in kwargs:
+            site_address = kwargs['siteAddress']
+        if 'siteId' in kwargs:
+            site_id = kwargs['siteId']
+        if 'siteName' in kwargs:
+            site_name = kwargs['siteName']
+        if 'siteUrls' in kwargs:
+            site_urls = kwargs['siteUrls']
+        if 'skipAfter' in kwargs:
+            skip_after = kwargs['skipAfter']
+        if 'skipBefore' in kwargs:
+            skip_before = kwargs['skipBefore']
+        if 'soapUri' in kwargs:
+            soap_uri = kwargs['soapUri']
+        if 'socialDataSyncTimeframe' in kwargs:
+            social_data_sync_timeframe = kwargs['socialDataSyncTimeframe']
+        if 'storeHash' in kwargs:
+            store_hash = kwargs['storeHash']
+        if 'subDomain' in kwargs:
+            sub_domain = kwargs['subDomain']
+        if 'subscriberName' in kwargs:
+            subscriber_name = kwargs['subscriberName']
+        if 'supportConnectedAccountsSync' in kwargs:
+            support_connected_accounts_sync = kwargs['supportConnectedAccountsSync']
+        if 'supportNestedColumns' in kwargs:
+            support_nested_columns = kwargs['supportNestedColumns']
+        if 'surveyIds' in kwargs:
+            survey_ids = kwargs['surveyIds']
+        if 'swipeAttributionWindow' in kwargs:
+            swipe_attribution_window = kwargs['swipeAttributionWindow']
+        if 'syncDataLocker' in kwargs:
+            sync_data_locker = kwargs['syncDataLocker']
+        if 'syncFormat' in kwargs:
+            sync_format = kwargs['syncFormat']
+        if 'syncFormulaFields' in kwargs:
+            sync_formula_fields = kwargs['syncFormulaFields']
+        if 'syncMetadata' in kwargs:
+            sync_metadata = kwargs['syncMetadata']
+        if 'syncMethod' in kwargs:
+            sync_method = kwargs['syncMethod']
+        if 'syncMode' in kwargs:
+            sync_mode = kwargs['syncMode']
+        if 'syncMultipleAccounts' in kwargs:
+            sync_multiple_accounts = kwargs['syncMultipleAccounts']
+        if 'syncPackMode' in kwargs:
+            sync_pack_mode = kwargs['syncPackMode']
+        if 'syncPullApi' in kwargs:
+            sync_pull_api = kwargs['syncPullApi']
+        if 'syncType' in kwargs:
+            sync_type = kwargs['syncType']
+        if 'tableName' in kwargs:
+            table_name = kwargs['tableName']
+        if 'tdeCertificate' in kwargs:
+            tde_certificate = kwargs['tdeCertificate']
+        if 'tdeCertificateName' in kwargs:
+            tde_certificate_name = kwargs['tdeCertificateName']
+        if 'tdePassword' in kwargs:
+            tde_password = kwargs['tdePassword']
+        if 'tdePrivateKey' in kwargs:
+            tde_private_key = kwargs['tdePrivateKey']
+        if 'teamId' in kwargs:
+            team_id = kwargs['teamId']
+        if 'technicalAccountId' in kwargs:
+            technical_account_id = kwargs['technicalAccountId']
+        if 'templateLabels' in kwargs:
+            template_labels = kwargs['templateLabels']
+        if 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if 'testTableName' in kwargs:
+            test_table_name = kwargs['testTableName']
+        if 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+        if 'timeframeMonths' in kwargs:
+            timeframe_months = kwargs['timeframeMonths']
+        if 'tokenAuthenticatedContainer' in kwargs:
+            token_authenticated_container = kwargs['tokenAuthenticatedContainer']
+        if 'tokenAuthenticatedDatabase' in kwargs:
+            token_authenticated_database = kwargs['tokenAuthenticatedDatabase']
+        if 'tokenId' in kwargs:
+            token_id = kwargs['tokenId']
+        if 'tokenKey' in kwargs:
+            token_key = kwargs['tokenKey']
+        if 'tokenSecret' in kwargs:
+            token_secret = kwargs['tokenSecret']
+        if 'tokenSecretKey' in kwargs:
+            token_secret_key = kwargs['tokenSecretKey']
+        if 'trustStoreType' in kwargs:
+            trust_store_type = kwargs['trustStoreType']
+        if 'trustedCert' in kwargs:
+            trusted_cert = kwargs['trustedCert']
+        if 'tunnelHost' in kwargs:
+            tunnel_host = kwargs['tunnelHost']
+        if 'tunnelPort' in kwargs:
+            tunnel_port = kwargs['tunnelPort']
+        if 'tunnelUser' in kwargs:
+            tunnel_user = kwargs['tunnelUser']
+        if 'uniqueId' in kwargs:
+            unique_id = kwargs['uniqueId']
+        if 'updateConfigOnEachSync' in kwargs:
+            update_config_on_each_sync = kwargs['updateConfigOnEachSync']
+        if 'updateMethod' in kwargs:
+            update_method = kwargs['updateMethod']
+        if 'useApiKeys' in kwargs:
+            use_api_keys = kwargs['useApiKeys']
+        if 'useCustomerBucket' in kwargs:
+            use_customer_bucket = kwargs['useCustomerBucket']
+        if 'useOracleRac' in kwargs:
+            use_oracle_rac = kwargs['useOracleRac']
+        if 'usePgpEncryptionOptions' in kwargs:
+            use_pgp_encryption_options = kwargs['usePgpEncryptionOptions']
+        if 'useServiceAccount' in kwargs:
+            use_service_account = kwargs['useServiceAccount']
+        if 'useTemplateLabels' in kwargs:
+            use_template_labels = kwargs['useTemplateLabels']
+        if 'useWebhooks' in kwargs:
+            use_webhooks = kwargs['useWebhooks']
+        if 'useWorkspace' in kwargs:
+            use_workspace = kwargs['useWorkspace']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if 'userKey' in kwargs:
+            user_key = kwargs['userKey']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+        if 'userProfiles' in kwargs:
+            user_profiles = kwargs['userProfiles']
+        if 'viewAttributionWindow' in kwargs:
+            view_attribution_window = kwargs['viewAttributionWindow']
+        if 'viewThroughAttributionWindowSize' in kwargs:
+            view_through_attribution_window_size = kwargs['viewThroughAttributionWindowSize']
+        if 'webhookEndpoint' in kwargs:
+            webhook_endpoint = kwargs['webhookEndpoint']
+        if 'webhookKey' in kwargs:
+            webhook_key = kwargs['webhookKey']
+        if 'webhookUrl' in kwargs:
+            webhook_url = kwargs['webhookUrl']
+        if 'wordPressSiteIdOrWoocommerceDomainName' in kwargs:
+            word_press_site_id_or_woocommerce_domain_name = kwargs['wordPressSiteIdOrWoocommerceDomainName']
+        if 'workspaceName' in kwargs:
+            workspace_name = kwargs['workspaceName']
+        if 'workspaceSameAsSource' in kwargs:
+            workspace_same_as_source = kwargs['workspaceSameAsSource']
+        if 'workspaceSchema' in kwargs:
+            workspace_schema = kwargs['workspaceSchema']
+        if 'wsCertificate' in kwargs:
+            ws_certificate = kwargs['wsCertificate']
+
         if abs_connection_method is not None:
-            pulumi.set(__self__, "abs_connection_method", abs_connection_method)
+            _setter("abs_connection_method", abs_connection_method)
         if abs_connection_string is not None:
-            pulumi.set(__self__, "abs_connection_string", abs_connection_string)
+            _setter("abs_connection_string", abs_connection_string)
         if abs_container_address is not None:
-            pulumi.set(__self__, "abs_container_address", abs_container_address)
+            _setter("abs_container_address", abs_container_address)
         if abs_container_name is not None:
-            pulumi.set(__self__, "abs_container_name", abs_container_name)
+            _setter("abs_container_name", abs_container_name)
         if abs_host_ip is not None:
-            pulumi.set(__self__, "abs_host_ip", abs_host_ip)
+            _setter("abs_host_ip", abs_host_ip)
         if abs_host_user is not None:
-            pulumi.set(__self__, "abs_host_user", abs_host_user)
+            _setter("abs_host_user", abs_host_user)
         if abs_prefix is not None:
-            pulumi.set(__self__, "abs_prefix", abs_prefix)
+            _setter("abs_prefix", abs_prefix)
         if abs_public_key is not None:
-            pulumi.set(__self__, "abs_public_key", abs_public_key)
+            _setter("abs_public_key", abs_public_key)
         if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
+            _setter("access_key", access_key)
         if access_key_id is not None:
-            pulumi.set(__self__, "access_key_id", access_key_id)
+            _setter("access_key_id", access_key_id)
         if access_key_secret is not None:
-            pulumi.set(__self__, "access_key_secret", access_key_secret)
+            _setter("access_key_secret", access_key_secret)
         if access_token is not None:
-            pulumi.set(__self__, "access_token", access_token)
+            _setter("access_token", access_token)
         if access_type is not None:
-            pulumi.set(__self__, "access_type", access_type)
+            _setter("access_type", access_type)
         if account is not None:
-            pulumi.set(__self__, "account", account)
+            _setter("account", account)
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if account_ids is not None:
-            pulumi.set(__self__, "account_ids", account_ids)
+            _setter("account_ids", account_ids)
         if account_key is not None:
-            pulumi.set(__self__, "account_key", account_key)
+            _setter("account_key", account_key)
         if account_name is not None:
-            pulumi.set(__self__, "account_name", account_name)
+            _setter("account_name", account_name)
         if account_sync_mode is not None:
-            pulumi.set(__self__, "account_sync_mode", account_sync_mode)
+            _setter("account_sync_mode", account_sync_mode)
         if accounts is not None:
-            pulumi.set(__self__, "accounts", accounts)
+            _setter("accounts", accounts)
         if accounts_reddit_ads is not None:
-            pulumi.set(__self__, "accounts_reddit_ads", accounts_reddit_ads)
+            _setter("accounts_reddit_ads", accounts_reddit_ads)
         if accounts_sync_mode is not None:
-            pulumi.set(__self__, "accounts_sync_mode", accounts_sync_mode)
+            _setter("accounts_sync_mode", accounts_sync_mode)
         if action_breakdowns is not None:
-            pulumi.set(__self__, "action_breakdowns", action_breakdowns)
+            _setter("action_breakdowns", action_breakdowns)
         if action_report_time is not None:
-            pulumi.set(__self__, "action_report_time", action_report_time)
+            _setter("action_report_time", action_report_time)
         if ad_analytics is not None:
-            pulumi.set(__self__, "ad_analytics", ad_analytics)
+            _setter("ad_analytics", ad_analytics)
         if ad_unit_view is not None:
-            pulumi.set(__self__, "ad_unit_view", ad_unit_view)
+            _setter("ad_unit_view", ad_unit_view)
         if admin_api_key is not None:
-            pulumi.set(__self__, "admin_api_key", admin_api_key)
+            _setter("admin_api_key", admin_api_key)
         if adobe_analytics_configurations is not None:
-            pulumi.set(__self__, "adobe_analytics_configurations", adobe_analytics_configurations)
+            _setter("adobe_analytics_configurations", adobe_analytics_configurations)
         if advertisables is not None:
-            pulumi.set(__self__, "advertisables", advertisables)
+            _setter("advertisables", advertisables)
         if advertisers is not None:
-            pulumi.set(__self__, "advertisers", advertisers)
+            _setter("advertisers", advertisers)
         if advertisers_ids is not None:
-            pulumi.set(__self__, "advertisers_ids", advertisers_ids)
+            _setter("advertisers_ids", advertisers_ids)
         if advertisers_sync_mode is not None:
-            pulumi.set(__self__, "advertisers_sync_mode", advertisers_sync_mode)
+            _setter("advertisers_sync_mode", advertisers_sync_mode)
         if agent_host is not None:
-            pulumi.set(__self__, "agent_host", agent_host)
+            _setter("agent_host", agent_host)
         if agent_ora_home is not None:
-            pulumi.set(__self__, "agent_ora_home", agent_ora_home)
+            _setter("agent_ora_home", agent_ora_home)
         if agent_password is not None:
-            pulumi.set(__self__, "agent_password", agent_password)
+            _setter("agent_password", agent_password)
         if agent_port is not None:
-            pulumi.set(__self__, "agent_port", agent_port)
+            _setter("agent_port", agent_port)
         if agent_public_cert is not None:
-            pulumi.set(__self__, "agent_public_cert", agent_public_cert)
+            _setter("agent_public_cert", agent_public_cert)
         if agent_user is not None:
-            pulumi.set(__self__, "agent_user", agent_user)
+            _setter("agent_user", agent_user)
         if aggregation is not None:
-            pulumi.set(__self__, "aggregation", aggregation)
+            _setter("aggregation", aggregation)
         if always_encrypted is not None:
-            pulumi.set(__self__, "always_encrypted", always_encrypted)
+            _setter("always_encrypted", always_encrypted)
         if api_access_token is not None:
-            pulumi.set(__self__, "api_access_token", api_access_token)
+            _setter("api_access_token", api_access_token)
         if api_id is not None:
-            pulumi.set(__self__, "api_id", api_id)
+            _setter("api_id", api_id)
         if api_key is not None:
-            pulumi.set(__self__, "api_key", api_key)
+            _setter("api_key", api_key)
         if api_keys is not None:
-            pulumi.set(__self__, "api_keys", api_keys)
+            _setter("api_keys", api_keys)
         if api_quota is not None:
-            pulumi.set(__self__, "api_quota", api_quota)
+            _setter("api_quota", api_quota)
         if api_requests_per_minute is not None:
-            pulumi.set(__self__, "api_requests_per_minute", api_requests_per_minute)
+            _setter("api_requests_per_minute", api_requests_per_minute)
         if api_secret is not None:
-            pulumi.set(__self__, "api_secret", api_secret)
+            _setter("api_secret", api_secret)
         if api_secret_key is not None:
-            pulumi.set(__self__, "api_secret_key", api_secret_key)
+            _setter("api_secret_key", api_secret_key)
         if api_token is not None:
-            pulumi.set(__self__, "api_token", api_token)
+            _setter("api_token", api_token)
         if api_type is not None:
-            pulumi.set(__self__, "api_type", api_type)
+            _setter("api_type", api_type)
         if api_url is not None:
-            pulumi.set(__self__, "api_url", api_url)
+            _setter("api_url", api_url)
         if api_usage is not None:
-            pulumi.set(__self__, "api_usage", api_usage)
+            _setter("api_usage", api_usage)
         if api_version is not None:
-            pulumi.set(__self__, "api_version", api_version)
+            _setter("api_version", api_version)
         if app_id is not None:
-            pulumi.set(__self__, "app_id", app_id)
+            _setter("app_id", app_id)
         if app_ids is not None:
-            pulumi.set(__self__, "app_ids", app_ids)
+            _setter("app_ids", app_ids)
         if app_ids_appsflyers is not None:
-            pulumi.set(__self__, "app_ids_appsflyers", app_ids_appsflyers)
+            _setter("app_ids_appsflyers", app_ids_appsflyers)
         if app_specific_password is not None:
-            pulumi.set(__self__, "app_specific_password", app_specific_password)
+            _setter("app_specific_password", app_specific_password)
         if app_sync_mode is not None:
-            pulumi.set(__self__, "app_sync_mode", app_sync_mode)
+            _setter("app_sync_mode", app_sync_mode)
         if append_file_option is not None:
-            pulumi.set(__self__, "append_file_option", append_file_option)
+            _setter("append_file_option", append_file_option)
         if application_key is not None:
-            pulumi.set(__self__, "application_key", application_key)
+            _setter("application_key", application_key)
         if apps is not None:
-            pulumi.set(__self__, "apps", apps)
+            _setter("apps", apps)
         if archive_log_format is not None:
-            pulumi.set(__self__, "archive_log_format", archive_log_format)
+            _setter("archive_log_format", archive_log_format)
         if archive_log_path is not None:
-            pulumi.set(__self__, "archive_log_path", archive_log_path)
+            _setter("archive_log_path", archive_log_path)
         if archive_pattern is not None:
-            pulumi.set(__self__, "archive_pattern", archive_pattern)
+            _setter("archive_pattern", archive_pattern)
         if are_soap_credentials_provided is not None:
-            pulumi.set(__self__, "are_soap_credentials_provided", are_soap_credentials_provided)
+            _setter("are_soap_credentials_provided", are_soap_credentials_provided)
         if asb_ip is not None:
-            pulumi.set(__self__, "asb_ip", asb_ip)
+            _setter("asb_ip", asb_ip)
         if asm_option is not None:
-            pulumi.set(__self__, "asm_option", asm_option)
+            _setter("asm_option", asm_option)
         if asm_oracle_home is not None:
-            pulumi.set(__self__, "asm_oracle_home", asm_oracle_home)
+            _setter("asm_oracle_home", asm_oracle_home)
         if asm_password is not None:
-            pulumi.set(__self__, "asm_password", asm_password)
+            _setter("asm_password", asm_password)
         if asm_tns is not None:
-            pulumi.set(__self__, "asm_tns", asm_tns)
+            _setter("asm_tns", asm_tns)
         if asm_user is not None:
-            pulumi.set(__self__, "asm_user", asm_user)
+            _setter("asm_user", asm_user)
         if attribution_window is not None:
-            pulumi.set(__self__, "attribution_window", attribution_window)
+            _setter("attribution_window", attribution_window)
         if attribution_window_size is not None:
-            pulumi.set(__self__, "attribution_window_size", attribution_window_size)
+            _setter("attribution_window_size", attribution_window_size)
         if auth is not None:
-            pulumi.set(__self__, "auth", auth)
+            _setter("auth", auth)
         if auth_method is not None:
-            pulumi.set(__self__, "auth_method", auth_method)
+            _setter("auth_method", auth_method)
         if auth_mode is not None:
-            pulumi.set(__self__, "auth_mode", auth_mode)
+            _setter("auth_mode", auth_mode)
         if auth_type is not None:
-            pulumi.set(__self__, "auth_type", auth_type)
+            _setter("auth_type", auth_type)
         if authorization_method is not None:
-            pulumi.set(__self__, "authorization_method", authorization_method)
+            _setter("authorization_method", authorization_method)
         if aws_region_code is not None:
-            pulumi.set(__self__, "aws_region_code", aws_region_code)
+            _setter("aws_region_code", aws_region_code)
         if base_currency is not None:
-            pulumi.set(__self__, "base_currency", base_currency)
+            _setter("base_currency", base_currency)
         if base_domain is not None:
-            pulumi.set(__self__, "base_domain", base_domain)
+            _setter("base_domain", base_domain)
         if base_id is not None:
-            pulumi.set(__self__, "base_id", base_id)
+            _setter("base_id", base_id)
         if base_url is not None:
-            pulumi.set(__self__, "base_url", base_url)
+            _setter("base_url", base_url)
         if bearer_token is not None:
-            pulumi.set(__self__, "bearer_token", bearer_token)
+            _setter("bearer_token", bearer_token)
         if blob_sas_url is not None:
-            pulumi.set(__self__, "blob_sas_url", blob_sas_url)
+            _setter("blob_sas_url", blob_sas_url)
         if breakdowns is not None:
-            pulumi.set(__self__, "breakdowns", breakdowns)
+            _setter("breakdowns", breakdowns)
         if bucket is not None:
-            pulumi.set(__self__, "bucket", bucket)
+            _setter("bucket", bucket)
         if bucket_name is not None:
-            pulumi.set(__self__, "bucket_name", bucket_name)
+            _setter("bucket_name", bucket_name)
         if bucket_service is not None:
-            pulumi.set(__self__, "bucket_service", bucket_service)
+            _setter("bucket_service", bucket_service)
         if business_id is not None:
-            pulumi.set(__self__, "business_id", business_id)
+            _setter("business_id", business_id)
         if business_unit_id is not None:
-            pulumi.set(__self__, "business_unit_id", business_unit_id)
+            _setter("business_unit_id", business_unit_id)
         if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
+            _setter("certificate", certificate)
         if click_attribution_window is not None:
-            pulumi.set(__self__, "click_attribution_window", click_attribution_window)
+            _setter("click_attribution_window", click_attribution_window)
+        if client is not None:
+            _setter("client", client)
         if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
+            _setter("client_cert", client_cert)
         if client_cert_key is not None:
-            pulumi.set(__self__, "client_cert_key", client_cert_key)
+            _setter("client_cert_key", client_cert_key)
         if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
+            _setter("client_id", client_id)
         if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
+            _setter("client_key", client_key)
         if client_name is not None:
-            pulumi.set(__self__, "client_name", client_name)
+            _setter("client_name", client_name)
         if client_secret is not None:
-            pulumi.set(__self__, "client_secret", client_secret)
+            _setter("client_secret", client_secret)
         if cloud_storage_type is not None:
-            pulumi.set(__self__, "cloud_storage_type", cloud_storage_type)
+            _setter("cloud_storage_type", cloud_storage_type)
         if columns is not None:
-            pulumi.set(__self__, "columns", columns)
+            _setter("columns", columns)
         if company_id is not None:
-            pulumi.set(__self__, "company_id", company_id)
+            _setter("company_id", company_id)
         if company_key is not None:
-            pulumi.set(__self__, "company_key", company_key)
+            _setter("company_key", company_key)
+        if company_request_token is not None:
+            _setter("company_request_token", company_request_token)
+        if company_uuid is not None:
+            _setter("company_uuid", company_uuid)
         if compression is not None:
-            pulumi.set(__self__, "compression", compression)
+            _setter("compression", compression)
         if config_method is not None:
-            pulumi.set(__self__, "config_method", config_method)
+            _setter("config_method", config_method)
         if config_repository_url is not None:
-            pulumi.set(__self__, "config_repository_url", config_repository_url)
+            _setter("config_repository_url", config_repository_url)
         if config_type is not None:
-            pulumi.set(__self__, "config_type", config_type)
+            _setter("config_type", config_type)
         if connecting_user is not None:
-            pulumi.set(__self__, "connecting_user", connecting_user)
+            _setter("connecting_user", connecting_user)
         if connecting_user_email is not None:
-            pulumi.set(__self__, "connecting_user_email", connecting_user_email)
+            _setter("connecting_user_email", connecting_user_email)
         if connection_method is not None:
-            pulumi.set(__self__, "connection_method", connection_method)
+            _setter("connection_method", connection_method)
         if connection_string is not None:
-            pulumi.set(__self__, "connection_string", connection_string)
+            _setter("connection_string", connection_string)
         if connection_type is not None:
-            pulumi.set(__self__, "connection_type", connection_type)
+            _setter("connection_type", connection_type)
         if consumer_group is not None:
-            pulumi.set(__self__, "consumer_group", consumer_group)
+            _setter("consumer_group", consumer_group)
         if consumer_key is not None:
-            pulumi.set(__self__, "consumer_key", consumer_key)
+            _setter("consumer_key", consumer_key)
         if consumer_secret is not None:
-            pulumi.set(__self__, "consumer_secret", consumer_secret)
+            _setter("consumer_secret", consumer_secret)
         if container_address is not None:
-            pulumi.set(__self__, "container_address", container_address)
+            _setter("container_address", container_address)
         if container_name is not None:
-            pulumi.set(__self__, "container_name", container_name)
+            _setter("container_name", container_name)
         if content_owner_id is not None:
-            pulumi.set(__self__, "content_owner_id", content_owner_id)
+            _setter("content_owner_id", content_owner_id)
         if conversation_webhook_url is not None:
-            pulumi.set(__self__, "conversation_webhook_url", conversation_webhook_url)
+            _setter("conversation_webhook_url", conversation_webhook_url)
         if conversion_dimensions is not None:
-            pulumi.set(__self__, "conversion_dimensions", conversion_dimensions)
+            _setter("conversion_dimensions", conversion_dimensions)
         if conversion_report_time is not None:
-            pulumi.set(__self__, "conversion_report_time", conversion_report_time)
+            _setter("conversion_report_time", conversion_report_time)
         if conversion_window_size is not None:
-            pulumi.set(__self__, "conversion_window_size", conversion_window_size)
+            _setter("conversion_window_size", conversion_window_size)
         if csv_definition is not None:
-            pulumi.set(__self__, "csv_definition", csv_definition)
+            _setter("csv_definition", csv_definition)
         if currency is not None:
-            pulumi.set(__self__, "currency", currency)
+            _setter("currency", currency)
         if custom_event_sync_mode is not None:
-            pulumi.set(__self__, "custom_event_sync_mode", custom_event_sync_mode)
+            _setter("custom_event_sync_mode", custom_event_sync_mode)
         if custom_events is not None:
-            pulumi.set(__self__, "custom_events", custom_events)
+            _setter("custom_events", custom_events)
         if custom_field_ids is not None:
-            pulumi.set(__self__, "custom_field_ids", custom_field_ids)
+            _setter("custom_field_ids", custom_field_ids)
         if custom_floodlight_variables is not None:
-            pulumi.set(__self__, "custom_floodlight_variables", custom_floodlight_variables)
+            _setter("custom_floodlight_variables", custom_floodlight_variables)
         if custom_reports is not None:
-            pulumi.set(__self__, "custom_reports", custom_reports)
+            _setter("custom_reports", custom_reports)
         if custom_tables is not None:
-            pulumi.set(__self__, "custom_tables", custom_tables)
+            _setter("custom_tables", custom_tables)
         if customer_id is not None:
-            pulumi.set(__self__, "customer_id", customer_id)
+            _setter("customer_id", customer_id)
         if customer_list_id is not None:
-            pulumi.set(__self__, "customer_list_id", customer_list_id)
+            _setter("customer_list_id", customer_list_id)
         if daily_api_call_limit is not None:
-            pulumi.set(__self__, "daily_api_call_limit", daily_api_call_limit)
+            _setter("daily_api_call_limit", daily_api_call_limit)
         if data_access_method is not None:
-            pulumi.set(__self__, "data_access_method", data_access_method)
+            _setter("data_access_method", data_access_method)
         if data_center is not None:
-            pulumi.set(__self__, "data_center", data_center)
+            _setter("data_center", data_center)
         if data_set_name is not None:
-            pulumi.set(__self__, "data_set_name", data_set_name)
+            _setter("data_set_name", data_set_name)
         if database is not None:
-            pulumi.set(__self__, "database", database)
+            _setter("database", database)
         if dataset_id is not None:
-            pulumi.set(__self__, "dataset_id", dataset_id)
+            _setter("dataset_id", dataset_id)
         if datasource is not None:
-            pulumi.set(__self__, "datasource", datasource)
+            _setter("datasource", datasource)
         if date_granularity is not None:
-            pulumi.set(__self__, "date_granularity", date_granularity)
+            _setter("date_granularity", date_granularity)
         if delimiter is not None:
-            pulumi.set(__self__, "delimiter", delimiter)
+            _setter("delimiter", delimiter)
         if dimension_attributes is not None:
-            pulumi.set(__self__, "dimension_attributes", dimension_attributes)
+            _setter("dimension_attributes", dimension_attributes)
         if dimensions is not None:
-            pulumi.set(__self__, "dimensions", dimensions)
+            _setter("dimensions", dimensions)
         if domain is not None:
-            pulumi.set(__self__, "domain", domain)
+            _setter("domain", domain)
         if domain_host_name is not None:
-            pulumi.set(__self__, "domain_host_name", domain_host_name)
+            _setter("domain_host_name", domain_host_name)
         if domain_name is not None:
-            pulumi.set(__self__, "domain_name", domain_name)
+            _setter("domain_name", domain_name)
         if domain_type is not None:
-            pulumi.set(__self__, "domain_type", domain_type)
+            _setter("domain_type", domain_type)
         if elements is not None:
-            pulumi.set(__self__, "elements", elements)
+            _setter("elements", elements)
         if email is not None:
-            pulumi.set(__self__, "email", email)
+            _setter("email", email)
         if empty_header is not None:
-            pulumi.set(__self__, "empty_header", empty_header)
+            _setter("empty_header", empty_header)
         if enable_all_dimension_combinations is not None:
-            pulumi.set(__self__, "enable_all_dimension_combinations", enable_all_dimension_combinations)
+            _setter("enable_all_dimension_combinations", enable_all_dimension_combinations)
         if enable_archive_log_only is not None:
-            pulumi.set(__self__, "enable_archive_log_only", enable_archive_log_only)
+            _setter("enable_archive_log_only", enable_archive_log_only)
         if enable_enrichments is not None:
-            pulumi.set(__self__, "enable_enrichments", enable_enrichments)
+            _setter("enable_enrichments", enable_enrichments)
         if enable_exports is not None:
-            pulumi.set(__self__, "enable_exports", enable_exports)
+            _setter("enable_exports", enable_exports)
         if enable_tde is not None:
-            pulumi.set(__self__, "enable_tde", enable_tde)
+            _setter("enable_tde", enable_tde)
         if encoded_public_key is not None:
-            pulumi.set(__self__, "encoded_public_key", encoded_public_key)
+            _setter("encoded_public_key", encoded_public_key)
         if encryption_key is not None:
-            pulumi.set(__self__, "encryption_key", encryption_key)
+            _setter("encryption_key", encryption_key)
         if endpoint is not None:
-            pulumi.set(__self__, "endpoint", endpoint)
+            _setter("endpoint", endpoint)
         if engagement_attribution_window is not None:
-            pulumi.set(__self__, "engagement_attribution_window", engagement_attribution_window)
+            _setter("engagement_attribution_window", engagement_attribution_window)
         if enriched_export is not None:
-            pulumi.set(__self__, "enriched_export", enriched_export)
+            _setter("enriched_export", enriched_export)
         if entity_id is not None:
-            pulumi.set(__self__, "entity_id", entity_id)
+            _setter("entity_id", entity_id)
         if environment is not None:
-            pulumi.set(__self__, "environment", environment)
+            _setter("environment", environment)
         if escape_char is not None:
-            pulumi.set(__self__, "escape_char", escape_char)
+            _setter("escape_char", escape_char)
         if eu_region is not None:
-            pulumi.set(__self__, "eu_region", eu_region)
+            _setter("eu_region", eu_region)
         if events is not None:
-            pulumi.set(__self__, "events", events)
+            _setter("events", events)
         if export_storage_type is not None:
-            pulumi.set(__self__, "export_storage_type", export_storage_type)
+            _setter("export_storage_type", export_storage_type)
         if external_id is not None:
-            pulumi.set(__self__, "external_id", external_id)
+            _setter("external_id", external_id)
         if fields is not None:
-            pulumi.set(__self__, "fields", fields)
+            _setter("fields", fields)
         if file_type is not None:
-            pulumi.set(__self__, "file_type", file_type)
+            _setter("file_type", file_type)
         if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+            _setter("filter", filter)
         if finance_account_sync_mode is not None:
-            pulumi.set(__self__, "finance_account_sync_mode", finance_account_sync_mode)
+            _setter("finance_account_sync_mode", finance_account_sync_mode)
         if finance_accounts is not None:
-            pulumi.set(__self__, "finance_accounts", finance_accounts)
+            _setter("finance_accounts", finance_accounts)
         if folder is not None:
-            pulumi.set(__self__, "folder", folder)
+            _setter("folder", folder)
         if folder_id is not None:
-            pulumi.set(__self__, "folder_id", folder_id)
+            _setter("folder_id", folder_id)
         if folder_path is not None:
-            pulumi.set(__self__, "folder_path", folder_path)
+            _setter("folder_path", folder_path)
         if forecast_id is not None:
-            pulumi.set(__self__, "forecast_id", forecast_id)
+            _setter("forecast_id", forecast_id)
         if ftp_host is not None:
-            pulumi.set(__self__, "ftp_host", ftp_host)
+            _setter("ftp_host", ftp_host)
         if ftp_password is not None:
-            pulumi.set(__self__, "ftp_password", ftp_password)
+            _setter("ftp_password", ftp_password)
         if ftp_port is not None:
-            pulumi.set(__self__, "ftp_port", ftp_port)
+            _setter("ftp_port", ftp_port)
         if ftp_user is not None:
-            pulumi.set(__self__, "ftp_user", ftp_user)
+            _setter("ftp_user", ftp_user)
         if function is not None:
-            pulumi.set(__self__, "function", function)
+            _setter("function", function)
         if function_app is not None:
-            pulumi.set(__self__, "function_app", function_app)
+            _setter("function_app", function_app)
         if function_key is not None:
-            pulumi.set(__self__, "function_key", function_key)
+            _setter("function_key", function_key)
         if function_name is not None:
-            pulumi.set(__self__, "function_name", function_name)
+            _setter("function_name", function_name)
         if function_trigger is not None:
-            pulumi.set(__self__, "function_trigger", function_trigger)
+            _setter("function_trigger", function_trigger)
         if gcs_bucket is not None:
-            pulumi.set(__self__, "gcs_bucket", gcs_bucket)
+            _setter("gcs_bucket", gcs_bucket)
         if gcs_folder is not None:
-            pulumi.set(__self__, "gcs_folder", gcs_folder)
+            _setter("gcs_folder", gcs_folder)
         if group_name is not None:
-            pulumi.set(__self__, "group_name", group_name)
+            _setter("group_name", group_name)
         if has_manage_permissions is not None:
-            pulumi.set(__self__, "has_manage_permissions", has_manage_permissions)
+            _setter("has_manage_permissions", has_manage_permissions)
         if home_folder is not None:
-            pulumi.set(__self__, "home_folder", home_folder)
+            _setter("home_folder", home_folder)
         if host is not None:
-            pulumi.set(__self__, "host", host)
+            _setter("host", host)
         if host_ip is not None:
-            pulumi.set(__self__, "host_ip", host_ip)
+            _setter("host_ip", host_ip)
         if host_user is not None:
-            pulumi.set(__self__, "host_user", host_user)
+            _setter("host_user", host_user)
         if hosts is not None:
-            pulumi.set(__self__, "hosts", hosts)
+            _setter("hosts", hosts)
         if identity is not None:
-            pulumi.set(__self__, "identity", identity)
+            _setter("identity", identity)
         if instance is not None:
-            pulumi.set(__self__, "instance", instance)
+            _setter("instance", instance)
         if instance_number is not None:
-            pulumi.set(__self__, "instance_number", instance_number)
+            _setter("instance_number", instance_number)
         if instance_url is not None:
-            pulumi.set(__self__, "instance_url", instance_url)
+            _setter("instance_url", instance_url)
         if integration_key is not None:
-            pulumi.set(__self__, "integration_key", integration_key)
+            _setter("integration_key", integration_key)
         if is_account_level_connector is not None:
-            pulumi.set(__self__, "is_account_level_connector", is_account_level_connector)
+            _setter("is_account_level_connector", is_account_level_connector)
         if is_auth2_enabled is not None:
-            pulumi.set(__self__, "is_auth2_enabled", is_auth2_enabled)
+            _setter("is_auth2_enabled", is_auth2_enabled)
         if is_custom_api_credentials is not None:
-            pulumi.set(__self__, "is_custom_api_credentials", is_custom_api_credentials)
+            _setter("is_custom_api_credentials", is_custom_api_credentials)
         if is_ftps is not None:
-            pulumi.set(__self__, "is_ftps", is_ftps)
+            _setter("is_ftps", is_ftps)
         if is_keypair is not None:
-            pulumi.set(__self__, "is_keypair", is_keypair)
+            _setter("is_keypair", is_keypair)
         if is_multi_entity_feature_enabled is not None:
-            pulumi.set(__self__, "is_multi_entity_feature_enabled", is_multi_entity_feature_enabled)
+            _setter("is_multi_entity_feature_enabled", is_multi_entity_feature_enabled)
         if is_new_package is not None:
-            pulumi.set(__self__, "is_new_package", is_new_package)
+            _setter("is_new_package", is_new_package)
         if is_private_key_encrypted is not None:
-            pulumi.set(__self__, "is_private_key_encrypted", is_private_key_encrypted)
+            _setter("is_private_key_encrypted", is_private_key_encrypted)
         if is_private_link_required is not None:
-            pulumi.set(__self__, "is_private_link_required", is_private_link_required)
+            _setter("is_private_link_required", is_private_link_required)
         if is_public is not None:
-            pulumi.set(__self__, "is_public", is_public)
+            _setter("is_public", is_public)
         if is_sailthru_connect_enabled is not None:
-            pulumi.set(__self__, "is_sailthru_connect_enabled", is_sailthru_connect_enabled)
+            _setter("is_sailthru_connect_enabled", is_sailthru_connect_enabled)
         if is_secure is not None:
-            pulumi.set(__self__, "is_secure", is_secure)
+            _setter("is_secure", is_secure)
         if is_single_table_mode is not None:
-            pulumi.set(__self__, "is_single_table_mode", is_single_table_mode)
+            _setter("is_single_table_mode", is_single_table_mode)
         if is_vendor is not None:
-            pulumi.set(__self__, "is_vendor", is_vendor)
+            _setter("is_vendor", is_vendor)
         if json_delivery_mode is not None:
-            pulumi.set(__self__, "json_delivery_mode", json_delivery_mode)
+            _setter("json_delivery_mode", json_delivery_mode)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if key_password is not None:
-            pulumi.set(__self__, "key_password", key_password)
+            _setter("key_password", key_password)
         if key_store_type is not None:
-            pulumi.set(__self__, "key_store_type", key_store_type)
+            _setter("key_store_type", key_store_type)
         if keystore is not None:
-            pulumi.set(__self__, "keystore", keystore)
+            _setter("keystore", keystore)
         if keystore_password is not None:
-            pulumi.set(__self__, "keystore_password", keystore_password)
-        if last_synced_changes_utc_ is not None:
-            pulumi.set(__self__, "last_synced_changes_utc_", last_synced_changes_utc_)
+            _setter("keystore_password", keystore_password)
+        if last_synced_changes_utc is not None:
+            _setter("last_synced_changes_utc", last_synced_changes_utc)
         if latest_version is not None:
-            pulumi.set(__self__, "latest_version", latest_version)
+            _setter("latest_version", latest_version)
         if line_separator is not None:
-            pulumi.set(__self__, "line_separator", line_separator)
+            _setter("line_separator", line_separator)
         if list_strategy is not None:
-            pulumi.set(__self__, "list_strategy", list_strategy)
+            _setter("list_strategy", list_strategy)
         if list_sync_mode is not None:
-            pulumi.set(__self__, "list_sync_mode", list_sync_mode)
+            _setter("list_sync_mode", list_sync_mode)
         if log_journal is not None:
-            pulumi.set(__self__, "log_journal", log_journal)
+            _setter("log_journal", log_journal)
         if log_journal_schema is not None:
-            pulumi.set(__self__, "log_journal_schema", log_journal_schema)
+            _setter("log_journal_schema", log_journal_schema)
         if login is not None:
-            pulumi.set(__self__, "login", login)
+            _setter("login", login)
         if login_password is not None:
-            pulumi.set(__self__, "login_password", login_password)
+            _setter("login_password", login_password)
         if manager_accounts is not None:
-            pulumi.set(__self__, "manager_accounts", manager_accounts)
+            _setter("manager_accounts", manager_accounts)
         if merchant_id is not None:
-            pulumi.set(__self__, "merchant_id", merchant_id)
+            _setter("merchant_id", merchant_id)
         if message_type is not None:
-            pulumi.set(__self__, "message_type", message_type)
+            _setter("message_type", message_type)
         if metrics is not None:
-            pulumi.set(__self__, "metrics", metrics)
+            _setter("metrics", metrics)
         if named_range is not None:
-            pulumi.set(__self__, "named_range", named_range)
+            _setter("named_range", named_range)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if network_code is not None:
-            pulumi.set(__self__, "network_code", network_code)
+            _setter("network_code", network_code)
         if null_sequence is not None:
-            pulumi.set(__self__, "null_sequence", null_sequence)
+            _setter("null_sequence", null_sequence)
         if oauth_token is not None:
-            pulumi.set(__self__, "oauth_token", oauth_token)
+            _setter("oauth_token", oauth_token)
         if oauth_token_secret is not None:
-            pulumi.set(__self__, "oauth_token_secret", oauth_token_secret)
+            _setter("oauth_token_secret", oauth_token_secret)
         if on_error is not None:
-            pulumi.set(__self__, "on_error", on_error)
+            _setter("on_error", on_error)
         if on_premise is not None:
-            pulumi.set(__self__, "on_premise", on_premise)
+            _setter("on_premise", on_premise)
         if organization is not None:
-            pulumi.set(__self__, "organization", organization)
+            _setter("organization", organization)
         if organization_id is not None:
-            pulumi.set(__self__, "organization_id", organization_id)
+            _setter("organization_id", organization_id)
         if organizations is not None:
-            pulumi.set(__self__, "organizations", organizations)
+            _setter("organizations", organizations)
         if packed_mode_tables is not None:
-            pulumi.set(__self__, "packed_mode_tables", packed_mode_tables)
+            _setter("packed_mode_tables", packed_mode_tables)
         if packing_mode is not None:
-            pulumi.set(__self__, "packing_mode", packing_mode)
+            _setter("packing_mode", packing_mode)
         if pages is not None:
-            pulumi.set(__self__, "pages", pages)
+            _setter("pages", pages)
         if partners is not None:
-            pulumi.set(__self__, "partners", partners)
+            _setter("partners", partners)
         if passphrase is not None:
-            pulumi.set(__self__, "passphrase", passphrase)
+            _setter("passphrase", passphrase)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if pat is not None:
-            pulumi.set(__self__, "pat", pat)
+            _setter("pat", pat)
+        if pat_name is not None:
+            _setter("pat_name", pat_name)
+        if pat_secret is not None:
+            _setter("pat_secret", pat_secret)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
         if pattern is not None:
-            pulumi.set(__self__, "pattern", pattern)
+            _setter("pattern", pattern)
         if pdb_name is not None:
-            pulumi.set(__self__, "pdb_name", pdb_name)
+            _setter("pdb_name", pdb_name)
         if pem_certificate is not None:
-            pulumi.set(__self__, "pem_certificate", pem_certificate)
+            _setter("pem_certificate", pem_certificate)
         if pem_private_key is not None:
-            pulumi.set(__self__, "pem_private_key", pem_private_key)
+            _setter("pem_private_key", pem_private_key)
         if per_interaction_dimensions is not None:
-            pulumi.set(__self__, "per_interaction_dimensions", per_interaction_dimensions)
+            _setter("per_interaction_dimensions", per_interaction_dimensions)
         if personal_access_token is not None:
-            pulumi.set(__self__, "personal_access_token", personal_access_token)
+            _setter("personal_access_token", personal_access_token)
         if pgp_pass_phrase is not None:
-            pulumi.set(__self__, "pgp_pass_phrase", pgp_pass_phrase)
+            _setter("pgp_pass_phrase", pgp_pass_phrase)
         if pgp_secret_key is not None:
-            pulumi.set(__self__, "pgp_secret_key", pgp_secret_key)
+            _setter("pgp_secret_key", pgp_secret_key)
         if phone_number is not None:
-            pulumi.set(__self__, "phone_number", phone_number)
+            _setter("phone_number", phone_number)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if post_click_attribution_window_size is not None:
-            pulumi.set(__self__, "post_click_attribution_window_size", post_click_attribution_window_size)
+            _setter("post_click_attribution_window_size", post_click_attribution_window_size)
         if prebuilt_report is not None:
-            pulumi.set(__self__, "prebuilt_report", prebuilt_report)
+            _setter("prebuilt_report", prebuilt_report)
         if prefix is not None:
-            pulumi.set(__self__, "prefix", prefix)
+            _setter("prefix", prefix)
         if primary_keys is not None:
-            pulumi.set(__self__, "primary_keys", primary_keys)
+            _setter("primary_keys", primary_keys)
         if private_key is not None:
-            pulumi.set(__self__, "private_key", private_key)
+            _setter("private_key", private_key)
         if profiles is not None:
-            pulumi.set(__self__, "profiles", profiles)
+            _setter("profiles", profiles)
         if project_credentials is not None:
-            pulumi.set(__self__, "project_credentials", project_credentials)
+            _setter("project_credentials", project_credentials)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if projects is not None:
-            pulumi.set(__self__, "projects", projects)
+            _setter("projects", projects)
         if properties is not None:
-            pulumi.set(__self__, "properties", properties)
+            _setter("properties", properties)
         if public_key is not None:
-            pulumi.set(__self__, "public_key", public_key)
+            _setter("public_key", public_key)
         if publication_name is not None:
-            pulumi.set(__self__, "publication_name", publication_name)
+            _setter("publication_name", publication_name)
         if query_id is not None:
-            pulumi.set(__self__, "query_id", query_id)
+            _setter("query_id", query_id)
         if query_param_value is not None:
-            pulumi.set(__self__, "query_param_value", query_param_value)
+            _setter("query_param_value", query_param_value)
         if refresh_token_expires_at is not None:
-            pulumi.set(__self__, "refresh_token_expires_at", refresh_token_expires_at)
+            _setter("refresh_token_expires_at", refresh_token_expires_at)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if replica_id is not None:
-            pulumi.set(__self__, "replica_id", replica_id)
+            _setter("replica_id", replica_id)
         if replication_slot is not None:
-            pulumi.set(__self__, "replication_slot", replication_slot)
+            _setter("replication_slot", replication_slot)
         if report_configuration_ids is not None:
-            pulumi.set(__self__, "report_configuration_ids", report_configuration_ids)
+            _setter("report_configuration_ids", report_configuration_ids)
         if report_format_type is not None:
-            pulumi.set(__self__, "report_format_type", report_format_type)
+            _setter("report_format_type", report_format_type)
         if report_suites is not None:
-            pulumi.set(__self__, "report_suites", report_suites)
+            _setter("report_suites", report_suites)
         if report_timezone is not None:
-            pulumi.set(__self__, "report_timezone", report_timezone)
+            _setter("report_timezone", report_timezone)
         if report_type is not None:
-            pulumi.set(__self__, "report_type", report_type)
+            _setter("report_type", report_type)
         if report_url is not None:
-            pulumi.set(__self__, "report_url", report_url)
+            _setter("report_url", report_url)
         if reports is not None:
-            pulumi.set(__self__, "reports", reports)
+            _setter("reports", reports)
         if reports_linkedin_ads is not None:
-            pulumi.set(__self__, "reports_linkedin_ads", reports_linkedin_ads)
+            _setter("reports_linkedin_ads", reports_linkedin_ads)
         if repositories is not None:
-            pulumi.set(__self__, "repositories", repositories)
+            _setter("repositories", repositories)
         if resource_token is not None:
-            pulumi.set(__self__, "resource_token", resource_token)
+            _setter("resource_token", resource_token)
         if resource_url is not None:
-            pulumi.set(__self__, "resource_url", resource_url)
+            _setter("resource_url", resource_url)
         if rest_api_limit is not None:
-            pulumi.set(__self__, "rest_api_limit", rest_api_limit)
+            _setter("rest_api_limit", rest_api_limit)
         if rfc_library_path is not None:
-            pulumi.set(__self__, "rfc_library_path", rfc_library_path)
+            _setter("rfc_library_path", rfc_library_path)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if rollback_window_size is not None:
-            pulumi.set(__self__, "rollback_window_size", rollback_window_size)
+            _setter("rollback_window_size", rollback_window_size)
         if s3_bucket is not None:
-            pulumi.set(__self__, "s3_bucket", s3_bucket)
+            _setter("s3_bucket", s3_bucket)
         if s3_export_bucket is not None:
-            pulumi.set(__self__, "s3_export_bucket", s3_export_bucket)
+            _setter("s3_export_bucket", s3_export_bucket)
         if s3_export_folder is not None:
-            pulumi.set(__self__, "s3_export_folder", s3_export_folder)
+            _setter("s3_export_folder", s3_export_folder)
         if s3_export_role_arn is not None:
-            pulumi.set(__self__, "s3_export_role_arn", s3_export_role_arn)
+            _setter("s3_export_role_arn", s3_export_role_arn)
         if s3_role_arn is not None:
-            pulumi.set(__self__, "s3_role_arn", s3_role_arn)
+            _setter("s3_role_arn", s3_role_arn)
         if s3bucket is not None:
-            pulumi.set(__self__, "s3bucket", s3bucket)
+            _setter("s3bucket", s3bucket)
         if s3external_id is not None:
-            pulumi.set(__self__, "s3external_id", s3external_id)
+            _setter("s3external_id", s3external_id)
         if s3folder is not None:
-            pulumi.set(__self__, "s3folder", s3folder)
+            _setter("s3folder", s3folder)
         if s3path is not None:
-            pulumi.set(__self__, "s3path", s3path)
+            _setter("s3path", s3path)
         if s3role_arn is not None:
-            pulumi.set(__self__, "s3role_arn", s3role_arn)
+            _setter("s3role_arn", s3role_arn)
         if sales_account_sync_mode is not None:
-            pulumi.set(__self__, "sales_account_sync_mode", sales_account_sync_mode)
+            _setter("sales_account_sync_mode", sales_account_sync_mode)
         if sales_accounts is not None:
-            pulumi.set(__self__, "sales_accounts", sales_accounts)
+            _setter("sales_accounts", sales_accounts)
         if salesforce_security_token is not None:
-            pulumi.set(__self__, "salesforce_security_token", salesforce_security_token)
+            _setter("salesforce_security_token", salesforce_security_token)
         if sandbox_account is not None:
-            pulumi.set(__self__, "sandbox_account", sandbox_account)
+            _setter("sandbox_account", sandbox_account)
         if sap_schema is not None:
-            pulumi.set(__self__, "sap_schema", sap_schema)
+            _setter("sap_schema", sap_schema)
         if sap_user is not None:
-            pulumi.set(__self__, "sap_user", sap_user)
+            _setter("sap_user", sap_user)
         if sasl_mechanism is not None:
-            pulumi.set(__self__, "sasl_mechanism", sasl_mechanism)
+            _setter("sasl_mechanism", sasl_mechanism)
         if sasl_plain_key is not None:
-            pulumi.set(__self__, "sasl_plain_key", sasl_plain_key)
+            _setter("sasl_plain_key", sasl_plain_key)
         if sasl_plain_secret is not None:
-            pulumi.set(__self__, "sasl_plain_secret", sasl_plain_secret)
+            _setter("sasl_plain_secret", sasl_plain_secret)
         if sasl_scram256_key is not None:
-            pulumi.set(__self__, "sasl_scram256_key", sasl_scram256_key)
+            _setter("sasl_scram256_key", sasl_scram256_key)
         if sasl_scram256_secret is not None:
-            pulumi.set(__self__, "sasl_scram256_secret", sasl_scram256_secret)
+            _setter("sasl_scram256_secret", sasl_scram256_secret)
         if sasl_scram512_key is not None:
-            pulumi.set(__self__, "sasl_scram512_key", sasl_scram512_key)
+            _setter("sasl_scram512_key", sasl_scram512_key)
         if sasl_scram512_secret is not None:
-            pulumi.set(__self__, "sasl_scram512_secret", sasl_scram512_secret)
+            _setter("sasl_scram512_secret", sasl_scram512_secret)
         if schema_registry_credentials_source is not None:
-            pulumi.set(__self__, "schema_registry_credentials_source", schema_registry_credentials_source)
+            _setter("schema_registry_credentials_source", schema_registry_credentials_source)
         if schema_registry_key is not None:
-            pulumi.set(__self__, "schema_registry_key", schema_registry_key)
+            _setter("schema_registry_key", schema_registry_key)
         if schema_registry_secret is not None:
-            pulumi.set(__self__, "schema_registry_secret", schema_registry_secret)
+            _setter("schema_registry_secret", schema_registry_secret)
         if schema_registry_urls is not None:
-            pulumi.set(__self__, "schema_registry_urls", schema_registry_urls)
+            _setter("schema_registry_urls", schema_registry_urls)
         if secret is not None:
-            pulumi.set(__self__, "secret", secret)
+            _setter("secret", secret)
         if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
+            _setter("secret_key", secret_key)
         if secrets is not None:
-            pulumi.set(__self__, "secrets", secrets)
+            _setter("secrets", secrets)
         if secrets_lists is not None:
-            pulumi.set(__self__, "secrets_lists", secrets_lists)
+            _setter("secrets_lists", secrets_lists)
         if security_protocol is not None:
-            pulumi.set(__self__, "security_protocol", security_protocol)
+            _setter("security_protocol", security_protocol)
         if segments is not None:
-            pulumi.set(__self__, "segments", segments)
+            _setter("segments", segments)
         if selected_exports is not None:
-            pulumi.set(__self__, "selected_exports", selected_exports)
+            _setter("selected_exports", selected_exports)
         if sender_id is not None:
-            pulumi.set(__self__, "sender_id", sender_id)
+            _setter("sender_id", sender_id)
         if sender_password is not None:
-            pulumi.set(__self__, "sender_password", sender_password)
+            _setter("sender_password", sender_password)
+        if server_address is not None:
+            _setter("server_address", server_address)
         if server_url is not None:
-            pulumi.set(__self__, "server_url", server_url)
+            _setter("server_url", server_url)
         if servers is not None:
-            pulumi.set(__self__, "servers", servers)
+            _setter("servers", servers)
         if service_account is not None:
-            pulumi.set(__self__, "service_account", service_account)
+            _setter("service_account", service_account)
         if service_account_email is not None:
-            pulumi.set(__self__, "service_account_email", service_account_email)
+            _setter("service_account_email", service_account_email)
         if service_account_key is not None:
-            pulumi.set(__self__, "service_account_key", service_account_key)
+            _setter("service_account_key", service_account_key)
         if service_version is not None:
-            pulumi.set(__self__, "service_version", service_version)
+            _setter("service_version", service_version)
         if sftp_host is not None:
-            pulumi.set(__self__, "sftp_host", sftp_host)
+            _setter("sftp_host", sftp_host)
         if sftp_is_key_pair is not None:
-            pulumi.set(__self__, "sftp_is_key_pair", sftp_is_key_pair)
+            _setter("sftp_is_key_pair", sftp_is_key_pair)
         if sftp_password is not None:
-            pulumi.set(__self__, "sftp_password", sftp_password)
+            _setter("sftp_password", sftp_password)
         if sftp_port is not None:
-            pulumi.set(__self__, "sftp_port", sftp_port)
+            _setter("sftp_port", sftp_port)
         if sftp_public_key is not None:
-            pulumi.set(__self__, "sftp_public_key", sftp_public_key)
+            _setter("sftp_public_key", sftp_public_key)
         if sftp_user is not None:
-            pulumi.set(__self__, "sftp_user", sftp_user)
+            _setter("sftp_user", sftp_user)
         if share_url is not None:
-            pulumi.set(__self__, "share_url", share_url)
+            _setter("share_url", share_url)
         if sheet_id is not None:
-            pulumi.set(__self__, "sheet_id", sheet_id)
+            _setter("sheet_id", sheet_id)
         if shop is not None:
-            pulumi.set(__self__, "shop", shop)
+            _setter("shop", shop)
         if short_code is not None:
-            pulumi.set(__self__, "short_code", short_code)
+            _setter("short_code", short_code)
         if show_records_with_no_metrics is not None:
-            pulumi.set(__self__, "show_records_with_no_metrics", show_records_with_no_metrics)
+            _setter("show_records_with_no_metrics", show_records_with_no_metrics)
         if sid is not None:
-            pulumi.set(__self__, "sid", sid)
+            _setter("sid", sid)
         if signer_public_key is not None:
-            pulumi.set(__self__, "signer_public_key", signer_public_key)
+            _setter("signer_public_key", signer_public_key)
         if site_address is not None:
-            pulumi.set(__self__, "site_address", site_address)
+            _setter("site_address", site_address)
         if site_id is not None:
-            pulumi.set(__self__, "site_id", site_id)
+            _setter("site_id", site_id)
         if site_name is not None:
-            pulumi.set(__self__, "site_name", site_name)
+            _setter("site_name", site_name)
         if site_urls is not None:
-            pulumi.set(__self__, "site_urls", site_urls)
+            _setter("site_urls", site_urls)
         if skip_after is not None:
-            pulumi.set(__self__, "skip_after", skip_after)
+            _setter("skip_after", skip_after)
         if skip_before is not None:
-            pulumi.set(__self__, "skip_before", skip_before)
+            _setter("skip_before", skip_before)
         if soap_uri is not None:
-            pulumi.set(__self__, "soap_uri", soap_uri)
+            _setter("soap_uri", soap_uri)
         if social_data_sync_timeframe is not None:
-            pulumi.set(__self__, "social_data_sync_timeframe", social_data_sync_timeframe)
+            _setter("social_data_sync_timeframe", social_data_sync_timeframe)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
         if store_hash is not None:
-            pulumi.set(__self__, "store_hash", store_hash)
+            _setter("store_hash", store_hash)
         if sub_domain is not None:
-            pulumi.set(__self__, "sub_domain", sub_domain)
+            _setter("sub_domain", sub_domain)
         if subdomain is not None:
-            pulumi.set(__self__, "subdomain", subdomain)
+            _setter("subdomain", subdomain)
         if subscriber_name is not None:
-            pulumi.set(__self__, "subscriber_name", subscriber_name)
+            _setter("subscriber_name", subscriber_name)
         if subscription is not None:
-            pulumi.set(__self__, "subscription", subscription)
+            _setter("subscription", subscription)
         if support_connected_accounts_sync is not None:
-            pulumi.set(__self__, "support_connected_accounts_sync", support_connected_accounts_sync)
+            _setter("support_connected_accounts_sync", support_connected_accounts_sync)
         if support_nested_columns is not None:
-            pulumi.set(__self__, "support_nested_columns", support_nested_columns)
+            _setter("support_nested_columns", support_nested_columns)
         if survey_ids is not None:
-            pulumi.set(__self__, "survey_ids", survey_ids)
+            _setter("survey_ids", survey_ids)
         if swipe_attribution_window is not None:
-            pulumi.set(__self__, "swipe_attribution_window", swipe_attribution_window)
+            _setter("swipe_attribution_window", swipe_attribution_window)
         if sync_data_locker is not None:
-            pulumi.set(__self__, "sync_data_locker", sync_data_locker)
+            _setter("sync_data_locker", sync_data_locker)
         if sync_format is not None:
-            pulumi.set(__self__, "sync_format", sync_format)
+            _setter("sync_format", sync_format)
         if sync_formula_fields is not None:
-            pulumi.set(__self__, "sync_formula_fields", sync_formula_fields)
+            _setter("sync_formula_fields", sync_formula_fields)
         if sync_metadata is not None:
-            pulumi.set(__self__, "sync_metadata", sync_metadata)
+            _setter("sync_metadata", sync_metadata)
         if sync_method is not None:
-            pulumi.set(__self__, "sync_method", sync_method)
+            _setter("sync_method", sync_method)
         if sync_mode is not None:
-            pulumi.set(__self__, "sync_mode", sync_mode)
+            _setter("sync_mode", sync_mode)
         if sync_multiple_accounts is not None:
-            pulumi.set(__self__, "sync_multiple_accounts", sync_multiple_accounts)
+            _setter("sync_multiple_accounts", sync_multiple_accounts)
         if sync_pack_mode is not None:
-            pulumi.set(__self__, "sync_pack_mode", sync_pack_mode)
+            _setter("sync_pack_mode", sync_pack_mode)
         if sync_pull_api is not None:
-            pulumi.set(__self__, "sync_pull_api", sync_pull_api)
+            _setter("sync_pull_api", sync_pull_api)
         if sync_type is not None:
-            pulumi.set(__self__, "sync_type", sync_type)
+            _setter("sync_type", sync_type)
+        if sysnr is not None:
+            _setter("sysnr", sysnr)
         if table_name is not None:
-            pulumi.set(__self__, "table_name", table_name)
+            _setter("table_name", table_name)
         if tde_certificate is not None:
-            pulumi.set(__self__, "tde_certificate", tde_certificate)
+            _setter("tde_certificate", tde_certificate)
         if tde_certificate_name is not None:
-            pulumi.set(__self__, "tde_certificate_name", tde_certificate_name)
+            _setter("tde_certificate_name", tde_certificate_name)
         if tde_password is not None:
-            pulumi.set(__self__, "tde_password", tde_password)
+            _setter("tde_password", tde_password)
         if tde_private_key is not None:
-            pulumi.set(__self__, "tde_private_key", tde_private_key)
+            _setter("tde_private_key", tde_private_key)
         if team_id is not None:
-            pulumi.set(__self__, "team_id", team_id)
+            _setter("team_id", team_id)
         if technical_account_id is not None:
-            pulumi.set(__self__, "technical_account_id", technical_account_id)
+            _setter("technical_account_id", technical_account_id)
         if template_labels is not None:
-            pulumi.set(__self__, "template_labels", template_labels)
+            _setter("template_labels", template_labels)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
         if test_table_name is not None:
-            pulumi.set(__self__, "test_table_name", test_table_name)
+            _setter("test_table_name", test_table_name)
         if time_zone is not None:
-            pulumi.set(__self__, "time_zone", time_zone)
+            _setter("time_zone", time_zone)
         if timeframe_months is not None:
-            pulumi.set(__self__, "timeframe_months", timeframe_months)
+            _setter("timeframe_months", timeframe_months)
         if tns is not None:
-            pulumi.set(__self__, "tns", tns)
+            _setter("tns", tns)
         if token_authenticated_container is not None:
-            pulumi.set(__self__, "token_authenticated_container", token_authenticated_container)
+            _setter("token_authenticated_container", token_authenticated_container)
         if token_authenticated_database is not None:
-            pulumi.set(__self__, "token_authenticated_database", token_authenticated_database)
+            _setter("token_authenticated_database", token_authenticated_database)
         if token_id is not None:
-            pulumi.set(__self__, "token_id", token_id)
+            _setter("token_id", token_id)
         if token_key is not None:
-            pulumi.set(__self__, "token_key", token_key)
+            _setter("token_key", token_key)
         if token_secret is not None:
-            pulumi.set(__self__, "token_secret", token_secret)
+            _setter("token_secret", token_secret)
         if token_secret_key is not None:
-            pulumi.set(__self__, "token_secret_key", token_secret_key)
+            _setter("token_secret_key", token_secret_key)
         if topics is not None:
-            pulumi.set(__self__, "topics", topics)
+            _setter("topics", topics)
         if trust_store_type is not None:
-            pulumi.set(__self__, "trust_store_type", trust_store_type)
+            _setter("trust_store_type", trust_store_type)
         if trusted_cert is not None:
-            pulumi.set(__self__, "trusted_cert", trusted_cert)
+            _setter("trusted_cert", trusted_cert)
         if truststore is not None:
-            pulumi.set(__self__, "truststore", truststore)
+            _setter("truststore", truststore)
         if tunnel_host is not None:
-            pulumi.set(__self__, "tunnel_host", tunnel_host)
+            _setter("tunnel_host", tunnel_host)
         if tunnel_port is not None:
-            pulumi.set(__self__, "tunnel_port", tunnel_port)
+            _setter("tunnel_port", tunnel_port)
         if tunnel_user is not None:
-            pulumi.set(__self__, "tunnel_user", tunnel_user)
+            _setter("tunnel_user", tunnel_user)
         if unique_id is not None:
-            pulumi.set(__self__, "unique_id", unique_id)
+            _setter("unique_id", unique_id)
         if update_config_on_each_sync is not None:
-            pulumi.set(__self__, "update_config_on_each_sync", update_config_on_each_sync)
+            _setter("update_config_on_each_sync", update_config_on_each_sync)
         if update_method is not None:
-            pulumi.set(__self__, "update_method", update_method)
+            _setter("update_method", update_method)
         if uri is not None:
-            pulumi.set(__self__, "uri", uri)
+            _setter("uri", uri)
         if use_api_keys is not None:
-            pulumi.set(__self__, "use_api_keys", use_api_keys)
+            _setter("use_api_keys", use_api_keys)
         if use_customer_bucket is not None:
-            pulumi.set(__self__, "use_customer_bucket", use_customer_bucket)
+            _setter("use_customer_bucket", use_customer_bucket)
         if use_oracle_rac is not None:
-            pulumi.set(__self__, "use_oracle_rac", use_oracle_rac)
+            _setter("use_oracle_rac", use_oracle_rac)
         if use_pgp_encryption_options is not None:
-            pulumi.set(__self__, "use_pgp_encryption_options", use_pgp_encryption_options)
+            _setter("use_pgp_encryption_options", use_pgp_encryption_options)
         if use_service_account is not None:
-            pulumi.set(__self__, "use_service_account", use_service_account)
+            _setter("use_service_account", use_service_account)
         if use_template_labels is not None:
-            pulumi.set(__self__, "use_template_labels", use_template_labels)
+            _setter("use_template_labels", use_template_labels)
         if use_webhooks is not None:
-            pulumi.set(__self__, "use_webhooks", use_webhooks)
+            _setter("use_webhooks", use_webhooks)
         if use_workspace is not None:
-            pulumi.set(__self__, "use_workspace", use_workspace)
+            _setter("use_workspace", use_workspace)
         if user is not None:
-            pulumi.set(__self__, "user", user)
+            _setter("user", user)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
         if user_key is not None:
-            pulumi.set(__self__, "user_key", user_key)
+            _setter("user_key", user_key)
         if user_name is not None:
-            pulumi.set(__self__, "user_name", user_name)
+            _setter("user_name", user_name)
         if user_profiles is not None:
-            pulumi.set(__self__, "user_profiles", user_profiles)
+            _setter("user_profiles", user_profiles)
         if username is not None:
-            pulumi.set(__self__, "username", username)
+            _setter("username", username)
         if view_attribution_window is not None:
-            pulumi.set(__self__, "view_attribution_window", view_attribution_window)
+            _setter("view_attribution_window", view_attribution_window)
         if view_through_attribution_window_size is not None:
-            pulumi.set(__self__, "view_through_attribution_window_size", view_through_attribution_window_size)
+            _setter("view_through_attribution_window_size", view_through_attribution_window_size)
         if webhook_endpoint is not None:
-            pulumi.set(__self__, "webhook_endpoint", webhook_endpoint)
+            _setter("webhook_endpoint", webhook_endpoint)
         if webhook_key is not None:
-            pulumi.set(__self__, "webhook_key", webhook_key)
+            _setter("webhook_key", webhook_key)
         if webhook_url is not None:
-            pulumi.set(__self__, "webhook_url", webhook_url)
+            _setter("webhook_url", webhook_url)
         if word_press_site_id_or_woocommerce_domain_name is not None:
-            pulumi.set(__self__, "word_press_site_id_or_woocommerce_domain_name", word_press_site_id_or_woocommerce_domain_name)
+            _setter("word_press_site_id_or_woocommerce_domain_name", word_press_site_id_or_woocommerce_domain_name)
         if workspace_name is not None:
-            pulumi.set(__self__, "workspace_name", workspace_name)
+            _setter("workspace_name", workspace_name)
         if workspace_same_as_source is not None:
-            pulumi.set(__self__, "workspace_same_as_source", workspace_same_as_source)
+            _setter("workspace_same_as_source", workspace_same_as_source)
         if workspace_schema is not None:
-            pulumi.set(__self__, "workspace_schema", workspace_schema)
+            _setter("workspace_schema", workspace_schema)
         if ws_certificate is not None:
-            pulumi.set(__self__, "ws_certificate", ws_certificate)
+            _setter("ws_certificate", ws_certificate)
 
     @property
     @pulumi.getter(name="absConnectionMethod")
@@ -2298,6 +4189,15 @@ class ConnectorConfigArgs:
         pulumi.set(self, "click_attribution_window", value)
 
     @property
+    @pulumi.getter
+    def client(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client")
+
+    @client.setter
+    def client(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client", value)
+
+    @property
     @pulumi.getter(name="clientCert")
     def client_cert(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "client_cert")
@@ -2386,6 +4286,24 @@ class ConnectorConfigArgs:
     @company_key.setter
     def company_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "company_key", value)
+
+    @property
+    @pulumi.getter(name="companyRequestToken")
+    def company_request_token(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "company_request_token")
+
+    @company_request_token.setter
+    def company_request_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "company_request_token", value)
+
+    @property
+    @pulumi.getter(name="companyUuid")
+    def company_uuid(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "company_uuid")
+
+    @company_uuid.setter
+    def company_uuid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "company_uuid", value)
 
     @property
     @pulumi.getter
@@ -3432,13 +5350,13 @@ class ConnectorConfigArgs:
         pulumi.set(self, "keystore_password", value)
 
     @property
-    @pulumi.getter(name="lastSyncedChangesUtc_")
-    def last_synced_changes_utc_(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "last_synced_changes_utc_")
+    @pulumi.getter
+    def last_synced_changes_utc(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "last_synced_changes_utc")
 
-    @last_synced_changes_utc_.setter
-    def last_synced_changes_utc_(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_synced_changes_utc_", value)
+    @last_synced_changes_utc.setter
+    def last_synced_changes_utc(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_synced_changes_utc", value)
 
     @property
     @pulumi.getter(name="latestVersion")
@@ -3709,6 +5627,24 @@ class ConnectorConfigArgs:
     @pat.setter
     def pat(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pat", value)
+
+    @property
+    @pulumi.getter(name="patName")
+    def pat_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "pat_name")
+
+    @pat_name.setter
+    def pat_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pat_name", value)
+
+    @property
+    @pulumi.getter(name="patSecret")
+    def pat_secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "pat_secret")
+
+    @pat_secret.setter
+    def pat_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pat_secret", value)
 
     @property
     @pulumi.getter
@@ -4440,6 +6376,15 @@ class ConnectorConfigArgs:
         pulumi.set(self, "sender_password", value)
 
     @property
+    @pulumi.getter(name="serverAddress")
+    def server_address(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "server_address")
+
+    @server_address.setter
+    def server_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_address", value)
+
+    @property
     @pulumi.getter(name="serverUrl")
     def server_url(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "server_url")
@@ -4861,6 +6806,15 @@ class ConnectorConfigArgs:
     @sync_type.setter
     def sync_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sync_type", value)
+
+    @property
+    @pulumi.getter
+    def sysnr(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "sysnr")
+
+    @sysnr.setter
+    def sysnr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sysnr", value)
 
     @property
     @pulumi.getter(name="tableName")
@@ -5353,8 +7307,19 @@ class ConnectorConfigArgs:
 class ConnectorConfigAccountsRedditAdArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None):
+        ConnectorConfigAccountsRedditAdArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -5376,20 +7341,49 @@ class ConnectorConfigAdobeAnalyticsConfigurationArgs:
                  segments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  sync_mode: Optional[pulumi.Input[str]] = None,
                  table: Optional[pulumi.Input[str]] = None):
+        ConnectorConfigAdobeAnalyticsConfigurationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            calculated_metrics=calculated_metrics,
+            elements=elements,
+            metrics=metrics,
+            report_suites=report_suites,
+            segments=segments,
+            sync_mode=sync_mode,
+            table=table,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             calculated_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             elements: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             metrics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             report_suites: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             segments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             sync_mode: Optional[pulumi.Input[str]] = None,
+             table: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'calculatedMetrics' in kwargs:
+            calculated_metrics = kwargs['calculatedMetrics']
+        if 'reportSuites' in kwargs:
+            report_suites = kwargs['reportSuites']
+        if 'syncMode' in kwargs:
+            sync_mode = kwargs['syncMode']
+
         if calculated_metrics is not None:
-            pulumi.set(__self__, "calculated_metrics", calculated_metrics)
+            _setter("calculated_metrics", calculated_metrics)
         if elements is not None:
-            pulumi.set(__self__, "elements", elements)
+            _setter("elements", elements)
         if metrics is not None:
-            pulumi.set(__self__, "metrics", metrics)
+            _setter("metrics", metrics)
         if report_suites is not None:
-            pulumi.set(__self__, "report_suites", report_suites)
+            _setter("report_suites", report_suites)
         if segments is not None:
-            pulumi.set(__self__, "segments", segments)
+            _setter("segments", segments)
         if sync_mode is not None:
-            pulumi.set(__self__, "sync_mode", sync_mode)
+            _setter("sync_mode", sync_mode)
         if table is not None:
-            pulumi.set(__self__, "table", table)
+            _setter("table", table)
 
     @property
     @pulumi.getter(name="calculatedMetrics")
@@ -5459,8 +7453,21 @@ class ConnectorConfigAdobeAnalyticsConfigurationArgs:
 class ConnectorConfigAppIdsAppsflyerArgs:
     def __init__(__self__, *,
                  app_id: Optional[pulumi.Input[str]] = None):
+        ConnectorConfigAppIdsAppsflyerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_id=app_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+
         if app_id is not None:
-            pulumi.set(__self__, "app_id", app_id)
+            _setter("app_id", app_id)
 
     @property
     @pulumi.getter(name="appId")
@@ -5487,30 +7494,77 @@ class ConnectorConfigCustomReportArgs:
                  report_type: Optional[pulumi.Input[str]] = None,
                  segmentation: Optional[pulumi.Input[str]] = None,
                  table_name: Optional[pulumi.Input[str]] = None):
+        ConnectorConfigCustomReportArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            aggregate=aggregate,
+            conversions_report_included=conversions_report_included,
+            custom_events_included=custom_events_included,
+            dimensions=dimensions,
+            event_names=event_names,
+            level=level,
+            metrics=metrics,
+            report_fields=report_fields,
+            report_name=report_name,
+            report_type=report_type,
+            segmentation=segmentation,
+            table_name=table_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             aggregate: Optional[pulumi.Input[str]] = None,
+             conversions_report_included: Optional[pulumi.Input[str]] = None,
+             custom_events_included: Optional[pulumi.Input[str]] = None,
+             dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             event_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             level: Optional[pulumi.Input[str]] = None,
+             metrics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             report_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             report_name: Optional[pulumi.Input[str]] = None,
+             report_type: Optional[pulumi.Input[str]] = None,
+             segmentation: Optional[pulumi.Input[str]] = None,
+             table_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'conversionsReportIncluded' in kwargs:
+            conversions_report_included = kwargs['conversionsReportIncluded']
+        if 'customEventsIncluded' in kwargs:
+            custom_events_included = kwargs['customEventsIncluded']
+        if 'eventNames' in kwargs:
+            event_names = kwargs['eventNames']
+        if 'reportFields' in kwargs:
+            report_fields = kwargs['reportFields']
+        if 'reportName' in kwargs:
+            report_name = kwargs['reportName']
+        if 'reportType' in kwargs:
+            report_type = kwargs['reportType']
+        if 'tableName' in kwargs:
+            table_name = kwargs['tableName']
+
         if aggregate is not None:
-            pulumi.set(__self__, "aggregate", aggregate)
+            _setter("aggregate", aggregate)
         if conversions_report_included is not None:
-            pulumi.set(__self__, "conversions_report_included", conversions_report_included)
+            _setter("conversions_report_included", conversions_report_included)
         if custom_events_included is not None:
-            pulumi.set(__self__, "custom_events_included", custom_events_included)
+            _setter("custom_events_included", custom_events_included)
         if dimensions is not None:
-            pulumi.set(__self__, "dimensions", dimensions)
+            _setter("dimensions", dimensions)
         if event_names is not None:
-            pulumi.set(__self__, "event_names", event_names)
+            _setter("event_names", event_names)
         if level is not None:
-            pulumi.set(__self__, "level", level)
+            _setter("level", level)
         if metrics is not None:
-            pulumi.set(__self__, "metrics", metrics)
+            _setter("metrics", metrics)
         if report_fields is not None:
-            pulumi.set(__self__, "report_fields", report_fields)
+            _setter("report_fields", report_fields)
         if report_name is not None:
-            pulumi.set(__self__, "report_name", report_name)
+            _setter("report_name", report_name)
         if report_type is not None:
-            pulumi.set(__self__, "report_type", report_type)
+            _setter("report_type", report_type)
         if segmentation is not None:
-            pulumi.set(__self__, "segmentation", segmentation)
+            _setter("segmentation", segmentation)
         if table_name is not None:
-            pulumi.set(__self__, "table_name", table_name)
+            _setter("table_name", table_name)
 
     @property
     @pulumi.getter
@@ -5636,30 +7690,79 @@ class ConnectorConfigCustomTableArgs:
                  table_name: Optional[pulumi.Input[str]] = None,
                  use_unified_attribution_setting: Optional[pulumi.Input[str]] = None,
                  view_attribution_window: Optional[pulumi.Input[str]] = None):
+        ConnectorConfigCustomTableArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action_breakdowns=action_breakdowns,
+            action_report_time=action_report_time,
+            aggregation=aggregation,
+            breakdowns=breakdowns,
+            click_attribution_window=click_attribution_window,
+            config_type=config_type,
+            fields=fields,
+            level=level,
+            prebuilt_report_name=prebuilt_report_name,
+            table_name=table_name,
+            use_unified_attribution_setting=use_unified_attribution_setting,
+            view_attribution_window=view_attribution_window,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action_breakdowns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             action_report_time: Optional[pulumi.Input[str]] = None,
+             aggregation: Optional[pulumi.Input[str]] = None,
+             breakdowns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             click_attribution_window: Optional[pulumi.Input[str]] = None,
+             config_type: Optional[pulumi.Input[str]] = None,
+             fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             level: Optional[pulumi.Input[str]] = None,
+             prebuilt_report_name: Optional[pulumi.Input[str]] = None,
+             table_name: Optional[pulumi.Input[str]] = None,
+             use_unified_attribution_setting: Optional[pulumi.Input[str]] = None,
+             view_attribution_window: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'actionBreakdowns' in kwargs:
+            action_breakdowns = kwargs['actionBreakdowns']
+        if 'actionReportTime' in kwargs:
+            action_report_time = kwargs['actionReportTime']
+        if 'clickAttributionWindow' in kwargs:
+            click_attribution_window = kwargs['clickAttributionWindow']
+        if 'configType' in kwargs:
+            config_type = kwargs['configType']
+        if 'prebuiltReportName' in kwargs:
+            prebuilt_report_name = kwargs['prebuiltReportName']
+        if 'tableName' in kwargs:
+            table_name = kwargs['tableName']
+        if 'useUnifiedAttributionSetting' in kwargs:
+            use_unified_attribution_setting = kwargs['useUnifiedAttributionSetting']
+        if 'viewAttributionWindow' in kwargs:
+            view_attribution_window = kwargs['viewAttributionWindow']
+
         if action_breakdowns is not None:
-            pulumi.set(__self__, "action_breakdowns", action_breakdowns)
+            _setter("action_breakdowns", action_breakdowns)
         if action_report_time is not None:
-            pulumi.set(__self__, "action_report_time", action_report_time)
+            _setter("action_report_time", action_report_time)
         if aggregation is not None:
-            pulumi.set(__self__, "aggregation", aggregation)
+            _setter("aggregation", aggregation)
         if breakdowns is not None:
-            pulumi.set(__self__, "breakdowns", breakdowns)
+            _setter("breakdowns", breakdowns)
         if click_attribution_window is not None:
-            pulumi.set(__self__, "click_attribution_window", click_attribution_window)
+            _setter("click_attribution_window", click_attribution_window)
         if config_type is not None:
-            pulumi.set(__self__, "config_type", config_type)
+            _setter("config_type", config_type)
         if fields is not None:
-            pulumi.set(__self__, "fields", fields)
+            _setter("fields", fields)
         if level is not None:
-            pulumi.set(__self__, "level", level)
+            _setter("level", level)
         if prebuilt_report_name is not None:
-            pulumi.set(__self__, "prebuilt_report_name", prebuilt_report_name)
+            _setter("prebuilt_report_name", prebuilt_report_name)
         if table_name is not None:
-            pulumi.set(__self__, "table_name", table_name)
+            _setter("table_name", table_name)
         if use_unified_attribution_setting is not None:
-            pulumi.set(__self__, "use_unified_attribution_setting", use_unified_attribution_setting)
+            _setter("use_unified_attribution_setting", use_unified_attribution_setting)
         if view_attribution_window is not None:
-            pulumi.set(__self__, "view_attribution_window", view_attribution_window)
+            _setter("view_attribution_window", view_attribution_window)
 
     @property
     @pulumi.getter(name="actionBreakdowns")
@@ -5776,12 +7879,31 @@ class ConnectorConfigProjectCredentialArgs:
                  api_key: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None):
+        ConnectorConfigProjectCredentialArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_key=api_key,
+            project=project,
+            secret_key=secret_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_key: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             secret_key: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiKey' in kwargs:
+            api_key = kwargs['apiKey']
+        if 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+
         if api_key is not None:
-            pulumi.set(__self__, "api_key", api_key)
+            _setter("api_key", api_key)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
+            _setter("secret_key", secret_key)
 
     @property
     @pulumi.getter(name="apiKey")
@@ -5829,36 +7951,89 @@ class ConnectorConfigReportArgs:
                  segment_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  segments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  table: Optional[pulumi.Input[str]] = None):
+        ConnectorConfigReportArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            aggregation=aggregation,
+            attributes=attributes,
+            config_type=config_type,
+            dimensions=dimensions,
+            fields=fields,
+            filter=filter,
+            filter_field_name=filter_field_name,
+            filter_value=filter_value,
+            metrics=metrics,
+            prebuilt_report=prebuilt_report,
+            report_type=report_type,
+            search_types=search_types,
+            segment_ids=segment_ids,
+            segments=segments,
+            table=table,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             aggregation: Optional[pulumi.Input[str]] = None,
+             attributes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             config_type: Optional[pulumi.Input[str]] = None,
+             dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             filter: Optional[pulumi.Input[str]] = None,
+             filter_field_name: Optional[pulumi.Input[str]] = None,
+             filter_value: Optional[pulumi.Input[str]] = None,
+             metrics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             prebuilt_report: Optional[pulumi.Input[str]] = None,
+             report_type: Optional[pulumi.Input[str]] = None,
+             search_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             segment_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             segments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             table: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configType' in kwargs:
+            config_type = kwargs['configType']
+        if 'filterFieldName' in kwargs:
+            filter_field_name = kwargs['filterFieldName']
+        if 'filterValue' in kwargs:
+            filter_value = kwargs['filterValue']
+        if 'prebuiltReport' in kwargs:
+            prebuilt_report = kwargs['prebuiltReport']
+        if 'reportType' in kwargs:
+            report_type = kwargs['reportType']
+        if 'searchTypes' in kwargs:
+            search_types = kwargs['searchTypes']
+        if 'segmentIds' in kwargs:
+            segment_ids = kwargs['segmentIds']
+
         if aggregation is not None:
-            pulumi.set(__self__, "aggregation", aggregation)
+            _setter("aggregation", aggregation)
         if attributes is not None:
-            pulumi.set(__self__, "attributes", attributes)
+            _setter("attributes", attributes)
         if config_type is not None:
-            pulumi.set(__self__, "config_type", config_type)
+            _setter("config_type", config_type)
         if dimensions is not None:
-            pulumi.set(__self__, "dimensions", dimensions)
+            _setter("dimensions", dimensions)
         if fields is not None:
-            pulumi.set(__self__, "fields", fields)
+            _setter("fields", fields)
         if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+            _setter("filter", filter)
         if filter_field_name is not None:
-            pulumi.set(__self__, "filter_field_name", filter_field_name)
+            _setter("filter_field_name", filter_field_name)
         if filter_value is not None:
-            pulumi.set(__self__, "filter_value", filter_value)
+            _setter("filter_value", filter_value)
         if metrics is not None:
-            pulumi.set(__self__, "metrics", metrics)
+            _setter("metrics", metrics)
         if prebuilt_report is not None:
-            pulumi.set(__self__, "prebuilt_report", prebuilt_report)
+            _setter("prebuilt_report", prebuilt_report)
         if report_type is not None:
-            pulumi.set(__self__, "report_type", report_type)
+            _setter("report_type", report_type)
         if search_types is not None:
-            pulumi.set(__self__, "search_types", search_types)
+            _setter("search_types", search_types)
         if segment_ids is not None:
-            pulumi.set(__self__, "segment_ids", segment_ids)
+            _setter("segment_ids", segment_ids)
         if segments is not None:
-            pulumi.set(__self__, "segments", segments)
+            _setter("segments", segments)
         if table is not None:
-            pulumi.set(__self__, "table", table)
+            _setter("table", table)
 
     @property
     @pulumi.getter
@@ -6001,10 +8176,23 @@ class ConnectorConfigSecretsListArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
+        ConnectorConfigSecretsListArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -6031,12 +8219,27 @@ class ConnectorDestinationSchemaArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  prefix: Optional[pulumi.Input[str]] = None,
                  table: Optional[pulumi.Input[str]] = None):
+        ConnectorDestinationSchemaArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            prefix=prefix,
+            table=table,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             prefix: Optional[pulumi.Input[str]] = None,
+             table: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if prefix is not None:
-            pulumi.set(__self__, "prefix", prefix)
+            _setter("prefix", prefix)
         if table is not None:
-            pulumi.set(__self__, "table", table)
+            _setter("table", table)
 
     @property
     @pulumi.getter
@@ -6067,6 +8270,98 @@ class ConnectorDestinationSchemaArgs:
 
 
 @pulumi.input_type
+class ConnectorFingerprintsFingerprintArgs:
+    def __init__(__self__, *,
+                 hash: pulumi.Input[str],
+                 public_key: pulumi.Input[str],
+                 validated_by: Optional[pulumi.Input[str]] = None,
+                 validated_date: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] hash: Hash of the fingerprint.
+        :param pulumi.Input[str] public_key: The SSH public key.
+        :param pulumi.Input[str] validated_by: User name who validated the fingerprint.
+        :param pulumi.Input[str] validated_date: The date when SSH fingerprint was approved.
+        """
+        ConnectorFingerprintsFingerprintArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hash=hash,
+            public_key=public_key,
+            validated_by=validated_by,
+            validated_date=validated_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hash: pulumi.Input[str],
+             public_key: pulumi.Input[str],
+             validated_by: Optional[pulumi.Input[str]] = None,
+             validated_date: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if 'validatedBy' in kwargs:
+            validated_by = kwargs['validatedBy']
+        if 'validatedDate' in kwargs:
+            validated_date = kwargs['validatedDate']
+
+        _setter("hash", hash)
+        _setter("public_key", public_key)
+        if validated_by is not None:
+            _setter("validated_by", validated_by)
+        if validated_date is not None:
+            _setter("validated_date", validated_date)
+
+    @property
+    @pulumi.getter
+    def hash(self) -> pulumi.Input[str]:
+        """
+        Hash of the fingerprint.
+        """
+        return pulumi.get(self, "hash")
+
+    @hash.setter
+    def hash(self, value: pulumi.Input[str]):
+        pulumi.set(self, "hash", value)
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> pulumi.Input[str]:
+        """
+        The SSH public key.
+        """
+        return pulumi.get(self, "public_key")
+
+    @public_key.setter
+    def public_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "public_key", value)
+
+    @property
+    @pulumi.getter(name="validatedBy")
+    def validated_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name who validated the fingerprint.
+        """
+        return pulumi.get(self, "validated_by")
+
+    @validated_by.setter
+    def validated_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "validated_by", value)
+
+    @property
+    @pulumi.getter(name="validatedDate")
+    def validated_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date when SSH fingerprint was approved.
+        """
+        return pulumi.get(self, "validated_date")
+
+    @validated_date.setter
+    def validated_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "validated_date", value)
+
+
+@pulumi.input_type
 class ConnectorSchemaConfigSchemaArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
@@ -6076,11 +8371,26 @@ class ConnectorSchemaConfigSchemaArgs:
         :param pulumi.Input[str] name: The schema name within your destination in accordance with Fivetran conventional rules.
         :param pulumi.Input[str] enabled: The boolean value specifying whether the sync for the schema into the destination is enabled.
         """
-        pulumi.set(__self__, "name", name)
+        ConnectorSchemaConfigSchemaArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            enabled=enabled,
+            tables=tables,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             enabled: Optional[pulumi.Input[str]] = None,
+             tables: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaTableArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
+        _setter("name", name)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if tables is not None:
-            pulumi.set(__self__, "tables", tables)
+            _setter("tables", tables)
 
     @property
     @pulumi.getter
@@ -6123,17 +8433,44 @@ class ConnectorSchemaConfigSchemaTableArgs:
                  columns: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaTableColumnArgs']]]] = None,
                  enabled: Optional[pulumi.Input[str]] = None,
                  sync_mode: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "name", name)
+        """
+        :param pulumi.Input[str] name: The schema name within your destination in accordance with Fivetran conventional rules.
+        :param pulumi.Input[str] enabled: The boolean value specifying whether the sync for the schema into the destination is enabled.
+        :param pulumi.Input[str] sync_mode: This field appears in the response if the connector supports switching sync modes for tables.
+        """
+        ConnectorSchemaConfigSchemaTableArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            columns=columns,
+            enabled=enabled,
+            sync_mode=sync_mode,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             columns: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaTableColumnArgs']]]] = None,
+             enabled: Optional[pulumi.Input[str]] = None,
+             sync_mode: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'syncMode' in kwargs:
+            sync_mode = kwargs['syncMode']
+
+        _setter("name", name)
         if columns is not None:
-            pulumi.set(__self__, "columns", columns)
+            _setter("columns", columns)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if sync_mode is not None:
-            pulumi.set(__self__, "sync_mode", sync_mode)
+            _setter("sync_mode", sync_mode)
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
+        """
+        The schema name within your destination in accordance with Fivetran conventional rules.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -6152,6 +8489,9 @@ class ConnectorSchemaConfigSchemaTableArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[str]]:
+        """
+        The boolean value specifying whether the sync for the schema into the destination is enabled.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -6161,6 +8501,9 @@ class ConnectorSchemaConfigSchemaTableArgs:
     @property
     @pulumi.getter(name="syncMode")
     def sync_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        This field appears in the response if the connector supports switching sync modes for tables.
+        """
         return pulumi.get(self, "sync_mode")
 
     @sync_mode.setter
@@ -6174,15 +8517,38 @@ class ConnectorSchemaConfigSchemaTableColumnArgs:
                  name: pulumi.Input[str],
                  enabled: Optional[pulumi.Input[str]] = None,
                  hashed: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "name", name)
+        """
+        :param pulumi.Input[str] name: The schema name within your destination in accordance with Fivetran conventional rules.
+        :param pulumi.Input[str] enabled: The boolean value specifying whether the sync for the schema into the destination is enabled.
+        :param pulumi.Input[str] hashed: The boolean value specifying whether a column should be hashed
+        """
+        ConnectorSchemaConfigSchemaTableColumnArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            enabled=enabled,
+            hashed=hashed,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             enabled: Optional[pulumi.Input[str]] = None,
+             hashed: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
+        _setter("name", name)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if hashed is not None:
-            pulumi.set(__self__, "hashed", hashed)
+            _setter("hashed", hashed)
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
+        """
+        The schema name within your destination in accordance with Fivetran conventional rules.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -6192,6 +8558,9 @@ class ConnectorSchemaConfigSchemaTableColumnArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[str]]:
+        """
+        The boolean value specifying whether the sync for the schema into the destination is enabled.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -6201,6 +8570,9 @@ class ConnectorSchemaConfigSchemaTableColumnArgs:
     @property
     @pulumi.getter
     def hashed(self) -> Optional[pulumi.Input[str]]:
+        """
+        The boolean value specifying whether a column should be hashed
+        """
         return pulumi.get(self, "hashed")
 
     @hashed.setter
@@ -6219,12 +8591,29 @@ class DbtProjectModelArgs:
         :param pulumi.Input[str] model_name: The dbt Model name.
         :param pulumi.Input[bool] scheduled: Boolean specifying whether the model is selected for execution.
         """
+        DbtProjectModelArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            model_name=model_name,
+            scheduled=scheduled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[pulumi.Input[str]] = None,
+             model_name: Optional[pulumi.Input[str]] = None,
+             scheduled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'modelName' in kwargs:
+            model_name = kwargs['modelName']
+
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if model_name is not None:
-            pulumi.set(__self__, "model_name", model_name)
+            _setter("model_name", model_name)
         if scheduled is not None:
-            pulumi.set(__self__, "scheduled", scheduled)
+            _setter("scheduled", scheduled)
 
     @property
     @pulumi.getter
@@ -6274,12 +8663,33 @@ class DbtProjectProjectConfigArgs:
         :param pulumi.Input[str] git_branch: Git branch.
         :param pulumi.Input[str] git_remote_url: Git remote URL with your dbt project.
         """
+        DbtProjectProjectConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            folder_path=folder_path,
+            git_branch=git_branch,
+            git_remote_url=git_remote_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             folder_path: Optional[pulumi.Input[str]] = None,
+             git_branch: Optional[pulumi.Input[str]] = None,
+             git_remote_url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'folderPath' in kwargs:
+            folder_path = kwargs['folderPath']
+        if 'gitBranch' in kwargs:
+            git_branch = kwargs['gitBranch']
+        if 'gitRemoteUrl' in kwargs:
+            git_remote_url = kwargs['gitRemoteUrl']
+
         if folder_path is not None:
-            pulumi.set(__self__, "folder_path", folder_path)
+            _setter("folder_path", folder_path)
         if git_branch is not None:
-            pulumi.set(__self__, "git_branch", git_branch)
+            _setter("git_branch", git_branch)
         if git_remote_url is not None:
-            pulumi.set(__self__, "git_remote_url", git_remote_url)
+            _setter("git_remote_url", git_remote_url)
 
     @property
     @pulumi.getter(name="folderPath")
@@ -6331,13 +8741,36 @@ class DbtTransformationScheduleArgs:
         :param pulumi.Input[int] interval: The time interval in minutes between subsequent transformation runs.
         :param pulumi.Input[str] time_of_day: The time of the day the transformation should be launched at. Supported values are: "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"
         """
-        pulumi.set(__self__, "schedule_type", schedule_type)
+        DbtTransformationScheduleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            schedule_type=schedule_type,
+            days_of_weeks=days_of_weeks,
+            interval=interval,
+            time_of_day=time_of_day,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             schedule_type: pulumi.Input[str],
+             days_of_weeks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             interval: Optional[pulumi.Input[int]] = None,
+             time_of_day: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'scheduleType' in kwargs:
+            schedule_type = kwargs['scheduleType']
+        if 'daysOfWeeks' in kwargs:
+            days_of_weeks = kwargs['daysOfWeeks']
+        if 'timeOfDay' in kwargs:
+            time_of_day = kwargs['timeOfDay']
+
+        _setter("schedule_type", schedule_type)
         if days_of_weeks is not None:
-            pulumi.set(__self__, "days_of_weeks", days_of_weeks)
+            _setter("days_of_weeks", days_of_weeks)
         if interval is not None:
-            pulumi.set(__self__, "interval", interval)
+            _setter("interval", interval)
         if time_of_day is not None:
-            pulumi.set(__self__, "time_of_day", time_of_day)
+            _setter("time_of_day", time_of_day)
 
     @property
     @pulumi.getter(name="scheduleType")
@@ -6386,6 +8819,190 @@ class DbtTransformationScheduleArgs:
     @time_of_day.setter
     def time_of_day(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "time_of_day", value)
+
+
+@pulumi.input_type
+class DestinationCertificatesCertificateArgs:
+    def __init__(__self__, *,
+                 encoded_cert: pulumi.Input[str],
+                 hash: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None,
+                 public_key: Optional[pulumi.Input[str]] = None,
+                 sha1: Optional[pulumi.Input[str]] = None,
+                 sha256: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 validated_by: Optional[pulumi.Input[str]] = None,
+                 validated_date: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] encoded_cert: Base64 encoded certificate.
+        :param pulumi.Input[str] hash: Hash of the fingerprint.
+        :param pulumi.Input[str] name: Certificate name.
+        :param pulumi.Input[str] public_key: Certificate public key.
+        :param pulumi.Input[str] sha1: Certificate sha1.
+        :param pulumi.Input[str] sha256: Certificate sha256.
+        :param pulumi.Input[str] type: Certificate type.
+        :param pulumi.Input[str] validated_by: User name who validated the certificate.
+        :param pulumi.Input[str] validated_date: The date when the certificate was approved.
+        """
+        DestinationCertificatesCertificateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            encoded_cert=encoded_cert,
+            hash=hash,
+            name=name,
+            public_key=public_key,
+            sha1=sha1,
+            sha256=sha256,
+            type=type,
+            validated_by=validated_by,
+            validated_date=validated_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             encoded_cert: pulumi.Input[str],
+             hash: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             public_key: Optional[pulumi.Input[str]] = None,
+             sha1: Optional[pulumi.Input[str]] = None,
+             sha256: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             validated_by: Optional[pulumi.Input[str]] = None,
+             validated_date: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'encodedCert' in kwargs:
+            encoded_cert = kwargs['encodedCert']
+        if 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if 'validatedBy' in kwargs:
+            validated_by = kwargs['validatedBy']
+        if 'validatedDate' in kwargs:
+            validated_date = kwargs['validatedDate']
+
+        _setter("encoded_cert", encoded_cert)
+        _setter("hash", hash)
+        if name is not None:
+            _setter("name", name)
+        if public_key is not None:
+            _setter("public_key", public_key)
+        if sha1 is not None:
+            _setter("sha1", sha1)
+        if sha256 is not None:
+            _setter("sha256", sha256)
+        if type is not None:
+            _setter("type", type)
+        if validated_by is not None:
+            _setter("validated_by", validated_by)
+        if validated_date is not None:
+            _setter("validated_date", validated_date)
+
+    @property
+    @pulumi.getter(name="encodedCert")
+    def encoded_cert(self) -> pulumi.Input[str]:
+        """
+        Base64 encoded certificate.
+        """
+        return pulumi.get(self, "encoded_cert")
+
+    @encoded_cert.setter
+    def encoded_cert(self, value: pulumi.Input[str]):
+        pulumi.set(self, "encoded_cert", value)
+
+    @property
+    @pulumi.getter
+    def hash(self) -> pulumi.Input[str]:
+        """
+        Hash of the fingerprint.
+        """
+        return pulumi.get(self, "hash")
+
+    @hash.setter
+    def hash(self, value: pulumi.Input[str]):
+        pulumi.set(self, "hash", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Certificate name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Certificate public key.
+        """
+        return pulumi.get(self, "public_key")
+
+    @public_key.setter
+    def public_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_key", value)
+
+    @property
+    @pulumi.getter
+    def sha1(self) -> Optional[pulumi.Input[str]]:
+        """
+        Certificate sha1.
+        """
+        return pulumi.get(self, "sha1")
+
+    @sha1.setter
+    def sha1(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sha1", value)
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> Optional[pulumi.Input[str]]:
+        """
+        Certificate sha256.
+        """
+        return pulumi.get(self, "sha256")
+
+    @sha256.setter
+    def sha256(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sha256", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Certificate type.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="validatedBy")
+    def validated_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name who validated the certificate.
+        """
+        return pulumi.get(self, "validated_by")
+
+    @validated_by.setter
+    def validated_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "validated_by", value)
+
+    @property
+    @pulumi.getter(name="validatedDate")
+    def validated_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date when the certificate was approved.
+        """
+        return pulumi.get(self, "validated_date")
+
+    @validated_date.setter
+    def validated_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "validated_date", value)
 
 
 @pulumi.input_type
@@ -6457,70 +9074,185 @@ class DestinationConfigArgs:
         :param pulumi.Input[str] tunnel_user: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
         :param pulumi.Input[str] user: Database user name
         """
+        DestinationConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auth=auth,
+            auth_type=auth_type,
+            bucket=bucket,
+            catalog=catalog,
+            cluster_id=cluster_id,
+            cluster_region=cluster_region,
+            connection_type=connection_type,
+            create_external_tables=create_external_tables,
+            data_set_location=data_set_location,
+            database=database,
+            external_location=external_location,
+            fivetran_role_arn=fivetran_role_arn,
+            host=host,
+            http_path=http_path,
+            is_private_key_encrypted=is_private_key_encrypted,
+            passphrase=passphrase,
+            password=password,
+            personal_access_token=personal_access_token,
+            port=port,
+            prefix_path=prefix_path,
+            private_key=private_key,
+            project_id=project_id,
+            public_key=public_key,
+            region=region,
+            role=role,
+            role_arn=role_arn,
+            secret_key=secret_key,
+            server_host_name=server_host_name,
+            tunnel_host=tunnel_host,
+            tunnel_port=tunnel_port,
+            tunnel_user=tunnel_user,
+            user=user,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auth: Optional[pulumi.Input[str]] = None,
+             auth_type: Optional[pulumi.Input[str]] = None,
+             bucket: Optional[pulumi.Input[str]] = None,
+             catalog: Optional[pulumi.Input[str]] = None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             cluster_region: Optional[pulumi.Input[str]] = None,
+             connection_type: Optional[pulumi.Input[str]] = None,
+             create_external_tables: Optional[pulumi.Input[str]] = None,
+             data_set_location: Optional[pulumi.Input[str]] = None,
+             database: Optional[pulumi.Input[str]] = None,
+             external_location: Optional[pulumi.Input[str]] = None,
+             fivetran_role_arn: Optional[pulumi.Input[str]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             http_path: Optional[pulumi.Input[str]] = None,
+             is_private_key_encrypted: Optional[pulumi.Input[str]] = None,
+             passphrase: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             personal_access_token: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             prefix_path: Optional[pulumi.Input[str]] = None,
+             private_key: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             public_key: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             role_arn: Optional[pulumi.Input[str]] = None,
+             secret_key: Optional[pulumi.Input[str]] = None,
+             server_host_name: Optional[pulumi.Input[str]] = None,
+             tunnel_host: Optional[pulumi.Input[str]] = None,
+             tunnel_port: Optional[pulumi.Input[str]] = None,
+             tunnel_user: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authType' in kwargs:
+            auth_type = kwargs['authType']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterRegion' in kwargs:
+            cluster_region = kwargs['clusterRegion']
+        if 'connectionType' in kwargs:
+            connection_type = kwargs['connectionType']
+        if 'createExternalTables' in kwargs:
+            create_external_tables = kwargs['createExternalTables']
+        if 'dataSetLocation' in kwargs:
+            data_set_location = kwargs['dataSetLocation']
+        if 'externalLocation' in kwargs:
+            external_location = kwargs['externalLocation']
+        if 'fivetranRoleArn' in kwargs:
+            fivetran_role_arn = kwargs['fivetranRoleArn']
+        if 'httpPath' in kwargs:
+            http_path = kwargs['httpPath']
+        if 'isPrivateKeyEncrypted' in kwargs:
+            is_private_key_encrypted = kwargs['isPrivateKeyEncrypted']
+        if 'personalAccessToken' in kwargs:
+            personal_access_token = kwargs['personalAccessToken']
+        if 'prefixPath' in kwargs:
+            prefix_path = kwargs['prefixPath']
+        if 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if 'serverHostName' in kwargs:
+            server_host_name = kwargs['serverHostName']
+        if 'tunnelHost' in kwargs:
+            tunnel_host = kwargs['tunnelHost']
+        if 'tunnelPort' in kwargs:
+            tunnel_port = kwargs['tunnelPort']
+        if 'tunnelUser' in kwargs:
+            tunnel_user = kwargs['tunnelUser']
+
         if auth is not None:
-            pulumi.set(__self__, "auth", auth)
+            _setter("auth", auth)
         if auth_type is not None:
-            pulumi.set(__self__, "auth_type", auth_type)
+            _setter("auth_type", auth_type)
         if bucket is not None:
-            pulumi.set(__self__, "bucket", bucket)
+            _setter("bucket", bucket)
         if catalog is not None:
-            pulumi.set(__self__, "catalog", catalog)
+            _setter("catalog", catalog)
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if cluster_region is not None:
-            pulumi.set(__self__, "cluster_region", cluster_region)
+            _setter("cluster_region", cluster_region)
         if connection_type is not None:
-            pulumi.set(__self__, "connection_type", connection_type)
+            _setter("connection_type", connection_type)
         if create_external_tables is not None:
-            pulumi.set(__self__, "create_external_tables", create_external_tables)
+            _setter("create_external_tables", create_external_tables)
         if data_set_location is not None:
-            pulumi.set(__self__, "data_set_location", data_set_location)
+            _setter("data_set_location", data_set_location)
         if database is not None:
-            pulumi.set(__self__, "database", database)
+            _setter("database", database)
         if external_location is not None:
-            pulumi.set(__self__, "external_location", external_location)
+            _setter("external_location", external_location)
         if fivetran_role_arn is not None:
-            pulumi.set(__self__, "fivetran_role_arn", fivetran_role_arn)
+            _setter("fivetran_role_arn", fivetran_role_arn)
         if host is not None:
-            pulumi.set(__self__, "host", host)
+            _setter("host", host)
         if http_path is not None:
-            pulumi.set(__self__, "http_path", http_path)
+            _setter("http_path", http_path)
         if is_private_key_encrypted is not None:
-            pulumi.set(__self__, "is_private_key_encrypted", is_private_key_encrypted)
+            _setter("is_private_key_encrypted", is_private_key_encrypted)
         if passphrase is not None:
-            pulumi.set(__self__, "passphrase", passphrase)
+            _setter("passphrase", passphrase)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if personal_access_token is not None:
-            pulumi.set(__self__, "personal_access_token", personal_access_token)
+            _setter("personal_access_token", personal_access_token)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if prefix_path is not None:
-            pulumi.set(__self__, "prefix_path", prefix_path)
+            _setter("prefix_path", prefix_path)
         if private_key is not None:
-            pulumi.set(__self__, "private_key", private_key)
+            _setter("private_key", private_key)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if public_key is not None:
-            pulumi.set(__self__, "public_key", public_key)
+            _setter("public_key", public_key)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
+            _setter("secret_key", secret_key)
         if server_host_name is not None:
-            pulumi.set(__self__, "server_host_name", server_host_name)
+            _setter("server_host_name", server_host_name)
         if tunnel_host is not None:
-            pulumi.set(__self__, "tunnel_host", tunnel_host)
+            _setter("tunnel_host", tunnel_host)
         if tunnel_port is not None:
-            pulumi.set(__self__, "tunnel_port", tunnel_port)
+            _setter("tunnel_port", tunnel_port)
         if tunnel_user is not None:
-            pulumi.set(__self__, "tunnel_user", tunnel_user)
+            _setter("tunnel_user", tunnel_user)
         if user is not None:
-            pulumi.set(__self__, "user", user)
+            _setter("user", user)
 
     @property
     @pulumi.getter
@@ -6908,6 +9640,382 @@ class DestinationConfigArgs:
 
 
 @pulumi.input_type
+class DestinationFingerprintsFingerprintArgs:
+    def __init__(__self__, *,
+                 hash: pulumi.Input[str],
+                 public_key: pulumi.Input[str],
+                 validated_by: Optional[pulumi.Input[str]] = None,
+                 validated_date: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] hash: Hash of the fingerprint.
+        :param pulumi.Input[str] public_key: The SSH public key.
+        :param pulumi.Input[str] validated_by: User name who validated the fingerprint.
+        :param pulumi.Input[str] validated_date: The date when SSH fingerprint was approved.
+        """
+        DestinationFingerprintsFingerprintArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hash=hash,
+            public_key=public_key,
+            validated_by=validated_by,
+            validated_date=validated_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hash: pulumi.Input[str],
+             public_key: pulumi.Input[str],
+             validated_by: Optional[pulumi.Input[str]] = None,
+             validated_date: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if 'validatedBy' in kwargs:
+            validated_by = kwargs['validatedBy']
+        if 'validatedDate' in kwargs:
+            validated_date = kwargs['validatedDate']
+
+        _setter("hash", hash)
+        _setter("public_key", public_key)
+        if validated_by is not None:
+            _setter("validated_by", validated_by)
+        if validated_date is not None:
+            _setter("validated_date", validated_date)
+
+    @property
+    @pulumi.getter
+    def hash(self) -> pulumi.Input[str]:
+        """
+        Hash of the fingerprint.
+        """
+        return pulumi.get(self, "hash")
+
+    @hash.setter
+    def hash(self, value: pulumi.Input[str]):
+        pulumi.set(self, "hash", value)
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> pulumi.Input[str]:
+        """
+        The SSH public key.
+        """
+        return pulumi.get(self, "public_key")
+
+    @public_key.setter
+    def public_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "public_key", value)
+
+    @property
+    @pulumi.getter(name="validatedBy")
+    def validated_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name who validated the fingerprint.
+        """
+        return pulumi.get(self, "validated_by")
+
+    @validated_by.setter
+    def validated_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "validated_by", value)
+
+    @property
+    @pulumi.getter(name="validatedDate")
+    def validated_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date when SSH fingerprint was approved.
+        """
+        return pulumi.get(self, "validated_date")
+
+    @validated_date.setter
+    def validated_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "validated_date", value)
+
+
+@pulumi.input_type
+class ExternalLoggingConfigArgs:
+    def __init__(__self__, *,
+                 api_key: Optional[pulumi.Input[str]] = None,
+                 channel: Optional[pulumi.Input[str]] = None,
+                 enable_ssl: Optional[pulumi.Input[bool]] = None,
+                 external_id: Optional[pulumi.Input[str]] = None,
+                 host: Optional[pulumi.Input[str]] = None,
+                 hostname: Optional[pulumi.Input[str]] = None,
+                 log_group_name: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 primary_key: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 role_arn: Optional[pulumi.Input[str]] = None,
+                 sub_domain: Optional[pulumi.Input[str]] = None,
+                 token: Optional[pulumi.Input[str]] = None,
+                 workspace_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] api_key: API Key
+        :param pulumi.Input[str] channel: Channel
+        :param pulumi.Input[bool] enable_ssl: Enable SSL
+        :param pulumi.Input[str] external_id: external_id
+        :param pulumi.Input[str] host: Server name
+        :param pulumi.Input[str] hostname: Server name
+        :param pulumi.Input[str] log_group_name: Log Group Name
+        :param pulumi.Input[int] port: Port
+        :param pulumi.Input[str] primary_key: Primary Key
+        :param pulumi.Input[str] region: Region
+        :param pulumi.Input[str] role_arn: Role Arn
+        :param pulumi.Input[str] sub_domain: Sub Domain
+        :param pulumi.Input[str] token: Token
+        :param pulumi.Input[str] workspace_id: Workspace ID
+        """
+        ExternalLoggingConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_key=api_key,
+            channel=channel,
+            enable_ssl=enable_ssl,
+            external_id=external_id,
+            host=host,
+            hostname=hostname,
+            log_group_name=log_group_name,
+            port=port,
+            primary_key=primary_key,
+            region=region,
+            role_arn=role_arn,
+            sub_domain=sub_domain,
+            token=token,
+            workspace_id=workspace_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_key: Optional[pulumi.Input[str]] = None,
+             channel: Optional[pulumi.Input[str]] = None,
+             enable_ssl: Optional[pulumi.Input[bool]] = None,
+             external_id: Optional[pulumi.Input[str]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             hostname: Optional[pulumi.Input[str]] = None,
+             log_group_name: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             primary_key: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             role_arn: Optional[pulumi.Input[str]] = None,
+             sub_domain: Optional[pulumi.Input[str]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             workspace_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiKey' in kwargs:
+            api_key = kwargs['apiKey']
+        if 'enableSsl' in kwargs:
+            enable_ssl = kwargs['enableSsl']
+        if 'externalId' in kwargs:
+            external_id = kwargs['externalId']
+        if 'logGroupName' in kwargs:
+            log_group_name = kwargs['logGroupName']
+        if 'primaryKey' in kwargs:
+            primary_key = kwargs['primaryKey']
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if 'subDomain' in kwargs:
+            sub_domain = kwargs['subDomain']
+        if 'workspaceId' in kwargs:
+            workspace_id = kwargs['workspaceId']
+
+        if api_key is not None:
+            _setter("api_key", api_key)
+        if channel is not None:
+            _setter("channel", channel)
+        if enable_ssl is not None:
+            _setter("enable_ssl", enable_ssl)
+        if external_id is not None:
+            _setter("external_id", external_id)
+        if host is not None:
+            _setter("host", host)
+        if hostname is not None:
+            _setter("hostname", hostname)
+        if log_group_name is not None:
+            _setter("log_group_name", log_group_name)
+        if port is not None:
+            _setter("port", port)
+        if primary_key is not None:
+            _setter("primary_key", primary_key)
+        if region is not None:
+            _setter("region", region)
+        if role_arn is not None:
+            _setter("role_arn", role_arn)
+        if sub_domain is not None:
+            _setter("sub_domain", sub_domain)
+        if token is not None:
+            _setter("token", token)
+        if workspace_id is not None:
+            _setter("workspace_id", workspace_id)
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        API Key
+        """
+        return pulumi.get(self, "api_key")
+
+    @api_key.setter
+    def api_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_key", value)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> Optional[pulumi.Input[str]]:
+        """
+        Channel
+        """
+        return pulumi.get(self, "channel")
+
+    @channel.setter
+    def channel(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "channel", value)
+
+    @property
+    @pulumi.getter(name="enableSsl")
+    def enable_ssl(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable SSL
+        """
+        return pulumi.get(self, "enable_ssl")
+
+    @enable_ssl.setter
+    def enable_ssl(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_ssl", value)
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        external_id
+        """
+        return pulumi.get(self, "external_id")
+
+    @external_id.setter
+    def external_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "external_id", value)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        Server name
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input[str]]:
+        """
+        Server name
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter(name="logGroupName")
+    def log_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Log Group Name
+        """
+        return pulumi.get(self, "log_group_name")
+
+    @log_group_name.setter
+    def log_group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_group_name", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Primary Key
+        """
+        return pulumi.get(self, "primary_key")
+
+    @primary_key.setter
+    def primary_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "primary_key", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        Region
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        Role Arn
+        """
+        return pulumi.get(self, "role_arn")
+
+    @role_arn.setter
+    def role_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_arn", value)
+
+    @property
+    @pulumi.getter(name="subDomain")
+    def sub_domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        Sub Domain
+        """
+        return pulumi.get(self, "sub_domain")
+
+    @sub_domain.setter
+    def sub_domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sub_domain", value)
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[pulumi.Input[str]]:
+        """
+        Token
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token", value)
+
+    @property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Workspace ID
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "workspace_id", value)
+
+
+@pulumi.input_type
 class GroupUsersUserArgs:
     def __init__(__self__, *,
                  email: pulumi.Input[str],
@@ -6918,10 +10026,25 @@ class GroupUsersUserArgs:
         :param pulumi.Input[str] role: The group role that you would like to assign this new user to. Supported group roles: ‘Destination Administrator‘, ‘Destination Reviewer‘, ‘Destination Analyst‘, ‘Connector Creator‘, or a custom destination role
         :param pulumi.Input[str] id: The unique identifier for the user within the account.
         """
-        pulumi.set(__self__, "email", email)
-        pulumi.set(__self__, "role", role)
+        GroupUsersUserArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            email=email,
+            role=role,
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             email: pulumi.Input[str],
+             role: pulumi.Input[str],
+             id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
+        _setter("email", email)
+        _setter("role", role)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
 
     @property
     @pulumi.getter
@@ -6958,6 +10081,360 @@ class GroupUsersUserArgs:
     @id.setter
     def id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
+class TeamConnectorMembershipConnectorArgs:
+    def __init__(__self__, *,
+                 connector_id: pulumi.Input[str],
+                 role: pulumi.Input[str],
+                 created_at: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] connector_id: The connector unique identifier
+        :param pulumi.Input[str] role: The team's role that links the team and the connector
+        :param pulumi.Input[str] created_at: The date and time the membership was created
+        """
+        TeamConnectorMembershipConnectorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connector_id=connector_id,
+            role=role,
+            created_at=created_at,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connector_id: pulumi.Input[str],
+             role: pulumi.Input[str],
+             created_at: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectorId' in kwargs:
+            connector_id = kwargs['connectorId']
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+
+        _setter("connector_id", connector_id)
+        _setter("role", role)
+        if created_at is not None:
+            _setter("created_at", created_at)
+
+    @property
+    @pulumi.getter(name="connectorId")
+    def connector_id(self) -> pulumi.Input[str]:
+        """
+        The connector unique identifier
+        """
+        return pulumi.get(self, "connector_id")
+
+    @connector_id.setter
+    def connector_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "connector_id", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> pulumi.Input[str]:
+        """
+        The team's role that links the team and the connector
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date and time the membership was created
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
+
+
+@pulumi.input_type
+class TeamGroupMembershipGroupArgs:
+    def __init__(__self__, *,
+                 group_id: pulumi.Input[str],
+                 role: pulumi.Input[str],
+                 created_at: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] group_id: The group unique identifier
+        :param pulumi.Input[str] role: The team's role that links the team and the group
+        :param pulumi.Input[str] created_at: The date and time the membership was created
+        """
+        TeamGroupMembershipGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_id=group_id,
+            role=role,
+            created_at=created_at,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_id: pulumi.Input[str],
+             role: pulumi.Input[str],
+             created_at: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+
+        _setter("group_id", group_id)
+        _setter("role", role)
+        if created_at is not None:
+            _setter("created_at", created_at)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> pulumi.Input[str]:
+        """
+        The group unique identifier
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> pulumi.Input[str]:
+        """
+        The team's role that links the team and the group
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date and time the membership was created
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
+
+
+@pulumi.input_type
+class TeamUserMembershipUserArgs:
+    def __init__(__self__, *,
+                 role: pulumi.Input[str],
+                 user_id: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] role: The team's role that links the team and the user
+        :param pulumi.Input[str] user_id: The user unique identifier
+        """
+        TeamUserMembershipUserArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            role=role,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             role: pulumi.Input[str],
+             user_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+
+        _setter("role", role)
+        _setter("user_id", user_id)
+
+    @property
+    @pulumi.getter
+    def role(self) -> pulumi.Input[str]:
+        """
+        The team's role that links the team and the user
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> pulumi.Input[str]:
+        """
+        The user unique identifier
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "user_id", value)
+
+
+@pulumi.input_type
+class GetConnectorCertificatesCertificateArgs:
+    def __init__(__self__, *,
+                 hash: str,
+                 name: str,
+                 public_key: str,
+                 sha1: str,
+                 sha256: str,
+                 type: str,
+                 validated_by: str,
+                 validated_date: str):
+        """
+        :param str hash: Hash of the fingerprint.
+        :param str name: Certificate name.
+        :param str public_key: Certificate public key.
+        :param str sha1: Certificate sha1.
+        :param str sha256: Certificate sha256.
+        :param str type: Certificate type.
+        :param str validated_by: User name who validated the certificate.
+        :param str validated_date: The date when the certificate was approved.
+        """
+        GetConnectorCertificatesCertificateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hash=hash,
+            name=name,
+            public_key=public_key,
+            sha1=sha1,
+            sha256=sha256,
+            type=type,
+            validated_by=validated_by,
+            validated_date=validated_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hash: str,
+             name: str,
+             public_key: str,
+             sha1: str,
+             sha256: str,
+             type: str,
+             validated_by: str,
+             validated_date: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if 'validatedBy' in kwargs:
+            validated_by = kwargs['validatedBy']
+        if 'validatedDate' in kwargs:
+            validated_date = kwargs['validatedDate']
+
+        _setter("hash", hash)
+        _setter("name", name)
+        _setter("public_key", public_key)
+        _setter("sha1", sha1)
+        _setter("sha256", sha256)
+        _setter("type", type)
+        _setter("validated_by", validated_by)
+        _setter("validated_date", validated_date)
+
+    @property
+    @pulumi.getter
+    def hash(self) -> str:
+        """
+        Hash of the fingerprint.
+        """
+        return pulumi.get(self, "hash")
+
+    @hash.setter
+    def hash(self, value: str):
+        pulumi.set(self, "hash", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Certificate name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> str:
+        """
+        Certificate public key.
+        """
+        return pulumi.get(self, "public_key")
+
+    @public_key.setter
+    def public_key(self, value: str):
+        pulumi.set(self, "public_key", value)
+
+    @property
+    @pulumi.getter
+    def sha1(self) -> str:
+        """
+        Certificate sha1.
+        """
+        return pulumi.get(self, "sha1")
+
+    @sha1.setter
+    def sha1(self, value: str):
+        pulumi.set(self, "sha1", value)
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> str:
+        """
+        Certificate sha256.
+        """
+        return pulumi.get(self, "sha256")
+
+    @sha256.setter
+    def sha256(self, value: str):
+        pulumi.set(self, "sha256", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Certificate type.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: str):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="validatedBy")
+    def validated_by(self) -> str:
+        """
+        User name who validated the certificate.
+        """
+        return pulumi.get(self, "validated_by")
+
+    @validated_by.setter
+    def validated_by(self, value: str):
+        pulumi.set(self, "validated_by", value)
+
+    @property
+    @pulumi.getter(name="validatedDate")
+    def validated_date(self) -> str:
+        """
+        The date when the certificate was approved.
+        """
+        return pulumi.get(self, "validated_date")
+
+    @validated_date.setter
+    def validated_date(self, value: str):
+        pulumi.set(self, "validated_date", value)
 
 
 @pulumi.input_type
@@ -7056,6 +10533,7 @@ class GetConnectorConfigArgs:
                  business_unit_id: str,
                  certificate: str,
                  click_attribution_window: str,
+                 client: str,
                  client_cert: str,
                  client_cert_key: str,
                  client_id: str,
@@ -7066,6 +10544,8 @@ class GetConnectorConfigArgs:
                  columns: Sequence[str],
                  company_id: str,
                  company_key: str,
+                 company_request_token: str,
+                 company_uuid: str,
                  compression: str,
                  config_method: str,
                  config_repository_url: str,
@@ -7182,7 +10662,7 @@ class GetConnectorConfigArgs:
                  key_store_type: str,
                  keystore: str,
                  keystore_password: str,
-                 last_synced_changes_utc_: str,
+                 last_synced_changes_utc: str,
                  latest_version: str,
                  line_separator: str,
                  list_strategy: str,
@@ -7213,6 +10693,8 @@ class GetConnectorConfigArgs:
                  passphrase: str,
                  password: str,
                  pat: str,
+                 pat_name: str,
+                 pat_secret: str,
                  path: str,
                  pattern: str,
                  pdb_name: str,
@@ -7294,6 +10776,7 @@ class GetConnectorConfigArgs:
                  selected_exports: Sequence[str],
                  sender_id: str,
                  sender_password: str,
+                 server_address: str,
                  server_url: str,
                  servers: Sequence[str],
                  service_account: str,
@@ -7341,6 +10824,7 @@ class GetConnectorConfigArgs:
                  sync_pack_mode: str,
                  sync_pull_api: str,
                  sync_type: str,
+                 sysnr: str,
                  table_name: str,
                  tde_certificate: str,
                  tde_certificate_name: str,
@@ -7395,438 +10879,2060 @@ class GetConnectorConfigArgs:
                  workspace_same_as_source: str,
                  workspace_schema: str,
                  ws_certificate: str):
-        pulumi.set(__self__, "abs_connection_method", abs_connection_method)
-        pulumi.set(__self__, "abs_connection_string", abs_connection_string)
-        pulumi.set(__self__, "abs_container_address", abs_container_address)
-        pulumi.set(__self__, "abs_container_name", abs_container_name)
-        pulumi.set(__self__, "abs_host_ip", abs_host_ip)
-        pulumi.set(__self__, "abs_host_user", abs_host_user)
-        pulumi.set(__self__, "abs_prefix", abs_prefix)
-        pulumi.set(__self__, "abs_public_key", abs_public_key)
-        pulumi.set(__self__, "access_key", access_key)
-        pulumi.set(__self__, "access_key_id", access_key_id)
-        pulumi.set(__self__, "access_key_secret", access_key_secret)
-        pulumi.set(__self__, "access_token", access_token)
-        pulumi.set(__self__, "access_type", access_type)
-        pulumi.set(__self__, "account", account)
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "account_ids", account_ids)
-        pulumi.set(__self__, "account_key", account_key)
-        pulumi.set(__self__, "account_name", account_name)
-        pulumi.set(__self__, "account_sync_mode", account_sync_mode)
-        pulumi.set(__self__, "accounts", accounts)
-        pulumi.set(__self__, "accounts_reddit_ads", accounts_reddit_ads)
-        pulumi.set(__self__, "accounts_sync_mode", accounts_sync_mode)
-        pulumi.set(__self__, "action_breakdowns", action_breakdowns)
-        pulumi.set(__self__, "action_report_time", action_report_time)
-        pulumi.set(__self__, "ad_analytics", ad_analytics)
-        pulumi.set(__self__, "ad_unit_view", ad_unit_view)
-        pulumi.set(__self__, "admin_api_key", admin_api_key)
-        pulumi.set(__self__, "adobe_analytics_configurations", adobe_analytics_configurations)
-        pulumi.set(__self__, "advertisables", advertisables)
-        pulumi.set(__self__, "advertisers", advertisers)
-        pulumi.set(__self__, "advertisers_ids", advertisers_ids)
-        pulumi.set(__self__, "advertisers_sync_mode", advertisers_sync_mode)
-        pulumi.set(__self__, "agent_host", agent_host)
-        pulumi.set(__self__, "agent_ora_home", agent_ora_home)
-        pulumi.set(__self__, "agent_password", agent_password)
-        pulumi.set(__self__, "agent_port", agent_port)
-        pulumi.set(__self__, "agent_public_cert", agent_public_cert)
-        pulumi.set(__self__, "agent_user", agent_user)
-        pulumi.set(__self__, "aggregation", aggregation)
-        pulumi.set(__self__, "always_encrypted", always_encrypted)
-        pulumi.set(__self__, "api_access_token", api_access_token)
-        pulumi.set(__self__, "api_id", api_id)
-        pulumi.set(__self__, "api_key", api_key)
-        pulumi.set(__self__, "api_keys", api_keys)
-        pulumi.set(__self__, "api_quota", api_quota)
-        pulumi.set(__self__, "api_requests_per_minute", api_requests_per_minute)
-        pulumi.set(__self__, "api_secret", api_secret)
-        pulumi.set(__self__, "api_secret_key", api_secret_key)
-        pulumi.set(__self__, "api_token", api_token)
-        pulumi.set(__self__, "api_type", api_type)
-        pulumi.set(__self__, "api_url", api_url)
-        pulumi.set(__self__, "api_usage", api_usage)
-        pulumi.set(__self__, "api_version", api_version)
-        pulumi.set(__self__, "app_id", app_id)
-        pulumi.set(__self__, "app_ids", app_ids)
-        pulumi.set(__self__, "app_ids_appsflyers", app_ids_appsflyers)
-        pulumi.set(__self__, "app_specific_password", app_specific_password)
-        pulumi.set(__self__, "app_sync_mode", app_sync_mode)
-        pulumi.set(__self__, "append_file_option", append_file_option)
-        pulumi.set(__self__, "application_key", application_key)
-        pulumi.set(__self__, "apps", apps)
-        pulumi.set(__self__, "archive_log_format", archive_log_format)
-        pulumi.set(__self__, "archive_log_path", archive_log_path)
-        pulumi.set(__self__, "archive_pattern", archive_pattern)
-        pulumi.set(__self__, "are_soap_credentials_provided", are_soap_credentials_provided)
-        pulumi.set(__self__, "asb_ip", asb_ip)
-        pulumi.set(__self__, "asm_option", asm_option)
-        pulumi.set(__self__, "asm_oracle_home", asm_oracle_home)
-        pulumi.set(__self__, "asm_password", asm_password)
-        pulumi.set(__self__, "asm_tns", asm_tns)
-        pulumi.set(__self__, "asm_user", asm_user)
-        pulumi.set(__self__, "attribution_window", attribution_window)
-        pulumi.set(__self__, "attribution_window_size", attribution_window_size)
-        pulumi.set(__self__, "auth", auth)
-        pulumi.set(__self__, "auth_method", auth_method)
-        pulumi.set(__self__, "auth_mode", auth_mode)
-        pulumi.set(__self__, "auth_type", auth_type)
-        pulumi.set(__self__, "authorization_method", authorization_method)
-        pulumi.set(__self__, "aws_region_code", aws_region_code)
-        pulumi.set(__self__, "base_currency", base_currency)
-        pulumi.set(__self__, "base_domain", base_domain)
-        pulumi.set(__self__, "base_id", base_id)
-        pulumi.set(__self__, "base_url", base_url)
-        pulumi.set(__self__, "bearer_token", bearer_token)
-        pulumi.set(__self__, "blob_sas_url", blob_sas_url)
-        pulumi.set(__self__, "breakdowns", breakdowns)
-        pulumi.set(__self__, "bucket", bucket)
-        pulumi.set(__self__, "bucket_name", bucket_name)
-        pulumi.set(__self__, "bucket_service", bucket_service)
-        pulumi.set(__self__, "business_id", business_id)
-        pulumi.set(__self__, "business_unit_id", business_unit_id)
-        pulumi.set(__self__, "certificate", certificate)
-        pulumi.set(__self__, "click_attribution_window", click_attribution_window)
-        pulumi.set(__self__, "client_cert", client_cert)
-        pulumi.set(__self__, "client_cert_key", client_cert_key)
-        pulumi.set(__self__, "client_id", client_id)
-        pulumi.set(__self__, "client_key", client_key)
-        pulumi.set(__self__, "client_name", client_name)
-        pulumi.set(__self__, "client_secret", client_secret)
-        pulumi.set(__self__, "cloud_storage_type", cloud_storage_type)
-        pulumi.set(__self__, "columns", columns)
-        pulumi.set(__self__, "company_id", company_id)
-        pulumi.set(__self__, "company_key", company_key)
-        pulumi.set(__self__, "compression", compression)
-        pulumi.set(__self__, "config_method", config_method)
-        pulumi.set(__self__, "config_repository_url", config_repository_url)
-        pulumi.set(__self__, "config_type", config_type)
-        pulumi.set(__self__, "connecting_user", connecting_user)
-        pulumi.set(__self__, "connecting_user_email", connecting_user_email)
-        pulumi.set(__self__, "connection_method", connection_method)
-        pulumi.set(__self__, "connection_string", connection_string)
-        pulumi.set(__self__, "connection_type", connection_type)
-        pulumi.set(__self__, "consumer_group", consumer_group)
-        pulumi.set(__self__, "consumer_key", consumer_key)
-        pulumi.set(__self__, "consumer_secret", consumer_secret)
-        pulumi.set(__self__, "container_address", container_address)
-        pulumi.set(__self__, "container_name", container_name)
-        pulumi.set(__self__, "content_owner_id", content_owner_id)
-        pulumi.set(__self__, "conversation_webhook_url", conversation_webhook_url)
-        pulumi.set(__self__, "conversion_dimensions", conversion_dimensions)
-        pulumi.set(__self__, "conversion_report_time", conversion_report_time)
-        pulumi.set(__self__, "conversion_window_size", conversion_window_size)
-        pulumi.set(__self__, "csv_definition", csv_definition)
-        pulumi.set(__self__, "currency", currency)
-        pulumi.set(__self__, "custom_event_sync_mode", custom_event_sync_mode)
-        pulumi.set(__self__, "custom_events", custom_events)
-        pulumi.set(__self__, "custom_field_ids", custom_field_ids)
-        pulumi.set(__self__, "custom_floodlight_variables", custom_floodlight_variables)
-        pulumi.set(__self__, "custom_reports", custom_reports)
-        pulumi.set(__self__, "custom_tables", custom_tables)
-        pulumi.set(__self__, "customer_id", customer_id)
-        pulumi.set(__self__, "customer_list_id", customer_list_id)
-        pulumi.set(__self__, "daily_api_call_limit", daily_api_call_limit)
-        pulumi.set(__self__, "data_access_method", data_access_method)
-        pulumi.set(__self__, "data_center", data_center)
-        pulumi.set(__self__, "data_set_name", data_set_name)
-        pulumi.set(__self__, "database", database)
-        pulumi.set(__self__, "dataset_id", dataset_id)
-        pulumi.set(__self__, "datasource", datasource)
-        pulumi.set(__self__, "date_granularity", date_granularity)
-        pulumi.set(__self__, "delimiter", delimiter)
-        pulumi.set(__self__, "dimension_attributes", dimension_attributes)
-        pulumi.set(__self__, "dimensions", dimensions)
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "domain_host_name", domain_host_name)
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "domain_type", domain_type)
-        pulumi.set(__self__, "elements", elements)
-        pulumi.set(__self__, "email", email)
-        pulumi.set(__self__, "empty_header", empty_header)
-        pulumi.set(__self__, "enable_all_dimension_combinations", enable_all_dimension_combinations)
-        pulumi.set(__self__, "enable_archive_log_only", enable_archive_log_only)
-        pulumi.set(__self__, "enable_enrichments", enable_enrichments)
-        pulumi.set(__self__, "enable_exports", enable_exports)
-        pulumi.set(__self__, "enable_tde", enable_tde)
-        pulumi.set(__self__, "encoded_public_key", encoded_public_key)
-        pulumi.set(__self__, "encryption_key", encryption_key)
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "engagement_attribution_window", engagement_attribution_window)
-        pulumi.set(__self__, "enriched_export", enriched_export)
-        pulumi.set(__self__, "entity_id", entity_id)
-        pulumi.set(__self__, "environment", environment)
-        pulumi.set(__self__, "escape_char", escape_char)
-        pulumi.set(__self__, "eu_region", eu_region)
-        pulumi.set(__self__, "events", events)
-        pulumi.set(__self__, "export_storage_type", export_storage_type)
-        pulumi.set(__self__, "external_id", external_id)
-        pulumi.set(__self__, "fields", fields)
-        pulumi.set(__self__, "file_type", file_type)
-        pulumi.set(__self__, "filter", filter)
-        pulumi.set(__self__, "finance_account_sync_mode", finance_account_sync_mode)
-        pulumi.set(__self__, "finance_accounts", finance_accounts)
-        pulumi.set(__self__, "folder", folder)
-        pulumi.set(__self__, "folder_id", folder_id)
-        pulumi.set(__self__, "folder_path", folder_path)
-        pulumi.set(__self__, "forecast_id", forecast_id)
-        pulumi.set(__self__, "ftp_host", ftp_host)
-        pulumi.set(__self__, "ftp_password", ftp_password)
-        pulumi.set(__self__, "ftp_port", ftp_port)
-        pulumi.set(__self__, "ftp_user", ftp_user)
-        pulumi.set(__self__, "function", function)
-        pulumi.set(__self__, "function_app", function_app)
-        pulumi.set(__self__, "function_key", function_key)
-        pulumi.set(__self__, "function_name", function_name)
-        pulumi.set(__self__, "function_trigger", function_trigger)
-        pulumi.set(__self__, "gcs_bucket", gcs_bucket)
-        pulumi.set(__self__, "gcs_folder", gcs_folder)
-        pulumi.set(__self__, "group_name", group_name)
-        pulumi.set(__self__, "has_manage_permissions", has_manage_permissions)
-        pulumi.set(__self__, "home_folder", home_folder)
-        pulumi.set(__self__, "host", host)
-        pulumi.set(__self__, "host_ip", host_ip)
-        pulumi.set(__self__, "host_user", host_user)
-        pulumi.set(__self__, "hosts", hosts)
-        pulumi.set(__self__, "identity", identity)
-        pulumi.set(__self__, "instance", instance)
-        pulumi.set(__self__, "instance_number", instance_number)
-        pulumi.set(__self__, "instance_url", instance_url)
-        pulumi.set(__self__, "integration_key", integration_key)
-        pulumi.set(__self__, "is_account_level_connector", is_account_level_connector)
-        pulumi.set(__self__, "is_auth2_enabled", is_auth2_enabled)
-        pulumi.set(__self__, "is_custom_api_credentials", is_custom_api_credentials)
-        pulumi.set(__self__, "is_ftps", is_ftps)
-        pulumi.set(__self__, "is_keypair", is_keypair)
-        pulumi.set(__self__, "is_multi_entity_feature_enabled", is_multi_entity_feature_enabled)
-        pulumi.set(__self__, "is_new_package", is_new_package)
-        pulumi.set(__self__, "is_private_key_encrypted", is_private_key_encrypted)
-        pulumi.set(__self__, "is_private_link_required", is_private_link_required)
-        pulumi.set(__self__, "is_public", is_public)
-        pulumi.set(__self__, "is_sailthru_connect_enabled", is_sailthru_connect_enabled)
-        pulumi.set(__self__, "is_secure", is_secure)
-        pulumi.set(__self__, "is_single_table_mode", is_single_table_mode)
-        pulumi.set(__self__, "is_vendor", is_vendor)
-        pulumi.set(__self__, "json_delivery_mode", json_delivery_mode)
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "key_password", key_password)
-        pulumi.set(__self__, "key_store_type", key_store_type)
-        pulumi.set(__self__, "keystore", keystore)
-        pulumi.set(__self__, "keystore_password", keystore_password)
-        pulumi.set(__self__, "last_synced_changes_utc_", last_synced_changes_utc_)
-        pulumi.set(__self__, "latest_version", latest_version)
-        pulumi.set(__self__, "line_separator", line_separator)
-        pulumi.set(__self__, "list_strategy", list_strategy)
-        pulumi.set(__self__, "list_sync_mode", list_sync_mode)
-        pulumi.set(__self__, "log_journal", log_journal)
-        pulumi.set(__self__, "log_journal_schema", log_journal_schema)
-        pulumi.set(__self__, "login", login)
-        pulumi.set(__self__, "login_password", login_password)
-        pulumi.set(__self__, "manager_accounts", manager_accounts)
-        pulumi.set(__self__, "merchant_id", merchant_id)
-        pulumi.set(__self__, "message_type", message_type)
-        pulumi.set(__self__, "metrics", metrics)
-        pulumi.set(__self__, "named_range", named_range)
-        pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "network_code", network_code)
-        pulumi.set(__self__, "null_sequence", null_sequence)
-        pulumi.set(__self__, "oauth_token", oauth_token)
-        pulumi.set(__self__, "oauth_token_secret", oauth_token_secret)
-        pulumi.set(__self__, "on_error", on_error)
-        pulumi.set(__self__, "on_premise", on_premise)
-        pulumi.set(__self__, "organization", organization)
-        pulumi.set(__self__, "organization_id", organization_id)
-        pulumi.set(__self__, "organizations", organizations)
-        pulumi.set(__self__, "packed_mode_tables", packed_mode_tables)
-        pulumi.set(__self__, "packing_mode", packing_mode)
-        pulumi.set(__self__, "pages", pages)
-        pulumi.set(__self__, "partners", partners)
-        pulumi.set(__self__, "passphrase", passphrase)
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "pat", pat)
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "pattern", pattern)
-        pulumi.set(__self__, "pdb_name", pdb_name)
-        pulumi.set(__self__, "pem_certificate", pem_certificate)
-        pulumi.set(__self__, "pem_private_key", pem_private_key)
-        pulumi.set(__self__, "per_interaction_dimensions", per_interaction_dimensions)
-        pulumi.set(__self__, "personal_access_token", personal_access_token)
-        pulumi.set(__self__, "pgp_pass_phrase", pgp_pass_phrase)
-        pulumi.set(__self__, "pgp_secret_key", pgp_secret_key)
-        pulumi.set(__self__, "phone_number", phone_number)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "post_click_attribution_window_size", post_click_attribution_window_size)
-        pulumi.set(__self__, "prebuilt_report", prebuilt_report)
-        pulumi.set(__self__, "prefix", prefix)
-        pulumi.set(__self__, "primary_keys", primary_keys)
-        pulumi.set(__self__, "private_key", private_key)
-        pulumi.set(__self__, "profiles", profiles)
-        pulumi.set(__self__, "project_credentials", project_credentials)
-        pulumi.set(__self__, "project_id", project_id)
-        pulumi.set(__self__, "projects", projects)
-        pulumi.set(__self__, "properties", properties)
-        pulumi.set(__self__, "public_key", public_key)
-        pulumi.set(__self__, "publication_name", publication_name)
-        pulumi.set(__self__, "query_id", query_id)
-        pulumi.set(__self__, "query_param_value", query_param_value)
-        pulumi.set(__self__, "refresh_token_expires_at", refresh_token_expires_at)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "replica_id", replica_id)
-        pulumi.set(__self__, "replication_slot", replication_slot)
-        pulumi.set(__self__, "report_configuration_ids", report_configuration_ids)
-        pulumi.set(__self__, "report_format_type", report_format_type)
-        pulumi.set(__self__, "report_suites", report_suites)
-        pulumi.set(__self__, "report_timezone", report_timezone)
-        pulumi.set(__self__, "report_type", report_type)
-        pulumi.set(__self__, "report_url", report_url)
-        pulumi.set(__self__, "reports", reports)
-        pulumi.set(__self__, "reports_linkedin_ads", reports_linkedin_ads)
-        pulumi.set(__self__, "repositories", repositories)
-        pulumi.set(__self__, "resource_token", resource_token)
-        pulumi.set(__self__, "resource_url", resource_url)
-        pulumi.set(__self__, "rest_api_limit", rest_api_limit)
-        pulumi.set(__self__, "rfc_library_path", rfc_library_path)
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "role_arn", role_arn)
-        pulumi.set(__self__, "rollback_window_size", rollback_window_size)
-        pulumi.set(__self__, "s3_bucket", s3_bucket)
-        pulumi.set(__self__, "s3_export_bucket", s3_export_bucket)
-        pulumi.set(__self__, "s3_export_folder", s3_export_folder)
-        pulumi.set(__self__, "s3_export_role_arn", s3_export_role_arn)
-        pulumi.set(__self__, "s3_role_arn", s3_role_arn)
-        pulumi.set(__self__, "s3bucket", s3bucket)
-        pulumi.set(__self__, "s3external_id", s3external_id)
-        pulumi.set(__self__, "s3folder", s3folder)
-        pulumi.set(__self__, "s3path", s3path)
-        pulumi.set(__self__, "s3role_arn", s3role_arn)
-        pulumi.set(__self__, "sales_account_sync_mode", sales_account_sync_mode)
-        pulumi.set(__self__, "sales_accounts", sales_accounts)
-        pulumi.set(__self__, "salesforce_security_token", salesforce_security_token)
-        pulumi.set(__self__, "sandbox_account", sandbox_account)
-        pulumi.set(__self__, "sap_schema", sap_schema)
-        pulumi.set(__self__, "sap_user", sap_user)
-        pulumi.set(__self__, "sasl_mechanism", sasl_mechanism)
-        pulumi.set(__self__, "sasl_plain_key", sasl_plain_key)
-        pulumi.set(__self__, "sasl_plain_secret", sasl_plain_secret)
-        pulumi.set(__self__, "sasl_scram256_key", sasl_scram256_key)
-        pulumi.set(__self__, "sasl_scram256_secret", sasl_scram256_secret)
-        pulumi.set(__self__, "sasl_scram512_key", sasl_scram512_key)
-        pulumi.set(__self__, "sasl_scram512_secret", sasl_scram512_secret)
-        pulumi.set(__self__, "schema_registry_credentials_source", schema_registry_credentials_source)
-        pulumi.set(__self__, "schema_registry_key", schema_registry_key)
-        pulumi.set(__self__, "schema_registry_secret", schema_registry_secret)
-        pulumi.set(__self__, "schema_registry_urls", schema_registry_urls)
-        pulumi.set(__self__, "secret", secret)
-        pulumi.set(__self__, "secret_key", secret_key)
-        pulumi.set(__self__, "secrets", secrets)
-        pulumi.set(__self__, "secrets_lists", secrets_lists)
-        pulumi.set(__self__, "security_protocol", security_protocol)
-        pulumi.set(__self__, "segments", segments)
-        pulumi.set(__self__, "selected_exports", selected_exports)
-        pulumi.set(__self__, "sender_id", sender_id)
-        pulumi.set(__self__, "sender_password", sender_password)
-        pulumi.set(__self__, "server_url", server_url)
-        pulumi.set(__self__, "servers", servers)
-        pulumi.set(__self__, "service_account", service_account)
-        pulumi.set(__self__, "service_account_email", service_account_email)
-        pulumi.set(__self__, "service_account_key", service_account_key)
-        pulumi.set(__self__, "service_version", service_version)
-        pulumi.set(__self__, "sftp_host", sftp_host)
-        pulumi.set(__self__, "sftp_is_key_pair", sftp_is_key_pair)
-        pulumi.set(__self__, "sftp_password", sftp_password)
-        pulumi.set(__self__, "sftp_port", sftp_port)
-        pulumi.set(__self__, "sftp_public_key", sftp_public_key)
-        pulumi.set(__self__, "sftp_user", sftp_user)
-        pulumi.set(__self__, "share_url", share_url)
-        pulumi.set(__self__, "sheet_id", sheet_id)
-        pulumi.set(__self__, "shop", shop)
-        pulumi.set(__self__, "short_code", short_code)
-        pulumi.set(__self__, "show_records_with_no_metrics", show_records_with_no_metrics)
-        pulumi.set(__self__, "sid", sid)
-        pulumi.set(__self__, "signer_public_key", signer_public_key)
-        pulumi.set(__self__, "site_address", site_address)
-        pulumi.set(__self__, "site_id", site_id)
-        pulumi.set(__self__, "site_name", site_name)
-        pulumi.set(__self__, "site_urls", site_urls)
-        pulumi.set(__self__, "skip_after", skip_after)
-        pulumi.set(__self__, "skip_before", skip_before)
-        pulumi.set(__self__, "soap_uri", soap_uri)
-        pulumi.set(__self__, "social_data_sync_timeframe", social_data_sync_timeframe)
-        pulumi.set(__self__, "source", source)
-        pulumi.set(__self__, "store_hash", store_hash)
-        pulumi.set(__self__, "sub_domain", sub_domain)
-        pulumi.set(__self__, "subdomain", subdomain)
-        pulumi.set(__self__, "subscriber_name", subscriber_name)
-        pulumi.set(__self__, "subscription", subscription)
-        pulumi.set(__self__, "support_connected_accounts_sync", support_connected_accounts_sync)
-        pulumi.set(__self__, "support_nested_columns", support_nested_columns)
-        pulumi.set(__self__, "survey_ids", survey_ids)
-        pulumi.set(__self__, "swipe_attribution_window", swipe_attribution_window)
-        pulumi.set(__self__, "sync_data_locker", sync_data_locker)
-        pulumi.set(__self__, "sync_format", sync_format)
-        pulumi.set(__self__, "sync_formula_fields", sync_formula_fields)
-        pulumi.set(__self__, "sync_metadata", sync_metadata)
-        pulumi.set(__self__, "sync_method", sync_method)
-        pulumi.set(__self__, "sync_mode", sync_mode)
-        pulumi.set(__self__, "sync_multiple_accounts", sync_multiple_accounts)
-        pulumi.set(__self__, "sync_pack_mode", sync_pack_mode)
-        pulumi.set(__self__, "sync_pull_api", sync_pull_api)
-        pulumi.set(__self__, "sync_type", sync_type)
-        pulumi.set(__self__, "table_name", table_name)
-        pulumi.set(__self__, "tde_certificate", tde_certificate)
-        pulumi.set(__self__, "tde_certificate_name", tde_certificate_name)
-        pulumi.set(__self__, "tde_password", tde_password)
-        pulumi.set(__self__, "tde_private_key", tde_private_key)
-        pulumi.set(__self__, "team_id", team_id)
-        pulumi.set(__self__, "technical_account_id", technical_account_id)
-        pulumi.set(__self__, "template_labels", template_labels)
-        pulumi.set(__self__, "tenant_id", tenant_id)
-        pulumi.set(__self__, "test_table_name", test_table_name)
-        pulumi.set(__self__, "time_zone", time_zone)
-        pulumi.set(__self__, "timeframe_months", timeframe_months)
-        pulumi.set(__self__, "tns", tns)
-        pulumi.set(__self__, "token_authenticated_container", token_authenticated_container)
-        pulumi.set(__self__, "token_authenticated_database", token_authenticated_database)
-        pulumi.set(__self__, "token_id", token_id)
-        pulumi.set(__self__, "token_key", token_key)
-        pulumi.set(__self__, "token_secret", token_secret)
-        pulumi.set(__self__, "token_secret_key", token_secret_key)
-        pulumi.set(__self__, "topics", topics)
-        pulumi.set(__self__, "trust_store_type", trust_store_type)
-        pulumi.set(__self__, "trusted_cert", trusted_cert)
-        pulumi.set(__self__, "truststore", truststore)
-        pulumi.set(__self__, "tunnel_host", tunnel_host)
-        pulumi.set(__self__, "tunnel_port", tunnel_port)
-        pulumi.set(__self__, "tunnel_user", tunnel_user)
-        pulumi.set(__self__, "unique_id", unique_id)
-        pulumi.set(__self__, "update_config_on_each_sync", update_config_on_each_sync)
-        pulumi.set(__self__, "update_method", update_method)
-        pulumi.set(__self__, "uri", uri)
-        pulumi.set(__self__, "use_api_keys", use_api_keys)
-        pulumi.set(__self__, "use_customer_bucket", use_customer_bucket)
-        pulumi.set(__self__, "use_oracle_rac", use_oracle_rac)
-        pulumi.set(__self__, "use_pgp_encryption_options", use_pgp_encryption_options)
-        pulumi.set(__self__, "use_service_account", use_service_account)
-        pulumi.set(__self__, "use_template_labels", use_template_labels)
-        pulumi.set(__self__, "use_webhooks", use_webhooks)
-        pulumi.set(__self__, "use_workspace", use_workspace)
-        pulumi.set(__self__, "user", user)
-        pulumi.set(__self__, "user_id", user_id)
-        pulumi.set(__self__, "user_key", user_key)
-        pulumi.set(__self__, "user_name", user_name)
-        pulumi.set(__self__, "user_profiles", user_profiles)
-        pulumi.set(__self__, "username", username)
-        pulumi.set(__self__, "view_attribution_window", view_attribution_window)
-        pulumi.set(__self__, "view_through_attribution_window_size", view_through_attribution_window_size)
-        pulumi.set(__self__, "webhook_endpoint", webhook_endpoint)
-        pulumi.set(__self__, "webhook_key", webhook_key)
-        pulumi.set(__self__, "webhook_url", webhook_url)
-        pulumi.set(__self__, "word_press_site_id_or_woocommerce_domain_name", word_press_site_id_or_woocommerce_domain_name)
-        pulumi.set(__self__, "workspace_name", workspace_name)
-        pulumi.set(__self__, "workspace_same_as_source", workspace_same_as_source)
-        pulumi.set(__self__, "workspace_schema", workspace_schema)
-        pulumi.set(__self__, "ws_certificate", ws_certificate)
+        GetConnectorConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            abs_connection_method=abs_connection_method,
+            abs_connection_string=abs_connection_string,
+            abs_container_address=abs_container_address,
+            abs_container_name=abs_container_name,
+            abs_host_ip=abs_host_ip,
+            abs_host_user=abs_host_user,
+            abs_prefix=abs_prefix,
+            abs_public_key=abs_public_key,
+            access_key=access_key,
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            access_token=access_token,
+            access_type=access_type,
+            account=account,
+            account_id=account_id,
+            account_ids=account_ids,
+            account_key=account_key,
+            account_name=account_name,
+            account_sync_mode=account_sync_mode,
+            accounts=accounts,
+            accounts_reddit_ads=accounts_reddit_ads,
+            accounts_sync_mode=accounts_sync_mode,
+            action_breakdowns=action_breakdowns,
+            action_report_time=action_report_time,
+            ad_analytics=ad_analytics,
+            ad_unit_view=ad_unit_view,
+            admin_api_key=admin_api_key,
+            adobe_analytics_configurations=adobe_analytics_configurations,
+            advertisables=advertisables,
+            advertisers=advertisers,
+            advertisers_ids=advertisers_ids,
+            advertisers_sync_mode=advertisers_sync_mode,
+            agent_host=agent_host,
+            agent_ora_home=agent_ora_home,
+            agent_password=agent_password,
+            agent_port=agent_port,
+            agent_public_cert=agent_public_cert,
+            agent_user=agent_user,
+            aggregation=aggregation,
+            always_encrypted=always_encrypted,
+            api_access_token=api_access_token,
+            api_id=api_id,
+            api_key=api_key,
+            api_keys=api_keys,
+            api_quota=api_quota,
+            api_requests_per_minute=api_requests_per_minute,
+            api_secret=api_secret,
+            api_secret_key=api_secret_key,
+            api_token=api_token,
+            api_type=api_type,
+            api_url=api_url,
+            api_usage=api_usage,
+            api_version=api_version,
+            app_id=app_id,
+            app_ids=app_ids,
+            app_ids_appsflyers=app_ids_appsflyers,
+            app_specific_password=app_specific_password,
+            app_sync_mode=app_sync_mode,
+            append_file_option=append_file_option,
+            application_key=application_key,
+            apps=apps,
+            archive_log_format=archive_log_format,
+            archive_log_path=archive_log_path,
+            archive_pattern=archive_pattern,
+            are_soap_credentials_provided=are_soap_credentials_provided,
+            asb_ip=asb_ip,
+            asm_option=asm_option,
+            asm_oracle_home=asm_oracle_home,
+            asm_password=asm_password,
+            asm_tns=asm_tns,
+            asm_user=asm_user,
+            attribution_window=attribution_window,
+            attribution_window_size=attribution_window_size,
+            auth=auth,
+            auth_method=auth_method,
+            auth_mode=auth_mode,
+            auth_type=auth_type,
+            authorization_method=authorization_method,
+            aws_region_code=aws_region_code,
+            base_currency=base_currency,
+            base_domain=base_domain,
+            base_id=base_id,
+            base_url=base_url,
+            bearer_token=bearer_token,
+            blob_sas_url=blob_sas_url,
+            breakdowns=breakdowns,
+            bucket=bucket,
+            bucket_name=bucket_name,
+            bucket_service=bucket_service,
+            business_id=business_id,
+            business_unit_id=business_unit_id,
+            certificate=certificate,
+            click_attribution_window=click_attribution_window,
+            client=client,
+            client_cert=client_cert,
+            client_cert_key=client_cert_key,
+            client_id=client_id,
+            client_key=client_key,
+            client_name=client_name,
+            client_secret=client_secret,
+            cloud_storage_type=cloud_storage_type,
+            columns=columns,
+            company_id=company_id,
+            company_key=company_key,
+            company_request_token=company_request_token,
+            company_uuid=company_uuid,
+            compression=compression,
+            config_method=config_method,
+            config_repository_url=config_repository_url,
+            config_type=config_type,
+            connecting_user=connecting_user,
+            connecting_user_email=connecting_user_email,
+            connection_method=connection_method,
+            connection_string=connection_string,
+            connection_type=connection_type,
+            consumer_group=consumer_group,
+            consumer_key=consumer_key,
+            consumer_secret=consumer_secret,
+            container_address=container_address,
+            container_name=container_name,
+            content_owner_id=content_owner_id,
+            conversation_webhook_url=conversation_webhook_url,
+            conversion_dimensions=conversion_dimensions,
+            conversion_report_time=conversion_report_time,
+            conversion_window_size=conversion_window_size,
+            csv_definition=csv_definition,
+            currency=currency,
+            custom_event_sync_mode=custom_event_sync_mode,
+            custom_events=custom_events,
+            custom_field_ids=custom_field_ids,
+            custom_floodlight_variables=custom_floodlight_variables,
+            custom_reports=custom_reports,
+            custom_tables=custom_tables,
+            customer_id=customer_id,
+            customer_list_id=customer_list_id,
+            daily_api_call_limit=daily_api_call_limit,
+            data_access_method=data_access_method,
+            data_center=data_center,
+            data_set_name=data_set_name,
+            database=database,
+            dataset_id=dataset_id,
+            datasource=datasource,
+            date_granularity=date_granularity,
+            delimiter=delimiter,
+            dimension_attributes=dimension_attributes,
+            dimensions=dimensions,
+            domain=domain,
+            domain_host_name=domain_host_name,
+            domain_name=domain_name,
+            domain_type=domain_type,
+            elements=elements,
+            email=email,
+            empty_header=empty_header,
+            enable_all_dimension_combinations=enable_all_dimension_combinations,
+            enable_archive_log_only=enable_archive_log_only,
+            enable_enrichments=enable_enrichments,
+            enable_exports=enable_exports,
+            enable_tde=enable_tde,
+            encoded_public_key=encoded_public_key,
+            encryption_key=encryption_key,
+            endpoint=endpoint,
+            engagement_attribution_window=engagement_attribution_window,
+            enriched_export=enriched_export,
+            entity_id=entity_id,
+            environment=environment,
+            escape_char=escape_char,
+            eu_region=eu_region,
+            events=events,
+            export_storage_type=export_storage_type,
+            external_id=external_id,
+            fields=fields,
+            file_type=file_type,
+            filter=filter,
+            finance_account_sync_mode=finance_account_sync_mode,
+            finance_accounts=finance_accounts,
+            folder=folder,
+            folder_id=folder_id,
+            folder_path=folder_path,
+            forecast_id=forecast_id,
+            ftp_host=ftp_host,
+            ftp_password=ftp_password,
+            ftp_port=ftp_port,
+            ftp_user=ftp_user,
+            function=function,
+            function_app=function_app,
+            function_key=function_key,
+            function_name=function_name,
+            function_trigger=function_trigger,
+            gcs_bucket=gcs_bucket,
+            gcs_folder=gcs_folder,
+            group_name=group_name,
+            has_manage_permissions=has_manage_permissions,
+            home_folder=home_folder,
+            host=host,
+            host_ip=host_ip,
+            host_user=host_user,
+            hosts=hosts,
+            identity=identity,
+            instance=instance,
+            instance_number=instance_number,
+            instance_url=instance_url,
+            integration_key=integration_key,
+            is_account_level_connector=is_account_level_connector,
+            is_auth2_enabled=is_auth2_enabled,
+            is_custom_api_credentials=is_custom_api_credentials,
+            is_ftps=is_ftps,
+            is_keypair=is_keypair,
+            is_multi_entity_feature_enabled=is_multi_entity_feature_enabled,
+            is_new_package=is_new_package,
+            is_private_key_encrypted=is_private_key_encrypted,
+            is_private_link_required=is_private_link_required,
+            is_public=is_public,
+            is_sailthru_connect_enabled=is_sailthru_connect_enabled,
+            is_secure=is_secure,
+            is_single_table_mode=is_single_table_mode,
+            is_vendor=is_vendor,
+            json_delivery_mode=json_delivery_mode,
+            key=key,
+            key_password=key_password,
+            key_store_type=key_store_type,
+            keystore=keystore,
+            keystore_password=keystore_password,
+            last_synced_changes_utc=last_synced_changes_utc,
+            latest_version=latest_version,
+            line_separator=line_separator,
+            list_strategy=list_strategy,
+            list_sync_mode=list_sync_mode,
+            log_journal=log_journal,
+            log_journal_schema=log_journal_schema,
+            login=login,
+            login_password=login_password,
+            manager_accounts=manager_accounts,
+            merchant_id=merchant_id,
+            message_type=message_type,
+            metrics=metrics,
+            named_range=named_range,
+            namespace=namespace,
+            network_code=network_code,
+            null_sequence=null_sequence,
+            oauth_token=oauth_token,
+            oauth_token_secret=oauth_token_secret,
+            on_error=on_error,
+            on_premise=on_premise,
+            organization=organization,
+            organization_id=organization_id,
+            organizations=organizations,
+            packed_mode_tables=packed_mode_tables,
+            packing_mode=packing_mode,
+            pages=pages,
+            partners=partners,
+            passphrase=passphrase,
+            password=password,
+            pat=pat,
+            pat_name=pat_name,
+            pat_secret=pat_secret,
+            path=path,
+            pattern=pattern,
+            pdb_name=pdb_name,
+            pem_certificate=pem_certificate,
+            pem_private_key=pem_private_key,
+            per_interaction_dimensions=per_interaction_dimensions,
+            personal_access_token=personal_access_token,
+            pgp_pass_phrase=pgp_pass_phrase,
+            pgp_secret_key=pgp_secret_key,
+            phone_number=phone_number,
+            port=port,
+            post_click_attribution_window_size=post_click_attribution_window_size,
+            prebuilt_report=prebuilt_report,
+            prefix=prefix,
+            primary_keys=primary_keys,
+            private_key=private_key,
+            profiles=profiles,
+            project_credentials=project_credentials,
+            project_id=project_id,
+            projects=projects,
+            properties=properties,
+            public_key=public_key,
+            publication_name=publication_name,
+            query_id=query_id,
+            query_param_value=query_param_value,
+            refresh_token_expires_at=refresh_token_expires_at,
+            region=region,
+            replica_id=replica_id,
+            replication_slot=replication_slot,
+            report_configuration_ids=report_configuration_ids,
+            report_format_type=report_format_type,
+            report_suites=report_suites,
+            report_timezone=report_timezone,
+            report_type=report_type,
+            report_url=report_url,
+            reports=reports,
+            reports_linkedin_ads=reports_linkedin_ads,
+            repositories=repositories,
+            resource_token=resource_token,
+            resource_url=resource_url,
+            rest_api_limit=rest_api_limit,
+            rfc_library_path=rfc_library_path,
+            role=role,
+            role_arn=role_arn,
+            rollback_window_size=rollback_window_size,
+            s3_bucket=s3_bucket,
+            s3_export_bucket=s3_export_bucket,
+            s3_export_folder=s3_export_folder,
+            s3_export_role_arn=s3_export_role_arn,
+            s3_role_arn=s3_role_arn,
+            s3bucket=s3bucket,
+            s3external_id=s3external_id,
+            s3folder=s3folder,
+            s3path=s3path,
+            s3role_arn=s3role_arn,
+            sales_account_sync_mode=sales_account_sync_mode,
+            sales_accounts=sales_accounts,
+            salesforce_security_token=salesforce_security_token,
+            sandbox_account=sandbox_account,
+            sap_schema=sap_schema,
+            sap_user=sap_user,
+            sasl_mechanism=sasl_mechanism,
+            sasl_plain_key=sasl_plain_key,
+            sasl_plain_secret=sasl_plain_secret,
+            sasl_scram256_key=sasl_scram256_key,
+            sasl_scram256_secret=sasl_scram256_secret,
+            sasl_scram512_key=sasl_scram512_key,
+            sasl_scram512_secret=sasl_scram512_secret,
+            schema_registry_credentials_source=schema_registry_credentials_source,
+            schema_registry_key=schema_registry_key,
+            schema_registry_secret=schema_registry_secret,
+            schema_registry_urls=schema_registry_urls,
+            secret=secret,
+            secret_key=secret_key,
+            secrets=secrets,
+            secrets_lists=secrets_lists,
+            security_protocol=security_protocol,
+            segments=segments,
+            selected_exports=selected_exports,
+            sender_id=sender_id,
+            sender_password=sender_password,
+            server_address=server_address,
+            server_url=server_url,
+            servers=servers,
+            service_account=service_account,
+            service_account_email=service_account_email,
+            service_account_key=service_account_key,
+            service_version=service_version,
+            sftp_host=sftp_host,
+            sftp_is_key_pair=sftp_is_key_pair,
+            sftp_password=sftp_password,
+            sftp_port=sftp_port,
+            sftp_public_key=sftp_public_key,
+            sftp_user=sftp_user,
+            share_url=share_url,
+            sheet_id=sheet_id,
+            shop=shop,
+            short_code=short_code,
+            show_records_with_no_metrics=show_records_with_no_metrics,
+            sid=sid,
+            signer_public_key=signer_public_key,
+            site_address=site_address,
+            site_id=site_id,
+            site_name=site_name,
+            site_urls=site_urls,
+            skip_after=skip_after,
+            skip_before=skip_before,
+            soap_uri=soap_uri,
+            social_data_sync_timeframe=social_data_sync_timeframe,
+            source=source,
+            store_hash=store_hash,
+            sub_domain=sub_domain,
+            subdomain=subdomain,
+            subscriber_name=subscriber_name,
+            subscription=subscription,
+            support_connected_accounts_sync=support_connected_accounts_sync,
+            support_nested_columns=support_nested_columns,
+            survey_ids=survey_ids,
+            swipe_attribution_window=swipe_attribution_window,
+            sync_data_locker=sync_data_locker,
+            sync_format=sync_format,
+            sync_formula_fields=sync_formula_fields,
+            sync_metadata=sync_metadata,
+            sync_method=sync_method,
+            sync_mode=sync_mode,
+            sync_multiple_accounts=sync_multiple_accounts,
+            sync_pack_mode=sync_pack_mode,
+            sync_pull_api=sync_pull_api,
+            sync_type=sync_type,
+            sysnr=sysnr,
+            table_name=table_name,
+            tde_certificate=tde_certificate,
+            tde_certificate_name=tde_certificate_name,
+            tde_password=tde_password,
+            tde_private_key=tde_private_key,
+            team_id=team_id,
+            technical_account_id=technical_account_id,
+            template_labels=template_labels,
+            tenant_id=tenant_id,
+            test_table_name=test_table_name,
+            time_zone=time_zone,
+            timeframe_months=timeframe_months,
+            tns=tns,
+            token_authenticated_container=token_authenticated_container,
+            token_authenticated_database=token_authenticated_database,
+            token_id=token_id,
+            token_key=token_key,
+            token_secret=token_secret,
+            token_secret_key=token_secret_key,
+            topics=topics,
+            trust_store_type=trust_store_type,
+            trusted_cert=trusted_cert,
+            truststore=truststore,
+            tunnel_host=tunnel_host,
+            tunnel_port=tunnel_port,
+            tunnel_user=tunnel_user,
+            unique_id=unique_id,
+            update_config_on_each_sync=update_config_on_each_sync,
+            update_method=update_method,
+            uri=uri,
+            use_api_keys=use_api_keys,
+            use_customer_bucket=use_customer_bucket,
+            use_oracle_rac=use_oracle_rac,
+            use_pgp_encryption_options=use_pgp_encryption_options,
+            use_service_account=use_service_account,
+            use_template_labels=use_template_labels,
+            use_webhooks=use_webhooks,
+            use_workspace=use_workspace,
+            user=user,
+            user_id=user_id,
+            user_key=user_key,
+            user_name=user_name,
+            user_profiles=user_profiles,
+            username=username,
+            view_attribution_window=view_attribution_window,
+            view_through_attribution_window_size=view_through_attribution_window_size,
+            webhook_endpoint=webhook_endpoint,
+            webhook_key=webhook_key,
+            webhook_url=webhook_url,
+            word_press_site_id_or_woocommerce_domain_name=word_press_site_id_or_woocommerce_domain_name,
+            workspace_name=workspace_name,
+            workspace_same_as_source=workspace_same_as_source,
+            workspace_schema=workspace_schema,
+            ws_certificate=ws_certificate,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             abs_connection_method: str,
+             abs_connection_string: str,
+             abs_container_address: str,
+             abs_container_name: str,
+             abs_host_ip: str,
+             abs_host_user: str,
+             abs_prefix: str,
+             abs_public_key: str,
+             access_key: str,
+             access_key_id: str,
+             access_key_secret: str,
+             access_token: str,
+             access_type: str,
+             account: str,
+             account_id: str,
+             account_ids: Sequence[str],
+             account_key: str,
+             account_name: str,
+             account_sync_mode: str,
+             accounts: Sequence[str],
+             accounts_reddit_ads: Sequence['GetConnectorConfigAccountsRedditAdArgs'],
+             accounts_sync_mode: str,
+             action_breakdowns: Sequence[str],
+             action_report_time: str,
+             ad_analytics: str,
+             ad_unit_view: str,
+             admin_api_key: str,
+             adobe_analytics_configurations: Sequence['GetConnectorConfigAdobeAnalyticsConfigurationArgs'],
+             advertisables: Sequence[str],
+             advertisers: Sequence[str],
+             advertisers_ids: Sequence[str],
+             advertisers_sync_mode: str,
+             agent_host: str,
+             agent_ora_home: str,
+             agent_password: str,
+             agent_port: str,
+             agent_public_cert: str,
+             agent_user: str,
+             aggregation: str,
+             always_encrypted: str,
+             api_access_token: str,
+             api_id: str,
+             api_key: str,
+             api_keys: Sequence[str],
+             api_quota: str,
+             api_requests_per_minute: str,
+             api_secret: str,
+             api_secret_key: str,
+             api_token: str,
+             api_type: str,
+             api_url: str,
+             api_usage: str,
+             api_version: str,
+             app_id: str,
+             app_ids: Sequence[str],
+             app_ids_appsflyers: Sequence['GetConnectorConfigAppIdsAppsflyerArgs'],
+             app_specific_password: str,
+             app_sync_mode: str,
+             append_file_option: str,
+             application_key: str,
+             apps: Sequence[str],
+             archive_log_format: str,
+             archive_log_path: str,
+             archive_pattern: str,
+             are_soap_credentials_provided: str,
+             asb_ip: str,
+             asm_option: str,
+             asm_oracle_home: str,
+             asm_password: str,
+             asm_tns: str,
+             asm_user: str,
+             attribution_window: str,
+             attribution_window_size: str,
+             auth: str,
+             auth_method: str,
+             auth_mode: str,
+             auth_type: str,
+             authorization_method: str,
+             aws_region_code: str,
+             base_currency: str,
+             base_domain: str,
+             base_id: str,
+             base_url: str,
+             bearer_token: str,
+             blob_sas_url: str,
+             breakdowns: Sequence[str],
+             bucket: str,
+             bucket_name: str,
+             bucket_service: str,
+             business_id: str,
+             business_unit_id: str,
+             certificate: str,
+             click_attribution_window: str,
+             client: str,
+             client_cert: str,
+             client_cert_key: str,
+             client_id: str,
+             client_key: str,
+             client_name: str,
+             client_secret: str,
+             cloud_storage_type: str,
+             columns: Sequence[str],
+             company_id: str,
+             company_key: str,
+             company_request_token: str,
+             company_uuid: str,
+             compression: str,
+             config_method: str,
+             config_repository_url: str,
+             config_type: str,
+             connecting_user: str,
+             connecting_user_email: str,
+             connection_method: str,
+             connection_string: str,
+             connection_type: str,
+             consumer_group: str,
+             consumer_key: str,
+             consumer_secret: str,
+             container_address: str,
+             container_name: str,
+             content_owner_id: str,
+             conversation_webhook_url: str,
+             conversion_dimensions: Sequence[str],
+             conversion_report_time: str,
+             conversion_window_size: str,
+             csv_definition: str,
+             currency: str,
+             custom_event_sync_mode: str,
+             custom_events: Sequence[str],
+             custom_field_ids: Sequence[str],
+             custom_floodlight_variables: Sequence[str],
+             custom_reports: Sequence['GetConnectorConfigCustomReportArgs'],
+             custom_tables: Sequence['GetConnectorConfigCustomTableArgs'],
+             customer_id: str,
+             customer_list_id: str,
+             daily_api_call_limit: str,
+             data_access_method: str,
+             data_center: str,
+             data_set_name: str,
+             database: str,
+             dataset_id: str,
+             datasource: str,
+             date_granularity: str,
+             delimiter: str,
+             dimension_attributes: Sequence[str],
+             dimensions: Sequence[str],
+             domain: str,
+             domain_host_name: str,
+             domain_name: str,
+             domain_type: str,
+             elements: Sequence[str],
+             email: str,
+             empty_header: str,
+             enable_all_dimension_combinations: str,
+             enable_archive_log_only: str,
+             enable_enrichments: str,
+             enable_exports: str,
+             enable_tde: str,
+             encoded_public_key: str,
+             encryption_key: str,
+             endpoint: str,
+             engagement_attribution_window: str,
+             enriched_export: str,
+             entity_id: str,
+             environment: str,
+             escape_char: str,
+             eu_region: str,
+             events: Sequence[str],
+             export_storage_type: str,
+             external_id: str,
+             fields: Sequence[str],
+             file_type: str,
+             filter: str,
+             finance_account_sync_mode: str,
+             finance_accounts: Sequence[str],
+             folder: str,
+             folder_id: str,
+             folder_path: str,
+             forecast_id: str,
+             ftp_host: str,
+             ftp_password: str,
+             ftp_port: str,
+             ftp_user: str,
+             function: str,
+             function_app: str,
+             function_key: str,
+             function_name: str,
+             function_trigger: str,
+             gcs_bucket: str,
+             gcs_folder: str,
+             group_name: str,
+             has_manage_permissions: str,
+             home_folder: str,
+             host: str,
+             host_ip: str,
+             host_user: str,
+             hosts: Sequence[str],
+             identity: str,
+             instance: str,
+             instance_number: str,
+             instance_url: str,
+             integration_key: str,
+             is_account_level_connector: str,
+             is_auth2_enabled: str,
+             is_custom_api_credentials: str,
+             is_ftps: str,
+             is_keypair: str,
+             is_multi_entity_feature_enabled: str,
+             is_new_package: str,
+             is_private_key_encrypted: str,
+             is_private_link_required: str,
+             is_public: str,
+             is_sailthru_connect_enabled: str,
+             is_secure: str,
+             is_single_table_mode: str,
+             is_vendor: str,
+             json_delivery_mode: str,
+             key: str,
+             key_password: str,
+             key_store_type: str,
+             keystore: str,
+             keystore_password: str,
+             last_synced_changes_utc: str,
+             latest_version: str,
+             line_separator: str,
+             list_strategy: str,
+             list_sync_mode: str,
+             log_journal: str,
+             log_journal_schema: str,
+             login: str,
+             login_password: str,
+             manager_accounts: Sequence[str],
+             merchant_id: str,
+             message_type: str,
+             metrics: Sequence[str],
+             named_range: str,
+             namespace: str,
+             network_code: str,
+             null_sequence: str,
+             oauth_token: str,
+             oauth_token_secret: str,
+             on_error: str,
+             on_premise: str,
+             organization: str,
+             organization_id: str,
+             organizations: Sequence[str],
+             packed_mode_tables: Sequence[str],
+             packing_mode: str,
+             pages: Sequence[str],
+             partners: Sequence[str],
+             passphrase: str,
+             password: str,
+             pat: str,
+             pat_name: str,
+             pat_secret: str,
+             path: str,
+             pattern: str,
+             pdb_name: str,
+             pem_certificate: str,
+             pem_private_key: str,
+             per_interaction_dimensions: Sequence[str],
+             personal_access_token: str,
+             pgp_pass_phrase: str,
+             pgp_secret_key: str,
+             phone_number: str,
+             port: str,
+             post_click_attribution_window_size: str,
+             prebuilt_report: str,
+             prefix: str,
+             primary_keys: Sequence[str],
+             private_key: str,
+             profiles: Sequence[str],
+             project_credentials: Sequence['GetConnectorConfigProjectCredentialArgs'],
+             project_id: str,
+             projects: Sequence[str],
+             properties: Sequence[str],
+             public_key: str,
+             publication_name: str,
+             query_id: str,
+             query_param_value: str,
+             refresh_token_expires_at: str,
+             region: str,
+             replica_id: str,
+             replication_slot: str,
+             report_configuration_ids: Sequence[str],
+             report_format_type: str,
+             report_suites: Sequence[str],
+             report_timezone: str,
+             report_type: str,
+             report_url: str,
+             reports: Sequence['GetConnectorConfigReportArgs'],
+             reports_linkedin_ads: Sequence[str],
+             repositories: Sequence[str],
+             resource_token: str,
+             resource_url: str,
+             rest_api_limit: str,
+             rfc_library_path: str,
+             role: str,
+             role_arn: str,
+             rollback_window_size: str,
+             s3_bucket: str,
+             s3_export_bucket: str,
+             s3_export_folder: str,
+             s3_export_role_arn: str,
+             s3_role_arn: str,
+             s3bucket: str,
+             s3external_id: str,
+             s3folder: str,
+             s3path: str,
+             s3role_arn: str,
+             sales_account_sync_mode: str,
+             sales_accounts: Sequence[str],
+             salesforce_security_token: str,
+             sandbox_account: str,
+             sap_schema: str,
+             sap_user: str,
+             sasl_mechanism: str,
+             sasl_plain_key: str,
+             sasl_plain_secret: str,
+             sasl_scram256_key: str,
+             sasl_scram256_secret: str,
+             sasl_scram512_key: str,
+             sasl_scram512_secret: str,
+             schema_registry_credentials_source: str,
+             schema_registry_key: str,
+             schema_registry_secret: str,
+             schema_registry_urls: Sequence[str],
+             secret: str,
+             secret_key: str,
+             secrets: str,
+             secrets_lists: Sequence['GetConnectorConfigSecretsListArgs'],
+             security_protocol: str,
+             segments: Sequence[str],
+             selected_exports: Sequence[str],
+             sender_id: str,
+             sender_password: str,
+             server_address: str,
+             server_url: str,
+             servers: Sequence[str],
+             service_account: str,
+             service_account_email: str,
+             service_account_key: str,
+             service_version: str,
+             sftp_host: str,
+             sftp_is_key_pair: str,
+             sftp_password: str,
+             sftp_port: str,
+             sftp_public_key: str,
+             sftp_user: str,
+             share_url: str,
+             sheet_id: str,
+             shop: str,
+             short_code: str,
+             show_records_with_no_metrics: str,
+             sid: str,
+             signer_public_key: str,
+             site_address: str,
+             site_id: str,
+             site_name: str,
+             site_urls: Sequence[str],
+             skip_after: str,
+             skip_before: str,
+             soap_uri: str,
+             social_data_sync_timeframe: str,
+             source: str,
+             store_hash: str,
+             sub_domain: str,
+             subdomain: str,
+             subscriber_name: str,
+             subscription: str,
+             support_connected_accounts_sync: str,
+             support_nested_columns: str,
+             survey_ids: str,
+             swipe_attribution_window: str,
+             sync_data_locker: str,
+             sync_format: str,
+             sync_formula_fields: str,
+             sync_metadata: str,
+             sync_method: str,
+             sync_mode: str,
+             sync_multiple_accounts: str,
+             sync_pack_mode: str,
+             sync_pull_api: str,
+             sync_type: str,
+             sysnr: str,
+             table_name: str,
+             tde_certificate: str,
+             tde_certificate_name: str,
+             tde_password: str,
+             tde_private_key: str,
+             team_id: str,
+             technical_account_id: str,
+             template_labels: Sequence[str],
+             tenant_id: str,
+             test_table_name: str,
+             time_zone: str,
+             timeframe_months: str,
+             tns: str,
+             token_authenticated_container: str,
+             token_authenticated_database: str,
+             token_id: str,
+             token_key: str,
+             token_secret: str,
+             token_secret_key: str,
+             topics: Sequence[str],
+             trust_store_type: str,
+             trusted_cert: str,
+             truststore: str,
+             tunnel_host: str,
+             tunnel_port: str,
+             tunnel_user: str,
+             unique_id: str,
+             update_config_on_each_sync: str,
+             update_method: str,
+             uri: str,
+             use_api_keys: str,
+             use_customer_bucket: str,
+             use_oracle_rac: str,
+             use_pgp_encryption_options: str,
+             use_service_account: str,
+             use_template_labels: str,
+             use_webhooks: str,
+             use_workspace: str,
+             user: str,
+             user_id: str,
+             user_key: str,
+             user_name: str,
+             user_profiles: Sequence[str],
+             username: str,
+             view_attribution_window: str,
+             view_through_attribution_window_size: str,
+             webhook_endpoint: str,
+             webhook_key: str,
+             webhook_url: str,
+             word_press_site_id_or_woocommerce_domain_name: str,
+             workspace_name: str,
+             workspace_same_as_source: str,
+             workspace_schema: str,
+             ws_certificate: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'absConnectionMethod' in kwargs:
+            abs_connection_method = kwargs['absConnectionMethod']
+        if 'absConnectionString' in kwargs:
+            abs_connection_string = kwargs['absConnectionString']
+        if 'absContainerAddress' in kwargs:
+            abs_container_address = kwargs['absContainerAddress']
+        if 'absContainerName' in kwargs:
+            abs_container_name = kwargs['absContainerName']
+        if 'absHostIp' in kwargs:
+            abs_host_ip = kwargs['absHostIp']
+        if 'absHostUser' in kwargs:
+            abs_host_user = kwargs['absHostUser']
+        if 'absPrefix' in kwargs:
+            abs_prefix = kwargs['absPrefix']
+        if 'absPublicKey' in kwargs:
+            abs_public_key = kwargs['absPublicKey']
+        if 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if 'accessKeyId' in kwargs:
+            access_key_id = kwargs['accessKeyId']
+        if 'accessKeySecret' in kwargs:
+            access_key_secret = kwargs['accessKeySecret']
+        if 'accessToken' in kwargs:
+            access_token = kwargs['accessToken']
+        if 'accessType' in kwargs:
+            access_type = kwargs['accessType']
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'accountIds' in kwargs:
+            account_ids = kwargs['accountIds']
+        if 'accountKey' in kwargs:
+            account_key = kwargs['accountKey']
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'accountSyncMode' in kwargs:
+            account_sync_mode = kwargs['accountSyncMode']
+        if 'accountsRedditAds' in kwargs:
+            accounts_reddit_ads = kwargs['accountsRedditAds']
+        if 'accountsSyncMode' in kwargs:
+            accounts_sync_mode = kwargs['accountsSyncMode']
+        if 'actionBreakdowns' in kwargs:
+            action_breakdowns = kwargs['actionBreakdowns']
+        if 'actionReportTime' in kwargs:
+            action_report_time = kwargs['actionReportTime']
+        if 'adAnalytics' in kwargs:
+            ad_analytics = kwargs['adAnalytics']
+        if 'adUnitView' in kwargs:
+            ad_unit_view = kwargs['adUnitView']
+        if 'adminApiKey' in kwargs:
+            admin_api_key = kwargs['adminApiKey']
+        if 'adobeAnalyticsConfigurations' in kwargs:
+            adobe_analytics_configurations = kwargs['adobeAnalyticsConfigurations']
+        if 'advertisersIds' in kwargs:
+            advertisers_ids = kwargs['advertisersIds']
+        if 'advertisersSyncMode' in kwargs:
+            advertisers_sync_mode = kwargs['advertisersSyncMode']
+        if 'agentHost' in kwargs:
+            agent_host = kwargs['agentHost']
+        if 'agentOraHome' in kwargs:
+            agent_ora_home = kwargs['agentOraHome']
+        if 'agentPassword' in kwargs:
+            agent_password = kwargs['agentPassword']
+        if 'agentPort' in kwargs:
+            agent_port = kwargs['agentPort']
+        if 'agentPublicCert' in kwargs:
+            agent_public_cert = kwargs['agentPublicCert']
+        if 'agentUser' in kwargs:
+            agent_user = kwargs['agentUser']
+        if 'alwaysEncrypted' in kwargs:
+            always_encrypted = kwargs['alwaysEncrypted']
+        if 'apiAccessToken' in kwargs:
+            api_access_token = kwargs['apiAccessToken']
+        if 'apiId' in kwargs:
+            api_id = kwargs['apiId']
+        if 'apiKey' in kwargs:
+            api_key = kwargs['apiKey']
+        if 'apiKeys' in kwargs:
+            api_keys = kwargs['apiKeys']
+        if 'apiQuota' in kwargs:
+            api_quota = kwargs['apiQuota']
+        if 'apiRequestsPerMinute' in kwargs:
+            api_requests_per_minute = kwargs['apiRequestsPerMinute']
+        if 'apiSecret' in kwargs:
+            api_secret = kwargs['apiSecret']
+        if 'apiSecretKey' in kwargs:
+            api_secret_key = kwargs['apiSecretKey']
+        if 'apiToken' in kwargs:
+            api_token = kwargs['apiToken']
+        if 'apiType' in kwargs:
+            api_type = kwargs['apiType']
+        if 'apiUrl' in kwargs:
+            api_url = kwargs['apiUrl']
+        if 'apiUsage' in kwargs:
+            api_usage = kwargs['apiUsage']
+        if 'apiVersion' in kwargs:
+            api_version = kwargs['apiVersion']
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'appIds' in kwargs:
+            app_ids = kwargs['appIds']
+        if 'appIdsAppsflyers' in kwargs:
+            app_ids_appsflyers = kwargs['appIdsAppsflyers']
+        if 'appSpecificPassword' in kwargs:
+            app_specific_password = kwargs['appSpecificPassword']
+        if 'appSyncMode' in kwargs:
+            app_sync_mode = kwargs['appSyncMode']
+        if 'appendFileOption' in kwargs:
+            append_file_option = kwargs['appendFileOption']
+        if 'applicationKey' in kwargs:
+            application_key = kwargs['applicationKey']
+        if 'archiveLogFormat' in kwargs:
+            archive_log_format = kwargs['archiveLogFormat']
+        if 'archiveLogPath' in kwargs:
+            archive_log_path = kwargs['archiveLogPath']
+        if 'archivePattern' in kwargs:
+            archive_pattern = kwargs['archivePattern']
+        if 'areSoapCredentialsProvided' in kwargs:
+            are_soap_credentials_provided = kwargs['areSoapCredentialsProvided']
+        if 'asbIp' in kwargs:
+            asb_ip = kwargs['asbIp']
+        if 'asmOption' in kwargs:
+            asm_option = kwargs['asmOption']
+        if 'asmOracleHome' in kwargs:
+            asm_oracle_home = kwargs['asmOracleHome']
+        if 'asmPassword' in kwargs:
+            asm_password = kwargs['asmPassword']
+        if 'asmTns' in kwargs:
+            asm_tns = kwargs['asmTns']
+        if 'asmUser' in kwargs:
+            asm_user = kwargs['asmUser']
+        if 'attributionWindow' in kwargs:
+            attribution_window = kwargs['attributionWindow']
+        if 'attributionWindowSize' in kwargs:
+            attribution_window_size = kwargs['attributionWindowSize']
+        if 'authMethod' in kwargs:
+            auth_method = kwargs['authMethod']
+        if 'authMode' in kwargs:
+            auth_mode = kwargs['authMode']
+        if 'authType' in kwargs:
+            auth_type = kwargs['authType']
+        if 'authorizationMethod' in kwargs:
+            authorization_method = kwargs['authorizationMethod']
+        if 'awsRegionCode' in kwargs:
+            aws_region_code = kwargs['awsRegionCode']
+        if 'baseCurrency' in kwargs:
+            base_currency = kwargs['baseCurrency']
+        if 'baseDomain' in kwargs:
+            base_domain = kwargs['baseDomain']
+        if 'baseId' in kwargs:
+            base_id = kwargs['baseId']
+        if 'baseUrl' in kwargs:
+            base_url = kwargs['baseUrl']
+        if 'bearerToken' in kwargs:
+            bearer_token = kwargs['bearerToken']
+        if 'blobSasUrl' in kwargs:
+            blob_sas_url = kwargs['blobSasUrl']
+        if 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if 'bucketService' in kwargs:
+            bucket_service = kwargs['bucketService']
+        if 'businessId' in kwargs:
+            business_id = kwargs['businessId']
+        if 'businessUnitId' in kwargs:
+            business_unit_id = kwargs['businessUnitId']
+        if 'clickAttributionWindow' in kwargs:
+            click_attribution_window = kwargs['clickAttributionWindow']
+        if 'clientCert' in kwargs:
+            client_cert = kwargs['clientCert']
+        if 'clientCertKey' in kwargs:
+            client_cert_key = kwargs['clientCertKey']
+        if 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+        if 'clientName' in kwargs:
+            client_name = kwargs['clientName']
+        if 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if 'cloudStorageType' in kwargs:
+            cloud_storage_type = kwargs['cloudStorageType']
+        if 'companyId' in kwargs:
+            company_id = kwargs['companyId']
+        if 'companyKey' in kwargs:
+            company_key = kwargs['companyKey']
+        if 'companyRequestToken' in kwargs:
+            company_request_token = kwargs['companyRequestToken']
+        if 'companyUuid' in kwargs:
+            company_uuid = kwargs['companyUuid']
+        if 'configMethod' in kwargs:
+            config_method = kwargs['configMethod']
+        if 'configRepositoryUrl' in kwargs:
+            config_repository_url = kwargs['configRepositoryUrl']
+        if 'configType' in kwargs:
+            config_type = kwargs['configType']
+        if 'connectingUser' in kwargs:
+            connecting_user = kwargs['connectingUser']
+        if 'connectingUserEmail' in kwargs:
+            connecting_user_email = kwargs['connectingUserEmail']
+        if 'connectionMethod' in kwargs:
+            connection_method = kwargs['connectionMethod']
+        if 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if 'connectionType' in kwargs:
+            connection_type = kwargs['connectionType']
+        if 'consumerGroup' in kwargs:
+            consumer_group = kwargs['consumerGroup']
+        if 'consumerKey' in kwargs:
+            consumer_key = kwargs['consumerKey']
+        if 'consumerSecret' in kwargs:
+            consumer_secret = kwargs['consumerSecret']
+        if 'containerAddress' in kwargs:
+            container_address = kwargs['containerAddress']
+        if 'containerName' in kwargs:
+            container_name = kwargs['containerName']
+        if 'contentOwnerId' in kwargs:
+            content_owner_id = kwargs['contentOwnerId']
+        if 'conversationWebhookUrl' in kwargs:
+            conversation_webhook_url = kwargs['conversationWebhookUrl']
+        if 'conversionDimensions' in kwargs:
+            conversion_dimensions = kwargs['conversionDimensions']
+        if 'conversionReportTime' in kwargs:
+            conversion_report_time = kwargs['conversionReportTime']
+        if 'conversionWindowSize' in kwargs:
+            conversion_window_size = kwargs['conversionWindowSize']
+        if 'csvDefinition' in kwargs:
+            csv_definition = kwargs['csvDefinition']
+        if 'customEventSyncMode' in kwargs:
+            custom_event_sync_mode = kwargs['customEventSyncMode']
+        if 'customEvents' in kwargs:
+            custom_events = kwargs['customEvents']
+        if 'customFieldIds' in kwargs:
+            custom_field_ids = kwargs['customFieldIds']
+        if 'customFloodlightVariables' in kwargs:
+            custom_floodlight_variables = kwargs['customFloodlightVariables']
+        if 'customReports' in kwargs:
+            custom_reports = kwargs['customReports']
+        if 'customTables' in kwargs:
+            custom_tables = kwargs['customTables']
+        if 'customerId' in kwargs:
+            customer_id = kwargs['customerId']
+        if 'customerListId' in kwargs:
+            customer_list_id = kwargs['customerListId']
+        if 'dailyApiCallLimit' in kwargs:
+            daily_api_call_limit = kwargs['dailyApiCallLimit']
+        if 'dataAccessMethod' in kwargs:
+            data_access_method = kwargs['dataAccessMethod']
+        if 'dataCenter' in kwargs:
+            data_center = kwargs['dataCenter']
+        if 'dataSetName' in kwargs:
+            data_set_name = kwargs['dataSetName']
+        if 'datasetId' in kwargs:
+            dataset_id = kwargs['datasetId']
+        if 'dateGranularity' in kwargs:
+            date_granularity = kwargs['dateGranularity']
+        if 'dimensionAttributes' in kwargs:
+            dimension_attributes = kwargs['dimensionAttributes']
+        if 'domainHostName' in kwargs:
+            domain_host_name = kwargs['domainHostName']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'domainType' in kwargs:
+            domain_type = kwargs['domainType']
+        if 'emptyHeader' in kwargs:
+            empty_header = kwargs['emptyHeader']
+        if 'enableAllDimensionCombinations' in kwargs:
+            enable_all_dimension_combinations = kwargs['enableAllDimensionCombinations']
+        if 'enableArchiveLogOnly' in kwargs:
+            enable_archive_log_only = kwargs['enableArchiveLogOnly']
+        if 'enableEnrichments' in kwargs:
+            enable_enrichments = kwargs['enableEnrichments']
+        if 'enableExports' in kwargs:
+            enable_exports = kwargs['enableExports']
+        if 'enableTde' in kwargs:
+            enable_tde = kwargs['enableTde']
+        if 'encodedPublicKey' in kwargs:
+            encoded_public_key = kwargs['encodedPublicKey']
+        if 'encryptionKey' in kwargs:
+            encryption_key = kwargs['encryptionKey']
+        if 'engagementAttributionWindow' in kwargs:
+            engagement_attribution_window = kwargs['engagementAttributionWindow']
+        if 'enrichedExport' in kwargs:
+            enriched_export = kwargs['enrichedExport']
+        if 'entityId' in kwargs:
+            entity_id = kwargs['entityId']
+        if 'escapeChar' in kwargs:
+            escape_char = kwargs['escapeChar']
+        if 'euRegion' in kwargs:
+            eu_region = kwargs['euRegion']
+        if 'exportStorageType' in kwargs:
+            export_storage_type = kwargs['exportStorageType']
+        if 'externalId' in kwargs:
+            external_id = kwargs['externalId']
+        if 'fileType' in kwargs:
+            file_type = kwargs['fileType']
+        if 'financeAccountSyncMode' in kwargs:
+            finance_account_sync_mode = kwargs['financeAccountSyncMode']
+        if 'financeAccounts' in kwargs:
+            finance_accounts = kwargs['financeAccounts']
+        if 'folderId' in kwargs:
+            folder_id = kwargs['folderId']
+        if 'folderPath' in kwargs:
+            folder_path = kwargs['folderPath']
+        if 'forecastId' in kwargs:
+            forecast_id = kwargs['forecastId']
+        if 'ftpHost' in kwargs:
+            ftp_host = kwargs['ftpHost']
+        if 'ftpPassword' in kwargs:
+            ftp_password = kwargs['ftpPassword']
+        if 'ftpPort' in kwargs:
+            ftp_port = kwargs['ftpPort']
+        if 'ftpUser' in kwargs:
+            ftp_user = kwargs['ftpUser']
+        if 'functionApp' in kwargs:
+            function_app = kwargs['functionApp']
+        if 'functionKey' in kwargs:
+            function_key = kwargs['functionKey']
+        if 'functionName' in kwargs:
+            function_name = kwargs['functionName']
+        if 'functionTrigger' in kwargs:
+            function_trigger = kwargs['functionTrigger']
+        if 'gcsBucket' in kwargs:
+            gcs_bucket = kwargs['gcsBucket']
+        if 'gcsFolder' in kwargs:
+            gcs_folder = kwargs['gcsFolder']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'hasManagePermissions' in kwargs:
+            has_manage_permissions = kwargs['hasManagePermissions']
+        if 'homeFolder' in kwargs:
+            home_folder = kwargs['homeFolder']
+        if 'hostIp' in kwargs:
+            host_ip = kwargs['hostIp']
+        if 'hostUser' in kwargs:
+            host_user = kwargs['hostUser']
+        if 'instanceNumber' in kwargs:
+            instance_number = kwargs['instanceNumber']
+        if 'instanceUrl' in kwargs:
+            instance_url = kwargs['instanceUrl']
+        if 'integrationKey' in kwargs:
+            integration_key = kwargs['integrationKey']
+        if 'isAccountLevelConnector' in kwargs:
+            is_account_level_connector = kwargs['isAccountLevelConnector']
+        if 'isAuth2Enabled' in kwargs:
+            is_auth2_enabled = kwargs['isAuth2Enabled']
+        if 'isCustomApiCredentials' in kwargs:
+            is_custom_api_credentials = kwargs['isCustomApiCredentials']
+        if 'isFtps' in kwargs:
+            is_ftps = kwargs['isFtps']
+        if 'isKeypair' in kwargs:
+            is_keypair = kwargs['isKeypair']
+        if 'isMultiEntityFeatureEnabled' in kwargs:
+            is_multi_entity_feature_enabled = kwargs['isMultiEntityFeatureEnabled']
+        if 'isNewPackage' in kwargs:
+            is_new_package = kwargs['isNewPackage']
+        if 'isPrivateKeyEncrypted' in kwargs:
+            is_private_key_encrypted = kwargs['isPrivateKeyEncrypted']
+        if 'isPrivateLinkRequired' in kwargs:
+            is_private_link_required = kwargs['isPrivateLinkRequired']
+        if 'isPublic' in kwargs:
+            is_public = kwargs['isPublic']
+        if 'isSailthruConnectEnabled' in kwargs:
+            is_sailthru_connect_enabled = kwargs['isSailthruConnectEnabled']
+        if 'isSecure' in kwargs:
+            is_secure = kwargs['isSecure']
+        if 'isSingleTableMode' in kwargs:
+            is_single_table_mode = kwargs['isSingleTableMode']
+        if 'isVendor' in kwargs:
+            is_vendor = kwargs['isVendor']
+        if 'jsonDeliveryMode' in kwargs:
+            json_delivery_mode = kwargs['jsonDeliveryMode']
+        if 'keyPassword' in kwargs:
+            key_password = kwargs['keyPassword']
+        if 'keyStoreType' in kwargs:
+            key_store_type = kwargs['keyStoreType']
+        if 'keystorePassword' in kwargs:
+            keystore_password = kwargs['keystorePassword']
+        if 'latestVersion' in kwargs:
+            latest_version = kwargs['latestVersion']
+        if 'lineSeparator' in kwargs:
+            line_separator = kwargs['lineSeparator']
+        if 'listStrategy' in kwargs:
+            list_strategy = kwargs['listStrategy']
+        if 'listSyncMode' in kwargs:
+            list_sync_mode = kwargs['listSyncMode']
+        if 'logJournal' in kwargs:
+            log_journal = kwargs['logJournal']
+        if 'logJournalSchema' in kwargs:
+            log_journal_schema = kwargs['logJournalSchema']
+        if 'loginPassword' in kwargs:
+            login_password = kwargs['loginPassword']
+        if 'managerAccounts' in kwargs:
+            manager_accounts = kwargs['managerAccounts']
+        if 'merchantId' in kwargs:
+            merchant_id = kwargs['merchantId']
+        if 'messageType' in kwargs:
+            message_type = kwargs['messageType']
+        if 'namedRange' in kwargs:
+            named_range = kwargs['namedRange']
+        if 'networkCode' in kwargs:
+            network_code = kwargs['networkCode']
+        if 'nullSequence' in kwargs:
+            null_sequence = kwargs['nullSequence']
+        if 'oauthToken' in kwargs:
+            oauth_token = kwargs['oauthToken']
+        if 'oauthTokenSecret' in kwargs:
+            oauth_token_secret = kwargs['oauthTokenSecret']
+        if 'onError' in kwargs:
+            on_error = kwargs['onError']
+        if 'onPremise' in kwargs:
+            on_premise = kwargs['onPremise']
+        if 'organizationId' in kwargs:
+            organization_id = kwargs['organizationId']
+        if 'packedModeTables' in kwargs:
+            packed_mode_tables = kwargs['packedModeTables']
+        if 'packingMode' in kwargs:
+            packing_mode = kwargs['packingMode']
+        if 'patName' in kwargs:
+            pat_name = kwargs['patName']
+        if 'patSecret' in kwargs:
+            pat_secret = kwargs['patSecret']
+        if 'pdbName' in kwargs:
+            pdb_name = kwargs['pdbName']
+        if 'pemCertificate' in kwargs:
+            pem_certificate = kwargs['pemCertificate']
+        if 'pemPrivateKey' in kwargs:
+            pem_private_key = kwargs['pemPrivateKey']
+        if 'perInteractionDimensions' in kwargs:
+            per_interaction_dimensions = kwargs['perInteractionDimensions']
+        if 'personalAccessToken' in kwargs:
+            personal_access_token = kwargs['personalAccessToken']
+        if 'pgpPassPhrase' in kwargs:
+            pgp_pass_phrase = kwargs['pgpPassPhrase']
+        if 'pgpSecretKey' in kwargs:
+            pgp_secret_key = kwargs['pgpSecretKey']
+        if 'phoneNumber' in kwargs:
+            phone_number = kwargs['phoneNumber']
+        if 'postClickAttributionWindowSize' in kwargs:
+            post_click_attribution_window_size = kwargs['postClickAttributionWindowSize']
+        if 'prebuiltReport' in kwargs:
+            prebuilt_report = kwargs['prebuiltReport']
+        if 'primaryKeys' in kwargs:
+            primary_keys = kwargs['primaryKeys']
+        if 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if 'projectCredentials' in kwargs:
+            project_credentials = kwargs['projectCredentials']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if 'publicationName' in kwargs:
+            publication_name = kwargs['publicationName']
+        if 'queryId' in kwargs:
+            query_id = kwargs['queryId']
+        if 'queryParamValue' in kwargs:
+            query_param_value = kwargs['queryParamValue']
+        if 'refreshTokenExpiresAt' in kwargs:
+            refresh_token_expires_at = kwargs['refreshTokenExpiresAt']
+        if 'replicaId' in kwargs:
+            replica_id = kwargs['replicaId']
+        if 'replicationSlot' in kwargs:
+            replication_slot = kwargs['replicationSlot']
+        if 'reportConfigurationIds' in kwargs:
+            report_configuration_ids = kwargs['reportConfigurationIds']
+        if 'reportFormatType' in kwargs:
+            report_format_type = kwargs['reportFormatType']
+        if 'reportSuites' in kwargs:
+            report_suites = kwargs['reportSuites']
+        if 'reportTimezone' in kwargs:
+            report_timezone = kwargs['reportTimezone']
+        if 'reportType' in kwargs:
+            report_type = kwargs['reportType']
+        if 'reportUrl' in kwargs:
+            report_url = kwargs['reportUrl']
+        if 'reportsLinkedinAds' in kwargs:
+            reports_linkedin_ads = kwargs['reportsLinkedinAds']
+        if 'resourceToken' in kwargs:
+            resource_token = kwargs['resourceToken']
+        if 'resourceUrl' in kwargs:
+            resource_url = kwargs['resourceUrl']
+        if 'restApiLimit' in kwargs:
+            rest_api_limit = kwargs['restApiLimit']
+        if 'rfcLibraryPath' in kwargs:
+            rfc_library_path = kwargs['rfcLibraryPath']
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if 'rollbackWindowSize' in kwargs:
+            rollback_window_size = kwargs['rollbackWindowSize']
+        if 's3Bucket' in kwargs:
+            s3_bucket = kwargs['s3Bucket']
+        if 's3ExportBucket' in kwargs:
+            s3_export_bucket = kwargs['s3ExportBucket']
+        if 's3ExportFolder' in kwargs:
+            s3_export_folder = kwargs['s3ExportFolder']
+        if 's3ExportRoleArn' in kwargs:
+            s3_export_role_arn = kwargs['s3ExportRoleArn']
+        if 's3RoleArn' in kwargs:
+            s3_role_arn = kwargs['s3RoleArn']
+        if 's3externalId' in kwargs:
+            s3external_id = kwargs['s3externalId']
+        if 's3roleArn' in kwargs:
+            s3role_arn = kwargs['s3roleArn']
+        if 'salesAccountSyncMode' in kwargs:
+            sales_account_sync_mode = kwargs['salesAccountSyncMode']
+        if 'salesAccounts' in kwargs:
+            sales_accounts = kwargs['salesAccounts']
+        if 'salesforceSecurityToken' in kwargs:
+            salesforce_security_token = kwargs['salesforceSecurityToken']
+        if 'sandboxAccount' in kwargs:
+            sandbox_account = kwargs['sandboxAccount']
+        if 'sapSchema' in kwargs:
+            sap_schema = kwargs['sapSchema']
+        if 'sapUser' in kwargs:
+            sap_user = kwargs['sapUser']
+        if 'saslMechanism' in kwargs:
+            sasl_mechanism = kwargs['saslMechanism']
+        if 'saslPlainKey' in kwargs:
+            sasl_plain_key = kwargs['saslPlainKey']
+        if 'saslPlainSecret' in kwargs:
+            sasl_plain_secret = kwargs['saslPlainSecret']
+        if 'saslScram256Key' in kwargs:
+            sasl_scram256_key = kwargs['saslScram256Key']
+        if 'saslScram256Secret' in kwargs:
+            sasl_scram256_secret = kwargs['saslScram256Secret']
+        if 'saslScram512Key' in kwargs:
+            sasl_scram512_key = kwargs['saslScram512Key']
+        if 'saslScram512Secret' in kwargs:
+            sasl_scram512_secret = kwargs['saslScram512Secret']
+        if 'schemaRegistryCredentialsSource' in kwargs:
+            schema_registry_credentials_source = kwargs['schemaRegistryCredentialsSource']
+        if 'schemaRegistryKey' in kwargs:
+            schema_registry_key = kwargs['schemaRegistryKey']
+        if 'schemaRegistrySecret' in kwargs:
+            schema_registry_secret = kwargs['schemaRegistrySecret']
+        if 'schemaRegistryUrls' in kwargs:
+            schema_registry_urls = kwargs['schemaRegistryUrls']
+        if 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if 'secretsLists' in kwargs:
+            secrets_lists = kwargs['secretsLists']
+        if 'securityProtocol' in kwargs:
+            security_protocol = kwargs['securityProtocol']
+        if 'selectedExports' in kwargs:
+            selected_exports = kwargs['selectedExports']
+        if 'senderId' in kwargs:
+            sender_id = kwargs['senderId']
+        if 'senderPassword' in kwargs:
+            sender_password = kwargs['senderPassword']
+        if 'serverAddress' in kwargs:
+            server_address = kwargs['serverAddress']
+        if 'serverUrl' in kwargs:
+            server_url = kwargs['serverUrl']
+        if 'serviceAccount' in kwargs:
+            service_account = kwargs['serviceAccount']
+        if 'serviceAccountEmail' in kwargs:
+            service_account_email = kwargs['serviceAccountEmail']
+        if 'serviceAccountKey' in kwargs:
+            service_account_key = kwargs['serviceAccountKey']
+        if 'serviceVersion' in kwargs:
+            service_version = kwargs['serviceVersion']
+        if 'sftpHost' in kwargs:
+            sftp_host = kwargs['sftpHost']
+        if 'sftpIsKeyPair' in kwargs:
+            sftp_is_key_pair = kwargs['sftpIsKeyPair']
+        if 'sftpPassword' in kwargs:
+            sftp_password = kwargs['sftpPassword']
+        if 'sftpPort' in kwargs:
+            sftp_port = kwargs['sftpPort']
+        if 'sftpPublicKey' in kwargs:
+            sftp_public_key = kwargs['sftpPublicKey']
+        if 'sftpUser' in kwargs:
+            sftp_user = kwargs['sftpUser']
+        if 'shareUrl' in kwargs:
+            share_url = kwargs['shareUrl']
+        if 'sheetId' in kwargs:
+            sheet_id = kwargs['sheetId']
+        if 'shortCode' in kwargs:
+            short_code = kwargs['shortCode']
+        if 'showRecordsWithNoMetrics' in kwargs:
+            show_records_with_no_metrics = kwargs['showRecordsWithNoMetrics']
+        if 'signerPublicKey' in kwargs:
+            signer_public_key = kwargs['signerPublicKey']
+        if 'siteAddress' in kwargs:
+            site_address = kwargs['siteAddress']
+        if 'siteId' in kwargs:
+            site_id = kwargs['siteId']
+        if 'siteName' in kwargs:
+            site_name = kwargs['siteName']
+        if 'siteUrls' in kwargs:
+            site_urls = kwargs['siteUrls']
+        if 'skipAfter' in kwargs:
+            skip_after = kwargs['skipAfter']
+        if 'skipBefore' in kwargs:
+            skip_before = kwargs['skipBefore']
+        if 'soapUri' in kwargs:
+            soap_uri = kwargs['soapUri']
+        if 'socialDataSyncTimeframe' in kwargs:
+            social_data_sync_timeframe = kwargs['socialDataSyncTimeframe']
+        if 'storeHash' in kwargs:
+            store_hash = kwargs['storeHash']
+        if 'subDomain' in kwargs:
+            sub_domain = kwargs['subDomain']
+        if 'subscriberName' in kwargs:
+            subscriber_name = kwargs['subscriberName']
+        if 'supportConnectedAccountsSync' in kwargs:
+            support_connected_accounts_sync = kwargs['supportConnectedAccountsSync']
+        if 'supportNestedColumns' in kwargs:
+            support_nested_columns = kwargs['supportNestedColumns']
+        if 'surveyIds' in kwargs:
+            survey_ids = kwargs['surveyIds']
+        if 'swipeAttributionWindow' in kwargs:
+            swipe_attribution_window = kwargs['swipeAttributionWindow']
+        if 'syncDataLocker' in kwargs:
+            sync_data_locker = kwargs['syncDataLocker']
+        if 'syncFormat' in kwargs:
+            sync_format = kwargs['syncFormat']
+        if 'syncFormulaFields' in kwargs:
+            sync_formula_fields = kwargs['syncFormulaFields']
+        if 'syncMetadata' in kwargs:
+            sync_metadata = kwargs['syncMetadata']
+        if 'syncMethod' in kwargs:
+            sync_method = kwargs['syncMethod']
+        if 'syncMode' in kwargs:
+            sync_mode = kwargs['syncMode']
+        if 'syncMultipleAccounts' in kwargs:
+            sync_multiple_accounts = kwargs['syncMultipleAccounts']
+        if 'syncPackMode' in kwargs:
+            sync_pack_mode = kwargs['syncPackMode']
+        if 'syncPullApi' in kwargs:
+            sync_pull_api = kwargs['syncPullApi']
+        if 'syncType' in kwargs:
+            sync_type = kwargs['syncType']
+        if 'tableName' in kwargs:
+            table_name = kwargs['tableName']
+        if 'tdeCertificate' in kwargs:
+            tde_certificate = kwargs['tdeCertificate']
+        if 'tdeCertificateName' in kwargs:
+            tde_certificate_name = kwargs['tdeCertificateName']
+        if 'tdePassword' in kwargs:
+            tde_password = kwargs['tdePassword']
+        if 'tdePrivateKey' in kwargs:
+            tde_private_key = kwargs['tdePrivateKey']
+        if 'teamId' in kwargs:
+            team_id = kwargs['teamId']
+        if 'technicalAccountId' in kwargs:
+            technical_account_id = kwargs['technicalAccountId']
+        if 'templateLabels' in kwargs:
+            template_labels = kwargs['templateLabels']
+        if 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if 'testTableName' in kwargs:
+            test_table_name = kwargs['testTableName']
+        if 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+        if 'timeframeMonths' in kwargs:
+            timeframe_months = kwargs['timeframeMonths']
+        if 'tokenAuthenticatedContainer' in kwargs:
+            token_authenticated_container = kwargs['tokenAuthenticatedContainer']
+        if 'tokenAuthenticatedDatabase' in kwargs:
+            token_authenticated_database = kwargs['tokenAuthenticatedDatabase']
+        if 'tokenId' in kwargs:
+            token_id = kwargs['tokenId']
+        if 'tokenKey' in kwargs:
+            token_key = kwargs['tokenKey']
+        if 'tokenSecret' in kwargs:
+            token_secret = kwargs['tokenSecret']
+        if 'tokenSecretKey' in kwargs:
+            token_secret_key = kwargs['tokenSecretKey']
+        if 'trustStoreType' in kwargs:
+            trust_store_type = kwargs['trustStoreType']
+        if 'trustedCert' in kwargs:
+            trusted_cert = kwargs['trustedCert']
+        if 'tunnelHost' in kwargs:
+            tunnel_host = kwargs['tunnelHost']
+        if 'tunnelPort' in kwargs:
+            tunnel_port = kwargs['tunnelPort']
+        if 'tunnelUser' in kwargs:
+            tunnel_user = kwargs['tunnelUser']
+        if 'uniqueId' in kwargs:
+            unique_id = kwargs['uniqueId']
+        if 'updateConfigOnEachSync' in kwargs:
+            update_config_on_each_sync = kwargs['updateConfigOnEachSync']
+        if 'updateMethod' in kwargs:
+            update_method = kwargs['updateMethod']
+        if 'useApiKeys' in kwargs:
+            use_api_keys = kwargs['useApiKeys']
+        if 'useCustomerBucket' in kwargs:
+            use_customer_bucket = kwargs['useCustomerBucket']
+        if 'useOracleRac' in kwargs:
+            use_oracle_rac = kwargs['useOracleRac']
+        if 'usePgpEncryptionOptions' in kwargs:
+            use_pgp_encryption_options = kwargs['usePgpEncryptionOptions']
+        if 'useServiceAccount' in kwargs:
+            use_service_account = kwargs['useServiceAccount']
+        if 'useTemplateLabels' in kwargs:
+            use_template_labels = kwargs['useTemplateLabels']
+        if 'useWebhooks' in kwargs:
+            use_webhooks = kwargs['useWebhooks']
+        if 'useWorkspace' in kwargs:
+            use_workspace = kwargs['useWorkspace']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if 'userKey' in kwargs:
+            user_key = kwargs['userKey']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+        if 'userProfiles' in kwargs:
+            user_profiles = kwargs['userProfiles']
+        if 'viewAttributionWindow' in kwargs:
+            view_attribution_window = kwargs['viewAttributionWindow']
+        if 'viewThroughAttributionWindowSize' in kwargs:
+            view_through_attribution_window_size = kwargs['viewThroughAttributionWindowSize']
+        if 'webhookEndpoint' in kwargs:
+            webhook_endpoint = kwargs['webhookEndpoint']
+        if 'webhookKey' in kwargs:
+            webhook_key = kwargs['webhookKey']
+        if 'webhookUrl' in kwargs:
+            webhook_url = kwargs['webhookUrl']
+        if 'wordPressSiteIdOrWoocommerceDomainName' in kwargs:
+            word_press_site_id_or_woocommerce_domain_name = kwargs['wordPressSiteIdOrWoocommerceDomainName']
+        if 'workspaceName' in kwargs:
+            workspace_name = kwargs['workspaceName']
+        if 'workspaceSameAsSource' in kwargs:
+            workspace_same_as_source = kwargs['workspaceSameAsSource']
+        if 'workspaceSchema' in kwargs:
+            workspace_schema = kwargs['workspaceSchema']
+        if 'wsCertificate' in kwargs:
+            ws_certificate = kwargs['wsCertificate']
+
+        _setter("abs_connection_method", abs_connection_method)
+        _setter("abs_connection_string", abs_connection_string)
+        _setter("abs_container_address", abs_container_address)
+        _setter("abs_container_name", abs_container_name)
+        _setter("abs_host_ip", abs_host_ip)
+        _setter("abs_host_user", abs_host_user)
+        _setter("abs_prefix", abs_prefix)
+        _setter("abs_public_key", abs_public_key)
+        _setter("access_key", access_key)
+        _setter("access_key_id", access_key_id)
+        _setter("access_key_secret", access_key_secret)
+        _setter("access_token", access_token)
+        _setter("access_type", access_type)
+        _setter("account", account)
+        _setter("account_id", account_id)
+        _setter("account_ids", account_ids)
+        _setter("account_key", account_key)
+        _setter("account_name", account_name)
+        _setter("account_sync_mode", account_sync_mode)
+        _setter("accounts", accounts)
+        _setter("accounts_reddit_ads", accounts_reddit_ads)
+        _setter("accounts_sync_mode", accounts_sync_mode)
+        _setter("action_breakdowns", action_breakdowns)
+        _setter("action_report_time", action_report_time)
+        _setter("ad_analytics", ad_analytics)
+        _setter("ad_unit_view", ad_unit_view)
+        _setter("admin_api_key", admin_api_key)
+        _setter("adobe_analytics_configurations", adobe_analytics_configurations)
+        _setter("advertisables", advertisables)
+        _setter("advertisers", advertisers)
+        _setter("advertisers_ids", advertisers_ids)
+        _setter("advertisers_sync_mode", advertisers_sync_mode)
+        _setter("agent_host", agent_host)
+        _setter("agent_ora_home", agent_ora_home)
+        _setter("agent_password", agent_password)
+        _setter("agent_port", agent_port)
+        _setter("agent_public_cert", agent_public_cert)
+        _setter("agent_user", agent_user)
+        _setter("aggregation", aggregation)
+        _setter("always_encrypted", always_encrypted)
+        _setter("api_access_token", api_access_token)
+        _setter("api_id", api_id)
+        _setter("api_key", api_key)
+        _setter("api_keys", api_keys)
+        _setter("api_quota", api_quota)
+        _setter("api_requests_per_minute", api_requests_per_minute)
+        _setter("api_secret", api_secret)
+        _setter("api_secret_key", api_secret_key)
+        _setter("api_token", api_token)
+        _setter("api_type", api_type)
+        _setter("api_url", api_url)
+        _setter("api_usage", api_usage)
+        _setter("api_version", api_version)
+        _setter("app_id", app_id)
+        _setter("app_ids", app_ids)
+        _setter("app_ids_appsflyers", app_ids_appsflyers)
+        _setter("app_specific_password", app_specific_password)
+        _setter("app_sync_mode", app_sync_mode)
+        _setter("append_file_option", append_file_option)
+        _setter("application_key", application_key)
+        _setter("apps", apps)
+        _setter("archive_log_format", archive_log_format)
+        _setter("archive_log_path", archive_log_path)
+        _setter("archive_pattern", archive_pattern)
+        _setter("are_soap_credentials_provided", are_soap_credentials_provided)
+        _setter("asb_ip", asb_ip)
+        _setter("asm_option", asm_option)
+        _setter("asm_oracle_home", asm_oracle_home)
+        _setter("asm_password", asm_password)
+        _setter("asm_tns", asm_tns)
+        _setter("asm_user", asm_user)
+        _setter("attribution_window", attribution_window)
+        _setter("attribution_window_size", attribution_window_size)
+        _setter("auth", auth)
+        _setter("auth_method", auth_method)
+        _setter("auth_mode", auth_mode)
+        _setter("auth_type", auth_type)
+        _setter("authorization_method", authorization_method)
+        _setter("aws_region_code", aws_region_code)
+        _setter("base_currency", base_currency)
+        _setter("base_domain", base_domain)
+        _setter("base_id", base_id)
+        _setter("base_url", base_url)
+        _setter("bearer_token", bearer_token)
+        _setter("blob_sas_url", blob_sas_url)
+        _setter("breakdowns", breakdowns)
+        _setter("bucket", bucket)
+        _setter("bucket_name", bucket_name)
+        _setter("bucket_service", bucket_service)
+        _setter("business_id", business_id)
+        _setter("business_unit_id", business_unit_id)
+        _setter("certificate", certificate)
+        _setter("click_attribution_window", click_attribution_window)
+        _setter("client", client)
+        _setter("client_cert", client_cert)
+        _setter("client_cert_key", client_cert_key)
+        _setter("client_id", client_id)
+        _setter("client_key", client_key)
+        _setter("client_name", client_name)
+        _setter("client_secret", client_secret)
+        _setter("cloud_storage_type", cloud_storage_type)
+        _setter("columns", columns)
+        _setter("company_id", company_id)
+        _setter("company_key", company_key)
+        _setter("company_request_token", company_request_token)
+        _setter("company_uuid", company_uuid)
+        _setter("compression", compression)
+        _setter("config_method", config_method)
+        _setter("config_repository_url", config_repository_url)
+        _setter("config_type", config_type)
+        _setter("connecting_user", connecting_user)
+        _setter("connecting_user_email", connecting_user_email)
+        _setter("connection_method", connection_method)
+        _setter("connection_string", connection_string)
+        _setter("connection_type", connection_type)
+        _setter("consumer_group", consumer_group)
+        _setter("consumer_key", consumer_key)
+        _setter("consumer_secret", consumer_secret)
+        _setter("container_address", container_address)
+        _setter("container_name", container_name)
+        _setter("content_owner_id", content_owner_id)
+        _setter("conversation_webhook_url", conversation_webhook_url)
+        _setter("conversion_dimensions", conversion_dimensions)
+        _setter("conversion_report_time", conversion_report_time)
+        _setter("conversion_window_size", conversion_window_size)
+        _setter("csv_definition", csv_definition)
+        _setter("currency", currency)
+        _setter("custom_event_sync_mode", custom_event_sync_mode)
+        _setter("custom_events", custom_events)
+        _setter("custom_field_ids", custom_field_ids)
+        _setter("custom_floodlight_variables", custom_floodlight_variables)
+        _setter("custom_reports", custom_reports)
+        _setter("custom_tables", custom_tables)
+        _setter("customer_id", customer_id)
+        _setter("customer_list_id", customer_list_id)
+        _setter("daily_api_call_limit", daily_api_call_limit)
+        _setter("data_access_method", data_access_method)
+        _setter("data_center", data_center)
+        _setter("data_set_name", data_set_name)
+        _setter("database", database)
+        _setter("dataset_id", dataset_id)
+        _setter("datasource", datasource)
+        _setter("date_granularity", date_granularity)
+        _setter("delimiter", delimiter)
+        _setter("dimension_attributes", dimension_attributes)
+        _setter("dimensions", dimensions)
+        _setter("domain", domain)
+        _setter("domain_host_name", domain_host_name)
+        _setter("domain_name", domain_name)
+        _setter("domain_type", domain_type)
+        _setter("elements", elements)
+        _setter("email", email)
+        _setter("empty_header", empty_header)
+        _setter("enable_all_dimension_combinations", enable_all_dimension_combinations)
+        _setter("enable_archive_log_only", enable_archive_log_only)
+        _setter("enable_enrichments", enable_enrichments)
+        _setter("enable_exports", enable_exports)
+        _setter("enable_tde", enable_tde)
+        _setter("encoded_public_key", encoded_public_key)
+        _setter("encryption_key", encryption_key)
+        _setter("endpoint", endpoint)
+        _setter("engagement_attribution_window", engagement_attribution_window)
+        _setter("enriched_export", enriched_export)
+        _setter("entity_id", entity_id)
+        _setter("environment", environment)
+        _setter("escape_char", escape_char)
+        _setter("eu_region", eu_region)
+        _setter("events", events)
+        _setter("export_storage_type", export_storage_type)
+        _setter("external_id", external_id)
+        _setter("fields", fields)
+        _setter("file_type", file_type)
+        _setter("filter", filter)
+        _setter("finance_account_sync_mode", finance_account_sync_mode)
+        _setter("finance_accounts", finance_accounts)
+        _setter("folder", folder)
+        _setter("folder_id", folder_id)
+        _setter("folder_path", folder_path)
+        _setter("forecast_id", forecast_id)
+        _setter("ftp_host", ftp_host)
+        _setter("ftp_password", ftp_password)
+        _setter("ftp_port", ftp_port)
+        _setter("ftp_user", ftp_user)
+        _setter("function", function)
+        _setter("function_app", function_app)
+        _setter("function_key", function_key)
+        _setter("function_name", function_name)
+        _setter("function_trigger", function_trigger)
+        _setter("gcs_bucket", gcs_bucket)
+        _setter("gcs_folder", gcs_folder)
+        _setter("group_name", group_name)
+        _setter("has_manage_permissions", has_manage_permissions)
+        _setter("home_folder", home_folder)
+        _setter("host", host)
+        _setter("host_ip", host_ip)
+        _setter("host_user", host_user)
+        _setter("hosts", hosts)
+        _setter("identity", identity)
+        _setter("instance", instance)
+        _setter("instance_number", instance_number)
+        _setter("instance_url", instance_url)
+        _setter("integration_key", integration_key)
+        _setter("is_account_level_connector", is_account_level_connector)
+        _setter("is_auth2_enabled", is_auth2_enabled)
+        _setter("is_custom_api_credentials", is_custom_api_credentials)
+        _setter("is_ftps", is_ftps)
+        _setter("is_keypair", is_keypair)
+        _setter("is_multi_entity_feature_enabled", is_multi_entity_feature_enabled)
+        _setter("is_new_package", is_new_package)
+        _setter("is_private_key_encrypted", is_private_key_encrypted)
+        _setter("is_private_link_required", is_private_link_required)
+        _setter("is_public", is_public)
+        _setter("is_sailthru_connect_enabled", is_sailthru_connect_enabled)
+        _setter("is_secure", is_secure)
+        _setter("is_single_table_mode", is_single_table_mode)
+        _setter("is_vendor", is_vendor)
+        _setter("json_delivery_mode", json_delivery_mode)
+        _setter("key", key)
+        _setter("key_password", key_password)
+        _setter("key_store_type", key_store_type)
+        _setter("keystore", keystore)
+        _setter("keystore_password", keystore_password)
+        _setter("last_synced_changes_utc", last_synced_changes_utc)
+        _setter("latest_version", latest_version)
+        _setter("line_separator", line_separator)
+        _setter("list_strategy", list_strategy)
+        _setter("list_sync_mode", list_sync_mode)
+        _setter("log_journal", log_journal)
+        _setter("log_journal_schema", log_journal_schema)
+        _setter("login", login)
+        _setter("login_password", login_password)
+        _setter("manager_accounts", manager_accounts)
+        _setter("merchant_id", merchant_id)
+        _setter("message_type", message_type)
+        _setter("metrics", metrics)
+        _setter("named_range", named_range)
+        _setter("namespace", namespace)
+        _setter("network_code", network_code)
+        _setter("null_sequence", null_sequence)
+        _setter("oauth_token", oauth_token)
+        _setter("oauth_token_secret", oauth_token_secret)
+        _setter("on_error", on_error)
+        _setter("on_premise", on_premise)
+        _setter("organization", organization)
+        _setter("organization_id", organization_id)
+        _setter("organizations", organizations)
+        _setter("packed_mode_tables", packed_mode_tables)
+        _setter("packing_mode", packing_mode)
+        _setter("pages", pages)
+        _setter("partners", partners)
+        _setter("passphrase", passphrase)
+        _setter("password", password)
+        _setter("pat", pat)
+        _setter("pat_name", pat_name)
+        _setter("pat_secret", pat_secret)
+        _setter("path", path)
+        _setter("pattern", pattern)
+        _setter("pdb_name", pdb_name)
+        _setter("pem_certificate", pem_certificate)
+        _setter("pem_private_key", pem_private_key)
+        _setter("per_interaction_dimensions", per_interaction_dimensions)
+        _setter("personal_access_token", personal_access_token)
+        _setter("pgp_pass_phrase", pgp_pass_phrase)
+        _setter("pgp_secret_key", pgp_secret_key)
+        _setter("phone_number", phone_number)
+        _setter("port", port)
+        _setter("post_click_attribution_window_size", post_click_attribution_window_size)
+        _setter("prebuilt_report", prebuilt_report)
+        _setter("prefix", prefix)
+        _setter("primary_keys", primary_keys)
+        _setter("private_key", private_key)
+        _setter("profiles", profiles)
+        _setter("project_credentials", project_credentials)
+        _setter("project_id", project_id)
+        _setter("projects", projects)
+        _setter("properties", properties)
+        _setter("public_key", public_key)
+        _setter("publication_name", publication_name)
+        _setter("query_id", query_id)
+        _setter("query_param_value", query_param_value)
+        _setter("refresh_token_expires_at", refresh_token_expires_at)
+        _setter("region", region)
+        _setter("replica_id", replica_id)
+        _setter("replication_slot", replication_slot)
+        _setter("report_configuration_ids", report_configuration_ids)
+        _setter("report_format_type", report_format_type)
+        _setter("report_suites", report_suites)
+        _setter("report_timezone", report_timezone)
+        _setter("report_type", report_type)
+        _setter("report_url", report_url)
+        _setter("reports", reports)
+        _setter("reports_linkedin_ads", reports_linkedin_ads)
+        _setter("repositories", repositories)
+        _setter("resource_token", resource_token)
+        _setter("resource_url", resource_url)
+        _setter("rest_api_limit", rest_api_limit)
+        _setter("rfc_library_path", rfc_library_path)
+        _setter("role", role)
+        _setter("role_arn", role_arn)
+        _setter("rollback_window_size", rollback_window_size)
+        _setter("s3_bucket", s3_bucket)
+        _setter("s3_export_bucket", s3_export_bucket)
+        _setter("s3_export_folder", s3_export_folder)
+        _setter("s3_export_role_arn", s3_export_role_arn)
+        _setter("s3_role_arn", s3_role_arn)
+        _setter("s3bucket", s3bucket)
+        _setter("s3external_id", s3external_id)
+        _setter("s3folder", s3folder)
+        _setter("s3path", s3path)
+        _setter("s3role_arn", s3role_arn)
+        _setter("sales_account_sync_mode", sales_account_sync_mode)
+        _setter("sales_accounts", sales_accounts)
+        _setter("salesforce_security_token", salesforce_security_token)
+        _setter("sandbox_account", sandbox_account)
+        _setter("sap_schema", sap_schema)
+        _setter("sap_user", sap_user)
+        _setter("sasl_mechanism", sasl_mechanism)
+        _setter("sasl_plain_key", sasl_plain_key)
+        _setter("sasl_plain_secret", sasl_plain_secret)
+        _setter("sasl_scram256_key", sasl_scram256_key)
+        _setter("sasl_scram256_secret", sasl_scram256_secret)
+        _setter("sasl_scram512_key", sasl_scram512_key)
+        _setter("sasl_scram512_secret", sasl_scram512_secret)
+        _setter("schema_registry_credentials_source", schema_registry_credentials_source)
+        _setter("schema_registry_key", schema_registry_key)
+        _setter("schema_registry_secret", schema_registry_secret)
+        _setter("schema_registry_urls", schema_registry_urls)
+        _setter("secret", secret)
+        _setter("secret_key", secret_key)
+        _setter("secrets", secrets)
+        _setter("secrets_lists", secrets_lists)
+        _setter("security_protocol", security_protocol)
+        _setter("segments", segments)
+        _setter("selected_exports", selected_exports)
+        _setter("sender_id", sender_id)
+        _setter("sender_password", sender_password)
+        _setter("server_address", server_address)
+        _setter("server_url", server_url)
+        _setter("servers", servers)
+        _setter("service_account", service_account)
+        _setter("service_account_email", service_account_email)
+        _setter("service_account_key", service_account_key)
+        _setter("service_version", service_version)
+        _setter("sftp_host", sftp_host)
+        _setter("sftp_is_key_pair", sftp_is_key_pair)
+        _setter("sftp_password", sftp_password)
+        _setter("sftp_port", sftp_port)
+        _setter("sftp_public_key", sftp_public_key)
+        _setter("sftp_user", sftp_user)
+        _setter("share_url", share_url)
+        _setter("sheet_id", sheet_id)
+        _setter("shop", shop)
+        _setter("short_code", short_code)
+        _setter("show_records_with_no_metrics", show_records_with_no_metrics)
+        _setter("sid", sid)
+        _setter("signer_public_key", signer_public_key)
+        _setter("site_address", site_address)
+        _setter("site_id", site_id)
+        _setter("site_name", site_name)
+        _setter("site_urls", site_urls)
+        _setter("skip_after", skip_after)
+        _setter("skip_before", skip_before)
+        _setter("soap_uri", soap_uri)
+        _setter("social_data_sync_timeframe", social_data_sync_timeframe)
+        _setter("source", source)
+        _setter("store_hash", store_hash)
+        _setter("sub_domain", sub_domain)
+        _setter("subdomain", subdomain)
+        _setter("subscriber_name", subscriber_name)
+        _setter("subscription", subscription)
+        _setter("support_connected_accounts_sync", support_connected_accounts_sync)
+        _setter("support_nested_columns", support_nested_columns)
+        _setter("survey_ids", survey_ids)
+        _setter("swipe_attribution_window", swipe_attribution_window)
+        _setter("sync_data_locker", sync_data_locker)
+        _setter("sync_format", sync_format)
+        _setter("sync_formula_fields", sync_formula_fields)
+        _setter("sync_metadata", sync_metadata)
+        _setter("sync_method", sync_method)
+        _setter("sync_mode", sync_mode)
+        _setter("sync_multiple_accounts", sync_multiple_accounts)
+        _setter("sync_pack_mode", sync_pack_mode)
+        _setter("sync_pull_api", sync_pull_api)
+        _setter("sync_type", sync_type)
+        _setter("sysnr", sysnr)
+        _setter("table_name", table_name)
+        _setter("tde_certificate", tde_certificate)
+        _setter("tde_certificate_name", tde_certificate_name)
+        _setter("tde_password", tde_password)
+        _setter("tde_private_key", tde_private_key)
+        _setter("team_id", team_id)
+        _setter("technical_account_id", technical_account_id)
+        _setter("template_labels", template_labels)
+        _setter("tenant_id", tenant_id)
+        _setter("test_table_name", test_table_name)
+        _setter("time_zone", time_zone)
+        _setter("timeframe_months", timeframe_months)
+        _setter("tns", tns)
+        _setter("token_authenticated_container", token_authenticated_container)
+        _setter("token_authenticated_database", token_authenticated_database)
+        _setter("token_id", token_id)
+        _setter("token_key", token_key)
+        _setter("token_secret", token_secret)
+        _setter("token_secret_key", token_secret_key)
+        _setter("topics", topics)
+        _setter("trust_store_type", trust_store_type)
+        _setter("trusted_cert", trusted_cert)
+        _setter("truststore", truststore)
+        _setter("tunnel_host", tunnel_host)
+        _setter("tunnel_port", tunnel_port)
+        _setter("tunnel_user", tunnel_user)
+        _setter("unique_id", unique_id)
+        _setter("update_config_on_each_sync", update_config_on_each_sync)
+        _setter("update_method", update_method)
+        _setter("uri", uri)
+        _setter("use_api_keys", use_api_keys)
+        _setter("use_customer_bucket", use_customer_bucket)
+        _setter("use_oracle_rac", use_oracle_rac)
+        _setter("use_pgp_encryption_options", use_pgp_encryption_options)
+        _setter("use_service_account", use_service_account)
+        _setter("use_template_labels", use_template_labels)
+        _setter("use_webhooks", use_webhooks)
+        _setter("use_workspace", use_workspace)
+        _setter("user", user)
+        _setter("user_id", user_id)
+        _setter("user_key", user_key)
+        _setter("user_name", user_name)
+        _setter("user_profiles", user_profiles)
+        _setter("username", username)
+        _setter("view_attribution_window", view_attribution_window)
+        _setter("view_through_attribution_window_size", view_through_attribution_window_size)
+        _setter("webhook_endpoint", webhook_endpoint)
+        _setter("webhook_key", webhook_key)
+        _setter("webhook_url", webhook_url)
+        _setter("word_press_site_id_or_woocommerce_domain_name", word_press_site_id_or_woocommerce_domain_name)
+        _setter("workspace_name", workspace_name)
+        _setter("workspace_same_as_source", workspace_same_as_source)
+        _setter("workspace_schema", workspace_schema)
+        _setter("ws_certificate", ws_certificate)
 
     @property
     @pulumi.getter(name="absConnectionMethod")
@@ -8666,6 +13772,15 @@ class GetConnectorConfigArgs:
         pulumi.set(self, "click_attribution_window", value)
 
     @property
+    @pulumi.getter
+    def client(self) -> str:
+        return pulumi.get(self, "client")
+
+    @client.setter
+    def client(self, value: str):
+        pulumi.set(self, "client", value)
+
+    @property
     @pulumi.getter(name="clientCert")
     def client_cert(self) -> str:
         return pulumi.get(self, "client_cert")
@@ -8754,6 +13869,24 @@ class GetConnectorConfigArgs:
     @company_key.setter
     def company_key(self, value: str):
         pulumi.set(self, "company_key", value)
+
+    @property
+    @pulumi.getter(name="companyRequestToken")
+    def company_request_token(self) -> str:
+        return pulumi.get(self, "company_request_token")
+
+    @company_request_token.setter
+    def company_request_token(self, value: str):
+        pulumi.set(self, "company_request_token", value)
+
+    @property
+    @pulumi.getter(name="companyUuid")
+    def company_uuid(self) -> str:
+        return pulumi.get(self, "company_uuid")
+
+    @company_uuid.setter
+    def company_uuid(self, value: str):
+        pulumi.set(self, "company_uuid", value)
 
     @property
     @pulumi.getter
@@ -9800,13 +14933,13 @@ class GetConnectorConfigArgs:
         pulumi.set(self, "keystore_password", value)
 
     @property
-    @pulumi.getter(name="lastSyncedChangesUtc_")
-    def last_synced_changes_utc_(self) -> str:
-        return pulumi.get(self, "last_synced_changes_utc_")
+    @pulumi.getter
+    def last_synced_changes_utc(self) -> str:
+        return pulumi.get(self, "last_synced_changes_utc")
 
-    @last_synced_changes_utc_.setter
-    def last_synced_changes_utc_(self, value: str):
-        pulumi.set(self, "last_synced_changes_utc_", value)
+    @last_synced_changes_utc.setter
+    def last_synced_changes_utc(self, value: str):
+        pulumi.set(self, "last_synced_changes_utc", value)
 
     @property
     @pulumi.getter(name="latestVersion")
@@ -10077,6 +15210,24 @@ class GetConnectorConfigArgs:
     @pat.setter
     def pat(self, value: str):
         pulumi.set(self, "pat", value)
+
+    @property
+    @pulumi.getter(name="patName")
+    def pat_name(self) -> str:
+        return pulumi.get(self, "pat_name")
+
+    @pat_name.setter
+    def pat_name(self, value: str):
+        pulumi.set(self, "pat_name", value)
+
+    @property
+    @pulumi.getter(name="patSecret")
+    def pat_secret(self) -> str:
+        return pulumi.get(self, "pat_secret")
+
+    @pat_secret.setter
+    def pat_secret(self, value: str):
+        pulumi.set(self, "pat_secret", value)
 
     @property
     @pulumi.getter
@@ -10808,6 +15959,15 @@ class GetConnectorConfigArgs:
         pulumi.set(self, "sender_password", value)
 
     @property
+    @pulumi.getter(name="serverAddress")
+    def server_address(self) -> str:
+        return pulumi.get(self, "server_address")
+
+    @server_address.setter
+    def server_address(self, value: str):
+        pulumi.set(self, "server_address", value)
+
+    @property
     @pulumi.getter(name="serverUrl")
     def server_url(self) -> str:
         return pulumi.get(self, "server_url")
@@ -11229,6 +16389,15 @@ class GetConnectorConfigArgs:
     @sync_type.setter
     def sync_type(self, value: str):
         pulumi.set(self, "sync_type", value)
+
+    @property
+    @pulumi.getter
+    def sysnr(self) -> str:
+        return pulumi.get(self, "sysnr")
+
+    @sysnr.setter
+    def sysnr(self, value: str):
+        pulumi.set(self, "sysnr", value)
 
     @property
     @pulumi.getter(name="tableName")
@@ -11721,7 +16890,18 @@ class GetConnectorConfigArgs:
 class GetConnectorConfigAccountsRedditAdArgs:
     def __init__(__self__, *,
                  name: str):
-        pulumi.set(__self__, "name", name)
+        GetConnectorConfigAccountsRedditAdArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -11743,13 +16923,42 @@ class GetConnectorConfigAdobeAnalyticsConfigurationArgs:
                  segments: Sequence[str],
                  sync_mode: str,
                  table: str):
-        pulumi.set(__self__, "calculated_metrics", calculated_metrics)
-        pulumi.set(__self__, "elements", elements)
-        pulumi.set(__self__, "metrics", metrics)
-        pulumi.set(__self__, "report_suites", report_suites)
-        pulumi.set(__self__, "segments", segments)
-        pulumi.set(__self__, "sync_mode", sync_mode)
-        pulumi.set(__self__, "table", table)
+        GetConnectorConfigAdobeAnalyticsConfigurationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            calculated_metrics=calculated_metrics,
+            elements=elements,
+            metrics=metrics,
+            report_suites=report_suites,
+            segments=segments,
+            sync_mode=sync_mode,
+            table=table,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             calculated_metrics: Sequence[str],
+             elements: Sequence[str],
+             metrics: Sequence[str],
+             report_suites: Sequence[str],
+             segments: Sequence[str],
+             sync_mode: str,
+             table: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'calculatedMetrics' in kwargs:
+            calculated_metrics = kwargs['calculatedMetrics']
+        if 'reportSuites' in kwargs:
+            report_suites = kwargs['reportSuites']
+        if 'syncMode' in kwargs:
+            sync_mode = kwargs['syncMode']
+
+        _setter("calculated_metrics", calculated_metrics)
+        _setter("elements", elements)
+        _setter("metrics", metrics)
+        _setter("report_suites", report_suites)
+        _setter("segments", segments)
+        _setter("sync_mode", sync_mode)
+        _setter("table", table)
 
     @property
     @pulumi.getter(name="calculatedMetrics")
@@ -11819,7 +17028,20 @@ class GetConnectorConfigAdobeAnalyticsConfigurationArgs:
 class GetConnectorConfigAppIdsAppsflyerArgs:
     def __init__(__self__, *,
                  app_id: str):
-        pulumi.set(__self__, "app_id", app_id)
+        GetConnectorConfigAppIdsAppsflyerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_id=app_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+
+        _setter("app_id", app_id)
 
     @property
     @pulumi.getter(name="appId")
@@ -11846,18 +17068,65 @@ class GetConnectorConfigCustomReportArgs:
                  report_type: str,
                  segmentation: str,
                  table_name: str):
-        pulumi.set(__self__, "aggregate", aggregate)
-        pulumi.set(__self__, "conversions_report_included", conversions_report_included)
-        pulumi.set(__self__, "custom_events_included", custom_events_included)
-        pulumi.set(__self__, "dimensions", dimensions)
-        pulumi.set(__self__, "event_names", event_names)
-        pulumi.set(__self__, "level", level)
-        pulumi.set(__self__, "metrics", metrics)
-        pulumi.set(__self__, "report_fields", report_fields)
-        pulumi.set(__self__, "report_name", report_name)
-        pulumi.set(__self__, "report_type", report_type)
-        pulumi.set(__self__, "segmentation", segmentation)
-        pulumi.set(__self__, "table_name", table_name)
+        GetConnectorConfigCustomReportArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            aggregate=aggregate,
+            conversions_report_included=conversions_report_included,
+            custom_events_included=custom_events_included,
+            dimensions=dimensions,
+            event_names=event_names,
+            level=level,
+            metrics=metrics,
+            report_fields=report_fields,
+            report_name=report_name,
+            report_type=report_type,
+            segmentation=segmentation,
+            table_name=table_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             aggregate: str,
+             conversions_report_included: str,
+             custom_events_included: str,
+             dimensions: Sequence[str],
+             event_names: Sequence[str],
+             level: str,
+             metrics: Sequence[str],
+             report_fields: Sequence[str],
+             report_name: str,
+             report_type: str,
+             segmentation: str,
+             table_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'conversionsReportIncluded' in kwargs:
+            conversions_report_included = kwargs['conversionsReportIncluded']
+        if 'customEventsIncluded' in kwargs:
+            custom_events_included = kwargs['customEventsIncluded']
+        if 'eventNames' in kwargs:
+            event_names = kwargs['eventNames']
+        if 'reportFields' in kwargs:
+            report_fields = kwargs['reportFields']
+        if 'reportName' in kwargs:
+            report_name = kwargs['reportName']
+        if 'reportType' in kwargs:
+            report_type = kwargs['reportType']
+        if 'tableName' in kwargs:
+            table_name = kwargs['tableName']
+
+        _setter("aggregate", aggregate)
+        _setter("conversions_report_included", conversions_report_included)
+        _setter("custom_events_included", custom_events_included)
+        _setter("dimensions", dimensions)
+        _setter("event_names", event_names)
+        _setter("level", level)
+        _setter("metrics", metrics)
+        _setter("report_fields", report_fields)
+        _setter("report_name", report_name)
+        _setter("report_type", report_type)
+        _setter("segmentation", segmentation)
+        _setter("table_name", table_name)
 
     @property
     @pulumi.getter
@@ -11983,18 +17252,67 @@ class GetConnectorConfigCustomTableArgs:
                  table_name: str,
                  use_unified_attribution_setting: str,
                  view_attribution_window: str):
-        pulumi.set(__self__, "action_breakdowns", action_breakdowns)
-        pulumi.set(__self__, "action_report_time", action_report_time)
-        pulumi.set(__self__, "aggregation", aggregation)
-        pulumi.set(__self__, "breakdowns", breakdowns)
-        pulumi.set(__self__, "click_attribution_window", click_attribution_window)
-        pulumi.set(__self__, "config_type", config_type)
-        pulumi.set(__self__, "fields", fields)
-        pulumi.set(__self__, "level", level)
-        pulumi.set(__self__, "prebuilt_report_name", prebuilt_report_name)
-        pulumi.set(__self__, "table_name", table_name)
-        pulumi.set(__self__, "use_unified_attribution_setting", use_unified_attribution_setting)
-        pulumi.set(__self__, "view_attribution_window", view_attribution_window)
+        GetConnectorConfigCustomTableArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action_breakdowns=action_breakdowns,
+            action_report_time=action_report_time,
+            aggregation=aggregation,
+            breakdowns=breakdowns,
+            click_attribution_window=click_attribution_window,
+            config_type=config_type,
+            fields=fields,
+            level=level,
+            prebuilt_report_name=prebuilt_report_name,
+            table_name=table_name,
+            use_unified_attribution_setting=use_unified_attribution_setting,
+            view_attribution_window=view_attribution_window,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action_breakdowns: Sequence[str],
+             action_report_time: str,
+             aggregation: str,
+             breakdowns: Sequence[str],
+             click_attribution_window: str,
+             config_type: str,
+             fields: Sequence[str],
+             level: str,
+             prebuilt_report_name: str,
+             table_name: str,
+             use_unified_attribution_setting: str,
+             view_attribution_window: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'actionBreakdowns' in kwargs:
+            action_breakdowns = kwargs['actionBreakdowns']
+        if 'actionReportTime' in kwargs:
+            action_report_time = kwargs['actionReportTime']
+        if 'clickAttributionWindow' in kwargs:
+            click_attribution_window = kwargs['clickAttributionWindow']
+        if 'configType' in kwargs:
+            config_type = kwargs['configType']
+        if 'prebuiltReportName' in kwargs:
+            prebuilt_report_name = kwargs['prebuiltReportName']
+        if 'tableName' in kwargs:
+            table_name = kwargs['tableName']
+        if 'useUnifiedAttributionSetting' in kwargs:
+            use_unified_attribution_setting = kwargs['useUnifiedAttributionSetting']
+        if 'viewAttributionWindow' in kwargs:
+            view_attribution_window = kwargs['viewAttributionWindow']
+
+        _setter("action_breakdowns", action_breakdowns)
+        _setter("action_report_time", action_report_time)
+        _setter("aggregation", aggregation)
+        _setter("breakdowns", breakdowns)
+        _setter("click_attribution_window", click_attribution_window)
+        _setter("config_type", config_type)
+        _setter("fields", fields)
+        _setter("level", level)
+        _setter("prebuilt_report_name", prebuilt_report_name)
+        _setter("table_name", table_name)
+        _setter("use_unified_attribution_setting", use_unified_attribution_setting)
+        _setter("view_attribution_window", view_attribution_window)
 
     @property
     @pulumi.getter(name="actionBreakdowns")
@@ -12111,9 +17429,28 @@ class GetConnectorConfigProjectCredentialArgs:
                  api_key: str,
                  project: str,
                  secret_key: str):
-        pulumi.set(__self__, "api_key", api_key)
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "secret_key", secret_key)
+        GetConnectorConfigProjectCredentialArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_key=api_key,
+            project=project,
+            secret_key=secret_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_key: str,
+             project: str,
+             secret_key: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiKey' in kwargs:
+            api_key = kwargs['apiKey']
+        if 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+
+        _setter("api_key", api_key)
+        _setter("project", project)
+        _setter("secret_key", secret_key)
 
     @property
     @pulumi.getter(name="apiKey")
@@ -12161,21 +17498,74 @@ class GetConnectorConfigReportArgs:
                  segment_ids: Sequence[str],
                  segments: Sequence[str],
                  table: str):
-        pulumi.set(__self__, "aggregation", aggregation)
-        pulumi.set(__self__, "attributes", attributes)
-        pulumi.set(__self__, "config_type", config_type)
-        pulumi.set(__self__, "dimensions", dimensions)
-        pulumi.set(__self__, "fields", fields)
-        pulumi.set(__self__, "filter", filter)
-        pulumi.set(__self__, "filter_field_name", filter_field_name)
-        pulumi.set(__self__, "filter_value", filter_value)
-        pulumi.set(__self__, "metrics", metrics)
-        pulumi.set(__self__, "prebuilt_report", prebuilt_report)
-        pulumi.set(__self__, "report_type", report_type)
-        pulumi.set(__self__, "search_types", search_types)
-        pulumi.set(__self__, "segment_ids", segment_ids)
-        pulumi.set(__self__, "segments", segments)
-        pulumi.set(__self__, "table", table)
+        GetConnectorConfigReportArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            aggregation=aggregation,
+            attributes=attributes,
+            config_type=config_type,
+            dimensions=dimensions,
+            fields=fields,
+            filter=filter,
+            filter_field_name=filter_field_name,
+            filter_value=filter_value,
+            metrics=metrics,
+            prebuilt_report=prebuilt_report,
+            report_type=report_type,
+            search_types=search_types,
+            segment_ids=segment_ids,
+            segments=segments,
+            table=table,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             aggregation: str,
+             attributes: Sequence[str],
+             config_type: str,
+             dimensions: Sequence[str],
+             fields: Sequence[str],
+             filter: str,
+             filter_field_name: str,
+             filter_value: str,
+             metrics: Sequence[str],
+             prebuilt_report: str,
+             report_type: str,
+             search_types: Sequence[str],
+             segment_ids: Sequence[str],
+             segments: Sequence[str],
+             table: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configType' in kwargs:
+            config_type = kwargs['configType']
+        if 'filterFieldName' in kwargs:
+            filter_field_name = kwargs['filterFieldName']
+        if 'filterValue' in kwargs:
+            filter_value = kwargs['filterValue']
+        if 'prebuiltReport' in kwargs:
+            prebuilt_report = kwargs['prebuiltReport']
+        if 'reportType' in kwargs:
+            report_type = kwargs['reportType']
+        if 'searchTypes' in kwargs:
+            search_types = kwargs['searchTypes']
+        if 'segmentIds' in kwargs:
+            segment_ids = kwargs['segmentIds']
+
+        _setter("aggregation", aggregation)
+        _setter("attributes", attributes)
+        _setter("config_type", config_type)
+        _setter("dimensions", dimensions)
+        _setter("fields", fields)
+        _setter("filter", filter)
+        _setter("filter_field_name", filter_field_name)
+        _setter("filter_value", filter_value)
+        _setter("metrics", metrics)
+        _setter("prebuilt_report", prebuilt_report)
+        _setter("report_type", report_type)
+        _setter("search_types", search_types)
+        _setter("segment_ids", segment_ids)
+        _setter("segments", segments)
+        _setter("table", table)
 
     @property
     @pulumi.getter
@@ -12318,8 +17708,21 @@ class GetConnectorConfigSecretsListArgs:
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        GetConnectorConfigSecretsListArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -12341,6 +17744,96 @@ class GetConnectorConfigSecretsListArgs:
 
 
 @pulumi.input_type
+class GetConnectorFingerprintsFingerprintArgs:
+    def __init__(__self__, *,
+                 hash: str,
+                 public_key: str,
+                 validated_by: str,
+                 validated_date: str):
+        """
+        :param str hash: Hash of the fingerprint.
+        :param str public_key: The SSH public key.
+        :param str validated_by: User name who validated the fingerprint.
+        :param str validated_date: The date when SSH fingerprint was approved.
+        """
+        GetConnectorFingerprintsFingerprintArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hash=hash,
+            public_key=public_key,
+            validated_by=validated_by,
+            validated_date=validated_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hash: str,
+             public_key: str,
+             validated_by: str,
+             validated_date: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if 'validatedBy' in kwargs:
+            validated_by = kwargs['validatedBy']
+        if 'validatedDate' in kwargs:
+            validated_date = kwargs['validatedDate']
+
+        _setter("hash", hash)
+        _setter("public_key", public_key)
+        _setter("validated_by", validated_by)
+        _setter("validated_date", validated_date)
+
+    @property
+    @pulumi.getter
+    def hash(self) -> str:
+        """
+        Hash of the fingerprint.
+        """
+        return pulumi.get(self, "hash")
+
+    @hash.setter
+    def hash(self, value: str):
+        pulumi.set(self, "hash", value)
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> str:
+        """
+        The SSH public key.
+        """
+        return pulumi.get(self, "public_key")
+
+    @public_key.setter
+    def public_key(self, value: str):
+        pulumi.set(self, "public_key", value)
+
+    @property
+    @pulumi.getter(name="validatedBy")
+    def validated_by(self) -> str:
+        """
+        User name who validated the fingerprint.
+        """
+        return pulumi.get(self, "validated_by")
+
+    @validated_by.setter
+    def validated_by(self, value: str):
+        pulumi.set(self, "validated_by", value)
+
+    @property
+    @pulumi.getter(name="validatedDate")
+    def validated_date(self) -> str:
+        """
+        The date when SSH fingerprint was approved.
+        """
+        return pulumi.get(self, "validated_date")
+
+    @validated_date.setter
+    def validated_date(self, value: str):
+        pulumi.set(self, "validated_date", value)
+
+
+@pulumi.input_type
 class GetConnectorsMetadataSourceArgs:
     def __init__(__self__, *,
                  description: str,
@@ -12359,13 +17852,42 @@ class GetConnectorsMetadataSourceArgs:
         :param str name: The connector service name within the Fivetran system.
         :param str type: The connector service type within the Fivetran system.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "icon_url", icon_url)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "link_to_docs", link_to_docs)
-        pulumi.set(__self__, "link_to_erd", link_to_erd)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
+        GetConnectorsMetadataSourceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            icon_url=icon_url,
+            id=id,
+            link_to_docs=link_to_docs,
+            link_to_erd=link_to_erd,
+            name=name,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             icon_url: str,
+             id: str,
+             link_to_docs: str,
+             link_to_erd: str,
+             name: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'iconUrl' in kwargs:
+            icon_url = kwargs['iconUrl']
+        if 'linkToDocs' in kwargs:
+            link_to_docs = kwargs['linkToDocs']
+        if 'linkToErd' in kwargs:
+            link_to_erd = kwargs['linkToErd']
+
+        _setter("description", description)
+        _setter("icon_url", icon_url)
+        _setter("id", id)
+        _setter("link_to_docs", link_to_docs)
+        _setter("link_to_erd", link_to_erd)
+        _setter("name", name)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -12463,9 +17985,26 @@ class GetDbtModelsModelArgs:
         :param str model_name: The dbt Model name.
         :param bool scheduled: Boolean specifying whether the model is selected for execution.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "model_name", model_name)
-        pulumi.set(__self__, "scheduled", scheduled)
+        GetDbtModelsModelArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            model_name=model_name,
+            scheduled=scheduled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             model_name: str,
+             scheduled: bool,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'modelName' in kwargs:
+            model_name = kwargs['modelName']
+
+        _setter("id", id)
+        _setter("model_name", model_name)
+        _setter("scheduled", scheduled)
 
     @property
     @pulumi.getter
@@ -12515,9 +18054,26 @@ class GetDbtProjectModelArgs:
         :param str model_name: The dbt Model name.
         :param bool scheduled: Boolean specifying whether the model is selected for execution.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "model_name", model_name)
-        pulumi.set(__self__, "scheduled", scheduled)
+        GetDbtProjectModelArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            model_name=model_name,
+            scheduled=scheduled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             model_name: str,
+             scheduled: bool,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'modelName' in kwargs:
+            model_name = kwargs['modelName']
+
+        _setter("id", id)
+        _setter("model_name", model_name)
+        _setter("scheduled", scheduled)
 
     @property
     @pulumi.getter
@@ -12569,10 +18125,33 @@ class GetDbtProjectsProjectArgs:
         :param str group_id: The name of the group within your account related to the project.
         :param str id: The unique identifier for the dbt project within the Fivetran system.
         """
-        pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "created_by_id", created_by_id)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "id", id)
+        GetDbtProjectsProjectArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_at=created_at,
+            created_by_id=created_by_id,
+            group_id=group_id,
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_at: str,
+             created_by_id: str,
+             group_id: str,
+             id: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'createdById' in kwargs:
+            created_by_id = kwargs['createdById']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+
+        _setter("created_at", created_at)
+        _setter("created_by_id", created_by_id)
+        _setter("group_id", group_id)
+        _setter("id", id)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -12621,6 +18200,164 @@ class GetDbtProjectsProjectArgs:
     @id.setter
     def id(self, value: str):
         pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
+class GetDestinationCertificatesCertificateArgs:
+    def __init__(__self__, *,
+                 hash: str,
+                 name: str,
+                 public_key: str,
+                 sha1: str,
+                 sha256: str,
+                 type: str,
+                 validated_by: str,
+                 validated_date: str):
+        """
+        :param str hash: Hash of the fingerprint.
+        :param str name: Certificate name.
+        :param str public_key: Certificate public key.
+        :param str sha1: Certificate sha1.
+        :param str sha256: Certificate sha256.
+        :param str type: Certificate type.
+        :param str validated_by: User name who validated the certificate.
+        :param str validated_date: The date when the certificate was approved.
+        """
+        GetDestinationCertificatesCertificateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hash=hash,
+            name=name,
+            public_key=public_key,
+            sha1=sha1,
+            sha256=sha256,
+            type=type,
+            validated_by=validated_by,
+            validated_date=validated_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hash: str,
+             name: str,
+             public_key: str,
+             sha1: str,
+             sha256: str,
+             type: str,
+             validated_by: str,
+             validated_date: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if 'validatedBy' in kwargs:
+            validated_by = kwargs['validatedBy']
+        if 'validatedDate' in kwargs:
+            validated_date = kwargs['validatedDate']
+
+        _setter("hash", hash)
+        _setter("name", name)
+        _setter("public_key", public_key)
+        _setter("sha1", sha1)
+        _setter("sha256", sha256)
+        _setter("type", type)
+        _setter("validated_by", validated_by)
+        _setter("validated_date", validated_date)
+
+    @property
+    @pulumi.getter
+    def hash(self) -> str:
+        """
+        Hash of the fingerprint.
+        """
+        return pulumi.get(self, "hash")
+
+    @hash.setter
+    def hash(self, value: str):
+        pulumi.set(self, "hash", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Certificate name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> str:
+        """
+        Certificate public key.
+        """
+        return pulumi.get(self, "public_key")
+
+    @public_key.setter
+    def public_key(self, value: str):
+        pulumi.set(self, "public_key", value)
+
+    @property
+    @pulumi.getter
+    def sha1(self) -> str:
+        """
+        Certificate sha1.
+        """
+        return pulumi.get(self, "sha1")
+
+    @sha1.setter
+    def sha1(self, value: str):
+        pulumi.set(self, "sha1", value)
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> str:
+        """
+        Certificate sha256.
+        """
+        return pulumi.get(self, "sha256")
+
+    @sha256.setter
+    def sha256(self, value: str):
+        pulumi.set(self, "sha256", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Certificate type.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: str):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="validatedBy")
+    def validated_by(self) -> str:
+        """
+        User name who validated the certificate.
+        """
+        return pulumi.get(self, "validated_by")
+
+    @validated_by.setter
+    def validated_by(self, value: str):
+        pulumi.set(self, "validated_by", value)
+
+    @property
+    @pulumi.getter(name="validatedDate")
+    def validated_date(self) -> str:
+        """
+        The date when the certificate was approved.
+        """
+        return pulumi.get(self, "validated_date")
+
+    @validated_date.setter
+    def validated_date(self, value: str):
+        pulumi.set(self, "validated_date", value)
 
 
 @pulumi.input_type
@@ -12692,68 +18429,183 @@ class GetDestinationConfigArgs:
         :param str tunnel_user: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
         :param str user: Database user name
         """
-        pulumi.set(__self__, "is_private_key_encrypted", is_private_key_encrypted)
-        pulumi.set(__self__, "public_key", public_key)
+        GetDestinationConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            is_private_key_encrypted=is_private_key_encrypted,
+            public_key=public_key,
+            auth=auth,
+            auth_type=auth_type,
+            bucket=bucket,
+            catalog=catalog,
+            cluster_id=cluster_id,
+            cluster_region=cluster_region,
+            connection_type=connection_type,
+            create_external_tables=create_external_tables,
+            data_set_location=data_set_location,
+            database=database,
+            external_location=external_location,
+            fivetran_role_arn=fivetran_role_arn,
+            host=host,
+            http_path=http_path,
+            passphrase=passphrase,
+            password=password,
+            personal_access_token=personal_access_token,
+            port=port,
+            prefix_path=prefix_path,
+            private_key=private_key,
+            project_id=project_id,
+            region=region,
+            role=role,
+            role_arn=role_arn,
+            secret_key=secret_key,
+            server_host_name=server_host_name,
+            tunnel_host=tunnel_host,
+            tunnel_port=tunnel_port,
+            tunnel_user=tunnel_user,
+            user=user,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             is_private_key_encrypted: str,
+             public_key: str,
+             auth: Optional[str] = None,
+             auth_type: Optional[str] = None,
+             bucket: Optional[str] = None,
+             catalog: Optional[str] = None,
+             cluster_id: Optional[str] = None,
+             cluster_region: Optional[str] = None,
+             connection_type: Optional[str] = None,
+             create_external_tables: Optional[str] = None,
+             data_set_location: Optional[str] = None,
+             database: Optional[str] = None,
+             external_location: Optional[str] = None,
+             fivetran_role_arn: Optional[str] = None,
+             host: Optional[str] = None,
+             http_path: Optional[str] = None,
+             passphrase: Optional[str] = None,
+             password: Optional[str] = None,
+             personal_access_token: Optional[str] = None,
+             port: Optional[int] = None,
+             prefix_path: Optional[str] = None,
+             private_key: Optional[str] = None,
+             project_id: Optional[str] = None,
+             region: Optional[str] = None,
+             role: Optional[str] = None,
+             role_arn: Optional[str] = None,
+             secret_key: Optional[str] = None,
+             server_host_name: Optional[str] = None,
+             tunnel_host: Optional[str] = None,
+             tunnel_port: Optional[str] = None,
+             tunnel_user: Optional[str] = None,
+             user: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'isPrivateKeyEncrypted' in kwargs:
+            is_private_key_encrypted = kwargs['isPrivateKeyEncrypted']
+        if 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if 'authType' in kwargs:
+            auth_type = kwargs['authType']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterRegion' in kwargs:
+            cluster_region = kwargs['clusterRegion']
+        if 'connectionType' in kwargs:
+            connection_type = kwargs['connectionType']
+        if 'createExternalTables' in kwargs:
+            create_external_tables = kwargs['createExternalTables']
+        if 'dataSetLocation' in kwargs:
+            data_set_location = kwargs['dataSetLocation']
+        if 'externalLocation' in kwargs:
+            external_location = kwargs['externalLocation']
+        if 'fivetranRoleArn' in kwargs:
+            fivetran_role_arn = kwargs['fivetranRoleArn']
+        if 'httpPath' in kwargs:
+            http_path = kwargs['httpPath']
+        if 'personalAccessToken' in kwargs:
+            personal_access_token = kwargs['personalAccessToken']
+        if 'prefixPath' in kwargs:
+            prefix_path = kwargs['prefixPath']
+        if 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if 'serverHostName' in kwargs:
+            server_host_name = kwargs['serverHostName']
+        if 'tunnelHost' in kwargs:
+            tunnel_host = kwargs['tunnelHost']
+        if 'tunnelPort' in kwargs:
+            tunnel_port = kwargs['tunnelPort']
+        if 'tunnelUser' in kwargs:
+            tunnel_user = kwargs['tunnelUser']
+
+        _setter("is_private_key_encrypted", is_private_key_encrypted)
+        _setter("public_key", public_key)
         if auth is not None:
-            pulumi.set(__self__, "auth", auth)
+            _setter("auth", auth)
         if auth_type is not None:
-            pulumi.set(__self__, "auth_type", auth_type)
+            _setter("auth_type", auth_type)
         if bucket is not None:
-            pulumi.set(__self__, "bucket", bucket)
+            _setter("bucket", bucket)
         if catalog is not None:
-            pulumi.set(__self__, "catalog", catalog)
+            _setter("catalog", catalog)
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if cluster_region is not None:
-            pulumi.set(__self__, "cluster_region", cluster_region)
+            _setter("cluster_region", cluster_region)
         if connection_type is not None:
-            pulumi.set(__self__, "connection_type", connection_type)
+            _setter("connection_type", connection_type)
         if create_external_tables is not None:
-            pulumi.set(__self__, "create_external_tables", create_external_tables)
+            _setter("create_external_tables", create_external_tables)
         if data_set_location is not None:
-            pulumi.set(__self__, "data_set_location", data_set_location)
+            _setter("data_set_location", data_set_location)
         if database is not None:
-            pulumi.set(__self__, "database", database)
+            _setter("database", database)
         if external_location is not None:
-            pulumi.set(__self__, "external_location", external_location)
+            _setter("external_location", external_location)
         if fivetran_role_arn is not None:
-            pulumi.set(__self__, "fivetran_role_arn", fivetran_role_arn)
+            _setter("fivetran_role_arn", fivetran_role_arn)
         if host is not None:
-            pulumi.set(__self__, "host", host)
+            _setter("host", host)
         if http_path is not None:
-            pulumi.set(__self__, "http_path", http_path)
+            _setter("http_path", http_path)
         if passphrase is not None:
-            pulumi.set(__self__, "passphrase", passphrase)
+            _setter("passphrase", passphrase)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if personal_access_token is not None:
-            pulumi.set(__self__, "personal_access_token", personal_access_token)
+            _setter("personal_access_token", personal_access_token)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if prefix_path is not None:
-            pulumi.set(__self__, "prefix_path", prefix_path)
+            _setter("prefix_path", prefix_path)
         if private_key is not None:
-            pulumi.set(__self__, "private_key", private_key)
+            _setter("private_key", private_key)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
+            _setter("secret_key", secret_key)
         if server_host_name is not None:
-            pulumi.set(__self__, "server_host_name", server_host_name)
+            _setter("server_host_name", server_host_name)
         if tunnel_host is not None:
-            pulumi.set(__self__, "tunnel_host", tunnel_host)
+            _setter("tunnel_host", tunnel_host)
         if tunnel_port is not None:
-            pulumi.set(__self__, "tunnel_port", tunnel_port)
+            _setter("tunnel_port", tunnel_port)
         if tunnel_user is not None:
-            pulumi.set(__self__, "tunnel_user", tunnel_user)
+            _setter("tunnel_user", tunnel_user)
         if user is not None:
-            pulumi.set(__self__, "user", user)
+            _setter("user", user)
 
     @property
     @pulumi.getter(name="isPrivateKeyEncrypted")
@@ -13141,6 +18993,380 @@ class GetDestinationConfigArgs:
 
 
 @pulumi.input_type
+class GetDestinationFingerprintsFingerprintArgs:
+    def __init__(__self__, *,
+                 hash: str,
+                 public_key: str,
+                 validated_by: str,
+                 validated_date: str):
+        """
+        :param str hash: Hash of the fingerprint.
+        :param str public_key: The SSH public key.
+        :param str validated_by: User name who validated the fingerprint.
+        :param str validated_date: The date when SSH fingerprint was approved.
+        """
+        GetDestinationFingerprintsFingerprintArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hash=hash,
+            public_key=public_key,
+            validated_by=validated_by,
+            validated_date=validated_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hash: str,
+             public_key: str,
+             validated_by: str,
+             validated_date: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if 'validatedBy' in kwargs:
+            validated_by = kwargs['validatedBy']
+        if 'validatedDate' in kwargs:
+            validated_date = kwargs['validatedDate']
+
+        _setter("hash", hash)
+        _setter("public_key", public_key)
+        _setter("validated_by", validated_by)
+        _setter("validated_date", validated_date)
+
+    @property
+    @pulumi.getter
+    def hash(self) -> str:
+        """
+        Hash of the fingerprint.
+        """
+        return pulumi.get(self, "hash")
+
+    @hash.setter
+    def hash(self, value: str):
+        pulumi.set(self, "hash", value)
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> str:
+        """
+        The SSH public key.
+        """
+        return pulumi.get(self, "public_key")
+
+    @public_key.setter
+    def public_key(self, value: str):
+        pulumi.set(self, "public_key", value)
+
+    @property
+    @pulumi.getter(name="validatedBy")
+    def validated_by(self) -> str:
+        """
+        User name who validated the fingerprint.
+        """
+        return pulumi.get(self, "validated_by")
+
+    @validated_by.setter
+    def validated_by(self, value: str):
+        pulumi.set(self, "validated_by", value)
+
+    @property
+    @pulumi.getter(name="validatedDate")
+    def validated_date(self) -> str:
+        """
+        The date when SSH fingerprint was approved.
+        """
+        return pulumi.get(self, "validated_date")
+
+    @validated_date.setter
+    def validated_date(self, value: str):
+        pulumi.set(self, "validated_date", value)
+
+
+@pulumi.input_type
+class GetExternalLoggingConfigArgs:
+    def __init__(__self__, *,
+                 api_key: Optional[str] = None,
+                 channel: Optional[str] = None,
+                 enable_ssl: Optional[bool] = None,
+                 external_id: Optional[str] = None,
+                 host: Optional[str] = None,
+                 hostname: Optional[str] = None,
+                 log_group_name: Optional[str] = None,
+                 port: Optional[int] = None,
+                 primary_key: Optional[str] = None,
+                 region: Optional[str] = None,
+                 role_arn: Optional[str] = None,
+                 sub_domain: Optional[str] = None,
+                 token: Optional[str] = None,
+                 workspace_id: Optional[str] = None):
+        """
+        :param str api_key: API Key
+        :param str channel: Channel
+        :param bool enable_ssl: Enable SSL
+        :param str external_id: external_id
+        :param str host: Server name
+        :param str hostname: Server name
+        :param str log_group_name: Log Group Name
+        :param int port: Port
+        :param str primary_key: Primary Key
+        :param str region: Region
+        :param str role_arn: Role Arn
+        :param str sub_domain: Sub Domain
+        :param str token: Token
+        :param str workspace_id: Workspace ID
+        """
+        GetExternalLoggingConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_key=api_key,
+            channel=channel,
+            enable_ssl=enable_ssl,
+            external_id=external_id,
+            host=host,
+            hostname=hostname,
+            log_group_name=log_group_name,
+            port=port,
+            primary_key=primary_key,
+            region=region,
+            role_arn=role_arn,
+            sub_domain=sub_domain,
+            token=token,
+            workspace_id=workspace_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_key: Optional[str] = None,
+             channel: Optional[str] = None,
+             enable_ssl: Optional[bool] = None,
+             external_id: Optional[str] = None,
+             host: Optional[str] = None,
+             hostname: Optional[str] = None,
+             log_group_name: Optional[str] = None,
+             port: Optional[int] = None,
+             primary_key: Optional[str] = None,
+             region: Optional[str] = None,
+             role_arn: Optional[str] = None,
+             sub_domain: Optional[str] = None,
+             token: Optional[str] = None,
+             workspace_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiKey' in kwargs:
+            api_key = kwargs['apiKey']
+        if 'enableSsl' in kwargs:
+            enable_ssl = kwargs['enableSsl']
+        if 'externalId' in kwargs:
+            external_id = kwargs['externalId']
+        if 'logGroupName' in kwargs:
+            log_group_name = kwargs['logGroupName']
+        if 'primaryKey' in kwargs:
+            primary_key = kwargs['primaryKey']
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if 'subDomain' in kwargs:
+            sub_domain = kwargs['subDomain']
+        if 'workspaceId' in kwargs:
+            workspace_id = kwargs['workspaceId']
+
+        if api_key is not None:
+            _setter("api_key", api_key)
+        if channel is not None:
+            _setter("channel", channel)
+        if enable_ssl is not None:
+            _setter("enable_ssl", enable_ssl)
+        if external_id is not None:
+            _setter("external_id", external_id)
+        if host is not None:
+            _setter("host", host)
+        if hostname is not None:
+            _setter("hostname", hostname)
+        if log_group_name is not None:
+            _setter("log_group_name", log_group_name)
+        if port is not None:
+            _setter("port", port)
+        if primary_key is not None:
+            _setter("primary_key", primary_key)
+        if region is not None:
+            _setter("region", region)
+        if role_arn is not None:
+            _setter("role_arn", role_arn)
+        if sub_domain is not None:
+            _setter("sub_domain", sub_domain)
+        if token is not None:
+            _setter("token", token)
+        if workspace_id is not None:
+            _setter("workspace_id", workspace_id)
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> Optional[str]:
+        """
+        API Key
+        """
+        return pulumi.get(self, "api_key")
+
+    @api_key.setter
+    def api_key(self, value: Optional[str]):
+        pulumi.set(self, "api_key", value)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> Optional[str]:
+        """
+        Channel
+        """
+        return pulumi.get(self, "channel")
+
+    @channel.setter
+    def channel(self, value: Optional[str]):
+        pulumi.set(self, "channel", value)
+
+    @property
+    @pulumi.getter(name="enableSsl")
+    def enable_ssl(self) -> Optional[bool]:
+        """
+        Enable SSL
+        """
+        return pulumi.get(self, "enable_ssl")
+
+    @enable_ssl.setter
+    def enable_ssl(self, value: Optional[bool]):
+        pulumi.set(self, "enable_ssl", value)
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> Optional[str]:
+        """
+        external_id
+        """
+        return pulumi.get(self, "external_id")
+
+    @external_id.setter
+    def external_id(self, value: Optional[str]):
+        pulumi.set(self, "external_id", value)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[str]:
+        """
+        Server name
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[str]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[str]:
+        """
+        Server name
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[str]):
+        pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter(name="logGroupName")
+    def log_group_name(self) -> Optional[str]:
+        """
+        Log Group Name
+        """
+        return pulumi.get(self, "log_group_name")
+
+    @log_group_name.setter
+    def log_group_name(self, value: Optional[str]):
+        pulumi.set(self, "log_group_name", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        Port
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[int]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[str]:
+        """
+        Primary Key
+        """
+        return pulumi.get(self, "primary_key")
+
+    @primary_key.setter
+    def primary_key(self, value: Optional[str]):
+        pulumi.set(self, "primary_key", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        Region
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[str]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[str]:
+        """
+        Role Arn
+        """
+        return pulumi.get(self, "role_arn")
+
+    @role_arn.setter
+    def role_arn(self, value: Optional[str]):
+        pulumi.set(self, "role_arn", value)
+
+    @property
+    @pulumi.getter(name="subDomain")
+    def sub_domain(self) -> Optional[str]:
+        """
+        Sub Domain
+        """
+        return pulumi.get(self, "sub_domain")
+
+    @sub_domain.setter
+    def sub_domain(self, value: Optional[str]):
+        pulumi.set(self, "sub_domain", value)
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[str]:
+        """
+        Token
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: Optional[str]):
+        pulumi.set(self, "token", value)
+
+    @property
+    @pulumi.getter(name="workspaceId")
+    def workspace_id(self) -> Optional[str]:
+        """
+        Workspace ID
+        """
+        return pulumi.get(self, "workspace_id")
+
+    @workspace_id.setter
+    def workspace_id(self, value: Optional[str]):
+        pulumi.set(self, "workspace_id", value)
+
+
+@pulumi.input_type
 class GetGroupConnectorsConnectorArgs:
     def __init__(__self__, *,
                  connected_by: str,
@@ -13170,19 +19396,72 @@ class GetGroupConnectorsConnectorArgs:
         :param str succeeded_at: The timestamp of the time the connector sync succeeded last time
         :param int sync_frequency: The connector sync frequency in minutes
         """
-        pulumi.set(__self__, "connected_by", connected_by)
-        pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "daily_sync_time", daily_sync_time)
-        pulumi.set(__self__, "failed_at", failed_at)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "schedule_type", schedule_type)
-        pulumi.set(__self__, "schema", schema)
-        pulumi.set(__self__, "service", service)
-        pulumi.set(__self__, "service_version", service_version)
-        pulumi.set(__self__, "statuses", statuses)
-        pulumi.set(__self__, "succeeded_at", succeeded_at)
-        pulumi.set(__self__, "sync_frequency", sync_frequency)
+        GetGroupConnectorsConnectorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connected_by=connected_by,
+            created_at=created_at,
+            daily_sync_time=daily_sync_time,
+            failed_at=failed_at,
+            group_id=group_id,
+            id=id,
+            schedule_type=schedule_type,
+            schema=schema,
+            service=service,
+            service_version=service_version,
+            statuses=statuses,
+            succeeded_at=succeeded_at,
+            sync_frequency=sync_frequency,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connected_by: str,
+             created_at: str,
+             daily_sync_time: str,
+             failed_at: str,
+             group_id: str,
+             id: str,
+             schedule_type: str,
+             schema: str,
+             service: str,
+             service_version: int,
+             statuses: Sequence['GetGroupConnectorsConnectorStatusArgs'],
+             succeeded_at: str,
+             sync_frequency: int,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectedBy' in kwargs:
+            connected_by = kwargs['connectedBy']
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'dailySyncTime' in kwargs:
+            daily_sync_time = kwargs['dailySyncTime']
+        if 'failedAt' in kwargs:
+            failed_at = kwargs['failedAt']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'scheduleType' in kwargs:
+            schedule_type = kwargs['scheduleType']
+        if 'serviceVersion' in kwargs:
+            service_version = kwargs['serviceVersion']
+        if 'succeededAt' in kwargs:
+            succeeded_at = kwargs['succeededAt']
+        if 'syncFrequency' in kwargs:
+            sync_frequency = kwargs['syncFrequency']
+
+        _setter("connected_by", connected_by)
+        _setter("created_at", created_at)
+        _setter("daily_sync_time", daily_sync_time)
+        _setter("failed_at", failed_at)
+        _setter("group_id", group_id)
+        _setter("id", id)
+        _setter("schedule_type", schedule_type)
+        _setter("schema", schema)
+        _setter("service", service)
+        _setter("service_version", service_version)
+        _setter("statuses", statuses)
+        _setter("succeeded_at", succeeded_at)
+        _setter("sync_frequency", sync_frequency)
 
     @property
     @pulumi.getter(name="connectedBy")
@@ -13347,16 +19626,55 @@ class GetGroupConnectorsConnectorStatusArgs:
                  tasks: Sequence['GetGroupConnectorsConnectorStatusTaskArgs'],
                  update_state: str,
                  warnings: Sequence['GetGroupConnectorsConnectorStatusWarningArgs']):
-        pulumi.set(__self__, "is_historical_sync", is_historical_sync)
-        pulumi.set(__self__, "setup_state", setup_state)
-        pulumi.set(__self__, "sync_state", sync_state)
-        pulumi.set(__self__, "tasks", tasks)
-        pulumi.set(__self__, "update_state", update_state)
-        pulumi.set(__self__, "warnings", warnings)
+        """
+        :param bool is_historical_sync: The boolean specifying whether the connector should be triggered to re-sync all historical data. If you set this parameter to TRUE, the next scheduled sync will be historical. If the value is FALSE or not specified, the connector will not re-sync historical data. NOTE: When the value is TRUE, only the next scheduled sync will be historical, all subsequent ones will be incremental. This parameter is set to FALSE once the historical sync is completed.
+        :param str setup_state: The current setup state of the connector. The available values are: \\n\\n - incomplete - the setup config is incomplete, the setup tests never succeeded \\n\\n - connected - the connector is properly set up \\n\\n - broken - the connector setup config is broken.
+        :param str sync_state: The current sync state of the connector. The available values are: \\n\\n - scheduled - the sync is waiting to be run \\n\\n - syncing - the sync is currently running \\n\\n - paused - the sync is currently paused \\n\\n - rescheduled - the sync is waiting until more API calls are available in the source service.
+        :param Sequence['GetGroupConnectorsConnectorStatusTaskArgs'] tasks: The collection of tasks for the connector
+        :param str update_state: The current data update state of the connector. The available values are: \\n\\n - on_schedule - the sync is running smoothly, no delays \\n\\n - delayed - the data is delayed for a longer time than expected for the update.
+        """
+        GetGroupConnectorsConnectorStatusArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            is_historical_sync=is_historical_sync,
+            setup_state=setup_state,
+            sync_state=sync_state,
+            tasks=tasks,
+            update_state=update_state,
+            warnings=warnings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             is_historical_sync: bool,
+             setup_state: str,
+             sync_state: str,
+             tasks: Sequence['GetGroupConnectorsConnectorStatusTaskArgs'],
+             update_state: str,
+             warnings: Sequence['GetGroupConnectorsConnectorStatusWarningArgs'],
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'isHistoricalSync' in kwargs:
+            is_historical_sync = kwargs['isHistoricalSync']
+        if 'setupState' in kwargs:
+            setup_state = kwargs['setupState']
+        if 'syncState' in kwargs:
+            sync_state = kwargs['syncState']
+        if 'updateState' in kwargs:
+            update_state = kwargs['updateState']
+
+        _setter("is_historical_sync", is_historical_sync)
+        _setter("setup_state", setup_state)
+        _setter("sync_state", sync_state)
+        _setter("tasks", tasks)
+        _setter("update_state", update_state)
+        _setter("warnings", warnings)
 
     @property
     @pulumi.getter(name="isHistoricalSync")
     def is_historical_sync(self) -> bool:
+        """
+        The boolean specifying whether the connector should be triggered to re-sync all historical data. If you set this parameter to TRUE, the next scheduled sync will be historical. If the value is FALSE or not specified, the connector will not re-sync historical data. NOTE: When the value is TRUE, only the next scheduled sync will be historical, all subsequent ones will be incremental. This parameter is set to FALSE once the historical sync is completed.
+        """
         return pulumi.get(self, "is_historical_sync")
 
     @is_historical_sync.setter
@@ -13366,6 +19684,9 @@ class GetGroupConnectorsConnectorStatusArgs:
     @property
     @pulumi.getter(name="setupState")
     def setup_state(self) -> str:
+        """
+        The current setup state of the connector. The available values are: \\n\\n - incomplete - the setup config is incomplete, the setup tests never succeeded \\n\\n - connected - the connector is properly set up \\n\\n - broken - the connector setup config is broken.
+        """
         return pulumi.get(self, "setup_state")
 
     @setup_state.setter
@@ -13375,6 +19696,9 @@ class GetGroupConnectorsConnectorStatusArgs:
     @property
     @pulumi.getter(name="syncState")
     def sync_state(self) -> str:
+        """
+        The current sync state of the connector. The available values are: \\n\\n - scheduled - the sync is waiting to be run \\n\\n - syncing - the sync is currently running \\n\\n - paused - the sync is currently paused \\n\\n - rescheduled - the sync is waiting until more API calls are available in the source service.
+        """
         return pulumi.get(self, "sync_state")
 
     @sync_state.setter
@@ -13384,6 +19708,9 @@ class GetGroupConnectorsConnectorStatusArgs:
     @property
     @pulumi.getter
     def tasks(self) -> Sequence['GetGroupConnectorsConnectorStatusTaskArgs']:
+        """
+        The collection of tasks for the connector
+        """
         return pulumi.get(self, "tasks")
 
     @tasks.setter
@@ -13393,6 +19720,9 @@ class GetGroupConnectorsConnectorStatusArgs:
     @property
     @pulumi.getter(name="updateState")
     def update_state(self) -> str:
+        """
+        The current data update state of the connector. The available values are: \\n\\n - on_schedule - the sync is running smoothly, no delays \\n\\n - delayed - the data is delayed for a longer time than expected for the update.
+        """
         return pulumi.get(self, "update_state")
 
     @update_state.setter
@@ -13414,12 +19744,32 @@ class GetGroupConnectorsConnectorStatusTaskArgs:
     def __init__(__self__, *,
                  code: str,
                  message: str):
-        pulumi.set(__self__, "code", code)
-        pulumi.set(__self__, "message", message)
+        """
+        :param str code: Response status code
+        :param str message: Response status text
+        """
+        GetGroupConnectorsConnectorStatusTaskArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            code=code,
+            message=message,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             code: str,
+             message: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
+        _setter("code", code)
+        _setter("message", message)
 
     @property
     @pulumi.getter
     def code(self) -> str:
+        """
+        Response status code
+        """
         return pulumi.get(self, "code")
 
     @code.setter
@@ -13429,6 +19779,9 @@ class GetGroupConnectorsConnectorStatusTaskArgs:
     @property
     @pulumi.getter
     def message(self) -> str:
+        """
+        Response status text
+        """
         return pulumi.get(self, "message")
 
     @message.setter
@@ -13441,12 +19794,32 @@ class GetGroupConnectorsConnectorStatusWarningArgs:
     def __init__(__self__, *,
                  code: str,
                  message: str):
-        pulumi.set(__self__, "code", code)
-        pulumi.set(__self__, "message", message)
+        """
+        :param str code: Response status code
+        :param str message: Response status text
+        """
+        GetGroupConnectorsConnectorStatusWarningArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            code=code,
+            message=message,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             code: str,
+             message: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
+        _setter("code", code)
+        _setter("message", message)
 
     @property
     @pulumi.getter
     def code(self) -> str:
+        """
+        Response status code
+        """
         return pulumi.get(self, "code")
 
     @code.setter
@@ -13456,6 +19829,9 @@ class GetGroupConnectorsConnectorStatusWarningArgs:
     @property
     @pulumi.getter
     def message(self) -> str:
+        """
+        Response status text
+        """
         return pulumi.get(self, "message")
 
     @message.setter
@@ -13490,17 +19866,56 @@ class GetGroupUsersUserArgs:
         :param str role: The group role that you would like to assign this new user to. Supported group roles: ‘Destination Administrator‘, ‘Destination Reviewer‘, ‘Destination Analyst‘, ‘Connector Creator‘, or a custom destination role
         :param bool verified: The field indicates whether the user has verified their email address in the account creation process.
         """
-        pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "email", email)
-        pulumi.set(__self__, "family_name", family_name)
-        pulumi.set(__self__, "given_name", given_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "invited", invited)
-        pulumi.set(__self__, "logged_in_at", logged_in_at)
-        pulumi.set(__self__, "phone", phone)
-        pulumi.set(__self__, "picture", picture)
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "verified", verified)
+        GetGroupUsersUserArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_at=created_at,
+            email=email,
+            family_name=family_name,
+            given_name=given_name,
+            id=id,
+            invited=invited,
+            logged_in_at=logged_in_at,
+            phone=phone,
+            picture=picture,
+            role=role,
+            verified=verified,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_at: str,
+             email: str,
+             family_name: str,
+             given_name: str,
+             id: str,
+             invited: bool,
+             logged_in_at: str,
+             phone: str,
+             picture: str,
+             role: str,
+             verified: bool,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'familyName' in kwargs:
+            family_name = kwargs['familyName']
+        if 'givenName' in kwargs:
+            given_name = kwargs['givenName']
+        if 'loggedInAt' in kwargs:
+            logged_in_at = kwargs['loggedInAt']
+
+        _setter("created_at", created_at)
+        _setter("email", email)
+        _setter("family_name", family_name)
+        _setter("given_name", given_name)
+        _setter("id", id)
+        _setter("invited", invited)
+        _setter("logged_in_at", logged_in_at)
+        _setter("phone", phone)
+        _setter("picture", picture)
+        _setter("role", role)
+        _setter("verified", verified)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -13646,9 +20061,26 @@ class GetGroupsGroupArgs:
         :param str id: The unique identifier for the group within the Fivetran system.
         :param str name: The name of the group within your account.
         """
-        pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
+        GetGroupsGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_at=created_at,
+            id=id,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_at: str,
+             id: str,
+             name: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+
+        _setter("created_at", created_at)
+        _setter("id", id)
+        _setter("name", name)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -13688,6 +20120,697 @@ class GetGroupsGroupArgs:
 
 
 @pulumi.input_type
+class GetMetadataColumnsMetadataColumnArgs:
+    def __init__(__self__, *,
+                 id: str,
+                 is_foreign_key: bool,
+                 is_primary_key: bool,
+                 name_in_destination: str,
+                 name_in_source: str,
+                 parent_id: str,
+                 type_in_destination: str,
+                 type_in_source: str):
+        """
+        :param str id: The unique column identifier
+        :param bool is_foreign_key: The boolean specifying whether the column is a foreign key
+        :param bool is_primary_key: The boolean specifying whether the column is a primary key
+        :param str name_in_destination: The column name in the destination
+        :param str name_in_source: The column name in the source
+        :param str parent_id: The unique identifier of the table associated with the column
+        :param str type_in_destination: The column type in the destination
+        :param str type_in_source: The column type in the source
+        """
+        GetMetadataColumnsMetadataColumnArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            is_foreign_key=is_foreign_key,
+            is_primary_key=is_primary_key,
+            name_in_destination=name_in_destination,
+            name_in_source=name_in_source,
+            parent_id=parent_id,
+            type_in_destination=type_in_destination,
+            type_in_source=type_in_source,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             is_foreign_key: bool,
+             is_primary_key: bool,
+             name_in_destination: str,
+             name_in_source: str,
+             parent_id: str,
+             type_in_destination: str,
+             type_in_source: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'isForeignKey' in kwargs:
+            is_foreign_key = kwargs['isForeignKey']
+        if 'isPrimaryKey' in kwargs:
+            is_primary_key = kwargs['isPrimaryKey']
+        if 'nameInDestination' in kwargs:
+            name_in_destination = kwargs['nameInDestination']
+        if 'nameInSource' in kwargs:
+            name_in_source = kwargs['nameInSource']
+        if 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if 'typeInDestination' in kwargs:
+            type_in_destination = kwargs['typeInDestination']
+        if 'typeInSource' in kwargs:
+            type_in_source = kwargs['typeInSource']
+
+        _setter("id", id)
+        _setter("is_foreign_key", is_foreign_key)
+        _setter("is_primary_key", is_primary_key)
+        _setter("name_in_destination", name_in_destination)
+        _setter("name_in_source", name_in_source)
+        _setter("parent_id", parent_id)
+        _setter("type_in_destination", type_in_destination)
+        _setter("type_in_source", type_in_source)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique column identifier
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="isForeignKey")
+    def is_foreign_key(self) -> bool:
+        """
+        The boolean specifying whether the column is a foreign key
+        """
+        return pulumi.get(self, "is_foreign_key")
+
+    @is_foreign_key.setter
+    def is_foreign_key(self, value: bool):
+        pulumi.set(self, "is_foreign_key", value)
+
+    @property
+    @pulumi.getter(name="isPrimaryKey")
+    def is_primary_key(self) -> bool:
+        """
+        The boolean specifying whether the column is a primary key
+        """
+        return pulumi.get(self, "is_primary_key")
+
+    @is_primary_key.setter
+    def is_primary_key(self, value: bool):
+        pulumi.set(self, "is_primary_key", value)
+
+    @property
+    @pulumi.getter(name="nameInDestination")
+    def name_in_destination(self) -> str:
+        """
+        The column name in the destination
+        """
+        return pulumi.get(self, "name_in_destination")
+
+    @name_in_destination.setter
+    def name_in_destination(self, value: str):
+        pulumi.set(self, "name_in_destination", value)
+
+    @property
+    @pulumi.getter(name="nameInSource")
+    def name_in_source(self) -> str:
+        """
+        The column name in the source
+        """
+        return pulumi.get(self, "name_in_source")
+
+    @name_in_source.setter
+    def name_in_source(self, value: str):
+        pulumi.set(self, "name_in_source", value)
+
+    @property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> str:
+        """
+        The unique identifier of the table associated with the column
+        """
+        return pulumi.get(self, "parent_id")
+
+    @parent_id.setter
+    def parent_id(self, value: str):
+        pulumi.set(self, "parent_id", value)
+
+    @property
+    @pulumi.getter(name="typeInDestination")
+    def type_in_destination(self) -> str:
+        """
+        The column type in the destination
+        """
+        return pulumi.get(self, "type_in_destination")
+
+    @type_in_destination.setter
+    def type_in_destination(self, value: str):
+        pulumi.set(self, "type_in_destination", value)
+
+    @property
+    @pulumi.getter(name="typeInSource")
+    def type_in_source(self) -> str:
+        """
+        The column type in the source
+        """
+        return pulumi.get(self, "type_in_source")
+
+    @type_in_source.setter
+    def type_in_source(self, value: str):
+        pulumi.set(self, "type_in_source", value)
+
+
+@pulumi.input_type
+class GetMetadataSchemasMetadataSchemaArgs:
+    def __init__(__self__, *,
+                 id: str,
+                 name_in_destination: str,
+                 name_in_source: str):
+        """
+        :param str id: The unique schema identifier
+        :param str name_in_destination: The schema name in the destination
+        :param str name_in_source: The schema name in the source
+        """
+        GetMetadataSchemasMetadataSchemaArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            name_in_destination=name_in_destination,
+            name_in_source=name_in_source,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             name_in_destination: str,
+             name_in_source: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nameInDestination' in kwargs:
+            name_in_destination = kwargs['nameInDestination']
+        if 'nameInSource' in kwargs:
+            name_in_source = kwargs['nameInSource']
+
+        _setter("id", id)
+        _setter("name_in_destination", name_in_destination)
+        _setter("name_in_source", name_in_source)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique schema identifier
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="nameInDestination")
+    def name_in_destination(self) -> str:
+        """
+        The schema name in the destination
+        """
+        return pulumi.get(self, "name_in_destination")
+
+    @name_in_destination.setter
+    def name_in_destination(self, value: str):
+        pulumi.set(self, "name_in_destination", value)
+
+    @property
+    @pulumi.getter(name="nameInSource")
+    def name_in_source(self) -> str:
+        """
+        The schema name in the source
+        """
+        return pulumi.get(self, "name_in_source")
+
+    @name_in_source.setter
+    def name_in_source(self, value: str):
+        pulumi.set(self, "name_in_source", value)
+
+
+@pulumi.input_type
+class GetMetadataTablesMetadataTableArgs:
+    def __init__(__self__, *,
+                 id: str,
+                 name_in_destination: str,
+                 name_in_source: str,
+                 parent_id: str):
+        """
+        :param str id: The unique table identifier
+        :param str name_in_destination: The table name in the destination
+        :param str name_in_source: The table name in the source
+        :param str parent_id: The unique identifier of the schema associated with the table
+        """
+        GetMetadataTablesMetadataTableArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            name_in_destination=name_in_destination,
+            name_in_source=name_in_source,
+            parent_id=parent_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             name_in_destination: str,
+             name_in_source: str,
+             parent_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nameInDestination' in kwargs:
+            name_in_destination = kwargs['nameInDestination']
+        if 'nameInSource' in kwargs:
+            name_in_source = kwargs['nameInSource']
+        if 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+
+        _setter("id", id)
+        _setter("name_in_destination", name_in_destination)
+        _setter("name_in_source", name_in_source)
+        _setter("parent_id", parent_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique table identifier
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="nameInDestination")
+    def name_in_destination(self) -> str:
+        """
+        The table name in the destination
+        """
+        return pulumi.get(self, "name_in_destination")
+
+    @name_in_destination.setter
+    def name_in_destination(self, value: str):
+        pulumi.set(self, "name_in_destination", value)
+
+    @property
+    @pulumi.getter(name="nameInSource")
+    def name_in_source(self) -> str:
+        """
+        The table name in the source
+        """
+        return pulumi.get(self, "name_in_source")
+
+    @name_in_source.setter
+    def name_in_source(self, value: str):
+        pulumi.set(self, "name_in_source", value)
+
+    @property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> str:
+        """
+        The unique identifier of the schema associated with the table
+        """
+        return pulumi.get(self, "parent_id")
+
+    @parent_id.setter
+    def parent_id(self, value: str):
+        pulumi.set(self, "parent_id", value)
+
+
+@pulumi.input_type
+class GetRolesRoleArgs:
+    def __init__(__self__, *,
+                 description: str,
+                 is_custom: bool,
+                 name: str,
+                 scopes: Sequence[str]):
+        """
+        :param str description: The role description
+        :param bool is_custom: TypeBool
+        :param str name: The role name
+        :param Sequence[str] scopes: Defines the list of resources the role manages. Supported values: ACCOUNT, DESTINATION, CONNECTOR, and TEAM
+        """
+        GetRolesRoleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            is_custom=is_custom,
+            name=name,
+            scopes=scopes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             is_custom: bool,
+             name: str,
+             scopes: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'isCustom' in kwargs:
+            is_custom = kwargs['isCustom']
+
+        _setter("description", description)
+        _setter("is_custom", is_custom)
+        _setter("name", name)
+        _setter("scopes", scopes)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The role description
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: str):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="isCustom")
+    def is_custom(self) -> bool:
+        """
+        TypeBool
+        """
+        return pulumi.get(self, "is_custom")
+
+    @is_custom.setter
+    def is_custom(self, value: bool):
+        pulumi.set(self, "is_custom", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The role name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Sequence[str]:
+        """
+        Defines the list of resources the role manages. Supported values: ACCOUNT, DESTINATION, CONNECTOR, and TEAM
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: Sequence[str]):
+        pulumi.set(self, "scopes", value)
+
+
+@pulumi.input_type
+class GetTeamConnectorMembershipsConnectorArgs:
+    def __init__(__self__, *,
+                 connector_id: str,
+                 created_at: str,
+                 role: str):
+        """
+        :param str connector_id: The connector unique identifier
+        :param str created_at: The date and time the membership was created
+        :param str role: The team's role that links the team and the connector
+        """
+        GetTeamConnectorMembershipsConnectorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connector_id=connector_id,
+            created_at=created_at,
+            role=role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connector_id: str,
+             created_at: str,
+             role: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectorId' in kwargs:
+            connector_id = kwargs['connectorId']
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+
+        _setter("connector_id", connector_id)
+        _setter("created_at", created_at)
+        _setter("role", role)
+
+    @property
+    @pulumi.getter(name="connectorId")
+    def connector_id(self) -> str:
+        """
+        The connector unique identifier
+        """
+        return pulumi.get(self, "connector_id")
+
+    @connector_id.setter
+    def connector_id(self, value: str):
+        pulumi.set(self, "connector_id", value)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        """
+        The date and time the membership was created
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: str):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        The team's role that links the team and the connector
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: str):
+        pulumi.set(self, "role", value)
+
+
+@pulumi.input_type
+class GetTeamGroupMembershipsGroupArgs:
+    def __init__(__self__, *,
+                 created_at: str,
+                 group_id: str,
+                 role: str):
+        """
+        :param str created_at: The date and time the membership was created
+        :param str group_id: The group unique identifier
+        :param str role: The team's role that links the team and the group
+        """
+        GetTeamGroupMembershipsGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_at=created_at,
+            group_id=group_id,
+            role=role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_at: str,
+             group_id: str,
+             role: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+
+        _setter("created_at", created_at)
+        _setter("group_id", group_id)
+        _setter("role", role)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        """
+        The date and time the membership was created
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: str):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> str:
+        """
+        The group unique identifier
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: str):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        The team's role that links the team and the group
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: str):
+        pulumi.set(self, "role", value)
+
+
+@pulumi.input_type
+class GetTeamUserMembershipsUserArgs:
+    def __init__(__self__, *,
+                 role: str,
+                 user_id: str):
+        """
+        :param str role: The team's role that links the team and the user
+        :param str user_id: The user unique identifier
+        """
+        GetTeamUserMembershipsUserArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            role=role,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             role: str,
+             user_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+
+        _setter("role", role)
+        _setter("user_id", user_id)
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        The team's role that links the team and the user
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: str):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> str:
+        """
+        The user unique identifier
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: str):
+        pulumi.set(self, "user_id", value)
+
+
+@pulumi.input_type
+class GetTeamsTeamArgs:
+    def __init__(__self__, *,
+                 description: str,
+                 id: str,
+                 name: str,
+                 role: str):
+        """
+        :param str description: The description of the team within your account.
+        :param str id: The unique identifier for the team within your account.
+        :param str name: The name of the team within your account.
+        :param str role: The account role of the team.
+        """
+        GetTeamsTeamArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            id=id,
+            name=name,
+            role=role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             id: str,
+             name: str,
+             role: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
+        _setter("description", description)
+        _setter("id", id)
+        _setter("name", name)
+        _setter("role", role)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the team within your account.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: str):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the team within your account.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the team within your account.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        The account role of the team.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: str):
+        pulumi.set(self, "role", value)
+
+
+@pulumi.input_type
 class GetUsersUserArgs:
     def __init__(__self__, *,
                  created_at: str,
@@ -13712,16 +20835,53 @@ class GetUsersUserArgs:
         :param str picture: The user's avatar as a URL link (for example, 'http://mycompany.com/avatars/john_white.png') or base64 data URI (for example, 'data:image/png;base64,aHR0cDovL215Y29tcGFueS5jb20vYXZhdGFycy9qb2huX3doaXRlLnBuZw==')
         :param bool verified: The field indicates whether the user has verified their email address in the account creation process.
         """
-        pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "email", email)
-        pulumi.set(__self__, "family_name", family_name)
-        pulumi.set(__self__, "given_name", given_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "invited", invited)
-        pulumi.set(__self__, "logged_in_at", logged_in_at)
-        pulumi.set(__self__, "phone", phone)
-        pulumi.set(__self__, "picture", picture)
-        pulumi.set(__self__, "verified", verified)
+        GetUsersUserArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_at=created_at,
+            email=email,
+            family_name=family_name,
+            given_name=given_name,
+            id=id,
+            invited=invited,
+            logged_in_at=logged_in_at,
+            phone=phone,
+            picture=picture,
+            verified=verified,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_at: str,
+             email: str,
+             family_name: str,
+             given_name: str,
+             id: str,
+             invited: bool,
+             logged_in_at: str,
+             phone: str,
+             picture: str,
+             verified: bool,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'familyName' in kwargs:
+            family_name = kwargs['familyName']
+        if 'givenName' in kwargs:
+            given_name = kwargs['givenName']
+        if 'loggedInAt' in kwargs:
+            logged_in_at = kwargs['loggedInAt']
+
+        _setter("created_at", created_at)
+        _setter("email", email)
+        _setter("family_name", family_name)
+        _setter("given_name", given_name)
+        _setter("id", id)
+        _setter("invited", invited)
+        _setter("logged_in_at", logged_in_at)
+        _setter("phone", phone)
+        _setter("picture", picture)
+        _setter("verified", verified)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -13869,17 +21029,54 @@ class GetWebhooksWebhookArgs:
         :param str url: Your webhooks URL endpoint for your application
         :param bool run_tests: Specifies whether the setup tests should be run
         """
-        pulumi.set(__self__, "active", active)
-        pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "created_by", created_by)
-        pulumi.set(__self__, "events", events)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "secret", secret)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "url", url)
+        GetWebhooksWebhookArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            active=active,
+            created_at=created_at,
+            created_by=created_by,
+            events=events,
+            group_id=group_id,
+            id=id,
+            secret=secret,
+            type=type,
+            url=url,
+            run_tests=run_tests,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             active: bool,
+             created_at: str,
+             created_by: str,
+             events: Sequence[str],
+             group_id: str,
+             id: str,
+             secret: str,
+             type: str,
+             url: str,
+             run_tests: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'runTests' in kwargs:
+            run_tests = kwargs['runTests']
+
+        _setter("active", active)
+        _setter("created_at", created_at)
+        _setter("created_by", created_by)
+        _setter("events", events)
+        _setter("group_id", group_id)
+        _setter("id", id)
+        _setter("secret", secret)
+        _setter("type", type)
+        _setter("url", url)
         if run_tests is not None:
-            pulumi.set(__self__, "run_tests", run_tests)
+            _setter("run_tests", run_tests)
 
     @property
     @pulumi.getter

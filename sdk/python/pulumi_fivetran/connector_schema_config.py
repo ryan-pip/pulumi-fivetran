@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -23,10 +23,29 @@ class ConnectorSchemaConfigArgs:
         The set of arguments for constructing a ConnectorSchemaConfig resource.
         :param pulumi.Input[str] connector_id: The unique identifier for the connector within the Fivetran system.
         """
-        pulumi.set(__self__, "connector_id", connector_id)
-        pulumi.set(__self__, "schema_change_handling", schema_change_handling)
+        ConnectorSchemaConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connector_id=connector_id,
+            schema_change_handling=schema_change_handling,
+            schemas=schemas,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connector_id: pulumi.Input[str],
+             schema_change_handling: pulumi.Input[str],
+             schemas: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectorId' in kwargs:
+            connector_id = kwargs['connectorId']
+        if 'schemaChangeHandling' in kwargs:
+            schema_change_handling = kwargs['schemaChangeHandling']
+
+        _setter("connector_id", connector_id)
+        _setter("schema_change_handling", schema_change_handling)
         if schemas is not None:
-            pulumi.set(__self__, "schemas", schemas)
+            _setter("schemas", schemas)
 
     @property
     @pulumi.getter(name="connectorId")
@@ -69,12 +88,31 @@ class _ConnectorSchemaConfigState:
         Input properties used for looking up and filtering ConnectorSchemaConfig resources.
         :param pulumi.Input[str] connector_id: The unique identifier for the connector within the Fivetran system.
         """
+        _ConnectorSchemaConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connector_id=connector_id,
+            schema_change_handling=schema_change_handling,
+            schemas=schemas,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connector_id: Optional[pulumi.Input[str]] = None,
+             schema_change_handling: Optional[pulumi.Input[str]] = None,
+             schemas: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectorId' in kwargs:
+            connector_id = kwargs['connectorId']
+        if 'schemaChangeHandling' in kwargs:
+            schema_change_handling = kwargs['schemaChangeHandling']
+
         if connector_id is not None:
-            pulumi.set(__self__, "connector_id", connector_id)
+            _setter("connector_id", connector_id)
         if schema_change_handling is not None:
-            pulumi.set(__self__, "schema_change_handling", schema_change_handling)
+            _setter("schema_change_handling", schema_change_handling)
         if schemas is not None:
-            pulumi.set(__self__, "schemas", schemas)
+            _setter("schemas", schemas)
 
     @property
     @pulumi.getter(name="connectorId")
@@ -232,6 +270,10 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConnectorSchemaConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

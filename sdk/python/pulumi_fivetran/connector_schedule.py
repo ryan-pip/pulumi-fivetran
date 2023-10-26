@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ConnectorScheduleArgs', 'ConnectorSchedule']
@@ -29,17 +29,48 @@ class ConnectorScheduleArgs:
         :param pulumi.Input[str] schedule_type: The connector schedule configuration type. Supported values: auto, manual
         :param pulumi.Input[str] sync_frequency: The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
         """
-        pulumi.set(__self__, "connector_id", connector_id)
+        ConnectorScheduleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connector_id=connector_id,
+            daily_sync_time=daily_sync_time,
+            pause_after_trial=pause_after_trial,
+            paused=paused,
+            schedule_type=schedule_type,
+            sync_frequency=sync_frequency,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connector_id: pulumi.Input[str],
+             daily_sync_time: Optional[pulumi.Input[str]] = None,
+             pause_after_trial: Optional[pulumi.Input[str]] = None,
+             paused: Optional[pulumi.Input[str]] = None,
+             schedule_type: Optional[pulumi.Input[str]] = None,
+             sync_frequency: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectorId' in kwargs:
+            connector_id = kwargs['connectorId']
+        if 'dailySyncTime' in kwargs:
+            daily_sync_time = kwargs['dailySyncTime']
+        if 'pauseAfterTrial' in kwargs:
+            pause_after_trial = kwargs['pauseAfterTrial']
+        if 'scheduleType' in kwargs:
+            schedule_type = kwargs['scheduleType']
+        if 'syncFrequency' in kwargs:
+            sync_frequency = kwargs['syncFrequency']
+
+        _setter("connector_id", connector_id)
         if daily_sync_time is not None:
-            pulumi.set(__self__, "daily_sync_time", daily_sync_time)
+            _setter("daily_sync_time", daily_sync_time)
         if pause_after_trial is not None:
-            pulumi.set(__self__, "pause_after_trial", pause_after_trial)
+            _setter("pause_after_trial", pause_after_trial)
         if paused is not None:
-            pulumi.set(__self__, "paused", paused)
+            _setter("paused", paused)
         if schedule_type is not None:
-            pulumi.set(__self__, "schedule_type", schedule_type)
+            _setter("schedule_type", schedule_type)
         if sync_frequency is not None:
-            pulumi.set(__self__, "sync_frequency", sync_frequency)
+            _setter("sync_frequency", sync_frequency)
 
     @property
     @pulumi.getter(name="connectorId")
@@ -132,18 +163,49 @@ class _ConnectorScheduleState:
         :param pulumi.Input[str] schedule_type: The connector schedule configuration type. Supported values: auto, manual
         :param pulumi.Input[str] sync_frequency: The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
         """
+        _ConnectorScheduleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connector_id=connector_id,
+            daily_sync_time=daily_sync_time,
+            pause_after_trial=pause_after_trial,
+            paused=paused,
+            schedule_type=schedule_type,
+            sync_frequency=sync_frequency,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connector_id: Optional[pulumi.Input[str]] = None,
+             daily_sync_time: Optional[pulumi.Input[str]] = None,
+             pause_after_trial: Optional[pulumi.Input[str]] = None,
+             paused: Optional[pulumi.Input[str]] = None,
+             schedule_type: Optional[pulumi.Input[str]] = None,
+             sync_frequency: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectorId' in kwargs:
+            connector_id = kwargs['connectorId']
+        if 'dailySyncTime' in kwargs:
+            daily_sync_time = kwargs['dailySyncTime']
+        if 'pauseAfterTrial' in kwargs:
+            pause_after_trial = kwargs['pauseAfterTrial']
+        if 'scheduleType' in kwargs:
+            schedule_type = kwargs['scheduleType']
+        if 'syncFrequency' in kwargs:
+            sync_frequency = kwargs['syncFrequency']
+
         if connector_id is not None:
-            pulumi.set(__self__, "connector_id", connector_id)
+            _setter("connector_id", connector_id)
         if daily_sync_time is not None:
-            pulumi.set(__self__, "daily_sync_time", daily_sync_time)
+            _setter("daily_sync_time", daily_sync_time)
         if pause_after_trial is not None:
-            pulumi.set(__self__, "pause_after_trial", pause_after_trial)
+            _setter("pause_after_trial", pause_after_trial)
         if paused is not None:
-            pulumi.set(__self__, "paused", paused)
+            _setter("paused", paused)
         if schedule_type is not None:
-            pulumi.set(__self__, "schedule_type", schedule_type)
+            _setter("schedule_type", schedule_type)
         if sync_frequency is not None:
-            pulumi.set(__self__, "sync_frequency", sync_frequency)
+            _setter("sync_frequency", sync_frequency)
 
     @property
     @pulumi.getter(name="connectorId")
@@ -351,6 +413,10 @@ class ConnectorSchedule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConnectorScheduleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

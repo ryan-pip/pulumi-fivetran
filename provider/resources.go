@@ -96,7 +96,20 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"fivetran_connector":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Connector")},
+			"fivetran_connector": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Connector"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"config": {
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"last_synced_changes__utc_": {
+									Name: "last_synced_changes_utc",
+								},
+							},
+						},
+					},
+				},
+			},
 			"fivetran_connector_schedule":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ConnectorSchedule")},
 			"fivetran_connector_schema_config": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ConnectorSchemaConfig")},
 			"fivetran_dbt_project":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "DbtProject")},
@@ -118,7 +131,20 @@ func Provider() tfbridge.ProviderInfo {
 			"fivetran_group_users":         {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroupUsers")},
 			"fivetran_destination":         {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getDestination")},
 			"fivetran_connectors_metadata": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getConnectorsMetadata")},
-			"fivetran_connector":           {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getConnector")},
+			"fivetran_connector": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getConnector"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"config": {
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"last_synced_changes__utc_": {
+									Name: "last_synced_changes_utc",
+								},
+							},
+						},
+					},
+				},
+			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['WebhookArgs', 'Webhook']
@@ -31,15 +31,42 @@ class WebhookArgs:
         :param pulumi.Input[str] group_id: The group ID
         :param pulumi.Input[bool] run_tests: Specifies whether the setup tests should be run
         """
-        pulumi.set(__self__, "active", active)
-        pulumi.set(__self__, "events", events)
-        pulumi.set(__self__, "secret", secret)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "url", url)
+        WebhookArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            active=active,
+            events=events,
+            secret=secret,
+            type=type,
+            url=url,
+            group_id=group_id,
+            run_tests=run_tests,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             active: pulumi.Input[bool],
+             events: pulumi.Input[Sequence[pulumi.Input[str]]],
+             secret: pulumi.Input[str],
+             type: pulumi.Input[str],
+             url: pulumi.Input[str],
+             group_id: Optional[pulumi.Input[str]] = None,
+             run_tests: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'runTests' in kwargs:
+            run_tests = kwargs['runTests']
+
+        _setter("active", active)
+        _setter("events", events)
+        _setter("secret", secret)
+        _setter("type", type)
+        _setter("url", url)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if run_tests is not None:
-            pulumi.set(__self__, "run_tests", run_tests)
+            _setter("run_tests", run_tests)
 
     @property
     @pulumi.getter
@@ -150,24 +177,59 @@ class _WebhookState:
         :param pulumi.Input[str] type: The webhook type (group, account)
         :param pulumi.Input[str] url: Your webhooks URL endpoint for your application
         """
+        _WebhookState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            active=active,
+            created_at=created_at,
+            created_by=created_by,
+            events=events,
+            group_id=group_id,
+            run_tests=run_tests,
+            secret=secret,
+            type=type,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             active: Optional[pulumi.Input[bool]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             created_by: Optional[pulumi.Input[str]] = None,
+             events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             run_tests: Optional[pulumi.Input[bool]] = None,
+             secret: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'runTests' in kwargs:
+            run_tests = kwargs['runTests']
+
         if active is not None:
-            pulumi.set(__self__, "active", active)
+            _setter("active", active)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if created_by is not None:
-            pulumi.set(__self__, "created_by", created_by)
+            _setter("created_by", created_by)
         if events is not None:
-            pulumi.set(__self__, "events", events)
+            _setter("events", events)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if run_tests is not None:
-            pulumi.set(__self__, "run_tests", run_tests)
+            _setter("run_tests", run_tests)
         if secret is not None:
-            pulumi.set(__self__, "secret", secret)
+            _setter("secret", secret)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter
@@ -359,6 +421,10 @@ class Webhook(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            WebhookArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

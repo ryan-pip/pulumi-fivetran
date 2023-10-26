@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -38,22 +38,65 @@ class DbtProjectArgs:
         :param pulumi.Input[int] threads: The number of threads dbt will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
         :param pulumi.Input[str] type: Type of dbt Project. Currently only `GIT` supported. Empty value will be considered as default (GIT).
         """
-        pulumi.set(__self__, "dbt_version", dbt_version)
-        pulumi.set(__self__, "default_schema", default_schema)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "project_config", project_config)
+        DbtProjectArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dbt_version=dbt_version,
+            default_schema=default_schema,
+            group_id=group_id,
+            project_config=project_config,
+            ensure_readiness=ensure_readiness,
+            environment_vars=environment_vars,
+            models=models,
+            target_name=target_name,
+            threads=threads,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dbt_version: pulumi.Input[str],
+             default_schema: pulumi.Input[str],
+             group_id: pulumi.Input[str],
+             project_config: pulumi.Input['DbtProjectProjectConfigArgs'],
+             ensure_readiness: Optional[pulumi.Input[bool]] = None,
+             environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             models: Optional[pulumi.Input[Sequence[pulumi.Input['DbtProjectModelArgs']]]] = None,
+             target_name: Optional[pulumi.Input[str]] = None,
+             threads: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbtVersion' in kwargs:
+            dbt_version = kwargs['dbtVersion']
+        if 'defaultSchema' in kwargs:
+            default_schema = kwargs['defaultSchema']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'projectConfig' in kwargs:
+            project_config = kwargs['projectConfig']
+        if 'ensureReadiness' in kwargs:
+            ensure_readiness = kwargs['ensureReadiness']
+        if 'environmentVars' in kwargs:
+            environment_vars = kwargs['environmentVars']
+        if 'targetName' in kwargs:
+            target_name = kwargs['targetName']
+
+        _setter("dbt_version", dbt_version)
+        _setter("default_schema", default_schema)
+        _setter("group_id", group_id)
+        _setter("project_config", project_config)
         if ensure_readiness is not None:
-            pulumi.set(__self__, "ensure_readiness", ensure_readiness)
+            _setter("ensure_readiness", ensure_readiness)
         if environment_vars is not None:
-            pulumi.set(__self__, "environment_vars", environment_vars)
+            _setter("environment_vars", environment_vars)
         if models is not None:
-            pulumi.set(__self__, "models", models)
+            _setter("models", models)
         if target_name is not None:
-            pulumi.set(__self__, "target_name", target_name)
+            _setter("target_name", target_name)
         if threads is not None:
-            pulumi.set(__self__, "threads", threads)
+            _setter("threads", threads)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="dbtVersion")
@@ -206,34 +249,91 @@ class _DbtProjectState:
         :param pulumi.Input[int] threads: The number of threads dbt will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
         :param pulumi.Input[str] type: Type of dbt Project. Currently only `GIT` supported. Empty value will be considered as default (GIT).
         """
+        _DbtProjectState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_at=created_at,
+            created_by_id=created_by_id,
+            dbt_version=dbt_version,
+            default_schema=default_schema,
+            ensure_readiness=ensure_readiness,
+            environment_vars=environment_vars,
+            group_id=group_id,
+            models=models,
+            project_config=project_config,
+            public_key=public_key,
+            status=status,
+            target_name=target_name,
+            threads=threads,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_at: Optional[pulumi.Input[str]] = None,
+             created_by_id: Optional[pulumi.Input[str]] = None,
+             dbt_version: Optional[pulumi.Input[str]] = None,
+             default_schema: Optional[pulumi.Input[str]] = None,
+             ensure_readiness: Optional[pulumi.Input[bool]] = None,
+             environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             models: Optional[pulumi.Input[Sequence[pulumi.Input['DbtProjectModelArgs']]]] = None,
+             project_config: Optional[pulumi.Input['DbtProjectProjectConfigArgs']] = None,
+             public_key: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             target_name: Optional[pulumi.Input[str]] = None,
+             threads: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'createdById' in kwargs:
+            created_by_id = kwargs['createdById']
+        if 'dbtVersion' in kwargs:
+            dbt_version = kwargs['dbtVersion']
+        if 'defaultSchema' in kwargs:
+            default_schema = kwargs['defaultSchema']
+        if 'ensureReadiness' in kwargs:
+            ensure_readiness = kwargs['ensureReadiness']
+        if 'environmentVars' in kwargs:
+            environment_vars = kwargs['environmentVars']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'projectConfig' in kwargs:
+            project_config = kwargs['projectConfig']
+        if 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if 'targetName' in kwargs:
+            target_name = kwargs['targetName']
+
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if created_by_id is not None:
-            pulumi.set(__self__, "created_by_id", created_by_id)
+            _setter("created_by_id", created_by_id)
         if dbt_version is not None:
-            pulumi.set(__self__, "dbt_version", dbt_version)
+            _setter("dbt_version", dbt_version)
         if default_schema is not None:
-            pulumi.set(__self__, "default_schema", default_schema)
+            _setter("default_schema", default_schema)
         if ensure_readiness is not None:
-            pulumi.set(__self__, "ensure_readiness", ensure_readiness)
+            _setter("ensure_readiness", ensure_readiness)
         if environment_vars is not None:
-            pulumi.set(__self__, "environment_vars", environment_vars)
+            _setter("environment_vars", environment_vars)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if models is not None:
-            pulumi.set(__self__, "models", models)
+            _setter("models", models)
         if project_config is not None:
-            pulumi.set(__self__, "project_config", project_config)
+            _setter("project_config", project_config)
         if public_key is not None:
-            pulumi.set(__self__, "public_key", public_key)
+            _setter("public_key", public_key)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if target_name is not None:
-            pulumi.set(__self__, "target_name", target_name)
+            _setter("target_name", target_name)
         if threads is not None:
-            pulumi.set(__self__, "threads", threads)
+            _setter("threads", threads)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -529,6 +629,10 @@ class DbtProject(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DbtProjectArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -565,6 +669,11 @@ class DbtProject(pulumi.CustomResource):
                 raise TypeError("Missing required property 'group_id'")
             __props__.__dict__["group_id"] = group_id
             __props__.__dict__["models"] = models
+            if project_config is not None and not isinstance(project_config, DbtProjectProjectConfigArgs):
+                project_config = project_config or {}
+                def _setter(key, value):
+                    project_config[key] = value
+                DbtProjectProjectConfigArgs._configure(_setter, **project_config)
             if project_config is None and not opts.urn:
                 raise TypeError("Missing required property 'project_config'")
             __props__.__dict__["project_config"] = project_config

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -36,19 +36,54 @@ class ConnectorArgs:
                trusted automatically, it has to be approved with [Certificates Management API Approve a destination
                fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
-        pulumi.set(__self__, "destination_schema", destination_schema)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "service", service)
+        ConnectorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            destination_schema=destination_schema,
+            group_id=group_id,
+            service=service,
+            auth=auth,
+            config=config,
+            run_setup_tests=run_setup_tests,
+            trust_certificates=trust_certificates,
+            trust_fingerprints=trust_fingerprints,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             destination_schema: pulumi.Input['ConnectorDestinationSchemaArgs'],
+             group_id: pulumi.Input[str],
+             service: pulumi.Input[str],
+             auth: Optional[pulumi.Input['ConnectorAuthArgs']] = None,
+             config: Optional[pulumi.Input['ConnectorConfigArgs']] = None,
+             run_setup_tests: Optional[pulumi.Input[str]] = None,
+             trust_certificates: Optional[pulumi.Input[str]] = None,
+             trust_fingerprints: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationSchema' in kwargs:
+            destination_schema = kwargs['destinationSchema']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'runSetupTests' in kwargs:
+            run_setup_tests = kwargs['runSetupTests']
+        if 'trustCertificates' in kwargs:
+            trust_certificates = kwargs['trustCertificates']
+        if 'trustFingerprints' in kwargs:
+            trust_fingerprints = kwargs['trustFingerprints']
+
+        _setter("destination_schema", destination_schema)
+        _setter("group_id", group_id)
+        _setter("service", service)
         if auth is not None:
-            pulumi.set(__self__, "auth", auth)
+            _setter("auth", auth)
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if run_setup_tests is not None:
-            pulumi.set(__self__, "run_setup_tests", run_setup_tests)
+            _setter("run_setup_tests", run_setup_tests)
         if trust_certificates is not None:
-            pulumi.set(__self__, "trust_certificates", trust_certificates)
+            _setter("trust_certificates", trust_certificates)
         if trust_fingerprints is not None:
-            pulumi.set(__self__, "trust_fingerprints", trust_fingerprints)
+            _setter("trust_fingerprints", trust_fingerprints)
 
     @property
     @pulumi.getter(name="destinationSchema")
@@ -173,30 +208,79 @@ class _ConnectorState:
                trusted automatically, it has to be approved with [Certificates Management API Approve a destination
                fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
+        _ConnectorState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auth=auth,
+            config=config,
+            connected_by=connected_by,
+            created_at=created_at,
+            destination_schema=destination_schema,
+            group_id=group_id,
+            last_updated=last_updated,
+            name=name,
+            run_setup_tests=run_setup_tests,
+            service=service,
+            trust_certificates=trust_certificates,
+            trust_fingerprints=trust_fingerprints,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auth: Optional[pulumi.Input['ConnectorAuthArgs']] = None,
+             config: Optional[pulumi.Input['ConnectorConfigArgs']] = None,
+             connected_by: Optional[pulumi.Input[str]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             destination_schema: Optional[pulumi.Input['ConnectorDestinationSchemaArgs']] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             last_updated: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             run_setup_tests: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             trust_certificates: Optional[pulumi.Input[str]] = None,
+             trust_fingerprints: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectedBy' in kwargs:
+            connected_by = kwargs['connectedBy']
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'destinationSchema' in kwargs:
+            destination_schema = kwargs['destinationSchema']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'lastUpdated' in kwargs:
+            last_updated = kwargs['lastUpdated']
+        if 'runSetupTests' in kwargs:
+            run_setup_tests = kwargs['runSetupTests']
+        if 'trustCertificates' in kwargs:
+            trust_certificates = kwargs['trustCertificates']
+        if 'trustFingerprints' in kwargs:
+            trust_fingerprints = kwargs['trustFingerprints']
+
         if auth is not None:
-            pulumi.set(__self__, "auth", auth)
+            _setter("auth", auth)
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if connected_by is not None:
-            pulumi.set(__self__, "connected_by", connected_by)
+            _setter("connected_by", connected_by)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if destination_schema is not None:
-            pulumi.set(__self__, "destination_schema", destination_schema)
+            _setter("destination_schema", destination_schema)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if last_updated is not None:
-            pulumi.set(__self__, "last_updated", last_updated)
+            _setter("last_updated", last_updated)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if run_setup_tests is not None:
-            pulumi.set(__self__, "run_setup_tests", run_setup_tests)
+            _setter("run_setup_tests", run_setup_tests)
         if service is not None:
-            pulumi.set(__self__, "service", service)
+            _setter("service", service)
         if trust_certificates is not None:
-            pulumi.set(__self__, "trust_certificates", trust_certificates)
+            _setter("trust_certificates", trust_certificates)
         if trust_fingerprints is not None:
-            pulumi.set(__self__, "trust_fingerprints", trust_fingerprints)
+            _setter("trust_fingerprints", trust_fingerprints)
 
     @property
     @pulumi.getter
@@ -388,6 +472,10 @@ class Connector(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConnectorArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -410,8 +498,23 @@ class Connector(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectorArgs.__new__(ConnectorArgs)
 
+            if auth is not None and not isinstance(auth, ConnectorAuthArgs):
+                auth = auth or {}
+                def _setter(key, value):
+                    auth[key] = value
+                ConnectorAuthArgs._configure(_setter, **auth)
             __props__.__dict__["auth"] = auth
+            if config is not None and not isinstance(config, ConnectorConfigArgs):
+                config = config or {}
+                def _setter(key, value):
+                    config[key] = value
+                ConnectorConfigArgs._configure(_setter, **config)
             __props__.__dict__["config"] = config
+            if destination_schema is not None and not isinstance(destination_schema, ConnectorDestinationSchemaArgs):
+                destination_schema = destination_schema or {}
+                def _setter(key, value):
+                    destination_schema[key] = value
+                ConnectorDestinationSchemaArgs._configure(_setter, **destination_schema)
             if destination_schema is None and not opts.urn:
                 raise TypeError("Missing required property 'destination_schema'")
             __props__.__dict__["destination_schema"] = destination_schema

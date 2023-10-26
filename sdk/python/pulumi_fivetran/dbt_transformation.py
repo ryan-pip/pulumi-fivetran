@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,11 +29,36 @@ class DbtTransformationArgs:
         :param pulumi.Input[bool] run_tests: The field indicating whether the tests have been configured for dbt Transformation. By default, the value is false.
         :param pulumi.Input['DbtTransformationScheduleArgs'] schedule: dbt Transformation schedule parameters.
         """
-        pulumi.set(__self__, "dbt_model_name", dbt_model_name)
-        pulumi.set(__self__, "dbt_project_id", dbt_project_id)
-        pulumi.set(__self__, "paused", paused)
-        pulumi.set(__self__, "run_tests", run_tests)
-        pulumi.set(__self__, "schedule", schedule)
+        DbtTransformationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dbt_model_name=dbt_model_name,
+            dbt_project_id=dbt_project_id,
+            paused=paused,
+            run_tests=run_tests,
+            schedule=schedule,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dbt_model_name: pulumi.Input[str],
+             dbt_project_id: pulumi.Input[str],
+             paused: pulumi.Input[bool],
+             run_tests: pulumi.Input[bool],
+             schedule: pulumi.Input['DbtTransformationScheduleArgs'],
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbtModelName' in kwargs:
+            dbt_model_name = kwargs['dbtModelName']
+        if 'dbtProjectId' in kwargs:
+            dbt_project_id = kwargs['dbtProjectId']
+        if 'runTests' in kwargs:
+            run_tests = kwargs['runTests']
+
+        _setter("dbt_model_name", dbt_model_name)
+        _setter("dbt_project_id", dbt_project_id)
+        _setter("paused", paused)
+        _setter("run_tests", run_tests)
+        _setter("schedule", schedule)
 
     @property
     @pulumi.getter(name="dbtModelName")
@@ -122,26 +147,71 @@ class _DbtTransformationState:
         :param pulumi.Input[bool] run_tests: The field indicating whether the tests have been configured for dbt Transformation. By default, the value is false.
         :param pulumi.Input['DbtTransformationScheduleArgs'] schedule: dbt Transformation schedule parameters.
         """
+        _DbtTransformationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connector_ids=connector_ids,
+            created_at=created_at,
+            dbt_model_id=dbt_model_id,
+            dbt_model_name=dbt_model_name,
+            dbt_project_id=dbt_project_id,
+            model_ids=model_ids,
+            output_model_name=output_model_name,
+            paused=paused,
+            run_tests=run_tests,
+            schedule=schedule,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connector_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             dbt_model_id: Optional[pulumi.Input[str]] = None,
+             dbt_model_name: Optional[pulumi.Input[str]] = None,
+             dbt_project_id: Optional[pulumi.Input[str]] = None,
+             model_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             output_model_name: Optional[pulumi.Input[str]] = None,
+             paused: Optional[pulumi.Input[bool]] = None,
+             run_tests: Optional[pulumi.Input[bool]] = None,
+             schedule: Optional[pulumi.Input['DbtTransformationScheduleArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectorIds' in kwargs:
+            connector_ids = kwargs['connectorIds']
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'dbtModelId' in kwargs:
+            dbt_model_id = kwargs['dbtModelId']
+        if 'dbtModelName' in kwargs:
+            dbt_model_name = kwargs['dbtModelName']
+        if 'dbtProjectId' in kwargs:
+            dbt_project_id = kwargs['dbtProjectId']
+        if 'modelIds' in kwargs:
+            model_ids = kwargs['modelIds']
+        if 'outputModelName' in kwargs:
+            output_model_name = kwargs['outputModelName']
+        if 'runTests' in kwargs:
+            run_tests = kwargs['runTests']
+
         if connector_ids is not None:
-            pulumi.set(__self__, "connector_ids", connector_ids)
+            _setter("connector_ids", connector_ids)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if dbt_model_id is not None:
-            pulumi.set(__self__, "dbt_model_id", dbt_model_id)
+            _setter("dbt_model_id", dbt_model_id)
         if dbt_model_name is not None:
-            pulumi.set(__self__, "dbt_model_name", dbt_model_name)
+            _setter("dbt_model_name", dbt_model_name)
         if dbt_project_id is not None:
-            pulumi.set(__self__, "dbt_project_id", dbt_project_id)
+            _setter("dbt_project_id", dbt_project_id)
         if model_ids is not None:
-            pulumi.set(__self__, "model_ids", model_ids)
+            _setter("model_ids", model_ids)
         if output_model_name is not None:
-            pulumi.set(__self__, "output_model_name", output_model_name)
+            _setter("output_model_name", output_model_name)
         if paused is not None:
-            pulumi.set(__self__, "paused", paused)
+            _setter("paused", paused)
         if run_tests is not None:
-            pulumi.set(__self__, "run_tests", run_tests)
+            _setter("run_tests", run_tests)
         if schedule is not None:
-            pulumi.set(__self__, "schedule", schedule)
+            _setter("schedule", schedule)
 
     @property
     @pulumi.getter(name="connectorIds")
@@ -385,6 +455,10 @@ class DbtTransformation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DbtTransformationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -416,6 +490,11 @@ class DbtTransformation(pulumi.CustomResource):
             if run_tests is None and not opts.urn:
                 raise TypeError("Missing required property 'run_tests'")
             __props__.__dict__["run_tests"] = run_tests
+            if schedule is not None and not isinstance(schedule, DbtTransformationScheduleArgs):
+                schedule = schedule or {}
+                def _setter(key, value):
+                    schedule[key] = value
+                DbtTransformationScheduleArgs._configure(_setter, **schedule)
             if schedule is None and not opts.urn:
                 raise TypeError("Missing required property 'schedule'")
             __props__.__dict__["schedule"] = schedule

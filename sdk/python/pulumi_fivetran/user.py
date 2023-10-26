@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['UserArgs', 'User']
@@ -29,15 +29,40 @@ class UserArgs:
         :param pulumi.Input[str] picture: The user's avatar as a URL link (for example, 'http://mycompany.com/avatars/john_white.png') or base64 data URI (for example, 'data:image/png;base64,aHR0cDovL215Y29tcGFueS5jb20vYXZhdGFycy9qb2huX3doaXRlLnBuZw==')
         :param pulumi.Input[str] role: The role that you would like to assign to the user
         """
-        pulumi.set(__self__, "email", email)
-        pulumi.set(__self__, "family_name", family_name)
-        pulumi.set(__self__, "given_name", given_name)
+        UserArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            email=email,
+            family_name=family_name,
+            given_name=given_name,
+            phone=phone,
+            picture=picture,
+            role=role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             email: pulumi.Input[str],
+             family_name: pulumi.Input[str],
+             given_name: pulumi.Input[str],
+             phone: Optional[pulumi.Input[str]] = None,
+             picture: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'familyName' in kwargs:
+            family_name = kwargs['familyName']
+        if 'givenName' in kwargs:
+            given_name = kwargs['givenName']
+
+        _setter("email", email)
+        _setter("family_name", family_name)
+        _setter("given_name", given_name)
         if phone is not None:
-            pulumi.set(__self__, "phone", phone)
+            _setter("phone", phone)
         if picture is not None:
-            pulumi.set(__self__, "picture", picture)
+            _setter("picture", picture)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
 
     @property
     @pulumi.getter
@@ -139,28 +164,69 @@ class _UserState:
         :param pulumi.Input[str] role: The role that you would like to assign to the user
         :param pulumi.Input[bool] verified: The field indicates whether the user has verified their email address in the account creation process.
         """
+        _UserState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_at=created_at,
+            email=email,
+            family_name=family_name,
+            given_name=given_name,
+            invited=invited,
+            last_updated=last_updated,
+            logged_in_at=logged_in_at,
+            phone=phone,
+            picture=picture,
+            role=role,
+            verified=verified,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_at: Optional[pulumi.Input[str]] = None,
+             email: Optional[pulumi.Input[str]] = None,
+             family_name: Optional[pulumi.Input[str]] = None,
+             given_name: Optional[pulumi.Input[str]] = None,
+             invited: Optional[pulumi.Input[bool]] = None,
+             last_updated: Optional[pulumi.Input[str]] = None,
+             logged_in_at: Optional[pulumi.Input[str]] = None,
+             phone: Optional[pulumi.Input[str]] = None,
+             picture: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             verified: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'familyName' in kwargs:
+            family_name = kwargs['familyName']
+        if 'givenName' in kwargs:
+            given_name = kwargs['givenName']
+        if 'lastUpdated' in kwargs:
+            last_updated = kwargs['lastUpdated']
+        if 'loggedInAt' in kwargs:
+            logged_in_at = kwargs['loggedInAt']
+
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if email is not None:
-            pulumi.set(__self__, "email", email)
+            _setter("email", email)
         if family_name is not None:
-            pulumi.set(__self__, "family_name", family_name)
+            _setter("family_name", family_name)
         if given_name is not None:
-            pulumi.set(__self__, "given_name", given_name)
+            _setter("given_name", given_name)
         if invited is not None:
-            pulumi.set(__self__, "invited", invited)
+            _setter("invited", invited)
         if last_updated is not None:
-            pulumi.set(__self__, "last_updated", last_updated)
+            _setter("last_updated", last_updated)
         if logged_in_at is not None:
-            pulumi.set(__self__, "logged_in_at", logged_in_at)
+            _setter("logged_in_at", logged_in_at)
         if phone is not None:
-            pulumi.set(__self__, "phone", phone)
+            _setter("phone", phone)
         if picture is not None:
-            pulumi.set(__self__, "picture", picture)
+            _setter("picture", picture)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if verified is not None:
-            pulumi.set(__self__, "verified", verified)
+            _setter("verified", verified)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -397,6 +463,10 @@ class User(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            UserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
