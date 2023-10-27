@@ -17,7 +17,7 @@ def readme():
         return "fivetran Pulumi Package - Development Version"
 
 
-setup(name='pulumi_fivetran',
+setup(name='pulumi_fivetran_dbt',
       python_requires='>=3.7',
       version=VERSION,
       description="A Pulumi package for creating and managing fivetran cloud resources.",
