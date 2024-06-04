@@ -23,6 +23,7 @@ export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Prom
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getUsers:getUsers", {
+        "id": args.id,
         "users": args.users,
     }, opts);
 }
@@ -31,6 +32,10 @@ export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getUsers.
  */
 export interface GetUsersArgs {
+    /**
+     * The unique identifier for the user within your account.
+     */
+    id?: string;
     users?: inputs.GetUsersUser[];
 }
 
@@ -39,10 +44,10 @@ export interface GetUsersArgs {
  */
 export interface GetUsersResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this resource.
      */
-    readonly id: string;
-    readonly users: outputs.GetUsersUser[];
+    readonly id?: string;
+    readonly users?: outputs.GetUsersUser[];
 }
 /**
  * This data source returns a list of all users within your Fivetran account.
@@ -64,5 +69,9 @@ export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOp
  * A collection of arguments for invoking getUsers.
  */
 export interface GetUsersOutputArgs {
+    /**
+     * The unique identifier for the user within your account.
+     */
+    id?: pulumi.Input<string>;
     users?: pulumi.Input<pulumi.Input<inputs.GetUsersUserArgs>[]>;
 }

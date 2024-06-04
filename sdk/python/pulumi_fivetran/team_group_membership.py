@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -22,24 +22,9 @@ class TeamGroupMembershipArgs:
         The set of arguments for constructing a TeamGroupMembership resource.
         :param pulumi.Input[str] team_id: The unique identifier for the team within your account.
         """
-        TeamGroupMembershipArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            team_id=team_id,
-            groups=groups,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             team_id: pulumi.Input[str],
-             groups: Optional[pulumi.Input[Sequence[pulumi.Input['TeamGroupMembershipGroupArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'teamId' in kwargs:
-            team_id = kwargs['teamId']
-
-        _setter("team_id", team_id)
+        pulumi.set(__self__, "team_id", team_id)
         if groups is not None:
-            _setter("groups", groups)
+            pulumi.set(__self__, "groups", groups)
 
     @property
     @pulumi.getter(name="teamId")
@@ -72,25 +57,10 @@ class _TeamGroupMembershipState:
         Input properties used for looking up and filtering TeamGroupMembership resources.
         :param pulumi.Input[str] team_id: The unique identifier for the team within your account.
         """
-        _TeamGroupMembershipState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            groups=groups,
-            team_id=team_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             groups: Optional[pulumi.Input[Sequence[pulumi.Input['TeamGroupMembershipGroupArgs']]]] = None,
-             team_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'teamId' in kwargs:
-            team_id = kwargs['teamId']
-
         if groups is not None:
-            _setter("groups", groups)
+            pulumi.set(__self__, "groups", groups)
         if team_id is not None:
-            _setter("team_id", team_id)
+            pulumi.set(__self__, "team_id", team_id)
 
     @property
     @pulumi.getter
@@ -127,13 +97,7 @@ class TeamGroupMembership(pulumi.CustomResource):
 
         ## Import
 
-        1. To import an existing `fivetran_team_group_membership` resource into your Terraform state, you need to get `team_id` and `group_id` You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_team_group_membership" "my_imported_fivetran_team_group_membership" { }
-
-        ```sh
-         $ pulumi import fivetran:index/teamGroupMembership:TeamGroupMembership
-
-        Run the `terraform import` command
-        ```
+        1. To import an existing `fivetran_team_group_membership` resource into your Terraform state, you need to get `team_id` and `group_id` You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_team_group_membership" "my_imported_fivetran_team_group_membership" { } 3. Run the `pulumi import` command
 
         ```sh
          $ pulumi import fivetran:index/teamGroupMembership:TeamGroupMembership my_imported_fivetran_team_group_membership {team_id}
@@ -156,13 +120,7 @@ class TeamGroupMembership(pulumi.CustomResource):
 
         ## Import
 
-        1. To import an existing `fivetran_team_group_membership` resource into your Terraform state, you need to get `team_id` and `group_id` You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_team_group_membership" "my_imported_fivetran_team_group_membership" { }
-
-        ```sh
-         $ pulumi import fivetran:index/teamGroupMembership:TeamGroupMembership
-
-        Run the `terraform import` command
-        ```
+        1. To import an existing `fivetran_team_group_membership` resource into your Terraform state, you need to get `team_id` and `group_id` You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_team_group_membership" "my_imported_fivetran_team_group_membership" { } 3. Run the `pulumi import` command
 
         ```sh
          $ pulumi import fivetran:index/teamGroupMembership:TeamGroupMembership my_imported_fivetran_team_group_membership {team_id}
@@ -180,10 +138,6 @@ class TeamGroupMembership(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TeamGroupMembershipArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

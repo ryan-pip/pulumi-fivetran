@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['TeamArgs', 'Team']
@@ -23,26 +23,11 @@ class TeamArgs:
         :param pulumi.Input[str] description: The description of the team within your account.
         :param pulumi.Input[str] name: The name of the team within your account.
         """
-        TeamArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            role=role,
-            description=description,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             role: pulumi.Input[str],
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
-        _setter("role", role)
+        pulumi.set(__self__, "role", role)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -93,27 +78,12 @@ class _TeamState:
         :param pulumi.Input[str] name: The name of the team within your account.
         :param pulumi.Input[str] role: The account role of the team.
         """
-        _TeamState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            name=name,
-            role=role,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if role is not None:
-            _setter("role", role)
+            pulumi.set(__self__, "role", role)
 
     @property
     @pulumi.getter
@@ -180,13 +150,7 @@ class Team(pulumi.CustomResource):
 
         1. To import an existing `fivetran_team` resource into your Terraform state, you need to get `team_id`.
 
-        You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_team" "my_imported_fivetran_team" { }
-
-        ```sh
-         $ pulumi import fivetran:index/team:Team
-
-        Run the `terraform import` command
-        ```
+        You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_team" "my_imported_fivetran_team" { } 3. Run the `pulumi import` command
 
         ```sh
          $ pulumi import fivetran:index/team:Team my_imported_fivetran_team {team_id}
@@ -225,13 +189,7 @@ class Team(pulumi.CustomResource):
 
         1. To import an existing `fivetran_team` resource into your Terraform state, you need to get `team_id`.
 
-        You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_team" "my_imported_fivetran_team" { }
-
-        ```sh
-         $ pulumi import fivetran:index/team:Team
-
-        Run the `terraform import` command
-        ```
+        You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_team" "my_imported_fivetran_team" { } 3. Run the `pulumi import` command
 
         ```sh
          $ pulumi import fivetran:index/team:Team my_imported_fivetran_team {team_id}
@@ -249,10 +207,6 @@ class Team(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TeamArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

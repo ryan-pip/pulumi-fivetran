@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
@@ -25,16 +24,16 @@ func LookupConnectorCertificates(ctx *pulumi.Context, args *LookupConnectorCerti
 // A collection of arguments for invoking getConnectorCertificates.
 type LookupConnectorCertificatesArgs struct {
 	Certificates []GetConnectorCertificatesCertificate `pulumi:"certificates"`
-	// The unique identifier for the resource. Equal to target connector id.
+	// The unique identifier for the resource. Equal to target connection id.
 	Id string `pulumi:"id"`
 }
 
 // A collection of values returned by getConnectorCertificates.
 type LookupConnectorCertificatesResult struct {
 	Certificates []GetConnectorCertificatesCertificate `pulumi:"certificates"`
-	// The unique identifier for the target connector within the Fivetran system.
+	// The unique identifier for the target connection within the Fivetran system.
 	ConnectorId string `pulumi:"connectorId"`
-	// The unique identifier for the resource. Equal to target connector id.
+	// The unique identifier for the resource. Equal to target connection id.
 	Id string `pulumi:"id"`
 }
 
@@ -54,7 +53,7 @@ func LookupConnectorCertificatesOutput(ctx *pulumi.Context, args LookupConnector
 // A collection of arguments for invoking getConnectorCertificates.
 type LookupConnectorCertificatesOutputArgs struct {
 	Certificates GetConnectorCertificatesCertificateArrayInput `pulumi:"certificates"`
-	// The unique identifier for the resource. Equal to target connector id.
+	// The unique identifier for the resource. Equal to target connection id.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -77,22 +76,16 @@ func (o LookupConnectorCertificatesResultOutput) ToLookupConnectorCertificatesRe
 	return o
 }
 
-func (o LookupConnectorCertificatesResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConnectorCertificatesResult] {
-	return pulumix.Output[LookupConnectorCertificatesResult]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LookupConnectorCertificatesResultOutput) Certificates() GetConnectorCertificatesCertificateArrayOutput {
 	return o.ApplyT(func(v LookupConnectorCertificatesResult) []GetConnectorCertificatesCertificate { return v.Certificates }).(GetConnectorCertificatesCertificateArrayOutput)
 }
 
-// The unique identifier for the target connector within the Fivetran system.
+// The unique identifier for the target connection within the Fivetran system.
 func (o LookupConnectorCertificatesResultOutput) ConnectorId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorCertificatesResult) string { return v.ConnectorId }).(pulumi.StringOutput)
 }
 
-// The unique identifier for the resource. Equal to target connector id.
+// The unique identifier for the resource. Equal to target connection id.
 func (o LookupConnectorCertificatesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorCertificatesResult) string { return v.Id }).(pulumi.StringOutput)
 }

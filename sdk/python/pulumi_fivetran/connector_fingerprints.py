@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -20,32 +20,17 @@ class ConnectorFingerprintsArgs:
                  fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorFingerprintsFingerprintArgs']]]] = None):
         """
         The set of arguments for constructing a ConnectorFingerprints resource.
-        :param pulumi.Input[str] connector_id: The unique identifier for the target connector within the Fivetran system.
+        :param pulumi.Input[str] connector_id: The unique identifier for the target connection within the Fivetran system.
         """
-        ConnectorFingerprintsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            connector_id=connector_id,
-            fingerprints=fingerprints,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             connector_id: pulumi.Input[str],
-             fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorFingerprintsFingerprintArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'connectorId' in kwargs:
-            connector_id = kwargs['connectorId']
-
-        _setter("connector_id", connector_id)
+        pulumi.set(__self__, "connector_id", connector_id)
         if fingerprints is not None:
-            _setter("fingerprints", fingerprints)
+            pulumi.set(__self__, "fingerprints", fingerprints)
 
     @property
     @pulumi.getter(name="connectorId")
     def connector_id(self) -> pulumi.Input[str]:
         """
-        The unique identifier for the target connector within the Fivetran system.
+        The unique identifier for the target connection within the Fivetran system.
         """
         return pulumi.get(self, "connector_id")
 
@@ -70,33 +55,18 @@ class _ConnectorFingerprintsState:
                  fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorFingerprintsFingerprintArgs']]]] = None):
         """
         Input properties used for looking up and filtering ConnectorFingerprints resources.
-        :param pulumi.Input[str] connector_id: The unique identifier for the target connector within the Fivetran system.
+        :param pulumi.Input[str] connector_id: The unique identifier for the target connection within the Fivetran system.
         """
-        _ConnectorFingerprintsState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            connector_id=connector_id,
-            fingerprints=fingerprints,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             connector_id: Optional[pulumi.Input[str]] = None,
-             fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorFingerprintsFingerprintArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'connectorId' in kwargs:
-            connector_id = kwargs['connectorId']
-
         if connector_id is not None:
-            _setter("connector_id", connector_id)
+            pulumi.set(__self__, "connector_id", connector_id)
         if fingerprints is not None:
-            _setter("fingerprints", fingerprints)
+            pulumi.set(__self__, "fingerprints", fingerprints)
 
     @property
     @pulumi.getter(name="connectorId")
     def connector_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique identifier for the target connector within the Fivetran system.
+        The unique identifier for the target connection within the Fivetran system.
         """
         return pulumi.get(self, "connector_id")
 
@@ -147,13 +117,7 @@ class ConnectorFingerprints(pulumi.CustomResource):
 
         ## Import
 
-        1. To import an existing `fivetran_connector_fingerprints` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard. 2. Retrieve all connectors in a particular group using the [fivetran_group_connectors data source](/docs/data-sources/group_connectors). To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_connector_fingerprints" "my_imported_connector_fingerprints" { }
-
-        ```sh
-         $ pulumi import fivetran:index/connectorFingerprints:ConnectorFingerprints
-
-        Run the `terraform import` command
-        ```
+        1. To import an existing `fivetran_connector_fingerprints` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard. 2. Retrieve all connectors in a particular group using the [fivetran_group_connectors data source](/docs/data-sources/group_connectors). To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_connector_fingerprints" "my_imported_connector_fingerprints" { } 4. Run the `pulumi import` command
 
         ```sh
          $ pulumi import fivetran:index/connectorFingerprints:ConnectorFingerprints my_imported_connector_fingerprints {your Fivetran Connector ID}
@@ -165,7 +129,7 @@ class ConnectorFingerprints(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] connector_id: The unique identifier for the target connector within the Fivetran system.
+        :param pulumi.Input[str] connector_id: The unique identifier for the target connection within the Fivetran system.
         """
         ...
     @overload
@@ -198,13 +162,7 @@ class ConnectorFingerprints(pulumi.CustomResource):
 
         ## Import
 
-        1. To import an existing `fivetran_connector_fingerprints` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard. 2. Retrieve all connectors in a particular group using the [fivetran_group_connectors data source](/docs/data-sources/group_connectors). To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_connector_fingerprints" "my_imported_connector_fingerprints" { }
-
-        ```sh
-         $ pulumi import fivetran:index/connectorFingerprints:ConnectorFingerprints
-
-        Run the `terraform import` command
-        ```
+        1. To import an existing `fivetran_connector_fingerprints` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard. 2. Retrieve all connectors in a particular group using the [fivetran_group_connectors data source](/docs/data-sources/group_connectors). To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_connector_fingerprints" "my_imported_connector_fingerprints" { } 4. Run the `pulumi import` command
 
         ```sh
          $ pulumi import fivetran:index/connectorFingerprints:ConnectorFingerprints my_imported_connector_fingerprints {your Fivetran Connector ID}
@@ -224,10 +182,6 @@ class ConnectorFingerprints(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ConnectorFingerprintsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -267,7 +221,7 @@ class ConnectorFingerprints(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] connector_id: The unique identifier for the target connector within the Fivetran system.
+        :param pulumi.Input[str] connector_id: The unique identifier for the target connection within the Fivetran system.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -281,7 +235,7 @@ class ConnectorFingerprints(pulumi.CustomResource):
     @pulumi.getter(name="connectorId")
     def connector_id(self) -> pulumi.Output[str]:
         """
-        The unique identifier for the target connector within the Fivetran system.
+        The unique identifier for the target connection within the Fivetran system.
         """
         return pulumi.get(self, "connector_id")
 

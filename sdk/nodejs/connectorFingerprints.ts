@@ -32,13 +32,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * 1. To import an existing `fivetran_connector_fingerprints` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard. 2. Retrieve all connectors in a particular group using the [fivetran_group_connectors data source](/docs/data-sources/group_connectors). To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_connector_fingerprints" "my_imported_connector_fingerprints" { }
- *
- * ```sh
- *  $ pulumi import fivetran:index/connectorFingerprints:ConnectorFingerprints
- *
- * Run the `terraform import` command
- * ```
+ * 1. To import an existing `fivetran_connector_fingerprints` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard. 2. Retrieve all connectors in a particular group using the [fivetran_group_connectors data source](/docs/data-sources/group_connectors). To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_connector_fingerprints" "my_imported_connector_fingerprints" { } 4. Run the `pulumi import` command
  *
  * ```sh
  *  $ pulumi import fivetran:index/connectorFingerprints:ConnectorFingerprints my_imported_connector_fingerprints {your Fivetran Connector ID}
@@ -77,7 +71,7 @@ export class ConnectorFingerprints extends pulumi.CustomResource {
     }
 
     /**
-     * The unique identifier for the target connector within the Fivetran system.
+     * The unique identifier for the target connection within the Fivetran system.
      */
     public readonly connectorId!: pulumi.Output<string>;
     public readonly fingerprints!: pulumi.Output<outputs.ConnectorFingerprintsFingerprint[] | undefined>;
@@ -115,7 +109,7 @@ export class ConnectorFingerprints extends pulumi.CustomResource {
  */
 export interface ConnectorFingerprintsState {
     /**
-     * The unique identifier for the target connector within the Fivetran system.
+     * The unique identifier for the target connection within the Fivetran system.
      */
     connectorId?: pulumi.Input<string>;
     fingerprints?: pulumi.Input<pulumi.Input<inputs.ConnectorFingerprintsFingerprint>[]>;
@@ -126,7 +120,7 @@ export interface ConnectorFingerprintsState {
  */
 export interface ConnectorFingerprintsArgs {
     /**
-     * The unique identifier for the target connector within the Fivetran system.
+     * The unique identifier for the target connection within the Fivetran system.
      */
     connectorId: pulumi.Input<string>;
     fingerprints?: pulumi.Input<pulumi.Input<inputs.ConnectorFingerprintsFingerprint>[]>;

@@ -34,13 +34,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * 1. To import an existing `fivetran_team_user_membership` resource into your Terraform state, you need to get `team_id` and `user_id` You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_team_user_membership" "my_imported_fivetran_team_user_membership" { }
- *
- * ```sh
- *  $ pulumi import fivetran:index/teamUserMembership:TeamUserMembership
- *
- * Run the `terraform import` command
- * ```
+ * 1. To import an existing `fivetran_team_user_membership` resource into your Terraform state, you need to get `team_id` and `user_id` You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_team_user_membership" "my_imported_fivetran_team_user_membership" { } 3. Run the `pulumi import` command
  *
  * ```sh
  *  $ pulumi import fivetran:index/teamUserMembership:TeamUserMembership my_imported_fivetran_team_user_membership {team_id}

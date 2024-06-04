@@ -25,13 +25,7 @@ import * as utilities from "./utilities";
  *
  * 1. To import an existing `fivetran_user` resource into your Terraform state, you need to get `user_id`.
  *
- * You can retrieve all users using the [fivetran_users data source](/docs/data-sources/users). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_user" "my_imported_fivetran_user" { }
- *
- * ```sh
- *  $ pulumi import fivetran:index/user:User
- *
- * Run the `terraform import` command
- * ```
+ * You can retrieve all users using the [fivetran_users data source](/docs/data-sources/users). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_user" "my_imported_fivetran_user" { } 3. Run the `pulumi import` command
  *
  * ```sh
  *  $ pulumi import fivetran:index/user:User my_imported_fivetran_user {user_id}
@@ -68,7 +62,7 @@ export class User extends pulumi.CustomResource {
     }
 
     /**
-     * The timestamp that the user created their Fivetran account
+     * The timestamp that the user created their Fivetran account.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
@@ -86,8 +80,7 @@ export class User extends pulumi.CustomResource {
     /**
      * The field indicates whether the user has been invited to your account.
      */
-    public /*out*/ readonly invited!: pulumi.Output<boolean>;
-    public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
+    public readonly invited!: pulumi.Output<boolean>;
     /**
      * The last time that the user has logged into their Fivetran account.
      */
@@ -101,13 +94,13 @@ export class User extends pulumi.CustomResource {
      */
     public readonly picture!: pulumi.Output<string | undefined>;
     /**
-     * The role that you would like to assign to the user
+     * The role that you would like to assign to the user.
      */
     public readonly role!: pulumi.Output<string | undefined>;
     /**
      * The field indicates whether the user has verified their email address in the account creation process.
      */
-    public /*out*/ readonly verified!: pulumi.Output<boolean>;
+    public readonly verified!: pulumi.Output<boolean>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -127,7 +120,6 @@ export class User extends pulumi.CustomResource {
             resourceInputs["familyName"] = state ? state.familyName : undefined;
             resourceInputs["givenName"] = state ? state.givenName : undefined;
             resourceInputs["invited"] = state ? state.invited : undefined;
-            resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
             resourceInputs["loggedInAt"] = state ? state.loggedInAt : undefined;
             resourceInputs["phone"] = state ? state.phone : undefined;
             resourceInputs["picture"] = state ? state.picture : undefined;
@@ -147,14 +139,13 @@ export class User extends pulumi.CustomResource {
             resourceInputs["email"] = args ? args.email : undefined;
             resourceInputs["familyName"] = args ? args.familyName : undefined;
             resourceInputs["givenName"] = args ? args.givenName : undefined;
+            resourceInputs["invited"] = args ? args.invited : undefined;
             resourceInputs["phone"] = args ? args.phone : undefined;
             resourceInputs["picture"] = args ? args.picture : undefined;
             resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["verified"] = args ? args.verified : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
-            resourceInputs["invited"] = undefined /*out*/;
-            resourceInputs["lastUpdated"] = undefined /*out*/;
             resourceInputs["loggedInAt"] = undefined /*out*/;
-            resourceInputs["verified"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(User.__pulumiType, name, resourceInputs, opts);
@@ -166,7 +157,7 @@ export class User extends pulumi.CustomResource {
  */
 export interface UserState {
     /**
-     * The timestamp that the user created their Fivetran account
+     * The timestamp that the user created their Fivetran account.
      */
     createdAt?: pulumi.Input<string>;
     /**
@@ -185,7 +176,6 @@ export interface UserState {
      * The field indicates whether the user has been invited to your account.
      */
     invited?: pulumi.Input<boolean>;
-    lastUpdated?: pulumi.Input<string>;
     /**
      * The last time that the user has logged into their Fivetran account.
      */
@@ -199,7 +189,7 @@ export interface UserState {
      */
     picture?: pulumi.Input<string>;
     /**
-     * The role that you would like to assign to the user
+     * The role that you would like to assign to the user.
      */
     role?: pulumi.Input<string>;
     /**
@@ -225,6 +215,10 @@ export interface UserArgs {
      */
     givenName: pulumi.Input<string>;
     /**
+     * The field indicates whether the user has been invited to your account.
+     */
+    invited?: pulumi.Input<boolean>;
+    /**
      * The phone number of the user.
      */
     phone?: pulumi.Input<string>;
@@ -233,7 +227,11 @@ export interface UserArgs {
      */
     picture?: pulumi.Input<string>;
     /**
-     * The role that you would like to assign to the user
+     * The role that you would like to assign to the user.
      */
     role?: pulumi.Input<string>;
+    /**
+     * The field indicates whether the user has verified their email address in the account creation process.
+     */
+    verified?: pulumi.Input<boolean>;
 }

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
@@ -40,14 +39,7 @@ import (
 //
 // ## Import
 //
-// 1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_group" "my_imported_fivetran_group" { }
-//
-// ```sh
-//
-//	$ pulumi import fivetran:index/group:Group
-//
-// Run the `terraform import` command
-// ```
+// 1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_group" "my_imported_fivetran_group" { } 3. Run the `pulumi import` command
 //
 // ```sh
 //
@@ -60,7 +52,8 @@ type Group struct {
 	pulumi.CustomResourceState
 
 	// The timestamp of when the group was created in your account.
-	CreatedAt   pulumi.StringOutput `pulumi:"createdAt"`
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// The timestamp of when the resource/datasource was updated last time.
 	LastUpdated pulumi.StringOutput `pulumi:"lastUpdated"`
 	// The name of the group within your account.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -97,7 +90,8 @@ func GetGroup(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Group resources.
 type groupState struct {
 	// The timestamp of when the group was created in your account.
-	CreatedAt   *string `pulumi:"createdAt"`
+	CreatedAt *string `pulumi:"createdAt"`
+	// The timestamp of when the resource/datasource was updated last time.
 	LastUpdated *string `pulumi:"lastUpdated"`
 	// The name of the group within your account.
 	Name *string `pulumi:"name"`
@@ -105,7 +99,8 @@ type groupState struct {
 
 type GroupState struct {
 	// The timestamp of when the group was created in your account.
-	CreatedAt   pulumi.StringPtrInput
+	CreatedAt pulumi.StringPtrInput
+	// The timestamp of when the resource/datasource was updated last time.
 	LastUpdated pulumi.StringPtrInput
 	// The name of the group within your account.
 	Name pulumi.StringPtrInput
@@ -149,12 +144,6 @@ func (i *Group) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupOutput)
 }
 
-func (i *Group) ToOutput(ctx context.Context) pulumix.Output[*Group] {
-	return pulumix.Output[*Group]{
-		OutputState: i.ToGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GroupArrayInput is an input type that accepts GroupArray and GroupArrayOutput values.
 // You can construct a concrete instance of `GroupArrayInput` via:
 //
@@ -178,12 +167,6 @@ func (i GroupArray) ToGroupArrayOutput() GroupArrayOutput {
 
 func (i GroupArray) ToGroupArrayOutputWithContext(ctx context.Context) GroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupArrayOutput)
-}
-
-func (i GroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*Group] {
-	return pulumix.Output[[]*Group]{
-		OutputState: i.ToGroupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GroupMapInput is an input type that accepts GroupMap and GroupMapOutput values.
@@ -211,12 +194,6 @@ func (i GroupMap) ToGroupMapOutputWithContext(ctx context.Context) GroupMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMapOutput)
 }
 
-func (i GroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Group] {
-	return pulumix.Output[map[string]*Group]{
-		OutputState: i.ToGroupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GroupOutput struct{ *pulumi.OutputState }
 
 func (GroupOutput) ElementType() reflect.Type {
@@ -231,17 +208,12 @@ func (o GroupOutput) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 	return o
 }
 
-func (o GroupOutput) ToOutput(ctx context.Context) pulumix.Output[*Group] {
-	return pulumix.Output[*Group]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The timestamp of when the group was created in your account.
 func (o GroupOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// The timestamp of when the resource/datasource was updated last time.
 func (o GroupOutput) LastUpdated() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.LastUpdated }).(pulumi.StringOutput)
 }
@@ -265,12 +237,6 @@ func (o GroupArrayOutput) ToGroupArrayOutputWithContext(ctx context.Context) Gro
 	return o
 }
 
-func (o GroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Group] {
-	return pulumix.Output[[]*Group]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GroupArrayOutput) Index(i pulumi.IntInput) GroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Group {
 		return vs[0].([]*Group)[vs[1].(int)]
@@ -289,12 +255,6 @@ func (o GroupMapOutput) ToGroupMapOutput() GroupMapOutput {
 
 func (o GroupMapOutput) ToGroupMapOutputWithContext(ctx context.Context) GroupMapOutput {
 	return o
-}
-
-func (o GroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Group] {
-	return pulumix.Output[map[string]*Group]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupMapOutput) MapIndex(k pulumi.StringInput) GroupOutput {

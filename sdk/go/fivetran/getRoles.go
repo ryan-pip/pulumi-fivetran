@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
@@ -54,7 +53,7 @@ type GetRolesArgs struct {
 
 // A collection of values returned by getRoles.
 type GetRolesResult struct {
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this resource.
 	Id    string         `pulumi:"id"`
 	Roles []GetRolesRole `pulumi:"roles"`
 }
@@ -96,13 +95,7 @@ func (o GetRolesResultOutput) ToGetRolesResultOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o GetRolesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRolesResult] {
-	return pulumix.Output[GetRolesResult]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The provider-assigned unique ID for this managed resource.
+// The ID of this resource.
 func (o GetRolesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRolesResult) string { return v.Id }).(pulumi.StringOutput)
 }

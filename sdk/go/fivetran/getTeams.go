@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
@@ -49,13 +48,15 @@ func GetTeams(ctx *pulumi.Context, args *GetTeamsArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getTeams.
 type GetTeamsArgs struct {
+	// The unique identifier for the team within your account.
+	Id    *string        `pulumi:"id"`
 	Teams []GetTeamsTeam `pulumi:"teams"`
 }
 
 // A collection of values returned by getTeams.
 type GetTeamsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id    string         `pulumi:"id"`
+	// The ID of this resource.
+	Id    *string        `pulumi:"id"`
 	Teams []GetTeamsTeam `pulumi:"teams"`
 }
 
@@ -74,6 +75,8 @@ func GetTeamsOutput(ctx *pulumi.Context, args GetTeamsOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getTeams.
 type GetTeamsOutputArgs struct {
+	// The unique identifier for the team within your account.
+	Id    pulumi.StringPtrInput  `pulumi:"id"`
 	Teams GetTeamsTeamArrayInput `pulumi:"teams"`
 }
 
@@ -96,15 +99,9 @@ func (o GetTeamsResultOutput) ToGetTeamsResultOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o GetTeamsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTeamsResult] {
-	return pulumix.Output[GetTeamsResult]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetTeamsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTeamsResult) string { return v.Id }).(pulumi.StringOutput)
+// The ID of this resource.
+func (o GetTeamsResultOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTeamsResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 func (o GetTeamsResultOutput) Teams() GetTeamsTeamArrayOutput {

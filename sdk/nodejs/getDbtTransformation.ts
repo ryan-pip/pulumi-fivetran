@@ -25,6 +25,7 @@ export function getDbtTransformation(args: GetDbtTransformationArgs, opts?: pulu
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getDbtTransformation:getDbtTransformation", {
         "id": args.id,
+        "schedule": args.schedule,
     }, opts);
 }
 
@@ -33,9 +34,10 @@ export function getDbtTransformation(args: GetDbtTransformationArgs, opts?: pulu
  */
 export interface GetDbtTransformationArgs {
     /**
-     * The ID of this resource.
+     * The unique identifier for the dbt Transformation within the Fivetran system.
      */
     id: string;
+    schedule?: inputs.GetDbtTransformationSchedule;
 }
 
 /**
@@ -63,7 +65,7 @@ export interface GetDbtTransformationResult {
      */
     readonly dbtProjectId: string;
     /**
-     * The ID of this resource.
+     * The unique identifier for the dbt Transformation within the Fivetran system.
      */
     readonly id: string;
     /**
@@ -75,17 +77,14 @@ export interface GetDbtTransformationResult {
      */
     readonly outputModelName: string;
     /**
-     * The field indicating whether the transformation will be created in paused state. By default, the value is false.
+     * The field indicating whether the transformation will be set into the paused state. By default, the value is false.
      */
     readonly paused: boolean;
     /**
      * The field indicating whether the tests have been configured for dbt Transformation. By default, the value is false.
      */
     readonly runTests: boolean;
-    /**
-     * dbt Transformation schedule parameters.
-     */
-    readonly schedules: outputs.GetDbtTransformationSchedule[];
+    readonly schedule?: outputs.GetDbtTransformationSchedule;
 }
 /**
  * This data source returns a dbt Transformation object.
@@ -110,7 +109,8 @@ export function getDbtTransformationOutput(args: GetDbtTransformationOutputArgs,
  */
 export interface GetDbtTransformationOutputArgs {
     /**
-     * The ID of this resource.
+     * The unique identifier for the dbt Transformation within the Fivetran system.
      */
     id: pulumi.Input<string>;
+    schedule?: pulumi.Input<inputs.GetDbtTransformationScheduleArgs>;
 }

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
@@ -103,7 +103,7 @@ class GetWebhookResult:
 
     @property
     @pulumi.getter(name="runTests")
-    def run_tests(self) -> Optional[bool]:
+    def run_tests(self) -> bool:
         """
         Specifies whether the setup tests should be run
         """
@@ -153,7 +153,6 @@ class AwaitableGetWebhookResult(GetWebhookResult):
 
 
 def get_webhook(id: Optional[str] = None,
-                run_tests: Optional[bool] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWebhookResult:
     """
     This data source returns a webhook object.
@@ -169,11 +168,9 @@ def get_webhook(id: Optional[str] = None,
 
 
     :param str id: The webhook ID
-    :param bool run_tests: Specifies whether the setup tests should be run
     """
     __args__ = dict()
     __args__['id'] = id
-    __args__['runTests'] = run_tests
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('fivetran:index/getWebhook:getWebhook', __args__, opts=opts, typ=GetWebhookResult).value
 
@@ -192,7 +189,6 @@ def get_webhook(id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_webhook)
 def get_webhook_output(id: Optional[pulumi.Input[str]] = None,
-                       run_tests: Optional[pulumi.Input[Optional[bool]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebhookResult]:
     """
     This data source returns a webhook object.
@@ -208,6 +204,5 @@ def get_webhook_output(id: Optional[pulumi.Input[str]] = None,
 
 
     :param str id: The webhook ID
-    :param bool run_tests: Specifies whether the setup tests should be run
     """
     ...

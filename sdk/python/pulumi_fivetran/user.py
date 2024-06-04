@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['UserArgs', 'User']
@@ -17,52 +17,35 @@ class UserArgs:
                  email: pulumi.Input[str],
                  family_name: pulumi.Input[str],
                  given_name: pulumi.Input[str],
+                 invited: Optional[pulumi.Input[bool]] = None,
                  phone: Optional[pulumi.Input[str]] = None,
                  picture: Optional[pulumi.Input[str]] = None,
-                 role: Optional[pulumi.Input[str]] = None):
+                 role: Optional[pulumi.Input[str]] = None,
+                 verified: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a User resource.
         :param pulumi.Input[str] email: The email address that the user has associated with their user profile.
         :param pulumi.Input[str] family_name: The last name of the user.
         :param pulumi.Input[str] given_name: The first name of the user.
+        :param pulumi.Input[bool] invited: The field indicates whether the user has been invited to your account.
         :param pulumi.Input[str] phone: The phone number of the user.
         :param pulumi.Input[str] picture: The user's avatar as a URL link (for example, 'http://mycompany.com/avatars/john_white.png') or base64 data URI (for example, 'data:image/png;base64,aHR0cDovL215Y29tcGFueS5jb20vYXZhdGFycy9qb2huX3doaXRlLnBuZw==')
-        :param pulumi.Input[str] role: The role that you would like to assign to the user
+        :param pulumi.Input[str] role: The role that you would like to assign to the user.
+        :param pulumi.Input[bool] verified: The field indicates whether the user has verified their email address in the account creation process.
         """
-        UserArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            email=email,
-            family_name=family_name,
-            given_name=given_name,
-            phone=phone,
-            picture=picture,
-            role=role,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             email: pulumi.Input[str],
-             family_name: pulumi.Input[str],
-             given_name: pulumi.Input[str],
-             phone: Optional[pulumi.Input[str]] = None,
-             picture: Optional[pulumi.Input[str]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'familyName' in kwargs:
-            family_name = kwargs['familyName']
-        if 'givenName' in kwargs:
-            given_name = kwargs['givenName']
-
-        _setter("email", email)
-        _setter("family_name", family_name)
-        _setter("given_name", given_name)
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "family_name", family_name)
+        pulumi.set(__self__, "given_name", given_name)
+        if invited is not None:
+            pulumi.set(__self__, "invited", invited)
         if phone is not None:
-            _setter("phone", phone)
+            pulumi.set(__self__, "phone", phone)
         if picture is not None:
-            _setter("picture", picture)
+            pulumi.set(__self__, "picture", picture)
         if role is not None:
-            _setter("role", role)
+            pulumi.set(__self__, "role", role)
+        if verified is not None:
+            pulumi.set(__self__, "verified", verified)
 
     @property
     @pulumi.getter
@@ -102,6 +85,18 @@ class UserArgs:
 
     @property
     @pulumi.getter
+    def invited(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The field indicates whether the user has been invited to your account.
+        """
+        return pulumi.get(self, "invited")
+
+    @invited.setter
+    def invited(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "invited", value)
+
+    @property
+    @pulumi.getter
     def phone(self) -> Optional[pulumi.Input[str]]:
         """
         The phone number of the user.
@@ -128,13 +123,25 @@ class UserArgs:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
         """
-        The role that you would like to assign to the user
+        The role that you would like to assign to the user.
         """
         return pulumi.get(self, "role")
 
     @role.setter
     def role(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter
+    def verified(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The field indicates whether the user has verified their email address in the account creation process.
+        """
+        return pulumi.get(self, "verified")
+
+    @verified.setter
+    def verified(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "verified", value)
 
 
 @pulumi.input_type
@@ -145,7 +152,6 @@ class _UserState:
                  family_name: Optional[pulumi.Input[str]] = None,
                  given_name: Optional[pulumi.Input[str]] = None,
                  invited: Optional[pulumi.Input[bool]] = None,
-                 last_updated: Optional[pulumi.Input[str]] = None,
                  logged_in_at: Optional[pulumi.Input[str]] = None,
                  phone: Optional[pulumi.Input[str]] = None,
                  picture: Optional[pulumi.Input[str]] = None,
@@ -153,7 +159,7 @@ class _UserState:
                  verified: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering User resources.
-        :param pulumi.Input[str] created_at: The timestamp that the user created their Fivetran account
+        :param pulumi.Input[str] created_at: The timestamp that the user created their Fivetran account.
         :param pulumi.Input[str] email: The email address that the user has associated with their user profile.
         :param pulumi.Input[str] family_name: The last name of the user.
         :param pulumi.Input[str] given_name: The first name of the user.
@@ -161,78 +167,35 @@ class _UserState:
         :param pulumi.Input[str] logged_in_at: The last time that the user has logged into their Fivetran account.
         :param pulumi.Input[str] phone: The phone number of the user.
         :param pulumi.Input[str] picture: The user's avatar as a URL link (for example, 'http://mycompany.com/avatars/john_white.png') or base64 data URI (for example, 'data:image/png;base64,aHR0cDovL215Y29tcGFueS5jb20vYXZhdGFycy9qb2huX3doaXRlLnBuZw==')
-        :param pulumi.Input[str] role: The role that you would like to assign to the user
+        :param pulumi.Input[str] role: The role that you would like to assign to the user.
         :param pulumi.Input[bool] verified: The field indicates whether the user has verified their email address in the account creation process.
         """
-        _UserState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            created_at=created_at,
-            email=email,
-            family_name=family_name,
-            given_name=given_name,
-            invited=invited,
-            last_updated=last_updated,
-            logged_in_at=logged_in_at,
-            phone=phone,
-            picture=picture,
-            role=role,
-            verified=verified,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             created_at: Optional[pulumi.Input[str]] = None,
-             email: Optional[pulumi.Input[str]] = None,
-             family_name: Optional[pulumi.Input[str]] = None,
-             given_name: Optional[pulumi.Input[str]] = None,
-             invited: Optional[pulumi.Input[bool]] = None,
-             last_updated: Optional[pulumi.Input[str]] = None,
-             logged_in_at: Optional[pulumi.Input[str]] = None,
-             phone: Optional[pulumi.Input[str]] = None,
-             picture: Optional[pulumi.Input[str]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             verified: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'createdAt' in kwargs:
-            created_at = kwargs['createdAt']
-        if 'familyName' in kwargs:
-            family_name = kwargs['familyName']
-        if 'givenName' in kwargs:
-            given_name = kwargs['givenName']
-        if 'lastUpdated' in kwargs:
-            last_updated = kwargs['lastUpdated']
-        if 'loggedInAt' in kwargs:
-            logged_in_at = kwargs['loggedInAt']
-
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if email is not None:
-            _setter("email", email)
+            pulumi.set(__self__, "email", email)
         if family_name is not None:
-            _setter("family_name", family_name)
+            pulumi.set(__self__, "family_name", family_name)
         if given_name is not None:
-            _setter("given_name", given_name)
+            pulumi.set(__self__, "given_name", given_name)
         if invited is not None:
-            _setter("invited", invited)
-        if last_updated is not None:
-            _setter("last_updated", last_updated)
+            pulumi.set(__self__, "invited", invited)
         if logged_in_at is not None:
-            _setter("logged_in_at", logged_in_at)
+            pulumi.set(__self__, "logged_in_at", logged_in_at)
         if phone is not None:
-            _setter("phone", phone)
+            pulumi.set(__self__, "phone", phone)
         if picture is not None:
-            _setter("picture", picture)
+            pulumi.set(__self__, "picture", picture)
         if role is not None:
-            _setter("role", role)
+            pulumi.set(__self__, "role", role)
         if verified is not None:
-            _setter("verified", verified)
+            pulumi.set(__self__, "verified", verified)
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
         """
-        The timestamp that the user created their Fivetran account
+        The timestamp that the user created their Fivetran account.
         """
         return pulumi.get(self, "created_at")
 
@@ -289,15 +252,6 @@ class _UserState:
         pulumi.set(self, "invited", value)
 
     @property
-    @pulumi.getter(name="lastUpdated")
-    def last_updated(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "last_updated")
-
-    @last_updated.setter
-    def last_updated(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_updated", value)
-
-    @property
     @pulumi.getter(name="loggedInAt")
     def logged_in_at(self) -> Optional[pulumi.Input[str]]:
         """
@@ -337,7 +291,7 @@ class _UserState:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
         """
-        The role that you would like to assign to the user
+        The role that you would like to assign to the user.
         """
         return pulumi.get(self, "role")
 
@@ -366,9 +320,11 @@ class User(pulumi.CustomResource):
                  email: Optional[pulumi.Input[str]] = None,
                  family_name: Optional[pulumi.Input[str]] = None,
                  given_name: Optional[pulumi.Input[str]] = None,
+                 invited: Optional[pulumi.Input[bool]] = None,
                  phone: Optional[pulumi.Input[str]] = None,
                  picture: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
+                 verified: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         -This resource allows you to create, update, and delete users.
@@ -390,13 +346,7 @@ class User(pulumi.CustomResource):
 
         1. To import an existing `fivetran_user` resource into your Terraform state, you need to get `user_id`.
 
-        You can retrieve all users using the [fivetran_users data source](/docs/data-sources/users). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_user" "my_imported_fivetran_user" { }
-
-        ```sh
-         $ pulumi import fivetran:index/user:User
-
-        Run the `terraform import` command
-        ```
+        You can retrieve all users using the [fivetran_users data source](/docs/data-sources/users). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_user" "my_imported_fivetran_user" { } 3. Run the `pulumi import` command
 
         ```sh
          $ pulumi import fivetran:index/user:User my_imported_fivetran_user {user_id}
@@ -409,9 +359,11 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] email: The email address that the user has associated with their user profile.
         :param pulumi.Input[str] family_name: The last name of the user.
         :param pulumi.Input[str] given_name: The first name of the user.
+        :param pulumi.Input[bool] invited: The field indicates whether the user has been invited to your account.
         :param pulumi.Input[str] phone: The phone number of the user.
         :param pulumi.Input[str] picture: The user's avatar as a URL link (for example, 'http://mycompany.com/avatars/john_white.png') or base64 data URI (for example, 'data:image/png;base64,aHR0cDovL215Y29tcGFueS5jb20vYXZhdGFycy9qb2huX3doaXRlLnBuZw==')
-        :param pulumi.Input[str] role: The role that you would like to assign to the user
+        :param pulumi.Input[str] role: The role that you would like to assign to the user.
+        :param pulumi.Input[bool] verified: The field indicates whether the user has verified their email address in the account creation process.
         """
         ...
     @overload
@@ -439,13 +391,7 @@ class User(pulumi.CustomResource):
 
         1. To import an existing `fivetran_user` resource into your Terraform state, you need to get `user_id`.
 
-        You can retrieve all users using the [fivetran_users data source](/docs/data-sources/users). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_user" "my_imported_fivetran_user" { }
-
-        ```sh
-         $ pulumi import fivetran:index/user:User
-
-        Run the `terraform import` command
-        ```
+        You can retrieve all users using the [fivetran_users data source](/docs/data-sources/users). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_user" "my_imported_fivetran_user" { } 3. Run the `pulumi import` command
 
         ```sh
          $ pulumi import fivetran:index/user:User my_imported_fivetran_user {user_id}
@@ -463,10 +409,6 @@ class User(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            UserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -475,9 +417,11 @@ class User(pulumi.CustomResource):
                  email: Optional[pulumi.Input[str]] = None,
                  family_name: Optional[pulumi.Input[str]] = None,
                  given_name: Optional[pulumi.Input[str]] = None,
+                 invited: Optional[pulumi.Input[bool]] = None,
                  phone: Optional[pulumi.Input[str]] = None,
                  picture: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
+                 verified: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -496,14 +440,13 @@ class User(pulumi.CustomResource):
             if given_name is None and not opts.urn:
                 raise TypeError("Missing required property 'given_name'")
             __props__.__dict__["given_name"] = given_name
+            __props__.__dict__["invited"] = invited
             __props__.__dict__["phone"] = phone
             __props__.__dict__["picture"] = picture
             __props__.__dict__["role"] = role
+            __props__.__dict__["verified"] = verified
             __props__.__dict__["created_at"] = None
-            __props__.__dict__["invited"] = None
-            __props__.__dict__["last_updated"] = None
             __props__.__dict__["logged_in_at"] = None
-            __props__.__dict__["verified"] = None
         super(User, __self__).__init__(
             'fivetran:index/user:User',
             resource_name,
@@ -519,7 +462,6 @@ class User(pulumi.CustomResource):
             family_name: Optional[pulumi.Input[str]] = None,
             given_name: Optional[pulumi.Input[str]] = None,
             invited: Optional[pulumi.Input[bool]] = None,
-            last_updated: Optional[pulumi.Input[str]] = None,
             logged_in_at: Optional[pulumi.Input[str]] = None,
             phone: Optional[pulumi.Input[str]] = None,
             picture: Optional[pulumi.Input[str]] = None,
@@ -532,7 +474,7 @@ class User(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] created_at: The timestamp that the user created their Fivetran account
+        :param pulumi.Input[str] created_at: The timestamp that the user created their Fivetran account.
         :param pulumi.Input[str] email: The email address that the user has associated with their user profile.
         :param pulumi.Input[str] family_name: The last name of the user.
         :param pulumi.Input[str] given_name: The first name of the user.
@@ -540,7 +482,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] logged_in_at: The last time that the user has logged into their Fivetran account.
         :param pulumi.Input[str] phone: The phone number of the user.
         :param pulumi.Input[str] picture: The user's avatar as a URL link (for example, 'http://mycompany.com/avatars/john_white.png') or base64 data URI (for example, 'data:image/png;base64,aHR0cDovL215Y29tcGFueS5jb20vYXZhdGFycy9qb2huX3doaXRlLnBuZw==')
-        :param pulumi.Input[str] role: The role that you would like to assign to the user
+        :param pulumi.Input[str] role: The role that you would like to assign to the user.
         :param pulumi.Input[bool] verified: The field indicates whether the user has verified their email address in the account creation process.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -552,7 +494,6 @@ class User(pulumi.CustomResource):
         __props__.__dict__["family_name"] = family_name
         __props__.__dict__["given_name"] = given_name
         __props__.__dict__["invited"] = invited
-        __props__.__dict__["last_updated"] = last_updated
         __props__.__dict__["logged_in_at"] = logged_in_at
         __props__.__dict__["phone"] = phone
         __props__.__dict__["picture"] = picture
@@ -564,7 +505,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
         """
-        The timestamp that the user created their Fivetran account
+        The timestamp that the user created their Fivetran account.
         """
         return pulumi.get(self, "created_at")
 
@@ -601,11 +542,6 @@ class User(pulumi.CustomResource):
         return pulumi.get(self, "invited")
 
     @property
-    @pulumi.getter(name="lastUpdated")
-    def last_updated(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "last_updated")
-
-    @property
     @pulumi.getter(name="loggedInAt")
     def logged_in_at(self) -> pulumi.Output[str]:
         """
@@ -633,7 +569,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter
     def role(self) -> pulumi.Output[Optional[str]]:
         """
-        The role that you would like to assign to the user
+        The role that you would like to assign to the user.
         """
         return pulumi.get(self, "role")
 

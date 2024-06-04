@@ -38,9 +38,9 @@ export interface GetGroupsArgs {
  * A collection of values returned by getGroups.
  */
 export interface GetGroupsResult {
-    readonly groups: outputs.GetGroupsGroup[];
+    readonly groups?: outputs.GetGroupsGroup[];
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this resource.
      */
     readonly id: string;
 }

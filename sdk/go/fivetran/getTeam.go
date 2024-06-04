@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
@@ -103,12 +102,6 @@ func (o LookupTeamResultOutput) ToLookupTeamResultOutput() LookupTeamResultOutpu
 
 func (o LookupTeamResultOutput) ToLookupTeamResultOutputWithContext(ctx context.Context) LookupTeamResultOutput {
 	return o
-}
-
-func (o LookupTeamResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTeamResult] {
-	return pulumix.Output[LookupTeamResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of the team within your account.

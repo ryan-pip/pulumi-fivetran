@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,7 +41,7 @@ class GetGroupUsersResult:
 
     @property
     @pulumi.getter
-    def users(self) -> Sequence['outputs.GetGroupUsersUserResult']:
+    def users(self) -> Optional[Sequence['outputs.GetGroupUsersUserResult']]:
         return pulumi.get(self, "users")
 
 

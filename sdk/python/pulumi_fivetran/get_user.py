@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
@@ -60,7 +60,7 @@ class GetUserResult:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
         """
-        The timestamp that the user created their Fivetran account
+        The timestamp that the user created their Fivetran account.
         """
         return pulumi.get(self, "created_at")
 
@@ -132,7 +132,7 @@ class GetUserResult:
     @pulumi.getter
     def role(self) -> str:
         """
-        The role that you would like to assign to the user
+        The role that you would like to assign to the user.
         """
         return pulumi.get(self, "role")
 

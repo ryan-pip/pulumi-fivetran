@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
@@ -54,7 +53,7 @@ type GetConnectorsMetadataArgs struct {
 
 // A collection of values returned by getConnectorsMetadata.
 type GetConnectorsMetadataResult struct {
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this resource.
 	Id      string                        `pulumi:"id"`
 	Sources []GetConnectorsMetadataSource `pulumi:"sources"`
 }
@@ -96,13 +95,7 @@ func (o GetConnectorsMetadataResultOutput) ToGetConnectorsMetadataResultOutputWi
 	return o
 }
 
-func (o GetConnectorsMetadataResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetConnectorsMetadataResult] {
-	return pulumix.Output[GetConnectorsMetadataResult]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The provider-assigned unique ID for this managed resource.
+// The ID of this resource.
 func (o GetConnectorsMetadataResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorsMetadataResult) string { return v.Id }).(pulumi.StringOutput)
 }

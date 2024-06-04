@@ -11,37 +11,9 @@ import * as utilities from "./utilities";
  *
  * This resource allows you to add, manage and delete dbt Projects in your account.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as fivetran from "@pulumi/fivetran";
- *
- * const project = new fivetran.DbtProject("project", {
- *     dbtVersion: "1.4.1",
- *     defaultSchema: "default_schema",
- *     environmentVars: ["environment_var=value"],
- *     groupId: "group_id",
- *     projectConfig: {
- *         folderPath: "/dbt/project/folder/path",
- *         gitBranch: "main",
- *         gitRemoteUrl: "your_git_remote_url",
- *     },
- *     targetName: "target_name",
- *     threads: 8,
- *     type: "GIT",
- * });
- * ```
- *
  * ## Import
  *
- * 1. To import an existing `fivetran_dbt_project` resource into your Terraform state, you need to get **Dbt Project ID** via API call `GET https://api.fivetran.com/v1/dbt/projects` to retrieve available projects. 2. Fetch project details for particular `project-id` using `GET https://api.fivetran.com/v1/dbt/projects/{project-id}` to ensure that this is the project you want to import. 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_dbt_project" "my_imported_fivetran_dbt_project" { }
- *
- * ```sh
- *  $ pulumi import fivetran:index/dbtProject:DbtProject
- *
- * Run the `terraform import` command
- * ```
+ * 1. To import an existing `fivetran_dbt_project` resource into your Terraform state, you need to get **Dbt Project ID** via API call `GET https://api.fivetran.com/v1/dbt/projects` to retrieve available projects. 2. Fetch project details for particular `project-id` using `GET https://api.fivetran.com/v1/dbt/projects/{project-id}` to ensure that this is the project you want to import. 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_dbt_project" "my_imported_fivetran_dbt_project" { } 4. Run the `pulumi import` command
  *
  * ```sh
  *  $ pulumi import fivetran:index/dbtProject:DbtProject my_imported_fivetran_dbt_project {Dbt Project ID}
@@ -96,20 +68,17 @@ export class DbtProject extends pulumi.CustomResource {
     /**
      * Should resource wait for project to finish initialization. Default value: true.
      */
-    public readonly ensureReadiness!: pulumi.Output<boolean | undefined>;
+    public readonly ensureReadiness!: pulumi.Output<boolean>;
+    /**
+     * List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
+     */
     public readonly environmentVars!: pulumi.Output<string[] | undefined>;
     /**
      * The unique identifier for the group within the Fivetran system.
      */
     public readonly groupId!: pulumi.Output<string>;
-    /**
-     * The collection of dbt Models.
-     */
-    public readonly models!: pulumi.Output<outputs.DbtProjectModel[]>;
-    /**
-     * Type specific dbt Project configuration parameters.
-     */
-    public readonly projectConfig!: pulumi.Output<outputs.DbtProjectProjectConfig>;
+    public /*out*/ readonly models!: pulumi.Output<outputs.DbtProjectModel[]>;
+    public readonly projectConfig!: pulumi.Output<outputs.DbtProjectProjectConfig | undefined>;
     /**
      * Public key to grant Fivetran SSH access to git repository.
      */
@@ -125,11 +94,12 @@ export class DbtProject extends pulumi.CustomResource {
     /**
      * The number of threads dbt will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
      */
-    public readonly threads!: pulumi.Output<number | undefined>;
+    public readonly threads!: pulumi.Output<number>;
+    public readonly timeouts!: pulumi.Output<outputs.DbtProjectTimeouts | undefined>;
     /**
      * Type of dbt Project. Currently only `GIT` supported. Empty value will be considered as default (GIT).
      */
-    public readonly type!: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string | undefined>;
 
     /**
      * Create a DbtProject resource with the given unique name, arguments, and options.
@@ -157,6 +127,7 @@ export class DbtProject extends pulumi.CustomResource {
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["targetName"] = state ? state.targetName : undefined;
             resourceInputs["threads"] = state ? state.threads : undefined;
+            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as DbtProjectArgs | undefined;
@@ -169,21 +140,19 @@ export class DbtProject extends pulumi.CustomResource {
             if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.projectConfig === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectConfig'");
-            }
             resourceInputs["dbtVersion"] = args ? args.dbtVersion : undefined;
             resourceInputs["defaultSchema"] = args ? args.defaultSchema : undefined;
             resourceInputs["ensureReadiness"] = args ? args.ensureReadiness : undefined;
             resourceInputs["environmentVars"] = args ? args.environmentVars : undefined;
             resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["models"] = args ? args.models : undefined;
             resourceInputs["projectConfig"] = args ? args.projectConfig : undefined;
             resourceInputs["targetName"] = args ? args.targetName : undefined;
             resourceInputs["threads"] = args ? args.threads : undefined;
+            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdById"] = undefined /*out*/;
+            resourceInputs["models"] = undefined /*out*/;
             resourceInputs["publicKey"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -216,18 +185,15 @@ export interface DbtProjectState {
      * Should resource wait for project to finish initialization. Default value: true.
      */
     ensureReadiness?: pulumi.Input<boolean>;
+    /**
+     * List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
+     */
     environmentVars?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The unique identifier for the group within the Fivetran system.
      */
     groupId?: pulumi.Input<string>;
-    /**
-     * The collection of dbt Models.
-     */
     models?: pulumi.Input<pulumi.Input<inputs.DbtProjectModel>[]>;
-    /**
-     * Type specific dbt Project configuration parameters.
-     */
     projectConfig?: pulumi.Input<inputs.DbtProjectProjectConfig>;
     /**
      * Public key to grant Fivetran SSH access to git repository.
@@ -245,6 +211,7 @@ export interface DbtProjectState {
      * The number of threads dbt will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
      */
     threads?: pulumi.Input<number>;
+    timeouts?: pulumi.Input<inputs.DbtProjectTimeouts>;
     /**
      * Type of dbt Project. Currently only `GIT` supported. Empty value will be considered as default (GIT).
      */
@@ -267,19 +234,15 @@ export interface DbtProjectArgs {
      * Should resource wait for project to finish initialization. Default value: true.
      */
     ensureReadiness?: pulumi.Input<boolean>;
+    /**
+     * List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
+     */
     environmentVars?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The unique identifier for the group within the Fivetran system.
      */
     groupId: pulumi.Input<string>;
-    /**
-     * The collection of dbt Models.
-     */
-    models?: pulumi.Input<pulumi.Input<inputs.DbtProjectModel>[]>;
-    /**
-     * Type specific dbt Project configuration parameters.
-     */
-    projectConfig: pulumi.Input<inputs.DbtProjectProjectConfig>;
+    projectConfig?: pulumi.Input<inputs.DbtProjectProjectConfig>;
     /**
      * Target name to set or override the value from the deployment.yaml
      */
@@ -288,6 +251,7 @@ export interface DbtProjectArgs {
      * The number of threads dbt will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
      */
     threads?: pulumi.Input<number>;
+    timeouts?: pulumi.Input<inputs.DbtProjectTimeouts>;
     /**
      * Type of dbt Project. Currently only `GIT` supported. Empty value will be considered as default (GIT).
      */

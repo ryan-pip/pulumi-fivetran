@@ -9,7 +9,6 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
@@ -53,14 +52,7 @@ import (
 //
 // ## Import
 //
-// 1. To import an existing `fivetran_connector_fingerprints` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard. 2. Retrieve all connectors in a particular group using the [fivetran_group_connectors data source](/docs/data-sources/group_connectors). To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_connector_fingerprints" "my_imported_connector_fingerprints" { }
-//
-// ```sh
-//
-//	$ pulumi import fivetran:index/connectorFingerprints:ConnectorFingerprints
-//
-// Run the `terraform import` command
-// ```
+// 1. To import an existing `fivetran_connector_fingerprints` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard. 2. Retrieve all connectors in a particular group using the [fivetran_group_connectors data source](/docs/data-sources/group_connectors). To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_connector_fingerprints" "my_imported_connector_fingerprints" { } 4. Run the `pulumi import` command
 //
 // ```sh
 //
@@ -74,7 +66,7 @@ import (
 type ConnectorFingerprints struct {
 	pulumi.CustomResourceState
 
-	// The unique identifier for the target connector within the Fivetran system.
+	// The unique identifier for the target connection within the Fivetran system.
 	ConnectorId  pulumi.StringOutput                         `pulumi:"connectorId"`
 	Fingerprints ConnectorFingerprintsFingerprintArrayOutput `pulumi:"fingerprints"`
 }
@@ -112,13 +104,13 @@ func GetConnectorFingerprints(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ConnectorFingerprints resources.
 type connectorFingerprintsState struct {
-	// The unique identifier for the target connector within the Fivetran system.
+	// The unique identifier for the target connection within the Fivetran system.
 	ConnectorId  *string                            `pulumi:"connectorId"`
 	Fingerprints []ConnectorFingerprintsFingerprint `pulumi:"fingerprints"`
 }
 
 type ConnectorFingerprintsState struct {
-	// The unique identifier for the target connector within the Fivetran system.
+	// The unique identifier for the target connection within the Fivetran system.
 	ConnectorId  pulumi.StringPtrInput
 	Fingerprints ConnectorFingerprintsFingerprintArrayInput
 }
@@ -128,14 +120,14 @@ func (ConnectorFingerprintsState) ElementType() reflect.Type {
 }
 
 type connectorFingerprintsArgs struct {
-	// The unique identifier for the target connector within the Fivetran system.
+	// The unique identifier for the target connection within the Fivetran system.
 	ConnectorId  string                             `pulumi:"connectorId"`
 	Fingerprints []ConnectorFingerprintsFingerprint `pulumi:"fingerprints"`
 }
 
 // The set of arguments for constructing a ConnectorFingerprints resource.
 type ConnectorFingerprintsArgs struct {
-	// The unique identifier for the target connector within the Fivetran system.
+	// The unique identifier for the target connection within the Fivetran system.
 	ConnectorId  pulumi.StringInput
 	Fingerprints ConnectorFingerprintsFingerprintArrayInput
 }
@@ -163,12 +155,6 @@ func (i *ConnectorFingerprints) ToConnectorFingerprintsOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorFingerprintsOutput)
 }
 
-func (i *ConnectorFingerprints) ToOutput(ctx context.Context) pulumix.Output[*ConnectorFingerprints] {
-	return pulumix.Output[*ConnectorFingerprints]{
-		OutputState: i.ToConnectorFingerprintsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectorFingerprintsArrayInput is an input type that accepts ConnectorFingerprintsArray and ConnectorFingerprintsArrayOutput values.
 // You can construct a concrete instance of `ConnectorFingerprintsArrayInput` via:
 //
@@ -192,12 +178,6 @@ func (i ConnectorFingerprintsArray) ToConnectorFingerprintsArrayOutput() Connect
 
 func (i ConnectorFingerprintsArray) ToConnectorFingerprintsArrayOutputWithContext(ctx context.Context) ConnectorFingerprintsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorFingerprintsArrayOutput)
-}
-
-func (i ConnectorFingerprintsArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConnectorFingerprints] {
-	return pulumix.Output[[]*ConnectorFingerprints]{
-		OutputState: i.ToConnectorFingerprintsArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConnectorFingerprintsMapInput is an input type that accepts ConnectorFingerprintsMap and ConnectorFingerprintsMapOutput values.
@@ -225,12 +205,6 @@ func (i ConnectorFingerprintsMap) ToConnectorFingerprintsMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorFingerprintsMapOutput)
 }
 
-func (i ConnectorFingerprintsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConnectorFingerprints] {
-	return pulumix.Output[map[string]*ConnectorFingerprints]{
-		OutputState: i.ToConnectorFingerprintsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectorFingerprintsOutput struct{ *pulumi.OutputState }
 
 func (ConnectorFingerprintsOutput) ElementType() reflect.Type {
@@ -245,13 +219,7 @@ func (o ConnectorFingerprintsOutput) ToConnectorFingerprintsOutputWithContext(ct
 	return o
 }
 
-func (o ConnectorFingerprintsOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectorFingerprints] {
-	return pulumix.Output[*ConnectorFingerprints]{
-		OutputState: o.OutputState,
-	}
-}
-
-// The unique identifier for the target connector within the Fivetran system.
+// The unique identifier for the target connection within the Fivetran system.
 func (o ConnectorFingerprintsOutput) ConnectorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectorFingerprints) pulumi.StringOutput { return v.ConnectorId }).(pulumi.StringOutput)
 }
@@ -274,12 +242,6 @@ func (o ConnectorFingerprintsArrayOutput) ToConnectorFingerprintsArrayOutputWith
 	return o
 }
 
-func (o ConnectorFingerprintsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConnectorFingerprints] {
-	return pulumix.Output[[]*ConnectorFingerprints]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConnectorFingerprintsArrayOutput) Index(i pulumi.IntInput) ConnectorFingerprintsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConnectorFingerprints {
 		return vs[0].([]*ConnectorFingerprints)[vs[1].(int)]
@@ -298,12 +260,6 @@ func (o ConnectorFingerprintsMapOutput) ToConnectorFingerprintsMapOutput() Conne
 
 func (o ConnectorFingerprintsMapOutput) ToConnectorFingerprintsMapOutputWithContext(ctx context.Context) ConnectorFingerprintsMapOutput {
 	return o
-}
-
-func (o ConnectorFingerprintsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConnectorFingerprints] {
-	return pulumix.Output[map[string]*ConnectorFingerprints]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorFingerprintsMapOutput) MapIndex(k pulumi.StringInput) ConnectorFingerprintsOutput {

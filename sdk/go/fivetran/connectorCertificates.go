@@ -9,7 +9,6 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
@@ -17,7 +16,7 @@ type ConnectorCertificates struct {
 	pulumi.CustomResourceState
 
 	Certificates ConnectorCertificatesCertificateArrayOutput `pulumi:"certificates"`
-	// The unique identifier for the target connector within the Fivetran system.
+	// The unique identifier for the target connection within the Fivetran system.
 	ConnectorId pulumi.StringOutput `pulumi:"connectorId"`
 }
 
@@ -55,13 +54,13 @@ func GetConnectorCertificates(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ConnectorCertificates resources.
 type connectorCertificatesState struct {
 	Certificates []ConnectorCertificatesCertificate `pulumi:"certificates"`
-	// The unique identifier for the target connector within the Fivetran system.
+	// The unique identifier for the target connection within the Fivetran system.
 	ConnectorId *string `pulumi:"connectorId"`
 }
 
 type ConnectorCertificatesState struct {
 	Certificates ConnectorCertificatesCertificateArrayInput
-	// The unique identifier for the target connector within the Fivetran system.
+	// The unique identifier for the target connection within the Fivetran system.
 	ConnectorId pulumi.StringPtrInput
 }
 
@@ -71,14 +70,14 @@ func (ConnectorCertificatesState) ElementType() reflect.Type {
 
 type connectorCertificatesArgs struct {
 	Certificates []ConnectorCertificatesCertificate `pulumi:"certificates"`
-	// The unique identifier for the target connector within the Fivetran system.
+	// The unique identifier for the target connection within the Fivetran system.
 	ConnectorId string `pulumi:"connectorId"`
 }
 
 // The set of arguments for constructing a ConnectorCertificates resource.
 type ConnectorCertificatesArgs struct {
 	Certificates ConnectorCertificatesCertificateArrayInput
-	// The unique identifier for the target connector within the Fivetran system.
+	// The unique identifier for the target connection within the Fivetran system.
 	ConnectorId pulumi.StringInput
 }
 
@@ -103,12 +102,6 @@ func (i *ConnectorCertificates) ToConnectorCertificatesOutput() ConnectorCertifi
 
 func (i *ConnectorCertificates) ToConnectorCertificatesOutputWithContext(ctx context.Context) ConnectorCertificatesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorCertificatesOutput)
-}
-
-func (i *ConnectorCertificates) ToOutput(ctx context.Context) pulumix.Output[*ConnectorCertificates] {
-	return pulumix.Output[*ConnectorCertificates]{
-		OutputState: i.ToConnectorCertificatesOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConnectorCertificatesArrayInput is an input type that accepts ConnectorCertificatesArray and ConnectorCertificatesArrayOutput values.
@@ -136,12 +129,6 @@ func (i ConnectorCertificatesArray) ToConnectorCertificatesArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorCertificatesArrayOutput)
 }
 
-func (i ConnectorCertificatesArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConnectorCertificates] {
-	return pulumix.Output[[]*ConnectorCertificates]{
-		OutputState: i.ToConnectorCertificatesArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConnectorCertificatesMapInput is an input type that accepts ConnectorCertificatesMap and ConnectorCertificatesMapOutput values.
 // You can construct a concrete instance of `ConnectorCertificatesMapInput` via:
 //
@@ -167,12 +154,6 @@ func (i ConnectorCertificatesMap) ToConnectorCertificatesMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorCertificatesMapOutput)
 }
 
-func (i ConnectorCertificatesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConnectorCertificates] {
-	return pulumix.Output[map[string]*ConnectorCertificates]{
-		OutputState: i.ToConnectorCertificatesMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectorCertificatesOutput struct{ *pulumi.OutputState }
 
 func (ConnectorCertificatesOutput) ElementType() reflect.Type {
@@ -187,17 +168,11 @@ func (o ConnectorCertificatesOutput) ToConnectorCertificatesOutputWithContext(ct
 	return o
 }
 
-func (o ConnectorCertificatesOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectorCertificates] {
-	return pulumix.Output[*ConnectorCertificates]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConnectorCertificatesOutput) Certificates() ConnectorCertificatesCertificateArrayOutput {
 	return o.ApplyT(func(v *ConnectorCertificates) ConnectorCertificatesCertificateArrayOutput { return v.Certificates }).(ConnectorCertificatesCertificateArrayOutput)
 }
 
-// The unique identifier for the target connector within the Fivetran system.
+// The unique identifier for the target connection within the Fivetran system.
 func (o ConnectorCertificatesOutput) ConnectorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectorCertificates) pulumi.StringOutput { return v.ConnectorId }).(pulumi.StringOutput)
 }
@@ -214,12 +189,6 @@ func (o ConnectorCertificatesArrayOutput) ToConnectorCertificatesArrayOutput() C
 
 func (o ConnectorCertificatesArrayOutput) ToConnectorCertificatesArrayOutputWithContext(ctx context.Context) ConnectorCertificatesArrayOutput {
 	return o
-}
-
-func (o ConnectorCertificatesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConnectorCertificates] {
-	return pulumix.Output[[]*ConnectorCertificates]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorCertificatesArrayOutput) Index(i pulumi.IntInput) ConnectorCertificatesOutput {
@@ -240,12 +209,6 @@ func (o ConnectorCertificatesMapOutput) ToConnectorCertificatesMapOutput() Conne
 
 func (o ConnectorCertificatesMapOutput) ToConnectorCertificatesMapOutputWithContext(ctx context.Context) ConnectorCertificatesMapOutput {
 	return o
-}
-
-func (o ConnectorCertificatesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConnectorCertificates] {
-	return pulumix.Output[map[string]*ConnectorCertificates]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorCertificatesMapOutput) MapIndex(k pulumi.StringInput) ConnectorCertificatesOutput {

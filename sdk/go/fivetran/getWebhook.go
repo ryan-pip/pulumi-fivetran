@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
@@ -53,8 +52,6 @@ func LookupWebhook(ctx *pulumi.Context, args *LookupWebhookArgs, opts ...pulumi.
 type LookupWebhookArgs struct {
 	// The webhook ID
 	Id string `pulumi:"id"`
-	// Specifies whether the setup tests should be run
-	RunTests *bool `pulumi:"runTests"`
 }
 
 // A collection of values returned by getWebhook.
@@ -72,7 +69,7 @@ type LookupWebhookResult struct {
 	// The webhook ID
 	Id string `pulumi:"id"`
 	// Specifies whether the setup tests should be run
-	RunTests *bool `pulumi:"runTests"`
+	RunTests bool `pulumi:"runTests"`
 	// The secret string used for payload signing and masked in the response.
 	Secret string `pulumi:"secret"`
 	// The webhook type (group, account)
@@ -98,8 +95,6 @@ func LookupWebhookOutput(ctx *pulumi.Context, args LookupWebhookOutputArgs, opts
 type LookupWebhookOutputArgs struct {
 	// The webhook ID
 	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies whether the setup tests should be run
-	RunTests pulumi.BoolPtrInput `pulumi:"runTests"`
 }
 
 func (LookupWebhookOutputArgs) ElementType() reflect.Type {
@@ -119,12 +114,6 @@ func (o LookupWebhookResultOutput) ToLookupWebhookResultOutput() LookupWebhookRe
 
 func (o LookupWebhookResultOutput) ToLookupWebhookResultOutputWithContext(ctx context.Context) LookupWebhookResultOutput {
 	return o
-}
-
-func (o LookupWebhookResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWebhookResult] {
-	return pulumix.Output[LookupWebhookResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Boolean, if set to true, webhooks are immediately sent in response to events
@@ -158,8 +147,8 @@ func (o LookupWebhookResultOutput) Id() pulumi.StringOutput {
 }
 
 // Specifies whether the setup tests should be run
-func (o LookupWebhookResultOutput) RunTests() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupWebhookResult) *bool { return v.RunTests }).(pulumi.BoolPtrOutput)
+func (o LookupWebhookResultOutput) RunTests() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupWebhookResult) bool { return v.RunTests }).(pulumi.BoolOutput)
 }
 
 // The secret string used for payload signing and masked in the response.

@@ -24,7 +24,7 @@ export function getDestination(args: GetDestinationArgs, opts?: pulumi.InvokeOpt
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getDestination:getDestination", {
-        "configs": args.configs,
+        "config": args.config,
         "id": args.id,
     }, opts);
 }
@@ -33,10 +33,7 @@ export function getDestination(args: GetDestinationArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getDestination.
  */
 export interface GetDestinationArgs {
-    configs?: inputs.GetDestinationConfig[];
-    /**
-     * The unique identifier for the destination within the Fivetran system
-     */
+    config?: inputs.GetDestinationConfig;
     id: string;
 }
 
@@ -44,30 +41,13 @@ export interface GetDestinationArgs {
  * A collection of values returned by getDestination.
  */
 export interface GetDestinationResult {
-    readonly configs: outputs.GetDestinationConfig[];
-    /**
-     * The unique identifier for the Group within the Fivetran system.
-     */
+    readonly config?: outputs.GetDestinationConfig;
+    readonly daylightSavingTimeEnabled: boolean;
     readonly groupId: string;
-    /**
-     * The unique identifier for the destination within the Fivetran system
-     */
     readonly id: string;
-    /**
-     * Data processing location. This is where Fivetran will operate and run computation on data.
-     */
     readonly region: string;
-    /**
-     * The destination type name within the Fivetran system
-     */
     readonly service: string;
-    /**
-     * Destination setup status
-     */
     readonly setupStatus: string;
-    /**
-     * Determines the time zone for the Fivetran sync schedule.
-     */
     readonly timeZoneOffset: string;
 }
 /**
@@ -92,9 +72,6 @@ export function getDestinationOutput(args: GetDestinationOutputArgs, opts?: pulu
  * A collection of arguments for invoking getDestination.
  */
 export interface GetDestinationOutputArgs {
-    configs?: pulumi.Input<pulumi.Input<inputs.GetDestinationConfigArgs>[]>;
-    /**
-     * The unique identifier for the destination within the Fivetran system
-     */
+    config?: pulumi.Input<inputs.GetDestinationConfigArgs>;
     id: pulumi.Input<string>;
 }

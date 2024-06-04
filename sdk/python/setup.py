@@ -3,12 +3,13 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import errno
+import os
 from setuptools import setup, find_packages
 from setuptools.command.install import install
 from subprocess import check_call
 
 
-VERSION = "0.0.4"
+VERSION = os.getenv("PULUMI_PYTHON_VERSION", "0.0.0")
 def readme():
     try:
         with open('README.md', encoding='utf-8') as f:
@@ -17,7 +18,7 @@ def readme():
         return "fivetran Pulumi Package - Development Version"
 
 
-setup(name='pulumi_fivetran_dbt',
+setup(name='pulumi_fivetran',
       python_requires='>=3.7',
       version=VERSION,
       description="A Pulumi package for creating and managing fivetran cloud resources.",
@@ -37,6 +38,7 @@ setup(name='pulumi_fivetran_dbt',
           ]
       },
       install_requires=[
+          'importlib-metadata>=6.0.0,<7.0.0; python_version < "3.8"',
           'parver>=0.2.1',
           'pulumi>=3.0.0,<4.0.0',
           'semver>=2.8.1'

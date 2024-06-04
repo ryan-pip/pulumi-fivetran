@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -16,83 +16,43 @@ __all__ = ['ConnectorArgs', 'Connector']
 @pulumi.input_type
 class ConnectorArgs:
     def __init__(__self__, *,
-                 destination_schema: pulumi.Input['ConnectorDestinationSchemaArgs'],
                  group_id: pulumi.Input[str],
                  service: pulumi.Input[str],
                  auth: Optional[pulumi.Input['ConnectorAuthArgs']] = None,
                  config: Optional[pulumi.Input['ConnectorConfigArgs']] = None,
-                 run_setup_tests: Optional[pulumi.Input[str]] = None,
-                 trust_certificates: Optional[pulumi.Input[str]] = None,
-                 trust_fingerprints: Optional[pulumi.Input[str]] = None):
+                 destination_schema: Optional[pulumi.Input['ConnectorDestinationSchemaArgs']] = None,
+                 run_setup_tests: Optional[pulumi.Input[bool]] = None,
+                 timeouts: Optional[pulumi.Input['ConnectorTimeoutsArgs']] = None,
+                 trust_certificates: Optional[pulumi.Input[bool]] = None,
+                 trust_fingerprints: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Connector resource.
         :param pulumi.Input[str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
-        :param pulumi.Input[str] service: The connector type name within the Fivetran system.
-        :param pulumi.Input[str] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
-        :param pulumi.Input[str] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
+        :param pulumi.Input[str] service: The connector type id within the Fivetran system.
+        :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
+        :param pulumi.Input[bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
                trusted automatically, it has to be approved with [Certificates Management API Approve a destination
                certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
-        :param pulumi.Input[str] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
+        :param pulumi.Input[bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
                trusted automatically, it has to be approved with [Certificates Management API Approve a destination
                fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
-        ConnectorArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            destination_schema=destination_schema,
-            group_id=group_id,
-            service=service,
-            auth=auth,
-            config=config,
-            run_setup_tests=run_setup_tests,
-            trust_certificates=trust_certificates,
-            trust_fingerprints=trust_fingerprints,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             destination_schema: pulumi.Input['ConnectorDestinationSchemaArgs'],
-             group_id: pulumi.Input[str],
-             service: pulumi.Input[str],
-             auth: Optional[pulumi.Input['ConnectorAuthArgs']] = None,
-             config: Optional[pulumi.Input['ConnectorConfigArgs']] = None,
-             run_setup_tests: Optional[pulumi.Input[str]] = None,
-             trust_certificates: Optional[pulumi.Input[str]] = None,
-             trust_fingerprints: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'destinationSchema' in kwargs:
-            destination_schema = kwargs['destinationSchema']
-        if 'groupId' in kwargs:
-            group_id = kwargs['groupId']
-        if 'runSetupTests' in kwargs:
-            run_setup_tests = kwargs['runSetupTests']
-        if 'trustCertificates' in kwargs:
-            trust_certificates = kwargs['trustCertificates']
-        if 'trustFingerprints' in kwargs:
-            trust_fingerprints = kwargs['trustFingerprints']
-
-        _setter("destination_schema", destination_schema)
-        _setter("group_id", group_id)
-        _setter("service", service)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "service", service)
         if auth is not None:
-            _setter("auth", auth)
+            pulumi.set(__self__, "auth", auth)
         if config is not None:
-            _setter("config", config)
+            pulumi.set(__self__, "config", config)
+        if destination_schema is not None:
+            pulumi.set(__self__, "destination_schema", destination_schema)
         if run_setup_tests is not None:
-            _setter("run_setup_tests", run_setup_tests)
+            pulumi.set(__self__, "run_setup_tests", run_setup_tests)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if trust_certificates is not None:
-            _setter("trust_certificates", trust_certificates)
+            pulumi.set(__self__, "trust_certificates", trust_certificates)
         if trust_fingerprints is not None:
-            _setter("trust_fingerprints", trust_fingerprints)
-
-    @property
-    @pulumi.getter(name="destinationSchema")
-    def destination_schema(self) -> pulumi.Input['ConnectorDestinationSchemaArgs']:
-        return pulumi.get(self, "destination_schema")
-
-    @destination_schema.setter
-    def destination_schema(self, value: pulumi.Input['ConnectorDestinationSchemaArgs']):
-        pulumi.set(self, "destination_schema", value)
+            pulumi.set(__self__, "trust_fingerprints", trust_fingerprints)
 
     @property
     @pulumi.getter(name="groupId")
@@ -110,7 +70,7 @@ class ConnectorArgs:
     @pulumi.getter
     def service(self) -> pulumi.Input[str]:
         """
-        The connector type name within the Fivetran system.
+        The connector type id within the Fivetran system.
         """
         return pulumi.get(self, "service")
 
@@ -137,20 +97,38 @@ class ConnectorArgs:
         pulumi.set(self, "config", value)
 
     @property
+    @pulumi.getter(name="destinationSchema")
+    def destination_schema(self) -> Optional[pulumi.Input['ConnectorDestinationSchemaArgs']]:
+        return pulumi.get(self, "destination_schema")
+
+    @destination_schema.setter
+    def destination_schema(self, value: Optional[pulumi.Input['ConnectorDestinationSchemaArgs']]):
+        pulumi.set(self, "destination_schema", value)
+
+    @property
     @pulumi.getter(name="runSetupTests")
-    def run_setup_tests(self) -> Optional[pulumi.Input[str]]:
+    def run_setup_tests(self) -> Optional[pulumi.Input[bool]]:
         """
         Specifies whether the setup tests should be run automatically. The default value is TRUE.
         """
         return pulumi.get(self, "run_setup_tests")
 
     @run_setup_tests.setter
-    def run_setup_tests(self, value: Optional[pulumi.Input[str]]):
+    def run_setup_tests(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "run_setup_tests", value)
 
     @property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['ConnectorTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['ConnectorTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @property
     @pulumi.getter(name="trustCertificates")
-    def trust_certificates(self) -> Optional[pulumi.Input[str]]:
+    def trust_certificates(self) -> Optional[pulumi.Input[bool]]:
         """
         Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
         trusted automatically, it has to be approved with [Certificates Management API Approve a destination
@@ -159,12 +137,12 @@ class ConnectorArgs:
         return pulumi.get(self, "trust_certificates")
 
     @trust_certificates.setter
-    def trust_certificates(self, value: Optional[pulumi.Input[str]]):
+    def trust_certificates(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "trust_certificates", value)
 
     @property
     @pulumi.getter(name="trustFingerprints")
-    def trust_fingerprints(self) -> Optional[pulumi.Input[str]]:
+    def trust_fingerprints(self) -> Optional[pulumi.Input[bool]]:
         """
         Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
         trusted automatically, it has to be approved with [Certificates Management API Approve a destination
@@ -173,7 +151,7 @@ class ConnectorArgs:
         return pulumi.get(self, "trust_fingerprints")
 
     @trust_fingerprints.setter
-    def trust_fingerprints(self, value: Optional[pulumi.Input[str]]):
+    def trust_fingerprints(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "trust_fingerprints", value)
 
 
@@ -186,101 +164,52 @@ class _ConnectorState:
                  created_at: Optional[pulumi.Input[str]] = None,
                  destination_schema: Optional[pulumi.Input['ConnectorDestinationSchemaArgs']] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
-                 last_updated: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 run_setup_tests: Optional[pulumi.Input[str]] = None,
+                 run_setup_tests: Optional[pulumi.Input[bool]] = None,
                  service: Optional[pulumi.Input[str]] = None,
-                 trust_certificates: Optional[pulumi.Input[str]] = None,
-                 trust_fingerprints: Optional[pulumi.Input[str]] = None):
+                 timeouts: Optional[pulumi.Input['ConnectorTimeoutsArgs']] = None,
+                 trust_certificates: Optional[pulumi.Input[bool]] = None,
+                 trust_fingerprints: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Connector resources.
-        :param pulumi.Input[str] connected_by: The unique identifier of the user who has created the connector in your account
-        :param pulumi.Input[str] created_at: The timestamp of the time the connector was created in your account
+        :param pulumi.Input[str] connected_by: The unique identifier of the user who has created the connector in your account.
+        :param pulumi.Input[str] created_at: The timestamp of the time the connector was created in your account.
         :param pulumi.Input[str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
         :param pulumi.Input[str] name: The name used both as the connector's name within the Fivetran system and as the source schema's name within your
                destination.
-        :param pulumi.Input[str] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
-        :param pulumi.Input[str] service: The connector type name within the Fivetran system.
-        :param pulumi.Input[str] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
+        :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
+        :param pulumi.Input[str] service: The connector type id within the Fivetran system.
+        :param pulumi.Input[bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
                trusted automatically, it has to be approved with [Certificates Management API Approve a destination
                certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
-        :param pulumi.Input[str] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
+        :param pulumi.Input[bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
                trusted automatically, it has to be approved with [Certificates Management API Approve a destination
                fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
-        _ConnectorState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auth=auth,
-            config=config,
-            connected_by=connected_by,
-            created_at=created_at,
-            destination_schema=destination_schema,
-            group_id=group_id,
-            last_updated=last_updated,
-            name=name,
-            run_setup_tests=run_setup_tests,
-            service=service,
-            trust_certificates=trust_certificates,
-            trust_fingerprints=trust_fingerprints,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auth: Optional[pulumi.Input['ConnectorAuthArgs']] = None,
-             config: Optional[pulumi.Input['ConnectorConfigArgs']] = None,
-             connected_by: Optional[pulumi.Input[str]] = None,
-             created_at: Optional[pulumi.Input[str]] = None,
-             destination_schema: Optional[pulumi.Input['ConnectorDestinationSchemaArgs']] = None,
-             group_id: Optional[pulumi.Input[str]] = None,
-             last_updated: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             run_setup_tests: Optional[pulumi.Input[str]] = None,
-             service: Optional[pulumi.Input[str]] = None,
-             trust_certificates: Optional[pulumi.Input[str]] = None,
-             trust_fingerprints: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'connectedBy' in kwargs:
-            connected_by = kwargs['connectedBy']
-        if 'createdAt' in kwargs:
-            created_at = kwargs['createdAt']
-        if 'destinationSchema' in kwargs:
-            destination_schema = kwargs['destinationSchema']
-        if 'groupId' in kwargs:
-            group_id = kwargs['groupId']
-        if 'lastUpdated' in kwargs:
-            last_updated = kwargs['lastUpdated']
-        if 'runSetupTests' in kwargs:
-            run_setup_tests = kwargs['runSetupTests']
-        if 'trustCertificates' in kwargs:
-            trust_certificates = kwargs['trustCertificates']
-        if 'trustFingerprints' in kwargs:
-            trust_fingerprints = kwargs['trustFingerprints']
-
         if auth is not None:
-            _setter("auth", auth)
+            pulumi.set(__self__, "auth", auth)
         if config is not None:
-            _setter("config", config)
+            pulumi.set(__self__, "config", config)
         if connected_by is not None:
-            _setter("connected_by", connected_by)
+            pulumi.set(__self__, "connected_by", connected_by)
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if destination_schema is not None:
-            _setter("destination_schema", destination_schema)
+            pulumi.set(__self__, "destination_schema", destination_schema)
         if group_id is not None:
-            _setter("group_id", group_id)
-        if last_updated is not None:
-            _setter("last_updated", last_updated)
+            pulumi.set(__self__, "group_id", group_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if run_setup_tests is not None:
-            _setter("run_setup_tests", run_setup_tests)
+            pulumi.set(__self__, "run_setup_tests", run_setup_tests)
         if service is not None:
-            _setter("service", service)
+            pulumi.set(__self__, "service", service)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if trust_certificates is not None:
-            _setter("trust_certificates", trust_certificates)
+            pulumi.set(__self__, "trust_certificates", trust_certificates)
         if trust_fingerprints is not None:
-            _setter("trust_fingerprints", trust_fingerprints)
+            pulumi.set(__self__, "trust_fingerprints", trust_fingerprints)
 
     @property
     @pulumi.getter
@@ -304,7 +233,7 @@ class _ConnectorState:
     @pulumi.getter(name="connectedBy")
     def connected_by(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique identifier of the user who has created the connector in your account
+        The unique identifier of the user who has created the connector in your account.
         """
         return pulumi.get(self, "connected_by")
 
@@ -316,7 +245,7 @@ class _ConnectorState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
         """
-        The timestamp of the time the connector was created in your account
+        The timestamp of the time the connector was created in your account.
         """
         return pulumi.get(self, "created_at")
 
@@ -346,15 +275,6 @@ class _ConnectorState:
         pulumi.set(self, "group_id", value)
 
     @property
-    @pulumi.getter(name="lastUpdated")
-    def last_updated(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "last_updated")
-
-    @last_updated.setter
-    def last_updated(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_updated", value)
-
-    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -369,21 +289,21 @@ class _ConnectorState:
 
     @property
     @pulumi.getter(name="runSetupTests")
-    def run_setup_tests(self) -> Optional[pulumi.Input[str]]:
+    def run_setup_tests(self) -> Optional[pulumi.Input[bool]]:
         """
         Specifies whether the setup tests should be run automatically. The default value is TRUE.
         """
         return pulumi.get(self, "run_setup_tests")
 
     @run_setup_tests.setter
-    def run_setup_tests(self, value: Optional[pulumi.Input[str]]):
+    def run_setup_tests(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "run_setup_tests", value)
 
     @property
     @pulumi.getter
     def service(self) -> Optional[pulumi.Input[str]]:
         """
-        The connector type name within the Fivetran system.
+        The connector type id within the Fivetran system.
         """
         return pulumi.get(self, "service")
 
@@ -392,8 +312,17 @@ class _ConnectorState:
         pulumi.set(self, "service", value)
 
     @property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['ConnectorTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['ConnectorTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @property
     @pulumi.getter(name="trustCertificates")
-    def trust_certificates(self) -> Optional[pulumi.Input[str]]:
+    def trust_certificates(self) -> Optional[pulumi.Input[bool]]:
         """
         Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
         trusted automatically, it has to be approved with [Certificates Management API Approve a destination
@@ -402,12 +331,12 @@ class _ConnectorState:
         return pulumi.get(self, "trust_certificates")
 
     @trust_certificates.setter
-    def trust_certificates(self, value: Optional[pulumi.Input[str]]):
+    def trust_certificates(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "trust_certificates", value)
 
     @property
     @pulumi.getter(name="trustFingerprints")
-    def trust_fingerprints(self) -> Optional[pulumi.Input[str]]:
+    def trust_fingerprints(self) -> Optional[pulumi.Input[bool]]:
         """
         Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
         trusted automatically, it has to be approved with [Certificates Management API Approve a destination
@@ -416,7 +345,7 @@ class _ConnectorState:
         return pulumi.get(self, "trust_fingerprints")
 
     @trust_fingerprints.setter
-    def trust_fingerprints(self, value: Optional[pulumi.Input[str]]):
+    def trust_fingerprints(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "trust_fingerprints", value)
 
 
@@ -429,10 +358,11 @@ class Connector(pulumi.CustomResource):
                  config: Optional[pulumi.Input[pulumi.InputType['ConnectorConfigArgs']]] = None,
                  destination_schema: Optional[pulumi.Input[pulumi.InputType['ConnectorDestinationSchemaArgs']]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
-                 run_setup_tests: Optional[pulumi.Input[str]] = None,
+                 run_setup_tests: Optional[pulumi.Input[bool]] = None,
                  service: Optional[pulumi.Input[str]] = None,
-                 trust_certificates: Optional[pulumi.Input[str]] = None,
-                 trust_fingerprints: Optional[pulumi.Input[str]] = None,
+                 timeouts: Optional[pulumi.Input[pulumi.InputType['ConnectorTimeoutsArgs']]] = None,
+                 trust_certificates: Optional[pulumi.Input[bool]] = None,
+                 trust_fingerprints: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         ## Import
@@ -442,12 +372,12 @@ class Connector(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
-        :param pulumi.Input[str] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
-        :param pulumi.Input[str] service: The connector type name within the Fivetran system.
-        :param pulumi.Input[str] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
+        :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
+        :param pulumi.Input[str] service: The connector type id within the Fivetran system.
+        :param pulumi.Input[bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
                trusted automatically, it has to be approved with [Certificates Management API Approve a destination
                certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
-        :param pulumi.Input[str] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
+        :param pulumi.Input[bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
                trusted automatically, it has to be approved with [Certificates Management API Approve a destination
                fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
@@ -472,10 +402,6 @@ class Connector(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ConnectorArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -485,10 +411,11 @@ class Connector(pulumi.CustomResource):
                  config: Optional[pulumi.Input[pulumi.InputType['ConnectorConfigArgs']]] = None,
                  destination_schema: Optional[pulumi.Input[pulumi.InputType['ConnectorDestinationSchemaArgs']]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
-                 run_setup_tests: Optional[pulumi.Input[str]] = None,
+                 run_setup_tests: Optional[pulumi.Input[bool]] = None,
                  service: Optional[pulumi.Input[str]] = None,
-                 trust_certificates: Optional[pulumi.Input[str]] = None,
-                 trust_fingerprints: Optional[pulumi.Input[str]] = None,
+                 timeouts: Optional[pulumi.Input[pulumi.InputType['ConnectorTimeoutsArgs']]] = None,
+                 trust_certificates: Optional[pulumi.Input[bool]] = None,
+                 trust_fingerprints: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -498,25 +425,8 @@ class Connector(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectorArgs.__new__(ConnectorArgs)
 
-            if auth is not None and not isinstance(auth, ConnectorAuthArgs):
-                auth = auth or {}
-                def _setter(key, value):
-                    auth[key] = value
-                ConnectorAuthArgs._configure(_setter, **auth)
             __props__.__dict__["auth"] = auth
-            if config is not None and not isinstance(config, ConnectorConfigArgs):
-                config = config or {}
-                def _setter(key, value):
-                    config[key] = value
-                ConnectorConfigArgs._configure(_setter, **config)
             __props__.__dict__["config"] = config
-            if destination_schema is not None and not isinstance(destination_schema, ConnectorDestinationSchemaArgs):
-                destination_schema = destination_schema or {}
-                def _setter(key, value):
-                    destination_schema[key] = value
-                ConnectorDestinationSchemaArgs._configure(_setter, **destination_schema)
-            if destination_schema is None and not opts.urn:
-                raise TypeError("Missing required property 'destination_schema'")
             __props__.__dict__["destination_schema"] = destination_schema
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
@@ -525,11 +435,11 @@ class Connector(pulumi.CustomResource):
             if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
             __props__.__dict__["service"] = service
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["trust_certificates"] = trust_certificates
             __props__.__dict__["trust_fingerprints"] = trust_fingerprints
             __props__.__dict__["connected_by"] = None
             __props__.__dict__["created_at"] = None
-            __props__.__dict__["last_updated"] = None
             __props__.__dict__["name"] = None
         super(Connector, __self__).__init__(
             'fivetran:index/connector:Connector',
@@ -547,12 +457,12 @@ class Connector(pulumi.CustomResource):
             created_at: Optional[pulumi.Input[str]] = None,
             destination_schema: Optional[pulumi.Input[pulumi.InputType['ConnectorDestinationSchemaArgs']]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
-            last_updated: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            run_setup_tests: Optional[pulumi.Input[str]] = None,
+            run_setup_tests: Optional[pulumi.Input[bool]] = None,
             service: Optional[pulumi.Input[str]] = None,
-            trust_certificates: Optional[pulumi.Input[str]] = None,
-            trust_fingerprints: Optional[pulumi.Input[str]] = None) -> 'Connector':
+            timeouts: Optional[pulumi.Input[pulumi.InputType['ConnectorTimeoutsArgs']]] = None,
+            trust_certificates: Optional[pulumi.Input[bool]] = None,
+            trust_fingerprints: Optional[pulumi.Input[bool]] = None) -> 'Connector':
         """
         Get an existing Connector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -560,17 +470,17 @@ class Connector(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] connected_by: The unique identifier of the user who has created the connector in your account
-        :param pulumi.Input[str] created_at: The timestamp of the time the connector was created in your account
+        :param pulumi.Input[str] connected_by: The unique identifier of the user who has created the connector in your account.
+        :param pulumi.Input[str] created_at: The timestamp of the time the connector was created in your account.
         :param pulumi.Input[str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
         :param pulumi.Input[str] name: The name used both as the connector's name within the Fivetran system and as the source schema's name within your
                destination.
-        :param pulumi.Input[str] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
-        :param pulumi.Input[str] service: The connector type name within the Fivetran system.
-        :param pulumi.Input[str] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
+        :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
+        :param pulumi.Input[str] service: The connector type id within the Fivetran system.
+        :param pulumi.Input[bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
                trusted automatically, it has to be approved with [Certificates Management API Approve a destination
                certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
-        :param pulumi.Input[str] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
+        :param pulumi.Input[bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
                trusted automatically, it has to be approved with [Certificates Management API Approve a destination
                fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
@@ -584,10 +494,10 @@ class Connector(pulumi.CustomResource):
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["destination_schema"] = destination_schema
         __props__.__dict__["group_id"] = group_id
-        __props__.__dict__["last_updated"] = last_updated
         __props__.__dict__["name"] = name
         __props__.__dict__["run_setup_tests"] = run_setup_tests
         __props__.__dict__["service"] = service
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["trust_certificates"] = trust_certificates
         __props__.__dict__["trust_fingerprints"] = trust_fingerprints
         return Connector(resource_name, opts=opts, __props__=__props__)
@@ -599,14 +509,14 @@ class Connector(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def config(self) -> pulumi.Output['outputs.ConnectorConfig']:
+    def config(self) -> pulumi.Output[Optional['outputs.ConnectorConfig']]:
         return pulumi.get(self, "config")
 
     @property
     @pulumi.getter(name="connectedBy")
     def connected_by(self) -> pulumi.Output[str]:
         """
-        The unique identifier of the user who has created the connector in your account
+        The unique identifier of the user who has created the connector in your account.
         """
         return pulumi.get(self, "connected_by")
 
@@ -614,13 +524,13 @@ class Connector(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
         """
-        The timestamp of the time the connector was created in your account
+        The timestamp of the time the connector was created in your account.
         """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="destinationSchema")
-    def destination_schema(self) -> pulumi.Output['outputs.ConnectorDestinationSchema']:
+    def destination_schema(self) -> pulumi.Output[Optional['outputs.ConnectorDestinationSchema']]:
         return pulumi.get(self, "destination_schema")
 
     @property
@@ -630,11 +540,6 @@ class Connector(pulumi.CustomResource):
         The unique identifier for the Group (Destination) within the Fivetran system.
         """
         return pulumi.get(self, "group_id")
-
-    @property
-    @pulumi.getter(name="lastUpdated")
-    def last_updated(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "last_updated")
 
     @property
     @pulumi.getter
@@ -647,7 +552,7 @@ class Connector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="runSetupTests")
-    def run_setup_tests(self) -> pulumi.Output[Optional[str]]:
+    def run_setup_tests(self) -> pulumi.Output[bool]:
         """
         Specifies whether the setup tests should be run automatically. The default value is TRUE.
         """
@@ -657,13 +562,18 @@ class Connector(pulumi.CustomResource):
     @pulumi.getter
     def service(self) -> pulumi.Output[str]:
         """
-        The connector type name within the Fivetran system.
+        The connector type id within the Fivetran system.
         """
         return pulumi.get(self, "service")
 
     @property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.ConnectorTimeouts']]:
+        return pulumi.get(self, "timeouts")
+
+    @property
     @pulumi.getter(name="trustCertificates")
-    def trust_certificates(self) -> pulumi.Output[Optional[str]]:
+    def trust_certificates(self) -> pulumi.Output[bool]:
         """
         Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
         trusted automatically, it has to be approved with [Certificates Management API Approve a destination
@@ -673,7 +583,7 @@ class Connector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="trustFingerprints")
-    def trust_fingerprints(self) -> pulumi.Output[Optional[str]]:
+    def trust_fingerprints(self) -> pulumi.Output[bool]:
         """
         Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
         trusted automatically, it has to be approved with [Certificates Management API Approve a destination

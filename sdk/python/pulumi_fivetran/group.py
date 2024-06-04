@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GroupArgs', 'Group']
@@ -19,19 +19,8 @@ class GroupArgs:
         The set of arguments for constructing a Group resource.
         :param pulumi.Input[str] name: The name of the group within your account.
         """
-        GroupArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -55,33 +44,15 @@ class _GroupState:
         """
         Input properties used for looking up and filtering Group resources.
         :param pulumi.Input[str] created_at: The timestamp of when the group was created in your account.
+        :param pulumi.Input[str] last_updated: The timestamp of when the resource/datasource was updated last time.
         :param pulumi.Input[str] name: The name of the group within your account.
         """
-        _GroupState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            created_at=created_at,
-            last_updated=last_updated,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             created_at: Optional[pulumi.Input[str]] = None,
-             last_updated: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'createdAt' in kwargs:
-            created_at = kwargs['createdAt']
-        if 'lastUpdated' in kwargs:
-            last_updated = kwargs['lastUpdated']
-
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if last_updated is not None:
-            _setter("last_updated", last_updated)
+            pulumi.set(__self__, "last_updated", last_updated)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -98,6 +69,9 @@ class _GroupState:
     @property
     @pulumi.getter(name="lastUpdated")
     def last_updated(self) -> Optional[pulumi.Input[str]]:
+        """
+        The timestamp of when the resource/datasource was updated last time.
+        """
         return pulumi.get(self, "last_updated")
 
     @last_updated.setter
@@ -138,13 +112,7 @@ class Group(pulumi.CustomResource):
 
         ## Import
 
-        1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_group" "my_imported_fivetran_group" { }
-
-        ```sh
-         $ pulumi import fivetran:index/group:Group
-
-        Run the `terraform import` command
-        ```
+        1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_group" "my_imported_fivetran_group" { } 3. Run the `pulumi import` command
 
         ```sh
          $ pulumi import fivetran:index/group:Group my_imported_fivetran_group {your Destination Group ID}
@@ -176,13 +144,7 @@ class Group(pulumi.CustomResource):
 
         ## Import
 
-        1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_group" "my_imported_fivetran_group" { }
-
-        ```sh
-         $ pulumi import fivetran:index/group:Group
-
-        Run the `terraform import` command
-        ```
+        1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_group" "my_imported_fivetran_group" { } 3. Run the `pulumi import` command
 
         ```sh
          $ pulumi import fivetran:index/group:Group my_imported_fivetran_group {your Destination Group ID}
@@ -200,10 +162,6 @@ class Group(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            GroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -243,6 +201,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created_at: The timestamp of when the group was created in your account.
+        :param pulumi.Input[str] last_updated: The timestamp of when the resource/datasource was updated last time.
         :param pulumi.Input[str] name: The name of the group within your account.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -265,6 +224,9 @@ class Group(pulumi.CustomResource):
     @property
     @pulumi.getter(name="lastUpdated")
     def last_updated(self) -> pulumi.Output[str]:
+        """
+        The timestamp of when the resource/datasource was updated last time.
+        """
         return pulumi.get(self, "last_updated")
 
     @property

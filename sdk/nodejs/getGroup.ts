@@ -49,6 +49,10 @@ export interface GetGroupResult {
      */
     readonly id: string;
     /**
+     * The timestamp of when the resource/datasource was updated last time.
+     */
+    readonly lastUpdated: string;
+    /**
      * The name of the group within your account.
      */
     readonly name: string;

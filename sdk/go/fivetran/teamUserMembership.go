@@ -9,7 +9,6 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
@@ -53,14 +52,7 @@ import (
 //
 // ## Import
 //
-// 1. To import an existing `fivetran_team_user_membership` resource into your Terraform state, you need to get `team_id` and `user_id` You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_team_user_membership" "my_imported_fivetran_team_user_membership" { }
-//
-// ```sh
-//
-//	$ pulumi import fivetran:index/teamUserMembership:TeamUserMembership
-//
-// Run the `terraform import` command
-// ```
+// 1. To import an existing `fivetran_team_user_membership` resource into your Terraform state, you need to get `team_id` and `user_id` You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_team_user_membership" "my_imported_fivetran_team_user_membership" { } 3. Run the `pulumi import` command
 //
 // ```sh
 //
@@ -161,12 +153,6 @@ func (i *TeamUserMembership) ToTeamUserMembershipOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(TeamUserMembershipOutput)
 }
 
-func (i *TeamUserMembership) ToOutput(ctx context.Context) pulumix.Output[*TeamUserMembership] {
-	return pulumix.Output[*TeamUserMembership]{
-		OutputState: i.ToTeamUserMembershipOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TeamUserMembershipArrayInput is an input type that accepts TeamUserMembershipArray and TeamUserMembershipArrayOutput values.
 // You can construct a concrete instance of `TeamUserMembershipArrayInput` via:
 //
@@ -190,12 +176,6 @@ func (i TeamUserMembershipArray) ToTeamUserMembershipArrayOutput() TeamUserMembe
 
 func (i TeamUserMembershipArray) ToTeamUserMembershipArrayOutputWithContext(ctx context.Context) TeamUserMembershipArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TeamUserMembershipArrayOutput)
-}
-
-func (i TeamUserMembershipArray) ToOutput(ctx context.Context) pulumix.Output[[]*TeamUserMembership] {
-	return pulumix.Output[[]*TeamUserMembership]{
-		OutputState: i.ToTeamUserMembershipArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TeamUserMembershipMapInput is an input type that accepts TeamUserMembershipMap and TeamUserMembershipMapOutput values.
@@ -223,12 +203,6 @@ func (i TeamUserMembershipMap) ToTeamUserMembershipMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(TeamUserMembershipMapOutput)
 }
 
-func (i TeamUserMembershipMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TeamUserMembership] {
-	return pulumix.Output[map[string]*TeamUserMembership]{
-		OutputState: i.ToTeamUserMembershipMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TeamUserMembershipOutput struct{ *pulumi.OutputState }
 
 func (TeamUserMembershipOutput) ElementType() reflect.Type {
@@ -241,12 +215,6 @@ func (o TeamUserMembershipOutput) ToTeamUserMembershipOutput() TeamUserMembershi
 
 func (o TeamUserMembershipOutput) ToTeamUserMembershipOutputWithContext(ctx context.Context) TeamUserMembershipOutput {
 	return o
-}
-
-func (o TeamUserMembershipOutput) ToOutput(ctx context.Context) pulumix.Output[*TeamUserMembership] {
-	return pulumix.Output[*TeamUserMembership]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unique identifier for the team within your account.
@@ -272,12 +240,6 @@ func (o TeamUserMembershipArrayOutput) ToTeamUserMembershipArrayOutputWithContex
 	return o
 }
 
-func (o TeamUserMembershipArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TeamUserMembership] {
-	return pulumix.Output[[]*TeamUserMembership]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TeamUserMembershipArrayOutput) Index(i pulumi.IntInput) TeamUserMembershipOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TeamUserMembership {
 		return vs[0].([]*TeamUserMembership)[vs[1].(int)]
@@ -296,12 +258,6 @@ func (o TeamUserMembershipMapOutput) ToTeamUserMembershipMapOutput() TeamUserMem
 
 func (o TeamUserMembershipMapOutput) ToTeamUserMembershipMapOutputWithContext(ctx context.Context) TeamUserMembershipMapOutput {
 	return o
-}
-
-func (o TeamUserMembershipMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TeamUserMembership] {
-	return pulumix.Output[map[string]*TeamUserMembership]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TeamUserMembershipMapOutput) MapIndex(k pulumi.StringInput) TeamUserMembershipOutput {

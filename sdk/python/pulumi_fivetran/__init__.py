@@ -30,11 +30,10 @@ from .get_destination_fingerprints import *
 from .get_external_logging import *
 from .get_group import *
 from .get_group_connectors import *
+from .get_group_service_account import *
+from .get_group_ssh_key import *
 from .get_group_users import *
 from .get_groups import *
-from .get_metadata_columns import *
-from .get_metadata_schemas import *
-from .get_metadata_tables import *
 from .get_roles import *
 from .get_team import *
 from .get_team_connector_memberships import *
@@ -42,6 +41,8 @@ from .get_team_group_memberships import *
 from .get_team_user_memberships import *
 from .get_teams import *
 from .get_user import *
+from .get_user_connector_memberships import *
+from .get_user_group_memberships import *
 from .get_users import *
 from .get_webhook import *
 from .get_webhooks import *
@@ -53,6 +54,8 @@ from .team_connector_membership import *
 from .team_group_membership import *
 from .team_user_membership import *
 from .user import *
+from .user_connector_membership import *
+from .user_group_membership import *
 from .webhook import *
 from ._inputs import *
 from . import outputs
@@ -209,6 +212,22 @@ _utilities.register(
   "fqn": "pulumi_fivetran",
   "classes": {
    "fivetran:index/user:User": "User"
+  }
+ },
+ {
+  "pkg": "fivetran",
+  "mod": "index/userConnectorMembership",
+  "fqn": "pulumi_fivetran",
+  "classes": {
+   "fivetran:index/userConnectorMembership:UserConnectorMembership": "UserConnectorMembership"
+  }
+ },
+ {
+  "pkg": "fivetran",
+  "mod": "index/userGroupMembership",
+  "fqn": "pulumi_fivetran",
+  "classes": {
+   "fivetran:index/userGroupMembership:UserGroupMembership": "UserGroupMembership"
   }
  },
  {

@@ -11,13 +11,7 @@ import * as utilities from "./utilities";
  *
  * 1. To import an existing `fivetran_webhook` resource into your Terraform state, you need to get `webhook_id`.
  *
- * You can retrieve all webhooks using the [fivetran_webhooks data source](/docs/data-sources/webhooks). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_webhook" "my_imported_fivetran_webhook" { }
- *
- * ```sh
- *  $ pulumi import fivetran:index/webhook:Webhook
- *
- * Run the `terraform import` command
- * ```
+ * You can retrieve all webhooks using the [fivetran_webhooks data source](/docs/data-sources/webhooks). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_webhook" "my_imported_fivetran_webhook" { } 3. Run the `pulumi import` command
  *
  * ```sh
  *  $ pulumi import fivetran:index/webhook:Webhook my_imported_fivetran_webhook {webhook_id}

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
@@ -52,9 +51,8 @@ func LookupDbtProject(ctx *pulumi.Context, args *LookupDbtProjectArgs, opts ...p
 // A collection of arguments for invoking getDbtProject.
 type LookupDbtProjectArgs struct {
 	// The unique identifier for the dbt Model within the Fivetran system.
-	Id string `pulumi:"id"`
-	// The collection of dbt Models.
-	Models []GetDbtProjectModel `pulumi:"models"`
+	Id            string                      `pulumi:"id"`
+	ProjectConfig *GetDbtProjectProjectConfig `pulumi:"projectConfig"`
 }
 
 // A collection of values returned by getDbtProject.
@@ -66,16 +64,17 @@ type LookupDbtProjectResult struct {
 	// The version of dbt that should run the project. We support the following versions: 0.18.0 - 0.18.2, 0.19.0 - 0.19.2, 0.20.0 - 0.20.2, 0.21.0 - 0.21.1, 1.0.0, 1.0.1, 1.0.3 - 1.0.9, 1.1.0 - 1.1.3, 1.2.0 - 1.2.4, 1.3.0 - 1.3.2, 1.4.1.
 	DbtVersion string `pulumi:"dbtVersion"`
 	// Default schema in destination. This production schema will contain your transformed data.
-	DefaultSchema   string   `pulumi:"defaultSchema"`
+	DefaultSchema string `pulumi:"defaultSchema"`
+	// Should resource wait for project to finish initialization. Default value: true.
+	EnsureReadiness bool `pulumi:"ensureReadiness"`
+	// List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
 	EnvironmentVars []string `pulumi:"environmentVars"`
 	// The unique identifier for the group within the Fivetran system.
 	GroupId string `pulumi:"groupId"`
 	// The unique identifier for the dbt Project within the Fivetran system.
-	Id string `pulumi:"id"`
-	// The collection of dbt Models.
-	Models []GetDbtProjectModel `pulumi:"models"`
-	// Type specific dbt Project configuration parameters.
-	ProjectConfigs []GetDbtProjectProjectConfig `pulumi:"projectConfigs"`
+	Id            string                      `pulumi:"id"`
+	Models        []GetDbtProjectModel        `pulumi:"models"`
+	ProjectConfig *GetDbtProjectProjectConfig `pulumi:"projectConfig"`
 	// Public key to grant Fivetran SSH access to git repository.
 	PublicKey string `pulumi:"publicKey"`
 	// Status of dbt Project (NOT_READY, READY, ERROR).
@@ -104,9 +103,8 @@ func LookupDbtProjectOutput(ctx *pulumi.Context, args LookupDbtProjectOutputArgs
 // A collection of arguments for invoking getDbtProject.
 type LookupDbtProjectOutputArgs struct {
 	// The unique identifier for the dbt Model within the Fivetran system.
-	Id pulumi.StringInput `pulumi:"id"`
-	// The collection of dbt Models.
-	Models GetDbtProjectModelArrayInput `pulumi:"models"`
+	Id            pulumi.StringInput                 `pulumi:"id"`
+	ProjectConfig GetDbtProjectProjectConfigPtrInput `pulumi:"projectConfig"`
 }
 
 func (LookupDbtProjectOutputArgs) ElementType() reflect.Type {
@@ -126,12 +124,6 @@ func (o LookupDbtProjectResultOutput) ToLookupDbtProjectResultOutput() LookupDbt
 
 func (o LookupDbtProjectResultOutput) ToLookupDbtProjectResultOutputWithContext(ctx context.Context) LookupDbtProjectResultOutput {
 	return o
-}
-
-func (o LookupDbtProjectResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDbtProjectResult] {
-	return pulumix.Output[LookupDbtProjectResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of the dbt Project creation.
@@ -154,6 +146,12 @@ func (o LookupDbtProjectResultOutput) DefaultSchema() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDbtProjectResult) string { return v.DefaultSchema }).(pulumi.StringOutput)
 }
 
+// Should resource wait for project to finish initialization. Default value: true.
+func (o LookupDbtProjectResultOutput) EnsureReadiness() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDbtProjectResult) bool { return v.EnsureReadiness }).(pulumi.BoolOutput)
+}
+
+// List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
 func (o LookupDbtProjectResultOutput) EnvironmentVars() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDbtProjectResult) []string { return v.EnvironmentVars }).(pulumi.StringArrayOutput)
 }
@@ -168,14 +166,12 @@ func (o LookupDbtProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDbtProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The collection of dbt Models.
 func (o LookupDbtProjectResultOutput) Models() GetDbtProjectModelArrayOutput {
 	return o.ApplyT(func(v LookupDbtProjectResult) []GetDbtProjectModel { return v.Models }).(GetDbtProjectModelArrayOutput)
 }
 
-// Type specific dbt Project configuration parameters.
-func (o LookupDbtProjectResultOutput) ProjectConfigs() GetDbtProjectProjectConfigArrayOutput {
-	return o.ApplyT(func(v LookupDbtProjectResult) []GetDbtProjectProjectConfig { return v.ProjectConfigs }).(GetDbtProjectProjectConfigArrayOutput)
+func (o LookupDbtProjectResultOutput) ProjectConfig() GetDbtProjectProjectConfigPtrOutput {
+	return o.ApplyT(func(v LookupDbtProjectResult) *GetDbtProjectProjectConfig { return v.ProjectConfig }).(GetDbtProjectProjectConfigPtrOutput)
 }
 
 // Public key to grant Fivetran SSH access to git repository.

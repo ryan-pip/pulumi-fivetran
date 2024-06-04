@@ -15,14 +15,16 @@
 package fivetran
 
 import (
+	"context"
+	_ "embed"
 	"fmt"
 	"path/filepath"
 
-	"github.com/fivetran/terraform-provider-fivetran/fivetran"
+	shimprovider "github.com/fivetran/terraform-provider-fivetran/shim"
+	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
-	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/ryan-pip/pulumi-fivetran/provider/pkg/version"
 )
@@ -36,6 +38,23 @@ const (
 	mainMod = "index" // the fivetran module
 )
 
+//go:embed cmd/pulumi-resource-fivetran/bridge-metadata.json
+var bridgeMetadata []byte
+
+func computeUserConnectorMembershipID(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
+	userID := state["user_id"].StringValue()
+	connector := state["connector"].ArrayValue()[0].ObjectValue()
+	connectorID := connector["connector_id"].StringValue()
+	return resource.ID(userID + ":" + connectorID), nil
+}
+
+func computeUserGroupMembershipID(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
+	userID := state["user_id"].StringValue()
+	group := state["group"].ArrayValue()[0].ObjectValue()
+	groupID := group["group_id"].StringValue()
+	return resource.ID(userID + ":" + groupID), nil
+}
+
 // preConfigureCallback is called before the providerConfigure function of the underlying provider.
 // It should validate that the provider can be configured, and provide actionable errors in the case
 // it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
@@ -47,7 +66,7 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := shimv2.NewProvider(fivetran.Provider())
+	p := pf.ShimProvider(shimprovider.NewProvider())
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
@@ -81,7 +100,9 @@ func Provider() tfbridge.ProviderInfo {
 		Repository: "https://github.com/ryan-packer/pulumi-fivetran",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
-		GitHubOrg: "fivetran",
+		Version:      version.Version,
+		GitHubOrg:    "fivetran",
+		MetadataInfo: tfbridge.NewProviderMetadata(bridgeMetadata),
 		Config: map[string]*tfbridge.SchemaInfo{
 			"api_key": {
 				Default: &tfbridge.DefaultInfo{
@@ -98,17 +119,6 @@ func Provider() tfbridge.ProviderInfo {
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"fivetran_connector": {
 				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Connector"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"config": {
-						Elem: &tfbridge.SchemaInfo{
-							Fields: map[string]*tfbridge.SchemaInfo{
-								"last_synced_changes__utc_": {
-									Name: "last_synced_changes_utc",
-								},
-							},
-						},
-					},
-				},
 			},
 			"fivetran_connector_schedule":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ConnectorSchedule")},
 			"fivetran_connector_schema_config": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ConnectorSchemaConfig")},
@@ -120,7 +130,15 @@ func Provider() tfbridge.ProviderInfo {
 			"fivetran_group":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Group")},
 			"fivetran_group_users": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GroupUsers")},
 			"fivetran_user":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "User")},
-			"fivetran_webhook":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Webhook")},
+			"fivetran_user_connector_membership": {
+				Tok:       tfbridge.MakeResource(mainPkg, mainMod, "UserConnectorMembership"),
+				ComputeID: computeUserConnectorMembershipID,
+			},
+			"fivetran_user_group_membership": {
+				Tok:       tfbridge.MakeResource(mainPkg, mainMod, "UserGroupMembership"),
+				ComputeID: computeUserGroupMembershipID,
+			},
+			"fivetran_webhook": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Webhook")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"fivetran_user":                {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getUser")},
@@ -133,17 +151,6 @@ func Provider() tfbridge.ProviderInfo {
 			"fivetran_connectors_metadata": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getConnectorsMetadata")},
 			"fivetran_connector": {
 				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getConnector"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"config": {
-						Elem: &tfbridge.SchemaInfo{
-							Fields: map[string]*tfbridge.SchemaInfo{
-								"last_synced_changes__utc_": {
-									Name: "last_synced_changes_utc",
-								},
-							},
-						},
-					},
-				},
 			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{

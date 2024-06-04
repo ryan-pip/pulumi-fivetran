@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -22,24 +22,9 @@ class DestinationFingerprintsArgs:
         The set of arguments for constructing a DestinationFingerprints resource.
         :param pulumi.Input[str] destination_id: The unique identifier for the target destination within the Fivetran system.
         """
-        DestinationFingerprintsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            destination_id=destination_id,
-            fingerprints=fingerprints,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             destination_id: pulumi.Input[str],
-             fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input['DestinationFingerprintsFingerprintArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'destinationId' in kwargs:
-            destination_id = kwargs['destinationId']
-
-        _setter("destination_id", destination_id)
+        pulumi.set(__self__, "destination_id", destination_id)
         if fingerprints is not None:
-            _setter("fingerprints", fingerprints)
+            pulumi.set(__self__, "fingerprints", fingerprints)
 
     @property
     @pulumi.getter(name="destinationId")
@@ -72,25 +57,10 @@ class _DestinationFingerprintsState:
         Input properties used for looking up and filtering DestinationFingerprints resources.
         :param pulumi.Input[str] destination_id: The unique identifier for the target destination within the Fivetran system.
         """
-        _DestinationFingerprintsState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            destination_id=destination_id,
-            fingerprints=fingerprints,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             destination_id: Optional[pulumi.Input[str]] = None,
-             fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input['DestinationFingerprintsFingerprintArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'destinationId' in kwargs:
-            destination_id = kwargs['destinationId']
-
         if destination_id is not None:
-            _setter("destination_id", destination_id)
+            pulumi.set(__self__, "destination_id", destination_id)
         if fingerprints is not None:
-            _setter("fingerprints", fingerprints)
+            pulumi.set(__self__, "fingerprints", fingerprints)
 
     @property
     @pulumi.getter(name="destinationId")
@@ -147,13 +117,7 @@ class DestinationFingerprints(pulumi.CustomResource):
 
         ## Import
 
-        1. To import an existing `fivetran_destination_fingerprints` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. 2. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_destination_fingerprints" "my_imported_destination_fingerprints" { }
-
-        ```sh
-         $ pulumi import fivetran:index/destinationFingerprints:DestinationFingerprints
-
-        Run the `terraform import` command
-        ```
+        1. To import an existing `fivetran_destination_fingerprints` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. 2. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_destination_fingerprints" "my_imported_destination_fingerprints" { } 4. Run the `pulumi import` command
 
         ```sh
          $ pulumi import fivetran:index/destinationFingerprints:DestinationFingerprints my_imported_destination_fingerprints {your Destination Group ID}
@@ -198,13 +162,7 @@ class DestinationFingerprints(pulumi.CustomResource):
 
         ## Import
 
-        1. To import an existing `fivetran_destination_fingerprints` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. 2. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_destination_fingerprints" "my_imported_destination_fingerprints" { }
-
-        ```sh
-         $ pulumi import fivetran:index/destinationFingerprints:DestinationFingerprints
-
-        Run the `terraform import` command
-        ```
+        1. To import an existing `fivetran_destination_fingerprints` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. 2. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_destination_fingerprints" "my_imported_destination_fingerprints" { } 4. Run the `pulumi import` command
 
         ```sh
          $ pulumi import fivetran:index/destinationFingerprints:DestinationFingerprints my_imported_destination_fingerprints {your Destination Group ID}
@@ -224,10 +182,6 @@ class DestinationFingerprints(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DestinationFingerprintsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

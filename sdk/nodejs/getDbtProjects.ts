@@ -18,20 +18,11 @@ import * as utilities from "./utilities";
  * const myProjects = fivetran.getDbtProjects({});
  * ```
  */
-export function getDbtProjects(args?: GetDbtProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetDbtProjectsResult> {
-    args = args || {};
+export function getDbtProjects(opts?: pulumi.InvokeOptions): Promise<GetDbtProjectsResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getDbtProjects:getDbtProjects", {
-        "projects": args.projects,
     }, opts);
-}
-
-/**
- * A collection of arguments for invoking getDbtProjects.
- */
-export interface GetDbtProjectsArgs {
-    projects?: inputs.GetDbtProjectsProject[];
 }
 
 /**
@@ -56,13 +47,6 @@ export interface GetDbtProjectsResult {
  * const myProjects = fivetran.getDbtProjects({});
  * ```
  */
-export function getDbtProjectsOutput(args?: GetDbtProjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbtProjectsResult> {
-    return pulumi.output(args).apply((a: any) => getDbtProjects(a, opts))
-}
-
-/**
- * A collection of arguments for invoking getDbtProjects.
- */
-export interface GetDbtProjectsOutputArgs {
-    projects?: pulumi.Input<pulumi.Input<inputs.GetDbtProjectsProjectArgs>[]>;
+export function getDbtProjectsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetDbtProjectsResult> {
+    return pulumi.output(getDbtProjects(opts))
 }

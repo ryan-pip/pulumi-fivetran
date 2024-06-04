@@ -9,7 +9,6 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
@@ -18,53 +17,9 @@ import (
 // This resource allows you to add, manage and delete dbt Transformations for existing dbt Model.
 // To retrieve available dbt Models use this [Retrieve dbt Project models](https://fivetran.com/docs/rest-api/dbt-transformation-management#retrievedbtprojectmodels) endpoint.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.NewDbtTransformation(ctx, "transformation", &fivetran.DbtTransformationArgs{
-//				DbtModelName: pulumi.String("dbt_model_name"),
-//				DbtProjectId: pulumi.String("dbt_project_id"),
-//				Paused:       pulumi.Bool(false),
-//				RunTests:     pulumi.Bool(false),
-//				Schedule: &fivetran.DbtTransformationScheduleArgs{
-//					DaysOfWeeks: pulumi.StringArray{
-//						pulumi.String("MONDAY"),
-//						pulumi.String("SATURDAY"),
-//					},
-//					ScheduleType: pulumi.String("TIME_OF_DAY"),
-//					TimeOfDay:    pulumi.String("12:00"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
-// 1. To import an existing `fivetran_dbt_transformation` resource into your Terraform state, you need to get **Transformation ID** on the transformation page in your Fivetran dashboard. 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_dbt_transformation" "my_imported_fivetran_dbt_transformation" { }
-//
-// ```sh
-//
-//	$ pulumi import fivetran:index/dbtTransformation:DbtTransformation
-//
-// Run the `terraform import` command
-// ```
+// 1. To import an existing `fivetran_dbt_transformation` resource into your Terraform state, you need to get **Transformation ID** on the transformation page in your Fivetran dashboard. 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_dbt_transformation" "my_imported_fivetran_dbt_transformation" { } 3. Run the `pulumi import` command
 //
 // ```sh
 //
@@ -90,12 +45,12 @@ type DbtTransformation struct {
 	ModelIds pulumi.StringArrayOutput `pulumi:"modelIds"`
 	// The dbt Model name.
 	OutputModelName pulumi.StringOutput `pulumi:"outputModelName"`
-	// The field indicating whether the transformation will be created in paused state. By default, the value is false.
+	// The field indicating whether the transformation will be set into the paused state. By default, the value is false.
 	Paused pulumi.BoolOutput `pulumi:"paused"`
 	// The field indicating whether the tests have been configured for dbt Transformation. By default, the value is false.
-	RunTests pulumi.BoolOutput `pulumi:"runTests"`
-	// dbt Transformation schedule parameters.
-	Schedule DbtTransformationScheduleOutput `pulumi:"schedule"`
+	RunTests pulumi.BoolOutput                  `pulumi:"runTests"`
+	Schedule DbtTransformationSchedulePtrOutput `pulumi:"schedule"`
+	Timeouts DbtTransformationTimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
 // NewDbtTransformation registers a new resource with the given unique name, arguments, and options.
@@ -110,15 +65,6 @@ func NewDbtTransformation(ctx *pulumi.Context,
 	}
 	if args.DbtProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'DbtProjectId'")
-	}
-	if args.Paused == nil {
-		return nil, errors.New("invalid value for required argument 'Paused'")
-	}
-	if args.RunTests == nil {
-		return nil, errors.New("invalid value for required argument 'RunTests'")
-	}
-	if args.Schedule == nil {
-		return nil, errors.New("invalid value for required argument 'Schedule'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DbtTransformation
@@ -157,12 +103,12 @@ type dbtTransformationState struct {
 	ModelIds []string `pulumi:"modelIds"`
 	// The dbt Model name.
 	OutputModelName *string `pulumi:"outputModelName"`
-	// The field indicating whether the transformation will be created in paused state. By default, the value is false.
+	// The field indicating whether the transformation will be set into the paused state. By default, the value is false.
 	Paused *bool `pulumi:"paused"`
 	// The field indicating whether the tests have been configured for dbt Transformation. By default, the value is false.
-	RunTests *bool `pulumi:"runTests"`
-	// dbt Transformation schedule parameters.
+	RunTests *bool                      `pulumi:"runTests"`
 	Schedule *DbtTransformationSchedule `pulumi:"schedule"`
+	Timeouts *DbtTransformationTimeouts `pulumi:"timeouts"`
 }
 
 type DbtTransformationState struct {
@@ -180,12 +126,12 @@ type DbtTransformationState struct {
 	ModelIds pulumi.StringArrayInput
 	// The dbt Model name.
 	OutputModelName pulumi.StringPtrInput
-	// The field indicating whether the transformation will be created in paused state. By default, the value is false.
+	// The field indicating whether the transformation will be set into the paused state. By default, the value is false.
 	Paused pulumi.BoolPtrInput
 	// The field indicating whether the tests have been configured for dbt Transformation. By default, the value is false.
 	RunTests pulumi.BoolPtrInput
-	// dbt Transformation schedule parameters.
 	Schedule DbtTransformationSchedulePtrInput
+	Timeouts DbtTransformationTimeoutsPtrInput
 }
 
 func (DbtTransformationState) ElementType() reflect.Type {
@@ -197,12 +143,12 @@ type dbtTransformationArgs struct {
 	DbtModelName string `pulumi:"dbtModelName"`
 	// The unique identifier for the dbt Project within the Fivetran system.
 	DbtProjectId string `pulumi:"dbtProjectId"`
-	// The field indicating whether the transformation will be created in paused state. By default, the value is false.
-	Paused bool `pulumi:"paused"`
+	// The field indicating whether the transformation will be set into the paused state. By default, the value is false.
+	Paused *bool `pulumi:"paused"`
 	// The field indicating whether the tests have been configured for dbt Transformation. By default, the value is false.
-	RunTests bool `pulumi:"runTests"`
-	// dbt Transformation schedule parameters.
-	Schedule DbtTransformationSchedule `pulumi:"schedule"`
+	RunTests *bool                      `pulumi:"runTests"`
+	Schedule *DbtTransformationSchedule `pulumi:"schedule"`
+	Timeouts *DbtTransformationTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a DbtTransformation resource.
@@ -211,12 +157,12 @@ type DbtTransformationArgs struct {
 	DbtModelName pulumi.StringInput
 	// The unique identifier for the dbt Project within the Fivetran system.
 	DbtProjectId pulumi.StringInput
-	// The field indicating whether the transformation will be created in paused state. By default, the value is false.
-	Paused pulumi.BoolInput
+	// The field indicating whether the transformation will be set into the paused state. By default, the value is false.
+	Paused pulumi.BoolPtrInput
 	// The field indicating whether the tests have been configured for dbt Transformation. By default, the value is false.
-	RunTests pulumi.BoolInput
-	// dbt Transformation schedule parameters.
-	Schedule DbtTransformationScheduleInput
+	RunTests pulumi.BoolPtrInput
+	Schedule DbtTransformationSchedulePtrInput
+	Timeouts DbtTransformationTimeoutsPtrInput
 }
 
 func (DbtTransformationArgs) ElementType() reflect.Type {
@@ -240,12 +186,6 @@ func (i *DbtTransformation) ToDbtTransformationOutput() DbtTransformationOutput 
 
 func (i *DbtTransformation) ToDbtTransformationOutputWithContext(ctx context.Context) DbtTransformationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DbtTransformationOutput)
-}
-
-func (i *DbtTransformation) ToOutput(ctx context.Context) pulumix.Output[*DbtTransformation] {
-	return pulumix.Output[*DbtTransformation]{
-		OutputState: i.ToDbtTransformationOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DbtTransformationArrayInput is an input type that accepts DbtTransformationArray and DbtTransformationArrayOutput values.
@@ -273,12 +213,6 @@ func (i DbtTransformationArray) ToDbtTransformationArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(DbtTransformationArrayOutput)
 }
 
-func (i DbtTransformationArray) ToOutput(ctx context.Context) pulumix.Output[[]*DbtTransformation] {
-	return pulumix.Output[[]*DbtTransformation]{
-		OutputState: i.ToDbtTransformationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DbtTransformationMapInput is an input type that accepts DbtTransformationMap and DbtTransformationMapOutput values.
 // You can construct a concrete instance of `DbtTransformationMapInput` via:
 //
@@ -304,12 +238,6 @@ func (i DbtTransformationMap) ToDbtTransformationMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DbtTransformationMapOutput)
 }
 
-func (i DbtTransformationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DbtTransformation] {
-	return pulumix.Output[map[string]*DbtTransformation]{
-		OutputState: i.ToDbtTransformationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DbtTransformationOutput struct{ *pulumi.OutputState }
 
 func (DbtTransformationOutput) ElementType() reflect.Type {
@@ -322,12 +250,6 @@ func (o DbtTransformationOutput) ToDbtTransformationOutput() DbtTransformationOu
 
 func (o DbtTransformationOutput) ToDbtTransformationOutputWithContext(ctx context.Context) DbtTransformationOutput {
 	return o
-}
-
-func (o DbtTransformationOutput) ToOutput(ctx context.Context) pulumix.Output[*DbtTransformation] {
-	return pulumix.Output[*DbtTransformation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Identifiers of related connectors.
@@ -365,7 +287,7 @@ func (o DbtTransformationOutput) OutputModelName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbtTransformation) pulumi.StringOutput { return v.OutputModelName }).(pulumi.StringOutput)
 }
 
-// The field indicating whether the transformation will be created in paused state. By default, the value is false.
+// The field indicating whether the transformation will be set into the paused state. By default, the value is false.
 func (o DbtTransformationOutput) Paused() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DbtTransformation) pulumi.BoolOutput { return v.Paused }).(pulumi.BoolOutput)
 }
@@ -375,9 +297,12 @@ func (o DbtTransformationOutput) RunTests() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DbtTransformation) pulumi.BoolOutput { return v.RunTests }).(pulumi.BoolOutput)
 }
 
-// dbt Transformation schedule parameters.
-func (o DbtTransformationOutput) Schedule() DbtTransformationScheduleOutput {
-	return o.ApplyT(func(v *DbtTransformation) DbtTransformationScheduleOutput { return v.Schedule }).(DbtTransformationScheduleOutput)
+func (o DbtTransformationOutput) Schedule() DbtTransformationSchedulePtrOutput {
+	return o.ApplyT(func(v *DbtTransformation) DbtTransformationSchedulePtrOutput { return v.Schedule }).(DbtTransformationSchedulePtrOutput)
+}
+
+func (o DbtTransformationOutput) Timeouts() DbtTransformationTimeoutsPtrOutput {
+	return o.ApplyT(func(v *DbtTransformation) DbtTransformationTimeoutsPtrOutput { return v.Timeouts }).(DbtTransformationTimeoutsPtrOutput)
 }
 
 type DbtTransformationArrayOutput struct{ *pulumi.OutputState }
@@ -392,12 +317,6 @@ func (o DbtTransformationArrayOutput) ToDbtTransformationArrayOutput() DbtTransf
 
 func (o DbtTransformationArrayOutput) ToDbtTransformationArrayOutputWithContext(ctx context.Context) DbtTransformationArrayOutput {
 	return o
-}
-
-func (o DbtTransformationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DbtTransformation] {
-	return pulumix.Output[[]*DbtTransformation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DbtTransformationArrayOutput) Index(i pulumi.IntInput) DbtTransformationOutput {
@@ -418,12 +337,6 @@ func (o DbtTransformationMapOutput) ToDbtTransformationMapOutput() DbtTransforma
 
 func (o DbtTransformationMapOutput) ToDbtTransformationMapOutputWithContext(ctx context.Context) DbtTransformationMapOutput {
 	return o
-}
-
-func (o DbtTransformationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DbtTransformation] {
-	return pulumix.Output[map[string]*DbtTransformation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DbtTransformationMapOutput) MapIndex(k pulumi.StringInput) DbtTransformationOutput {

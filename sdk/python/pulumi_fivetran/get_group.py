@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
@@ -21,13 +21,16 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, created_at=None, id=None, name=None):
+    def __init__(__self__, created_at=None, id=None, last_updated=None, name=None):
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if last_updated and not isinstance(last_updated, str):
+            raise TypeError("Expected argument 'last_updated' to be a str")
+        pulumi.set(__self__, "last_updated", last_updated)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -49,6 +52,14 @@ class GetGroupResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="lastUpdated")
+    def last_updated(self) -> str:
+        """
+        The timestamp of when the resource/datasource was updated last time.
+        """
+        return pulumi.get(self, "last_updated")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -65,6 +76,7 @@ class AwaitableGetGroupResult(GetGroupResult):
         return GetGroupResult(
             created_at=self.created_at,
             id=self.id,
+            last_updated=self.last_updated,
             name=self.name)
 
 
@@ -93,6 +105,7 @@ def get_group(id: Optional[str] = None,
     return AwaitableGetGroupResult(
         created_at=pulumi.get(__ret__, 'created_at'),
         id=pulumi.get(__ret__, 'id'),
+        last_updated=pulumi.get(__ret__, 'last_updated'),
         name=pulumi.get(__ret__, 'name'))
 
 

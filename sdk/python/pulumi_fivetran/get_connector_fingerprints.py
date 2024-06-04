@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -38,7 +38,7 @@ class GetConnectorFingerprintsResult:
     @pulumi.getter(name="connectorId")
     def connector_id(self) -> str:
         """
-        The unique identifier for the target connector within the Fivetran system.
+        The unique identifier for the target connection within the Fivetran system.
         """
         return pulumi.get(self, "connector_id")
 
@@ -51,7 +51,7 @@ class GetConnectorFingerprintsResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        The unique identifier for the resource. Equal to target connector id.
+        The unique identifier for the resource. Equal to target connection id.
         """
         return pulumi.get(self, "id")
 
@@ -83,7 +83,7 @@ def get_connector_fingerprints(fingerprints: Optional[Sequence[pulumi.InputType[
     ```
 
 
-    :param str id: The unique identifier for the resource. Equal to target connector id.
+    :param str id: The unique identifier for the resource. Equal to target connection id.
     """
     __args__ = dict()
     __args__['fingerprints'] = fingerprints
@@ -114,6 +114,6 @@ def get_connector_fingerprints_output(fingerprints: Optional[pulumi.Input[Option
     ```
 
 
-    :param str id: The unique identifier for the resource. Equal to target connector id.
+    :param str id: The unique identifier for the resource. Equal to target connection id.
     """
     ...

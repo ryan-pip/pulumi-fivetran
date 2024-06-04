@@ -90,7 +90,7 @@ export const getDbtProject: typeof import("./getDbtProject").getDbtProject = nul
 export const getDbtProjectOutput: typeof import("./getDbtProject").getDbtProjectOutput = null as any;
 utilities.lazyLoad(exports, ["getDbtProject","getDbtProjectOutput"], () => require("./getDbtProject"));
 
-export { GetDbtProjectsArgs, GetDbtProjectsResult, GetDbtProjectsOutputArgs } from "./getDbtProjects";
+export { GetDbtProjectsResult } from "./getDbtProjects";
 export const getDbtProjects: typeof import("./getDbtProjects").getDbtProjects = null as any;
 export const getDbtProjectsOutput: typeof import("./getDbtProjects").getDbtProjectsOutput = null as any;
 utilities.lazyLoad(exports, ["getDbtProjects","getDbtProjectsOutput"], () => require("./getDbtProjects"));
@@ -130,6 +130,16 @@ export const getGroupConnectors: typeof import("./getGroupConnectors").getGroupC
 export const getGroupConnectorsOutput: typeof import("./getGroupConnectors").getGroupConnectorsOutput = null as any;
 utilities.lazyLoad(exports, ["getGroupConnectors","getGroupConnectorsOutput"], () => require("./getGroupConnectors"));
 
+export { GetGroupServiceAccountArgs, GetGroupServiceAccountResult, GetGroupServiceAccountOutputArgs } from "./getGroupServiceAccount";
+export const getGroupServiceAccount: typeof import("./getGroupServiceAccount").getGroupServiceAccount = null as any;
+export const getGroupServiceAccountOutput: typeof import("./getGroupServiceAccount").getGroupServiceAccountOutput = null as any;
+utilities.lazyLoad(exports, ["getGroupServiceAccount","getGroupServiceAccountOutput"], () => require("./getGroupServiceAccount"));
+
+export { GetGroupSshKeyArgs, GetGroupSshKeyResult, GetGroupSshKeyOutputArgs } from "./getGroupSshKey";
+export const getGroupSshKey: typeof import("./getGroupSshKey").getGroupSshKey = null as any;
+export const getGroupSshKeyOutput: typeof import("./getGroupSshKey").getGroupSshKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getGroupSshKey","getGroupSshKeyOutput"], () => require("./getGroupSshKey"));
+
 export { GetGroupUsersArgs, GetGroupUsersResult, GetGroupUsersOutputArgs } from "./getGroupUsers";
 export const getGroupUsers: typeof import("./getGroupUsers").getGroupUsers = null as any;
 export const getGroupUsersOutput: typeof import("./getGroupUsers").getGroupUsersOutput = null as any;
@@ -139,21 +149,6 @@ export { GetGroupsArgs, GetGroupsResult, GetGroupsOutputArgs } from "./getGroups
 export const getGroups: typeof import("./getGroups").getGroups = null as any;
 export const getGroupsOutput: typeof import("./getGroups").getGroupsOutput = null as any;
 utilities.lazyLoad(exports, ["getGroups","getGroupsOutput"], () => require("./getGroups"));
-
-export { GetMetadataColumnsArgs, GetMetadataColumnsResult, GetMetadataColumnsOutputArgs } from "./getMetadataColumns";
-export const getMetadataColumns: typeof import("./getMetadataColumns").getMetadataColumns = null as any;
-export const getMetadataColumnsOutput: typeof import("./getMetadataColumns").getMetadataColumnsOutput = null as any;
-utilities.lazyLoad(exports, ["getMetadataColumns","getMetadataColumnsOutput"], () => require("./getMetadataColumns"));
-
-export { GetMetadataSchemasArgs, GetMetadataSchemasResult, GetMetadataSchemasOutputArgs } from "./getMetadataSchemas";
-export const getMetadataSchemas: typeof import("./getMetadataSchemas").getMetadataSchemas = null as any;
-export const getMetadataSchemasOutput: typeof import("./getMetadataSchemas").getMetadataSchemasOutput = null as any;
-utilities.lazyLoad(exports, ["getMetadataSchemas","getMetadataSchemasOutput"], () => require("./getMetadataSchemas"));
-
-export { GetMetadataTablesArgs, GetMetadataTablesResult, GetMetadataTablesOutputArgs } from "./getMetadataTables";
-export const getMetadataTables: typeof import("./getMetadataTables").getMetadataTables = null as any;
-export const getMetadataTablesOutput: typeof import("./getMetadataTables").getMetadataTablesOutput = null as any;
-utilities.lazyLoad(exports, ["getMetadataTables","getMetadataTablesOutput"], () => require("./getMetadataTables"));
 
 export { GetRolesArgs, GetRolesResult, GetRolesOutputArgs } from "./getRoles";
 export const getRoles: typeof import("./getRoles").getRoles = null as any;
@@ -190,6 +185,16 @@ export const getUser: typeof import("./getUser").getUser = null as any;
 export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
 utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
 
+export { GetUserConnectorMembershipsArgs, GetUserConnectorMembershipsResult, GetUserConnectorMembershipsOutputArgs } from "./getUserConnectorMemberships";
+export const getUserConnectorMemberships: typeof import("./getUserConnectorMemberships").getUserConnectorMemberships = null as any;
+export const getUserConnectorMembershipsOutput: typeof import("./getUserConnectorMemberships").getUserConnectorMembershipsOutput = null as any;
+utilities.lazyLoad(exports, ["getUserConnectorMemberships","getUserConnectorMembershipsOutput"], () => require("./getUserConnectorMemberships"));
+
+export { GetUserGroupMembershipsArgs, GetUserGroupMembershipsResult, GetUserGroupMembershipsOutputArgs } from "./getUserGroupMemberships";
+export const getUserGroupMemberships: typeof import("./getUserGroupMemberships").getUserGroupMemberships = null as any;
+export const getUserGroupMembershipsOutput: typeof import("./getUserGroupMemberships").getUserGroupMembershipsOutput = null as any;
+utilities.lazyLoad(exports, ["getUserGroupMemberships","getUserGroupMembershipsOutput"], () => require("./getUserGroupMemberships"));
+
 export { GetUsersArgs, GetUsersResult, GetUsersOutputArgs } from "./getUsers";
 export const getUsers: typeof import("./getUsers").getUsers = null as any;
 export const getUsersOutput: typeof import("./getUsers").getUsersOutput = null as any;
@@ -200,7 +205,7 @@ export const getWebhook: typeof import("./getWebhook").getWebhook = null as any;
 export const getWebhookOutput: typeof import("./getWebhook").getWebhookOutput = null as any;
 utilities.lazyLoad(exports, ["getWebhook","getWebhookOutput"], () => require("./getWebhook"));
 
-export { GetWebhooksArgs, GetWebhooksResult, GetWebhooksOutputArgs } from "./getWebhooks";
+export { GetWebhooksResult } from "./getWebhooks";
 export const getWebhooks: typeof import("./getWebhooks").getWebhooks = null as any;
 export const getWebhooksOutput: typeof import("./getWebhooks").getWebhooksOutput = null as any;
 utilities.lazyLoad(exports, ["getWebhooks","getWebhooksOutput"], () => require("./getWebhooks"));
@@ -244,6 +249,16 @@ export { UserArgs, UserState } from "./user";
 export type User = import("./user").User;
 export const User: typeof import("./user").User = null as any;
 utilities.lazyLoad(exports, ["User"], () => require("./user"));
+
+export { UserConnectorMembershipArgs, UserConnectorMembershipState } from "./userConnectorMembership";
+export type UserConnectorMembership = import("./userConnectorMembership").UserConnectorMembership;
+export const UserConnectorMembership: typeof import("./userConnectorMembership").UserConnectorMembership = null as any;
+utilities.lazyLoad(exports, ["UserConnectorMembership"], () => require("./userConnectorMembership"));
+
+export { UserGroupMembershipArgs, UserGroupMembershipState } from "./userGroupMembership";
+export type UserGroupMembership = import("./userGroupMembership").UserGroupMembership;
+export const UserGroupMembership: typeof import("./userGroupMembership").UserGroupMembership = null as any;
+utilities.lazyLoad(exports, ["UserGroupMembership"], () => require("./userGroupMembership"));
 
 export { WebhookArgs, WebhookState } from "./webhook";
 export type Webhook = import("./webhook").Webhook;
@@ -300,6 +315,10 @@ const _module = {
                 return new TeamUserMembership(name, <any>undefined, { urn })
             case "fivetran:index/user:User":
                 return new User(name, <any>undefined, { urn })
+            case "fivetran:index/userConnectorMembership:UserConnectorMembership":
+                return new UserConnectorMembership(name, <any>undefined, { urn })
+            case "fivetran:index/userGroupMembership:UserGroupMembership":
+                return new UserGroupMembership(name, <any>undefined, { urn })
             case "fivetran:index/webhook:Webhook":
                 return new Webhook(name, <any>undefined, { urn })
             default:
@@ -325,6 +344,8 @@ pulumi.runtime.registerResourceModule("fivetran", "index/teamConnectorMembership
 pulumi.runtime.registerResourceModule("fivetran", "index/teamGroupMembership", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/teamUserMembership", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/user", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/userConnectorMembership", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/userGroupMembership", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/webhook", _module)
 pulumi.runtime.registerResourcePackage("fivetran", {
     version: utilities.getVersion(),

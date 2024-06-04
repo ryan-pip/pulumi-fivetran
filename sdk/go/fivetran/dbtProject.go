@@ -9,7 +9,6 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
@@ -17,55 +16,9 @@ import (
 //
 // This resource allows you to add, manage and delete dbt Projects in your account.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.NewDbtProject(ctx, "project", &fivetran.DbtProjectArgs{
-//				DbtVersion:    pulumi.String("1.4.1"),
-//				DefaultSchema: pulumi.String("default_schema"),
-//				EnvironmentVars: pulumi.StringArray{
-//					pulumi.String("environment_var=value"),
-//				},
-//				GroupId: pulumi.String("group_id"),
-//				ProjectConfig: &fivetran.DbtProjectProjectConfigArgs{
-//					FolderPath:   pulumi.String("/dbt/project/folder/path"),
-//					GitBranch:    pulumi.String("main"),
-//					GitRemoteUrl: pulumi.String("your_git_remote_url"),
-//				},
-//				TargetName: pulumi.String("target_name"),
-//				Threads:    pulumi.Int(8),
-//				Type:       pulumi.String("GIT"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
-// 1. To import an existing `fivetran_dbt_project` resource into your Terraform state, you need to get **Dbt Project ID** via API call `GET https://api.fivetran.com/v1/dbt/projects` to retrieve available projects. 2. Fetch project details for particular `project-id` using `GET https://api.fivetran.com/v1/dbt/projects/{project-id}` to ensure that this is the project you want to import. 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_dbt_project" "my_imported_fivetran_dbt_project" { }
-//
-// ```sh
-//
-//	$ pulumi import fivetran:index/dbtProject:DbtProject
-//
-// Run the `terraform import` command
-// ```
+// 1. To import an existing `fivetran_dbt_project` resource into your Terraform state, you need to get **Dbt Project ID** via API call `GET https://api.fivetran.com/v1/dbt/projects` to retrieve available projects. 2. Fetch project details for particular `project-id` using `GET https://api.fivetran.com/v1/dbt/projects/{project-id}` to ensure that this is the project you want to import. 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_dbt_project" "my_imported_fivetran_dbt_project" { } 4. Run the `pulumi import` command
 //
 // ```sh
 //
@@ -86,14 +39,13 @@ type DbtProject struct {
 	// Default schema in destination. This production schema will contain your transformed data.
 	DefaultSchema pulumi.StringOutput `pulumi:"defaultSchema"`
 	// Should resource wait for project to finish initialization. Default value: true.
-	EnsureReadiness pulumi.BoolPtrOutput     `pulumi:"ensureReadiness"`
+	EnsureReadiness pulumi.BoolOutput `pulumi:"ensureReadiness"`
+	// List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
 	EnvironmentVars pulumi.StringArrayOutput `pulumi:"environmentVars"`
 	// The unique identifier for the group within the Fivetran system.
-	GroupId pulumi.StringOutput `pulumi:"groupId"`
-	// The collection of dbt Models.
-	Models DbtProjectModelArrayOutput `pulumi:"models"`
-	// Type specific dbt Project configuration parameters.
-	ProjectConfig DbtProjectProjectConfigOutput `pulumi:"projectConfig"`
+	GroupId       pulumi.StringOutput              `pulumi:"groupId"`
+	Models        DbtProjectModelArrayOutput       `pulumi:"models"`
+	ProjectConfig DbtProjectProjectConfigPtrOutput `pulumi:"projectConfig"`
 	// Public key to grant Fivetran SSH access to git repository.
 	PublicKey pulumi.StringOutput `pulumi:"publicKey"`
 	// Status of dbt Project (NOT_READY, READY, ERROR).
@@ -101,9 +53,10 @@ type DbtProject struct {
 	// Target name to set or override the value from the deployment.yaml
 	TargetName pulumi.StringPtrOutput `pulumi:"targetName"`
 	// The number of threads dbt will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
-	Threads pulumi.IntPtrOutput `pulumi:"threads"`
+	Threads  pulumi.IntOutput            `pulumi:"threads"`
+	Timeouts DbtProjectTimeoutsPtrOutput `pulumi:"timeouts"`
 	// Type of dbt Project. Currently only `GIT` supported. Empty value will be considered as default (GIT).
-	Type pulumi.StringOutput `pulumi:"type"`
+	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
 // NewDbtProject registers a new resource with the given unique name, arguments, and options.
@@ -121,9 +74,6 @@ func NewDbtProject(ctx *pulumi.Context,
 	}
 	if args.GroupId == nil {
 		return nil, errors.New("invalid value for required argument 'GroupId'")
-	}
-	if args.ProjectConfig == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectConfig'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DbtProject
@@ -157,13 +107,12 @@ type dbtProjectState struct {
 	// Default schema in destination. This production schema will contain your transformed data.
 	DefaultSchema *string `pulumi:"defaultSchema"`
 	// Should resource wait for project to finish initialization. Default value: true.
-	EnsureReadiness *bool    `pulumi:"ensureReadiness"`
+	EnsureReadiness *bool `pulumi:"ensureReadiness"`
+	// List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
 	EnvironmentVars []string `pulumi:"environmentVars"`
 	// The unique identifier for the group within the Fivetran system.
-	GroupId *string `pulumi:"groupId"`
-	// The collection of dbt Models.
-	Models []DbtProjectModel `pulumi:"models"`
-	// Type specific dbt Project configuration parameters.
+	GroupId       *string                  `pulumi:"groupId"`
+	Models        []DbtProjectModel        `pulumi:"models"`
 	ProjectConfig *DbtProjectProjectConfig `pulumi:"projectConfig"`
 	// Public key to grant Fivetran SSH access to git repository.
 	PublicKey *string `pulumi:"publicKey"`
@@ -172,7 +121,8 @@ type dbtProjectState struct {
 	// Target name to set or override the value from the deployment.yaml
 	TargetName *string `pulumi:"targetName"`
 	// The number of threads dbt will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
-	Threads *int `pulumi:"threads"`
+	Threads  *int                `pulumi:"threads"`
+	Timeouts *DbtProjectTimeouts `pulumi:"timeouts"`
 	// Type of dbt Project. Currently only `GIT` supported. Empty value will be considered as default (GIT).
 	Type *string `pulumi:"type"`
 }
@@ -188,12 +138,11 @@ type DbtProjectState struct {
 	DefaultSchema pulumi.StringPtrInput
 	// Should resource wait for project to finish initialization. Default value: true.
 	EnsureReadiness pulumi.BoolPtrInput
+	// List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
 	EnvironmentVars pulumi.StringArrayInput
 	// The unique identifier for the group within the Fivetran system.
-	GroupId pulumi.StringPtrInput
-	// The collection of dbt Models.
-	Models DbtProjectModelArrayInput
-	// Type specific dbt Project configuration parameters.
+	GroupId       pulumi.StringPtrInput
+	Models        DbtProjectModelArrayInput
 	ProjectConfig DbtProjectProjectConfigPtrInput
 	// Public key to grant Fivetran SSH access to git repository.
 	PublicKey pulumi.StringPtrInput
@@ -202,7 +151,8 @@ type DbtProjectState struct {
 	// Target name to set or override the value from the deployment.yaml
 	TargetName pulumi.StringPtrInput
 	// The number of threads dbt will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
-	Threads pulumi.IntPtrInput
+	Threads  pulumi.IntPtrInput
+	Timeouts DbtProjectTimeoutsPtrInput
 	// Type of dbt Project. Currently only `GIT` supported. Empty value will be considered as default (GIT).
 	Type pulumi.StringPtrInput
 }
@@ -217,18 +167,17 @@ type dbtProjectArgs struct {
 	// Default schema in destination. This production schema will contain your transformed data.
 	DefaultSchema string `pulumi:"defaultSchema"`
 	// Should resource wait for project to finish initialization. Default value: true.
-	EnsureReadiness *bool    `pulumi:"ensureReadiness"`
+	EnsureReadiness *bool `pulumi:"ensureReadiness"`
+	// List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
 	EnvironmentVars []string `pulumi:"environmentVars"`
 	// The unique identifier for the group within the Fivetran system.
-	GroupId string `pulumi:"groupId"`
-	// The collection of dbt Models.
-	Models []DbtProjectModel `pulumi:"models"`
-	// Type specific dbt Project configuration parameters.
-	ProjectConfig DbtProjectProjectConfig `pulumi:"projectConfig"`
+	GroupId       string                   `pulumi:"groupId"`
+	ProjectConfig *DbtProjectProjectConfig `pulumi:"projectConfig"`
 	// Target name to set or override the value from the deployment.yaml
 	TargetName *string `pulumi:"targetName"`
 	// The number of threads dbt will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
-	Threads *int `pulumi:"threads"`
+	Threads  *int                `pulumi:"threads"`
+	Timeouts *DbtProjectTimeouts `pulumi:"timeouts"`
 	// Type of dbt Project. Currently only `GIT` supported. Empty value will be considered as default (GIT).
 	Type *string `pulumi:"type"`
 }
@@ -241,17 +190,16 @@ type DbtProjectArgs struct {
 	DefaultSchema pulumi.StringInput
 	// Should resource wait for project to finish initialization. Default value: true.
 	EnsureReadiness pulumi.BoolPtrInput
+	// List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
 	EnvironmentVars pulumi.StringArrayInput
 	// The unique identifier for the group within the Fivetran system.
-	GroupId pulumi.StringInput
-	// The collection of dbt Models.
-	Models DbtProjectModelArrayInput
-	// Type specific dbt Project configuration parameters.
-	ProjectConfig DbtProjectProjectConfigInput
+	GroupId       pulumi.StringInput
+	ProjectConfig DbtProjectProjectConfigPtrInput
 	// Target name to set or override the value from the deployment.yaml
 	TargetName pulumi.StringPtrInput
 	// The number of threads dbt will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
-	Threads pulumi.IntPtrInput
+	Threads  pulumi.IntPtrInput
+	Timeouts DbtProjectTimeoutsPtrInput
 	// Type of dbt Project. Currently only `GIT` supported. Empty value will be considered as default (GIT).
 	Type pulumi.StringPtrInput
 }
@@ -279,12 +227,6 @@ func (i *DbtProject) ToDbtProjectOutputWithContext(ctx context.Context) DbtProje
 	return pulumi.ToOutputWithContext(ctx, i).(DbtProjectOutput)
 }
 
-func (i *DbtProject) ToOutput(ctx context.Context) pulumix.Output[*DbtProject] {
-	return pulumix.Output[*DbtProject]{
-		OutputState: i.ToDbtProjectOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DbtProjectArrayInput is an input type that accepts DbtProjectArray and DbtProjectArrayOutput values.
 // You can construct a concrete instance of `DbtProjectArrayInput` via:
 //
@@ -308,12 +250,6 @@ func (i DbtProjectArray) ToDbtProjectArrayOutput() DbtProjectArrayOutput {
 
 func (i DbtProjectArray) ToDbtProjectArrayOutputWithContext(ctx context.Context) DbtProjectArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DbtProjectArrayOutput)
-}
-
-func (i DbtProjectArray) ToOutput(ctx context.Context) pulumix.Output[[]*DbtProject] {
-	return pulumix.Output[[]*DbtProject]{
-		OutputState: i.ToDbtProjectArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DbtProjectMapInput is an input type that accepts DbtProjectMap and DbtProjectMapOutput values.
@@ -341,12 +277,6 @@ func (i DbtProjectMap) ToDbtProjectMapOutputWithContext(ctx context.Context) Dbt
 	return pulumi.ToOutputWithContext(ctx, i).(DbtProjectMapOutput)
 }
 
-func (i DbtProjectMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DbtProject] {
-	return pulumix.Output[map[string]*DbtProject]{
-		OutputState: i.ToDbtProjectMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DbtProjectOutput struct{ *pulumi.OutputState }
 
 func (DbtProjectOutput) ElementType() reflect.Type {
@@ -359,12 +289,6 @@ func (o DbtProjectOutput) ToDbtProjectOutput() DbtProjectOutput {
 
 func (o DbtProjectOutput) ToDbtProjectOutputWithContext(ctx context.Context) DbtProjectOutput {
 	return o
-}
-
-func (o DbtProjectOutput) ToOutput(ctx context.Context) pulumix.Output[*DbtProject] {
-	return pulumix.Output[*DbtProject]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of the dbt Project creation.
@@ -388,10 +312,11 @@ func (o DbtProjectOutput) DefaultSchema() pulumi.StringOutput {
 }
 
 // Should resource wait for project to finish initialization. Default value: true.
-func (o DbtProjectOutput) EnsureReadiness() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *DbtProject) pulumi.BoolPtrOutput { return v.EnsureReadiness }).(pulumi.BoolPtrOutput)
+func (o DbtProjectOutput) EnsureReadiness() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DbtProject) pulumi.BoolOutput { return v.EnsureReadiness }).(pulumi.BoolOutput)
 }
 
+// List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
 func (o DbtProjectOutput) EnvironmentVars() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DbtProject) pulumi.StringArrayOutput { return v.EnvironmentVars }).(pulumi.StringArrayOutput)
 }
@@ -401,14 +326,12 @@ func (o DbtProjectOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbtProject) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
 }
 
-// The collection of dbt Models.
 func (o DbtProjectOutput) Models() DbtProjectModelArrayOutput {
 	return o.ApplyT(func(v *DbtProject) DbtProjectModelArrayOutput { return v.Models }).(DbtProjectModelArrayOutput)
 }
 
-// Type specific dbt Project configuration parameters.
-func (o DbtProjectOutput) ProjectConfig() DbtProjectProjectConfigOutput {
-	return o.ApplyT(func(v *DbtProject) DbtProjectProjectConfigOutput { return v.ProjectConfig }).(DbtProjectProjectConfigOutput)
+func (o DbtProjectOutput) ProjectConfig() DbtProjectProjectConfigPtrOutput {
+	return o.ApplyT(func(v *DbtProject) DbtProjectProjectConfigPtrOutput { return v.ProjectConfig }).(DbtProjectProjectConfigPtrOutput)
 }
 
 // Public key to grant Fivetran SSH access to git repository.
@@ -427,13 +350,17 @@ func (o DbtProjectOutput) TargetName() pulumi.StringPtrOutput {
 }
 
 // The number of threads dbt will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
-func (o DbtProjectOutput) Threads() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DbtProject) pulumi.IntPtrOutput { return v.Threads }).(pulumi.IntPtrOutput)
+func (o DbtProjectOutput) Threads() pulumi.IntOutput {
+	return o.ApplyT(func(v *DbtProject) pulumi.IntOutput { return v.Threads }).(pulumi.IntOutput)
+}
+
+func (o DbtProjectOutput) Timeouts() DbtProjectTimeoutsPtrOutput {
+	return o.ApplyT(func(v *DbtProject) DbtProjectTimeoutsPtrOutput { return v.Timeouts }).(DbtProjectTimeoutsPtrOutput)
 }
 
 // Type of dbt Project. Currently only `GIT` supported. Empty value will be considered as default (GIT).
-func (o DbtProjectOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v *DbtProject) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+func (o DbtProjectOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbtProject) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 type DbtProjectArrayOutput struct{ *pulumi.OutputState }
@@ -448,12 +375,6 @@ func (o DbtProjectArrayOutput) ToDbtProjectArrayOutput() DbtProjectArrayOutput {
 
 func (o DbtProjectArrayOutput) ToDbtProjectArrayOutputWithContext(ctx context.Context) DbtProjectArrayOutput {
 	return o
-}
-
-func (o DbtProjectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DbtProject] {
-	return pulumix.Output[[]*DbtProject]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DbtProjectArrayOutput) Index(i pulumi.IntInput) DbtProjectOutput {
@@ -474,12 +395,6 @@ func (o DbtProjectMapOutput) ToDbtProjectMapOutput() DbtProjectMapOutput {
 
 func (o DbtProjectMapOutput) ToDbtProjectMapOutputWithContext(ctx context.Context) DbtProjectMapOutput {
 	return o
-}
-
-func (o DbtProjectMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DbtProject] {
-	return pulumix.Output[map[string]*DbtProject]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DbtProjectMapOutput) MapIndex(k pulumi.StringInput) DbtProjectOutput {

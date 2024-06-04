@@ -9,13 +9,7 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * 1. To import an existing `fivetran_external_logging` resource into your Terraform state, you need to get **External Logging Group ID** on the external logging page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_external_logging" "my_imported_external_logging" { }
- *
- * ```sh
- *  $ pulumi import fivetran:index/externalLogging:ExternalLogging
- *
- * Run the `terraform import` command with the following parameters
- * ```
+ * 1. To import an existing `fivetran_external_logging` resource into your Terraform state, you need to get **External Logging Group ID** on the external logging page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_external_logging" "my_imported_external_logging" { } 3. Run the `pulumi import` command with the following parameters
  *
  * ```sh
  *  $ pulumi import fivetran:index/externalLogging:ExternalLogging my_imported_external_logging {your External Logging Group ID}
@@ -51,7 +45,7 @@ export class ExternalLogging extends pulumi.CustomResource {
         return obj['__pulumiType'] === ExternalLogging.__pulumiType;
     }
 
-    public readonly config!: pulumi.Output<outputs.ExternalLoggingConfig>;
+    public readonly config!: pulumi.Output<outputs.ExternalLoggingConfig | undefined>;
     /**
      * The boolean value specifying whether the log service is enabled.
      */
@@ -89,9 +83,6 @@ export class ExternalLogging extends pulumi.CustomResource {
             resourceInputs["service"] = state ? state.service : undefined;
         } else {
             const args = argsOrState as ExternalLoggingArgs | undefined;
-            if ((!args || args.config === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'config'");
-            }
             if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
@@ -136,7 +127,7 @@ export interface ExternalLoggingState {
  * The set of arguments for constructing a ExternalLogging resource.
  */
 export interface ExternalLoggingArgs {
-    config: pulumi.Input<inputs.ExternalLoggingConfig>;
+    config?: pulumi.Input<inputs.ExternalLoggingConfig>;
     /**
      * The boolean value specifying whether the log service is enabled.
      */

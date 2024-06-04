@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,13 +35,13 @@ class GetRolesResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this resource.
         """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
-    def roles(self) -> Sequence['outputs.GetRolesRoleResult']:
+    def roles(self) -> Optional[Sequence['outputs.GetRolesRoleResult']]:
         return pulumi.get(self, "roles")
 
 

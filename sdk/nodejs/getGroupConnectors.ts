@@ -50,7 +50,7 @@ export interface GetGroupConnectorsArgs {
  * A collection of values returned by getGroupConnectors.
  */
 export interface GetGroupConnectorsResult {
-    readonly connectors: outputs.GetGroupConnectorsConnector[];
+    readonly connectors?: outputs.GetGroupConnectorsConnector[];
     /**
      * The ID of this resource.
      */

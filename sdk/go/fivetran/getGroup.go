@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
@@ -61,6 +60,8 @@ type LookupGroupResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// The unique identifier for the group within the Fivetran system.
 	Id string `pulumi:"id"`
+	// The timestamp of when the resource/datasource was updated last time.
+	LastUpdated string `pulumi:"lastUpdated"`
 	// The name of the group within your account.
 	Name string `pulumi:"name"`
 }
@@ -103,12 +104,6 @@ func (o LookupGroupResultOutput) ToLookupGroupResultOutputWithContext(ctx contex
 	return o
 }
 
-func (o LookupGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGroupResult] {
-	return pulumix.Output[LookupGroupResult]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The timestamp of when the group was created in your account.
 func (o LookupGroupResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.CreatedAt }).(pulumi.StringOutput)
@@ -117,6 +112,11 @@ func (o LookupGroupResultOutput) CreatedAt() pulumi.StringOutput {
 // The unique identifier for the group within the Fivetran system.
 func (o LookupGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The timestamp of when the resource/datasource was updated last time.
+func (o LookupGroupResultOutput) LastUpdated() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.LastUpdated }).(pulumi.StringOutput)
 }
 
 // The name of the group within your account.

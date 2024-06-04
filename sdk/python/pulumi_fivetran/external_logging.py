@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -16,9 +16,9 @@ __all__ = ['ExternalLoggingArgs', 'ExternalLogging']
 @pulumi.input_type
 class ExternalLoggingArgs:
     def __init__(__self__, *,
-                 config: pulumi.Input['ExternalLoggingConfigArgs'],
                  group_id: pulumi.Input[str],
                  service: pulumi.Input[str],
+                 config: Optional[pulumi.Input['ExternalLoggingConfigArgs']] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  run_setup_tests: Optional[pulumi.Input[bool]] = None):
         """
@@ -28,45 +28,14 @@ class ExternalLoggingArgs:
         :param pulumi.Input[bool] enabled: The boolean value specifying whether the log service is enabled.
         :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
         """
-        ExternalLoggingArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            config=config,
-            group_id=group_id,
-            service=service,
-            enabled=enabled,
-            run_setup_tests=run_setup_tests,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             config: pulumi.Input['ExternalLoggingConfigArgs'],
-             group_id: pulumi.Input[str],
-             service: pulumi.Input[str],
-             enabled: Optional[pulumi.Input[bool]] = None,
-             run_setup_tests: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'groupId' in kwargs:
-            group_id = kwargs['groupId']
-        if 'runSetupTests' in kwargs:
-            run_setup_tests = kwargs['runSetupTests']
-
-        _setter("config", config)
-        _setter("group_id", group_id)
-        _setter("service", service)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "service", service)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if run_setup_tests is not None:
-            _setter("run_setup_tests", run_setup_tests)
-
-    @property
-    @pulumi.getter
-    def config(self) -> pulumi.Input['ExternalLoggingConfigArgs']:
-        return pulumi.get(self, "config")
-
-    @config.setter
-    def config(self, value: pulumi.Input['ExternalLoggingConfigArgs']):
-        pulumi.set(self, "config", value)
+            pulumi.set(__self__, "run_setup_tests", run_setup_tests)
 
     @property
     @pulumi.getter(name="groupId")
@@ -91,6 +60,15 @@ class ExternalLoggingArgs:
     @service.setter
     def service(self, value: pulumi.Input[str]):
         pulumi.set(self, "service", value)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[pulumi.Input['ExternalLoggingConfigArgs']]:
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input['ExternalLoggingConfigArgs']]):
+        pulumi.set(self, "config", value)
 
     @property
     @pulumi.getter
@@ -132,39 +110,16 @@ class _ExternalLoggingState:
         :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
         :param pulumi.Input[str] service: The name for the log service type within the Fivetran system. We support the following log services: azure*monitor*log, cloudwatch, datadog*log, new*relic_log, splunkLog, stackdriver.
         """
-        _ExternalLoggingState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            config=config,
-            enabled=enabled,
-            group_id=group_id,
-            run_setup_tests=run_setup_tests,
-            service=service,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             config: Optional[pulumi.Input['ExternalLoggingConfigArgs']] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             group_id: Optional[pulumi.Input[str]] = None,
-             run_setup_tests: Optional[pulumi.Input[bool]] = None,
-             service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'groupId' in kwargs:
-            group_id = kwargs['groupId']
-        if 'runSetupTests' in kwargs:
-            run_setup_tests = kwargs['runSetupTests']
-
         if config is not None:
-            _setter("config", config)
+            pulumi.set(__self__, "config", config)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if group_id is not None:
-            _setter("group_id", group_id)
+            pulumi.set(__self__, "group_id", group_id)
         if run_setup_tests is not None:
-            _setter("run_setup_tests", run_setup_tests)
+            pulumi.set(__self__, "run_setup_tests", run_setup_tests)
         if service is not None:
-            _setter("service", service)
+            pulumi.set(__self__, "service", service)
 
     @property
     @pulumi.getter
@@ -238,13 +193,7 @@ class ExternalLogging(pulumi.CustomResource):
         """
         ## Import
 
-        1. To import an existing `fivetran_external_logging` resource into your Terraform state, you need to get **External Logging Group ID** on the external logging page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_external_logging" "my_imported_external_logging" { }
-
-        ```sh
-         $ pulumi import fivetran:index/externalLogging:ExternalLogging
-
-        Run the `terraform import` command with the following parameters
-        ```
+        1. To import an existing `fivetran_external_logging` resource into your Terraform state, you need to get **External Logging Group ID** on the external logging page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_external_logging" "my_imported_external_logging" { } 3. Run the `pulumi import` command with the following parameters
 
         ```sh
          $ pulumi import fivetran:index/externalLogging:ExternalLogging my_imported_external_logging {your External Logging Group ID}
@@ -268,13 +217,7 @@ class ExternalLogging(pulumi.CustomResource):
         """
         ## Import
 
-        1. To import an existing `fivetran_external_logging` resource into your Terraform state, you need to get **External Logging Group ID** on the external logging page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_external_logging" "my_imported_external_logging" { }
-
-        ```sh
-         $ pulumi import fivetran:index/externalLogging:ExternalLogging
-
-        Run the `terraform import` command with the following parameters
-        ```
+        1. To import an existing `fivetran_external_logging` resource into your Terraform state, you need to get **External Logging Group ID** on the external logging page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_external_logging" "my_imported_external_logging" { } 3. Run the `pulumi import` command with the following parameters
 
         ```sh
          $ pulumi import fivetran:index/externalLogging:ExternalLogging my_imported_external_logging {your External Logging Group ID}
@@ -292,10 +235,6 @@ class ExternalLogging(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ExternalLoggingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -315,13 +254,6 @@ class ExternalLogging(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ExternalLoggingArgs.__new__(ExternalLoggingArgs)
 
-            if config is not None and not isinstance(config, ExternalLoggingConfigArgs):
-                config = config or {}
-                def _setter(key, value):
-                    config[key] = value
-                ExternalLoggingConfigArgs._configure(_setter, **config)
-            if config is None and not opts.urn:
-                raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
             __props__.__dict__["enabled"] = enabled
             if group_id is None and not opts.urn:
@@ -371,7 +303,7 @@ class ExternalLogging(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def config(self) -> pulumi.Output['outputs.ExternalLoggingConfig']:
+    def config(self) -> pulumi.Output[Optional['outputs.ExternalLoggingConfig']]:
         return pulumi.get(self, "config")
 
     @property

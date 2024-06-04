@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
@@ -55,7 +54,7 @@ type GetGroupsArgs struct {
 // A collection of values returned by getGroups.
 type GetGroupsResult struct {
 	Groups []GetGroupsGroup `pulumi:"groups"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of this resource.
 	Id string `pulumi:"id"`
 }
 
@@ -96,17 +95,11 @@ func (o GetGroupsResultOutput) ToGetGroupsResultOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o GetGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupsResult] {
-	return pulumix.Output[GetGroupsResult]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GetGroupsResultOutput) Groups() GetGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetGroupsResult) []GetGroupsGroup { return v.Groups }).(GetGroupsGroupArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of this resource.
 func (o GetGroupsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsResult) string { return v.Id }).(pulumi.StringOutput)
 }

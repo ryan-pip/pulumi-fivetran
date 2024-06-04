@@ -23,7 +23,6 @@ export function getWebhook(args: GetWebhookArgs, opts?: pulumi.InvokeOptions): P
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getWebhook:getWebhook", {
         "id": args.id,
-        "runTests": args.runTests,
     }, opts);
 }
 
@@ -35,10 +34,6 @@ export interface GetWebhookArgs {
      * The webhook ID
      */
     id: string;
-    /**
-     * Specifies whether the setup tests should be run
-     */
-    runTests?: boolean;
 }
 
 /**
@@ -72,7 +67,7 @@ export interface GetWebhookResult {
     /**
      * Specifies whether the setup tests should be run
      */
-    readonly runTests?: boolean;
+    readonly runTests: boolean;
     /**
      * The secret string used for payload signing and masked in the response.
      */
@@ -112,8 +107,4 @@ export interface GetWebhookOutputArgs {
      * The webhook ID
      */
     id: pulumi.Input<string>;
-    /**
-     * Specifies whether the setup tests should be run
-     */
-    runTests?: pulumi.Input<boolean>;
 }

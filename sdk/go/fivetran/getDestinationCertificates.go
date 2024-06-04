@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
@@ -75,12 +74,6 @@ func (o LookupDestinationCertificatesResultOutput) ToLookupDestinationCertificat
 
 func (o LookupDestinationCertificatesResultOutput) ToLookupDestinationCertificatesResultOutputWithContext(ctx context.Context) LookupDestinationCertificatesResultOutput {
 	return o
-}
-
-func (o LookupDestinationCertificatesResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDestinationCertificatesResult] {
-	return pulumix.Output[LookupDestinationCertificatesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupDestinationCertificatesResultOutput) Certificates() GetDestinationCertificatesCertificateArrayOutput {

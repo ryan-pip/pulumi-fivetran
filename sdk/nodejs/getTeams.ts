@@ -23,6 +23,7 @@ export function getTeams(args?: GetTeamsArgs, opts?: pulumi.InvokeOptions): Prom
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getTeams:getTeams", {
+        "id": args.id,
         "teams": args.teams,
     }, opts);
 }
@@ -31,6 +32,10 @@ export function getTeams(args?: GetTeamsArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getTeams.
  */
 export interface GetTeamsArgs {
+    /**
+     * The unique identifier for the team within your account.
+     */
+    id?: string;
     teams?: inputs.GetTeamsTeam[];
 }
 
@@ -39,10 +44,10 @@ export interface GetTeamsArgs {
  */
 export interface GetTeamsResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this resource.
      */
-    readonly id: string;
-    readonly teams: outputs.GetTeamsTeam[];
+    readonly id?: string;
+    readonly teams?: outputs.GetTeamsTeam[];
 }
 /**
  * This data source returns a list of all teams within your Fivetran account.
@@ -64,5 +69,9 @@ export function getTeamsOutput(args?: GetTeamsOutputArgs, opts?: pulumi.InvokeOp
  * A collection of arguments for invoking getTeams.
  */
 export interface GetTeamsOutputArgs {
+    /**
+     * The unique identifier for the team within your account.
+     */
+    id?: pulumi.Input<string>;
     teams?: pulumi.Input<pulumi.Input<inputs.GetTeamsTeamArgs>[]>;
 }

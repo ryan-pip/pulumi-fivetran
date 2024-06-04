@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,14 +33,14 @@ class GetGroupsResult:
 
     @property
     @pulumi.getter
-    def groups(self) -> Sequence['outputs.GetGroupsGroupResult']:
+    def groups(self) -> Optional[Sequence['outputs.GetGroupsGroupResult']]:
         return pulumi.get(self, "groups")
 
     @property
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this resource.
         """
         return pulumi.get(self, "id")
 

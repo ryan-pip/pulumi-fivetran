@@ -18,20 +18,11 @@ import * as utilities from "./utilities";
  * const webhooks = fivetran.getWebhooks({});
  * ```
  */
-export function getWebhooks(args?: GetWebhooksArgs, opts?: pulumi.InvokeOptions): Promise<GetWebhooksResult> {
-    args = args || {};
+export function getWebhooks(opts?: pulumi.InvokeOptions): Promise<GetWebhooksResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("fivetran:index/getWebhooks:getWebhooks", {
-        "webhooks": args.webhooks,
     }, opts);
-}
-
-/**
- * A collection of arguments for invoking getWebhooks.
- */
-export interface GetWebhooksArgs {
-    webhooks?: inputs.GetWebhooksWebhook[];
 }
 
 /**
@@ -56,13 +47,6 @@ export interface GetWebhooksResult {
  * const webhooks = fivetran.getWebhooks({});
  * ```
  */
-export function getWebhooksOutput(args?: GetWebhooksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebhooksResult> {
-    return pulumi.output(args).apply((a: any) => getWebhooks(a, opts))
-}
-
-/**
- * A collection of arguments for invoking getWebhooks.
- */
-export interface GetWebhooksOutputArgs {
-    webhooks?: pulumi.Input<pulumi.Input<inputs.GetWebhooksWebhookArgs>[]>;
+export function getWebhooksOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetWebhooksResult> {
+    return pulumi.output(getWebhooks(opts))
 }

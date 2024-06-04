@@ -39,10 +39,10 @@ export interface GetRolesArgs {
  */
 export interface GetRolesResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of this resource.
      */
     readonly id: string;
-    readonly roles: outputs.GetRolesRole[];
+    readonly roles?: outputs.GetRolesRole[];
 }
 /**
  * This data source returns a list of all predefined and custom roles within your Fivetran account.

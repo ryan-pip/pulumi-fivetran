@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -22,24 +22,9 @@ class GroupUsersArgs:
         The set of arguments for constructing a GroupUsers resource.
         :param pulumi.Input[str] group_id: The unique identifier for the Group within the Fivetran system.
         """
-        GroupUsersArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            group_id=group_id,
-            users=users,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             group_id: pulumi.Input[str],
-             users: Optional[pulumi.Input[Sequence[pulumi.Input['GroupUsersUserArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'groupId' in kwargs:
-            group_id = kwargs['groupId']
-
-        _setter("group_id", group_id)
+        pulumi.set(__self__, "group_id", group_id)
         if users is not None:
-            _setter("users", users)
+            pulumi.set(__self__, "users", users)
 
     @property
     @pulumi.getter(name="groupId")
@@ -73,31 +58,12 @@ class _GroupUsersState:
         Input properties used for looking up and filtering GroupUsers resources.
         :param pulumi.Input[str] group_id: The unique identifier for the Group within the Fivetran system.
         """
-        _GroupUsersState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            group_id=group_id,
-            last_updated=last_updated,
-            users=users,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             group_id: Optional[pulumi.Input[str]] = None,
-             last_updated: Optional[pulumi.Input[str]] = None,
-             users: Optional[pulumi.Input[Sequence[pulumi.Input['GroupUsersUserArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'groupId' in kwargs:
-            group_id = kwargs['groupId']
-        if 'lastUpdated' in kwargs:
-            last_updated = kwargs['lastUpdated']
-
         if group_id is not None:
-            _setter("group_id", group_id)
+            pulumi.set(__self__, "group_id", group_id)
         if last_updated is not None:
-            _setter("last_updated", last_updated)
+            pulumi.set(__self__, "last_updated", last_updated)
         if users is not None:
-            _setter("users", users)
+            pulumi.set(__self__, "users", users)
 
     @property
     @pulumi.getter(name="groupId")
@@ -204,10 +170,6 @@ class GroupUsers(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            GroupUsersArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

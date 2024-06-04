@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
@@ -107,12 +106,6 @@ func (o GetGroupConnectorsResultOutput) ToGetGroupConnectorsResultOutput() GetGr
 
 func (o GetGroupConnectorsResultOutput) ToGetGroupConnectorsResultOutputWithContext(ctx context.Context) GetGroupConnectorsResultOutput {
 	return o
-}
-
-func (o GetGroupConnectorsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupConnectorsResult] {
-	return pulumix.Output[GetGroupConnectorsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetGroupConnectorsResultOutput) Connectors() GetGroupConnectorsConnectorArrayOutput {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
@@ -102,12 +101,6 @@ func (o LookupDestinationFingerprintsResultOutput) ToLookupDestinationFingerprin
 
 func (o LookupDestinationFingerprintsResultOutput) ToLookupDestinationFingerprintsResultOutputWithContext(ctx context.Context) LookupDestinationFingerprintsResultOutput {
 	return o
-}
-
-func (o LookupDestinationFingerprintsResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDestinationFingerprintsResult] {
-	return pulumix.Output[LookupDestinationFingerprintsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unique identifier for the target destination within the Fivetran system.

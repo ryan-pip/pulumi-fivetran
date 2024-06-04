@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
@@ -102,12 +101,6 @@ func (o GetTeamGroupMembershipsResultOutput) ToGetTeamGroupMembershipsResultOutp
 
 func (o GetTeamGroupMembershipsResultOutput) ToGetTeamGroupMembershipsResultOutputWithContext(ctx context.Context) GetTeamGroupMembershipsResultOutput {
 	return o
-}
-
-func (o GetTeamGroupMembershipsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTeamGroupMembershipsResult] {
-	return pulumix.Output[GetTeamGroupMembershipsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTeamGroupMembershipsResultOutput) Groups() GetTeamGroupMembershipsGroupArrayOutput {

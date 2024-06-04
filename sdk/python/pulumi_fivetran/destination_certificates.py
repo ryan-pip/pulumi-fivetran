@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -22,24 +22,9 @@ class DestinationCertificatesArgs:
         The set of arguments for constructing a DestinationCertificates resource.
         :param pulumi.Input[str] destination_id: The unique identifier for the target destination within the Fivetran system.
         """
-        DestinationCertificatesArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            destination_id=destination_id,
-            certificates=certificates,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             destination_id: pulumi.Input[str],
-             certificates: Optional[pulumi.Input[Sequence[pulumi.Input['DestinationCertificatesCertificateArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'destinationId' in kwargs:
-            destination_id = kwargs['destinationId']
-
-        _setter("destination_id", destination_id)
+        pulumi.set(__self__, "destination_id", destination_id)
         if certificates is not None:
-            _setter("certificates", certificates)
+            pulumi.set(__self__, "certificates", certificates)
 
     @property
     @pulumi.getter(name="destinationId")
@@ -72,25 +57,10 @@ class _DestinationCertificatesState:
         Input properties used for looking up and filtering DestinationCertificates resources.
         :param pulumi.Input[str] destination_id: The unique identifier for the target destination within the Fivetran system.
         """
-        _DestinationCertificatesState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            certificates=certificates,
-            destination_id=destination_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             certificates: Optional[pulumi.Input[Sequence[pulumi.Input['DestinationCertificatesCertificateArgs']]]] = None,
-             destination_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'destinationId' in kwargs:
-            destination_id = kwargs['destinationId']
-
         if certificates is not None:
-            _setter("certificates", certificates)
+            pulumi.set(__self__, "certificates", certificates)
         if destination_id is not None:
-            _setter("destination_id", destination_id)
+            pulumi.set(__self__, "destination_id", destination_id)
 
     @property
     @pulumi.getter
@@ -146,10 +116,6 @@ class DestinationCertificates(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DestinationCertificatesArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

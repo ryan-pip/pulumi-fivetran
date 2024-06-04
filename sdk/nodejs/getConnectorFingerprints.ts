@@ -35,7 +35,7 @@ export function getConnectorFingerprints(args: GetConnectorFingerprintsArgs, opt
 export interface GetConnectorFingerprintsArgs {
     fingerprints?: inputs.GetConnectorFingerprintsFingerprint[];
     /**
-     * The unique identifier for the resource. Equal to target connector id.
+     * The unique identifier for the resource. Equal to target connection id.
      */
     id: string;
 }
@@ -45,12 +45,12 @@ export interface GetConnectorFingerprintsArgs {
  */
 export interface GetConnectorFingerprintsResult {
     /**
-     * The unique identifier for the target connector within the Fivetran system.
+     * The unique identifier for the target connection within the Fivetran system.
      */
     readonly connectorId: string;
     readonly fingerprints?: outputs.GetConnectorFingerprintsFingerprint[];
     /**
-     * The unique identifier for the resource. Equal to target connector id.
+     * The unique identifier for the resource. Equal to target connection id.
      */
     readonly id: string;
 }
@@ -78,7 +78,7 @@ export function getConnectorFingerprintsOutput(args: GetConnectorFingerprintsOut
 export interface GetConnectorFingerprintsOutputArgs {
     fingerprints?: pulumi.Input<pulumi.Input<inputs.GetConnectorFingerprintsFingerprintArgs>[]>;
     /**
-     * The unique identifier for the resource. Equal to target connector id.
+     * The unique identifier for the resource. Equal to target connection id.
      */
     id: pulumi.Input<string>;
 }

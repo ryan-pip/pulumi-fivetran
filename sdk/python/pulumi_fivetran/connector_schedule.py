@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ConnectorScheduleArgs', 'ConnectorSchedule']
@@ -22,61 +22,30 @@ class ConnectorScheduleArgs:
                  sync_frequency: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ConnectorSchedule resource.
-        :param pulumi.Input[str] connector_id: The unique identifier for the connector
-        :param pulumi.Input[str] daily_sync_time: The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time
-        :param pulumi.Input[str] pause_after_trial: Specifies whether the connector should be paused after the free trial period has ended
-        :param pulumi.Input[str] paused: Specifies whether the connector is paused
-        :param pulumi.Input[str] schedule_type: The connector schedule configuration type. Supported values: auto, manual
-        :param pulumi.Input[str] sync_frequency: The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+        :param pulumi.Input[str] connector_id: The unique identifier for the connector within the Fivetran system.
+        :param pulumi.Input[str] daily_sync_time: The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
+        :param pulumi.Input[str] pause_after_trial: Specifies whether the connector should be paused after the free trial period has ended.
+        :param pulumi.Input[str] paused: Specifies whether the connector is paused.
+        :param pulumi.Input[str] schedule_type: The connector schedule configuration type. Supported values: auto, manual.
+        :param pulumi.Input[str] sync_frequency: The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
         """
-        ConnectorScheduleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            connector_id=connector_id,
-            daily_sync_time=daily_sync_time,
-            pause_after_trial=pause_after_trial,
-            paused=paused,
-            schedule_type=schedule_type,
-            sync_frequency=sync_frequency,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             connector_id: pulumi.Input[str],
-             daily_sync_time: Optional[pulumi.Input[str]] = None,
-             pause_after_trial: Optional[pulumi.Input[str]] = None,
-             paused: Optional[pulumi.Input[str]] = None,
-             schedule_type: Optional[pulumi.Input[str]] = None,
-             sync_frequency: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'connectorId' in kwargs:
-            connector_id = kwargs['connectorId']
-        if 'dailySyncTime' in kwargs:
-            daily_sync_time = kwargs['dailySyncTime']
-        if 'pauseAfterTrial' in kwargs:
-            pause_after_trial = kwargs['pauseAfterTrial']
-        if 'scheduleType' in kwargs:
-            schedule_type = kwargs['scheduleType']
-        if 'syncFrequency' in kwargs:
-            sync_frequency = kwargs['syncFrequency']
-
-        _setter("connector_id", connector_id)
+        pulumi.set(__self__, "connector_id", connector_id)
         if daily_sync_time is not None:
-            _setter("daily_sync_time", daily_sync_time)
+            pulumi.set(__self__, "daily_sync_time", daily_sync_time)
         if pause_after_trial is not None:
-            _setter("pause_after_trial", pause_after_trial)
+            pulumi.set(__self__, "pause_after_trial", pause_after_trial)
         if paused is not None:
-            _setter("paused", paused)
+            pulumi.set(__self__, "paused", paused)
         if schedule_type is not None:
-            _setter("schedule_type", schedule_type)
+            pulumi.set(__self__, "schedule_type", schedule_type)
         if sync_frequency is not None:
-            _setter("sync_frequency", sync_frequency)
+            pulumi.set(__self__, "sync_frequency", sync_frequency)
 
     @property
     @pulumi.getter(name="connectorId")
     def connector_id(self) -> pulumi.Input[str]:
         """
-        The unique identifier for the connector
+        The unique identifier for the connector within the Fivetran system.
         """
         return pulumi.get(self, "connector_id")
 
@@ -88,7 +57,7 @@ class ConnectorScheduleArgs:
     @pulumi.getter(name="dailySyncTime")
     def daily_sync_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time
+        The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
         """
         return pulumi.get(self, "daily_sync_time")
 
@@ -100,7 +69,7 @@ class ConnectorScheduleArgs:
     @pulumi.getter(name="pauseAfterTrial")
     def pause_after_trial(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies whether the connector should be paused after the free trial period has ended
+        Specifies whether the connector should be paused after the free trial period has ended.
         """
         return pulumi.get(self, "pause_after_trial")
 
@@ -112,7 +81,7 @@ class ConnectorScheduleArgs:
     @pulumi.getter
     def paused(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies whether the connector is paused
+        Specifies whether the connector is paused.
         """
         return pulumi.get(self, "paused")
 
@@ -124,7 +93,7 @@ class ConnectorScheduleArgs:
     @pulumi.getter(name="scheduleType")
     def schedule_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The connector schedule configuration type. Supported values: auto, manual
+        The connector schedule configuration type. Supported values: auto, manual.
         """
         return pulumi.get(self, "schedule_type")
 
@@ -136,7 +105,7 @@ class ConnectorScheduleArgs:
     @pulumi.getter(name="syncFrequency")
     def sync_frequency(self) -> Optional[pulumi.Input[str]]:
         """
-        The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+        The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
         """
         return pulumi.get(self, "sync_frequency")
 
@@ -156,62 +125,31 @@ class _ConnectorScheduleState:
                  sync_frequency: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ConnectorSchedule resources.
-        :param pulumi.Input[str] connector_id: The unique identifier for the connector
-        :param pulumi.Input[str] daily_sync_time: The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time
-        :param pulumi.Input[str] pause_after_trial: Specifies whether the connector should be paused after the free trial period has ended
-        :param pulumi.Input[str] paused: Specifies whether the connector is paused
-        :param pulumi.Input[str] schedule_type: The connector schedule configuration type. Supported values: auto, manual
-        :param pulumi.Input[str] sync_frequency: The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+        :param pulumi.Input[str] connector_id: The unique identifier for the connector within the Fivetran system.
+        :param pulumi.Input[str] daily_sync_time: The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
+        :param pulumi.Input[str] pause_after_trial: Specifies whether the connector should be paused after the free trial period has ended.
+        :param pulumi.Input[str] paused: Specifies whether the connector is paused.
+        :param pulumi.Input[str] schedule_type: The connector schedule configuration type. Supported values: auto, manual.
+        :param pulumi.Input[str] sync_frequency: The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
         """
-        _ConnectorScheduleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            connector_id=connector_id,
-            daily_sync_time=daily_sync_time,
-            pause_after_trial=pause_after_trial,
-            paused=paused,
-            schedule_type=schedule_type,
-            sync_frequency=sync_frequency,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             connector_id: Optional[pulumi.Input[str]] = None,
-             daily_sync_time: Optional[pulumi.Input[str]] = None,
-             pause_after_trial: Optional[pulumi.Input[str]] = None,
-             paused: Optional[pulumi.Input[str]] = None,
-             schedule_type: Optional[pulumi.Input[str]] = None,
-             sync_frequency: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'connectorId' in kwargs:
-            connector_id = kwargs['connectorId']
-        if 'dailySyncTime' in kwargs:
-            daily_sync_time = kwargs['dailySyncTime']
-        if 'pauseAfterTrial' in kwargs:
-            pause_after_trial = kwargs['pauseAfterTrial']
-        if 'scheduleType' in kwargs:
-            schedule_type = kwargs['scheduleType']
-        if 'syncFrequency' in kwargs:
-            sync_frequency = kwargs['syncFrequency']
-
         if connector_id is not None:
-            _setter("connector_id", connector_id)
+            pulumi.set(__self__, "connector_id", connector_id)
         if daily_sync_time is not None:
-            _setter("daily_sync_time", daily_sync_time)
+            pulumi.set(__self__, "daily_sync_time", daily_sync_time)
         if pause_after_trial is not None:
-            _setter("pause_after_trial", pause_after_trial)
+            pulumi.set(__self__, "pause_after_trial", pause_after_trial)
         if paused is not None:
-            _setter("paused", paused)
+            pulumi.set(__self__, "paused", paused)
         if schedule_type is not None:
-            _setter("schedule_type", schedule_type)
+            pulumi.set(__self__, "schedule_type", schedule_type)
         if sync_frequency is not None:
-            _setter("sync_frequency", sync_frequency)
+            pulumi.set(__self__, "sync_frequency", sync_frequency)
 
     @property
     @pulumi.getter(name="connectorId")
     def connector_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique identifier for the connector
+        The unique identifier for the connector within the Fivetran system.
         """
         return pulumi.get(self, "connector_id")
 
@@ -223,7 +161,7 @@ class _ConnectorScheduleState:
     @pulumi.getter(name="dailySyncTime")
     def daily_sync_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time
+        The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
         """
         return pulumi.get(self, "daily_sync_time")
 
@@ -235,7 +173,7 @@ class _ConnectorScheduleState:
     @pulumi.getter(name="pauseAfterTrial")
     def pause_after_trial(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies whether the connector should be paused after the free trial period has ended
+        Specifies whether the connector should be paused after the free trial period has ended.
         """
         return pulumi.get(self, "pause_after_trial")
 
@@ -247,7 +185,7 @@ class _ConnectorScheduleState:
     @pulumi.getter
     def paused(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies whether the connector is paused
+        Specifies whether the connector is paused.
         """
         return pulumi.get(self, "paused")
 
@@ -259,7 +197,7 @@ class _ConnectorScheduleState:
     @pulumi.getter(name="scheduleType")
     def schedule_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The connector schedule configuration type. Supported values: auto, manual
+        The connector schedule configuration type. Supported values: auto, manual.
         """
         return pulumi.get(self, "schedule_type")
 
@@ -271,7 +209,7 @@ class _ConnectorScheduleState:
     @pulumi.getter(name="syncFrequency")
     def sync_frequency(self) -> Optional[pulumi.Input[str]]:
         """
-        The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+        The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
         """
         return pulumi.get(self, "sync_frequency")
 
@@ -342,12 +280,12 @@ class ConnectorSchedule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] connector_id: The unique identifier for the connector
-        :param pulumi.Input[str] daily_sync_time: The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time
-        :param pulumi.Input[str] pause_after_trial: Specifies whether the connector should be paused after the free trial period has ended
-        :param pulumi.Input[str] paused: Specifies whether the connector is paused
-        :param pulumi.Input[str] schedule_type: The connector schedule configuration type. Supported values: auto, manual
-        :param pulumi.Input[str] sync_frequency: The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+        :param pulumi.Input[str] connector_id: The unique identifier for the connector within the Fivetran system.
+        :param pulumi.Input[str] daily_sync_time: The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
+        :param pulumi.Input[str] pause_after_trial: Specifies whether the connector should be paused after the free trial period has ended.
+        :param pulumi.Input[str] paused: Specifies whether the connector is paused.
+        :param pulumi.Input[str] schedule_type: The connector schedule configuration type. Supported values: auto, manual.
+        :param pulumi.Input[str] sync_frequency: The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
         """
         ...
     @overload
@@ -413,10 +351,6 @@ class ConnectorSchedule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ConnectorScheduleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -468,12 +402,12 @@ class ConnectorSchedule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] connector_id: The unique identifier for the connector
-        :param pulumi.Input[str] daily_sync_time: The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time
-        :param pulumi.Input[str] pause_after_trial: Specifies whether the connector should be paused after the free trial period has ended
-        :param pulumi.Input[str] paused: Specifies whether the connector is paused
-        :param pulumi.Input[str] schedule_type: The connector schedule configuration type. Supported values: auto, manual
-        :param pulumi.Input[str] sync_frequency: The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+        :param pulumi.Input[str] connector_id: The unique identifier for the connector within the Fivetran system.
+        :param pulumi.Input[str] daily_sync_time: The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
+        :param pulumi.Input[str] pause_after_trial: Specifies whether the connector should be paused after the free trial period has ended.
+        :param pulumi.Input[str] paused: Specifies whether the connector is paused.
+        :param pulumi.Input[str] schedule_type: The connector schedule configuration type. Supported values: auto, manual.
+        :param pulumi.Input[str] sync_frequency: The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -491,15 +425,15 @@ class ConnectorSchedule(pulumi.CustomResource):
     @pulumi.getter(name="connectorId")
     def connector_id(self) -> pulumi.Output[str]:
         """
-        The unique identifier for the connector
+        The unique identifier for the connector within the Fivetran system.
         """
         return pulumi.get(self, "connector_id")
 
     @property
     @pulumi.getter(name="dailySyncTime")
-    def daily_sync_time(self) -> pulumi.Output[Optional[str]]:
+    def daily_sync_time(self) -> pulumi.Output[str]:
         """
-        The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time
+        The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
         """
         return pulumi.get(self, "daily_sync_time")
 
@@ -507,7 +441,7 @@ class ConnectorSchedule(pulumi.CustomResource):
     @pulumi.getter(name="pauseAfterTrial")
     def pause_after_trial(self) -> pulumi.Output[str]:
         """
-        Specifies whether the connector should be paused after the free trial period has ended
+        Specifies whether the connector should be paused after the free trial period has ended.
         """
         return pulumi.get(self, "pause_after_trial")
 
@@ -515,7 +449,7 @@ class ConnectorSchedule(pulumi.CustomResource):
     @pulumi.getter
     def paused(self) -> pulumi.Output[str]:
         """
-        Specifies whether the connector is paused
+        Specifies whether the connector is paused.
         """
         return pulumi.get(self, "paused")
 
@@ -523,7 +457,7 @@ class ConnectorSchedule(pulumi.CustomResource):
     @pulumi.getter(name="scheduleType")
     def schedule_type(self) -> pulumi.Output[str]:
         """
-        The connector schedule configuration type. Supported values: auto, manual
+        The connector schedule configuration type. Supported values: auto, manual.
         """
         return pulumi.get(self, "schedule_type")
 
@@ -531,7 +465,7 @@ class ConnectorSchedule(pulumi.CustomResource):
     @pulumi.getter(name="syncFrequency")
     def sync_frequency(self) -> pulumi.Output[str]:
         """
-        The connector sync frequency in minutes. Supported values: 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+        The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
         """
         return pulumi.get(self, "sync_frequency")
 

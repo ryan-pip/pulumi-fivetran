@@ -48,7 +48,7 @@ export interface GetGroupUsersResult {
      * The unique identifier for the group within the Fivetran system. Data-source will represent a set of users who has membership in this group.
      */
     readonly id: string;
-    readonly users: outputs.GetGroupUsersUser[];
+    readonly users?: outputs.GetGroupUsersUser[];
 }
 /**
  * This data source returns a list of information about all users within a group in your Fivetran account.

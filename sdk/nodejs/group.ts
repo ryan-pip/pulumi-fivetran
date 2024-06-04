@@ -18,13 +18,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * 1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_group" "my_imported_fivetran_group" { }
- *
- * ```sh
- *  $ pulumi import fivetran:index/group:Group
- *
- * Run the `terraform import` command
- * ```
+ * 1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_group" "my_imported_fivetran_group" { } 3. Run the `pulumi import` command
  *
  * ```sh
  *  $ pulumi import fivetran:index/group:Group my_imported_fivetran_group {your Destination Group ID}
@@ -64,6 +58,9 @@ export class Group extends pulumi.CustomResource {
      * The timestamp of when the group was created in your account.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * The timestamp of when the resource/datasource was updated last time.
+     */
     public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
     /**
      * The name of the group within your account.
@@ -105,6 +102,9 @@ export interface GroupState {
      * The timestamp of when the group was created in your account.
      */
     createdAt?: pulumi.Input<string>;
+    /**
+     * The timestamp of when the resource/datasource was updated last time.
+     */
     lastUpdated?: pulumi.Input<string>;
     /**
      * The name of the group within your account.

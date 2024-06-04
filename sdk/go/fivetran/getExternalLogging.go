@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
@@ -51,7 +50,7 @@ func LookupExternalLogging(ctx *pulumi.Context, args *LookupExternalLoggingArgs,
 
 // A collection of arguments for invoking getExternalLogging.
 type LookupExternalLoggingArgs struct {
-	Configs []GetExternalLoggingConfig `pulumi:"configs"`
+	Config *GetExternalLoggingConfig `pulumi:"config"`
 	// The unique identifier for the log service within the Fivetran system.
 	Id string `pulumi:"id"`
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
@@ -60,7 +59,7 @@ type LookupExternalLoggingArgs struct {
 
 // A collection of values returned by getExternalLogging.
 type LookupExternalLoggingResult struct {
-	Configs []GetExternalLoggingConfig `pulumi:"configs"`
+	Config *GetExternalLoggingConfig `pulumi:"config"`
 	// The boolean value specifying whether the log service is enabled.
 	Enabled bool `pulumi:"enabled"`
 	// The unique identifier for the log service within the Fivetran system.
@@ -88,7 +87,7 @@ func LookupExternalLoggingOutput(ctx *pulumi.Context, args LookupExternalLogging
 
 // A collection of arguments for invoking getExternalLogging.
 type LookupExternalLoggingOutputArgs struct {
-	Configs GetExternalLoggingConfigArrayInput `pulumi:"configs"`
+	Config GetExternalLoggingConfigPtrInput `pulumi:"config"`
 	// The unique identifier for the log service within the Fivetran system.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
@@ -114,14 +113,8 @@ func (o LookupExternalLoggingResultOutput) ToLookupExternalLoggingResultOutputWi
 	return o
 }
 
-func (o LookupExternalLoggingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupExternalLoggingResult] {
-	return pulumix.Output[LookupExternalLoggingResult]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o LookupExternalLoggingResultOutput) Configs() GetExternalLoggingConfigArrayOutput {
-	return o.ApplyT(func(v LookupExternalLoggingResult) []GetExternalLoggingConfig { return v.Configs }).(GetExternalLoggingConfigArrayOutput)
+func (o LookupExternalLoggingResultOutput) Config() GetExternalLoggingConfigPtrOutput {
+	return o.ApplyT(func(v LookupExternalLoggingResult) *GetExternalLoggingConfig { return v.Config }).(GetExternalLoggingConfigPtrOutput)
 }
 
 // The boolean value specifying whether the log service is enabled.

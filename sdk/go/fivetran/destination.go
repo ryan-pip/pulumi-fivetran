@@ -9,20 +9,12 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
 // ## Import
 //
-// 1. To import an existing `fivetran_destination` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_destination" "my_imported_destination" { }
-//
-// ```sh
-//
-//	$ pulumi import fivetran:index/destination:Destination
-//
-// Run the `terraform import` command with the following parameters
-// ```
+// 1. To import an existing `fivetran_destination` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_destination" "my_imported_destination" { } 3. Run the `pulumi import` command with the following parameters
 //
 // ```sh
 //
@@ -34,24 +26,30 @@ import (
 type Destination struct {
 	pulumi.CustomResourceState
 
-	Config DestinationConfigOutput `pulumi:"config"`
+	Config DestinationConfigPtrOutput `pulumi:"config"`
+	// Shift my UTC offset with daylight savings time (US Only)
+	DaylightSavingTimeEnabled pulumi.BoolOutput `pulumi:"daylightSavingTimeEnabled"`
 	// The unique identifier for the Group within the Fivetran system.
-	GroupId     pulumi.StringOutput `pulumi:"groupId"`
-	LastUpdated pulumi.StringOutput `pulumi:"lastUpdated"`
-	// Region of your AWS S3 bucket
+	GroupId pulumi.StringOutput `pulumi:"groupId"`
+	// Data processing location. This is where Fivetran will operate and run computation on data.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
-	RunSetupTests pulumi.BoolPtrOutput `pulumi:"runSetupTests"`
-	// The destination type name within the Fivetran system.
+	RunSetupTests pulumi.BoolOutput `pulumi:"runSetupTests"`
+	// The destination type id within the Fivetran system.
 	Service pulumi.StringOutput `pulumi:"service"`
-	// Destination setup status
+	// Destination setup status.
 	SetupStatus pulumi.StringOutput `pulumi:"setupStatus"`
 	// Determines the time zone for the Fivetran sync schedule.
-	TimeZoneOffset pulumi.StringOutput `pulumi:"timeZoneOffset"`
-	// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
-	TrustCertificates pulumi.BoolPtrOutput `pulumi:"trustCertificates"`
-	// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
-	TrustFingerprints pulumi.BoolPtrOutput `pulumi:"trustFingerprints"`
+	TimeZoneOffset pulumi.StringOutput          `pulumi:"timeZoneOffset"`
+	Timeouts       DestinationTimeoutsPtrOutput `pulumi:"timeouts"`
+	// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
+	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+	// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+	TrustCertificates pulumi.BoolOutput `pulumi:"trustCertificates"`
+	// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
+	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+	// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+	TrustFingerprints pulumi.BoolOutput `pulumi:"trustFingerprints"`
 }
 
 // NewDestination registers a new resource with the given unique name, arguments, and options.
@@ -61,9 +59,6 @@ func NewDestination(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Config == nil {
-		return nil, errors.New("invalid value for required argument 'Config'")
-	}
 	if args.GroupId == nil {
 		return nil, errors.New("invalid value for required argument 'GroupId'")
 	}
@@ -100,43 +95,55 @@ func GetDestination(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Destination resources.
 type destinationState struct {
 	Config *DestinationConfig `pulumi:"config"`
+	// Shift my UTC offset with daylight savings time (US Only)
+	DaylightSavingTimeEnabled *bool `pulumi:"daylightSavingTimeEnabled"`
 	// The unique identifier for the Group within the Fivetran system.
-	GroupId     *string `pulumi:"groupId"`
-	LastUpdated *string `pulumi:"lastUpdated"`
-	// Region of your AWS S3 bucket
+	GroupId *string `pulumi:"groupId"`
+	// Data processing location. This is where Fivetran will operate and run computation on data.
 	Region *string `pulumi:"region"`
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
 	RunSetupTests *bool `pulumi:"runSetupTests"`
-	// The destination type name within the Fivetran system.
+	// The destination type id within the Fivetran system.
 	Service *string `pulumi:"service"`
-	// Destination setup status
+	// Destination setup status.
 	SetupStatus *string `pulumi:"setupStatus"`
 	// Determines the time zone for the Fivetran sync schedule.
-	TimeZoneOffset *string `pulumi:"timeZoneOffset"`
-	// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+	TimeZoneOffset *string              `pulumi:"timeZoneOffset"`
+	Timeouts       *DestinationTimeouts `pulumi:"timeouts"`
+	// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
+	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+	// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
 	TrustCertificates *bool `pulumi:"trustCertificates"`
-	// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+	// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
+	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+	// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
 	TrustFingerprints *bool `pulumi:"trustFingerprints"`
 }
 
 type DestinationState struct {
 	Config DestinationConfigPtrInput
+	// Shift my UTC offset with daylight savings time (US Only)
+	DaylightSavingTimeEnabled pulumi.BoolPtrInput
 	// The unique identifier for the Group within the Fivetran system.
-	GroupId     pulumi.StringPtrInput
-	LastUpdated pulumi.StringPtrInput
-	// Region of your AWS S3 bucket
+	GroupId pulumi.StringPtrInput
+	// Data processing location. This is where Fivetran will operate and run computation on data.
 	Region pulumi.StringPtrInput
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
 	RunSetupTests pulumi.BoolPtrInput
-	// The destination type name within the Fivetran system.
+	// The destination type id within the Fivetran system.
 	Service pulumi.StringPtrInput
-	// Destination setup status
+	// Destination setup status.
 	SetupStatus pulumi.StringPtrInput
 	// Determines the time zone for the Fivetran sync schedule.
 	TimeZoneOffset pulumi.StringPtrInput
-	// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+	Timeouts       DestinationTimeoutsPtrInput
+	// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
+	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+	// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
 	TrustCertificates pulumi.BoolPtrInput
-	// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+	// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
+	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+	// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
 	TrustFingerprints pulumi.BoolPtrInput
 }
 
@@ -145,39 +152,53 @@ func (DestinationState) ElementType() reflect.Type {
 }
 
 type destinationArgs struct {
-	Config DestinationConfig `pulumi:"config"`
+	Config *DestinationConfig `pulumi:"config"`
+	// Shift my UTC offset with daylight savings time (US Only)
+	DaylightSavingTimeEnabled *bool `pulumi:"daylightSavingTimeEnabled"`
 	// The unique identifier for the Group within the Fivetran system.
 	GroupId string `pulumi:"groupId"`
-	// Region of your AWS S3 bucket
+	// Data processing location. This is where Fivetran will operate and run computation on data.
 	Region string `pulumi:"region"`
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
 	RunSetupTests *bool `pulumi:"runSetupTests"`
-	// The destination type name within the Fivetran system.
+	// The destination type id within the Fivetran system.
 	Service string `pulumi:"service"`
 	// Determines the time zone for the Fivetran sync schedule.
-	TimeZoneOffset string `pulumi:"timeZoneOffset"`
-	// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+	TimeZoneOffset string               `pulumi:"timeZoneOffset"`
+	Timeouts       *DestinationTimeouts `pulumi:"timeouts"`
+	// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
+	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+	// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
 	TrustCertificates *bool `pulumi:"trustCertificates"`
-	// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+	// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
+	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+	// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
 	TrustFingerprints *bool `pulumi:"trustFingerprints"`
 }
 
 // The set of arguments for constructing a Destination resource.
 type DestinationArgs struct {
-	Config DestinationConfigInput
+	Config DestinationConfigPtrInput
+	// Shift my UTC offset with daylight savings time (US Only)
+	DaylightSavingTimeEnabled pulumi.BoolPtrInput
 	// The unique identifier for the Group within the Fivetran system.
 	GroupId pulumi.StringInput
-	// Region of your AWS S3 bucket
+	// Data processing location. This is where Fivetran will operate and run computation on data.
 	Region pulumi.StringInput
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
 	RunSetupTests pulumi.BoolPtrInput
-	// The destination type name within the Fivetran system.
+	// The destination type id within the Fivetran system.
 	Service pulumi.StringInput
 	// Determines the time zone for the Fivetran sync schedule.
 	TimeZoneOffset pulumi.StringInput
-	// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+	Timeouts       DestinationTimeoutsPtrInput
+	// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
+	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+	// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
 	TrustCertificates pulumi.BoolPtrInput
-	// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+	// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
+	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+	// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
 	TrustFingerprints pulumi.BoolPtrInput
 }
 
@@ -202,12 +223,6 @@ func (i *Destination) ToDestinationOutput() DestinationOutput {
 
 func (i *Destination) ToDestinationOutputWithContext(ctx context.Context) DestinationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DestinationOutput)
-}
-
-func (i *Destination) ToOutput(ctx context.Context) pulumix.Output[*Destination] {
-	return pulumix.Output[*Destination]{
-		OutputState: i.ToDestinationOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DestinationArrayInput is an input type that accepts DestinationArray and DestinationArrayOutput values.
@@ -235,12 +250,6 @@ func (i DestinationArray) ToDestinationArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(DestinationArrayOutput)
 }
 
-func (i DestinationArray) ToOutput(ctx context.Context) pulumix.Output[[]*Destination] {
-	return pulumix.Output[[]*Destination]{
-		OutputState: i.ToDestinationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DestinationMapInput is an input type that accepts DestinationMap and DestinationMapOutput values.
 // You can construct a concrete instance of `DestinationMapInput` via:
 //
@@ -266,12 +275,6 @@ func (i DestinationMap) ToDestinationMapOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DestinationMapOutput)
 }
 
-func (i DestinationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Destination] {
-	return pulumix.Output[map[string]*Destination]{
-		OutputState: i.ToDestinationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DestinationOutput struct{ *pulumi.OutputState }
 
 func (DestinationOutput) ElementType() reflect.Type {
@@ -286,14 +289,13 @@ func (o DestinationOutput) ToDestinationOutputWithContext(ctx context.Context) D
 	return o
 }
 
-func (o DestinationOutput) ToOutput(ctx context.Context) pulumix.Output[*Destination] {
-	return pulumix.Output[*Destination]{
-		OutputState: o.OutputState,
-	}
+func (o DestinationOutput) Config() DestinationConfigPtrOutput {
+	return o.ApplyT(func(v *Destination) DestinationConfigPtrOutput { return v.Config }).(DestinationConfigPtrOutput)
 }
 
-func (o DestinationOutput) Config() DestinationConfigOutput {
-	return o.ApplyT(func(v *Destination) DestinationConfigOutput { return v.Config }).(DestinationConfigOutput)
+// Shift my UTC offset with daylight savings time (US Only)
+func (o DestinationOutput) DaylightSavingTimeEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Destination) pulumi.BoolOutput { return v.DaylightSavingTimeEnabled }).(pulumi.BoolOutput)
 }
 
 // The unique identifier for the Group within the Fivetran system.
@@ -301,26 +303,22 @@ func (o DestinationOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Destination) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
 }
 
-func (o DestinationOutput) LastUpdated() pulumi.StringOutput {
-	return o.ApplyT(func(v *Destination) pulumi.StringOutput { return v.LastUpdated }).(pulumi.StringOutput)
-}
-
-// Region of your AWS S3 bucket
+// Data processing location. This is where Fivetran will operate and run computation on data.
 func (o DestinationOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Destination) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // Specifies whether the setup tests should be run automatically. The default value is TRUE.
-func (o DestinationOutput) RunSetupTests() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Destination) pulumi.BoolPtrOutput { return v.RunSetupTests }).(pulumi.BoolPtrOutput)
+func (o DestinationOutput) RunSetupTests() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Destination) pulumi.BoolOutput { return v.RunSetupTests }).(pulumi.BoolOutput)
 }
 
-// The destination type name within the Fivetran system.
+// The destination type id within the Fivetran system.
 func (o DestinationOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v *Destination) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
 }
 
-// Destination setup status
+// Destination setup status.
 func (o DestinationOutput) SetupStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Destination) pulumi.StringOutput { return v.SetupStatus }).(pulumi.StringOutput)
 }
@@ -330,14 +328,22 @@ func (o DestinationOutput) TimeZoneOffset() pulumi.StringOutput {
 	return o.ApplyT(func(v *Destination) pulumi.StringOutput { return v.TimeZoneOffset }).(pulumi.StringOutput)
 }
 
-// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
-func (o DestinationOutput) TrustCertificates() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Destination) pulumi.BoolPtrOutput { return v.TrustCertificates }).(pulumi.BoolPtrOutput)
+func (o DestinationOutput) Timeouts() DestinationTimeoutsPtrOutput {
+	return o.ApplyT(func(v *Destination) DestinationTimeoutsPtrOutput { return v.Timeouts }).(DestinationTimeoutsPtrOutput)
 }
 
-// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
-func (o DestinationOutput) TrustFingerprints() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Destination) pulumi.BoolPtrOutput { return v.TrustFingerprints }).(pulumi.BoolPtrOutput)
+// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
+// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+func (o DestinationOutput) TrustCertificates() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Destination) pulumi.BoolOutput { return v.TrustCertificates }).(pulumi.BoolOutput)
+}
+
+// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
+// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
+// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+func (o DestinationOutput) TrustFingerprints() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Destination) pulumi.BoolOutput { return v.TrustFingerprints }).(pulumi.BoolOutput)
 }
 
 type DestinationArrayOutput struct{ *pulumi.OutputState }
@@ -352,12 +358,6 @@ func (o DestinationArrayOutput) ToDestinationArrayOutput() DestinationArrayOutpu
 
 func (o DestinationArrayOutput) ToDestinationArrayOutputWithContext(ctx context.Context) DestinationArrayOutput {
 	return o
-}
-
-func (o DestinationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Destination] {
-	return pulumix.Output[[]*Destination]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DestinationArrayOutput) Index(i pulumi.IntInput) DestinationOutput {
@@ -378,12 +378,6 @@ func (o DestinationMapOutput) ToDestinationMapOutput() DestinationMapOutput {
 
 func (o DestinationMapOutput) ToDestinationMapOutputWithContext(ctx context.Context) DestinationMapOutput {
 	return o
-}
-
-func (o DestinationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Destination] {
-	return pulumix.Output[map[string]*Destination]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DestinationMapOutput) MapIndex(k pulumi.StringInput) DestinationOutput {

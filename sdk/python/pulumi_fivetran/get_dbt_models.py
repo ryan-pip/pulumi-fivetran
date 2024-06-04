@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -38,23 +38,20 @@ class GetDbtModelsResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of this datasource (equals to `project_id`).
         """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
-    def models(self) -> Sequence['outputs.GetDbtModelsModelResult']:
-        """
-        The collection of dbt Models.
-        """
+    def models(self) -> Optional[Sequence['outputs.GetDbtModelsModelResult']]:
         return pulumi.get(self, "models")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
         """
-        The unique identifier for the dbt project within the Fivetran system.
+        The unique identifier for the dbt Project within the Fivetran system.
         """
         return pulumi.get(self, "project_id")
 
@@ -86,8 +83,7 @@ def get_dbt_models(models: Optional[Sequence[pulumi.InputType['GetDbtModelsModel
     ```
 
 
-    :param Sequence[pulumi.InputType['GetDbtModelsModelArgs']] models: The collection of dbt Models.
-    :param str project_id: The unique identifier for the dbt project within the Fivetran system.
+    :param str project_id: The unique identifier for the dbt Project within the Fivetran system.
     """
     __args__ = dict()
     __args__['models'] = models
@@ -118,7 +114,6 @@ def get_dbt_models_output(models: Optional[pulumi.Input[Optional[Sequence[pulumi
     ```
 
 
-    :param Sequence[pulumi.InputType['GetDbtModelsModelArgs']] models: The collection of dbt Models.
-    :param str project_id: The unique identifier for the dbt project within the Fivetran system.
+    :param str project_id: The unique identifier for the dbt Project within the Fivetran system.
     """
     ...

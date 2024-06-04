@@ -9,20 +9,12 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
 // ## Import
 //
-// 1. To import an existing `fivetran_external_logging` resource into your Terraform state, you need to get **External Logging Group ID** on the external logging page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_external_logging" "my_imported_external_logging" { }
-//
-// ```sh
-//
-//	$ pulumi import fivetran:index/externalLogging:ExternalLogging
-//
-// Run the `terraform import` command with the following parameters
-// ```
+// 1. To import an existing `fivetran_external_logging` resource into your Terraform state, you need to get **External Logging Group ID** on the external logging page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_external_logging" "my_imported_external_logging" { } 3. Run the `pulumi import` command with the following parameters
 //
 // ```sh
 //
@@ -34,7 +26,7 @@ import (
 type ExternalLogging struct {
 	pulumi.CustomResourceState
 
-	Config ExternalLoggingConfigOutput `pulumi:"config"`
+	Config ExternalLoggingConfigPtrOutput `pulumi:"config"`
 	// The boolean value specifying whether the log service is enabled.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// The unique identifier for the log service within the Fivetran system.
@@ -52,9 +44,6 @@ func NewExternalLogging(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Config == nil {
-		return nil, errors.New("invalid value for required argument 'Config'")
-	}
 	if args.GroupId == nil {
 		return nil, errors.New("invalid value for required argument 'GroupId'")
 	}
@@ -112,7 +101,7 @@ func (ExternalLoggingState) ElementType() reflect.Type {
 }
 
 type externalLoggingArgs struct {
-	Config ExternalLoggingConfig `pulumi:"config"`
+	Config *ExternalLoggingConfig `pulumi:"config"`
 	// The boolean value specifying whether the log service is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// The unique identifier for the log service within the Fivetran system.
@@ -125,7 +114,7 @@ type externalLoggingArgs struct {
 
 // The set of arguments for constructing a ExternalLogging resource.
 type ExternalLoggingArgs struct {
-	Config ExternalLoggingConfigInput
+	Config ExternalLoggingConfigPtrInput
 	// The boolean value specifying whether the log service is enabled.
 	Enabled pulumi.BoolPtrInput
 	// The unique identifier for the log service within the Fivetran system.
@@ -159,12 +148,6 @@ func (i *ExternalLogging) ToExternalLoggingOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalLoggingOutput)
 }
 
-func (i *ExternalLogging) ToOutput(ctx context.Context) pulumix.Output[*ExternalLogging] {
-	return pulumix.Output[*ExternalLogging]{
-		OutputState: i.ToExternalLoggingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ExternalLoggingArrayInput is an input type that accepts ExternalLoggingArray and ExternalLoggingArrayOutput values.
 // You can construct a concrete instance of `ExternalLoggingArrayInput` via:
 //
@@ -188,12 +171,6 @@ func (i ExternalLoggingArray) ToExternalLoggingArrayOutput() ExternalLoggingArra
 
 func (i ExternalLoggingArray) ToExternalLoggingArrayOutputWithContext(ctx context.Context) ExternalLoggingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalLoggingArrayOutput)
-}
-
-func (i ExternalLoggingArray) ToOutput(ctx context.Context) pulumix.Output[[]*ExternalLogging] {
-	return pulumix.Output[[]*ExternalLogging]{
-		OutputState: i.ToExternalLoggingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ExternalLoggingMapInput is an input type that accepts ExternalLoggingMap and ExternalLoggingMapOutput values.
@@ -221,12 +198,6 @@ func (i ExternalLoggingMap) ToExternalLoggingMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalLoggingMapOutput)
 }
 
-func (i ExternalLoggingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ExternalLogging] {
-	return pulumix.Output[map[string]*ExternalLogging]{
-		OutputState: i.ToExternalLoggingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ExternalLoggingOutput struct{ *pulumi.OutputState }
 
 func (ExternalLoggingOutput) ElementType() reflect.Type {
@@ -241,14 +212,8 @@ func (o ExternalLoggingOutput) ToExternalLoggingOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o ExternalLoggingOutput) ToOutput(ctx context.Context) pulumix.Output[*ExternalLogging] {
-	return pulumix.Output[*ExternalLogging]{
-		OutputState: o.OutputState,
-	}
-}
-
-func (o ExternalLoggingOutput) Config() ExternalLoggingConfigOutput {
-	return o.ApplyT(func(v *ExternalLogging) ExternalLoggingConfigOutput { return v.Config }).(ExternalLoggingConfigOutput)
+func (o ExternalLoggingOutput) Config() ExternalLoggingConfigPtrOutput {
+	return o.ApplyT(func(v *ExternalLogging) ExternalLoggingConfigPtrOutput { return v.Config }).(ExternalLoggingConfigPtrOutput)
 }
 
 // The boolean value specifying whether the log service is enabled.
@@ -285,12 +250,6 @@ func (o ExternalLoggingArrayOutput) ToExternalLoggingArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o ExternalLoggingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ExternalLogging] {
-	return pulumix.Output[[]*ExternalLogging]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ExternalLoggingArrayOutput) Index(i pulumi.IntInput) ExternalLoggingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ExternalLogging {
 		return vs[0].([]*ExternalLogging)[vs[1].(int)]
@@ -309,12 +268,6 @@ func (o ExternalLoggingMapOutput) ToExternalLoggingMapOutput() ExternalLoggingMa
 
 func (o ExternalLoggingMapOutput) ToExternalLoggingMapOutputWithContext(ctx context.Context) ExternalLoggingMapOutput {
 	return o
-}
-
-func (o ExternalLoggingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ExternalLogging] {
-	return pulumix.Output[map[string]*ExternalLogging]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExternalLoggingMapOutput) MapIndex(k pulumi.StringInput) ExternalLoggingOutput {
