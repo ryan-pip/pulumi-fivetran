@@ -126,7 +126,19 @@ func Provider() tfbridge.ProviderInfo {
 			"fivetran_dbt_transformation": {
 				Tok: tfbridge.MakeResource(mainPkg, mainMod, "DbtTransformation"),
 			},
-			"fivetran_destination": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Destination")},
+			"fivetran_destination": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Destination"),
+				PreStateUpgradeHook: func(args tfbridge.PreStateUpgradeHookArgs) (int64, resource.PropertyMap, error) {
+					// States for RandomString may be contaminated by
+					// https://github.com/pulumi/pulumi-random/issues/258 bug where the state is
+					// missing the version marker. Pretend that these states are at V1, which is the
+					// best guess. V1->V2/V3 migrations seem idempotent, this is probably safe.
+					if args.PriorStateSchemaVersion == 0 {
+						return 1, args.PriorState, nil
+					}
+					return args.PriorStateSchemaVersion, args.PriorState, nil
+				},
+			},
 			"fivetran_group":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Group")},
 			"fivetran_group_users": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GroupUsers")},
 			"fivetran_user":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "User")},
