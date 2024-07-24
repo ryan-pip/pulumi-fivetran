@@ -23,7 +23,7 @@ class GetConnectorResult:
     """
     A collection of values returned by getConnector.
     """
-    def __init__(__self__, config=None, connected_by=None, created_at=None, daily_sync_time=None, destination_schema=None, failed_at=None, group_id=None, id=None, name=None, pause_after_trial=None, paused=None, schedule_type=None, service=None, service_version=None, status=None, succeeded_at=None, sync_frequency=None):
+    def __init__(__self__, config=None, connected_by=None, created_at=None, daily_sync_time=None, destination_schema=None, failed_at=None, group_id=None, id=None, local_processing_agent_id=None, name=None, networking_method=None, pause_after_trial=None, paused=None, proxy_agent_id=None, schedule_type=None, service=None, service_version=None, status=None, succeeded_at=None, sync_frequency=None):
         if config and not isinstance(config, dict):
             raise TypeError("Expected argument 'config' to be a dict")
         pulumi.set(__self__, "config", config)
@@ -48,15 +48,24 @@ class GetConnectorResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if local_processing_agent_id and not isinstance(local_processing_agent_id, str):
+            raise TypeError("Expected argument 'local_processing_agent_id' to be a str")
+        pulumi.set(__self__, "local_processing_agent_id", local_processing_agent_id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if networking_method and not isinstance(networking_method, str):
+            raise TypeError("Expected argument 'networking_method' to be a str")
+        pulumi.set(__self__, "networking_method", networking_method)
         if pause_after_trial and not isinstance(pause_after_trial, bool):
             raise TypeError("Expected argument 'pause_after_trial' to be a bool")
         pulumi.set(__self__, "pause_after_trial", pause_after_trial)
         if paused and not isinstance(paused, bool):
             raise TypeError("Expected argument 'paused' to be a bool")
         pulumi.set(__self__, "paused", paused)
+        if proxy_agent_id and not isinstance(proxy_agent_id, str):
+            raise TypeError("Expected argument 'proxy_agent_id' to be a str")
+        pulumi.set(__self__, "proxy_agent_id", proxy_agent_id)
         if schedule_type and not isinstance(schedule_type, str):
             raise TypeError("Expected argument 'schedule_type' to be a str")
         pulumi.set(__self__, "schedule_type", schedule_type)
@@ -117,9 +126,19 @@ class GetConnectorResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="localProcessingAgentId")
+    def local_processing_agent_id(self) -> str:
+        return pulumi.get(self, "local_processing_agent_id")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkingMethod")
+    def networking_method(self) -> str:
+        return pulumi.get(self, "networking_method")
 
     @property
     @pulumi.getter(name="pauseAfterTrial")
@@ -130,6 +149,11 @@ class GetConnectorResult:
     @pulumi.getter
     def paused(self) -> bool:
         return pulumi.get(self, "paused")
+
+    @property
+    @pulumi.getter(name="proxyAgentId")
+    def proxy_agent_id(self) -> str:
+        return pulumi.get(self, "proxy_agent_id")
 
     @property
     @pulumi.getter(name="scheduleType")
@@ -176,9 +200,12 @@ class AwaitableGetConnectorResult(GetConnectorResult):
             failed_at=self.failed_at,
             group_id=self.group_id,
             id=self.id,
+            local_processing_agent_id=self.local_processing_agent_id,
             name=self.name,
+            networking_method=self.networking_method,
             pause_after_trial=self.pause_after_trial,
             paused=self.paused,
+            proxy_agent_id=self.proxy_agent_id,
             schedule_type=self.schedule_type,
             service=self.service,
             service_version=self.service_version,
@@ -221,9 +248,12 @@ def get_connector(config: Optional[pulumi.InputType['GetConnectorConfigArgs']] =
         failed_at=pulumi.get(__ret__, 'failed_at'),
         group_id=pulumi.get(__ret__, 'group_id'),
         id=pulumi.get(__ret__, 'id'),
+        local_processing_agent_id=pulumi.get(__ret__, 'local_processing_agent_id'),
         name=pulumi.get(__ret__, 'name'),
+        networking_method=pulumi.get(__ret__, 'networking_method'),
         pause_after_trial=pulumi.get(__ret__, 'pause_after_trial'),
         paused=pulumi.get(__ret__, 'paused'),
+        proxy_agent_id=pulumi.get(__ret__, 'proxy_agent_id'),
         schedule_type=pulumi.get(__ret__, 'schedule_type'),
         service=pulumi.get(__ret__, 'service'),
         service_version=pulumi.get(__ret__, 'service_version'),

@@ -27,9 +27,16 @@ type Connector struct {
 	DestinationSchema ConnectorDestinationSchemaPtrOutput `pulumi:"destinationSchema"`
 	// The unique identifier for the Group (Destination) within the Fivetran system.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
+	// The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+	// value is specified, the system will try to associate the connection with an existing agent.
+	LocalProcessingAgentId pulumi.StringPtrOutput `pulumi:"localProcessingAgentId"`
 	// The name used both as the connector's name within the Fivetran system and as the source schema's name within your
 	// destination.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Possible values: Directly, SshTunnel, ProxyAgent.
+	NetworkingMethod pulumi.StringOutput `pulumi:"networkingMethod"`
+	// The proxy agent ID.
+	ProxyAgentId pulumi.StringPtrOutput `pulumi:"proxyAgentId"`
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
 	RunSetupTests pulumi.BoolOutput `pulumi:"runSetupTests"`
 	// The connector type id within the Fivetran system.
@@ -90,9 +97,16 @@ type connectorState struct {
 	DestinationSchema *ConnectorDestinationSchema `pulumi:"destinationSchema"`
 	// The unique identifier for the Group (Destination) within the Fivetran system.
 	GroupId *string `pulumi:"groupId"`
+	// The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+	// value is specified, the system will try to associate the connection with an existing agent.
+	LocalProcessingAgentId *string `pulumi:"localProcessingAgentId"`
 	// The name used both as the connector's name within the Fivetran system and as the source schema's name within your
 	// destination.
 	Name *string `pulumi:"name"`
+	// Possible values: Directly, SshTunnel, ProxyAgent.
+	NetworkingMethod *string `pulumi:"networkingMethod"`
+	// The proxy agent ID.
+	ProxyAgentId *string `pulumi:"proxyAgentId"`
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
 	RunSetupTests *bool `pulumi:"runSetupTests"`
 	// The connector type id within the Fivetran system.
@@ -118,9 +132,16 @@ type ConnectorState struct {
 	DestinationSchema ConnectorDestinationSchemaPtrInput
 	// The unique identifier for the Group (Destination) within the Fivetran system.
 	GroupId pulumi.StringPtrInput
+	// The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+	// value is specified, the system will try to associate the connection with an existing agent.
+	LocalProcessingAgentId pulumi.StringPtrInput
 	// The name used both as the connector's name within the Fivetran system and as the source schema's name within your
 	// destination.
 	Name pulumi.StringPtrInput
+	// Possible values: Directly, SshTunnel, ProxyAgent.
+	NetworkingMethod pulumi.StringPtrInput
+	// The proxy agent ID.
+	ProxyAgentId pulumi.StringPtrInput
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
 	RunSetupTests pulumi.BoolPtrInput
 	// The connector type id within the Fivetran system.
@@ -146,6 +167,13 @@ type connectorArgs struct {
 	DestinationSchema *ConnectorDestinationSchema `pulumi:"destinationSchema"`
 	// The unique identifier for the Group (Destination) within the Fivetran system.
 	GroupId string `pulumi:"groupId"`
+	// The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+	// value is specified, the system will try to associate the connection with an existing agent.
+	LocalProcessingAgentId *string `pulumi:"localProcessingAgentId"`
+	// Possible values: Directly, SshTunnel, ProxyAgent.
+	NetworkingMethod *string `pulumi:"networkingMethod"`
+	// The proxy agent ID.
+	ProxyAgentId *string `pulumi:"proxyAgentId"`
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
 	RunSetupTests *bool `pulumi:"runSetupTests"`
 	// The connector type id within the Fivetran system.
@@ -168,6 +196,13 @@ type ConnectorArgs struct {
 	DestinationSchema ConnectorDestinationSchemaPtrInput
 	// The unique identifier for the Group (Destination) within the Fivetran system.
 	GroupId pulumi.StringInput
+	// The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+	// value is specified, the system will try to associate the connection with an existing agent.
+	LocalProcessingAgentId pulumi.StringPtrInput
+	// Possible values: Directly, SshTunnel, ProxyAgent.
+	NetworkingMethod pulumi.StringPtrInput
+	// The proxy agent ID.
+	ProxyAgentId pulumi.StringPtrInput
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
 	RunSetupTests pulumi.BoolPtrInput
 	// The connector type id within the Fivetran system.
@@ -297,10 +332,26 @@ func (o ConnectorOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
 }
 
+// The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+// value is specified, the system will try to associate the connection with an existing agent.
+func (o ConnectorOutput) LocalProcessingAgentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Connector) pulumi.StringPtrOutput { return v.LocalProcessingAgentId }).(pulumi.StringPtrOutput)
+}
+
 // The name used both as the connector's name within the Fivetran system and as the source schema's name within your
 // destination.
 func (o ConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Possible values: Directly, SshTunnel, ProxyAgent.
+func (o ConnectorOutput) NetworkingMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.NetworkingMethod }).(pulumi.StringOutput)
+}
+
+// The proxy agent ID.
+func (o ConnectorOutput) ProxyAgentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Connector) pulumi.StringPtrOutput { return v.ProxyAgentId }).(pulumi.StringPtrOutput)
 }
 
 // Specifies whether the setup tests should be run automatically. The default value is TRUE.

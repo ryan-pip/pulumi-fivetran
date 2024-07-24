@@ -5197,11 +5197,11 @@ export interface ConnectorSchemaConfigSchema {
 export interface ConnectorSchemaConfigSchemaTable {
     columns?: outputs.ConnectorSchemaConfigSchemaTableColumn[];
     /**
-     * The boolean value specifying whether the sync for the schema into the destination is enabled.
+     * The boolean value specifying whether the sync of table into the destination is enabled.
      */
     enabled: boolean;
     /**
-     * The schema name within your destination in accordance with Fivetran conventional rules.
+     * The table name within your destination in accordance with Fivetran conventional rules.
      */
     name: string;
     /**
@@ -5212,7 +5212,7 @@ export interface ConnectorSchemaConfigSchemaTable {
 
 export interface ConnectorSchemaConfigSchemaTableColumn {
     /**
-     * The boolean value specifying whether the sync for the schema into the destination is enabled.
+     * The boolean value specifying whether the sync of the column into the destination is enabled.
      */
     enabled: boolean;
     /**
@@ -5220,7 +5220,7 @@ export interface ConnectorSchemaConfigSchemaTableColumn {
      */
     hashed: boolean;
     /**
-     * The schema name within your destination in accordance with Fivetran conventional rules.
+     * The column name within your destination in accordance with Fivetran conventional rules.
      */
     name: string;
 }
@@ -5242,7 +5242,7 @@ export interface ConnectorSchemaConfigSchemasTables {
      */
     columns?: {[key: string]: outputs.ConnectorSchemaConfigSchemasTablesColumns};
     /**
-     * The boolean value specifying whether the sync for the schema into the destination is enabled.
+     * The boolean value specifying whether the sync for the table into the destination is enabled.
      */
     enabled: boolean;
     /**
@@ -5253,7 +5253,7 @@ export interface ConnectorSchemaConfigSchemasTables {
 
 export interface ConnectorSchemaConfigSchemasTablesColumns {
     /**
-     * The boolean value specifying whether the sync for the schema into the destination is enabled.
+     * The boolean value specifying whether the sync of the column into the destination is enabled.
      */
     enabled: boolean;
     /**
@@ -11967,6 +11967,87 @@ export interface GetGroupsGroup {
     name: string;
 }
 
+export interface GetLocalProcessingAgentUsage {
+    /**
+     * The unique identifier of the connection associated with the agent.
+     */
+    connectionId: string;
+    /**
+     * The connection schema name.
+     */
+    schema: string;
+    /**
+     * The connection type.
+     */
+    service: string;
+}
+
+export interface GetLocalProcessingAgentsItem {
+    /**
+     * The unique name for the local processing agent.
+     */
+    displayName: string;
+    /**
+     * The unique identifier for the Group within the Fivetran system.
+     */
+    groupId: string;
+    /**
+     * The unique identifier for the local processing agent within your account.
+     */
+    id: string;
+    /**
+     * The timestamp of the time the local processing agent was created in your account.
+     */
+    registeredAt: string;
+    usages: outputs.GetLocalProcessingAgentsItemUsage[];
+}
+
+export interface GetLocalProcessingAgentsItemUsage {
+    /**
+     * The unique identifier of the connection associated with the agent.
+     */
+    connectionId: string;
+    /**
+     * The connection schema name.
+     */
+    schema: string;
+    /**
+     * The connection type.
+     */
+    service: string;
+}
+
+export interface GetProxyAgentsItem {
+    /**
+     * The actor who created the proxy agent.
+     */
+    createdBy: string;
+    /**
+     * Proxy agent name.
+     */
+    displayName: string;
+    /**
+     * Data processing location. This is where Fivetran will operate and run computation on data.
+     */
+    groupRegion: string;
+    /**
+     * The unique identifier for the proxy within your account.
+     */
+    id: string;
+    /**
+     * The timestamp of the time the proxy agent was created in your account.
+     */
+    registredAt: string;
+    /**
+     * The salt.
+     */
+    salt: string;
+    /**
+     * The auth token.
+     */
+    token: string;
+}
+
 export interface GetRolesRole {
     /**
      * The role description
@@ -12175,6 +12256,21 @@ export interface GroupUsersUser {
      * The group role that you would like to assign this new user to. Supported group roles: ‘Destination Administrator‘, ‘Destination Reviewer‘, ‘Destination Analyst‘, ‘Connector Creator‘, or a custom destination role
      */
     role: string;
+}
+
+export interface LocalProcessingAgentUsage {
+    /**
+     * The unique identifier of the connection associated with the agent.
+     */
+    connectionId: string;
+    /**
+     * The connection schema name.
+     */
+    schema: string;
+    /**
+     * The connection type.
+     */
+    service: string;
 }
 
 export interface TeamConnectorMembershipConnector {

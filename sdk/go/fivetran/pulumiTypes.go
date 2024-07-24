@@ -23736,9 +23736,9 @@ func (o ConnectorSchemaConfigSchemaArrayOutput) Index(i pulumi.IntInput) Connect
 
 type ConnectorSchemaConfigSchemaTable struct {
 	Columns []ConnectorSchemaConfigSchemaTableColumn `pulumi:"columns"`
-	// The boolean value specifying whether the sync for the schema into the destination is enabled.
+	// The boolean value specifying whether the sync of table into the destination is enabled.
 	Enabled *bool `pulumi:"enabled"`
-	// The schema name within your destination in accordance with Fivetran conventional rules.
+	// The table name within your destination in accordance with Fivetran conventional rules.
 	Name string `pulumi:"name"`
 	// This field appears in the response if the connector supports switching sync modes for tables.
 	SyncMode *string `pulumi:"syncMode"`
@@ -23757,9 +23757,9 @@ type ConnectorSchemaConfigSchemaTableInput interface {
 
 type ConnectorSchemaConfigSchemaTableArgs struct {
 	Columns ConnectorSchemaConfigSchemaTableColumnArrayInput `pulumi:"columns"`
-	// The boolean value specifying whether the sync for the schema into the destination is enabled.
+	// The boolean value specifying whether the sync of table into the destination is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// The schema name within your destination in accordance with Fivetran conventional rules.
+	// The table name within your destination in accordance with Fivetran conventional rules.
 	Name pulumi.StringInput `pulumi:"name"`
 	// This field appears in the response if the connector supports switching sync modes for tables.
 	SyncMode pulumi.StringPtrInput `pulumi:"syncMode"`
@@ -23820,12 +23820,12 @@ func (o ConnectorSchemaConfigSchemaTableOutput) Columns() ConnectorSchemaConfigS
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTable) []ConnectorSchemaConfigSchemaTableColumn { return v.Columns }).(ConnectorSchemaConfigSchemaTableColumnArrayOutput)
 }
 
-// The boolean value specifying whether the sync for the schema into the destination is enabled.
+// The boolean value specifying whether the sync of table into the destination is enabled.
 func (o ConnectorSchemaConfigSchemaTableOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTable) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The schema name within your destination in accordance with Fivetran conventional rules.
+// The table name within your destination in accordance with Fivetran conventional rules.
 func (o ConnectorSchemaConfigSchemaTableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTable) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -23856,11 +23856,11 @@ func (o ConnectorSchemaConfigSchemaTableArrayOutput) Index(i pulumi.IntInput) Co
 }
 
 type ConnectorSchemaConfigSchemaTableColumn struct {
-	// The boolean value specifying whether the sync for the schema into the destination is enabled.
+	// The boolean value specifying whether the sync of the column into the destination is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// The boolean value specifying whether a column should be hashed.
 	Hashed *bool `pulumi:"hashed"`
-	// The schema name within your destination in accordance with Fivetran conventional rules.
+	// The column name within your destination in accordance with Fivetran conventional rules.
 	Name string `pulumi:"name"`
 }
 
@@ -23876,11 +23876,11 @@ type ConnectorSchemaConfigSchemaTableColumnInput interface {
 }
 
 type ConnectorSchemaConfigSchemaTableColumnArgs struct {
-	// The boolean value specifying whether the sync for the schema into the destination is enabled.
+	// The boolean value specifying whether the sync of the column into the destination is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// The boolean value specifying whether a column should be hashed.
 	Hashed pulumi.BoolPtrInput `pulumi:"hashed"`
-	// The schema name within your destination in accordance with Fivetran conventional rules.
+	// The column name within your destination in accordance with Fivetran conventional rules.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -23935,7 +23935,7 @@ func (o ConnectorSchemaConfigSchemaTableColumnOutput) ToConnectorSchemaConfigSch
 	return o
 }
 
-// The boolean value specifying whether the sync for the schema into the destination is enabled.
+// The boolean value specifying whether the sync of the column into the destination is enabled.
 func (o ConnectorSchemaConfigSchemaTableColumnOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTableColumn) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -23945,7 +23945,7 @@ func (o ConnectorSchemaConfigSchemaTableColumnOutput) Hashed() pulumi.BoolPtrOut
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTableColumn) *bool { return v.Hashed }).(pulumi.BoolPtrOutput)
 }
 
-// The schema name within your destination in accordance with Fivetran conventional rules.
+// The column name within your destination in accordance with Fivetran conventional rules.
 func (o ConnectorSchemaConfigSchemaTableColumnOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTableColumn) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -24079,7 +24079,7 @@ func (o ConnectorSchemaConfigSchemasMapOutput) MapIndex(k pulumi.StringInput) Co
 type ConnectorSchemaConfigSchemasTables struct {
 	// Map of table configurations.
 	Columns map[string]ConnectorSchemaConfigSchemasTablesColumns `pulumi:"columns"`
-	// The boolean value specifying whether the sync for the schema into the destination is enabled.
+	// The boolean value specifying whether the sync for the table into the destination is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// This field appears in the response if the connector supports switching sync modes for tables.
 	SyncMode *string `pulumi:"syncMode"`
@@ -24099,7 +24099,7 @@ type ConnectorSchemaConfigSchemasTablesInput interface {
 type ConnectorSchemaConfigSchemasTablesArgs struct {
 	// Map of table configurations.
 	Columns ConnectorSchemaConfigSchemasTablesColumnsMapInput `pulumi:"columns"`
-	// The boolean value specifying whether the sync for the schema into the destination is enabled.
+	// The boolean value specifying whether the sync for the table into the destination is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// This field appears in the response if the connector supports switching sync modes for tables.
 	SyncMode pulumi.StringPtrInput `pulumi:"syncMode"`
@@ -24163,7 +24163,7 @@ func (o ConnectorSchemaConfigSchemasTablesOutput) Columns() ConnectorSchemaConfi
 	}).(ConnectorSchemaConfigSchemasTablesColumnsMapOutput)
 }
 
-// The boolean value specifying whether the sync for the schema into the destination is enabled.
+// The boolean value specifying whether the sync for the table into the destination is enabled.
 func (o ConnectorSchemaConfigSchemasTablesOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemasTables) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -24194,7 +24194,7 @@ func (o ConnectorSchemaConfigSchemasTablesMapOutput) MapIndex(k pulumi.StringInp
 }
 
 type ConnectorSchemaConfigSchemasTablesColumns struct {
-	// The boolean value specifying whether the sync for the schema into the destination is enabled.
+	// The boolean value specifying whether the sync of the column into the destination is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// The boolean value specifying whether a column should be hashed.
 	Hashed *bool `pulumi:"hashed"`
@@ -24212,7 +24212,7 @@ type ConnectorSchemaConfigSchemasTablesColumnsInput interface {
 }
 
 type ConnectorSchemaConfigSchemasTablesColumnsArgs struct {
-	// The boolean value specifying whether the sync for the schema into the destination is enabled.
+	// The boolean value specifying whether the sync of the column into the destination is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// The boolean value specifying whether a column should be hashed.
 	Hashed pulumi.BoolPtrInput `pulumi:"hashed"`
@@ -24269,7 +24269,7 @@ func (o ConnectorSchemaConfigSchemasTablesColumnsOutput) ToConnectorSchemaConfig
 	return o
 }
 
-// The boolean value specifying whether the sync for the schema into the destination is enabled.
+// The boolean value specifying whether the sync of the column into the destination is enabled.
 func (o ConnectorSchemaConfigSchemasTablesColumnsOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemasTablesColumns) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -28841,6 +28841,121 @@ func (o GroupUsersUserArrayOutput) Index(i pulumi.IntInput) GroupUsersUserOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GroupUsersUser {
 		return vs[0].([]GroupUsersUser)[vs[1].(int)]
 	}).(GroupUsersUserOutput)
+}
+
+type LocalProcessingAgentUsage struct {
+	// The unique identifier of the connection associated with the agent.
+	ConnectionId *string `pulumi:"connectionId"`
+	// The connection schema name.
+	Schema string `pulumi:"schema"`
+	// The connection type.
+	Service string `pulumi:"service"`
+}
+
+// LocalProcessingAgentUsageInput is an input type that accepts LocalProcessingAgentUsageArgs and LocalProcessingAgentUsageOutput values.
+// You can construct a concrete instance of `LocalProcessingAgentUsageInput` via:
+//
+//	LocalProcessingAgentUsageArgs{...}
+type LocalProcessingAgentUsageInput interface {
+	pulumi.Input
+
+	ToLocalProcessingAgentUsageOutput() LocalProcessingAgentUsageOutput
+	ToLocalProcessingAgentUsageOutputWithContext(context.Context) LocalProcessingAgentUsageOutput
+}
+
+type LocalProcessingAgentUsageArgs struct {
+	// The unique identifier of the connection associated with the agent.
+	ConnectionId pulumi.StringPtrInput `pulumi:"connectionId"`
+	// The connection schema name.
+	Schema pulumi.StringInput `pulumi:"schema"`
+	// The connection type.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (LocalProcessingAgentUsageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocalProcessingAgentUsage)(nil)).Elem()
+}
+
+func (i LocalProcessingAgentUsageArgs) ToLocalProcessingAgentUsageOutput() LocalProcessingAgentUsageOutput {
+	return i.ToLocalProcessingAgentUsageOutputWithContext(context.Background())
+}
+
+func (i LocalProcessingAgentUsageArgs) ToLocalProcessingAgentUsageOutputWithContext(ctx context.Context) LocalProcessingAgentUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocalProcessingAgentUsageOutput)
+}
+
+// LocalProcessingAgentUsageArrayInput is an input type that accepts LocalProcessingAgentUsageArray and LocalProcessingAgentUsageArrayOutput values.
+// You can construct a concrete instance of `LocalProcessingAgentUsageArrayInput` via:
+//
+//	LocalProcessingAgentUsageArray{ LocalProcessingAgentUsageArgs{...} }
+type LocalProcessingAgentUsageArrayInput interface {
+	pulumi.Input
+
+	ToLocalProcessingAgentUsageArrayOutput() LocalProcessingAgentUsageArrayOutput
+	ToLocalProcessingAgentUsageArrayOutputWithContext(context.Context) LocalProcessingAgentUsageArrayOutput
+}
+
+type LocalProcessingAgentUsageArray []LocalProcessingAgentUsageInput
+
+func (LocalProcessingAgentUsageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LocalProcessingAgentUsage)(nil)).Elem()
+}
+
+func (i LocalProcessingAgentUsageArray) ToLocalProcessingAgentUsageArrayOutput() LocalProcessingAgentUsageArrayOutput {
+	return i.ToLocalProcessingAgentUsageArrayOutputWithContext(context.Background())
+}
+
+func (i LocalProcessingAgentUsageArray) ToLocalProcessingAgentUsageArrayOutputWithContext(ctx context.Context) LocalProcessingAgentUsageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocalProcessingAgentUsageArrayOutput)
+}
+
+type LocalProcessingAgentUsageOutput struct{ *pulumi.OutputState }
+
+func (LocalProcessingAgentUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocalProcessingAgentUsage)(nil)).Elem()
+}
+
+func (o LocalProcessingAgentUsageOutput) ToLocalProcessingAgentUsageOutput() LocalProcessingAgentUsageOutput {
+	return o
+}
+
+func (o LocalProcessingAgentUsageOutput) ToLocalProcessingAgentUsageOutputWithContext(ctx context.Context) LocalProcessingAgentUsageOutput {
+	return o
+}
+
+// The unique identifier of the connection associated with the agent.
+func (o LocalProcessingAgentUsageOutput) ConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LocalProcessingAgentUsage) *string { return v.ConnectionId }).(pulumi.StringPtrOutput)
+}
+
+// The connection schema name.
+func (o LocalProcessingAgentUsageOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v LocalProcessingAgentUsage) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+// The connection type.
+func (o LocalProcessingAgentUsageOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v LocalProcessingAgentUsage) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type LocalProcessingAgentUsageArrayOutput struct{ *pulumi.OutputState }
+
+func (LocalProcessingAgentUsageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LocalProcessingAgentUsage)(nil)).Elem()
+}
+
+func (o LocalProcessingAgentUsageArrayOutput) ToLocalProcessingAgentUsageArrayOutput() LocalProcessingAgentUsageArrayOutput {
+	return o
+}
+
+func (o LocalProcessingAgentUsageArrayOutput) ToLocalProcessingAgentUsageArrayOutputWithContext(ctx context.Context) LocalProcessingAgentUsageArrayOutput {
+	return o
+}
+
+func (o LocalProcessingAgentUsageArrayOutput) Index(i pulumi.IntInput) LocalProcessingAgentUsageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LocalProcessingAgentUsage {
+		return vs[0].([]LocalProcessingAgentUsage)[vs[1].(int)]
+	}).(LocalProcessingAgentUsageOutput)
 }
 
 type TeamConnectorMembershipConnector struct {
@@ -57516,6 +57631,517 @@ func (o GetGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupOutput
 	}).(GetGroupsGroupOutput)
 }
 
+type GetLocalProcessingAgentUsage struct {
+	// The unique identifier of the connection associated with the agent.
+	ConnectionId string `pulumi:"connectionId"`
+	// The connection schema name.
+	Schema string `pulumi:"schema"`
+	// The connection type.
+	Service string `pulumi:"service"`
+}
+
+// GetLocalProcessingAgentUsageInput is an input type that accepts GetLocalProcessingAgentUsageArgs and GetLocalProcessingAgentUsageOutput values.
+// You can construct a concrete instance of `GetLocalProcessingAgentUsageInput` via:
+//
+//	GetLocalProcessingAgentUsageArgs{...}
+type GetLocalProcessingAgentUsageInput interface {
+	pulumi.Input
+
+	ToGetLocalProcessingAgentUsageOutput() GetLocalProcessingAgentUsageOutput
+	ToGetLocalProcessingAgentUsageOutputWithContext(context.Context) GetLocalProcessingAgentUsageOutput
+}
+
+type GetLocalProcessingAgentUsageArgs struct {
+	// The unique identifier of the connection associated with the agent.
+	ConnectionId pulumi.StringInput `pulumi:"connectionId"`
+	// The connection schema name.
+	Schema pulumi.StringInput `pulumi:"schema"`
+	// The connection type.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (GetLocalProcessingAgentUsageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLocalProcessingAgentUsage)(nil)).Elem()
+}
+
+func (i GetLocalProcessingAgentUsageArgs) ToGetLocalProcessingAgentUsageOutput() GetLocalProcessingAgentUsageOutput {
+	return i.ToGetLocalProcessingAgentUsageOutputWithContext(context.Background())
+}
+
+func (i GetLocalProcessingAgentUsageArgs) ToGetLocalProcessingAgentUsageOutputWithContext(ctx context.Context) GetLocalProcessingAgentUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLocalProcessingAgentUsageOutput)
+}
+
+// GetLocalProcessingAgentUsageArrayInput is an input type that accepts GetLocalProcessingAgentUsageArray and GetLocalProcessingAgentUsageArrayOutput values.
+// You can construct a concrete instance of `GetLocalProcessingAgentUsageArrayInput` via:
+//
+//	GetLocalProcessingAgentUsageArray{ GetLocalProcessingAgentUsageArgs{...} }
+type GetLocalProcessingAgentUsageArrayInput interface {
+	pulumi.Input
+
+	ToGetLocalProcessingAgentUsageArrayOutput() GetLocalProcessingAgentUsageArrayOutput
+	ToGetLocalProcessingAgentUsageArrayOutputWithContext(context.Context) GetLocalProcessingAgentUsageArrayOutput
+}
+
+type GetLocalProcessingAgentUsageArray []GetLocalProcessingAgentUsageInput
+
+func (GetLocalProcessingAgentUsageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLocalProcessingAgentUsage)(nil)).Elem()
+}
+
+func (i GetLocalProcessingAgentUsageArray) ToGetLocalProcessingAgentUsageArrayOutput() GetLocalProcessingAgentUsageArrayOutput {
+	return i.ToGetLocalProcessingAgentUsageArrayOutputWithContext(context.Background())
+}
+
+func (i GetLocalProcessingAgentUsageArray) ToGetLocalProcessingAgentUsageArrayOutputWithContext(ctx context.Context) GetLocalProcessingAgentUsageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLocalProcessingAgentUsageArrayOutput)
+}
+
+type GetLocalProcessingAgentUsageOutput struct{ *pulumi.OutputState }
+
+func (GetLocalProcessingAgentUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLocalProcessingAgentUsage)(nil)).Elem()
+}
+
+func (o GetLocalProcessingAgentUsageOutput) ToGetLocalProcessingAgentUsageOutput() GetLocalProcessingAgentUsageOutput {
+	return o
+}
+
+func (o GetLocalProcessingAgentUsageOutput) ToGetLocalProcessingAgentUsageOutputWithContext(ctx context.Context) GetLocalProcessingAgentUsageOutput {
+	return o
+}
+
+// The unique identifier of the connection associated with the agent.
+func (o GetLocalProcessingAgentUsageOutput) ConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocalProcessingAgentUsage) string { return v.ConnectionId }).(pulumi.StringOutput)
+}
+
+// The connection schema name.
+func (o GetLocalProcessingAgentUsageOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocalProcessingAgentUsage) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+// The connection type.
+func (o GetLocalProcessingAgentUsageOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocalProcessingAgentUsage) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type GetLocalProcessingAgentUsageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLocalProcessingAgentUsageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLocalProcessingAgentUsage)(nil)).Elem()
+}
+
+func (o GetLocalProcessingAgentUsageArrayOutput) ToGetLocalProcessingAgentUsageArrayOutput() GetLocalProcessingAgentUsageArrayOutput {
+	return o
+}
+
+func (o GetLocalProcessingAgentUsageArrayOutput) ToGetLocalProcessingAgentUsageArrayOutputWithContext(ctx context.Context) GetLocalProcessingAgentUsageArrayOutput {
+	return o
+}
+
+func (o GetLocalProcessingAgentUsageArrayOutput) Index(i pulumi.IntInput) GetLocalProcessingAgentUsageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLocalProcessingAgentUsage {
+		return vs[0].([]GetLocalProcessingAgentUsage)[vs[1].(int)]
+	}).(GetLocalProcessingAgentUsageOutput)
+}
+
+type GetLocalProcessingAgentsItem struct {
+	// The unique name for the local processing agent.
+	DisplayName string `pulumi:"displayName"`
+	// The unique identifier for the Group within the Fivetran system.
+	GroupId string `pulumi:"groupId"`
+	// The unique identifier for the local processing agent within your account.
+	Id string `pulumi:"id"`
+	// The timestamp of the time the local processing agent was created in your account.
+	RegisteredAt string                              `pulumi:"registeredAt"`
+	Usages       []GetLocalProcessingAgentsItemUsage `pulumi:"usages"`
+}
+
+// GetLocalProcessingAgentsItemInput is an input type that accepts GetLocalProcessingAgentsItemArgs and GetLocalProcessingAgentsItemOutput values.
+// You can construct a concrete instance of `GetLocalProcessingAgentsItemInput` via:
+//
+//	GetLocalProcessingAgentsItemArgs{...}
+type GetLocalProcessingAgentsItemInput interface {
+	pulumi.Input
+
+	ToGetLocalProcessingAgentsItemOutput() GetLocalProcessingAgentsItemOutput
+	ToGetLocalProcessingAgentsItemOutputWithContext(context.Context) GetLocalProcessingAgentsItemOutput
+}
+
+type GetLocalProcessingAgentsItemArgs struct {
+	// The unique name for the local processing agent.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The unique identifier for the Group within the Fivetran system.
+	GroupId pulumi.StringInput `pulumi:"groupId"`
+	// The unique identifier for the local processing agent within your account.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The timestamp of the time the local processing agent was created in your account.
+	RegisteredAt pulumi.StringInput                          `pulumi:"registeredAt"`
+	Usages       GetLocalProcessingAgentsItemUsageArrayInput `pulumi:"usages"`
+}
+
+func (GetLocalProcessingAgentsItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLocalProcessingAgentsItem)(nil)).Elem()
+}
+
+func (i GetLocalProcessingAgentsItemArgs) ToGetLocalProcessingAgentsItemOutput() GetLocalProcessingAgentsItemOutput {
+	return i.ToGetLocalProcessingAgentsItemOutputWithContext(context.Background())
+}
+
+func (i GetLocalProcessingAgentsItemArgs) ToGetLocalProcessingAgentsItemOutputWithContext(ctx context.Context) GetLocalProcessingAgentsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLocalProcessingAgentsItemOutput)
+}
+
+// GetLocalProcessingAgentsItemArrayInput is an input type that accepts GetLocalProcessingAgentsItemArray and GetLocalProcessingAgentsItemArrayOutput values.
+// You can construct a concrete instance of `GetLocalProcessingAgentsItemArrayInput` via:
+//
+//	GetLocalProcessingAgentsItemArray{ GetLocalProcessingAgentsItemArgs{...} }
+type GetLocalProcessingAgentsItemArrayInput interface {
+	pulumi.Input
+
+	ToGetLocalProcessingAgentsItemArrayOutput() GetLocalProcessingAgentsItemArrayOutput
+	ToGetLocalProcessingAgentsItemArrayOutputWithContext(context.Context) GetLocalProcessingAgentsItemArrayOutput
+}
+
+type GetLocalProcessingAgentsItemArray []GetLocalProcessingAgentsItemInput
+
+func (GetLocalProcessingAgentsItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLocalProcessingAgentsItem)(nil)).Elem()
+}
+
+func (i GetLocalProcessingAgentsItemArray) ToGetLocalProcessingAgentsItemArrayOutput() GetLocalProcessingAgentsItemArrayOutput {
+	return i.ToGetLocalProcessingAgentsItemArrayOutputWithContext(context.Background())
+}
+
+func (i GetLocalProcessingAgentsItemArray) ToGetLocalProcessingAgentsItemArrayOutputWithContext(ctx context.Context) GetLocalProcessingAgentsItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLocalProcessingAgentsItemArrayOutput)
+}
+
+type GetLocalProcessingAgentsItemOutput struct{ *pulumi.OutputState }
+
+func (GetLocalProcessingAgentsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLocalProcessingAgentsItem)(nil)).Elem()
+}
+
+func (o GetLocalProcessingAgentsItemOutput) ToGetLocalProcessingAgentsItemOutput() GetLocalProcessingAgentsItemOutput {
+	return o
+}
+
+func (o GetLocalProcessingAgentsItemOutput) ToGetLocalProcessingAgentsItemOutputWithContext(ctx context.Context) GetLocalProcessingAgentsItemOutput {
+	return o
+}
+
+// The unique name for the local processing agent.
+func (o GetLocalProcessingAgentsItemOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocalProcessingAgentsItem) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the Group within the Fivetran system.
+func (o GetLocalProcessingAgentsItemOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocalProcessingAgentsItem) string { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the local processing agent within your account.
+func (o GetLocalProcessingAgentsItemOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocalProcessingAgentsItem) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The timestamp of the time the local processing agent was created in your account.
+func (o GetLocalProcessingAgentsItemOutput) RegisteredAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocalProcessingAgentsItem) string { return v.RegisteredAt }).(pulumi.StringOutput)
+}
+
+func (o GetLocalProcessingAgentsItemOutput) Usages() GetLocalProcessingAgentsItemUsageArrayOutput {
+	return o.ApplyT(func(v GetLocalProcessingAgentsItem) []GetLocalProcessingAgentsItemUsage { return v.Usages }).(GetLocalProcessingAgentsItemUsageArrayOutput)
+}
+
+type GetLocalProcessingAgentsItemArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLocalProcessingAgentsItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLocalProcessingAgentsItem)(nil)).Elem()
+}
+
+func (o GetLocalProcessingAgentsItemArrayOutput) ToGetLocalProcessingAgentsItemArrayOutput() GetLocalProcessingAgentsItemArrayOutput {
+	return o
+}
+
+func (o GetLocalProcessingAgentsItemArrayOutput) ToGetLocalProcessingAgentsItemArrayOutputWithContext(ctx context.Context) GetLocalProcessingAgentsItemArrayOutput {
+	return o
+}
+
+func (o GetLocalProcessingAgentsItemArrayOutput) Index(i pulumi.IntInput) GetLocalProcessingAgentsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLocalProcessingAgentsItem {
+		return vs[0].([]GetLocalProcessingAgentsItem)[vs[1].(int)]
+	}).(GetLocalProcessingAgentsItemOutput)
+}
+
+type GetLocalProcessingAgentsItemUsage struct {
+	// The unique identifier of the connection associated with the agent.
+	ConnectionId string `pulumi:"connectionId"`
+	// The connection schema name.
+	Schema string `pulumi:"schema"`
+	// The connection type.
+	Service string `pulumi:"service"`
+}
+
+// GetLocalProcessingAgentsItemUsageInput is an input type that accepts GetLocalProcessingAgentsItemUsageArgs and GetLocalProcessingAgentsItemUsageOutput values.
+// You can construct a concrete instance of `GetLocalProcessingAgentsItemUsageInput` via:
+//
+//	GetLocalProcessingAgentsItemUsageArgs{...}
+type GetLocalProcessingAgentsItemUsageInput interface {
+	pulumi.Input
+
+	ToGetLocalProcessingAgentsItemUsageOutput() GetLocalProcessingAgentsItemUsageOutput
+	ToGetLocalProcessingAgentsItemUsageOutputWithContext(context.Context) GetLocalProcessingAgentsItemUsageOutput
+}
+
+type GetLocalProcessingAgentsItemUsageArgs struct {
+	// The unique identifier of the connection associated with the agent.
+	ConnectionId pulumi.StringInput `pulumi:"connectionId"`
+	// The connection schema name.
+	Schema pulumi.StringInput `pulumi:"schema"`
+	// The connection type.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (GetLocalProcessingAgentsItemUsageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLocalProcessingAgentsItemUsage)(nil)).Elem()
+}
+
+func (i GetLocalProcessingAgentsItemUsageArgs) ToGetLocalProcessingAgentsItemUsageOutput() GetLocalProcessingAgentsItemUsageOutput {
+	return i.ToGetLocalProcessingAgentsItemUsageOutputWithContext(context.Background())
+}
+
+func (i GetLocalProcessingAgentsItemUsageArgs) ToGetLocalProcessingAgentsItemUsageOutputWithContext(ctx context.Context) GetLocalProcessingAgentsItemUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLocalProcessingAgentsItemUsageOutput)
+}
+
+// GetLocalProcessingAgentsItemUsageArrayInput is an input type that accepts GetLocalProcessingAgentsItemUsageArray and GetLocalProcessingAgentsItemUsageArrayOutput values.
+// You can construct a concrete instance of `GetLocalProcessingAgentsItemUsageArrayInput` via:
+//
+//	GetLocalProcessingAgentsItemUsageArray{ GetLocalProcessingAgentsItemUsageArgs{...} }
+type GetLocalProcessingAgentsItemUsageArrayInput interface {
+	pulumi.Input
+
+	ToGetLocalProcessingAgentsItemUsageArrayOutput() GetLocalProcessingAgentsItemUsageArrayOutput
+	ToGetLocalProcessingAgentsItemUsageArrayOutputWithContext(context.Context) GetLocalProcessingAgentsItemUsageArrayOutput
+}
+
+type GetLocalProcessingAgentsItemUsageArray []GetLocalProcessingAgentsItemUsageInput
+
+func (GetLocalProcessingAgentsItemUsageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLocalProcessingAgentsItemUsage)(nil)).Elem()
+}
+
+func (i GetLocalProcessingAgentsItemUsageArray) ToGetLocalProcessingAgentsItemUsageArrayOutput() GetLocalProcessingAgentsItemUsageArrayOutput {
+	return i.ToGetLocalProcessingAgentsItemUsageArrayOutputWithContext(context.Background())
+}
+
+func (i GetLocalProcessingAgentsItemUsageArray) ToGetLocalProcessingAgentsItemUsageArrayOutputWithContext(ctx context.Context) GetLocalProcessingAgentsItemUsageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLocalProcessingAgentsItemUsageArrayOutput)
+}
+
+type GetLocalProcessingAgentsItemUsageOutput struct{ *pulumi.OutputState }
+
+func (GetLocalProcessingAgentsItemUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLocalProcessingAgentsItemUsage)(nil)).Elem()
+}
+
+func (o GetLocalProcessingAgentsItemUsageOutput) ToGetLocalProcessingAgentsItemUsageOutput() GetLocalProcessingAgentsItemUsageOutput {
+	return o
+}
+
+func (o GetLocalProcessingAgentsItemUsageOutput) ToGetLocalProcessingAgentsItemUsageOutputWithContext(ctx context.Context) GetLocalProcessingAgentsItemUsageOutput {
+	return o
+}
+
+// The unique identifier of the connection associated with the agent.
+func (o GetLocalProcessingAgentsItemUsageOutput) ConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocalProcessingAgentsItemUsage) string { return v.ConnectionId }).(pulumi.StringOutput)
+}
+
+// The connection schema name.
+func (o GetLocalProcessingAgentsItemUsageOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocalProcessingAgentsItemUsage) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+// The connection type.
+func (o GetLocalProcessingAgentsItemUsageOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocalProcessingAgentsItemUsage) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type GetLocalProcessingAgentsItemUsageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLocalProcessingAgentsItemUsageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLocalProcessingAgentsItemUsage)(nil)).Elem()
+}
+
+func (o GetLocalProcessingAgentsItemUsageArrayOutput) ToGetLocalProcessingAgentsItemUsageArrayOutput() GetLocalProcessingAgentsItemUsageArrayOutput {
+	return o
+}
+
+func (o GetLocalProcessingAgentsItemUsageArrayOutput) ToGetLocalProcessingAgentsItemUsageArrayOutputWithContext(ctx context.Context) GetLocalProcessingAgentsItemUsageArrayOutput {
+	return o
+}
+
+func (o GetLocalProcessingAgentsItemUsageArrayOutput) Index(i pulumi.IntInput) GetLocalProcessingAgentsItemUsageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLocalProcessingAgentsItemUsage {
+		return vs[0].([]GetLocalProcessingAgentsItemUsage)[vs[1].(int)]
+	}).(GetLocalProcessingAgentsItemUsageOutput)
+}
+
+type GetProxyAgentsItem struct {
+	// The actor who created the proxy agent.
+	CreatedBy string `pulumi:"createdBy"`
+	// Proxy agent name.
+	DisplayName string `pulumi:"displayName"`
+	// Data processing location. This is where Fivetran will operate and run computation on data.
+	GroupRegion string `pulumi:"groupRegion"`
+	// The unique identifier for the proxy within your account.
+	Id string `pulumi:"id"`
+	// The timestamp of the time the proxy agent was created in your account.
+	RegistredAt string `pulumi:"registredAt"`
+	// The salt.
+	Salt string `pulumi:"salt"`
+	// The auth token.
+	Token string `pulumi:"token"`
+}
+
+// GetProxyAgentsItemInput is an input type that accepts GetProxyAgentsItemArgs and GetProxyAgentsItemOutput values.
+// You can construct a concrete instance of `GetProxyAgentsItemInput` via:
+//
+//	GetProxyAgentsItemArgs{...}
+type GetProxyAgentsItemInput interface {
+	pulumi.Input
+
+	ToGetProxyAgentsItemOutput() GetProxyAgentsItemOutput
+	ToGetProxyAgentsItemOutputWithContext(context.Context) GetProxyAgentsItemOutput
+}
+
+type GetProxyAgentsItemArgs struct {
+	// The actor who created the proxy agent.
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// Proxy agent name.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Data processing location. This is where Fivetran will operate and run computation on data.
+	GroupRegion pulumi.StringInput `pulumi:"groupRegion"`
+	// The unique identifier for the proxy within your account.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The timestamp of the time the proxy agent was created in your account.
+	RegistredAt pulumi.StringInput `pulumi:"registredAt"`
+	// The salt.
+	Salt pulumi.StringInput `pulumi:"salt"`
+	// The auth token.
+	Token pulumi.StringInput `pulumi:"token"`
+}
+
+func (GetProxyAgentsItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProxyAgentsItem)(nil)).Elem()
+}
+
+func (i GetProxyAgentsItemArgs) ToGetProxyAgentsItemOutput() GetProxyAgentsItemOutput {
+	return i.ToGetProxyAgentsItemOutputWithContext(context.Background())
+}
+
+func (i GetProxyAgentsItemArgs) ToGetProxyAgentsItemOutputWithContext(ctx context.Context) GetProxyAgentsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProxyAgentsItemOutput)
+}
+
+// GetProxyAgentsItemArrayInput is an input type that accepts GetProxyAgentsItemArray and GetProxyAgentsItemArrayOutput values.
+// You can construct a concrete instance of `GetProxyAgentsItemArrayInput` via:
+//
+//	GetProxyAgentsItemArray{ GetProxyAgentsItemArgs{...} }
+type GetProxyAgentsItemArrayInput interface {
+	pulumi.Input
+
+	ToGetProxyAgentsItemArrayOutput() GetProxyAgentsItemArrayOutput
+	ToGetProxyAgentsItemArrayOutputWithContext(context.Context) GetProxyAgentsItemArrayOutput
+}
+
+type GetProxyAgentsItemArray []GetProxyAgentsItemInput
+
+func (GetProxyAgentsItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProxyAgentsItem)(nil)).Elem()
+}
+
+func (i GetProxyAgentsItemArray) ToGetProxyAgentsItemArrayOutput() GetProxyAgentsItemArrayOutput {
+	return i.ToGetProxyAgentsItemArrayOutputWithContext(context.Background())
+}
+
+func (i GetProxyAgentsItemArray) ToGetProxyAgentsItemArrayOutputWithContext(ctx context.Context) GetProxyAgentsItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProxyAgentsItemArrayOutput)
+}
+
+type GetProxyAgentsItemOutput struct{ *pulumi.OutputState }
+
+func (GetProxyAgentsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProxyAgentsItem)(nil)).Elem()
+}
+
+func (o GetProxyAgentsItemOutput) ToGetProxyAgentsItemOutput() GetProxyAgentsItemOutput {
+	return o
+}
+
+func (o GetProxyAgentsItemOutput) ToGetProxyAgentsItemOutputWithContext(ctx context.Context) GetProxyAgentsItemOutput {
+	return o
+}
+
+// The actor who created the proxy agent.
+func (o GetProxyAgentsItemOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProxyAgentsItem) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Proxy agent name.
+func (o GetProxyAgentsItemOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProxyAgentsItem) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Data processing location. This is where Fivetran will operate and run computation on data.
+func (o GetProxyAgentsItemOutput) GroupRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProxyAgentsItem) string { return v.GroupRegion }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the proxy within your account.
+func (o GetProxyAgentsItemOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProxyAgentsItem) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The timestamp of the time the proxy agent was created in your account.
+func (o GetProxyAgentsItemOutput) RegistredAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProxyAgentsItem) string { return v.RegistredAt }).(pulumi.StringOutput)
+}
+
+// The salt.
+func (o GetProxyAgentsItemOutput) Salt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProxyAgentsItem) string { return v.Salt }).(pulumi.StringOutput)
+}
+
+// The auth token.
+func (o GetProxyAgentsItemOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProxyAgentsItem) string { return v.Token }).(pulumi.StringOutput)
+}
+
+type GetProxyAgentsItemArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProxyAgentsItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProxyAgentsItem)(nil)).Elem()
+}
+
+func (o GetProxyAgentsItemArrayOutput) ToGetProxyAgentsItemArrayOutput() GetProxyAgentsItemArrayOutput {
+	return o
+}
+
+func (o GetProxyAgentsItemArrayOutput) ToGetProxyAgentsItemArrayOutputWithContext(ctx context.Context) GetProxyAgentsItemArrayOutput {
+	return o
+}
+
+func (o GetProxyAgentsItemArrayOutput) Index(i pulumi.IntInput) GetProxyAgentsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProxyAgentsItem {
+		return vs[0].([]GetProxyAgentsItem)[vs[1].(int)]
+	}).(GetProxyAgentsItemOutput)
+}
+
 type GetRolesRole struct {
 	// The role description
 	Description string `pulumi:"description"`
@@ -58759,6 +59385,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalLoggingConfigPtrInput)(nil)).Elem(), ExternalLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupUsersUserInput)(nil)).Elem(), GroupUsersUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupUsersUserArrayInput)(nil)).Elem(), GroupUsersUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocalProcessingAgentUsageInput)(nil)).Elem(), LocalProcessingAgentUsageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocalProcessingAgentUsageArrayInput)(nil)).Elem(), LocalProcessingAgentUsageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamConnectorMembershipConnectorInput)(nil)).Elem(), TeamConnectorMembershipConnectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamConnectorMembershipConnectorArrayInput)(nil)).Elem(), TeamConnectorMembershipConnectorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamGroupMembershipGroupInput)(nil)).Elem(), TeamGroupMembershipGroupArgs{})
@@ -58837,6 +59465,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupUsersUserArrayInput)(nil)).Elem(), GetGroupUsersUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupInput)(nil)).Elem(), GetGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupArrayInput)(nil)).Elem(), GetGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLocalProcessingAgentUsageInput)(nil)).Elem(), GetLocalProcessingAgentUsageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLocalProcessingAgentUsageArrayInput)(nil)).Elem(), GetLocalProcessingAgentUsageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLocalProcessingAgentsItemInput)(nil)).Elem(), GetLocalProcessingAgentsItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLocalProcessingAgentsItemArrayInput)(nil)).Elem(), GetLocalProcessingAgentsItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLocalProcessingAgentsItemUsageInput)(nil)).Elem(), GetLocalProcessingAgentsItemUsageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLocalProcessingAgentsItemUsageArrayInput)(nil)).Elem(), GetLocalProcessingAgentsItemUsageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProxyAgentsItemInput)(nil)).Elem(), GetProxyAgentsItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProxyAgentsItemArrayInput)(nil)).Elem(), GetProxyAgentsItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRolesRoleInput)(nil)).Elem(), GetRolesRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRolesRoleArrayInput)(nil)).Elem(), GetRolesRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamConnectorMembershipsConnectorInput)(nil)).Elem(), GetTeamConnectorMembershipsConnectorArgs{})
@@ -58927,6 +59563,8 @@ func init() {
 	pulumi.RegisterOutputType(ExternalLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(GroupUsersUserOutput{})
 	pulumi.RegisterOutputType(GroupUsersUserArrayOutput{})
+	pulumi.RegisterOutputType(LocalProcessingAgentUsageOutput{})
+	pulumi.RegisterOutputType(LocalProcessingAgentUsageArrayOutput{})
 	pulumi.RegisterOutputType(TeamConnectorMembershipConnectorOutput{})
 	pulumi.RegisterOutputType(TeamConnectorMembershipConnectorArrayOutput{})
 	pulumi.RegisterOutputType(TeamGroupMembershipGroupOutput{})
@@ -59005,6 +59643,14 @@ func init() {
 	pulumi.RegisterOutputType(GetGroupUsersUserArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetLocalProcessingAgentUsageOutput{})
+	pulumi.RegisterOutputType(GetLocalProcessingAgentUsageArrayOutput{})
+	pulumi.RegisterOutputType(GetLocalProcessingAgentsItemOutput{})
+	pulumi.RegisterOutputType(GetLocalProcessingAgentsItemArrayOutput{})
+	pulumi.RegisterOutputType(GetLocalProcessingAgentsItemUsageOutput{})
+	pulumi.RegisterOutputType(GetLocalProcessingAgentsItemUsageArrayOutput{})
+	pulumi.RegisterOutputType(GetProxyAgentsItemOutput{})
+	pulumi.RegisterOutputType(GetProxyAgentsItemArrayOutput{})
 	pulumi.RegisterOutputType(GetRolesRoleOutput{})
 	pulumi.RegisterOutputType(GetRolesRoleArrayOutput{})
 	pulumi.RegisterOutputType(GetTeamConnectorMembershipsConnectorOutput{})

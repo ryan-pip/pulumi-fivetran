@@ -46,6 +46,7 @@ __all__ = [
     'DestinationTimeoutsArgs',
     'ExternalLoggingConfigArgs',
     'GroupUsersUserArgs',
+    'LocalProcessingAgentUsageArgs',
     'TeamConnectorMembershipConnectorArgs',
     'TeamGroupMembershipGroupArgs',
     'TeamUserMembershipUserArgs',
@@ -83,6 +84,7 @@ __all__ = [
     'GetGroupConnectorsConnectorStatusWarningArgs',
     'GetGroupUsersUserArgs',
     'GetGroupsGroupArgs',
+    'GetProxyAgentsItemArgs',
     'GetRolesRoleArgs',
     'GetTeamConnectorMembershipsConnectorArgs',
     'GetTeamGroupMembershipsGroupArgs',
@@ -16068,8 +16070,8 @@ class ConnectorSchemaConfigSchemaTableArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  sync_mode: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: The schema name within your destination in accordance with Fivetran conventional rules.
-        :param pulumi.Input[bool] enabled: The boolean value specifying whether the sync for the schema into the destination is enabled.
+        :param pulumi.Input[str] name: The table name within your destination in accordance with Fivetran conventional rules.
+        :param pulumi.Input[bool] enabled: The boolean value specifying whether the sync of table into the destination is enabled.
         :param pulumi.Input[str] sync_mode: This field appears in the response if the connector supports switching sync modes for tables.
         """
         pulumi.set(__self__, "name", name)
@@ -16084,7 +16086,7 @@ class ConnectorSchemaConfigSchemaTableArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The schema name within your destination in accordance with Fivetran conventional rules.
+        The table name within your destination in accordance with Fivetran conventional rules.
         """
         return pulumi.get(self, "name")
 
@@ -16105,7 +16107,7 @@ class ConnectorSchemaConfigSchemaTableArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        The boolean value specifying whether the sync for the schema into the destination is enabled.
+        The boolean value specifying whether the sync of table into the destination is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -16133,8 +16135,8 @@ class ConnectorSchemaConfigSchemaTableColumnArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  hashed: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] name: The schema name within your destination in accordance with Fivetran conventional rules.
-        :param pulumi.Input[bool] enabled: The boolean value specifying whether the sync for the schema into the destination is enabled.
+        :param pulumi.Input[str] name: The column name within your destination in accordance with Fivetran conventional rules.
+        :param pulumi.Input[bool] enabled: The boolean value specifying whether the sync of the column into the destination is enabled.
         :param pulumi.Input[bool] hashed: The boolean value specifying whether a column should be hashed.
         """
         pulumi.set(__self__, "name", name)
@@ -16147,7 +16149,7 @@ class ConnectorSchemaConfigSchemaTableColumnArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The schema name within your destination in accordance with Fivetran conventional rules.
+        The column name within your destination in accordance with Fivetran conventional rules.
         """
         return pulumi.get(self, "name")
 
@@ -16159,7 +16161,7 @@ class ConnectorSchemaConfigSchemaTableColumnArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        The boolean value specifying whether the sync for the schema into the destination is enabled.
+        The boolean value specifying whether the sync of the column into the destination is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -16227,7 +16229,7 @@ class ConnectorSchemaConfigSchemasTablesArgs:
                  sync_mode: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasTablesColumnsArgs']]] columns: Map of table configurations.
-        :param pulumi.Input[bool] enabled: The boolean value specifying whether the sync for the schema into the destination is enabled.
+        :param pulumi.Input[bool] enabled: The boolean value specifying whether the sync for the table into the destination is enabled.
         :param pulumi.Input[str] sync_mode: This field appears in the response if the connector supports switching sync modes for tables.
         """
         if columns is not None:
@@ -16253,7 +16255,7 @@ class ConnectorSchemaConfigSchemasTablesArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        The boolean value specifying whether the sync for the schema into the destination is enabled.
+        The boolean value specifying whether the sync for the table into the destination is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -16280,7 +16282,7 @@ class ConnectorSchemaConfigSchemasTablesColumnsArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  hashed: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[bool] enabled: The boolean value specifying whether the sync for the schema into the destination is enabled.
+        :param pulumi.Input[bool] enabled: The boolean value specifying whether the sync of the column into the destination is enabled.
         :param pulumi.Input[bool] hashed: The boolean value specifying whether a column should be hashed.
         """
         if enabled is not None:
@@ -16292,7 +16294,7 @@ class ConnectorSchemaConfigSchemasTablesColumnsArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        The boolean value specifying whether the sync for the schema into the destination is enabled.
+        The boolean value specifying whether the sync of the column into the destination is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -18790,6 +18792,59 @@ class GroupUsersUserArgs:
     @id.setter
     def id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "id", value)
+
+
+@pulumi.input_type
+class LocalProcessingAgentUsageArgs:
+    def __init__(__self__, *,
+                 schema: pulumi.Input[str],
+                 service: pulumi.Input[str],
+                 connection_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] schema: The connection schema name.
+        :param pulumi.Input[str] service: The connection type.
+        :param pulumi.Input[str] connection_id: The unique identifier of the connection associated with the agent.
+        """
+        pulumi.set(__self__, "schema", schema)
+        pulumi.set(__self__, "service", service)
+        if connection_id is not None:
+            pulumi.set(__self__, "connection_id", connection_id)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> pulumi.Input[str]:
+        """
+        The connection schema name.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: pulumi.Input[str]):
+        pulumi.set(self, "schema", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> pulumi.Input[str]:
+        """
+        The connection type.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service", value)
+
+    @property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique identifier of the connection associated with the agent.
+        """
+        return pulumi.get(self, "connection_id")
+
+    @connection_id.setter
+    def connection_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_id", value)
 
 
 @pulumi.input_type
@@ -36845,6 +36900,118 @@ class GetGroupsGroupArgs:
     @name.setter
     def name(self, value: str):
         pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class GetProxyAgentsItemArgs:
+    def __init__(__self__, *,
+                 created_by: str,
+                 display_name: str,
+                 group_region: str,
+                 id: str,
+                 registred_at: str,
+                 salt: str,
+                 token: str):
+        """
+        :param str created_by: The actor who created the proxy agent.
+        :param str display_name: Proxy agent name.
+        :param str group_region: Data processing location. This is where Fivetran will operate and run computation on data.
+        :param str id: The unique identifier for the proxy within your account.
+        :param str registred_at: The timestamp of the time the proxy agent was created in your account.
+        :param str salt: The salt.
+        :param str token: The auth token.
+        """
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "group_region", group_region)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "registred_at", registred_at)
+        pulumi.set(__self__, "salt", salt)
+        pulumi.set(__self__, "token", token)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        """
+        The actor who created the proxy agent.
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: str):
+        pulumi.set(self, "created_by", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Proxy agent name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: str):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="groupRegion")
+    def group_region(self) -> str:
+        """
+        Data processing location. This is where Fivetran will operate and run computation on data.
+        """
+        return pulumi.get(self, "group_region")
+
+    @group_region.setter
+    def group_region(self, value: str):
+        pulumi.set(self, "group_region", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the proxy within your account.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="registredAt")
+    def registred_at(self) -> str:
+        """
+        The timestamp of the time the proxy agent was created in your account.
+        """
+        return pulumi.get(self, "registred_at")
+
+    @registred_at.setter
+    def registred_at(self, value: str):
+        pulumi.set(self, "registred_at", value)
+
+    @property
+    @pulumi.getter
+    def salt(self) -> str:
+        """
+        The salt.
+        """
+        return pulumi.get(self, "salt")
+
+    @salt.setter
+    def salt(self, value: str):
+        pulumi.set(self, "salt", value)
+
+    @property
+    @pulumi.getter
+    def token(self) -> str:
+        """
+        The auth token.
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: str):
+        pulumi.set(self, "token", value)
 
 
 @pulumi.input_type

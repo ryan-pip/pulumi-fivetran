@@ -3648,11 +3648,11 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "The boolean value specifying whether the sync for the schema into the destination is enabled.\n"
+                    "description": "The boolean value specifying whether the sync of table into the destination is enabled.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "The schema name within your destination in accordance with Fivetran conventional rules.\n"
+                    "description": "The table name within your destination in accordance with Fivetran conventional rules.\n"
                 },
                 "syncMode": {
                     "type": "string",
@@ -3677,7 +3677,7 @@
             "properties": {
                 "enabled": {
                     "type": "boolean",
-                    "description": "The boolean value specifying whether the sync for the schema into the destination is enabled.\n"
+                    "description": "The boolean value specifying whether the sync of the column into the destination is enabled.\n"
                 },
                 "hashed": {
                     "type": "boolean",
@@ -3685,7 +3685,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The schema name within your destination in accordance with Fivetran conventional rules.\n"
+                    "description": "The column name within your destination in accordance with Fivetran conventional rules.\n"
                 }
             },
             "type": "object",
@@ -3736,7 +3736,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "The boolean value specifying whether the sync for the schema into the destination is enabled.\n"
+                    "description": "The boolean value specifying whether the sync for the table into the destination is enabled.\n"
                 },
                 "syncMode": {
                     "type": "string",
@@ -3757,7 +3757,7 @@
             "properties": {
                 "enabled": {
                     "type": "boolean",
-                    "description": "The boolean value specifying whether the sync for the schema into the destination is enabled.\n"
+                    "description": "The boolean value specifying whether the sync of the column into the destination is enabled.\n"
                 },
                 "hashed": {
                     "type": "boolean",
@@ -4413,6 +4413,36 @@
                         "email",
                         "id",
                         "role"
+                    ]
+                }
+            }
+        },
+        "fivetran:index/LocalProcessingAgentUsage:LocalProcessingAgentUsage": {
+            "properties": {
+                "connectionId": {
+                    "type": "string",
+                    "description": "The unique identifier of the connection associated with the agent.\n"
+                },
+                "schema": {
+                    "type": "string",
+                    "description": "The connection schema name.\n"
+                },
+                "service": {
+                    "type": "string",
+                    "description": "The connection type.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "schema",
+                "service"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "connectionId",
+                        "schema",
+                        "service"
                     ]
                 }
             }
@@ -9426,6 +9456,148 @@
                 }
             }
         },
+        "fivetran:index/getLocalProcessingAgentUsage:getLocalProcessingAgentUsage": {
+            "properties": {
+                "connectionId": {
+                    "type": "string",
+                    "description": "The unique identifier of the connection associated with the agent.\n"
+                },
+                "schema": {
+                    "type": "string",
+                    "description": "The connection schema name.\n"
+                },
+                "service": {
+                    "type": "string",
+                    "description": "The connection type.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "connectionId",
+                "schema",
+                "service"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "fivetran:index/getLocalProcessingAgentsItem:getLocalProcessingAgentsItem": {
+            "properties": {
+                "displayName": {
+                    "type": "string",
+                    "description": "The unique name for the local processing agent.\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The unique identifier for the Group within the Fivetran system.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The unique identifier for the local processing agent within your account.\n"
+                },
+                "registeredAt": {
+                    "type": "string",
+                    "description": "The timestamp of the time the local processing agent was created in your account.\n"
+                },
+                "usages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/fivetran:index/getLocalProcessingAgentsItemUsage:getLocalProcessingAgentsItemUsage"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "displayName",
+                "groupId",
+                "id",
+                "registeredAt",
+                "usages"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "fivetran:index/getLocalProcessingAgentsItemUsage:getLocalProcessingAgentsItemUsage": {
+            "properties": {
+                "connectionId": {
+                    "type": "string",
+                    "description": "The unique identifier of the connection associated with the agent.\n"
+                },
+                "schema": {
+                    "type": "string",
+                    "description": "The connection schema name.\n"
+                },
+                "service": {
+                    "type": "string",
+                    "description": "The connection type.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "connectionId",
+                "schema",
+                "service"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "fivetran:index/getProxyAgentsItem:getProxyAgentsItem": {
+            "properties": {
+                "createdBy": {
+                    "type": "string",
+                    "description": "The actor who created the proxy agent.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Proxy agent name.\n"
+                },
+                "groupRegion": {
+                    "type": "string",
+                    "description": "Data processing location. This is where Fivetran will operate and run computation on data.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The unique identifier for the proxy within your account.\n"
+                },
+                "registredAt": {
+                    "type": "string",
+                    "description": "The timestamp of the time the proxy agent was created in your account.\n"
+                },
+                "salt": {
+                    "type": "string",
+                    "description": "The salt.\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "The auth token.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createdBy",
+                "displayName",
+                "groupRegion",
+                "id",
+                "registredAt",
+                "salt",
+                "token"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": [
+                        "id"
+                    ]
+                }
+            }
+        },
         "fivetran:index/getRolesRole:getRolesRole": {
             "properties": {
                 "description": {
@@ -9821,9 +9993,21 @@
                     "type": "string",
                     "description": "The unique identifier for the Group (Destination) within the Fivetran system.\n"
                 },
+                "localProcessingAgentId": {
+                    "type": "string",
+                    "description": "The local processing agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The name used both as the connector's name within the Fivetran system and as the source schema's name within your\ndestination.\n"
+                },
+                "networkingMethod": {
+                    "type": "string",
+                    "description": "Possible values: Directly, SshTunnel, ProxyAgent.\n"
+                },
+                "proxyAgentId": {
+                    "type": "string",
+                    "description": "The proxy agent ID.\n"
                 },
                 "runSetupTests": {
                     "type": "boolean",
@@ -9850,6 +10034,7 @@
                 "createdAt",
                 "groupId",
                 "name",
+                "networkingMethod",
                 "runSetupTests",
                 "service",
                 "trustCertificates",
@@ -9868,6 +10053,18 @@
                 "groupId": {
                     "type": "string",
                     "description": "The unique identifier for the Group (Destination) within the Fivetran system.\n"
+                },
+                "localProcessingAgentId": {
+                    "type": "string",
+                    "description": "The local processing agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                },
+                "networkingMethod": {
+                    "type": "string",
+                    "description": "Possible values: Directly, SshTunnel, ProxyAgent.\n"
+                },
+                "proxyAgentId": {
+                    "type": "string",
+                    "description": "The proxy agent ID.\n"
                 },
                 "runSetupTests": {
                     "type": "boolean",
@@ -9917,9 +10114,21 @@
                         "type": "string",
                         "description": "The unique identifier for the Group (Destination) within the Fivetran system.\n"
                     },
+                    "localProcessingAgentId": {
+                        "type": "string",
+                        "description": "The local processing agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "The name used both as the connector's name within the Fivetran system and as the source schema's name within your\ndestination.\n"
+                    },
+                    "networkingMethod": {
+                        "type": "string",
+                        "description": "Possible values: Directly, SshTunnel, ProxyAgent.\n"
+                    },
+                    "proxyAgentId": {
+                        "type": "string",
+                        "description": "The proxy agent ID.\n"
                     },
                     "runSetupTests": {
                         "type": "boolean",
@@ -10152,7 +10361,8 @@
                     "deprecationMessage": "Configure `schemas` instead. This attribute will be removed in the next major version of the provider."
                 },
                 "schemaChangeHandling": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The value specifying how new source data is handled.\n"
                 },
                 "schemas": {
                     "type": "object",
@@ -10167,11 +10377,16 @@
                 },
                 "timeouts": {
                     "$ref": "#/types/fivetran:index/ConnectorSchemaConfigTimeouts:ConnectorSchemaConfigTimeouts"
+                },
+                "validationLevel": {
+                    "type": "string",
+                    "description": "The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,\nfail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column\nnames. The resource will try to fetch columns for every configured table and verify column names.\n"
                 }
             },
             "required": [
                 "connectorId",
-                "schemaChangeHandling"
+                "schemaChangeHandling",
+                "validationLevel"
             ],
             "inputProperties": {
                 "connectorId": {
@@ -10186,7 +10401,8 @@
                     "deprecationMessage": "Configure `schemas` instead. This attribute will be removed in the next major version of the provider."
                 },
                 "schemaChangeHandling": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The value specifying how new source data is handled.\n"
                 },
                 "schemas": {
                     "type": "object",
@@ -10201,6 +10417,10 @@
                 },
                 "timeouts": {
                     "$ref": "#/types/fivetran:index/ConnectorSchemaConfigTimeouts:ConnectorSchemaConfigTimeouts"
+                },
+                "validationLevel": {
+                    "type": "string",
+                    "description": "The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,\nfail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column\nnames. The resource will try to fetch columns for every configured table and verify column names.\n"
                 }
             },
             "requiredInputs": [
@@ -10222,7 +10442,8 @@
                         "deprecationMessage": "Configure `schemas` instead. This attribute will be removed in the next major version of the provider."
                     },
                     "schemaChangeHandling": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The value specifying how new source data is handled.\n"
                     },
                     "schemas": {
                         "type": "object",
@@ -10237,6 +10458,10 @@
                     },
                     "timeouts": {
                         "$ref": "#/types/fivetran:index/ConnectorSchemaConfigTimeouts:ConnectorSchemaConfigTimeouts"
+                    },
+                    "validationLevel": {
+                        "type": "string",
+                        "description": "The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,\nfail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column\nnames. The resource will try to fetch columns for every configured table and verify column names.\n"
                     }
                 },
                 "type": "object"
@@ -10599,6 +10824,14 @@
                     "type": "string",
                     "description": "The unique identifier for the Group within the Fivetran system.\n"
                 },
+                "localProcessingAgentId": {
+                    "type": "string",
+                    "description": "The local processing agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                },
+                "networkingMethod": {
+                    "type": "string",
+                    "description": "Possible values: Directly, SshTunnel, ProxyAgent.\n"
+                },
                 "region": {
                     "type": "string",
                     "description": "Data processing location. This is where Fivetran will operate and run computation on data.\n"
@@ -10634,6 +10867,7 @@
             "required": [
                 "daylightSavingTimeEnabled",
                 "groupId",
+                "networkingMethod",
                 "region",
                 "runSetupTests",
                 "service",
@@ -10653,6 +10887,14 @@
                 "groupId": {
                     "type": "string",
                     "description": "The unique identifier for the Group within the Fivetran system.\n"
+                },
+                "localProcessingAgentId": {
+                    "type": "string",
+                    "description": "The local processing agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                },
+                "networkingMethod": {
+                    "type": "string",
+                    "description": "Possible values: Directly, SshTunnel, ProxyAgent.\n"
                 },
                 "region": {
                     "type": "string",
@@ -10701,6 +10943,14 @@
                     "groupId": {
                         "type": "string",
                         "description": "The unique identifier for the Group within the Fivetran system.\n"
+                    },
+                    "localProcessingAgentId": {
+                        "type": "string",
+                        "description": "The local processing agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                    },
+                    "networkingMethod": {
+                        "type": "string",
+                        "description": "Possible values: Directly, SshTunnel, ProxyAgent.\n"
                     },
                     "region": {
                         "type": "string",
@@ -11009,6 +11259,203 @@
                         "items": {
                             "$ref": "#/types/fivetran:index/GroupUsersUser:GroupUsersUser"
                         }
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "fivetran:index/localProcessingAgent:LocalProcessingAgent": {
+            "description": "This resource allows you to create, update, and delete local processing agents.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst testLpa = new fivetran.LocalProcessingAgent(\"testLpa\", {\n    displayName: \"display_name\",\n    groupId: \"group_id\",\n}, {\n    provider: fivetran_provider,\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\ntest_lpa = fivetran.LocalProcessingAgent(\"testLpa\",\n    display_name=\"display_name\",\n    group_id=\"group_id\",\n    opts=pulumi.ResourceOptions(provider=fivetran_provider))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testLpa = new Fivetran.LocalProcessingAgent(\"testLpa\", new()\n    {\n        DisplayName = \"display_name\",\n        GroupId = \"group_id\",\n    }, new CustomResourceOptions\n    {\n        Provider = fivetran_provider,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewLocalProcessingAgent(ctx, \"testLpa\", \u0026fivetran.LocalProcessingAgentArgs{\n\t\t\tDisplayName: pulumi.String(\"display_name\"),\n\t\t\tGroupId:     pulumi.String(\"group_id\"),\n\t\t}, pulumi.Provider(fivetran_provider))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.LocalProcessingAgent;\nimport com.pulumi.fivetran.LocalProcessingAgentArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testLpa = new LocalProcessingAgent(\"testLpa\", LocalProcessingAgentArgs.builder()        \n            .displayName(\"display_name\")\n            .groupId(\"group_id\")\n            .build(), CustomResourceOptions.builder()\n                .provider(fivetran_provider)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testLpa:\n    type: fivetran:LocalProcessingAgent\n    properties:\n      displayName: display_name\n      groupId: group_id\n    options:\n      provider: ${[\"fivetran-provider\"]}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "authJson": {
+                    "type": "string",
+                    "description": "Base64-encoded content of the auth.json file.\n"
+                },
+                "authenticationCounter": {
+                    "type": "integer",
+                    "description": "Determines whether re-authentication needs to be performed.\n"
+                },
+                "configJson": {
+                    "type": "string",
+                    "description": "Base64-encoded content of the config.json file.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The unique name for the local processing agent.\n"
+                },
+                "dockerComposeYaml": {
+                    "type": "string",
+                    "description": "Base64-encoded content of the compose file for the chosen containerization type.\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The unique identifier for the Group within the Fivetran system.\n"
+                },
+                "registeredAt": {
+                    "type": "string",
+                    "description": "The timestamp of the time the local processing agent was created in your account.\n"
+                },
+                "usages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/fivetran:index/LocalProcessingAgentUsage:LocalProcessingAgentUsage"
+                    }
+                }
+            },
+            "required": [
+                "authJson",
+                "authenticationCounter",
+                "configJson",
+                "displayName",
+                "dockerComposeYaml",
+                "groupId",
+                "registeredAt",
+                "usages"
+            ],
+            "inputProperties": {
+                "authenticationCounter": {
+                    "type": "integer",
+                    "description": "Determines whether re-authentication needs to be performed.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The unique name for the local processing agent.\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The unique identifier for the Group within the Fivetran system.\n"
+                }
+            },
+            "requiredInputs": [
+                "displayName",
+                "groupId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering LocalProcessingAgent resources.\n",
+                "properties": {
+                    "authJson": {
+                        "type": "string",
+                        "description": "Base64-encoded content of the auth.json file.\n"
+                    },
+                    "authenticationCounter": {
+                        "type": "integer",
+                        "description": "Determines whether re-authentication needs to be performed.\n"
+                    },
+                    "configJson": {
+                        "type": "string",
+                        "description": "Base64-encoded content of the config.json file.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The unique name for the local processing agent.\n"
+                    },
+                    "dockerComposeYaml": {
+                        "type": "string",
+                        "description": "Base64-encoded content of the compose file for the chosen containerization type.\n"
+                    },
+                    "groupId": {
+                        "type": "string",
+                        "description": "The unique identifier for the Group within the Fivetran system.\n"
+                    },
+                    "registeredAt": {
+                        "type": "string",
+                        "description": "The timestamp of the time the local processing agent was created in your account.\n"
+                    },
+                    "usages": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/LocalProcessingAgentUsage:LocalProcessingAgentUsage"
+                        }
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "fivetran:index/proxyAgent:ProxyAgent": {
+            "description": "This resource allows you to create, update, and delete proxy agent.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst testProxyAgent = new fivetran.ProxyAgent(\"testProxyAgent\", {\n    displayName: \"display_name\",\n    groupRegion: \"group_region\",\n}, {\n    provider: fivetran_provider,\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\ntest_proxy_agent = fivetran.ProxyAgent(\"testProxyAgent\",\n    display_name=\"display_name\",\n    group_region=\"group_region\",\n    opts=pulumi.ResourceOptions(provider=fivetran_provider))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testProxyAgent = new Fivetran.ProxyAgent(\"testProxyAgent\", new()\n    {\n        DisplayName = \"display_name\",\n        GroupRegion = \"group_region\",\n    }, new CustomResourceOptions\n    {\n        Provider = fivetran_provider,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewProxyAgent(ctx, \"testProxyAgent\", \u0026fivetran.ProxyAgentArgs{\n\t\t\tDisplayName: pulumi.String(\"display_name\"),\n\t\t\tGroupRegion: pulumi.String(\"group_region\"),\n\t\t}, pulumi.Provider(fivetran_provider))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.ProxyAgent;\nimport com.pulumi.fivetran.ProxyAgentArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testProxyAgent = new ProxyAgent(\"testProxyAgent\", ProxyAgentArgs.builder()        \n            .displayName(\"display_name\")\n            .groupRegion(\"group_region\")\n            .build(), CustomResourceOptions.builder()\n                .provider(fivetran_provider)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testProxyAgent:\n    type: fivetran:ProxyAgent\n    properties:\n      displayName: display_name\n      groupRegion: group_region\n    options:\n      provider: ${[\"fivetran-provider\"]}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "createdBy": {
+                    "type": "string",
+                    "description": "The actor who created the proxy agent.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Proxy agent name.\n"
+                },
+                "groupRegion": {
+                    "type": "string",
+                    "description": "Data processing location. This is where Fivetran will operate and run computation on data.\n"
+                },
+                "proxyServerUri": {
+                    "type": "string",
+                    "description": "The proxy server URI.\n"
+                },
+                "registredAt": {
+                    "type": "string",
+                    "description": "The timestamp of the time the proxy agent was created in your account.\n"
+                },
+                "salt": {
+                    "type": "string",
+                    "description": "The salt.\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "The auth token.\n"
+                }
+            },
+            "required": [
+                "createdBy",
+                "displayName",
+                "groupRegion",
+                "proxyServerUri",
+                "registredAt",
+                "salt",
+                "token"
+            ],
+            "inputProperties": {
+                "displayName": {
+                    "type": "string",
+                    "description": "Proxy agent name.\n"
+                },
+                "groupRegion": {
+                    "type": "string",
+                    "description": "Data processing location. This is where Fivetran will operate and run computation on data.\n"
+                }
+            },
+            "requiredInputs": [
+                "displayName",
+                "groupRegion"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ProxyAgent resources.\n",
+                "properties": {
+                    "createdBy": {
+                        "type": "string",
+                        "description": "The actor who created the proxy agent.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "Proxy agent name.\n"
+                    },
+                    "groupRegion": {
+                        "type": "string",
+                        "description": "Data processing location. This is where Fivetran will operate and run computation on data.\n"
+                    },
+                    "proxyServerUri": {
+                        "type": "string",
+                        "description": "The proxy server URI.\n"
+                    },
+                    "registredAt": {
+                        "type": "string",
+                        "description": "The timestamp of the time the proxy agent was created in your account.\n"
+                    },
+                    "salt": {
+                        "type": "string",
+                        "description": "The salt.\n"
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "The auth token.\n"
                     }
                 },
                 "type": "object"
@@ -11647,7 +12094,13 @@
                     "id": {
                         "type": "string"
                     },
+                    "localProcessingAgentId": {
+                        "type": "string"
+                    },
                     "name": {
+                        "type": "string"
+                    },
+                    "networkingMethod": {
                         "type": "string"
                     },
                     "pauseAfterTrial": {
@@ -11655,6 +12108,9 @@
                     },
                     "paused": {
                         "type": "boolean"
+                    },
+                    "proxyAgentId": {
+                        "type": "string"
                     },
                     "scheduleType": {
                         "type": "string"
@@ -11683,9 +12139,12 @@
                     "failedAt",
                     "groupId",
                     "id",
+                    "localProcessingAgentId",
                     "name",
+                    "networkingMethod",
                     "pauseAfterTrial",
                     "paused",
+                    "proxyAgentId",
                     "scheduleType",
                     "service",
                     "serviceVersion",
@@ -12111,6 +12570,12 @@
                     "id": {
                         "type": "string"
                     },
+                    "localProcessingAgentId": {
+                        "type": "string"
+                    },
+                    "networkingMethod": {
+                        "type": "string"
+                    },
                     "region": {
                         "type": "string"
                     },
@@ -12129,6 +12594,8 @@
                     "daylightSavingTimeEnabled",
                     "groupId",
                     "id",
+                    "localProcessingAgentId",
+                    "networkingMethod",
                     "region",
                     "service",
                     "setupStatus",
@@ -12513,6 +12980,173 @@
                     "id": {
                         "type": "string",
                         "description": "The ID of this resource.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            }
+        },
+        "fivetran:index/getLocalProcessingAgent:getLocalProcessingAgent": {
+            "description": "This data source returns a local processing agent object.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst localProcessingAgent = fivetran.getLocalProcessingAgent({\n    id: \"local_processing_agent_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nlocal_processing_agent = fivetran.get_local_processing_agent(id=\"local_processing_agent_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var localProcessingAgent = Fivetran.GetLocalProcessingAgent.Invoke(new()\n    {\n        Id = \"local_processing_agent_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupLocalProcessingAgent(ctx, \u0026fivetran.LookupLocalProcessingAgentArgs{\n\t\t\tId: \"local_processing_agent_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetLocalProcessingAgentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var localProcessingAgent = FivetranFunctions.getLocalProcessingAgent(GetLocalProcessingAgentArgs.builder()\n            .id(\"local_processing_agent_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  localProcessingAgent:\n    fn::invoke:\n      Function: fivetran:getLocalProcessingAgent\n      Arguments:\n        id: local_processing_agent_id\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getLocalProcessingAgent.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the local processing agent within your account.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getLocalProcessingAgent.\n",
+                "properties": {
+                    "displayName": {
+                        "type": "string",
+                        "description": "The unique name for the local processing agent.\n"
+                    },
+                    "groupId": {
+                        "type": "string",
+                        "description": "The unique identifier for the Group within the Fivetran system.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the local processing agent within your account.\n"
+                    },
+                    "registeredAt": {
+                        "type": "string",
+                        "description": "The timestamp of the time the local processing agent was created in your account.\n"
+                    },
+                    "usages": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getLocalProcessingAgentUsage:getLocalProcessingAgentUsage"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "displayName",
+                    "groupId",
+                    "id",
+                    "registeredAt",
+                    "usages"
+                ]
+            }
+        },
+        "fivetran:index/getLocalProcessingAgents:getLocalProcessingAgents": {
+            "description": "This data source returns a list of all local processing agents within your Fivetran account.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst localProcessingAgents = fivetran.getLocalProcessingAgents({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nlocal_processing_agents = fivetran.get_local_processing_agents()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var localProcessingAgents = Fivetran.GetLocalProcessingAgents.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetLocalProcessingAgents(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var localProcessingAgents = FivetranFunctions.getLocalProcessingAgents();\n\n    }\n}\n```\n```yaml\nvariables:\n  localProcessingAgents:\n    fn::invoke:\n      Function: fivetran:getLocalProcessingAgents\n      Arguments: {}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "outputs": {
+                "description": "A collection of values returned by getLocalProcessingAgents.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getLocalProcessingAgentsItem:getLocalProcessingAgentsItem"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "items",
+                    "id"
+                ]
+            }
+        },
+        "fivetran:index/getProxyAgent:getProxyAgent": {
+            "description": "This data source returns a proxy agent object.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst proxyAgent = fivetran.getProxyAgent({\n    id: \"proxy_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nproxy_agent = fivetran.get_proxy_agent(id=\"proxy_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var proxyAgent = Fivetran.GetProxyAgent.Invoke(new()\n    {\n        Id = \"proxy_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupProxyAgent(ctx, \u0026fivetran.LookupProxyAgentArgs{\n\t\t\tId: \"proxy_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetProxyAgentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var proxyAgent = FivetranFunctions.getProxyAgent(GetProxyAgentArgs.builder()\n            .id(\"proxy_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  proxyAgent:\n    fn::invoke:\n      Function: fivetran:getProxyAgent\n      Arguments:\n        id: proxy_id\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getProxyAgent.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the proxy within your account.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getProxyAgent.\n",
+                "properties": {
+                    "createdBy": {
+                        "type": "string",
+                        "description": "The actor who created the proxy agent.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "Proxy agent name.\n"
+                    },
+                    "groupRegion": {
+                        "type": "string",
+                        "description": "Data processing location. This is where Fivetran will operate and run computation on data.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the proxy within your account.\n"
+                    },
+                    "registredAt": {
+                        "type": "string",
+                        "description": "The timestamp of the time the proxy agent was created in your account.\n"
+                    },
+                    "salt": {
+                        "type": "string",
+                        "description": "The salt.\n"
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "The auth token.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "createdBy",
+                    "displayName",
+                    "groupRegion",
+                    "id",
+                    "registredAt",
+                    "salt",
+                    "token"
+                ]
+            }
+        },
+        "fivetran:index/getProxyAgents:getProxyAgents": {
+            "description": "This data source returns a list of all proxy agents within your Fivetran account.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst proxyAgents = fivetran.getProxyAgents({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nproxy_agents = fivetran.get_proxy_agents()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var proxyAgents = Fivetran.GetProxyAgents.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetProxyAgents(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetProxyAgentsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var proxyAgents = FivetranFunctions.getProxyAgents();\n\n    }\n}\n```\n```yaml\nvariables:\n  proxyAgents:\n    fn::invoke:\n      Function: fivetran:getProxyAgents\n      Arguments: {}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getProxyAgents.\n",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getProxyAgentsItem:getProxyAgentsItem"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getProxyAgents.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getProxyAgentsItem:getProxyAgentsItem"
+                        }
                     }
                 },
                 "type": "object",

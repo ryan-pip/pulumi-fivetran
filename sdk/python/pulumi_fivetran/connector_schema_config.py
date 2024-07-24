@@ -21,12 +21,17 @@ class ConnectorSchemaConfigArgs:
                  schema: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]] = None,
                  schemas: Optional[pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]]] = None,
                  schemas_json: Optional[pulumi.Input[str]] = None,
-                 timeouts: Optional[pulumi.Input['ConnectorSchemaConfigTimeoutsArgs']] = None):
+                 timeouts: Optional[pulumi.Input['ConnectorSchemaConfigTimeoutsArgs']] = None,
+                 validation_level: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ConnectorSchemaConfig resource.
         :param pulumi.Input[str] connector_id: The unique identifier for the connector within the Fivetran system.
+        :param pulumi.Input[str] schema_change_handling: The value specifying how new source data is handled.
         :param pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]] schemas: Map of schema configurations.
         :param pulumi.Input[str] schemas_json: Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
+        :param pulumi.Input[str] validation_level: The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
+               fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
+               names. The resource will try to fetch columns for every configured table and verify column names.
         """
         pulumi.set(__self__, "connector_id", connector_id)
         pulumi.set(__self__, "schema_change_handling", schema_change_handling)
@@ -41,6 +46,8 @@ class ConnectorSchemaConfigArgs:
             pulumi.set(__self__, "schemas_json", schemas_json)
         if timeouts is not None:
             pulumi.set(__self__, "timeouts", timeouts)
+        if validation_level is not None:
+            pulumi.set(__self__, "validation_level", validation_level)
 
     @property
     @pulumi.getter(name="connectorId")
@@ -57,6 +64,9 @@ class ConnectorSchemaConfigArgs:
     @property
     @pulumi.getter(name="schemaChangeHandling")
     def schema_change_handling(self) -> pulumi.Input[str]:
+        """
+        The value specifying how new source data is handled.
+        """
         return pulumi.get(self, "schema_change_handling")
 
     @schema_change_handling.setter
@@ -108,6 +118,20 @@ class ConnectorSchemaConfigArgs:
     def timeouts(self, value: Optional[pulumi.Input['ConnectorSchemaConfigTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
+    @property
+    @pulumi.getter(name="validationLevel")
+    def validation_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
+        fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
+        names. The resource will try to fetch columns for every configured table and verify column names.
+        """
+        return pulumi.get(self, "validation_level")
+
+    @validation_level.setter
+    def validation_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "validation_level", value)
+
 
 @pulumi.input_type
 class _ConnectorSchemaConfigState:
@@ -117,12 +141,17 @@ class _ConnectorSchemaConfigState:
                  schema_change_handling: Optional[pulumi.Input[str]] = None,
                  schemas: Optional[pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]]] = None,
                  schemas_json: Optional[pulumi.Input[str]] = None,
-                 timeouts: Optional[pulumi.Input['ConnectorSchemaConfigTimeoutsArgs']] = None):
+                 timeouts: Optional[pulumi.Input['ConnectorSchemaConfigTimeoutsArgs']] = None,
+                 validation_level: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ConnectorSchemaConfig resources.
         :param pulumi.Input[str] connector_id: The unique identifier for the connector within the Fivetran system.
+        :param pulumi.Input[str] schema_change_handling: The value specifying how new source data is handled.
         :param pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]] schemas: Map of schema configurations.
         :param pulumi.Input[str] schemas_json: Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
+        :param pulumi.Input[str] validation_level: The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
+               fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
+               names. The resource will try to fetch columns for every configured table and verify column names.
         """
         if connector_id is not None:
             pulumi.set(__self__, "connector_id", connector_id)
@@ -139,6 +168,8 @@ class _ConnectorSchemaConfigState:
             pulumi.set(__self__, "schemas_json", schemas_json)
         if timeouts is not None:
             pulumi.set(__self__, "timeouts", timeouts)
+        if validation_level is not None:
+            pulumi.set(__self__, "validation_level", validation_level)
 
     @property
     @pulumi.getter(name="connectorId")
@@ -167,6 +198,9 @@ class _ConnectorSchemaConfigState:
     @property
     @pulumi.getter(name="schemaChangeHandling")
     def schema_change_handling(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value specifying how new source data is handled.
+        """
         return pulumi.get(self, "schema_change_handling")
 
     @schema_change_handling.setter
@@ -206,6 +240,20 @@ class _ConnectorSchemaConfigState:
     def timeouts(self, value: Optional[pulumi.Input['ConnectorSchemaConfigTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
+    @property
+    @pulumi.getter(name="validationLevel")
+    def validation_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
+        fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
+        names. The resource will try to fetch columns for every configured table and verify column names.
+        """
+        return pulumi.get(self, "validation_level")
+
+    @validation_level.setter
+    def validation_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "validation_level", value)
+
 
 class ConnectorSchemaConfig(pulumi.CustomResource):
     @overload
@@ -218,6 +266,7 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
                  schemas: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ConnectorSchemaConfigSchemasArgs']]]]] = None,
                  schemas_json: Optional[pulumi.Input[str]] = None,
                  timeouts: Optional[pulumi.Input[pulumi.InputType['ConnectorSchemaConfigTimeoutsArgs']]] = None,
+                 validation_level: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         ## Import
@@ -227,8 +276,12 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connector_id: The unique identifier for the connector within the Fivetran system.
+        :param pulumi.Input[str] schema_change_handling: The value specifying how new source data is handled.
         :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ConnectorSchemaConfigSchemasArgs']]]] schemas: Map of schema configurations.
         :param pulumi.Input[str] schemas_json: Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
+        :param pulumi.Input[str] validation_level: The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
+               fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
+               names. The resource will try to fetch columns for every configured table and verify column names.
         """
         ...
     @overload
@@ -262,6 +315,7 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
                  schemas: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ConnectorSchemaConfigSchemasArgs']]]]] = None,
                  schemas_json: Optional[pulumi.Input[str]] = None,
                  timeouts: Optional[pulumi.Input[pulumi.InputType['ConnectorSchemaConfigTimeoutsArgs']]] = None,
+                 validation_level: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -281,6 +335,7 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
             __props__.__dict__["schemas"] = schemas
             __props__.__dict__["schemas_json"] = schemas_json
             __props__.__dict__["timeouts"] = timeouts
+            __props__.__dict__["validation_level"] = validation_level
         super(ConnectorSchemaConfig, __self__).__init__(
             'fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig',
             resource_name,
@@ -296,7 +351,8 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
             schema_change_handling: Optional[pulumi.Input[str]] = None,
             schemas: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ConnectorSchemaConfigSchemasArgs']]]]] = None,
             schemas_json: Optional[pulumi.Input[str]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['ConnectorSchemaConfigTimeoutsArgs']]] = None) -> 'ConnectorSchemaConfig':
+            timeouts: Optional[pulumi.Input[pulumi.InputType['ConnectorSchemaConfigTimeoutsArgs']]] = None,
+            validation_level: Optional[pulumi.Input[str]] = None) -> 'ConnectorSchemaConfig':
         """
         Get an existing ConnectorSchemaConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -305,8 +361,12 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connector_id: The unique identifier for the connector within the Fivetran system.
+        :param pulumi.Input[str] schema_change_handling: The value specifying how new source data is handled.
         :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ConnectorSchemaConfigSchemasArgs']]]] schemas: Map of schema configurations.
         :param pulumi.Input[str] schemas_json: Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
+        :param pulumi.Input[str] validation_level: The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
+               fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
+               names. The resource will try to fetch columns for every configured table and verify column names.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -318,6 +378,7 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
         __props__.__dict__["schemas"] = schemas
         __props__.__dict__["schemas_json"] = schemas_json
         __props__.__dict__["timeouts"] = timeouts
+        __props__.__dict__["validation_level"] = validation_level
         return ConnectorSchemaConfig(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -339,6 +400,9 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
     @property
     @pulumi.getter(name="schemaChangeHandling")
     def schema_change_handling(self) -> pulumi.Output[str]:
+        """
+        The value specifying how new source data is handled.
+        """
         return pulumi.get(self, "schema_change_handling")
 
     @property
@@ -361,4 +425,14 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
     @pulumi.getter
     def timeouts(self) -> pulumi.Output[Optional['outputs.ConnectorSchemaConfigTimeouts']]:
         return pulumi.get(self, "timeouts")
+
+    @property
+    @pulumi.getter(name="validationLevel")
+    def validation_level(self) -> pulumi.Output[str]:
+        """
+        The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
+        fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
+        names. The resource will try to fetch columns for every configured table and verify column names.
+        """
+        return pulumi.get(self, "validation_level")
 
