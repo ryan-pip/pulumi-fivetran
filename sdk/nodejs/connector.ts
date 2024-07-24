@@ -55,10 +55,23 @@ export class Connector extends pulumi.CustomResource {
      */
     public readonly groupId!: pulumi.Output<string>;
     /**
+     * The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+     * value is specified, the system will try to associate the connection with an existing agent.
+     */
+    public readonly localProcessingAgentId!: pulumi.Output<string | undefined>;
+    /**
      * The name used both as the connector's name within the Fivetran system and as the source schema's name within your
      * destination.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Possible values: Directly, SshTunnel, ProxyAgent.
+     */
+    public readonly networkingMethod!: pulumi.Output<string>;
+    /**
+     * The proxy agent ID.
+     */
+    public readonly proxyAgentId!: pulumi.Output<string | undefined>;
     /**
      * Specifies whether the setup tests should be run automatically. The default value is TRUE.
      */
@@ -100,7 +113,10 @@ export class Connector extends pulumi.CustomResource {
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["destinationSchema"] = state ? state.destinationSchema : undefined;
             resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["localProcessingAgentId"] = state ? state.localProcessingAgentId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkingMethod"] = state ? state.networkingMethod : undefined;
+            resourceInputs["proxyAgentId"] = state ? state.proxyAgentId : undefined;
             resourceInputs["runSetupTests"] = state ? state.runSetupTests : undefined;
             resourceInputs["service"] = state ? state.service : undefined;
             resourceInputs["timeouts"] = state ? state.timeouts : undefined;
@@ -118,6 +134,9 @@ export class Connector extends pulumi.CustomResource {
             resourceInputs["config"] = args ? args.config : undefined;
             resourceInputs["destinationSchema"] = args ? args.destinationSchema : undefined;
             resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["localProcessingAgentId"] = args ? args.localProcessingAgentId : undefined;
+            resourceInputs["networkingMethod"] = args ? args.networkingMethod : undefined;
+            resourceInputs["proxyAgentId"] = args ? args.proxyAgentId : undefined;
             resourceInputs["runSetupTests"] = args ? args.runSetupTests : undefined;
             resourceInputs["service"] = args ? args.service : undefined;
             resourceInputs["timeouts"] = args ? args.timeouts : undefined;
@@ -152,10 +171,23 @@ export interface ConnectorState {
      */
     groupId?: pulumi.Input<string>;
     /**
+     * The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+     * value is specified, the system will try to associate the connection with an existing agent.
+     */
+    localProcessingAgentId?: pulumi.Input<string>;
+    /**
      * The name used both as the connector's name within the Fivetran system and as the source schema's name within your
      * destination.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Possible values: Directly, SshTunnel, ProxyAgent.
+     */
+    networkingMethod?: pulumi.Input<string>;
+    /**
+     * The proxy agent ID.
+     */
+    proxyAgentId?: pulumi.Input<string>;
     /**
      * Specifies whether the setup tests should be run automatically. The default value is TRUE.
      */
@@ -190,6 +222,19 @@ export interface ConnectorArgs {
      * The unique identifier for the Group (Destination) within the Fivetran system.
      */
     groupId: pulumi.Input<string>;
+    /**
+     * The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+     * value is specified, the system will try to associate the connection with an existing agent.
+     */
+    localProcessingAgentId?: pulumi.Input<string>;
+    /**
+     * Possible values: Directly, SshTunnel, ProxyAgent.
+     */
+    networkingMethod?: pulumi.Input<string>;
+    /**
+     * The proxy agent ID.
+     */
+    proxyAgentId?: pulumi.Input<string>;
     /**
      * Specifies whether the setup tests should be run automatically. The default value is TRUE.
      */

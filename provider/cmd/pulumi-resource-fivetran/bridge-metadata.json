@@ -14,6 +14,8 @@
             "fivetran:index/externalLogging:ExternalLogging": "fivetran_external_logging",
             "fivetran:index/group:Group": "fivetran_group",
             "fivetran:index/groupUsers:GroupUsers": "fivetran_group_users",
+            "fivetran:index/localProcessingAgent:LocalProcessingAgent": "fivetran_local_processing_agent",
+            "fivetran:index/proxyAgent:ProxyAgent": "fivetran_proxy_agent",
             "fivetran:index/team:Team": "fivetran_team",
             "fivetran:index/teamConnectorMembership:TeamConnectorMembership": "fivetran_team_connector_membership",
             "fivetran:index/teamGroupMembership:TeamGroupMembership": "fivetran_team_group_membership",
@@ -42,6 +44,10 @@
             "fivetran:index/getGroupSshKey:getGroupSshKey": "fivetran_group_ssh_key",
             "fivetran:index/getGroupUsers:getGroupUsers": "fivetran_group_users",
             "fivetran:index/getGroups:getGroups": "fivetran_groups",
+            "fivetran:index/getLocalProcessingAgent:getLocalProcessingAgent": "fivetran_local_processing_agent",
+            "fivetran:index/getLocalProcessingAgents:getLocalProcessingAgents": "fivetran_local_processing_agents",
+            "fivetran:index/getProxyAgent:getProxyAgent": "fivetran_proxy_agent",
+            "fivetran:index/getProxyAgents:getProxyAgents": "fivetran_proxy_agents",
             "fivetran:index/getRoles:getRoles": "fivetran_roles",
             "fivetran:index/getTeam:getTeam": "fivetran_team",
             "fivetran:index/getTeamConnectorMemberships:getTeamConnectorMemberships": "fivetran_team_connector_memberships",
@@ -730,6 +736,9 @@
                 "subDomain": "sub_domain",
                 "workspaceId": "workspace_id"
             },
+            "fivetran:index/LocalProcessingAgentUsage:LocalProcessingAgentUsage": {
+                "connectionId": "connection_id"
+            },
             "fivetran:index/TeamConnectorMembershipConnector:TeamConnectorMembershipConnector": {
                 "connectorId": "connector_id",
                 "createdAt": "created_at"
@@ -754,6 +763,9 @@
                 "createdAt": "created_at",
                 "destinationSchema": "destination_schema",
                 "groupId": "group_id",
+                "localProcessingAgentId": "local_processing_agent_id",
+                "networkingMethod": "networking_method",
+                "proxyAgentId": "proxy_agent_id",
                 "runSetupTests": "run_setup_tests",
                 "trustCertificates": "trust_certificates",
                 "trustFingerprints": "trust_fingerprints"
@@ -776,7 +788,8 @@
             "fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig": {
                 "connectorId": "connector_id",
                 "schemaChangeHandling": "schema_change_handling",
-                "schemasJson": "schemas_json"
+                "schemasJson": "schemas_json",
+                "validationLevel": "validation_level"
             },
             "fivetran:index/dbtProject:DbtProject": {
                 "createdAt": "created_at",
@@ -803,6 +816,8 @@
             "fivetran:index/destination:Destination": {
                 "daylightSavingTimeEnabled": "daylight_saving_time_enabled",
                 "groupId": "group_id",
+                "localProcessingAgentId": "local_processing_agent_id",
+                "networkingMethod": "networking_method",
                 "runSetupTests": "run_setup_tests",
                 "setupStatus": "setup_status",
                 "timeZoneOffset": "time_zone_offset",
@@ -828,7 +843,10 @@
                 "destinationSchema": "destination_schema",
                 "failedAt": "failed_at",
                 "groupId": "group_id",
+                "localProcessingAgentId": "local_processing_agent_id",
+                "networkingMethod": "networking_method",
                 "pauseAfterTrial": "pause_after_trial",
+                "proxyAgentId": "proxy_agent_id",
                 "scheduleType": "schedule_type",
                 "serviceVersion": "service_version",
                 "succeededAt": "succeeded_at",
@@ -1440,6 +1458,8 @@
             "fivetran:index/getDestination:getDestination": {
                 "daylightSavingTimeEnabled": "daylight_saving_time_enabled",
                 "groupId": "group_id",
+                "localProcessingAgentId": "local_processing_agent_id",
+                "networkingMethod": "networking_method",
                 "setupStatus": "setup_status",
                 "timeZoneOffset": "time_zone_offset"
             },
@@ -1572,6 +1592,36 @@
                 "createdAt": "created_at",
                 "lastUpdated": "last_updated"
             },
+            "fivetran:index/getLocalProcessingAgent:getLocalProcessingAgent": {
+                "displayName": "display_name",
+                "groupId": "group_id",
+                "registeredAt": "registered_at",
+                "usages": "usage"
+            },
+            "fivetran:index/getLocalProcessingAgentUsage:getLocalProcessingAgentUsage": {
+                "connectionId": "connection_id"
+            },
+            "fivetran:index/getLocalProcessingAgentsItem:getLocalProcessingAgentsItem": {
+                "displayName": "display_name",
+                "groupId": "group_id",
+                "registeredAt": "registered_at",
+                "usages": "usage"
+            },
+            "fivetran:index/getLocalProcessingAgentsItemUsage:getLocalProcessingAgentsItemUsage": {
+                "connectionId": "connection_id"
+            },
+            "fivetran:index/getProxyAgent:getProxyAgent": {
+                "createdBy": "created_by",
+                "displayName": "display_name",
+                "groupRegion": "group_region",
+                "registredAt": "registred_at"
+            },
+            "fivetran:index/getProxyAgentsItem:getProxyAgentsItem": {
+                "createdBy": "created_by",
+                "displayName": "display_name",
+                "groupRegion": "group_region",
+                "registredAt": "registred_at"
+            },
             "fivetran:index/getRolesRole:getRolesRole": {
                 "isCustom": "is_custom",
                 "scopes": "scope"
@@ -1647,6 +1697,23 @@
                 "groupId": "group_id",
                 "lastUpdated": "last_updated",
                 "users": "user"
+            },
+            "fivetran:index/localProcessingAgent:LocalProcessingAgent": {
+                "authJson": "auth_json",
+                "authenticationCounter": "authentication_counter",
+                "configJson": "config_json",
+                "displayName": "display_name",
+                "dockerComposeYaml": "docker_compose_yaml",
+                "groupId": "group_id",
+                "registeredAt": "registered_at",
+                "usages": "usage"
+            },
+            "fivetran:index/proxyAgent:ProxyAgent": {
+                "createdBy": "created_by",
+                "displayName": "display_name",
+                "groupRegion": "group_region",
+                "proxyServerUri": "proxy_server_uri",
+                "registredAt": "registred_at"
             },
             "fivetran:index/teamConnectorMembership:TeamConnectorMembership": {
                 "connectors": "connector",

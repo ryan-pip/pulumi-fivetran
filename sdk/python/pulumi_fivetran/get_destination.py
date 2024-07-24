@@ -23,7 +23,7 @@ class GetDestinationResult:
     """
     A collection of values returned by getDestination.
     """
-    def __init__(__self__, config=None, daylight_saving_time_enabled=None, group_id=None, id=None, region=None, service=None, setup_status=None, time_zone_offset=None):
+    def __init__(__self__, config=None, daylight_saving_time_enabled=None, group_id=None, id=None, local_processing_agent_id=None, networking_method=None, region=None, service=None, setup_status=None, time_zone_offset=None):
         if config and not isinstance(config, dict):
             raise TypeError("Expected argument 'config' to be a dict")
         pulumi.set(__self__, "config", config)
@@ -36,6 +36,12 @@ class GetDestinationResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if local_processing_agent_id and not isinstance(local_processing_agent_id, str):
+            raise TypeError("Expected argument 'local_processing_agent_id' to be a str")
+        pulumi.set(__self__, "local_processing_agent_id", local_processing_agent_id)
+        if networking_method and not isinstance(networking_method, str):
+            raise TypeError("Expected argument 'networking_method' to be a str")
+        pulumi.set(__self__, "networking_method", networking_method)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -70,6 +76,16 @@ class GetDestinationResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="localProcessingAgentId")
+    def local_processing_agent_id(self) -> str:
+        return pulumi.get(self, "local_processing_agent_id")
+
+    @property
+    @pulumi.getter(name="networkingMethod")
+    def networking_method(self) -> str:
+        return pulumi.get(self, "networking_method")
+
+    @property
     @pulumi.getter
     def region(self) -> str:
         return pulumi.get(self, "region")
@@ -100,6 +116,8 @@ class AwaitableGetDestinationResult(GetDestinationResult):
             daylight_saving_time_enabled=self.daylight_saving_time_enabled,
             group_id=self.group_id,
             id=self.id,
+            local_processing_agent_id=self.local_processing_agent_id,
+            networking_method=self.networking_method,
             region=self.region,
             service=self.service,
             setup_status=self.setup_status,
@@ -132,6 +150,8 @@ def get_destination(config: Optional[pulumi.InputType['GetDestinationConfigArgs'
         daylight_saving_time_enabled=pulumi.get(__ret__, 'daylight_saving_time_enabled'),
         group_id=pulumi.get(__ret__, 'group_id'),
         id=pulumi.get(__ret__, 'id'),
+        local_processing_agent_id=pulumi.get(__ret__, 'local_processing_agent_id'),
+        networking_method=pulumi.get(__ret__, 'networking_method'),
         region=pulumi.get(__ret__, 'region'),
         service=pulumi.get(__ret__, 'service'),
         setup_status=pulumi.get(__ret__, 'setup_status'),
