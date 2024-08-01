@@ -105,7 +105,7 @@ class Group(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_fivetran as fivetran
+        import pulumi_provider_fivetran as fivetran
 
         group = fivetran.Group("group")
         ```
@@ -153,7 +153,7 @@ class Group(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_fivetran as fivetran
+        import pulumi_provider_fivetran as fivetran
 
         group = fivetran.Group("group")
         ```

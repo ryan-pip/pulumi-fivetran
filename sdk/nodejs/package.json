@@ -1,5 +1,5 @@
 {
-    "name": "@pulumi/fivetran",
+    "name": "@ryan-pip/pulumi-fivetran",
     "version": "${VERSION}",
     "description": "A Pulumi package for creating and managing fivetran cloud resources.",
     "keywords": [

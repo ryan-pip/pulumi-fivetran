@@ -333,7 +333,7 @@ class User(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_fivetran as fivetran
+        import pulumi_provider_fivetran as fivetran
 
         user = fivetran.User("user",
             email="user@email.address.com",
@@ -392,7 +392,7 @@ class User(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_fivetran as fivetran
+        import pulumi_provider_fivetran as fivetran
 
         user = fivetran.User("user",
             email="user@email.address.com",

@@ -99,7 +99,7 @@ class ConnectorFingerprints(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_fivetran as fivetran
+        import pulumi_provider_fivetran as fivetran
 
         my_connector_approved_fingerprints = fivetran.ConnectorFingerprints("myConnectorApprovedFingerprints",
             connector_id=fivetran_connector["my_connector"]["id"],
@@ -158,7 +158,7 @@ class ConnectorFingerprints(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_fivetran as fivetran
+        import pulumi_provider_fivetran as fivetran
 
         my_connector_approved_fingerprints = fivetran.ConnectorFingerprints("myConnectorApprovedFingerprints",
             connector_id=fivetran_connector["my_connector"]["id"],

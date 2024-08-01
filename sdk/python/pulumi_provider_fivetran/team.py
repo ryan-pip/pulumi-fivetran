@@ -138,7 +138,7 @@ class Team(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_fivetran as fivetran
+        import pulumi_provider_fivetran as fivetran
 
         test_team = fivetran.Team("testTeam",
             description="test_description",
@@ -191,7 +191,7 @@ class Team(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_fivetran as fivetran
+        import pulumi_provider_fivetran as fivetran
 
         test_team = fivetran.Team("testTeam",
             description="test_description",

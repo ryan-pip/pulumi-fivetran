@@ -68,10 +68,10 @@ from . import outputs
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
-    import pulumi_fivetran.config as __config
+    import pulumi_provider_fivetran.config as __config
     config = __config
 else:
-    config = _utilities.lazy_import('pulumi_fivetran.config')
+    config = _utilities.lazy_import('pulumi_provider_fivetran.config')
 
 _utilities.register(
     resource_modules="""
@@ -79,7 +79,7 @@ _utilities.register(
  {
   "pkg": "fivetran",
   "mod": "index/connector",
-  "fqn": "pulumi_fivetran",
+  "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/connector:Connector": "Connector"
   }
@@ -87,7 +87,7 @@ _utilities.register(
  {
   "pkg": "fivetran",
   "mod": "index/connectorCertificates",
-  "fqn": "pulumi_fivetran",
+  "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/connectorCertificates:ConnectorCertificates": "ConnectorCertificates"
   }
@@ -95,7 +95,7 @@ _utilities.register(
  {
   "pkg": "fivetran",
   "mod": "index/connectorFingerprints",
-  "fqn": "pulumi_fivetran",
+  "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/connectorFingerprints:ConnectorFingerprints": "ConnectorFingerprints"
   }
@@ -103,7 +103,7 @@ _utilities.register(
  {
   "pkg": "fivetran",
   "mod": "index/connectorSchedule",
-  "fqn": "pulumi_fivetran",
+  "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/connectorSchedule:ConnectorSchedule": "ConnectorSchedule"
   }
@@ -111,7 +111,7 @@ _utilities.register(
  {
   "pkg": "fivetran",
   "mod": "index/connectorSchemaConfig",
-  "fqn": "pulumi_fivetran",
+  "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig": "ConnectorSchemaConfig"
   }
@@ -119,7 +119,7 @@ _utilities.register(
  {
   "pkg": "fivetran",
   "mod": "index/dbtProject",
-  "fqn": "pulumi_fivetran",
+  "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/dbtProject:DbtProject": "DbtProject"
   }
@@ -127,7 +127,7 @@ _utilities.register(
  {
   "pkg": "fivetran",
   "mod": "index/dbtTransformation",
-  "fqn": "pulumi_fivetran",
+  "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/dbtTransformation:DbtTransformation": "DbtTransformation"
   }
@@ -135,7 +135,7 @@ _utilities.register(
  {
   "pkg": "fivetran",
   "mod": "index/destination",
-  "fqn": "pulumi_fivetran",
+  "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/destination:Destination": "Destination"
   }
@@ -143,7 +143,7 @@ _utilities.register(
  {
   "pkg": "fivetran",
   "mod": "index/destinationCertificates",
-  "fqn": "pulumi_fivetran",
+  "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/destinationCertificates:DestinationCertificates": "DestinationCertificates"
   }
@@ -151,7 +151,7 @@ _utilities.register(
  {
   "pkg": "fivetran",
   "mod": "index/destinationFingerprints",
-  "fqn": "pulumi_fivetran",
+  "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/destinationFingerprints:DestinationFingerprints": "DestinationFingerprints"
   }
@@ -159,7 +159,7 @@ _utilities.register(
  {
   "pkg": "fivetran",
   "mod": "index/externalLogging",
-  "fqn": "pulumi_fivetran",
+  "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/externalLogging:ExternalLogging": "ExternalLogging"
   }
@@ -167,7 +167,7 @@ _utilities.register(
  {
   "pkg": "fivetran",
   "mod": "index/group",
-  "fqn": "pulumi_fivetran",
+  "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/group:Group": "Group"
   }
@@ -175,7 +175,7 @@ _utilities.register(
  {
   "pkg": "fivetran",
   "mod": "index/groupUsers",
-  "fqn": "pulumi_fivetran",
+  "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/groupUsers:GroupUsers": "GroupUsers"
   }
@@ -183,7 +183,7 @@ _utilities.register(
  {
   "pkg": "fivetran",
   "mod": "index/localProcessingAgent",
-  "fqn": "pulumi_fivetran",
+  "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/localProcessingAgent:LocalProcessingAgent": "LocalProcessingAgent"
   }
@@ -191,7 +191,7 @@ _utilities.register(
  {
   "pkg": "fivetran",
   "mod": "index/proxyAgent",
-  "fqn": "pulumi_fivetran",
+  "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/proxyAgent:ProxyAgent": "ProxyAgent"
   }
@@ -199,7 +199,7 @@ _utilities.register(
  {
   "pkg": "fivetran",
   "mod": "index/team",
-  "fqn": "pulumi_fivetran",
+  "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/team:Team": "Team"
   }
@@ -207,7 +207,7 @@ _utilities.register(
  {
   "pkg": "fivetran",
   "mod": "index/teamConnectorMembership",
-  "fqn": "pulumi_fivetran",
+  "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/teamConnectorMembership:TeamConnectorMembership": "TeamConnectorMembership"
   }
@@ -215,7 +215,7 @@ _utilities.register(
  {
   "pkg": "fivetran",
   "mod": "index/teamGroupMembership",
-  "fqn": "pulumi_fivetran",
+  "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/teamGroupMembership:TeamGroupMembership": "TeamGroupMembership"
   }
@@ -223,7 +223,7 @@ _utilities.register(
  {
   "pkg": "fivetran",
   "mod": "index/teamUserMembership",
-  "fqn": "pulumi_fivetran",
+  "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/teamUserMembership:TeamUserMembership": "TeamUserMembership"
   }
@@ -231,7 +231,7 @@ _utilities.register(
  {
   "pkg": "fivetran",
   "mod": "index/user",
-  "fqn": "pulumi_fivetran",
+  "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/user:User": "User"
   }
@@ -239,7 +239,7 @@ _utilities.register(
  {
   "pkg": "fivetran",
   "mod": "index/userConnectorMembership",
-  "fqn": "pulumi_fivetran",
+  "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/userConnectorMembership:UserConnectorMembership": "UserConnectorMembership"
   }
@@ -247,7 +247,7 @@ _utilities.register(
  {
   "pkg": "fivetran",
   "mod": "index/userGroupMembership",
-  "fqn": "pulumi_fivetran",
+  "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/userGroupMembership:UserGroupMembership": "UserGroupMembership"
   }
@@ -255,7 +255,7 @@ _utilities.register(
  {
   "pkg": "fivetran",
   "mod": "index/webhook",
-  "fqn": "pulumi_fivetran",
+  "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/webhook:Webhook": "Webhook"
   }
@@ -267,7 +267,7 @@ _utilities.register(
  {
   "pkg": "fivetran",
   "token": "pulumi:providers:fivetran",
-  "fqn": "pulumi_fivetran",
+  "fqn": "pulumi_provider_fivetran",
   "class": "Provider"
  }
 ]

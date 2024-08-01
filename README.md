@@ -11,13 +11,13 @@ This package is available for several languages/platforms:
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
 ```bash
-npm install @pulumi/fivetran
+npm install @ryan-pip/pulumi-fivetran
 ```
 
 or `yarn`:
 
 ```bash
-yarn add @pulumi/foo
+yarn add @ryan-pip/pulumi-fivetran
 ```
 
 ### Python
@@ -25,7 +25,7 @@ yarn add @pulumi/foo
 To use from Python, install using `pip`:
 
 ```bash
-pip install pulumi_fivetran
+pip install pulumi_provider_fivetran
 ```
 
 ### Go

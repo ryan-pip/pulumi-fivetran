@@ -99,7 +99,7 @@ class TeamUserMembership(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_fivetran as fivetran
+        import pulumi_provider_fivetran as fivetran
 
         test_team_user_membership = fivetran.TeamUserMembership("testTeamUserMembership",
             team_id="test_team",
@@ -159,7 +159,7 @@ class TeamUserMembership(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_fivetran as fivetran
+        import pulumi_provider_fivetran as fivetran
 
         test_team_user_membership = fivetran.TeamUserMembership("testTeamUserMembership",
             team_id="test_team",

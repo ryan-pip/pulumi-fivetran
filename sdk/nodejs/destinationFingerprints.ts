@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fivetran from "@pulumi/fivetran";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
  * const myDestinationApprovedFingerprints = new fivetran.DestinationFingerprints("myDestinationApprovedFingerprints", {
  *     destinationId: fivetran_destination.my_destination.id,

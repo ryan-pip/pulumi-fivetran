@@ -99,7 +99,7 @@ class TeamConnectorMembership(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_fivetran as fivetran
+        import pulumi_provider_fivetran as fivetran
 
         test_team_connector_membership = fivetran.TeamConnectorMembership("testTeamConnectorMembership",
             team_id="test_team",
@@ -161,7 +161,7 @@ class TeamConnectorMembership(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_fivetran as fivetran
+        import pulumi_provider_fivetran as fivetran
 
         test_team_connector_membership = fivetran.TeamConnectorMembership("testTeamConnectorMembership",
             team_id="test_team",

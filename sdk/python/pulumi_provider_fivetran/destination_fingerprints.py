@@ -99,7 +99,7 @@ class DestinationFingerprints(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_fivetran as fivetran
+        import pulumi_provider_fivetran as fivetran
 
         my_destination_approved_fingerprints = fivetran.DestinationFingerprints("myDestinationApprovedFingerprints",
             destination_id=fivetran_destination["my_destination"]["id"],
@@ -158,7 +158,7 @@ class DestinationFingerprints(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_fivetran as fivetran
+        import pulumi_provider_fivetran as fivetran
 
         my_destination_approved_fingerprints = fivetran.DestinationFingerprints("myDestinationApprovedFingerprints",
             destination_id=fivetran_destination["my_destination"]["id"],
