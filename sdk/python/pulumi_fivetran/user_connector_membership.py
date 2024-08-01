@@ -115,18 +115,34 @@ class UserConnectorMembership(pulumi.CustomResource):
                     created_at="2020-05-25T15:26:47.306509Z",
                 ),
             ],
-            opts=pulumi.ResourceOptions(provider=fivetran_provider))
+            opts = pulumi.ResourceOptions(provider=fivetran_provider))
         ```
 
         ## Import
 
-        1. To import an existing `fivetran_user_connector_membership` resource into your Terraform state, you need to get `user_id` and `connector_id` You can retrieve all users using the [fivetran_users data source](/docs/data-sources/users). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_user_connector_membership" "my_imported_fivetran_user_connector_membership" { } 3. Run the `pulumi import` command
+        1. To import an existing `fivetran_user_connector_membership` resource into your Terraform state, you need to get `user_id` and `connector_id`
+
+        You can retrieve all users using the [fivetran_users data source](/docs/data-sources/users).
+
+        2. Define an empty resource in your `.tf` configuration:
+
+        hcl
+
+        resource "fivetran_user_connector_membership" "my_imported_fivetran_user_connector_membership" {
+
+        }
+
+        3. Run the `pulumi import` command:
 
         ```sh
-         $ pulumi import fivetran:index/userConnectorMembership:UserConnectorMembership my_imported_fivetran_user_connector_membership {user_id}
+        $ pulumi import fivetran:index/userConnectorMembership:UserConnectorMembership my_imported_fivetran_user_connector_membership {user_id}
         ```
 
-         4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_user_connector_membership.my_imported_fivetran_user_connector_membership' 5. Copy the values and paste them to your `.tf` configuration.
+        4. Use the `terraform state show` command to get the values from the state:
+
+        terraform state show 'fivetran_user_connector_membership.my_imported_fivetran_user_connector_membership'
+
+        5. Copy the values and paste them to your `.tf` configuration.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -161,18 +177,34 @@ class UserConnectorMembership(pulumi.CustomResource):
                     created_at="2020-05-25T15:26:47.306509Z",
                 ),
             ],
-            opts=pulumi.ResourceOptions(provider=fivetran_provider))
+            opts = pulumi.ResourceOptions(provider=fivetran_provider))
         ```
 
         ## Import
 
-        1. To import an existing `fivetran_user_connector_membership` resource into your Terraform state, you need to get `user_id` and `connector_id` You can retrieve all users using the [fivetran_users data source](/docs/data-sources/users). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_user_connector_membership" "my_imported_fivetran_user_connector_membership" { } 3. Run the `pulumi import` command
+        1. To import an existing `fivetran_user_connector_membership` resource into your Terraform state, you need to get `user_id` and `connector_id`
+
+        You can retrieve all users using the [fivetran_users data source](/docs/data-sources/users).
+
+        2. Define an empty resource in your `.tf` configuration:
+
+        hcl
+
+        resource "fivetran_user_connector_membership" "my_imported_fivetran_user_connector_membership" {
+
+        }
+
+        3. Run the `pulumi import` command:
 
         ```sh
-         $ pulumi import fivetran:index/userConnectorMembership:UserConnectorMembership my_imported_fivetran_user_connector_membership {user_id}
+        $ pulumi import fivetran:index/userConnectorMembership:UserConnectorMembership my_imported_fivetran_user_connector_membership {user_id}
         ```
 
-         4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_user_connector_membership.my_imported_fivetran_user_connector_membership' 5. Copy the values and paste them to your `.tf` configuration.
+        4. Use the `terraform state show` command to get the values from the state:
+
+        terraform state show 'fivetran_user_connector_membership.my_imported_fivetran_user_connector_membership'
+
+        5. Copy the values and paste them to your `.tf` configuration.
 
         :param str resource_name: The name of the resource.
         :param UserConnectorMembershipArgs args: The arguments to use to populate this resource's properties.

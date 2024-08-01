@@ -48,7 +48,7 @@ func GetTeams(ctx *pulumi.Context, args *GetTeamsArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getTeams.
 type GetTeamsArgs struct {
-	// The unique identifier for the team within your account.
+	// The ID of this resource.
 	Id    *string        `pulumi:"id"`
 	Teams []GetTeamsTeam `pulumi:"teams"`
 }
@@ -75,7 +75,7 @@ func GetTeamsOutput(ctx *pulumi.Context, args GetTeamsOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getTeams.
 type GetTeamsOutputArgs struct {
-	// The unique identifier for the team within your account.
+	// The ID of this resource.
 	Id    pulumi.StringPtrInput  `pulumi:"id"`
 	Teams GetTeamsTeamArrayInput `pulumi:"teams"`
 }

@@ -220,7 +220,7 @@ class LocalProcessingAgent(pulumi.CustomResource):
         test_lpa = fivetran.LocalProcessingAgent("testLpa",
             display_name="display_name",
             group_id="group_id",
-            opts=pulumi.ResourceOptions(provider=fivetran_provider))
+            opts = pulumi.ResourceOptions(provider=fivetran_provider))
         ```
 
         :param str resource_name: The name of the resource.
@@ -247,7 +247,7 @@ class LocalProcessingAgent(pulumi.CustomResource):
         test_lpa = fivetran.LocalProcessingAgent("testLpa",
             display_name="display_name",
             group_id="group_id",
-            opts=pulumi.ResourceOptions(provider=fivetran_provider))
+            opts = pulumi.ResourceOptions(provider=fivetran_provider))
         ```
 
         :param str resource_name: The name of the resource.

@@ -189,7 +189,7 @@ class ProxyAgent(pulumi.CustomResource):
         test_proxy_agent = fivetran.ProxyAgent("testProxyAgent",
             display_name="display_name",
             group_region="group_region",
-            opts=pulumi.ResourceOptions(provider=fivetran_provider))
+            opts = pulumi.ResourceOptions(provider=fivetran_provider))
         ```
 
         :param str resource_name: The name of the resource.
@@ -215,7 +215,7 @@ class ProxyAgent(pulumi.CustomResource):
         test_proxy_agent = fivetran.ProxyAgent("testProxyAgent",
             display_name="display_name",
             group_region="group_region",
-            opts=pulumi.ResourceOptions(provider=fivetran_provider))
+            opts = pulumi.ResourceOptions(provider=fivetran_provider))
         ```
 
         :param str resource_name: The name of the resource.

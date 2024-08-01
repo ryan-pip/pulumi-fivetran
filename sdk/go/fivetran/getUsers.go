@@ -48,7 +48,7 @@ func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getUsers.
 type GetUsersArgs struct {
-	// The unique identifier for the user within your account.
+	// The ID of this resource.
 	Id    *string        `pulumi:"id"`
 	Users []GetUsersUser `pulumi:"users"`
 }
@@ -75,7 +75,7 @@ func GetUsersOutput(ctx *pulumi.Context, args GetUsersOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getUsers.
 type GetUsersOutputArgs struct {
-	// The unique identifier for the user within your account.
+	// The ID of this resource.
 	Id    pulumi.StringPtrInput  `pulumi:"id"`
 	Users GetUsersUserArrayInput `pulumi:"users"`
 }
