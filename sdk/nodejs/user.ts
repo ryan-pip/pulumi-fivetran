@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fivetran from "@pulumi/fivetran";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
  * const user = new fivetran.User("user", {
  *     email: "user@email.address.com",

@@ -111,7 +111,7 @@ class GroupUsers(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_fivetran as fivetran
+        import pulumi_provider_fivetran as fivetran
 
         group_users = fivetran.GroupUsers("groupUsers",
             group_id=fivetran_group["group"]["id"],
@@ -144,7 +144,7 @@ class GroupUsers(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_fivetran as fivetran
+        import pulumi_provider_fivetran as fivetran
 
         group_users = fivetran.GroupUsers("groupUsers",
             group_id=fivetran_group["group"]["id"],

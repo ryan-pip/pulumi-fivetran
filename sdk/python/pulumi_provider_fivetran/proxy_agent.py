@@ -184,7 +184,7 @@ class ProxyAgent(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_fivetran as fivetran
+        import pulumi_provider_fivetran as fivetran
 
         test_proxy_agent = fivetran.ProxyAgent("testProxyAgent",
             display_name="display_name",
@@ -210,7 +210,7 @@ class ProxyAgent(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_fivetran as fivetran
+        import pulumi_provider_fivetran as fivetran
 
         test_proxy_agent = fivetran.ProxyAgent("testProxyAgent",
             display_name="display_name",

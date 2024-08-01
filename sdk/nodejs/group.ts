@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fivetran from "@pulumi/fivetran";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
  * const group = new fivetran.Group("group", {});
  * ```

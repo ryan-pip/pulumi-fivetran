@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fivetran from "@pulumi/fivetran";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
  * const myConnectorSchedule = new fivetran.ConnectorSchedule("myConnectorSchedule", {
  *     connectorId: fivetran_connector.my_connector.id,

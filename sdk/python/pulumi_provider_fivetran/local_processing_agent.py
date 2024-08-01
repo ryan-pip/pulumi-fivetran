@@ -215,7 +215,7 @@ class LocalProcessingAgent(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_fivetran as fivetran
+        import pulumi_provider_fivetran as fivetran
 
         test_lpa = fivetran.LocalProcessingAgent("testLpa",
             display_name="display_name",
@@ -242,7 +242,7 @@ class LocalProcessingAgent(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_fivetran as fivetran
+        import pulumi_provider_fivetran as fivetran
 
         test_lpa = fivetran.LocalProcessingAgent("testLpa",
             display_name="display_name",
