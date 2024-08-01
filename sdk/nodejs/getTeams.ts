@@ -33,7 +33,7 @@ export function getTeams(args?: GetTeamsArgs, opts?: pulumi.InvokeOptions): Prom
  */
 export interface GetTeamsArgs {
     /**
-     * The unique identifier for the team within your account.
+     * The ID of this resource.
      */
     id?: string;
     teams?: inputs.GetTeamsTeam[];
@@ -70,7 +70,7 @@ export function getTeamsOutput(args?: GetTeamsOutputArgs, opts?: pulumi.InvokeOp
  */
 export interface GetTeamsOutputArgs {
     /**
-     * The unique identifier for the team within your account.
+     * The ID of this resource.
      */
     id?: pulumi.Input<string>;
     teams?: pulumi.Input<pulumi.Input<inputs.GetTeamsTeamArgs>[]>;

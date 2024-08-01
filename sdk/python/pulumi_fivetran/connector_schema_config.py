@@ -75,10 +75,8 @@ class ConnectorSchemaConfigArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Configure `schemas` instead. This attribute will be removed in the next major version of the provider.""")
     def schema(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]]:
-        warnings.warn("""Configure `schemas` instead. This attribute will be removed in the next major version of the provider.""", DeprecationWarning)
-        pulumi.log.warn("""schema is deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.""")
-
         return pulumi.get(self, "schema")
 
     @schema.setter
@@ -185,10 +183,8 @@ class _ConnectorSchemaConfigState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Configure `schemas` instead. This attribute will be removed in the next major version of the provider.""")
     def schema(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]]:
-        warnings.warn("""Configure `schemas` instead. This attribute will be removed in the next major version of the provider.""", DeprecationWarning)
-        pulumi.log.warn("""schema is deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.""")
-
         return pulumi.get(self, "schema")
 
     @schema.setter
@@ -391,10 +387,8 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Configure `schemas` instead. This attribute will be removed in the next major version of the provider.""")
     def schema(self) -> pulumi.Output[Optional[Sequence['outputs.ConnectorSchemaConfigSchema']]]:
-        warnings.warn("""Configure `schemas` instead. This attribute will be removed in the next major version of the provider.""", DeprecationWarning)
-        pulumi.log.warn("""schema is deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.""")
-
         return pulumi.get(self, "schema")
 
     @property

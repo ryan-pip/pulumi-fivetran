@@ -50,7 +50,7 @@ func LookupDbtProject(ctx *pulumi.Context, args *LookupDbtProjectArgs, opts ...p
 
 // A collection of arguments for invoking getDbtProject.
 type LookupDbtProjectArgs struct {
-	// The unique identifier for the dbt Model within the Fivetran system.
+	// The unique identifier for the dbt Project within the Fivetran system.
 	Id            string                      `pulumi:"id"`
 	ProjectConfig *GetDbtProjectProjectConfig `pulumi:"projectConfig"`
 }
@@ -102,7 +102,7 @@ func LookupDbtProjectOutput(ctx *pulumi.Context, args LookupDbtProjectOutputArgs
 
 // A collection of arguments for invoking getDbtProject.
 type LookupDbtProjectOutputArgs struct {
-	// The unique identifier for the dbt Model within the Fivetran system.
+	// The unique identifier for the dbt Project within the Fivetran system.
 	Id            pulumi.StringInput                 `pulumi:"id"`
 	ProjectConfig GetDbtProjectProjectConfigPtrInput `pulumi:"projectConfig"`
 }

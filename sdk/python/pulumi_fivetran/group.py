@@ -112,13 +112,29 @@ class Group(pulumi.CustomResource):
 
         ## Import
 
-        1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_group" "my_imported_fivetran_group" { } 3. Run the `pulumi import` command
+        1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+
+        To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).
+
+        2. Define an empty resource in your `.tf` configuration:
+
+        hcl
+
+        resource "fivetran_group" "my_imported_fivetran_group" {
+
+        }
+
+        3. Run the `pulumi import` command:
 
         ```sh
-         $ pulumi import fivetran:index/group:Group my_imported_fivetran_group {your Destination Group ID}
+        $ pulumi import fivetran:index/group:Group my_imported_fivetran_group {your Destination Group ID}
         ```
 
-         4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_group.my_imported_fivetran_group' 5. Copy the values and paste them to your `.tf` configuration.
+        4. Use the `terraform state show` command to get the values from the state:
+
+        terraform state show 'fivetran_group.my_imported_fivetran_group'
+
+        5. Copy the values and paste them to your `.tf` configuration.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -144,13 +160,29 @@ class Group(pulumi.CustomResource):
 
         ## Import
 
-        1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_group" "my_imported_fivetran_group" { } 3. Run the `pulumi import` command
+        1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+
+        To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).
+
+        2. Define an empty resource in your `.tf` configuration:
+
+        hcl
+
+        resource "fivetran_group" "my_imported_fivetran_group" {
+
+        }
+
+        3. Run the `pulumi import` command:
 
         ```sh
-         $ pulumi import fivetran:index/group:Group my_imported_fivetran_group {your Destination Group ID}
+        $ pulumi import fivetran:index/group:Group my_imported_fivetran_group {your Destination Group ID}
         ```
 
-         4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_group.my_imported_fivetran_group' 5. Copy the values and paste them to your `.tf` configuration.
+        4. Use the `terraform state show` command to get the values from the state:
+
+        terraform state show 'fivetran_group.my_imported_fivetran_group'
+
+        5. Copy the values and paste them to your `.tf` configuration.
 
         :param str resource_name: The name of the resource.
         :param GroupArgs args: The arguments to use to populate this resource's properties.

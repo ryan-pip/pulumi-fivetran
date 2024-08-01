@@ -33,7 +33,7 @@ export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Prom
  */
 export interface GetUsersArgs {
     /**
-     * The unique identifier for the user within your account.
+     * The ID of this resource.
      */
     id?: string;
     users?: inputs.GetUsersUser[];
@@ -70,7 +70,7 @@ export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOp
  */
 export interface GetUsersOutputArgs {
     /**
-     * The unique identifier for the user within your account.
+     * The ID of this resource.
      */
     id?: pulumi.Input<string>;
     users?: pulumi.Input<pulumi.Input<inputs.GetUsersUserArgs>[]>;

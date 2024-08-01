@@ -34,7 +34,7 @@ export function getDbtProject(args: GetDbtProjectArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetDbtProjectArgs {
     /**
-     * The unique identifier for the dbt Model within the Fivetran system.
+     * The unique identifier for the dbt Project within the Fivetran system.
      */
     id: string;
     projectConfig?: inputs.GetDbtProjectProjectConfig;
@@ -122,7 +122,7 @@ export function getDbtProjectOutput(args: GetDbtProjectOutputArgs, opts?: pulumi
  */
 export interface GetDbtProjectOutputArgs {
     /**
-     * The unique identifier for the dbt Model within the Fivetran system.
+     * The unique identifier for the dbt Project within the Fivetran system.
      */
     id: pulumi.Input<string>;
     projectConfig?: pulumi.Input<inputs.GetDbtProjectProjectConfigArgs>;

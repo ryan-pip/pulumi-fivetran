@@ -37,11 +37,11 @@ export function getGroupConnectors(args: GetGroupConnectorsArgs, opts?: pulumi.I
 export interface GetGroupConnectorsArgs {
     connectors?: inputs.GetGroupConnectorsConnector[];
     /**
-     * The unique identifier for the Connector within the Fivetran system.
+     * The ID of this resource.
      */
     id: string;
     /**
-     * The name used both as the connector's name within the Fivetran system and as the source schema's name within your destination
+     * Optional filter. When defined, the data source will only contain information for the connector with the specified schema name.
      */
     schema?: string;
 }
@@ -85,11 +85,11 @@ export function getGroupConnectorsOutput(args: GetGroupConnectorsOutputArgs, opt
 export interface GetGroupConnectorsOutputArgs {
     connectors?: pulumi.Input<pulumi.Input<inputs.GetGroupConnectorsConnectorArgs>[]>;
     /**
-     * The unique identifier for the Connector within the Fivetran system.
+     * The ID of this resource.
      */
     id: pulumi.Input<string>;
     /**
-     * The name used both as the connector's name within the Fivetran system and as the source schema's name within your destination
+     * Optional filter. When defined, the data source will only contain information for the connector with the specified schema name.
      */
     schema?: pulumi.Input<string>;
 }

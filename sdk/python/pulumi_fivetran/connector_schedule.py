@@ -252,31 +252,43 @@ class ConnectorSchedule(pulumi.CustomResource):
 
         You don't need to import this resource as it is synthetic.
 
-        To fetch schedule values from existing connector use `fivetran_connector` data sourcehcl data "fivetran_connector" "my_connector" {
+        To fetch schedule values from existing connector use `fivetran_connector` data source:
 
-         id = "my_connector_id" } now you can use schedule values from this data_source:
+        hcl
 
-         sync_frequency = data.fivetran_connector.my_connector.sync_frequency
+        data "fivetran_connector" "my_connector" {
 
-         paused = data.fivetran_connector.my_connector.paused This resource manages settings for already existing connector instance and doesn't create a new one. If you already have an existing connector with id = `my_connector_id` just define `fivetran_connector_schedule` resourcehcl resource "fivetran_connector_schedule" "my_connector_schedule" {
+            id = "my_connector_id"
 
-         connector_id = "my_connector_id"
+        }
 
-         sync_frequency
+        now you can use schedule values from this data_source:
 
-         = "360"
+          sync_frequency = data.fivetran_connector.my_connector.sync_frequency
 
-         paused
+          paused = data.fivetran_connector.my_connector.paused
 
-         = false
+        This resource manages settings for already existing connector instance and doesn't create a new one.
 
-         pause_after_trial
+        If you already have an existing connector with id = `my_connector_id` just define `fivetran_connector_schedule` resource:
 
-        = true
+        hcl
 
-         schedule_type
+        resource "fivetran_connector_schedule" "my_connector_schedule" {
 
-        = "auto" } -> NOTEYou can't have several resources managing the same `connector_id`. They will be in conflict ater each `apply`.
+            connector_id = "my_connector_id"
+            
+            sync_frequency     = "360"
+            
+            paused             = false
+            
+            pause_after_trial  = true
+            
+            schedule_type      = "auto"
+
+        }
+
+        -> NOTE: You can't have several resources managing the same `connector_id`. They will be in conflict ater each `apply`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -315,31 +327,43 @@ class ConnectorSchedule(pulumi.CustomResource):
 
         You don't need to import this resource as it is synthetic.
 
-        To fetch schedule values from existing connector use `fivetran_connector` data sourcehcl data "fivetran_connector" "my_connector" {
+        To fetch schedule values from existing connector use `fivetran_connector` data source:
 
-         id = "my_connector_id" } now you can use schedule values from this data_source:
+        hcl
 
-         sync_frequency = data.fivetran_connector.my_connector.sync_frequency
+        data "fivetran_connector" "my_connector" {
 
-         paused = data.fivetran_connector.my_connector.paused This resource manages settings for already existing connector instance and doesn't create a new one. If you already have an existing connector with id = `my_connector_id` just define `fivetran_connector_schedule` resourcehcl resource "fivetran_connector_schedule" "my_connector_schedule" {
+            id = "my_connector_id"
 
-         connector_id = "my_connector_id"
+        }
 
-         sync_frequency
+        now you can use schedule values from this data_source:
 
-         = "360"
+          sync_frequency = data.fivetran_connector.my_connector.sync_frequency
 
-         paused
+          paused = data.fivetran_connector.my_connector.paused
 
-         = false
+        This resource manages settings for already existing connector instance and doesn't create a new one.
 
-         pause_after_trial
+        If you already have an existing connector with id = `my_connector_id` just define `fivetran_connector_schedule` resource:
 
-        = true
+        hcl
 
-         schedule_type
+        resource "fivetran_connector_schedule" "my_connector_schedule" {
 
-        = "auto" } -> NOTEYou can't have several resources managing the same `connector_id`. They will be in conflict ater each `apply`.
+            connector_id = "my_connector_id"
+            
+            sync_frequency     = "360"
+            
+            paused             = false
+            
+            pause_after_trial  = true
+            
+            schedule_type      = "auto"
+
+        }
+
+        -> NOTE: You can't have several resources managing the same `connector_id`. They will be in conflict ater each `apply`.
 
         :param str resource_name: The name of the resource.
         :param ConnectorScheduleArgs args: The arguments to use to populate this resource's properties.

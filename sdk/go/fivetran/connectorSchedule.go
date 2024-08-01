@@ -49,31 +49,43 @@ import (
 //
 // You don't need to import this resource as it is synthetic.
 //
-// To fetch schedule values from existing connector use `fivetran_connector` data sourcehcl data "fivetran_connector" "my_connector" {
+// To fetch schedule values from existing connector use `fivetran_connector` data source:
 //
-//	id = "my_connector_id" } now you can use schedule values from this data_source:
+// hcl
+//
+// data "fivetran_connector" "my_connector" {
+//
+//	id = "my_connector_id"
+//
+// }
+//
+// now you can use schedule values from this data_source:
 //
 //	sync_frequency = data.fivetran_connector.my_connector.sync_frequency
 //
-//	paused = data.fivetran_connector.my_connector.paused This resource manages settings for already existing connector instance and doesn't create a new one. If you already have an existing connector with id = `my_connector_id` just define `fivetran_connector_schedule` resourcehcl resource "fivetran_connector_schedule" "my_connector_schedule" {
+//	paused = data.fivetran_connector.my_connector.paused
+//
+// This resource manages settings for already existing connector instance and doesn't create a new one.
+//
+// If you already have an existing connector with id = `my_connector_id` just define `fivetran_connector_schedule` resource:
+//
+// hcl
+//
+// resource "fivetran_connector_schedule" "my_connector_schedule" {
 //
 //	connector_id = "my_connector_id"
 //
-//	sync_frequency
+//	sync_frequency     = "360"
 //
-//	= "360"
+//	paused             = false
 //
-//	paused
+//	pause_after_trial  = true
 //
-//	= false
+//	schedule_type      = "auto"
 //
-//	pause_after_trial
+// }
 //
-// = true
-//
-//	schedule_type
-//
-// = "auto" } -> NOTEYou can't have several resources managing the same `connector_id`. They will be in conflict ater each `apply`.
+// -> NOTE: You can't have several resources managing the same `connector_id`. They will be in conflict ater each `apply`.
 type ConnectorSchedule struct {
 	pulumi.CustomResourceState
 

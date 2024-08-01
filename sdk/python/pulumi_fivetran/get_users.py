@@ -71,7 +71,7 @@ def get_users(id: Optional[str] = None,
     ```
 
 
-    :param str id: The unique identifier for the user within your account.
+    :param str id: The ID of this resource.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -101,6 +101,6 @@ def get_users_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     ```
 
 
-    :param str id: The unique identifier for the user within your account.
+    :param str id: The ID of this resource.
     """
     ...

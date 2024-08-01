@@ -32,15 +32,29 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * 1. To import an existing `fivetran_destination_fingerprints` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard. 2. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups). 3. Define an empty resource in your `.tf` configurationhcl resource "fivetran_destination_fingerprints" "my_imported_destination_fingerprints" { } 4. Run the `pulumi import` command
+ * 1. To import an existing `fivetran_destination_fingerprints` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+ *
+ * 2. To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).
+ *
+ * 3. Define an empty resource in your `.tf` configuration:
+ *
+ * hcl
+ *
+ * resource "fivetran_destination_fingerprints" "my_imported_destination_fingerprints" {
+ *
+ * }
+ *
+ * 4. Run the `pulumi import` command:
  *
  * ```sh
- *  $ pulumi import fivetran:index/destinationFingerprints:DestinationFingerprints my_imported_destination_fingerprints {your Destination Group ID}
+ * $ pulumi import fivetran:index/destinationFingerprints:DestinationFingerprints my_imported_destination_fingerprints {your Destination Group ID}
  * ```
  *
- * 5.  
+ * 5.  Use the `terraform state show` command to get the values from the state:
  *
- * Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_destination_fingerprints.my_imported_destination_fingerprints' 6. Copy the values and paste them to your `.tf` configuration.
+ * terraform state show 'fivetran_destination_fingerprints.my_imported_destination_fingerprints'
+ *
+ * 6. Copy the values and paste them to your `.tf` configuration.
  */
 export class DestinationFingerprints extends pulumi.CustomResource {
     /**

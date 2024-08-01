@@ -113,18 +113,34 @@ class TeamUserMembership(pulumi.CustomResource):
                     role="Connector Administrator",
                 ),
             ],
-            opts=pulumi.ResourceOptions(provider=fivetran_provider))
+            opts = pulumi.ResourceOptions(provider=fivetran_provider))
         ```
 
         ## Import
 
-        1. To import an existing `fivetran_team_user_membership` resource into your Terraform state, you need to get `team_id` and `user_id` You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_team_user_membership" "my_imported_fivetran_team_user_membership" { } 3. Run the `pulumi import` command
+        1. To import an existing `fivetran_team_user_membership` resource into your Terraform state, you need to get `team_id` and `user_id`
+
+        You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams).
+
+        2. Define an empty resource in your `.tf` configuration:
+
+        hcl
+
+        resource "fivetran_team_user_membership" "my_imported_fivetran_team_user_membership" {
+
+        }
+
+        3. Run the `pulumi import` command:
 
         ```sh
-         $ pulumi import fivetran:index/teamUserMembership:TeamUserMembership my_imported_fivetran_team_user_membership {team_id}
+        $ pulumi import fivetran:index/teamUserMembership:TeamUserMembership my_imported_fivetran_team_user_membership {team_id}
         ```
 
-         4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_team_user_membership.my_imported_fivetran_team_user_membership' 5. Copy the values and paste them to your `.tf` configuration.
+        4. Use the `terraform state show` command to get the values from the state:
+
+        terraform state show 'fivetran_team_user_membership.my_imported_fivetran_team_user_membership'
+
+        5. Copy the values and paste them to your `.tf` configuration.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -157,18 +173,34 @@ class TeamUserMembership(pulumi.CustomResource):
                     role="Connector Administrator",
                 ),
             ],
-            opts=pulumi.ResourceOptions(provider=fivetran_provider))
+            opts = pulumi.ResourceOptions(provider=fivetran_provider))
         ```
 
         ## Import
 
-        1. To import an existing `fivetran_team_user_membership` resource into your Terraform state, you need to get `team_id` and `user_id` You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_team_user_membership" "my_imported_fivetran_team_user_membership" { } 3. Run the `pulumi import` command
+        1. To import an existing `fivetran_team_user_membership` resource into your Terraform state, you need to get `team_id` and `user_id`
+
+        You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams).
+
+        2. Define an empty resource in your `.tf` configuration:
+
+        hcl
+
+        resource "fivetran_team_user_membership" "my_imported_fivetran_team_user_membership" {
+
+        }
+
+        3. Run the `pulumi import` command:
 
         ```sh
-         $ pulumi import fivetran:index/teamUserMembership:TeamUserMembership my_imported_fivetran_team_user_membership {team_id}
+        $ pulumi import fivetran:index/teamUserMembership:TeamUserMembership my_imported_fivetran_team_user_membership {team_id}
         ```
 
-         4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_team_user_membership.my_imported_fivetran_team_user_membership' 5. Copy the values and paste them to your `.tf` configuration.
+        4. Use the `terraform state show` command to get the values from the state:
+
+        terraform state show 'fivetran_team_user_membership.my_imported_fivetran_team_user_membership'
+
+        5. Copy the values and paste them to your `.tf` configuration.
 
         :param str resource_name: The name of the resource.
         :param TeamUserMembershipArgs args: The arguments to use to populate this resource's properties.

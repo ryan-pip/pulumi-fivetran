@@ -16,15 +16,29 @@ import (
 //
 // ## Import
 //
-// 1. To import an existing `fivetran_user_group_membership` resource into your Terraform state, you need to get `user_id` and `group_id` You can retrieve all users using the [fivetran_users data source](/docs/data-sources/users). 2. Define an empty resource in your `.tf` configurationhcl resource "fivetran_user_group_membership" "my_imported_fivetran_user_group_membership" { } 3. Run the `pulumi import` command
+// 1. To import an existing `fivetran_user_group_membership` resource into your Terraform state, you need to get `user_id` and `group_id`
+//
+// You can retrieve all users using the [fivetran_users data source](/docs/data-sources/users).
+//
+// 2. Define an empty resource in your `.tf` configuration:
+//
+// hcl
+//
+// resource "fivetran_user_group_membership" "my_imported_fivetran_user_group_membership" {
+//
+// }
+//
+// 3. Run the `pulumi import` command:
 //
 // ```sh
-//
-//	$ pulumi import fivetran:index/userGroupMembership:UserGroupMembership my_imported_fivetran_user_group_membership {user_id}
-//
+// $ pulumi import fivetran:index/userGroupMembership:UserGroupMembership my_imported_fivetran_user_group_membership {user_id}
 // ```
 //
-//  4. Use the `terraform state show` command to get the values from the stateterraform state show 'fivetran_user_group_membership.my_imported_fivetran_user_group_membership' 5. Copy the values and paste them to your `.tf` configuration.
+// 4. Use the `terraform state show` command to get the values from the state:
+//
+// terraform state show 'fivetran_user_group_membership.my_imported_fivetran_user_group_membership'
+//
+// 5. Copy the values and paste them to your `.tf` configuration.
 type UserGroupMembership struct {
 	pulumi.CustomResourceState
 
