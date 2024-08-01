@@ -1,0 +1,3 @@
+upstream-provider-org: fivetran
+upstream-provider-name: terraform-provider-fivetran
+remove-plugins: true
