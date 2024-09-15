@@ -67,7 +67,7 @@ class AwaitableGetDestinationFingerprintsResult(GetDestinationFingerprintsResult
             id=self.id)
 
 
-def get_destination_fingerprints(fingerprints: Optional[Sequence[pulumi.InputType['GetDestinationFingerprintsFingerprintArgs']]] = None,
+def get_destination_fingerprints(fingerprints: Optional[Sequence[Union['GetDestinationFingerprintsFingerprintArgs', 'GetDestinationFingerprintsFingerprintArgsDict']]] = None,
                                  id: Optional[str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDestinationFingerprintsResult:
     """
@@ -98,7 +98,7 @@ def get_destination_fingerprints(fingerprints: Optional[Sequence[pulumi.InputTyp
 
 
 @_utilities.lift_output_func(get_destination_fingerprints)
-def get_destination_fingerprints_output(fingerprints: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDestinationFingerprintsFingerprintArgs']]]]] = None,
+def get_destination_fingerprints_output(fingerprints: Optional[pulumi.Input[Optional[Sequence[Union['GetDestinationFingerprintsFingerprintArgs', 'GetDestinationFingerprintsFingerprintArgsDict']]]]] = None,
                                         id: Optional[pulumi.Input[str]] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDestinationFingerprintsResult]:
     """

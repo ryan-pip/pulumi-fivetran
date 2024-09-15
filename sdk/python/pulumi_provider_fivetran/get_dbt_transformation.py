@@ -164,7 +164,7 @@ class AwaitableGetDbtTransformationResult(GetDbtTransformationResult):
 
 
 def get_dbt_transformation(id: Optional[str] = None,
-                           schedule: Optional[pulumi.InputType['GetDbtTransformationScheduleArgs']] = None,
+                           schedule: Optional[Union['GetDbtTransformationScheduleArgs', 'GetDbtTransformationScheduleArgsDict']] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDbtTransformationResult:
     """
     This data source returns a dbt Transformation object.
@@ -203,7 +203,7 @@ def get_dbt_transformation(id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_dbt_transformation)
 def get_dbt_transformation_output(id: Optional[pulumi.Input[str]] = None,
-                                  schedule: Optional[pulumi.Input[Optional[pulumi.InputType['GetDbtTransformationScheduleArgs']]]] = None,
+                                  schedule: Optional[pulumi.Input[Optional[Union['GetDbtTransformationScheduleArgs', 'GetDbtTransformationScheduleArgsDict']]]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDbtTransformationResult]:
     """
     This data source returns a dbt Transformation object.

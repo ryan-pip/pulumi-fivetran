@@ -55,7 +55,7 @@ class AwaitableGetProxyAgentsResult(GetProxyAgentsResult):
             items=self.items)
 
 
-def get_proxy_agents(items: Optional[Sequence[pulumi.InputType['GetProxyAgentsItemArgs']]] = None,
+def get_proxy_agents(items: Optional[Sequence[Union['GetProxyAgentsItemArgs', 'GetProxyAgentsItemArgsDict']]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProxyAgentsResult:
     """
     This data source returns a list of all proxy agents within your Fivetran account.
@@ -80,7 +80,7 @@ def get_proxy_agents(items: Optional[Sequence[pulumi.InputType['GetProxyAgentsIt
 
 
 @_utilities.lift_output_func(get_proxy_agents)
-def get_proxy_agents_output(items: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetProxyAgentsItemArgs']]]]] = None,
+def get_proxy_agents_output(items: Optional[pulumi.Input[Optional[Sequence[Union['GetProxyAgentsItemArgs', 'GetProxyAgentsItemArgsDict']]]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProxyAgentsResult]:
     """
     This data source returns a list of all proxy agents within your Fivetran account.

@@ -67,7 +67,7 @@ class AwaitableGetConnectorCertificatesResult(GetConnectorCertificatesResult):
             id=self.id)
 
 
-def get_connector_certificates(certificates: Optional[Sequence[pulumi.InputType['GetConnectorCertificatesCertificateArgs']]] = None,
+def get_connector_certificates(certificates: Optional[Sequence[Union['GetConnectorCertificatesCertificateArgs', 'GetConnectorCertificatesCertificateArgsDict']]] = None,
                                id: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConnectorCertificatesResult:
     """
@@ -88,7 +88,7 @@ def get_connector_certificates(certificates: Optional[Sequence[pulumi.InputType[
 
 
 @_utilities.lift_output_func(get_connector_certificates)
-def get_connector_certificates_output(certificates: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetConnectorCertificatesCertificateArgs']]]]] = None,
+def get_connector_certificates_output(certificates: Optional[pulumi.Input[Optional[Sequence[Union['GetConnectorCertificatesCertificateArgs', 'GetConnectorCertificatesCertificateArgsDict']]]]] = None,
                                       id: Optional[pulumi.Input[str]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectorCertificatesResult]:
     """

@@ -67,7 +67,7 @@ class AwaitableGetDestinationCertificatesResult(GetDestinationCertificatesResult
             id=self.id)
 
 
-def get_destination_certificates(certificates: Optional[Sequence[pulumi.InputType['GetDestinationCertificatesCertificateArgs']]] = None,
+def get_destination_certificates(certificates: Optional[Sequence[Union['GetDestinationCertificatesCertificateArgs', 'GetDestinationCertificatesCertificateArgsDict']]] = None,
                                  id: Optional[str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDestinationCertificatesResult:
     """
@@ -88,7 +88,7 @@ def get_destination_certificates(certificates: Optional[Sequence[pulumi.InputTyp
 
 
 @_utilities.lift_output_func(get_destination_certificates)
-def get_destination_certificates_output(certificates: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDestinationCertificatesCertificateArgs']]]]] = None,
+def get_destination_certificates_output(certificates: Optional[pulumi.Input[Optional[Sequence[Union['GetDestinationCertificatesCertificateArgs', 'GetDestinationCertificatesCertificateArgsDict']]]]] = None,
                                         id: Optional[pulumi.Input[str]] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDestinationCertificatesResult]:
     """

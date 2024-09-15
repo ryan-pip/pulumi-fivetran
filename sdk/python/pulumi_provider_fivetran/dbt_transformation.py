@@ -292,8 +292,8 @@ class DbtTransformation(pulumi.CustomResource):
                  dbt_project_id: Optional[pulumi.Input[str]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  run_tests: Optional[pulumi.Input[bool]] = None,
-                 schedule: Optional[pulumi.Input[pulumi.InputType['DbtTransformationScheduleArgs']]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['DbtTransformationTimeoutsArgs']]] = None,
+                 schedule: Optional[pulumi.Input[Union['DbtTransformationScheduleArgs', 'DbtTransformationScheduleArgsDict']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['DbtTransformationTimeoutsArgs', 'DbtTransformationTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         Resource is in ALPHA state.
@@ -387,8 +387,8 @@ class DbtTransformation(pulumi.CustomResource):
                  dbt_project_id: Optional[pulumi.Input[str]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  run_tests: Optional[pulumi.Input[bool]] = None,
-                 schedule: Optional[pulumi.Input[pulumi.InputType['DbtTransformationScheduleArgs']]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['DbtTransformationTimeoutsArgs']]] = None,
+                 schedule: Optional[pulumi.Input[Union['DbtTransformationScheduleArgs', 'DbtTransformationScheduleArgsDict']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['DbtTransformationTimeoutsArgs', 'DbtTransformationTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -432,8 +432,8 @@ class DbtTransformation(pulumi.CustomResource):
             output_model_name: Optional[pulumi.Input[str]] = None,
             paused: Optional[pulumi.Input[bool]] = None,
             run_tests: Optional[pulumi.Input[bool]] = None,
-            schedule: Optional[pulumi.Input[pulumi.InputType['DbtTransformationScheduleArgs']]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['DbtTransformationTimeoutsArgs']]] = None) -> 'DbtTransformation':
+            schedule: Optional[pulumi.Input[Union['DbtTransformationScheduleArgs', 'DbtTransformationScheduleArgsDict']]] = None,
+            timeouts: Optional[pulumi.Input[Union['DbtTransformationTimeoutsArgs', 'DbtTransformationTimeoutsArgsDict']]] = None) -> 'DbtTransformation':
         """
         Get an existing DbtTransformation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

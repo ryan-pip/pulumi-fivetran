@@ -56,7 +56,7 @@ class AwaitableGetUsersResult(GetUsersResult):
 
 
 def get_users(id: Optional[str] = None,
-              users: Optional[Sequence[pulumi.InputType['GetUsersUserArgs']]] = None,
+              users: Optional[Sequence[Union['GetUsersUserArgs', 'GetUsersUserArgsDict']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsersResult:
     """
     This data source returns a list of all users within your Fivetran account.
@@ -86,7 +86,7 @@ def get_users(id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_users)
 def get_users_output(id: Optional[pulumi.Input[Optional[str]]] = None,
-                     users: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetUsersUserArgs']]]]] = None,
+                     users: Optional[pulumi.Input[Optional[Sequence[Union['GetUsersUserArgs', 'GetUsersUserArgsDict']]]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUsersResult]:
     """
     This data source returns a list of all users within your Fivetran account.

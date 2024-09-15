@@ -89,7 +89,7 @@ class TeamConnectorMembership(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connectors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TeamConnectorMembershipConnectorArgs']]]]] = None,
+                 connectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TeamConnectorMembershipConnectorArgs', 'TeamConnectorMembershipConnectorArgsDict']]]]] = None,
                  team_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -104,16 +104,16 @@ class TeamConnectorMembership(pulumi.CustomResource):
         test_team_connector_membership = fivetran.TeamConnectorMembership("testTeamConnectorMembership",
             team_id="test_team",
             connectors=[
-                fivetran.TeamConnectorMembershipConnectorArgs(
-                    connector_id="test_connector",
-                    role="Connector Administrator",
-                    created_at="2020-05-25T15:26:47.306509Z",
-                ),
-                fivetran.TeamConnectorMembershipConnectorArgs(
-                    connector_id="test_connector",
-                    role="Connector Administrator",
-                    created_at="2020-05-25T15:26:47.306509Z",
-                ),
+                {
+                    "connector_id": "test_connector",
+                    "role": "Connector Administrator",
+                    "created_at": "2020-05-25T15:26:47.306509Z",
+                },
+                {
+                    "connector_id": "test_connector",
+                    "role": "Connector Administrator",
+                    "created_at": "2020-05-25T15:26:47.306509Z",
+                },
             ],
             opts = pulumi.ResourceOptions(provider=fivetran_provider))
         ```
@@ -166,16 +166,16 @@ class TeamConnectorMembership(pulumi.CustomResource):
         test_team_connector_membership = fivetran.TeamConnectorMembership("testTeamConnectorMembership",
             team_id="test_team",
             connectors=[
-                fivetran.TeamConnectorMembershipConnectorArgs(
-                    connector_id="test_connector",
-                    role="Connector Administrator",
-                    created_at="2020-05-25T15:26:47.306509Z",
-                ),
-                fivetran.TeamConnectorMembershipConnectorArgs(
-                    connector_id="test_connector",
-                    role="Connector Administrator",
-                    created_at="2020-05-25T15:26:47.306509Z",
-                ),
+                {
+                    "connector_id": "test_connector",
+                    "role": "Connector Administrator",
+                    "created_at": "2020-05-25T15:26:47.306509Z",
+                },
+                {
+                    "connector_id": "test_connector",
+                    "role": "Connector Administrator",
+                    "created_at": "2020-05-25T15:26:47.306509Z",
+                },
             ],
             opts = pulumi.ResourceOptions(provider=fivetran_provider))
         ```
@@ -221,7 +221,7 @@ class TeamConnectorMembership(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connectors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TeamConnectorMembershipConnectorArgs']]]]] = None,
+                 connectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TeamConnectorMembershipConnectorArgs', 'TeamConnectorMembershipConnectorArgsDict']]]]] = None,
                  team_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -246,7 +246,7 @@ class TeamConnectorMembership(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connectors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TeamConnectorMembershipConnectorArgs']]]]] = None,
+            connectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TeamConnectorMembershipConnectorArgs', 'TeamConnectorMembershipConnectorArgsDict']]]]] = None,
             team_id: Optional[pulumi.Input[str]] = None) -> 'TeamConnectorMembership':
         """
         Get an existing TeamConnectorMembership resource's state with the given name, id, and optional extra

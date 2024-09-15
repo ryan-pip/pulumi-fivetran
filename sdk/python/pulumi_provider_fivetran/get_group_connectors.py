@@ -67,7 +67,7 @@ class AwaitableGetGroupConnectorsResult(GetGroupConnectorsResult):
             schema=self.schema)
 
 
-def get_group_connectors(connectors: Optional[Sequence[pulumi.InputType['GetGroupConnectorsConnectorArgs']]] = None,
+def get_group_connectors(connectors: Optional[Sequence[Union['GetGroupConnectorsConnectorArgs', 'GetGroupConnectorsConnectorArgsDict']]] = None,
                          id: Optional[str] = None,
                          schema: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupConnectorsResult:
@@ -102,7 +102,7 @@ def get_group_connectors(connectors: Optional[Sequence[pulumi.InputType['GetGrou
 
 
 @_utilities.lift_output_func(get_group_connectors)
-def get_group_connectors_output(connectors: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetGroupConnectorsConnectorArgs']]]]] = None,
+def get_group_connectors_output(connectors: Optional[pulumi.Input[Optional[Sequence[Union['GetGroupConnectorsConnectorArgs', 'GetGroupConnectorsConnectorArgsDict']]]]] = None,
                                 id: Optional[pulumi.Input[str]] = None,
                                 schema: Optional[pulumi.Input[Optional[str]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupConnectorsResult]:

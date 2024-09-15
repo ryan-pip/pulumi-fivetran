@@ -37,7 +37,7 @@ type Connector struct {
 	NetworkingMethod pulumi.StringOutput `pulumi:"networkingMethod"`
 	// The proxy agent ID.
 	ProxyAgentId pulumi.StringPtrOutput `pulumi:"proxyAgentId"`
-	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
+	// Specifies whether the setup tests should be run automatically. The default value is FALSE.
 	RunSetupTests pulumi.BoolOutput `pulumi:"runSetupTests"`
 	// The connector type id within the Fivetran system.
 	Service  pulumi.StringOutput        `pulumi:"service"`
@@ -107,7 +107,7 @@ type connectorState struct {
 	NetworkingMethod *string `pulumi:"networkingMethod"`
 	// The proxy agent ID.
 	ProxyAgentId *string `pulumi:"proxyAgentId"`
-	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
+	// Specifies whether the setup tests should be run automatically. The default value is FALSE.
 	RunSetupTests *bool `pulumi:"runSetupTests"`
 	// The connector type id within the Fivetran system.
 	Service  *string            `pulumi:"service"`
@@ -142,7 +142,7 @@ type ConnectorState struct {
 	NetworkingMethod pulumi.StringPtrInput
 	// The proxy agent ID.
 	ProxyAgentId pulumi.StringPtrInput
-	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
+	// Specifies whether the setup tests should be run automatically. The default value is FALSE.
 	RunSetupTests pulumi.BoolPtrInput
 	// The connector type id within the Fivetran system.
 	Service  pulumi.StringPtrInput
@@ -174,7 +174,7 @@ type connectorArgs struct {
 	NetworkingMethod *string `pulumi:"networkingMethod"`
 	// The proxy agent ID.
 	ProxyAgentId *string `pulumi:"proxyAgentId"`
-	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
+	// Specifies whether the setup tests should be run automatically. The default value is FALSE.
 	RunSetupTests *bool `pulumi:"runSetupTests"`
 	// The connector type id within the Fivetran system.
 	Service  string             `pulumi:"service"`
@@ -203,7 +203,7 @@ type ConnectorArgs struct {
 	NetworkingMethod pulumi.StringPtrInput
 	// The proxy agent ID.
 	ProxyAgentId pulumi.StringPtrInput
-	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
+	// Specifies whether the setup tests should be run automatically. The default value is FALSE.
 	RunSetupTests pulumi.BoolPtrInput
 	// The connector type id within the Fivetran system.
 	Service  pulumi.StringInput
@@ -354,7 +354,7 @@ func (o ConnectorOutput) ProxyAgentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Connector) pulumi.StringPtrOutput { return v.ProxyAgentId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether the setup tests should be run automatically. The default value is TRUE.
+// Specifies whether the setup tests should be run automatically. The default value is FALSE.
 func (o ConnectorOutput) RunSetupTests() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Connector) pulumi.BoolOutput { return v.RunSetupTests }).(pulumi.BoolOutput)
 }

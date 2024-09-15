@@ -73,7 +73,7 @@ export class Connector extends pulumi.CustomResource {
      */
     public readonly proxyAgentId!: pulumi.Output<string | undefined>;
     /**
-     * Specifies whether the setup tests should be run automatically. The default value is TRUE.
+     * Specifies whether the setup tests should be run automatically. The default value is FALSE.
      */
     public readonly runSetupTests!: pulumi.Output<boolean>;
     /**
@@ -189,7 +189,7 @@ export interface ConnectorState {
      */
     proxyAgentId?: pulumi.Input<string>;
     /**
-     * Specifies whether the setup tests should be run automatically. The default value is TRUE.
+     * Specifies whether the setup tests should be run automatically. The default value is FALSE.
      */
     runSetupTests?: pulumi.Input<boolean>;
     /**
@@ -236,7 +236,7 @@ export interface ConnectorArgs {
      */
     proxyAgentId?: pulumi.Input<string>;
     /**
-     * Specifies whether the setup tests should be run automatically. The default value is TRUE.
+     * Specifies whether the setup tests should be run automatically. The default value is FALSE.
      */
     runSetupTests?: pulumi.Input<boolean>;
     /**

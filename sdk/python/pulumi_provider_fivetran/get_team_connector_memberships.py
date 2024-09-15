@@ -67,7 +67,7 @@ class AwaitableGetTeamConnectorMembershipsResult(GetTeamConnectorMembershipsResu
             team_id=self.team_id)
 
 
-def get_team_connector_memberships(connectors: Optional[Sequence[pulumi.InputType['GetTeamConnectorMembershipsConnectorArgs']]] = None,
+def get_team_connector_memberships(connectors: Optional[Sequence[Union['GetTeamConnectorMembershipsConnectorArgs', 'GetTeamConnectorMembershipsConnectorArgsDict']]] = None,
                                    team_id: Optional[str] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTeamConnectorMembershipsResult:
     """
@@ -89,7 +89,7 @@ def get_team_connector_memberships(connectors: Optional[Sequence[pulumi.InputTyp
 
 
 @_utilities.lift_output_func(get_team_connector_memberships)
-def get_team_connector_memberships_output(connectors: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetTeamConnectorMembershipsConnectorArgs']]]]] = None,
+def get_team_connector_memberships_output(connectors: Optional[pulumi.Input[Optional[Sequence[Union['GetTeamConnectorMembershipsConnectorArgs', 'GetTeamConnectorMembershipsConnectorArgsDict']]]]] = None,
                                           team_id: Optional[pulumi.Input[str]] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTeamConnectorMembershipsResult]:
     """

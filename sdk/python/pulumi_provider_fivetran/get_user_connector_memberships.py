@@ -67,7 +67,7 @@ class AwaitableGetUserConnectorMembershipsResult(GetUserConnectorMembershipsResu
             user_id=self.user_id)
 
 
-def get_user_connector_memberships(connectors: Optional[Sequence[pulumi.InputType['GetUserConnectorMembershipsConnectorArgs']]] = None,
+def get_user_connector_memberships(connectors: Optional[Sequence[Union['GetUserConnectorMembershipsConnectorArgs', 'GetUserConnectorMembershipsConnectorArgsDict']]] = None,
                                    user_id: Optional[str] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserConnectorMembershipsResult:
     """
@@ -98,7 +98,7 @@ def get_user_connector_memberships(connectors: Optional[Sequence[pulumi.InputTyp
 
 
 @_utilities.lift_output_func(get_user_connector_memberships)
-def get_user_connector_memberships_output(connectors: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetUserConnectorMembershipsConnectorArgs']]]]] = None,
+def get_user_connector_memberships_output(connectors: Optional[pulumi.Input[Optional[Sequence[Union['GetUserConnectorMembershipsConnectorArgs', 'GetUserConnectorMembershipsConnectorArgsDict']]]]] = None,
                                           user_id: Optional[pulumi.Input[str]] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserConnectorMembershipsResult]:
     """

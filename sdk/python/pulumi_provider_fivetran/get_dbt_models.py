@@ -67,7 +67,7 @@ class AwaitableGetDbtModelsResult(GetDbtModelsResult):
             project_id=self.project_id)
 
 
-def get_dbt_models(models: Optional[Sequence[pulumi.InputType['GetDbtModelsModelArgs']]] = None,
+def get_dbt_models(models: Optional[Sequence[Union['GetDbtModelsModelArgs', 'GetDbtModelsModelArgsDict']]] = None,
                    project_id: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDbtModelsResult:
     """
@@ -98,7 +98,7 @@ def get_dbt_models(models: Optional[Sequence[pulumi.InputType['GetDbtModelsModel
 
 
 @_utilities.lift_output_func(get_dbt_models)
-def get_dbt_models_output(models: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetDbtModelsModelArgs']]]]] = None,
+def get_dbt_models_output(models: Optional[pulumi.Input[Optional[Sequence[Union['GetDbtModelsModelArgs', 'GetDbtModelsModelArgsDict']]]]] = None,
                           project_id: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDbtModelsResult]:
     """

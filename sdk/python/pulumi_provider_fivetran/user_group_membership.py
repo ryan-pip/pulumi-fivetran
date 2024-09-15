@@ -89,7 +89,7 @@ class UserGroupMembership(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserGroupMembershipGroupArgs']]]]] = None,
+                 groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserGroupMembershipGroupArgs', 'UserGroupMembershipGroupArgsDict']]]]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -175,7 +175,7 @@ class UserGroupMembership(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserGroupMembershipGroupArgs']]]]] = None,
+                 groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserGroupMembershipGroupArgs', 'UserGroupMembershipGroupArgsDict']]]]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -200,7 +200,7 @@ class UserGroupMembership(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserGroupMembershipGroupArgs']]]]] = None,
+            groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserGroupMembershipGroupArgs', 'UserGroupMembershipGroupArgsDict']]]]] = None,
             user_id: Optional[pulumi.Input[str]] = None) -> 'UserGroupMembership':
         """
         Get an existing UserGroupMembership resource's state with the given name, id, and optional extra

@@ -56,7 +56,7 @@ class AwaitableGetTeamsResult(GetTeamsResult):
 
 
 def get_teams(id: Optional[str] = None,
-              teams: Optional[Sequence[pulumi.InputType['GetTeamsTeamArgs']]] = None,
+              teams: Optional[Sequence[Union['GetTeamsTeamArgs', 'GetTeamsTeamArgsDict']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTeamsResult:
     """
     This data source returns a list of all teams within your Fivetran account.
@@ -86,7 +86,7 @@ def get_teams(id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_teams)
 def get_teams_output(id: Optional[pulumi.Input[Optional[str]]] = None,
-                     teams: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetTeamsTeamArgs']]]]] = None,
+                     teams: Optional[pulumi.Input[Optional[Sequence[Union['GetTeamsTeamArgs', 'GetTeamsTeamArgsDict']]]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTeamsResult]:
     """
     This data source returns a list of all teams within your Fivetran account.

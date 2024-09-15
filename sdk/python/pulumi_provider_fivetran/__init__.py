@@ -10,6 +10,7 @@ from .connector_certificates import *
 from .connector_fingerprints import *
 from .connector_schedule import *
 from .connector_schema_config import *
+from .dbt_git_project_config import *
 from .dbt_project import *
 from .dbt_transformation import *
 from .destination import *
@@ -114,6 +115,14 @@ _utilities.register(
   "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig": "ConnectorSchemaConfig"
+  }
+ },
+ {
+  "pkg": "fivetran",
+  "mod": "index/dbtGitProjectConfig",
+  "fqn": "pulumi_provider_fivetran",
+  "classes": {
+   "fivetran:index/dbtGitProjectConfig:DbtGitProjectConfig": "DbtGitProjectConfig"
   }
  },
  {

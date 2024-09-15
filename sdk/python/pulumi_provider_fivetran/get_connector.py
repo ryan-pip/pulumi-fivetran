@@ -214,10 +214,10 @@ class AwaitableGetConnectorResult(GetConnectorResult):
             sync_frequency=self.sync_frequency)
 
 
-def get_connector(config: Optional[pulumi.InputType['GetConnectorConfigArgs']] = None,
-                  destination_schema: Optional[pulumi.InputType['GetConnectorDestinationSchemaArgs']] = None,
+def get_connector(config: Optional[Union['GetConnectorConfigArgs', 'GetConnectorConfigArgsDict']] = None,
+                  destination_schema: Optional[Union['GetConnectorDestinationSchemaArgs', 'GetConnectorDestinationSchemaArgsDict']] = None,
                   id: Optional[str] = None,
-                  status: Optional[pulumi.InputType['GetConnectorStatusArgs']] = None,
+                  status: Optional[Union['GetConnectorStatusArgs', 'GetConnectorStatusArgsDict']] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConnectorResult:
     """
     This data source returns a connector object.
@@ -263,10 +263,10 @@ def get_connector(config: Optional[pulumi.InputType['GetConnectorConfigArgs']] =
 
 
 @_utilities.lift_output_func(get_connector)
-def get_connector_output(config: Optional[pulumi.Input[Optional[pulumi.InputType['GetConnectorConfigArgs']]]] = None,
-                         destination_schema: Optional[pulumi.Input[Optional[pulumi.InputType['GetConnectorDestinationSchemaArgs']]]] = None,
+def get_connector_output(config: Optional[pulumi.Input[Optional[Union['GetConnectorConfigArgs', 'GetConnectorConfigArgsDict']]]] = None,
+                         destination_schema: Optional[pulumi.Input[Optional[Union['GetConnectorDestinationSchemaArgs', 'GetConnectorDestinationSchemaArgsDict']]]] = None,
                          id: Optional[pulumi.Input[str]] = None,
-                         status: Optional[pulumi.Input[Optional[pulumi.InputType['GetConnectorStatusArgs']]]] = None,
+                         status: Optional[pulumi.Input[Optional[Union['GetConnectorStatusArgs', 'GetConnectorStatusArgsDict']]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectorResult]:
     """
     This data source returns a connector object.

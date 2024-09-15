@@ -257,11 +257,11 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connector_id: Optional[pulumi.Input[str]] = None,
-                 schema: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectorSchemaConfigSchemaArgs']]]]] = None,
+                 schema: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectorSchemaConfigSchemaArgs', 'ConnectorSchemaConfigSchemaArgsDict']]]]] = None,
                  schema_change_handling: Optional[pulumi.Input[str]] = None,
-                 schemas: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ConnectorSchemaConfigSchemasArgs']]]]] = None,
+                 schemas: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ConnectorSchemaConfigSchemasArgs', 'ConnectorSchemaConfigSchemasArgsDict']]]]] = None,
                  schemas_json: Optional[pulumi.Input[str]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['ConnectorSchemaConfigTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['ConnectorSchemaConfigTimeoutsArgs', 'ConnectorSchemaConfigTimeoutsArgsDict']]] = None,
                  validation_level: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -273,7 +273,7 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connector_id: The unique identifier for the connector within the Fivetran system.
         :param pulumi.Input[str] schema_change_handling: The value specifying how new source data is handled.
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ConnectorSchemaConfigSchemasArgs']]]] schemas: Map of schema configurations.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['ConnectorSchemaConfigSchemasArgs', 'ConnectorSchemaConfigSchemasArgsDict']]]] schemas: Map of schema configurations.
         :param pulumi.Input[str] schemas_json: Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
         :param pulumi.Input[str] validation_level: The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
                fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
@@ -306,11 +306,11 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connector_id: Optional[pulumi.Input[str]] = None,
-                 schema: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectorSchemaConfigSchemaArgs']]]]] = None,
+                 schema: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectorSchemaConfigSchemaArgs', 'ConnectorSchemaConfigSchemaArgsDict']]]]] = None,
                  schema_change_handling: Optional[pulumi.Input[str]] = None,
-                 schemas: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ConnectorSchemaConfigSchemasArgs']]]]] = None,
+                 schemas: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ConnectorSchemaConfigSchemasArgs', 'ConnectorSchemaConfigSchemasArgsDict']]]]] = None,
                  schemas_json: Optional[pulumi.Input[str]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['ConnectorSchemaConfigTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['ConnectorSchemaConfigTimeoutsArgs', 'ConnectorSchemaConfigTimeoutsArgsDict']]] = None,
                  validation_level: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -343,11 +343,11 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             connector_id: Optional[pulumi.Input[str]] = None,
-            schema: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectorSchemaConfigSchemaArgs']]]]] = None,
+            schema: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectorSchemaConfigSchemaArgs', 'ConnectorSchemaConfigSchemaArgsDict']]]]] = None,
             schema_change_handling: Optional[pulumi.Input[str]] = None,
-            schemas: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ConnectorSchemaConfigSchemasArgs']]]]] = None,
+            schemas: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ConnectorSchemaConfigSchemasArgs', 'ConnectorSchemaConfigSchemasArgsDict']]]]] = None,
             schemas_json: Optional[pulumi.Input[str]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['ConnectorSchemaConfigTimeoutsArgs']]] = None,
+            timeouts: Optional[pulumi.Input[Union['ConnectorSchemaConfigTimeoutsArgs', 'ConnectorSchemaConfigTimeoutsArgsDict']]] = None,
             validation_level: Optional[pulumi.Input[str]] = None) -> 'ConnectorSchemaConfig':
         """
         Get an existing ConnectorSchemaConfig resource's state with the given name, id, and optional extra
@@ -358,7 +358,7 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connector_id: The unique identifier for the connector within the Fivetran system.
         :param pulumi.Input[str] schema_change_handling: The value specifying how new source data is handled.
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['ConnectorSchemaConfigSchemasArgs']]]] schemas: Map of schema configurations.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['ConnectorSchemaConfigSchemasArgs', 'ConnectorSchemaConfigSchemasArgsDict']]]] schemas: Map of schema configurations.
         :param pulumi.Input[str] schemas_json: Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
         :param pulumi.Input[str] validation_level: The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
                fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column

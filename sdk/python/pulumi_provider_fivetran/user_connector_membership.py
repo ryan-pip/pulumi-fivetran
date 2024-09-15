@@ -89,7 +89,7 @@ class UserConnectorMembership(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connectors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserConnectorMembershipConnectorArgs']]]]] = None,
+                 connectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserConnectorMembershipConnectorArgs', 'UserConnectorMembershipConnectorArgsDict']]]]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -104,16 +104,16 @@ class UserConnectorMembership(pulumi.CustomResource):
         test_user_connector_membership = fivetran.UserConnectorMembership("testUserConnectorMembership",
             user_id="test_user",
             connectors=[
-                fivetran.UserConnectorMembershipConnectorArgs(
-                    connector_id="test_connector",
-                    role="Connector Administrator",
-                    created_at="2020-05-25T15:26:47.306509Z",
-                ),
-                fivetran.UserConnectorMembershipConnectorArgs(
-                    connector_id="test_connector",
-                    role="Connector Administrator",
-                    created_at="2020-05-25T15:26:47.306509Z",
-                ),
+                {
+                    "connector_id": "test_connector",
+                    "role": "Connector Administrator",
+                    "created_at": "2020-05-25T15:26:47.306509Z",
+                },
+                {
+                    "connector_id": "test_connector",
+                    "role": "Connector Administrator",
+                    "created_at": "2020-05-25T15:26:47.306509Z",
+                },
             ],
             opts = pulumi.ResourceOptions(provider=fivetran_provider))
         ```
@@ -166,16 +166,16 @@ class UserConnectorMembership(pulumi.CustomResource):
         test_user_connector_membership = fivetran.UserConnectorMembership("testUserConnectorMembership",
             user_id="test_user",
             connectors=[
-                fivetran.UserConnectorMembershipConnectorArgs(
-                    connector_id="test_connector",
-                    role="Connector Administrator",
-                    created_at="2020-05-25T15:26:47.306509Z",
-                ),
-                fivetran.UserConnectorMembershipConnectorArgs(
-                    connector_id="test_connector",
-                    role="Connector Administrator",
-                    created_at="2020-05-25T15:26:47.306509Z",
-                ),
+                {
+                    "connector_id": "test_connector",
+                    "role": "Connector Administrator",
+                    "created_at": "2020-05-25T15:26:47.306509Z",
+                },
+                {
+                    "connector_id": "test_connector",
+                    "role": "Connector Administrator",
+                    "created_at": "2020-05-25T15:26:47.306509Z",
+                },
             ],
             opts = pulumi.ResourceOptions(provider=fivetran_provider))
         ```
@@ -221,7 +221,7 @@ class UserConnectorMembership(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connectors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserConnectorMembershipConnectorArgs']]]]] = None,
+                 connectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserConnectorMembershipConnectorArgs', 'UserConnectorMembershipConnectorArgsDict']]]]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -246,7 +246,7 @@ class UserConnectorMembership(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connectors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UserConnectorMembershipConnectorArgs']]]]] = None,
+            connectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserConnectorMembershipConnectorArgs', 'UserConnectorMembershipConnectorArgsDict']]]]] = None,
             user_id: Optional[pulumi.Input[str]] = None) -> 'UserConnectorMembership':
         """
         Get an existing UserConnectorMembership resource's state with the given name, id, and optional extra
