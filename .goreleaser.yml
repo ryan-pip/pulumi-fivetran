@@ -21,7 +21,7 @@ builds:
       - -X github.com/ryan-pip/pulumi-fivetran/provider/pkg/version.Version={{.Tag }}
     main: ./cmd/pulumi-resource-fivetran/
 changelog:
-  skip: true
+  disable: true
 release:
   disable: false
   prerelease: auto
