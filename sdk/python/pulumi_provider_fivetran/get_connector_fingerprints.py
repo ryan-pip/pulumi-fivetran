@@ -67,7 +67,7 @@ class AwaitableGetConnectorFingerprintsResult(GetConnectorFingerprintsResult):
             id=self.id)
 
 
-def get_connector_fingerprints(fingerprints: Optional[Sequence[pulumi.InputType['GetConnectorFingerprintsFingerprintArgs']]] = None,
+def get_connector_fingerprints(fingerprints: Optional[Sequence[Union['GetConnectorFingerprintsFingerprintArgs', 'GetConnectorFingerprintsFingerprintArgsDict']]] = None,
                                id: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConnectorFingerprintsResult:
     """
@@ -98,7 +98,7 @@ def get_connector_fingerprints(fingerprints: Optional[Sequence[pulumi.InputType[
 
 
 @_utilities.lift_output_func(get_connector_fingerprints)
-def get_connector_fingerprints_output(fingerprints: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetConnectorFingerprintsFingerprintArgs']]]]] = None,
+def get_connector_fingerprints_output(fingerprints: Optional[pulumi.Input[Optional[Sequence[Union['GetConnectorFingerprintsFingerprintArgs', 'GetConnectorFingerprintsFingerprintArgsDict']]]]] = None,
                                       id: Optional[pulumi.Input[str]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectorFingerprintsResult]:
     """

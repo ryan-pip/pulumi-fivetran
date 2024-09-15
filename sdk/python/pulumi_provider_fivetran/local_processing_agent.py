@@ -306,7 +306,7 @@ class LocalProcessingAgent(pulumi.CustomResource):
             docker_compose_yaml: Optional[pulumi.Input[str]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
             registered_at: Optional[pulumi.Input[str]] = None,
-            usages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LocalProcessingAgentUsageArgs']]]]] = None) -> 'LocalProcessingAgent':
+            usages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LocalProcessingAgentUsageArgs', 'LocalProcessingAgentUsageArgsDict']]]]] = None) -> 'LocalProcessingAgent':
         """
         Get an existing LocalProcessingAgent resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

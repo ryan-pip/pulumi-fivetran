@@ -36,7 +36,7 @@ class ConnectorArgs:
                value is specified, the system will try to associate the connection with an existing agent.
         :param pulumi.Input[str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
         :param pulumi.Input[str] proxy_agent_id: The proxy agent ID.
-        :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
+        :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is FALSE.
         :param pulumi.Input[bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
                trusted automatically, it has to be approved with [Certificates Management API Approve a destination
                certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
@@ -159,7 +159,7 @@ class ConnectorArgs:
     @pulumi.getter(name="runSetupTests")
     def run_setup_tests(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether the setup tests should be run automatically. The default value is TRUE.
+        Specifies whether the setup tests should be run automatically. The default value is FALSE.
         """
         return pulumi.get(self, "run_setup_tests")
 
@@ -234,7 +234,7 @@ class _ConnectorState:
                destination.
         :param pulumi.Input[str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
         :param pulumi.Input[str] proxy_agent_id: The proxy agent ID.
-        :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
+        :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is FALSE.
         :param pulumi.Input[str] service: The connector type id within the Fivetran system.
         :param pulumi.Input[bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
                trusted automatically, it has to be approved with [Certificates Management API Approve a destination
@@ -391,7 +391,7 @@ class _ConnectorState:
     @pulumi.getter(name="runSetupTests")
     def run_setup_tests(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether the setup tests should be run automatically. The default value is TRUE.
+        Specifies whether the setup tests should be run automatically. The default value is FALSE.
         """
         return pulumi.get(self, "run_setup_tests")
 
@@ -454,16 +454,16 @@ class Connector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth: Optional[pulumi.Input[pulumi.InputType['ConnectorAuthArgs']]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['ConnectorConfigArgs']]] = None,
-                 destination_schema: Optional[pulumi.Input[pulumi.InputType['ConnectorDestinationSchemaArgs']]] = None,
+                 auth: Optional[pulumi.Input[Union['ConnectorAuthArgs', 'ConnectorAuthArgsDict']]] = None,
+                 config: Optional[pulumi.Input[Union['ConnectorConfigArgs', 'ConnectorConfigArgsDict']]] = None,
+                 destination_schema: Optional[pulumi.Input[Union['ConnectorDestinationSchemaArgs', 'ConnectorDestinationSchemaArgsDict']]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  local_processing_agent_id: Optional[pulumi.Input[str]] = None,
                  networking_method: Optional[pulumi.Input[str]] = None,
                  proxy_agent_id: Optional[pulumi.Input[str]] = None,
                  run_setup_tests: Optional[pulumi.Input[bool]] = None,
                  service: Optional[pulumi.Input[str]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['ConnectorTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['ConnectorTimeoutsArgs', 'ConnectorTimeoutsArgsDict']]] = None,
                  trust_certificates: Optional[pulumi.Input[bool]] = None,
                  trust_fingerprints: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -479,7 +479,7 @@ class Connector(pulumi.CustomResource):
                value is specified, the system will try to associate the connection with an existing agent.
         :param pulumi.Input[str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
         :param pulumi.Input[str] proxy_agent_id: The proxy agent ID.
-        :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
+        :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is FALSE.
         :param pulumi.Input[str] service: The connector type id within the Fivetran system.
         :param pulumi.Input[bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
                trusted automatically, it has to be approved with [Certificates Management API Approve a destination
@@ -514,16 +514,16 @@ class Connector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth: Optional[pulumi.Input[pulumi.InputType['ConnectorAuthArgs']]] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['ConnectorConfigArgs']]] = None,
-                 destination_schema: Optional[pulumi.Input[pulumi.InputType['ConnectorDestinationSchemaArgs']]] = None,
+                 auth: Optional[pulumi.Input[Union['ConnectorAuthArgs', 'ConnectorAuthArgsDict']]] = None,
+                 config: Optional[pulumi.Input[Union['ConnectorConfigArgs', 'ConnectorConfigArgsDict']]] = None,
+                 destination_schema: Optional[pulumi.Input[Union['ConnectorDestinationSchemaArgs', 'ConnectorDestinationSchemaArgsDict']]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  local_processing_agent_id: Optional[pulumi.Input[str]] = None,
                  networking_method: Optional[pulumi.Input[str]] = None,
                  proxy_agent_id: Optional[pulumi.Input[str]] = None,
                  run_setup_tests: Optional[pulumi.Input[bool]] = None,
                  service: Optional[pulumi.Input[str]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['ConnectorTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['ConnectorTimeoutsArgs', 'ConnectorTimeoutsArgsDict']]] = None,
                  trust_certificates: Optional[pulumi.Input[bool]] = None,
                  trust_fingerprints: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -564,11 +564,11 @@ class Connector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auth: Optional[pulumi.Input[pulumi.InputType['ConnectorAuthArgs']]] = None,
-            config: Optional[pulumi.Input[pulumi.InputType['ConnectorConfigArgs']]] = None,
+            auth: Optional[pulumi.Input[Union['ConnectorAuthArgs', 'ConnectorAuthArgsDict']]] = None,
+            config: Optional[pulumi.Input[Union['ConnectorConfigArgs', 'ConnectorConfigArgsDict']]] = None,
             connected_by: Optional[pulumi.Input[str]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
-            destination_schema: Optional[pulumi.Input[pulumi.InputType['ConnectorDestinationSchemaArgs']]] = None,
+            destination_schema: Optional[pulumi.Input[Union['ConnectorDestinationSchemaArgs', 'ConnectorDestinationSchemaArgsDict']]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
             local_processing_agent_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -576,7 +576,7 @@ class Connector(pulumi.CustomResource):
             proxy_agent_id: Optional[pulumi.Input[str]] = None,
             run_setup_tests: Optional[pulumi.Input[bool]] = None,
             service: Optional[pulumi.Input[str]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['ConnectorTimeoutsArgs']]] = None,
+            timeouts: Optional[pulumi.Input[Union['ConnectorTimeoutsArgs', 'ConnectorTimeoutsArgsDict']]] = None,
             trust_certificates: Optional[pulumi.Input[bool]] = None,
             trust_fingerprints: Optional[pulumi.Input[bool]] = None) -> 'Connector':
         """
@@ -595,7 +595,7 @@ class Connector(pulumi.CustomResource):
                destination.
         :param pulumi.Input[str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
         :param pulumi.Input[str] proxy_agent_id: The proxy agent ID.
-        :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
+        :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is FALSE.
         :param pulumi.Input[str] service: The connector type id within the Fivetran system.
         :param pulumi.Input[bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
                trusted automatically, it has to be approved with [Certificates Management API Approve a destination
@@ -702,7 +702,7 @@ class Connector(pulumi.CustomResource):
     @pulumi.getter(name="runSetupTests")
     def run_setup_tests(self) -> pulumi.Output[bool]:
         """
-        Specifies whether the setup tests should be run automatically. The default value is TRUE.
+        Specifies whether the setup tests should be run automatically. The default value is FALSE.
         """
         return pulumi.get(self, "run_setup_tests")
 

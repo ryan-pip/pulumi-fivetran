@@ -434,7 +434,7 @@ class Destination(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['DestinationConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['DestinationConfigArgs', 'DestinationConfigArgsDict']]] = None,
                  daylight_saving_time_enabled: Optional[pulumi.Input[bool]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  local_processing_agent_id: Optional[pulumi.Input[str]] = None,
@@ -443,7 +443,7 @@ class Destination(pulumi.CustomResource):
                  run_setup_tests: Optional[pulumi.Input[bool]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  time_zone_offset: Optional[pulumi.Input[str]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['DestinationTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['DestinationTimeoutsArgs', 'DestinationTimeoutsArgsDict']]] = None,
                  trust_certificates: Optional[pulumi.Input[bool]] = None,
                  trust_fingerprints: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -544,7 +544,7 @@ class Destination(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[pulumi.InputType['DestinationConfigArgs']]] = None,
+                 config: Optional[pulumi.Input[Union['DestinationConfigArgs', 'DestinationConfigArgsDict']]] = None,
                  daylight_saving_time_enabled: Optional[pulumi.Input[bool]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  local_processing_agent_id: Optional[pulumi.Input[str]] = None,
@@ -553,7 +553,7 @@ class Destination(pulumi.CustomResource):
                  run_setup_tests: Optional[pulumi.Input[bool]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  time_zone_offset: Optional[pulumi.Input[str]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['DestinationTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['DestinationTimeoutsArgs', 'DestinationTimeoutsArgsDict']]] = None,
                  trust_certificates: Optional[pulumi.Input[bool]] = None,
                  trust_fingerprints: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -596,7 +596,7 @@ class Destination(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: Optional[pulumi.Input[pulumi.InputType['DestinationConfigArgs']]] = None,
+            config: Optional[pulumi.Input[Union['DestinationConfigArgs', 'DestinationConfigArgsDict']]] = None,
             daylight_saving_time_enabled: Optional[pulumi.Input[bool]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
             local_processing_agent_id: Optional[pulumi.Input[str]] = None,
@@ -606,7 +606,7 @@ class Destination(pulumi.CustomResource):
             service: Optional[pulumi.Input[str]] = None,
             setup_status: Optional[pulumi.Input[str]] = None,
             time_zone_offset: Optional[pulumi.Input[str]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['DestinationTimeoutsArgs']]] = None,
+            timeouts: Optional[pulumi.Input[Union['DestinationTimeoutsArgs', 'DestinationTimeoutsArgsDict']]] = None,
             trust_certificates: Optional[pulumi.Input[bool]] = None,
             trust_fingerprints: Optional[pulumi.Input[bool]] = None) -> 'Destination':
         """

@@ -209,7 +209,7 @@ class AwaitableGetDbtProjectResult(GetDbtProjectResult):
 
 
 def get_dbt_project(id: Optional[str] = None,
-                    project_config: Optional[pulumi.InputType['GetDbtProjectProjectConfigArgs']] = None,
+                    project_config: Optional[Union['GetDbtProjectProjectConfigArgs', 'GetDbtProjectProjectConfigArgsDict']] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDbtProjectResult:
     """
     This data source returns a dbt Project object.
@@ -252,7 +252,7 @@ def get_dbt_project(id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_dbt_project)
 def get_dbt_project_output(id: Optional[pulumi.Input[str]] = None,
-                           project_config: Optional[pulumi.Input[Optional[pulumi.InputType['GetDbtProjectProjectConfigArgs']]]] = None,
+                           project_config: Optional[pulumi.Input[Optional[Union['GetDbtProjectProjectConfigArgs', 'GetDbtProjectProjectConfigArgsDict']]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDbtProjectResult]:
     """
     This data source returns a dbt Project object.

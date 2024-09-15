@@ -55,7 +55,7 @@ class AwaitableGetRolesResult(GetRolesResult):
             roles=self.roles)
 
 
-def get_roles(roles: Optional[Sequence[pulumi.InputType['GetRolesRoleArgs']]] = None,
+def get_roles(roles: Optional[Sequence[Union['GetRolesRoleArgs', 'GetRolesRoleArgsDict']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRolesResult:
     """
     This data source returns a list of all predefined and custom roles within your Fivetran account.
@@ -80,7 +80,7 @@ def get_roles(roles: Optional[Sequence[pulumi.InputType['GetRolesRoleArgs']]] = 
 
 
 @_utilities.lift_output_func(get_roles)
-def get_roles_output(roles: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetRolesRoleArgs']]]]] = None,
+def get_roles_output(roles: Optional[pulumi.Input[Optional[Sequence[Union['GetRolesRoleArgs', 'GetRolesRoleArgsDict']]]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRolesResult]:
     """
     This data source returns a list of all predefined and custom roles within your Fivetran account.

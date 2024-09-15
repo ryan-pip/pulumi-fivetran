@@ -55,7 +55,7 @@ class AwaitableGetConnectorsMetadataResult(GetConnectorsMetadataResult):
             sources=self.sources)
 
 
-def get_connectors_metadata(sources: Optional[Sequence[pulumi.InputType['GetConnectorsMetadataSourceArgs']]] = None,
+def get_connectors_metadata(sources: Optional[Sequence[Union['GetConnectorsMetadataSourceArgs', 'GetConnectorsMetadataSourceArgsDict']]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConnectorsMetadataResult:
     """
     This data source returns all available source types within your Fivetran account. This data source makes it easier to display Fivetran connectors within your application because it provides metadata including the proper source name (‘Facebook Ad Account’ instead of facebook_ad_account), the source icon, and links to Fivetran resources. As we update source names and icons, that metadata will automatically update within this endpoint.
@@ -80,7 +80,7 @@ def get_connectors_metadata(sources: Optional[Sequence[pulumi.InputType['GetConn
 
 
 @_utilities.lift_output_func(get_connectors_metadata)
-def get_connectors_metadata_output(sources: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetConnectorsMetadataSourceArgs']]]]] = None,
+def get_connectors_metadata_output(sources: Optional[pulumi.Input[Optional[Sequence[Union['GetConnectorsMetadataSourceArgs', 'GetConnectorsMetadataSourceArgsDict']]]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectorsMetadataResult]:
     """
     This data source returns all available source types within your Fivetran account. This data source makes it easier to display Fivetran connectors within your application because it provides metadata including the proper source name (‘Facebook Ad Account’ instead of facebook_ad_account), the source icon, and links to Fivetran resources. As we update source names and icons, that metadata will automatically update within this endpoint.

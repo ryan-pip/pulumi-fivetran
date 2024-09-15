@@ -56,7 +56,7 @@ class AwaitableGetGroupUsersResult(GetGroupUsersResult):
 
 
 def get_group_users(id: Optional[str] = None,
-                    users: Optional[Sequence[pulumi.InputType['GetGroupUsersUserArgs']]] = None,
+                    users: Optional[Sequence[Union['GetGroupUsersUserArgs', 'GetGroupUsersUserArgsDict']]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupUsersResult:
     """
     This data source returns a list of information about all users within a group in your Fivetran account.
@@ -86,7 +86,7 @@ def get_group_users(id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_group_users)
 def get_group_users_output(id: Optional[pulumi.Input[str]] = None,
-                           users: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetGroupUsersUserArgs']]]]] = None,
+                           users: Optional[pulumi.Input[Optional[Sequence[Union['GetGroupUsersUserArgs', 'GetGroupUsersUserArgsDict']]]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupUsersResult]:
     """
     This data source returns a list of information about all users within a group in your Fivetran account.

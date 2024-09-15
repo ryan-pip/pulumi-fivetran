@@ -124,7 +124,7 @@ class AwaitableGetDestinationResult(GetDestinationResult):
             time_zone_offset=self.time_zone_offset)
 
 
-def get_destination(config: Optional[pulumi.InputType['GetDestinationConfigArgs']] = None,
+def get_destination(config: Optional[Union['GetDestinationConfigArgs', 'GetDestinationConfigArgsDict']] = None,
                     id: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDestinationResult:
     """
@@ -159,7 +159,7 @@ def get_destination(config: Optional[pulumi.InputType['GetDestinationConfigArgs'
 
 
 @_utilities.lift_output_func(get_destination)
-def get_destination_output(config: Optional[pulumi.Input[Optional[pulumi.InputType['GetDestinationConfigArgs']]]] = None,
+def get_destination_output(config: Optional[pulumi.Input[Optional[Union['GetDestinationConfigArgs', 'GetDestinationConfigArgsDict']]]] = None,
                            id: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDestinationResult]:
     """

@@ -55,7 +55,7 @@ class AwaitableGetGroupsResult(GetGroupsResult):
             id=self.id)
 
 
-def get_groups(groups: Optional[Sequence[pulumi.InputType['GetGroupsGroupArgs']]] = None,
+def get_groups(groups: Optional[Sequence[Union['GetGroupsGroupArgs', 'GetGroupsGroupArgsDict']]] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupsResult:
     """
     This data source returns a list of all groups within your Fivetran account.
@@ -80,7 +80,7 @@ def get_groups(groups: Optional[Sequence[pulumi.InputType['GetGroupsGroupArgs']]
 
 
 @_utilities.lift_output_func(get_groups)
-def get_groups_output(groups: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetGroupsGroupArgs']]]]] = None,
+def get_groups_output(groups: Optional[pulumi.Input[Optional[Sequence[Union['GetGroupsGroupArgs', 'GetGroupsGroupArgsDict']]]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupsResult]:
     """
     This data source returns a list of all groups within your Fivetran account.

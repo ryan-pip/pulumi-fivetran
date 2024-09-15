@@ -68,7 +68,7 @@ class AwaitableGetTeamUserMembershipsResult(GetTeamUserMembershipsResult):
 
 
 def get_team_user_memberships(team_id: Optional[str] = None,
-                              users: Optional[Sequence[pulumi.InputType['GetTeamUserMembershipsUserArgs']]] = None,
+                              users: Optional[Sequence[Union['GetTeamUserMembershipsUserArgs', 'GetTeamUserMembershipsUserArgsDict']]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTeamUserMembershipsResult:
     """
     This data source returns a list of user memberships within team object.
@@ -99,7 +99,7 @@ def get_team_user_memberships(team_id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_team_user_memberships)
 def get_team_user_memberships_output(team_id: Optional[pulumi.Input[str]] = None,
-                                     users: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetTeamUserMembershipsUserArgs']]]]] = None,
+                                     users: Optional[pulumi.Input[Optional[Sequence[Union['GetTeamUserMembershipsUserArgs', 'GetTeamUserMembershipsUserArgsDict']]]]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTeamUserMembershipsResult]:
     """
     This data source returns a list of user memberships within team object.

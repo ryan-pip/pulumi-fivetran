@@ -103,7 +103,7 @@ class AwaitableGetExternalLoggingResult(GetExternalLoggingResult):
             service=self.service)
 
 
-def get_external_logging(config: Optional[pulumi.InputType['GetExternalLoggingConfigArgs']] = None,
+def get_external_logging(config: Optional[Union['GetExternalLoggingConfigArgs', 'GetExternalLoggingConfigArgsDict']] = None,
                          id: Optional[str] = None,
                          run_setup_tests: Optional[bool] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetExternalLoggingResult:
@@ -140,7 +140,7 @@ def get_external_logging(config: Optional[pulumi.InputType['GetExternalLoggingCo
 
 
 @_utilities.lift_output_func(get_external_logging)
-def get_external_logging_output(config: Optional[pulumi.Input[Optional[pulumi.InputType['GetExternalLoggingConfigArgs']]]] = None,
+def get_external_logging_output(config: Optional[pulumi.Input[Optional[Union['GetExternalLoggingConfigArgs', 'GetExternalLoggingConfigArgsDict']]]] = None,
                                 id: Optional[pulumi.Input[str]] = None,
                                 run_setup_tests: Optional[pulumi.Input[Optional[bool]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetExternalLoggingResult]:

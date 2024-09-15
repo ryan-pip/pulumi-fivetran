@@ -67,7 +67,7 @@ class AwaitableGetTeamGroupMembershipsResult(GetTeamGroupMembershipsResult):
             team_id=self.team_id)
 
 
-def get_team_group_memberships(groups: Optional[Sequence[pulumi.InputType['GetTeamGroupMembershipsGroupArgs']]] = None,
+def get_team_group_memberships(groups: Optional[Sequence[Union['GetTeamGroupMembershipsGroupArgs', 'GetTeamGroupMembershipsGroupArgsDict']]] = None,
                                team_id: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTeamGroupMembershipsResult:
     """
@@ -98,7 +98,7 @@ def get_team_group_memberships(groups: Optional[Sequence[pulumi.InputType['GetTe
 
 
 @_utilities.lift_output_func(get_team_group_memberships)
-def get_team_group_memberships_output(groups: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetTeamGroupMembershipsGroupArgs']]]]] = None,
+def get_team_group_memberships_output(groups: Optional[pulumi.Input[Optional[Sequence[Union['GetTeamGroupMembershipsGroupArgs', 'GetTeamGroupMembershipsGroupArgsDict']]]]] = None,
                                       team_id: Optional[pulumi.Input[str]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTeamGroupMembershipsResult]:
     """

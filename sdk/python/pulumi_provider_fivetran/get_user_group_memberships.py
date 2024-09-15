@@ -67,7 +67,7 @@ class AwaitableGetUserGroupMembershipsResult(GetUserGroupMembershipsResult):
             user_id=self.user_id)
 
 
-def get_user_group_memberships(groups: Optional[Sequence[pulumi.InputType['GetUserGroupMembershipsGroupArgs']]] = None,
+def get_user_group_memberships(groups: Optional[Sequence[Union['GetUserGroupMembershipsGroupArgs', 'GetUserGroupMembershipsGroupArgsDict']]] = None,
                                user_id: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserGroupMembershipsResult:
     """
@@ -98,7 +98,7 @@ def get_user_group_memberships(groups: Optional[Sequence[pulumi.InputType['GetUs
 
 
 @_utilities.lift_output_func(get_user_group_memberships)
-def get_user_group_memberships_output(groups: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetUserGroupMembershipsGroupArgs']]]]] = None,
+def get_user_group_memberships_output(groups: Optional[pulumi.Input[Optional[Sequence[Union['GetUserGroupMembershipsGroupArgs', 'GetUserGroupMembershipsGroupArgsDict']]]]] = None,
                                       user_id: Optional[pulumi.Input[str]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserGroupMembershipsResult]:
     """
