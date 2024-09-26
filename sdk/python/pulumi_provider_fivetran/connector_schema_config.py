@@ -17,8 +17,8 @@ __all__ = ['ConnectorSchemaConfigArgs', 'ConnectorSchemaConfig']
 class ConnectorSchemaConfigArgs:
     def __init__(__self__, *,
                  connector_id: pulumi.Input[str],
-                 schema_change_handling: pulumi.Input[str],
                  schema: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]] = None,
+                 schema_change_handling: Optional[pulumi.Input[str]] = None,
                  schemas: Optional[pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]]] = None,
                  schemas_json: Optional[pulumi.Input[str]] = None,
                  timeouts: Optional[pulumi.Input['ConnectorSchemaConfigTimeoutsArgs']] = None,
@@ -34,12 +34,13 @@ class ConnectorSchemaConfigArgs:
                names. The resource will try to fetch columns for every configured table and verify column names.
         """
         pulumi.set(__self__, "connector_id", connector_id)
-        pulumi.set(__self__, "schema_change_handling", schema_change_handling)
         if schema is not None:
             warnings.warn("""Configure `schemas` instead. This attribute will be removed in the next major version of the provider.""", DeprecationWarning)
             pulumi.log.warn("""schema is deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.""")
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
+        if schema_change_handling is not None:
+            pulumi.set(__self__, "schema_change_handling", schema_change_handling)
         if schemas is not None:
             pulumi.set(__self__, "schemas", schemas)
         if schemas_json is not None:
@@ -62,18 +63,6 @@ class ConnectorSchemaConfigArgs:
         pulumi.set(self, "connector_id", value)
 
     @property
-    @pulumi.getter(name="schemaChangeHandling")
-    def schema_change_handling(self) -> pulumi.Input[str]:
-        """
-        The value specifying how new source data is handled.
-        """
-        return pulumi.get(self, "schema_change_handling")
-
-    @schema_change_handling.setter
-    def schema_change_handling(self, value: pulumi.Input[str]):
-        pulumi.set(self, "schema_change_handling", value)
-
-    @property
     @pulumi.getter
     @_utilities.deprecated("""Configure `schemas` instead. This attribute will be removed in the next major version of the provider.""")
     def schema(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]]:
@@ -82,6 +71,18 @@ class ConnectorSchemaConfigArgs:
     @schema.setter
     def schema(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]]):
         pulumi.set(self, "schema", value)
+
+    @property
+    @pulumi.getter(name="schemaChangeHandling")
+    def schema_change_handling(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value specifying how new source data is handled.
+        """
+        return pulumi.get(self, "schema_change_handling")
+
+    @schema_change_handling.setter
+    def schema_change_handling(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schema_change_handling", value)
 
     @property
     @pulumi.getter
@@ -325,8 +326,6 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
                 raise TypeError("Missing required property 'connector_id'")
             __props__.__dict__["connector_id"] = connector_id
             __props__.__dict__["schema"] = schema
-            if schema_change_handling is None and not opts.urn:
-                raise TypeError("Missing required property 'schema_change_handling'")
             __props__.__dict__["schema_change_handling"] = schema_change_handling
             __props__.__dict__["schemas"] = schemas
             __props__.__dict__["schemas_json"] = schemas_json
@@ -393,7 +392,7 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="schemaChangeHandling")
-    def schema_change_handling(self) -> pulumi.Output[str]:
+    def schema_change_handling(self) -> pulumi.Output[Optional[str]]:
         """
         The value specifying how new source data is handled.
         """
