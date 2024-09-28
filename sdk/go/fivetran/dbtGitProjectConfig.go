@@ -16,6 +16,35 @@ import (
 //
 // This resource allows you to add and manage dbt Git Projects Configs.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.NewDbtGitProjectConfig(ctx, "gitProjectConfig", &fivetran.DbtGitProjectConfigArgs{
+//				FolderPath:   pulumi.String("/dbt/project/folder/path"),
+//				GitBranch:    pulumi.String("main"),
+//				GitRemoteUrl: pulumi.String("your_git_remote_url"),
+//				ProjectId:    pulumi.String("project_id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // 1. To import an existing `fivetran_dbt_git_project_config` resource into your Terraform state, you need to get **Dbt Project ID** via API call `GET https://api.fivetran.com/v1/dbt/projects` to retrieve available projects.
