@@ -202,6 +202,19 @@ class DbtGitProjectConfig(pulumi.CustomResource):
 
         This resource allows you to add and manage dbt Git Projects Configs.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        git_project_config = fivetran.DbtGitProjectConfig("gitProjectConfig",
+            folder_path="/dbt/project/folder/path",
+            git_branch="main",
+            git_remote_url="your_git_remote_url",
+            project_id="project_id")
+        ```
+
         ## Import
 
         1. To import an existing `fivetran_dbt_git_project_config` resource into your Terraform state, you need to get **Dbt Project ID** via API call `GET https://api.fivetran.com/v1/dbt/projects` to retrieve available projects.
@@ -246,6 +259,19 @@ class DbtGitProjectConfig(pulumi.CustomResource):
         Resource is in ALPHA state.
 
         This resource allows you to add and manage dbt Git Projects Configs.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        git_project_config = fivetran.DbtGitProjectConfig("gitProjectConfig",
+            folder_path="/dbt/project/folder/path",
+            git_branch="main",
+            git_remote_url="your_git_remote_url",
+            project_id="project_id")
+        ```
 
         ## Import
 

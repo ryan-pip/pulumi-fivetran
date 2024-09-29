@@ -443,6 +443,22 @@ class DbtProject(pulumi.CustomResource):
 
         This resource allows you to add, manage and delete dbt Projects in your account.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        project = fivetran.DbtProject("project",
+            dbt_version="1.4.1",
+            default_schema="default_schema",
+            environment_vars=["environment_var=value"],
+            group_id="group_id",
+            target_name="target_name",
+            threads=8,
+            type="GIT")
+        ```
+
         ## Import
 
         1. To import an existing `fivetran_dbt_project` resource into your Terraform state, you need to get **Dbt Project ID** via API call `GET https://api.fivetran.com/v1/dbt/projects` to retrieve available projects.
@@ -490,6 +506,22 @@ class DbtProject(pulumi.CustomResource):
         Resource is in ALPHA state.
 
         This resource allows you to add, manage and delete dbt Projects in your account.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        project = fivetran.DbtProject("project",
+            dbt_version="1.4.1",
+            default_schema="default_schema",
+            environment_vars=["environment_var=value"],
+            group_id="group_id",
+            target_name="target_name",
+            threads=8,
+            type="GIT")
+        ```
 
         ## Import
 
