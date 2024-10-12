@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -248,9 +253,6 @@ def get_dbt_project(id: Optional[str] = None,
         target_name=pulumi.get(__ret__, 'target_name'),
         threads=pulumi.get(__ret__, 'threads'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_dbt_project)
 def get_dbt_project_output(id: Optional[pulumi.Input[str]] = None,
                            project_config: Optional[pulumi.Input[Optional[Union['GetDbtProjectProjectConfigArgs', 'GetDbtProjectProjectConfigArgsDict']]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDbtProjectResult]:
@@ -269,4 +271,24 @@ def get_dbt_project_output(id: Optional[pulumi.Input[str]] = None,
 
     :param str id: The unique identifier for the dbt Project within the Fivetran system.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['projectConfig'] = project_config
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('fivetran:index/getDbtProject:getDbtProject', __args__, opts=opts, typ=GetDbtProjectResult)
+    return __ret__.apply(lambda __response__: GetDbtProjectResult(
+        created_at=pulumi.get(__response__, 'created_at'),
+        created_by_id=pulumi.get(__response__, 'created_by_id'),
+        dbt_version=pulumi.get(__response__, 'dbt_version'),
+        default_schema=pulumi.get(__response__, 'default_schema'),
+        ensure_readiness=pulumi.get(__response__, 'ensure_readiness'),
+        environment_vars=pulumi.get(__response__, 'environment_vars'),
+        group_id=pulumi.get(__response__, 'group_id'),
+        id=pulumi.get(__response__, 'id'),
+        models=pulumi.get(__response__, 'models'),
+        project_config=pulumi.get(__response__, 'project_config'),
+        public_key=pulumi.get(__response__, 'public_key'),
+        status=pulumi.get(__response__, 'status'),
+        target_name=pulumi.get(__response__, 'target_name'),
+        threads=pulumi.get(__response__, 'threads'),
+        type=pulumi.get(__response__, 'type')))
