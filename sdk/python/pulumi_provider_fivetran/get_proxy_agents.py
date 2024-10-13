@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -77,9 +82,6 @@ def get_proxy_agents(items: Optional[Sequence[Union['GetProxyAgentsItemArgs', 'G
     return AwaitableGetProxyAgentsResult(
         id=pulumi.get(__ret__, 'id'),
         items=pulumi.get(__ret__, 'items'))
-
-
-@_utilities.lift_output_func(get_proxy_agents)
 def get_proxy_agents_output(items: Optional[pulumi.Input[Optional[Sequence[Union['GetProxyAgentsItemArgs', 'GetProxyAgentsItemArgsDict']]]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProxyAgentsResult]:
     """
@@ -94,4 +96,10 @@ def get_proxy_agents_output(items: Optional[pulumi.Input[Optional[Sequence[Union
     proxy_agents = fivetran.get_proxy_agents()
     ```
     """
-    ...
+    __args__ = dict()
+    __args__['items'] = items
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('fivetran:index/getProxyAgents:getProxyAgents', __args__, opts=opts, typ=GetProxyAgentsResult)
+    return __ret__.apply(lambda __response__: GetProxyAgentsResult(
+        id=pulumi.get(__response__, 'id'),
+        items=pulumi.get(__response__, 'items')))

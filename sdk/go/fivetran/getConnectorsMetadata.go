@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.GetConnectorsMetadata(ctx, nil, nil)
+//			_, err := fivetran.GetConnectorsMetadata(ctx, &fivetran.GetConnectorsMetadataArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

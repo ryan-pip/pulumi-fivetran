@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -77,9 +82,6 @@ def get_connectors_metadata(sources: Optional[Sequence[Union['GetConnectorsMetad
     return AwaitableGetConnectorsMetadataResult(
         id=pulumi.get(__ret__, 'id'),
         sources=pulumi.get(__ret__, 'sources'))
-
-
-@_utilities.lift_output_func(get_connectors_metadata)
 def get_connectors_metadata_output(sources: Optional[pulumi.Input[Optional[Sequence[Union['GetConnectorsMetadataSourceArgs', 'GetConnectorsMetadataSourceArgsDict']]]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectorsMetadataResult]:
     """
@@ -94,4 +96,10 @@ def get_connectors_metadata_output(sources: Optional[pulumi.Input[Optional[Seque
     sources = fivetran.get_connectors_metadata()
     ```
     """
-    ...
+    __args__ = dict()
+    __args__['sources'] = sources
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('fivetran:index/getConnectorsMetadata:getConnectorsMetadata', __args__, opts=opts, typ=GetConnectorsMetadataResult)
+    return __ret__.apply(lambda __response__: GetConnectorsMetadataResult(
+        id=pulumi.get(__response__, 'id'),
+        sources=pulumi.get(__response__, 'sources')))
