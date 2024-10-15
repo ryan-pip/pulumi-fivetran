@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -156,9 +161,6 @@ def get_destination(config: Optional[Union['GetDestinationConfigArgs', 'GetDesti
         service=pulumi.get(__ret__, 'service'),
         setup_status=pulumi.get(__ret__, 'setup_status'),
         time_zone_offset=pulumi.get(__ret__, 'time_zone_offset'))
-
-
-@_utilities.lift_output_func(get_destination)
 def get_destination_output(config: Optional[pulumi.Input[Optional[Union['GetDestinationConfigArgs', 'GetDestinationConfigArgsDict']]]] = None,
                            id: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDestinationResult]:
@@ -174,4 +176,19 @@ def get_destination_output(config: Optional[pulumi.Input[Optional[Union['GetDest
     dest = fivetran.get_destination(id="anonymous_mystery")
     ```
     """
-    ...
+    __args__ = dict()
+    __args__['config'] = config
+    __args__['id'] = id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('fivetran:index/getDestination:getDestination', __args__, opts=opts, typ=GetDestinationResult)
+    return __ret__.apply(lambda __response__: GetDestinationResult(
+        config=pulumi.get(__response__, 'config'),
+        daylight_saving_time_enabled=pulumi.get(__response__, 'daylight_saving_time_enabled'),
+        group_id=pulumi.get(__response__, 'group_id'),
+        id=pulumi.get(__response__, 'id'),
+        local_processing_agent_id=pulumi.get(__response__, 'local_processing_agent_id'),
+        networking_method=pulumi.get(__response__, 'networking_method'),
+        region=pulumi.get(__response__, 'region'),
+        service=pulumi.get(__response__, 'service'),
+        setup_status=pulumi.get(__response__, 'setup_status'),
+        time_zone_offset=pulumi.get(__response__, 'time_zone_offset')))
