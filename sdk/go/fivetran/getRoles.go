@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.GetRoles(ctx, nil, nil)
+//			_, err := fivetran.GetRoles(ctx, &fivetran.GetRolesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
