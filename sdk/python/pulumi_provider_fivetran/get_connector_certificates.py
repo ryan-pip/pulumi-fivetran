@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -85,9 +90,6 @@ def get_connector_certificates(certificates: Optional[Sequence[Union['GetConnect
         certificates=pulumi.get(__ret__, 'certificates'),
         connector_id=pulumi.get(__ret__, 'connector_id'),
         id=pulumi.get(__ret__, 'id'))
-
-
-@_utilities.lift_output_func(get_connector_certificates)
 def get_connector_certificates_output(certificates: Optional[pulumi.Input[Optional[Sequence[Union['GetConnectorCertificatesCertificateArgs', 'GetConnectorCertificatesCertificateArgsDict']]]]] = None,
                                       id: Optional[pulumi.Input[str]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectorCertificatesResult]:
@@ -96,4 +98,12 @@ def get_connector_certificates_output(certificates: Optional[pulumi.Input[Option
 
     :param str id: The unique identifier for the resource. Equal to target connection id.
     """
-    ...
+    __args__ = dict()
+    __args__['certificates'] = certificates
+    __args__['id'] = id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('fivetran:index/getConnectorCertificates:getConnectorCertificates', __args__, opts=opts, typ=GetConnectorCertificatesResult)
+    return __ret__.apply(lambda __response__: GetConnectorCertificatesResult(
+        certificates=pulumi.get(__response__, 'certificates'),
+        connector_id=pulumi.get(__response__, 'connector_id'),
+        id=pulumi.get(__response__, 'id')))
