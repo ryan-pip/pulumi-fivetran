@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -260,9 +265,6 @@ def get_connector(config: Optional[Union['GetConnectorConfigArgs', 'GetConnector
         status=pulumi.get(__ret__, 'status'),
         succeeded_at=pulumi.get(__ret__, 'succeeded_at'),
         sync_frequency=pulumi.get(__ret__, 'sync_frequency'))
-
-
-@_utilities.lift_output_func(get_connector)
 def get_connector_output(config: Optional[pulumi.Input[Optional[Union['GetConnectorConfigArgs', 'GetConnectorConfigArgsDict']]]] = None,
                          destination_schema: Optional[pulumi.Input[Optional[Union['GetConnectorDestinationSchemaArgs', 'GetConnectorDestinationSchemaArgsDict']]]] = None,
                          id: Optional[pulumi.Input[str]] = None,
@@ -280,4 +282,31 @@ def get_connector_output(config: Optional[pulumi.Input[Optional[Union['GetConnec
     connector = fivetran.get_connector(id="anonymous_mystery")
     ```
     """
-    ...
+    __args__ = dict()
+    __args__['config'] = config
+    __args__['destinationSchema'] = destination_schema
+    __args__['id'] = id
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('fivetran:index/getConnector:getConnector', __args__, opts=opts, typ=GetConnectorResult)
+    return __ret__.apply(lambda __response__: GetConnectorResult(
+        config=pulumi.get(__response__, 'config'),
+        connected_by=pulumi.get(__response__, 'connected_by'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        daily_sync_time=pulumi.get(__response__, 'daily_sync_time'),
+        destination_schema=pulumi.get(__response__, 'destination_schema'),
+        failed_at=pulumi.get(__response__, 'failed_at'),
+        group_id=pulumi.get(__response__, 'group_id'),
+        id=pulumi.get(__response__, 'id'),
+        local_processing_agent_id=pulumi.get(__response__, 'local_processing_agent_id'),
+        name=pulumi.get(__response__, 'name'),
+        networking_method=pulumi.get(__response__, 'networking_method'),
+        pause_after_trial=pulumi.get(__response__, 'pause_after_trial'),
+        paused=pulumi.get(__response__, 'paused'),
+        proxy_agent_id=pulumi.get(__response__, 'proxy_agent_id'),
+        schedule_type=pulumi.get(__response__, 'schedule_type'),
+        service=pulumi.get(__response__, 'service'),
+        service_version=pulumi.get(__response__, 'service_version'),
+        status=pulumi.get(__response__, 'status'),
+        succeeded_at=pulumi.get(__response__, 'succeeded_at'),
+        sync_frequency=pulumi.get(__response__, 'sync_frequency')))
