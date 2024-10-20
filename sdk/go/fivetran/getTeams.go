@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.GetTeams(ctx, nil, nil)
+//			_, err := fivetran.GetTeams(ctx, &fivetran.GetTeamsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -86,9 +91,6 @@ def get_team_connector_memberships(connectors: Optional[Sequence[Union['GetTeamC
         connectors=pulumi.get(__ret__, 'connectors'),
         id=pulumi.get(__ret__, 'id'),
         team_id=pulumi.get(__ret__, 'team_id'))
-
-
-@_utilities.lift_output_func(get_team_connector_memberships)
 def get_team_connector_memberships_output(connectors: Optional[pulumi.Input[Optional[Sequence[Union['GetTeamConnectorMembershipsConnectorArgs', 'GetTeamConnectorMembershipsConnectorArgsDict']]]]] = None,
                                           team_id: Optional[pulumi.Input[str]] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTeamConnectorMembershipsResult]:
@@ -98,4 +100,12 @@ def get_team_connector_memberships_output(connectors: Optional[pulumi.Input[Opti
 
     :param str team_id: The unique identifier for the team within your account.
     """
-    ...
+    __args__ = dict()
+    __args__['connectors'] = connectors
+    __args__['teamId'] = team_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('fivetran:index/getTeamConnectorMemberships:getTeamConnectorMemberships', __args__, opts=opts, typ=GetTeamConnectorMembershipsResult)
+    return __ret__.apply(lambda __response__: GetTeamConnectorMembershipsResult(
+        connectors=pulumi.get(__response__, 'connectors'),
+        id=pulumi.get(__response__, 'id'),
+        team_id=pulumi.get(__response__, 'team_id')))

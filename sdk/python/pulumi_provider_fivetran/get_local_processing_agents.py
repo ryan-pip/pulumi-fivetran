@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -74,9 +79,6 @@ def get_local_processing_agents(opts: Optional[pulumi.InvokeOptions] = None) -> 
     return AwaitableGetLocalProcessingAgentsResult(
         id=pulumi.get(__ret__, 'id'),
         items=pulumi.get(__ret__, 'items'))
-
-
-@_utilities.lift_output_func(get_local_processing_agents)
 def get_local_processing_agents_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLocalProcessingAgentsResult]:
     """
     This data source returns a list of all local processing agents within your Fivetran account.
@@ -90,4 +92,9 @@ def get_local_processing_agents_output(opts: Optional[pulumi.InvokeOptions] = No
     local_processing_agents = fivetran.get_local_processing_agents()
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('fivetran:index/getLocalProcessingAgents:getLocalProcessingAgents', __args__, opts=opts, typ=GetLocalProcessingAgentsResult)
+    return __ret__.apply(lambda __response__: GetLocalProcessingAgentsResult(
+        id=pulumi.get(__response__, 'id'),
+        items=pulumi.get(__response__, 'items')))
