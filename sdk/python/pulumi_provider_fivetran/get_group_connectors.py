@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -99,9 +104,6 @@ def get_group_connectors(connectors: Optional[Sequence[Union['GetGroupConnectors
         connectors=pulumi.get(__ret__, 'connectors'),
         id=pulumi.get(__ret__, 'id'),
         schema=pulumi.get(__ret__, 'schema'))
-
-
-@_utilities.lift_output_func(get_group_connectors)
 def get_group_connectors_output(connectors: Optional[pulumi.Input[Optional[Sequence[Union['GetGroupConnectorsConnectorArgs', 'GetGroupConnectorsConnectorArgsDict']]]]] = None,
                                 id: Optional[pulumi.Input[str]] = None,
                                 schema: Optional[pulumi.Input[Optional[str]]] = None,
@@ -123,4 +125,13 @@ def get_group_connectors_output(connectors: Optional[pulumi.Input[Optional[Seque
     :param str id: The ID of this resource.
     :param str schema: Optional filter. When defined, the data source will only contain information for the connector with the specified schema name.
     """
-    ...
+    __args__ = dict()
+    __args__['connectors'] = connectors
+    __args__['id'] = id
+    __args__['schema'] = schema
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('fivetran:index/getGroupConnectors:getGroupConnectors', __args__, opts=opts, typ=GetGroupConnectorsResult)
+    return __ret__.apply(lambda __response__: GetGroupConnectorsResult(
+        connectors=pulumi.get(__response__, 'connectors'),
+        id=pulumi.get(__response__, 'id'),
+        schema=pulumi.get(__response__, 'schema')))
