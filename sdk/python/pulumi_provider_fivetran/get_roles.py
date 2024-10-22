@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -77,9 +82,6 @@ def get_roles(roles: Optional[Sequence[Union['GetRolesRoleArgs', 'GetRolesRoleAr
     return AwaitableGetRolesResult(
         id=pulumi.get(__ret__, 'id'),
         roles=pulumi.get(__ret__, 'roles'))
-
-
-@_utilities.lift_output_func(get_roles)
 def get_roles_output(roles: Optional[pulumi.Input[Optional[Sequence[Union['GetRolesRoleArgs', 'GetRolesRoleArgsDict']]]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRolesResult]:
     """
@@ -94,4 +96,10 @@ def get_roles_output(roles: Optional[pulumi.Input[Optional[Sequence[Union['GetRo
     roles = fivetran.get_roles()
     ```
     """
-    ...
+    __args__ = dict()
+    __args__['roles'] = roles
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('fivetran:index/getRoles:getRoles', __args__, opts=opts, typ=GetRolesResult)
+    return __ret__.apply(lambda __response__: GetRolesResult(
+        id=pulumi.get(__response__, 'id'),
+        roles=pulumi.get(__response__, 'roles')))
