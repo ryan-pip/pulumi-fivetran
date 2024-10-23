@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.GetProxyAgents(ctx, nil, nil)
+//			_, err := fivetran.GetProxyAgents(ctx, &fivetran.GetProxyAgentsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

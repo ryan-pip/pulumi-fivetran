@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -77,9 +82,6 @@ def get_groups(groups: Optional[Sequence[Union['GetGroupsGroupArgs', 'GetGroupsG
     return AwaitableGetGroupsResult(
         groups=pulumi.get(__ret__, 'groups'),
         id=pulumi.get(__ret__, 'id'))
-
-
-@_utilities.lift_output_func(get_groups)
 def get_groups_output(groups: Optional[pulumi.Input[Optional[Sequence[Union['GetGroupsGroupArgs', 'GetGroupsGroupArgsDict']]]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupsResult]:
     """
@@ -94,4 +96,10 @@ def get_groups_output(groups: Optional[pulumi.Input[Optional[Sequence[Union['Get
     all = fivetran.get_groups()
     ```
     """
-    ...
+    __args__ = dict()
+    __args__['groups'] = groups
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('fivetran:index/getGroups:getGroups', __args__, opts=opts, typ=GetGroupsResult)
+    return __ret__.apply(lambda __response__: GetGroupsResult(
+        groups=pulumi.get(__response__, 'groups'),
+        id=pulumi.get(__response__, 'id')))
