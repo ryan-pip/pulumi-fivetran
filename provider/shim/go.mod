@@ -5,7 +5,7 @@ go 1.21
 toolchain go1.21.6
 
 require (
-	github.com/fivetran/terraform-provider-fivetran v1.3.2
+	github.com/fivetran/terraform-provider-fivetran v1.3.3
 	github.com/hashicorp/terraform-plugin-framework v1.10.0
 )
 
