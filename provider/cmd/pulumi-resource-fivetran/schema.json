@@ -9959,6 +9959,38 @@
                 }
             }
         },
+        "fivetran:index/getHybridDeploymentAgentsItem:getHybridDeploymentAgentsItem": {
+            "properties": {
+                "displayName": {
+                    "type": "string",
+                    "description": "The unique name for the hybrid deployment agent.\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The unique identifier for the Group within the Fivetran system.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The unique identifier for the hybrid deployment agent within your account.\n"
+                },
+                "registeredAt": {
+                    "type": "string",
+                    "description": "The timestamp of the time the hybrid deployment agent was created in your account.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "displayName",
+                "groupId",
+                "id",
+                "registeredAt"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "fivetran:index/getLocalProcessingAgentUsage:getLocalProcessingAgentUsage": {
             "properties": {
                 "connectionId": {
@@ -10045,6 +10077,63 @@
                 "connectionId",
                 "schema",
                 "service"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "fivetran:index/getPrivateLinksItem:getPrivateLinksItem": {
+            "properties": {
+                "cloudProvider": {
+                    "type": "string",
+                    "description": "The cloud provider name.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time the membership was created.\n"
+                },
+                "createdBy": {
+                    "type": "string",
+                    "description": "The unique identifier for the User within the Fivetran system.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The unique identifier for the private link within the Fivetran system.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Data processing location. This is where Fivetran will operate and run computation on data.\n"
+                },
+                "service": {
+                    "type": "string",
+                    "description": "Service type.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "The state of the private link.\n"
+                },
+                "stateSummary": {
+                    "type": "string",
+                    "description": "The state of the private link.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cloudProvider",
+                "createdAt",
+                "createdBy",
+                "id",
+                "name",
+                "region",
+                "service",
+                "state",
+                "stateSummary"
             ],
             "language": {
                 "nodejs": {
@@ -10496,9 +10585,14 @@
                     "type": "string",
                     "description": "The unique identifier for the Group (Destination) within the Fivetran system.\n"
                 },
+                "hybridDeploymentAgentId": {
+                    "type": "string",
+                    "description": "The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                },
                 "localProcessingAgentId": {
                     "type": "string",
-                    "description": "The local processing agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                    "description": "(Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs\nto. If the value is specified, the system will try to associate the connection with an existing agent.\n",
+                    "deprecationMessage": "This field is Deprecated, please follow the 1.4.0 migration guide to update the schema"
                 },
                 "name": {
                     "type": "string",
@@ -10507,6 +10601,10 @@
                 "networkingMethod": {
                     "type": "string",
                     "description": "Possible values: Directly, SshTunnel, ProxyAgent.\n"
+                },
+                "privateLinkId": {
+                    "type": "string",
+                    "description": "The private link ID.\n"
                 },
                 "proxyAgentId": {
                     "type": "string",
@@ -10557,13 +10655,22 @@
                     "type": "string",
                     "description": "The unique identifier for the Group (Destination) within the Fivetran system.\n"
                 },
+                "hybridDeploymentAgentId": {
+                    "type": "string",
+                    "description": "The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                },
                 "localProcessingAgentId": {
                     "type": "string",
-                    "description": "The local processing agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                    "description": "(Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs\nto. If the value is specified, the system will try to associate the connection with an existing agent.\n",
+                    "deprecationMessage": "This field is Deprecated, please follow the 1.4.0 migration guide to update the schema"
                 },
                 "networkingMethod": {
                     "type": "string",
                     "description": "Possible values: Directly, SshTunnel, ProxyAgent.\n"
+                },
+                "privateLinkId": {
+                    "type": "string",
+                    "description": "The private link ID.\n"
                 },
                 "proxyAgentId": {
                     "type": "string",
@@ -10617,9 +10724,14 @@
                         "type": "string",
                         "description": "The unique identifier for the Group (Destination) within the Fivetran system.\n"
                     },
+                    "hybridDeploymentAgentId": {
+                        "type": "string",
+                        "description": "The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                    },
                     "localProcessingAgentId": {
                         "type": "string",
-                        "description": "The local processing agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                        "description": "(Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs\nto. If the value is specified, the system will try to associate the connection with an existing agent.\n",
+                        "deprecationMessage": "This field is Deprecated, please follow the 1.4.0 migration guide to update the schema"
                     },
                     "name": {
                         "type": "string",
@@ -10628,6 +10740,10 @@
                     "networkingMethod": {
                         "type": "string",
                         "description": "Possible values: Directly, SshTunnel, ProxyAgent.\n"
+                    },
+                    "privateLinkId": {
+                        "type": "string",
+                        "description": "The private link ID.\n"
                     },
                     "proxyAgentId": {
                         "type": "string",
@@ -11411,13 +11527,22 @@
                     "type": "string",
                     "description": "The unique identifier for the Group within the Fivetran system.\n"
                 },
+                "hybridDeploymentAgentId": {
+                    "type": "string",
+                    "description": "The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                },
                 "localProcessingAgentId": {
                     "type": "string",
-                    "description": "The local processing agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                    "description": "(Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs\nto. If the value is specified, the system will try to associate the connection with an existing agent.\n",
+                    "deprecationMessage": "This field is Deprecated, please follow the 1.4.0 migration guide to update the schema"
                 },
                 "networkingMethod": {
                     "type": "string",
                     "description": "Possible values: Directly, SshTunnel, ProxyAgent.\n"
+                },
+                "privateLinkId": {
+                    "type": "string",
+                    "description": "The private link ID.\n"
                 },
                 "region": {
                     "type": "string",
@@ -11475,13 +11600,22 @@
                     "type": "string",
                     "description": "The unique identifier for the Group within the Fivetran system.\n"
                 },
+                "hybridDeploymentAgentId": {
+                    "type": "string",
+                    "description": "The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                },
                 "localProcessingAgentId": {
                     "type": "string",
-                    "description": "The local processing agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                    "description": "(Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs\nto. If the value is specified, the system will try to associate the connection with an existing agent.\n",
+                    "deprecationMessage": "This field is Deprecated, please follow the 1.4.0 migration guide to update the schema"
                 },
                 "networkingMethod": {
                     "type": "string",
                     "description": "Possible values: Directly, SshTunnel, ProxyAgent.\n"
+                },
+                "privateLinkId": {
+                    "type": "string",
+                    "description": "The private link ID.\n"
                 },
                 "region": {
                     "type": "string",
@@ -11531,13 +11665,22 @@
                         "type": "string",
                         "description": "The unique identifier for the Group within the Fivetran system.\n"
                     },
+                    "hybridDeploymentAgentId": {
+                        "type": "string",
+                        "description": "The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                    },
                     "localProcessingAgentId": {
                         "type": "string",
-                        "description": "The local processing agent ID that refers to the controller created for the group the connection belongs to. If the\nvalue is specified, the system will try to associate the connection with an existing agent.\n"
+                        "description": "(Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs\nto. If the value is specified, the system will try to associate the connection with an existing agent.\n",
+                        "deprecationMessage": "This field is Deprecated, please follow the 1.4.0 migration guide to update the schema"
                     },
                     "networkingMethod": {
                         "type": "string",
                         "description": "Possible values: Directly, SshTunnel, ProxyAgent.\n"
+                    },
+                    "privateLinkId": {
+                        "type": "string",
+                        "description": "The private link ID.\n"
                     },
                     "region": {
                         "type": "string",
@@ -11851,8 +11994,125 @@
                 "type": "object"
             }
         },
+        "fivetran:index/hybridDeploymentAgent:HybridDeploymentAgent": {
+            "description": "This resource allows you to create, update, and delete hybrid deployment agents.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@ryan-pip/pulumi-fivetran\";\n\nconst hybridDeploymentAgent = new fivetran.HybridDeploymentAgent(\"hybridDeploymentAgent\", {\n    displayName: \"display_name\",\n    groupId: \"group_id\",\n    authType: \"AUTO\",\n}, {\n    provider: fivetran_provider,\n});\n```\n```python\nimport pulumi\nimport pulumi_provider_fivetran as fivetran\n\nhybrid_deployment_agent = fivetran.HybridDeploymentAgent(\"hybridDeploymentAgent\",\n    display_name=\"display_name\",\n    group_id=\"group_id\",\n    auth_type=\"AUTO\",\n    opts = pulumi.ResourceOptions(provider=fivetran_provider))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var hybridDeploymentAgent = new Fivetran.HybridDeploymentAgent(\"hybridDeploymentAgent\", new()\n    {\n        DisplayName = \"display_name\",\n        GroupId = \"group_id\",\n        AuthType = \"AUTO\",\n    }, new CustomResourceOptions\n    {\n        Provider = fivetran_provider,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewHybridDeploymentAgent(ctx, \"hybridDeploymentAgent\", \u0026fivetran.HybridDeploymentAgentArgs{\n\t\t\tDisplayName: pulumi.String(\"display_name\"),\n\t\t\tGroupId:     pulumi.String(\"group_id\"),\n\t\t\tAuthType:    pulumi.String(\"AUTO\"),\n\t\t}, pulumi.Provider(fivetran_provider))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.HybridDeploymentAgent;\nimport com.pulumi.fivetran.HybridDeploymentAgentArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var hybridDeploymentAgent = new HybridDeploymentAgent(\"hybridDeploymentAgent\", HybridDeploymentAgentArgs.builder()\n            .displayName(\"display_name\")\n            .groupId(\"group_id\")\n            .authType(\"AUTO\")\n            .build(), CustomResourceOptions.builder()\n                .provider(fivetran_provider)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  hybridDeploymentAgent:\n    type: fivetran:HybridDeploymentAgent\n    properties:\n      displayName: display_name\n      groupId: group_id\n      authType: AUTO\n    options:\n      provider: ${[\"fivetran-provider\"]}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "authJson": {
+                    "type": "string",
+                    "description": "Base64-encoded content of the auth.json file.\n"
+                },
+                "authType": {
+                    "type": "string",
+                    "description": "Type of authentification. Possible values `AUTO`,`MANUAL`\n"
+                },
+                "authenticationCounter": {
+                    "type": "integer",
+                    "description": "Determines whether re-authentication needs to be performed.\n"
+                },
+                "configJson": {
+                    "type": "string",
+                    "description": "Base64-encoded content of the config.json file.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The unique name for the hybrid deployment agent.\n"
+                },
+                "dockerComposeYaml": {
+                    "type": "string",
+                    "description": "Base64-encoded content of the compose file for the chosen containerization type.\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The unique identifier for the Group within the Fivetran system.\n"
+                },
+                "registeredAt": {
+                    "type": "string",
+                    "description": "The timestamp of the time the hybrid deployment agent was created in your account.\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "Base64 encoded content of token.\n"
+                }
+            },
+            "required": [
+                "authJson",
+                "authType",
+                "authenticationCounter",
+                "configJson",
+                "displayName",
+                "dockerComposeYaml",
+                "groupId",
+                "registeredAt",
+                "token"
+            ],
+            "inputProperties": {
+                "authType": {
+                    "type": "string",
+                    "description": "Type of authentification. Possible values `AUTO`,`MANUAL`\n"
+                },
+                "authenticationCounter": {
+                    "type": "integer",
+                    "description": "Determines whether re-authentication needs to be performed.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The unique name for the hybrid deployment agent.\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The unique identifier for the Group within the Fivetran system.\n"
+                }
+            },
+            "requiredInputs": [
+                "authType",
+                "displayName",
+                "groupId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering HybridDeploymentAgent resources.\n",
+                "properties": {
+                    "authJson": {
+                        "type": "string",
+                        "description": "Base64-encoded content of the auth.json file.\n"
+                    },
+                    "authType": {
+                        "type": "string",
+                        "description": "Type of authentification. Possible values `AUTO`,`MANUAL`\n"
+                    },
+                    "authenticationCounter": {
+                        "type": "integer",
+                        "description": "Determines whether re-authentication needs to be performed.\n"
+                    },
+                    "configJson": {
+                        "type": "string",
+                        "description": "Base64-encoded content of the config.json file.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The unique name for the hybrid deployment agent.\n"
+                    },
+                    "dockerComposeYaml": {
+                        "type": "string",
+                        "description": "Base64-encoded content of the compose file for the chosen containerization type.\n"
+                    },
+                    "groupId": {
+                        "type": "string",
+                        "description": "The unique identifier for the Group within the Fivetran system.\n"
+                    },
+                    "registeredAt": {
+                        "type": "string",
+                        "description": "The timestamp of the time the hybrid deployment agent was created in your account.\n"
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "Base64 encoded content of token.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "fivetran:index/localProcessingAgent:LocalProcessingAgent": {
-            "description": "This resource allows you to create, update, and delete local processing agents.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@ryan-pip/pulumi-fivetran\";\n\nconst testLpa = new fivetran.LocalProcessingAgent(\"testLpa\", {\n    displayName: \"display_name\",\n    groupId: \"group_id\",\n}, {\n    provider: fivetran_provider,\n});\n```\n```python\nimport pulumi\nimport pulumi_provider_fivetran as fivetran\n\ntest_lpa = fivetran.LocalProcessingAgent(\"testLpa\",\n    display_name=\"display_name\",\n    group_id=\"group_id\",\n    opts = pulumi.ResourceOptions(provider=fivetran_provider))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testLpa = new Fivetran.LocalProcessingAgent(\"testLpa\", new()\n    {\n        DisplayName = \"display_name\",\n        GroupId = \"group_id\",\n    }, new CustomResourceOptions\n    {\n        Provider = fivetran_provider,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewLocalProcessingAgent(ctx, \"testLpa\", \u0026fivetran.LocalProcessingAgentArgs{\n\t\t\tDisplayName: pulumi.String(\"display_name\"),\n\t\t\tGroupId:     pulumi.String(\"group_id\"),\n\t\t}, pulumi.Provider(fivetran_provider))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.LocalProcessingAgent;\nimport com.pulumi.fivetran.LocalProcessingAgentArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testLpa = new LocalProcessingAgent(\"testLpa\", LocalProcessingAgentArgs.builder()\n            .displayName(\"display_name\")\n            .groupId(\"group_id\")\n            .build(), CustomResourceOptions.builder()\n                .provider(fivetran_provider)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testLpa:\n    type: fivetran:LocalProcessingAgent\n    properties:\n      displayName: display_name\n      groupId: group_id\n    options:\n      provider: ${[\"fivetran-provider\"]}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "NOTE: In connection with the general availability of the hybrid deployment functionality and in order to synchronize internal terminology, we have deprecate this resource.\n\nThis resource allows you to create, update, and delete local processing agents.\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@ryan-pip/pulumi-fivetran\";\n\nconst testLpa = new fivetran.LocalProcessingAgent(\"testLpa\", {\n    displayName: \"display_name\",\n    groupId: \"group_id\",\n}, {\n    provider: fivetran_provider,\n});\n```\n```python\nimport pulumi\nimport pulumi_provider_fivetran as fivetran\n\ntest_lpa = fivetran.LocalProcessingAgent(\"testLpa\",\n    display_name=\"display_name\",\n    group_id=\"group_id\",\n    opts = pulumi.ResourceOptions(provider=fivetran_provider))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testLpa = new Fivetran.LocalProcessingAgent(\"testLpa\", new()\n    {\n        DisplayName = \"display_name\",\n        GroupId = \"group_id\",\n    }, new CustomResourceOptions\n    {\n        Provider = fivetran_provider,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewLocalProcessingAgent(ctx, \"testLpa\", \u0026fivetran.LocalProcessingAgentArgs{\n\t\t\tDisplayName: pulumi.String(\"display_name\"),\n\t\t\tGroupId:     pulumi.String(\"group_id\"),\n\t\t}, pulumi.Provider(fivetran_provider))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.LocalProcessingAgent;\nimport com.pulumi.fivetran.LocalProcessingAgentArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testLpa = new LocalProcessingAgent(\"testLpa\", LocalProcessingAgentArgs.builder()\n            .displayName(\"display_name\")\n            .groupId(\"group_id\")\n            .build(), CustomResourceOptions.builder()\n                .provider(fivetran_provider)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testLpa:\n    type: fivetran:LocalProcessingAgent\n    properties:\n      displayName: display_name\n      groupId: group_id\n    options:\n      provider: ${[\"fivetran-provider\"]}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "authJson": {
                     "type": "string",
@@ -11953,6 +12213,132 @@
                         "items": {
                             "$ref": "#/types/fivetran:index/LocalProcessingAgentUsage:LocalProcessingAgentUsage"
                         }
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "fivetran:index/privateLink:PrivateLink": {
+            "description": "This resource allows you to create, update, and delete private links.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  testPl:\n    type: fivetran:PrivateLink\n    properties:\n      region: region\n      service: service\n      config:\n        - connectionServiceName: connection_service_name\n    options:\n      provider: ${[\"fivetran-provider\"]}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "cloudProvider": {
+                    "type": "string",
+                    "description": "The cloud provider name.\n"
+                },
+                "configMap": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Configuration.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time the membership was created.\n"
+                },
+                "createdBy": {
+                    "type": "string",
+                    "description": "The unique identifier for the User within the Fivetran system.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The private link name within the account. The name must start with a letter or underscore and can only contain letters,\nnumbers, or underscores. Maximum size of name is 23 characters.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Data processing location. This is where Fivetran will operate and run computation on data.\n"
+                },
+                "service": {
+                    "type": "string",
+                    "description": "Service type.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "The state of the private link.\n"
+                },
+                "stateSummary": {
+                    "type": "string",
+                    "description": "The state of the private link.\n"
+                }
+            },
+            "required": [
+                "cloudProvider",
+                "configMap",
+                "createdAt",
+                "createdBy",
+                "name",
+                "region",
+                "service",
+                "state",
+                "stateSummary"
+            ],
+            "inputProperties": {
+                "configMap": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Configuration.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The private link name within the account. The name must start with a letter or underscore and can only contain letters,\nnumbers, or underscores. Maximum size of name is 23 characters.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Data processing location. This is where Fivetran will operate and run computation on data.\n"
+                },
+                "service": {
+                    "type": "string",
+                    "description": "Service type.\n"
+                }
+            },
+            "requiredInputs": [
+                "configMap",
+                "region",
+                "service"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PrivateLink resources.\n",
+                "properties": {
+                    "cloudProvider": {
+                        "type": "string",
+                        "description": "The cloud provider name.\n"
+                    },
+                    "configMap": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Configuration.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The date and time the membership was created.\n"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "description": "The unique identifier for the User within the Fivetran system.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The private link name within the account. The name must start with a letter or underscore and can only contain letters,\nnumbers, or underscores. Maximum size of name is 23 characters.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Data processing location. This is where Fivetran will operate and run computation on data.\n"
+                    },
+                    "service": {
+                        "type": "string",
+                        "description": "Service type.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "The state of the private link.\n"
+                    },
+                    "stateSummary": {
+                        "type": "string",
+                        "description": "The state of the private link.\n"
                     }
                 },
                 "type": "object"
@@ -12678,6 +13064,9 @@
                     "groupId": {
                         "type": "string"
                     },
+                    "hybridDeploymentAgentId": {
+                        "type": "string"
+                    },
                     "id": {
                         "type": "string"
                     },
@@ -12695,6 +13084,9 @@
                     },
                     "paused": {
                         "type": "boolean"
+                    },
+                    "privateLinkId": {
+                        "type": "string"
                     },
                     "proxyAgentId": {
                         "type": "string"
@@ -12725,12 +13117,14 @@
                     "dailySyncTime",
                     "failedAt",
                     "groupId",
+                    "hybridDeploymentAgentId",
                     "id",
                     "localProcessingAgentId",
                     "name",
                     "networkingMethod",
                     "pauseAfterTrial",
                     "paused",
+                    "privateLinkId",
                     "proxyAgentId",
                     "scheduleType",
                     "service",
@@ -13154,6 +13548,9 @@
                     "groupId": {
                         "type": "string"
                     },
+                    "hybridDeploymentAgentId": {
+                        "type": "string"
+                    },
                     "id": {
                         "type": "string"
                     },
@@ -13161,6 +13558,9 @@
                         "type": "string"
                     },
                     "networkingMethod": {
+                        "type": "string"
+                    },
+                    "privateLinkId": {
                         "type": "string"
                     },
                     "region": {
@@ -13180,9 +13580,11 @@
                 "required": [
                     "daylightSavingTimeEnabled",
                     "groupId",
+                    "hybridDeploymentAgentId",
                     "id",
                     "localProcessingAgentId",
                     "networkingMethod",
+                    "privateLinkId",
                     "region",
                     "service",
                     "setupStatus",
@@ -13575,8 +13977,75 @@
                 ]
             }
         },
+        "fivetran:index/getHybridDeploymentAgent:getHybridDeploymentAgent": {
+            "description": "This data source returns a hybrid deployment agent object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var hybridDeploymentAgent = FivetranFunctions.getHybridDeploymentAgents(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);\n\n    }\n}\n```\n```yaml\nvariables:\n  hybridDeploymentAgent:\n    fn::invoke:\n      Function: fivetran:getHybridDeploymentAgents\n      Arguments:\n        id: hybrid_deployment_agent_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getHybridDeploymentAgent.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the hybrid deployment agent within your account.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getHybridDeploymentAgent.\n",
+                "properties": {
+                    "displayName": {
+                        "type": "string",
+                        "description": "The unique name for the hybrid deployment agent.\n"
+                    },
+                    "groupId": {
+                        "type": "string",
+                        "description": "The unique identifier for the Group within the Fivetran system.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the hybrid deployment agent within your account.\n"
+                    },
+                    "registeredAt": {
+                        "type": "string",
+                        "description": "The timestamp of the time the hybrid deployment agent was created in your account.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "displayName",
+                    "groupId",
+                    "id",
+                    "registeredAt"
+                ]
+            }
+        },
+        "fivetran:index/getHybridDeploymentAgents:getHybridDeploymentAgents": {
+            "description": "This data source returns a list of all hybrid deployment agents within your Fivetran account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst hybridDeploymentAgents = fivetran.getHybridDeploymentAgents({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nhybrid_deployment_agents = fivetran.get_hybrid_deployment_agents()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var hybridDeploymentAgents = Fivetran.GetHybridDeploymentAgents.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetHybridDeploymentAgents(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var hybridDeploymentAgents = FivetranFunctions.getHybridDeploymentAgents();\n\n    }\n}\n```\n```yaml\nvariables:\n  hybridDeploymentAgents:\n    fn::invoke:\n      Function: fivetran:getHybridDeploymentAgents\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "outputs": {
+                "description": "A collection of values returned by getHybridDeploymentAgents.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getHybridDeploymentAgentsItem:getHybridDeploymentAgentsItem"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "items",
+                    "id"
+                ]
+            }
+        },
         "fivetran:index/getLocalProcessingAgent:getLocalProcessingAgent": {
-            "description": "This data source returns a local processing agent object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst localProcessingAgent = fivetran.getLocalProcessingAgent({\n    id: \"local_processing_agent_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nlocal_processing_agent = fivetran.get_local_processing_agent(id=\"local_processing_agent_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var localProcessingAgent = Fivetran.GetLocalProcessingAgent.Invoke(new()\n    {\n        Id = \"local_processing_agent_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupLocalProcessingAgent(ctx, \u0026fivetran.LookupLocalProcessingAgentArgs{\n\t\t\tId: \"local_processing_agent_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetLocalProcessingAgentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var localProcessingAgent = FivetranFunctions.getLocalProcessingAgent(GetLocalProcessingAgentArgs.builder()\n            .id(\"local_processing_agent_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  localProcessingAgent:\n    fn::invoke:\n      Function: fivetran:getLocalProcessingAgent\n      Arguments:\n        id: local_processing_agent_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "NOTE: In connection with the general availability of the hybrid deployment functionality and in order to synchronize internal terminology, we have deprecate this data source.\n\nThis data source returns a local processing agent object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst localProcessingAgent = fivetran.getLocalProcessingAgent({\n    id: \"local_processing_agent_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nlocal_processing_agent = fivetran.get_local_processing_agent(id=\"local_processing_agent_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var localProcessingAgent = Fivetran.GetLocalProcessingAgent.Invoke(new()\n    {\n        Id = \"local_processing_agent_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupLocalProcessingAgent(ctx, \u0026fivetran.LookupLocalProcessingAgentArgs{\n\t\t\tId: \"local_processing_agent_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetLocalProcessingAgentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var localProcessingAgent = FivetranFunctions.getLocalProcessingAgent(GetLocalProcessingAgentArgs.builder()\n            .id(\"local_processing_agent_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  localProcessingAgent:\n    fn::invoke:\n      Function: fivetran:getLocalProcessingAgent\n      Arguments:\n        id: local_processing_agent_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getLocalProcessingAgent.\n",
                 "properties": {
@@ -13627,7 +14096,7 @@
             }
         },
         "fivetran:index/getLocalProcessingAgents:getLocalProcessingAgents": {
-            "description": "This data source returns a list of all local processing agents within your Fivetran account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst localProcessingAgents = fivetran.getLocalProcessingAgents({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nlocal_processing_agents = fivetran.get_local_processing_agents()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var localProcessingAgents = Fivetran.GetLocalProcessingAgents.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetLocalProcessingAgents(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var localProcessingAgents = FivetranFunctions.getLocalProcessingAgents();\n\n    }\n}\n```\n```yaml\nvariables:\n  localProcessingAgents:\n    fn::invoke:\n      Function: fivetran:getLocalProcessingAgents\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "NOTE: In connection with the general availability of the hybrid deployment functionality and in order to synchronize internal terminology, we have deprecate this data source.\n\nThis data source returns a list of all local processing agents within your Fivetran account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst localProcessingAgents = fivetran.getLocalProcessingAgents({});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nlocal_processing_agents = fivetran.get_local_processing_agents()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var localProcessingAgents = Fivetran.GetLocalProcessingAgents.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.GetLocalProcessingAgents(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var localProcessingAgents = FivetranFunctions.getLocalProcessingAgents();\n\n    }\n}\n```\n```yaml\nvariables:\n  localProcessingAgents:\n    fn::invoke:\n      Function: fivetran:getLocalProcessingAgents\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "outputs": {
                 "description": "A collection of values returned by getLocalProcessingAgents.\n",
                 "properties": {
@@ -13645,6 +14114,116 @@
                 "type": "object",
                 "required": [
                     "items",
+                    "id"
+                ]
+            }
+        },
+        "fivetran:index/getPrivateLink:getPrivateLink": {
+            "description": "This data source returns a private link object.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@pulumi/fivetran\";\n\nconst privateLink = fivetran.getPrivateLink({\n    id: \"private_link_id\",\n});\n```\n```python\nimport pulumi\nimport pulumi_fivetran as fivetran\n\nprivate_link = fivetran.get_private_link(id=\"private_link_id\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var privateLink = Fivetran.GetPrivateLink.Invoke(new()\n    {\n        Id = \"private_link_id\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.LookupPrivateLink(ctx, \u0026fivetran.LookupPrivateLinkArgs{\n\t\t\tId: \"private_link_id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.FivetranFunctions;\nimport com.pulumi.fivetran.inputs.GetPrivateLinkArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var privateLink = FivetranFunctions.getPrivateLink(GetPrivateLinkArgs.builder()\n            .id(\"private_link_id\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  privateLink:\n    fn::invoke:\n      Function: fivetran:getPrivateLink\n      Arguments:\n        id: private_link_id\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getPrivateLink.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the private link within the Fivetran system.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPrivateLink.\n",
+                "properties": {
+                    "cloudProvider": {
+                        "type": "string",
+                        "description": "The cloud provider name.\n"
+                    },
+                    "configMap": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Configuration.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The date and time the membership was created.\n"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "description": "The unique identifier for the User within the Fivetran system.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier for the private link within the Fivetran system.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Data processing location. This is where Fivetran will operate and run computation on data.\n"
+                    },
+                    "service": {
+                        "type": "string",
+                        "description": "Service type.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "The state of the private link.\n"
+                    },
+                    "stateSummary": {
+                        "type": "string",
+                        "description": "The state of the private link.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "cloudProvider",
+                    "configMap",
+                    "createdAt",
+                    "createdBy",
+                    "id",
+                    "name",
+                    "region",
+                    "service",
+                    "state",
+                    "stateSummary"
+                ]
+            }
+        },
+        "fivetran:index/getPrivateLinks:getPrivateLinks": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getPrivateLinks.\n",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getPrivateLinksItem:getPrivateLinksItem"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPrivateLinks.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/fivetran:index/getPrivateLinksItem:getPrivateLinksItem"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
                     "id"
                 ]
             }
