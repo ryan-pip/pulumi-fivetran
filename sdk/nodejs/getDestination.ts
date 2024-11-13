@@ -43,9 +43,11 @@ export interface GetDestinationResult {
     readonly config?: outputs.GetDestinationConfig;
     readonly daylightSavingTimeEnabled: boolean;
     readonly groupId: string;
+    readonly hybridDeploymentAgentId: string;
     readonly id: string;
     readonly localProcessingAgentId: string;
     readonly networkingMethod: string;
+    readonly privateLinkId: string;
     readonly region: string;
     readonly service: string;
     readonly setupStatus: string;

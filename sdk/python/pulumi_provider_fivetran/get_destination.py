@@ -28,7 +28,7 @@ class GetDestinationResult:
     """
     A collection of values returned by getDestination.
     """
-    def __init__(__self__, config=None, daylight_saving_time_enabled=None, group_id=None, id=None, local_processing_agent_id=None, networking_method=None, region=None, service=None, setup_status=None, time_zone_offset=None):
+    def __init__(__self__, config=None, daylight_saving_time_enabled=None, group_id=None, hybrid_deployment_agent_id=None, id=None, local_processing_agent_id=None, networking_method=None, private_link_id=None, region=None, service=None, setup_status=None, time_zone_offset=None):
         if config and not isinstance(config, dict):
             raise TypeError("Expected argument 'config' to be a dict")
         pulumi.set(__self__, "config", config)
@@ -38,6 +38,9 @@ class GetDestinationResult:
         if group_id and not isinstance(group_id, str):
             raise TypeError("Expected argument 'group_id' to be a str")
         pulumi.set(__self__, "group_id", group_id)
+        if hybrid_deployment_agent_id and not isinstance(hybrid_deployment_agent_id, str):
+            raise TypeError("Expected argument 'hybrid_deployment_agent_id' to be a str")
+        pulumi.set(__self__, "hybrid_deployment_agent_id", hybrid_deployment_agent_id)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -47,6 +50,9 @@ class GetDestinationResult:
         if networking_method and not isinstance(networking_method, str):
             raise TypeError("Expected argument 'networking_method' to be a str")
         pulumi.set(__self__, "networking_method", networking_method)
+        if private_link_id and not isinstance(private_link_id, str):
+            raise TypeError("Expected argument 'private_link_id' to be a str")
+        pulumi.set(__self__, "private_link_id", private_link_id)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -76,6 +82,11 @@ class GetDestinationResult:
         return pulumi.get(self, "group_id")
 
     @property
+    @pulumi.getter(name="hybridDeploymentAgentId")
+    def hybrid_deployment_agent_id(self) -> str:
+        return pulumi.get(self, "hybrid_deployment_agent_id")
+
+    @property
     @pulumi.getter
     def id(self) -> str:
         return pulumi.get(self, "id")
@@ -89,6 +100,11 @@ class GetDestinationResult:
     @pulumi.getter(name="networkingMethod")
     def networking_method(self) -> str:
         return pulumi.get(self, "networking_method")
+
+    @property
+    @pulumi.getter(name="privateLinkId")
+    def private_link_id(self) -> str:
+        return pulumi.get(self, "private_link_id")
 
     @property
     @pulumi.getter
@@ -120,9 +136,11 @@ class AwaitableGetDestinationResult(GetDestinationResult):
             config=self.config,
             daylight_saving_time_enabled=self.daylight_saving_time_enabled,
             group_id=self.group_id,
+            hybrid_deployment_agent_id=self.hybrid_deployment_agent_id,
             id=self.id,
             local_processing_agent_id=self.local_processing_agent_id,
             networking_method=self.networking_method,
+            private_link_id=self.private_link_id,
             region=self.region,
             service=self.service,
             setup_status=self.setup_status,
@@ -154,9 +172,11 @@ def get_destination(config: Optional[Union['GetDestinationConfigArgs', 'GetDesti
         config=pulumi.get(__ret__, 'config'),
         daylight_saving_time_enabled=pulumi.get(__ret__, 'daylight_saving_time_enabled'),
         group_id=pulumi.get(__ret__, 'group_id'),
+        hybrid_deployment_agent_id=pulumi.get(__ret__, 'hybrid_deployment_agent_id'),
         id=pulumi.get(__ret__, 'id'),
         local_processing_agent_id=pulumi.get(__ret__, 'local_processing_agent_id'),
         networking_method=pulumi.get(__ret__, 'networking_method'),
+        private_link_id=pulumi.get(__ret__, 'private_link_id'),
         region=pulumi.get(__ret__, 'region'),
         service=pulumi.get(__ret__, 'service'),
         setup_status=pulumi.get(__ret__, 'setup_status'),
@@ -185,9 +205,11 @@ def get_destination_output(config: Optional[pulumi.Input[Optional[Union['GetDest
         config=pulumi.get(__response__, 'config'),
         daylight_saving_time_enabled=pulumi.get(__response__, 'daylight_saving_time_enabled'),
         group_id=pulumi.get(__response__, 'group_id'),
+        hybrid_deployment_agent_id=pulumi.get(__response__, 'hybrid_deployment_agent_id'),
         id=pulumi.get(__response__, 'id'),
         local_processing_agent_id=pulumi.get(__response__, 'local_processing_agent_id'),
         networking_method=pulumi.get(__response__, 'networking_method'),
+        private_link_id=pulumi.get(__response__, 'private_link_id'),
         region=pulumi.get(__response__, 'region'),
         service=pulumi.get(__response__, 'service'),
         setup_status=pulumi.get(__response__, 'setup_status'),

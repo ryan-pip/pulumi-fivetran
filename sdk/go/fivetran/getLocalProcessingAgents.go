@@ -11,6 +11,8 @@ import (
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
+// NOTE: In connection with the general availability of the hybrid deployment functionality and in order to synchronize internal terminology, we have deprecate this data source.
+//
 // This data source returns a list of all local processing agents within your Fivetran account.
 //
 // ## Example Usage

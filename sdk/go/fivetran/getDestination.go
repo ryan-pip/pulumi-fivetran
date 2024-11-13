@@ -59,9 +59,11 @@ type LookupDestinationResult struct {
 	Config                    *GetDestinationConfig `pulumi:"config"`
 	DaylightSavingTimeEnabled bool                  `pulumi:"daylightSavingTimeEnabled"`
 	GroupId                   string                `pulumi:"groupId"`
+	HybridDeploymentAgentId   string                `pulumi:"hybridDeploymentAgentId"`
 	Id                        string                `pulumi:"id"`
 	LocalProcessingAgentId    string                `pulumi:"localProcessingAgentId"`
 	NetworkingMethod          string                `pulumi:"networkingMethod"`
+	PrivateLinkId             string                `pulumi:"privateLinkId"`
 	Region                    string                `pulumi:"region"`
 	Service                   string                `pulumi:"service"`
 	SetupStatus               string                `pulumi:"setupStatus"`
@@ -124,6 +126,10 @@ func (o LookupDestinationResultOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDestinationResult) string { return v.GroupId }).(pulumi.StringOutput)
 }
 
+func (o LookupDestinationResultOutput) HybridDeploymentAgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDestinationResult) string { return v.HybridDeploymentAgentId }).(pulumi.StringOutput)
+}
+
 func (o LookupDestinationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDestinationResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -134,6 +140,10 @@ func (o LookupDestinationResultOutput) LocalProcessingAgentId() pulumi.StringOut
 
 func (o LookupDestinationResultOutput) NetworkingMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDestinationResult) string { return v.NetworkingMethod }).(pulumi.StringOutput)
+}
+
+func (o LookupDestinationResultOutput) PrivateLinkId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDestinationResult) string { return v.PrivateLinkId }).(pulumi.StringOutput)
 }
 
 func (o LookupDestinationResultOutput) Region() pulumi.StringOutput {
