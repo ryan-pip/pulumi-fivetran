@@ -16,16 +16,16 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
-    'GetLocalProcessingAgentsResult',
-    'AwaitableGetLocalProcessingAgentsResult',
-    'get_local_processing_agents',
-    'get_local_processing_agents_output',
+    'GetHybridDeploymentAgentsResult',
+    'AwaitableGetHybridDeploymentAgentsResult',
+    'get_hybrid_deployment_agents',
+    'get_hybrid_deployment_agents_output',
 ]
 
 @pulumi.output_type
-class GetLocalProcessingAgentsResult:
+class GetHybridDeploymentAgentsResult:
     """
-    A collection of values returned by getLocalProcessingAgents.
+    A collection of values returned by getHybridDeploymentAgents.
     """
     def __init__(__self__, id=None, items=None):
         if id and not isinstance(id, str):
@@ -45,25 +45,23 @@ class GetLocalProcessingAgentsResult:
 
     @property
     @pulumi.getter
-    def items(self) -> Sequence['outputs.GetLocalProcessingAgentsItemResult']:
+    def items(self) -> Sequence['outputs.GetHybridDeploymentAgentsItemResult']:
         return pulumi.get(self, "items")
 
 
-class AwaitableGetLocalProcessingAgentsResult(GetLocalProcessingAgentsResult):
+class AwaitableGetHybridDeploymentAgentsResult(GetHybridDeploymentAgentsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return GetLocalProcessingAgentsResult(
+        return GetHybridDeploymentAgentsResult(
             id=self.id,
             items=self.items)
 
 
-def get_local_processing_agents(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLocalProcessingAgentsResult:
+def get_hybrid_deployment_agents(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHybridDeploymentAgentsResult:
     """
-    NOTE: In connection with the general availability of the hybrid deployment functionality and in order to synchronize internal terminology, we have deprecate this data source.
-
-    This data source returns a list of all local processing agents within your Fivetran account.
+    This data source returns a list of all hybrid deployment agents within your Fivetran account.
 
     ## Example Usage
 
@@ -71,21 +69,19 @@ def get_local_processing_agents(opts: Optional[pulumi.InvokeOptions] = None) -> 
     import pulumi
     import pulumi_fivetran as fivetran
 
-    local_processing_agents = fivetran.get_local_processing_agents()
+    hybrid_deployment_agents = fivetran.get_hybrid_deployment_agents()
     ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('fivetran:index/getLocalProcessingAgents:getLocalProcessingAgents', __args__, opts=opts, typ=GetLocalProcessingAgentsResult).value
+    __ret__ = pulumi.runtime.invoke('fivetran:index/getHybridDeploymentAgents:getHybridDeploymentAgents', __args__, opts=opts, typ=GetHybridDeploymentAgentsResult).value
 
-    return AwaitableGetLocalProcessingAgentsResult(
+    return AwaitableGetHybridDeploymentAgentsResult(
         id=pulumi.get(__ret__, 'id'),
         items=pulumi.get(__ret__, 'items'))
-def get_local_processing_agents_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLocalProcessingAgentsResult]:
+def get_hybrid_deployment_agents_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHybridDeploymentAgentsResult]:
     """
-    NOTE: In connection with the general availability of the hybrid deployment functionality and in order to synchronize internal terminology, we have deprecate this data source.
-
-    This data source returns a list of all local processing agents within your Fivetran account.
+    This data source returns a list of all hybrid deployment agents within your Fivetran account.
 
     ## Example Usage
 
@@ -93,12 +89,12 @@ def get_local_processing_agents_output(opts: Optional[pulumi.InvokeOptions] = No
     import pulumi
     import pulumi_fivetran as fivetran
 
-    local_processing_agents = fivetran.get_local_processing_agents()
+    hybrid_deployment_agents = fivetran.get_hybrid_deployment_agents()
     ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('fivetran:index/getLocalProcessingAgents:getLocalProcessingAgents', __args__, opts=opts, typ=GetLocalProcessingAgentsResult)
-    return __ret__.apply(lambda __response__: GetLocalProcessingAgentsResult(
+    __ret__ = pulumi.runtime.invoke_output('fivetran:index/getHybridDeploymentAgents:getHybridDeploymentAgents', __args__, opts=opts, typ=GetHybridDeploymentAgentsResult)
+    return __ret__.apply(lambda __response__: GetHybridDeploymentAgentsResult(
         id=pulumi.get(__response__, 'id'),
         items=pulumi.get(__response__, 'items')))

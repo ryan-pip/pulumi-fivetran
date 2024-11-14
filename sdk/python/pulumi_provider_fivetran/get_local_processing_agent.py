@@ -98,6 +98,8 @@ class AwaitableGetLocalProcessingAgentResult(GetLocalProcessingAgentResult):
 def get_local_processing_agent(id: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLocalProcessingAgentResult:
     """
+    NOTE: In connection with the general availability of the hybrid deployment functionality and in order to synchronize internal terminology, we have deprecate this data source.
+
     This data source returns a local processing agent object.
 
     ## Example Usage
@@ -126,6 +128,8 @@ def get_local_processing_agent(id: Optional[str] = None,
 def get_local_processing_agent_output(id: Optional[pulumi.Input[str]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLocalProcessingAgentResult]:
     """
+    NOTE: In connection with the general availability of the hybrid deployment functionality and in order to synchronize internal terminology, we have deprecate this data source.
+
     This data source returns a local processing agent object.
 
     ## Example Usage

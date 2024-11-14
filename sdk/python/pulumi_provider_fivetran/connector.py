@@ -26,8 +26,10 @@ class ConnectorArgs:
                  auth: Optional[pulumi.Input['ConnectorAuthArgs']] = None,
                  config: Optional[pulumi.Input['ConnectorConfigArgs']] = None,
                  destination_schema: Optional[pulumi.Input['ConnectorDestinationSchemaArgs']] = None,
+                 hybrid_deployment_agent_id: Optional[pulumi.Input[str]] = None,
                  local_processing_agent_id: Optional[pulumi.Input[str]] = None,
                  networking_method: Optional[pulumi.Input[str]] = None,
+                 private_link_id: Optional[pulumi.Input[str]] = None,
                  proxy_agent_id: Optional[pulumi.Input[str]] = None,
                  run_setup_tests: Optional[pulumi.Input[bool]] = None,
                  timeouts: Optional[pulumi.Input['ConnectorTimeoutsArgs']] = None,
@@ -37,9 +39,12 @@ class ConnectorArgs:
         The set of arguments for constructing a Connector resource.
         :param pulumi.Input[str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
         :param pulumi.Input[str] service: The connector type id within the Fivetran system.
-        :param pulumi.Input[str] local_processing_agent_id: The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+        :param pulumi.Input[str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
                value is specified, the system will try to associate the connection with an existing agent.
+        :param pulumi.Input[str] local_processing_agent_id: (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
+               to. If the value is specified, the system will try to associate the connection with an existing agent.
         :param pulumi.Input[str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
+        :param pulumi.Input[str] private_link_id: The private link ID.
         :param pulumi.Input[str] proxy_agent_id: The proxy agent ID.
         :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is FALSE.
         :param pulumi.Input[bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
@@ -57,10 +62,17 @@ class ConnectorArgs:
             pulumi.set(__self__, "config", config)
         if destination_schema is not None:
             pulumi.set(__self__, "destination_schema", destination_schema)
+        if hybrid_deployment_agent_id is not None:
+            pulumi.set(__self__, "hybrid_deployment_agent_id", hybrid_deployment_agent_id)
+        if local_processing_agent_id is not None:
+            warnings.warn("""This field is Deprecated, please follow the 1.4.0 migration guide to update the schema""", DeprecationWarning)
+            pulumi.log.warn("""local_processing_agent_id is deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema""")
         if local_processing_agent_id is not None:
             pulumi.set(__self__, "local_processing_agent_id", local_processing_agent_id)
         if networking_method is not None:
             pulumi.set(__self__, "networking_method", networking_method)
+        if private_link_id is not None:
+            pulumi.set(__self__, "private_link_id", private_link_id)
         if proxy_agent_id is not None:
             pulumi.set(__self__, "proxy_agent_id", proxy_agent_id)
         if run_setup_tests is not None:
@@ -124,11 +136,25 @@ class ConnectorArgs:
         pulumi.set(self, "destination_schema", value)
 
     @property
+    @pulumi.getter(name="hybridDeploymentAgentId")
+    def hybrid_deployment_agent_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
+        value is specified, the system will try to associate the connection with an existing agent.
+        """
+        return pulumi.get(self, "hybrid_deployment_agent_id")
+
+    @hybrid_deployment_agent_id.setter
+    def hybrid_deployment_agent_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hybrid_deployment_agent_id", value)
+
+    @property
     @pulumi.getter(name="localProcessingAgentId")
+    @_utilities.deprecated("""This field is Deprecated, please follow the 1.4.0 migration guide to update the schema""")
     def local_processing_agent_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
-        value is specified, the system will try to associate the connection with an existing agent.
+        (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
+        to. If the value is specified, the system will try to associate the connection with an existing agent.
         """
         return pulumi.get(self, "local_processing_agent_id")
 
@@ -147,6 +173,18 @@ class ConnectorArgs:
     @networking_method.setter
     def networking_method(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "networking_method", value)
+
+    @property
+    @pulumi.getter(name="privateLinkId")
+    def private_link_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private link ID.
+        """
+        return pulumi.get(self, "private_link_id")
+
+    @private_link_id.setter
+    def private_link_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_link_id", value)
 
     @property
     @pulumi.getter(name="proxyAgentId")
@@ -219,9 +257,11 @@ class _ConnectorState:
                  created_at: Optional[pulumi.Input[str]] = None,
                  destination_schema: Optional[pulumi.Input['ConnectorDestinationSchemaArgs']] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
+                 hybrid_deployment_agent_id: Optional[pulumi.Input[str]] = None,
                  local_processing_agent_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  networking_method: Optional[pulumi.Input[str]] = None,
+                 private_link_id: Optional[pulumi.Input[str]] = None,
                  proxy_agent_id: Optional[pulumi.Input[str]] = None,
                  run_setup_tests: Optional[pulumi.Input[bool]] = None,
                  service: Optional[pulumi.Input[str]] = None,
@@ -233,11 +273,14 @@ class _ConnectorState:
         :param pulumi.Input[str] connected_by: The unique identifier of the user who has created the connector in your account.
         :param pulumi.Input[str] created_at: The timestamp of the time the connector was created in your account.
         :param pulumi.Input[str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
-        :param pulumi.Input[str] local_processing_agent_id: The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+        :param pulumi.Input[str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
                value is specified, the system will try to associate the connection with an existing agent.
+        :param pulumi.Input[str] local_processing_agent_id: (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
+               to. If the value is specified, the system will try to associate the connection with an existing agent.
         :param pulumi.Input[str] name: The name used both as the connector's name within the Fivetran system and as the source schema's name within your
                destination.
         :param pulumi.Input[str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
+        :param pulumi.Input[str] private_link_id: The private link ID.
         :param pulumi.Input[str] proxy_agent_id: The proxy agent ID.
         :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is FALSE.
         :param pulumi.Input[str] service: The connector type id within the Fivetran system.
@@ -260,12 +303,19 @@ class _ConnectorState:
             pulumi.set(__self__, "destination_schema", destination_schema)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
+        if hybrid_deployment_agent_id is not None:
+            pulumi.set(__self__, "hybrid_deployment_agent_id", hybrid_deployment_agent_id)
+        if local_processing_agent_id is not None:
+            warnings.warn("""This field is Deprecated, please follow the 1.4.0 migration guide to update the schema""", DeprecationWarning)
+            pulumi.log.warn("""local_processing_agent_id is deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema""")
         if local_processing_agent_id is not None:
             pulumi.set(__self__, "local_processing_agent_id", local_processing_agent_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if networking_method is not None:
             pulumi.set(__self__, "networking_method", networking_method)
+        if private_link_id is not None:
+            pulumi.set(__self__, "private_link_id", private_link_id)
         if proxy_agent_id is not None:
             pulumi.set(__self__, "proxy_agent_id", proxy_agent_id)
         if run_setup_tests is not None:
@@ -343,11 +393,25 @@ class _ConnectorState:
         pulumi.set(self, "group_id", value)
 
     @property
+    @pulumi.getter(name="hybridDeploymentAgentId")
+    def hybrid_deployment_agent_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
+        value is specified, the system will try to associate the connection with an existing agent.
+        """
+        return pulumi.get(self, "hybrid_deployment_agent_id")
+
+    @hybrid_deployment_agent_id.setter
+    def hybrid_deployment_agent_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hybrid_deployment_agent_id", value)
+
+    @property
     @pulumi.getter(name="localProcessingAgentId")
+    @_utilities.deprecated("""This field is Deprecated, please follow the 1.4.0 migration guide to update the schema""")
     def local_processing_agent_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
-        value is specified, the system will try to associate the connection with an existing agent.
+        (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
+        to. If the value is specified, the system will try to associate the connection with an existing agent.
         """
         return pulumi.get(self, "local_processing_agent_id")
 
@@ -379,6 +443,18 @@ class _ConnectorState:
     @networking_method.setter
     def networking_method(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "networking_method", value)
+
+    @property
+    @pulumi.getter(name="privateLinkId")
+    def private_link_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private link ID.
+        """
+        return pulumi.get(self, "private_link_id")
+
+    @private_link_id.setter
+    def private_link_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_link_id", value)
 
     @property
     @pulumi.getter(name="proxyAgentId")
@@ -463,8 +539,10 @@ class Connector(pulumi.CustomResource):
                  config: Optional[pulumi.Input[Union['ConnectorConfigArgs', 'ConnectorConfigArgsDict']]] = None,
                  destination_schema: Optional[pulumi.Input[Union['ConnectorDestinationSchemaArgs', 'ConnectorDestinationSchemaArgsDict']]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
+                 hybrid_deployment_agent_id: Optional[pulumi.Input[str]] = None,
                  local_processing_agent_id: Optional[pulumi.Input[str]] = None,
                  networking_method: Optional[pulumi.Input[str]] = None,
+                 private_link_id: Optional[pulumi.Input[str]] = None,
                  proxy_agent_id: Optional[pulumi.Input[str]] = None,
                  run_setup_tests: Optional[pulumi.Input[bool]] = None,
                  service: Optional[pulumi.Input[str]] = None,
@@ -480,9 +558,12 @@ class Connector(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
-        :param pulumi.Input[str] local_processing_agent_id: The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+        :param pulumi.Input[str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
                value is specified, the system will try to associate the connection with an existing agent.
+        :param pulumi.Input[str] local_processing_agent_id: (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
+               to. If the value is specified, the system will try to associate the connection with an existing agent.
         :param pulumi.Input[str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
+        :param pulumi.Input[str] private_link_id: The private link ID.
         :param pulumi.Input[str] proxy_agent_id: The proxy agent ID.
         :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is FALSE.
         :param pulumi.Input[str] service: The connector type id within the Fivetran system.
@@ -523,8 +604,10 @@ class Connector(pulumi.CustomResource):
                  config: Optional[pulumi.Input[Union['ConnectorConfigArgs', 'ConnectorConfigArgsDict']]] = None,
                  destination_schema: Optional[pulumi.Input[Union['ConnectorDestinationSchemaArgs', 'ConnectorDestinationSchemaArgsDict']]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
+                 hybrid_deployment_agent_id: Optional[pulumi.Input[str]] = None,
                  local_processing_agent_id: Optional[pulumi.Input[str]] = None,
                  networking_method: Optional[pulumi.Input[str]] = None,
+                 private_link_id: Optional[pulumi.Input[str]] = None,
                  proxy_agent_id: Optional[pulumi.Input[str]] = None,
                  run_setup_tests: Optional[pulumi.Input[bool]] = None,
                  service: Optional[pulumi.Input[str]] = None,
@@ -546,8 +629,10 @@ class Connector(pulumi.CustomResource):
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
             __props__.__dict__["group_id"] = group_id
+            __props__.__dict__["hybrid_deployment_agent_id"] = hybrid_deployment_agent_id
             __props__.__dict__["local_processing_agent_id"] = local_processing_agent_id
             __props__.__dict__["networking_method"] = networking_method
+            __props__.__dict__["private_link_id"] = private_link_id
             __props__.__dict__["proxy_agent_id"] = proxy_agent_id
             __props__.__dict__["run_setup_tests"] = run_setup_tests
             if service is None and not opts.urn:
@@ -575,9 +660,11 @@ class Connector(pulumi.CustomResource):
             created_at: Optional[pulumi.Input[str]] = None,
             destination_schema: Optional[pulumi.Input[Union['ConnectorDestinationSchemaArgs', 'ConnectorDestinationSchemaArgsDict']]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
+            hybrid_deployment_agent_id: Optional[pulumi.Input[str]] = None,
             local_processing_agent_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             networking_method: Optional[pulumi.Input[str]] = None,
+            private_link_id: Optional[pulumi.Input[str]] = None,
             proxy_agent_id: Optional[pulumi.Input[str]] = None,
             run_setup_tests: Optional[pulumi.Input[bool]] = None,
             service: Optional[pulumi.Input[str]] = None,
@@ -594,11 +681,14 @@ class Connector(pulumi.CustomResource):
         :param pulumi.Input[str] connected_by: The unique identifier of the user who has created the connector in your account.
         :param pulumi.Input[str] created_at: The timestamp of the time the connector was created in your account.
         :param pulumi.Input[str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
-        :param pulumi.Input[str] local_processing_agent_id: The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
+        :param pulumi.Input[str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
                value is specified, the system will try to associate the connection with an existing agent.
+        :param pulumi.Input[str] local_processing_agent_id: (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
+               to. If the value is specified, the system will try to associate the connection with an existing agent.
         :param pulumi.Input[str] name: The name used both as the connector's name within the Fivetran system and as the source schema's name within your
                destination.
         :param pulumi.Input[str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
+        :param pulumi.Input[str] private_link_id: The private link ID.
         :param pulumi.Input[str] proxy_agent_id: The proxy agent ID.
         :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is FALSE.
         :param pulumi.Input[str] service: The connector type id within the Fivetran system.
@@ -619,9 +709,11 @@ class Connector(pulumi.CustomResource):
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["destination_schema"] = destination_schema
         __props__.__dict__["group_id"] = group_id
+        __props__.__dict__["hybrid_deployment_agent_id"] = hybrid_deployment_agent_id
         __props__.__dict__["local_processing_agent_id"] = local_processing_agent_id
         __props__.__dict__["name"] = name
         __props__.__dict__["networking_method"] = networking_method
+        __props__.__dict__["private_link_id"] = private_link_id
         __props__.__dict__["proxy_agent_id"] = proxy_agent_id
         __props__.__dict__["run_setup_tests"] = run_setup_tests
         __props__.__dict__["service"] = service
@@ -670,11 +762,21 @@ class Connector(pulumi.CustomResource):
         return pulumi.get(self, "group_id")
 
     @property
+    @pulumi.getter(name="hybridDeploymentAgentId")
+    def hybrid_deployment_agent_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
+        value is specified, the system will try to associate the connection with an existing agent.
+        """
+        return pulumi.get(self, "hybrid_deployment_agent_id")
+
+    @property
     @pulumi.getter(name="localProcessingAgentId")
+    @_utilities.deprecated("""This field is Deprecated, please follow the 1.4.0 migration guide to update the schema""")
     def local_processing_agent_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The local processing agent ID that refers to the controller created for the group the connection belongs to. If the
-        value is specified, the system will try to associate the connection with an existing agent.
+        (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
+        to. If the value is specified, the system will try to associate the connection with an existing agent.
         """
         return pulumi.get(self, "local_processing_agent_id")
 
@@ -694,6 +796,14 @@ class Connector(pulumi.CustomResource):
         Possible values: Directly, SshTunnel, ProxyAgent.
         """
         return pulumi.get(self, "networking_method")
+
+    @property
+    @pulumi.getter(name="privateLinkId")
+    def private_link_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The private link ID.
+        """
+        return pulumi.get(self, "private_link_id")
 
     @property
     @pulumi.getter(name="proxyAgentId")

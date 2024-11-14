@@ -167,6 +167,8 @@ __all__ = [
     'GetGroupUsersUserArgsDict',
     'GetGroupsGroupArgs',
     'GetGroupsGroupArgsDict',
+    'GetPrivateLinksItemArgs',
+    'GetPrivateLinksItemArgsDict',
     'GetProxyAgentsItemArgs',
     'GetProxyAgentsItemArgsDict',
     'GetRolesRoleArgs',
@@ -53381,6 +53383,189 @@ class GetGroupsGroupArgs:
     @name.setter
     def name(self, value: str):
         pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class GetPrivateLinksItemArgsDict(TypedDict):
+        cloud_provider: str
+        """
+        The cloud provider name.
+        """
+        created_at: str
+        """
+        The date and time the membership was created.
+        """
+        created_by: str
+        """
+        The unique identifier for the User within the Fivetran system.
+        """
+        id: str
+        """
+        The unique identifier for the private link within the Fivetran system.
+        """
+        name: str
+        """
+        The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
+        """
+        region: str
+        """
+        Data processing location. This is where Fivetran will operate and run computation on data.
+        """
+        service: str
+        """
+        Service type.
+        """
+        state: str
+        """
+        The state of the private link.
+        """
+        state_summary: str
+        """
+        The state of the private link.
+        """
+elif False:
+    GetPrivateLinksItemArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetPrivateLinksItemArgs:
+    def __init__(__self__, *,
+                 cloud_provider: str,
+                 created_at: str,
+                 created_by: str,
+                 id: str,
+                 name: str,
+                 region: str,
+                 service: str,
+                 state: str,
+                 state_summary: str):
+        """
+        :param str cloud_provider: The cloud provider name.
+        :param str created_at: The date and time the membership was created.
+        :param str created_by: The unique identifier for the User within the Fivetran system.
+        :param str id: The unique identifier for the private link within the Fivetran system.
+        :param str name: The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
+        :param str region: Data processing location. This is where Fivetran will operate and run computation on data.
+        :param str service: Service type.
+        :param str state: The state of the private link.
+        :param str state_summary: The state of the private link.
+        """
+        pulumi.set(__self__, "cloud_provider", cloud_provider)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "service", service)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "state_summary", state_summary)
+
+    @property
+    @pulumi.getter(name="cloudProvider")
+    def cloud_provider(self) -> str:
+        """
+        The cloud provider name.
+        """
+        return pulumi.get(self, "cloud_provider")
+
+    @cloud_provider.setter
+    def cloud_provider(self, value: str):
+        pulumi.set(self, "cloud_provider", value)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        """
+        The date and time the membership was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: str):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        """
+        The unique identifier for the User within the Fivetran system.
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: str):
+        pulumi.set(self, "created_by", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the private link within the Fivetran system.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Data processing location. This is where Fivetran will operate and run computation on data.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: str):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        """
+        Service type.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: str):
+        pulumi.set(self, "service", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The state of the private link.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: str):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="stateSummary")
+    def state_summary(self) -> str:
+        """
+        The state of the private link.
+        """
+        return pulumi.get(self, "state_summary")
+
+    @state_summary.setter
+    def state_summary(self, value: str):
+        pulumi.set(self, "state_summary", value)
 
 
 if not MYPY:
