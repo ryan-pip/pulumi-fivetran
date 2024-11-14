@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * NOTE: In connection with the general availability of the hybrid deployment functionality and in order to synchronize internal terminology, we have deprecate this data source.
+ *
  * This data source returns a list of all local processing agents within your Fivetran account.
  *
  * ## Example Usage
@@ -35,6 +37,8 @@ export interface GetLocalProcessingAgentsResult {
     readonly items: outputs.GetLocalProcessingAgentsItem[];
 }
 /**
+ * NOTE: In connection with the general availability of the hybrid deployment functionality and in order to synchronize internal terminology, we have deprecate this data source.
+ *
  * This data source returns a list of all local processing agents within your Fivetran account.
  *
  * ## Example Usage

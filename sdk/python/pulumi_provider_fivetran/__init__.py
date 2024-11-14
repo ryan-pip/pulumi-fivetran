@@ -35,8 +35,12 @@ from .get_group_service_account import *
 from .get_group_ssh_key import *
 from .get_group_users import *
 from .get_groups import *
+from .get_hybrid_deployment_agent import *
+from .get_hybrid_deployment_agents import *
 from .get_local_processing_agent import *
 from .get_local_processing_agents import *
+from .get_private_link import *
+from .get_private_links import *
 from .get_proxy_agent import *
 from .get_proxy_agents import *
 from .get_roles import *
@@ -53,7 +57,9 @@ from .get_webhook import *
 from .get_webhooks import *
 from .group import *
 from .group_users import *
+from .hybrid_deployment_agent import *
 from .local_processing_agent import *
+from .private_link import *
 from .provider import *
 from .proxy_agent import *
 from .team import *
@@ -191,10 +197,26 @@ _utilities.register(
  },
  {
   "pkg": "fivetran",
+  "mod": "index/hybridDeploymentAgent",
+  "fqn": "pulumi_provider_fivetran",
+  "classes": {
+   "fivetran:index/hybridDeploymentAgent:HybridDeploymentAgent": "HybridDeploymentAgent"
+  }
+ },
+ {
+  "pkg": "fivetran",
   "mod": "index/localProcessingAgent",
   "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/localProcessingAgent:LocalProcessingAgent": "LocalProcessingAgent"
+  }
+ },
+ {
+  "pkg": "fivetran",
+  "mod": "index/privateLink",
+  "fqn": "pulumi_provider_fivetran",
+  "classes": {
+   "fivetran:index/privateLink:PrivateLink": "PrivateLink"
   }
  },
  {

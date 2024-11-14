@@ -2,14 +2,10 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * NOTE: In connection with the general availability of the hybrid deployment functionality and in order to synchronize internal terminology, we have deprecate this resource.
- *
- * This resource allows you to create, update, and delete local processing agents.
+ * This resource allows you to create, update, and delete hybrid deployment agents.
  *
  * ## Example Usage
  *
@@ -17,17 +13,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
- * const testLpa = new fivetran.LocalProcessingAgent("testLpa", {
+ * const hybridDeploymentAgent = new fivetran.HybridDeploymentAgent("hybridDeploymentAgent", {
  *     displayName: "display_name",
  *     groupId: "group_id",
+ *     authType: "AUTO",
  * }, {
  *     provider: fivetran_provider,
  * });
  * ```
  */
-export class LocalProcessingAgent extends pulumi.CustomResource {
+export class HybridDeploymentAgent extends pulumi.CustomResource {
     /**
-     * Get an existing LocalProcessingAgent resource's state with the given name, ID, and optional extra
+     * Get an existing HybridDeploymentAgent resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -35,28 +32,32 @@ export class LocalProcessingAgent extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LocalProcessingAgentState, opts?: pulumi.CustomResourceOptions): LocalProcessingAgent {
-        return new LocalProcessingAgent(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: HybridDeploymentAgentState, opts?: pulumi.CustomResourceOptions): HybridDeploymentAgent {
+        return new HybridDeploymentAgent(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'fivetran:index/localProcessingAgent:LocalProcessingAgent';
+    public static readonly __pulumiType = 'fivetran:index/hybridDeploymentAgent:HybridDeploymentAgent';
 
     /**
-     * Returns true if the given object is an instance of LocalProcessingAgent.  This is designed to work even
+     * Returns true if the given object is an instance of HybridDeploymentAgent.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is LocalProcessingAgent {
+    public static isInstance(obj: any): obj is HybridDeploymentAgent {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === LocalProcessingAgent.__pulumiType;
+        return obj['__pulumiType'] === HybridDeploymentAgent.__pulumiType;
     }
 
     /**
      * Base64-encoded content of the auth.json file.
      */
     public /*out*/ readonly authJson!: pulumi.Output<string>;
+    /**
+     * Type of authentification. Possible values `AUTO`,`MANUAL`
+     */
+    public readonly authType!: pulumi.Output<string>;
     /**
      * Determines whether re-authentication needs to be performed.
      */
@@ -66,7 +67,7 @@ export class LocalProcessingAgent extends pulumi.CustomResource {
      */
     public /*out*/ readonly configJson!: pulumi.Output<string>;
     /**
-     * The unique name for the local processing agent.
+     * The unique name for the hybrid deployment agent.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -78,40 +79,48 @@ export class LocalProcessingAgent extends pulumi.CustomResource {
      */
     public readonly groupId!: pulumi.Output<string>;
     /**
-     * The timestamp of the time the local processing agent was created in your account.
+     * The timestamp of the time the hybrid deployment agent was created in your account.
      */
     public /*out*/ readonly registeredAt!: pulumi.Output<string>;
-    public /*out*/ readonly usages!: pulumi.Output<outputs.LocalProcessingAgentUsage[]>;
+    /**
+     * Base64 encoded content of token.
+     */
+    public /*out*/ readonly token!: pulumi.Output<string>;
 
     /**
-     * Create a LocalProcessingAgent resource with the given unique name, arguments, and options.
+     * Create a HybridDeploymentAgent resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: LocalProcessingAgentArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: LocalProcessingAgentArgs | LocalProcessingAgentState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: HybridDeploymentAgentArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: HybridDeploymentAgentArgs | HybridDeploymentAgentState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as LocalProcessingAgentState | undefined;
+            const state = argsOrState as HybridDeploymentAgentState | undefined;
             resourceInputs["authJson"] = state ? state.authJson : undefined;
+            resourceInputs["authType"] = state ? state.authType : undefined;
             resourceInputs["authenticationCounter"] = state ? state.authenticationCounter : undefined;
             resourceInputs["configJson"] = state ? state.configJson : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["dockerComposeYaml"] = state ? state.dockerComposeYaml : undefined;
             resourceInputs["groupId"] = state ? state.groupId : undefined;
             resourceInputs["registeredAt"] = state ? state.registeredAt : undefined;
-            resourceInputs["usages"] = state ? state.usages : undefined;
+            resourceInputs["token"] = state ? state.token : undefined;
         } else {
-            const args = argsOrState as LocalProcessingAgentArgs | undefined;
+            const args = argsOrState as HybridDeploymentAgentArgs | undefined;
+            if ((!args || args.authType === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'authType'");
+            }
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
             if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
+            resourceInputs["authType"] = args ? args.authType : undefined;
             resourceInputs["authenticationCounter"] = args ? args.authenticationCounter : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["groupId"] = args ? args.groupId : undefined;
@@ -119,21 +128,25 @@ export class LocalProcessingAgent extends pulumi.CustomResource {
             resourceInputs["configJson"] = undefined /*out*/;
             resourceInputs["dockerComposeYaml"] = undefined /*out*/;
             resourceInputs["registeredAt"] = undefined /*out*/;
-            resourceInputs["usages"] = undefined /*out*/;
+            resourceInputs["token"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(LocalProcessingAgent.__pulumiType, name, resourceInputs, opts);
+        super(HybridDeploymentAgent.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering LocalProcessingAgent resources.
+ * Input properties used for looking up and filtering HybridDeploymentAgent resources.
  */
-export interface LocalProcessingAgentState {
+export interface HybridDeploymentAgentState {
     /**
      * Base64-encoded content of the auth.json file.
      */
     authJson?: pulumi.Input<string>;
+    /**
+     * Type of authentification. Possible values `AUTO`,`MANUAL`
+     */
+    authType?: pulumi.Input<string>;
     /**
      * Determines whether re-authentication needs to be performed.
      */
@@ -143,7 +156,7 @@ export interface LocalProcessingAgentState {
      */
     configJson?: pulumi.Input<string>;
     /**
-     * The unique name for the local processing agent.
+     * The unique name for the hybrid deployment agent.
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -155,22 +168,29 @@ export interface LocalProcessingAgentState {
      */
     groupId?: pulumi.Input<string>;
     /**
-     * The timestamp of the time the local processing agent was created in your account.
+     * The timestamp of the time the hybrid deployment agent was created in your account.
      */
     registeredAt?: pulumi.Input<string>;
-    usages?: pulumi.Input<pulumi.Input<inputs.LocalProcessingAgentUsage>[]>;
+    /**
+     * Base64 encoded content of token.
+     */
+    token?: pulumi.Input<string>;
 }
 
 /**
- * The set of arguments for constructing a LocalProcessingAgent resource.
+ * The set of arguments for constructing a HybridDeploymentAgent resource.
  */
-export interface LocalProcessingAgentArgs {
+export interface HybridDeploymentAgentArgs {
+    /**
+     * Type of authentification. Possible values `AUTO`,`MANUAL`
+     */
+    authType: pulumi.Input<string>;
     /**
      * Determines whether re-authentication needs to be performed.
      */
     authenticationCounter?: pulumi.Input<number>;
     /**
-     * The unique name for the local processing agent.
+     * The unique name for the hybrid deployment agent.
      */
     displayName: pulumi.Input<string>;
     /**

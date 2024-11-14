@@ -94,9 +94,11 @@ __all__ = [
     'GetGroupConnectorsConnectorStatusWarningResult',
     'GetGroupUsersUserResult',
     'GetGroupsGroupResult',
+    'GetHybridDeploymentAgentsItemResult',
     'GetLocalProcessingAgentUsageResult',
     'GetLocalProcessingAgentsItemResult',
     'GetLocalProcessingAgentsItemUsageResult',
+    'GetPrivateLinksItemResult',
     'GetProxyAgentsItemResult',
     'GetRolesRoleResult',
     'GetTeamConnectorMembershipsConnectorResult',
@@ -34827,6 +34829,57 @@ class GetGroupsGroupResult(dict):
 
 
 @pulumi.output_type
+class GetHybridDeploymentAgentsItemResult(dict):
+    def __init__(__self__, *,
+                 display_name: str,
+                 group_id: str,
+                 id: str,
+                 registered_at: str):
+        """
+        :param str display_name: The unique name for the hybrid deployment agent.
+        :param str group_id: The unique identifier for the Group within the Fivetran system.
+        :param str id: The unique identifier for the hybrid deployment agent within your account.
+        :param str registered_at: The timestamp of the time the hybrid deployment agent was created in your account.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "registered_at", registered_at)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        The unique name for the hybrid deployment agent.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> str:
+        """
+        The unique identifier for the Group within the Fivetran system.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the hybrid deployment agent within your account.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="registeredAt")
+    def registered_at(self) -> str:
+        """
+        The timestamp of the time the hybrid deployment agent was created in your account.
+        """
+        return pulumi.get(self, "registered_at")
+
+
+@pulumi.output_type
 class GetLocalProcessingAgentUsageResult(dict):
     def __init__(__self__, *,
                  connection_id: str,
@@ -34962,6 +35015,112 @@ class GetLocalProcessingAgentsItemUsageResult(dict):
         The connection type.
         """
         return pulumi.get(self, "service")
+
+
+@pulumi.output_type
+class GetPrivateLinksItemResult(dict):
+    def __init__(__self__, *,
+                 cloud_provider: str,
+                 created_at: str,
+                 created_by: str,
+                 id: str,
+                 name: str,
+                 region: str,
+                 service: str,
+                 state: str,
+                 state_summary: str):
+        """
+        :param str cloud_provider: The cloud provider name.
+        :param str created_at: The date and time the membership was created.
+        :param str created_by: The unique identifier for the User within the Fivetran system.
+        :param str id: The unique identifier for the private link within the Fivetran system.
+        :param str name: The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
+        :param str region: Data processing location. This is where Fivetran will operate and run computation on data.
+        :param str service: Service type.
+        :param str state: The state of the private link.
+        :param str state_summary: The state of the private link.
+        """
+        pulumi.set(__self__, "cloud_provider", cloud_provider)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "created_by", created_by)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "service", service)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "state_summary", state_summary)
+
+    @property
+    @pulumi.getter(name="cloudProvider")
+    def cloud_provider(self) -> str:
+        """
+        The cloud provider name.
+        """
+        return pulumi.get(self, "cloud_provider")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> str:
+        """
+        The date and time the membership was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        """
+        The unique identifier for the User within the Fivetran system.
+        """
+        return pulumi.get(self, "created_by")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier for the private link within the Fivetran system.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Data processing location. This is where Fivetran will operate and run computation on data.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        """
+        Service type.
+        """
+        return pulumi.get(self, "service")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The state of the private link.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="stateSummary")
+    def state_summary(self) -> str:
+        """
+        The state of the private link.
+        """
+        return pulumi.get(self, "state_summary")
 
 
 @pulumi.output_type
