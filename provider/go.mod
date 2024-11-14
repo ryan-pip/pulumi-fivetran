@@ -10,8 +10,8 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 
 require (
 	github.com/fivetran/terraform-provider-fivetran/shim v0.0.0-00010101000000-000000000000
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.47.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.94.0
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.48.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.95.0
 	github.com/pulumi/pulumi/sdk/v3 v3.137.0
 )
 
@@ -53,8 +53,8 @@ require (
 	github.com/ettle/strcase v0.1.1 // indirect
 	github.com/fatih/color v1.17.0 // indirect
 	github.com/felixge/httpsnoop v1.0.4 // indirect
-	github.com/fivetran/go-fivetran v0.9.4 // indirect
-	github.com/fivetran/terraform-provider-fivetran v1.3.3 // indirect
+	github.com/fivetran/go-fivetran v1.0.4 // indirect
+	github.com/fivetran/terraform-provider-fivetran v1.4.0 // indirect
 	github.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376 // indirect
 	github.com/go-git/go-billy/v5 v5.5.0 // indirect
 	github.com/go-git/go-git/v5 v5.12.0 // indirect
@@ -122,6 +122,7 @@ require (
 	github.com/muesli/termenv v0.15.2 // indirect
 	github.com/natefinch/atomic v1.0.1 // indirect
 	github.com/oklog/run v1.1.0 // indirect
+	github.com/olekukonko/tablewriter v0.0.5 // indirect
 	github.com/opentracing/basictracer-go v1.1.0 // indirect
 	github.com/opentracing/opentracing-go v1.2.0 // indirect
 	github.com/pgavlin/fx v0.1.6 // indirect

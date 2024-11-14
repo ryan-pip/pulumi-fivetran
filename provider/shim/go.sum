@@ -12,10 +12,10 @@ github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSs
 github.com/fatih/color v1.13.0/go.mod h1:kLAiJbzzSOZDVNGyDpeOxJ47H46qBXwg5ILebYFFOfk=
 github.com/fatih/color v1.17.0 h1:GlRw1BRJxkpqUCBKzKOw098ed57fEsKeNjpTe3cSjK4=
 github.com/fatih/color v1.17.0/go.mod h1:YZ7TlrGPkiz6ku9fK3TLD/pl3CpsiFyu8N92HLgmosI=
-github.com/fivetran/go-fivetran v0.9.4 h1:9F7XzoezZxnhCW331NpN49ace8YfsJ8+92oyjxIj88o=
-github.com/fivetran/go-fivetran v0.9.4/go.mod h1:EIy5Uwn1zylQCr/7O+8rrwvmjvhW3PPpzHkQj26ON7Y=
-github.com/fivetran/terraform-provider-fivetran v1.3.3 h1:Hara9Gy0X+FwVKlnIIOSMn6Z382et8qOouhIjTRbFIg=
-github.com/fivetran/terraform-provider-fivetran v1.3.3/go.mod h1:HoNiGtKK1Tm3zjI5OsAmbdegwjQZxJyVXSMaJUF221s=
+github.com/fivetran/go-fivetran v1.0.4 h1:wYNS72Zw/bEZpuBKFYGm07TRQtqoo1/Y6oWayHAqEHk=
+github.com/fivetran/go-fivetran v1.0.4/go.mod h1:EIy5Uwn1zylQCr/7O+8rrwvmjvhW3PPpzHkQj26ON7Y=
+github.com/fivetran/terraform-provider-fivetran v1.4.0 h1:Aa0qu2Nxt/7hIh2loJ2/C/MlXvkLsDfbAnzGe9/R+jo=
+github.com/fivetran/terraform-provider-fivetran v1.4.0/go.mod h1:V8ZodQO+durSN5jf8hV5gR4aFcHp3Pd0e7fA8bFoqUo=
 github.com/golang/protobuf v1.5.4 h1:i7eJL8qZTpSEXOPTxNKhASYpMn+8e5Q6AdndVa1dWek=
 github.com/golang/protobuf v1.5.4/go.mod h1:lnTiLA8Wa4RWRcIUkrtSVa5nRhsEGBg48fD6rSs7xps=
 github.com/google/go-cmp v0.6.0 h1:ofyhxvXcZhMsU5ulbFiLKl/XBFqE1GSq7atu8tAmTRI=
