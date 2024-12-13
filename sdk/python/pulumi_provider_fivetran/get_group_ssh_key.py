@@ -87,7 +87,7 @@ def get_group_ssh_key(id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         public_key=pulumi.get(__ret__, 'public_key'))
 def get_group_ssh_key_output(id: Optional[pulumi.Input[str]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupSshKeyResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupSshKeyResult]:
     """
     This data source returns public key from SSH key pair associated with the group.
 
@@ -105,7 +105,7 @@ def get_group_ssh_key_output(id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['id'] = id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getGroupSshKey:getGroupSshKey', __args__, opts=opts, typ=GetGroupSshKeyResult)
     return __ret__.apply(lambda __response__: GetGroupSshKeyResult(
         id=pulumi.get(__response__, 'id'),

@@ -102,7 +102,7 @@ def get_dbt_models(models: Optional[Sequence[Union['GetDbtModelsModelArgs', 'Get
         project_id=pulumi.get(__ret__, 'project_id'))
 def get_dbt_models_output(models: Optional[pulumi.Input[Optional[Sequence[Union['GetDbtModelsModelArgs', 'GetDbtModelsModelArgsDict']]]]] = None,
                           project_id: Optional[pulumi.Input[str]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDbtModelsResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDbtModelsResult]:
     """
     This data source returns a list of all dbt Models available for specified dbt Project id.
 
@@ -121,7 +121,7 @@ def get_dbt_models_output(models: Optional[pulumi.Input[Optional[Sequence[Union[
     __args__ = dict()
     __args__['models'] = models
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getDbtModels:getDbtModels', __args__, opts=opts, typ=GetDbtModelsResult)
     return __ret__.apply(lambda __response__: GetDbtModelsResult(
         id=pulumi.get(__response__, 'id'),

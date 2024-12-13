@@ -206,7 +206,7 @@ def get_dbt_transformation(id: Optional[str] = None,
         schedule=pulumi.get(__ret__, 'schedule'))
 def get_dbt_transformation_output(id: Optional[pulumi.Input[str]] = None,
                                   schedule: Optional[pulumi.Input[Optional[Union['GetDbtTransformationScheduleArgs', 'GetDbtTransformationScheduleArgsDict']]]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDbtTransformationResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDbtTransformationResult]:
     """
     This data source returns a dbt Transformation object.
 
@@ -225,7 +225,7 @@ def get_dbt_transformation_output(id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['id'] = id
     __args__['schedule'] = schedule
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getDbtTransformation:getDbtTransformation', __args__, opts=opts, typ=GetDbtTransformationResult)
     return __ret__.apply(lambda __response__: GetDbtTransformationResult(
         connector_ids=pulumi.get(__response__, 'connector_ids'),

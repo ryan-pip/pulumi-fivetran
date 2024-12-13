@@ -83,7 +83,7 @@ def get_connectors_metadata(sources: Optional[Sequence[Union['GetConnectorsMetad
         id=pulumi.get(__ret__, 'id'),
         sources=pulumi.get(__ret__, 'sources'))
 def get_connectors_metadata_output(sources: Optional[pulumi.Input[Optional[Sequence[Union['GetConnectorsMetadataSourceArgs', 'GetConnectorsMetadataSourceArgsDict']]]]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectorsMetadataResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectorsMetadataResult]:
     """
     This data source returns all available source types within your Fivetran account. This data source makes it easier to display Fivetran connectors within your application because it provides metadata including the proper source name (‘Facebook Ad Account’ instead of facebook_ad_account), the source icon, and links to Fivetran resources. As we update source names and icons, that metadata will automatically update within this endpoint.
 
@@ -98,7 +98,7 @@ def get_connectors_metadata_output(sources: Optional[pulumi.Input[Optional[Seque
     """
     __args__ = dict()
     __args__['sources'] = sources
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getConnectorsMetadata:getConnectorsMetadata', __args__, opts=opts, typ=GetConnectorsMetadataResult)
     return __ret__.apply(lambda __response__: GetConnectorsMetadataResult(
         id=pulumi.get(__response__, 'id'),
