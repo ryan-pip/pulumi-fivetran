@@ -102,7 +102,7 @@ def get_team_user_memberships(team_id: Optional[str] = None,
         users=pulumi.get(__ret__, 'users'))
 def get_team_user_memberships_output(team_id: Optional[pulumi.Input[str]] = None,
                                      users: Optional[pulumi.Input[Optional[Sequence[Union['GetTeamUserMembershipsUserArgs', 'GetTeamUserMembershipsUserArgsDict']]]]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTeamUserMembershipsResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTeamUserMembershipsResult]:
     """
     This data source returns a list of user memberships within team object.
 
@@ -121,7 +121,7 @@ def get_team_user_memberships_output(team_id: Optional[pulumi.Input[str]] = None
     __args__ = dict()
     __args__['teamId'] = team_id
     __args__['users'] = users
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getTeamUserMemberships:getTeamUserMemberships', __args__, opts=opts, typ=GetTeamUserMembershipsResult)
     return __ret__.apply(lambda __response__: GetTeamUserMembershipsResult(
         id=pulumi.get(__response__, 'id'),

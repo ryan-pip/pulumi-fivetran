@@ -89,7 +89,7 @@ def get_group_users(id: Optional[str] = None,
         users=pulumi.get(__ret__, 'users'))
 def get_group_users_output(id: Optional[pulumi.Input[str]] = None,
                            users: Optional[pulumi.Input[Optional[Sequence[Union['GetGroupUsersUserArgs', 'GetGroupUsersUserArgsDict']]]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupUsersResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupUsersResult]:
     """
     This data source returns a list of information about all users within a group in your Fivetran account.
 
@@ -108,7 +108,7 @@ def get_group_users_output(id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['id'] = id
     __args__['users'] = users
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getGroupUsers:getGroupUsers', __args__, opts=opts, typ=GetGroupUsersResult)
     return __ret__.apply(lambda __response__: GetGroupUsersResult(
         id=pulumi.get(__response__, 'id'),

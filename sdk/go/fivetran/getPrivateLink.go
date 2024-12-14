@@ -79,21 +79,11 @@ type LookupPrivateLinkResult struct {
 }
 
 func LookupPrivateLinkOutput(ctx *pulumi.Context, args LookupPrivateLinkOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateLinkResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPrivateLinkResultOutput, error) {
 			args := v.(LookupPrivateLinkArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupPrivateLinkResult
-			secret, err := ctx.InvokePackageRaw("fivetran:index/getPrivateLink:getPrivateLink", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPrivateLinkResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPrivateLinkResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPrivateLinkResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("fivetran:index/getPrivateLink:getPrivateLink", args, LookupPrivateLinkResultOutput{}, options).(LookupPrivateLinkResultOutput), nil
 		}).(LookupPrivateLinkResultOutput)
 }
 
