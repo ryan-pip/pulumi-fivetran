@@ -255,7 +255,7 @@ def get_dbt_project(id: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'))
 def get_dbt_project_output(id: Optional[pulumi.Input[str]] = None,
                            project_config: Optional[pulumi.Input[Optional[Union['GetDbtProjectProjectConfigArgs', 'GetDbtProjectProjectConfigArgsDict']]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDbtProjectResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDbtProjectResult]:
     """
     This data source returns a dbt Project object.
 
@@ -274,7 +274,7 @@ def get_dbt_project_output(id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['id'] = id
     __args__['projectConfig'] = project_config
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getDbtProject:getDbtProject', __args__, opts=opts, typ=GetDbtProjectResult)
     return __ret__.apply(lambda __response__: GetDbtProjectResult(
         created_at=pulumi.get(__response__, 'created_at'),

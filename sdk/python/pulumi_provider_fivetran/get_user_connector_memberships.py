@@ -102,7 +102,7 @@ def get_user_connector_memberships(connectors: Optional[Sequence[Union['GetUserC
         user_id=pulumi.get(__ret__, 'user_id'))
 def get_user_connector_memberships_output(connectors: Optional[pulumi.Input[Optional[Sequence[Union['GetUserConnectorMembershipsConnectorArgs', 'GetUserConnectorMembershipsConnectorArgsDict']]]]] = None,
                                           user_id: Optional[pulumi.Input[str]] = None,
-                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserConnectorMembershipsResult]:
+                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserConnectorMembershipsResult]:
     """
     This data source returns a connector membership for user.
 
@@ -121,7 +121,7 @@ def get_user_connector_memberships_output(connectors: Optional[pulumi.Input[Opti
     __args__ = dict()
     __args__['connectors'] = connectors
     __args__['userId'] = user_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getUserConnectorMemberships:getUserConnectorMemberships', __args__, opts=opts, typ=GetUserConnectorMembershipsResult)
     return __ret__.apply(lambda __response__: GetUserConnectorMembershipsResult(
         connectors=pulumi.get(__response__, 'connectors'),

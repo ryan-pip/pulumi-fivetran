@@ -191,7 +191,7 @@ def get_webhook(id: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'),
         url=pulumi.get(__ret__, 'url'))
 def get_webhook_output(id: Optional[pulumi.Input[str]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebhookResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWebhookResult]:
     """
     This data source returns a webhook object.
 
@@ -209,7 +209,7 @@ def get_webhook_output(id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['id'] = id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getWebhook:getWebhook', __args__, opts=opts, typ=GetWebhookResult)
     return __ret__.apply(lambda __response__: GetWebhookResult(
         active=pulumi.get(__response__, 'active'),

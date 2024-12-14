@@ -94,7 +94,7 @@ export interface GetPrivateLinkResult {
  * });
  * ```
  */
-export function getPrivateLinkOutput(args: GetPrivateLinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateLinkResult> {
+export function getPrivateLinkOutput(args: GetPrivateLinkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrivateLinkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getPrivateLink:getPrivateLink", {
         "id": args.id,
