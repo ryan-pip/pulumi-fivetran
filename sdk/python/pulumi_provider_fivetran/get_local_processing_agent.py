@@ -126,7 +126,7 @@ def get_local_processing_agent(id: Optional[str] = None,
         registered_at=pulumi.get(__ret__, 'registered_at'),
         usages=pulumi.get(__ret__, 'usages'))
 def get_local_processing_agent_output(id: Optional[pulumi.Input[str]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLocalProcessingAgentResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLocalProcessingAgentResult]:
     """
     NOTE: In connection with the general availability of the hybrid deployment functionality and in order to synchronize internal terminology, we have deprecate this data source.
 
@@ -146,7 +146,7 @@ def get_local_processing_agent_output(id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['id'] = id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getLocalProcessingAgent:getLocalProcessingAgent', __args__, opts=opts, typ=GetLocalProcessingAgentResult)
     return __ret__.apply(lambda __response__: GetLocalProcessingAgentResult(
         display_name=pulumi.get(__response__, 'display_name'),

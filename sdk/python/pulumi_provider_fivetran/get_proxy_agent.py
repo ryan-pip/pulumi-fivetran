@@ -152,7 +152,7 @@ def get_proxy_agent(id: Optional[str] = None,
         salt=pulumi.get(__ret__, 'salt'),
         token=pulumi.get(__ret__, 'token'))
 def get_proxy_agent_output(id: Optional[pulumi.Input[str]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProxyAgentResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProxyAgentResult]:
     """
     This data source returns a proxy agent object.
 
@@ -170,7 +170,7 @@ def get_proxy_agent_output(id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['id'] = id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getProxyAgent:getProxyAgent', __args__, opts=opts, typ=GetProxyAgentResult)
     return __ret__.apply(lambda __response__: GetProxyAgentResult(
         created_by=pulumi.get(__response__, 'created_by'),

@@ -46,7 +46,7 @@ export interface GetHybridDeploymentAgentsResult {
  * const hybridDeploymentAgents = fivetran.getHybridDeploymentAgents({});
  * ```
  */
-export function getHybridDeploymentAgentsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetHybridDeploymentAgentsResult> {
+export function getHybridDeploymentAgentsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHybridDeploymentAgentsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getHybridDeploymentAgents:getHybridDeploymentAgents", {
     }, opts);

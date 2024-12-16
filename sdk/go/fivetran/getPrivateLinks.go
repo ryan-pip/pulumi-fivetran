@@ -34,21 +34,11 @@ type GetPrivateLinksResult struct {
 }
 
 func GetPrivateLinksOutput(ctx *pulumi.Context, args GetPrivateLinksOutputArgs, opts ...pulumi.InvokeOption) GetPrivateLinksResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetPrivateLinksResultOutput, error) {
 			args := v.(GetPrivateLinksArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetPrivateLinksResult
-			secret, err := ctx.InvokePackageRaw("fivetran:index/getPrivateLinks:getPrivateLinks", args, &rv, "", opts...)
-			if err != nil {
-				return GetPrivateLinksResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetPrivateLinksResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetPrivateLinksResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("fivetran:index/getPrivateLinks:getPrivateLinks", args, GetPrivateLinksResultOutput{}, options).(GetPrivateLinksResultOutput), nil
 		}).(GetPrivateLinksResultOutput)
 }
 

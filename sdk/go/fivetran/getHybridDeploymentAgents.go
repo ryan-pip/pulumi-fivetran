@@ -55,18 +55,8 @@ type GetHybridDeploymentAgentsResult struct {
 
 func GetHybridDeploymentAgentsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetHybridDeploymentAgentsResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetHybridDeploymentAgentsResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetHybridDeploymentAgentsResult
-		secret, err := ctx.InvokePackageRaw("fivetran:index/getHybridDeploymentAgents:getHybridDeploymentAgents", nil, &rv, "", opts...)
-		if err != nil {
-			return GetHybridDeploymentAgentsResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetHybridDeploymentAgentsResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetHybridDeploymentAgentsResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("fivetran:index/getHybridDeploymentAgents:getHybridDeploymentAgents", nil, GetHybridDeploymentAgentsResultOutput{}, options).(GetHybridDeploymentAgentsResultOutput), nil
 	}).(GetHybridDeploymentAgentsResultOutput)
 }
 
