@@ -183,7 +183,7 @@ def get_destination(config: Optional[Union['GetDestinationConfigArgs', 'GetDesti
         time_zone_offset=pulumi.get(__ret__, 'time_zone_offset'))
 def get_destination_output(config: Optional[pulumi.Input[Optional[Union['GetDestinationConfigArgs', 'GetDestinationConfigArgsDict']]]] = None,
                            id: Optional[pulumi.Input[str]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDestinationResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDestinationResult]:
     """
     This data source returns a destination object.
 
@@ -199,7 +199,7 @@ def get_destination_output(config: Optional[pulumi.Input[Optional[Union['GetDest
     __args__ = dict()
     __args__['config'] = config
     __args__['id'] = id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getDestination:getDestination', __args__, opts=opts, typ=GetDestinationResult)
     return __ret__.apply(lambda __response__: GetDestinationResult(
         config=pulumi.get(__response__, 'config'),

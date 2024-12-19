@@ -26383,7 +26383,8 @@ type ConnectorSchemaConfigSchemaTableColumn struct {
 	// The boolean value specifying whether the sync of the column into the destination is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// The boolean value specifying whether a column should be hashed.
-	Hashed *bool `pulumi:"hashed"`
+	Hashed       *bool `pulumi:"hashed"`
+	IsPrimaryKey *bool `pulumi:"isPrimaryKey"`
 	// The column name within your destination in accordance with Fivetran conventional rules.
 	Name string `pulumi:"name"`
 }
@@ -26403,7 +26404,8 @@ type ConnectorSchemaConfigSchemaTableColumnArgs struct {
 	// The boolean value specifying whether the sync of the column into the destination is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// The boolean value specifying whether a column should be hashed.
-	Hashed pulumi.BoolPtrInput `pulumi:"hashed"`
+	Hashed       pulumi.BoolPtrInput `pulumi:"hashed"`
+	IsPrimaryKey pulumi.BoolPtrInput `pulumi:"isPrimaryKey"`
 	// The column name within your destination in accordance with Fivetran conventional rules.
 	Name pulumi.StringInput `pulumi:"name"`
 }
@@ -26467,6 +26469,10 @@ func (o ConnectorSchemaConfigSchemaTableColumnOutput) Enabled() pulumi.BoolPtrOu
 // The boolean value specifying whether a column should be hashed.
 func (o ConnectorSchemaConfigSchemaTableColumnOutput) Hashed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTableColumn) *bool { return v.Hashed }).(pulumi.BoolPtrOutput)
+}
+
+func (o ConnectorSchemaConfigSchemaTableColumnOutput) IsPrimaryKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTableColumn) *bool { return v.IsPrimaryKey }).(pulumi.BoolPtrOutput)
 }
 
 // The column name within your destination in accordance with Fivetran conventional rules.
@@ -26721,7 +26727,8 @@ type ConnectorSchemaConfigSchemasTablesColumns struct {
 	// The boolean value specifying whether the sync of the column into the destination is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// The boolean value specifying whether a column should be hashed.
-	Hashed *bool `pulumi:"hashed"`
+	Hashed       *bool `pulumi:"hashed"`
+	IsPrimaryKey *bool `pulumi:"isPrimaryKey"`
 }
 
 // ConnectorSchemaConfigSchemasTablesColumnsInput is an input type that accepts ConnectorSchemaConfigSchemasTablesColumnsArgs and ConnectorSchemaConfigSchemasTablesColumnsOutput values.
@@ -26739,7 +26746,8 @@ type ConnectorSchemaConfigSchemasTablesColumnsArgs struct {
 	// The boolean value specifying whether the sync of the column into the destination is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// The boolean value specifying whether a column should be hashed.
-	Hashed pulumi.BoolPtrInput `pulumi:"hashed"`
+	Hashed       pulumi.BoolPtrInput `pulumi:"hashed"`
+	IsPrimaryKey pulumi.BoolPtrInput `pulumi:"isPrimaryKey"`
 }
 
 func (ConnectorSchemaConfigSchemasTablesColumnsArgs) ElementType() reflect.Type {
@@ -26801,6 +26809,10 @@ func (o ConnectorSchemaConfigSchemasTablesColumnsOutput) Enabled() pulumi.BoolPt
 // The boolean value specifying whether a column should be hashed.
 func (o ConnectorSchemaConfigSchemasTablesColumnsOutput) Hashed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemasTablesColumns) *bool { return v.Hashed }).(pulumi.BoolPtrOutput)
+}
+
+func (o ConnectorSchemaConfigSchemasTablesColumnsOutput) IsPrimaryKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectorSchemaConfigSchemasTablesColumns) *bool { return v.IsPrimaryKey }).(pulumi.BoolPtrOutput)
 }
 
 type ConnectorSchemaConfigSchemasTablesColumnsMapOutput struct{ *pulumi.OutputState }

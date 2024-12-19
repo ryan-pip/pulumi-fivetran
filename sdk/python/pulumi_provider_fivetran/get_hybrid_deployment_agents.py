@@ -79,7 +79,7 @@ def get_hybrid_deployment_agents(opts: Optional[pulumi.InvokeOptions] = None) ->
     return AwaitableGetHybridDeploymentAgentsResult(
         id=pulumi.get(__ret__, 'id'),
         items=pulumi.get(__ret__, 'items'))
-def get_hybrid_deployment_agents_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHybridDeploymentAgentsResult]:
+def get_hybrid_deployment_agents_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHybridDeploymentAgentsResult]:
     """
     This data source returns a list of all hybrid deployment agents within your Fivetran account.
 
@@ -93,7 +93,7 @@ def get_hybrid_deployment_agents_output(opts: Optional[pulumi.InvokeOptions] = N
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getHybridDeploymentAgents:getHybridDeploymentAgents', __args__, opts=opts, typ=GetHybridDeploymentAgentsResult)
     return __ret__.apply(lambda __response__: GetHybridDeploymentAgentsResult(
         id=pulumi.get(__response__, 'id'),

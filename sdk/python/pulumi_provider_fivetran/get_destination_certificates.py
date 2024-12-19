@@ -92,7 +92,7 @@ def get_destination_certificates(certificates: Optional[Sequence[Union['GetDesti
         id=pulumi.get(__ret__, 'id'))
 def get_destination_certificates_output(certificates: Optional[pulumi.Input[Optional[Sequence[Union['GetDestinationCertificatesCertificateArgs', 'GetDestinationCertificatesCertificateArgsDict']]]]] = None,
                                         id: Optional[pulumi.Input[str]] = None,
-                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDestinationCertificatesResult]:
+                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDestinationCertificatesResult]:
     """
     Use this data source to access information about an existing resource.
 
@@ -101,7 +101,7 @@ def get_destination_certificates_output(certificates: Optional[pulumi.Input[Opti
     __args__ = dict()
     __args__['certificates'] = certificates
     __args__['id'] = id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getDestinationCertificates:getDestinationCertificates', __args__, opts=opts, typ=GetDestinationCertificatesResult)
     return __ret__.apply(lambda __response__: GetDestinationCertificatesResult(
         certificates=pulumi.get(__response__, 'certificates'),

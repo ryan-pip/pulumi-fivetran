@@ -67,7 +67,7 @@ export interface GetDestinationResult {
  * });
  * ```
  */
-export function getDestinationOutput(args: GetDestinationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDestinationResult> {
+export function getDestinationOutput(args: GetDestinationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDestinationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getDestination:getDestination", {
         "config": args.config,

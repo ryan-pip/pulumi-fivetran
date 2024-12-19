@@ -87,7 +87,7 @@ def get_group_service_account(id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         service_account=pulumi.get(__ret__, 'service_account'))
 def get_group_service_account_output(id: Optional[pulumi.Input[str]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupServiceAccountResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupServiceAccountResult]:
     """
     This data source returns Fivetran service account associated with the group.
 
@@ -105,7 +105,7 @@ def get_group_service_account_output(id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['id'] = id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getGroupServiceAccount:getGroupServiceAccount', __args__, opts=opts, typ=GetGroupServiceAccountResult)
     return __ret__.apply(lambda __response__: GetGroupServiceAccountResult(
         id=pulumi.get(__response__, 'id'),

@@ -31,7 +31,7 @@ export interface GetPrivateLinksResult {
     readonly id: string;
     readonly items?: outputs.GetPrivateLinksItem[];
 }
-export function getPrivateLinksOutput(args?: GetPrivateLinksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateLinksResult> {
+export function getPrivateLinksOutput(args?: GetPrivateLinksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrivateLinksResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getPrivateLinks:getPrivateLinks", {
