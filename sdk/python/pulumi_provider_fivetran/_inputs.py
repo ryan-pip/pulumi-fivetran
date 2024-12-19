@@ -23641,6 +23641,7 @@ if not MYPY:
         """
         The boolean value specifying whether a column should be hashed.
         """
+        is_primary_key: NotRequired[pulumi.Input[bool]]
 elif False:
     ConnectorSchemaConfigSchemaTableColumnArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -23649,7 +23650,8 @@ class ConnectorSchemaConfigSchemaTableColumnArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 hashed: Optional[pulumi.Input[bool]] = None):
+                 hashed: Optional[pulumi.Input[bool]] = None,
+                 is_primary_key: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] name: The column name within your destination in accordance with Fivetran conventional rules.
         :param pulumi.Input[bool] enabled: The boolean value specifying whether the sync of the column into the destination is enabled.
@@ -23660,6 +23662,8 @@ class ConnectorSchemaConfigSchemaTableColumnArgs:
             pulumi.set(__self__, "enabled", enabled)
         if hashed is not None:
             pulumi.set(__self__, "hashed", hashed)
+        if is_primary_key is not None:
+            pulumi.set(__self__, "is_primary_key", is_primary_key)
 
     @property
     @pulumi.getter
@@ -23696,6 +23700,15 @@ class ConnectorSchemaConfigSchemaTableColumnArgs:
     @hashed.setter
     def hashed(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "hashed", value)
+
+    @property
+    @pulumi.getter(name="isPrimaryKey")
+    def is_primary_key(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_primary_key")
+
+    @is_primary_key.setter
+    def is_primary_key(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_primary_key", value)
 
 
 if not MYPY:
@@ -23832,6 +23845,7 @@ if not MYPY:
         """
         The boolean value specifying whether a column should be hashed.
         """
+        is_primary_key: NotRequired[pulumi.Input[bool]]
 elif False:
     ConnectorSchemaConfigSchemasTablesColumnsArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -23839,7 +23853,8 @@ elif False:
 class ConnectorSchemaConfigSchemasTablesColumnsArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 hashed: Optional[pulumi.Input[bool]] = None):
+                 hashed: Optional[pulumi.Input[bool]] = None,
+                 is_primary_key: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] enabled: The boolean value specifying whether the sync of the column into the destination is enabled.
         :param pulumi.Input[bool] hashed: The boolean value specifying whether a column should be hashed.
@@ -23848,6 +23863,8 @@ class ConnectorSchemaConfigSchemasTablesColumnsArgs:
             pulumi.set(__self__, "enabled", enabled)
         if hashed is not None:
             pulumi.set(__self__, "hashed", hashed)
+        if is_primary_key is not None:
+            pulumi.set(__self__, "is_primary_key", is_primary_key)
 
     @property
     @pulumi.getter
@@ -23872,6 +23889,15 @@ class ConnectorSchemaConfigSchemasTablesColumnsArgs:
     @hashed.setter
     def hashed(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "hashed", value)
+
+    @property
+    @pulumi.getter(name="isPrimaryKey")
+    def is_primary_key(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_primary_key")
+
+    @is_primary_key.setter
+    def is_primary_key(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_primary_key", value)
 
 
 if not MYPY:

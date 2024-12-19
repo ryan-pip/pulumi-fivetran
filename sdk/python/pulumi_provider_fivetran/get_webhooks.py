@@ -79,7 +79,7 @@ def get_webhooks(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWeb
     return AwaitableGetWebhooksResult(
         id=pulumi.get(__ret__, 'id'),
         webhooks=pulumi.get(__ret__, 'webhooks'))
-def get_webhooks_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebhooksResult]:
+def get_webhooks_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWebhooksResult]:
     """
     This data source returns a list of all webhooks within your Fivetran account.
 
@@ -93,7 +93,7 @@ def get_webhooks_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.O
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getWebhooks:getWebhooks', __args__, opts=opts, typ=GetWebhooksResult)
     return __ret__.apply(lambda __response__: GetWebhooksResult(
         id=pulumi.get(__response__, 'id'),

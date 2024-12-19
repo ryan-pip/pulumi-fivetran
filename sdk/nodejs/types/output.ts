@@ -5824,6 +5824,7 @@ export interface ConnectorSchemaConfigSchemaTableColumn {
      * The boolean value specifying whether a column should be hashed.
      */
     hashed: boolean;
+    isPrimaryKey?: boolean;
     /**
      * The column name within your destination in accordance with Fivetran conventional rules.
      */
@@ -5865,6 +5866,7 @@ export interface ConnectorSchemaConfigSchemasTablesColumns {
      * The boolean value specifying whether a column should be hashed.
      */
     hashed: boolean;
+    isPrimaryKey: boolean;
 }
 
 export interface ConnectorSchemaConfigTimeouts {

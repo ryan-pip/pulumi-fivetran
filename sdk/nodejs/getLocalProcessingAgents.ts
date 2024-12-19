@@ -50,7 +50,7 @@ export interface GetLocalProcessingAgentsResult {
  * const localProcessingAgents = fivetran.getLocalProcessingAgents({});
  * ```
  */
-export function getLocalProcessingAgentsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetLocalProcessingAgentsResult> {
+export function getLocalProcessingAgentsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLocalProcessingAgentsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getLocalProcessingAgents:getLocalProcessingAgents", {
     }, opts);
