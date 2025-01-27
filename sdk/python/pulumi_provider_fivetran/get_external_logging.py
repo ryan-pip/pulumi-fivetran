@@ -145,7 +145,7 @@ def get_external_logging(config: Optional[Union['GetExternalLoggingConfigArgs', 
 def get_external_logging_output(config: Optional[pulumi.Input[Optional[Union['GetExternalLoggingConfigArgs', 'GetExternalLoggingConfigArgsDict']]]] = None,
                                 id: Optional[pulumi.Input[str]] = None,
                                 run_setup_tests: Optional[pulumi.Input[Optional[bool]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetExternalLoggingResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalLoggingResult]:
     """
     This data source returns a logging service object.
 
@@ -166,7 +166,7 @@ def get_external_logging_output(config: Optional[pulumi.Input[Optional[Union['Ge
     __args__['config'] = config
     __args__['id'] = id
     __args__['runSetupTests'] = run_setup_tests
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getExternalLogging:getExternalLogging', __args__, opts=opts, typ=GetExternalLoggingResult)
     return __ret__.apply(lambda __response__: GetExternalLoggingResult(
         config=pulumi.get(__response__, 'config'),

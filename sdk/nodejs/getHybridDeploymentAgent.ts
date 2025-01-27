@@ -48,7 +48,7 @@ export interface GetHybridDeploymentAgentResult {
 /**
  * This data source returns a hybrid deployment agent object.
  */
-export function getHybridDeploymentAgentOutput(args: GetHybridDeploymentAgentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHybridDeploymentAgentResult> {
+export function getHybridDeploymentAgentOutput(args: GetHybridDeploymentAgentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHybridDeploymentAgentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getHybridDeploymentAgent:getHybridDeploymentAgent", {
         "id": args.id,

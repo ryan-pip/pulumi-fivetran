@@ -89,7 +89,7 @@ def get_teams(id: Optional[str] = None,
         teams=pulumi.get(__ret__, 'teams'))
 def get_teams_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                      teams: Optional[pulumi.Input[Optional[Sequence[Union['GetTeamsTeamArgs', 'GetTeamsTeamArgsDict']]]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTeamsResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTeamsResult]:
     """
     This data source returns a list of all teams within your Fivetran account.
 
@@ -108,7 +108,7 @@ def get_teams_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     __args__ = dict()
     __args__['id'] = id
     __args__['teams'] = teams
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getTeams:getTeams', __args__, opts=opts, typ=GetTeamsResult)
     return __ret__.apply(lambda __response__: GetTeamsResult(
         id=pulumi.get(__response__, 'id'),
