@@ -28,7 +28,6 @@ class DestinationArgs:
                  config: Optional[pulumi.Input['DestinationConfigArgs']] = None,
                  daylight_saving_time_enabled: Optional[pulumi.Input[bool]] = None,
                  hybrid_deployment_agent_id: Optional[pulumi.Input[str]] = None,
-                 local_processing_agent_id: Optional[pulumi.Input[str]] = None,
                  networking_method: Optional[pulumi.Input[str]] = None,
                  private_link_id: Optional[pulumi.Input[str]] = None,
                  run_setup_tests: Optional[pulumi.Input[bool]] = None,
@@ -44,8 +43,6 @@ class DestinationArgs:
         :param pulumi.Input[bool] daylight_saving_time_enabled: Shift my UTC offset with daylight savings time (US Only)
         :param pulumi.Input[str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
                value is specified, the system will try to associate the connection with an existing agent.
-        :param pulumi.Input[str] local_processing_agent_id: (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-               to. If the value is specified, the system will try to associate the connection with an existing agent.
         :param pulumi.Input[str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
         :param pulumi.Input[str] private_link_id: The private link ID.
         :param pulumi.Input[bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
@@ -66,11 +63,6 @@ class DestinationArgs:
             pulumi.set(__self__, "daylight_saving_time_enabled", daylight_saving_time_enabled)
         if hybrid_deployment_agent_id is not None:
             pulumi.set(__self__, "hybrid_deployment_agent_id", hybrid_deployment_agent_id)
-        if local_processing_agent_id is not None:
-            warnings.warn("""This field is Deprecated, please follow the 1.4.0 migration guide to update the schema""", DeprecationWarning)
-            pulumi.log.warn("""local_processing_agent_id is deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema""")
-        if local_processing_agent_id is not None:
-            pulumi.set(__self__, "local_processing_agent_id", local_processing_agent_id)
         if networking_method is not None:
             pulumi.set(__self__, "networking_method", networking_method)
         if private_link_id is not None:
@@ -167,20 +159,6 @@ class DestinationArgs:
         pulumi.set(self, "hybrid_deployment_agent_id", value)
 
     @property
-    @pulumi.getter(name="localProcessingAgentId")
-    @_utilities.deprecated("""This field is Deprecated, please follow the 1.4.0 migration guide to update the schema""")
-    def local_processing_agent_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-        to. If the value is specified, the system will try to associate the connection with an existing agent.
-        """
-        return pulumi.get(self, "local_processing_agent_id")
-
-    @local_processing_agent_id.setter
-    def local_processing_agent_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "local_processing_agent_id", value)
-
-    @property
     @pulumi.getter(name="networkingMethod")
     def networking_method(self) -> Optional[pulumi.Input[str]]:
         """
@@ -261,7 +239,6 @@ class _DestinationState:
                  daylight_saving_time_enabled: Optional[pulumi.Input[bool]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  hybrid_deployment_agent_id: Optional[pulumi.Input[str]] = None,
-                 local_processing_agent_id: Optional[pulumi.Input[str]] = None,
                  networking_method: Optional[pulumi.Input[str]] = None,
                  private_link_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -278,8 +255,6 @@ class _DestinationState:
         :param pulumi.Input[str] group_id: The unique identifier for the Group within the Fivetran system.
         :param pulumi.Input[str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
                value is specified, the system will try to associate the connection with an existing agent.
-        :param pulumi.Input[str] local_processing_agent_id: (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-               to. If the value is specified, the system will try to associate the connection with an existing agent.
         :param pulumi.Input[str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
         :param pulumi.Input[str] private_link_id: The private link ID.
         :param pulumi.Input[str] region: Data processing location. This is where Fivetran will operate and run computation on data.
@@ -302,11 +277,6 @@ class _DestinationState:
             pulumi.set(__self__, "group_id", group_id)
         if hybrid_deployment_agent_id is not None:
             pulumi.set(__self__, "hybrid_deployment_agent_id", hybrid_deployment_agent_id)
-        if local_processing_agent_id is not None:
-            warnings.warn("""This field is Deprecated, please follow the 1.4.0 migration guide to update the schema""", DeprecationWarning)
-            pulumi.log.warn("""local_processing_agent_id is deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema""")
-        if local_processing_agent_id is not None:
-            pulumi.set(__self__, "local_processing_agent_id", local_processing_agent_id)
         if networking_method is not None:
             pulumi.set(__self__, "networking_method", networking_method)
         if private_link_id is not None:
@@ -373,20 +343,6 @@ class _DestinationState:
     @hybrid_deployment_agent_id.setter
     def hybrid_deployment_agent_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "hybrid_deployment_agent_id", value)
-
-    @property
-    @pulumi.getter(name="localProcessingAgentId")
-    @_utilities.deprecated("""This field is Deprecated, please follow the 1.4.0 migration guide to update the schema""")
-    def local_processing_agent_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-        to. If the value is specified, the system will try to associate the connection with an existing agent.
-        """
-        return pulumi.get(self, "local_processing_agent_id")
-
-    @local_processing_agent_id.setter
-    def local_processing_agent_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "local_processing_agent_id", value)
 
     @property
     @pulumi.getter(name="networkingMethod")
@@ -519,7 +475,6 @@ class Destination(pulumi.CustomResource):
                  daylight_saving_time_enabled: Optional[pulumi.Input[bool]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  hybrid_deployment_agent_id: Optional[pulumi.Input[str]] = None,
-                 local_processing_agent_id: Optional[pulumi.Input[str]] = None,
                  networking_method: Optional[pulumi.Input[str]] = None,
                  private_link_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -565,8 +520,6 @@ class Destination(pulumi.CustomResource):
         :param pulumi.Input[str] group_id: The unique identifier for the Group within the Fivetran system.
         :param pulumi.Input[str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
                value is specified, the system will try to associate the connection with an existing agent.
-        :param pulumi.Input[str] local_processing_agent_id: (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-               to. If the value is specified, the system will try to associate the connection with an existing agent.
         :param pulumi.Input[str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
         :param pulumi.Input[str] private_link_id: The private link ID.
         :param pulumi.Input[str] region: Data processing location. This is where Fivetran will operate and run computation on data.
@@ -634,7 +587,6 @@ class Destination(pulumi.CustomResource):
                  daylight_saving_time_enabled: Optional[pulumi.Input[bool]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  hybrid_deployment_agent_id: Optional[pulumi.Input[str]] = None,
-                 local_processing_agent_id: Optional[pulumi.Input[str]] = None,
                  networking_method: Optional[pulumi.Input[str]] = None,
                  private_link_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -659,7 +611,6 @@ class Destination(pulumi.CustomResource):
                 raise TypeError("Missing required property 'group_id'")
             __props__.__dict__["group_id"] = group_id
             __props__.__dict__["hybrid_deployment_agent_id"] = hybrid_deployment_agent_id
-            __props__.__dict__["local_processing_agent_id"] = local_processing_agent_id
             __props__.__dict__["networking_method"] = networking_method
             __props__.__dict__["private_link_id"] = private_link_id
             if region is None and not opts.urn:
@@ -690,7 +641,6 @@ class Destination(pulumi.CustomResource):
             daylight_saving_time_enabled: Optional[pulumi.Input[bool]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
             hybrid_deployment_agent_id: Optional[pulumi.Input[str]] = None,
-            local_processing_agent_id: Optional[pulumi.Input[str]] = None,
             networking_method: Optional[pulumi.Input[str]] = None,
             private_link_id: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -712,8 +662,6 @@ class Destination(pulumi.CustomResource):
         :param pulumi.Input[str] group_id: The unique identifier for the Group within the Fivetran system.
         :param pulumi.Input[str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
                value is specified, the system will try to associate the connection with an existing agent.
-        :param pulumi.Input[str] local_processing_agent_id: (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-               to. If the value is specified, the system will try to associate the connection with an existing agent.
         :param pulumi.Input[str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
         :param pulumi.Input[str] private_link_id: The private link ID.
         :param pulumi.Input[str] region: Data processing location. This is where Fivetran will operate and run computation on data.
@@ -736,7 +684,6 @@ class Destination(pulumi.CustomResource):
         __props__.__dict__["daylight_saving_time_enabled"] = daylight_saving_time_enabled
         __props__.__dict__["group_id"] = group_id
         __props__.__dict__["hybrid_deployment_agent_id"] = hybrid_deployment_agent_id
-        __props__.__dict__["local_processing_agent_id"] = local_processing_agent_id
         __props__.__dict__["networking_method"] = networking_method
         __props__.__dict__["private_link_id"] = private_link_id
         __props__.__dict__["region"] = region
@@ -778,16 +725,6 @@ class Destination(pulumi.CustomResource):
         value is specified, the system will try to associate the connection with an existing agent.
         """
         return pulumi.get(self, "hybrid_deployment_agent_id")
-
-    @property
-    @pulumi.getter(name="localProcessingAgentId")
-    @_utilities.deprecated("""This field is Deprecated, please follow the 1.4.0 migration guide to update the schema""")
-    def local_processing_agent_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-        to. If the value is specified, the system will try to associate the connection with an existing agent.
-        """
-        return pulumi.get(self, "local_processing_agent_id")
 
     @property
     @pulumi.getter(name="networkingMethod")

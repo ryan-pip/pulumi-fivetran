@@ -25,9 +25,10 @@ class ConnectorArgs:
                  service: pulumi.Input[str],
                  auth: Optional[pulumi.Input['ConnectorAuthArgs']] = None,
                  config: Optional[pulumi.Input['ConnectorConfigArgs']] = None,
+                 data_delay_sensitivity: Optional[pulumi.Input[str]] = None,
+                 data_delay_threshold: Optional[pulumi.Input[int]] = None,
                  destination_schema: Optional[pulumi.Input['ConnectorDestinationSchemaArgs']] = None,
                  hybrid_deployment_agent_id: Optional[pulumi.Input[str]] = None,
-                 local_processing_agent_id: Optional[pulumi.Input[str]] = None,
                  networking_method: Optional[pulumi.Input[str]] = None,
                  private_link_id: Optional[pulumi.Input[str]] = None,
                  proxy_agent_id: Optional[pulumi.Input[str]] = None,
@@ -39,10 +40,12 @@ class ConnectorArgs:
         The set of arguments for constructing a Connector resource.
         :param pulumi.Input[str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
         :param pulumi.Input[str] service: The connector type id within the Fivetran system.
+        :param pulumi.Input[str] data_delay_sensitivity: The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
+               CUSTOM is only available for customers using the Enterprise plan or above.
+        :param pulumi.Input[int] data_delay_threshold: Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
+               data_delay_sensitivity set to CUSTOM.
         :param pulumi.Input[str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
                value is specified, the system will try to associate the connection with an existing agent.
-        :param pulumi.Input[str] local_processing_agent_id: (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-               to. If the value is specified, the system will try to associate the connection with an existing agent.
         :param pulumi.Input[str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
         :param pulumi.Input[str] private_link_id: The private link ID.
         :param pulumi.Input[str] proxy_agent_id: The proxy agent ID.
@@ -60,15 +63,14 @@ class ConnectorArgs:
             pulumi.set(__self__, "auth", auth)
         if config is not None:
             pulumi.set(__self__, "config", config)
+        if data_delay_sensitivity is not None:
+            pulumi.set(__self__, "data_delay_sensitivity", data_delay_sensitivity)
+        if data_delay_threshold is not None:
+            pulumi.set(__self__, "data_delay_threshold", data_delay_threshold)
         if destination_schema is not None:
             pulumi.set(__self__, "destination_schema", destination_schema)
         if hybrid_deployment_agent_id is not None:
             pulumi.set(__self__, "hybrid_deployment_agent_id", hybrid_deployment_agent_id)
-        if local_processing_agent_id is not None:
-            warnings.warn("""This field is Deprecated, please follow the 1.4.0 migration guide to update the schema""", DeprecationWarning)
-            pulumi.log.warn("""local_processing_agent_id is deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema""")
-        if local_processing_agent_id is not None:
-            pulumi.set(__self__, "local_processing_agent_id", local_processing_agent_id)
         if networking_method is not None:
             pulumi.set(__self__, "networking_method", networking_method)
         if private_link_id is not None:
@@ -127,6 +129,32 @@ class ConnectorArgs:
         pulumi.set(self, "config", value)
 
     @property
+    @pulumi.getter(name="dataDelaySensitivity")
+    def data_delay_sensitivity(self) -> Optional[pulumi.Input[str]]:
+        """
+        The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
+        CUSTOM is only available for customers using the Enterprise plan or above.
+        """
+        return pulumi.get(self, "data_delay_sensitivity")
+
+    @data_delay_sensitivity.setter
+    def data_delay_sensitivity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_delay_sensitivity", value)
+
+    @property
+    @pulumi.getter(name="dataDelayThreshold")
+    def data_delay_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
+        data_delay_sensitivity set to CUSTOM.
+        """
+        return pulumi.get(self, "data_delay_threshold")
+
+    @data_delay_threshold.setter
+    def data_delay_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "data_delay_threshold", value)
+
+    @property
     @pulumi.getter(name="destinationSchema")
     def destination_schema(self) -> Optional[pulumi.Input['ConnectorDestinationSchemaArgs']]:
         return pulumi.get(self, "destination_schema")
@@ -147,20 +175,6 @@ class ConnectorArgs:
     @hybrid_deployment_agent_id.setter
     def hybrid_deployment_agent_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "hybrid_deployment_agent_id", value)
-
-    @property
-    @pulumi.getter(name="localProcessingAgentId")
-    @_utilities.deprecated("""This field is Deprecated, please follow the 1.4.0 migration guide to update the schema""")
-    def local_processing_agent_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-        to. If the value is specified, the system will try to associate the connection with an existing agent.
-        """
-        return pulumi.get(self, "local_processing_agent_id")
-
-    @local_processing_agent_id.setter
-    def local_processing_agent_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "local_processing_agent_id", value)
 
     @property
     @pulumi.getter(name="networkingMethod")
@@ -255,10 +269,11 @@ class _ConnectorState:
                  config: Optional[pulumi.Input['ConnectorConfigArgs']] = None,
                  connected_by: Optional[pulumi.Input[str]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
+                 data_delay_sensitivity: Optional[pulumi.Input[str]] = None,
+                 data_delay_threshold: Optional[pulumi.Input[int]] = None,
                  destination_schema: Optional[pulumi.Input['ConnectorDestinationSchemaArgs']] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  hybrid_deployment_agent_id: Optional[pulumi.Input[str]] = None,
-                 local_processing_agent_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  networking_method: Optional[pulumi.Input[str]] = None,
                  private_link_id: Optional[pulumi.Input[str]] = None,
@@ -272,11 +287,13 @@ class _ConnectorState:
         Input properties used for looking up and filtering Connector resources.
         :param pulumi.Input[str] connected_by: The unique identifier of the user who has created the connector in your account.
         :param pulumi.Input[str] created_at: The timestamp of the time the connector was created in your account.
+        :param pulumi.Input[str] data_delay_sensitivity: The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
+               CUSTOM is only available for customers using the Enterprise plan or above.
+        :param pulumi.Input[int] data_delay_threshold: Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
+               data_delay_sensitivity set to CUSTOM.
         :param pulumi.Input[str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
         :param pulumi.Input[str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
                value is specified, the system will try to associate the connection with an existing agent.
-        :param pulumi.Input[str] local_processing_agent_id: (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-               to. If the value is specified, the system will try to associate the connection with an existing agent.
         :param pulumi.Input[str] name: The name used both as the connector's name within the Fivetran system and as the source schema's name within your
                destination.
         :param pulumi.Input[str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
@@ -299,17 +316,16 @@ class _ConnectorState:
             pulumi.set(__self__, "connected_by", connected_by)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if data_delay_sensitivity is not None:
+            pulumi.set(__self__, "data_delay_sensitivity", data_delay_sensitivity)
+        if data_delay_threshold is not None:
+            pulumi.set(__self__, "data_delay_threshold", data_delay_threshold)
         if destination_schema is not None:
             pulumi.set(__self__, "destination_schema", destination_schema)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
         if hybrid_deployment_agent_id is not None:
             pulumi.set(__self__, "hybrid_deployment_agent_id", hybrid_deployment_agent_id)
-        if local_processing_agent_id is not None:
-            warnings.warn("""This field is Deprecated, please follow the 1.4.0 migration guide to update the schema""", DeprecationWarning)
-            pulumi.log.warn("""local_processing_agent_id is deprecated: This field is Deprecated, please follow the 1.4.0 migration guide to update the schema""")
-        if local_processing_agent_id is not None:
-            pulumi.set(__self__, "local_processing_agent_id", local_processing_agent_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if networking_method is not None:
@@ -372,6 +388,32 @@ class _ConnectorState:
         pulumi.set(self, "created_at", value)
 
     @property
+    @pulumi.getter(name="dataDelaySensitivity")
+    def data_delay_sensitivity(self) -> Optional[pulumi.Input[str]]:
+        """
+        The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
+        CUSTOM is only available for customers using the Enterprise plan or above.
+        """
+        return pulumi.get(self, "data_delay_sensitivity")
+
+    @data_delay_sensitivity.setter
+    def data_delay_sensitivity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_delay_sensitivity", value)
+
+    @property
+    @pulumi.getter(name="dataDelayThreshold")
+    def data_delay_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
+        data_delay_sensitivity set to CUSTOM.
+        """
+        return pulumi.get(self, "data_delay_threshold")
+
+    @data_delay_threshold.setter
+    def data_delay_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "data_delay_threshold", value)
+
+    @property
     @pulumi.getter(name="destinationSchema")
     def destination_schema(self) -> Optional[pulumi.Input['ConnectorDestinationSchemaArgs']]:
         return pulumi.get(self, "destination_schema")
@@ -404,20 +446,6 @@ class _ConnectorState:
     @hybrid_deployment_agent_id.setter
     def hybrid_deployment_agent_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "hybrid_deployment_agent_id", value)
-
-    @property
-    @pulumi.getter(name="localProcessingAgentId")
-    @_utilities.deprecated("""This field is Deprecated, please follow the 1.4.0 migration guide to update the schema""")
-    def local_processing_agent_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-        to. If the value is specified, the system will try to associate the connection with an existing agent.
-        """
-        return pulumi.get(self, "local_processing_agent_id")
-
-    @local_processing_agent_id.setter
-    def local_processing_agent_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "local_processing_agent_id", value)
 
     @property
     @pulumi.getter
@@ -537,10 +565,11 @@ class Connector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth: Optional[pulumi.Input[Union['ConnectorAuthArgs', 'ConnectorAuthArgsDict']]] = None,
                  config: Optional[pulumi.Input[Union['ConnectorConfigArgs', 'ConnectorConfigArgsDict']]] = None,
+                 data_delay_sensitivity: Optional[pulumi.Input[str]] = None,
+                 data_delay_threshold: Optional[pulumi.Input[int]] = None,
                  destination_schema: Optional[pulumi.Input[Union['ConnectorDestinationSchemaArgs', 'ConnectorDestinationSchemaArgsDict']]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  hybrid_deployment_agent_id: Optional[pulumi.Input[str]] = None,
-                 local_processing_agent_id: Optional[pulumi.Input[str]] = None,
                  networking_method: Optional[pulumi.Input[str]] = None,
                  private_link_id: Optional[pulumi.Input[str]] = None,
                  proxy_agent_id: Optional[pulumi.Input[str]] = None,
@@ -557,11 +586,13 @@ class Connector(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] data_delay_sensitivity: The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
+               CUSTOM is only available for customers using the Enterprise plan or above.
+        :param pulumi.Input[int] data_delay_threshold: Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
+               data_delay_sensitivity set to CUSTOM.
         :param pulumi.Input[str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
         :param pulumi.Input[str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
                value is specified, the system will try to associate the connection with an existing agent.
-        :param pulumi.Input[str] local_processing_agent_id: (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-               to. If the value is specified, the system will try to associate the connection with an existing agent.
         :param pulumi.Input[str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
         :param pulumi.Input[str] private_link_id: The private link ID.
         :param pulumi.Input[str] proxy_agent_id: The proxy agent ID.
@@ -602,10 +633,11 @@ class Connector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth: Optional[pulumi.Input[Union['ConnectorAuthArgs', 'ConnectorAuthArgsDict']]] = None,
                  config: Optional[pulumi.Input[Union['ConnectorConfigArgs', 'ConnectorConfigArgsDict']]] = None,
+                 data_delay_sensitivity: Optional[pulumi.Input[str]] = None,
+                 data_delay_threshold: Optional[pulumi.Input[int]] = None,
                  destination_schema: Optional[pulumi.Input[Union['ConnectorDestinationSchemaArgs', 'ConnectorDestinationSchemaArgsDict']]] = None,
                  group_id: Optional[pulumi.Input[str]] = None,
                  hybrid_deployment_agent_id: Optional[pulumi.Input[str]] = None,
-                 local_processing_agent_id: Optional[pulumi.Input[str]] = None,
                  networking_method: Optional[pulumi.Input[str]] = None,
                  private_link_id: Optional[pulumi.Input[str]] = None,
                  proxy_agent_id: Optional[pulumi.Input[str]] = None,
@@ -625,12 +657,13 @@ class Connector(pulumi.CustomResource):
 
             __props__.__dict__["auth"] = auth
             __props__.__dict__["config"] = config
+            __props__.__dict__["data_delay_sensitivity"] = data_delay_sensitivity
+            __props__.__dict__["data_delay_threshold"] = data_delay_threshold
             __props__.__dict__["destination_schema"] = destination_schema
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
             __props__.__dict__["group_id"] = group_id
             __props__.__dict__["hybrid_deployment_agent_id"] = hybrid_deployment_agent_id
-            __props__.__dict__["local_processing_agent_id"] = local_processing_agent_id
             __props__.__dict__["networking_method"] = networking_method
             __props__.__dict__["private_link_id"] = private_link_id
             __props__.__dict__["proxy_agent_id"] = proxy_agent_id
@@ -658,10 +691,11 @@ class Connector(pulumi.CustomResource):
             config: Optional[pulumi.Input[Union['ConnectorConfigArgs', 'ConnectorConfigArgsDict']]] = None,
             connected_by: Optional[pulumi.Input[str]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
+            data_delay_sensitivity: Optional[pulumi.Input[str]] = None,
+            data_delay_threshold: Optional[pulumi.Input[int]] = None,
             destination_schema: Optional[pulumi.Input[Union['ConnectorDestinationSchemaArgs', 'ConnectorDestinationSchemaArgsDict']]] = None,
             group_id: Optional[pulumi.Input[str]] = None,
             hybrid_deployment_agent_id: Optional[pulumi.Input[str]] = None,
-            local_processing_agent_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             networking_method: Optional[pulumi.Input[str]] = None,
             private_link_id: Optional[pulumi.Input[str]] = None,
@@ -680,11 +714,13 @@ class Connector(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connected_by: The unique identifier of the user who has created the connector in your account.
         :param pulumi.Input[str] created_at: The timestamp of the time the connector was created in your account.
+        :param pulumi.Input[str] data_delay_sensitivity: The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
+               CUSTOM is only available for customers using the Enterprise plan or above.
+        :param pulumi.Input[int] data_delay_threshold: Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
+               data_delay_sensitivity set to CUSTOM.
         :param pulumi.Input[str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
         :param pulumi.Input[str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
                value is specified, the system will try to associate the connection with an existing agent.
-        :param pulumi.Input[str] local_processing_agent_id: (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-               to. If the value is specified, the system will try to associate the connection with an existing agent.
         :param pulumi.Input[str] name: The name used both as the connector's name within the Fivetran system and as the source schema's name within your
                destination.
         :param pulumi.Input[str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
@@ -707,10 +743,11 @@ class Connector(pulumi.CustomResource):
         __props__.__dict__["config"] = config
         __props__.__dict__["connected_by"] = connected_by
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["data_delay_sensitivity"] = data_delay_sensitivity
+        __props__.__dict__["data_delay_threshold"] = data_delay_threshold
         __props__.__dict__["destination_schema"] = destination_schema
         __props__.__dict__["group_id"] = group_id
         __props__.__dict__["hybrid_deployment_agent_id"] = hybrid_deployment_agent_id
-        __props__.__dict__["local_processing_agent_id"] = local_processing_agent_id
         __props__.__dict__["name"] = name
         __props__.__dict__["networking_method"] = networking_method
         __props__.__dict__["private_link_id"] = private_link_id
@@ -749,6 +786,24 @@ class Connector(pulumi.CustomResource):
         return pulumi.get(self, "created_at")
 
     @property
+    @pulumi.getter(name="dataDelaySensitivity")
+    def data_delay_sensitivity(self) -> pulumi.Output[Optional[str]]:
+        """
+        The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
+        CUSTOM is only available for customers using the Enterprise plan or above.
+        """
+        return pulumi.get(self, "data_delay_sensitivity")
+
+    @property
+    @pulumi.getter(name="dataDelayThreshold")
+    def data_delay_threshold(self) -> pulumi.Output[int]:
+        """
+        Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
+        data_delay_sensitivity set to CUSTOM.
+        """
+        return pulumi.get(self, "data_delay_threshold")
+
+    @property
     @pulumi.getter(name="destinationSchema")
     def destination_schema(self) -> pulumi.Output[Optional['outputs.ConnectorDestinationSchema']]:
         return pulumi.get(self, "destination_schema")
@@ -769,16 +824,6 @@ class Connector(pulumi.CustomResource):
         value is specified, the system will try to associate the connection with an existing agent.
         """
         return pulumi.get(self, "hybrid_deployment_agent_id")
-
-    @property
-    @pulumi.getter(name="localProcessingAgentId")
-    @_utilities.deprecated("""This field is Deprecated, please follow the 1.4.0 migration guide to update the schema""")
-    def local_processing_agent_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        (Deprecated) The hybrid deployment agent ID that refers to the controller created for the group the connection belongs
-        to. If the value is specified, the system will try to associate the connection with an existing agent.
-        """
-        return pulumi.get(self, "local_processing_agent_id")
 
     @property
     @pulumi.getter

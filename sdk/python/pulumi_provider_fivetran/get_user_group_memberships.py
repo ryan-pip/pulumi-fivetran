@@ -102,7 +102,7 @@ def get_user_group_memberships(groups: Optional[Sequence[Union['GetUserGroupMemb
         user_id=pulumi.get(__ret__, 'user_id'))
 def get_user_group_memberships_output(groups: Optional[pulumi.Input[Optional[Sequence[Union['GetUserGroupMembershipsGroupArgs', 'GetUserGroupMembershipsGroupArgsDict']]]]] = None,
                                       user_id: Optional[pulumi.Input[str]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserGroupMembershipsResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserGroupMembershipsResult]:
     """
     This data source returns a list of group memberships for user.
 
@@ -121,7 +121,7 @@ def get_user_group_memberships_output(groups: Optional[pulumi.Input[Optional[Seq
     __args__ = dict()
     __args__['groups'] = groups
     __args__['userId'] = user_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getUserGroupMemberships:getUserGroupMemberships', __args__, opts=opts, typ=GetUserGroupMembershipsResult)
     return __ret__.apply(lambda __response__: GetUserGroupMembershipsResult(
         groups=pulumi.get(__response__, 'groups'),

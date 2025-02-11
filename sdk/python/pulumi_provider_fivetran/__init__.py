@@ -20,6 +20,7 @@ from .external_logging import *
 from .get_connector import *
 from .get_connector_certificates import *
 from .get_connector_fingerprints import *
+from .get_connectors import *
 from .get_connectors_metadata import *
 from .get_dbt_models import *
 from .get_dbt_project import *
@@ -28,7 +29,9 @@ from .get_dbt_transformation import *
 from .get_destination import *
 from .get_destination_certificates import *
 from .get_destination_fingerprints import *
+from .get_destinations import *
 from .get_external_logging import *
+from .get_external_logs import *
 from .get_group import *
 from .get_group_connectors import *
 from .get_group_service_account import *
@@ -37,18 +40,22 @@ from .get_group_users import *
 from .get_groups import *
 from .get_hybrid_deployment_agent import *
 from .get_hybrid_deployment_agents import *
-from .get_local_processing_agent import *
-from .get_local_processing_agents import *
 from .get_private_link import *
 from .get_private_links import *
 from .get_proxy_agent import *
 from .get_proxy_agents import *
+from .get_quickstart_package import *
+from .get_quickstart_packages import *
 from .get_roles import *
 from .get_team import *
 from .get_team_connector_memberships import *
 from .get_team_group_memberships import *
 from .get_team_user_memberships import *
 from .get_teams import *
+from .get_transformation import *
+from .get_transformation_project import *
+from .get_transformation_projects import *
+from .get_transformations import *
 from .get_user import *
 from .get_user_connector_memberships import *
 from .get_user_group_memberships import *
@@ -58,7 +65,6 @@ from .get_webhooks import *
 from .group import *
 from .group_users import *
 from .hybrid_deployment_agent import *
-from .local_processing_agent import *
 from .private_link import *
 from .provider import *
 from .proxy_agent import *
@@ -66,6 +72,8 @@ from .team import *
 from .team_connector_membership import *
 from .team_group_membership import *
 from .team_user_membership import *
+from .transformation import *
+from .transformation_project import *
 from .user import *
 from .user_connector_membership import *
 from .user_group_membership import *
@@ -205,14 +213,6 @@ _utilities.register(
  },
  {
   "pkg": "fivetran",
-  "mod": "index/localProcessingAgent",
-  "fqn": "pulumi_provider_fivetran",
-  "classes": {
-   "fivetran:index/localProcessingAgent:LocalProcessingAgent": "LocalProcessingAgent"
-  }
- },
- {
-  "pkg": "fivetran",
   "mod": "index/privateLink",
   "fqn": "pulumi_provider_fivetran",
   "classes": {
@@ -257,6 +257,22 @@ _utilities.register(
   "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/teamUserMembership:TeamUserMembership": "TeamUserMembership"
+  }
+ },
+ {
+  "pkg": "fivetran",
+  "mod": "index/transformation",
+  "fqn": "pulumi_provider_fivetran",
+  "classes": {
+   "fivetran:index/transformation:Transformation": "Transformation"
+  }
+ },
+ {
+  "pkg": "fivetran",
+  "mod": "index/transformationProject",
+  "fqn": "pulumi_provider_fivetran",
+  "classes": {
+   "fivetran:index/transformationProject:TransformationProject": "TransformationProject"
   }
  },
  {

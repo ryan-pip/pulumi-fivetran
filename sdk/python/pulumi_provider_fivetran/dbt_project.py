@@ -444,7 +444,7 @@ class DbtProject(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Resource is in ALPHA state.
+        This resource is Deprecated, please follow the 1.5.0 migration guide to update the schema.
 
         This resource allows you to add, manage and delete dbt Projects in your account.
 
@@ -508,7 +508,7 @@ class DbtProject(pulumi.CustomResource):
                  args: DbtProjectArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource is in ALPHA state.
+        This resource is Deprecated, please follow the 1.5.0 migration guide to update the schema.
 
         This resource allows you to add, manage and delete dbt Projects in your account.
 
