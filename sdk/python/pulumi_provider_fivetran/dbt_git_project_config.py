@@ -203,7 +203,7 @@ class DbtGitProjectConfig(pulumi.CustomResource):
                  project_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Resource is in ALPHA state.
+        This resource is Deprecated, please follow the 1.5.0 migration guide to update the schema.
 
         This resource allows you to add and manage dbt Git Projects Configs.
 
@@ -261,7 +261,7 @@ class DbtGitProjectConfig(pulumi.CustomResource):
                  args: DbtGitProjectConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource is in ALPHA state.
+        This resource is Deprecated, please follow the 1.5.0 migration guide to update the schema.
 
         This resource allows you to add and manage dbt Git Projects Configs.
 
