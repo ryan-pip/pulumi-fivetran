@@ -41,21 +41,11 @@ type LookupHybridDeploymentAgentResult struct {
 }
 
 func LookupHybridDeploymentAgentOutput(ctx *pulumi.Context, args LookupHybridDeploymentAgentOutputArgs, opts ...pulumi.InvokeOption) LookupHybridDeploymentAgentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupHybridDeploymentAgentResultOutput, error) {
 			args := v.(LookupHybridDeploymentAgentArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupHybridDeploymentAgentResult
-			secret, err := ctx.InvokePackageRaw("fivetran:index/getHybridDeploymentAgent:getHybridDeploymentAgent", args, &rv, "", opts...)
-			if err != nil {
-				return LookupHybridDeploymentAgentResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupHybridDeploymentAgentResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupHybridDeploymentAgentResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("fivetran:index/getHybridDeploymentAgent:getHybridDeploymentAgent", args, LookupHybridDeploymentAgentResultOutput{}, options).(LookupHybridDeploymentAgentResultOutput), nil
 		}).(LookupHybridDeploymentAgentResultOutput)
 }
 

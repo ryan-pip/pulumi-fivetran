@@ -77,7 +77,7 @@ export interface GetLocalProcessingAgentResult {
  * });
  * ```
  */
-export function getLocalProcessingAgentOutput(args: GetLocalProcessingAgentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLocalProcessingAgentResult> {
+export function getLocalProcessingAgentOutput(args: GetLocalProcessingAgentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLocalProcessingAgentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("fivetran:index/getLocalProcessingAgent:getLocalProcessingAgent", {
         "id": args.id,

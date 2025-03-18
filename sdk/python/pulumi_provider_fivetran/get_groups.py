@@ -83,7 +83,7 @@ def get_groups(groups: Optional[Sequence[Union['GetGroupsGroupArgs', 'GetGroupsG
         groups=pulumi.get(__ret__, 'groups'),
         id=pulumi.get(__ret__, 'id'))
 def get_groups_output(groups: Optional[pulumi.Input[Optional[Sequence[Union['GetGroupsGroupArgs', 'GetGroupsGroupArgsDict']]]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupsResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupsResult]:
     """
     This data source returns a list of all groups within your Fivetran account.
 
@@ -98,7 +98,7 @@ def get_groups_output(groups: Optional[pulumi.Input[Optional[Sequence[Union['Get
     """
     __args__ = dict()
     __args__['groups'] = groups
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getGroups:getGroups', __args__, opts=opts, typ=GetGroupsResult)
     return __ret__.apply(lambda __response__: GetGroupsResult(
         groups=pulumi.get(__response__, 'groups'),

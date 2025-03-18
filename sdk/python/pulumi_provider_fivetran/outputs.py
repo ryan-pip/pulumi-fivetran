@@ -16155,10 +16155,28 @@ class ConnectorSchemaConfigSchemaTable(dict):
 
 @pulumi.output_type
 class ConnectorSchemaConfigSchemaTableColumn(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isPrimaryKey":
+            suggest = "is_primary_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorSchemaConfigSchemaTableColumn. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorSchemaConfigSchemaTableColumn.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorSchemaConfigSchemaTableColumn.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  enabled: Optional[bool] = None,
-                 hashed: Optional[bool] = None):
+                 hashed: Optional[bool] = None,
+                 is_primary_key: Optional[bool] = None):
         """
         :param str name: The column name within your destination in accordance with Fivetran conventional rules.
         :param bool enabled: The boolean value specifying whether the sync of the column into the destination is enabled.
@@ -16169,6 +16187,8 @@ class ConnectorSchemaConfigSchemaTableColumn(dict):
             pulumi.set(__self__, "enabled", enabled)
         if hashed is not None:
             pulumi.set(__self__, "hashed", hashed)
+        if is_primary_key is not None:
+            pulumi.set(__self__, "is_primary_key", is_primary_key)
 
     @property
     @pulumi.getter
@@ -16193,6 +16213,11 @@ class ConnectorSchemaConfigSchemaTableColumn(dict):
         The boolean value specifying whether a column should be hashed.
         """
         return pulumi.get(self, "hashed")
+
+    @property
+    @pulumi.getter(name="isPrimaryKey")
+    def is_primary_key(self) -> Optional[bool]:
+        return pulumi.get(self, "is_primary_key")
 
 
 @pulumi.output_type
@@ -16288,9 +16313,27 @@ class ConnectorSchemaConfigSchemasTables(dict):
 
 @pulumi.output_type
 class ConnectorSchemaConfigSchemasTablesColumns(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isPrimaryKey":
+            suggest = "is_primary_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorSchemaConfigSchemasTablesColumns. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorSchemaConfigSchemasTablesColumns.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorSchemaConfigSchemasTablesColumns.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
-                 hashed: Optional[bool] = None):
+                 hashed: Optional[bool] = None,
+                 is_primary_key: Optional[bool] = None):
         """
         :param bool enabled: The boolean value specifying whether the sync of the column into the destination is enabled.
         :param bool hashed: The boolean value specifying whether a column should be hashed.
@@ -16299,6 +16342,8 @@ class ConnectorSchemaConfigSchemasTablesColumns(dict):
             pulumi.set(__self__, "enabled", enabled)
         if hashed is not None:
             pulumi.set(__self__, "hashed", hashed)
+        if is_primary_key is not None:
+            pulumi.set(__self__, "is_primary_key", is_primary_key)
 
     @property
     @pulumi.getter
@@ -16315,6 +16360,11 @@ class ConnectorSchemaConfigSchemasTablesColumns(dict):
         The boolean value specifying whether a column should be hashed.
         """
         return pulumi.get(self, "hashed")
+
+    @property
+    @pulumi.getter(name="isPrimaryKey")
+    def is_primary_key(self) -> Optional[bool]:
+        return pulumi.get(self, "is_primary_key")
 
 
 @pulumi.output_type

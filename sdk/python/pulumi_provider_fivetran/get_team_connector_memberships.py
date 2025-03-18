@@ -93,7 +93,7 @@ def get_team_connector_memberships(connectors: Optional[Sequence[Union['GetTeamC
         team_id=pulumi.get(__ret__, 'team_id'))
 def get_team_connector_memberships_output(connectors: Optional[pulumi.Input[Optional[Sequence[Union['GetTeamConnectorMembershipsConnectorArgs', 'GetTeamConnectorMembershipsConnectorArgsDict']]]]] = None,
                                           team_id: Optional[pulumi.Input[str]] = None,
-                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTeamConnectorMembershipsResult]:
+                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTeamConnectorMembershipsResult]:
     """
     This data source returns a connector membership within team object.
 
@@ -103,7 +103,7 @@ def get_team_connector_memberships_output(connectors: Optional[pulumi.Input[Opti
     __args__ = dict()
     __args__['connectors'] = connectors
     __args__['teamId'] = team_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getTeamConnectorMemberships:getTeamConnectorMemberships', __args__, opts=opts, typ=GetTeamConnectorMembershipsResult)
     return __ret__.apply(lambda __response__: GetTeamConnectorMembershipsResult(
         connectors=pulumi.get(__response__, 'connectors'),
