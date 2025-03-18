@@ -61,7 +61,6 @@ type LookupDestinationResult struct {
 	GroupId                   string                `pulumi:"groupId"`
 	HybridDeploymentAgentId   string                `pulumi:"hybridDeploymentAgentId"`
 	Id                        string                `pulumi:"id"`
-	LocalProcessingAgentId    string                `pulumi:"localProcessingAgentId"`
 	NetworkingMethod          string                `pulumi:"networkingMethod"`
 	PrivateLinkId             string                `pulumi:"privateLinkId"`
 	Region                    string                `pulumi:"region"`
@@ -71,21 +70,11 @@ type LookupDestinationResult struct {
 }
 
 func LookupDestinationOutput(ctx *pulumi.Context, args LookupDestinationOutputArgs, opts ...pulumi.InvokeOption) LookupDestinationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDestinationResultOutput, error) {
 			args := v.(LookupDestinationArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupDestinationResult
-			secret, err := ctx.InvokePackageRaw("fivetran:index/getDestination:getDestination", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDestinationResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDestinationResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDestinationResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("fivetran:index/getDestination:getDestination", args, LookupDestinationResultOutput{}, options).(LookupDestinationResultOutput), nil
 		}).(LookupDestinationResultOutput)
 }
 
@@ -132,10 +121,6 @@ func (o LookupDestinationResultOutput) HybridDeploymentAgentId() pulumi.StringOu
 
 func (o LookupDestinationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDestinationResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-func (o LookupDestinationResultOutput) LocalProcessingAgentId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDestinationResult) string { return v.LocalProcessingAgentId }).(pulumi.StringOutput)
 }
 
 func (o LookupDestinationResultOutput) NetworkingMethod() pulumi.StringOutput {

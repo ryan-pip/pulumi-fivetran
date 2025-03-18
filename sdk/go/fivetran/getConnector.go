@@ -62,12 +62,13 @@ type LookupConnectorResult struct {
 	ConnectedBy             string                         `pulumi:"connectedBy"`
 	CreatedAt               string                         `pulumi:"createdAt"`
 	DailySyncTime           string                         `pulumi:"dailySyncTime"`
+	DataDelaySensitivity    string                         `pulumi:"dataDelaySensitivity"`
+	DataDelayThreshold      int                            `pulumi:"dataDelayThreshold"`
 	DestinationSchema       *GetConnectorDestinationSchema `pulumi:"destinationSchema"`
 	FailedAt                string                         `pulumi:"failedAt"`
 	GroupId                 string                         `pulumi:"groupId"`
 	HybridDeploymentAgentId string                         `pulumi:"hybridDeploymentAgentId"`
 	Id                      string                         `pulumi:"id"`
-	LocalProcessingAgentId  string                         `pulumi:"localProcessingAgentId"`
 	Name                    string                         `pulumi:"name"`
 	NetworkingMethod        string                         `pulumi:"networkingMethod"`
 	PauseAfterTrial         bool                           `pulumi:"pauseAfterTrial"`
@@ -83,21 +84,11 @@ type LookupConnectorResult struct {
 }
 
 func LookupConnectorOutput(ctx *pulumi.Context, args LookupConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConnectorResultOutput, error) {
 			args := v.(LookupConnectorArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupConnectorResult
-			secret, err := ctx.InvokePackageRaw("fivetran:index/getConnector:getConnector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupConnectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupConnectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupConnectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("fivetran:index/getConnector:getConnector", args, LookupConnectorResultOutput{}, options).(LookupConnectorResultOutput), nil
 		}).(LookupConnectorResultOutput)
 }
 
@@ -144,6 +135,14 @@ func (o LookupConnectorResultOutput) DailySyncTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorResult) string { return v.DailySyncTime }).(pulumi.StringOutput)
 }
 
+func (o LookupConnectorResultOutput) DataDelaySensitivity() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectorResult) string { return v.DataDelaySensitivity }).(pulumi.StringOutput)
+}
+
+func (o LookupConnectorResultOutput) DataDelayThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupConnectorResult) int { return v.DataDelayThreshold }).(pulumi.IntOutput)
+}
+
 func (o LookupConnectorResultOutput) DestinationSchema() GetConnectorDestinationSchemaPtrOutput {
 	return o.ApplyT(func(v LookupConnectorResult) *GetConnectorDestinationSchema { return v.DestinationSchema }).(GetConnectorDestinationSchemaPtrOutput)
 }
@@ -162,10 +161,6 @@ func (o LookupConnectorResultOutput) HybridDeploymentAgentId() pulumi.StringOutp
 
 func (o LookupConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-func (o LookupConnectorResultOutput) LocalProcessingAgentId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupConnectorResult) string { return v.LocalProcessingAgentId }).(pulumi.StringOutput)
 }
 
 func (o LookupConnectorResultOutput) Name() pulumi.StringOutput {

@@ -74,13 +74,13 @@ def get_private_links(items: Optional[Sequence[Union['GetPrivateLinksItemArgs', 
         id=pulumi.get(__ret__, 'id'),
         items=pulumi.get(__ret__, 'items'))
 def get_private_links_output(items: Optional[pulumi.Input[Optional[Sequence[Union['GetPrivateLinksItemArgs', 'GetPrivateLinksItemArgsDict']]]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrivateLinksResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPrivateLinksResult]:
     """
     Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['items'] = items
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getPrivateLinks:getPrivateLinks', __args__, opts=opts, typ=GetPrivateLinksResult)
     return __ret__.apply(lambda __response__: GetPrivateLinksResult(
         id=pulumi.get(__response__, 'id'),

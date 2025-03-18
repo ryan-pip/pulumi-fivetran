@@ -28,7 +28,7 @@ class GetDestinationResult:
     """
     A collection of values returned by getDestination.
     """
-    def __init__(__self__, config=None, daylight_saving_time_enabled=None, group_id=None, hybrid_deployment_agent_id=None, id=None, local_processing_agent_id=None, networking_method=None, private_link_id=None, region=None, service=None, setup_status=None, time_zone_offset=None):
+    def __init__(__self__, config=None, daylight_saving_time_enabled=None, group_id=None, hybrid_deployment_agent_id=None, id=None, networking_method=None, private_link_id=None, region=None, service=None, setup_status=None, time_zone_offset=None):
         if config and not isinstance(config, dict):
             raise TypeError("Expected argument 'config' to be a dict")
         pulumi.set(__self__, "config", config)
@@ -44,9 +44,6 @@ class GetDestinationResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if local_processing_agent_id and not isinstance(local_processing_agent_id, str):
-            raise TypeError("Expected argument 'local_processing_agent_id' to be a str")
-        pulumi.set(__self__, "local_processing_agent_id", local_processing_agent_id)
         if networking_method and not isinstance(networking_method, str):
             raise TypeError("Expected argument 'networking_method' to be a str")
         pulumi.set(__self__, "networking_method", networking_method)
@@ -92,11 +89,6 @@ class GetDestinationResult:
         return pulumi.get(self, "id")
 
     @property
-    @pulumi.getter(name="localProcessingAgentId")
-    def local_processing_agent_id(self) -> str:
-        return pulumi.get(self, "local_processing_agent_id")
-
-    @property
     @pulumi.getter(name="networkingMethod")
     def networking_method(self) -> str:
         return pulumi.get(self, "networking_method")
@@ -138,7 +130,6 @@ class AwaitableGetDestinationResult(GetDestinationResult):
             group_id=self.group_id,
             hybrid_deployment_agent_id=self.hybrid_deployment_agent_id,
             id=self.id,
-            local_processing_agent_id=self.local_processing_agent_id,
             networking_method=self.networking_method,
             private_link_id=self.private_link_id,
             region=self.region,
@@ -174,7 +165,6 @@ def get_destination(config: Optional[Union['GetDestinationConfigArgs', 'GetDesti
         group_id=pulumi.get(__ret__, 'group_id'),
         hybrid_deployment_agent_id=pulumi.get(__ret__, 'hybrid_deployment_agent_id'),
         id=pulumi.get(__ret__, 'id'),
-        local_processing_agent_id=pulumi.get(__ret__, 'local_processing_agent_id'),
         networking_method=pulumi.get(__ret__, 'networking_method'),
         private_link_id=pulumi.get(__ret__, 'private_link_id'),
         region=pulumi.get(__ret__, 'region'),
@@ -183,7 +173,7 @@ def get_destination(config: Optional[Union['GetDestinationConfigArgs', 'GetDesti
         time_zone_offset=pulumi.get(__ret__, 'time_zone_offset'))
 def get_destination_output(config: Optional[pulumi.Input[Optional[Union['GetDestinationConfigArgs', 'GetDestinationConfigArgsDict']]]] = None,
                            id: Optional[pulumi.Input[str]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDestinationResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDestinationResult]:
     """
     This data source returns a destination object.
 
@@ -199,7 +189,7 @@ def get_destination_output(config: Optional[pulumi.Input[Optional[Union['GetDest
     __args__ = dict()
     __args__['config'] = config
     __args__['id'] = id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getDestination:getDestination', __args__, opts=opts, typ=GetDestinationResult)
     return __ret__.apply(lambda __response__: GetDestinationResult(
         config=pulumi.get(__response__, 'config'),
@@ -207,7 +197,6 @@ def get_destination_output(config: Optional[pulumi.Input[Optional[Union['GetDest
         group_id=pulumi.get(__response__, 'group_id'),
         hybrid_deployment_agent_id=pulumi.get(__response__, 'hybrid_deployment_agent_id'),
         id=pulumi.get(__response__, 'id'),
-        local_processing_agent_id=pulumi.get(__response__, 'local_processing_agent_id'),
         networking_method=pulumi.get(__response__, 'networking_method'),
         private_link_id=pulumi.get(__response__, 'private_link_id'),
         region=pulumi.get(__response__, 'region'),
