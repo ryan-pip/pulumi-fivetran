@@ -16,7 +16,7 @@ import (
 //
 // 1. To import an existing `fivetran_destination` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
 //
-// To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).
+// To retrieve existing groups, use the [fivetran_groups data source](/providers/fivetran/fivetran/latest/docs/data-sources/groups).
 //
 // 2. Define an empty resource in your `.tf` configuration:
 //
