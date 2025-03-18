@@ -5,13 +5,13 @@ go 1.21
 toolchain go1.21.6
 
 require (
-	github.com/fivetran/terraform-provider-fivetran v1.4.1
+	github.com/fivetran/terraform-provider-fivetran v1.4.2
 	github.com/hashicorp/terraform-plugin-framework v1.10.0
 )
 
 require (
 	github.com/fatih/color v1.17.0 // indirect
-	github.com/fivetran/go-fivetran v1.0.4 // indirect
+	github.com/fivetran/go-fivetran v1.0.5 // indirect
 	github.com/hashicorp/go-hclog v1.6.3 // indirect
 	github.com/hashicorp/terraform-plugin-framework-timeouts v0.4.1 // indirect
 	github.com/hashicorp/terraform-plugin-framework-validators v0.13.0 // indirect
