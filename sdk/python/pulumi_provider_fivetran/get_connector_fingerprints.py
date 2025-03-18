@@ -102,7 +102,7 @@ def get_connector_fingerprints(fingerprints: Optional[Sequence[Union['GetConnect
         id=pulumi.get(__ret__, 'id'))
 def get_connector_fingerprints_output(fingerprints: Optional[pulumi.Input[Optional[Sequence[Union['GetConnectorFingerprintsFingerprintArgs', 'GetConnectorFingerprintsFingerprintArgsDict']]]]] = None,
                                       id: Optional[pulumi.Input[str]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectorFingerprintsResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectorFingerprintsResult]:
     """
     This data source returns a list of SSH fingerprints approved for specified connector.
 
@@ -121,7 +121,7 @@ def get_connector_fingerprints_output(fingerprints: Optional[pulumi.Input[Option
     __args__ = dict()
     __args__['fingerprints'] = fingerprints
     __args__['id'] = id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getConnectorFingerprints:getConnectorFingerprints', __args__, opts=opts, typ=GetConnectorFingerprintsResult)
     return __ret__.apply(lambda __response__: GetConnectorFingerprintsResult(
         connector_id=pulumi.get(__response__, 'connector_id'),

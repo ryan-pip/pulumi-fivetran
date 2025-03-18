@@ -289,7 +289,7 @@ def get_connector_output(config: Optional[pulumi.Input[Optional[Union['GetConnec
                          destination_schema: Optional[pulumi.Input[Optional[Union['GetConnectorDestinationSchemaArgs', 'GetConnectorDestinationSchemaArgsDict']]]] = None,
                          id: Optional[pulumi.Input[str]] = None,
                          status: Optional[pulumi.Input[Optional[Union['GetConnectorStatusArgs', 'GetConnectorStatusArgsDict']]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectorResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectorResult]:
     """
     This data source returns a connector object.
 
@@ -307,7 +307,7 @@ def get_connector_output(config: Optional[pulumi.Input[Optional[Union['GetConnec
     __args__['destinationSchema'] = destination_schema
     __args__['id'] = id
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getConnector:getConnector', __args__, opts=opts, typ=GetConnectorResult)
     return __ret__.apply(lambda __response__: GetConnectorResult(
         config=pulumi.get(__response__, 'config'),

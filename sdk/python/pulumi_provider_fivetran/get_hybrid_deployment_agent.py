@@ -104,7 +104,7 @@ def get_hybrid_deployment_agent(id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         registered_at=pulumi.get(__ret__, 'registered_at'))
 def get_hybrid_deployment_agent_output(id: Optional[pulumi.Input[str]] = None,
-                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHybridDeploymentAgentResult]:
+                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHybridDeploymentAgentResult]:
     """
     This data source returns a hybrid deployment agent object.
 
@@ -113,7 +113,7 @@ def get_hybrid_deployment_agent_output(id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['id'] = id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getHybridDeploymentAgent:getHybridDeploymentAgent', __args__, opts=opts, typ=GetHybridDeploymentAgentResult)
     return __ret__.apply(lambda __response__: GetHybridDeploymentAgentResult(
         display_name=pulumi.get(__response__, 'display_name'),
