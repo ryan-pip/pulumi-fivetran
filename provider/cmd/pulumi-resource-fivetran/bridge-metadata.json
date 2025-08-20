@@ -1,4 +1,1399 @@
 {
+    "auto-aliasing": {
+        "resources": {
+            "fivetran_connector": {
+                "current": "fivetran:index/connector:Connector",
+                "majorVersion": 1,
+                "fields": {
+                    "config": {
+                        "fields": {
+                            "account_ids": {
+                                "maxItemsOne": false
+                            },
+                            "accounts": {
+                                "maxItemsOne": false
+                            },
+                            "accounts_reddit_ads": {
+                                "maxItemsOne": false
+                            },
+                            "action_breakdowns": {
+                                "maxItemsOne": false
+                            },
+                            "adobe_analytics_configurations": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "calculated_metrics": {
+                                            "maxItemsOne": false
+                                        },
+                                        "elements": {
+                                            "maxItemsOne": false
+                                        },
+                                        "metrics": {
+                                            "maxItemsOne": false
+                                        },
+                                        "report_suites": {
+                                            "maxItemsOne": false
+                                        },
+                                        "segments": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
+                            "advertisables": {
+                                "maxItemsOne": false
+                            },
+                            "advertisers": {
+                                "maxItemsOne": false
+                            },
+                            "advertisers_id": {
+                                "maxItemsOne": false
+                            },
+                            "advertisers_with_seat": {
+                                "maxItemsOne": false
+                            },
+                            "api_keys": {
+                                "maxItemsOne": false
+                            },
+                            "app_ids": {
+                                "maxItemsOne": false
+                            },
+                            "app_ids_appsflyer": {
+                                "maxItemsOne": false
+                            },
+                            "apps": {
+                                "maxItemsOne": false
+                            },
+                            "breakdowns": {
+                                "maxItemsOne": false
+                            },
+                            "business_accounts": {
+                                "maxItemsOne": false
+                            },
+                            "columns": {
+                                "maxItemsOne": false
+                            },
+                            "companies": {
+                                "maxItemsOne": false
+                            },
+                            "conversion_dimensions": {
+                                "maxItemsOne": false
+                            },
+                            "custom_events": {
+                                "maxItemsOne": false
+                            },
+                            "custom_field_ids": {
+                                "maxItemsOne": false
+                            },
+                            "custom_floodlight_variables": {
+                                "maxItemsOne": false
+                            },
+                            "custom_payloads": {
+                                "maxItemsOne": false
+                            },
+                            "custom_reports": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "base_metrics_fields": {
+                                            "maxItemsOne": false
+                                        },
+                                        "dimensions": {
+                                            "maxItemsOne": false
+                                        },
+                                        "event_names": {
+                                            "maxItemsOne": false
+                                        },
+                                        "metrics": {
+                                            "maxItemsOne": false
+                                        },
+                                        "report_fields": {
+                                            "maxItemsOne": false
+                                        },
+                                        "sk_ad_metrics_fields": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
+                            "custom_tables": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "action_breakdowns": {
+                                            "maxItemsOne": false
+                                        },
+                                        "breakdowns": {
+                                            "maxItemsOne": false
+                                        },
+                                        "fields": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
+                            "data_model_path_alias_list": {
+                                "maxItemsOne": false
+                            },
+                            "dimension_attributes": {
+                                "maxItemsOne": false
+                            },
+                            "dimensions": {
+                                "maxItemsOne": false
+                            },
+                            "directories": {
+                                "maxItemsOne": false
+                            },
+                            "ecommerce_stores": {
+                                "maxItemsOne": false
+                            },
+                            "elements": {
+                                "maxItemsOne": false
+                            },
+                            "events": {
+                                "maxItemsOne": false
+                            },
+                            "fields": {
+                                "maxItemsOne": false
+                            },
+                            "files": {
+                                "maxItemsOne": false
+                            },
+                            "finance_accounts": {
+                                "maxItemsOne": false
+                            },
+                            "hosts": {
+                                "maxItemsOne": false
+                            },
+                            "manager_accounts": {
+                                "maxItemsOne": false
+                            },
+                            "metrics": {
+                                "maxItemsOne": false
+                            },
+                            "organizations": {
+                                "maxItemsOne": false
+                            },
+                            "packed_mode_tables": {
+                                "maxItemsOne": false
+                            },
+                            "pages": {
+                                "maxItemsOne": false
+                            },
+                            "partners": {
+                                "maxItemsOne": false
+                            },
+                            "pats": {
+                                "maxItemsOne": false
+                            },
+                            "per_interaction_dimensions": {
+                                "maxItemsOne": false
+                            },
+                            "primary_keys": {
+                                "maxItemsOne": false
+                            },
+                            "profiles": {
+                                "maxItemsOne": false
+                            },
+                            "project_credentials": {
+                                "maxItemsOne": false
+                            },
+                            "projects": {
+                                "maxItemsOne": false
+                            },
+                            "properties": {
+                                "maxItemsOne": false
+                            },
+                            "report_configs": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "dimensions": {
+                                            "maxItemsOne": false
+                                        },
+                                        "metrics": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
+                            "report_configuration_ids": {
+                                "maxItemsOne": false
+                            },
+                            "report_list": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "fields": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
+                            "report_suites": {
+                                "maxItemsOne": false
+                            },
+                            "reports": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "advertisers": {
+                                            "maxItemsOne": false
+                                        },
+                                        "attributes": {
+                                            "maxItemsOne": false
+                                        },
+                                        "dimensions": {
+                                            "maxItemsOne": false
+                                        },
+                                        "fields": {
+                                            "maxItemsOne": false
+                                        },
+                                        "metrics": {
+                                            "maxItemsOne": false
+                                        },
+                                        "partners": {
+                                            "maxItemsOne": false
+                                        },
+                                        "primary_keys": {
+                                            "maxItemsOne": false
+                                        },
+                                        "search_types": {
+                                            "maxItemsOne": false
+                                        },
+                                        "segment_ids": {
+                                            "maxItemsOne": false
+                                        },
+                                        "segments": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
+                            "reports_linkedin_ads": {
+                                "maxItemsOne": false
+                            },
+                            "repositories": {
+                                "maxItemsOne": false
+                            },
+                            "sales_accounts": {
+                                "maxItemsOne": false
+                            },
+                            "schema_registry_urls": {
+                                "maxItemsOne": false
+                            },
+                            "seats": {
+                                "maxItemsOne": false
+                            },
+                            "secrets_list": {
+                                "maxItemsOne": false
+                            },
+                            "segments": {
+                                "maxItemsOne": false
+                            },
+                            "selected_event_types": {
+                                "maxItemsOne": false
+                            },
+                            "selected_exports": {
+                                "maxItemsOne": false
+                            },
+                            "servers": {
+                                "maxItemsOne": false
+                            },
+                            "site_urls": {
+                                "maxItemsOne": false
+                            },
+                            "sub_collections": {
+                                "maxItemsOne": false
+                            },
+                            "template_labels": {
+                                "maxItemsOne": false
+                            },
+                            "tenant_configs": {
+                                "maxItemsOne": false
+                            },
+                            "topics": {
+                                "maxItemsOne": false
+                            },
+                            "user_profiles": {
+                                "maxItemsOne": false
+                            },
+                            "vendors_id": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "fivetran_connector_certificates": {
+                "current": "fivetran:index/connectorCertificates:ConnectorCertificates",
+                "majorVersion": 1,
+                "fields": {
+                    "certificate": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_connector_fingerprints": {
+                "current": "fivetran:index/connectorFingerprints:ConnectorFingerprints",
+                "majorVersion": 1,
+                "fields": {
+                    "fingerprint": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_connector_schedule": {
+                "current": "fivetran:index/connectorSchedule:ConnectorSchedule",
+                "majorVersion": 1
+            },
+            "fivetran_connector_schema_config": {
+                "current": "fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig",
+                "majorVersion": 1,
+                "fields": {
+                    "schema": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "table": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "column": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "fivetran_destination": {
+                "current": "fivetran:index/destination:Destination",
+                "majorVersion": 1,
+                "fields": {
+                    "config": {
+                        "fields": {
+                            "bootstrap_servers": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "fivetran_destination_certificates": {
+                "current": "fivetran:index/destinationCertificates:DestinationCertificates",
+                "majorVersion": 1,
+                "fields": {
+                    "certificate": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_destination_fingerprints": {
+                "current": "fivetran:index/destinationFingerprints:DestinationFingerprints",
+                "majorVersion": 1,
+                "fields": {
+                    "fingerprint": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_external_logging": {
+                "current": "fivetran:index/externalLogging:ExternalLogging",
+                "majorVersion": 1
+            },
+            "fivetran_group": {
+                "current": "fivetran:index/group:Group",
+                "majorVersion": 1
+            },
+            "fivetran_group_users": {
+                "current": "fivetran:index/groupUsers:GroupUsers",
+                "majorVersion": 1,
+                "fields": {
+                    "user": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_hybrid_deployment_agent": {
+                "current": "fivetran:index/hybridDeploymentAgent:HybridDeploymentAgent",
+                "majorVersion": 1
+            },
+            "fivetran_private_link": {
+                "current": "fivetran:index/privateLink:PrivateLink",
+                "majorVersion": 1
+            },
+            "fivetran_proxy_agent": {
+                "current": "fivetran:index/proxyAgent:ProxyAgent",
+                "majorVersion": 1
+            },
+            "fivetran_team": {
+                "current": "fivetran:index/team:Team",
+                "majorVersion": 1
+            },
+            "fivetran_team_connector_membership": {
+                "current": "fivetran:index/teamConnectorMembership:TeamConnectorMembership",
+                "majorVersion": 1,
+                "fields": {
+                    "connector": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_team_group_membership": {
+                "current": "fivetran:index/teamGroupMembership:TeamGroupMembership",
+                "majorVersion": 1,
+                "fields": {
+                    "group": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_team_user_membership": {
+                "current": "fivetran:index/teamUserMembership:TeamUserMembership",
+                "majorVersion": 1,
+                "fields": {
+                    "user": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_transformation": {
+                "current": "fivetran:index/transformation:Transformation",
+                "majorVersion": 1,
+                "fields": {
+                    "output_model_names": {
+                        "maxItemsOne": false
+                    },
+                    "schedule": {
+                        "fields": {
+                            "connection_ids": {
+                                "maxItemsOne": false
+                            },
+                            "cron": {
+                                "maxItemsOne": false
+                            },
+                            "days_of_week": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "transformation_config": {
+                        "fields": {
+                            "connection_ids": {
+                                "maxItemsOne": false
+                            },
+                            "excluded_models": {
+                                "maxItemsOne": false
+                            },
+                            "steps": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "fivetran_transformation_project": {
+                "current": "fivetran:index/transformationProject:TransformationProject",
+                "majorVersion": 1,
+                "fields": {
+                    "errors": {
+                        "maxItemsOne": false
+                    },
+                    "project_config": {
+                        "fields": {
+                            "environment_vars": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "fivetran_user": {
+                "current": "fivetran:index/user:User",
+                "majorVersion": 1
+            },
+            "fivetran_user_connector_membership": {
+                "current": "fivetran:index/userConnectorMembership:UserConnectorMembership",
+                "majorVersion": 1,
+                "fields": {
+                    "connector": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_user_group_membership": {
+                "current": "fivetran:index/userGroupMembership:UserGroupMembership",
+                "majorVersion": 1,
+                "fields": {
+                    "group": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_webhook": {
+                "current": "fivetran:index/webhook:Webhook",
+                "majorVersion": 1,
+                "fields": {
+                    "events": {
+                        "maxItemsOne": false
+                    }
+                }
+            }
+        },
+        "datasources": {
+            "fivetran_connection": {
+                "current": "fivetran:index/getConnection:getConnection",
+                "majorVersion": 1,
+                "fields": {
+                    "status": {
+                        "fields": {
+                            "tasks": {
+                                "maxItemsOne": false
+                            },
+                            "warnings": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "fivetran_connection_certificates": {
+                "current": "fivetran:index/getConnectionCertificates:getConnectionCertificates",
+                "majorVersion": 1,
+                "fields": {
+                    "certificates": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_connection_fingerprints": {
+                "current": "fivetran:index/getConnectionFingerprints:getConnectionFingerprints",
+                "majorVersion": 1,
+                "fields": {
+                    "fingerprints": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_connections": {
+                "current": "fivetran:index/getConnections:getConnections",
+                "majorVersion": 1,
+                "fields": {
+                    "connections": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_connector": {
+                "current": "fivetran:index/getConnector:getConnector",
+                "majorVersion": 1,
+                "fields": {
+                    "config": {
+                        "fields": {
+                            "account_ids": {
+                                "maxItemsOne": false
+                            },
+                            "accounts": {
+                                "maxItemsOne": false
+                            },
+                            "accounts_reddit_ads": {
+                                "maxItemsOne": false
+                            },
+                            "action_breakdowns": {
+                                "maxItemsOne": false
+                            },
+                            "adobe_analytics_configurations": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "calculated_metrics": {
+                                            "maxItemsOne": false
+                                        },
+                                        "elements": {
+                                            "maxItemsOne": false
+                                        },
+                                        "metrics": {
+                                            "maxItemsOne": false
+                                        },
+                                        "report_suites": {
+                                            "maxItemsOne": false
+                                        },
+                                        "segments": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
+                            "advertisables": {
+                                "maxItemsOne": false
+                            },
+                            "advertisers": {
+                                "maxItemsOne": false
+                            },
+                            "advertisers_id": {
+                                "maxItemsOne": false
+                            },
+                            "advertisers_with_seat": {
+                                "maxItemsOne": false
+                            },
+                            "api_keys": {
+                                "maxItemsOne": false
+                            },
+                            "app_ids": {
+                                "maxItemsOne": false
+                            },
+                            "app_ids_appsflyer": {
+                                "maxItemsOne": false
+                            },
+                            "apps": {
+                                "maxItemsOne": false
+                            },
+                            "breakdowns": {
+                                "maxItemsOne": false
+                            },
+                            "business_accounts": {
+                                "maxItemsOne": false
+                            },
+                            "columns": {
+                                "maxItemsOne": false
+                            },
+                            "companies": {
+                                "maxItemsOne": false
+                            },
+                            "conversion_dimensions": {
+                                "maxItemsOne": false
+                            },
+                            "custom_events": {
+                                "maxItemsOne": false
+                            },
+                            "custom_field_ids": {
+                                "maxItemsOne": false
+                            },
+                            "custom_floodlight_variables": {
+                                "maxItemsOne": false
+                            },
+                            "custom_payloads": {
+                                "maxItemsOne": false
+                            },
+                            "custom_reports": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "base_metrics_fields": {
+                                            "maxItemsOne": false
+                                        },
+                                        "dimensions": {
+                                            "maxItemsOne": false
+                                        },
+                                        "event_names": {
+                                            "maxItemsOne": false
+                                        },
+                                        "metrics": {
+                                            "maxItemsOne": false
+                                        },
+                                        "report_fields": {
+                                            "maxItemsOne": false
+                                        },
+                                        "sk_ad_metrics_fields": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
+                            "custom_tables": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "action_breakdowns": {
+                                            "maxItemsOne": false
+                                        },
+                                        "breakdowns": {
+                                            "maxItemsOne": false
+                                        },
+                                        "fields": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
+                            "data_model_path_alias_list": {
+                                "maxItemsOne": false
+                            },
+                            "dimension_attributes": {
+                                "maxItemsOne": false
+                            },
+                            "dimensions": {
+                                "maxItemsOne": false
+                            },
+                            "directories": {
+                                "maxItemsOne": false
+                            },
+                            "ecommerce_stores": {
+                                "maxItemsOne": false
+                            },
+                            "elements": {
+                                "maxItemsOne": false
+                            },
+                            "events": {
+                                "maxItemsOne": false
+                            },
+                            "fields": {
+                                "maxItemsOne": false
+                            },
+                            "files": {
+                                "maxItemsOne": false
+                            },
+                            "finance_accounts": {
+                                "maxItemsOne": false
+                            },
+                            "hosts": {
+                                "maxItemsOne": false
+                            },
+                            "manager_accounts": {
+                                "maxItemsOne": false
+                            },
+                            "metrics": {
+                                "maxItemsOne": false
+                            },
+                            "organizations": {
+                                "maxItemsOne": false
+                            },
+                            "packed_mode_tables": {
+                                "maxItemsOne": false
+                            },
+                            "pages": {
+                                "maxItemsOne": false
+                            },
+                            "partners": {
+                                "maxItemsOne": false
+                            },
+                            "pats": {
+                                "maxItemsOne": false
+                            },
+                            "per_interaction_dimensions": {
+                                "maxItemsOne": false
+                            },
+                            "primary_keys": {
+                                "maxItemsOne": false
+                            },
+                            "profiles": {
+                                "maxItemsOne": false
+                            },
+                            "project_credentials": {
+                                "maxItemsOne": false
+                            },
+                            "projects": {
+                                "maxItemsOne": false
+                            },
+                            "properties": {
+                                "maxItemsOne": false
+                            },
+                            "report_configs": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "dimensions": {
+                                            "maxItemsOne": false
+                                        },
+                                        "metrics": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
+                            "report_configuration_ids": {
+                                "maxItemsOne": false
+                            },
+                            "report_list": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "fields": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
+                            "report_suites": {
+                                "maxItemsOne": false
+                            },
+                            "reports": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "advertisers": {
+                                            "maxItemsOne": false
+                                        },
+                                        "attributes": {
+                                            "maxItemsOne": false
+                                        },
+                                        "dimensions": {
+                                            "maxItemsOne": false
+                                        },
+                                        "fields": {
+                                            "maxItemsOne": false
+                                        },
+                                        "metrics": {
+                                            "maxItemsOne": false
+                                        },
+                                        "partners": {
+                                            "maxItemsOne": false
+                                        },
+                                        "primary_keys": {
+                                            "maxItemsOne": false
+                                        },
+                                        "search_types": {
+                                            "maxItemsOne": false
+                                        },
+                                        "segment_ids": {
+                                            "maxItemsOne": false
+                                        },
+                                        "segments": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
+                            "reports_linkedin_ads": {
+                                "maxItemsOne": false
+                            },
+                            "repositories": {
+                                "maxItemsOne": false
+                            },
+                            "sales_accounts": {
+                                "maxItemsOne": false
+                            },
+                            "schema_registry_urls": {
+                                "maxItemsOne": false
+                            },
+                            "seats": {
+                                "maxItemsOne": false
+                            },
+                            "secrets_list": {
+                                "maxItemsOne": false
+                            },
+                            "segments": {
+                                "maxItemsOne": false
+                            },
+                            "selected_event_types": {
+                                "maxItemsOne": false
+                            },
+                            "selected_exports": {
+                                "maxItemsOne": false
+                            },
+                            "servers": {
+                                "maxItemsOne": false
+                            },
+                            "site_urls": {
+                                "maxItemsOne": false
+                            },
+                            "sub_collections": {
+                                "maxItemsOne": false
+                            },
+                            "template_labels": {
+                                "maxItemsOne": false
+                            },
+                            "tenant_configs": {
+                                "maxItemsOne": false
+                            },
+                            "topics": {
+                                "maxItemsOne": false
+                            },
+                            "user_profiles": {
+                                "maxItemsOne": false
+                            },
+                            "vendors_id": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "status": {
+                        "fields": {
+                            "tasks": {
+                                "maxItemsOne": false
+                            },
+                            "warnings": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "fivetran_connector_certificates": {
+                "current": "fivetran:index/getConnectorCertificates:getConnectorCertificates",
+                "majorVersion": 1,
+                "fields": {
+                    "certificates": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_connector_fingerprints": {
+                "current": "fivetran:index/getConnectorFingerprints:getConnectorFingerprints",
+                "majorVersion": 1,
+                "fields": {
+                    "fingerprints": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_connectors": {
+                "current": "fivetran:index/getConnectors:getConnectors",
+                "majorVersion": 1,
+                "fields": {
+                    "connectors": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_connectors_metadata": {
+                "current": "fivetran:index/getConnectorsMetadata:getConnectorsMetadata",
+                "majorVersion": 1,
+                "fields": {
+                    "sources": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_destination": {
+                "current": "fivetran:index/getDestination:getDestination",
+                "majorVersion": 1,
+                "fields": {
+                    "config": {
+                        "fields": {
+                            "bootstrap_servers": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "fivetran_destination_certificates": {
+                "current": "fivetran:index/getDestinationCertificates:getDestinationCertificates",
+                "majorVersion": 1,
+                "fields": {
+                    "certificates": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_destination_fingerprints": {
+                "current": "fivetran:index/getDestinationFingerprints:getDestinationFingerprints",
+                "majorVersion": 1,
+                "fields": {
+                    "fingerprints": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_destinations": {
+                "current": "fivetran:index/getDestinations:getDestinations",
+                "majorVersion": 1,
+                "fields": {
+                    "destinations": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_external_logging": {
+                "current": "fivetran:index/getExternalLogging:getExternalLogging",
+                "majorVersion": 1
+            },
+            "fivetran_external_logs": {
+                "current": "fivetran:index/getExternalLogs:getExternalLogs",
+                "majorVersion": 1,
+                "fields": {
+                    "logs": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_group": {
+                "current": "fivetran:index/getGroup:getGroup",
+                "majorVersion": 1
+            },
+            "fivetran_group_connections": {
+                "current": "fivetran:index/getGroupConnections:getGroupConnections",
+                "majorVersion": 1,
+                "fields": {
+                    "connections": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "status": {
+                                    "fields": {
+                                        "tasks": {
+                                            "maxItemsOne": false
+                                        },
+                                        "warnings": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "fivetran_group_connectors": {
+                "current": "fivetran:index/getGroupConnectors:getGroupConnectors",
+                "majorVersion": 1,
+                "fields": {
+                    "connectors": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "status": {
+                                    "fields": {
+                                        "tasks": {
+                                            "maxItemsOne": false
+                                        },
+                                        "warnings": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "fivetran_group_service_account": {
+                "current": "fivetran:index/getGroupServiceAccount:getGroupServiceAccount",
+                "majorVersion": 1
+            },
+            "fivetran_group_ssh_key": {
+                "current": "fivetran:index/getGroupSshKey:getGroupSshKey",
+                "majorVersion": 1
+            },
+            "fivetran_group_users": {
+                "current": "fivetran:index/getGroupUsers:getGroupUsers",
+                "majorVersion": 1,
+                "fields": {
+                    "users": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_groups": {
+                "current": "fivetran:index/getGroups:getGroups",
+                "majorVersion": 1,
+                "fields": {
+                    "groups": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_hybrid_deployment_agent": {
+                "current": "fivetran:index/getHybridDeploymentAgent:getHybridDeploymentAgent",
+                "majorVersion": 1
+            },
+            "fivetran_hybrid_deployment_agents": {
+                "current": "fivetran:index/getHybridDeploymentAgents:getHybridDeploymentAgents",
+                "majorVersion": 1,
+                "fields": {
+                    "items": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_private_link": {
+                "current": "fivetran:index/getPrivateLink:getPrivateLink",
+                "majorVersion": 1
+            },
+            "fivetran_private_links": {
+                "current": "fivetran:index/getPrivateLinks:getPrivateLinks",
+                "majorVersion": 1,
+                "fields": {
+                    "items": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_proxy_agent": {
+                "current": "fivetran:index/getProxyAgent:getProxyAgent",
+                "majorVersion": 1
+            },
+            "fivetran_proxy_agents": {
+                "current": "fivetran:index/getProxyAgents:getProxyAgents",
+                "majorVersion": 1,
+                "fields": {
+                    "items": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_quickstart_package": {
+                "current": "fivetran:index/getQuickstartPackage:getQuickstartPackage",
+                "majorVersion": 1,
+                "fields": {
+                    "connector_types": {
+                        "maxItemsOne": false
+                    },
+                    "output_model_names": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_quickstart_packages": {
+                "current": "fivetran:index/getQuickstartPackages:getQuickstartPackages",
+                "majorVersion": 1,
+                "fields": {
+                    "packages": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "connector_types": {
+                                    "maxItemsOne": false
+                                },
+                                "output_model_names": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "fivetran_roles": {
+                "current": "fivetran:index/getRoles:getRoles",
+                "majorVersion": 1,
+                "fields": {
+                    "roles": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "scope": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "fivetran_team": {
+                "current": "fivetran:index/getTeam:getTeam",
+                "majorVersion": 1
+            },
+            "fivetran_team_connection_memberships": {
+                "current": "fivetran:index/getTeamConnectionMemberships:getTeamConnectionMemberships",
+                "majorVersion": 1,
+                "fields": {
+                    "connections": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_team_connector_memberships": {
+                "current": "fivetran:index/getTeamConnectorMemberships:getTeamConnectorMemberships",
+                "majorVersion": 1,
+                "fields": {
+                    "connector": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_team_group_memberships": {
+                "current": "fivetran:index/getTeamGroupMemberships:getTeamGroupMemberships",
+                "majorVersion": 1,
+                "fields": {
+                    "group": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_team_user_memberships": {
+                "current": "fivetran:index/getTeamUserMemberships:getTeamUserMemberships",
+                "majorVersion": 1,
+                "fields": {
+                    "user": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_teams": {
+                "current": "fivetran:index/getTeams:getTeams",
+                "majorVersion": 1,
+                "fields": {
+                    "teams": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_transformation": {
+                "current": "fivetran:index/getTransformation:getTransformation",
+                "majorVersion": 1,
+                "fields": {
+                    "output_model_names": {
+                        "maxItemsOne": false
+                    },
+                    "schedule": {
+                        "fields": {
+                            "connection_ids": {
+                                "maxItemsOne": false
+                            },
+                            "cron": {
+                                "maxItemsOne": false
+                            },
+                            "days_of_week": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "transformation_config": {
+                        "fields": {
+                            "connection_ids": {
+                                "maxItemsOne": false
+                            },
+                            "excluded_models": {
+                                "maxItemsOne": false
+                            },
+                            "steps": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "fivetran_transformation_project": {
+                "current": "fivetran:index/getTransformationProject:getTransformationProject",
+                "majorVersion": 1,
+                "fields": {
+                    "errors": {
+                        "maxItemsOne": false
+                    },
+                    "project_config": {
+                        "fields": {
+                            "environment_vars": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "fivetran_transformation_projects": {
+                "current": "fivetran:index/getTransformationProjects:getTransformationProjects",
+                "majorVersion": 1,
+                "fields": {
+                    "projects": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_transformations": {
+                "current": "fivetran:index/getTransformations:getTransformations",
+                "majorVersion": 1,
+                "fields": {
+                    "transformations": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "output_model_names": {
+                                    "maxItemsOne": false
+                                },
+                                "schedule": {
+                                    "fields": {
+                                        "connection_ids": {
+                                            "maxItemsOne": false
+                                        },
+                                        "cron": {
+                                            "maxItemsOne": false
+                                        },
+                                        "days_of_week": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "transformation_config": {
+                                    "fields": {
+                                        "connection_ids": {
+                                            "maxItemsOne": false
+                                        },
+                                        "excluded_models": {
+                                            "maxItemsOne": false
+                                        },
+                                        "steps": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "fivetran_user": {
+                "current": "fivetran:index/getUser:getUser",
+                "majorVersion": 1
+            },
+            "fivetran_user_connection_memberships": {
+                "current": "fivetran:index/getUserConnectionMemberships:getUserConnectionMemberships",
+                "majorVersion": 1,
+                "fields": {
+                    "connections": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_user_connector_memberships": {
+                "current": "fivetran:index/getUserConnectorMemberships:getUserConnectorMemberships",
+                "majorVersion": 1,
+                "fields": {
+                    "connector": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_user_group_memberships": {
+                "current": "fivetran:index/getUserGroupMemberships:getUserGroupMemberships",
+                "majorVersion": 1,
+                "fields": {
+                    "group": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_users": {
+                "current": "fivetran:index/getUsers:getUsers",
+                "majorVersion": 1,
+                "fields": {
+                    "users": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_webhook": {
+                "current": "fivetran:index/getWebhook:getWebhook",
+                "majorVersion": 1,
+                "fields": {
+                    "events": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "fivetran_webhooks": {
+                "current": "fivetran:index/getWebhooks:getWebhooks",
+                "majorVersion": 1,
+                "fields": {
+                    "webhooks": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "events": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "auto-settings": {},
     "renames": {
         "resources": {
             "fivetran:index/connector:Connector": "fivetran_connector",
