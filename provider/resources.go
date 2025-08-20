@@ -117,15 +117,6 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"fivetran_connector": {
-				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Connector"),
-			},
-			"fivetran_connector_schedule":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ConnectorSchedule")},
-			"fivetran_connector_schema_config": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ConnectorSchemaConfig")},
-			"fivetran_dbt_project":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "DbtProject")},
-			"fivetran_dbt_transformation": {
-				Tok: tfbridge.MakeResource(mainPkg, mainMod, "DbtTransformation"),
-			},
 			"fivetran_destination": {
 				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Destination"),
 				PreStateUpgradeHook: func(args tfbridge.PreStateUpgradeHookArgs) (int64, resource.PropertyMap, error) {
@@ -139,9 +130,6 @@ func Provider() tfbridge.ProviderInfo {
 					return args.PriorStateSchemaVersion, args.PriorState, nil
 				},
 			},
-			"fivetran_group":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Group")},
-			"fivetran_group_users": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GroupUsers")},
-			"fivetran_user":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "User")},
 			"fivetran_user_connector_membership": {
 				Tok:       tfbridge.MakeResource(mainPkg, mainMod, "UserConnectorMembership"),
 				ComputeID: computeUserConnectorMembershipID,
@@ -150,21 +138,8 @@ func Provider() tfbridge.ProviderInfo {
 				Tok:       tfbridge.MakeResource(mainPkg, mainMod, "UserGroupMembership"),
 				ComputeID: computeUserGroupMembershipID,
 			},
-			"fivetran_webhook": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Webhook")},
 		},
-		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"fivetran_user":                {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getUser")},
-			"fivetran_users":               {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getUsers")},
-			"fivetran_group":               {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroup")},
-			"fivetran_groups":              {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroups")},
-			"fivetran_group_connectors":    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroupConnectors")},
-			"fivetran_group_users":         {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroupUsers")},
-			"fivetran_destination":         {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getDestination")},
-			"fivetran_connectors_metadata": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getConnectorsMetadata")},
-			"fivetran_connector": {
-				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getConnector"),
-			},
-		},
+		DataSources: map[string]*tfbridge.DataSourceInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			PackageName: "@ryan-pip/pulumi-fivetran",
 			// List any npm dependencies and their versions
@@ -209,7 +184,7 @@ func Provider() tfbridge.ProviderInfo {
 	// https://pkg.go.dev/github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge#ProviderInfo.ComputeTokens
 	prov.MustComputeTokens(tokens.SingleModule("fivetran_", mainMod,
 		tokens.MakeStandard(mainPkg)))
-	// prov.MustApplyAutoAliases()
+	prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")
 
 	return prov
