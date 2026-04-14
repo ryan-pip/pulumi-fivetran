@@ -39,7 +39,7 @@ jobs:
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go
-      uses: actions/setup-go@v4
+      uses: actions/setup-go@v5
       with:
         go-version: ${{matrix.goversion}}
 
@@ -90,3 +90,60 @@ jobs:
             git diff
             exit 1
         fi
+
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Install Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.23.x
+
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v6
+        with:
+          working-directory: provider
+          args: --path-prefix provider -c ../.golangci.yml
+
+  unit_test:
+    name: unit-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Install Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.23.x
+
+      - name: go vet
+        run: cd provider && go vet ./...
+
+      - name: go test
+        run: make test_provider
+
+  schema_validation:
+    name: schema-validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Validate schema is valid JSON
+        run: |
+          jq . provider/cmd/pulumi-resource-fivetran/schema.json > /dev/null
+          echo "Schema JSON is valid"
+
+      - name: Check schema resource count
+        run: |
+          COUNT=$(jq '.resources | length' provider/cmd/pulumi-resource-fivetran/schema.json)
+          echo "Schema contains $COUNT resources"
+          if [ "$COUNT" -eq 0 ]; then
+            echo "ERROR: Schema has zero resources - something went wrong with generation"
+            exit 1
+          fi
