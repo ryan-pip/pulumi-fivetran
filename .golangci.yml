@@ -1,21 +1,25 @@
 linters:
   enable:
-    - deadcode
+    # Core correctness checks
     - errcheck
-    - goconst
-    - gofmt
-    - golint
-    - gosec
     - govet
     - ineffassign
-    - interfacer
+    - staticcheck
+    # Style / quality
+    - goconst
+    - gofmt
     - lll
-    - megacheck
     - misspell
     - nakedret
-    - structcheck
     - unconvert
-    - varcheck
+    # Security
+    - gosec
+    # Replacements for removed linters:
+    # - staticcheck replaces megacheck
+    # - unused replaces deadcode/structcheck/varcheck
+    # - revive replaces golint/interfacer
+    - unused
+    - revive
   enable-all: false
 run:
   skip-files:
