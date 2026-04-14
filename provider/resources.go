@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// Package fivetran is the Pulumi provider for Fivetran cloud resources.
 package fivetran
 
 import (
@@ -21,7 +22,7 @@ import (
 	"path/filepath"
 
 	shimprovider "github.com/fivetran/terraform-provider-fivetran/shim"
-	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
+	pf "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
@@ -59,7 +60,7 @@ func computeUserGroupMembershipID(_ context.Context, state resource.PropertyMap)
 // It should validate that the provider can be configured, and provide actionable errors in the case
 // it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
 // for example `stringValue(vars, "accessKey")`.
-func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
+func preConfigureCallback(_ resource.PropertyMap, _ shim.ResourceConfig) error {
 	return nil
 }
 

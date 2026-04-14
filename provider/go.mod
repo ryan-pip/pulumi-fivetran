@@ -10,7 +10,6 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 
 require (
 	github.com/fivetran/terraform-provider-fivetran/shim v0.0.0-00010101000000-000000000000
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.49.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.111.0
 	github.com/pulumi/pulumi/sdk/v3 v3.185.0
 )
@@ -55,6 +54,7 @@ require (
 	github.com/felixge/httpsnoop v1.0.4 // indirect
 	github.com/fivetran/go-fivetran v1.2.2 // indirect
 	github.com/fivetran/terraform-provider-fivetran v1.9.4 // indirect
+	github.com/frankban/quicktest v1.14.4 // indirect
 	github.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376 // indirect
 	github.com/go-git/go-billy/v5 v5.6.2 // indirect
 	github.com/go-git/go-git/v5 v5.16.0 // indirect
@@ -156,6 +156,7 @@ require (
 	github.com/spf13/cast v1.5.0 // indirect
 	github.com/spf13/cobra v1.9.1 // indirect
 	github.com/spf13/pflag v1.0.6 // indirect
+	github.com/stretchr/objx v0.5.2 // indirect
 	github.com/teekennedy/goldmark-markdown v0.3.0 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect
 	github.com/uber/jaeger-client-go v2.30.0+incompatible // indirect
