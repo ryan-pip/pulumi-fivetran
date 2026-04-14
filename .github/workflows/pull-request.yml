@@ -103,13 +103,15 @@ jobs:
         with:
           go-version: 1.23.x
 
-      - name: golangci-lint
-        uses: golangci/golangci-lint-action@v6
-        with:
-          version: v2.5.0
-          working-directory: provider
-          # Lint library packages only; cmd/ depends on schema-embed.json which is generated at build time.
-          args: --path-prefix provider -c ../.golangci.yml . ./pkg/...
+      - name: Install golangci-lint v2
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/HEAD/install.sh | \
+            sh -s -- -b $(go env GOPATH)/bin v2.5.0
+          golangci-lint --version
+
+      - name: Run golangci-lint
+        # Lint library packages only; cmd/ depends on schema-embed.json which is generated at build time.
+        run: cd provider && golangci-lint run --path-prefix provider -c ../.golangci.yml . ./pkg/...
 
   unit_test:
     name: unit-test
