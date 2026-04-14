@@ -106,6 +106,7 @@ jobs:
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v6
         with:
+          version: v2.5.0
           working-directory: provider
           # Lint library packages only; cmd/ depends on schema-embed.json which is generated at build time.
           args: --path-prefix provider -c ../.golangci.yml . ./pkg/...
