@@ -1,28 +1,33 @@
+version: "2"
+
 linters:
   enable:
-    # Core correctness checks
+    # Core correctness (also enabled by default in v2, listed explicitly for clarity)
     - errcheck
     - govet
     - ineffassign
     - staticcheck
+    - unused
     # Style / quality
     - goconst
-    - gofmt
     - lll
     - misspell
     - nakedret
     - unconvert
     # Security
     - gosec
-    # Replacements for removed linters:
-    # - staticcheck replaces megacheck
-    # - unused replaces deadcode/structcheck/varcheck
-    # - revive replaces golint/interfacer
-    - unused
+    # Replaces golint / interfacer (removed in golangci-lint v1.57+)
     - revive
   enable-all: false
-run:
-  skip-files:
+
+issues:
+  exclude-files:
     - schema.go
     - pulumiManifest.go
+  # cmd/ packages depend on schema-embed.json which is generated at build time.
+  # Lint only the library packages; cmd/ is a thin entry-point with no logic to lint.
+  exclude-dirs:
+    - cmd
+
+run:
   timeout: 20m

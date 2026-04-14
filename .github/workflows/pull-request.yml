@@ -107,7 +107,8 @@ jobs:
         uses: golangci/golangci-lint-action@v6
         with:
           working-directory: provider
-          args: --path-prefix provider -c ../.golangci.yml
+          # Lint library packages only; cmd/ depends on schema-embed.json which is generated at build time.
+          args: --path-prefix provider -c ../.golangci.yml . ./pkg/...
 
   unit_test:
     name: unit-test
@@ -122,10 +123,12 @@ jobs:
           go-version: 1.23.x
 
       - name: go vet
-        run: cd provider && go vet ./...
+        # Exclude cmd/ packages: they embed schema-embed.json which is generated at build time.
+        run: cd provider && go vet . ./pkg/...
 
       - name: go test
-        run: make test_provider
+        # Exclude cmd/ packages for the same reason (schema-embed.json not present without make generate).
+        run: cd provider && go test -v -short -parallel 10 . ./pkg/...
 
   schema_validation:
     name: schema-validation

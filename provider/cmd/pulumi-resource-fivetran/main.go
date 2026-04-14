@@ -20,7 +20,7 @@ import (
 	"context"
 	_ "embed"
 
-	"github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	fivetran "github.com/ryan-pip/pulumi-fivetran/provider"
 )
 

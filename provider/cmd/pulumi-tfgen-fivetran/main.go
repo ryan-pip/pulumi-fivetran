@@ -15,7 +15,7 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform-bridge/pf/tfgen"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfgen"
 	fivetran "github.com/ryan-pip/pulumi-fivetran/provider"
 )
 
