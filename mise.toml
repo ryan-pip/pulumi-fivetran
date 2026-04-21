@@ -1,7 +1,7 @@
 [tools]
 github-cli = "latest"
 
-go = "1.23"
+go = "1.25"
 python = '3.11'
 dotnet = '8.0'
 # Corretto version used as Java SE/OpenJDK version no longer offered
