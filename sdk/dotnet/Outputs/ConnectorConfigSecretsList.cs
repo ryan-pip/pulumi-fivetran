@@ -14,17 +14,17 @@ namespace Pulumi.Fivetran.Outputs
     public sealed class ConnectorConfigSecretsList
     {
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_lambda`: Secret Key.
-        /// 	- Service `azure_function`: Key
-        /// 	- Service `google_cloud_function`: Key
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsLambda`: Secret Key.
+        /// 	- Service `AzureFunction`: Key
+        /// 	- Service `GoogleCloudFunction`: Key
         /// </summary>
         public readonly string? Key;
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_lambda`: Secret Value.
-        /// 	- Service `azure_function`: Value
-        /// 	- Service `google_cloud_function`: Value
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsLambda`: Secret Value.
+        /// 	- Service `AzureFunction`: Value
+        /// 	- Service `GoogleCloudFunction`: Value
         /// </summary>
         public readonly string? Value;
 

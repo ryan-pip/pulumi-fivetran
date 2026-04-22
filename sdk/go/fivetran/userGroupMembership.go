@@ -14,19 +14,72 @@ import (
 
 // This resource allows you to create, update, and delete group membership for user
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.NewUserGroupMembership(ctx, "test_user_group_membership", &fivetran.UserGroupMembershipArgs{
+//				UserId: pulumi.String("test_user"),
+//				Groups: fivetran.UserGroupMembershipGroupArray{
+//					&fivetran.UserGroupMembershipGroupArgs{
+//						ConnectorId: "test_connector",
+//						GroupId:     pulumi.String("test_group"),
+//						Role:        pulumi.String("Destination Administrator"),
+//					},
+//					&fivetran.UserGroupMembershipGroupArgs{
+//						ConnectorId: "test_connector",
+//						GroupId:     pulumi.String("test_group"),
+//						Role:        pulumi.String("Destination Administrator"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
-// 1. To import an existing `fivetran_user_group_membership` resource into your Terraform state, you need to get `user_id` and `group_id`
-//
-// You can retrieve all users using the [fivetran_users data source](/docs/data-sources/users).
+// 1. To import an existing `UserGroupMembership` resource into your Terraform state, you need to get `userId` and `groupId`
+// You can retrieve all users using the [getUsers data source](https://www.terraform.io/docs/data-sources/users).
 //
 // 2. Define an empty resource in your `.tf` configuration:
 //
-// hcl
+// ```go
+// package main
 //
-// resource "fivetran_user_group_membership" "my_imported_fivetran_user_group_membership" {
+// import (
 //
-// }
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.NewUserGroupMembership(ctx, "my_imported_fivetran_user_group_membership", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // 3. Run the `pulumi import` command:
 //
@@ -36,8 +89,9 @@ import (
 //
 // 4. Use the `terraform state show` command to get the values from the state:
 //
+// ```sh
 // terraform state show 'fivetran_user_group_membership.my_imported_fivetran_user_group_membership'
-//
+// ```
 // 5. Copy the values and paste them to your `.tf` configuration.
 type UserGroupMembership struct {
 	pulumi.CustomResourceState

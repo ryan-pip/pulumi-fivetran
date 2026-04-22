@@ -16,8 +16,8 @@ namespace Pulumi.Fivetran.Inputs
         private Input<string>? _apiKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `amplitude`: The API key of the project.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Amplitude`: The API key of the project.
         /// </summary>
         public Input<string>? ApiKey
         {
@@ -30,8 +30,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `amplitude`: The project name you wish to use with Fivetran.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Amplitude`: The project name you wish to use with Fivetran.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -40,8 +40,8 @@ namespace Pulumi.Fivetran.Inputs
         private Input<string>? _secretKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `amplitude`: The secret key of the project.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Amplitude`: The secret key of the project.
         /// </summary>
         public Input<string>? SecretKey
         {

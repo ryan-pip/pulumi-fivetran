@@ -22,7 +22,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myDestinationApprovedFingerprints = new Fivetran.DestinationFingerprints("my_destination_approved_fingerprints", new()
+    ///     var myDestinationApprovedFingerprints = new Fivetran.Index.DestinationFingerprints("my_destination_approved_fingerprints", new()
     ///     {
     ///         DestinationId = myDestination.Id,
     ///         Fingerprints = new[]
@@ -45,27 +45,36 @@ namespace Pulumi.Fivetran
     /// 
     /// ## Import
     /// 
-    /// 1. To import an existing `fivetran_destination_fingerprints` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+    /// 1. To import an existing `fivetran.DestinationFingerprints` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
     /// 
-    /// 2. To retrieve existing destinations, use the [fivetran_destinations data source](/docs/data-sources/destinations).
+    /// 2. To retrieve existing destinations, use the [fivetran.getDestinations data source](https://www.terraform.io/docs/data-sources/destinations).
     /// 
     /// 3. Define an empty resource in your `.tf` configuration:
     /// 
-    /// hcl
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Pulumi.Fivetran;
     /// 
-    /// resource "fivetran_destination_fingerprints" "my_imported_destination_fingerprints" {
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myImportedDestinationFingerprints = new Fivetran.Index.DestinationFingerprints("my_imported_destination_fingerprints");
     /// 
-    /// }
+    /// });
+    /// ```
     /// 
     /// 4. Run the `pulumi import` command:
     /// 
     /// ```sh
-    /// $ pulumi import fivetran:index/destinationFingerprints:DestinationFingerprints my_imported_destination_fingerprints {your Destination Group ID}
+    /// terraform import fivetran_destination_fingerprints.my_imported_destination_fingerprints {your Destination Group ID}
     /// ```
     /// 
     /// 5.  Use the `terraform state show` command to get the values from the state:
     /// 
+    /// ```sh
     /// terraform state show 'fivetran_destination_fingerprints.my_imported_destination_fingerprints'
+    /// ```
     /// 
     /// 6. Copy the values and paste them to your `.tf` configuration.
     /// </summary>

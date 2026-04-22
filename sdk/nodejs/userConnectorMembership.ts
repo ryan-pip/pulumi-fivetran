@@ -34,17 +34,17 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * 1. To import an existing `fivetran_user_connector_membership` resource into your Terraform state, you need to get `user_id` and `connector_id`
- *
- * You can retrieve all users using the [fivetran_users data source](/docs/data-sources/users).
+ * 1. To import an existing `fivetran.UserConnectorMembership` resource into your Terraform state, you need to get `userId` and `connectorId`
+ * You can retrieve all users using the [fivetran.getUsers data source](https://www.terraform.io/docs/data-sources/users).
  *
  * 2. Define an empty resource in your `.tf` configuration:
  *
- * hcl
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
- * resource "fivetran_user_connector_membership" "my_imported_fivetran_user_connector_membership" {
- *
- * }
+ * const myImportedFivetranUserConnectorMembership = new fivetran.UserConnectorMembership("my_imported_fivetran_user_connector_membership", {});
+ * ```
  *
  * 3. Run the `pulumi import` command:
  *
@@ -54,8 +54,9 @@ import * as utilities from "./utilities";
  *
  * 4. Use the `terraform state show` command to get the values from the state:
  *
+ * ```sh
  * terraform state show 'fivetran_user_connector_membership.my_imported_fivetran_user_connector_membership'
- *
+ * ```
  * 5. Copy the values and paste them to your `.tf` configuration.
  */
 export class UserConnectorMembership extends pulumi.CustomResource {
@@ -86,11 +87,11 @@ export class UserConnectorMembership extends pulumi.CustomResource {
         return obj['__pulumiType'] === UserConnectorMembership.__pulumiType;
     }
 
-    public readonly connectors!: pulumi.Output<outputs.UserConnectorMembershipConnector[] | undefined>;
+    declare public readonly connectors: pulumi.Output<outputs.UserConnectorMembershipConnector[] | undefined>;
     /**
      * The unique identifier for the user within your account.
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
 
     /**
      * Create a UserConnectorMembership resource with the given unique name, arguments, and options.
@@ -105,15 +106,15 @@ export class UserConnectorMembership extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserConnectorMembershipState | undefined;
-            resourceInputs["connectors"] = state ? state.connectors : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["connectors"] = state?.connectors;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as UserConnectorMembershipArgs | undefined;
-            if ((!args || args.userId === undefined) && !opts.urn) {
+            if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            resourceInputs["connectors"] = args ? args.connectors : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["connectors"] = args?.connectors;
+            resourceInputs["userId"] = args?.userId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(UserConnectorMembership.__pulumiType, name, resourceInputs, opts);

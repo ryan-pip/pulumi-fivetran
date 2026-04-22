@@ -27,43 +27,33 @@ import * as utilities from "./utilities";
  *
  * You don't need to import this resource as it is synthetic.
  *
- * To fetch schedule values from existing connector use `fivetran_connector` data source:
+ * To fetch schedule values from existing connector use `fivetran.Connector` data source:
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
- * hcl
- *
- * data "fivetran_connector" "my_connector" {
- *
- *     id = "my_connector_id"
- *
- * }
- *
- * now you can use schedule values from this data_source:
- *
- *   sync_frequency = data.fivetran_connector.my_connector.sync_frequency
- *
- *   paused = data.fivetran_connector.my_connector.paused
+ * const myConnector = fivetran.getConnector({
+ *     id: "my_connector_id",
+ * });
+ * ```
  *
  * This resource manages settings for already existing connector instance and doesn't create a new one.
+ * If you already have an existing connector with id = `myConnectorId` just define `fivetran.ConnectorSchedule` resource:
  *
- * If you already have an existing connector with id = `my_connector_id` just define `fivetran_connector_schedule` resource:
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
- * hcl
+ * const myConnectorSchedule = new fivetran.ConnectorSchedule("my_connector_schedule", {
+ *     connectorId: "my_connector_id",
+ *     syncFrequency: "360",
+ *     paused: "false",
+ *     pauseAfterTrial: "true",
+ *     scheduleType: "auto",
+ * });
+ * ```
  *
- * resource "fivetran_connector_schedule" "my_connector_schedule" {
- *
- *     connector_id = "my_connector_id"
- *     
- *     sync_frequency     = "360"
- *     
- *     paused             = false
- *     
- *     pause_after_trial  = true
- *     
- *     schedule_type      = "auto"
- *
- * }
- *
- * -> NOTE: You can't have several resources managing the same `connector_id`. They will be in conflict ater each `apply`.
+ * > NOTE: You can't have several resources managing the same `connectorId`. They will be in conflict ater each `apply`.
  */
 export class ConnectorSchedule extends pulumi.CustomResource {
     /**
@@ -96,27 +86,27 @@ export class ConnectorSchedule extends pulumi.CustomResource {
     /**
      * The unique identifier for the connector within the Fivetran system.
      */
-    public readonly connectorId!: pulumi.Output<string>;
+    declare public readonly connectorId: pulumi.Output<string>;
     /**
      * The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
      */
-    public readonly dailySyncTime!: pulumi.Output<string>;
+    declare public readonly dailySyncTime: pulumi.Output<string>;
     /**
      * Specifies whether the connector should be paused after the free trial period has ended.
      */
-    public readonly pauseAfterTrial!: pulumi.Output<string>;
+    declare public readonly pauseAfterTrial: pulumi.Output<string>;
     /**
      * Specifies whether the connector is paused.
      */
-    public readonly paused!: pulumi.Output<string>;
+    declare public readonly paused: pulumi.Output<string>;
     /**
      * The connector schedule configuration type. Supported values: auto, manual.
      */
-    public readonly scheduleType!: pulumi.Output<string>;
+    declare public readonly scheduleType: pulumi.Output<string>;
     /**
      * The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
      */
-    public readonly syncFrequency!: pulumi.Output<string>;
+    declare public readonly syncFrequency: pulumi.Output<string>;
 
     /**
      * Create a ConnectorSchedule resource with the given unique name, arguments, and options.
@@ -131,23 +121,23 @@ export class ConnectorSchedule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectorScheduleState | undefined;
-            resourceInputs["connectorId"] = state ? state.connectorId : undefined;
-            resourceInputs["dailySyncTime"] = state ? state.dailySyncTime : undefined;
-            resourceInputs["pauseAfterTrial"] = state ? state.pauseAfterTrial : undefined;
-            resourceInputs["paused"] = state ? state.paused : undefined;
-            resourceInputs["scheduleType"] = state ? state.scheduleType : undefined;
-            resourceInputs["syncFrequency"] = state ? state.syncFrequency : undefined;
+            resourceInputs["connectorId"] = state?.connectorId;
+            resourceInputs["dailySyncTime"] = state?.dailySyncTime;
+            resourceInputs["pauseAfterTrial"] = state?.pauseAfterTrial;
+            resourceInputs["paused"] = state?.paused;
+            resourceInputs["scheduleType"] = state?.scheduleType;
+            resourceInputs["syncFrequency"] = state?.syncFrequency;
         } else {
             const args = argsOrState as ConnectorScheduleArgs | undefined;
-            if ((!args || args.connectorId === undefined) && !opts.urn) {
+            if (args?.connectorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectorId'");
             }
-            resourceInputs["connectorId"] = args ? args.connectorId : undefined;
-            resourceInputs["dailySyncTime"] = args ? args.dailySyncTime : undefined;
-            resourceInputs["pauseAfterTrial"] = args ? args.pauseAfterTrial : undefined;
-            resourceInputs["paused"] = args ? args.paused : undefined;
-            resourceInputs["scheduleType"] = args ? args.scheduleType : undefined;
-            resourceInputs["syncFrequency"] = args ? args.syncFrequency : undefined;
+            resourceInputs["connectorId"] = args?.connectorId;
+            resourceInputs["dailySyncTime"] = args?.dailySyncTime;
+            resourceInputs["pauseAfterTrial"] = args?.pauseAfterTrial;
+            resourceInputs["paused"] = args?.paused;
+            resourceInputs["scheduleType"] = args?.scheduleType;
+            resourceInputs["syncFrequency"] = args?.syncFrequency;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConnectorSchedule.__pulumiType, name, resourceInputs, opts);

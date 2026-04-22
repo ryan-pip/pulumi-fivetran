@@ -24,6 +24,7 @@ class ProxyAgentArgs:
                  regeneration_counter: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a ProxyAgent resource.
+
         :param pulumi.Input[_builtins.str] display_name: Proxy agent name.
         :param pulumi.Input[_builtins.str] group_region: Data processing location. This is where Fivetran will operate and run computation on data.
         :param pulumi.Input[_builtins.int] regeneration_counter: Determines whether regenerarion secrets needs to be performed.
@@ -83,6 +84,7 @@ class _ProxyAgentState:
                  token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProxyAgent resources.
+
         :param pulumi.Input[_builtins.str] client_cert: Client certificate.
         :param pulumi.Input[_builtins.str] client_private_key: Client private key.
         :param pulumi.Input[_builtins.str] created_by: The actor who created the proxy agent.
@@ -232,6 +234,7 @@ class ProxyAgent(pulumi.CustomResource):
             group_region="group_region")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: Proxy agent name.
@@ -259,6 +262,7 @@ class ProxyAgent(pulumi.CustomResource):
             display_name="display_name",
             group_region="group_region")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProxyAgentArgs args: The arguments to use to populate this resource's properties.

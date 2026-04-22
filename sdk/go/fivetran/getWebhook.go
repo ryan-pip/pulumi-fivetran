@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.LookupWebhook(ctx, &fivetran.LookupWebhookArgs{
+//			_, err := fivetran.GetWebhook(ctx, &fivetran.LookupWebhookArgs{
 //				Id: "webhook_id",
 //			}, nil)
 //			if err != nil {

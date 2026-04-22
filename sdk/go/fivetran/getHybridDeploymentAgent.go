@@ -12,6 +12,8 @@ import (
 )
 
 // This data source returns a hybrid deployment agent object.
+//
+// ## Example Usage
 func LookupHybridDeploymentAgent(ctx *pulumi.Context, args *LookupHybridDeploymentAgentArgs, opts ...pulumi.InvokeOption) (*LookupHybridDeploymentAgentResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupHybridDeploymentAgentResult

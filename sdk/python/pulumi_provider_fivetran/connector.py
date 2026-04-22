@@ -38,24 +38,18 @@ class ConnectorArgs:
                  trust_fingerprints: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Connector resource.
+
         :param pulumi.Input[_builtins.str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
         :param pulumi.Input[_builtins.str] service: The connector type id within the Fivetran system.
-        :param pulumi.Input[_builtins.str] data_delay_sensitivity: The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
-               CUSTOM is only available for customers using the Enterprise plan or above.
-        :param pulumi.Input[_builtins.int] data_delay_threshold: Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
-               data_delay_sensitivity set to CUSTOM.
-        :param pulumi.Input[_builtins.str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-               value is specified, the system will try to associate the connection with an existing agent.
+        :param pulumi.Input[_builtins.str] data_delay_sensitivity: The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
+        :param pulumi.Input[_builtins.int] data_delay_threshold: Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data_delay_sensitivity set to CUSTOM.
+        :param pulumi.Input[_builtins.str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
         :param pulumi.Input[_builtins.str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
         :param pulumi.Input[_builtins.str] private_link_id: The private link ID.
         :param pulumi.Input[_builtins.str] proxy_agent_id: The proxy agent ID.
         :param pulumi.Input[_builtins.bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is FALSE.
-        :param pulumi.Input[_builtins.bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-               trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-               certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
-        :param pulumi.Input[_builtins.bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-               trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-               fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        :param pulumi.Input[_builtins.bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        :param pulumi.Input[_builtins.bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "service", service)
@@ -132,8 +126,7 @@ class ConnectorArgs:
     @pulumi.getter(name="dataDelaySensitivity")
     def data_delay_sensitivity(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
-        CUSTOM is only available for customers using the Enterprise plan or above.
+        The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
         """
         return pulumi.get(self, "data_delay_sensitivity")
 
@@ -145,8 +138,7 @@ class ConnectorArgs:
     @pulumi.getter(name="dataDelayThreshold")
     def data_delay_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
-        data_delay_sensitivity set to CUSTOM.
+        Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data_delay_sensitivity set to CUSTOM.
         """
         return pulumi.get(self, "data_delay_threshold")
 
@@ -167,8 +159,7 @@ class ConnectorArgs:
     @pulumi.getter(name="hybridDeploymentAgentId")
     def hybrid_deployment_agent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-        value is specified, the system will try to associate the connection with an existing agent.
+        The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
         """
         return pulumi.get(self, "hybrid_deployment_agent_id")
 
@@ -237,9 +228,7 @@ class ConnectorArgs:
     @pulumi.getter(name="trustCertificates")
     def trust_certificates(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-        trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-        certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
         """
         return pulumi.get(self, "trust_certificates")
 
@@ -251,9 +240,7 @@ class ConnectorArgs:
     @pulumi.getter(name="trustFingerprints")
     def trust_fingerprints(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-        trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-        fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
         return pulumi.get(self, "trust_fingerprints")
 
@@ -285,28 +272,21 @@ class _ConnectorState:
                  trust_fingerprints: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Connector resources.
+
         :param pulumi.Input[_builtins.str] connected_by: The unique identifier of the user who has created the connector in your account.
         :param pulumi.Input[_builtins.str] created_at: The timestamp of the time the connector was created in your account.
-        :param pulumi.Input[_builtins.str] data_delay_sensitivity: The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
-               CUSTOM is only available for customers using the Enterprise plan or above.
-        :param pulumi.Input[_builtins.int] data_delay_threshold: Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
-               data_delay_sensitivity set to CUSTOM.
+        :param pulumi.Input[_builtins.str] data_delay_sensitivity: The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
+        :param pulumi.Input[_builtins.int] data_delay_threshold: Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data_delay_sensitivity set to CUSTOM.
         :param pulumi.Input[_builtins.str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
-        :param pulumi.Input[_builtins.str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-               value is specified, the system will try to associate the connection with an existing agent.
-        :param pulumi.Input[_builtins.str] name: The name used both as the connector's name within the Fivetran system and as the source schema's name within your
-               destination.
+        :param pulumi.Input[_builtins.str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
+        :param pulumi.Input[_builtins.str] name: The name used both as the connector's name within the Fivetran system and as the source schema's name within your destination.
         :param pulumi.Input[_builtins.str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
         :param pulumi.Input[_builtins.str] private_link_id: The private link ID.
         :param pulumi.Input[_builtins.str] proxy_agent_id: The proxy agent ID.
         :param pulumi.Input[_builtins.bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is FALSE.
         :param pulumi.Input[_builtins.str] service: The connector type id within the Fivetran system.
-        :param pulumi.Input[_builtins.bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-               trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-               certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
-        :param pulumi.Input[_builtins.bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-               trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-               fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        :param pulumi.Input[_builtins.bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        :param pulumi.Input[_builtins.bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
         if auth is not None:
             pulumi.set(__self__, "auth", auth)
@@ -391,8 +371,7 @@ class _ConnectorState:
     @pulumi.getter(name="dataDelaySensitivity")
     def data_delay_sensitivity(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
-        CUSTOM is only available for customers using the Enterprise plan or above.
+        The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
         """
         return pulumi.get(self, "data_delay_sensitivity")
 
@@ -404,8 +383,7 @@ class _ConnectorState:
     @pulumi.getter(name="dataDelayThreshold")
     def data_delay_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
-        data_delay_sensitivity set to CUSTOM.
+        Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data_delay_sensitivity set to CUSTOM.
         """
         return pulumi.get(self, "data_delay_threshold")
 
@@ -438,8 +416,7 @@ class _ConnectorState:
     @pulumi.getter(name="hybridDeploymentAgentId")
     def hybrid_deployment_agent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-        value is specified, the system will try to associate the connection with an existing agent.
+        The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
         """
         return pulumi.get(self, "hybrid_deployment_agent_id")
 
@@ -451,8 +428,7 @@ class _ConnectorState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name used both as the connector's name within the Fivetran system and as the source schema's name within your
-        destination.
+        The name used both as the connector's name within the Fivetran system and as the source schema's name within your destination.
         """
         return pulumi.get(self, "name")
 
@@ -533,9 +509,7 @@ class _ConnectorState:
     @pulumi.getter(name="trustCertificates")
     def trust_certificates(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-        trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-        certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
         """
         return pulumi.get(self, "trust_certificates")
 
@@ -547,9 +521,7 @@ class _ConnectorState:
     @pulumi.getter(name="trustFingerprints")
     def trust_fingerprints(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-        trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-        fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
         return pulumi.get(self, "trust_fingerprints")
 
@@ -581,30 +553,108 @@ class Connector(pulumi.CustomResource):
                  trust_fingerprints: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
+        This resource allows you to create, update, and delete connectors.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        amplitude = fivetran.Connector("amplitude",
+            group_id=group["id"],
+            service="amplitude",
+            destination_schema=[{
+                "name": "amplitude_connector",
+            }],
+            config=[{
+                "projectCredentials": [
+                    {
+                        "project": "project1",
+                        "apiKey": "my_api_key",
+                        "secretKey": "my_secret_key",
+                    },
+                    {
+                        "project": "project2",
+                        "apiKey": "my_api_key",
+                        "secretKey": "my_secret_key",
+                    },
+                ],
+            }])
+        ```
+
+        > Use `destination_schema` to define connector schema configuration. Field `destination_schema.name` will be mapped into `config.schema` in REST API payload. Field `destination_schema.table` will be mapped into `config.table` in REST API payload. Field `destination_schema.prefix` will be mapped into `config.schema_prefix` in REST API payload. Field `destination_schema.table_group_name` will be mapped into `config.table_group_name` in REST API payload. Specify values according to [public documentation](https://fivetran.com/docs/rest-api/connectors/config) for particular connector type.
+
+        ## GitHub connector example
+
+        To authorize a GitHub connector via terraform using personal access token you should specify `auth_mode`, `username` and `pat` inside `config` block instead of `auth` and set `run_setup_tests` to `true`:
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        my_github_connector = fivetran.Connector("my_github_connector",
+            group_id="group_id",
+            service="github",
+            run_setup_tests=True,
+            destination_schema=[{
+                "name": "github_connector",
+            }],
+            config=[{
+                "syncMode": "AllRepositories",
+                "useWebhooks": "false",
+                "authMode": "PersonalAccessToken",
+                "username": "git-hub-user-name",
+                "pat": "ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            }])
+        ```
+
         ## Import
+
+        1. To import an existing `Connector` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard.
+
+        2. Retrieve all connectors in a particular group using the [get_connectors data source](https://www.terraform.io/docs/data-sources/connectors)
+
+        3. Define an empty resource in your `.tf` configuration:
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        my_imported_connector = fivetran.Connector("my_imported_connector")
+        ```
+
+        4. Run the `pulumi import` command:
+
+        ```sh
+        terraform import fivetran_connector.my_imported_connector {your Fivetran Connector ID}
+        ```
+
+        5.  Use the `terraform state show` command to get the values from the state:
+
+        ```sh
+        terraform state show 'fivetran_connector.my_imported_connector'
+        ```
+        6. Copy the values and paste them to your `.tf` configuration.
+
+        > The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to connectors. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/connectors/config) for reference to find the properties you need to keep in the `config` section.
 
         ### How to authorize connector
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] data_delay_sensitivity: The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
-               CUSTOM is only available for customers using the Enterprise plan or above.
-        :param pulumi.Input[_builtins.int] data_delay_threshold: Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
-               data_delay_sensitivity set to CUSTOM.
+        :param pulumi.Input[_builtins.str] data_delay_sensitivity: The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
+        :param pulumi.Input[_builtins.int] data_delay_threshold: Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data_delay_sensitivity set to CUSTOM.
         :param pulumi.Input[_builtins.str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
-        :param pulumi.Input[_builtins.str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-               value is specified, the system will try to associate the connection with an existing agent.
+        :param pulumi.Input[_builtins.str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
         :param pulumi.Input[_builtins.str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
         :param pulumi.Input[_builtins.str] private_link_id: The private link ID.
         :param pulumi.Input[_builtins.str] proxy_agent_id: The proxy agent ID.
         :param pulumi.Input[_builtins.bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is FALSE.
         :param pulumi.Input[_builtins.str] service: The connector type id within the Fivetran system.
-        :param pulumi.Input[_builtins.bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-               trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-               certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
-        :param pulumi.Input[_builtins.bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-               trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-               fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        :param pulumi.Input[_builtins.bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        :param pulumi.Input[_builtins.bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
         ...
     @overload
@@ -613,9 +663,94 @@ class Connector(pulumi.CustomResource):
                  args: ConnectorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        This resource allows you to create, update, and delete connectors.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        amplitude = fivetran.Connector("amplitude",
+            group_id=group["id"],
+            service="amplitude",
+            destination_schema=[{
+                "name": "amplitude_connector",
+            }],
+            config=[{
+                "projectCredentials": [
+                    {
+                        "project": "project1",
+                        "apiKey": "my_api_key",
+                        "secretKey": "my_secret_key",
+                    },
+                    {
+                        "project": "project2",
+                        "apiKey": "my_api_key",
+                        "secretKey": "my_secret_key",
+                    },
+                ],
+            }])
+        ```
+
+        > Use `destination_schema` to define connector schema configuration. Field `destination_schema.name` will be mapped into `config.schema` in REST API payload. Field `destination_schema.table` will be mapped into `config.table` in REST API payload. Field `destination_schema.prefix` will be mapped into `config.schema_prefix` in REST API payload. Field `destination_schema.table_group_name` will be mapped into `config.table_group_name` in REST API payload. Specify values according to [public documentation](https://fivetran.com/docs/rest-api/connectors/config) for particular connector type.
+
+        ## GitHub connector example
+
+        To authorize a GitHub connector via terraform using personal access token you should specify `auth_mode`, `username` and `pat` inside `config` block instead of `auth` and set `run_setup_tests` to `true`:
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        my_github_connector = fivetran.Connector("my_github_connector",
+            group_id="group_id",
+            service="github",
+            run_setup_tests=True,
+            destination_schema=[{
+                "name": "github_connector",
+            }],
+            config=[{
+                "syncMode": "AllRepositories",
+                "useWebhooks": "false",
+                "authMode": "PersonalAccessToken",
+                "username": "git-hub-user-name",
+                "pat": "ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            }])
+        ```
+
         ## Import
 
+        1. To import an existing `Connector` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard.
+
+        2. Retrieve all connectors in a particular group using the [get_connectors data source](https://www.terraform.io/docs/data-sources/connectors)
+
+        3. Define an empty resource in your `.tf` configuration:
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        my_imported_connector = fivetran.Connector("my_imported_connector")
+        ```
+
+        4. Run the `pulumi import` command:
+
+        ```sh
+        terraform import fivetran_connector.my_imported_connector {your Fivetran Connector ID}
+        ```
+
+        5.  Use the `terraform state show` command to get the values from the state:
+
+        ```sh
+        terraform state show 'fivetran_connector.my_imported_connector'
+        ```
+        6. Copy the values and paste them to your `.tf` configuration.
+
+        > The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to connectors. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/connectors/config) for reference to find the properties you need to keep in the `config` section.
+
         ### How to authorize connector
+
 
         :param str resource_name: The name of the resource.
         :param ConnectorArgs args: The arguments to use to populate this resource's properties.
@@ -715,26 +850,18 @@ class Connector(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connected_by: The unique identifier of the user who has created the connector in your account.
         :param pulumi.Input[_builtins.str] created_at: The timestamp of the time the connector was created in your account.
-        :param pulumi.Input[_builtins.str] data_delay_sensitivity: The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
-               CUSTOM is only available for customers using the Enterprise plan or above.
-        :param pulumi.Input[_builtins.int] data_delay_threshold: Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
-               data_delay_sensitivity set to CUSTOM.
+        :param pulumi.Input[_builtins.str] data_delay_sensitivity: The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
+        :param pulumi.Input[_builtins.int] data_delay_threshold: Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data_delay_sensitivity set to CUSTOM.
         :param pulumi.Input[_builtins.str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
-        :param pulumi.Input[_builtins.str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-               value is specified, the system will try to associate the connection with an existing agent.
-        :param pulumi.Input[_builtins.str] name: The name used both as the connector's name within the Fivetran system and as the source schema's name within your
-               destination.
+        :param pulumi.Input[_builtins.str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
+        :param pulumi.Input[_builtins.str] name: The name used both as the connector's name within the Fivetran system and as the source schema's name within your destination.
         :param pulumi.Input[_builtins.str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
         :param pulumi.Input[_builtins.str] private_link_id: The private link ID.
         :param pulumi.Input[_builtins.str] proxy_agent_id: The proxy agent ID.
         :param pulumi.Input[_builtins.bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is FALSE.
         :param pulumi.Input[_builtins.str] service: The connector type id within the Fivetran system.
-        :param pulumi.Input[_builtins.bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-               trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-               certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
-        :param pulumi.Input[_builtins.bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-               trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-               fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        :param pulumi.Input[_builtins.bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        :param pulumi.Input[_builtins.bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -790,8 +917,7 @@ class Connector(pulumi.CustomResource):
     @pulumi.getter(name="dataDelaySensitivity")
     def data_delay_sensitivity(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
-        CUSTOM is only available for customers using the Enterprise plan or above.
+        The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
         """
         return pulumi.get(self, "data_delay_sensitivity")
 
@@ -799,8 +925,7 @@ class Connector(pulumi.CustomResource):
     @pulumi.getter(name="dataDelayThreshold")
     def data_delay_threshold(self) -> pulumi.Output[_builtins.int]:
         """
-        Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
-        data_delay_sensitivity set to CUSTOM.
+        Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data_delay_sensitivity set to CUSTOM.
         """
         return pulumi.get(self, "data_delay_threshold")
 
@@ -821,8 +946,7 @@ class Connector(pulumi.CustomResource):
     @pulumi.getter(name="hybridDeploymentAgentId")
     def hybrid_deployment_agent_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-        value is specified, the system will try to associate the connection with an existing agent.
+        The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
         """
         return pulumi.get(self, "hybrid_deployment_agent_id")
 
@@ -830,8 +954,7 @@ class Connector(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name used both as the connector's name within the Fivetran system and as the source schema's name within your
-        destination.
+        The name used both as the connector's name within the Fivetran system and as the source schema's name within your destination.
         """
         return pulumi.get(self, "name")
 
@@ -884,9 +1007,7 @@ class Connector(pulumi.CustomResource):
     @pulumi.getter(name="trustCertificates")
     def trust_certificates(self) -> pulumi.Output[_builtins.bool]:
         """
-        Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-        trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-        certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
         """
         return pulumi.get(self, "trust_certificates")
 
@@ -894,9 +1015,7 @@ class Connector(pulumi.CustomResource):
     @pulumi.getter(name="trustFingerprints")
     def trust_fingerprints(self) -> pulumi.Output[_builtins.bool]:
         """
-        Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-        trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-        fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
         return pulumi.get(self, "trust_fingerprints")
 

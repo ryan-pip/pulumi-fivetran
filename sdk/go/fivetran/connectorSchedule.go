@@ -49,43 +49,63 @@ import (
 //
 // You don't need to import this resource as it is synthetic.
 //
-// To fetch schedule values from existing connector use `fivetran_connector` data source:
+// To fetch schedule values from existing connector use `Connector` data source:
+// ```go
+// package main
 //
-// hcl
+// import (
 //
-// data "fivetran_connector" "my_connector" {
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
 //
-//	id = "my_connector_id"
+// )
 //
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.GetConnector(ctx, &fivetran.LookupConnectorArgs{
+//				Id: "my_connector_id",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
 //
-// now you can use schedule values from this data_source:
-//
-//	sync_frequency = data.fivetran_connector.my_connector.sync_frequency
-//
-//	paused = data.fivetran_connector.my_connector.paused
+// ```
 //
 // This resource manages settings for already existing connector instance and doesn't create a new one.
+// If you already have an existing connector with id = `myConnectorId` just define `ConnectorSchedule` resource:
 //
-// If you already have an existing connector with id = `my_connector_id` just define `fivetran_connector_schedule` resource:
+// ```go
+// package main
 //
-// hcl
+// import (
 //
-// resource "fivetran_connector_schedule" "my_connector_schedule" {
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
 //
-//	connector_id = "my_connector_id"
+// )
 //
-//	sync_frequency     = "360"
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.NewConnectorSchedule(ctx, "my_connector_schedule", &fivetran.ConnectorScheduleArgs{
+//				ConnectorId:     pulumi.String("my_connector_id"),
+//				SyncFrequency:   pulumi.String("360"),
+//				Paused:          pulumi.String("false"),
+//				PauseAfterTrial: pulumi.String("true"),
+//				ScheduleType:    pulumi.String("auto"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
 //
-//	paused             = false
+// ```
 //
-//	pause_after_trial  = true
-//
-//	schedule_type      = "auto"
-//
-// }
-//
-// -> NOTE: You can't have several resources managing the same `connector_id`. They will be in conflict ater each `apply`.
+// > NOTE: You can't have several resources managing the same `connectorId`. They will be in conflict ater each `apply`.
 type ConnectorSchedule struct {
 	pulumi.CustomResourceState
 

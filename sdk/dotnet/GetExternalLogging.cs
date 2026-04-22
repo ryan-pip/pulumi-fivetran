@@ -24,7 +24,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var extlog = Fivetran.GetExternalLogging.Invoke(new()
+        ///     var extlog = Fivetran.Index.GetExternalLogging.Invoke(new()
         ///     {
         ///         Id = "anonymous_mystery",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var extlog = Fivetran.GetExternalLogging.Invoke(new()
+        ///     var extlog = Fivetran.Index.GetExternalLogging.Invoke(new()
         ///     {
         ///         Id = "anonymous_mystery",
         ///     });
@@ -72,7 +72,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var extlog = Fivetran.GetExternalLogging.Invoke(new()
+        ///     var extlog = Fivetran.Index.GetExternalLogging.Invoke(new()
         ///     {
         ///         Id = "anonymous_mystery",
         ///     });

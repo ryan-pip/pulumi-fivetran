@@ -7,33 +7,62 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * This resource allows you to create, update, and delete logging service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
+ *
+ * const extlog = new fivetran.ExternalLogging("extlog", {
+ *     groupId: group.id,
+ *     service: "azure_monitor_log",
+ *     enabled: true,
+ *     runSetupTests: true,
+ *     config: [{
+ *         workspaceId: "workspace_id",
+ *         primaryKey: "PASSWORD",
+ *     }],
+ * });
+ * ```
+ *
+ * ## Setup tests
+ *
+ * The `runSetupTests` field doesn't have upstream value, it only defines local resource behavoir. This means that when you update only the `runSetupTests` value (from `false` to `true`, for example) it won't cause any upstream actions. The value will be just saved in terraform state and then used on effective field updates.
+ *
+ * The default value is `false` - this means that no setup tests will be performed during create/update. To perform setup tests, you should set value to `true`.
+ *
  * ## Import
  *
- * 1. To import an existing `fivetran_external_logging` resource into your Terraform state, you need to get **External Logging Group ID** on the external logging page in your Fivetran dashboard.
+ * 1. To import an existing `fivetran.ExternalLogging` resource into your Terraform state, you need to get **External Logging Group ID** on the external logging page in your Fivetran dashboard.
  *
- * 2. To retrieve existing destinations, use the [fivetran_destinations data source](/docs/data-sources/destinations).
+ * 2. To retrieve existing destinations, use the [fivetran.getDestinations data source](https://www.terraform.io/docs/data-sources/destinations).
  *
  * 3. Define an empty resource in your `.tf` configuration:
  *
- * hcl
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
- * resource "fivetran_external_logging" "my_imported_external_logging" {
- *
- * }
+ * const myImportedExternalLogging = new fivetran.ExternalLogging("my_imported_external_logging", {});
+ * ```
  *
  * 4. Run the `pulumi import` command with the following parameters:
  *
  * ```sh
- * $ pulumi import fivetran:index/externalLogging:ExternalLogging my_imported_external_logging {your External Logging Group ID}
+ * terraform import fivetran_external_logging.my_imported_external_logging {your External Logging Group ID}
  * ```
  *
  * 5. Use the `terraform state show` command to get the values from the state:
  *
+ * ```sh
  * terraform state show 'fivetran_external_logging.my_imported_external_logging'
+ * ```
  *
  * 6. Copy the values and paste them to your `.tf` configuration.
  *
- * -> The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/log-service-management#logservicesetupconfigurations) for reference to find the properties you need to keep in the `config` section.
+ * > The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/log-service-management#logservicesetupconfigurations) for reference to find the properties you need to keep in the `config` section.
  */
 export class ExternalLogging extends pulumi.CustomResource {
     /**
@@ -63,23 +92,23 @@ export class ExternalLogging extends pulumi.CustomResource {
         return obj['__pulumiType'] === ExternalLogging.__pulumiType;
     }
 
-    public readonly config!: pulumi.Output<outputs.ExternalLoggingConfig | undefined>;
+    declare public readonly config: pulumi.Output<outputs.ExternalLoggingConfig | undefined>;
     /**
      * The boolean value specifying whether the log service is enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * The unique identifier for the log service within the Fivetran system.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * Specifies whether the setup tests should be run automatically. The default value is TRUE.
      */
-    public readonly runSetupTests!: pulumi.Output<boolean | undefined>;
+    declare public readonly runSetupTests: pulumi.Output<boolean | undefined>;
     /**
      * The name for the log service type within the Fivetran system. We support the following log services: azure*monitor*log, cloudwatch, datadog*log, new*relic_log, splunkLog, stackdriver.
      */
-    public readonly service!: pulumi.Output<string>;
+    declare public readonly service: pulumi.Output<string>;
 
     /**
      * Create a ExternalLogging resource with the given unique name, arguments, and options.
@@ -94,24 +123,24 @@ export class ExternalLogging extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExternalLoggingState | undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["runSetupTests"] = state ? state.runSetupTests : undefined;
-            resourceInputs["service"] = state ? state.service : undefined;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["runSetupTests"] = state?.runSetupTests;
+            resourceInputs["service"] = state?.service;
         } else {
             const args = argsOrState as ExternalLoggingArgs | undefined;
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.service === undefined) && !opts.urn) {
+            if (args?.service === undefined && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["runSetupTests"] = args ? args.runSetupTests : undefined;
-            resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["runSetupTests"] = args?.runSetupTests;
+            resourceInputs["service"] = args?.service;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ExternalLogging.__pulumiType, name, resourceInputs, opts);

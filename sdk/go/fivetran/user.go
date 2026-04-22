@@ -45,17 +45,32 @@ import (
 //
 // ## Import
 //
-// 1. To import an existing `fivetran_user` resource into your Terraform state, you need to get `user_id`.
-//
-// You can retrieve all users using the [fivetran_users data source](/docs/data-sources/users).
+// 1. To import an existing `User` resource into your Terraform state, you need to get `userId`.
+// You can retrieve all users using the [getUsers data source](https://www.terraform.io/docs/data-sources/users).
 //
 // 2. Define an empty resource in your `.tf` configuration:
 //
-// hcl
+// ```go
+// package main
 //
-// resource "fivetran_user" "my_imported_fivetran_user" {
+// import (
 //
-// }
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.NewUser(ctx, "my_imported_fivetran_user", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // 3. Run the `pulumi import` command:
 //
@@ -65,8 +80,9 @@ import (
 //
 // 4. Use the `terraform state show` command to get the values from the state:
 //
+// ```sh
 // terraform state show 'fivetran_user.my_imported_fivetran_user'
-//
+// ```
 // 5. Copy the values and paste them to your `.tf` configuration.
 type User struct {
 	pulumi.CustomResourceState

@@ -16,8 +16,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _calculatedMetrics;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics`: The calculated_metrics that you want to sync.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalytics`: The CalculatedMetrics that you want to sync.
         /// </summary>
         public List<string> CalculatedMetrics
         {
@@ -29,8 +29,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _elements;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics`: The elements that you want to sync.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalytics`: The elements that you want to sync.
         /// </summary>
         public List<string> Elements
         {
@@ -42,8 +42,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _metrics;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics`: The metrics that you want to sync.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalytics`: The metrics that you want to sync.
         /// </summary>
         public List<string> Metrics
         {
@@ -55,8 +55,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _reportSuites;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics`: Specific report suites to sync. Must be populated if `sync_mode` is set to `SpecificReportSuites`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalytics`: Specific report suites to sync. Must be populated if `SyncMode` is set to `SpecificReportSuites`.
         /// </summary>
         public List<string> ReportSuites
         {
@@ -68,8 +68,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _segments;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics`: The segments that you want to sync.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalytics`: The segments that you want to sync.
         /// </summary>
         public List<string> Segments
         {
@@ -78,15 +78,15 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics`: Whether to sync all report suites or specific report suites. Default value: `AllReportSuites` .
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalytics`: Whether to sync all report suites or specific report suites. Default value: `AllReportSuites` .
         /// </summary>
         [Input("syncMode", required: true)]
         public string SyncMode { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics`: The table name unique within the schema to which connector will sync the data. Required for connector creation.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalytics`: The table name unique within the schema to which connector will sync the data. Required for connector creation.
         /// </summary>
         [Input("table", required: true)]
         public string Table { get; set; } = null!;

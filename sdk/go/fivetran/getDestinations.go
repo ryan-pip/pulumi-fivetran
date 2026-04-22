@@ -12,6 +12,8 @@ import (
 )
 
 // This data source returns list of destination objects.
+//
+// ## Example Usage
 func GetDestinations(ctx *pulumi.Context, args *GetDestinationsArgs, opts ...pulumi.InvokeOption) (*GetDestinationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDestinationsResult

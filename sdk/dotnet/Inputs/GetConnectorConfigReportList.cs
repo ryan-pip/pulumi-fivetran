@@ -13,8 +13,8 @@ namespace Pulumi.Fivetran.Inputs
     public sealed class GetConnectorConfigReportListArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `spotify_ads`: The dimension (entity_type) to sync.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SpotifyAds`: The dimension (entity_type) to sync.
         /// </summary>
         [Input("dimension", required: true)]
         public string Dimension { get; set; } = null!;
@@ -23,8 +23,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _fields;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `spotify_ads`: A list of the fields (metrics) to sync.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SpotifyAds`: A list of the fields (metrics) to sync.
         /// </summary>
         public List<string> Fields
         {
@@ -33,15 +33,15 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `spotify_ads`: The report granularity.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SpotifyAds`: The report granularity.
         /// </summary>
         [Input("granularity", required: true)]
         public string Granularity { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `spotify_ads`: The table name within the schema to which connector will sync the data of the specific report.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SpotifyAds`: The table name within the schema to which connector will sync the data of the specific report.
         /// </summary>
         [Input("table", required: true)]
         public string Table { get; set; } = null!;

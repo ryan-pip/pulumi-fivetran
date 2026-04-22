@@ -27,6 +27,7 @@ class TransformationProjectArgs:
                  run_tests: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a TransformationProject resource.
+
         :param pulumi.Input[_builtins.str] group_id: The unique identifier for the group within the Fivetran system.
         :param pulumi.Input[_builtins.str] type: Transformation project type.
         :param pulumi.Input[_builtins.bool] run_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
@@ -97,6 +98,7 @@ class _TransformationProjectState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransformationProject resources.
+
         :param pulumi.Input[_builtins.str] created_at: The timestamp of the transformation Project creation.
         :param pulumi.Input[_builtins.str] created_by_id: The unique identifier for the User within the Fivetran system who created the dbt Project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] errors: List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
@@ -228,31 +230,116 @@ class TransformationProject(pulumi.CustomResource):
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Resource is in ALPHA state.
+
+        This resource allows you to add, manage and delete transformation projects in your account.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        project = fivetran.TransformationProject("project",
+            group_id="group_id",
+            type="DBT_GIT",
+            run_tests=True,
+            project_config=[{
+                "gitRemoteUrl": "git_remote_url",
+                "gitBranch": "git_branch",
+                "folderPath": "folder_path",
+                "dbtVersion": "dbt_version",
+                "defaultSchema": "default_schema",
+                "threads": 1,
+                "targetName": "target_name",
+                "environmentVars": ["DBT_VARIABLE=variable_value"],
+            }])
+        ```
+
+        ## How to set up a Transformation Project with private Git Repo.
+
+        To be able to use private Transformation Project Git repository you have to grant Fivetran access to this repo.
+        To do that you need to add a Deploy Key to your repository.
+        To get SSH key from Fivetran create `TransformationProject` resource:
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        my_group = fivetran.Group("my_group", name="My_Group")
+        project = fivetran.TransformationProject("project",
+            group_id="group_id",
+            type="DBT_GIT",
+            run_tests=True,
+            project_config=[{
+                "gitRemoteUrl": "git_remote_url",
+                "gitBranch": "git_branch",
+                "folderPath": "folder_path",
+                "dbtVersion": "dbt_version",
+                "defaultSchema": "default_schema",
+                "threads": 1,
+                "targetName": "target_name",
+                "environmentVars": ["DBT_VARIABLE=variable_value"],
+            }])
+        ```
+
+        Then you need to set up the Transformation Project public key (field `public_key` in created resource) as a deploy key into your repo using:
+
+        GitHub Provider Repository Deploy Key Resource:
+        ```python
+        import pulumi
+        import pulumi_github as github
+
+        example_repository_deploy_key = github.RepositoryDeployKey("example_repository_deploy_key",
+            title=Repository test key,
+            repository=repo-owner/repo-name,
+            key=test_project.project_config.public_key,
+            read_only=True)
+        ```
+
+        or
+
+        [Bitbucket Provider Repository Deploy Key Resource]https://registry.terraform.io/providers/DrFaust92/bitbucket/latest/docs/resources/deploy_key)
+        ```python
+        import pulumi
+        import pulumi_bitbucket as bitbucket
+
+        test = bitbucket.DeployKey("test",
+            workspace=repo-owner,
+            repository=repo-name,
+            key=test_project.project_config.public_key,
+            label=Repository test key)
+        ```
+
+        Since we recommend using third-party providers in this case, please make sure that access to the repositories is provided correctly and the providers are configured correctly for connection.
+
         ## Import
 
-        1. To import an existing `fivetran_transformation_project` resource into your Terraform state, you need to get **Transformation Project ID** via API call `GET https://api.fivetran.com/v1/transformation-projects` to retrieve available projects.
-
+        1. To import an existing `TransformationProject` resource into your Terraform state, you need to get **Transformation Project ID** via API call `GET https://api.fivetran.com/v1/transformation-projects` to retrieve available projects.
         2. Fetch project details for particular `project-id` using `GET https://api.fivetran.com/v1/transformation-projects/{project-id}` to ensure that this is the project you want to import.
-
         3. Define an empty resource in your `.tf` configuration:
 
-        hcl
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
 
-        resource "fivetran_transformation_project" "my_imported_fivetran_transformation_project" {
-
-        }
+        my_imported_fivetran_transformation_project = fivetran.TransformationProject("my_imported_fivetran_transformation_project")
+        ```
 
         4. Run the `pulumi import` command:
 
         ```sh
-        $ pulumi import fivetran:index/transformationProject:TransformationProject my_imported_fivetran_transformation_project {Transformation Project ID}
+        terraform import fivetran_transformation_project.my_imported_fivetran_transformation_project {Transformation Project ID}
         ```
 
         4. Use the `terraform state show` command to get the values from the state:
 
+        ```sh
         terraform state show 'fivetran_transformation_project.my_imported_fivetran_transformation_project'
+        ```
 
         5. Copy the values and paste them to your `.tf` configuration.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -267,31 +354,116 @@ class TransformationProject(pulumi.CustomResource):
                  args: TransformationProjectArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Resource is in ALPHA state.
+
+        This resource allows you to add, manage and delete transformation projects in your account.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        project = fivetran.TransformationProject("project",
+            group_id="group_id",
+            type="DBT_GIT",
+            run_tests=True,
+            project_config=[{
+                "gitRemoteUrl": "git_remote_url",
+                "gitBranch": "git_branch",
+                "folderPath": "folder_path",
+                "dbtVersion": "dbt_version",
+                "defaultSchema": "default_schema",
+                "threads": 1,
+                "targetName": "target_name",
+                "environmentVars": ["DBT_VARIABLE=variable_value"],
+            }])
+        ```
+
+        ## How to set up a Transformation Project with private Git Repo.
+
+        To be able to use private Transformation Project Git repository you have to grant Fivetran access to this repo.
+        To do that you need to add a Deploy Key to your repository.
+        To get SSH key from Fivetran create `TransformationProject` resource:
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        my_group = fivetran.Group("my_group", name="My_Group")
+        project = fivetran.TransformationProject("project",
+            group_id="group_id",
+            type="DBT_GIT",
+            run_tests=True,
+            project_config=[{
+                "gitRemoteUrl": "git_remote_url",
+                "gitBranch": "git_branch",
+                "folderPath": "folder_path",
+                "dbtVersion": "dbt_version",
+                "defaultSchema": "default_schema",
+                "threads": 1,
+                "targetName": "target_name",
+                "environmentVars": ["DBT_VARIABLE=variable_value"],
+            }])
+        ```
+
+        Then you need to set up the Transformation Project public key (field `public_key` in created resource) as a deploy key into your repo using:
+
+        GitHub Provider Repository Deploy Key Resource:
+        ```python
+        import pulumi
+        import pulumi_github as github
+
+        example_repository_deploy_key = github.RepositoryDeployKey("example_repository_deploy_key",
+            title=Repository test key,
+            repository=repo-owner/repo-name,
+            key=test_project.project_config.public_key,
+            read_only=True)
+        ```
+
+        or
+
+        [Bitbucket Provider Repository Deploy Key Resource]https://registry.terraform.io/providers/DrFaust92/bitbucket/latest/docs/resources/deploy_key)
+        ```python
+        import pulumi
+        import pulumi_bitbucket as bitbucket
+
+        test = bitbucket.DeployKey("test",
+            workspace=repo-owner,
+            repository=repo-name,
+            key=test_project.project_config.public_key,
+            label=Repository test key)
+        ```
+
+        Since we recommend using third-party providers in this case, please make sure that access to the repositories is provided correctly and the providers are configured correctly for connection.
+
         ## Import
 
-        1. To import an existing `fivetran_transformation_project` resource into your Terraform state, you need to get **Transformation Project ID** via API call `GET https://api.fivetran.com/v1/transformation-projects` to retrieve available projects.
-
+        1. To import an existing `TransformationProject` resource into your Terraform state, you need to get **Transformation Project ID** via API call `GET https://api.fivetran.com/v1/transformation-projects` to retrieve available projects.
         2. Fetch project details for particular `project-id` using `GET https://api.fivetran.com/v1/transformation-projects/{project-id}` to ensure that this is the project you want to import.
-
         3. Define an empty resource in your `.tf` configuration:
 
-        hcl
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
 
-        resource "fivetran_transformation_project" "my_imported_fivetran_transformation_project" {
-
-        }
+        my_imported_fivetran_transformation_project = fivetran.TransformationProject("my_imported_fivetran_transformation_project")
+        ```
 
         4. Run the `pulumi import` command:
 
         ```sh
-        $ pulumi import fivetran:index/transformationProject:TransformationProject my_imported_fivetran_transformation_project {Transformation Project ID}
+        terraform import fivetran_transformation_project.my_imported_fivetran_transformation_project {Transformation Project ID}
         ```
 
         4. Use the `terraform state show` command to get the values from the state:
 
+        ```sh
         terraform state show 'fivetran_transformation_project.my_imported_fivetran_transformation_project'
+        ```
 
         5. Copy the values and paste them to your `.tf` configuration.
+
 
         :param str resource_name: The name of the resource.
         :param TransformationProjectArgs args: The arguments to use to populate this resource's properties.

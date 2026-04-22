@@ -13,19 +13,19 @@ namespace Pulumi.Fivetran.Inputs
     public sealed class ConnectorConfigCustomPayloadArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_lambda`: Payload Key
-        /// 	- Service `azure_function`: Payload Key
-        /// 	- Service `google_cloud_function`: Payload Key
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsLambda`: Payload Key
+        /// 	- Service `AzureFunction`: Payload Key
+        /// 	- Service `GoogleCloudFunction`: Payload Key
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_lambda`: Payload Value
-        /// 	- Service `azure_function`: Payload Value
-        /// 	- Service `google_cloud_function`: Payload Value
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsLambda`: Payload Value
+        /// 	- Service `AzureFunction`: Payload Value
+        /// 	- Service `GoogleCloudFunction`: Payload Value
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

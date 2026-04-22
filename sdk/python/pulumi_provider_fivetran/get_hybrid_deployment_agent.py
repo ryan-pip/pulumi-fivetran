@@ -90,6 +90,8 @@ def get_hybrid_deployment_agent(id: Optional[_builtins.str] = None,
     """
     This data source returns a hybrid deployment agent object.
 
+    ## Example Usage
+
 
     :param _builtins.str id: The unique identifier for the hybrid deployment agent within your account.
     """
@@ -107,6 +109,8 @@ def get_hybrid_deployment_agent_output(id: Optional[pulumi.Input[_builtins.str]]
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHybridDeploymentAgentResult]:
     """
     This data source returns a hybrid deployment agent object.
+
+    ## Example Usage
 
 
     :param _builtins.str id: The unique identifier for the hybrid deployment agent within your account.

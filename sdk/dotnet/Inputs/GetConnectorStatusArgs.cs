@@ -19,13 +19,13 @@ namespace Pulumi.Fivetran.Inputs
         public Input<bool> IsHistoricalSync { get; set; } = null!;
 
         /// <summary>
-        /// The current setup state of the connector. The available values are: &lt;br /&gt; - incomplete - the setup config is incomplete, the setup tests never succeeded  `connected` - the connector is properly set up, `broken` - the connector setup config is broken.
+        /// The current setup state of the connector. The available values are: &lt;br /&gt; - incomplete - the setup config is incomplete, the setup tests never succeeded  `Connected` - the connector is properly set up, `Broken` - the connector setup config is broken.
         /// </summary>
         [Input("setupState", required: true)]
         public Input<string> SetupState { get; set; } = null!;
 
         /// <summary>
-        /// The current sync state of the connector. The available values are: `scheduled` - the sync is waiting to be run, `syncing` - the sync is currently running, `paused` - the sync is currently paused, `rescheduled` - the sync is waiting until more API calls are available in the source service.
+        /// The current sync state of the connector. The available values are: `Scheduled` - the sync is waiting to be run, `Syncing` - the sync is currently running, `Paused` - the sync is currently paused, `Rescheduled` - the sync is waiting until more API calls are available in the source service.
         /// </summary>
         [Input("syncState", required: true)]
         public Input<string> SyncState { get; set; } = null!;
@@ -43,7 +43,7 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// The current data update state of the connector. The available values are: `on_schedule` - the sync is running smoothly, no delays, `delayed` - the data is delayed for a longer time than expected for the update.
+        /// The current data update state of the connector. The available values are: `OnSchedule` - the sync is running smoothly, no delays, `Delayed` - the data is delayed for a longer time than expected for the update.
         /// </summary>
         [Input("updateState", required: true)]
         public Input<string> UpdateState { get; set; } = null!;

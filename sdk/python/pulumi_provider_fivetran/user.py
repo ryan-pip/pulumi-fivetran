@@ -29,6 +29,7 @@ class UserArgs:
                  verified: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a User resource.
+
         :param pulumi.Input[_builtins.str] email: The email address that the user has associated with their user profile.
         :param pulumi.Input[_builtins.str] family_name: The last name of the user.
         :param pulumi.Input[_builtins.str] given_name: The first name of the user.
@@ -164,6 +165,7 @@ class _UserState:
                  verified: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering User resources.
+
         :param pulumi.Input[_builtins.str] created_at: The timestamp that the user created their Fivetran account.
         :param pulumi.Input[_builtins.str] email: The email address that the user has associated with their user profile.
         :param pulumi.Input[_builtins.str] family_name: The last name of the user.
@@ -350,17 +352,17 @@ class User(pulumi.CustomResource):
 
         ## Import
 
-        1. To import an existing `fivetran_user` resource into your Terraform state, you need to get `user_id`.
-
-        You can retrieve all users using the [fivetran_users data source](/docs/data-sources/users).
+        1. To import an existing `User` resource into your Terraform state, you need to get `user_id`.
+        You can retrieve all users using the [get_users data source](https://www.terraform.io/docs/data-sources/users).
 
         2. Define an empty resource in your `.tf` configuration:
 
-        hcl
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
 
-        resource "fivetran_user" "my_imported_fivetran_user" {
-
-        }
+        my_imported_fivetran_user = fivetran.User("my_imported_fivetran_user")
+        ```
 
         3. Run the `pulumi import` command:
 
@@ -370,9 +372,11 @@ class User(pulumi.CustomResource):
 
         4. Use the `terraform state show` command to get the values from the state:
 
+        ```sh
         terraform state show 'fivetran_user.my_imported_fivetran_user'
-
+        ```
         5. Copy the values and paste them to your `.tf` configuration.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -409,17 +413,17 @@ class User(pulumi.CustomResource):
 
         ## Import
 
-        1. To import an existing `fivetran_user` resource into your Terraform state, you need to get `user_id`.
-
-        You can retrieve all users using the [fivetran_users data source](/docs/data-sources/users).
+        1. To import an existing `User` resource into your Terraform state, you need to get `user_id`.
+        You can retrieve all users using the [get_users data source](https://www.terraform.io/docs/data-sources/users).
 
         2. Define an empty resource in your `.tf` configuration:
 
-        hcl
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
 
-        resource "fivetran_user" "my_imported_fivetran_user" {
-
-        }
+        my_imported_fivetran_user = fivetran.User("my_imported_fivetran_user")
+        ```
 
         3. Run the `pulumi import` command:
 
@@ -429,9 +433,11 @@ class User(pulumi.CustomResource):
 
         4. Use the `terraform state show` command to get the values from the state:
 
+        ```sh
         terraform state show 'fivetran_user.my_imported_fivetran_user'
-
+        ```
         5. Copy the values and paste them to your `.tf` configuration.
+
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

@@ -12,6 +12,253 @@ import (
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
+// ## page_title: "Resource: ConnectorSchemaConfig"
+//
+// ***
+//
+// # Resource: ConnectorSchemaConfig
+//
+// This resource allows you to manage the Standard Configuration settings of a connector:
+//   - Define the schema change handling settings
+//   - Enable and disable schemas, tables, and columns
+//
+// The resource is in **ALPHA** state. The resource schema and behavior are subject to change without prior notice.
+//
+// Known issues:
+//   - Definition of `syncMode` for table may cause infinite drifting changes in plan.
+//   - Using `schema` field causes very slow plan preparation because of slow performance for SetTypable fields in terraform-framework, please use MapTypable `schemas` field instead.
+//
+// ## Usage guide
+//
+// Note that all configuration settings are aligned to the `schemaChangeHandling` settings,  except the settings explicitly specified in `schemas`.
+// In `schemas`, you only override the default settings defined by the chosen `schemaChangeHandling` option.
+// The allowed `schemaChangeHandling` options are as follows:
+// - `ALLOW_ALL`- all schemas, tables and columns are ENABLED by default. You only need  to explicitly specify DISABLED items or hashed tables
+// - `BLOCK_ALL` - all schemas, tables and columns are DISABLED by default, the configuration only specifies ENABLED items
+// - `ALLOW_COLUMNS` - all schemas and tables are DISABLED by default, but all columns are ENABLED by default, the configuration specifies ENABLED schemas and tables, and DISABLED columns
+//
+// Note that system-enabled tables and columns (such as primary and foreign key columns, and [system tables and columns](https://fivetran.com/docs/getting-started/system-columns-and-tables)) are synced regardless of the `schemaChangeHandling` settings and configuration. You can only disable non-locked columns in the system-enabled tables. If the configuration specifies any system tables or locked system table columns as disabled ( `enabled = "false"`), the provider just ignores these statements.
+//
+// ## Usage examples
+//
+// ### Example for the ALLOW_ALL option
+//
+// In `schemas`,  you only need to specify schemas and tables you want to disable (`enabled = "false"`) and columns you want to disable or hash (`hashed = "true"`).
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.NewConnectorSchemaConfig(ctx, "schema", &fivetran.ConnectorSchemaConfigArgs{
+//				ConnectorId:          pulumi.String("connector_id"),
+//				SchemaChangeHandling: pulumi.String("ALLOW_ALL"),
+//				Schemas: fivetran.ConnectorSchemaConfigSchemasMap{
+//					"schema_name": &fivetran.ConnectorSchemaConfigSchemasArgs{
+//						Tables: fivetran.ConnectorSchemaConfigSchemasTablesMap{
+//							"table_name": &fivetran.ConnectorSchemaConfigSchemasTablesArgs{
+//								Columns: fivetran.ConnectorSchemaConfigSchemasTablesColumnsMap{
+//									"hashed_column_name": &fivetran.ConnectorSchemaConfigSchemasTablesColumnsArgs{
+//										Hashed: pulumi.Bool(true),
+//									},
+//									"blocked_column_name": &fivetran.ConnectorSchemaConfigSchemasTablesColumnsArgs{
+//										Enabled: pulumi.Bool(false),
+//									},
+//								},
+//							},
+//							"blocked_table_name": &fivetran.ConnectorSchemaConfigSchemasTablesArgs{
+//								Enabled: pulumi.Bool(false),
+//							},
+//						},
+//					},
+//					"blocked_schema": &fivetran.ConnectorSchemaConfigSchemasArgs{
+//						Enabled: pulumi.Bool(false),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// The configuration resulting from the example request is as follows:
+// - All new and existing schemas except `blockedSchema` are enabled
+// - All new and existing tables in the `schemaName` schema except the `blockedTableName` table are enabled
+// - All new and existing columns in the`tableName` of the `schemaName` schema except the `blockedColumnName` column are enabled
+// - The `hashedColumnName` column is hashed in the `tableName` table in the `schemaName` schema
+// - All new schemas, tables, and columns are enabled once captured by the connector during the sync except those disabled by the system
+//
+// ### Example for the BLOCK_ALL option
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.NewConnectorSchemaConfig(ctx, "schema", &fivetran.ConnectorSchemaConfigArgs{
+//				ConnectorId:          pulumi.String("connector_id"),
+//				SchemaChangeHandling: pulumi.String("BLOCK_ALL"),
+//				Schemas: fivetran.ConnectorSchemaConfigSchemasMap{
+//					"schema_name": &fivetran.ConnectorSchemaConfigSchemasArgs{
+//						Tables: fivetran.ConnectorSchemaConfigSchemasTablesMap{
+//							"table_name": &fivetran.ConnectorSchemaConfigSchemasTablesArgs{
+//								Columns: fivetran.ConnectorSchemaConfigSchemasTablesColumnsMap{
+//									"hashed_column_name": &fivetran.ConnectorSchemaConfigSchemasTablesColumnsArgs{
+//										Hashed: pulumi.Bool(true),
+//									},
+//								},
+//							},
+//							"enabled_table_name": &fivetran.ConnectorSchemaConfigSchemasTablesArgs{
+//								Enabled: pulumi.Bool(true),
+//							},
+//						},
+//					},
+//					"enabled_schema": &fivetran.ConnectorSchemaConfigSchemasArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// The configuration resulting from the example request is as follows:
+//
+// - All new and existing schemas except the `enabledSchema` and `schemaName` are disabled
+// - Only system-enabled tables and columns are enabled in the `enabledSchema` schema
+// - All new and existing tables in the `schemaName` schema except  the `enabledTableName`, `tableName` tables and system tables are disabled
+// - All new and existing columns in the `tableName` table of the `schemaName` schema are disabled except the `hashedColumnName` column and system columns
+// - The `hashedColumnName` column in the `tableName`  table the `schemaName` schema is hashed
+// - All new columns except the system-enabled columns, all schemas and tables are disabled once captured by the connector during the sync
+//
+// ### Example for the ALLOW_COLUMNS option
+//
+// In `schemas`, you only need to specify schemas and tables you want to enable `enabled = "true"`) and columns you want to disable (`enabled = "false"`) or hash (`hashed = "true"`).
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.NewConnectorSchemaConfig(ctx, "schema", &fivetran.ConnectorSchemaConfigArgs{
+//				ConnectorId:          pulumi.String("connector_id"),
+//				SchemaChangeHandling: pulumi.String("ALLOW_COLUMNS"),
+//				Schemas: fivetran.ConnectorSchemaConfigSchemasMap{
+//					"schema_name": &fivetran.ConnectorSchemaConfigSchemasArgs{
+//						Tables: fivetran.ConnectorSchemaConfigSchemasTablesMap{
+//							"table_name": &fivetran.ConnectorSchemaConfigSchemasTablesArgs{
+//								Columns: fivetran.ConnectorSchemaConfigSchemasTablesColumnsMap{
+//									"hashed_column_name": &fivetran.ConnectorSchemaConfigSchemasTablesColumnsArgs{
+//										Hashed: pulumi.Bool(true),
+//									},
+//									"disabled_column_name": &fivetran.ConnectorSchemaConfigSchemasTablesColumnsArgs{
+//										Enabled: pulumi.Bool(false),
+//									},
+//								},
+//							},
+//							"enabled_table": &fivetran.ConnectorSchemaConfigSchemasTablesArgs{
+//								Enabled: pulumi.Bool(true),
+//							},
+//						},
+//					},
+//					"enabled_schema_name": &fivetran.ConnectorSchemaConfigSchemasArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// The configuration resulting from the example request is as follows:
+//
+// - All specified existing schemas and tables are enabled and all columns inside them are enabled by default, unless `enabled = "false"` is specified for the column
+// - All new and existing schemas except the `enabledSchemaName` and `schemaName` are disabled
+// - Only system-enabled tables and columns would be enabled in  the`enabledSchemaName` schema
+// - All new and existing tables in the `schemaName` schema except the `enabledTableName`, `tableName` and system-enabled tables are disabled
+// - All new and existing columns in the`tableName` table of the `schemaName` schema except the `disabledColumnsName` and system-enabled columns are enabled
+// - The `hashedColumnName` would be hashed in table `tableName` in schema `schemaName`
+// - All new non system-enabled tables/schemas would be disabled once captured by connector on sync
+// - All new non system-enabled columns inside enabled tables (including system enabled-tables) would be enabled once captured by connector on sync
+//
+// <a id="nestedblock--nonlocked"></a>
+// ### Non-locked table column management in system-enabled tables
+//
+// You cannot manage system-enabled tables, but you can manage its non-locked columns. For example, your schema `schemaName` has a system-enabled table `systemEnabledTable` that can't be disabled, and you want to disable one of its columns named `columnName`:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.NewConnectorSchemaConfig(ctx, "schema", &fivetran.ConnectorSchemaConfigArgs{
+//				ConnectorId:          pulumi.String("connector_id"),
+//				SchemaChangeHandling: pulumi.String("ALLOW_COLUMNS"),
+//				Schemas: fivetran.ConnectorSchemaConfigSchemasMap{
+//					"schema_name": &fivetran.ConnectorSchemaConfigSchemasArgs{
+//						Tables: fivetran.ConnectorSchemaConfigSchemasTablesMap{
+//							"system_enabled_table": &fivetran.ConnectorSchemaConfigSchemasTablesArgs{
+//								Columns: fivetran.ConnectorSchemaConfigSchemasTablesColumnsMap{
+//									"column_name": &fivetran.ConnectorSchemaConfigSchemasTablesColumnsArgs{
+//										Enabled: pulumi.Bool(false),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // You don't need to import this resource as it is synthetic (doesn't create new instances in upstream).
@@ -29,9 +276,10 @@ type ConnectorSchemaConfig struct {
 	// Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
 	SchemasJson pulumi.StringPtrOutput                 `pulumi:"schemasJson"`
 	Timeouts    ConnectorSchemaConfigTimeoutsPtrOutput `pulumi:"timeouts"`
-	// The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
-	// fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
-	// names. The resource will try to fetch columns for every configured table and verify column names.
+	// The value defines validation method.
+	// - NONE: no validation, any configuration accepted.
+	// - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
+	// - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
 	ValidationLevel pulumi.StringOutput `pulumi:"validationLevel"`
 }
 
@@ -79,9 +327,10 @@ type connectorSchemaConfigState struct {
 	// Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
 	SchemasJson *string                        `pulumi:"schemasJson"`
 	Timeouts    *ConnectorSchemaConfigTimeouts `pulumi:"timeouts"`
-	// The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
-	// fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
-	// names. The resource will try to fetch columns for every configured table and verify column names.
+	// The value defines validation method.
+	// - NONE: no validation, any configuration accepted.
+	// - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
+	// - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
 	ValidationLevel *string `pulumi:"validationLevel"`
 }
 
@@ -97,9 +346,10 @@ type ConnectorSchemaConfigState struct {
 	// Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
 	SchemasJson pulumi.StringPtrInput
 	Timeouts    ConnectorSchemaConfigTimeoutsPtrInput
-	// The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
-	// fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
-	// names. The resource will try to fetch columns for every configured table and verify column names.
+	// The value defines validation method.
+	// - NONE: no validation, any configuration accepted.
+	// - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
+	// - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
 	ValidationLevel pulumi.StringPtrInput
 }
 
@@ -119,9 +369,10 @@ type connectorSchemaConfigArgs struct {
 	// Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
 	SchemasJson *string                        `pulumi:"schemasJson"`
 	Timeouts    *ConnectorSchemaConfigTimeouts `pulumi:"timeouts"`
-	// The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
-	// fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
-	// names. The resource will try to fetch columns for every configured table and verify column names.
+	// The value defines validation method.
+	// - NONE: no validation, any configuration accepted.
+	// - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
+	// - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
 	ValidationLevel *string `pulumi:"validationLevel"`
 }
 
@@ -138,9 +389,10 @@ type ConnectorSchemaConfigArgs struct {
 	// Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
 	SchemasJson pulumi.StringPtrInput
 	Timeouts    ConnectorSchemaConfigTimeoutsPtrInput
-	// The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
-	// fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
-	// names. The resource will try to fetch columns for every configured table and verify column names.
+	// The value defines validation method.
+	// - NONE: no validation, any configuration accepted.
+	// - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
+	// - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
 	ValidationLevel pulumi.StringPtrInput
 }
 
@@ -260,9 +512,10 @@ func (o ConnectorSchemaConfigOutput) Timeouts() ConnectorSchemaConfigTimeoutsPtr
 	return o.ApplyT(func(v *ConnectorSchemaConfig) ConnectorSchemaConfigTimeoutsPtrOutput { return v.Timeouts }).(ConnectorSchemaConfigTimeoutsPtrOutput)
 }
 
-// The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
-// fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
-// names. The resource will try to fetch columns for every configured table and verify column names.
+// The value defines validation method.
+// - NONE: no validation, any configuration accepted.
+// - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
+// - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
 func (o ConnectorSchemaConfigOutput) ValidationLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectorSchemaConfig) pulumi.StringOutput { return v.ValidationLevel }).(pulumi.StringOutput)
 }

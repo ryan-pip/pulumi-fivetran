@@ -27,6 +27,7 @@ class TransformationArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Transformation resource.
+
         :param pulumi.Input[_builtins.bool] paused: The field indicating whether the transformation will be set into the paused state. By default, the value is false.
         :param pulumi.Input[_builtins.str] type: Transformation type. The following values are supported: DBT_CORE, QUICKSTART.
         """
@@ -95,6 +96,7 @@ class _TransformationState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Transformation resources.
+
         :param pulumi.Input[_builtins.str] created_at: The timestamp of when the transformation was created in your account.
         :param pulumi.Input[_builtins.str] created_by_id: The unique identifier for the User within the Fivetran system who created the transformation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] output_model_names: Identifiers of related models.
@@ -228,31 +230,88 @@ class Transformation(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Dbt Core Transformation
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        transformation = fivetran.Transformation("transformation",
+            type="DBT_CORE",
+            paused=True,
+            schedule=[{
+                "scheduleType": "TIME_OF_DAY",
+                "timeOfDay": "11:00",
+            }],
+            transformation_config=[{
+                "projectId": "project_id",
+                "name": "name",
+                "steps": [
+                    {
+                        "name": "name1",
+                        "command": "command1",
+                    },
+                    {
+                        "name": "name2",
+                        "command": "command2",
+                    },
+                ],
+            }])
+        ```
+
+        ### Quickstart Transformation
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        transformation = fivetran.Transformation("transformation",
+            type="QUICKSTART",
+            paused=True,
+            schedule=[{
+                "scheduleType": "TIME_OF_DAY",
+                "timeOfDay": "11:00",
+            }],
+            transformation_config=[{
+                "packageName": "package_name",
+                "connectionIds": [
+                    "connection_id1",
+                    "connection_id2",
+                ],
+                "excludedModels": [
+                    "excluded_model1",
+                    "excluded_model2",
+                ],
+            }])
+        ```
+
         ## Import
 
-        1. To import an existing `fivetran_transformation` resource into your Terraform state, you need to get **Transformation ID** via API call `GET https://api.fivetran.com/v1/transformations` to retrieve available projects.
-
+        1. To import an existing `Transformation` resource into your Terraform state, you need to get **Transformation ID** via API call `GET https://api.fivetran.com/v1/transformations` to retrieve available projects.
         2. Fetch transformation details for particular `transformation-id` using `GET https://api.fivetran.com/v1/transformations/{transformation-id}` to ensure that this is the transformation you want to import.
-
         3. Define an empty resource in your `.tf` configuration:
 
-        hcl
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
 
-        resource "fivetran_transformation" "my_imported_fivetran_transformation" {
-
-        }
+        my_imported_fivetran_transformation = fivetran.Transformation("my_imported_fivetran_transformation")
+        ```
 
         4. Run the `pulumi import` command:
 
         ```sh
-        $ pulumi import fivetran:index/transformation:Transformation my_imported_fivetran_transformation {Transformation ID}
+        terraform import fivetran_transformation.my_imported_fivetran_transformation {Transformation ID}
         ```
 
         4. Use the `terraform state show` command to get the values from the state:
 
+        ```sh
         terraform state show 'fivetran_transformation.my_imported_fivetran_transformation'
+        ```
 
         5. Copy the values and paste them to your `.tf` configuration.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -272,31 +331,88 @@ class Transformation(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Dbt Core Transformation
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        transformation = fivetran.Transformation("transformation",
+            type="DBT_CORE",
+            paused=True,
+            schedule=[{
+                "scheduleType": "TIME_OF_DAY",
+                "timeOfDay": "11:00",
+            }],
+            transformation_config=[{
+                "projectId": "project_id",
+                "name": "name",
+                "steps": [
+                    {
+                        "name": "name1",
+                        "command": "command1",
+                    },
+                    {
+                        "name": "name2",
+                        "command": "command2",
+                    },
+                ],
+            }])
+        ```
+
+        ### Quickstart Transformation
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        transformation = fivetran.Transformation("transformation",
+            type="QUICKSTART",
+            paused=True,
+            schedule=[{
+                "scheduleType": "TIME_OF_DAY",
+                "timeOfDay": "11:00",
+            }],
+            transformation_config=[{
+                "packageName": "package_name",
+                "connectionIds": [
+                    "connection_id1",
+                    "connection_id2",
+                ],
+                "excludedModels": [
+                    "excluded_model1",
+                    "excluded_model2",
+                ],
+            }])
+        ```
+
         ## Import
 
-        1. To import an existing `fivetran_transformation` resource into your Terraform state, you need to get **Transformation ID** via API call `GET https://api.fivetran.com/v1/transformations` to retrieve available projects.
-
+        1. To import an existing `Transformation` resource into your Terraform state, you need to get **Transformation ID** via API call `GET https://api.fivetran.com/v1/transformations` to retrieve available projects.
         2. Fetch transformation details for particular `transformation-id` using `GET https://api.fivetran.com/v1/transformations/{transformation-id}` to ensure that this is the transformation you want to import.
-
         3. Define an empty resource in your `.tf` configuration:
 
-        hcl
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
 
-        resource "fivetran_transformation" "my_imported_fivetran_transformation" {
-
-        }
+        my_imported_fivetran_transformation = fivetran.Transformation("my_imported_fivetran_transformation")
+        ```
 
         4. Run the `pulumi import` command:
 
         ```sh
-        $ pulumi import fivetran:index/transformation:Transformation my_imported_fivetran_transformation {Transformation ID}
+        terraform import fivetran_transformation.my_imported_fivetran_transformation {Transformation ID}
         ```
 
         4. Use the `terraform state show` command to get the values from the state:
 
+        ```sh
         terraform state show 'fivetran_transformation.my_imported_fivetran_transformation'
+        ```
 
         5. Copy the values and paste them to your `.tf` configuration.
+
 
         :param str resource_name: The name of the resource.
         :param TransformationArgs args: The arguments to use to populate this resource's properties.

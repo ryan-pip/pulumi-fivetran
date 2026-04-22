@@ -24,7 +24,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var proxyAgent = Fivetran.GetProxyAgent.Invoke(new()
+        ///     var proxyAgent = Fivetran.Index.GetProxyAgent.Invoke(new()
         ///     {
         ///         Id = "proxy_id",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var proxyAgent = Fivetran.GetProxyAgent.Invoke(new()
+        ///     var proxyAgent = Fivetran.Index.GetProxyAgent.Invoke(new()
         ///     {
         ///         Id = "proxy_id",
         ///     });
@@ -72,7 +72,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var proxyAgent = Fivetran.GetProxyAgent.Invoke(new()
+        ///     var proxyAgent = Fivetran.Index.GetProxyAgent.Invoke(new()
         ///     {
         ///         Id = "proxy_id",
         ///     });

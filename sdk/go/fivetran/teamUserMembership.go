@@ -52,17 +52,32 @@ import (
 //
 // ## Import
 //
-// 1. To import an existing `fivetran_team_user_membership` resource into your Terraform state, you need to get `team_id` and `user_id`
-//
-// You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams).
+// 1. To import an existing `TeamUserMembership` resource into your Terraform state, you need to get `teamId` and `userId`
+// You can retrieve all teams using the [getTeams data source](https://www.terraform.io/docs/data-sources/teams).
 //
 // 2. Define an empty resource in your `.tf` configuration:
 //
-// hcl
+// ```go
+// package main
 //
-// resource "fivetran_team_user_membership" "my_imported_fivetran_team_user_membership" {
+// import (
 //
-// }
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.NewTeamUserMembership(ctx, "my_imported_fivetran_team_user_membership", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // 3. Run the `pulumi import` command:
 //
@@ -72,8 +87,9 @@ import (
 //
 // 4. Use the `terraform state show` command to get the values from the state:
 //
+// ```sh
 // terraform state show 'fivetran_team_user_membership.my_imported_fivetran_team_user_membership'
-//
+// ```
 // 5. Copy the values and paste them to your `.tf` configuration.
 type TeamUserMembership struct {
 	pulumi.CustomResourceState

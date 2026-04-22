@@ -26,6 +26,7 @@ class HybridDeploymentAgentArgs:
                  authentication_counter: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a HybridDeploymentAgent resource.
+
         :param pulumi.Input[_builtins.str] auth_type: Type of authentification. Possible values `AUTO`,`MANUAL`
         :param pulumi.Input[_builtins.str] display_name: The unique name for the hybrid deployment agent.
         :param pulumi.Input[_builtins.str] env_type: Environment type. Possible values `DOCKER`,`PODMAN`,`KUBERNETES`,`SNOWPARK`
@@ -115,6 +116,7 @@ class _HybridDeploymentAgentState:
                  token: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HybridDeploymentAgent resources.
+
         :param pulumi.Input[_builtins.str] auth_json: Base64-encoded content of the auth.json file.
         :param pulumi.Input[_builtins.str] auth_type: Type of authentification. Possible values `AUTO`,`MANUAL`
         :param pulumi.Input[_builtins.int] authentication_counter: Determines whether re-authentication needs to be performed.
@@ -295,6 +297,7 @@ class HybridDeploymentAgent(pulumi.CustomResource):
             auth_type="AUTO")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auth_type: Type of authentification. Possible values `AUTO`,`MANUAL`
@@ -323,6 +326,7 @@ class HybridDeploymentAgent(pulumi.CustomResource):
             group_id="group_id",
             auth_type="AUTO")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param HybridDeploymentAgentArgs args: The arguments to use to populate this resource's properties.

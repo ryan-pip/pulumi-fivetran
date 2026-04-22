@@ -24,7 +24,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var privateLink = Fivetran.GetPrivateLink.Invoke(new()
+        ///     var privateLink = Fivetran.Index.GetPrivateLink.Invoke(new()
         ///     {
         ///         Id = "private_link_id",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var privateLink = Fivetran.GetPrivateLink.Invoke(new()
+        ///     var privateLink = Fivetran.Index.GetPrivateLink.Invoke(new()
         ///     {
         ///         Id = "private_link_id",
         ///     });
@@ -72,7 +72,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var privateLink = Fivetran.GetPrivateLink.Invoke(new()
+        ///     var privateLink = Fivetran.Index.GetPrivateLink.Invoke(new()
         ///     {
         ///         Id = "private_link_id",
         ///     });

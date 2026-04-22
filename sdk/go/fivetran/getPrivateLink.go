@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.LookupPrivateLink(ctx, &fivetran.LookupPrivateLinkArgs{
+//			_, err := fivetran.GetPrivateLink(ctx, &fivetran.LookupPrivateLinkArgs{
 //				Id: "private_link_id",
 //			}, nil)
 //			if err != nil {

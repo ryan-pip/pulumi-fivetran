@@ -14,13 +14,13 @@ namespace Pulumi.Fivetran.Outputs
     public sealed class GetConnectorConfigTenantConfigResult
     {
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `reltio`: Your Reltio subdomain.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Reltio`: Your Reltio subdomain.
         /// </summary>
         public readonly string Subdomain;
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `reltio`: Your Reltio tenant ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Reltio`: Your Reltio tenant ID.
         /// </summary>
         public readonly string TenantId;
 

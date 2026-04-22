@@ -45,27 +45,43 @@ import (
 //
 // ## Import
 //
-// 1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+//  1. To import an existing `Group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+//     To retrieve existing groups, use the [getGroups data source](https://www.terraform.io/docs/data-sources/groups).
+//  2. Define an empty resource in your `.tf` configuration:
 //
-// To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).
+// ```go
+// package main
 //
-// 2. Define an empty resource in your `.tf` configuration:
+// import (
 //
-// hcl
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
 //
-// resource "fivetran_group" "my_imported_fivetran_group" {
+// )
 //
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.NewGroup(ctx, "my_imported_fivetran_group", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // 3. Run the `pulumi import` command:
 //
 // ```sh
-// $ pulumi import fivetran:index/group:Group my_imported_fivetran_group {your Destination Group ID}
+// terraform import fivetran_group.my_imported_fivetran_group {your Destination Group ID}
 // ```
 //
 // 4. Use the `terraform state show` command to get the values from the state:
 //
+// ```sh
 // terraform state show 'fivetran_group.my_imported_fivetran_group'
+// ```
 //
 // 5. Copy the values and paste them to your `.tf` configuration.
 type Group struct {

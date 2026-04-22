@@ -1,7 +1,10 @@
+[settings]
+experimental = true # Required for Go binaries (e.g. pulumictl).
+
 [tools]
 github-cli = "latest"
 
-go = "1.25"
+go = "1.25.9"
 python = '3.11'
 dotnet = '8.0'
 # Corretto version used as Java SE/OpenJDK version no longer offered
@@ -12,5 +15,5 @@ pulumi = 'latest'
 "go:github.com/pulumi/pulumictl/cmd/pulumictl" = 'latest'
 "go:github.com/pulumi/upgrade-provider" = "main"
 
-[settings]
-experimental = true # Required for Go binaries (e.g. pulumictl).
+[env]
+GOTOOLCHAIN="1.25.9"

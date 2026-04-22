@@ -32,17 +32,17 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * 1. To import an existing `fivetran_team_user_membership` resource into your Terraform state, you need to get `team_id` and `user_id`
- *
- * You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams).
+ * 1. To import an existing `fivetran.TeamUserMembership` resource into your Terraform state, you need to get `teamId` and `userId`
+ * You can retrieve all teams using the [fivetran.getTeams data source](https://www.terraform.io/docs/data-sources/teams).
  *
  * 2. Define an empty resource in your `.tf` configuration:
  *
- * hcl
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
- * resource "fivetran_team_user_membership" "my_imported_fivetran_team_user_membership" {
- *
- * }
+ * const myImportedFivetranTeamUserMembership = new fivetran.TeamUserMembership("my_imported_fivetran_team_user_membership", {});
+ * ```
  *
  * 3. Run the `pulumi import` command:
  *
@@ -52,8 +52,9 @@ import * as utilities from "./utilities";
  *
  * 4. Use the `terraform state show` command to get the values from the state:
  *
+ * ```sh
  * terraform state show 'fivetran_team_user_membership.my_imported_fivetran_team_user_membership'
- *
+ * ```
  * 5. Copy the values and paste them to your `.tf` configuration.
  */
 export class TeamUserMembership extends pulumi.CustomResource {
@@ -87,8 +88,8 @@ export class TeamUserMembership extends pulumi.CustomResource {
     /**
      * The unique identifier for the team within your account.
      */
-    public readonly teamId!: pulumi.Output<string>;
-    public readonly users!: pulumi.Output<outputs.TeamUserMembershipUser[] | undefined>;
+    declare public readonly teamId: pulumi.Output<string>;
+    declare public readonly users: pulumi.Output<outputs.TeamUserMembershipUser[] | undefined>;
 
     /**
      * Create a TeamUserMembership resource with the given unique name, arguments, and options.
@@ -103,15 +104,15 @@ export class TeamUserMembership extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TeamUserMembershipState | undefined;
-            resourceInputs["teamId"] = state ? state.teamId : undefined;
-            resourceInputs["users"] = state ? state.users : undefined;
+            resourceInputs["teamId"] = state?.teamId;
+            resourceInputs["users"] = state?.users;
         } else {
             const args = argsOrState as TeamUserMembershipArgs | undefined;
-            if ((!args || args.teamId === undefined) && !opts.urn) {
+            if (args?.teamId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'teamId'");
             }
-            resourceInputs["teamId"] = args ? args.teamId : undefined;
-            resourceInputs["users"] = args ? args.users : undefined;
+            resourceInputs["teamId"] = args?.teamId;
+            resourceInputs["users"] = args?.users;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TeamUserMembership.__pulumiType, name, resourceInputs, opts);

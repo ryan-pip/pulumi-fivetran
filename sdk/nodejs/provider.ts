@@ -25,9 +25,9 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === "pulumi:providers:" + Provider.__pulumiType;
     }
 
-    public readonly apiKey!: pulumi.Output<string | undefined>;
-    public readonly apiSecret!: pulumi.Output<string | undefined>;
-    public readonly apiUrl!: pulumi.Output<string | undefined>;
+    declare public readonly apiKey: pulumi.Output<string | undefined>;
+    declare public readonly apiSecret: pulumi.Output<string | undefined>;
+    declare public readonly apiUrl: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -40,9 +40,9 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["apiKey"] = (args ? args.apiKey : undefined) ?? utilities.getEnv("FIVETRAN_API_KEY");
+            resourceInputs["apiKey"] = (args?.apiKey) ?? utilities.getEnv("FIVETRAN_API_KEY");
             resourceInputs["apiSecret"] = (args?.apiSecret ? pulumi.secret(args.apiSecret) : undefined) ?? utilities.getEnv("FIVETRAN_API_SECRET");
-            resourceInputs["apiUrl"] = args ? args.apiUrl : undefined;
+            resourceInputs["apiUrl"] = args?.apiUrl;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["apiSecret"] };

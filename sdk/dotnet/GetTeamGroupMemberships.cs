@@ -24,7 +24,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var teamGroupMemberships = Fivetran.GetTeamGroupMemberships.Invoke(new()
+        ///     var teamGroupMemberships = Fivetran.Index.GetTeamGroupMemberships.Invoke(new()
         ///     {
         ///         TeamId = "team_id",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var teamGroupMemberships = Fivetran.GetTeamGroupMemberships.Invoke(new()
+        ///     var teamGroupMemberships = Fivetran.Index.GetTeamGroupMemberships.Invoke(new()
         ///     {
         ///         TeamId = "team_id",
         ///     });
@@ -72,7 +72,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var teamGroupMemberships = Fivetran.GetTeamGroupMemberships.Invoke(new()
+        ///     var teamGroupMemberships = Fivetran.Index.GetTeamGroupMemberships.Invoke(new()
         ///     {
         ///         TeamId = "team_id",
         ///     });

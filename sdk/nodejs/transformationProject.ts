@@ -7,29 +7,117 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Resource is in ALPHA state.
+ *
+ * This resource allows you to add, manage and delete transformation projects in your account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
+ *
+ * const project = new fivetran.TransformationProject("project", {
+ *     groupId: "group_id",
+ *     type: "DBT_GIT",
+ *     runTests: true,
+ *     projectConfig: [{
+ *         gitRemoteUrl: "git_remote_url",
+ *         gitBranch: "git_branch",
+ *         folderPath: "folder_path",
+ *         dbtVersion: "dbt_version",
+ *         defaultSchema: "default_schema",
+ *         threads: 1,
+ *         targetName: "target_name",
+ *         environmentVars: ["DBT_VARIABLE=variable_value"],
+ *     }],
+ * });
+ * ```
+ *
+ * ## How to set up a Transformation Project with private Git Repo.
+ *
+ * To be able to use private Transformation Project Git repository you have to grant Fivetran access to this repo.
+ * To do that you need to add a Deploy Key to your repository.
+ * To get SSH key from Fivetran create `fivetran.TransformationProject` resource:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
+ *
+ * const myGroup = new fivetran.Group("my_group", {name: "My_Group"});
+ * const project = new fivetran.TransformationProject("project", {
+ *     groupId: "group_id",
+ *     type: "DBT_GIT",
+ *     runTests: true,
+ *     projectConfig: [{
+ *         gitRemoteUrl: "git_remote_url",
+ *         gitBranch: "git_branch",
+ *         folderPath: "folder_path",
+ *         dbtVersion: "dbt_version",
+ *         defaultSchema: "default_schema",
+ *         threads: 1,
+ *         targetName: "target_name",
+ *         environmentVars: ["DBT_VARIABLE=variable_value"],
+ *     }],
+ * });
+ * ```
+ *
+ * Then you need to set up the Transformation Project public key (field `publicKey` in created resource) as a deploy key into your repo using:
+ *
+ * GitHub Provider Repository Deploy Key Resource:
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as github from "@pulumi/github";
+ *
+ * const exampleRepositoryDeployKey = new github.index.RepositoryDeployKey("example_repository_deploy_key", {
+ *     title: "Repository test key",
+ *     repository: "repo-owner/repo-name",
+ *     key: testProject.projectConfig.publicKey,
+ *     readOnly: true,
+ * });
+ * ```
+ *
+ * or
+ *
+ * [Bitbucket Provider Repository Deploy Key Resource]https://registry.terraform.io/providers/DrFaust92/bitbucket/latest/docs/resources/deploy_key)
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as bitbucket from "@pulumi/bitbucket";
+ *
+ * const test = new bitbucket.index.DeployKey("test", {
+ *     workspace: "repo-owner",
+ *     repository: "repo-name",
+ *     key: testProject.projectConfig.publicKey,
+ *     label: "Repository test key",
+ * });
+ * ```
+ *
+ * Since we recommend using third-party providers in this case, please make sure that access to the repositories is provided correctly and the providers are configured correctly for connection.
+ *
  * ## Import
  *
- * 1. To import an existing `fivetran_transformation_project` resource into your Terraform state, you need to get **Transformation Project ID** via API call `GET https://api.fivetran.com/v1/transformation-projects` to retrieve available projects.
- *
+ * 1. To import an existing `fivetran.TransformationProject` resource into your Terraform state, you need to get **Transformation Project ID** via API call `GET https://api.fivetran.com/v1/transformation-projects` to retrieve available projects.
  * 2. Fetch project details for particular `project-id` using `GET https://api.fivetran.com/v1/transformation-projects/{project-id}` to ensure that this is the project you want to import.
- *
  * 3. Define an empty resource in your `.tf` configuration:
  *
- * hcl
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
- * resource "fivetran_transformation_project" "my_imported_fivetran_transformation_project" {
- *
- * }
+ * const myImportedFivetranTransformationProject = new fivetran.TransformationProject("my_imported_fivetran_transformation_project", {});
+ * ```
  *
  * 4. Run the `pulumi import` command:
  *
  * ```sh
- * $ pulumi import fivetran:index/transformationProject:TransformationProject my_imported_fivetran_transformation_project {Transformation Project ID}
+ * terraform import fivetran_transformation_project.my_imported_fivetran_transformation_project {Transformation Project ID}
  * ```
  *
  * 4. Use the `terraform state show` command to get the values from the state:
  *
+ * ```sh
  * terraform state show 'fivetran_transformation_project.my_imported_fivetran_transformation_project'
+ * ```
  *
  * 5. Copy the values and paste them to your `.tf` configuration.
  */
@@ -64,32 +152,32 @@ export class TransformationProject extends pulumi.CustomResource {
     /**
      * The timestamp of the transformation Project creation.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The unique identifier for the User within the Fivetran system who created the dbt Project.
      */
-    public /*out*/ readonly createdById!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdById: pulumi.Output<string>;
     /**
      * List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
      */
-    public /*out*/ readonly errors!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly errors: pulumi.Output<string[]>;
     /**
      * The unique identifier for the group within the Fivetran system.
      */
-    public readonly groupId!: pulumi.Output<string>;
-    public readonly projectConfig!: pulumi.Output<outputs.TransformationProjectProjectConfig | undefined>;
+    declare public readonly groupId: pulumi.Output<string>;
+    declare public readonly projectConfig: pulumi.Output<outputs.TransformationProjectProjectConfig | undefined>;
     /**
      * Specifies whether the setup tests should be run automatically. The default value is TRUE.
      */
-    public readonly runTests!: pulumi.Output<boolean>;
+    declare public readonly runTests: pulumi.Output<boolean>;
     /**
      * Status of transformation Project (NOT_READY, READY, ERROR).
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Transformation project type.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a TransformationProject resource with the given unique name, arguments, and options.
@@ -104,26 +192,26 @@ export class TransformationProject extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransformationProjectState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["createdById"] = state ? state.createdById : undefined;
-            resourceInputs["errors"] = state ? state.errors : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["projectConfig"] = state ? state.projectConfig : undefined;
-            resourceInputs["runTests"] = state ? state.runTests : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["createdById"] = state?.createdById;
+            resourceInputs["errors"] = state?.errors;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["projectConfig"] = state?.projectConfig;
+            resourceInputs["runTests"] = state?.runTests;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as TransformationProjectArgs | undefined;
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["projectConfig"] = args ? args.projectConfig : undefined;
-            resourceInputs["runTests"] = args ? args.runTests : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["projectConfig"] = args?.projectConfig;
+            resourceInputs["runTests"] = args?.runTests;
+            resourceInputs["type"] = args?.type;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdById"] = undefined /*out*/;
             resourceInputs["errors"] = undefined /*out*/;

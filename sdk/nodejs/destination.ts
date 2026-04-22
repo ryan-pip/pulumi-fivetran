@@ -7,33 +7,73 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * This resource allows you to create, update, and delete destinations.
+ *
+ * IMPORTANT: Groups and destinations are mapped 1:1 to each other. We do this mapping using the group's id value that we automatically generate when you create a group using our REST API, and the destination's groupId value that you specify when you create a destination using our REST API. This means that if you use our REST API to create a destination, you must create a group in your Fivetran account before you can create a destination in it.
+ *
+ * When you create a destination in your Fivetran dashboard, we automatically create a group and assign a value to its id and a destination with the same groupId value, which is unique in your Fivetran account. The group's name corresponds to the Destination name you specify in your Fivetran dashboard when creating the destination in your Fivetran dashboard.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
+ *
+ * const dest = new fivetran.Destination("dest", {
+ *     groupId: group.id,
+ *     service: "postgres_rds_warehouse",
+ *     timeZoneOffset: "0",
+ *     region: "GCP_US_EAST4",
+ *     trustCertificates: true,
+ *     trustFingerprints: true,
+ *     daylightSavingTimeEnabled: true,
+ *     runSetupTests: true,
+ *     config: [{
+ *         host: "destination.fqdn",
+ *         port: 5432,
+ *         user: "postgres",
+ *         password: "myPass",
+ *         database: "fivetran",
+ *         connectionType: "Directly",
+ *     }],
+ * });
+ * ```
+ *
+ * ## Setup tests
+ *
+ * The `runSetupTests` field doesn't have upstream value, it only defines local resource behavoir. This means that when you update only the `runSetupTests` value (from `false` to `true`, for example) it won't cause any upstream actions. The value will be just saved in terraform state and then used on effective field updates.
+ *
+ * The default value is `false` - this means that no setup tests will be performed during create/update. To perform setup tests, you should set value to `true`.
+ *
  * ## Import
  *
- * 1. To import an existing `fivetran_destination` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+ * 1. To import an existing `fivetran.Destination` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
  *
- * 2. To retrieve existing destinations, use the [fivetran_destinations data source](/docs/data-sources/destinations).
+ * 2. To retrieve existing destinations, use the [fivetran.getDestinations data source](https://www.terraform.io/docs/data-sources/destinations).
  *
  * 3. Define an empty resource in your `.tf` configuration:
  *
- * hcl
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
- * resource "fivetran_destination" "my_imported_destination" {
- *
- * }
+ * const myImportedDestination = new fivetran.Destination("my_imported_destination", {});
+ * ```
  *
  * 4. Run the `pulumi import` command with the following parameters:
  *
  * ```sh
- * $ pulumi import fivetran:index/destination:Destination my_imported_destination {your Destination Group ID}
+ * terraform import fivetran_destination.my_imported_destination {your Destination Group ID}
  * ```
  *
  * 5. Use the `terraform state show` command to get the values from the state:
  *
+ * ```sh
  * terraform state show 'fivetran_destination.my_imported_destination'
- *
+ * ```
  * 6. Copy the values and paste them to your `.tf` configuration.
  *
- * -> The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/destinations/config) for reference to find the properties you need to keep in the `config` section.
+ * > The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/destinations/config) for reference to find the properties you need to keep in the `config` section.
  */
 export class Destination extends pulumi.CustomResource {
     /**
@@ -63,61 +103,56 @@ export class Destination extends pulumi.CustomResource {
         return obj['__pulumiType'] === Destination.__pulumiType;
     }
 
-    public readonly config!: pulumi.Output<outputs.DestinationConfig | undefined>;
+    declare public readonly config: pulumi.Output<outputs.DestinationConfig | undefined>;
     /**
      * Shift my UTC offset with daylight savings time (US Only)
      */
-    public readonly daylightSavingTimeEnabled!: pulumi.Output<boolean>;
+    declare public readonly daylightSavingTimeEnabled: pulumi.Output<boolean>;
     /**
      * The unique identifier for the Group within the Fivetran system.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
-     * The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-     * value is specified, the system will try to associate the connection with an existing agent.
+     * The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
      */
-    public readonly hybridDeploymentAgentId!: pulumi.Output<string | undefined>;
+    declare public readonly hybridDeploymentAgentId: pulumi.Output<string | undefined>;
     /**
      * Possible values: Directly, SshTunnel, ProxyAgent.
      */
-    public readonly networkingMethod!: pulumi.Output<string>;
+    declare public readonly networkingMethod: pulumi.Output<string>;
     /**
      * The private link ID.
      */
-    public readonly privateLinkId!: pulumi.Output<string | undefined>;
+    declare public readonly privateLinkId: pulumi.Output<string | undefined>;
     /**
      * Data processing location. This is where Fivetran will operate and run computation on data.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies whether the setup tests should be run automatically. The default value is TRUE.
      */
-    public readonly runSetupTests!: pulumi.Output<boolean>;
+    declare public readonly runSetupTests: pulumi.Output<boolean>;
     /**
      * The destination type id within the Fivetran system.
      */
-    public readonly service!: pulumi.Output<string>;
+    declare public readonly service: pulumi.Output<string>;
     /**
      * Destination setup status.
      */
-    public /*out*/ readonly setupStatus!: pulumi.Output<string>;
+    declare public /*out*/ readonly setupStatus: pulumi.Output<string>;
     /**
      * Determines the time zone for the Fivetran sync schedule.
      */
-    public readonly timeZoneOffset!: pulumi.Output<string>;
-    public readonly timeouts!: pulumi.Output<outputs.DestinationTimeouts | undefined>;
+    declare public readonly timeZoneOffset: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.DestinationTimeouts | undefined>;
     /**
-     * Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-     * trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-     * certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+     * Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
      */
-    public readonly trustCertificates!: pulumi.Output<boolean>;
+    declare public readonly trustCertificates: pulumi.Output<boolean>;
     /**
-     * Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-     * trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-     * fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+     * Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
      */
-    public readonly trustFingerprints!: pulumi.Output<boolean>;
+    declare public readonly trustFingerprints: pulumi.Output<boolean>;
 
     /**
      * Create a Destination resource with the given unique name, arguments, and options.
@@ -132,47 +167,47 @@ export class Destination extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DestinationState | undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["daylightSavingTimeEnabled"] = state ? state.daylightSavingTimeEnabled : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["hybridDeploymentAgentId"] = state ? state.hybridDeploymentAgentId : undefined;
-            resourceInputs["networkingMethod"] = state ? state.networkingMethod : undefined;
-            resourceInputs["privateLinkId"] = state ? state.privateLinkId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["runSetupTests"] = state ? state.runSetupTests : undefined;
-            resourceInputs["service"] = state ? state.service : undefined;
-            resourceInputs["setupStatus"] = state ? state.setupStatus : undefined;
-            resourceInputs["timeZoneOffset"] = state ? state.timeZoneOffset : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
-            resourceInputs["trustCertificates"] = state ? state.trustCertificates : undefined;
-            resourceInputs["trustFingerprints"] = state ? state.trustFingerprints : undefined;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["daylightSavingTimeEnabled"] = state?.daylightSavingTimeEnabled;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["hybridDeploymentAgentId"] = state?.hybridDeploymentAgentId;
+            resourceInputs["networkingMethod"] = state?.networkingMethod;
+            resourceInputs["privateLinkId"] = state?.privateLinkId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["runSetupTests"] = state?.runSetupTests;
+            resourceInputs["service"] = state?.service;
+            resourceInputs["setupStatus"] = state?.setupStatus;
+            resourceInputs["timeZoneOffset"] = state?.timeZoneOffset;
+            resourceInputs["timeouts"] = state?.timeouts;
+            resourceInputs["trustCertificates"] = state?.trustCertificates;
+            resourceInputs["trustFingerprints"] = state?.trustFingerprints;
         } else {
             const args = argsOrState as DestinationArgs | undefined;
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.service === undefined) && !opts.urn) {
+            if (args?.service === undefined && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            if ((!args || args.timeZoneOffset === undefined) && !opts.urn) {
+            if (args?.timeZoneOffset === undefined && !opts.urn) {
                 throw new Error("Missing required property 'timeZoneOffset'");
             }
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["daylightSavingTimeEnabled"] = args ? args.daylightSavingTimeEnabled : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["hybridDeploymentAgentId"] = args ? args.hybridDeploymentAgentId : undefined;
-            resourceInputs["networkingMethod"] = args ? args.networkingMethod : undefined;
-            resourceInputs["privateLinkId"] = args ? args.privateLinkId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["runSetupTests"] = args ? args.runSetupTests : undefined;
-            resourceInputs["service"] = args ? args.service : undefined;
-            resourceInputs["timeZoneOffset"] = args ? args.timeZoneOffset : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
-            resourceInputs["trustCertificates"] = args ? args.trustCertificates : undefined;
-            resourceInputs["trustFingerprints"] = args ? args.trustFingerprints : undefined;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["daylightSavingTimeEnabled"] = args?.daylightSavingTimeEnabled;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["hybridDeploymentAgentId"] = args?.hybridDeploymentAgentId;
+            resourceInputs["networkingMethod"] = args?.networkingMethod;
+            resourceInputs["privateLinkId"] = args?.privateLinkId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["runSetupTests"] = args?.runSetupTests;
+            resourceInputs["service"] = args?.service;
+            resourceInputs["timeZoneOffset"] = args?.timeZoneOffset;
+            resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["trustCertificates"] = args?.trustCertificates;
+            resourceInputs["trustFingerprints"] = args?.trustFingerprints;
             resourceInputs["setupStatus"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -194,8 +229,7 @@ export interface DestinationState {
      */
     groupId?: pulumi.Input<string>;
     /**
-     * The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-     * value is specified, the system will try to associate the connection with an existing agent.
+     * The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
      */
     hybridDeploymentAgentId?: pulumi.Input<string>;
     /**
@@ -228,15 +262,11 @@ export interface DestinationState {
     timeZoneOffset?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.DestinationTimeouts>;
     /**
-     * Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-     * trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-     * certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+     * Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
      */
     trustCertificates?: pulumi.Input<boolean>;
     /**
-     * Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-     * trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-     * fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+     * Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
      */
     trustFingerprints?: pulumi.Input<boolean>;
 }
@@ -255,8 +285,7 @@ export interface DestinationArgs {
      */
     groupId: pulumi.Input<string>;
     /**
-     * The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-     * value is specified, the system will try to associate the connection with an existing agent.
+     * The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
      */
     hybridDeploymentAgentId?: pulumi.Input<string>;
     /**
@@ -285,15 +314,11 @@ export interface DestinationArgs {
     timeZoneOffset: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.DestinationTimeouts>;
     /**
-     * Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-     * trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-     * certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+     * Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
      */
     trustCertificates?: pulumi.Input<boolean>;
     /**
-     * Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-     * trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-     * fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+     * Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
      */
     trustFingerprints?: pulumi.Input<boolean>;
 }

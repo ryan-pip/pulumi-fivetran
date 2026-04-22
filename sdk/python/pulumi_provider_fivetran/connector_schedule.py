@@ -27,6 +27,7 @@ class ConnectorScheduleArgs:
                  sync_frequency: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConnectorSchedule resource.
+
         :param pulumi.Input[_builtins.str] connector_id: The unique identifier for the connector within the Fivetran system.
         :param pulumi.Input[_builtins.str] daily_sync_time: The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
         :param pulumi.Input[_builtins.str] pause_after_trial: Specifies whether the connector should be paused after the free trial period has ended.
@@ -130,6 +131,7 @@ class _ConnectorScheduleState:
                  sync_frequency: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectorSchedule resources.
+
         :param pulumi.Input[_builtins.str] connector_id: The unique identifier for the connector within the Fivetran system.
         :param pulumi.Input[_builtins.str] daily_sync_time: The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
         :param pulumi.Input[_builtins.str] pause_after_trial: Specifies whether the connector should be paused after the free trial period has ended.
@@ -258,43 +260,31 @@ class ConnectorSchedule(pulumi.CustomResource):
 
         You don't need to import this resource as it is synthetic.
 
-        To fetch schedule values from existing connector use `fivetran_connector` data source:
+        To fetch schedule values from existing connector use `Connector` data source:
+        ```python
+        import pulumi
+        import pulumi_fivetran as fivetran
 
-        hcl
-
-        data "fivetran_connector" "my_connector" {
-
-            id = "my_connector_id"
-
-        }
-
-        now you can use schedule values from this data_source:
-
-          sync_frequency = data.fivetran_connector.my_connector.sync_frequency
-
-          paused = data.fivetran_connector.my_connector.paused
+        my_connector = fivetran.get_connector(id="my_connector_id")
+        ```
 
         This resource manages settings for already existing connector instance and doesn't create a new one.
+        If you already have an existing connector with id = `my_connector_id` just define `ConnectorSchedule` resource:
 
-        If you already have an existing connector with id = `my_connector_id` just define `fivetran_connector_schedule` resource:
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
 
-        hcl
+        my_connector_schedule = fivetran.ConnectorSchedule("my_connector_schedule",
+            connector_id="my_connector_id",
+            sync_frequency="360",
+            paused="false",
+            pause_after_trial="true",
+            schedule_type="auto")
+        ```
 
-        resource "fivetran_connector_schedule" "my_connector_schedule" {
+        > NOTE: You can't have several resources managing the same `connector_id`. They will be in conflict ater each `apply`.
 
-            connector_id = "my_connector_id"
-            
-            sync_frequency     = "360"
-            
-            paused             = false
-            
-            pause_after_trial  = true
-            
-            schedule_type      = "auto"
-
-        }
-
-        -> NOTE: You can't have several resources managing the same `connector_id`. They will be in conflict ater each `apply`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -333,43 +323,31 @@ class ConnectorSchedule(pulumi.CustomResource):
 
         You don't need to import this resource as it is synthetic.
 
-        To fetch schedule values from existing connector use `fivetran_connector` data source:
+        To fetch schedule values from existing connector use `Connector` data source:
+        ```python
+        import pulumi
+        import pulumi_fivetran as fivetran
 
-        hcl
-
-        data "fivetran_connector" "my_connector" {
-
-            id = "my_connector_id"
-
-        }
-
-        now you can use schedule values from this data_source:
-
-          sync_frequency = data.fivetran_connector.my_connector.sync_frequency
-
-          paused = data.fivetran_connector.my_connector.paused
+        my_connector = fivetran.get_connector(id="my_connector_id")
+        ```
 
         This resource manages settings for already existing connector instance and doesn't create a new one.
+        If you already have an existing connector with id = `my_connector_id` just define `ConnectorSchedule` resource:
 
-        If you already have an existing connector with id = `my_connector_id` just define `fivetran_connector_schedule` resource:
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
 
-        hcl
+        my_connector_schedule = fivetran.ConnectorSchedule("my_connector_schedule",
+            connector_id="my_connector_id",
+            sync_frequency="360",
+            paused="false",
+            pause_after_trial="true",
+            schedule_type="auto")
+        ```
 
-        resource "fivetran_connector_schedule" "my_connector_schedule" {
+        > NOTE: You can't have several resources managing the same `connector_id`. They will be in conflict ater each `apply`.
 
-            connector_id = "my_connector_id"
-            
-            sync_frequency     = "360"
-            
-            paused             = false
-            
-            pause_after_trial  = true
-            
-            schedule_type      = "auto"
-
-        }
-
-        -> NOTE: You can't have several resources managing the same `connector_id`. They will be in conflict ater each `apply`.
 
         :param str resource_name: The name of the resource.
         :param ConnectorScheduleArgs args: The arguments to use to populate this resource's properties.

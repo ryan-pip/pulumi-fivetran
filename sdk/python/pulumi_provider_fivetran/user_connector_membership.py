@@ -25,6 +25,7 @@ class UserConnectorMembershipArgs:
                  connectors: Optional[pulumi.Input[Sequence[pulumi.Input['UserConnectorMembershipConnectorArgs']]]] = None):
         """
         The set of arguments for constructing a UserConnectorMembership resource.
+
         :param pulumi.Input[_builtins.str] user_id: The unique identifier for the user within your account.
         """
         pulumi.set(__self__, "user_id", user_id)
@@ -60,6 +61,7 @@ class _UserConnectorMembershipState:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserConnectorMembership resources.
+
         :param pulumi.Input[_builtins.str] user_id: The unique identifier for the user within your account.
         """
         if connectors is not None:
@@ -125,17 +127,17 @@ class UserConnectorMembership(pulumi.CustomResource):
 
         ## Import
 
-        1. To import an existing `fivetran_user_connector_membership` resource into your Terraform state, you need to get `user_id` and `connector_id`
-
-        You can retrieve all users using the [fivetran_users data source](/docs/data-sources/users).
+        1. To import an existing `UserConnectorMembership` resource into your Terraform state, you need to get `user_id` and `connector_id`
+        You can retrieve all users using the [get_users data source](https://www.terraform.io/docs/data-sources/users).
 
         2. Define an empty resource in your `.tf` configuration:
 
-        hcl
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
 
-        resource "fivetran_user_connector_membership" "my_imported_fivetran_user_connector_membership" {
-
-        }
+        my_imported_fivetran_user_connector_membership = fivetran.UserConnectorMembership("my_imported_fivetran_user_connector_membership")
+        ```
 
         3. Run the `pulumi import` command:
 
@@ -145,9 +147,11 @@ class UserConnectorMembership(pulumi.CustomResource):
 
         4. Use the `terraform state show` command to get the values from the state:
 
+        ```sh
         terraform state show 'fivetran_user_connector_membership.my_imported_fivetran_user_connector_membership'
-
+        ```
         5. Copy the values and paste them to your `.tf` configuration.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -186,17 +190,17 @@ class UserConnectorMembership(pulumi.CustomResource):
 
         ## Import
 
-        1. To import an existing `fivetran_user_connector_membership` resource into your Terraform state, you need to get `user_id` and `connector_id`
-
-        You can retrieve all users using the [fivetran_users data source](/docs/data-sources/users).
+        1. To import an existing `UserConnectorMembership` resource into your Terraform state, you need to get `user_id` and `connector_id`
+        You can retrieve all users using the [get_users data source](https://www.terraform.io/docs/data-sources/users).
 
         2. Define an empty resource in your `.tf` configuration:
 
-        hcl
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
 
-        resource "fivetran_user_connector_membership" "my_imported_fivetran_user_connector_membership" {
-
-        }
+        my_imported_fivetran_user_connector_membership = fivetran.UserConnectorMembership("my_imported_fivetran_user_connector_membership")
+        ```
 
         3. Run the `pulumi import` command:
 
@@ -206,9 +210,11 @@ class UserConnectorMembership(pulumi.CustomResource):
 
         4. Use the `terraform state show` command to get the values from the state:
 
+        ```sh
         terraform state show 'fivetran_user_connector_membership.my_imported_fivetran_user_connector_membership'
-
+        ```
         5. Copy the values and paste them to your `.tf` configuration.
+
 
         :param str resource_name: The name of the resource.
         :param UserConnectorMembershipArgs args: The arguments to use to populate this resource's properties.

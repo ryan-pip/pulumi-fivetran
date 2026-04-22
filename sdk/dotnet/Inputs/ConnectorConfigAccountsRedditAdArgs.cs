@@ -13,8 +13,8 @@ namespace Pulumi.Fivetran.Inputs
     public sealed class ConnectorConfigAccountsRedditAdArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `reddit_ads`: Reddit username of the additional linked account.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `RedditAds`: Reddit username of the additional linked account.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -22,7 +22,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var user = new Fivetran.User("user", new()
+    ///     var user = new Fivetran.Index.User("user", new()
     ///     {
     ///         Email = "user@email.address.com",
     ///         GivenName = "John",
@@ -35,17 +35,23 @@ namespace Pulumi.Fivetran
     /// 
     /// ## Import
     /// 
-    /// 1. To import an existing `fivetran_user` resource into your Terraform state, you need to get `user_id`.
-    /// 
-    /// You can retrieve all users using the [fivetran_users data source](/docs/data-sources/users).
+    /// 1. To import an existing `fivetran.User` resource into your Terraform state, you need to get `UserId`.
+    /// You can retrieve all users using the [fivetran.getUsers data source](https://www.terraform.io/docs/data-sources/users).
     /// 
     /// 2. Define an empty resource in your `.tf` configuration:
     /// 
-    /// hcl
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Pulumi.Fivetran;
     /// 
-    /// resource "fivetran_user" "my_imported_fivetran_user" {
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myImportedFivetranUser = new Fivetran.Index.User("my_imported_fivetran_user");
     /// 
-    /// }
+    /// });
+    /// ```
     /// 
     /// 3. Run the `pulumi import` command:
     /// 
@@ -55,8 +61,9 @@ namespace Pulumi.Fivetran
     /// 
     /// 4. Use the `terraform state show` command to get the values from the state:
     /// 
+    /// ```sh
     /// terraform state show 'fivetran_user.my_imported_fivetran_user'
-    /// 
+    /// ```
     /// 5. Copy the values and paste them to your `.tf` configuration.
     /// </summary>
     [FivetranResourceType("fivetran:index/user:User")]

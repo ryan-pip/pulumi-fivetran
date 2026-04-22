@@ -25,11 +25,11 @@ class PrivateLinkArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PrivateLink resource.
+
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config_map: Configuration.
         :param pulumi.Input[_builtins.str] region: Data processing location. This is where Fivetran will operate and run computation on data.
         :param pulumi.Input[_builtins.str] service: Service type.
-        :param pulumi.Input[_builtins.str] name: The private link name within the account. The name must start with a letter or underscore and can only contain letters,
-               numbers, or underscores. Maximum size of name is 23 characters.
+        :param pulumi.Input[_builtins.str] name: The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
         """
         pulumi.set(__self__, "config_map", config_map)
         pulumi.set(__self__, "region", region)
@@ -77,8 +77,7 @@ class PrivateLinkArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The private link name within the account. The name must start with a letter or underscore and can only contain letters,
-        numbers, or underscores. Maximum size of name is 23 characters.
+        The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
         """
         return pulumi.get(self, "name")
 
@@ -102,13 +101,13 @@ class _PrivateLinkState:
                  state_summary: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PrivateLink resources.
+
         :param pulumi.Input[_builtins.str] cloud_provider: The cloud provider name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config_map: Configuration.
         :param pulumi.Input[_builtins.str] created_at: The date and time the membership was created.
         :param pulumi.Input[_builtins.str] created_by: The unique identifier for the User within the Fivetran system.
         :param pulumi.Input[_builtins.str] host: The private link host.
-        :param pulumi.Input[_builtins.str] name: The private link name within the account. The name must start with a letter or underscore and can only contain letters,
-               numbers, or underscores. Maximum size of name is 23 characters.
+        :param pulumi.Input[_builtins.str] name: The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
         :param pulumi.Input[_builtins.str] region: Data processing location. This is where Fivetran will operate and run computation on data.
         :param pulumi.Input[_builtins.str] service: Service type.
         :param pulumi.Input[_builtins.str] state: The state of the private link.
@@ -199,8 +198,7 @@ class _PrivateLinkState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The private link name within the account. The name must start with a letter or underscore and can only contain letters,
-        numbers, or underscores. Maximum size of name is 23 characters.
+        The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
         """
         return pulumi.get(self, "name")
 
@@ -271,11 +269,26 @@ class PrivateLink(pulumi.CustomResource):
         """
         This resource allows you to create, update, and delete private links.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        test_pl = fivetran.PrivateLink("test_pl",
+            name="name",
+            region="region",
+            service="service",
+            config=[{
+                "connectionServiceName": "connection_service_name",
+            }])
+        ```
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] config_map: Configuration.
-        :param pulumi.Input[_builtins.str] name: The private link name within the account. The name must start with a letter or underscore and can only contain letters,
-               numbers, or underscores. Maximum size of name is 23 characters.
+        :param pulumi.Input[_builtins.str] name: The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
         :param pulumi.Input[_builtins.str] region: Data processing location. This is where Fivetran will operate and run computation on data.
         :param pulumi.Input[_builtins.str] service: Service type.
         """
@@ -287,6 +300,22 @@ class PrivateLink(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource allows you to create, update, and delete private links.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        test_pl = fivetran.PrivateLink("test_pl",
+            name="name",
+            region="region",
+            service="service",
+            config=[{
+                "connectionServiceName": "connection_service_name",
+            }])
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param PrivateLinkArgs args: The arguments to use to populate this resource's properties.
@@ -364,8 +393,7 @@ class PrivateLink(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created_at: The date and time the membership was created.
         :param pulumi.Input[_builtins.str] created_by: The unique identifier for the User within the Fivetran system.
         :param pulumi.Input[_builtins.str] host: The private link host.
-        :param pulumi.Input[_builtins.str] name: The private link name within the account. The name must start with a letter or underscore and can only contain letters,
-               numbers, or underscores. Maximum size of name is 23 characters.
+        :param pulumi.Input[_builtins.str] name: The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
         :param pulumi.Input[_builtins.str] region: Data processing location. This is where Fivetran will operate and run computation on data.
         :param pulumi.Input[_builtins.str] service: Service type.
         :param pulumi.Input[_builtins.str] state: The state of the private link.
@@ -431,8 +459,7 @@ class PrivateLink(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The private link name within the account. The name must start with a letter or underscore and can only contain letters,
-        numbers, or underscores. Maximum size of name is 23 characters.
+        The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
         """
         return pulumi.get(self, "name")
 

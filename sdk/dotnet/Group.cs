@@ -12,9 +12,9 @@ namespace Pulumi.Fivetran
     /// <summary>
     /// This resource allows you to create, update, and delete groups.
     /// 
-    /// IMPORTANT: Groups and destinations are mapped 1:1 to each other. We do this mapping using the group's id value that we automatically generate when you create a group using our Terrafrom Provider, and the destination's group_id value that you specify when you create a destination using our Terrafrom Provider. This means that if you use our Terrafrom Provider to create a destination, you must create a group in your Fivetran account before you can create a destination in it.
+    /// IMPORTANT: Groups and destinations are mapped 1:1 to each other. We do this mapping using the group's id value that we automatically generate when you create a group using our Terrafrom Provider, and the destination's GroupId value that you specify when you create a destination using our Terrafrom Provider. This means that if you use our Terrafrom Provider to create a destination, you must create a group in your Fivetran account before you can create a destination in it.
     /// 
-    /// When you create a destination in your Fivetran dashboard, we automatically create a group and assign a value to its id and a destination with the same group_id value, which is unique in your Fivetran account. The group's name corresponds to the Destination name you specify in your Fivetran dashboard when creating the destination in your Fivetran dashboard.
+    /// When you create a destination in your Fivetran dashboard, we automatically create a group and assign a value to its id and a destination with the same GroupId value, which is unique in your Fivetran account. The group's name corresponds to the Destination name you specify in your Fivetran dashboard when creating the destination in your Fivetran dashboard.
     /// 
     /// ## Example Usage
     /// 
@@ -26,7 +26,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @group = new Fivetran.Group("group", new()
+    ///     var @group = new Fivetran.Index.Group("group", new()
     ///     {
     ///         Name = "MyGroup",
     ///     });
@@ -36,27 +36,34 @@ namespace Pulumi.Fivetran
     /// 
     /// ## Import
     /// 
-    /// 1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
-    /// 
-    /// To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).
-    /// 
+    /// 1. To import an existing `fivetran.Group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+    ///    To retrieve existing groups, use the [fivetran.getGroups data source](https://www.terraform.io/docs/data-sources/groups).
     /// 2. Define an empty resource in your `.tf` configuration:
     /// 
-    /// hcl
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Pulumi.Fivetran;
     /// 
-    /// resource "fivetran_group" "my_imported_fivetran_group" {
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myImportedFivetranGroup = new Fivetran.Index.Group("my_imported_fivetran_group");
     /// 
-    /// }
+    /// });
+    /// ```
     /// 
     /// 3. Run the `pulumi import` command:
     /// 
     /// ```sh
-    /// $ pulumi import fivetran:index/group:Group my_imported_fivetran_group {your Destination Group ID}
+    /// terraform import fivetran_group.my_imported_fivetran_group {your Destination Group ID}
     /// ```
     /// 
     /// 4. Use the `terraform state show` command to get the values from the state:
     /// 
+    /// ```sh
     /// terraform state show 'fivetran_group.my_imported_fivetran_group'
+    /// ```
     /// 
     /// 5. Copy the values and paste them to your `.tf` configuration.
     /// </summary>

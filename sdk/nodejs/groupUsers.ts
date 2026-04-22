@@ -61,9 +61,9 @@ export class GroupUsers extends pulumi.CustomResource {
     /**
      * The unique identifier for the Group within the Fivetran system.
      */
-    public readonly groupId!: pulumi.Output<string>;
-    public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
-    public readonly users!: pulumi.Output<outputs.GroupUsersUser[] | undefined>;
+    declare public readonly groupId: pulumi.Output<string>;
+    declare public /*out*/ readonly lastUpdated: pulumi.Output<string>;
+    declare public readonly users: pulumi.Output<outputs.GroupUsersUser[] | undefined>;
 
     /**
      * Create a GroupUsers resource with the given unique name, arguments, and options.
@@ -78,16 +78,16 @@ export class GroupUsers extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupUsersState | undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
-            resourceInputs["users"] = state ? state.users : undefined;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["lastUpdated"] = state?.lastUpdated;
+            resourceInputs["users"] = state?.users;
         } else {
             const args = argsOrState as GroupUsersArgs | undefined;
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["users"] = args ? args.users : undefined;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["users"] = args?.users;
             resourceInputs["lastUpdated"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

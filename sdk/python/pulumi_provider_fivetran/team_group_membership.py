@@ -25,6 +25,7 @@ class TeamGroupMembershipArgs:
                  groups: Optional[pulumi.Input[Sequence[pulumi.Input['TeamGroupMembershipGroupArgs']]]] = None):
         """
         The set of arguments for constructing a TeamGroupMembership resource.
+
         :param pulumi.Input[_builtins.str] team_id: The unique identifier for the team within your account.
         """
         pulumi.set(__self__, "team_id", team_id)
@@ -60,6 +61,7 @@ class _TeamGroupMembershipState:
                  team_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TeamGroupMembership resources.
+
         :param pulumi.Input[_builtins.str] team_id: The unique identifier for the team within your account.
         """
         if groups is not None:
@@ -101,19 +103,41 @@ class TeamGroupMembership(pulumi.CustomResource):
         """
         This resource allows you to create, update, and delete group membership for teams
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        test_team_group_membership = fivetran.TeamGroupMembership("test_team_group_membership",
+            team_id="test_team",
+            groups=[
+                {
+                    "connector_id": "test_connector",
+                    "group_id": "test_group",
+                    "role": "Destination Administrator",
+                },
+                {
+                    "connector_id": "test_connector",
+                    "group_id": "test_group",
+                    "role": "Destination Administrator",
+                },
+            ])
+        ```
+
         ## Import
 
-        1. To import an existing `fivetran_team_group_membership` resource into your Terraform state, you need to get `team_id` and `group_id`
-
-        You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams).
+        1. To import an existing `TeamGroupMembership` resource into your Terraform state, you need to get `team_id` and `group_id`
+        You can retrieve all teams using the [get_teams data source](https://www.terraform.io/docs/data-sources/teams).
 
         2. Define an empty resource in your `.tf` configuration:
 
-        hcl
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
 
-        resource "fivetran_team_group_membership" "my_imported_fivetran_team_group_membership" {
-
-        }
+        my_imported_fivetran_team_group_membership = fivetran.TeamGroupMembership("my_imported_fivetran_team_group_membership")
+        ```
 
         3. Run the `pulumi import` command:
 
@@ -123,9 +147,11 @@ class TeamGroupMembership(pulumi.CustomResource):
 
         4. Use the `terraform state show` command to get the values from the state:
 
+        ```sh
         terraform state show 'fivetran_team_group_membership.my_imported_fivetran_team_group_membership'
-
+        ```
         5. Copy the values and paste them to your `.tf` configuration.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -140,19 +166,41 @@ class TeamGroupMembership(pulumi.CustomResource):
         """
         This resource allows you to create, update, and delete group membership for teams
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        test_team_group_membership = fivetran.TeamGroupMembership("test_team_group_membership",
+            team_id="test_team",
+            groups=[
+                {
+                    "connector_id": "test_connector",
+                    "group_id": "test_group",
+                    "role": "Destination Administrator",
+                },
+                {
+                    "connector_id": "test_connector",
+                    "group_id": "test_group",
+                    "role": "Destination Administrator",
+                },
+            ])
+        ```
+
         ## Import
 
-        1. To import an existing `fivetran_team_group_membership` resource into your Terraform state, you need to get `team_id` and `group_id`
-
-        You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams).
+        1. To import an existing `TeamGroupMembership` resource into your Terraform state, you need to get `team_id` and `group_id`
+        You can retrieve all teams using the [get_teams data source](https://www.terraform.io/docs/data-sources/teams).
 
         2. Define an empty resource in your `.tf` configuration:
 
-        hcl
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
 
-        resource "fivetran_team_group_membership" "my_imported_fivetran_team_group_membership" {
-
-        }
+        my_imported_fivetran_team_group_membership = fivetran.TeamGroupMembership("my_imported_fivetran_team_group_membership")
+        ```
 
         3. Run the `pulumi import` command:
 
@@ -162,9 +210,11 @@ class TeamGroupMembership(pulumi.CustomResource):
 
         4. Use the `terraform state show` command to get the values from the state:
 
+        ```sh
         terraform state show 'fivetran_team_group_membership.my_imported_fivetran_team_group_membership'
-
+        ```
         5. Copy the values and paste them to your `.tf` configuration.
+
 
         :param str resource_name: The name of the resource.
         :param TeamGroupMembershipArgs args: The arguments to use to populate this resource's properties.

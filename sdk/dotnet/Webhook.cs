@@ -14,17 +14,23 @@ namespace Pulumi.Fivetran
     /// 
     /// ## Import
     /// 
-    /// 1. To import an existing `fivetran_webhook` resource into your Terraform state, you need to get `webhook_id`.
-    /// 
-    /// You can retrieve all webhooks using the [fivetran_webhooks data source](/docs/data-sources/webhooks).
+    /// 1. To import an existing `fivetran.Webhook` resource into your Terraform state, you need to get `WebhookId`.
+    /// You can retrieve all webhooks using the [fivetran.getWebhooks data source](https://www.terraform.io/docs/data-sources/webhooks).
     /// 
     /// 2. Define an empty resource in your `.tf` configuration:
     /// 
-    /// hcl
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Pulumi.Fivetran;
     /// 
-    /// resource "fivetran_webhook" "my_imported_fivetran_webhook" {
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myImportedFivetranWebhook = new Fivetran.Index.Webhook("my_imported_fivetran_webhook");
     /// 
-    /// }
+    /// });
+    /// ```
     /// 
     /// 3. Run the `pulumi import` command:
     /// 
@@ -34,8 +40,9 @@ namespace Pulumi.Fivetran
     /// 
     /// 4. Use the `terraform state show` command to get the values from the state:
     /// 
+    /// ```sh
     /// terraform state show 'fivetran_webhook.my_imported_fivetran_webhook'
-    /// 
+    /// ```
     /// 5. Copy the values and paste them to your `.tf` configuration.
     /// </summary>
     [FivetranResourceType("fivetran:index/webhook:Webhook")]

@@ -14,18 +14,18 @@ namespace Pulumi.Fivetran.Outputs
     public sealed class GetConnectorConfigProjectCredentialResult
     {
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `amplitude`: The API key of the project.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Amplitude`: The API key of the project.
         /// </summary>
         public readonly string ApiKey;
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `amplitude`: The project name you wish to use with Fivetran.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Amplitude`: The project name you wish to use with Fivetran.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `amplitude`: The secret key of the project.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Amplitude`: The secret key of the project.
         /// </summary>
         public readonly string SecretKey;
 

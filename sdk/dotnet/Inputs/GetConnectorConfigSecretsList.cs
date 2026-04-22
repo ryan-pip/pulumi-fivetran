@@ -13,10 +13,10 @@ namespace Pulumi.Fivetran.Inputs
     public sealed class GetConnectorConfigSecretsListArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_lambda`: Secret Key.
-        /// 	- Service `azure_function`: Key
-        /// 	- Service `google_cloud_function`: Key
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsLambda`: Secret Key.
+        /// 	- Service `AzureFunction`: Key
+        /// 	- Service `GoogleCloudFunction`: Key
         /// </summary>
         [Input("key", required: true)]
         public string Key { get; set; } = null!;
@@ -25,10 +25,10 @@ namespace Pulumi.Fivetran.Inputs
         private string? _value;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_lambda`: Secret Value.
-        /// 	- Service `azure_function`: Value
-        /// 	- Service `google_cloud_function`: Value
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsLambda`: Secret Value.
+        /// 	- Service `AzureFunction`: Value
+        /// 	- Service `GoogleCloudFunction`: Value
         /// </summary>
         public string? Value
         {

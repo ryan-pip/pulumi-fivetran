@@ -30,13 +30,15 @@ class ConnectorSchemaConfigArgs:
                  validation_level: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConnectorSchemaConfig resource.
+
         :param pulumi.Input[_builtins.str] connector_id: The unique identifier for the connector within the Fivetran system.
         :param pulumi.Input[_builtins.str] schema_change_handling: The value specifying how new source data is handled.
         :param pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]] schemas: Map of schema configurations.
         :param pulumi.Input[_builtins.str] schemas_json: Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
-        :param pulumi.Input[_builtins.str] validation_level: The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
-               fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
-               names. The resource will try to fetch columns for every configured table and verify column names.
+        :param pulumi.Input[_builtins.str] validation_level: The value defines validation method. 
+               - NONE: no validation, any configuration accepted. 
+               - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
+               - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
         """
         pulumi.set(__self__, "connector_id", connector_id)
         if schema is not None:
@@ -126,9 +128,10 @@ class ConnectorSchemaConfigArgs:
     @pulumi.getter(name="validationLevel")
     def validation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
-        fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
-        names. The resource will try to fetch columns for every configured table and verify column names.
+        The value defines validation method. 
+        - NONE: no validation, any configuration accepted. 
+        - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
+        - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
         """
         return pulumi.get(self, "validation_level")
 
@@ -149,13 +152,15 @@ class _ConnectorSchemaConfigState:
                  validation_level: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectorSchemaConfig resources.
+
         :param pulumi.Input[_builtins.str] connector_id: The unique identifier for the connector within the Fivetran system.
         :param pulumi.Input[_builtins.str] schema_change_handling: The value specifying how new source data is handled.
         :param pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]] schemas: Map of schema configurations.
         :param pulumi.Input[_builtins.str] schemas_json: Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
-        :param pulumi.Input[_builtins.str] validation_level: The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
-               fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
-               names. The resource will try to fetch columns for every configured table and verify column names.
+        :param pulumi.Input[_builtins.str] validation_level: The value defines validation method. 
+               - NONE: no validation, any configuration accepted. 
+               - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
+               - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
         """
         if connector_id is not None:
             pulumi.set(__self__, "connector_id", connector_id)
@@ -246,9 +251,10 @@ class _ConnectorSchemaConfigState:
     @pulumi.getter(name="validationLevel")
     def validation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
-        fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
-        names. The resource will try to fetch columns for every configured table and verify column names.
+        The value defines validation method. 
+        - NONE: no validation, any configuration accepted. 
+        - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
+        - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
         """
         return pulumi.get(self, "validation_level")
 
@@ -272,9 +278,193 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
                  validation_level: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        ## page_title: "Resource: ConnectorSchemaConfig"
+
+        ***
+
+        # Resource: ConnectorSchemaConfig
+
+        This resource allows you to manage the Standard Configuration settings of a connector:
+         - Define the schema change handling settings
+         - Enable and disable schemas, tables, and columns
+
+        The resource is in **ALPHA** state. The resource schema and behavior are subject to change without prior notice.
+
+        Known issues:
+         - Definition of `sync_mode` for table may cause infinite drifting changes in plan.
+         - Using `schema` field causes very slow plan preparation because of slow performance for SetTypable fields in terraform-framework, please use MapTypable `schemas` field instead.
+
+        ## Usage guide
+
+        Note that all configuration settings are aligned to the `schema_change_handling` settings,  except the settings explicitly specified in `schemas`.
+        In `schemas`, you only override the default settings defined by the chosen `schema_change_handling` option.
+        The allowed `schema_change_handling` options are as follows:
+        - `ALLOW_ALL`- all schemas, tables and columns are ENABLED by default. You only need  to explicitly specify DISABLED items or hashed tables
+        - `BLOCK_ALL` - all schemas, tables and columns are DISABLED by default, the configuration only specifies ENABLED items
+        - `ALLOW_COLUMNS` - all schemas and tables are DISABLED by default, but all columns are ENABLED by default, the configuration specifies ENABLED schemas and tables, and DISABLED columns
+
+        Note that system-enabled tables and columns (such as primary and foreign key columns, and [system tables and columns](https://fivetran.com/docs/getting-started/system-columns-and-tables)) are synced regardless of the `schema_change_handling` settings and configuration. You can only disable non-locked columns in the system-enabled tables. If the configuration specifies any system tables or locked system table columns as disabled ( `enabled = "false"`), the provider just ignores these statements.
+
+        ## Usage examples
+
+        ### Example for the ALLOW_ALL option
+
+        In `schemas`,  you only need to specify schemas and tables you want to disable (`enabled = "false"`) and columns you want to disable or hash (`hashed = "true"`).
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        schema = fivetran.ConnectorSchemaConfig("schema",
+            connector_id="connector_id",
+            schema_change_handling="ALLOW_ALL",
+            schemas={
+                "schema_name": {
+                    "tables": {
+                        "table_name": {
+                            "columns": {
+                                "hashed_column_name": {
+                                    "hashed": True,
+                                },
+                                "blocked_column_name": {
+                                    "enabled": False,
+                                },
+                            },
+                        },
+                        "blocked_table_name": {
+                            "enabled": False,
+                        },
+                    },
+                },
+                "blocked_schema": {
+                    "enabled": False,
+                },
+            })
+        ```
+
+        The configuration resulting from the example request is as follows:
+        - All new and existing schemas except `blocked_schema` are enabled
+        - All new and existing tables in the `schema_name` schema except the `blocked_table_name` table are enabled
+        - All new and existing columns in the`table_name` of the `schema_name` schema except the `blocked_column_name` column are enabled
+        - The `hashed_column_name` column is hashed in the `table_name` table in the `schema_name` schema
+        - All new schemas, tables, and columns are enabled once captured by the connector during the sync except those disabled by the system
+
+        ### Example for the BLOCK_ALL option
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        schema = fivetran.ConnectorSchemaConfig("schema",
+            connector_id="connector_id",
+            schema_change_handling="BLOCK_ALL",
+            schemas={
+                "schema_name": {
+                    "tables": {
+                        "table_name": {
+                            "columns": {
+                                "hashed_column_name": {
+                                    "hashed": True,
+                                },
+                            },
+                        },
+                        "enabled_table_name": {
+                            "enabled": True,
+                        },
+                    },
+                },
+                "enabled_schema": {
+                    "enabled": True,
+                },
+            })
+        ```
+
+        The configuration resulting from the example request is as follows:
+
+        - All new and existing schemas except the `enabled_schema` and `schema_name` are disabled
+        - Only system-enabled tables and columns are enabled in the `enabled_schema` schema
+        - All new and existing tables in the `schema_name` schema except  the `enabled_table_name`, `table_name` tables and system tables are disabled
+        - All new and existing columns in the `table_name` table of the `schema_name` schema are disabled except the `hashed_column_name` column and system columns
+        - The `hashed_column_name` column in the `table_name`  table the `schema_name` schema is hashed
+        - All new columns except the system-enabled columns, all schemas and tables are disabled once captured by the connector during the sync
+
+        ### Example for the ALLOW_COLUMNS option
+
+        In `schemas`, you only need to specify schemas and tables you want to enable `enabled = "true"`) and columns you want to disable (`enabled = "false"`) or hash (`hashed = "true"`).
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        schema = fivetran.ConnectorSchemaConfig("schema",
+            connector_id="connector_id",
+            schema_change_handling="ALLOW_COLUMNS",
+            schemas={
+                "schema_name": {
+                    "tables": {
+                        "table_name": {
+                            "columns": {
+                                "hashed_column_name": {
+                                    "hashed": True,
+                                },
+                                "disabled_column_name": {
+                                    "enabled": False,
+                                },
+                            },
+                        },
+                        "enabled_table": {
+                            "enabled": True,
+                        },
+                    },
+                },
+                "enabled_schema_name": {
+                    "enabled": True,
+                },
+            })
+        ```
+
+        The configuration resulting from the example request is as follows:
+
+        - All specified existing schemas and tables are enabled and all columns inside them are enabled by default, unless `enabled = "false"` is specified for the column
+        - All new and existing schemas except the `enabled_schema_name` and `schema_name` are disabled
+        - Only system-enabled tables and columns would be enabled in  the`enabled_schema_name` schema
+        - All new and existing tables in the `schema_name` schema except the `enabled_table_name`, `table_name` and system-enabled tables are disabled
+        - All new and existing columns in the`table_name` table of the `schema_name` schema except the `disabled_columns_name` and system-enabled columns are enabled
+        - The `hashed_column_name` would be hashed in table `table_name` in schema `schema_name`
+        - All new non system-enabled tables/schemas would be disabled once captured by connector on sync
+        - All new non system-enabled columns inside enabled tables (including system enabled-tables) would be enabled once captured by connector on sync
+
+        <a id="nestedblock--nonlocked"></a>
+        ### Non-locked table column management in system-enabled tables
+
+        You cannot manage system-enabled tables, but you can manage its non-locked columns. For example, your schema `schema_name` has a system-enabled table `system_enabled_table` that can't be disabled, and you want to disable one of its columns named `column_name`:
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        schema = fivetran.ConnectorSchemaConfig("schema",
+            connector_id="connector_id",
+            schema_change_handling="ALLOW_COLUMNS",
+            schemas={
+                "schema_name": {
+                    "tables": {
+                        "system_enabled_table": {
+                            "columns": {
+                                "column_name": {
+                                    "enabled": False,
+                                },
+                            },
+                        },
+                    },
+                },
+            })
+        ```
+
         ## Import
 
         You don't need to import this resource as it is synthetic (doesn't create new instances in upstream).
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -282,9 +472,10 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] schema_change_handling: The value specifying how new source data is handled.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['ConnectorSchemaConfigSchemasArgs', 'ConnectorSchemaConfigSchemasArgsDict']]]] schemas: Map of schema configurations.
         :param pulumi.Input[_builtins.str] schemas_json: Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
-        :param pulumi.Input[_builtins.str] validation_level: The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
-               fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
-               names. The resource will try to fetch columns for every configured table and verify column names.
+        :param pulumi.Input[_builtins.str] validation_level: The value defines validation method. 
+               - NONE: no validation, any configuration accepted. 
+               - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
+               - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
         """
         ...
     @overload
@@ -293,9 +484,193 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
                  args: ConnectorSchemaConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## page_title: "Resource: ConnectorSchemaConfig"
+
+        ***
+
+        # Resource: ConnectorSchemaConfig
+
+        This resource allows you to manage the Standard Configuration settings of a connector:
+         - Define the schema change handling settings
+         - Enable and disable schemas, tables, and columns
+
+        The resource is in **ALPHA** state. The resource schema and behavior are subject to change without prior notice.
+
+        Known issues:
+         - Definition of `sync_mode` for table may cause infinite drifting changes in plan.
+         - Using `schema` field causes very slow plan preparation because of slow performance for SetTypable fields in terraform-framework, please use MapTypable `schemas` field instead.
+
+        ## Usage guide
+
+        Note that all configuration settings are aligned to the `schema_change_handling` settings,  except the settings explicitly specified in `schemas`.
+        In `schemas`, you only override the default settings defined by the chosen `schema_change_handling` option.
+        The allowed `schema_change_handling` options are as follows:
+        - `ALLOW_ALL`- all schemas, tables and columns are ENABLED by default. You only need  to explicitly specify DISABLED items or hashed tables
+        - `BLOCK_ALL` - all schemas, tables and columns are DISABLED by default, the configuration only specifies ENABLED items
+        - `ALLOW_COLUMNS` - all schemas and tables are DISABLED by default, but all columns are ENABLED by default, the configuration specifies ENABLED schemas and tables, and DISABLED columns
+
+        Note that system-enabled tables and columns (such as primary and foreign key columns, and [system tables and columns](https://fivetran.com/docs/getting-started/system-columns-and-tables)) are synced regardless of the `schema_change_handling` settings and configuration. You can only disable non-locked columns in the system-enabled tables. If the configuration specifies any system tables or locked system table columns as disabled ( `enabled = "false"`), the provider just ignores these statements.
+
+        ## Usage examples
+
+        ### Example for the ALLOW_ALL option
+
+        In `schemas`,  you only need to specify schemas and tables you want to disable (`enabled = "false"`) and columns you want to disable or hash (`hashed = "true"`).
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        schema = fivetran.ConnectorSchemaConfig("schema",
+            connector_id="connector_id",
+            schema_change_handling="ALLOW_ALL",
+            schemas={
+                "schema_name": {
+                    "tables": {
+                        "table_name": {
+                            "columns": {
+                                "hashed_column_name": {
+                                    "hashed": True,
+                                },
+                                "blocked_column_name": {
+                                    "enabled": False,
+                                },
+                            },
+                        },
+                        "blocked_table_name": {
+                            "enabled": False,
+                        },
+                    },
+                },
+                "blocked_schema": {
+                    "enabled": False,
+                },
+            })
+        ```
+
+        The configuration resulting from the example request is as follows:
+        - All new and existing schemas except `blocked_schema` are enabled
+        - All new and existing tables in the `schema_name` schema except the `blocked_table_name` table are enabled
+        - All new and existing columns in the`table_name` of the `schema_name` schema except the `blocked_column_name` column are enabled
+        - The `hashed_column_name` column is hashed in the `table_name` table in the `schema_name` schema
+        - All new schemas, tables, and columns are enabled once captured by the connector during the sync except those disabled by the system
+
+        ### Example for the BLOCK_ALL option
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        schema = fivetran.ConnectorSchemaConfig("schema",
+            connector_id="connector_id",
+            schema_change_handling="BLOCK_ALL",
+            schemas={
+                "schema_name": {
+                    "tables": {
+                        "table_name": {
+                            "columns": {
+                                "hashed_column_name": {
+                                    "hashed": True,
+                                },
+                            },
+                        },
+                        "enabled_table_name": {
+                            "enabled": True,
+                        },
+                    },
+                },
+                "enabled_schema": {
+                    "enabled": True,
+                },
+            })
+        ```
+
+        The configuration resulting from the example request is as follows:
+
+        - All new and existing schemas except the `enabled_schema` and `schema_name` are disabled
+        - Only system-enabled tables and columns are enabled in the `enabled_schema` schema
+        - All new and existing tables in the `schema_name` schema except  the `enabled_table_name`, `table_name` tables and system tables are disabled
+        - All new and existing columns in the `table_name` table of the `schema_name` schema are disabled except the `hashed_column_name` column and system columns
+        - The `hashed_column_name` column in the `table_name`  table the `schema_name` schema is hashed
+        - All new columns except the system-enabled columns, all schemas and tables are disabled once captured by the connector during the sync
+
+        ### Example for the ALLOW_COLUMNS option
+
+        In `schemas`, you only need to specify schemas and tables you want to enable `enabled = "true"`) and columns you want to disable (`enabled = "false"`) or hash (`hashed = "true"`).
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        schema = fivetran.ConnectorSchemaConfig("schema",
+            connector_id="connector_id",
+            schema_change_handling="ALLOW_COLUMNS",
+            schemas={
+                "schema_name": {
+                    "tables": {
+                        "table_name": {
+                            "columns": {
+                                "hashed_column_name": {
+                                    "hashed": True,
+                                },
+                                "disabled_column_name": {
+                                    "enabled": False,
+                                },
+                            },
+                        },
+                        "enabled_table": {
+                            "enabled": True,
+                        },
+                    },
+                },
+                "enabled_schema_name": {
+                    "enabled": True,
+                },
+            })
+        ```
+
+        The configuration resulting from the example request is as follows:
+
+        - All specified existing schemas and tables are enabled and all columns inside them are enabled by default, unless `enabled = "false"` is specified for the column
+        - All new and existing schemas except the `enabled_schema_name` and `schema_name` are disabled
+        - Only system-enabled tables and columns would be enabled in  the`enabled_schema_name` schema
+        - All new and existing tables in the `schema_name` schema except the `enabled_table_name`, `table_name` and system-enabled tables are disabled
+        - All new and existing columns in the`table_name` table of the `schema_name` schema except the `disabled_columns_name` and system-enabled columns are enabled
+        - The `hashed_column_name` would be hashed in table `table_name` in schema `schema_name`
+        - All new non system-enabled tables/schemas would be disabled once captured by connector on sync
+        - All new non system-enabled columns inside enabled tables (including system enabled-tables) would be enabled once captured by connector on sync
+
+        <a id="nestedblock--nonlocked"></a>
+        ### Non-locked table column management in system-enabled tables
+
+        You cannot manage system-enabled tables, but you can manage its non-locked columns. For example, your schema `schema_name` has a system-enabled table `system_enabled_table` that can't be disabled, and you want to disable one of its columns named `column_name`:
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        schema = fivetran.ConnectorSchemaConfig("schema",
+            connector_id="connector_id",
+            schema_change_handling="ALLOW_COLUMNS",
+            schemas={
+                "schema_name": {
+                    "tables": {
+                        "system_enabled_table": {
+                            "columns": {
+                                "column_name": {
+                                    "enabled": False,
+                                },
+                            },
+                        },
+                    },
+                },
+            })
+        ```
+
         ## Import
 
         You don't need to import this resource as it is synthetic (doesn't create new instances in upstream).
+
 
         :param str resource_name: The name of the resource.
         :param ConnectorSchemaConfigArgs args: The arguments to use to populate this resource's properties.
@@ -365,9 +740,10 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] schema_change_handling: The value specifying how new source data is handled.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['ConnectorSchemaConfigSchemasArgs', 'ConnectorSchemaConfigSchemasArgsDict']]]] schemas: Map of schema configurations.
         :param pulumi.Input[_builtins.str] schemas_json: Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
-        :param pulumi.Input[_builtins.str] validation_level: The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
-               fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
-               names. The resource will try to fetch columns for every configured table and verify column names.
+        :param pulumi.Input[_builtins.str] validation_level: The value defines validation method. 
+               - NONE: no validation, any configuration accepted. 
+               - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
+               - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -429,9 +805,10 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
     @pulumi.getter(name="validationLevel")
     def validation_level(self) -> pulumi.Output[_builtins.str]:
         """
-        The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
-        fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
-        names. The resource will try to fetch columns for every configured table and verify column names.
+        The value defines validation method. 
+        - NONE: no validation, any configuration accepted. 
+        - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
+        - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
         """
         return pulumi.get(self, "validation_level")
 

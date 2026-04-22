@@ -24,7 +24,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var groupConnections = Fivetran.GetGroupConnections.Invoke(new()
+        ///     var groupConnections = Fivetran.Index.GetGroupConnections.Invoke(new()
         ///     {
         ///         Id = "anonymous_mystery",
         ///         Schema = "connection_schema_name",
@@ -49,7 +49,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var groupConnections = Fivetran.GetGroupConnections.Invoke(new()
+        ///     var groupConnections = Fivetran.Index.GetGroupConnections.Invoke(new()
         ///     {
         ///         Id = "anonymous_mystery",
         ///         Schema = "connection_schema_name",
@@ -74,7 +74,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var groupConnections = Fivetran.GetGroupConnections.Invoke(new()
+        ///     var groupConnections = Fivetran.Index.GetGroupConnections.Invoke(new()
         ///     {
         ///         Id = "anonymous_mystery",
         ///         Schema = "connection_schema_name",

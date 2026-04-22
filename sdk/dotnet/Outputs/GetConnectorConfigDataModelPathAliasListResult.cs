@@ -14,13 +14,13 @@ namespace Pulumi.Fivetran.Outputs
     public sealed class GetConnectorConfigDataModelPathAliasListResult
     {
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `oracle_business_intelligence_publisher`: Schema name
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `OracleBusinessIntelligencePublisher`: Schema name
         /// </summary>
         public readonly string Alias;
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `oracle_business_intelligence_publisher`: Path
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `OracleBusinessIntelligencePublisher`: Path
         /// </summary>
         public readonly string Path;
 

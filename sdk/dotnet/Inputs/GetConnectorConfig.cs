@@ -13,8 +13,8 @@ namespace Pulumi.Fivetran.Inputs
     public sealed class GetConnectorConfigArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics_data_feed`: Azure Blob Storage connection method
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalyticsDataFeed`: Azure Blob Storage connection method
         /// </summary>
         [Input("absConnectionMethod", required: true)]
         public string AbsConnectionMethod { get; set; } = null!;
@@ -23,9 +23,9 @@ namespace Pulumi.Fivetran.Inputs
         private string? _absConnectionString;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics_data_feed`: Azure Blob Storage connection string.
-        /// 	- Service `braze`: Connection String
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalyticsDataFeed`: Azure Blob Storage connection string.
+        /// 	- Service `Braze`: Connection String
         /// </summary>
         public string? AbsConnectionString
         {
@@ -34,65 +34,65 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics_data_feed`: Azure Blob Storage container address
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalyticsDataFeed`: Azure Blob Storage container address
         /// </summary>
         [Input("absContainerAddress", required: true)]
         public string AbsContainerAddress { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics_data_feed`: Azure Blob Storage container name.
-        /// 	- Service `braze`: Container Name
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalyticsDataFeed`: Azure Blob Storage container name.
+        /// 	- Service `Braze`: Container Name
         /// </summary>
         [Input("absContainerName", required: true)]
         public string AbsContainerName { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics_data_feed`: Azure Blob Storage host IP
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalyticsDataFeed`: Azure Blob Storage host IP
         /// </summary>
         [Input("absHostIp", required: true)]
         public string AbsHostIp { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics_data_feed`: Azure Blob Storage username
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalyticsDataFeed`: Azure Blob Storage username
         /// </summary>
         [Input("absHostUser", required: true)]
         public string AbsHostUser { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `braze`: Prefix
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Braze`: Prefix
         /// </summary>
         [Input("absPrefix", required: true)]
         public string AbsPrefix { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics_data_feed`: Azure Blob Storage public key
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalyticsDataFeed`: Azure Blob Storage public key
         /// </summary>
         [Input("absPublicKey", required: true)]
         public string AbsPublicKey { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `workramp`: Your WorkRamp academy ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Workramp`: Your WorkRamp academy ID.
         /// </summary>
         [Input("academyId", required: true)]
         public string AcademyId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `ceridian_dayforce`: Your confirmation that you have granted Fivetran access to all the RESTful services and fields you want to sync. Possible values: `true`, `false`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `CeridianDayforce`: Your confirmation that you have granted Fivetran access to all the RESTful services and fields you want to sync. Possible values: `True`, `False`.
         /// </summary>
         [Input("accessConfirmation", required: true)]
         public string AccessConfirmation { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `planful`: Your Planful access ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Planful`: Your Planful access ID.
         /// </summary>
         [Input("accessId", required: true)]
         public string AccessId { get; set; } = null!;
@@ -101,12 +101,12 @@ namespace Pulumi.Fivetran.Inputs
         private string? _accessKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `gainsight_customer_success`: The access key for API authentication.
-        /// 	- Service `gongio`: Your Gongio Access key.
-        /// 	- Service `line_ads`: Your LINE Ads access key.
-        /// 	- Service `planful`: Your Planful access key.
-        /// 	- Service `retailnext`: Your RetailNext access key.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GainsightCustomerSuccess`: The access key for API authentication.
+        /// 	- Service `Gongio`: Your Gongio Access key.
+        /// 	- Service `LineAds`: Your LINE Ads access key.
+        /// 	- Service `Planful`: Your Planful access key.
+        /// 	- Service `Retailnext`: Your RetailNext access key.
         /// </summary>
         public string? AccessKey
         {
@@ -118,16 +118,16 @@ namespace Pulumi.Fivetran.Inputs
         private string? _accessKeyId;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `appsflyer`: Your AWS access key ID.
-        /// 	- Service `aws_cost_report`: Access Key ID
-        /// 	- Service `checkout`: Your Checkout.com access key ID.
-        /// 	- Service `cloudtalk`: Your CloudTalk Access Key ID.
-        /// 	- Service `nice`: Your NICE access key ID.
-        /// 	- Service `s3`: Access Key ID
-        /// 	- Service `s3_compatible_storage`: Access Key ID
-        /// 	- Service `validio`: Your Validio access key ID.
-        /// 	- Service `wasabi_cloud_storage`: Access Key ID
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Appsflyer`: Your AWS access key ID.
+        /// 	- Service `AwsCostReport`: Access Key ID
+        /// 	- Service `Checkout`: Your Checkout.com access key ID.
+        /// 	- Service `Cloudtalk`: Your CloudTalk Access Key ID.
+        /// 	- Service `Nice`: Your NICE access key ID.
+        /// 	- Service `S3`: Access Key ID
+        /// 	- Service `S3CompatibleStorage`: Access Key ID
+        /// 	- Service `Validio`: Your Validio access key ID.
+        /// 	- Service `WasabiCloudStorage`: Access Key ID
         /// </summary>
         public string? AccessKeyId
         {
@@ -139,15 +139,15 @@ namespace Pulumi.Fivetran.Inputs
         private string? _accessKeySecret;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_cost_report`: Access Key Secret
-        /// 	- Service `checkout`: Your Checkout.com access key secret.
-        /// 	- Service `cloudtalk`: Your CloudTalk Access Key Secret.
-        /// 	- Service `gongio`: Your Gongio Access Key Secret.
-        /// 	- Service `nice`: Your NICE access key secret.
-        /// 	- Service `s3`: Access Key Secret
-        /// 	- Service `s3_compatible_storage`: Access Key Secret
-        /// 	- Service `wasabi_cloud_storage`: Access Key Secret
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsCostReport`: Access Key Secret
+        /// 	- Service `Checkout`: Your Checkout.com access key secret.
+        /// 	- Service `Cloudtalk`: Your CloudTalk Access Key Secret.
+        /// 	- Service `Gongio`: Your Gongio Access Key Secret.
+        /// 	- Service `Nice`: Your NICE access key secret.
+        /// 	- Service `S3`: Access Key Secret
+        /// 	- Service `S3CompatibleStorage`: Access Key Secret
+        /// 	- Service `WasabiCloudStorage`: Access Key Secret
         /// </summary>
         public string? AccessKeySecret
         {
@@ -159,36 +159,36 @@ namespace Pulumi.Fivetran.Inputs
         private string? _accessToken;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
+        /// Field usage depends on `Service` value: 
         /// 	- Service `7shifts`: Your 7shifts access token.
-        /// 	- Service `attio`: Your Attio bearer token
-        /// 	- Service `big_commerce`: API access token of your store.
-        /// 	- Service `bitly`: Your Bitly access token.
-        /// 	- Service `calabrio`: Your Calabrio access token.
-        /// 	- Service `coalesce`: Your Coalesce access token.
-        /// 	- Service `coheris`: Your Coheris access token.
-        /// 	- Service `coupa`: Your Coupa access token fetched using client_id and client_secret
-        /// 	- Service `deputy`: Your Deputy API access token.
-        /// 	- Service `getfeedback`: Your GetFeedback Access token.
-        /// 	- Service `gocardless`: Your GoCardless API token.
-        /// 	- Service `higher_logic_vanilla`: Your Higher Logic Vanilla access token.
-        /// 	- Service `ironclad`: Your Ironclad access token.
-        /// 	- Service `khoros_marketing`: Your Khoros Marketing access token.
-        /// 	- Service `kustomer`: Your Kustomer API key.
-        /// 	- Service `lattice`: Your Lattice API access token.
-        /// 	- Service `launchdarkly`: Your LaunchDarkly access token.
-        /// 	- Service `leap_crm`: Your Leap CRM access token.
-        /// 	- Service `nylas`: Your Nylas access_token.
-        /// 	- Service `planhat`: Your Planhat access token.
-        /// 	- Service `poplar`: Your Poplar access token.
-        /// 	- Service `rollbar`: Your Rollbar Access Token.
-        /// 	- Service `samsara`: Your Samsara API token.
-        /// 	- Service `slab`: Your Slab API key.
-        /// 	- Service `stripe`: The Stripe API Restricted Key
-        /// 	- Service `stripe_test`: The Stripe API Restricted Key
-        /// 	- Service `talkwalker`: Your Talkwalker access token.
-        /// 	- Service `workable`: Your Workable Access Token.
-        /// 	- Service `workramp`: Your WorkRamp access token.
+        /// 	- Service `Attio`: Your Attio bearer token
+        /// 	- Service `BigCommerce`: API access token of your store.
+        /// 	- Service `Bitly`: Your Bitly access token.
+        /// 	- Service `Calabrio`: Your Calabrio access token.
+        /// 	- Service `Coalesce`: Your Coalesce access token.
+        /// 	- Service `Coheris`: Your Coheris access token.
+        /// 	- Service `Coupa`: Your Coupa access token fetched using ClientId and ClientSecret
+        /// 	- Service `Deputy`: Your Deputy API access token.
+        /// 	- Service `Getfeedback`: Your GetFeedback Access token.
+        /// 	- Service `Gocardless`: Your GoCardless API token.
+        /// 	- Service `HigherLogicVanilla`: Your Higher Logic Vanilla access token.
+        /// 	- Service `Ironclad`: Your Ironclad access token.
+        /// 	- Service `KhorosMarketing`: Your Khoros Marketing access token.
+        /// 	- Service `Kustomer`: Your Kustomer API key.
+        /// 	- Service `Lattice`: Your Lattice API access token.
+        /// 	- Service `Launchdarkly`: Your LaunchDarkly access token.
+        /// 	- Service `LeapCrm`: Your Leap CRM access token.
+        /// 	- Service `Nylas`: Your Nylas access_token.
+        /// 	- Service `Planhat`: Your Planhat access token.
+        /// 	- Service `Poplar`: Your Poplar access token.
+        /// 	- Service `Rollbar`: Your Rollbar Access Token.
+        /// 	- Service `Samsara`: Your Samsara API token.
+        /// 	- Service `Slab`: Your Slab API key.
+        /// 	- Service `Stripe`: The Stripe API Restricted Key
+        /// 	- Service `StripeTest`: The Stripe API Restricted Key
+        /// 	- Service `Talkwalker`: Your Talkwalker access token.
+        /// 	- Service `Workable`: Your Workable Access Token.
+        /// 	- Service `Workramp`: Your WorkRamp access token.
         /// </summary>
         public string? AccessToken
         {
@@ -197,16 +197,16 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `share_point`: Access Type
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SharePoint`: Access Type
         /// </summary>
         [Input("accessType", required: true)]
         public string AccessType { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `netsuite_suiteanalytics`: The NetSuite Account ID.
-        /// 	- Service `ordway`: Your Ordway account type.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `NetsuiteSuiteanalytics`: The NetSuite Account ID.
+        /// 	- Service `Ordway`: Your Ordway account type.
         /// </summary>
         [Input("account", required: true)]
         public string Account { get; set; } = null!;
@@ -215,8 +215,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _accountAccessToken;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `rollbar`: Your Rollbar account access token.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Rollbar`: Your Rollbar account access token.
         /// </summary>
         public string? AccountAccessToken
         {
@@ -225,15 +225,15 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `appcues`: Your Appcues Account ID.
-        /// 	- Service `brightcove`: Your Brightcove account ID.
-        /// 	- Service `cin7core`: Your Cin7 Core account ID.
-        /// 	- Service `dear`: Your Dear Account ID.
-        /// 	- Service `harvest`: Your Harvest Account ID.
-        /// 	- Service `optimizely`: Your Optimizely account ID.
-        /// 	- Service `rokt`: Your Rokt account ID.
-        /// 	- Service `udemy_business`: Your Udemy Business account ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Appcues`: Your Appcues Account ID.
+        /// 	- Service `Brightcove`: Your Brightcove account ID.
+        /// 	- Service `Cin7core`: Your Cin7 Core account ID.
+        /// 	- Service `Dear`: Your Dear Account ID.
+        /// 	- Service `Harvest`: Your Harvest Account ID.
+        /// 	- Service `Optimizely`: Your Optimizely account ID.
+        /// 	- Service `Rokt`: Your Rokt account ID.
+        /// 	- Service `UdemyBusiness`: Your Udemy Business account ID.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -242,8 +242,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _accountIds;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `taboola`: Specific Account IDs to sync.  Must be populated if `syncMode` is set to `SpecificAccounts`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Taboola`: Specific Account IDs to sync.  Must be populated if `syncMode` is set to `SpecificAccounts`.
         /// </summary>
         public List<string> AccountIds
         {
@@ -255,9 +255,9 @@ namespace Pulumi.Fivetran.Inputs
         private string? _accountKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `cosmos`: The read-only primary or secondary account key for the database account. Required for the `ACCOUNT_KEY` data access method.
-        /// 	- Service `simplesat`: Your Simplesat account key.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Cosmos`: The read-only primary or secondary account key for the database account. Required for the `ACCOUNT_KEY` data access method.
+        /// 	- Service `Simplesat`: Your Simplesat account key.
         /// </summary>
         public string? AccountKey
         {
@@ -266,43 +266,43 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `eventsforce`: Your Eventsforce account name.
-        /// 	- Service `freshdesk_contact_center`: Your Freshdesk Contact Center account name.
-        /// 	- Service `happyfox`: Your HappyFox account name.
-        /// 	- Service `maxio_saasoptics`: Your Maxio SaaSOptics account name.
-        /// 	- Service `talkdesk`: Your Talkdesk Account Name.
-        /// 	- Service `udemy_business`: Your Udemy Business account name.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Eventsforce`: Your Eventsforce account name.
+        /// 	- Service `FreshdeskContactCenter`: Your Freshdesk Contact Center account name.
+        /// 	- Service `Happyfox`: Your HappyFox account name.
+        /// 	- Service `MaxioSaasoptics`: Your Maxio SaaSOptics account name.
+        /// 	- Service `Talkdesk`: Your Talkdesk Account Name.
+        /// 	- Service `UdemyBusiness`: Your Udemy Business account name.
         /// </summary>
         [Input("accountName", required: true)]
         public string AccountName { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `tymeshift`: Your Tymeshift account plan.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Tymeshift`: Your Tymeshift account plan.
         /// </summary>
         [Input("accountPlan", required: true)]
         public string AccountPlan { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `iterable`: If your Iterable account URL starts with `https://app.eu.iterable.com` then provide `EU` else `US`
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Iterable`: If your Iterable account URL starts with `https://app.eu.iterable.com` then provide `EU` else `US`
         /// </summary>
         [Input("accountRegion", required: true)]
         public string AccountRegion { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `fone_dynamics`: Your Fone Dynamics account SID.
-        /// 	- Service `impact_partner`: Your Impact Partner account SID
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FoneDynamics`: Your Fone Dynamics account SID.
+        /// 	- Service `ImpactPartner`: Your Impact Partner account SID
         /// </summary>
         [Input("accountSid", required: true)]
         public string AccountSid { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `itunes_connect`: Account Sync Mode
-        /// 	- Service `snapchat_ads`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ItunesConnect`: Account Sync Mode
+        /// 	- Service `SnapchatAds`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
         /// </summary>
         [Input("accountSyncMode", required: true)]
         public string AccountSyncMode { get; set; } = null!;
@@ -311,8 +311,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _accountToken;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `konnect_insights`: Your Konnect Insights Account Token.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `KonnectInsights`: Your Konnect Insights Account Token.
         /// </summary>
         public string? AccountToken
         {
@@ -321,8 +321,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `freightview`: Your Freightview account type.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Freightview`: Your Freightview account type.
         /// </summary>
         [Input("accountType", required: true)]
         public string AccountType { get; set; } = null!;
@@ -331,25 +331,25 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _accounts;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `bingads`: Specific accounts to sync. Must be populated if `syncMode` is set to `SpecificAccounts`.
-        /// 	- Service `facebook`: List of accounts of which connector will sync the data.
-        /// 	- Service `facebook_ad_account`: Specific accounts to sync. Must be populated if `sync_mode` is set to `SpecificAccounts`.
-        /// 	- Service `facebook_ads`: List of accounts of which connector will sync the data.
-        /// 	- Service `google_ads`: The list of Account IDs to sync. Must be populated if `sync_mode` is set to `SpecificAccounts`.
-        /// 	- Service `google_analytics`: The list of specific Account IDs to sync.  Must be populated if `syncMode` is set to `SpecificAccounts`.
-        /// 	- Service `google_analytics_4`: The list of specific Account IDs to sync. Must be populated if `sync_mode` is set to `SPECIFIC_ACCOUNTS`.
-        /// 	- Service `google_analytics_mcf`: Specific Account IDs to sync.  Must be populated if `sync_mode` is set to `SPECIFIC_ACCOUNTS`.
-        /// 	- Service `google_search_ads_360`: Specific accounts to sync. Must be populated if `accountsSyncMode` is set to `SPECIFIC_ACCOUNTS`.
-        /// 	- Service `instagram_business`: Specific accounts to sync. Must be populated if `sync_mode` is set to `SpecificAccounts`.
-        /// 	- Service `itunes_connect`: Accounts
-        /// 	- Service `linkedin_ads`: Specific Account IDs to sync. Must be populated if `syncMode` is set to `SpecificAccounts`.
-        /// 	- Service `snapchat_ads`: Specific accounts IDs to sync. Must be populated if `accountSyncMode` is set to `SpecificAccounts`.
-        /// 	- Service `spotify_ads`: The list of Ad Account IDs to sync. Must be populated if `sync_mode` is set to `SPECIFIC_ACCOUNTS`.
-        /// 	- Service `tiktok_ads`: Specific accounts to sync.  Must be populated if `sync_mode` is set to `SpecificAccounts`.
-        /// 	- Service `twilio`: Specific Accounts to sync.  Must be populated if `sync_mode` is set to `SpecificAccounts`.
-        /// 	- Service `twitter`: Specific accounts to sync. Must be populated if `sync_mode` is set to `SpecificAccounts`.
-        /// 	- Service `twitter_ads`: Specific Accounts to sync.  Must be populated if `sync_mode` is set to `SpecificAccounts`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Bingads`: Specific accounts to sync. Must be populated if `syncMode` is set to `SpecificAccounts`.
+        /// 	- Service `Facebook`: List of accounts of which connector will sync the data.
+        /// 	- Service `FacebookAdAccount`: Specific accounts to sync. Must be populated if `SyncMode` is set to `SpecificAccounts`.
+        /// 	- Service `FacebookAds`: List of accounts of which connector will sync the data.
+        /// 	- Service `GoogleAds`: The list of Account IDs to sync. Must be populated if `SyncMode` is set to `SpecificAccounts`.
+        /// 	- Service `GoogleAnalytics`: The list of specific Account IDs to sync.  Must be populated if `syncMode` is set to `SpecificAccounts`.
+        /// 	- Service `GoogleAnalytics4`: The list of specific Account IDs to sync. Must be populated if `SyncMode` is set to `SPECIFIC_ACCOUNTS`.
+        /// 	- Service `GoogleAnalyticsMcf`: Specific Account IDs to sync.  Must be populated if `SyncMode` is set to `SPECIFIC_ACCOUNTS`.
+        /// 	- Service `GoogleSearchAds360`: Specific accounts to sync. Must be populated if `accountsSyncMode` is set to `SPECIFIC_ACCOUNTS`.
+        /// 	- Service `InstagramBusiness`: Specific accounts to sync. Must be populated if `SyncMode` is set to `SpecificAccounts`.
+        /// 	- Service `ItunesConnect`: Accounts
+        /// 	- Service `LinkedinAds`: Specific Account IDs to sync. Must be populated if `syncMode` is set to `SpecificAccounts`.
+        /// 	- Service `SnapchatAds`: Specific accounts IDs to sync. Must be populated if `accountSyncMode` is set to `SpecificAccounts`.
+        /// 	- Service `SpotifyAds`: The list of Ad Account IDs to sync. Must be populated if `SyncMode` is set to `SPECIFIC_ACCOUNTS`.
+        /// 	- Service `TiktokAds`: Specific accounts to sync.  Must be populated if `SyncMode` is set to `SpecificAccounts`.
+        /// 	- Service `Twilio`: Specific Accounts to sync.  Must be populated if `SyncMode` is set to `SpecificAccounts`.
+        /// 	- Service `Twitter`: Specific accounts to sync. Must be populated if `SyncMode` is set to `SpecificAccounts`.
+        /// 	- Service `TwitterAds`: Specific Accounts to sync.  Must be populated if `SyncMode` is set to `SpecificAccounts`.
         /// </summary>
         public List<string> Accounts
         {
@@ -361,8 +361,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<Inputs.GetConnectorConfigAccountsRedditAdArgs>? _accountsRedditAds;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `reddit_ads`: Accounts
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `RedditAds`: Accounts
         /// </summary>
         public List<Inputs.GetConnectorConfigAccountsRedditAdArgs> AccountsRedditAds
         {
@@ -371,8 +371,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_search_ads_360`: Whether to sync all accounts or specific.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleSearchAds360`: Whether to sync all accounts or specific.
         /// </summary>
         [Input("accountsSyncMode", required: true)]
         public string AccountsSyncMode { get; set; } = null!;
@@ -381,8 +381,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _actionBreakdowns;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook`: List of action_breakdowns which connector will sync. [Possible action_breakdowns values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#actionbreakdowns).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Facebook`: List of ActionBreakdowns which connector will sync. [Possible ActionBreakdowns values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#actionbreakdowns).
         /// </summary>
         public List<string> ActionBreakdowns
         {
@@ -391,22 +391,22 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook`: The report time of action stats. [Possible action_report time values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#actionreporttime).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Facebook`: The report time of action stats. [Possible ActionReport time values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#actionreporttime).
         /// </summary>
         [Input("actionReportTime", required: true)]
         public string ActionReportTime { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `linkedin_ads`: Whether to sync all analytic reports or specific. Default value: `AllReports`
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `LinkedinAds`: Whether to sync all analytic reports or specific. Default value: `AllReports`
         /// </summary>
         [Input("adAnalytics", required: true)]
         public string AdAnalytics { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `double_click_publishers`: Ad unit view for the report.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `DoubleClickPublishers`: Ad unit view for the report.
         /// </summary>
         [Input("adUnitView", required: true)]
         public string AdUnitView { get; set; } = null!;
@@ -415,8 +415,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _adminApiKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `splitio`: Your Split admin api key.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Splitio`: Your Split admin api key.
         /// </summary>
         public string? AdminApiKey
         {
@@ -425,8 +425,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `brivo`: Your Brivo Admin username.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Brivo`: Your Brivo Admin username.
         /// </summary>
         [Input("adminUsername", required: true)]
         public string AdminUsername { get; set; } = null!;
@@ -435,8 +435,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<Inputs.GetConnectorConfigAdobeAnalyticsConfigurationArgs>? _adobeAnalyticsConfigurations;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics`: The list of configurations of tables you want to sync. The number of tables and their configurations is limited to 5. Required for connector creation.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalytics`: The list of configurations of tables you want to sync. The number of tables and their configurations is limited to 5. Required for connector creation.
         /// </summary>
         public List<Inputs.GetConnectorConfigAdobeAnalyticsConfigurationArgs> AdobeAnalyticsConfigurations
         {
@@ -448,8 +448,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _advertisables;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adroll`: Specific advertisables to sync. Must be populated if `sync_mode` is set to `SpecificAdvertisables`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adroll`: Specific advertisables to sync. Must be populated if `SyncMode` is set to `SpecificAdvertisables`.
         /// </summary>
         public List<string> Advertisables
         {
@@ -461,10 +461,10 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _advertisers;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_display_and_video_360`: The list of advertisers to include into a sync. This parameter only takes effect when `config_method` is set to `CREATE_NEW`.
-        /// 	- Service `google_search_ads_360`: Specific advertisers to sync. Must be populated if `advertisersSyncMode` is set to `SPECIFIC_ADVERTISERS`.
-        /// 	- Service `pinterest_ads`: Specific Advertisers to sync.  Must be populated if `sync_mode` is set to `SpecificAdvertisers`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleDisplayAndVideo360`: The list of advertisers to include into a sync. This parameter only takes effect when `ConfigMethod` is set to `CREATE_NEW`.
+        /// 	- Service `GoogleSearchAds360`: Specific advertisers to sync. Must be populated if `advertisersSyncMode` is set to `SPECIFIC_ADVERTISERS`.
+        /// 	- Service `PinterestAds`: Specific Advertisers to sync.  Must be populated if `SyncMode` is set to `SpecificAdvertisers`.
         /// </summary>
         public List<string> Advertisers
         {
@@ -476,8 +476,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _advertisersIds;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `yahoo_gemini`: Specific Advertiser IDs to sync. Must be populated if `syncMode` is set to `SpecificAccounts`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `YahooGemini`: Specific Advertiser IDs to sync. Must be populated if `syncMode` is set to `SpecificAccounts`.
         /// </summary>
         public List<string> AdvertisersIds
         {
@@ -486,8 +486,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_search_ads_360`: Whether to sync all or specific advertisers.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleSearchAds360`: Whether to sync all or specific advertisers.
         /// </summary>
         [Input("advertisersSyncMode", required: true)]
         public string AdvertisersSyncMode { get; set; } = null!;
@@ -496,8 +496,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _advertisersWithSeats;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `yahoo_dsp`: Specific Advertisers to sync. Must be populated if `sync_mode_advertiser` is set to `SPECIFIC_ADVERTISERS`. Pay attention to the format: `AdvertiserId:SeatId`
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `YahooDsp`: Specific Advertisers to sync. Must be populated if `SyncModeAdvertiser` is set to `SPECIFIC_ADVERTISERS`. Pay attention to the format: `AdvertiserId:SeatId`
         /// </summary>
         public List<string> AdvertisersWithSeats
         {
@@ -509,34 +509,34 @@ namespace Pulumi.Fivetran.Inputs
         public string AgentConfigMethod { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `db2i_hva`: The agent host.
-        /// 	- Service `db2i_sap_hva`: The host of the agent. This is the same as the database host, since the agent must be installed on the same machine as the source database.
-        /// 	- Service `hana_sap_hva_b1`: The host of the agent. This is the same as the database host, since the agent must be installed on the same machine as the source database.
-        /// 	- Service `hana_sap_hva_ecc`: The host of the agent. This is the same as the database host, since the agent must be installed on the same machine as the source database.
-        /// 	- Service `hana_sap_hva_ecc_netweaver`: The host of the agent. This is the same as the database host, since the agent must be installed on the same machine as the source database.
-        /// 	- Service `hana_sap_hva_s4`: The host of the agent. This is the same as the database host, since the agent must be installed on the same machine as the source database.
-        /// 	- Service `hana_sap_hva_s4_netweaver`: The host of the agent. This is the same as the database host, since the agent must be installed on the same machine as the source database.
-        /// 	- Service `oracle_hva`: The host of the agent. This is the same as database host, since the agent must be installed in the same machine as source database.
-        /// 	- Service `oracle_sap_hva`: The host of the agent. This is the same as the database host, since the agent must be installed on the same machine as the source database.
-        /// 	- Service `oracle_sap_hva_netweaver`: The host of the agent. This is the same as the database host, since the agent must be installed on the same machine as the source database.
-        /// 	- Service `sql_server_hva`: The host address of the machine running the agent. Often the same as the DB host.
-        /// 	- Service `sql_server_sap_ecc_hva`: The host address of the machine running the agent. Often the same as the DB host.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Db2iHva`: The agent host.
+        /// 	- Service `Db2iSapHva`: The host of the agent. This is the same as the database host, since the agent must be installed on the same machine as the source database.
+        /// 	- Service `HanaSapHvaB1`: The host of the agent. This is the same as the database host, since the agent must be installed on the same machine as the source database.
+        /// 	- Service `HanaSapHvaEcc`: The host of the agent. This is the same as the database host, since the agent must be installed on the same machine as the source database.
+        /// 	- Service `HanaSapHvaEccNetweaver`: The host of the agent. This is the same as the database host, since the agent must be installed on the same machine as the source database.
+        /// 	- Service `HanaSapHvaS4`: The host of the agent. This is the same as the database host, since the agent must be installed on the same machine as the source database.
+        /// 	- Service `HanaSapHvaS4Netweaver`: The host of the agent. This is the same as the database host, since the agent must be installed on the same machine as the source database.
+        /// 	- Service `OracleHva`: The host of the agent. This is the same as database host, since the agent must be installed in the same machine as source database.
+        /// 	- Service `OracleSapHva`: The host of the agent. This is the same as the database host, since the agent must be installed on the same machine as the source database.
+        /// 	- Service `OracleSapHvaNetweaver`: The host of the agent. This is the same as the database host, since the agent must be installed on the same machine as the source database.
+        /// 	- Service `SqlServerHva`: The host address of the machine running the agent. Often the same as the DB host.
+        /// 	- Service `SqlServerSapEccHva`: The host address of the machine running the agent. Often the same as the DB host.
         /// </summary>
         [Input("agentHost", required: true)]
         public string AgentHost { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `phoenix_ads`: Your Phoenix Ads Agent ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `PhoenixAds`: Your Phoenix Ads Agent ID.
         /// </summary>
         [Input("agentId", required: true)]
         public string AgentId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `oracle_hva`: The home directory of the Oracle database.
-        /// 	- Service `oracle_sap_hva`: The home directory of the Oracle database.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `OracleHva`: The home directory of the Oracle database.
+        /// 	- Service `OracleSapHva`: The home directory of the Oracle database.
         /// </summary>
         [Input("agentOraHome", required: true)]
         public string AgentOraHome { get; set; } = null!;
@@ -545,19 +545,19 @@ namespace Pulumi.Fivetran.Inputs
         private string? _agentPassword;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `db2i_hva`: The agent password.
-        /// 	- Service `db2i_sap_hva`: The agent user's password. It must have a minimum length of 10 characters.
-        /// 	- Service `hana_sap_hva_b1`: The agent user's password. It must have a minimum length of 10 characters.
-        /// 	- Service `hana_sap_hva_ecc`: The agent user's password. It must have a minimum length of 10 characters.
-        /// 	- Service `hana_sap_hva_ecc_netweaver`: The agent user's password. It must have a minimum length of 10 characters.
-        /// 	- Service `hana_sap_hva_s4`: The agent user's password. It must have a minimum length of 10 characters.
-        /// 	- Service `hana_sap_hva_s4_netweaver`: The agent user's password. It must have a minimum length of 10 characters.
-        /// 	- Service `oracle_hva`: The agent user's password. It should have a minimum length of 10 characters.
-        /// 	- Service `oracle_sap_hva`: The agent user's password. It must have a minimum length of 10 characters.
-        /// 	- Service `oracle_sap_hva_netweaver`: The agent user's password. It must have a minimum length of 10 characters.
-        /// 	- Service `sql_server_hva`: The password for the agent user.
-        /// 	- Service `sql_server_sap_ecc_hva`: The password for the agent user.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Db2iHva`: The agent password.
+        /// 	- Service `Db2iSapHva`: The agent user's password. It must have a minimum length of 10 characters.
+        /// 	- Service `HanaSapHvaB1`: The agent user's password. It must have a minimum length of 10 characters.
+        /// 	- Service `HanaSapHvaEcc`: The agent user's password. It must have a minimum length of 10 characters.
+        /// 	- Service `HanaSapHvaEccNetweaver`: The agent user's password. It must have a minimum length of 10 characters.
+        /// 	- Service `HanaSapHvaS4`: The agent user's password. It must have a minimum length of 10 characters.
+        /// 	- Service `HanaSapHvaS4Netweaver`: The agent user's password. It must have a minimum length of 10 characters.
+        /// 	- Service `OracleHva`: The agent user's password. It should have a minimum length of 10 characters.
+        /// 	- Service `OracleSapHva`: The agent user's password. It must have a minimum length of 10 characters.
+        /// 	- Service `OracleSapHvaNetweaver`: The agent user's password. It must have a minimum length of 10 characters.
+        /// 	- Service `SqlServerHva`: The password for the agent user.
+        /// 	- Service `SqlServerSapEccHva`: The password for the agent user.
         /// </summary>
         public string? AgentPassword
         {
@@ -566,62 +566,62 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `db2i_hva`: The agent port.
-        /// 	- Service `db2i_sap_hva`: The port number of the agent.
-        /// 	- Service `hana_sap_hva_b1`: The port number of the agent.
-        /// 	- Service `hana_sap_hva_ecc`: The port number of the agent.
-        /// 	- Service `hana_sap_hva_ecc_netweaver`: The port number of the agent.
-        /// 	- Service `hana_sap_hva_s4`: The port number of the agent.
-        /// 	- Service `hana_sap_hva_s4_netweaver`: The port number of the agent.
-        /// 	- Service `oracle_hva`: The port number of the agent.
-        /// 	- Service `oracle_sap_hva`: The port number of the agent.
-        /// 	- Service `oracle_sap_hva_netweaver`: The port number of the agent.
-        /// 	- Service `sql_server_hva`: The port that the agent has open for Fivetran's connection. Default value is 4343.
-        /// 	- Service `sql_server_sap_ecc_hva`: The port that the agent has open for Fivetran's connection. Default value is 4343.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Db2iHva`: The agent port.
+        /// 	- Service `Db2iSapHva`: The port number of the agent.
+        /// 	- Service `HanaSapHvaB1`: The port number of the agent.
+        /// 	- Service `HanaSapHvaEcc`: The port number of the agent.
+        /// 	- Service `HanaSapHvaEccNetweaver`: The port number of the agent.
+        /// 	- Service `HanaSapHvaS4`: The port number of the agent.
+        /// 	- Service `HanaSapHvaS4Netweaver`: The port number of the agent.
+        /// 	- Service `OracleHva`: The port number of the agent.
+        /// 	- Service `OracleSapHva`: The port number of the agent.
+        /// 	- Service `OracleSapHvaNetweaver`: The port number of the agent.
+        /// 	- Service `SqlServerHva`: The port that the agent has open for Fivetran's connection. Default value is 4343.
+        /// 	- Service `SqlServerSapEccHva`: The port that the agent has open for Fivetran's connection. Default value is 4343.
         /// </summary>
         [Input("agentPort", required: true)]
         public int AgentPort { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `db2i_hva`: The public certificate for the agent.
-        /// 	- Service `db2i_sap_hva`: The agent public certificate.
-        /// 	- Service `hana_sap_hva_b1`: The agent public certificate.
-        /// 	- Service `hana_sap_hva_ecc`: The agent public certificate.
-        /// 	- Service `hana_sap_hva_ecc_netweaver`: The agent public certificate.
-        /// 	- Service `hana_sap_hva_s4`: The agent public certificate.
-        /// 	- Service `hana_sap_hva_s4_netweaver`: The agent public certificate.
-        /// 	- Service `oracle_hva`: The agent public certificate.
-        /// 	- Service `oracle_sap_hva`: The agent public certificate.
-        /// 	- Service `oracle_sap_hva_netweaver`: The agent public certificate.
-        /// 	- Service `sql_server_hva`: The public certificate generated by the agent.
-        /// 	- Service `sql_server_sap_ecc_hva`: The public certificate generated by the agent.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Db2iHva`: The public certificate for the agent.
+        /// 	- Service `Db2iSapHva`: The agent public certificate.
+        /// 	- Service `HanaSapHvaB1`: The agent public certificate.
+        /// 	- Service `HanaSapHvaEcc`: The agent public certificate.
+        /// 	- Service `HanaSapHvaEccNetweaver`: The agent public certificate.
+        /// 	- Service `HanaSapHvaS4`: The agent public certificate.
+        /// 	- Service `HanaSapHvaS4Netweaver`: The agent public certificate.
+        /// 	- Service `OracleHva`: The agent public certificate.
+        /// 	- Service `OracleSapHva`: The agent public certificate.
+        /// 	- Service `OracleSapHvaNetweaver`: The agent public certificate.
+        /// 	- Service `SqlServerHva`: The public certificate generated by the agent.
+        /// 	- Service `SqlServerSapEccHva`: The public certificate generated by the agent.
         /// </summary>
         [Input("agentPublicCert", required: true)]
         public string AgentPublicCert { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `db2i_hva`: The agent user name.
-        /// 	- Service `db2i_sap_hva`: The agent's user.
-        /// 	- Service `hana_sap_hva_b1`: The agent's user.
-        /// 	- Service `hana_sap_hva_ecc`: The agent's user.
-        /// 	- Service `hana_sap_hva_ecc_netweaver`: The agent's user.
-        /// 	- Service `hana_sap_hva_s4`: The agent's user.
-        /// 	- Service `hana_sap_hva_s4_netweaver`: The agent's user.
-        /// 	- Service `oracle_hva`: The agent's user.
-        /// 	- Service `oracle_sap_hva`: The agent's user.
-        /// 	- Service `oracle_sap_hva_netweaver`: The agent's user.
-        /// 	- Service `sql_server_hva`: The agent's username.
-        /// 	- Service `sql_server_sap_ecc_hva`: The agent's username.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Db2iHva`: The agent user name.
+        /// 	- Service `Db2iSapHva`: The agent's user.
+        /// 	- Service `HanaSapHvaB1`: The agent's user.
+        /// 	- Service `HanaSapHvaEcc`: The agent's user.
+        /// 	- Service `HanaSapHvaEccNetweaver`: The agent's user.
+        /// 	- Service `HanaSapHvaS4`: The agent's user.
+        /// 	- Service `HanaSapHvaS4Netweaver`: The agent's user.
+        /// 	- Service `OracleHva`: The agent's user.
+        /// 	- Service `OracleSapHva`: The agent's user.
+        /// 	- Service `OracleSapHvaNetweaver`: The agent's user.
+        /// 	- Service `SqlServerHva`: The agent's username.
+        /// 	- Service `SqlServerSapEccHva`: The agent's username.
         /// </summary>
         [Input("agentUser", required: true)]
         public string AgentUser { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#aggregation).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Facebook`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#aggregation).
         /// </summary>
         [Input("aggregation", required: true)]
         public string Aggregation { get; set; } = null!;
@@ -630,8 +630,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _agreementGrantToken;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `economic`: Your E-conomic X-AgreementGrantToken goes here.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Economic`: Your E-conomic X-AgreementGrantToken goes here.
         /// </summary>
         public string? AgreementGrantToken
         {
@@ -640,66 +640,66 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `webhooks`: HMAC algorithm used for generating the HMAC signature. Supported algorithms  INFER_FROM_HEADER, MD5, SHA_1, SHA_224, SHA_256, SHA_384, SHA_512. Default: SHA_256
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Webhooks`: HMAC algorithm used for generating the HMAC signature. Supported algorithms  INFER_FROM_HEADER, MD5, SHA_1, SHA_224, SHA_256, SHA_384, SHA_512. Default: SHA_256
         /// </summary>
         [Input("algorithm", required: true)]
         public string Algorithm { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora`: Require TLS through Tunnel
-        /// 	- Service `aurora_postgres`: Require TLS through Tunnel
-        /// 	- Service `aveva_pi`: Require TLS.
-        /// 	- Service `azure_cosmos_for_mongo`: Require TLS
-        /// 	- Service `azure_postgres`: Require TLS through Tunnel
-        /// 	- Service `azure_sql_db`: Require TLS through Tunnel.
-        /// 	- Service `azure_sql_managed_db`: Require TLS.
-        /// 	- Service `clarity`: Require TLS through Tunnel.
-        /// 	- Service `cockroachdb`: Require TLS
-        /// 	- Service `db2i_hva`: Require TLS through Tunnel
-        /// 	- Service `db2i_sap_hva`: Require TLS through Tunnel
-        /// 	- Service `documentdb`: Require TLS encryption.
-        /// 	- Service `dynamics_365_fo`: Require TLS through Tunnel.
-        /// 	- Service `ehr`: Require TLS through Tunnel.
-        /// 	- Service `elastic_cloud`: Default value: true. Set to false if TLS is not required when using an SSH tunnel.
-        /// 	- Service `es_self_hosted`: Default value: true. Set to false if TLS is not required when using an SSH tunnel.
-        /// 	- Service `google_cloud_mysql`: Require TLS through Tunnel
-        /// 	- Service `google_cloud_postgresql`: Require TLS through Tunnel
-        /// 	- Service `google_cloud_sqlserver`: Require TLS.
-        /// 	- Service `heroku_postgres`: Require TLS through Tunnel
-        /// 	- Service `magento_mysql`: Require TLS through Tunnel
-        /// 	- Service `magento_mysql_rds`: Require TLS through Tunnel
-        /// 	- Service `maria`: Require TLS through Tunnel
-        /// 	- Service `maria_azure`: Require TLS through Tunnel
-        /// 	- Service `maria_rds`: Require TLS through Tunnel
-        /// 	- Service `mongo`: Require TLS
-        /// 	- Service `mongo_sharded`: Require TLS through Tunnel
-        /// 	- Service `mysql`: Require TLS through Tunnel
-        /// 	- Service `mysql_azure`: Require TLS through Tunnel
-        /// 	- Service `mysql_rds`: Require TLS through Tunnel
-        /// 	- Service `opendistro`: Default value: true. Set to false if TLS is not required when using an SSH tunnel.
-        /// 	- Service `opensearch`: Default value: true. Set to false if TLS is not required when using an SSH tunnel.
-        /// 	- Service `oracle`: Require TLS through Tunnel
-        /// 	- Service `oracle_ebs`: Require TLS through Tunnel
-        /// 	- Service `oracle_hva`: Require TLS through Tunnel
-        /// 	- Service `oracle_rac`: Require TLS through Tunnel
-        /// 	- Service `oracle_rds`: Require TLS through Tunnel
-        /// 	- Service `oracle_sap_hva`: Require TLS through Tunnel
-        /// 	- Service `oracle_sap_hva_netweaver`: Require TLS.
-        /// 	- Service `postgres`: Require TLS through Tunnel
-        /// 	- Service `postgres_rds`: Require TLS through Tunnel
-        /// 	- Service `sql_server`: Require TLS.
-        /// 	- Service `sql_server_hva`: Require TLS.
-        /// 	- Service `sql_server_rds`: Require TLS.
-        /// 	- Service `sql_server_sap_ecc_hva`: Require TLS.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Aurora`: Require TLS through Tunnel
+        /// 	- Service `AuroraPostgres`: Require TLS through Tunnel
+        /// 	- Service `AvevaPi`: Require TLS.
+        /// 	- Service `AzureCosmosForMongo`: Require TLS
+        /// 	- Service `AzurePostgres`: Require TLS through Tunnel
+        /// 	- Service `AzureSqlDb`: Require TLS through Tunnel.
+        /// 	- Service `AzureSqlManagedDb`: Require TLS.
+        /// 	- Service `Clarity`: Require TLS through Tunnel.
+        /// 	- Service `Cockroachdb`: Require TLS
+        /// 	- Service `Db2iHva`: Require TLS through Tunnel
+        /// 	- Service `Db2iSapHva`: Require TLS through Tunnel
+        /// 	- Service `Documentdb`: Require TLS encryption.
+        /// 	- Service `Dynamics365Fo`: Require TLS through Tunnel.
+        /// 	- Service `Ehr`: Require TLS through Tunnel.
+        /// 	- Service `ElasticCloud`: Default value: true. Set to false if TLS is not required when using an SSH tunnel.
+        /// 	- Service `EsSelfHosted`: Default value: true. Set to false if TLS is not required when using an SSH tunnel.
+        /// 	- Service `GoogleCloudMysql`: Require TLS through Tunnel
+        /// 	- Service `GoogleCloudPostgresql`: Require TLS through Tunnel
+        /// 	- Service `GoogleCloudSqlserver`: Require TLS.
+        /// 	- Service `HerokuPostgres`: Require TLS through Tunnel
+        /// 	- Service `MagentoMysql`: Require TLS through Tunnel
+        /// 	- Service `MagentoMysqlRds`: Require TLS through Tunnel
+        /// 	- Service `Maria`: Require TLS through Tunnel
+        /// 	- Service `MariaAzure`: Require TLS through Tunnel
+        /// 	- Service `MariaRds`: Require TLS through Tunnel
+        /// 	- Service `Mongo`: Require TLS
+        /// 	- Service `MongoSharded`: Require TLS through Tunnel
+        /// 	- Service `Mysql`: Require TLS through Tunnel
+        /// 	- Service `MysqlAzure`: Require TLS through Tunnel
+        /// 	- Service `MysqlRds`: Require TLS through Tunnel
+        /// 	- Service `Opendistro`: Default value: true. Set to false if TLS is not required when using an SSH tunnel.
+        /// 	- Service `Opensearch`: Default value: true. Set to false if TLS is not required when using an SSH tunnel.
+        /// 	- Service `Oracle`: Require TLS through Tunnel
+        /// 	- Service `OracleEbs`: Require TLS through Tunnel
+        /// 	- Service `OracleHva`: Require TLS through Tunnel
+        /// 	- Service `OracleRac`: Require TLS through Tunnel
+        /// 	- Service `OracleRds`: Require TLS through Tunnel
+        /// 	- Service `OracleSapHva`: Require TLS through Tunnel
+        /// 	- Service `OracleSapHvaNetweaver`: Require TLS.
+        /// 	- Service `Postgres`: Require TLS through Tunnel
+        /// 	- Service `PostgresRds`: Require TLS through Tunnel
+        /// 	- Service `SqlServer`: Require TLS.
+        /// 	- Service `SqlServerHva`: Require TLS.
+        /// 	- Service `SqlServerRds`: Require TLS.
+        /// 	- Service `SqlServerSapEccHva`: Require TLS.
         /// </summary>
         [Input("alwaysEncrypted", required: true)]
         public bool AlwaysEncrypted { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `freshsuccess`: Set this parameter to `api`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Freshsuccess`: Set this parameter to `Api`.
         /// </summary>
         [Input("api", required: true)]
         public string Api { get; set; } = null!;
@@ -708,11 +708,11 @@ namespace Pulumi.Fivetran.Inputs
         private string? _apiAccessToken;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `device_magic`: Your Device Magic API access token.
-        /// 	- Service `flywheel_digital`: Your Flywheel Digital API access token.
-        /// 	- Service `shopify`: API access token of your custom app.
-        /// 	- Service `square`: The Square API access token of your application.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `DeviceMagic`: Your Device Magic API access token.
+        /// 	- Service `FlywheelDigital`: Your Flywheel Digital API access token.
+        /// 	- Service `Shopify`: API access token of your custom app.
+        /// 	- Service `Square`: The Square API access token of your application.
         /// </summary>
         public string? ApiAccessToken
         {
@@ -721,16 +721,16 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `afterpay`: Your Afterpay API environment.
-        /// 	- Service `tiktok_organic`: Your TikTok Organic API environment.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Afterpay`: Your Afterpay API environment.
+        /// 	- Service `TiktokOrganic`: Your TikTok Organic API environment.
         /// </summary>
         [Input("apiEnvironment", required: true)]
         public string ApiEnvironment { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aircall`: Your Aircall API ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Aircall`: Your Aircall API ID.
         /// </summary>
         [Input("apiId", required: true)]
         public string ApiId { get; set; } = null!;
@@ -739,219 +739,219 @@ namespace Pulumi.Fivetran.Inputs
         private string? _apiKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
+        /// Field usage depends on `Service` value: 
         /// 	- Service `15five`: Your 15five API key.
         /// 	- Service `360learning`: Your 360Learning API Key.
         /// 	- Service `6sense`: Your 6sense API Key.
-        /// 	- Service `acculynx`: Your Acculynx API key.
-        /// 	- Service `activecampaign`: Your ActiveCampaign API key.
-        /// 	- Service `affinity`: Your Affinity API key.
-        /// 	- Service `airtable`: API key of the Airtable account.
-        /// 	- Service `algolia`: Your Algolia API key.
-        /// 	- Service `alida`: Your Alida API key.
-        /// 	- Service `anvyl`: Your Anvyl API key.
-        /// 	- Service `apollo`: Your Apollo API key.
-        /// 	- Service `appcues`: Your Appcues API key.
-        /// 	- Service `ashby`: Your Ashby API key.
-        /// 	- Service `assembled`: Your Assembled API key.
-        /// 	- Service `atlassian_jira_align`: Your Jira Align API key.
-        /// 	- Service `atlassian_ops_genie`: Your Opsgenie API key
-        /// 	- Service `attentive`: Your Attentive API key.
-        /// 	- Service `aumni`: Your Aumni API key.
-        /// 	- Service `avantlink`: Your AvantLink API key.
-        /// 	- Service `ballotready`: Your BallotReady API token.
-        /// 	- Service `bamboohr`: Your API Key.
-        /// 	- Service `bazaarvoice`: Your Bazaarvoice API key.
-        /// 	- Service `betterworks`: Your Betterworks API key.
-        /// 	- Service `bigmarker`: Your BigMarker API key.
-        /// 	- Service `bizzabo`: Your Bizzabo API key.
-        /// 	- Service `brave_ads`: Your Brave Ads API key
-        /// 	- Service `braze`: Your Braze API Key.
-        /// 	- Service `brevo`: Your Brevo API key.
-        /// 	- Service `brivo`: Your Brivo API key.
-        /// 	- Service `bubble`: Your Bubble API token.
-        /// 	- Service `buildium`: Your Buildium private API key.
-        /// 	- Service `callrail`: Your CallRail API key.
-        /// 	- Service `campaignmonitor`: Your Campaign Monitor API key.
-        /// 	- Service `canny`: Your Canny API key.
-        /// 	- Service `chargebee_product_catalog_1`: Your Chargebee Product Catalog 1 API key.
-        /// 	- Service `chargebee_product_catalog_2`: Your Chargebee API key.
-        /// 	- Service `chartmogul`: Your ChartMogul API key.
-        /// 	- Service `chorusai`: Your Chorus API key.
-        /// 	- Service `churnkey`: Your Churnkey API Key.
-        /// 	- Service `churnzero`: Your ChurnZero API key.
-        /// 	- Service `cimis`: Your Cimis API key.
-        /// 	- Service `circleci`: Your CircleCI API Key.
-        /// 	- Service `clickup`: Your ClickUp API key.
-        /// 	- Service `clockify`: Your Clockify API key.
-        /// 	- Service `clockodo`: Your Clockodo API key.
-        /// 	- Service `close`: Your Close API key.
-        /// 	- Service `cloudbeds`: Your Cloudbeds API key.
-        /// 	- Service `clubspeed`: Your Clubspeed API key.
-        /// 	- Service `coassemble`: Your Coassemble API key.
-        /// 	- Service `codefresh`: Your Codefresh API Key.
-        /// 	- Service `column`: Your Column API key.
-        /// 	- Service `concord`: Your Concord API key.
-        /// 	- Service `confluent_cloud`: API Key
-        /// 	- Service `contrast_security`: Your Contrast Security API Key.
-        /// 	- Service `copper`: Your Copper API key.
-        /// 	- Service `coupa`: Your Coupa API key.
-        /// 	- Service `crunchbase`: Your Crunchbase API key.
-        /// 	- Service `datadog`: Your Datadog API key.
-        /// 	- Service `dbt_cloud`: Your dbt Cloud service token.
-        /// 	- Service `dcl_logistics`: Your DCL Logistics API key.
-        /// 	- Service `delighted`: API Key for your Delighted account
-        /// 	- Service `destini`: Your Destini API Key.
-        /// 	- Service `donus`: Your Donus API key.
-        /// 	- Service `doorloop`: Your DoorLoop API key.
-        /// 	- Service `drata`: Your Drata API Key.
-        /// 	- Service `dropbox_sign`: Your Dropbox Sign API key.
-        /// 	- Service `duoplane`: Your Duoplane API key.
-        /// 	- Service `easypost`: Your EasyPost API Key.
-        /// 	- Service `electronic_tenant_solutions`: Your Electronic Tenant Solutions API key.
-        /// 	- Service `eventsforce`: Your Eventsforce API secret key.
-        /// 	- Service `everflow`: Your Everflow API key.
-        /// 	- Service `everhour`: Your Everhour API Token.
-        /// 	- Service `expensein`: Your ExpenseIn API key.
-        /// 	- Service `factorial`: Your Factorial API key.
-        /// 	- Service `firehydrant`: Your FireHydrant API key.
-        /// 	- Service `float`: Your Float API key.
-        /// 	- Service `forj_community`: Your Forj Community API key.
-        /// 	- Service `fourkites`: Your FourKites API key.
-        /// 	- Service `freightview`: Your Freightview API key.
-        /// 	- Service `freshdesk`: Your Freshdesk API Key.
-        /// 	- Service `freshdesk_contact_center`: Your Freshdesk Contact Center API key.
-        /// 	- Service `freshsales`: Your Freshsales API key.
-        /// 	- Service `freshservice`: Your Freshservice API Key.
-        /// 	- Service `freshsuccess`: Your Freshsuccess API key.
-        /// 	- Service `freshteam`: Your Freshteam API key.
-        /// 	- Service `friendbuy`: Your Friendbuy API key.
-        /// 	- Service `fullstory`: Your Fullstory API key.
-        /// 	- Service `gainsight_product_experience`: Your Gainsight Product Experience API key.
-        /// 	- Service `gem`: Your Gem API key.
-        /// 	- Service `goldcast`: Your Goldcast API key.
-        /// 	- Service `gorgias`: Your Gorgias API key.
-        /// 	- Service `greenhouse`: Your Greenhouse API key.
-        /// 	- Service `grepsr`: Your Grepsr API Key.
-        /// 	- Service `grin`: Your Grin API key.
-        /// 	- Service `happyfox`: Your HappyFox API key.
-        /// 	- Service `height`: Your Height API key.
-        /// 	- Service `helpshift`: Your Helpshift API Key.
-        /// 	- Service `incidentio`: Your incident.io API key.
-        /// 	- Service `infobip`: Your Infobip API key.
-        /// 	- Service `insightly`: Your Insightly API key.
-        /// 	- Service `integrate`: Your Integrate API key.
-        /// 	- Service `invoiced`: Your Invoiced API key.
-        /// 	- Service `iterable`: Your Iterable API key.
-        /// 	- Service `ivanti`: Your Ivanti API Key.
-        /// 	- Service `jotform`: Your Jotform API key.
-        /// 	- Service `justcall`: Your JustCall API key.
-        /// 	- Service `katana`: Your Katana API key.
-        /// 	- Service `kevel`: Your Kevel API key.
-        /// 	- Service `keypay`: Your KeyPay API key.
-        /// 	- Service `kisi`: Your Kisi API key.
-        /// 	- Service `klaviyo`: Your Klaviyo API key.
-        /// 	- Service `learnupon`: Your Learnupon API key.
-        /// 	- Service `lemlist`: Your Lemlist API key.
-        /// 	- Service `lever`: Your Lever API key.
-        /// 	- Service `liftoff`: Your Liftoff API key.
-        /// 	- Service `linear`: Your Linear API key.
-        /// 	- Service `linksquares`: Your LinkSquares API key.
-        /// 	- Service `lob`: Your Lob API key.
-        /// 	- Service `loop`: Your Loop API key.
-        /// 	- Service `lucca`: Your Lucca API key.
-        /// 	- Service `luma`: Your Luma API key.
-        /// 	- Service `maileon`: Your Maileon API key.
-        /// 	- Service `mailgun`: Your Mailgun API key.
-        /// 	- Service `mailjet`: Your Mailjet API key.
-        /// 	- Service `malomo`: Your Malomo API key.
-        /// 	- Service `mambu`: Your Mambu API key.
-        /// 	- Service `mandrill`: Your Mandrill API key.
-        /// 	- Service `maxio_chargify`: Enter Your API Key.
-        /// 	- Service `messagebird`: Your MessageBird API key.
-        /// 	- Service `moloco`: Your Moloco api_key
-        /// 	- Service `mountain`: Your MNTN API key.
-        /// 	- Service `myosh`: Your myosh API key.
-        /// 	- Service `okendo`: Your Okendo API key.
-        /// 	- Service `ometria`: Your Ometria API Key.
-        /// 	- Service `oncehub`: Your OnceHub API key.
-        /// 	- Service `ordergroove`: Your Ordergroove API key.
-        /// 	- Service `ordway`: Your Ordway API key.
-        /// 	- Service `ortto`: Your Ortto API key.
-        /// 	- Service `paddle`: Your Paddle API key.
-        /// 	- Service `pagerduty`: Your PagerDuty API key.
-        /// 	- Service `pandadoc`: Your PandaDoc API key.
-        /// 	- Service `papershift`: Your Papershift API Key
-        /// 	- Service `partnerize`: Your Partnerize user API key.
-        /// 	- Service `persona`: Your Persona API key.
-        /// 	- Service `picqer`: Your Picqer API key.
-        /// 	- Service `pigment`: Your Pigment API key.
-        /// 	- Service `pinpoint`: Your Pinpoint API key.
-        /// 	- Service `pipe17`: The Pipe17 API key.
-        /// 	- Service `placerai`: Your Placer.ai API key.
-        /// 	- Service `playvox`: Your Playvox API Key.
-        /// 	- Service `posthog`: Your PostHog API key.
-        /// 	- Service `prive`: Your Prive API key.
-        /// 	- Service `prosperstack`: Your ProsperStack API key.
-        /// 	- Service `qualaroo`: Your Qualaroo API Key.
-        /// 	- Service `quorum`: Your Quorum API key.
-        /// 	- Service `rebound_returns`: Your ReBound Returns API key.
-        /// 	- Service `recurly`: The Recurly API key.
-        /// 	- Service `replyio`: Your Reply API key.
-        /// 	- Service `revenuecat`: Your RevenueCat API key.
-        /// 	- Service `reviewsio`: Your REVIEWS.io API key.
-        /// 	- Service `revops`: Your RevOps bearer token.
-        /// 	- Service `ricochet360`: Your Ricochet360 API key.
-        /// 	- Service `ringover`: Your Ringover API key.
-        /// 	- Service `rippling`: Your Rippling API key.
-        /// 	- Service `rocketlane`: Your Rocketlane API key.
-        /// 	- Service `rootly`: Your Rootly API key.
-        /// 	- Service `ruddr`: Your Ruddr API key.
-        /// 	- Service `safebase`: Your SafeBase API key.
-        /// 	- Service `sage_hr`: Your Sage HR API key.
-        /// 	- Service `sailthru`: The Sailthru API key.
-        /// 	- Service `salsify`: Your Salsify API Key.
-        /// 	- Service `security_journey`: Your Security Journey API key.
-        /// 	- Service `sendgrid`: The SendGrid API key.
-        /// 	- Service `sendinblue`: Your Sendinblue API key.
-        /// 	- Service `shortcut`: Your Shortcut API token.
-        /// 	- Service `shortio`: Your Short.io API key.
-        /// 	- Service `simplesat`: Your Simplesat API key.
-        /// 	- Service `sistrix`: Your SISTRIX API key.
-        /// 	- Service `skilljar`: Your Skilljar API key.
-        /// 	- Service `smartwaiver`: Your Smartwaiver API key.
-        /// 	- Service `snyk`: Your Snyk API key.
-        /// 	- Service `sonarqube`: Your Sonarqube API key.
-        /// 	- Service `sparkpost`: Your SparkPost API key.
-        /// 	- Service `squarespace`: Your Squarespace API key.
-        /// 	- Service `stackadapt`: Your StackAdapt API key.
-        /// 	- Service `statuspage`: Your Statuspage API Key.
-        /// 	- Service `stripe`: Restricted API key
-        /// 	- Service `stripe_test`: Restricted API key
-        /// 	- Service `subscript`: Your Subscript API key.
-        /// 	- Service `survicate`: Your Survicate API Key.
-        /// 	- Service `teads`: Your Teads API key.
-        /// 	- Service `teamtailor`: Your Teamtailor API key.
-        /// 	- Service `testrail`: Your TestRail API key.
-        /// 	- Service `ticket_tailor`: Your Ticket Tailor API key.
-        /// 	- Service `transcend`: Your Transcend API key.
-        /// 	- Service `trello`: Your TRELLO api key.
-        /// 	- Service `triple_whale`: Your Triple Whale API key.
-        /// 	- Service `uppromote`: Your UpPromote API key.
-        /// 	- Service `veeqo`: Your Veeqo API key.
-        /// 	- Service `venminder`: Your Venminder API key.
-        /// 	- Service `visit_by_ges`: Your Visit by GES API key.
-        /// 	- Service `vitally`: Your Vitally API key.
-        /// 	- Service `vonage`: Your Vonage API Key.
-        /// 	- Service `vts`: Your VTS API key.
-        /// 	- Service `webconnex`: Your Webconnex API key.
-        /// 	- Service `wicked_reports`: Your Wicked Reports API key.
-        /// 	- Service `workleap_officevibe`: Your Workleap Officevibe API key.
-        /// 	- Service `xsolla`: Your Xsolla API key.
-        /// 	- Service `yext`: Your Yext API key.
-        /// 	- Service `yougov_sport`: Your Yougov Sport API key.
-        /// 	- Service `zingtree`: Your Zingtree API key.
-        /// 	- Service `zip`: Your Zip API key.
+        /// 	- Service `Acculynx`: Your Acculynx API key.
+        /// 	- Service `Activecampaign`: Your ActiveCampaign API key.
+        /// 	- Service `Affinity`: Your Affinity API key.
+        /// 	- Service `Airtable`: API key of the Airtable account.
+        /// 	- Service `Algolia`: Your Algolia API key.
+        /// 	- Service `Alida`: Your Alida API key.
+        /// 	- Service `Anvyl`: Your Anvyl API key.
+        /// 	- Service `Apollo`: Your Apollo API key.
+        /// 	- Service `Appcues`: Your Appcues API key.
+        /// 	- Service `Ashby`: Your Ashby API key.
+        /// 	- Service `Assembled`: Your Assembled API key.
+        /// 	- Service `AtlassianJiraAlign`: Your Jira Align API key.
+        /// 	- Service `AtlassianOpsGenie`: Your Opsgenie API key
+        /// 	- Service `Attentive`: Your Attentive API key.
+        /// 	- Service `Aumni`: Your Aumni API key.
+        /// 	- Service `Avantlink`: Your AvantLink API key.
+        /// 	- Service `Ballotready`: Your BallotReady API token.
+        /// 	- Service `Bamboohr`: Your API Key.
+        /// 	- Service `Bazaarvoice`: Your Bazaarvoice API key.
+        /// 	- Service `Betterworks`: Your Betterworks API key.
+        /// 	- Service `Bigmarker`: Your BigMarker API key.
+        /// 	- Service `Bizzabo`: Your Bizzabo API key.
+        /// 	- Service `BraveAds`: Your Brave Ads API key
+        /// 	- Service `Braze`: Your Braze API Key.
+        /// 	- Service `Brevo`: Your Brevo API key.
+        /// 	- Service `Brivo`: Your Brivo API key.
+        /// 	- Service `Bubble`: Your Bubble API token.
+        /// 	- Service `Buildium`: Your Buildium private API key.
+        /// 	- Service `Callrail`: Your CallRail API key.
+        /// 	- Service `Campaignmonitor`: Your Campaign Monitor API key.
+        /// 	- Service `Canny`: Your Canny API key.
+        /// 	- Service `ChargebeeProductCatalog1`: Your Chargebee Product Catalog 1 API key.
+        /// 	- Service `ChargebeeProductCatalog2`: Your Chargebee API key.
+        /// 	- Service `Chartmogul`: Your ChartMogul API key.
+        /// 	- Service `Chorusai`: Your Chorus API key.
+        /// 	- Service `Churnkey`: Your Churnkey API Key.
+        /// 	- Service `Churnzero`: Your ChurnZero API key.
+        /// 	- Service `Cimis`: Your Cimis API key.
+        /// 	- Service `Circleci`: Your CircleCI API Key.
+        /// 	- Service `Clickup`: Your ClickUp API key.
+        /// 	- Service `Clockify`: Your Clockify API key.
+        /// 	- Service `Clockodo`: Your Clockodo API key.
+        /// 	- Service `Close`: Your Close API key.
+        /// 	- Service `Cloudbeds`: Your Cloudbeds API key.
+        /// 	- Service `Clubspeed`: Your Clubspeed API key.
+        /// 	- Service `Coassemble`: Your Coassemble API key.
+        /// 	- Service `Codefresh`: Your Codefresh API Key.
+        /// 	- Service `Column`: Your Column API key.
+        /// 	- Service `Concord`: Your Concord API key.
+        /// 	- Service `ConfluentCloud`: API Key
+        /// 	- Service `ContrastSecurity`: Your Contrast Security API Key.
+        /// 	- Service `Copper`: Your Copper API key.
+        /// 	- Service `Coupa`: Your Coupa API key.
+        /// 	- Service `Crunchbase`: Your Crunchbase API key.
+        /// 	- Service `Datadog`: Your Datadog API key.
+        /// 	- Service `DbtCloud`: Your dbt Cloud service token.
+        /// 	- Service `DclLogistics`: Your DCL Logistics API key.
+        /// 	- Service `Delighted`: API Key for your Delighted account
+        /// 	- Service `Destini`: Your Destini API Key.
+        /// 	- Service `Donus`: Your Donus API key.
+        /// 	- Service `Doorloop`: Your DoorLoop API key.
+        /// 	- Service `Drata`: Your Drata API Key.
+        /// 	- Service `DropboxSign`: Your Dropbox Sign API key.
+        /// 	- Service `Duoplane`: Your Duoplane API key.
+        /// 	- Service `Easypost`: Your EasyPost API Key.
+        /// 	- Service `ElectronicTenantSolutions`: Your Electronic Tenant Solutions API key.
+        /// 	- Service `Eventsforce`: Your Eventsforce API secret key.
+        /// 	- Service `Everflow`: Your Everflow API key.
+        /// 	- Service `Everhour`: Your Everhour API Token.
+        /// 	- Service `Expensein`: Your ExpenseIn API key.
+        /// 	- Service `Factorial`: Your Factorial API key.
+        /// 	- Service `Firehydrant`: Your FireHydrant API key.
+        /// 	- Service `Float`: Your Float API key.
+        /// 	- Service `ForjCommunity`: Your Forj Community API key.
+        /// 	- Service `Fourkites`: Your FourKites API key.
+        /// 	- Service `Freightview`: Your Freightview API key.
+        /// 	- Service `Freshdesk`: Your Freshdesk API Key.
+        /// 	- Service `FreshdeskContactCenter`: Your Freshdesk Contact Center API key.
+        /// 	- Service `Freshsales`: Your Freshsales API key.
+        /// 	- Service `Freshservice`: Your Freshservice API Key.
+        /// 	- Service `Freshsuccess`: Your Freshsuccess API key.
+        /// 	- Service `Freshteam`: Your Freshteam API key.
+        /// 	- Service `Friendbuy`: Your Friendbuy API key.
+        /// 	- Service `Fullstory`: Your Fullstory API key.
+        /// 	- Service `GainsightProductExperience`: Your Gainsight Product Experience API key.
+        /// 	- Service `Gem`: Your Gem API key.
+        /// 	- Service `Goldcast`: Your Goldcast API key.
+        /// 	- Service `Gorgias`: Your Gorgias API key.
+        /// 	- Service `Greenhouse`: Your Greenhouse API key.
+        /// 	- Service `Grepsr`: Your Grepsr API Key.
+        /// 	- Service `Grin`: Your Grin API key.
+        /// 	- Service `Happyfox`: Your HappyFox API key.
+        /// 	- Service `Height`: Your Height API key.
+        /// 	- Service `Helpshift`: Your Helpshift API Key.
+        /// 	- Service `Incidentio`: Your incident.io API key.
+        /// 	- Service `Infobip`: Your Infobip API key.
+        /// 	- Service `Insightly`: Your Insightly API key.
+        /// 	- Service `Integrate`: Your Integrate API key.
+        /// 	- Service `Invoiced`: Your Invoiced API key.
+        /// 	- Service `Iterable`: Your Iterable API key.
+        /// 	- Service `Ivanti`: Your Ivanti API Key.
+        /// 	- Service `Jotform`: Your Jotform API key.
+        /// 	- Service `Justcall`: Your JustCall API key.
+        /// 	- Service `Katana`: Your Katana API key.
+        /// 	- Service `Kevel`: Your Kevel API key.
+        /// 	- Service `Keypay`: Your KeyPay API key.
+        /// 	- Service `Kisi`: Your Kisi API key.
+        /// 	- Service `Klaviyo`: Your Klaviyo API key.
+        /// 	- Service `Learnupon`: Your Learnupon API key.
+        /// 	- Service `Lemlist`: Your Lemlist API key.
+        /// 	- Service `Lever`: Your Lever API key.
+        /// 	- Service `Liftoff`: Your Liftoff API key.
+        /// 	- Service `Linear`: Your Linear API key.
+        /// 	- Service `Linksquares`: Your LinkSquares API key.
+        /// 	- Service `Lob`: Your Lob API key.
+        /// 	- Service `Loop`: Your Loop API key.
+        /// 	- Service `Lucca`: Your Lucca API key.
+        /// 	- Service `Luma`: Your Luma API key.
+        /// 	- Service `Maileon`: Your Maileon API key.
+        /// 	- Service `Mailgun`: Your Mailgun API key.
+        /// 	- Service `Mailjet`: Your Mailjet API key.
+        /// 	- Service `Malomo`: Your Malomo API key.
+        /// 	- Service `Mambu`: Your Mambu API key.
+        /// 	- Service `Mandrill`: Your Mandrill API key.
+        /// 	- Service `MaxioChargify`: Enter Your API Key.
+        /// 	- Service `Messagebird`: Your MessageBird API key.
+        /// 	- Service `Moloco`: Your Moloco ApiKey
+        /// 	- Service `Mountain`: Your MNTN API key.
+        /// 	- Service `Myosh`: Your myosh API key.
+        /// 	- Service `Okendo`: Your Okendo API key.
+        /// 	- Service `Ometria`: Your Ometria API Key.
+        /// 	- Service `Oncehub`: Your OnceHub API key.
+        /// 	- Service `Ordergroove`: Your Ordergroove API key.
+        /// 	- Service `Ordway`: Your Ordway API key.
+        /// 	- Service `Ortto`: Your Ortto API key.
+        /// 	- Service `Paddle`: Your Paddle API key.
+        /// 	- Service `Pagerduty`: Your PagerDuty API key.
+        /// 	- Service `Pandadoc`: Your PandaDoc API key.
+        /// 	- Service `Papershift`: Your Papershift API Key
+        /// 	- Service `Partnerize`: Your Partnerize user API key.
+        /// 	- Service `Persona`: Your Persona API key.
+        /// 	- Service `Picqer`: Your Picqer API key.
+        /// 	- Service `Pigment`: Your Pigment API key.
+        /// 	- Service `Pinpoint`: Your Pinpoint API key.
+        /// 	- Service `Pipe17`: The Pipe17 API key.
+        /// 	- Service `Placerai`: Your Placer.ai API key.
+        /// 	- Service `Playvox`: Your Playvox API Key.
+        /// 	- Service `Posthog`: Your PostHog API key.
+        /// 	- Service `Prive`: Your Prive API key.
+        /// 	- Service `Prosperstack`: Your ProsperStack API key.
+        /// 	- Service `Qualaroo`: Your Qualaroo API Key.
+        /// 	- Service `Quorum`: Your Quorum API key.
+        /// 	- Service `ReboundReturns`: Your ReBound Returns API key.
+        /// 	- Service `Recurly`: The Recurly API key.
+        /// 	- Service `Replyio`: Your Reply API key.
+        /// 	- Service `Revenuecat`: Your RevenueCat API key.
+        /// 	- Service `Reviewsio`: Your REVIEWS.io API key.
+        /// 	- Service `Revops`: Your RevOps bearer token.
+        /// 	- Service `Ricochet360`: Your Ricochet360 API key.
+        /// 	- Service `Ringover`: Your Ringover API key.
+        /// 	- Service `Rippling`: Your Rippling API key.
+        /// 	- Service `Rocketlane`: Your Rocketlane API key.
+        /// 	- Service `Rootly`: Your Rootly API key.
+        /// 	- Service `Ruddr`: Your Ruddr API key.
+        /// 	- Service `Safebase`: Your SafeBase API key.
+        /// 	- Service `SageHr`: Your Sage HR API key.
+        /// 	- Service `Sailthru`: The Sailthru API key.
+        /// 	- Service `Salsify`: Your Salsify API Key.
+        /// 	- Service `SecurityJourney`: Your Security Journey API key.
+        /// 	- Service `Sendgrid`: The SendGrid API key.
+        /// 	- Service `Sendinblue`: Your Sendinblue API key.
+        /// 	- Service `Shortcut`: Your Shortcut API token.
+        /// 	- Service `Shortio`: Your Short.io API key.
+        /// 	- Service `Simplesat`: Your Simplesat API key.
+        /// 	- Service `Sistrix`: Your SISTRIX API key.
+        /// 	- Service `Skilljar`: Your Skilljar API key.
+        /// 	- Service `Smartwaiver`: Your Smartwaiver API key.
+        /// 	- Service `Snyk`: Your Snyk API key.
+        /// 	- Service `Sonarqube`: Your Sonarqube API key.
+        /// 	- Service `Sparkpost`: Your SparkPost API key.
+        /// 	- Service `Squarespace`: Your Squarespace API key.
+        /// 	- Service `Stackadapt`: Your StackAdapt API key.
+        /// 	- Service `Statuspage`: Your Statuspage API Key.
+        /// 	- Service `Stripe`: Restricted API key
+        /// 	- Service `StripeTest`: Restricted API key
+        /// 	- Service `Subscript`: Your Subscript API key.
+        /// 	- Service `Survicate`: Your Survicate API Key.
+        /// 	- Service `Teads`: Your Teads API key.
+        /// 	- Service `Teamtailor`: Your Teamtailor API key.
+        /// 	- Service `Testrail`: Your TestRail API key.
+        /// 	- Service `TicketTailor`: Your Ticket Tailor API key.
+        /// 	- Service `Transcend`: Your Transcend API key.
+        /// 	- Service `Trello`: Your TRELLO api key.
+        /// 	- Service `TripleWhale`: Your Triple Whale API key.
+        /// 	- Service `Uppromote`: Your UpPromote API key.
+        /// 	- Service `Veeqo`: Your Veeqo API key.
+        /// 	- Service `Venminder`: Your Venminder API key.
+        /// 	- Service `VisitByGes`: Your Visit by GES API key.
+        /// 	- Service `Vitally`: Your Vitally API key.
+        /// 	- Service `Vonage`: Your Vonage API Key.
+        /// 	- Service `Vts`: Your VTS API key.
+        /// 	- Service `Webconnex`: Your Webconnex API key.
+        /// 	- Service `WickedReports`: Your Wicked Reports API key.
+        /// 	- Service `WorkleapOfficevibe`: Your Workleap Officevibe API key.
+        /// 	- Service `Xsolla`: Your Xsolla API key.
+        /// 	- Service `Yext`: Your Yext API key.
+        /// 	- Service `YougovSport`: Your Yougov Sport API key.
+        /// 	- Service `Zingtree`: Your Zingtree API key.
+        /// 	- Service `Zip`: Your Zip API key.
         /// </summary>
         public string? ApiKey
         {
@@ -963,8 +963,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _apiKeyApiSecret;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `revel`: Your Revel Systems API Key and API Secret.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Revel`: Your Revel Systems API Key and API Secret.
         /// </summary>
         public string? ApiKeyApiSecret
         {
@@ -976,8 +976,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _apiKeys;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `mandrill`: Comma-separated list of API keys.  Required if `use_api_keys` is set to `true`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Mandrill`: Comma-separated list of API keys.  Required if `UseApiKeys` is set to `True`.
         /// </summary>
         public List<string> ApiKeys
         {
@@ -989,8 +989,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _apiPassword;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `duoplane`: Your Duoplane API password.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Duoplane`: Your Duoplane API password.
         /// </summary>
         public string? ApiPassword
         {
@@ -999,8 +999,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `marketo`: Allowed number of API requests to Marketo instance per day, the default value is 10000.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Marketo`: Allowed number of API requests to Marketo instance per day, the default value is 10000.
         /// </summary>
         [Input("apiQuota", required: true)]
         public int ApiQuota { get; set; }
@@ -1009,8 +1009,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _apiReadAccessToken;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `the_movie_database`: Your The Movie Database API read access token.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `TheMovieDatabase`: Your The Movie Database API read access token.
         /// </summary>
         public string? ApiReadAccessToken
         {
@@ -1019,8 +1019,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `qualtrics`: Allowed number of API requests to Qualtrics per minute, the default value is 2000. Maximum allowed number is 3000 because brands may make up to 3000 API requests per minute across all of its API calls.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Qualtrics`: Allowed number of API requests to Qualtrics per minute, the default value is 2000. Maximum allowed number is 3000 because brands may make up to 3000 API requests per minute across all of its API calls.
         /// </summary>
         [Input("apiRequestsPerMinute", required: true)]
         public int ApiRequestsPerMinute { get; set; }
@@ -1029,17 +1029,17 @@ namespace Pulumi.Fivetran.Inputs
         private string? _apiSecret;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `confluent_cloud`: API Secret
-        /// 	- Service `forj_community`: Your Forj Community API secret.
-        /// 	- Service `friendbuy`: Your Friendbuy API secret.
-        /// 	- Service `justcall`: Your JustCall API secret.
-        /// 	- Service `liftoff`: Your Liftoff API secret.
-        /// 	- Service `mixpanel`: Mixpanel API Secret.
-        /// 	- Service `qualaroo`: Your Qualaroo API Secret.
-        /// 	- Service `sailthru`: The Sailthru API secret.
-        /// 	- Service `shareasale`: Your ShareASale API secret.
-        /// 	- Service `vonage`: Your Vonage API Secret.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ConfluentCloud`: API Secret
+        /// 	- Service `ForjCommunity`: Your Forj Community API secret.
+        /// 	- Service `Friendbuy`: Your Friendbuy API secret.
+        /// 	- Service `Justcall`: Your JustCall API secret.
+        /// 	- Service `Liftoff`: Your Liftoff API secret.
+        /// 	- Service `Mixpanel`: Mixpanel API Secret.
+        /// 	- Service `Qualaroo`: Your Qualaroo API Secret.
+        /// 	- Service `Sailthru`: The Sailthru API secret.
+        /// 	- Service `Shareasale`: Your ShareASale API secret.
+        /// 	- Service `Vonage`: Your Vonage API Secret.
         /// </summary>
         public string? ApiSecret
         {
@@ -1051,8 +1051,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _apiSecretKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `alchemer`: Your Alchemer API Secret key.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Alchemer`: Your Alchemer API Secret key.
         /// </summary>
         public string? ApiSecretKey
         {
@@ -1061,8 +1061,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `sigma_computing_source`: Your Sigma Computing api server.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SigmaComputingSource`: Your Sigma Computing api server.
         /// </summary>
         [Input("apiServer", required: true)]
         public string ApiServer { get; set; } = null!;
@@ -1071,66 +1071,66 @@ namespace Pulumi.Fivetran.Inputs
         private string? _apiToken;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aha`: Your Aha! API key.
-        /// 	- Service `aircall`: Your Aircall API token.
-        /// 	- Service `appsflyer`: API Token for AppsFlyer's PULL API.
-        /// 	- Service `aura_from_unity`: Your Aura from Unity API token.
-        /// 	- Service `awin`: Your Awin API Token.
-        /// 	- Service `backbone_plm`: Your Backbone PLM API token.
-        /// 	- Service `brex`: Your Brex API token
-        /// 	- Service `buildkite`: Your Buildkite API token.
-        /// 	- Service `buzzsprout`: Your Buzzsprout API token.
-        /// 	- Service `centra`: Your Centra API token.
-        /// 	- Service `chameleon`: Your Chameleon API token.
-        /// 	- Service `clari`: Your Clari API token.
-        /// 	- Service `cloudflare_analytics`: Your Cloudflare Analytics API token.
-        /// 	- Service `confluence`: The Confluence API token.
-        /// 	- Service `dixa`: Your Dixa API token.
-        /// 	- Service `drip`: Your Drip API Token.
-        /// 	- Service `factbird`: Your Factbird API token.
-        /// 	- Service `fone_dynamics`: Your Fone Dynamics API token.
-        /// 	- Service `forethought`: Your Forethought API token.
-        /// 	- Service `fountain`: Your Fountain API token.
-        /// 	- Service `g2`: Your G2 API token.
-        /// 	- Service `gladly`: Your Gladly API Token.
-        /// 	- Service `hibob`: Your Hibob API token.
-        /// 	- Service `kandji`: Your Kandji API token.
-        /// 	- Service `livechat`: Your Livechat Access token.
-        /// 	- Service `livechat_partner`: Your Livechat Partner API Token.
-        /// 	- Service `maxio_saasoptics`: Your Maxio SaaSOptics API token.
-        /// 	- Service `megaphone`: Your Megaphone API token.
-        /// 	- Service `missive`: Your Missive API token.
-        /// 	- Service `mixmax`: Mixmax API token.
-        /// 	- Service `okta`: Your Okta API token.
-        /// 	- Service `ordway`: Your Ordway API token.
-        /// 	- Service `packiyo`: Your Packiyo API token.
-        /// 	- Service `pipedrive`: (Optional)Your Pipedrive personal API token
-        /// 	- Service `pivotal_tracker`: Pivotal Tracker API token.
-        /// 	- Service `postmark`: Your Postmark account API token.
-        /// 	- Service `productive`: Your Productive API token.
-        /// 	- Service `pylon_support_platform`: Your Pylon Support Platform API token.
-        /// 	- Service `qualtrics`: API token of the Qualtrics account.
-        /// 	- Service `rakutenadvertising`: Your Rakuten Advertising API token.
-        /// 	- Service `recharge`: The Recharge API token.
-        /// 	- Service `referralhero`: Your Referralhero API token.
-        /// 	- Service `resource_management_by_smartsheet`: Your Resource Management by Smartsheet API token.
-        /// 	- Service `retently`: Your Retently API token.
-        /// 	- Service `reviewsai`: Your REVIEWS.ai API token.
-        /// 	- Service `rundeck`: Your Rundeck API token.
-        /// 	- Service `safetyculture`: Your SafetyCulture API token.
-        /// 	- Service `sensor_tower`: Your Sensor Tower API token.
-        /// 	- Service `sentry`: Your Sentry auth token.
-        /// 	- Service `simplecast`: Your Simplecast API token.
-        /// 	- Service `snyk`: Your Snyk API token.
-        /// 	- Service `textus`: Your TextUs API token.
-        /// 	- Service `toggl_track`: Your Toggl Track API token
-        /// 	- Service `trello`: Your TRELLO api token.
-        /// 	- Service `trisolute`: Your Trisolute API token.
-        /// 	- Service `vwo`: Your VWO API token.
-        /// 	- Service `web_scraper`: Your Web Scraper API token.
-        /// 	- Service `zendesk`: Zendesk API tokens are auto-generated passwords in the Support admin interface.
-        /// 	- Service `zendesk_sunshine`: Zendesk API tokens are auto-generated passwords in the Support admin interface.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Aha`: Your Aha! API key.
+        /// 	- Service `Aircall`: Your Aircall API token.
+        /// 	- Service `Appsflyer`: API Token for AppsFlyer's PULL API.
+        /// 	- Service `AuraFromUnity`: Your Aura from Unity API token.
+        /// 	- Service `Awin`: Your Awin API Token.
+        /// 	- Service `BackbonePlm`: Your Backbone PLM API token.
+        /// 	- Service `Brex`: Your Brex API token
+        /// 	- Service `Buildkite`: Your Buildkite API token.
+        /// 	- Service `Buzzsprout`: Your Buzzsprout API token.
+        /// 	- Service `Centra`: Your Centra API token.
+        /// 	- Service `Chameleon`: Your Chameleon API token.
+        /// 	- Service `Clari`: Your Clari API token.
+        /// 	- Service `CloudflareAnalytics`: Your Cloudflare Analytics API token.
+        /// 	- Service `Confluence`: The Confluence API token.
+        /// 	- Service `Dixa`: Your Dixa API token.
+        /// 	- Service `Drip`: Your Drip API Token.
+        /// 	- Service `Factbird`: Your Factbird API token.
+        /// 	- Service `FoneDynamics`: Your Fone Dynamics API token.
+        /// 	- Service `Forethought`: Your Forethought API token.
+        /// 	- Service `Fountain`: Your Fountain API token.
+        /// 	- Service `G2`: Your G2 API token.
+        /// 	- Service `Gladly`: Your Gladly API Token.
+        /// 	- Service `Hibob`: Your Hibob API token.
+        /// 	- Service `Kandji`: Your Kandji API token.
+        /// 	- Service `Livechat`: Your Livechat Access token.
+        /// 	- Service `LivechatPartner`: Your Livechat Partner API Token.
+        /// 	- Service `MaxioSaasoptics`: Your Maxio SaaSOptics API token.
+        /// 	- Service `Megaphone`: Your Megaphone API token.
+        /// 	- Service `Missive`: Your Missive API token.
+        /// 	- Service `Mixmax`: Mixmax API token.
+        /// 	- Service `Okta`: Your Okta API token.
+        /// 	- Service `Ordway`: Your Ordway API token.
+        /// 	- Service `Packiyo`: Your Packiyo API token.
+        /// 	- Service `Pipedrive`: (Optional)Your Pipedrive personal API token
+        /// 	- Service `PivotalTracker`: Pivotal Tracker API token.
+        /// 	- Service `Postmark`: Your Postmark account API token.
+        /// 	- Service `Productive`: Your Productive API token.
+        /// 	- Service `PylonSupportPlatform`: Your Pylon Support Platform API token.
+        /// 	- Service `Qualtrics`: API token of the Qualtrics account.
+        /// 	- Service `Rakutenadvertising`: Your Rakuten Advertising API token.
+        /// 	- Service `Recharge`: The Recharge API token.
+        /// 	- Service `Referralhero`: Your Referralhero API token.
+        /// 	- Service `ResourceManagementBySmartsheet`: Your Resource Management by Smartsheet API token.
+        /// 	- Service `Retently`: Your Retently API token.
+        /// 	- Service `Reviewsai`: Your REVIEWS.ai API token.
+        /// 	- Service `Rundeck`: Your Rundeck API token.
+        /// 	- Service `Safetyculture`: Your SafetyCulture API token.
+        /// 	- Service `SensorTower`: Your Sensor Tower API token.
+        /// 	- Service `Sentry`: Your Sentry auth token.
+        /// 	- Service `Simplecast`: Your Simplecast API token.
+        /// 	- Service `Snyk`: Your Snyk API token.
+        /// 	- Service `Textus`: Your TextUs API token.
+        /// 	- Service `TogglTrack`: Your Toggl Track API token
+        /// 	- Service `Trello`: Your TRELLO api token.
+        /// 	- Service `Trisolute`: Your Trisolute API token.
+        /// 	- Service `Vwo`: Your VWO API token.
+        /// 	- Service `WebScraper`: Your Web Scraper API token.
+        /// 	- Service `Zendesk`: Zendesk API tokens are auto-generated passwords in the Support admin interface.
+        /// 	- Service `ZendeskSunshine`: Zendesk API tokens are auto-generated passwords in the Support admin interface.
         /// </summary>
         public string? ApiToken
         {
@@ -1142,22 +1142,22 @@ namespace Pulumi.Fivetran.Inputs
         public string ApiType { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `braze`: Your Braze API URL.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Braze`: Your Braze API URL.
         /// </summary>
         [Input("apiUrl", required: true)]
         public string ApiUrl { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `amazon_dsp`: Your Amazon DSP API URL region.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AmazonDsp`: Your Amazon DSP API URL region.
         /// </summary>
         [Input("apiUrlRegion", required: true)]
         public string ApiUrlRegion { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `zendesk`: Maximum Zendesk Api Usage allowed
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Zendesk`: Maximum Zendesk Api Usage allowed
         /// </summary>
         [Input("apiUsage", required: true)]
         public string ApiUsage { get; set; } = null!;
@@ -1166,8 +1166,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _apiUserIdentifier;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `shipnetwork`: Your ShipNetwork API user identifier.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Shipnetwork`: Your ShipNetwork API user identifier.
         /// </summary>
         public string? ApiUserIdentifier
         {
@@ -1179,8 +1179,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _apiUserSecret;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `shipnetwork`: Your ShipNetwork API user secret.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Shipnetwork`: Your ShipNetwork API user secret.
         /// </summary>
         public string? ApiUserSecret
         {
@@ -1189,16 +1189,16 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `kustomer`: Api Utilization Percentage
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Kustomer`: Api Utilization Percentage
         /// </summary>
         [Input("apiUtilizationPercentage", required: true)]
         public string ApiUtilizationPercentage { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `pardot`: API Version
-        /// 	- Service `pardot_sandbox`: API Version
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Pardot`: API Version
+        /// 	- Service `PardotSandbox`: API Version
         /// </summary>
         [Input("apiVersion", required: true)]
         public string ApiVersion { get; set; } = null!;
@@ -1207,11 +1207,11 @@ namespace Pulumi.Fivetran.Inputs
         private string? _appId;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `churnkey`: Your Churnkey APP ID.
-        /// 	- Service `open_exchange_rates`: Your Open Exchange Rates App Id.
-        /// 	- Service `rokt`: Your Rokt app ID.
-        /// 	- Service `tiktok_organic`: Your Tiktok Organic app ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Churnkey`: Your Churnkey APP ID.
+        /// 	- Service `OpenExchangeRates`: Your Open Exchange Rates App Id.
+        /// 	- Service `Rokt`: Your Rokt app ID.
+        /// 	- Service `TiktokOrganic`: Your Tiktok Organic app ID.
         /// </summary>
         public string? AppId
         {
@@ -1223,8 +1223,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _appIds;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `pendo`: Specific App IDs to sync. Must be populated if `sync_mode` is set to `SpecificAppIds`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Pendo`: Specific App IDs to sync. Must be populated if `SyncMode` is set to `SpecificAppIds`.
         /// </summary>
         public List<string> AppIds
         {
@@ -1236,8 +1236,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<Inputs.GetConnectorConfigAppIdsAppsflyerArgs>? _appIdsAppsflyers;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `appsflyer`: *  App ID(s)
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Appsflyer`: *  App ID(s)
         /// </summary>
         public List<Inputs.GetConnectorConfigAppIdsAppsflyerArgs> AppIdsAppsflyers
         {
@@ -1249,11 +1249,11 @@ namespace Pulumi.Fivetran.Inputs
         private string? _appKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `loopio`: Your Loopio App Key.
-        /// 	- Service `servicetitan`: Your ServiceTitan app key.
-        /// 	- Service `yotpo`: Your Yotpo app key.
-        /// 	- Service `yotpo_app`: Your Yotpo App key.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Loopio`: Your Loopio App Key.
+        /// 	- Service `Servicetitan`: Your ServiceTitan app key.
+        /// 	- Service `Yotpo`: Your Yotpo app key.
+        /// 	- Service `YotpoApp`: Your Yotpo App key.
         /// </summary>
         public string? AppKey
         {
@@ -1262,8 +1262,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `brightpearl`: Your Brightpearl app reference.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Brightpearl`: Your Brightpearl app reference.
         /// </summary>
         [Input("appReference", required: true)]
         public string AppReference { get; set; } = null!;
@@ -1272,8 +1272,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _appSecret;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `rokt`: Your Rokt app secret.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Rokt`: Your Rokt app secret.
         /// </summary>
         public string? AppSecret
         {
@@ -1293,8 +1293,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _appSpecificPassword;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `itunes_connect`: Your app-specific password
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ItunesConnect`: Your app-specific password
         /// </summary>
         public string? AppSpecificPassword
         {
@@ -1303,36 +1303,36 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `itunes_connect`: Whether to sync all apps or specific apps.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ItunesConnect`: Whether to sync all apps or specific apps.
         /// </summary>
         [Input("appSyncMode", required: true)]
         public string AppSyncMode { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_cost_report`: If you know that the source completely overwrites the same file with new data, you can append the changes instead of upserting based on filename and line number.
-        /// 	- Service `azure_blob_storage`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
-        /// 	- Service `box`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
-        /// 	- Service `dropbox`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
-        /// 	- Service `email`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
-        /// 	- Service `ftp`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
-        /// 	- Service `gcs`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
-        /// 	- Service `google_drive`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
-        /// 	- Service `kinesis`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
-        /// 	- Service `s3`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
-        /// 	- Service `s3_compatible_storage`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
-        /// 	- Service `sftp`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
-        /// 	- Service `share_point`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
-        /// 	- Service `wasabi_cloud_storage`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsCostReport`: If you know that the source completely overwrites the same file with new data, you can append the changes instead of upserting based on filename and line number.
+        /// 	- Service `AzureBlobStorage`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
+        /// 	- Service `Box`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
+        /// 	- Service `Dropbox`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
+        /// 	- Service `Email`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
+        /// 	- Service `Ftp`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
+        /// 	- Service `Gcs`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
+        /// 	- Service `GoogleDrive`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
+        /// 	- Service `Kinesis`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
+        /// 	- Service `S3`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
+        /// 	- Service `S3CompatibleStorage`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
+        /// 	- Service `Sftp`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
+        /// 	- Service `SharePoint`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
+        /// 	- Service `WasabiCloudStorage`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
         /// </summary>
         [Input("appendFileOption", required: true)]
         public string AppendFileOption { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `algolia`: Your Algolia application ID.
-        /// 	- Service `xactly`: Your Xactly Application ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Algolia`: Your Algolia application ID.
+        /// 	- Service `Xactly`: Your Xactly Application ID.
         /// </summary>
         [Input("applicationId", required: true)]
         public string ApplicationId { get; set; } = null!;
@@ -1341,11 +1341,11 @@ namespace Pulumi.Fivetran.Inputs
         private string? _applicationKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `cin7core`: Your Cin7 Core application key.
-        /// 	- Service `datadog`: Your Datadog application key.
-        /// 	- Service `dear`: Your Dear Application key.
-        /// 	- Service `partnerize`: Your Partnerize user application key.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Cin7core`: Your Cin7 Core application key.
+        /// 	- Service `Datadog`: Your Datadog application key.
+        /// 	- Service `Dear`: Your Dear Application key.
+        /// 	- Service `Partnerize`: Your Partnerize user application key.
         /// </summary>
         public string? ApplicationKey
         {
@@ -1357,8 +1357,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _apps;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `itunes_connect`: Specific apps to sync. Must be populated if `app_sync_mode` is set to `SpecificApps`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ItunesConnect`: Specific apps to sync. Must be populated if `AppSyncMode` is set to `SpecificApps`.
         /// </summary>
         public List<string> Apps
         {
@@ -1367,73 +1367,73 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `oracle_hva`: Archive log format.
-        /// 	- Service `oracle_sap_hva`: Archive log format.
-        /// 	- Service `oracle_sap_hva_netweaver`: Archive log format.
-        /// 	- Service `sql_server_hva`: Format for archive log file names
-        /// 	- Service `sql_server_sap_ecc_hva`: Format for archive log file names
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `OracleHva`: Archive log format.
+        /// 	- Service `OracleSapHva`: Archive log format.
+        /// 	- Service `OracleSapHvaNetweaver`: Archive log format.
+        /// 	- Service `SqlServerHva`: Format for archive log file names
+        /// 	- Service `SqlServerSapEccHva`: Format for archive log file names
         /// </summary>
         [Input("archiveLogFormat", required: true)]
         public string ArchiveLogFormat { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `oracle_hva`: Archive log path.
-        /// 	- Service `oracle_sap_hva`: Archive log path.
-        /// 	- Service `oracle_sap_hva_netweaver`: Archive log path.
-        /// 	- Service `sql_server_hva`: Directory where archive logs are located
-        /// 	- Service `sql_server_sap_ecc_hva`: Directory where archive logs are located
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `OracleHva`: Archive log path.
+        /// 	- Service `OracleSapHva`: Archive log path.
+        /// 	- Service `OracleSapHvaNetweaver`: Archive log path.
+        /// 	- Service `SqlServerHva`: Directory where archive logs are located
+        /// 	- Service `SqlServerSapEccHva`: Directory where archive logs are located
         /// </summary>
         [Input("archiveLogPath", required: true)]
         public string ArchiveLogPath { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_cost_report`: Optional. Files inside of compressed archives with filenames matching this regular expression will be synced.
-        /// 	- Service `azure_blob_storage`: Files inside of compressed archives with filenames matching this regular expression will be synced.
-        /// 	- Service `box`: Files inside of compressed archives with filenames matching this regular expression will be synced.
-        /// 	- Service `dropbox`: Files inside of compressed archives with filenames matching this regular expression will be synced.
-        /// 	- Service `email`: Files inside of compressed archives with filenames matching this regular expression will be synced.
-        /// 	- Service `ftp`: Files inside of compressed archives with filenames matching this regular expression will be synced.
-        /// 	- Service `gcs`: Files inside of compressed archives with filenames matching this regular expression will be synced.
-        /// 	- Service `google_drive`: Files inside of compressed archives with filenames matching this regular expression will be synced.
-        /// 	- Service `kinesis`: Optional. Files inside of compressed archives with filenames matching this regular expression will be synced.
-        /// 	- Service `s3`: Files inside compressed archives with filenames matching this regular expression will be synced.
-        /// 	- Service `s3_compatible_storage`: Files inside compressed archives with filenames matching this regular expression will be synced.
-        /// 	- Service `sftp`: Files inside of compressed archives with filenames matching this regular expression will be synced.
-        /// 	- Service `share_point`: Files inside of compressed archives with filenames matching this regular expression will be synced.
-        /// 	- Service `wasabi_cloud_storage`: Files inside compressed archives with filenames matching this regular expression will be synced.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsCostReport`: Optional. Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `AzureBlobStorage`: Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `Box`: Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `Dropbox`: Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `Email`: Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `Ftp`: Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `Gcs`: Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `GoogleDrive`: Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `Kinesis`: Optional. Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `S3`: Files inside compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `S3CompatibleStorage`: Files inside compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `Sftp`: Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `SharePoint`: Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `WasabiCloudStorage`: Files inside compressed archives with filenames matching this regular expression will be synced.
         /// </summary>
         [Input("archivePattern", required: true)]
         public string ArchivePattern { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `marketo`: Marketo SOAP credentials provided.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Marketo`: Marketo SOAP credentials provided.
         /// </summary>
         [Input("areSoapCredentialsProvided", required: true)]
         public bool AreSoapCredentialsProvided { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `azure_service_bus`: The IP address (or) the URL of ASB namespace
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureServiceBus`: The IP address (or) the URL of ASB namespace
         /// </summary>
         [Input("asbIp", required: true)]
         public string AsbIp { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `oracle_hva`: Default value: `false`. Set to `true` if you're using ASM on a non-RAC instance.
-        /// 	- Service `oracle_sap_hva`: Default value: `false`. Set to `true` if you are using ASM on a non-RAC instance.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `OracleHva`: Default value: `False`. Set to `True` if you're using ASM on a non-RAC instance.
+        /// 	- Service `OracleSapHva`: Default value: `False`. Set to `True` if you are using ASM on a non-RAC instance.
         /// </summary>
         [Input("asmOption", required: true)]
         public bool AsmOption { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `oracle_hva`: ASM Oracle Home path.
-        /// 	- Service `oracle_sap_hva`: The Oracle ASM home directory.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `OracleHva`: ASM Oracle Home path.
+        /// 	- Service `OracleSapHva`: The Oracle ASM home directory.
         /// </summary>
         [Input("asmOracleHome", required: true)]
         public string AsmOracleHome { get; set; } = null!;
@@ -1442,9 +1442,9 @@ namespace Pulumi.Fivetran.Inputs
         private string? _asmPassword;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `oracle_hva`: ASM password. Mandatory if `use_oracle_rac` or `asm_option` is set to `true`.
-        /// 	- Service `oracle_sap_hva`: The ASM user's password. Mandatory if `use_oracle_rac` or `asm_option` is set to `true`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `OracleHva`: ASM password. Mandatory if `UseOracleRac` or `AsmOption` is set to `True`.
+        /// 	- Service `OracleSapHva`: The ASM user's password. Mandatory if `UseOracleRac` or `AsmOption` is set to `True`.
         /// </summary>
         public string? AsmPassword
         {
@@ -1453,31 +1453,31 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `oracle_hva`: ASM TNS.
-        /// 	- Service `oracle_sap_hva`: ASM TNS.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `OracleHva`: ASM TNS.
+        /// 	- Service `OracleSapHva`: ASM TNS.
         /// </summary>
         [Input("asmTns", required: true)]
         public string AsmTns { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `oracle_hva`: ASM user. Mandatory if `use_oracle_rac` or `asm_option` is set to `true`.
-        /// 	- Service `oracle_sap_hva`: The ASM user. Mandatory if `use_oracle_rac` or `asm_option` is set to `true`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `OracleHva`: ASM user. Mandatory if `UseOracleRac` or `AsmOption` is set to `True`.
+        /// 	- Service `OracleSapHva`: The ASM user. Mandatory if `UseOracleRac` or `AsmOption` is set to `True`.
         /// </summary>
         [Input("asmUser", required: true)]
         public string AsmUser { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `amazon_ads`: Time period used to attribute conversions based on clicks.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AmazonAds`: Time period used to attribute conversions based on clicks.
         /// </summary>
         [Input("attributionWindow", required: true)]
         public string AttributionWindow { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `tiktok_ads`: Rollback sync duration to capture conversions. Set this to your configured attribution window in TikTok Ads. The default value is 7 days.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `TiktokAds`: Rollback sync duration to capture conversions. Set this to your configured attribution window in TikTok Ads. The default value is 7 days.
         /// </summary>
         [Input("attributionWindowSize", required: true)]
         public string AttributionWindowSize { get; set; } = null!;
@@ -1486,8 +1486,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _audience;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `auth0`: Your Auth0 API audience.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Auth0`: Your Auth0 API audience.
         /// </summary>
         public string? Audience
         {
@@ -1496,10 +1496,10 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `databricks_db`: Token-based authentication type
-        /// 	- Service `redshift_db`: Password-based authentication type
-        /// 	- Service `snowflake_db`: Password-based or key-based authentication type
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `DatabricksDb`: Token-based authentication type
+        /// 	- Service `RedshiftDb`: Password-based authentication type
+        /// 	- Service `SnowflakeDb`: Password-based or key-based authentication type
         /// </summary>
         [Input("auth", required: true)]
         public string Auth { get; set; } = null!;
@@ -1508,8 +1508,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _authCode;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `happyfox`: Your HappyFox auth code.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Happyfox`: Your HappyFox auth code.
         /// </summary>
         public string? AuthCode
         {
@@ -1518,52 +1518,52 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `younium`: Your Younium auth environment.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Younium`: Your Younium auth environment.
         /// </summary>
         [Input("authEnvironment", required: true)]
         public string AuthEnvironment { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `webhooks`: Set if you use HMAC/token-based auth methods. This is used to retrieve a key in headers
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Webhooks`: Set if you use HMAC/token-based auth methods. This is used to retrieve a key in headers
         /// </summary>
         [Input("authHeaderKey", required: true)]
         public string AuthHeaderKey { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora`: Database authentication method
-        /// 	- Service `aurora_postgres`: Database authentication method
-        /// 	- Service `azure_postgres`: Database authentication method
-        /// 	- Service `azure_sql_db`: Authentication Method.
-        /// 	- Service `azure_sql_managed_db`: Authentication Method.
-        /// 	- Service `google_cloud_mysql`: Database authentication method
-        /// 	- Service `google_cloud_postgresql`: Database authentication method
-        /// 	- Service `heroku_postgres`: Database authentication method
-        /// 	- Service `magento_mysql`: Database authentication method
-        /// 	- Service `magento_mysql_rds`: Database authentication method
-        /// 	- Service `maria`: Database authentication method
-        /// 	- Service `maria_azure`: Database authentication method
-        /// 	- Service `maria_rds`: Database authentication method
-        /// 	- Service `mysql`: Database authentication method
-        /// 	- Service `mysql_azure`: Database authentication method
-        /// 	- Service `mysql_rds`: Database authentication method
-        /// 	- Service `postgres`: Database authentication method
-        /// 	- Service `postgres_rds`: Database authentication method
-        /// 	- Service `sql_server_hva`: Authentication Method
-        /// 	- Service `sql_server_sap_ecc_hva`: Authentication Method
-        /// 	- Service `webhooks`: The authentication mechanism you want to use
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Aurora`: Database authentication method
+        /// 	- Service `AuroraPostgres`: Database authentication method
+        /// 	- Service `AzurePostgres`: Database authentication method
+        /// 	- Service `AzureSqlDb`: Authentication Method.
+        /// 	- Service `AzureSqlManagedDb`: Authentication Method.
+        /// 	- Service `GoogleCloudMysql`: Database authentication method
+        /// 	- Service `GoogleCloudPostgresql`: Database authentication method
+        /// 	- Service `HerokuPostgres`: Database authentication method
+        /// 	- Service `MagentoMysql`: Database authentication method
+        /// 	- Service `MagentoMysqlRds`: Database authentication method
+        /// 	- Service `Maria`: Database authentication method
+        /// 	- Service `MariaAzure`: Database authentication method
+        /// 	- Service `MariaRds`: Database authentication method
+        /// 	- Service `Mysql`: Database authentication method
+        /// 	- Service `MysqlAzure`: Database authentication method
+        /// 	- Service `MysqlRds`: Database authentication method
+        /// 	- Service `Postgres`: Database authentication method
+        /// 	- Service `PostgresRds`: Database authentication method
+        /// 	- Service `SqlServerHva`: Authentication Method
+        /// 	- Service `SqlServerSapEccHva`: Authentication Method
+        /// 	- Service `Webhooks`: The authentication mechanism you want to use
         /// </summary>
         [Input("authMethod", required: true)]
         public string AuthMethod { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `anaplan`: The Anaplan authentication method.
-        /// 	- Service `concur`: The Authentication Mode used by SAP Concur. It can be PasswordGrant or CompanyLevel auth mode
-        /// 	- Service `github`: Authorization type.
-        /// 	- Service `workday`: Authentication Mode
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Anaplan`: The Anaplan authentication method.
+        /// 	- Service `Concur`: The Authentication Mode used by SAP Concur. It can be PasswordGrant or CompanyLevel auth mode
+        /// 	- Service `Github`: Authorization type.
+        /// 	- Service `Workday`: Authentication Mode
         /// </summary>
         [Input("authMode", required: true)]
         public string AuthMode { get; set; } = null!;
@@ -1572,8 +1572,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _authSecret;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `webhooks`: The secret you want to use for HMAC/token-based auth methods
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Webhooks`: The secret you want to use for HMAC/token-based auth methods
         /// </summary>
         public string? AuthSecret
         {
@@ -1585,9 +1585,9 @@ namespace Pulumi.Fivetran.Inputs
         private string? _authToken;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `impact_partner`: Your Impact Partner auth token
-        /// 	- Service `zonka_feedback`: Your Zonka Feedback auth token.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ImpactPartner`: Your Impact Partner auth token
+        /// 	- Service `ZonkaFeedback`: Your Zonka Feedback auth token.
         /// </summary>
         public string? AuthToken
         {
@@ -1596,44 +1596,44 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `airtable`: Type of authentication being used by connector
-        /// 	- Service `aws_cost_report`: Access approach
-        /// 	- Service `azure_service_bus`: The authentication mode to access the topic
-        /// 	- Service `dynamics_365`: Authentication mechanism. Either one of `OAUTH2`, or `SERVICE_PRINCIPAL`. Default value `OAUTH2`
-        /// 	- Service `gcs`: Authorization type. Required for storage bucket authentication.
-        /// 	- Service `google_sheets`: The `OAuth` value must be specified for this type of authorization.
-        /// 	- Service `jira`: Authorization type.
-        /// 	- Service `mixpanel`: Authentication Method
-        /// 	- Service `pardot`: Authenticate using OAuth or HTTP Basic
-        /// 	- Service `pardot_sandbox`: Authenticate using OAuth or HTTP Basic
-        /// 	- Service `qualtrics`: Type of authentication being used by connector
-        /// 	- Service `s3`: Access approach
-        /// 	- Service `s3_compatible_storage`: Access approach
-        /// 	- Service `wasabi_cloud_storage`: The Wasabi Cloud Storage Access approach. Required for connector creation. Default value: `ACCESS_KEY`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Airtable`: Type of authentication being used by connector
+        /// 	- Service `AwsCostReport`: Access approach
+        /// 	- Service `AzureServiceBus`: The authentication mode to access the topic
+        /// 	- Service `Dynamics365`: Authentication mechanism. Either one of `OAUTH2`, or `SERVICE_PRINCIPAL`. Default value `OAUTH2`
+        /// 	- Service `Gcs`: Authorization type. Required for storage bucket authentication.
+        /// 	- Service `GoogleSheets`: The `OAuth` value must be specified for this type of authorization.
+        /// 	- Service `Jira`: Authorization type.
+        /// 	- Service `Mixpanel`: Authentication Method
+        /// 	- Service `Pardot`: Authenticate using OAuth or HTTP Basic
+        /// 	- Service `PardotSandbox`: Authenticate using OAuth or HTTP Basic
+        /// 	- Service `Qualtrics`: Type of authentication being used by connector
+        /// 	- Service `S3`: Access approach
+        /// 	- Service `S3CompatibleStorage`: Access approach
+        /// 	- Service `WasabiCloudStorage`: The Wasabi Cloud Storage Access approach. Required for connector creation. Default value: `ACCESS_KEY`.
         /// </summary>
         [Input("authType", required: true)]
         public string AuthType { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `amazon_dsp`: Your Amazon DSP auth grant URL region.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AmazonDsp`: Your Amazon DSP auth grant URL region.
         /// </summary>
         [Input("authUrlRegion", required: true)]
         public string AuthUrlRegion { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics`: Authentication Method
-        /// 	- Service `elastic_cloud`: The authentication method used to connect to your cluster.
-        /// 	- Service `es_self_hosted`: The authentication method used to connect to your cluster.
-        /// 	- Service `opendistro`: The authentication method used to connect to your cluster.
-        /// 	- Service `opensearch`: The authentication method used to connect to your cluster.
-        /// 	- Service `oracle_fusion_cloud_apps_crm`: The Oracle Fusion Cloud authentication method.
-        /// 	- Service `oracle_fusion_cloud_apps_fscm`: The Oracle Fusion Cloud authentication method.
-        /// 	- Service `oracle_fusion_cloud_apps_hcm`: The Oracle Fusion Cloud authentication method.
-        /// 	- Service `salesforce`: (Optional) Authentication type (default value = `STANDARD`)
-        /// 	- Service `salesforce_sandbox`: (Optional) Authentication type (default value = `STANDARD`)
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalytics`: Authentication Method
+        /// 	- Service `ElasticCloud`: The authentication method used to connect to your cluster.
+        /// 	- Service `EsSelfHosted`: The authentication method used to connect to your cluster.
+        /// 	- Service `Opendistro`: The authentication method used to connect to your cluster.
+        /// 	- Service `Opensearch`: The authentication method used to connect to your cluster.
+        /// 	- Service `OracleFusionCloudAppsCrm`: The Oracle Fusion Cloud authentication method.
+        /// 	- Service `OracleFusionCloudAppsFscm`: The Oracle Fusion Cloud authentication method.
+        /// 	- Service `OracleFusionCloudAppsHcm`: The Oracle Fusion Cloud authentication method.
+        /// 	- Service `Salesforce`: (Optional) Authentication type (default value = `STANDARD`)
+        /// 	- Service `SalesforceSandbox`: (Optional) Authentication type (default value = `STANDARD`)
         /// </summary>
         [Input("authenticationMethod", required: true)]
         public string AuthenticationMethod { get; set; } = null!;
@@ -1642,16 +1642,16 @@ namespace Pulumi.Fivetran.Inputs
         public string AuthorizationMethod { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `tiktok_organic`: The authorization URL of the app registered in your TikTok developer account.
-        /// 	- Service `workday`: Authorization URL
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `TiktokOrganic`: The authorization URL of the app registered in your TikTok developer account.
+        /// 	- Service `Workday`: Authorization URL
         /// </summary>
         [Input("authorizationUrl", required: true)]
         public string AuthorizationUrl { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `dynamodb`: The AWS region code for the DynamoDB instance, e.g. `us-east-1`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Dynamodb`: The AWS region code for the DynamoDB instance, e.g. `us-east-1`.
         /// </summary>
         [Input("awsRegionCode", required: true)]
         public string AwsRegionCode { get; set; } = null!;
@@ -1663,75 +1663,75 @@ namespace Pulumi.Fivetran.Inputs
         public string BackintExecutablePath { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `shopify`: Limit of the Historical Sync Time for selected tables
-        /// 	- Service `stripe`: Limit of the Historical Sync Time for selected tables
-        /// 	- Service `stripe_test`: Limit of the Historical Sync Time for selected tables
-        /// 	- Service `zendesk`: Date Limit of the Historical Sync Time for selected tables. The format should be YYYY-MM-DD
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Shopify`: Limit of the Historical Sync Time for selected tables
+        /// 	- Service `Stripe`: Limit of the Historical Sync Time for selected tables
+        /// 	- Service `StripeTest`: Limit of the Historical Sync Time for selected tables
+        /// 	- Service `Zendesk`: Date Limit of the Historical Sync Time for selected tables. The format should be YYYY-MM-DD
         /// </summary>
         [Input("backwardSyncLimit", required: true)]
         public string BackwardSyncLimit { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `hubspot`: Date Limit of the Historical Sync Time for selected tables. The Format should be YYYY-MM-DD
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Hubspot`: Date Limit of the Historical Sync Time for selected tables. The Format should be YYYY-MM-DD
         /// </summary>
         [Input("backwardSyncLimitDate", required: true)]
         public string BackwardSyncLimitDate { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `open_exchange_rates`: Your Open Exchange Rates Base Currency.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `OpenExchangeRates`: Your Open Exchange Rates Base Currency.
         /// </summary>
         [Input("baseCurrency", required: true)]
         public string BaseCurrency { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `freshteam`: Your company's Freshteam base domain name (usually **company**.freshteam.com).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Freshteam`: Your company's Freshteam base domain name (usually **company**.freshteam.com).
         /// </summary>
         [Input("baseDomain", required: true)]
         public string BaseDomain { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `airtable`: ID of base in Airtable
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Airtable`: ID of base in Airtable
         /// </summary>
         [Input("baseId", required: true)]
         public string BaseId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aha`: Your Aha! subdomain.
-        /// 	- Service `akeneo`: Your Akeneo base URL.
-        /// 	- Service `bigmarker`: Your BigMarker base URL.
-        /// 	- Service `billing_platform`: Your BillingPlatform subdomain.
-        /// 	- Service `boostr`: Your Boostr base URL.
-        /// 	- Service `brex`: Your Brex Base URL
-        /// 	- Service `centra`: Your Centra base URL.
-        /// 	- Service `coalesce`: Your Coalesce base URL.
-        /// 	- Service `coheris`: Your Coheris base URL.
-        /// 	- Service `cornerstone`: Your Cornerstone base URL.
-        /// 	- Service `culture_amp`: Your Culture Amp base URL.
-        /// 	- Service `datadog`: Your Datadog base url.
-        /// 	- Service `factbird`: Your Factbird base url.
-        /// 	- Service `fillout`: Your Fillout Base URL.
-        /// 	- Service `financial_force`: (Optional) The custom Salesforce domain. Make sure that the `base_url` starts with `https://`.
-        /// 	- Service `freshsales`: Your Freshsales product.
-        /// 	- Service `gongio`: Your Gong API Base URL.
-        /// 	- Service `higher_logic_vanilla`: Your Higher Logic Vanilla base URL.
-        /// 	- Service `ironclad`: Your Ironclad base url.
-        /// 	- Service `jotform`: Your Jotform base URL.
-        /// 	- Service `mailgun`: Your Mailgun base URL.
-        /// 	- Service `nice`: Your NICE base URL.
-        /// 	- Service `ortto`: Your Ortto base URL. Possible values: `api`, `api.au`, `api.eu`.
-        /// 	- Service `prisma_cloud`: Your Prisma Cloud admin console URL.
-        /// 	- Service `salesforce`: (Optional) The custom Salesforce domain. Make sure that the `base_url` starts with `https://`.
-        /// 	- Service `salesforce_sandbox`: (Optional) The custom Salesforce domain. Make sure that the `base_url` starts with `https://`.
-        /// 	- Service `stickyio`: Your sticky.io base URL .
-        /// 	- Service `veeva_vault`: Base URL
-        /// 	- Service `veevavault`: Your Veeva Vault base URL.
-        /// 	- Service `vitally`: Your Vitally base URL.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Aha`: Your Aha! subdomain.
+        /// 	- Service `Akeneo`: Your Akeneo base URL.
+        /// 	- Service `Bigmarker`: Your BigMarker base URL.
+        /// 	- Service `BillingPlatform`: Your BillingPlatform subdomain.
+        /// 	- Service `Boostr`: Your Boostr base URL.
+        /// 	- Service `Brex`: Your Brex Base URL
+        /// 	- Service `Centra`: Your Centra base URL.
+        /// 	- Service `Coalesce`: Your Coalesce base URL.
+        /// 	- Service `Coheris`: Your Coheris base URL.
+        /// 	- Service `Cornerstone`: Your Cornerstone base URL.
+        /// 	- Service `CultureAmp`: Your Culture Amp base URL.
+        /// 	- Service `Datadog`: Your Datadog base url.
+        /// 	- Service `Factbird`: Your Factbird base url.
+        /// 	- Service `Fillout`: Your Fillout Base URL.
+        /// 	- Service `FinancialForce`: (Optional) The custom Salesforce domain. Make sure that the `BaseUrl` starts with `https://`.
+        /// 	- Service `Freshsales`: Your Freshsales product.
+        /// 	- Service `Gongio`: Your Gong API Base URL.
+        /// 	- Service `HigherLogicVanilla`: Your Higher Logic Vanilla base URL.
+        /// 	- Service `Ironclad`: Your Ironclad base url.
+        /// 	- Service `Jotform`: Your Jotform base URL.
+        /// 	- Service `Mailgun`: Your Mailgun base URL.
+        /// 	- Service `Nice`: Your NICE base URL.
+        /// 	- Service `Ortto`: Your Ortto base URL. Possible values: `Api`, `api.au`, `api.eu`.
+        /// 	- Service `PrismaCloud`: Your Prisma Cloud admin console URL.
+        /// 	- Service `Salesforce`: (Optional) The custom Salesforce domain. Make sure that the `BaseUrl` starts with `https://`.
+        /// 	- Service `SalesforceSandbox`: (Optional) The custom Salesforce domain. Make sure that the `BaseUrl` starts with `https://`.
+        /// 	- Service `Stickyio`: Your sticky.io base URL .
+        /// 	- Service `VeevaVault`: Base URL
+        /// 	- Service `Veevavault`: Your Veeva Vault base URL.
+        /// 	- Service `Vitally`: Your Vitally base URL.
         /// </summary>
         [Input("baseUrl", required: true)]
         public string BaseUrl { get; set; } = null!;
@@ -1740,17 +1740,17 @@ namespace Pulumi.Fivetran.Inputs
         private string? _bearerToken;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `ada`: Your Ada API key.
-        /// 	- Service `crowddev`: Your crowd.dev Auth Token.
-        /// 	- Service `customerio`: Your Customer.io App API Key.
-        /// 	- Service `freshchat`: Your Freshchat API Token.
-        /// 	- Service `hopin`: Your Hopin API key.
-        /// 	- Service `orbit`: Your Orbit API Token.
-        /// 	- Service `productboard`: Your Productboard API key.
-        /// 	- Service `smarthr`: Your SmartHR access token.
-        /// 	- Service `sprout`: Your Sprout Social API Access Token.
-        /// 	- Service `zenefits`: Your Zenefits bearer token.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Ada`: Your Ada API key.
+        /// 	- Service `Crowddev`: Your crowd.dev Auth Token.
+        /// 	- Service `Customerio`: Your Customer.io App API Key.
+        /// 	- Service `Freshchat`: Your Freshchat API Token.
+        /// 	- Service `Hopin`: Your Hopin API key.
+        /// 	- Service `Orbit`: Your Orbit API Token.
+        /// 	- Service `Productboard`: Your Productboard API key.
+        /// 	- Service `Smarthr`: Your SmartHR access token.
+        /// 	- Service `Sprout`: Your Sprout Social API Access Token.
+        /// 	- Service `Zenefits`: Your Zenefits bearer token.
         /// </summary>
         public string? BearerToken
         {
@@ -1759,8 +1759,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `sql_server`: Transaction log type. Possible values: `"ONLINE"`, `"BACK_AZURE"`. Default"  value is `"ONLINE"`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SqlServer`: Transaction log type. Possible values: `"ONLINE"`, `"BACK_AZURE"`. Default"  value is `"ONLINE"`.
         /// </summary>
         [Input("binaryLogType", required: true)]
         public string BinaryLogType { get; set; } = null!;
@@ -1769,8 +1769,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _blobSasUrl;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `webhooks`: The blob SAS URL of your Azure container. Required if `bucket_service` is set to `AZURE`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Webhooks`: The blob SAS URL of your Azure container. Required if `BucketService` is set to `AZURE`.
         /// </summary>
         public string? BlobSasUrl
         {
@@ -1779,15 +1779,15 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `rarible`: Your Rarible Blockchain.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Rarible`: Your Rarible Blockchain.
         /// </summary>
         [Input("blockchain", required: true)]
         public string Blockchain { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `oracle_moat_analytics`: Your Oracle Moat Analytics Brand ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `OracleMoatAnalytics`: Your Oracle Moat Analytics Brand ID.
         /// </summary>
         [Input("brandId", required: true)]
         public string BrandId { get; set; } = null!;
@@ -1796,8 +1796,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _breakdowns;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#breakdowns).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Facebook`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#breakdowns).
         /// </summary>
         public List<string> Breakdowns
         {
@@ -1806,37 +1806,37 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `appsflyer`: Customer S3 Bucket
-        /// 	- Service `aws_cloudtrail`: The AWS bucket name which is configured for AWS CloudTrail.
-        /// 	- Service `aws_cost_report`: The S3 bucket name with the AWS Cost and Usage Report 
-        /// 	- Service `aws_inventory`: The AWS bucket name that is configured for AWS Config.
-        /// 	- Service `aws_lambda`: S3 Bucket
-        /// 	- Service `cloudfront`: The bucket name for CloudFront.
-        /// 	- Service `gcs`: The name of the GCS bucket.
-        /// 	- Service `google_play`: The Google Cloud Storage source bucket.
-        /// 	- Service `heap`: The S3 bucket name.
-        /// 	- Service `kinesis`: The name of the Kinesis bucket.
-        /// 	- Service `s3`: The S3 bucket name. Required for connector creation.
-        /// 	- Service `s3_compatible_storage`: The S3-Compatible Storage bucket name. Required for connector creation.
-        /// 	- Service `segment`: The name of the Segment bucket. Must be populated if `sync_type` is set to `S3`.
-        /// 	- Service `wasabi_cloud_storage`: The Wasabi Cloud Storage bucket name. Required for connector creation.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Appsflyer`: Customer S3 Bucket
+        /// 	- Service `AwsCloudtrail`: The AWS bucket name which is configured for AWS CloudTrail.
+        /// 	- Service `AwsCostReport`: The S3 bucket name with the AWS Cost and Usage Report 
+        /// 	- Service `AwsInventory`: The AWS bucket name that is configured for AWS Config.
+        /// 	- Service `AwsLambda`: S3 Bucket
+        /// 	- Service `Cloudfront`: The bucket name for CloudFront.
+        /// 	- Service `Gcs`: The name of the GCS bucket.
+        /// 	- Service `GooglePlay`: The Google Cloud Storage source bucket.
+        /// 	- Service `Heap`: The S3 bucket name.
+        /// 	- Service `Kinesis`: The name of the Kinesis bucket.
+        /// 	- Service `S3`: The S3 bucket name. Required for connector creation.
+        /// 	- Service `S3CompatibleStorage`: The S3-Compatible Storage bucket name. Required for connector creation.
+        /// 	- Service `Segment`: The name of the Segment bucket. Must be populated if `SyncType` is set to `S3`.
+        /// 	- Service `WasabiCloudStorage`: The Wasabi Cloud Storage bucket name. Required for connector creation.
         /// </summary>
         [Input("bucket", required: true)]
         public string Bucket { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adjust`: Your AWS S3 or GCS bucket.
-        /// 	- Service `google_analytics_360`: The name of the bucket.
-        /// 	- Service `google_analytics_4_export`: The name of the bucket.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adjust`: Your AWS S3 or GCS bucket.
+        /// 	- Service `GoogleAnalytics360`: The name of the bucket.
+        /// 	- Service `GoogleAnalytics4Export`: The name of the bucket.
         /// </summary>
         [Input("bucketName", required: true)]
         public string BucketName { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `webhooks`: Whether to store the events in Fivetran's container service or your S3 bucket. Default value: `Fivetran`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Webhooks`: Whether to store the events in Fivetran's container service or your S3 bucket. Default value: `Fivetran`.
         /// </summary>
         [Input("bucketService", required: true)]
         public string BucketService { get; set; } = null!;
@@ -1845,8 +1845,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _businessAccounts;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `reddit_ads`: Specific Accounts to sync.  Must be populated if `sync_mode` is set to `SpecificAccounts`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `RedditAds`: Specific Accounts to sync.  Must be populated if `SyncMode` is set to `SpecificAccounts`.
         /// </summary>
         public List<string> BusinessAccounts
         {
@@ -1858,8 +1858,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _businessId;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `birdeye`: Your Birdeye Business ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Birdeye`: Your Birdeye Business ID.
         /// </summary>
         public string? BusinessId
         {
@@ -1868,23 +1868,23 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `deposco`: Your Deposco business unit.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Deposco`: Your Deposco business unit.
         /// </summary>
         [Input("businessUnit", required: true)]
         public string BusinessUnit { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `pardot`: Business Unit Id
-        /// 	- Service `pardot_sandbox`: Business Unit Id
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Pardot`: Business Unit Id
+        /// 	- Service `PardotSandbox`: Business Unit Id
         /// </summary>
         [Input("businessUnitId", required: true)]
         public string BusinessUnitId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `databricks_db`: catalog to sync
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `DatabricksDb`: catalog to sync
         /// </summary>
         [Input("catalog", required: true)]
         public string Catalog { get; set; } = null!;
@@ -1893,11 +1893,11 @@ namespace Pulumi.Fivetran.Inputs
         private string? _certificate;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `anaplan`: The contents of your PEM certificate file. Must be populated if `auth_mode` is set to `Certificate`.
-        /// 	- Service `qualtrics`: Your Client Certificate
-        /// 	- Service `salesforce`: Provide content of the `.pem` certificate (only when authentication_method = `ADVANCED`).
-        /// 	- Service `salesforce_sandbox`: Provide content of the `.pem` certificate (only when authentication_method = `ADVANCED`).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Anaplan`: The contents of your PEM certificate file. Must be populated if `AuthMode` is set to `Certificate`.
+        /// 	- Service `Qualtrics`: Your Client Certificate
+        /// 	- Service `Salesforce`: Provide content of the `.pem` certificate (only when AuthenticationMethod = `ADVANCED`).
+        /// 	- Service `SalesforceSandbox`: Provide content of the `.pem` certificate (only when AuthenticationMethod = `ADVANCED`).
         /// </summary>
         public string? Certificate
         {
@@ -1909,8 +1909,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _certificateId;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `netsuite_suiteanalytics`: Certificate Id
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `NetsuiteSuiteanalytics`: Certificate Id
         /// </summary>
         public string? CertificateId
         {
@@ -1919,9 +1919,9 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook`: Time period to attribute conversions based on clicks. [Possible click_attribution_window values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#clickattributionwindow).
-        /// 	- Service `pinterest_ads`: The number of days to use as the conversion attribution window for a 'click' action.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Facebook`: Time period to attribute conversions based on clicks. [Possible ClickAttributionWindow values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#clickattributionwindow).
+        /// 	- Service `PinterestAds`: The number of days to use as the conversion attribution window for a 'click' action.
         /// </summary>
         [Input("clickAttributionWindow", required: true)]
         public string ClickAttributionWindow { get; set; } = null!;
@@ -1933,9 +1933,9 @@ namespace Pulumi.Fivetran.Inputs
         private string? _clientCert;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `apache_kafka`: Kafka client certificate.
-        /// 	- Service `heroku_kafka`: Heroku Kafka client certificate. Required for `TLS` security protocol.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ApacheKafka`: Kafka client certificate.
+        /// 	- Service `HerokuKafka`: Heroku Kafka client certificate. Required for `TLS` security protocol.
         /// </summary>
         public string? ClientCert
         {
@@ -1947,9 +1947,9 @@ namespace Pulumi.Fivetran.Inputs
         private string? _clientCertKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `apache_kafka`: Kafka client certificate key.
-        /// 	- Service `heroku_kafka`: Heroku Kafka client certificate key.  Required for `TLS` security protocol.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ApacheKafka`: Kafka client certificate key.
+        /// 	- Service `HerokuKafka`: Heroku Kafka client certificate key.  Required for `TLS` security protocol.
         /// </summary>
         public string? ClientCertKey
         {
@@ -1958,8 +1958,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `ceridian_dayforce`: Your Ceridian Dayforce client host.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `CeridianDayforce`: Your Ceridian Dayforce client host.
         /// </summary>
         [Input("clientHost", required: true)]
         public string ClientHost { get; set; } = null!;
@@ -1968,124 +1968,124 @@ namespace Pulumi.Fivetran.Inputs
         private string? _clientId;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `acumatica`: Your Acumatica client ID.
-        /// 	- Service `adobe_analytics`: Client ID from the OAuth Server-to-Server or Service Account (JWT) credentials of your Adobe Project.
-        /// 	- Service `adobe_workfront`: Your Adobe Workfront client ID.
-        /// 	- Service `adp_workforce_now`: Your ADP Client ID.
-        /// 	- Service `akamai`: Your Akamai client ID.
-        /// 	- Service `akeneo`: Your Akeneo client ID.
-        /// 	- Service `auth0`: Your Auth0 client ID.
-        /// 	- Service `autodesk_bim_360`: Your Autodesk BIM 360 client ID.
-        /// 	- Service `bigin_by_zoho_crm`: Your Bigin by Zoho CRM Client Id
-        /// 	- Service `billing_platform`: Your BillingPlatform client ID.
-        /// 	- Service `bing_webmaster_tools`: Your Bing Webmaster Tools client ID.
-        /// 	- Service `brightcove`: Your Brightcove client ID.
-        /// 	- Service `brightpearl`: Your Brightpearl client ID.
-        /// 	- Service `brivo`: Your Brivo client ID.
-        /// 	- Service `buildium`: Your Buildium API client ID.
-        /// 	- Service `cabcharge`: Your Cabcharge client ID.
-        /// 	- Service `canvas_by_instructure`: Your Canvas by Instructure client ID.
-        /// 	- Service `canvas_data_2_by_instructure`: Your Canvas Data 2 by Instructure client ID.
-        /// 	- Service `castor_edc`: Your Castor EDC client Id.
-        /// 	- Service `clazar`: Your Clazar client ID.
-        /// 	- Service `cloudbeds`: Your Cloudbeds client ID.
-        /// 	- Service `commercetools`: Your commercetools client ID.
-        /// 	- Service `concur`: The SAP Concur Client ID.
-        /// 	- Service `constant_contact`: Your Constant Contact client ID.
-        /// 	- Service `cornerstone`: Your Cornerstone client ID.
-        /// 	- Service `coupa`: Your Coupa client_id
-        /// 	- Service `criteo`: Your Criteo Client ID.
-        /// 	- Service `criteo_retail_media`: Your Criteo Retail Media client ID.
-        /// 	- Service `culture_amp`: Your Culture Amp client ID.
-        /// 	- Service `cvent`: Your Cvent client ID.
-        /// 	- Service `d2l_brightspace`: Your D2L Brightspace client ID.
-        /// 	- Service `dialpad`: Your Dialpad client ID.
-        /// 	- Service `ebay`: Your eBay app ID.
-        /// 	- Service `exact_online`: Your Exact Online client ID.
-        /// 	- Service `fillout`: Your Fillout client ID.
-        /// 	- Service `flexport`: The Flexport API Key.
-        /// 	- Service `formstack`: Your Formstack client ID.
-        /// 	- Service `fortnox`: Your Fortnox client ID.
-        /// 	- Service `genesys`: Your Genesys client ID.
-        /// 	- Service `hana_sap_hva_ecc_netweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
-        /// 	- Service `hana_sap_hva_s4_netweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
-        /// 	- Service `helpdesk`: Your HelpDesk client ID.
-        /// 	- Service `hilti_ontrack`: Your Hilti On!Track client ID.
-        /// 	- Service `ilevel`: Your iLevel Client ID.
-        /// 	- Service `instructure`: Your Instructure client ID.
-        /// 	- Service `integral_ad_science`: Your integral_ad_science client id.
-        /// 	- Service `ironclad`: Your Ironclad client ID.
-        /// 	- Service `jama_software`: Your Jama Software client ID.
-        /// 	- Service `jibble`: Your Jibble client ID.
-        /// 	- Service `khoros_communities`: Your Khoros Communities client ID.
-        /// 	- Service `learn_amp`: Your Learn Amp client ID.
-        /// 	- Service `looker_source`: Your Looker Client ID.
-        /// 	- Service `marketo`: Marketo REST API Client Id.
-        /// 	- Service `medallia`: Medallia Client ID
-        /// 	- Service `microsoft_entra_id`: Your Microsoft Entra ID Client ID.
-        /// 	- Service `microsoft_power_bi`: Your Microsoft Power BI client ID.
-        /// 	- Service `microsoft_teams`: Your Microsoft Teams client ID.
-        /// 	- Service `navan`: Your Navan client ID.
-        /// 	- Service `nice`: Your NICE client ID.
-        /// 	- Service `on24`: Your ON24 client ID.
-        /// 	- Service `oracle_fusion_field_service`: Your Oracle Fusion Field Service client ID.
-        /// 	- Service `oracle_sap_hva_netweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
-        /// 	- Service `paychex`: Your Paychex client ID.
-        /// 	- Service `paypal`: `Client ID` of your PayPal client application.
-        /// 	- Service `paypal_sandbox`: `Client ID` of your PayPal client application.
-        /// 	- Service `personio`: Your Personio Client ID.
-        /// 	- Service `piwik_pro`: Your Piwik PRO client ID.
-        /// 	- Service `podio`: Your Podio client ID.
-        /// 	- Service `power_reviews_enterprise`: Your PowerReviews Enterprise Client ID.
-        /// 	- Service `prisma_cloud`: Your Prisma Cloud access key ID.
-        /// 	- Service `procore`: Your Procore client ID.
-        /// 	- Service `quora_ads`: Your Quora Ads client ID.
-        /// 	- Service `reltio`: Your Reltio client ID.
-        /// 	- Service `salesforce_commerce_cloud`: The Salesforce Commerce Cloud Client ID.
-        /// 	- Service `salesforce_marketing_cloud`: The Salesforce Marketing Cloud client ID.
-        /// 	- Service `salesloft`: `Client ID` of your Salesloft client application.
-        /// 	- Service `sana`: Your Sana client ID.
-        /// 	- Service `sap_success_factors`: Your SAP SuccessFactors Client ID.
-        /// 	- Service `servicenow`: ServiceNow Client ID.
-        /// 	- Service `servicetitan`: Your ServiceTitan client ID.
-        /// 	- Service `sharetribe`: Your Sharetribe client ID.
-        /// 	- Service `shipnetwork`: Your ShipNetwork client ID.
-        /// 	- Service `showpad`: Your Showpad client ID.
-        /// 	- Service `sigma_computing_source`: Your Sigma Computing client ID.
-        /// 	- Service `skillstx`: Your SkillsTX client ID.
-        /// 	- Service `skimlinks`: Your Skimlinks client ID.
-        /// 	- Service `smartrecruiters`: Your SmartRecruiters client ID.
-        /// 	- Service `splash`: Your Splash client ID.
-        /// 	- Service `square`: The Application ID of your organization.
-        /// 	- Service `standard_metrics`: Your Standard Metrics Client ID.
-        /// 	- Service `sugarcrm`: Your SugarCRM client ID.
-        /// 	- Service `swoogo`: Your Swoogo client Id.
-        /// 	- Service `taboola`: The Taboola client ID.
-        /// 	- Service `talkdesk`: The Client ID of your OAuth Client
-        /// 	- Service `tive`: Your Tive client ID.
-        /// 	- Service `toast`: Your Toast client ID.
-        /// 	- Service `trelica`: Your Trelica client ID.
-        /// 	- Service `tremendous`: Your Tremendous client ID.
-        /// 	- Service `tymeshift`: Your Tymeshift email.
-        /// 	- Service `udemy_business`: Your Udemy Business client ID.
-        /// 	- Service `ukg_pro_workforce_management`: Your UKG Pro Workforce Management client ID.
-        /// 	- Service `vimeo`: Your Vimeo client ID.
-        /// 	- Service `visma`: Your Visma client ID.
-        /// 	- Service `vonage_contact_center`: Your Vonage Contact Center client ID.
-        /// 	- Service `walmart_marketplace`: Your Walmart Marketplace client ID.
-        /// 	- Service `xero`: your clientId
-        /// 	- Service `xray`: Your Xray Client ID.
-        /// 	- Service `yahoo_display_ads_on_yahoo_japan`: Your Yahoo Display Ads on Yahoo Japan client ID.
-        /// 	- Service `yougov_sport`: Your Yougov Sport client ID.
-        /// 	- Service `zendesk_chat`: Your Zendesk client ID.
-        /// 	- Service `zoho_books`: Your Zoho Books Client ID.
-        /// 	- Service `zoho_campaigns`: Your Zoho Campaigns Client ID.
-        /// 	- Service `zoho_desk`: Your Zoho Desk Client Id.
-        /// 	- Service `zoho_inventory`: Your Zoho Inventory client ID.
-        /// 	- Service `zoho_recruit`: Your Zoho Recruit client ID.
-        /// 	- Service `zuora`: Zuora Client ID.
-        /// 	- Service `zuora_sandbox`: Zuora Client ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Acumatica`: Your Acumatica client ID.
+        /// 	- Service `AdobeAnalytics`: Client ID from the OAuth Server-to-Server or Service Account (JWT) credentials of your Adobe Project.
+        /// 	- Service `AdobeWorkfront`: Your Adobe Workfront client ID.
+        /// 	- Service `AdpWorkforceNow`: Your ADP Client ID.
+        /// 	- Service `Akamai`: Your Akamai client ID.
+        /// 	- Service `Akeneo`: Your Akeneo client ID.
+        /// 	- Service `Auth0`: Your Auth0 client ID.
+        /// 	- Service `AutodeskBim360`: Your Autodesk BIM 360 client ID.
+        /// 	- Service `BiginByZohoCrm`: Your Bigin by Zoho CRM Client Id
+        /// 	- Service `BillingPlatform`: Your BillingPlatform client ID.
+        /// 	- Service `BingWebmasterTools`: Your Bing Webmaster Tools client ID.
+        /// 	- Service `Brightcove`: Your Brightcove client ID.
+        /// 	- Service `Brightpearl`: Your Brightpearl client ID.
+        /// 	- Service `Brivo`: Your Brivo client ID.
+        /// 	- Service `Buildium`: Your Buildium API client ID.
+        /// 	- Service `Cabcharge`: Your Cabcharge client ID.
+        /// 	- Service `CanvasByInstructure`: Your Canvas by Instructure client ID.
+        /// 	- Service `CanvasData2ByInstructure`: Your Canvas Data 2 by Instructure client ID.
+        /// 	- Service `CastorEdc`: Your Castor EDC client Id.
+        /// 	- Service `Clazar`: Your Clazar client ID.
+        /// 	- Service `Cloudbeds`: Your Cloudbeds client ID.
+        /// 	- Service `Commercetools`: Your commercetools client ID.
+        /// 	- Service `Concur`: The SAP Concur Client ID.
+        /// 	- Service `ConstantContact`: Your Constant Contact client ID.
+        /// 	- Service `Cornerstone`: Your Cornerstone client ID.
+        /// 	- Service `Coupa`: Your Coupa ClientId
+        /// 	- Service `Criteo`: Your Criteo Client ID.
+        /// 	- Service `CriteoRetailMedia`: Your Criteo Retail Media client ID.
+        /// 	- Service `CultureAmp`: Your Culture Amp client ID.
+        /// 	- Service `Cvent`: Your Cvent client ID.
+        /// 	- Service `D2lBrightspace`: Your D2L Brightspace client ID.
+        /// 	- Service `Dialpad`: Your Dialpad client ID.
+        /// 	- Service `Ebay`: Your eBay app ID.
+        /// 	- Service `ExactOnline`: Your Exact Online client ID.
+        /// 	- Service `Fillout`: Your Fillout client ID.
+        /// 	- Service `Flexport`: The Flexport API Key.
+        /// 	- Service `Formstack`: Your Formstack client ID.
+        /// 	- Service `Fortnox`: Your Fortnox client ID.
+        /// 	- Service `Genesys`: Your Genesys client ID.
+        /// 	- Service `HanaSapHvaEccNetweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
+        /// 	- Service `HanaSapHvaS4Netweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
+        /// 	- Service `Helpdesk`: Your HelpDesk client ID.
+        /// 	- Service `HiltiOntrack`: Your Hilti On!Track client ID.
+        /// 	- Service `Ilevel`: Your iLevel Client ID.
+        /// 	- Service `Instructure`: Your Instructure client ID.
+        /// 	- Service `IntegralAdScience`: Your IntegralAdScience client id.
+        /// 	- Service `Ironclad`: Your Ironclad client ID.
+        /// 	- Service `JamaSoftware`: Your Jama Software client ID.
+        /// 	- Service `Jibble`: Your Jibble client ID.
+        /// 	- Service `KhorosCommunities`: Your Khoros Communities client ID.
+        /// 	- Service `LearnAmp`: Your Learn Amp client ID.
+        /// 	- Service `LookerSource`: Your Looker Client ID.
+        /// 	- Service `Marketo`: Marketo REST API Client Id.
+        /// 	- Service `Medallia`: Medallia Client ID
+        /// 	- Service `MicrosoftEntraId`: Your Microsoft Entra ID Client ID.
+        /// 	- Service `MicrosoftPowerBi`: Your Microsoft Power BI client ID.
+        /// 	- Service `MicrosoftTeams`: Your Microsoft Teams client ID.
+        /// 	- Service `Navan`: Your Navan client ID.
+        /// 	- Service `Nice`: Your NICE client ID.
+        /// 	- Service `On24`: Your ON24 client ID.
+        /// 	- Service `OracleFusionFieldService`: Your Oracle Fusion Field Service client ID.
+        /// 	- Service `OracleSapHvaNetweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
+        /// 	- Service `Paychex`: Your Paychex client ID.
+        /// 	- Service `Paypal`: `Client ID` of your PayPal client application.
+        /// 	- Service `PaypalSandbox`: `Client ID` of your PayPal client application.
+        /// 	- Service `Personio`: Your Personio Client ID.
+        /// 	- Service `PiwikPro`: Your Piwik PRO client ID.
+        /// 	- Service `Podio`: Your Podio client ID.
+        /// 	- Service `PowerReviewsEnterprise`: Your PowerReviews Enterprise Client ID.
+        /// 	- Service `PrismaCloud`: Your Prisma Cloud access key ID.
+        /// 	- Service `Procore`: Your Procore client ID.
+        /// 	- Service `QuoraAds`: Your Quora Ads client ID.
+        /// 	- Service `Reltio`: Your Reltio client ID.
+        /// 	- Service `SalesforceCommerceCloud`: The Salesforce Commerce Cloud Client ID.
+        /// 	- Service `SalesforceMarketingCloud`: The Salesforce Marketing Cloud client ID.
+        /// 	- Service `Salesloft`: `Client ID` of your Salesloft client application.
+        /// 	- Service `Sana`: Your Sana client ID.
+        /// 	- Service `SapSuccessFactors`: Your SAP SuccessFactors Client ID.
+        /// 	- Service `Servicenow`: ServiceNow Client ID.
+        /// 	- Service `Servicetitan`: Your ServiceTitan client ID.
+        /// 	- Service `Sharetribe`: Your Sharetribe client ID.
+        /// 	- Service `Shipnetwork`: Your ShipNetwork client ID.
+        /// 	- Service `Showpad`: Your Showpad client ID.
+        /// 	- Service `SigmaComputingSource`: Your Sigma Computing client ID.
+        /// 	- Service `Skillstx`: Your SkillsTX client ID.
+        /// 	- Service `Skimlinks`: Your Skimlinks client ID.
+        /// 	- Service `Smartrecruiters`: Your SmartRecruiters client ID.
+        /// 	- Service `Splash`: Your Splash client ID.
+        /// 	- Service `Square`: The Application ID of your organization.
+        /// 	- Service `StandardMetrics`: Your Standard Metrics Client ID.
+        /// 	- Service `Sugarcrm`: Your SugarCRM client ID.
+        /// 	- Service `Swoogo`: Your Swoogo client Id.
+        /// 	- Service `Taboola`: The Taboola client ID.
+        /// 	- Service `Talkdesk`: The Client ID of your OAuth Client
+        /// 	- Service `Tive`: Your Tive client ID.
+        /// 	- Service `Toast`: Your Toast client ID.
+        /// 	- Service `Trelica`: Your Trelica client ID.
+        /// 	- Service `Tremendous`: Your Tremendous client ID.
+        /// 	- Service `Tymeshift`: Your Tymeshift email.
+        /// 	- Service `UdemyBusiness`: Your Udemy Business client ID.
+        /// 	- Service `UkgProWorkforceManagement`: Your UKG Pro Workforce Management client ID.
+        /// 	- Service `Vimeo`: Your Vimeo client ID.
+        /// 	- Service `Visma`: Your Visma client ID.
+        /// 	- Service `VonageContactCenter`: Your Vonage Contact Center client ID.
+        /// 	- Service `WalmartMarketplace`: Your Walmart Marketplace client ID.
+        /// 	- Service `Xero`: your clientId
+        /// 	- Service `Xray`: Your Xray Client ID.
+        /// 	- Service `YahooDisplayAdsOnYahooJapan`: Your Yahoo Display Ads on Yahoo Japan client ID.
+        /// 	- Service `YougovSport`: Your Yougov Sport client ID.
+        /// 	- Service `ZendeskChat`: Your Zendesk client ID.
+        /// 	- Service `ZohoBooks`: Your Zoho Books Client ID.
+        /// 	- Service `ZohoCampaigns`: Your Zoho Campaigns Client ID.
+        /// 	- Service `ZohoDesk`: Your Zoho Desk Client Id.
+        /// 	- Service `ZohoInventory`: Your Zoho Inventory client ID.
+        /// 	- Service `ZohoRecruit`: Your Zoho Recruit client ID.
+        /// 	- Service `Zuora`: Zuora Client ID.
+        /// 	- Service `ZuoraSandbox`: Zuora Client ID.
         /// </summary>
         public string? ClientId
         {
@@ -2097,10 +2097,10 @@ namespace Pulumi.Fivetran.Inputs
         private string? _clientKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `appfigures`: Your Appfigures Client Key.
-        /// 	- Service `thinkific`: Your Thinkific client key.
-        /// 	- Service `yougov_sport`: Your Yougov Sport client key.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Appfigures`: Your Appfigures Client Key.
+        /// 	- Service `Thinkific`: Your Thinkific client key.
+        /// 	- Service `YougovSport`: Your Yougov Sport client key.
         /// </summary>
         public string? ClientKey
         {
@@ -2112,9 +2112,9 @@ namespace Pulumi.Fivetran.Inputs
         private string? _clientName;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `destini`: Your Destini Client Name.
-        /// 	- Service `medallia`: Medallia company name
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Destini`: Your Destini Client Name.
+        /// 	- Service `Medallia`: Medallia company name
         /// </summary>
         public string? ClientName
         {
@@ -2123,8 +2123,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `ceridian_dayforce`: Your Ceridian Dayforce client namespace.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `CeridianDayforce`: Your Ceridian Dayforce client namespace.
         /// </summary>
         [Input("clientNamespace", required: true)]
         public string ClientNamespace { get; set; } = null!;
@@ -2133,23 +2133,23 @@ namespace Pulumi.Fivetran.Inputs
         private string? _clientPrivateKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora`: Client Private Key in .pem format.
-        /// 	- Service `aurora_postgres`: Client Private Key in .pem format.
-        /// 	- Service `azure_postgres`: Client Private Key in .pem format.
-        /// 	- Service `google_cloud_mysql`: Client Private Key in .pem format.
-        /// 	- Service `google_cloud_postgresql`: Client Private Key in .pem format.
-        /// 	- Service `heroku_postgres`: Client Private Key in .pem format.
-        /// 	- Service `magento_mysql`: Client Private Key in .pem format.
-        /// 	- Service `magento_mysql_rds`: Client Private Key in .pem format.
-        /// 	- Service `maria`: Client Private Key in .pem format.
-        /// 	- Service `maria_azure`: Client Private Key in .pem format.
-        /// 	- Service `maria_rds`: Client Private Key in .pem format.
-        /// 	- Service `mysql`: Client Private Key in .pem format.
-        /// 	- Service `mysql_azure`: Client Private Key in .pem format.
-        /// 	- Service `mysql_rds`: Client Private Key in .pem format.
-        /// 	- Service `postgres`: Client Private Key in .pem format.
-        /// 	- Service `postgres_rds`: Client Private Key in .pem format.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Aurora`: Client Private Key in .pem format.
+        /// 	- Service `AuroraPostgres`: Client Private Key in .pem format.
+        /// 	- Service `AzurePostgres`: Client Private Key in .pem format.
+        /// 	- Service `GoogleCloudMysql`: Client Private Key in .pem format.
+        /// 	- Service `GoogleCloudPostgresql`: Client Private Key in .pem format.
+        /// 	- Service `HerokuPostgres`: Client Private Key in .pem format.
+        /// 	- Service `MagentoMysql`: Client Private Key in .pem format.
+        /// 	- Service `MagentoMysqlRds`: Client Private Key in .pem format.
+        /// 	- Service `Maria`: Client Private Key in .pem format.
+        /// 	- Service `MariaAzure`: Client Private Key in .pem format.
+        /// 	- Service `MariaRds`: Client Private Key in .pem format.
+        /// 	- Service `Mysql`: Client Private Key in .pem format.
+        /// 	- Service `MysqlAzure`: Client Private Key in .pem format.
+        /// 	- Service `MysqlRds`: Client Private Key in .pem format.
+        /// 	- Service `Postgres`: Client Private Key in .pem format.
+        /// 	- Service `PostgresRds`: Client Private Key in .pem format.
         /// </summary>
         public string? ClientPrivateKey
         {
@@ -2158,23 +2158,23 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora`: Client Certificate in .pem format.
-        /// 	- Service `aurora_postgres`: Client Certificate in .pem format.
-        /// 	- Service `azure_postgres`: Client Certificate in .pem format.
-        /// 	- Service `google_cloud_mysql`: Client Certificate in .pem format.
-        /// 	- Service `google_cloud_postgresql`: Client Certificate in .pem format.
-        /// 	- Service `heroku_postgres`: Client Certificate in .pem format.
-        /// 	- Service `magento_mysql`: Client Certificate in .pem format.
-        /// 	- Service `magento_mysql_rds`: Client Certificate in .pem format.
-        /// 	- Service `maria`: Client Certificate in .pem format.
-        /// 	- Service `maria_azure`: Client Certificate in .pem format.
-        /// 	- Service `maria_rds`: Client Certificate in .pem format.
-        /// 	- Service `mysql`: Client Certificate in .pem format.
-        /// 	- Service `mysql_azure`: Client Certificate in .pem format.
-        /// 	- Service `mysql_rds`: Client Certificate in .pem format.
-        /// 	- Service `postgres`: Client Certificate in .pem format.
-        /// 	- Service `postgres_rds`: Client Certificate in .pem format.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Aurora`: Client Certificate in .pem format.
+        /// 	- Service `AuroraPostgres`: Client Certificate in .pem format.
+        /// 	- Service `AzurePostgres`: Client Certificate in .pem format.
+        /// 	- Service `GoogleCloudMysql`: Client Certificate in .pem format.
+        /// 	- Service `GoogleCloudPostgresql`: Client Certificate in .pem format.
+        /// 	- Service `HerokuPostgres`: Client Certificate in .pem format.
+        /// 	- Service `MagentoMysql`: Client Certificate in .pem format.
+        /// 	- Service `MagentoMysqlRds`: Client Certificate in .pem format.
+        /// 	- Service `Maria`: Client Certificate in .pem format.
+        /// 	- Service `MariaAzure`: Client Certificate in .pem format.
+        /// 	- Service `MariaRds`: Client Certificate in .pem format.
+        /// 	- Service `Mysql`: Client Certificate in .pem format.
+        /// 	- Service `MysqlAzure`: Client Certificate in .pem format.
+        /// 	- Service `MysqlRds`: Client Certificate in .pem format.
+        /// 	- Service `Postgres`: Client Certificate in .pem format.
+        /// 	- Service `PostgresRds`: Client Certificate in .pem format.
         /// </summary>
         [Input("clientPublicCertificate", required: true)]
         public string ClientPublicCertificate { get; set; } = null!;
@@ -2183,113 +2183,113 @@ namespace Pulumi.Fivetran.Inputs
         private string? _clientSecret;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `acumatica`: Your Acumatica client secret.
-        /// 	- Service `adobe_analytics`: Client Secret from the OAuth Server-to-Server or Service Account (JWT) credentials of your Adobe Project.
-        /// 	- Service `adobe_workfront`: Your Adobe Workfront client secret.
-        /// 	- Service `adp_workforce_now`: Your ADP Client Secret.
-        /// 	- Service `akamai`: Your Akamai client secret.
-        /// 	- Service `akeneo`: Your Akeneo client secret.
-        /// 	- Service `auth0`: Your Auth0 client secret.
-        /// 	- Service `autodesk_bim_360`: Your Autodesk BIM 360 client secret.
-        /// 	- Service `bigin_by_zoho_crm`: Your Bigin by Zoho CRM Client Secret
-        /// 	- Service `billing_platform`: Your BillingPlatform client secret.
-        /// 	- Service `bing_webmaster_tools`: Your Bing Webmaster Tools client secret.
-        /// 	- Service `brightcove`: Your Brightcove client secret.
-        /// 	- Service `brightpearl`: Your Brightpearl client secret.
-        /// 	- Service `brivo`: Your Brivo client secret.
-        /// 	- Service `canvas_by_instructure`: Your Canvas by Instructure client secret.
-        /// 	- Service `castor_edc`: Your Castor EDC client secret.
-        /// 	- Service `clazar`: Your Clazar client secret.
-        /// 	- Service `cloudbeds`: Your Cloudbeds client secret.
-        /// 	- Service `commercetools`: Your commercetools client secret.
-        /// 	- Service `concur`: The SAP Concur Client secret.
-        /// 	- Service `constant_contact`: Your Constant Contact client secret.
-        /// 	- Service `cornerstone`: Your Cornerstone client secret.
-        /// 	- Service `coupa`: Your Coupa client_id
-        /// 	- Service `criteo`: Your Criteo client secret key.
-        /// 	- Service `criteo_retail_media`: Your Criteo Retail Media client secret.
-        /// 	- Service `culture_amp`: Your Culture Amp client secret.
-        /// 	- Service `cvent`: Your Cvent client secret.
-        /// 	- Service `d2l_brightspace`: Your D2L Brightspace client secret.
-        /// 	- Service `dialpad`: Your Dialpad client secret.
-        /// 	- Service `ebay`: Your eBay cert ID.
-        /// 	- Service `exact_online`: Your Exact Online client secret.
-        /// 	- Service `fillout`: Your Fillout client secret
-        /// 	- Service `flexport`: The Flexport API Secret.
-        /// 	- Service `formstack`: Your Formstack client secret.
-        /// 	- Service `fortnox`: Your Fortnox client secret.
-        /// 	- Service `genesys`: Your Genesys client secret.
-        /// 	- Service `helpdesk`: Your HelpDesk client secret.
-        /// 	- Service `hilti_ontrack`: Your Hilti On!Track client secret.
-        /// 	- Service `ilevel`: Your iLevel Client Secret.
-        /// 	- Service `instructure`: Your Instructure client secret.
-        /// 	- Service `integral_ad_science`: Your integral_ad_science client secret.
-        /// 	- Service `ironclad`: Your Ironclad client secret.
-        /// 	- Service `jama_software`: Your Jama Software client secret.
-        /// 	- Service `jibble`: Your Jibble client secret.
-        /// 	- Service `learn_amp`: Your Learn Amp client secret.
-        /// 	- Service `looker_source`: Your Looker Client Secret.
-        /// 	- Service `marketo`: Marketo REST API Client Secret.
-        /// 	- Service `medallia`: Medallia Client Secret key
-        /// 	- Service `microsoft_entra_id`: Your Microsoft Entra ID Client Secret.
-        /// 	- Service `microsoft_power_bi`: Your Microsoft Power BI client secret.
-        /// 	- Service `microsoft_teams`: Your Microsoft Teams client secret.
-        /// 	- Service `navan`: Your Navan client secret.
-        /// 	- Service `nice`: Your NICE client secret.
-        /// 	- Service `oracle_fusion_field_service`: Your Oracle Fusion Field Service client secret.
-        /// 	- Service `paychex`: Your Paychex client secret.
-        /// 	- Service `personio`: Your Personio secret.
-        /// 	- Service `piwik_pro`: Your Piwik PRO client secret.
-        /// 	- Service `podio`: Your Podio client secret.
-        /// 	- Service `power_reviews_enterprise`: Your PowerReviews Enterprise Client Secret.
-        /// 	- Service `prisma_cloud`: Your Prisma Cloud secret access Key.
-        /// 	- Service `procore`: Your Procore client secret.
-        /// 	- Service `quora_ads`: Your Quora Ads client secret.
-        /// 	- Service `reltio`: Your Reltio client secret.
-        /// 	- Service `salesforce_commerce_cloud`: The Salesforce Commerce Cloud Client secret.
-        /// 	- Service `salesforce_marketing_cloud`: The Salesforce Marketing Cloud client secret.
-        /// 	- Service `salesloft`: `Client Secret` of your Salesloft client application.
-        /// 	- Service `sana`: Your Sana client secret.
-        /// 	- Service `sap_success_factors`: Your SAP SuccessFactors Client Secret that you generated through SAML Assertion.
-        /// 	- Service `servicenow`: ServiceNow Client Secret.
-        /// 	- Service `servicetitan`: Your ServiceTitan secret key.
-        /// 	- Service `sharetribe`: Your Sharetribe client secret.
-        /// 	- Service `showpad`: Your Showpad client secret.
-        /// 	- Service `sigma_computing_source`: Your Sigma Computing client secret.
-        /// 	- Service `skillstx`: Your SkillsTX client secret.
-        /// 	- Service `skimlinks`: Your Skimlinks client secret.
-        /// 	- Service `smartrecruiters`: Your SmartRecruiters client secret.
-        /// 	- Service `splash`: Your Splash client secret.
-        /// 	- Service `square`: The Application Secret of your organization.
-        /// 	- Service `standard_metrics`: Your Standard Metrics Client secret.
-        /// 	- Service `sugarcrm`: Your SugarCRM client secret.
-        /// 	- Service `swoogo`: Your Swoogo Client Secret.
-        /// 	- Service `taboola`: The Taboola client secret.
-        /// 	- Service `talkdesk`: The Client Secret of your OAuth Client
-        /// 	- Service `thinkific`: Your Thinkific client secret.
-        /// 	- Service `tive`: Your Tive client secret.
-        /// 	- Service `toast`: Your Toast client secret.
-        /// 	- Service `trelica`: Your Trelica client secret.
-        /// 	- Service `tremendous`: Your Tremendous client secret.
-        /// 	- Service `tymeshift`: Your Tymeshift password.
-        /// 	- Service `udemy_business`: Your Udemy Business client secret.
-        /// 	- Service `ukg_pro_workforce_management`: Your UKG Pro Workforce Management client secret.
-        /// 	- Service `vimeo`: Your Vimeo client secret.
-        /// 	- Service `visma`: Your Visma client secret.
-        /// 	- Service `vonage_contact_center`: Your Vonage Contact Center client secret.
-        /// 	- Service `walmart_marketplace`: Your Walmart Marketplace client secret.
-        /// 	- Service `xero`: your clientSecret
-        /// 	- Service `xray`: Your Xray Client Secret.
-        /// 	- Service `yahoo_display_ads_on_yahoo_japan`: Your Yahoo Display Ads on Yahoo Japan client secret.
-        /// 	- Service `zendesk_chat`: Your Zendesk client secret.
-        /// 	- Service `zoho_books`: Your Zoho Books Client Secret.
-        /// 	- Service `zoho_campaigns`: Your Zoho Campaigns Client Secret.
-        /// 	- Service `zoho_desk`: Your Zoho Desk Client secret.
-        /// 	- Service `zoho_inventory`: Your Zoho Inventory client secret.
-        /// 	- Service `zoho_recruit`: Your Zoho Recruit client secret.
-        /// 	- Service `zuora`: Zuora Client Secret.
-        /// 	- Service `zuora_sandbox`: Zuora Client Secret.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Acumatica`: Your Acumatica client secret.
+        /// 	- Service `AdobeAnalytics`: Client Secret from the OAuth Server-to-Server or Service Account (JWT) credentials of your Adobe Project.
+        /// 	- Service `AdobeWorkfront`: Your Adobe Workfront client secret.
+        /// 	- Service `AdpWorkforceNow`: Your ADP Client Secret.
+        /// 	- Service `Akamai`: Your Akamai client secret.
+        /// 	- Service `Akeneo`: Your Akeneo client secret.
+        /// 	- Service `Auth0`: Your Auth0 client secret.
+        /// 	- Service `AutodeskBim360`: Your Autodesk BIM 360 client secret.
+        /// 	- Service `BiginByZohoCrm`: Your Bigin by Zoho CRM Client Secret
+        /// 	- Service `BillingPlatform`: Your BillingPlatform client secret.
+        /// 	- Service `BingWebmasterTools`: Your Bing Webmaster Tools client secret.
+        /// 	- Service `Brightcove`: Your Brightcove client secret.
+        /// 	- Service `Brightpearl`: Your Brightpearl client secret.
+        /// 	- Service `Brivo`: Your Brivo client secret.
+        /// 	- Service `CanvasByInstructure`: Your Canvas by Instructure client secret.
+        /// 	- Service `CastorEdc`: Your Castor EDC client secret.
+        /// 	- Service `Clazar`: Your Clazar client secret.
+        /// 	- Service `Cloudbeds`: Your Cloudbeds client secret.
+        /// 	- Service `Commercetools`: Your commercetools client secret.
+        /// 	- Service `Concur`: The SAP Concur Client secret.
+        /// 	- Service `ConstantContact`: Your Constant Contact client secret.
+        /// 	- Service `Cornerstone`: Your Cornerstone client secret.
+        /// 	- Service `Coupa`: Your Coupa ClientId
+        /// 	- Service `Criteo`: Your Criteo client secret key.
+        /// 	- Service `CriteoRetailMedia`: Your Criteo Retail Media client secret.
+        /// 	- Service `CultureAmp`: Your Culture Amp client secret.
+        /// 	- Service `Cvent`: Your Cvent client secret.
+        /// 	- Service `D2lBrightspace`: Your D2L Brightspace client secret.
+        /// 	- Service `Dialpad`: Your Dialpad client secret.
+        /// 	- Service `Ebay`: Your eBay cert ID.
+        /// 	- Service `ExactOnline`: Your Exact Online client secret.
+        /// 	- Service `Fillout`: Your Fillout client secret
+        /// 	- Service `Flexport`: The Flexport API Secret.
+        /// 	- Service `Formstack`: Your Formstack client secret.
+        /// 	- Service `Fortnox`: Your Fortnox client secret.
+        /// 	- Service `Genesys`: Your Genesys client secret.
+        /// 	- Service `Helpdesk`: Your HelpDesk client secret.
+        /// 	- Service `HiltiOntrack`: Your Hilti On!Track client secret.
+        /// 	- Service `Ilevel`: Your iLevel Client Secret.
+        /// 	- Service `Instructure`: Your Instructure client secret.
+        /// 	- Service `IntegralAdScience`: Your IntegralAdScience client secret.
+        /// 	- Service `Ironclad`: Your Ironclad client secret.
+        /// 	- Service `JamaSoftware`: Your Jama Software client secret.
+        /// 	- Service `Jibble`: Your Jibble client secret.
+        /// 	- Service `LearnAmp`: Your Learn Amp client secret.
+        /// 	- Service `LookerSource`: Your Looker Client Secret.
+        /// 	- Service `Marketo`: Marketo REST API Client Secret.
+        /// 	- Service `Medallia`: Medallia Client Secret key
+        /// 	- Service `MicrosoftEntraId`: Your Microsoft Entra ID Client Secret.
+        /// 	- Service `MicrosoftPowerBi`: Your Microsoft Power BI client secret.
+        /// 	- Service `MicrosoftTeams`: Your Microsoft Teams client secret.
+        /// 	- Service `Navan`: Your Navan client secret.
+        /// 	- Service `Nice`: Your NICE client secret.
+        /// 	- Service `OracleFusionFieldService`: Your Oracle Fusion Field Service client secret.
+        /// 	- Service `Paychex`: Your Paychex client secret.
+        /// 	- Service `Personio`: Your Personio secret.
+        /// 	- Service `PiwikPro`: Your Piwik PRO client secret.
+        /// 	- Service `Podio`: Your Podio client secret.
+        /// 	- Service `PowerReviewsEnterprise`: Your PowerReviews Enterprise Client Secret.
+        /// 	- Service `PrismaCloud`: Your Prisma Cloud secret access Key.
+        /// 	- Service `Procore`: Your Procore client secret.
+        /// 	- Service `QuoraAds`: Your Quora Ads client secret.
+        /// 	- Service `Reltio`: Your Reltio client secret.
+        /// 	- Service `SalesforceCommerceCloud`: The Salesforce Commerce Cloud Client secret.
+        /// 	- Service `SalesforceMarketingCloud`: The Salesforce Marketing Cloud client secret.
+        /// 	- Service `Salesloft`: `Client Secret` of your Salesloft client application.
+        /// 	- Service `Sana`: Your Sana client secret.
+        /// 	- Service `SapSuccessFactors`: Your SAP SuccessFactors Client Secret that you generated through SAML Assertion.
+        /// 	- Service `Servicenow`: ServiceNow Client Secret.
+        /// 	- Service `Servicetitan`: Your ServiceTitan secret key.
+        /// 	- Service `Sharetribe`: Your Sharetribe client secret.
+        /// 	- Service `Showpad`: Your Showpad client secret.
+        /// 	- Service `SigmaComputingSource`: Your Sigma Computing client secret.
+        /// 	- Service `Skillstx`: Your SkillsTX client secret.
+        /// 	- Service `Skimlinks`: Your Skimlinks client secret.
+        /// 	- Service `Smartrecruiters`: Your SmartRecruiters client secret.
+        /// 	- Service `Splash`: Your Splash client secret.
+        /// 	- Service `Square`: The Application Secret of your organization.
+        /// 	- Service `StandardMetrics`: Your Standard Metrics Client secret.
+        /// 	- Service `Sugarcrm`: Your SugarCRM client secret.
+        /// 	- Service `Swoogo`: Your Swoogo Client Secret.
+        /// 	- Service `Taboola`: The Taboola client secret.
+        /// 	- Service `Talkdesk`: The Client Secret of your OAuth Client
+        /// 	- Service `Thinkific`: Your Thinkific client secret.
+        /// 	- Service `Tive`: Your Tive client secret.
+        /// 	- Service `Toast`: Your Toast client secret.
+        /// 	- Service `Trelica`: Your Trelica client secret.
+        /// 	- Service `Tremendous`: Your Tremendous client secret.
+        /// 	- Service `Tymeshift`: Your Tymeshift password.
+        /// 	- Service `UdemyBusiness`: Your Udemy Business client secret.
+        /// 	- Service `UkgProWorkforceManagement`: Your UKG Pro Workforce Management client secret.
+        /// 	- Service `Vimeo`: Your Vimeo client secret.
+        /// 	- Service `Visma`: Your Visma client secret.
+        /// 	- Service `VonageContactCenter`: Your Vonage Contact Center client secret.
+        /// 	- Service `WalmartMarketplace`: Your Walmart Marketplace client secret.
+        /// 	- Service `Xero`: your clientSecret
+        /// 	- Service `Xray`: Your Xray Client Secret.
+        /// 	- Service `YahooDisplayAdsOnYahooJapan`: Your Yahoo Display Ads on Yahoo Japan client secret.
+        /// 	- Service `ZendeskChat`: Your Zendesk client secret.
+        /// 	- Service `ZohoBooks`: Your Zoho Books Client Secret.
+        /// 	- Service `ZohoCampaigns`: Your Zoho Campaigns Client Secret.
+        /// 	- Service `ZohoDesk`: Your Zoho Desk Client secret.
+        /// 	- Service `ZohoInventory`: Your Zoho Inventory client secret.
+        /// 	- Service `ZohoRecruit`: Your Zoho Recruit client secret.
+        /// 	- Service `Zuora`: Zuora Client Secret.
+        /// 	- Service `ZuoraSandbox`: Zuora Client Secret.
         /// </summary>
         public string? ClientSecret
         {
@@ -2298,15 +2298,15 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `braze`: Cloud storage type Braze Current is connected to.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Braze`: Cloud storage type Braze Current is connected to.
         /// </summary>
         [Input("cloudStorageType", required: true)]
         public string CloudStorageType { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `rarible`: Your Rarible Collection Address.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Rarible`: Your Rarible Collection Address.
         /// </summary>
         [Input("collectionAddress", required: true)]
         public string CollectionAddress { get; set; } = null!;
@@ -2315,8 +2315,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _columns;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `double_click_publishers`: Columns provide all trafficking statistics and revenue information available for the chosen Dimensions.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `DoubleClickPublishers`: Columns provide all trafficking statistics and revenue information available for the chosen Dimensions.
         /// </summary>
         public List<string> Columns
         {
@@ -2325,22 +2325,22 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `alida`: Your Alida community API key name.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Alida`: Your Alida community API key name.
         /// </summary>
         [Input("communityApiKeyName", required: true)]
         public string CommunityApiKeyName { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `khoros_communities`: Your Khoros Communities community domain.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `KhorosCommunities`: Your Khoros Communities community domain.
         /// </summary>
         [Input("communityDomain", required: true)]
         public string CommunityDomain { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `khoros_communities`: Your Khoros Communities community ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `KhorosCommunities`: Your Khoros Communities community ID.
         /// </summary>
         [Input("communityId", required: true)]
         public string CommunityId { get; set; } = null!;
@@ -2349,8 +2349,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _companies;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `business_central`: List of companies to sync
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `BusinessCentral`: List of companies to sync
         /// </summary>
         public List<string> Companies
         {
@@ -2359,24 +2359,24 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `ordway`: Your Ordway company name.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Ordway`: Your Ordway company name.
         /// </summary>
         [Input("company", required: true)]
         public string Company { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
+        /// Field usage depends on `Service` value: 
         /// 	- Service `360learning`: Your 360Learning Company ID.
-        /// 	- Service `sage_intacct`: Company ID
-        /// 	- Service `sap_success_factors`: Your SAP SuccessFactors Company ID.
+        /// 	- Service `SageIntacct`: Company ID
+        /// 	- Service `SapSuccessFactors`: Your SAP SuccessFactors Company ID.
         /// </summary>
         [Input("companyId", required: true)]
         public string CompanyId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `cj_commission_detail`: Your CJ Commission Detail company IDs.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `CjCommissionDetail`: Your CJ Commission Detail company IDs.
         /// </summary>
         [Input("companyIds", required: true)]
         public string CompanyIds { get; set; } = null!;
@@ -2385,9 +2385,9 @@ namespace Pulumi.Fivetran.Inputs
         private string? _companyKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `khoros_care`: Your Khoros Care companyKey.
-        /// 	- Service `upland`: Your Upland Software Company Key.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `KhorosCare`: Your Khoros Care companyKey.
+        /// 	- Service `Upland`: Your Upland Software Company Key.
         /// </summary>
         public string? CompanyKey
         {
@@ -2396,8 +2396,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `clockodo`: Your Clockodo company name.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Clockodo`: Your Clockodo company name.
         /// </summary>
         [Input("companyName", required: true)]
         public string CompanyName { get; set; } = null!;
@@ -2406,8 +2406,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _companyRequestToken;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `concur`: The SAP Concur Company Request Token
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Concur`: The SAP Concur Company Request Token
         /// </summary>
         public string? CompanyRequestToken
         {
@@ -2416,50 +2416,50 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `concur`: The SAP Concur Company UUID
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Concur`: The SAP Concur Company UUID
         /// </summary>
         [Input("companyUuid", required: true)]
         public string CompanyUuid { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_cost_report`: If your files are compressed, but do not have extensions indicating the compression method, you can force them to be uncompressed according to the selected compression algorithm. Leave the value as infer if your files are saved with the correct compression extensions.
-        /// 	- Service `azure_blob_storage`: The secrets that should be passed to the function at runtime.
-        /// 	- Service `box`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
-        /// 	- Service `dropbox`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
-        /// 	- Service `email`: The secrets that should be passed to the function at runtime.
-        /// 	- Service `ftp`: The secrets that should be passed to the function at runtime.
-        /// 	- Service `gcs`: The secrets that should be passed to the function at runtime.
-        /// 	- Service `google_drive`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
-        /// 	- Service `kinesis`: If your files are compressed, but do not have extensions indicating the compression method, you can force them to be uncompressed according to the selected compression algorithm. Leave the value as infer if your files are saved with the correct compression extensions.
-        /// 	- Service `s3`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
-        /// 	- Service `s3_compatible_storage`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
-        /// 	- Service `sftp`: The secrets that should be passed to the function at runtime.
-        /// 	- Service `share_point`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
-        /// 	- Service `wasabi_cloud_storage`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsCostReport`: If your files are compressed, but do not have extensions indicating the compression method, you can force them to be uncompressed according to the selected compression algorithm. Leave the value as infer if your files are saved with the correct compression extensions.
+        /// 	- Service `AzureBlobStorage`: The secrets that should be passed to the function at runtime.
+        /// 	- Service `Box`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
+        /// 	- Service `Dropbox`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
+        /// 	- Service `Email`: The secrets that should be passed to the function at runtime.
+        /// 	- Service `Ftp`: The secrets that should be passed to the function at runtime.
+        /// 	- Service `Gcs`: The secrets that should be passed to the function at runtime.
+        /// 	- Service `GoogleDrive`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
+        /// 	- Service `Kinesis`: If your files are compressed, but do not have extensions indicating the compression method, you can force them to be uncompressed according to the selected compression algorithm. Leave the value as infer if your files are saved with the correct compression extensions.
+        /// 	- Service `S3`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
+        /// 	- Service `S3CompatibleStorage`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
+        /// 	- Service `Sftp`: The secrets that should be passed to the function at runtime.
+        /// 	- Service `SharePoint`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
+        /// 	- Service `WasabiCloudStorage`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
         /// </summary>
         [Input("compression", required: true)]
         public string Compression { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_display_and_video_360`: The report configuration method. Specifies whether a new configuration is defined manually or an existing configuration is reused. The default value is `CREATE_NEW`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleDisplayAndVideo360`: The report configuration method. Specifies whether a new configuration is defined manually or an existing configuration is reused. The default value is `CREATE_NEW`.
         /// </summary>
         [Input("configMethod", required: true)]
         public string ConfigMethod { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snowplow`: Public repository URL containing JSON configuration files.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Snowplow`: Public repository URL containing JSON configuration files.
         /// </summary>
         [Input("configRepositoryUrl", required: true)]
         public string ConfigRepositoryUrl { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook`: Option to select Prebuilt Reports or Custom Reports. [Possible config_type values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#configtype).
-        /// 	- Service `google_analytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/connectors/applications/google-analytics#schemainformation).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Facebook`: Option to select Prebuilt Reports or Custom Reports. [Possible ConfigType values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#configtype).
+        /// 	- Service `GoogleAnalytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/connectors/applications/google-analytics#schemainformation).
         /// </summary>
         [Input("configType", required: true)]
         public string ConfigType { get; set; } = null!;
@@ -2468,8 +2468,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _connectPassword;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `xactly`: Your Xactly Connect password.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Xactly`: Your Xactly Connect password.
         /// </summary>
         public string? ConnectPassword
         {
@@ -2478,8 +2478,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `xactly`: Your Xactly Connect username.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Xactly`: Your Xactly Connect username.
         /// </summary>
         [Input("connectUsername", required: true)]
         public string ConnectUsername { get; set; } = null!;
@@ -2491,19 +2491,19 @@ namespace Pulumi.Fivetran.Inputs
         public string ConnectingUserEmail { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_msk`: How Fivetran connects to your message brokers in the cluster
-        /// 	- Service `azure_blob_storage`: Connection Method. Possible values:  `DIRECT`: Fivetran will connect directly to your storage container, `SSH_TUNNEL`: Fivetran will connect to your storage container using a host machine (commonly used for VPN connections), `PRIVATE_LINK`: Fivetran will connect to your storage container using PrivateLink.
-        /// 	- Service `azure_function`: Connection Method. Possible values:  `DIRECT`: Fivetran will connect directly to your function, `PRIVATE_LINK`: Fivetran will connect to your storage container using PrivateLink.
-        /// 	- Service `azure_service_bus`: The connection method
-        /// 	- Service `sftp`: The connection method used to connect to SFTP Server.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsMsk`: How Fivetran connects to your message brokers in the cluster
+        /// 	- Service `AzureBlobStorage`: Connection Method. Possible values:  `DIRECT`: Fivetran will connect directly to your storage container, `SSH_TUNNEL`: Fivetran will connect to your storage container using a host machine (commonly used for VPN connections), `PRIVATE_LINK`: Fivetran will connect to your storage container using PrivateLink.
+        /// 	- Service `AzureFunction`: Connection Method. Possible values:  `DIRECT`: Fivetran will connect directly to your function, `PRIVATE_LINK`: Fivetran will connect to your storage container using PrivateLink.
+        /// 	- Service `AzureServiceBus`: The connection method
+        /// 	- Service `Sftp`: The connection method used to connect to SFTP Server.
         /// </summary>
         [Input("connectionMethod", required: true)]
         public string ConnectionMethod { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `appsflyer`: Your Data Locker Connection Name. Default value: `data-locker-hourly/
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Appsflyer`: Your Data Locker Connection Name. Default value: `data-locker-hourly/
         /// </summary>
         [Input("connectionName", required: true)]
         public string ConnectionName { get; set; } = null!;
@@ -2512,13 +2512,13 @@ namespace Pulumi.Fivetran.Inputs
         private string? _connectionString;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `azure_blob_storage`: The blob storage container connection string.
-        /// 	- Service `azure_event_hub`: Connection string of the Event Hub Namespace you want to sync.
-        /// 	- Service `azure_service_bus`: The connection string used for authentication. Required if the authentication type is `ConnectionString` 
-        /// 	- Service `microsoft_dynamics_365_fno`: The blob storage container's connection string.
-        /// 	- Service `microsoft_dynamics_365_fo`: The blob storage container connection string.
-        /// 	- Service `sql_server`: The Azure Blob Storage container connection string.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureBlobStorage`: The blob storage container connection string.
+        /// 	- Service `AzureEventHub`: Connection string of the Event Hub Namespace you want to sync.
+        /// 	- Service `AzureServiceBus`: The connection string used for authentication. Required if the authentication type is `ConnectionString` 
+        /// 	- Service `MicrosoftDynamics365Fno`: The blob storage container's connection string.
+        /// 	- Service `MicrosoftDynamics365Fo`: The blob storage container connection string.
+        /// 	- Service `SqlServer`: The Azure Blob Storage container connection string.
         /// </summary>
         public string? ConnectionString
         {
@@ -2527,86 +2527,86 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `aurora_postgres`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `aveva_pi`: Possible values: `Directly`, `PrivateLink`
-        /// 	- Service `aws_cost_report`: Connection method. Default value: `Directly`.
-        /// 	- Service `aws_lambda`: Connection method. Default value: `Directly`.
-        /// 	- Service `azure_blob_storage`: Connection method. Default value: `Directly`.
-        /// 	- Service `azure_cosmos_for_mongo`: Possible values:`Directly`, `PrivateLink`. `Directly` is the default value
-        /// 	- Service `azure_postgres`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `azure_sql_db`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `azure_sql_managed_db`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `bigquery_db`: Direct or PrivateLink connection
-        /// 	- Service `clarity`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `cockroachdb`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `db2i_hva`: Possible values:`SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and the following parameter's values are specified: `tunnel_host`, `tunnel_port`, `tunnel_user`.
-        /// 	- Service `db2i_sap_hva`: Possible values:`SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`.
-        /// 	- Service `documentdb`: Possible values:`SshTunnel`, `PrivateLink` . `SshTunnel` is used as a value if this parameter is omitted in the request and the following parameter's values are specified: `tunnel_host`, `tunnel_port`, `tunnel_user`.
-        /// 	- Service `dynamics_365_fo`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `ehr`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `elastic_cloud`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `email`: Connection method. Default value: `Directly`.
-        /// 	- Service `es_self_hosted`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `google_cloud_mysql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `google_cloud_postgresql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `google_cloud_sqlserver`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `hana_sap_hva_b1`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `hana_sap_hva_ecc`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `hana_sap_hva_ecc_netweaver`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `hana_sap_hva_s4`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `hana_sap_hva_s4_netweaver`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `heroku_postgres`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `kinesis`: Connection method. Default value: `Directly`.
-        /// 	- Service `magento_mysql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `magento_mysql_rds`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `maria`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `maria_azure`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `maria_rds`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `mongo`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `mongo_sharded`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `mysql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `mysql_azure`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `mysql_rds`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `opendistro`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `opensearch`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `oracle`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `oracle_ebs`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `oracle_hva`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `oracle_rac`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `oracle_rds`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `oracle_sap_hva`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `oracle_sap_hva_netweaver`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `postgres`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `postgres_rds`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `redshift_db`: Directly or Private Link
-        /// 	- Service `s3`: Connection method. Default value: `Directly`.
-        /// 	- Service `sap_hana`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `sap_s4hana`: Connection Method
-        /// 	- Service `snowflake_db`: Directly or Private Link
-        /// 	- Service `sql_server`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `sql_server_hva`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `sql_server_rds`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
-        /// 	- Service `sql_server_sap_ecc_hva`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnel_host`, `tunnel_port`, `tunnel_user`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Aurora`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `AuroraPostgres`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `AvevaPi`: Possible values: `Directly`, `PrivateLink`
+        /// 	- Service `AwsCostReport`: Connection method. Default value: `Directly`.
+        /// 	- Service `AwsLambda`: Connection method. Default value: `Directly`.
+        /// 	- Service `AzureBlobStorage`: Connection method. Default value: `Directly`.
+        /// 	- Service `AzureCosmosForMongo`: Possible values:`Directly`, `PrivateLink`. `Directly` is the default value
+        /// 	- Service `AzurePostgres`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `AzureSqlDb`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `AzureSqlManagedDb`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `BigqueryDb`: Direct or PrivateLink connection
+        /// 	- Service `Clarity`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `Cockroachdb`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `Db2iHva`: Possible values:`SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and the following parameter's values are specified: `TunnelHost`, `TunnelPort`, `TunnelUser`.
+        /// 	- Service `Db2iSapHva`: Possible values:`SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`.
+        /// 	- Service `Documentdb`: Possible values:`SshTunnel`, `PrivateLink` . `SshTunnel` is used as a value if this parameter is omitted in the request and the following parameter's values are specified: `TunnelHost`, `TunnelPort`, `TunnelUser`.
+        /// 	- Service `Dynamics365Fo`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `Ehr`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `ElasticCloud`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `Email`: Connection method. Default value: `Directly`.
+        /// 	- Service `EsSelfHosted`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `GoogleCloudMysql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `GoogleCloudPostgresql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `GoogleCloudSqlserver`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `HanaSapHvaB1`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `HanaSapHvaEcc`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `HanaSapHvaEccNetweaver`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `HanaSapHvaS4`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `HanaSapHvaS4Netweaver`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `HerokuPostgres`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `Kinesis`: Connection method. Default value: `Directly`.
+        /// 	- Service `MagentoMysql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `MagentoMysqlRds`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `Maria`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `MariaAzure`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `MariaRds`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `Mongo`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `MongoSharded`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `Mysql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `MysqlAzure`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `MysqlRds`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `Opendistro`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `Opensearch`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `Oracle`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `OracleEbs`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `OracleHva`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `OracleRac`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `OracleRds`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `OracleSapHva`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `OracleSapHvaNetweaver`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `Postgres`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `PostgresRds`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `RedshiftDb`: Directly or Private Link
+        /// 	- Service `S3`: Connection method. Default value: `Directly`.
+        /// 	- Service `SapHana`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `SapS4hana`: Connection Method
+        /// 	- Service `SnowflakeDb`: Directly or Private Link
+        /// 	- Service `SqlServer`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `SqlServerHva`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `SqlServerRds`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+        /// 	- Service `SqlServerSapEccHva`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
         /// </summary>
         [Input("connectionType", required: true)]
         public string ConnectionType { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `prisma_cloud`: Your Prisma Cloud console URL.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `PrismaCloud`: Your Prisma Cloud console URL.
         /// </summary>
         [Input("consoleUrl", required: true)]
         public string ConsoleUrl { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `apache_kafka`: Kafka consumer group name.
-        /// 	- Service `aws_msk`: The name of consumer group created for Fivetran.
-        /// 	- Service `azure_event_hub`: Name of consumer group created for Fivetran.
-        /// 	- Service `confluent_cloud`: Confluent Cloud consumer group name.
-        /// 	- Service `heroku_kafka`: Heroku Kafka consumer group name.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ApacheKafka`: Kafka consumer group name.
+        /// 	- Service `AwsMsk`: The name of consumer group created for Fivetran.
+        /// 	- Service `AzureEventHub`: Name of consumer group created for Fivetran.
+        /// 	- Service `ConfluentCloud`: Confluent Cloud consumer group name.
+        /// 	- Service `HerokuKafka`: Heroku Kafka consumer group name.
         /// </summary>
         [Input("consumerGroup", required: true)]
         public string ConsumerGroup { get; set; } = null!;
@@ -2615,12 +2615,12 @@ namespace Pulumi.Fivetran.Inputs
         private string? _consumerKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `netsuite_suiteanalytics`: Consumer Key
-        /// 	- Service `odoo`: Your Odoo consumer key.
-        /// 	- Service `twitter`: API Key of your app
-        /// 	- Service `twitter_ads`: The Twitter App consumer key.
-        /// 	- Service `woocommerce`: Your WooCommerce Consumer key.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `NetsuiteSuiteanalytics`: Consumer Key
+        /// 	- Service `Odoo`: Your Odoo consumer key.
+        /// 	- Service `Twitter`: API Key of your app
+        /// 	- Service `TwitterAds`: The Twitter App consumer key.
+        /// 	- Service `Woocommerce`: Your WooCommerce Consumer key.
         /// </summary>
         public string? ConsumerKey
         {
@@ -2629,8 +2629,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `xactly`: Your Xactly Connect consumer name.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Xactly`: Your Xactly Connect consumer name.
         /// </summary>
         [Input("consumerName", required: true)]
         public string ConsumerName { get; set; } = null!;
@@ -2639,12 +2639,12 @@ namespace Pulumi.Fivetran.Inputs
         private string? _consumerSecret;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `netsuite_suiteanalytics`: Consumer Secret
-        /// 	- Service `odoo`: Your Odoo consumer secret.
-        /// 	- Service `twitter`: API Secret of your app
-        /// 	- Service `twitter_ads`: The Twitter App consumer secret.
-        /// 	- Service `woocommerce`: Your WooCommerce Consumer secret.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `NetsuiteSuiteanalytics`: Consumer Secret
+        /// 	- Service `Odoo`: Your Odoo consumer secret.
+        /// 	- Service `Twitter`: API Secret of your app
+        /// 	- Service `TwitterAds`: The Twitter App consumer secret.
+        /// 	- Service `Woocommerce`: Your WooCommerce Consumer secret.
         /// </summary>
         public string? ConsumerSecret
         {
@@ -2653,8 +2653,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `azure_blob_storage`: IP address of the Azure Storage Container which is accessible from host machine.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureBlobStorage`: IP address of the Azure Storage Container which is accessible from host machine.
         /// </summary>
         [Input("containerAddress", required: true)]
         public string ContainerAddress { get; set; } = null!;
@@ -2663,11 +2663,11 @@ namespace Pulumi.Fivetran.Inputs
         private string? _containerName;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `azure_blob_storage`: The name of the blob container.
-        /// 	- Service `microsoft_dynamics_365_fno`: The name of the blob container.
-        /// 	- Service `microsoft_dynamics_365_fo`: The name of the blob container.
-        /// 	- Service `sql_server`: The name of the Azure Blob Storage container.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureBlobStorage`: The name of the blob container.
+        /// 	- Service `MicrosoftDynamics365Fno`: The name of the blob container.
+        /// 	- Service `MicrosoftDynamics365Fo`: The name of the blob container.
+        /// 	- Service `SqlServer`: The name of the Azure Blob Storage container.
         /// </summary>
         public string? ContainerName
         {
@@ -2676,22 +2676,22 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `youtube_analytics`: Used only for Content Owner reports. The ID of the content owner for whom the API request is being made.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `YoutubeAnalytics`: Used only for Content Owner reports. The ID of the content owner for whom the API request is being made.
         /// </summary>
         [Input("contentOwnerId", required: true)]
         public string ContentOwnerId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `acumatica`: Your Acumatica contract version.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Acumatica`: Your Acumatica contract version.
         /// </summary>
         [Input("contractVersion", required: true)]
         public string ContractVersion { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `helpscout`: Your conversation webhook URL
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Helpscout`: Your conversation webhook URL
         /// </summary>
         [Input("conversationWebhookUrl", required: true)]
         public string ConversationWebhookUrl { get; set; } = null!;
@@ -2700,8 +2700,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _conversionDimensions;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `double_click_campaign_manager`: Conversion Dimensions.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `DoubleClickCampaignManager`: Conversion Dimensions.
         /// </summary>
         public List<string> ConversionDimensions
         {
@@ -2710,15 +2710,15 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `pinterest_ads`: The date that the user interacted with the ad OR completed a conversion event.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `PinterestAds`: The date that the user interacted with the ad OR completed a conversion event.
         /// </summary>
         [Input("conversionReportTime", required: true)]
         public string ConversionReportTime { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_ads`: A period of time in days during which a conversion is recorded.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleAds`: A period of time in days during which a conversion is recorded.
         /// </summary>
         [Input("conversionWindowSize", required: true)]
         public int ConversionWindowSize { get; set; }
@@ -2727,32 +2727,32 @@ namespace Pulumi.Fivetran.Inputs
         public bool ConvertDatsTypeToDate { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adjust`: CSV definition for the CSV export (https://help.adjust.com/en/article/csv-uploads#how-do-i-format-my-csv-definition).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adjust`: CSV definition for the CSV export (https://help.adjust.com/en/article/csv-uploads#how-do-i-format-my-csv-definition).
         /// </summary>
         [Input("csvDefinition", required: true)]
         public string CsvDefinition { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `criteo`: Currency
-        /// 	- Service `rokt`: Your Rokt currency.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Criteo`: Currency
+        /// 	- Service `Rokt`: Your Rokt currency.
         /// </summary>
         [Input("currency", required: true)]
         public string Currency { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `coalesce`: Your Coalesce custom base URL.
-        /// 	- Service `datadog`: Your Datadog custom base url.
-        /// 	- Service `deposco`: Your Deposco custom base URL.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Coalesce`: Your Coalesce custom base URL.
+        /// 	- Service `Datadog`: Your Datadog custom base url.
+        /// 	- Service `Deposco`: Your Deposco custom base URL.
         /// </summary>
         [Input("customBaseUrl", required: true)]
         public string CustomBaseUrl { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `iterable`: Custom Events Sync Mode.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Iterable`: Custom Events Sync Mode.
         /// </summary>
         [Input("customEventSyncMode", required: true)]
         public string CustomEventSyncMode { get; set; } = null!;
@@ -2761,8 +2761,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _customEvents;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `iterable`: List of custom events to sync. Should be specified when `custom_event_sync_mode` is `SelectedEvents`
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Iterable`: List of custom events to sync. Should be specified when `CustomEventSyncMode` is `SelectedEvents`
         /// </summary>
         public List<string> CustomEvents
         {
@@ -2774,8 +2774,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _customFieldIds;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `double_click_publishers`: The list of custom field IDs included in the report. Custom fields can only be selected with their corresponding dimensions.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `DoubleClickPublishers`: The list of custom field IDs included in the report. Custom fields can only be selected with their corresponding dimensions.
         /// </summary>
         public List<string> CustomFieldIds
         {
@@ -2787,8 +2787,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _customFloodlightVariables;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `double_click_campaign_manager`: Custom Floodlight variables enable you to capture information beyond the basics (visits and revenue) that you can collect with standard parameters in your tags.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `DoubleClickCampaignManager`: Custom Floodlight variables enable you to capture information beyond the basics (visits and revenue) that you can collect with standard parameters in your tags.
         /// </summary>
         public List<string> CustomFloodlightVariables
         {
@@ -2800,10 +2800,10 @@ namespace Pulumi.Fivetran.Inputs
         private List<Inputs.GetConnectorConfigCustomPayloadArgs>? _customPayloads;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_lambda`: The list of key-value pairs that can be used to specify custom information to the function at runtime.
-        /// 	- Service `azure_function`: The list of key-value pairs that can be used to specify custom information to the function at runtime.
-        /// 	- Service `google_cloud_function`: The list of key-value pairs that can be used to specify custom information to the function at runtime.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsLambda`: The list of key-value pairs that can be used to specify custom information to the function at runtime.
+        /// 	- Service `AzureFunction`: The list of key-value pairs that can be used to specify custom information to the function at runtime.
+        /// 	- Service `GoogleCloudFunction`: The list of key-value pairs that can be used to specify custom information to the function at runtime.
         /// </summary>
         public List<Inputs.GetConnectorConfigCustomPayloadArgs> CustomPayloads
         {
@@ -2815,10 +2815,10 @@ namespace Pulumi.Fivetran.Inputs
         private List<Inputs.GetConnectorConfigCustomReportArgs>? _customReports;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `reddit_ads`: The list of custom report configurations. Each report corresponds to a table within the schema to which connector will sync the data.
-        /// 	- Service `snapchat_ads`: [Custom reports for Snapchat Ads connector](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports).
-        /// 	- Service `tiktok_ads`: Title of Custom Report
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `RedditAds`: The list of custom report configurations. Each report corresponds to a table within the schema to which connector will sync the data.
+        /// 	- Service `SnapchatAds`: [Custom reports for Snapchat Ads connector](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports).
+        /// 	- Service `TiktokAds`: Title of Custom Report
         /// </summary>
         public List<Inputs.GetConnectorConfigCustomReportArgs> CustomReports
         {
@@ -2830,8 +2830,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<Inputs.GetConnectorConfigCustomTableArgs>? _customTables;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook_ads`: List of custom tables. Each custom table corresponds to a table within the schema to which connector will sync the data.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FacebookAds`: List of custom tables. Each custom table corresponds to a table within the schema to which connector will sync the data.
         /// </summary>
         public List<Inputs.GetConnectorConfigCustomTableArgs> CustomTables
         {
@@ -2840,10 +2840,10 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `dbt_cloud`: Your dbt Cloud access url.
-        /// 	- Service `factbird`: Your Factbird custom base url.
-        /// 	- Service `jotform`: Your Jotform custom base URL.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `DbtCloud`: Your dbt Cloud access url.
+        /// 	- Service `Factbird`: Your Factbird custom base url.
+        /// 	- Service `Jotform`: Your Jotform custom base URL.
         /// </summary>
         [Input("customUrl", required: true)]
         public string CustomUrl { get; set; } = null!;
@@ -2852,8 +2852,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _customerApiKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `ukg_pro`: Your UKG Pro Customer API key.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `UkgPro`: Your UKG Pro Customer API key.
         /// </summary>
         public string? CustomerApiKey
         {
@@ -2862,15 +2862,15 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_ads`: ID of the customer, can be retrieved from your AdWords dashboard.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleAds`: ID of the customer, can be retrieved from your AdWords dashboard.
         /// </summary>
         [Input("customerId", required: true)]
         public string CustomerId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `salesforce_commerce_cloud`: The parameter to retrieve customer details.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SalesforceCommerceCloud`: The parameter to retrieve customer details.
         /// </summary>
         [Input("customerListId", required: true)]
         public string CustomerListId { get; set; } = null!;
@@ -2879,24 +2879,24 @@ namespace Pulumi.Fivetran.Inputs
         public int DailyApiCallLimit { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `cosmos`: The source data access method. Supported values:`ACCOUNT_KEY`- Data access method that uses account keys to authenticate to the source database. It comes in both read-write and read-only variants.`RESOURCE_TOKEN`- Fine-grained permission model based on native Azure Cosmos DB users and permissions. Learn more in our [Azure Cosmos DB Data Access Methods documentation](https://fivetran.com/docs/connectors/databases/cosmos#dataaccessmethods).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Cosmos`: The source data access method. Supported values:`ACCOUNT_KEY`- Data access method that uses account keys to authenticate to the source database. It comes in both read-write and read-only variants.`RESOURCE_TOKEN`- Fine-grained permission model based on native Azure Cosmos DB users and permissions. Learn more in our [Azure Cosmos DB Data Access Methods documentation](https://fivetran.com/docs/connectors/databases/cosmos#dataaccessmethods).
         /// </summary>
         [Input("dataAccessMethod", required: true)]
         public string DataAccessMethod { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `brightpearl`: Your Brightpearl data center.
-        /// 	- Service `qualtrics`: Data center ID of the Qualtrics account. Can be found in the URL before `qualtrics.com`. (For example, if your URL is `youraccount.ca1.qualtrics.com`, then the data center is `ca1`.)
-        /// 	- Service `zoho_crm`: Data Center, depending on the Domain name
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Brightpearl`: Your Brightpearl data center.
+        /// 	- Service `Qualtrics`: Data center ID of the Qualtrics account. Can be found in the URL before `qualtrics.com`. (For example, if your URL is `youraccount.ca1.qualtrics.com`, then the data center is `Ca1`.)
+        /// 	- Service `ZohoCrm`: Data Center, depending on the Domain name
         /// </summary>
         [Input("dataCenter", required: true)]
         public string DataCenter { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `zonka_feedback`: Your Zonka Feedback data center ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ZonkaFeedback`: Your Zonka Feedback data center ID.
         /// </summary>
         [Input("dataCenterId", required: true)]
         public string DataCenterId { get; set; } = null!;
@@ -2905,8 +2905,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<Inputs.GetConnectorConfigDataModelPathAliasListArgs>? _dataModelPathAliasLists;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `oracle_business_intelligence_publisher`: Data Model Paths (Optional)
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `OracleBusinessIntelligencePublisher`: Data Model Paths (Optional)
         /// </summary>
         public List<Inputs.GetConnectorConfigDataModelPathAliasListArgs> DataModelPathAliasLists
         {
@@ -2915,122 +2915,122 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `bigquery_db`: Data set name
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `BigqueryDb`: Data set name
         /// </summary>
         [Input("dataSetName", required: true)]
         public string DataSetName { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora`: The database name.
-        /// 	- Service `aurora_postgres`: The database name.
-        /// 	- Service `azure_cosmos_for_mongo`: Authentication database for the source. Usually 'admin'.
-        /// 	- Service `azure_postgres`: The database name.
-        /// 	- Service `azure_sql_db`: The database name.
-        /// 	- Service `azure_sql_managed_db`: The database name.
-        /// 	- Service `clarity`: The database name.
-        /// 	- Service `cockroachdb`: The database name.
-        /// 	- Service `db2i_hva`: The database name.
-        /// 	- Service `db2i_sap_hva`: The database name.
-        /// 	- Service `dynamics_365_fo`: The database name.
-        /// 	- Service `ehr`: The database name.
-        /// 	- Service `google_cloud_mysql`: The database name.
-        /// 	- Service `google_cloud_postgresql`: The database name.
-        /// 	- Service `google_cloud_sqlserver`: The database name.
-        /// 	- Service `hana_sap_hva_b1`: The Hana database name.
-        /// 	- Service `hana_sap_hva_ecc`: The Hana database name.
-        /// 	- Service `hana_sap_hva_ecc_netweaver`: The Hana database name.
-        /// 	- Service `hana_sap_hva_s4`: The Hana database name.
-        /// 	- Service `hana_sap_hva_s4_netweaver`: The Hana database name.
-        /// 	- Service `heroku_postgres`: The database name.
-        /// 	- Service `magento_mysql`: The database name.
-        /// 	- Service `magento_mysql_rds`: The database name.
-        /// 	- Service `maria`: The database name.
-        /// 	- Service `maria_azure`: The database name.
-        /// 	- Service `maria_rds`: The database name.
-        /// 	- Service `mysql`: The database name.
-        /// 	- Service `mysql_azure`: The database name.
-        /// 	- Service `mysql_rds`: The database name.
-        /// 	- Service `oracle`: The database name.
-        /// 	- Service `oracle_ebs`: The database name.
-        /// 	- Service `oracle_hva`: The database name.
-        /// 	- Service `oracle_rac`: The database name.
-        /// 	- Service `oracle_rds`: The database name.
-        /// 	- Service `oracle_sap_hva`: The database name.
-        /// 	- Service `postgres`: The database name.
-        /// 	- Service `postgres_rds`: The database name.
-        /// 	- Service `redshift_db`: The database name: Redshift
-        /// 	- Service `sap_hana`: The database name.
-        /// 	- Service `sap_s4hana`: The database name.
-        /// 	- Service `snowflake_db`: The database name: Snowflake
-        /// 	- Service `sql_server`: The database name.
-        /// 	- Service `sql_server_hva`: The database name.
-        /// 	- Service `sql_server_rds`: The database name.
-        /// 	- Service `sql_server_sap_ecc_hva`: The database name.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Aurora`: The database name.
+        /// 	- Service `AuroraPostgres`: The database name.
+        /// 	- Service `AzureCosmosForMongo`: Authentication database for the source. Usually 'admin'.
+        /// 	- Service `AzurePostgres`: The database name.
+        /// 	- Service `AzureSqlDb`: The database name.
+        /// 	- Service `AzureSqlManagedDb`: The database name.
+        /// 	- Service `Clarity`: The database name.
+        /// 	- Service `Cockroachdb`: The database name.
+        /// 	- Service `Db2iHva`: The database name.
+        /// 	- Service `Db2iSapHva`: The database name.
+        /// 	- Service `Dynamics365Fo`: The database name.
+        /// 	- Service `Ehr`: The database name.
+        /// 	- Service `GoogleCloudMysql`: The database name.
+        /// 	- Service `GoogleCloudPostgresql`: The database name.
+        /// 	- Service `GoogleCloudSqlserver`: The database name.
+        /// 	- Service `HanaSapHvaB1`: The Hana database name.
+        /// 	- Service `HanaSapHvaEcc`: The Hana database name.
+        /// 	- Service `HanaSapHvaEccNetweaver`: The Hana database name.
+        /// 	- Service `HanaSapHvaS4`: The Hana database name.
+        /// 	- Service `HanaSapHvaS4Netweaver`: The Hana database name.
+        /// 	- Service `HerokuPostgres`: The database name.
+        /// 	- Service `MagentoMysql`: The database name.
+        /// 	- Service `MagentoMysqlRds`: The database name.
+        /// 	- Service `Maria`: The database name.
+        /// 	- Service `MariaAzure`: The database name.
+        /// 	- Service `MariaRds`: The database name.
+        /// 	- Service `Mysql`: The database name.
+        /// 	- Service `MysqlAzure`: The database name.
+        /// 	- Service `MysqlRds`: The database name.
+        /// 	- Service `Oracle`: The database name.
+        /// 	- Service `OracleEbs`: The database name.
+        /// 	- Service `OracleHva`: The database name.
+        /// 	- Service `OracleRac`: The database name.
+        /// 	- Service `OracleRds`: The database name.
+        /// 	- Service `OracleSapHva`: The database name.
+        /// 	- Service `Postgres`: The database name.
+        /// 	- Service `PostgresRds`: The database name.
+        /// 	- Service `RedshiftDb`: The database name: Redshift
+        /// 	- Service `SapHana`: The database name.
+        /// 	- Service `SapS4hana`: The database name.
+        /// 	- Service `SnowflakeDb`: The database name: Snowflake
+        /// 	- Service `SqlServer`: The database name.
+        /// 	- Service `SqlServerHva`: The database name.
+        /// 	- Service `SqlServerRds`: The database name.
+        /// 	- Service `SqlServerSapEccHva`: The database name.
         /// </summary>
         [Input("database", required: true)]
         public string Database { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `firebase`: Database Name
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Firebase`: Database Name
         /// </summary>
         [Input("databaseName", required: true)]
         public string DatabaseName { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_analytics_360`: The dataset ID.
-        /// 	- Service `google_analytics_4_export`: The Dataset ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleAnalytics360`: The dataset ID.
+        /// 	- Service `GoogleAnalytics4Export`: The Dataset ID.
         /// </summary>
         [Input("datasetId", required: true)]
         public string DatasetId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `netsuite_suiteanalytics`: The NetSuite data source value: `NetSuite.com`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `NetsuiteSuiteanalytics`: The NetSuite data source value: `NetSuite.com`.
         /// </summary>
         [Input("datasource", required: true)]
         public string Datasource { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics`: The aggregation duration you want. Default value: `HOUR` .
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalytics`: The aggregation duration you want. Default value: `HOUR` .
         /// </summary>
         [Input("dateGranularity", required: true)]
         public string DateGranularity { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `myosh`: Your Myosh Server variables/db .
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Myosh`: Your Myosh Server variables/db .
         /// </summary>
         [Input("db", required: true)]
         public string Db { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_cost_report`: Optional. You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible. If your files sync with the wrong number of columns, consider setting this value
-        /// 	- Service `azure_blob_storage`: You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
-        /// 	- Service `box`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
-        /// 	- Service `dropbox`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
-        /// 	- Service `email`: You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
-        /// 	- Service `ftp`: You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
-        /// 	- Service `gcs`: You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
-        /// 	- Service `google_drive`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
-        /// 	- Service `kinesis`: Optional. You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible. If your files sync with the wrong number of columns, consider setting this value
-        /// 	- Service `s3`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
-        /// 	- Service `s3_compatible_storage`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
-        /// 	- Service `sftp`: You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
-        /// 	- Service `share_point`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
-        /// 	- Service `wasabi_cloud_storage`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsCostReport`: Optional. You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible. If your files sync with the wrong number of columns, consider setting this value
+        /// 	- Service `AzureBlobStorage`: You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
+        /// 	- Service `Box`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
+        /// 	- Service `Dropbox`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
+        /// 	- Service `Email`: You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
+        /// 	- Service `Ftp`: You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
+        /// 	- Service `Gcs`: You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
+        /// 	- Service `GoogleDrive`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
+        /// 	- Service `Kinesis`: Optional. You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible. If your files sync with the wrong number of columns, consider setting this value
+        /// 	- Service `S3`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
+        /// 	- Service `S3CompatibleStorage`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
+        /// 	- Service `Sftp`: You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
+        /// 	- Service `SharePoint`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
+        /// 	- Service `WasabiCloudStorage`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
         /// </summary>
         [Input("delimiter", required: true)]
         public string Delimiter { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `brightpearl`: Your Brightpearl dev reference.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Brightpearl`: Your Brightpearl dev reference.
         /// </summary>
         [Input("developerReference", required: true)]
         public string DeveloperReference { get; set; } = null!;
@@ -3039,8 +3039,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _dimensionAttributes;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `double_click_publishers`: Dimension attributes provide additional fields associated with a Dimension. Dimension attributes can only be selected with their corresponding Dimensions.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `DoubleClickPublishers`: Dimension attributes provide additional fields associated with a Dimension. Dimension attributes can only be selected with their corresponding Dimensions.
         /// </summary>
         public List<string> DimensionAttributes
         {
@@ -3052,12 +3052,12 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _dimensions;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adroll`: The dimenstions that you want to sync.
-        /// 	- Service `double_click_campaign_manager`: Report dimensions to include into a sync. The `date` dimension is mandatory for all the report types. The `advertiser` dimension is mandatory for `REACH` report type
-        /// 	- Service `double_click_publishers`: Report dimensions to include in the sync. The `date` dimension is mandatory for all the report types.
-        /// 	- Service `google_analytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
-        /// 	- Service `google_display_and_video_360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `config_method` is set to `CREATE_NEW`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adroll`: The dimenstions that you want to sync.
+        /// 	- Service `DoubleClickCampaignManager`: Report dimensions to include into a sync. The `Date` dimension is mandatory for all the report types. The `Advertiser` dimension is mandatory for `REACH` report type
+        /// 	- Service `DoubleClickPublishers`: Report dimensions to include in the sync. The `Date` dimension is mandatory for all the report types.
+        /// 	- Service `GoogleAnalytics`: The report dimensions to include into a sync. The `Date` dimension is mandatory for all the report types.
+        /// 	- Service `GoogleDisplayAndVideo360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `ConfigMethod` is set to `CREATE_NEW`.
         /// </summary>
         public List<string> Dimensions
         {
@@ -3066,9 +3066,9 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `oracle_hva`: Possible values:`DIRECT`, `BFILE`, `ASM`, `ARCHIVE_ONLY`
-        /// 	- Service `oracle_sap_hva`: Possible values:`DIRECT`, `BFILE`, `ASM`, `ARCHIVE_ONLY`
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `OracleHva`: Possible values:`DIRECT`, `BFILE`, `ASM`, `ARCHIVE_ONLY`
+        /// 	- Service `OracleSapHva`: Possible values:`DIRECT`, `BFILE`, `ASM`, `ARCHIVE_ONLY`
         /// </summary>
         [Input("directCaptureMethod", required: true)]
         public string DirectCaptureMethod { get; set; } = null!;
@@ -3077,8 +3077,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _directories;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `qualtrics`: Set of directories to be synced when syncMode is CUSTOM
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Qualtrics`: Set of directories to be synced when syncMode is CUSTOM
         /// </summary>
         public List<string> Directories
         {
@@ -3087,66 +3087,66 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `qualtrics`: Sync mode to be used for fetching select directories. The Allowed Values are ALL and CUSTOM. If CUSTOM add the directories to be synced in the `directories` field.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Qualtrics`: Sync mode to be used for fetching select directories. The Allowed Values are ALL and CUSTOM. If CUSTOM add the directories to be synced in the `Directories` field.
         /// </summary>
         [Input("directorySyncMode", required: true)]
         public string DirectorySyncMode { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `cosmos`: Specifies the total number of connectors in the Distributed Connector Cluster running in parallel.
-        /// 	- Service `dynamodb`: Specifies the total number of connectors in the Distributed Connector Cluster running in parallel.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Cosmos`: Specifies the total number of connectors in the Distributed Connector Cluster running in parallel.
+        /// 	- Service `Dynamodb`: Specifies the total number of connectors in the Distributed Connector Cluster running in parallel.
         /// </summary>
         [Input("distributedConnectorClusterSize", required: true)]
         public int DistributedConnectorClusterSize { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `qualtrics`: Can be used to set the distributions fetch window for incremental sync. Fetch window cannot be lesser than 60 days.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Qualtrics`: Can be used to set the distributions fetch window for incremental sync. Fetch window cannot be lesser than 60 days.
         /// </summary>
         [Input("distributionIncrementalFetchWindowDays", required: true)]
         public int DistributionIncrementalFetchWindowDays { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `auth0`: Your Auth0 domain.
-        /// 	- Service `bubble`: Your Bubble app name or domain name.
-        /// 	- Service `confluence`: Your Confluence domain.
-        /// 	- Service `kustomer`: Domain is the beginning of your kustomer URL going before .kustomerapp.com, e.g. for yourcompany.kustomerapp.com the domain name is yourcompany
-        /// 	- Service `okta`: Your Okta domain.
-        /// 	- Service `pipedrive`: Your Pipedrive domain.
-        /// 	- Service `shopware`: Your Shopware domain.
-        /// 	- Service `sistrix`: Your SISTRIX domain.
-        /// 	- Service `solarwinds_service_desk`: Your SolarWinds Service Desk domain.
-        /// 	- Service `uservoice`: Domain of your UserVoice site. If it ends with ".uservoice.com", you can specify just the subdomain ("mydomain.uservoice.com" - "mydomain")
-        /// 	- Service `zendesk`: Zendesk domain.
-        /// 	- Service `zendesk_sunshine`: Zendesk domain.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Auth0`: Your Auth0 domain.
+        /// 	- Service `Bubble`: Your Bubble app name or domain name.
+        /// 	- Service `Confluence`: Your Confluence domain.
+        /// 	- Service `Kustomer`: Domain is the beginning of your kustomer URL going before .kustomerapp.com, e.g. for yourcompany.kustomerapp.com the domain name is yourcompany
+        /// 	- Service `Okta`: Your Okta domain.
+        /// 	- Service `Pipedrive`: Your Pipedrive domain.
+        /// 	- Service `Shopware`: Your Shopware domain.
+        /// 	- Service `Sistrix`: Your SISTRIX domain.
+        /// 	- Service `SolarwindsServiceDesk`: Your SolarWinds Service Desk domain.
+        /// 	- Service `Uservoice`: Domain of your UserVoice site. If it ends with ".uservoice.com", you can specify just the subdomain ("mydomain.uservoice.com" - "mydomain")
+        /// 	- Service `Zendesk`: Zendesk domain.
+        /// 	- Service `ZendeskSunshine`: Zendesk domain.
         /// </summary>
         [Input("domain", required: true)]
         public string Domain { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `workday`: Workday host name.
-        /// 	- Service `workday_financial_management`: Workday host name.
-        /// 	- Service `workday_hcm`: Workday host name.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Workday`: Workday host name.
+        /// 	- Service `WorkdayFinancialManagement`: Workday host name.
+        /// 	- Service `WorkdayHcm`: Workday host name.
         /// </summary>
         [Input("domainHostName", required: true)]
         public string DomainHostName { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `calabrio`: Your Calabrio domain name
-        /// 	- Service `dynamics_365`: The custom domain name associated with Dynamics 365.
-        /// 	- Service `helpshift`: Your Helpshift domain name.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Calabrio`: Your Calabrio domain name
+        /// 	- Service `Dynamics365`: The custom domain name associated with Dynamics 365.
+        /// 	- Service `Helpshift`: Your Helpshift domain name.
         /// </summary>
         [Input("domainName", required: true)]
         public string DomainName { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `medallia`: Domain type of your Medallia URL
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Medallia`: Domain type of your Medallia URL
         /// </summary>
         [Input("domainType", required: true)]
         public string DomainType { get; set; } = null!;
@@ -3171,8 +3171,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _ecommerceStores;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `mailchimp`: List of IDs of the Mailchimp E-Commerce Stores to Sync
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Mailchimp`: List of IDs of the Mailchimp E-Commerce Stores to Sync
         /// </summary>
         public List<string> EcommerceStores
         {
@@ -3192,74 +3192,74 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `appcues`: Your Appcues Email.
-        /// 	- Service `asset_panda`: Your Asset Panda email.
-        /// 	- Service `boostr`: Your Boostr email.
-        /// 	- Service `copper`: Your Copper email address.
-        /// 	- Service `email`: Send your emails to this address.
-        /// 	- Service `moloco`: Your Moloco account email.
-        /// 	- Service `netsuite_suiteanalytics`: The NetSuite user's email address.
-        /// 	- Service `pardot`: The email of the Pardot user.
-        /// 	- Service `pardot_sandbox`: The email of the Pardot user.
-        /// 	- Service `skuvault`: Your SkuVault email.
-        /// 	- Service `smadex`: Your Smadex account's email ID.
-        /// 	- Service `zendesk`: Zendesk email.
-        /// 	- Service `zendesk_sunshine`: Zendesk email.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Appcues`: Your Appcues Email.
+        /// 	- Service `AssetPanda`: Your Asset Panda email.
+        /// 	- Service `Boostr`: Your Boostr email.
+        /// 	- Service `Copper`: Your Copper email address.
+        /// 	- Service `Email`: Send your emails to this address.
+        /// 	- Service `Moloco`: Your Moloco account email.
+        /// 	- Service `NetsuiteSuiteanalytics`: The NetSuite user's email address.
+        /// 	- Service `Pardot`: The email of the Pardot user.
+        /// 	- Service `PardotSandbox`: The email of the Pardot user.
+        /// 	- Service `Skuvault`: Your SkuVault email.
+        /// 	- Service `Smadex`: Your Smadex account's email ID.
+        /// 	- Service `Zendesk`: Zendesk email.
+        /// 	- Service `ZendeskSunshine`: Zendesk email.
         /// </summary>
         [Input("email", required: true)]
         public string Email { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `clockodo`: Your Clockodo email address.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Clockodo`: Your Clockodo email address.
         /// </summary>
         [Input("emailAddress", required: true)]
         public string EmailAddress { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `cabcharge`: Your Cabcharge email ID.
-        /// 	- Service `ordway`: Your Ordway user email ID.
-        /// 	- Service `planful`: Your Planful email ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Cabcharge`: Your Cabcharge email ID.
+        /// 	- Service `Ordway`: Your Ordway user email ID.
+        /// 	- Service `Planful`: Your Planful email ID.
         /// </summary>
         [Input("emailId", required: true)]
         public string EmailId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_cost_report`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
-        /// 	- Service `azure_blob_storage`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
-        /// 	- Service `box`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
-        /// 	- Service `dropbox`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
-        /// 	- Service `email`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
-        /// 	- Service `ftp`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
-        /// 	- Service `gcs`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
-        /// 	- Service `google_drive`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
-        /// 	- Service `kinesis`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
-        /// 	- Service `s3`: If your CSVs are headerless, set this is as `true`. When `true`, we will generate generic column names following the convention of `column_0`, `column_1`, ... `column_n` to map the rows. Default value: `false`.
-        /// 	- Service `s3_compatible_storage`: If your CSVs are headerless, set this is as `true`. When `true`, we will generate generic column names following the convention of `column_0`, `column_1`, ... `column_n` to map the rows. Default value: `false`.
-        /// 	- Service `sftp`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
-        /// 	- Service `share_point`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
-        /// 	- Service `wasabi_cloud_storage`: If your CSVs are headerless, set this is as `true`. When `true`, we will generate generic column names following the convention of `column_0`, `column_1`, ... `column_n` to map the rows. Default value: `false`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsCostReport`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
+        /// 	- Service `AzureBlobStorage`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
+        /// 	- Service `Box`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
+        /// 	- Service `Dropbox`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
+        /// 	- Service `Email`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
+        /// 	- Service `Ftp`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
+        /// 	- Service `Gcs`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
+        /// 	- Service `GoogleDrive`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
+        /// 	- Service `Kinesis`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
+        /// 	- Service `S3`: If your CSVs are headerless, set this is as `True`. When `True`, we will generate generic column names following the convention of `Column0`, `Column1`, ... `ColumnN` to map the rows. Default value: `False`.
+        /// 	- Service `S3CompatibleStorage`: If your CSVs are headerless, set this is as `True`. When `True`, we will generate generic column names following the convention of `Column0`, `Column1`, ... `ColumnN` to map the rows. Default value: `False`.
+        /// 	- Service `Sftp`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
+        /// 	- Service `SharePoint`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
+        /// 	- Service `WasabiCloudStorage`: If your CSVs are headerless, set this is as `True`. When `True`, we will generate generic column names following the convention of `Column0`, `Column1`, ... `ColumnN` to map the rows. Default value: `False`.
         /// </summary>
         [Input("emptyHeader", required: true)]
         public bool EmptyHeader { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `double_click_campaign_manager`: Whether to enable all reach dimension combinations in the report. Default value: `false`
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `DoubleClickCampaignManager`: Whether to enable all reach dimension combinations in the report. Default value: `False`
         /// </summary>
         [Input("enableAllDimensionCombinations", required: true)]
         public bool EnableAllDimensionCombinations { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `oracle_hva`: Default value: `false`. Set to `true` if you're using archive log only mode.
-        /// 	- Service `oracle_sap_hva`: Default value: `false`. Set to `true` if you're using archive log only mode.
-        /// 	- Service `oracle_sap_hva_netweaver`: Default value: `false`. Set to `true` if you're using archive log only mode.
-        /// 	- Service `sql_server_hva`: Use archive log only mode
-        /// 	- Service `sql_server_sap_ecc_hva`: Use archive log only mode
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `OracleHva`: Default value: `False`. Set to `True` if you're using archive log only mode.
+        /// 	- Service `OracleSapHva`: Default value: `False`. Set to `True` if you're using archive log only mode.
+        /// 	- Service `OracleSapHvaNetweaver`: Default value: `False`. Set to `True` if you're using archive log only mode.
+        /// 	- Service `SqlServerHva`: Use archive log only mode
+        /// 	- Service `SqlServerSapEccHva`: Use archive log only mode
         /// </summary>
         [Input("enableArchiveLogOnly", required: true)]
         public bool EnableArchiveLogOnly { get; set; }
@@ -3268,48 +3268,48 @@ namespace Pulumi.Fivetran.Inputs
         public bool EnableDataExtensionsSyncing { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `cosmos`: Enable to allow the connector to join a cluster of connectors forming a Distributed Connector Cluster. This cluster allows parallel syncs from the same source to the same destination using multiple connectors.
-        /// 	- Service `dynamodb`: Enable to allow the connector to join a cluster of connectors forming a Distributed Connector Cluster. This cluster allows parallel syncs from the same source to the same destination using multiple connectors.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Cosmos`: Enable to allow the connector to join a cluster of connectors forming a Distributed Connector Cluster. This cluster allows parallel syncs from the same source to the same destination using multiple connectors.
+        /// 	- Service `Dynamodb`: Enable to allow the connector to join a cluster of connectors forming a Distributed Connector Cluster. This cluster allows parallel syncs from the same source to the same destination using multiple connectors.
         /// </summary>
         [Input("enableDistributedConnectorMode", required: true)]
         public bool EnableDistributedConnectorMode { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snowplow`: Enable Enrichments
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Snowplow`: Enable Enrichments
         /// </summary>
         [Input("enableEnrichments", required: true)]
         public bool EnableEnrichments { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `braze`: Enable User Profile Exports
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Braze`: Enable User Profile Exports
         /// </summary>
         [Input("enableExports", required: true)]
         public bool EnableExports { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `sql_server`: Use transparent data encryption (TDE)
-        /// 	- Service `sql_server_hva`: Using Transparent Data Encryption (TDE)
-        /// 	- Service `sql_server_sap_ecc_hva`: Using Transparent Data Encryption (TDE)
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SqlServer`: Use transparent data encryption (TDE)
+        /// 	- Service `SqlServerHva`: Using Transparent Data Encryption (TDE)
+        /// 	- Service `SqlServerSapEccHva`: Using Transparent Data Encryption (TDE)
         /// </summary>
         [Input("enableTde", required: true)]
         public bool EnableTde { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `oracle_hva`: Default value: `false`. Set to `true` if you're using TDE encryption.
-        /// 	- Service `oracle_sap_hva`: Default value: `false`. Set to `true` if you're using TDE encryption.
-        /// 	- Service `oracle_sap_hva_netweaver`: Default value: `false`. Set to `true` if you're using TDE encryption.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `OracleHva`: Default value: `False`. Set to `True` if you're using TDE encryption.
+        /// 	- Service `OracleSapHva`: Default value: `False`. Set to `True` if you're using TDE encryption.
+        /// 	- Service `OracleSapHvaNetweaver`: Default value: `False`. Set to `True` if you're using TDE encryption.
         /// </summary>
         [Input("enableTdeEncryption", required: true)]
         public bool EnableTdeEncryption { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `apple_search_ads`: Use the public key to grant Fivetran access to Apple Search Ads api.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AppleSearchAds`: Use the public key to grant Fivetran access to Apple Search Ads api.
         /// </summary>
         [Input("encodedPublicKey", required: true)]
         public string EncodedPublicKey { get; set; } = null!;
@@ -3318,8 +3318,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _encryptionKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `marketo`: Marketo SOAP API Encryption Key.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Marketo`: Marketo SOAP API Encryption Key.
         /// </summary>
         public string? EncryptionKey
         {
@@ -3328,144 +3328,144 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `branch`: Webhook Endpoint
-        /// 	- Service `iterable`: Register the following URL for webhooks on your Iterable dashboard.
-        /// 	- Service `marketo`: Marketo REST API endpoint.
-        /// 	- Service `snowplow`: Connection-specific collector endpoint. The collector endpoint will have the `webhooks.fivetran.com/snowplow/endpoint_ID` format. You will need it to configure Snowplow to connect with Fivetran.
-        /// 	- Service `webhooks`: You can send your events to https://webhooks.fivetran.com/webhooks/{endpoint}
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Branch`: Webhook Endpoint
+        /// 	- Service `Iterable`: Register the following URL for webhooks on your Iterable dashboard.
+        /// 	- Service `Marketo`: Marketo REST API endpoint.
+        /// 	- Service `Snowplow`: Connection-specific collector endpoint. The collector endpoint will have the `webhooks.fivetran.com/snowplow/endpoint_ID` format. You will need it to configure Snowplow to connect with Fivetran.
+        /// 	- Service `Webhooks`: You can send your events to https://webhooks.fivetran.com/webhooks/{endpoint}
         /// </summary>
         [Input("endpoint", required: true)]
         public string Endpoint { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `s3_compatible_storage`: S3-Compatible Storage Endpoint URL.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `S3CompatibleStorage`: S3-Compatible Storage Endpoint URL.
         /// </summary>
         [Input("endpointUrl", required: true)]
         public string EndpointUrl { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `pinterest_ads`: The number of days to use as the conversion attribution window for an engagement (i.e. closeup or save) action.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `PinterestAds`: The number of days to use as the conversion attribution window for an engagement (i.e. closeup or save) action.
         /// </summary>
         [Input("engagementAttributionWindow", required: true)]
         public string EngagementAttributionWindow { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `optimizely`: Enriched Events S3 bucket
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Optimizely`: Enriched Events S3 bucket
         /// </summary>
         [Input("enrichedExport", required: true)]
         public string EnrichedExport { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `checkout`: Your Checkout.com entity ID.
-        /// 	- Service `zuora`: If `is_multi_entity_feature_enabled` is `true`, then it's `EntityId`.
-        /// 	- Service `zuora_sandbox`: If `is_multi_entity_feature_enabled` is `true`, then it's `EntityId`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Checkout`: Your Checkout.com entity ID.
+        /// 	- Service `Zuora`: If `IsMultiEntityFeatureEnabled` is `True`, then it's `EntityId`.
+        /// 	- Service `ZuoraSandbox`: If `IsMultiEntityFeatureEnabled` is `True`, then it's `EntityId`.
         /// </summary>
         [Input("entityId", required: true)]
         public string EntityId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora_postgres`: Registered Application ID (for Entra ID authentication).
-        /// 	- Service `azure_postgres`: Registered Application ID (for Entra ID authentication).
-        /// 	- Service `google_cloud_postgresql`: Registered Application ID (for Entra ID authentication).
-        /// 	- Service `heroku_postgres`: Registered Application ID (for Entra ID authentication).
-        /// 	- Service `postgres`: Registered Application ID (for Entra ID authentication).
-        /// 	- Service `postgres_rds`: Registered Application ID (for Entra ID authentication).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AuroraPostgres`: Registered Application ID (for Entra ID authentication).
+        /// 	- Service `AzurePostgres`: Registered Application ID (for Entra ID authentication).
+        /// 	- Service `GoogleCloudPostgresql`: Registered Application ID (for Entra ID authentication).
+        /// 	- Service `HerokuPostgres`: Registered Application ID (for Entra ID authentication).
+        /// 	- Service `Postgres`: Registered Application ID (for Entra ID authentication).
+        /// 	- Service `PostgresRds`: Registered Application ID (for Entra ID authentication).
         /// </summary>
         [Input("entraAppId", required: true)]
         public string EntraAppId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora_postgres`: Azure Tenant ID (for Entra ID authentication).
-        /// 	- Service `azure_postgres`: Azure Tenant ID (for Entra ID authentication).
-        /// 	- Service `google_cloud_postgresql`: Azure Tenant ID (for Entra ID authentication).
-        /// 	- Service `heroku_postgres`: Azure Tenant ID (for Entra ID authentication).
-        /// 	- Service `postgres`: Azure Tenant ID (for Entra ID authentication).
-        /// 	- Service `postgres_rds`: Azure Tenant ID (for Entra ID authentication).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AuroraPostgres`: Azure Tenant ID (for Entra ID authentication).
+        /// 	- Service `AzurePostgres`: Azure Tenant ID (for Entra ID authentication).
+        /// 	- Service `GoogleCloudPostgresql`: Azure Tenant ID (for Entra ID authentication).
+        /// 	- Service `HerokuPostgres`: Azure Tenant ID (for Entra ID authentication).
+        /// 	- Service `Postgres`: Azure Tenant ID (for Entra ID authentication).
+        /// 	- Service `PostgresRds`: Azure Tenant ID (for Entra ID authentication).
         /// </summary>
         [Input("entraTenantId", required: true)]
         public string EntraTenantId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `bazaarvoice`: Your Bazaarvoice environment.
-        /// 	- Service `buildium`: Your Buildium environment.
-        /// 	- Service `checkout`: Your Checkout.com environment.
-        /// 	- Service `concord`: Your Concord environment.
-        /// 	- Service `deposco`: Your Deposco environment.
-        /// 	- Service `dialpad`: Your Dialpad environment.
-        /// 	- Service `invoiced`: Your Invoiced environment.
-        /// 	- Service `jibble`: Your Jibble environment.
-        /// 	- Service `lucca`: Your Lucca environment.
-        /// 	- Service `ordergroove`: Your Ordergroove environment.
-        /// 	- Service `paddle`: Your Paddle environment.
-        /// 	- Service `procore`: Your Procore account environment.
-        /// 	- Service `reltio`: Your Reltio environment.
-        /// 	- Service `servicetitan`: Your ServiceTitan environment.
-        /// 	- Service `smarthr`: Your SmartHR environment.
-        /// 	- Service `trelica`: Your Trelica environment.
-        /// 	- Service `tremendous`: Your Tremendous environment.
-        /// 	- Service `vts`: Your VTS environment.
-        /// 	- Service `xactly`: Your Xactly environment.
-        /// 	- Service `younium`: Your Younium API environment.
-        /// 	- Service `zuora`: Zuora Sandbox Environment. This accepts either of the two values Sandbox or Central Sandbox based on your subscription. The default environment is Sandbox.
-        /// 	- Service `zuora_sandbox`: Zuora Sandbox Environment. This accepts either of the two values Sandbox or Central Sandbox based on your subscription. The default environment is Sandbox.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Bazaarvoice`: Your Bazaarvoice environment.
+        /// 	- Service `Buildium`: Your Buildium environment.
+        /// 	- Service `Checkout`: Your Checkout.com environment.
+        /// 	- Service `Concord`: Your Concord environment.
+        /// 	- Service `Deposco`: Your Deposco environment.
+        /// 	- Service `Dialpad`: Your Dialpad environment.
+        /// 	- Service `Invoiced`: Your Invoiced environment.
+        /// 	- Service `Jibble`: Your Jibble environment.
+        /// 	- Service `Lucca`: Your Lucca environment.
+        /// 	- Service `Ordergroove`: Your Ordergroove environment.
+        /// 	- Service `Paddle`: Your Paddle environment.
+        /// 	- Service `Procore`: Your Procore account environment.
+        /// 	- Service `Reltio`: Your Reltio environment.
+        /// 	- Service `Servicetitan`: Your ServiceTitan environment.
+        /// 	- Service `Smarthr`: Your SmartHR environment.
+        /// 	- Service `Trelica`: Your Trelica environment.
+        /// 	- Service `Tremendous`: Your Tremendous environment.
+        /// 	- Service `Vts`: Your VTS environment.
+        /// 	- Service `Xactly`: Your Xactly environment.
+        /// 	- Service `Younium`: Your Younium API environment.
+        /// 	- Service `Zuora`: Zuora Sandbox Environment. This accepts either of the two values Sandbox or Central Sandbox based on your subscription. The default environment is Sandbox.
+        /// 	- Service `ZuoraSandbox`: Zuora Sandbox Environment. This accepts either of the two values Sandbox or Central Sandbox based on your subscription. The default environment is Sandbox.
         /// </summary>
         [Input("environment", required: true)]
         public string Environment { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `xactly`: Your Xactly environment host.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Xactly`: Your Xactly environment host.
         /// </summary>
         [Input("environmentHost", required: true)]
         public string EnvironmentHost { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `business_central`: Name of the environment
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `BusinessCentral`: Name of the environment
         /// </summary>
         [Input("environmentName", required: true)]
         public string EnvironmentName { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_cost_report`: Optional. If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
-        /// 	- Service `azure_blob_storage`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
-        /// 	- Service `box`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
-        /// 	- Service `dropbox`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
-        /// 	- Service `email`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
-        /// 	- Service `ftp`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
-        /// 	- Service `gcs`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
-        /// 	- Service `google_drive`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
-        /// 	- Service `kinesis`: Optional. If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
-        /// 	- Service `s3`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
-        /// 	- Service `s3_compatible_storage`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
-        /// 	- Service `sftp`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
-        /// 	- Service `share_point`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
-        /// 	- Service `wasabi_cloud_storage`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsCostReport`: Optional. If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
+        /// 	- Service `AzureBlobStorage`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
+        /// 	- Service `Box`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
+        /// 	- Service `Dropbox`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
+        /// 	- Service `Email`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
+        /// 	- Service `Ftp`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
+        /// 	- Service `Gcs`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
+        /// 	- Service `GoogleDrive`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
+        /// 	- Service `Kinesis`: Optional. If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
+        /// 	- Service `S3`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
+        /// 	- Service `S3CompatibleStorage`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
+        /// 	- Service `Sftp`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
+        /// 	- Service `SharePoint`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
+        /// 	- Service `WasabiCloudStorage`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
         /// </summary>
         [Input("escapeChar", required: true)]
         public string EscapeChar { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `gcs`: Approach used by CSV parser. Default  value: `CUSTOM_ESCAPE_CHAR`. required for CSV parsing when `non_standard_escape_char` is `true`.
-        /// 	- Service `s3`: Approach used by CSV parser. Default  value: `CUSTOM_ESCAPE_CHAR`. required for CSV parsing when `non_standard_escape_char` is `true`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Gcs`: Approach used by CSV parser. Default  value: `CUSTOM_ESCAPE_CHAR`. required for CSV parsing when `NonStandardEscapeChar` is `True`.
+        /// 	- Service `S3`: Approach used by CSV parser. Default  value: `CUSTOM_ESCAPE_CHAR`. required for CSV parsing when `NonStandardEscapeChar` is `True`.
         /// </summary>
         [Input("escapeCharOptions", required: true)]
         public string EscapeCharOptions { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `kustomer`: Turn it on if your app is on EU region
-        /// 	- Service `survey_monkey`: The SurveyMonkey account region. Specify `true`, if your account is hosted in the EU region. Default value is `false`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Kustomer`: Turn it on if your app is on EU region
+        /// 	- Service `SurveyMonkey`: The SurveyMonkey account region. Specify `True`, if your account is hosted in the EU region. Default value is `False`.
         /// </summary>
         [Input("euRegion", required: true)]
         public bool EuRegion { get; set; }
@@ -3474,8 +3474,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _events;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `iterable`: List of events to sync. Should be specified when `sync_mode` is `SelectedEvents`
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Iterable`: List of events to sync. Should be specified when `SyncMode` is `SelectedEvents`
         /// </summary>
         public List<string> Events
         {
@@ -3484,33 +3484,33 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adjust`: Your cloud storage.
-        /// 	- Service `braze`: Export Storage. Required if `enable_exports` is `true`
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adjust`: Your cloud storage.
+        /// 	- Service `Braze`: Export Storage. Required if `EnableExports` is `True`
         /// </summary>
         [Input("exportStorageType", required: true)]
         public string ExportStorageType { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `appsflyer`: The external ID is a string that designates who can assume the role. For more information, click a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html"here/a
-        /// 	- Service `aws_cloudtrail`: This is the same as your `group_id`, used for authentication along with the `role_arn`.
-        /// 	- Service `aws_cost_report`: The external ID is a string that designates who can assume the role. For more information, click a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html"here/a
-        /// 	- Service `aws_lambda`: The external ID is a string that designates who can assume the role.
-        /// 	- Service `aws_msk`: This is the same as your `group_id`. This is required when `sasl_mechanism` is set to `IAM`.
-        /// 	- Service `azure_function`: External ID.
-        /// 	- Service `cloudfront`: This is the same as your `group_id`, used for authentication along with the `role_arn`.
-        /// 	- Service `dynamodb`: This is the same as your `group_id`, used for authentication along with the `role_arn`.
-        /// 	- Service `kinesis`: The external ID is a string that designates who can assume the role. For more information, click a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html"here/a
-        /// 	- Service `s3`: Used for authentication along with the `role_arn`. If not provided, it uses connector's `group_id`. Use the [List All Groups endpoint](https://fivetran.com/docs/rest-api/groups#listallgroups) to find the `group_id`.
-        /// 	- Service `segment`: The external ID is a string that designates who can assume the role. For more information, see a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html"Amazon's AWS Identity and Access Management User Guide/a.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Appsflyer`: The external ID is a string that designates who can assume the role. For more information, click a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html"here/a
+        /// 	- Service `AwsCloudtrail`: This is the same as your `GroupId`, used for authentication along with the `RoleArn`.
+        /// 	- Service `AwsCostReport`: The external ID is a string that designates who can assume the role. For more information, click a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html"here/a
+        /// 	- Service `AwsLambda`: The external ID is a string that designates who can assume the role.
+        /// 	- Service `AwsMsk`: This is the same as your `GroupId`. This is required when `SaslMechanism` is set to `IAM`.
+        /// 	- Service `AzureFunction`: External ID.
+        /// 	- Service `Cloudfront`: This is the same as your `GroupId`, used for authentication along with the `RoleArn`.
+        /// 	- Service `Dynamodb`: This is the same as your `GroupId`, used for authentication along with the `RoleArn`.
+        /// 	- Service `Kinesis`: The external ID is a string that designates who can assume the role. For more information, click a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html"here/a
+        /// 	- Service `S3`: Used for authentication along with the `RoleArn`. If not provided, it uses connector's `GroupId`. Use the [List All Groups endpoint](https://fivetran.com/docs/rest-api/groups#listallgroups) to find the `GroupId`.
+        /// 	- Service `Segment`: The external ID is a string that designates who can assume the role. For more information, see a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html"Amazon's AWS Identity and Access Management User Guide/a.
         /// </summary>
         [Input("externalId", required: true)]
         public string ExternalId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `unicommerce`: Your uniware facility codes.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Unicommerce`: Your uniware facility codes.
         /// </summary>
         [Input("facilityCodes", required: true)]
         public string FacilityCodes { get; set; } = null!;
@@ -3519,8 +3519,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _fields;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#fields).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Facebook`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#fields).
         /// </summary>
         public List<string> Fields
         {
@@ -3529,21 +3529,21 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_cost_report`: If your files are saved with improper extensions, you can force them to by synced as the selected filetype. Leave the value as infer if your files have the correct extensions
-        /// 	- Service `azure_blob_storage`: If your files are saved with improper extensions, you can force them to by synced as the selected file type.
-        /// 	- Service `box`: If your files are saved with improper extensions, you can force them to be synced as the selected filetype.
-        /// 	- Service `dropbox`: If your files are saved with improper extensions, you can force them to be synced as the selected filetype.
-        /// 	- Service `email`: If your files are saved with improper extensions, you can force them to by synced as the selected file type.
-        /// 	- Service `ftp`: If your files are saved with improper extensions, you can force them to by synced as the selected file type.
-        /// 	- Service `gcs`: If your files are saved with improper extensions, you can force them to by synced as the selected file type.
-        /// 	- Service `google_drive`: If your files are saved with improper extensions, you can force them to be synced as the selected filetype.
-        /// 	- Service `kinesis`: If your files are saved with improper extensions, you can force them to by synced as the selected filetype. Leave the value as infer if your files have the correct extensions
-        /// 	- Service `s3`: If your files are saved with improper extensions, you can force them to be synced as the selected file type.
-        /// 	- Service `s3_compatible_storage`: If your files are saved with improper extensions, you can force them to be synced as the selected file type.
-        /// 	- Service `sftp`: If your files are saved with improper extensions, you can force them to by synced as the selected file type.
-        /// 	- Service `share_point`: If your files are saved with improper extensions, you can force them to be synced as the selected file type.
-        /// 	- Service `wasabi_cloud_storage`: If your files are saved with improper extensions, you can force them to be synced as the selected file type.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsCostReport`: If your files are saved with improper extensions, you can force them to by synced as the selected filetype. Leave the value as infer if your files have the correct extensions
+        /// 	- Service `AzureBlobStorage`: If your files are saved with improper extensions, you can force them to by synced as the selected file type.
+        /// 	- Service `Box`: If your files are saved with improper extensions, you can force them to be synced as the selected filetype.
+        /// 	- Service `Dropbox`: If your files are saved with improper extensions, you can force them to be synced as the selected filetype.
+        /// 	- Service `Email`: If your files are saved with improper extensions, you can force them to by synced as the selected file type.
+        /// 	- Service `Ftp`: If your files are saved with improper extensions, you can force them to by synced as the selected file type.
+        /// 	- Service `Gcs`: If your files are saved with improper extensions, you can force them to by synced as the selected file type.
+        /// 	- Service `GoogleDrive`: If your files are saved with improper extensions, you can force them to be synced as the selected filetype.
+        /// 	- Service `Kinesis`: If your files are saved with improper extensions, you can force them to by synced as the selected filetype. Leave the value as infer if your files have the correct extensions
+        /// 	- Service `S3`: If your files are saved with improper extensions, you can force them to be synced as the selected file type.
+        /// 	- Service `S3CompatibleStorage`: If your files are saved with improper extensions, you can force them to be synced as the selected file type.
+        /// 	- Service `Sftp`: If your files are saved with improper extensions, you can force them to by synced as the selected file type.
+        /// 	- Service `SharePoint`: If your files are saved with improper extensions, you can force them to be synced as the selected file type.
+        /// 	- Service `WasabiCloudStorage`: If your files are saved with improper extensions, you can force them to be synced as the selected file type.
         /// </summary>
         [Input("fileType", required: true)]
         public string FileType { get; set; } = null!;
@@ -3552,15 +3552,15 @@ namespace Pulumi.Fivetran.Inputs
         private List<Inputs.GetConnectorConfigFileArgs>? _files;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `azure_blob_storage`: Mapped file name patterns to a destination table.
-        /// 	- Service `email`: Mapped file name patterns to a destination table.
-        /// 	- Service `gcs`: Mapped file name patterns to a destination table.
-        /// 	- Service `google_drive`: Mapped file name patterns to a destination table.
-        /// 	- Service `s3`: Mapped file name patterns to a destination table.
-        /// 	- Service `s3_compatible_storage`: Mapped file name patterns to a destination table.
-        /// 	- Service `sftp`: Mapped file name patterns to a destination table.
-        /// 	- Service `share_point`: Mapped file name patterns to a destination table.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureBlobStorage`: Mapped file name patterns to a destination table.
+        /// 	- Service `Email`: Mapped file name patterns to a destination table.
+        /// 	- Service `Gcs`: Mapped file name patterns to a destination table.
+        /// 	- Service `GoogleDrive`: Mapped file name patterns to a destination table.
+        /// 	- Service `S3`: Mapped file name patterns to a destination table.
+        /// 	- Service `S3CompatibleStorage`: Mapped file name patterns to a destination table.
+        /// 	- Service `Sftp`: Mapped file name patterns to a destination table.
+        /// 	- Service `SharePoint`: Mapped file name patterns to a destination table.
         /// </summary>
         public List<Inputs.GetConnectorConfigFileArgs> Files
         {
@@ -3569,15 +3569,15 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_analytics`: String parameter restricts the data returned for your report. To use the filter parameter, specify a dimension or metric on which to filter, followed by the filter expression
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleAnalytics`: String parameter restricts the data returned for your report. To use the filter parameter, specify a dimension or metric on which to filter, followed by the filter expression
         /// </summary>
         [Input("filter", required: true)]
         public string Filter { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `itunes_connect`: Whether to sync all finance accounts or specific finance accounts.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ItunesConnect`: Whether to sync all finance accounts or specific finance accounts.
         /// </summary>
         [Input("financeAccountSyncMode", required: true)]
         public string FinanceAccountSyncMode { get; set; } = null!;
@@ -3586,8 +3586,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _financeAccounts;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `itunes_connect`: Specific finance accounts to sync. Must be populated if `finance_account_sync_mode` is set to `SpecificFinanceAccounts`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ItunesConnect`: Specific finance accounts to sync. Must be populated if `FinanceAccountSyncMode` is set to `SpecificFinanceAccounts`.
         /// </summary>
         public List<string> FinanceAccounts
         {
@@ -3596,39 +3596,39 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `dropbox`: Your Dropbox Folder URL.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Dropbox`: Your Dropbox Folder URL.
         /// </summary>
         [Input("folder", required: true)]
         public string Folder { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `box`: Folder URL
-        /// 	- Service `google_drive`: Folder URL
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Box`: Folder URL
+        /// 	- Service `GoogleDrive`: Folder URL
         /// </summary>
         [Input("folderId", required: true)]
         public string FolderId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics_data_feed`: Folder Path
-        /// 	- Service `one_drive`: Your OneDrive folder URL
-        /// 	- Service `oracle_business_intelligence_publisher`: The folder path to save data models and reports.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalyticsDataFeed`: Folder Path
+        /// 	- Service `OneDrive`: Your OneDrive folder URL
+        /// 	- Service `OracleBusinessIntelligencePublisher`: The folder path to save data models and reports.
         /// </summary>
         [Input("folderPath", required: true)]
         public string FolderPath { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `clari`: Your Clari Forecast id .
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Clari`: Your Clari Forecast id .
         /// </summary>
         [Input("forecastId", required: true)]
         public string ForecastId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics_data_feed`: FTP host.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalyticsDataFeed`: FTP host.
         /// </summary>
         [Input("ftpHost", required: true)]
         public string FtpHost { get; set; } = null!;
@@ -3637,8 +3637,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _ftpPassword;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics_data_feed`: FTP password.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalyticsDataFeed`: FTP password.
         /// </summary>
         public string? FtpPassword
         {
@@ -3647,29 +3647,29 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics_data_feed`: FTP port.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalyticsDataFeed`: FTP port.
         /// </summary>
         [Input("ftpPort", required: true)]
         public int FtpPort { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics_data_feed`: FTP user.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalyticsDataFeed`: FTP user.
         /// </summary>
         [Input("ftpUser", required: true)]
         public string FtpUser { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_lambda`: The name of your AWS Lambda Function.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsLambda`: The name of your AWS Lambda Function.
         /// </summary>
         [Input("function", required: true)]
         public string Function { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `azure_function`: Function app name in Azure portal.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureFunction`: Function app name in Azure portal.
         /// </summary>
         [Input("functionApp", required: true)]
         public string FunctionApp { get; set; } = null!;
@@ -3678,8 +3678,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _functionKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `azure_function`: Function key used for authorization.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureFunction`: Function key used for authorization.
         /// </summary>
         public string? FunctionKey
         {
@@ -3688,8 +3688,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `azure_function`: Name of the function to be triggered.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureFunction`: Name of the function to be triggered.
         /// </summary>
         [Input("functionName", required: true)]
         public string FunctionName { get; set; } = null!;
@@ -3698,8 +3698,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _functionTrigger;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_cloud_function`: The trigger URL of the cloud function.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleCloudFunction`: The trigger URL of the cloud function.
         /// </summary>
         public string? FunctionTrigger
         {
@@ -3708,51 +3708,51 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `braze`: Your GCS bucket. Required if `GCS` is the `cloud_storage_type`
-        /// 	- Service `webhooks`: The GCS bucket name. Required if `bucket_service` is set to `GCS`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Braze`: Your GCS bucket. Required if `GCS` is the `CloudStorageType`
+        /// 	- Service `Webhooks`: The GCS bucket name. Required if `BucketService` is set to `GCS`.
         /// </summary>
         [Input("gcsBucket", required: true)]
         public string GcsBucket { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `braze`: Your GCS bucket. Required if `GCS` is the `export_storage_type`
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Braze`: Your GCS bucket. Required if `GCS` is the `ExportStorageType`
         /// </summary>
         [Input("gcsExportBucket", required: true)]
         public string GcsExportBucket { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `braze`: Your GCS folder name. Required if `GCS` is the `export_storage_type`
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Braze`: Your GCS folder name. Required if `GCS` is the `ExportStorageType`
         /// </summary>
         [Input("gcsExportFolder", required: true)]
         public string GcsExportFolder { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `braze`: Your GCS folder name. Required if `GCS` is the `cloud_storage_type`
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Braze`: Your GCS folder name. Required if `GCS` is the `CloudStorageType`
         /// </summary>
         [Input("gcsFolder", required: true)]
         public string GcsFolder { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `workday`: Select this option to generate a Primary Key for reports where no single column or combination of columns can be used to form a Primary Key.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Workday`: Select this option to generate a Primary Key for reports where no single column or combination of columns can be used to form a Primary Key.
         /// </summary>
         [Input("generateFivetranPk", required: true)]
         public bool GenerateFivetranPk { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `line_ads`: Your LINE Ads group ID(s).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `LineAds`: Your LINE Ads group ID(s).
         /// </summary>
         [Input("groupId", required: true)]
         public string GroupId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `fivetran_log`: (Optional) The group name of the `target_group_id`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FivetranLog`: (Optional) The group name of the `TargetGroupId`.
         /// </summary>
         [Input("groupName", required: true)]
         public string GroupName { get; set; } = null!;
@@ -3766,198 +3766,198 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `hana_sap_hva_b1`: The mode for connecting to HANA server. Available options: Single container (default), Multiple containers - Tenant database, Multiple containers - System database, Manual port selection - This option is used only if the database port needs to be specified manually.
-        /// 	- Service `hana_sap_hva_ecc`: The mode for connecting to HANA server. Available options: Single container (default), Multiple containers - Tenant database, Multiple containers - System database, Manual port selection - This option is used only if the database port needs to be specified manually.
-        /// 	- Service `hana_sap_hva_ecc_netweaver`: The mode for connecting to HANA server. Available options: Single container (default), Multiple containers - Tenant database, Multiple containers - System database, Manual port selection - This option is used only if the database port needs to be specified manually.
-        /// 	- Service `hana_sap_hva_s4`: The mode for connecting to HANA server. Available options: Single container (default), Multiple containers - Tenant database, Multiple containers - System database, Manual port selection - This option is used only if the database port needs to be specified manually.
-        /// 	- Service `hana_sap_hva_s4_netweaver`: The mode for connecting to HANA server. Available options: Single container (default), Multiple containers - Tenant database, Multiple containers - System database, Manual port selection - This option is used only if the database port needs to be specified manually.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `HanaSapHvaB1`: The mode for connecting to HANA server. Available options: Single container (default), Multiple containers - Tenant database, Multiple containers - System database, Manual port selection - This option is used only if the database port needs to be specified manually.
+        /// 	- Service `HanaSapHvaEcc`: The mode for connecting to HANA server. Available options: Single container (default), Multiple containers - Tenant database, Multiple containers - System database, Manual port selection - This option is used only if the database port needs to be specified manually.
+        /// 	- Service `HanaSapHvaEccNetweaver`: The mode for connecting to HANA server. Available options: Single container (default), Multiple containers - Tenant database, Multiple containers - System database, Manual port selection - This option is used only if the database port needs to be specified manually.
+        /// 	- Service `HanaSapHvaS4`: The mode for connecting to HANA server. Available options: Single container (default), Multiple containers - Tenant database, Multiple containers - System database, Manual port selection - This option is used only if the database port needs to be specified manually.
+        /// 	- Service `HanaSapHvaS4Netweaver`: The mode for connecting to HANA server. Available options: Single container (default), Multiple containers - Tenant database, Multiple containers - System database, Manual port selection - This option is used only if the database port needs to be specified manually.
         /// </summary>
         [Input("hanaMode", required: true)]
         public string HanaMode { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `azure_service_bus`: The boolean value specifying whether the connection string has manage permissions
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureServiceBus`: The boolean value specifying whether the connection string has manage permissions
         /// </summary>
         [Input("hasManagePermissions", required: true)]
         public bool HasManagePermissions { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `braze`: Range of data in history you would like to include in the initial sync.
-        /// 	- Service `iterable`: The time range for which historical data should be synced. Default value: `All Time`.
-        /// 	- Service `klaviyo`: Range of data in history you would like to include in the initial sync. Default value: `ALL_TIME`.
-        /// 	- Service `marketo`: Range of data in history you would like to include in the initial sync. Default value: `ALL_TIME`.
-        /// 	- Service `sailthru`: Range of historical data you would like to include in the initial sync. Default value: `ALL_TIME`.
-        /// 	- Service `salesforce_marketing_cloud`: Range of data in history you would like to include in the initial sync. Default value: `ALL_TIME`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Braze`: Range of data in history you would like to include in the initial sync.
+        /// 	- Service `Iterable`: The time range for which historical data should be synced. Default value: `All Time`.
+        /// 	- Service `Klaviyo`: Range of data in history you would like to include in the initial sync. Default value: `ALL_TIME`.
+        /// 	- Service `Marketo`: Range of data in history you would like to include in the initial sync. Default value: `ALL_TIME`.
+        /// 	- Service `Sailthru`: Range of historical data you would like to include in the initial sync. Default value: `ALL_TIME`.
+        /// 	- Service `SalesforceMarketingCloud`: Range of data in history you would like to include in the initial sync. Default value: `ALL_TIME`.
         /// </summary>
         [Input("historicSyncTimeFrame", required: true)]
         public string HistoricSyncTimeFrame { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `braze`: Range of data in history you would like to include in the initial sync. Valid values are `ALL_TIME` and `DATE_LIMIT`
-        /// 	- Service `concur`: Historical Sync Limit for the Sync
-        /// 	- Service `eloqua`: Range of data in history you would like to include in the initial sync. Default value: `ALL_TIME`.
-        /// 	- Service `iterable`: The time range for which historical data should be synced. Default value: `All Time`.
-        /// 	- Service `klaviyo`: The time range for which historical data should be synced. Default value: `All Time`.
-        /// 	- Service `marketo`: The time range for which historical data should be synced. Default value: `All Time`.
-        /// 	- Service `pardot`: The time range for which historical data should be synced. Default value: `All Time`.
-        /// 	- Service `pardot_sandbox`: The time range for which historical data should be synced. Default value: `All Time`.
-        /// 	- Service `sage_intacct`: Historical Sync Limit for the Sync
-        /// 	- Service `sailthru`: The time range for which historical data should be synced. Default value: `All Time`.
-        /// 	- Service `salesforce_marketing_cloud`: The time range for which historical data should be synced. Default value: `All Time`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Braze`: Range of data in history you would like to include in the initial sync. Valid values are `ALL_TIME` and `DATE_LIMIT`
+        /// 	- Service `Concur`: Historical Sync Limit for the Sync
+        /// 	- Service `Eloqua`: Range of data in history you would like to include in the initial sync. Default value: `ALL_TIME`.
+        /// 	- Service `Iterable`: The time range for which historical data should be synced. Default value: `All Time`.
+        /// 	- Service `Klaviyo`: The time range for which historical data should be synced. Default value: `All Time`.
+        /// 	- Service `Marketo`: The time range for which historical data should be synced. Default value: `All Time`.
+        /// 	- Service `Pardot`: The time range for which historical data should be synced. Default value: `All Time`.
+        /// 	- Service `PardotSandbox`: The time range for which historical data should be synced. Default value: `All Time`.
+        /// 	- Service `SageIntacct`: Historical Sync Limit for the Sync
+        /// 	- Service `Sailthru`: The time range for which historical data should be synced. Default value: `All Time`.
+        /// 	- Service `SalesforceMarketingCloud`: The time range for which historical data should be synced. Default value: `All Time`.
         /// </summary>
         [Input("historicalSyncLimit", required: true)]
         public string HistoricalSyncLimit { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `braze`: The start date (in YYYY-MM-DD) from which to sync historical data. Only used when `historicalSyncLimit` is set to `DATE_LIMIT`.
-        /// 	- Service `iterable`: The start date (YYYY-MM-DD) from which to sync historical data.
-        /// 	- Service `klaviyo`: The start date (YYYY-MM-DD) from which to sync historical data.
-        /// 	- Service `marketo`: The start date (YYYY-MM-DD) from which to sync historical data.
-        /// 	- Service `pardot`: The start date (YYYY-MM-DD) from which to sync historical data.
-        /// 	- Service `pardot_sandbox`: The start date (YYYY-MM-DD) from which to sync historical data.
-        /// 	- Service `sailthru`: The start date (YYYY-MM-DD) from which to sync historical data.
-        /// 	- Service `salesforce_marketing_cloud`: The start date (YYYY-MM-DD) from which to sync historical data.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Braze`: The start date (in YYYY-MM-DD) from which to sync historical data. Only used when `historicalSyncLimit` is set to `DATE_LIMIT`.
+        /// 	- Service `Iterable`: The start date (YYYY-MM-DD) from which to sync historical data.
+        /// 	- Service `Klaviyo`: The start date (YYYY-MM-DD) from which to sync historical data.
+        /// 	- Service `Marketo`: The start date (YYYY-MM-DD) from which to sync historical data.
+        /// 	- Service `Pardot`: The start date (YYYY-MM-DD) from which to sync historical data.
+        /// 	- Service `PardotSandbox`: The start date (YYYY-MM-DD) from which to sync historical data.
+        /// 	- Service `Sailthru`: The start date (YYYY-MM-DD) from which to sync historical data.
+        /// 	- Service `SalesforceMarketingCloud`: The start date (YYYY-MM-DD) from which to sync historical data.
         /// </summary>
         [Input("historicalSyncLimitDate", required: true)]
         public string HistoricalSyncLimitDate { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `pardot`: The options for time range for which historical data should be synced. Default value: `All Time`.
-        /// 	- Service `pardot_sandbox`: The options for time range for which historical data should be synced. Default value: `All Time`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Pardot`: The options for time range for which historical data should be synced. Default value: `All Time`.
+        /// 	- Service `PardotSandbox`: The options for time range for which historical data should be synced. Default value: `All Time`.
         /// </summary>
         [Input("historicalSyncLimitTimeFrame", required: true)]
         public string HistoricalSyncLimitTimeFrame { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `ascend_by_partnerize`: Your Ascend by Partnerize Historical sync time frame
-        /// 	- Service `hubspot`: Used to configure Historical sync timeframe for selected tables
-        /// 	- Service `rokt`: Your Rokt historical sync time frame.
-        /// 	- Service `shopify`: Used to configure Historical sync timeframe for selected tables
-        /// 	- Service `skimlinks`: Your Skimlinks Historical sync time frame.
-        /// 	- Service `stripe`: Used to configure Historical sync timeframe for selected tables
-        /// 	- Service `stripe_test`: Used to configure Historical sync timeframe for selected tables
-        /// 	- Service `vimeo`: Your Vimeo Historical sync time frame.
-        /// 	- Service `zendesk`: Used to configure Historical sync timeframe for selected tables
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AscendByPartnerize`: Your Ascend by Partnerize Historical sync time frame
+        /// 	- Service `Hubspot`: Used to configure Historical sync timeframe for selected tables
+        /// 	- Service `Rokt`: Your Rokt historical sync time frame.
+        /// 	- Service `Shopify`: Used to configure Historical sync timeframe for selected tables
+        /// 	- Service `Skimlinks`: Your Skimlinks Historical sync time frame.
+        /// 	- Service `Stripe`: Used to configure Historical sync timeframe for selected tables
+        /// 	- Service `StripeTest`: Used to configure Historical sync timeframe for selected tables
+        /// 	- Service `Vimeo`: Your Vimeo Historical sync time frame.
+        /// 	- Service `Zendesk`: Used to configure Historical sync timeframe for selected tables
         /// </summary>
         [Input("historicalSyncTimeFrame", required: true)]
         public string HistoricalSyncTimeFrame { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `appsflyer`: Your S3 home folder path of the Data Locker.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Appsflyer`: Your S3 home folder path of the Data Locker.
         /// </summary>
         [Input("homeFolder", required: true)]
         public string HomeFolder { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora`: DB instance host or IP address.
-        /// 	- Service `aurora_postgres`: DB instance host or IP address.
-        /// 	- Service `aveva_pi`: IP address of the AF Server
-        /// 	- Service `azure_postgres`: DB instance host or IP address.
-        /// 	- Service `azure_sql_db`: DB instance host or IP address.
-        /// 	- Service `azure_sql_managed_db`: DB instance host or IP address.
-        /// 	- Service `clarity`: DB instance host or IP address.
-        /// 	- Service `cockroachdb`: DB instance host or IP address.
-        /// 	- Service `commercetools`: Your commercetools host.
-        /// 	- Service `databricks_db`: The host URL for your Databricks account.
-        /// 	- Service `db2i_hva`: A host address of the primary node. It should be a DB instance host/IP address with a port number.
-        /// 	- Service `db2i_sap_hva`: DB instance host or IP address.
-        /// 	- Service `documentdb`: Host IP address of the primary node. Ignored if `hosts` value is provided.
-        /// 	- Service `dynamics_365_fo`: DB instance host or IP address.
-        /// 	- Service `ehr`: DB instance host or IP address.
-        /// 	- Service `elastic_cloud`: DB instance host or IP address.
-        /// 	- Service `es_self_hosted`: DB instance host or IP address.
-        /// 	- Service `ftp`: FTP host address.
-        /// 	- Service `google_cloud_mysql`: DB instance host or IP address.
-        /// 	- Service `google_cloud_postgresql`: DB instance host or IP address.
-        /// 	- Service `google_cloud_sqlserver`: DB instance host or IP address.
-        /// 	- Service `hana_sap_hva_b1`: DB instance host or IP address.
-        /// 	- Service `hana_sap_hva_ecc`: DB instance host or IP address.
-        /// 	- Service `hana_sap_hva_ecc_netweaver`: DB instance host or IP address.
-        /// 	- Service `hana_sap_hva_s4`: DB instance host or IP address.
-        /// 	- Service `hana_sap_hva_s4_netweaver`: DB instance host or IP address.
-        /// 	- Service `heroku_postgres`: DB instance host or IP address.
-        /// 	- Service `jira`: The Jira service host address.
-        /// 	- Service `magento_mysql`: DB instance host or IP address.
-        /// 	- Service `magento_mysql_rds`: DB instance host or IP address.
-        /// 	- Service `maria`: DB instance host or IP address.
-        /// 	- Service `maria_azure`: DB instance host or IP address.
-        /// 	- Service `maria_rds`: DB instance host or IP address.
-        /// 	- Service `marin`: The Marin host address.
-        /// 	- Service `mysql`: DB instance host or IP address.
-        /// 	- Service `mysql_azure`: DB instance host or IP address.
-        /// 	- Service `mysql_rds`: DB instance host or IP address.
-        /// 	- Service `netsuite_suiteanalytics`: The NetSuite service host address.
-        /// 	- Service `opendistro`: DB instance host or IP address.
-        /// 	- Service `opensearch`: DB instance host or IP address.
-        /// 	- Service `oracle`: DB instance host or IP address.
-        /// 	- Service `oracle_ebs`: DB instance host or IP address.
-        /// 	- Service `oracle_hva`: DB instance host or IP address.
-        /// 	- Service `oracle_rac`: DB instance host or IP address.
-        /// 	- Service `oracle_rds`: DB instance host or IP address.
-        /// 	- Service `oracle_sap_hva`: DB instance host or IP address.
-        /// 	- Service `oracle_sap_hva_netweaver`: DB instance host or IP address.
-        /// 	- Service `postgres`: DB instance host or IP address.
-        /// 	- Service `postgres_rds`: DB instance host or IP address.
-        /// 	- Service `redshift_db`: Host name
-        /// 	- Service `sap_hana`: The SAP HANA host or IP address.
-        /// 	- Service `sap_s4hana`: The SAP S/4 host or IP address.
-        /// 	- Service `sftp`: SFTP host address.
-        /// 	- Service `snowflake_db`: Host name
-        /// 	- Service `splunk`: The Splunk service host address.
-        /// 	- Service `sql_server`: DB instance host or IP address.
-        /// 	- Service `sql_server_hva`: DB instance host or IP address.
-        /// 	- Service `sql_server_rds`: DB instance host or IP address.
-        /// 	- Service `sql_server_sap_ecc_hva`: DB instance host or IP address.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Aurora`: DB instance host or IP address.
+        /// 	- Service `AuroraPostgres`: DB instance host or IP address.
+        /// 	- Service `AvevaPi`: IP address of the AF Server
+        /// 	- Service `AzurePostgres`: DB instance host or IP address.
+        /// 	- Service `AzureSqlDb`: DB instance host or IP address.
+        /// 	- Service `AzureSqlManagedDb`: DB instance host or IP address.
+        /// 	- Service `Clarity`: DB instance host or IP address.
+        /// 	- Service `Cockroachdb`: DB instance host or IP address.
+        /// 	- Service `Commercetools`: Your commercetools host.
+        /// 	- Service `DatabricksDb`: The host URL for your Databricks account.
+        /// 	- Service `Db2iHva`: A host address of the primary node. It should be a DB instance host/IP address with a port number.
+        /// 	- Service `Db2iSapHva`: DB instance host or IP address.
+        /// 	- Service `Documentdb`: Host IP address of the primary node. Ignored if `Hosts` value is provided.
+        /// 	- Service `Dynamics365Fo`: DB instance host or IP address.
+        /// 	- Service `Ehr`: DB instance host or IP address.
+        /// 	- Service `ElasticCloud`: DB instance host or IP address.
+        /// 	- Service `EsSelfHosted`: DB instance host or IP address.
+        /// 	- Service `Ftp`: FTP host address.
+        /// 	- Service `GoogleCloudMysql`: DB instance host or IP address.
+        /// 	- Service `GoogleCloudPostgresql`: DB instance host or IP address.
+        /// 	- Service `GoogleCloudSqlserver`: DB instance host or IP address.
+        /// 	- Service `HanaSapHvaB1`: DB instance host or IP address.
+        /// 	- Service `HanaSapHvaEcc`: DB instance host or IP address.
+        /// 	- Service `HanaSapHvaEccNetweaver`: DB instance host or IP address.
+        /// 	- Service `HanaSapHvaS4`: DB instance host or IP address.
+        /// 	- Service `HanaSapHvaS4Netweaver`: DB instance host or IP address.
+        /// 	- Service `HerokuPostgres`: DB instance host or IP address.
+        /// 	- Service `Jira`: The Jira service host address.
+        /// 	- Service `MagentoMysql`: DB instance host or IP address.
+        /// 	- Service `MagentoMysqlRds`: DB instance host or IP address.
+        /// 	- Service `Maria`: DB instance host or IP address.
+        /// 	- Service `MariaAzure`: DB instance host or IP address.
+        /// 	- Service `MariaRds`: DB instance host or IP address.
+        /// 	- Service `Marin`: The Marin host address.
+        /// 	- Service `Mysql`: DB instance host or IP address.
+        /// 	- Service `MysqlAzure`: DB instance host or IP address.
+        /// 	- Service `MysqlRds`: DB instance host or IP address.
+        /// 	- Service `NetsuiteSuiteanalytics`: The NetSuite service host address.
+        /// 	- Service `Opendistro`: DB instance host or IP address.
+        /// 	- Service `Opensearch`: DB instance host or IP address.
+        /// 	- Service `Oracle`: DB instance host or IP address.
+        /// 	- Service `OracleEbs`: DB instance host or IP address.
+        /// 	- Service `OracleHva`: DB instance host or IP address.
+        /// 	- Service `OracleRac`: DB instance host or IP address.
+        /// 	- Service `OracleRds`: DB instance host or IP address.
+        /// 	- Service `OracleSapHva`: DB instance host or IP address.
+        /// 	- Service `OracleSapHvaNetweaver`: DB instance host or IP address.
+        /// 	- Service `Postgres`: DB instance host or IP address.
+        /// 	- Service `PostgresRds`: DB instance host or IP address.
+        /// 	- Service `RedshiftDb`: Host name
+        /// 	- Service `SapHana`: The SAP HANA host or IP address.
+        /// 	- Service `SapS4hana`: The SAP S/4 host or IP address.
+        /// 	- Service `Sftp`: SFTP host address.
+        /// 	- Service `SnowflakeDb`: Host name
+        /// 	- Service `Splunk`: The Splunk service host address.
+        /// 	- Service `SqlServer`: DB instance host or IP address.
+        /// 	- Service `SqlServerHva`: DB instance host or IP address.
+        /// 	- Service `SqlServerRds`: DB instance host or IP address.
+        /// 	- Service `SqlServerSapEccHva`: DB instance host or IP address.
         /// </summary>
         [Input("host", required: true)]
         public string Host { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `azure_blob_storage`: IP address of host tunnel machine which is used to connect to the Storage container.
-        /// 	- Service `azure_service_bus`: The IP address of the host machine which we use to connect to ASB via ssh
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureBlobStorage`: IP address of host tunnel machine which is used to connect to the Storage container.
+        /// 	- Service `AzureServiceBus`: The IP address of the host machine which we use to connect to ASB via ssh
         /// </summary>
         [Input("hostIp", required: true)]
         public string HostIp { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `coassemble`: Your Coassemble Hostname.
-        /// 	- Service `datadog`: Your Datadog host name.
-        /// 	- Service `ukg_pro_workforce_management`: Your UKG Pro Workforce Management hostname.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Coassemble`: Your Coassemble Hostname.
+        /// 	- Service `Datadog`: Your Datadog host name.
+        /// 	- Service `UkgProWorkforceManagement`: Your UKG Pro Workforce Management hostname.
         /// </summary>
         [Input("hostName", required: true)]
         public string HostName { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_commerce`: Your Adobe Commerce host url.
-        /// 	- Service `sparkpost`: Your SparkPost host URL.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeCommerce`: Your Adobe Commerce host url.
+        /// 	- Service `Sparkpost`: Your SparkPost host URL.
         /// </summary>
         [Input("hostUrl", required: true)]
         public string HostUrl { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `azure_blob_storage`: Username in the host machine.
-        /// 	- Service `azure_service_bus`: The username on the host machine which we use to connect to ASB via ssh
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureBlobStorage`: Username in the host machine.
+        /// 	- Service `AzureServiceBus`: The username on the host machine which we use to connect to ASB via ssh
         /// </summary>
         [Input("hostUser", required: true)]
         public string HostUser { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `akamai`: Your Akamai hostname.
-        /// 	- Service `ukg_pro`: Your UKG Pro hostname.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Akamai`: Your Akamai hostname.
+        /// 	- Service `UkgPro`: Your UKG Pro hostname.
         /// </summary>
         [Input("hostname", required: true)]
         public string Hostname { get; set; } = null!;
@@ -3966,10 +3966,10 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _hosts;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `azure_cosmos_for_mongo`: A list of host addresses for Azure Cosmos DB for Mongo DB.
-        /// 	- Service `mongo`: A list of host addresses of the primary node and all replicas. Each list item is either: a DB instance host/IP address with a port number, or SRV host record.
-        /// 	- Service `mongo_sharded`: A list of host addresses of the primary node and all replicas. Each list item is either: a DB instance host/IP address with a port number, or SRV host record.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureCosmosForMongo`: A list of host addresses for Azure Cosmos DB for Mongo DB.
+        /// 	- Service `Mongo`: A list of host addresses of the primary node and all replicas. Each list item is either: a DB instance host/IP address with a port number, or SRV host record.
+        /// 	- Service `MongoSharded`: A list of host addresses of the primary node and all replicas. Each list item is either: a DB instance host/IP address with a port number, or SRV host record.
         /// </summary>
         public List<string> Hosts
         {
@@ -3978,60 +3978,60 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `databricks_db`: http path
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `DatabricksDb`: http path
         /// </summary>
         [Input("httpPath", required: true)]
         public string HttpPath { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `playvox_workforce_management`: Your Playvox Workforce Management client identifier.
-        /// 	- Service `statistics_netherlands_cbs`: Your Statistics Netherlands CBS catalog identifier.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `PlayvoxWorkforceManagement`: Your Playvox Workforce Management client identifier.
+        /// 	- Service `StatisticsNetherlandsCbs`: Your Statistics Netherlands CBS catalog identifier.
         /// </summary>
         [Input("identifier", required: true)]
         public string Identifier { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `marketo`: Marketo REST API identity url.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Marketo`: Marketo REST API identity url.
         /// </summary>
         [Input("identity", required: true)]
         public string Identity { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `salesforce_commerce_cloud`: Whether to sync data through OCAPI endpoints.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SalesforceCommerceCloud`: Whether to sync data through OCAPI endpoints.
         /// </summary>
         [Input("includeOcapiEndpoints", required: true)]
         public bool IncludeOcapiEndpoints { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `acumatica`: Your Acumatica instance name.
-        /// 	- Service `coupa`: The instance name of your Coupa account in the URL.
-        /// 	- Service `flywheel_digital`: Your Flywheel Digital instance.
-        /// 	- Service `salesforce_marketing_cloud`: The Salesforce Marketing Cloud instance ID
-        /// 	- Service `servicenow`: ServiceNow Instance ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Acumatica`: Your Acumatica instance name.
+        /// 	- Service `Coupa`: The instance name of your Coupa account in the URL.
+        /// 	- Service `FlywheelDigital`: Your Flywheel Digital instance.
+        /// 	- Service `SalesforceMarketingCloud`: The Salesforce Marketing Cloud instance ID
+        /// 	- Service `Servicenow`: ServiceNow Instance ID.
         /// </summary>
         [Input("instance", required: true)]
         public string Instance { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `hana_sap_hva_b1`: Two-digit number (00-97) of the SAP instance within its host.
-        /// 	- Service `hana_sap_hva_ecc`: Two-digit number (00-97) of the SAP instance within its host.
-        /// 	- Service `hana_sap_hva_ecc_netweaver`: Two-digit number (00-97) of the SAP instance within its host.
-        /// 	- Service `hana_sap_hva_s4`: Two-digit number (00-97) of the SAP instance within its host.
-        /// 	- Service `hana_sap_hva_s4_netweaver`: Two-digit number (00-97) of the SAP instance within its host.
-        /// 	- Service `oracle_sap_hva_netweaver`: Two-digit number (00-97) of the SAP instance within its host.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `HanaSapHvaB1`: Two-digit number (00-97) of the SAP instance within its host.
+        /// 	- Service `HanaSapHvaEcc`: Two-digit number (00-97) of the SAP instance within its host.
+        /// 	- Service `HanaSapHvaEccNetweaver`: Two-digit number (00-97) of the SAP instance within its host.
+        /// 	- Service `HanaSapHvaS4`: Two-digit number (00-97) of the SAP instance within its host.
+        /// 	- Service `HanaSapHvaS4Netweaver`: Two-digit number (00-97) of the SAP instance within its host.
+        /// 	- Service `OracleSapHvaNetweaver`: Two-digit number (00-97) of the SAP instance within its host.
         /// </summary>
         [Input("instanceNumber", required: true)]
         public string InstanceNumber { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `sap_business_by_design`: The SAP Business ByDesign instance URL.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SapBusinessByDesign`: The SAP Business ByDesign instance URL.
         /// </summary>
         [Input("instanceUrl", required: true)]
         public string InstanceUrl { get; set; } = null!;
@@ -4040,8 +4040,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _integrationKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `pendo`: The integration key of the Pendo account.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Pendo`: The integration key of the Pendo account.
         /// </summary>
         public string? IntegrationKey
         {
@@ -4050,172 +4050,172 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aveva_pi`: IP address of the AF Server
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AvevaPi`: IP address of the AF Server
         /// </summary>
         [Input("ipAddress", required: true)]
         public string IpAddress { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `fivetran_log`: (Optional) Retrieve account-level logs.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FivetranLog`: (Optional) Retrieve account-level logs.
         /// </summary>
         [Input("isAccountLevelConnector", required: true)]
         public bool IsAccountLevelConnector { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `apple_search_ads`: The contents of your PEM certificate file. Default value: `false`
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AppleSearchAds`: The contents of your PEM certificate file. Default value: `False`
         /// </summary>
         [Input("isAuth2Enabled", required: true)]
         public bool IsAuth2Enabled { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `twitter_ads`: Custom API credentials
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `TwitterAds`: Custom API credentials
         /// </summary>
         [Input("isCustomApiCredentials", required: true)]
         public bool IsCustomApiCredentials { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `pardot`: Whether the `EXTERNAL_ACTIVITY` table must be synced or not.
-        /// 	- Service `pardot_sandbox`: Whether the `EXTERNAL_ACTIVITY` table must be synced or not.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Pardot`: Whether the `EXTERNAL_ACTIVITY` table must be synced or not.
+        /// 	- Service `PardotSandbox`: Whether the `EXTERNAL_ACTIVITY` table must be synced or not.
         /// </summary>
         [Input("isExternalActivitiesEndpointSelected", required: true)]
         public bool IsExternalActivitiesEndpointSelected { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics_data_feed`: Use Secure FTP (FTPS).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalyticsDataFeed`: Use Secure FTP (FTPS).
         /// </summary>
         [Input("isFtps", required: true)]
         public bool IsFtps { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `sftp`: Whether to use a key pair for authentication.  When `true`, do not use `password`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Sftp`: Whether to use a key pair for authentication.  When `True`, do not use `Password`.
         /// </summary>
         [Input("isKeypair", required: true)]
         public bool IsKeypair { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `zuora`: Set to `true` if there are multiple entities in your Zuora account and you only want to use one entity. Otherwise, set to `false`.
-        /// 	- Service `zuora_sandbox`: Set to `true` if there are multiple entities in your Zuora account and you only want to use one entity. Otherwise, set to `false`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Zuora`: Set to `True` if there are multiple entities in your Zuora account and you only want to use one entity. Otherwise, set to `False`.
+        /// 	- Service `ZuoraSandbox`: Set to `True` if there are multiple entities in your Zuora account and you only want to use one entity. Otherwise, set to `False`.
         /// </summary>
         [Input("isMultiEntityFeatureEnabled", required: true)]
         public bool IsMultiEntityFeatureEnabled { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `salesforce_marketing_cloud`: Indicates that that your installed package uses OAuth 2.0. Default value: `false`
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SalesforceMarketingCloud`: Indicates that that your installed package uses OAuth 2.0. Default value: `False`
         /// </summary>
         [Input("isNewPackage", required: true)]
         public bool IsNewPackage { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snowflake_db`: Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SnowflakeDb`: Indicates that a private key is encrypted. The default value: `False`. The field can be specified if authentication type is `KEY_PAIR`.
         /// </summary>
         [Input("isPrivateKeyEncrypted", required: true)]
         public bool IsPrivateKeyEncrypted { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_lambda`: We use PrivateLink by default if your AWS Lambda is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to AWS lambda over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options#awsprivatelink).
-        /// 	- Service `s3`: Set to `true` if you want to connect to S3 bucket over PrivateLink. Default value: `false`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsLambda`: We use PrivateLink by default if your AWS Lambda is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to AWS lambda over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options#awsprivatelink).
+        /// 	- Service `S3`: Set to `True` if you want to connect to S3 bucket over PrivateLink. Default value: `False`.
         /// </summary>
         [Input("isPrivateLinkRequired", required: true)]
         public bool IsPrivateLinkRequired { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_cost_report`: Whether you are syncing from a public bucket. Default value: `false`.
-        /// 	- Service `kinesis`: Is the bucket public? (you don't need an AWS account for syncing public buckets!)
-        /// 	- Service `s3`: Whether you are syncing from a public bucket. Default value: `false`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsCostReport`: Whether you are syncing from a public bucket. Default value: `False`.
+        /// 	- Service `Kinesis`: Is the bucket public? (you don't need an AWS account for syncing public buckets!)
+        /// 	- Service `S3`: Whether you are syncing from a public bucket. Default value: `False`.
         /// </summary>
         [Input("isPublic", required: true)]
         public bool IsPublic { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `sailthru`: Enable this if you want to sync Sailthru Connect
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Sailthru`: Enable this if you want to sync Sailthru Connect
         /// </summary>
         [Input("isSailthruConnectEnabled", required: true)]
         public bool IsSailthruConnectEnabled { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `ftp`: Whether the server supports FTPS.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Ftp`: Whether the server supports FTPS.
         /// </summary>
         [Input("isSecure", required: true)]
         public bool IsSecure { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `salesforce_marketing_cloud`: Provide SFTP credentials
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SalesforceMarketingCloud`: Provide SFTP credentials
         /// </summary>
         [Input("isSftpCredsAvailable", required: true)]
         public bool IsSftpCredsAvailable { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `box`: Allows the creation of connector using Merge Mode strategy.
-        /// 	- Service `dropbox`: Allows the creation of connector using Merge Mode strategy.
-        /// 	- Service `google_drive`: Allows the creation of connector using Merge Mode strategy.
-        /// 	- Service `sftp`: Allows the creation of connector using the specified Sync strategy.
-        /// 	- Service `share_point`: Allows the creation of connector using Merge Mode strategy.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Box`: Allows the creation of connector using Merge Mode strategy.
+        /// 	- Service `Dropbox`: Allows the creation of connector using Merge Mode strategy.
+        /// 	- Service `GoogleDrive`: Allows the creation of connector using Merge Mode strategy.
+        /// 	- Service `Sftp`: Allows the creation of connector using the specified Sync strategy.
+        /// 	- Service `SharePoint`: Allows the creation of connector using Merge Mode strategy.
         /// </summary>
         [Input("isSingleTableMode", required: true)]
         public bool IsSingleTableMode { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adyen`: Whether or not your Adyen Account is a Test Account. Default value: `false`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adyen`: Whether or not your Adyen Account is a Test Account. Default value: `False`.
         /// </summary>
         [Input("isTestAccount", required: true)]
         public bool IsTestAccount { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `amazon_selling_partner`: Whether or not you have a Vendor Account. Default value: `false`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AmazonSellingPartner`: Whether or not you have a Vendor Account. Default value: `False`.
         /// </summary>
         [Input("isVendor", required: true)]
         public bool IsVendor { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `oracle_fusion_cloud_apps_crm`: The Oracle Fusion Cloud issuer name.
-        /// 	- Service `oracle_fusion_cloud_apps_fscm`: The Oracle Fusion Cloud issuer name.
-        /// 	- Service `oracle_fusion_cloud_apps_hcm`: The Oracle Fusion Cloud issuer name.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `OracleFusionCloudAppsCrm`: The Oracle Fusion Cloud issuer name.
+        /// 	- Service `OracleFusionCloudAppsFscm`: The Oracle Fusion Cloud issuer name.
+        /// 	- Service `OracleFusionCloudAppsHcm`: The Oracle Fusion Cloud issuer name.
         /// </summary>
         [Input("issuer", required: true)]
         public string Issuer { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `itunes_connect`: Your Issuer ID
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ItunesConnect`: Your Issuer ID
         /// </summary>
         [Input("issuerId", required: true)]
         public string IssuerId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_cost_report`: Control how your JSON data is delivered into your destination
-        /// 	- Service `azure_blob_storage`: Control how your JSON data is delivered into your destination
-        /// 	- Service `box`: Control how your JSON data is delivered into your destination
-        /// 	- Service `dropbox`: Control how your JSON data is delivered into your destination
-        /// 	- Service `email`: Control how your JSON data is delivered into your destination
-        /// 	- Service `ftp`: Control how your JSON data is delivered into your destination
-        /// 	- Service `gcs`: Control how your JSON data is delivered into your destination
-        /// 	- Service `google_drive`: Control how your JSON data is delivered into your destination
-        /// 	- Service `kinesis`: Control how your JSON data is delivered into your destination
-        /// 	- Service `s3`: Control how your JSON data is delivered into your destination
-        /// 	- Service `s3_compatible_storage`: Control how your JSON data is delivered into your destination
-        /// 	- Service `sftp`: Control how your JSON data is delivered into your destination
-        /// 	- Service `share_point`: Control how your JSON data is delivered into your destination
-        /// 	- Service `wasabi_cloud_storage`: Specifies how Fivetran should handle your JSON data. Default value: `Packed`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsCostReport`: Control how your JSON data is delivered into your destination
+        /// 	- Service `AzureBlobStorage`: Control how your JSON data is delivered into your destination
+        /// 	- Service `Box`: Control how your JSON data is delivered into your destination
+        /// 	- Service `Dropbox`: Control how your JSON data is delivered into your destination
+        /// 	- Service `Email`: Control how your JSON data is delivered into your destination
+        /// 	- Service `Ftp`: Control how your JSON data is delivered into your destination
+        /// 	- Service `Gcs`: Control how your JSON data is delivered into your destination
+        /// 	- Service `GoogleDrive`: Control how your JSON data is delivered into your destination
+        /// 	- Service `Kinesis`: Control how your JSON data is delivered into your destination
+        /// 	- Service `S3`: Control how your JSON data is delivered into your destination
+        /// 	- Service `S3CompatibleStorage`: Control how your JSON data is delivered into your destination
+        /// 	- Service `Sftp`: Control how your JSON data is delivered into your destination
+        /// 	- Service `SharePoint`: Control how your JSON data is delivered into your destination
+        /// 	- Service `WasabiCloudStorage`: Specifies how Fivetran should handle your JSON data. Default value: `Packed`.
         /// </summary>
         [Input("jsonDeliveryMode", required: true)]
         public string JsonDeliveryMode { get; set; } = null!;
@@ -4224,8 +4224,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _key;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `uservoice`: The UserVoice API key.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Uservoice`: The UserVoice API key.
         /// </summary>
         public string? Key
         {
@@ -4234,8 +4234,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `itunes_connect`: Your Key ID
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ItunesConnect`: Your Key ID
         /// </summary>
         [Input("keyId", required: true)]
         public string KeyId { get; set; } = null!;
@@ -4244,8 +4244,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _keyPassword;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_msk`: If `security_protocol` is set to `TLS`, enter your `Key Password`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsMsk`: If `SecurityProtocol` is set to `TLS`, enter your `Key Password`.
         /// </summary>
         public string? KeyPassword
         {
@@ -4254,8 +4254,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `heroku_kafka`: Key Store Type
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `HerokuKafka`: Key Store Type
         /// </summary>
         [Input("keyStoreType", required: true)]
         public string KeyStoreType { get; set; } = null!;
@@ -4264,8 +4264,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _keystore;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_msk`: If `security_protocol` is set to `TLS`, add the `Keystore File` as Base64 encoded string.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsMsk`: If `SecurityProtocol` is set to `TLS`, add the `Keystore File` as Base64 encoded string.
         /// </summary>
         public string? Keystore
         {
@@ -4277,8 +4277,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _keystorePassword;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_msk`: If `security_protocol` is set to `TLS`, enter your `Keystore Password`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsMsk`: If `SecurityProtocol` is set to `TLS`, enter your `Keystore Password`.
         /// </summary>
         public string? KeystorePassword
         {
@@ -4293,100 +4293,100 @@ namespace Pulumi.Fivetran.Inputs
         public string LatestVersion { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `younium`: Your Younium legal entity ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Younium`: Your Younium legal entity ID.
         /// </summary>
         [Input("legalEntityId", required: true)]
         public string LegalEntityId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `pardot`: API limit for the external activities endpoint.
-        /// 	- Service `pardot_sandbox`: API limit for the external activities endpoint.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Pardot`: API limit for the external activities endpoint.
+        /// 	- Service `PardotSandbox`: API limit for the external activities endpoint.
         /// </summary>
         [Input("limitForApiCallsToExternalActivitiesEndpoint", required: true)]
         public int LimitForApiCallsToExternalActivitiesEndpoint { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_cost_report`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
-        /// 	- Service `azure_blob_storage`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
-        /// 	- Service `box`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
-        /// 	- Service `dropbox`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
-        /// 	- Service `email`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
-        /// 	- Service `ftp`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
-        /// 	- Service `gcs`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
-        /// 	- Service `google_drive`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
-        /// 	- Service `kinesis`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
-        /// 	- Service `s3`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
-        /// 	- Service `s3_compatible_storage`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
-        /// 	- Service `sftp`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
-        /// 	- Service `share_point`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
-        /// 	- Service `wasabi_cloud_storage`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsCostReport`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
+        /// 	- Service `AzureBlobStorage`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
+        /// 	- Service `Box`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
+        /// 	- Service `Dropbox`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
+        /// 	- Service `Email`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
+        /// 	- Service `Ftp`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
+        /// 	- Service `Gcs`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
+        /// 	- Service `GoogleDrive`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
+        /// 	- Service `Kinesis`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
+        /// 	- Service `S3`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
+        /// 	- Service `S3CompatibleStorage`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
+        /// 	- Service `Sftp`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
+        /// 	- Service `SharePoint`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
+        /// 	- Service `WasabiCloudStorage`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
         /// </summary>
         [Input("lineSeparator", required: true)]
         public string LineSeparator { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `pigment`: Your Pigment list ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Pigment`: Your Pigment list ID.
         /// </summary>
         [Input("listId", required: true)]
         public string ListId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `cj_commission_detail`: Your CJ Commission Detail list of company IDs.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `CjCommissionDetail`: Your CJ Commission Detail list of company IDs.
         /// </summary>
         [Input("listOfCompanyIds", required: true)]
         public string ListOfCompanyIds { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_cost_report`: Optional. If you have a file structure where new files are always named in lexicographically increasing order such as files being named in increasing order of time, you can select codetime_based_pattern_listing/code.
-        /// 	- Service `kinesis`: Optional. If you have a file structure where new files are always named in lexicographically increasing order such as files being named in increasing order of time, you can select codetime_based_pattern_listing/code.
-        /// 	- Service `s3`: The listing strategy you want to use. Default value: `complete_listing`.
-        /// 	- Service `s3_compatible_storage`: The listing strategy you want to use. Default value: `complete_listing`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsCostReport`: Optional. If you have a file structure where new files are always named in lexicographically increasing order such as files being named in increasing order of time, you can select codetime_based_pattern_listing/code.
+        /// 	- Service `Kinesis`: Optional. If you have a file structure where new files are always named in lexicographically increasing order such as files being named in increasing order of time, you can select codetime_based_pattern_listing/code.
+        /// 	- Service `S3`: The listing strategy you want to use. Default value: `CompleteListing`.
+        /// 	- Service `S3CompatibleStorage`: The listing strategy you want to use. Default value: `CompleteListing`.
         /// </summary>
         [Input("listStrategy", required: true)]
         public string ListStrategy { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_analytics_4_export`: The Sync Mode
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleAnalytics4Export`: The Sync Mode
         /// </summary>
         [Input("listSyncMode", required: true)]
         public string ListSyncMode { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `db2i_hva`: The log journal name.
-        /// 	- Service `db2i_sap_hva`: The log journal name.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Db2iHva`: The log journal name.
+        /// 	- Service `Db2iSapHva`: The log journal name.
         /// </summary>
         [Input("logJournal", required: true)]
         public string LogJournal { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `db2i_hva`: The log journal schema.
-        /// 	- Service `db2i_sap_hva`: The log journal schema.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Db2iHva`: The log journal schema.
+        /// 	- Service `Db2iSapHva`: The log journal schema.
         /// </summary>
         [Input("logJournalSchema", required: true)]
         public string LogJournalSchema { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `hana_sap_hva_ecc_netweaver`: Name of the SAP logon group. The default value is PUBLIC. This field is optional.
-        /// 	- Service `hana_sap_hva_s4_netweaver`: Name of the SAP logon group. The default value is PUBLIC. This field is optional.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `HanaSapHvaEccNetweaver`: Name of the SAP logon group. The default value is PUBLIC. This field is optional.
+        /// 	- Service `HanaSapHvaS4Netweaver`: Name of the SAP logon group. The default value is PUBLIC. This field is optional.
         /// </summary>
         [Input("logOnGroup", required: true)]
         public string LogOnGroup { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `rebound_returns`: Your ReBound Returns login.
-        /// 	- Service `the_trade_desk`: The Trade Desk email. It is a part of the login credentials.
-        /// 	- Service `walmart_dsp`: Walmart DSP email. It is a part of the login credentials.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ReboundReturns`: Your ReBound Returns login.
+        /// 	- Service `TheTradeDesk`: The Trade Desk email. It is a part of the login credentials.
+        /// 	- Service `WalmartDsp`: Walmart DSP email. It is a part of the login credentials.
         /// </summary>
         [Input("login", required: true)]
         public string Login { get; set; } = null!;
@@ -4395,9 +4395,9 @@ namespace Pulumi.Fivetran.Inputs
         private string? _loginPassword;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `concur`: The SAP Concur password.
-        /// 	- Service `sage_intacct`: The login password. It is a part of the login credentials.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Concur`: The SAP Concur password.
+        /// 	- Service `SageIntacct`: The login password. It is a part of the login credentials.
         /// </summary>
         public string? LoginPassword
         {
@@ -4406,8 +4406,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `sage_intacct`: Lookback window for GL Batch endpoint lookback sync
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SageIntacct`: Lookback window for GL Batch endpoint lookback sync
         /// </summary>
         [Input("lookBackWindowForGlBatchEndpoint", required: true)]
         public int LookBackWindowForGlBatchEndpoint { get; set; }
@@ -4416,8 +4416,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _managerAccounts;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_ads`: The list of the Manager Account IDs whose clients will be synced. Must be populated if `sync_mode` is set to `ManagerAccounts`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleAds`: The list of the Manager Account IDs whose clients will be synced. Must be populated if `SyncMode` is set to `ManagerAccounts`.
         /// </summary>
         public List<string> ManagerAccounts
         {
@@ -4426,40 +4426,40 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `reltio`: Maximum API requests per day
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Reltio`: Maximum API requests per day
         /// </summary>
         [Input("maxApiRequestsPerDay", required: true)]
         public int MaxApiRequestsPerDay { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `afterpay`: Your Afterpay Merchant ID.
-        /// 	- Service `amazon_selling_partner`: The Merchant ID or Vendor Code.
-        /// 	- Service `avantlink`: Your AvantLink Merchant ID.
-        /// 	- Service `braintree`: Your Braintree merchant ID.
-        /// 	- Service `braintree_sandbox`: Your Braintree merchant ID.
-        /// 	- Service `shareasale`: Your ShareASale merchant ID.
-        /// 	- Service `xsolla`: Your Xsolla Merchant ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Afterpay`: Your Afterpay Merchant ID.
+        /// 	- Service `AmazonSellingPartner`: The Merchant ID or Vendor Code.
+        /// 	- Service `Avantlink`: Your AvantLink Merchant ID.
+        /// 	- Service `Braintree`: Your Braintree merchant ID.
+        /// 	- Service `BraintreeSandbox`: Your Braintree merchant ID.
+        /// 	- Service `Shareasale`: Your ShareASale merchant ID.
+        /// 	- Service `Xsolla`: Your Xsolla Merchant ID.
         /// </summary>
         [Input("merchantId", required: true)]
         public string MerchantId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `apache_kafka`: Kafka message type.
-        /// 	- Service `aws_msk`: The Message type.
-        /// 	- Service `azure_event_hub`: Message type.
-        /// 	- Service `azure_service_bus`: The format of messages in the topic
-        /// 	- Service `confluent_cloud`: Confluent Cloud message type.
-        /// 	- Service `heroku_kafka`: Heroku Kafka message type.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ApacheKafka`: Kafka message type.
+        /// 	- Service `AwsMsk`: The Message type.
+        /// 	- Service `AzureEventHub`: Message type.
+        /// 	- Service `AzureServiceBus`: The format of messages in the topic
+        /// 	- Service `ConfluentCloud`: Confluent Cloud message type.
+        /// 	- Service `HerokuKafka`: Heroku Kafka message type.
         /// </summary>
         [Input("messageType", required: true)]
         public string MessageType { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `pigment`: Your Pigment metric ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Pigment`: Your Pigment metric ID.
         /// </summary>
         [Input("metricId", required: true)]
         public string MetricId { get; set; } = null!;
@@ -4468,12 +4468,12 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _metrics;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adroll`: The metrics that you want to sync.
-        /// 	- Service `criteo`: Metrics
-        /// 	- Service `double_click_campaign_manager`: Report metrics to include into a sync.
-        /// 	- Service `google_analytics`: The report metrics to include into a sync.
-        /// 	- Service `google_display_and_video_360`: The report metrics to include into a sync. The metric names are provided in the API format. This is a required parameter when `config_method` is set to `CREATE_NEW`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adroll`: The metrics that you want to sync.
+        /// 	- Service `Criteo`: Metrics
+        /// 	- Service `DoubleClickCampaignManager`: Report metrics to include into a sync.
+        /// 	- Service `GoogleAnalytics`: The report metrics to include into a sync.
+        /// 	- Service `GoogleDisplayAndVideo360`: The report metrics to include into a sync. The metric names are provided in the API format. This is a required parameter when `ConfigMethod` is set to `CREATE_NEW`.
         /// </summary>
         public List<string> Metrics
         {
@@ -4482,50 +4482,50 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_sheets`: The name of the named data range on the sheet that contains the data to be synced.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleSheets`: The name of the named data range on the sheet that contains the data to be synced.
         /// </summary>
         [Input("namedRange", required: true)]
         public string NamedRange { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `azure_service_bus`: The ASB namespace which we have to sync. Required for `AzureActiveDirectory` authentication.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureServiceBus`: The ASB namespace which we have to sync. Required for `AzureActiveDirectory` authentication.
         /// </summary>
         [Input("namespace", required: true)]
         public string Namespace { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `double_click_publishers`: Network code is a unique, numeric identifier for your Ad Manager network.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `DoubleClickPublishers`: Network code is a unique, numeric identifier for your Ad Manager network.
         /// </summary>
         [Input("networkCode", required: true)]
         public int NetworkCode { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `gcs`: Use this if your CSV generator uses non-standard ways of escaping characters. Default value: `false`.
-        /// 	- Service `s3`: Use this if your CSV generator uses non-standard ways of escaping characters. Default value: `false`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Gcs`: Use this if your CSV generator uses non-standard ways of escaping characters. Default value: `False`.
+        /// 	- Service `S3`: Use this if your CSV generator uses non-standard ways of escaping characters. Default value: `False`.
         /// </summary>
         [Input("nonStandardEscapeChar", required: true)]
         public bool NonStandardEscapeChar { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_cost_report`: Optional. If your CSVs use a special value indicating null, you can specify it here.
-        /// 	- Service `azure_blob_storage`: If your CSVs use a special value indicating null, you can specify it here.
-        /// 	- Service `box`: If your CSVs use a special value indicating null, you can specify it here.
-        /// 	- Service `dropbox`: If your CSVs use a special value indicating null, you can specify it here.
-        /// 	- Service `email`: If your CSVs use a special value indicating null, you can specify it here.
-        /// 	- Service `ftp`: If your CSVs use a special value indicating null, you can specify it here.
-        /// 	- Service `gcs`: If your CSVs use a special value indicating null, you can specify it here.
-        /// 	- Service `google_drive`: If your CSVs use a special value indicating null, you can specify it here.
-        /// 	- Service `kinesis`: Optional. If your CSVs use a special value indicating null, you can specify it here.
-        /// 	- Service `s3`: If your CSVs use a special value indicating null, you can specify it here.
-        /// 	- Service `s3_compatible_storage`: If your CSVs use a special value indicating null, you can specify it here.
-        /// 	- Service `sftp`: If your CSVs use a special value indicating null, you can specify it here.
-        /// 	- Service `share_point`: If your CSVs use a special value indicating null, you can specify it here.
-        /// 	- Service `wasabi_cloud_storage`: If your CSVs use a special value indicating null, you can specify it here.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsCostReport`: Optional. If your CSVs use a special value indicating null, you can specify it here.
+        /// 	- Service `AzureBlobStorage`: If your CSVs use a special value indicating null, you can specify it here.
+        /// 	- Service `Box`: If your CSVs use a special value indicating null, you can specify it here.
+        /// 	- Service `Dropbox`: If your CSVs use a special value indicating null, you can specify it here.
+        /// 	- Service `Email`: If your CSVs use a special value indicating null, you can specify it here.
+        /// 	- Service `Ftp`: If your CSVs use a special value indicating null, you can specify it here.
+        /// 	- Service `Gcs`: If your CSVs use a special value indicating null, you can specify it here.
+        /// 	- Service `GoogleDrive`: If your CSVs use a special value indicating null, you can specify it here.
+        /// 	- Service `Kinesis`: Optional. If your CSVs use a special value indicating null, you can specify it here.
+        /// 	- Service `S3`: If your CSVs use a special value indicating null, you can specify it here.
+        /// 	- Service `S3CompatibleStorage`: If your CSVs use a special value indicating null, you can specify it here.
+        /// 	- Service `Sftp`: If your CSVs use a special value indicating null, you can specify it here.
+        /// 	- Service `SharePoint`: If your CSVs use a special value indicating null, you can specify it here.
+        /// 	- Service `WasabiCloudStorage`: If your CSVs use a special value indicating null, you can specify it here.
         /// </summary>
         [Input("nullSequence", required: true)]
         public string NullSequence { get; set; } = null!;
@@ -4547,8 +4547,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `salesforce_commerce_cloud`: The Salesforce Commerce Cloud OCAPI Client ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SalesforceCommerceCloud`: The Salesforce Commerce Cloud OCAPI Client ID.
         /// </summary>
         [Input("ocapiClientId", required: true)]
         public string OcapiClientId { get; set; } = null!;
@@ -4557,8 +4557,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _ocapiClientSecret;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `salesforce_commerce_cloud`: The Salesforce Commerce Cloud OCAPI Client secret.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SalesforceCommerceCloud`: The Salesforce Commerce Cloud OCAPI Client secret.
         /// </summary>
         public string? OcapiClientSecret
         {
@@ -4567,97 +4567,97 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `salesforce_commerce_cloud`: The Salesforce Commerce Cloud OCAPI custom object types.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SalesforceCommerceCloud`: The Salesforce Commerce Cloud OCAPI custom object types.
         /// </summary>
         [Input("ocapiCustomObjectTypes", required: true)]
         public string OcapiCustomObjectTypes { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `salesforce_commerce_cloud`: The Salesforce Commerce Cloud OCAPI hostname.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SalesforceCommerceCloud`: The Salesforce Commerce Cloud OCAPI hostname.
         /// </summary>
         [Input("ocapiHostname", required: true)]
         public string OcapiHostname { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `hana_sap_hva_b1`: ODBC manager library path
-        /// 	- Service `hana_sap_hva_ecc`: ODBC manager library path
-        /// 	- Service `hana_sap_hva_s4`: ODBC manager library path
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `HanaSapHvaB1`: ODBC manager library path
+        /// 	- Service `HanaSapHvaEcc`: ODBC manager library path
+        /// 	- Service `HanaSapHvaS4`: ODBC manager library path
         /// </summary>
         [Input("odbcDriverManagerLibraryPath", required: true)]
         public string OdbcDriverManagerLibraryPath { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `hana_sap_hva_b1`: odbc.ini and odbcsinst.ini location
-        /// 	- Service `hana_sap_hva_ecc`: odbc.ini and odbcsinst.ini location
-        /// 	- Service `hana_sap_hva_s4`: odbc.ini and odbcsinst.ini location
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `HanaSapHvaB1`: odbc.ini and odbcsinst.ini location
+        /// 	- Service `HanaSapHvaEcc`: odbc.ini and odbcsinst.ini location
+        /// 	- Service `HanaSapHvaS4`: odbc.ini and odbcsinst.ini location
         /// </summary>
         [Input("odbcSysIniPath", required: true)]
         public string OdbcSysIniPath { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_cost_report`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
-        /// 	- Service `azure_blob_storage`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
-        /// 	- Service `box`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
-        /// 	- Service `dropbox`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
-        /// 	- Service `ftp`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
-        /// 	- Service `gcs`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
-        /// 	- Service `google_drive`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
-        /// 	- Service `kinesis`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
-        /// 	- Service `s3`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as `fail` unless you are certain that you have undesirable, malformed data.
-        /// 	- Service `s3_compatible_storage`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as `fail` unless you are certain that you have undesirable, malformed data.
-        /// 	- Service `sftp`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
-        /// 	- Service `share_point`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
-        /// 	- Service `wasabi_cloud_storage`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as `fail` unless you are certain that you have undesirable, malformed data.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsCostReport`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
+        /// 	- Service `AzureBlobStorage`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
+        /// 	- Service `Box`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
+        /// 	- Service `Dropbox`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
+        /// 	- Service `Ftp`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
+        /// 	- Service `Gcs`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
+        /// 	- Service `GoogleDrive`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
+        /// 	- Service `Kinesis`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
+        /// 	- Service `S3`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as `Fail` unless you are certain that you have undesirable, malformed data.
+        /// 	- Service `S3CompatibleStorage`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as `Fail` unless you are certain that you have undesirable, malformed data.
+        /// 	- Service `Sftp`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
+        /// 	- Service `SharePoint`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
+        /// 	- Service `WasabiCloudStorage`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as `Fail` unless you are certain that you have undesirable, malformed data.
         /// </summary>
         [Input("onError", required: true)]
         public string OnError { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `jira`: Whether the Jira instance is local or in cloud.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Jira`: Whether the Jira instance is local or in cloud.
         /// </summary>
         [Input("onPremise", required: true)]
         public bool OnPremise { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `gladly`: Your Gladly Organization Name.
-        /// 	- Service `statuspage`: Your Statuspage Organization ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Gladly`: Your Gladly Organization Name.
+        /// 	- Service `Statuspage`: Your Statuspage Organization ID.
         /// </summary>
         [Input("organization", required: true)]
         public string Organization { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_workfront`: Your Adobe Workfront organization domain.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeWorkfront`: Your Adobe Workfront organization domain.
         /// </summary>
         [Input("organizationDomain", required: true)]
         public string OrganizationDomain { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics`: Organization ID from the Service Account (JWT) credentials of your Adobe Project.
-        /// 	- Service `device_magic`: Your Device Magic organization ID.
-        /// 	- Service `integrate`: Your Integrate organization ID.
-        /// 	- Service `megaphone`: Your Megaphone organization ID.
-        /// 	- Service `productive`: Your Productive Organization ID.
-        /// 	- Service `salesforce_commerce_cloud`: The organization ID from Salesforce Commerce Cloud account.
-        /// 	- Service `sentry`: Your Sentry organization ID.
-        /// 	- Service `zoho_books`: Your Zoho Books Organization ID.
-        /// 	- Service `zoho_inventory`: Your Zoho Inventory organization ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalytics`: Organization ID from the Service Account (JWT) credentials of your Adobe Project.
+        /// 	- Service `DeviceMagic`: Your Device Magic organization ID.
+        /// 	- Service `Integrate`: Your Integrate organization ID.
+        /// 	- Service `Megaphone`: Your Megaphone organization ID.
+        /// 	- Service `Productive`: Your Productive Organization ID.
+        /// 	- Service `SalesforceCommerceCloud`: The organization ID from Salesforce Commerce Cloud account.
+        /// 	- Service `Sentry`: Your Sentry organization ID.
+        /// 	- Service `ZohoBooks`: Your Zoho Books Organization ID.
+        /// 	- Service `ZohoInventory`: Your Zoho Inventory organization ID.
         /// </summary>
         [Input("organizationId", required: true)]
         public string OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `brightpearl`: Your Brightpearl organization name.
-        /// 	- Service `confluence`: Your Confluence organization name.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Brightpearl`: Your Brightpearl organization name.
+        /// 	- Service `Confluence`: Your Confluence organization name.
         /// </summary>
         [Input("organizationName", required: true)]
         public string OrganizationName { get; set; } = null!;
@@ -4666,9 +4666,9 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _organizations;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `apple_search_ads`: Organizations
-        /// 	- Service `snapchat_ads`: Specific organizations IDs to sync. Must be populated if `syncMode` is set to `SpecificOrganizations`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AppleSearchAds`: Organizations
+        /// 	- Service `SnapchatAds`: Specific organizations IDs to sync. Must be populated if `syncMode` is set to `SpecificOrganizations`.
         /// </summary>
         public List<string> Organizations
         {
@@ -4680,12 +4680,12 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _packedModeTables;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `azure_cosmos_for_mongo`: List of tables to be synced in packed mode; format:`db.table`(case-sensitive).
-        /// 	- Service `dynamodb`: List of tables to be synced in packed mode.
-        /// 	- Service `firebase`: Specific tables to sync. Must be populated if `packing_mode` is set to `SelectTablesForPackedMode`.
-        /// 	- Service `mongo`: List of tables to be synced in packed mode; format:`db.table`(case-sensitive).
-        /// 	- Service `mongo_sharded`: List of tables to be synced in packed mode; format:`db.table`(case-sensitive).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureCosmosForMongo`: List of tables to be synced in packed mode; format:`db.table`(case-sensitive).
+        /// 	- Service `Dynamodb`: List of tables to be synced in packed mode.
+        /// 	- Service `Firebase`: Specific tables to sync. Must be populated if `PackingMode` is set to `SelectTablesForPackedMode`.
+        /// 	- Service `Mongo`: List of tables to be synced in packed mode; format:`db.table`(case-sensitive).
+        /// 	- Service `MongoSharded`: List of tables to be synced in packed mode; format:`db.table`(case-sensitive).
         /// </summary>
         public List<string> PackedModeTables
         {
@@ -4694,14 +4694,14 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `azure_cosmos_for_mongo`: Indicates the desired sync pack mode. Accepted values are `UsePackedModeOnly` and `UseUnpackedModeOnly`. `SelectTablesForPackedMode` is deprecated. 
-        /// 	- Service `firebase`: Whether to sync all tables in unpacked mode or specific tables in packed mode. Default value: `UseUnpackedModeOnly`.
-        /// 	- Service `klaviyo`: Packing mode for EVENT and PERSON tables.
-        /// 	- Service `mongo`: Whether to sync all tables in unpacked mode only, all tables in packed mode only, or specific tables in packed mode. Default value: `UseUnpackedModeOnly`.
-        /// 	- Service `mongo_sharded`: Whether to sync all tables in unpacked mode only, all tables in packed mode only, or specific tables in packed mode. Default value: `UseUnpackedModeOnly`.
-        /// 	- Service `optimizely`: Packing mode for conversion and decision tables.
-        /// 	- Service `sailthru`: Packing mode for LIST_STATE and USER tables.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureCosmosForMongo`: Indicates the desired sync pack mode. Accepted values are `UsePackedModeOnly` and `UseUnpackedModeOnly`. `SelectTablesForPackedMode` is deprecated. 
+        /// 	- Service `Firebase`: Whether to sync all tables in unpacked mode or specific tables in packed mode. Default value: `UseUnpackedModeOnly`.
+        /// 	- Service `Klaviyo`: Packing mode for EVENT and PERSON tables.
+        /// 	- Service `Mongo`: Whether to sync all tables in unpacked mode only, all tables in packed mode only, or specific tables in packed mode. Default value: `UseUnpackedModeOnly`.
+        /// 	- Service `MongoSharded`: Whether to sync all tables in unpacked mode only, all tables in packed mode only, or specific tables in packed mode. Default value: `UseUnpackedModeOnly`.
+        /// 	- Service `Optimizely`: Packing mode for conversion and decision tables.
+        /// 	- Service `Sailthru`: Packing mode for LIST_STATE and USER tables.
         /// </summary>
         [Input("packingMode", required: true)]
         public string PackingMode { get; set; } = null!;
@@ -4710,8 +4710,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _pages;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook_pages`: Specific pages to sync. Must be populated if `sync_mode` is set to `SpecificPages`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FacebookPages`: Specific pages to sync. Must be populated if `SyncMode` is set to `SpecificPages`.
         /// </summary>
         public List<string> Pages
         {
@@ -4720,15 +4720,15 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `care_quality_commission`: Your Care Quality Commission partner code.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `CareQualityCommission`: Your Care Quality Commission partner code.
         /// </summary>
         [Input("partnerCode", required: true)]
         public string PartnerCode { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `expensify`: Your Expensify partnerUserID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Expensify`: Your Expensify partnerUserID.
         /// </summary>
         [Input("partnerUserId", required: true)]
         public string PartnerUserId { get; set; } = null!;
@@ -4737,8 +4737,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _partnerUserSecret;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `expensify`: Your Expensify partnerUserSecret.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Expensify`: Your Expensify partnerUserSecret.
         /// </summary>
         public string? PartnerUserSecret
         {
@@ -4750,10 +4750,10 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _partners;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_display_and_video_360`: The list of partners to include into a sync. This parameter only takes effect when `config_method` is set to `CREATE_NEW`.
-        /// 	- Service `the_trade_desk`: Specific Partner IDs to sync.  Must be populated if `syncMode` is set to `SpecificAccounts`.
-        /// 	- Service `walmart_dsp`: Specific Partner IDs to sync.  Must be populated if `syncMode` is set to `SpecificAccounts`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleDisplayAndVideo360`: The list of partners to include into a sync. This parameter only takes effect when `ConfigMethod` is set to `CREATE_NEW`.
+        /// 	- Service `TheTradeDesk`: Specific Partner IDs to sync.  Must be populated if `syncMode` is set to `SpecificAccounts`.
+        /// 	- Service `WalmartDsp`: Specific Partner IDs to sync.  Must be populated if `syncMode` is set to `SpecificAccounts`.
         /// </summary>
         public List<string> Partners
         {
@@ -4765,8 +4765,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _passPhrase;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `qualtrics`: Pass Phrase
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Qualtrics`: Pass Phrase
         /// </summary>
         public string? PassPhrase
         {
@@ -4778,8 +4778,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _passphrase;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snowflake_db`: In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SnowflakeDb`: In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
         /// </summary>
         public string? Passphrase
         {
@@ -4791,139 +4791,139 @@ namespace Pulumi.Fivetran.Inputs
         private string? _password;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `absorb_lms`: Your Absorb LMS password.
-        /// 	- Service `adobe_commerce`: Your Adobe Commerce password.
-        /// 	- Service `akeneo`: Your Akeneo password.
-        /// 	- Service `alida`: Your Alida client secret.
-        /// 	- Service `anaplan`: Your Anaplan password. Must be populated if `auth_mode` is set to `Basic`.
-        /// 	- Service `appfigures`: Your Appfigures Password.
-        /// 	- Service `asset_panda`: Your Asset Panda password.
-        /// 	- Service `aurora`: The user's password.
-        /// 	- Service `aurora_postgres`: The user's password.
-        /// 	- Service `azure_cosmos_for_mongo`: Password used for source database authentication.
-        /// 	- Service `azure_postgres`: The user's password.
-        /// 	- Service `azure_sql_db`: The user's password.
-        /// 	- Service `azure_sql_managed_db`: The user's password.
-        /// 	- Service `boostr`: Your Boostr password.
-        /// 	- Service `brivo`: Your Brivo password.
-        /// 	- Service `cabcharge`: Your Cabcharge password.
-        /// 	- Service `ceridian_dayforce`: Your Ceridian Dayforce password.
-        /// 	- Service `cin7`: Your Cin7 API Key.
-        /// 	- Service `clarity`: The user's password.
-        /// 	- Service `cockroachdb`: The user's password.
-        /// 	- Service `collibra`: Your collibra password.
-        /// 	- Service `compliance_checkpoint`: Your Compliance Checkpoint account password.
-        /// 	- Service `contrast_security`: Your Contrast Security API Password.
-        /// 	- Service `db2i_hva`: The user's password.
-        /// 	- Service `db2i_sap_hva`: The user's password.
-        /// 	- Service `deposco`: Your Deposco password.
-        /// 	- Service `documentdb`: The user's password.
-        /// 	- Service `dynamics_365_fo`: The user's password.
-        /// 	- Service `ehr`: The user's password.
-        /// 	- Service `elastic_cloud`: The user's password.
-        /// 	- Service `es_self_hosted`: The user's password.
-        /// 	- Service `ftp`: FTP password.
-        /// 	- Service `globalmeet`: Your GlobalMeet Password.
-        /// 	- Service `google_cloud_mysql`: The user's password.
-        /// 	- Service `google_cloud_postgresql`: The user's password.
-        /// 	- Service `google_cloud_sqlserver`: The user's password.
-        /// 	- Service `green_power_monitor`: Your GreenPowerMonitor password.
-        /// 	- Service `guru`: Your Guru password.
-        /// 	- Service `hana_sap_hva_b1`: The user's password.
-        /// 	- Service `hana_sap_hva_ecc`: The user's password.
-        /// 	- Service `hana_sap_hva_ecc_netweaver`: The user's password.
-        /// 	- Service `hana_sap_hva_s4`: The user's password.
-        /// 	- Service `hana_sap_hva_s4_netweaver`: The user's password.
-        /// 	- Service `heroku_postgres`: The user's password.
-        /// 	- Service `hilti_ontrack`: Your Hilti On!Track password.
-        /// 	- Service `impact`: Your Impact Brand Account Token
-        /// 	- Service `integral_ad_science`: Your integral_ad_science password.
-        /// 	- Service `itunes_connect`: Your password
-        /// 	- Service `jamf`: Your Jamf password.
-        /// 	- Service `jira`: The Jira user's password.
-        /// 	- Service `khoros_care`: Your Khoros Care password.
-        /// 	- Service `kissmetrics`: Your Kissmetrics API Password.
-        /// 	- Service `klarna`: Your Klarna Password.
-        /// 	- Service `lessonly`: Your Lessonly password.
-        /// 	- Service `magento_mysql`: The user's password.
-        /// 	- Service `magento_mysql_rds`: The user's password.
-        /// 	- Service `maria`: The user's password.
-        /// 	- Service `maria_azure`: The user's password.
-        /// 	- Service `maria_rds`: The user's password.
-        /// 	- Service `marin`: The Marin user's password.
-        /// 	- Service `moloco`: Your Moloco account password.
-        /// 	- Service `mongo`: The user's password.
-        /// 	- Service `mongo_sharded`: The user's password.
-        /// 	- Service `myosh`: Your myosh password.
-        /// 	- Service `mysql`: The user's password.
-        /// 	- Service `mysql_azure`: The user's password.
-        /// 	- Service `mysql_rds`: The user's password.
-        /// 	- Service `netsuite_suiteanalytics`: The NetSuite user's password.
-        /// 	- Service `opendistro`: The user's password.
-        /// 	- Service `opensearch`: The user's password.
-        /// 	- Service `oracle`: The user's password.
-        /// 	- Service `oracle_business_intelligence_publisher`: The Oracle Business Intelligence user password.
-        /// 	- Service `oracle_ebs`: The user's password.
-        /// 	- Service `oracle_fusion_cloud_apps_crm`: The Oracle Fusion Cloud user password.
-        /// 	- Service `oracle_fusion_cloud_apps_fscm`: The Oracle Fusion Cloud user password.
-        /// 	- Service `oracle_fusion_cloud_apps_hcm`: The Oracle Fusion Cloud user password.
-        /// 	- Service `oracle_hva`: The user's password.
-        /// 	- Service `oracle_rac`: The user's password.
-        /// 	- Service `oracle_rds`: The user's password.
-        /// 	- Service `oracle_sap_hva`: The user's password.
-        /// 	- Service `oracle_sap_hva_netweaver`: The user's password.
-        /// 	- Service `outbrain`: The Outbrain user's password.
-        /// 	- Service `pardot`: The Pardot user's password.
-        /// 	- Service `pardot_sandbox`: The Pardot user's password.
-        /// 	- Service `partnerize`: Your Partnerize account's password.
-        /// 	- Service `podio`: Your Podio account password.
-        /// 	- Service `postgres`: The user's password.
-        /// 	- Service `postgres_rds`: The user's password.
-        /// 	- Service `qmatic_data_connect`: Your Qmatic Data Connect password.
-        /// 	- Service `redshift_db`: The Redshift user's password.
-        /// 	- Service `revx`: Your RevX Password.
-        /// 	- Service `rtb_house`: Your RTB House password.
-        /// 	- Service `sap_business_by_design`: The SAP Business ByDesign password.
-        /// 	- Service `sap_hana`: Your SAP HANA password.
-        /// 	- Service `sap_s4hana`: Your SAP S/4 password.
-        /// 	- Service `scorm`: Your Scorm Secret Key.
-        /// 	- Service `servicenow`: Your account password.
-        /// 	- Service `sftp`: SFTP password.
-        /// 	- Service `shiphero`: Your ShipHero password.
-        /// 	- Service `shipstation`: Your ShipStation password.
-        /// 	- Service `shopware`: Your Shopware password.
-        /// 	- Service `skuvault`: Your SkuVault password.
-        /// 	- Service `smadex`: Your Smadex Password.
-        /// 	- Service `snowflake_db`: The Snowflake user's password.
-        /// 	- Service `splash`: Your Splash password.
-        /// 	- Service `splunk`: The Splunk user's password.
-        /// 	- Service `sql_server`: The user's password.
-        /// 	- Service `sql_server_hva`: The user's password.
-        /// 	- Service `sql_server_rds`: The user's password.
-        /// 	- Service `sql_server_sap_ecc_hva`: The user's password.
-        /// 	- Service `starrez`: Your StarRez API password
-        /// 	- Service `stickyio`: Your sticky.io password.
-        /// 	- Service `stylight`: Your Stylight Password.
-        /// 	- Service `sugarcrm`: Your SugarCRM password.
-        /// 	- Service `teamwork`: Your Teamwork password.
-        /// 	- Service `the_trade_desk`: The Trade Desk password. It is a part of the login credentials.
-        /// 	- Service `toggl_track`: Your Toggl Track Password
-        /// 	- Service `ukg_pro`: Your UKG Pro password.
-        /// 	- Service `ukg_pro_workforce_management`: Your UKG Pro Workforce Management password.
-        /// 	- Service `unicommerce`: Your uniware login password.
-        /// 	- Service `upland`: Your Upland Software Password.
-        /// 	- Service `veeva_vault`: Password
-        /// 	- Service `veevavault`: Your Veeva Vault password.
-        /// 	- Service `walmart_dsp`: Walmart DSP password. It is a part of the login credentials.
-        /// 	- Service `when_i_work`: Your When I Work password.
-        /// 	- Service `wherefour`: Your Wherefour password.
-        /// 	- Service `workday`: Workday password.
-        /// 	- Service `workday_financial_management`: Workday password.
-        /// 	- Service `workday_hcm`: Workday password.
-        /// 	- Service `xandr`: Your Xandr password.
-        /// 	- Service `yougov_brandindex`: Your YouGov BrandIndex password.
-        /// 	- Service `younium`: Your Younium password.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AbsorbLms`: Your Absorb LMS password.
+        /// 	- Service `AdobeCommerce`: Your Adobe Commerce password.
+        /// 	- Service `Akeneo`: Your Akeneo password.
+        /// 	- Service `Alida`: Your Alida client secret.
+        /// 	- Service `Anaplan`: Your Anaplan password. Must be populated if `AuthMode` is set to `Basic`.
+        /// 	- Service `Appfigures`: Your Appfigures Password.
+        /// 	- Service `AssetPanda`: Your Asset Panda password.
+        /// 	- Service `Aurora`: The user's password.
+        /// 	- Service `AuroraPostgres`: The user's password.
+        /// 	- Service `AzureCosmosForMongo`: Password used for source database authentication.
+        /// 	- Service `AzurePostgres`: The user's password.
+        /// 	- Service `AzureSqlDb`: The user's password.
+        /// 	- Service `AzureSqlManagedDb`: The user's password.
+        /// 	- Service `Boostr`: Your Boostr password.
+        /// 	- Service `Brivo`: Your Brivo password.
+        /// 	- Service `Cabcharge`: Your Cabcharge password.
+        /// 	- Service `CeridianDayforce`: Your Ceridian Dayforce password.
+        /// 	- Service `Cin7`: Your Cin7 API Key.
+        /// 	- Service `Clarity`: The user's password.
+        /// 	- Service `Cockroachdb`: The user's password.
+        /// 	- Service `Collibra`: Your collibra password.
+        /// 	- Service `ComplianceCheckpoint`: Your Compliance Checkpoint account password.
+        /// 	- Service `ContrastSecurity`: Your Contrast Security API Password.
+        /// 	- Service `Db2iHva`: The user's password.
+        /// 	- Service `Db2iSapHva`: The user's password.
+        /// 	- Service `Deposco`: Your Deposco password.
+        /// 	- Service `Documentdb`: The user's password.
+        /// 	- Service `Dynamics365Fo`: The user's password.
+        /// 	- Service `Ehr`: The user's password.
+        /// 	- Service `ElasticCloud`: The user's password.
+        /// 	- Service `EsSelfHosted`: The user's password.
+        /// 	- Service `Ftp`: FTP password.
+        /// 	- Service `Globalmeet`: Your GlobalMeet Password.
+        /// 	- Service `GoogleCloudMysql`: The user's password.
+        /// 	- Service `GoogleCloudPostgresql`: The user's password.
+        /// 	- Service `GoogleCloudSqlserver`: The user's password.
+        /// 	- Service `GreenPowerMonitor`: Your GreenPowerMonitor password.
+        /// 	- Service `Guru`: Your Guru password.
+        /// 	- Service `HanaSapHvaB1`: The user's password.
+        /// 	- Service `HanaSapHvaEcc`: The user's password.
+        /// 	- Service `HanaSapHvaEccNetweaver`: The user's password.
+        /// 	- Service `HanaSapHvaS4`: The user's password.
+        /// 	- Service `HanaSapHvaS4Netweaver`: The user's password.
+        /// 	- Service `HerokuPostgres`: The user's password.
+        /// 	- Service `HiltiOntrack`: Your Hilti On!Track password.
+        /// 	- Service `Impact`: Your Impact Brand Account Token
+        /// 	- Service `IntegralAdScience`: Your IntegralAdScience password.
+        /// 	- Service `ItunesConnect`: Your password
+        /// 	- Service `Jamf`: Your Jamf password.
+        /// 	- Service `Jira`: The Jira user's password.
+        /// 	- Service `KhorosCare`: Your Khoros Care password.
+        /// 	- Service `Kissmetrics`: Your Kissmetrics API Password.
+        /// 	- Service `Klarna`: Your Klarna Password.
+        /// 	- Service `Lessonly`: Your Lessonly password.
+        /// 	- Service `MagentoMysql`: The user's password.
+        /// 	- Service `MagentoMysqlRds`: The user's password.
+        /// 	- Service `Maria`: The user's password.
+        /// 	- Service `MariaAzure`: The user's password.
+        /// 	- Service `MariaRds`: The user's password.
+        /// 	- Service `Marin`: The Marin user's password.
+        /// 	- Service `Moloco`: Your Moloco account password.
+        /// 	- Service `Mongo`: The user's password.
+        /// 	- Service `MongoSharded`: The user's password.
+        /// 	- Service `Myosh`: Your myosh password.
+        /// 	- Service `Mysql`: The user's password.
+        /// 	- Service `MysqlAzure`: The user's password.
+        /// 	- Service `MysqlRds`: The user's password.
+        /// 	- Service `NetsuiteSuiteanalytics`: The NetSuite user's password.
+        /// 	- Service `Opendistro`: The user's password.
+        /// 	- Service `Opensearch`: The user's password.
+        /// 	- Service `Oracle`: The user's password.
+        /// 	- Service `OracleBusinessIntelligencePublisher`: The Oracle Business Intelligence user password.
+        /// 	- Service `OracleEbs`: The user's password.
+        /// 	- Service `OracleFusionCloudAppsCrm`: The Oracle Fusion Cloud user password.
+        /// 	- Service `OracleFusionCloudAppsFscm`: The Oracle Fusion Cloud user password.
+        /// 	- Service `OracleFusionCloudAppsHcm`: The Oracle Fusion Cloud user password.
+        /// 	- Service `OracleHva`: The user's password.
+        /// 	- Service `OracleRac`: The user's password.
+        /// 	- Service `OracleRds`: The user's password.
+        /// 	- Service `OracleSapHva`: The user's password.
+        /// 	- Service `OracleSapHvaNetweaver`: The user's password.
+        /// 	- Service `Outbrain`: The Outbrain user's password.
+        /// 	- Service `Pardot`: The Pardot user's password.
+        /// 	- Service `PardotSandbox`: The Pardot user's password.
+        /// 	- Service `Partnerize`: Your Partnerize account's password.
+        /// 	- Service `Podio`: Your Podio account password.
+        /// 	- Service `Postgres`: The user's password.
+        /// 	- Service `PostgresRds`: The user's password.
+        /// 	- Service `QmaticDataConnect`: Your Qmatic Data Connect password.
+        /// 	- Service `RedshiftDb`: The Redshift user's password.
+        /// 	- Service `Revx`: Your RevX Password.
+        /// 	- Service `RtbHouse`: Your RTB House password.
+        /// 	- Service `SapBusinessByDesign`: The SAP Business ByDesign password.
+        /// 	- Service `SapHana`: Your SAP HANA password.
+        /// 	- Service `SapS4hana`: Your SAP S/4 password.
+        /// 	- Service `Scorm`: Your Scorm Secret Key.
+        /// 	- Service `Servicenow`: Your account password.
+        /// 	- Service `Sftp`: SFTP password.
+        /// 	- Service `Shiphero`: Your ShipHero password.
+        /// 	- Service `Shipstation`: Your ShipStation password.
+        /// 	- Service `Shopware`: Your Shopware password.
+        /// 	- Service `Skuvault`: Your SkuVault password.
+        /// 	- Service `Smadex`: Your Smadex Password.
+        /// 	- Service `SnowflakeDb`: The Snowflake user's password.
+        /// 	- Service `Splash`: Your Splash password.
+        /// 	- Service `Splunk`: The Splunk user's password.
+        /// 	- Service `SqlServer`: The user's password.
+        /// 	- Service `SqlServerHva`: The user's password.
+        /// 	- Service `SqlServerRds`: The user's password.
+        /// 	- Service `SqlServerSapEccHva`: The user's password.
+        /// 	- Service `Starrez`: Your StarRez API password
+        /// 	- Service `Stickyio`: Your sticky.io password.
+        /// 	- Service `Stylight`: Your Stylight Password.
+        /// 	- Service `Sugarcrm`: Your SugarCRM password.
+        /// 	- Service `Teamwork`: Your Teamwork password.
+        /// 	- Service `TheTradeDesk`: The Trade Desk password. It is a part of the login credentials.
+        /// 	- Service `TogglTrack`: Your Toggl Track Password
+        /// 	- Service `UkgPro`: Your UKG Pro password.
+        /// 	- Service `UkgProWorkforceManagement`: Your UKG Pro Workforce Management password.
+        /// 	- Service `Unicommerce`: Your uniware login password.
+        /// 	- Service `Upland`: Your Upland Software Password.
+        /// 	- Service `VeevaVault`: Password
+        /// 	- Service `Veevavault`: Your Veeva Vault password.
+        /// 	- Service `WalmartDsp`: Walmart DSP password. It is a part of the login credentials.
+        /// 	- Service `WhenIWork`: Your When I Work password.
+        /// 	- Service `Wherefour`: Your Wherefour password.
+        /// 	- Service `Workday`: Workday password.
+        /// 	- Service `WorkdayFinancialManagement`: Workday password.
+        /// 	- Service `WorkdayHcm`: Workday password.
+        /// 	- Service `Xandr`: Your Xandr password.
+        /// 	- Service `YougovBrandindex`: Your YouGov BrandIndex password.
+        /// 	- Service `Younium`: Your Younium password.
         /// </summary>
         public string? Password
         {
@@ -4935,8 +4935,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _pat;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `github`: The `Personal Access Token` generated in Github.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Github`: The `Personal Access Token` generated in Github.
         /// </summary>
         public string? Pat
         {
@@ -4945,8 +4945,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `tableau_source`: Your Tableau Source PAT Name.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `TableauSource`: Your Tableau Source PAT Name.
         /// </summary>
         [Input("patName", required: true)]
         public string PatName { get; set; } = null!;
@@ -4955,8 +4955,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _patSecret;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `tableau_source`: Your Tableau Source PAT Secret.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `TableauSource`: Your Tableau Source PAT Secret.
         /// </summary>
         public string? PatSecret
         {
@@ -4965,8 +4965,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `jira`: A URL subdirectory where the Jira instance is working.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Jira`: A URL subdirectory where the Jira instance is working.
         /// </summary>
         [Input("path", required: true)]
         public string Path { get; set; } = null!;
@@ -4975,8 +4975,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _pats;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `github`: The `Personal Access Tokens`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Github`: The `Personal Access Tokens`.
         /// </summary>
         public List<string> Pats
         {
@@ -4985,32 +4985,32 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_cost_report`: Optional. All files in your search path matching this regular expression will be synced. This parameter is optional.
-        /// 	- Service `azure_blob_storage`: All files in your search path matching this regular expression will be synced.
-        /// 	- Service `box`: All files in your search path matching this regular expression will be synced.
-        /// 	- Service `dropbox`: All files in your search path matching this regular expression will be synced.
-        /// 	- Service `email`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by Oct 31, 2025.
-        /// 	- Service `ftp`: All files in your search path matching this regular expression will be synced.
-        /// 	- Service `gcs`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by August 31, 2025.
-        /// 	- Service `google_drive`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by August 31, 2025.
-        /// 	- Service `kinesis`: Optional. All files in your search path matching this regular expression will be synced. This parameter is optional.
-        /// 	- Service `s3`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by August 31, 2025.
-        /// 	- Service `sftp`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by August 31, 2025.
-        /// 	- Service `share_point`: All files in your search path matching this regular expression will be synced.
-        /// 	- Service `wasabi_cloud_storage`: All files in your search path matching this regular expression will be synced.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsCostReport`: Optional. All files in your search path matching this regular expression will be synced. This parameter is optional.
+        /// 	- Service `AzureBlobStorage`: All files in your search path matching this regular expression will be synced.
+        /// 	- Service `Box`: All files in your search path matching this regular expression will be synced.
+        /// 	- Service `Dropbox`: All files in your search path matching this regular expression will be synced.
+        /// 	- Service `Email`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by Oct 31, 2025.
+        /// 	- Service `Ftp`: All files in your search path matching this regular expression will be synced.
+        /// 	- Service `Gcs`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by August 31, 2025.
+        /// 	- Service `GoogleDrive`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by August 31, 2025.
+        /// 	- Service `Kinesis`: Optional. All files in your search path matching this regular expression will be synced. This parameter is optional.
+        /// 	- Service `S3`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by August 31, 2025.
+        /// 	- Service `Sftp`: All files in your search path matching this regular expression will be synced. We have discontinued this field, and will delete it by August 31, 2025.
+        /// 	- Service `SharePoint`: All files in your search path matching this regular expression will be synced.
+        /// 	- Service `WasabiCloudStorage`: All files in your search path matching this regular expression will be synced.
         /// </summary>
         [Input("pattern", required: true)]
         public string Pattern { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `oracle`: Optional: Required only for containerized database.
-        /// 	- Service `oracle_ebs`: Optional: Required only for containerized database.
-        /// 	- Service `oracle_hva`: (Multi-tenant databases only) The database's PDB name. Exclude this parameter for single-tenant databases.
-        /// 	- Service `oracle_rac`: Optional: Required only for containerized database.
-        /// 	- Service `oracle_rds`: Optional: Required only for containerized database.
-        /// 	- Service `oracle_sap_hva`: (Multi-tenant databases only) The database's PDB name. Exclude this parameter for single-tenant databases.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Oracle`: Optional: Required only for containerized database.
+        /// 	- Service `OracleEbs`: Optional: Required only for containerized database.
+        /// 	- Service `OracleHva`: (Multi-tenant databases only) The database's PDB name. Exclude this parameter for single-tenant databases.
+        /// 	- Service `OracleRac`: Optional: Required only for containerized database.
+        /// 	- Service `OracleRds`: Optional: Required only for containerized database.
+        /// 	- Service `OracleSapHva`: (Multi-tenant databases only) The database's PDB name. Exclude this parameter for single-tenant databases.
         /// </summary>
         [Input("pdbName", required: true)]
         public string PdbName { get; set; } = null!;
@@ -5019,8 +5019,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _pemCertificate;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `apple_search_ads`: The contents of your PEM certificate file. Must be populated if `is_auth2_enabled` is set to `false`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AppleSearchAds`: The contents of your PEM certificate file. Must be populated if `IsAuth2Enabled` is set to `False`.
         /// </summary>
         public string? PemCertificate
         {
@@ -5032,8 +5032,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _pemPrivateKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `apple_search_ads`: The contents of your PEM secret key file. Must be populated if `is_auth2_enabled` is set to `true`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AppleSearchAds`: The contents of your PEM secret key file. Must be populated if `IsAuth2Enabled` is set to `True`.
         /// </summary>
         public string? PemPrivateKey
         {
@@ -5045,8 +5045,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _perInteractionDimensions;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `double_click_campaign_manager`: Per Interaction Dimensions.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `DoubleClickCampaignManager`: Per Interaction Dimensions.
         /// </summary>
         public List<string> PerInteractionDimensions
         {
@@ -5058,12 +5058,12 @@ namespace Pulumi.Fivetran.Inputs
         private string? _personalAccessToken;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `cj_commission_detail`: Your CJ Commission Detail personal access token.
-        /// 	- Service `databricks_db`: Access Token
-        /// 	- Service `harvest`: Your Harvest Personal Access Token.
-        /// 	- Service `productive`: Your Productive personal access token.
-        /// 	- Service `totango`: Your Totango personal access token.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `CjCommissionDetail`: Your CJ Commission Detail personal access token.
+        /// 	- Service `DatabricksDb`: Access Token
+        /// 	- Service `Harvest`: Your Harvest Personal Access Token.
+        /// 	- Service `Productive`: Your Productive personal access token.
+        /// 	- Service `Totango`: Your Totango personal access token.
         /// </summary>
         public string? PersonalAccessToken
         {
@@ -5075,9 +5075,9 @@ namespace Pulumi.Fivetran.Inputs
         private string? _personalApiToken;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `circleci`: Your CircleCI Personal API token.
-        /// 	- Service `monday`: Your Monday.com Personal API Token.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Circleci`: Your CircleCI Personal API token.
+        /// 	- Service `Monday`: Your Monday.com Personal API Token.
         /// </summary>
         public string? PersonalApiToken
         {
@@ -5089,14 +5089,14 @@ namespace Pulumi.Fivetran.Inputs
         private string? _pgpPassPhrase;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `azure_blob_storage`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
-        /// 	- Service `ftp`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
-        /// 	- Service `gcs`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
-        /// 	- Service `s3`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
-        /// 	- Service `s3_compatible_storage`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
-        /// 	- Service `sftp`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
-        /// 	- Service `wasabi_cloud_storage`: The PGP passphrase used to create the key. Must be populated if `use_pgp_encryption_options` is set to `true`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureBlobStorage`: The PGP passphrase used to create the key. Must be populated if `UsePgpEncryptionOptions` is set to `True`.
+        /// 	- Service `Ftp`: The PGP passphrase used to create the key. Must be populated if `UsePgpEncryptionOptions` is set to `True`.
+        /// 	- Service `Gcs`: The PGP passphrase used to create the key. Must be populated if `UsePgpEncryptionOptions` is set to `True`.
+        /// 	- Service `S3`: The PGP passphrase used to create the key. Must be populated if `UsePgpEncryptionOptions` is set to `True`.
+        /// 	- Service `S3CompatibleStorage`: The PGP passphrase used to create the key. Must be populated if `UsePgpEncryptionOptions` is set to `True`.
+        /// 	- Service `Sftp`: The PGP passphrase used to create the key. Must be populated if `UsePgpEncryptionOptions` is set to `True`.
+        /// 	- Service `WasabiCloudStorage`: The PGP passphrase used to create the key. Must be populated if `UsePgpEncryptionOptions` is set to `True`.
         /// </summary>
         public string? PgpPassPhrase
         {
@@ -5108,14 +5108,14 @@ namespace Pulumi.Fivetran.Inputs
         private string? _pgpSecretKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `azure_blob_storage`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
-        /// 	- Service `ftp`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
-        /// 	- Service `gcs`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
-        /// 	- Service `s3`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
-        /// 	- Service `s3_compatible_storage`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
-        /// 	- Service `sftp`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
-        /// 	- Service `wasabi_cloud_storage`: The contents of your PGP secret key file. Must be populated if `use_pgp_encryption_options` is set to `true`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureBlobStorage`: The contents of your PGP secret key file. Must be populated if `UsePgpEncryptionOptions` is set to `True`.
+        /// 	- Service `Ftp`: The contents of your PGP secret key file. Must be populated if `UsePgpEncryptionOptions` is set to `True`.
+        /// 	- Service `Gcs`: The contents of your PGP secret key file. Must be populated if `UsePgpEncryptionOptions` is set to `True`.
+        /// 	- Service `S3`: The contents of your PGP secret key file. Must be populated if `UsePgpEncryptionOptions` is set to `True`.
+        /// 	- Service `S3CompatibleStorage`: The contents of your PGP secret key file. Must be populated if `UsePgpEncryptionOptions` is set to `True`.
+        /// 	- Service `Sftp`: The contents of your PGP secret key file. Must be populated if `UsePgpEncryptionOptions` is set to `True`.
+        /// 	- Service `WasabiCloudStorage`: The contents of your PGP secret key file. Must be populated if `UsePgpEncryptionOptions` is set to `True`.
         /// </summary>
         public string? PgpSecretKey
         {
@@ -5124,124 +5124,124 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `itunes_connect`: Register the number on AppleId Account Page for 2FA
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ItunesConnect`: Register the number on AppleId Account Page for 2FA
         /// </summary>
         [Input("phoneNumber", required: true)]
         public string PhoneNumber { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `wrike`: Your Wrike Subscription Plan.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Wrike`: Your Wrike Subscription Plan.
         /// </summary>
         [Input("plan", required: true)]
         public string Plan { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `justcall`: Your JustCall Plan Type.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Justcall`: Your JustCall Plan Type.
         /// </summary>
         [Input("planType", required: true)]
         public string PlanType { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora`: The port number.
-        /// 	- Service `aurora_postgres`: The port number.
-        /// 	- Service `aveva_pi`: Port number at which the AF Server is running
-        /// 	- Service `azure_postgres`: The port number.
-        /// 	- Service `azure_sql_db`: The port number.
-        /// 	- Service `azure_sql_managed_db`: The port number.
-        /// 	- Service `clarity`: The port number.
-        /// 	- Service `cockroachdb`: The port number.
-        /// 	- Service `databricks_db`: The port of your SQL warehouse.
-        /// 	- Service `db2i_hva`: The port number.
-        /// 	- Service `db2i_sap_hva`: The port number.
-        /// 	- Service `documentdb`: Port of the primary node. Ignored if `hosts` value is provided.
-        /// 	- Service `dynamics_365_fo`: The port number.
-        /// 	- Service `ehr`: The port number.
-        /// 	- Service `elastic_cloud`: The port number.
-        /// 	- Service `es_self_hosted`: The port number.
-        /// 	- Service `ftp`: FTP port.
-        /// 	- Service `google_cloud_mysql`: The port number.
-        /// 	- Service `google_cloud_postgresql`: The port number.
-        /// 	- Service `google_cloud_sqlserver`: The port number.
-        /// 	- Service `hana_sap_hva_b1`: The port number.
-        /// 	- Service `hana_sap_hva_ecc`: The port number.
-        /// 	- Service `hana_sap_hva_ecc_netweaver`: The port number.
-        /// 	- Service `hana_sap_hva_s4`: The port number.
-        /// 	- Service `hana_sap_hva_s4_netweaver`: The port number.
-        /// 	- Service `heroku_postgres`: The port number.
-        /// 	- Service `jira`: The Jira service host port.
-        /// 	- Service `magento_mysql`: The port number.
-        /// 	- Service `magento_mysql_rds`: The port number.
-        /// 	- Service `maria`: The port number.
-        /// 	- Service `maria_azure`: The port number.
-        /// 	- Service `maria_rds`: The port number.
-        /// 	- Service `mysql`: The port number.
-        /// 	- Service `mysql_azure`: The port number.
-        /// 	- Service `mysql_rds`: The port number.
-        /// 	- Service `netsuite_suiteanalytics`: The NetSuite service host port.
-        /// 	- Service `opendistro`: The port number.
-        /// 	- Service `opensearch`: The port number.
-        /// 	- Service `oracle`: The port number.
-        /// 	- Service `oracle_ebs`: The port number.
-        /// 	- Service `oracle_hva`: The port number.
-        /// 	- Service `oracle_rac`: The port number.
-        /// 	- Service `oracle_rds`: The port number.
-        /// 	- Service `oracle_sap_hva`: The port number.
-        /// 	- Service `postgres`: The port number.
-        /// 	- Service `postgres_rds`: The port number.
-        /// 	- Service `redshift_db`: Port number
-        /// 	- Service `sap_hana`: The SAP HANA port number.
-        /// 	- Service `sap_s4hana`: The SAP S/4 port number.
-        /// 	- Service `sftp`: SFTP port.
-        /// 	- Service `snowflake_db`: The Snowflake optional port number.
-        /// 	- Service `splunk`: The Splunk service host port.
-        /// 	- Service `sql_server`: The port number.
-        /// 	- Service `sql_server_hva`: The port number.
-        /// 	- Service `sql_server_rds`: The port number.
-        /// 	- Service `sql_server_sap_ecc_hva`: The port number.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Aurora`: The port number.
+        /// 	- Service `AuroraPostgres`: The port number.
+        /// 	- Service `AvevaPi`: Port number at which the AF Server is running
+        /// 	- Service `AzurePostgres`: The port number.
+        /// 	- Service `AzureSqlDb`: The port number.
+        /// 	- Service `AzureSqlManagedDb`: The port number.
+        /// 	- Service `Clarity`: The port number.
+        /// 	- Service `Cockroachdb`: The port number.
+        /// 	- Service `DatabricksDb`: The port of your SQL warehouse.
+        /// 	- Service `Db2iHva`: The port number.
+        /// 	- Service `Db2iSapHva`: The port number.
+        /// 	- Service `Documentdb`: Port of the primary node. Ignored if `Hosts` value is provided.
+        /// 	- Service `Dynamics365Fo`: The port number.
+        /// 	- Service `Ehr`: The port number.
+        /// 	- Service `ElasticCloud`: The port number.
+        /// 	- Service `EsSelfHosted`: The port number.
+        /// 	- Service `Ftp`: FTP port.
+        /// 	- Service `GoogleCloudMysql`: The port number.
+        /// 	- Service `GoogleCloudPostgresql`: The port number.
+        /// 	- Service `GoogleCloudSqlserver`: The port number.
+        /// 	- Service `HanaSapHvaB1`: The port number.
+        /// 	- Service `HanaSapHvaEcc`: The port number.
+        /// 	- Service `HanaSapHvaEccNetweaver`: The port number.
+        /// 	- Service `HanaSapHvaS4`: The port number.
+        /// 	- Service `HanaSapHvaS4Netweaver`: The port number.
+        /// 	- Service `HerokuPostgres`: The port number.
+        /// 	- Service `Jira`: The Jira service host port.
+        /// 	- Service `MagentoMysql`: The port number.
+        /// 	- Service `MagentoMysqlRds`: The port number.
+        /// 	- Service `Maria`: The port number.
+        /// 	- Service `MariaAzure`: The port number.
+        /// 	- Service `MariaRds`: The port number.
+        /// 	- Service `Mysql`: The port number.
+        /// 	- Service `MysqlAzure`: The port number.
+        /// 	- Service `MysqlRds`: The port number.
+        /// 	- Service `NetsuiteSuiteanalytics`: The NetSuite service host port.
+        /// 	- Service `Opendistro`: The port number.
+        /// 	- Service `Opensearch`: The port number.
+        /// 	- Service `Oracle`: The port number.
+        /// 	- Service `OracleEbs`: The port number.
+        /// 	- Service `OracleHva`: The port number.
+        /// 	- Service `OracleRac`: The port number.
+        /// 	- Service `OracleRds`: The port number.
+        /// 	- Service `OracleSapHva`: The port number.
+        /// 	- Service `Postgres`: The port number.
+        /// 	- Service `PostgresRds`: The port number.
+        /// 	- Service `RedshiftDb`: Port number
+        /// 	- Service `SapHana`: The SAP HANA port number.
+        /// 	- Service `SapS4hana`: The SAP S/4 port number.
+        /// 	- Service `Sftp`: SFTP port.
+        /// 	- Service `SnowflakeDb`: The Snowflake optional port number.
+        /// 	- Service `Splunk`: The Splunk service host port.
+        /// 	- Service `SqlServer`: The port number.
+        /// 	- Service `SqlServerHva`: The port number.
+        /// 	- Service `SqlServerRds`: The port number.
+        /// 	- Service `SqlServerSapEccHva`: The port number.
         /// </summary>
         [Input("port", required: true)]
         public int Port { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `linkedin_ads`: The time period to attribute conversions based on clicks. Default value: `DAY_30`
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `LinkedinAds`: The time period to attribute conversions based on clicks. Default value: `DAY_30`
         /// </summary>
         [Input("postClickAttributionWindowSize", required: true)]
         public string PostClickAttributionWindowSize { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook`: The name of report of which connector will sync the data. [Possible prebuilt_report values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#prebuiltreport).
-        /// 	- Service `google_analytics`: The name of the Prebuilt Report from which the connector will sync the data.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Facebook`: The name of report of which connector will sync the data. [Possible PrebuiltReport values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#prebuiltreport).
+        /// 	- Service `GoogleAnalytics`: The name of the Prebuilt Report from which the connector will sync the data.
         /// </summary>
         [Input("prebuiltReport", required: true)]
         public string PrebuiltReport { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_cloudtrail`: If prefix is present when configuring the bucket.
-        /// 	- Service `aws_cost_report`: Folder path to the aws_cost_report files within the bucket.
-        /// 	- Service `aws_inventory`: The prefix if you used one when configuring the bucket.
-        /// 	- Service `azure_blob_storage`: All files and folders under this folder path will be searched for files to sync.
-        /// 	- Service `box`: All files and folders under this folder path will be searched for files to sync.
-        /// 	- Service `cloudfront`: The name of the CloudFront folder in the bucket.
-        /// 	- Service `dropbox`: All files and folders under this folder path will be searched for files to sync.
-        /// 	- Service `ftp`: All files and folders under this folder path will be searched for files to sync.
-        /// 	- Service `gcs`: All files and folders under this folder path will be searched for files to sync.
-        /// 	- Service `google_drive`: All files and folders under this folder path will be searched for files to sync, this can be the entire drive link or a folder URL
-        /// 	- Service `kinesis`: Folder path to the Kinesis files within the bucket.
-        /// 	- Service `marin`: Folder path to the Marin manifest file.
-        /// 	- Service `microsoft_dynamics_365_fo`: Folder name in which the exported dynamics 365 data resides.
-        /// 	- Service `s3`: All files and folders under this folder path will be searched for files to sync.
-        /// 	- Service `s3_compatible_storage`: All files and folders under this folder path will be searched for files to sync.
-        /// 	- Service `segment`: Folder path to the Segment files within the bucket. Must be populated if `sync_type` is set to `S3`.
-        /// 	- Service `sftp`: All files and folders under this folder path will be searched for files to sync.
-        /// 	- Service `share_point`: All files and folders under this folder path link will be searched for files to sync. This can be any shared folder link.
-        /// 	- Service `wasabi_cloud_storage`: All files and folders under this folder path will be searched for files to sync.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsCloudtrail`: If prefix is present when configuring the bucket.
+        /// 	- Service `AwsCostReport`: Folder path to the AwsCostReport files within the bucket.
+        /// 	- Service `AwsInventory`: The prefix if you used one when configuring the bucket.
+        /// 	- Service `AzureBlobStorage`: All files and folders under this folder path will be searched for files to sync.
+        /// 	- Service `Box`: All files and folders under this folder path will be searched for files to sync.
+        /// 	- Service `Cloudfront`: The name of the CloudFront folder in the bucket.
+        /// 	- Service `Dropbox`: All files and folders under this folder path will be searched for files to sync.
+        /// 	- Service `Ftp`: All files and folders under this folder path will be searched for files to sync.
+        /// 	- Service `Gcs`: All files and folders under this folder path will be searched for files to sync.
+        /// 	- Service `GoogleDrive`: All files and folders under this folder path will be searched for files to sync, this can be the entire drive link or a folder URL
+        /// 	- Service `Kinesis`: Folder path to the Kinesis files within the bucket.
+        /// 	- Service `Marin`: Folder path to the Marin manifest file.
+        /// 	- Service `MicrosoftDynamics365Fo`: Folder name in which the exported dynamics 365 data resides.
+        /// 	- Service `S3`: All files and folders under this folder path will be searched for files to sync.
+        /// 	- Service `S3CompatibleStorage`: All files and folders under this folder path will be searched for files to sync.
+        /// 	- Service `Segment`: Folder path to the Segment files within the bucket. Must be populated if `SyncType` is set to `S3`.
+        /// 	- Service `Sftp`: All files and folders under this folder path will be searched for files to sync.
+        /// 	- Service `SharePoint`: All files and folders under this folder path link will be searched for files to sync. This can be any shared folder link.
+        /// 	- Service `WasabiCloudStorage`: All files and folders under this folder path will be searched for files to sync.
         /// </summary>
         [Input("prefix", required: true)]
         public string Prefix { get; set; } = null!;
@@ -5250,8 +5250,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _primaryKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `care_quality_commission`: Your Care Quality Commission primary key.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `CareQualityCommission`: Your Care Quality Commission primary key.
         /// </summary>
         public string? PrimaryKey
         {
@@ -5263,8 +5263,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _primaryKeys;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `workday`: Primary Keys
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Workday`: Primary Keys
         /// </summary>
         public List<string> PrimaryKeys
         {
@@ -5273,8 +5273,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `marketo`: Use BULK for both LEAD and ACTIITIES
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Marketo`: Use BULK for both LEAD and ACTIITIES
         /// </summary>
         [Input("prioritiseBulkExportOverRest", required: true)]
         public bool PrioritiseBulkExportOverRest { get; set; }
@@ -5283,8 +5283,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _privateAccessToken;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `purple_dot`: Your PurpleDot Private access token.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `PurpleDot`: Your PurpleDot Private access token.
         /// </summary>
         public string? PrivateAccessToken
         {
@@ -5296,23 +5296,23 @@ namespace Pulumi.Fivetran.Inputs
         private string? _privateKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `absorb_lms`: Your Absorb LMS REST API private key.
-        /// 	- Service `adobe_analytics`: The complete contents of your private key file including the start and end tags (`----BEGIN PRIVATE KEY----` to `----END PRIVATE KEY----`).
-        /// 	- Service `adp_workforce_now`: Private Key.
-        /// 	- Service `anaplan`: The contents of your private key file. Must be populated if `auth_mode` is set to `Certificate`.
-        /// 	- Service `apple_search_ads`: The contents of your secret key file. Must be populated if `is_auth2_enabled` is set to `false`.
-        /// 	- Service `braintree`: The contents of your secret key file.
-        /// 	- Service `braintree_sandbox`: The contents of your secret key file.
-        /// 	- Service `itunes_connect`: Your Private Key
-        /// 	- Service `netsuite_suiteanalytics`: Private Key
-        /// 	- Service `oracle_fusion_cloud_apps_crm`: The Oracle Fusion Cloud private key.
-        /// 	- Service `oracle_fusion_cloud_apps_fscm`: The Oracle Fusion Cloud private key.
-        /// 	- Service `oracle_fusion_cloud_apps_hcm`: The Oracle Fusion Cloud private key.
-        /// 	- Service `qualtrics`: Your private key
-        /// 	- Service `salesforce`: Provide content of the `.key` private key (only when authentication_method = `ADVANCED`).
-        /// 	- Service `salesforce_sandbox`: Provide content of the `.key` private key (only when authentication_method = `ADVANCED`).
-        /// 	- Service `snowflake_db`: Private access key.  The field should be specified if authentication type is `KEY_PAIR`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AbsorbLms`: Your Absorb LMS REST API private key.
+        /// 	- Service `AdobeAnalytics`: The complete contents of your private key file including the start and end tags (`----BEGIN PRIVATE KEY----` to `----END PRIVATE KEY----`).
+        /// 	- Service `AdpWorkforceNow`: Private Key.
+        /// 	- Service `Anaplan`: The contents of your private key file. Must be populated if `AuthMode` is set to `Certificate`.
+        /// 	- Service `AppleSearchAds`: The contents of your secret key file. Must be populated if `IsAuth2Enabled` is set to `False`.
+        /// 	- Service `Braintree`: The contents of your secret key file.
+        /// 	- Service `BraintreeSandbox`: The contents of your secret key file.
+        /// 	- Service `ItunesConnect`: Your Private Key
+        /// 	- Service `NetsuiteSuiteanalytics`: Private Key
+        /// 	- Service `OracleFusionCloudAppsCrm`: The Oracle Fusion Cloud private key.
+        /// 	- Service `OracleFusionCloudAppsFscm`: The Oracle Fusion Cloud private key.
+        /// 	- Service `OracleFusionCloudAppsHcm`: The Oracle Fusion Cloud private key.
+        /// 	- Service `Qualtrics`: Your private key
+        /// 	- Service `Salesforce`: Provide content of the `.key` private key (only when AuthenticationMethod = `ADVANCED`).
+        /// 	- Service `SalesforceSandbox`: Provide content of the `.key` private key (only when AuthenticationMethod = `ADVANCED`).
+        /// 	- Service `SnowflakeDb`: Private access key.  The field should be specified if authentication type is `KEY_PAIR`.
         /// </summary>
         public string? PrivateKey
         {
@@ -5324,8 +5324,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _privateToken;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `eventbrite`: Your Eventbrite private token.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Eventbrite`: Your Eventbrite private token.
         /// </summary>
         public string? PrivateToken
         {
@@ -5334,8 +5334,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `webconnex`: Your Webconnex product.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Webconnex`: Your Webconnex product.
         /// </summary>
         [Input("product", required: true)]
         public string Product { get; set; } = null!;
@@ -5344,10 +5344,10 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _profiles;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `amazon_ads`: Specific User Profile IDs to sync. Must be populated if `sync_mode` is set to `SpecificProfiles`.
-        /// 	- Service `google_analytics`: Specific User Profile IDs to sync.  Must be populated if `syncMode` is set to `SpecificAccounts`.
-        /// 	- Service `google_analytics_mcf`: Specific User Profile IDs to sync.  Must be populated if `sync_mode` is set to `SPECIFIC_ACCOUNTS`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AmazonAds`: Specific User Profile IDs to sync. Must be populated if `SyncMode` is set to `SpecificProfiles`.
+        /// 	- Service `GoogleAnalytics`: Specific User Profile IDs to sync.  Must be populated if `syncMode` is set to `SpecificAccounts`.
+        /// 	- Service `GoogleAnalyticsMcf`: Specific User Profile IDs to sync.  Must be populated if `SyncMode` is set to `SPECIFIC_ACCOUNTS`.
         /// </summary>
         public List<string> Profiles
         {
@@ -5356,8 +5356,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `amazon_dsp`: your Amazon DSP profiles pass it inside an Array list.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AmazonDsp`: your Amazon DSP profiles pass it inside an Array list.
         /// </summary>
         [Input("profilesAmazonDsp", required: true)]
         public string ProfilesAmazonDsp { get; set; } = null!;
@@ -5366,8 +5366,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _projectAccessToken;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `rollbar`: Your Rollbar project access token.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Rollbar`: Your Rollbar project access token.
         /// </summary>
         public string? ProjectAccessToken
         {
@@ -5379,8 +5379,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<Inputs.GetConnectorConfigProjectCredentialArgs>? _projectCredentials;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `amplitude`: *  Project(s)
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Amplitude`: *  Project(s)
         /// </summary>
         public List<Inputs.GetConnectorConfigProjectCredentialArgs> ProjectCredentials
         {
@@ -5392,11 +5392,11 @@ namespace Pulumi.Fivetran.Inputs
         private string? _projectId;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `bigquery_db`: BigQuery project ID
-        /// 	- Service `google_analytics_360`: The project ID.
-        /// 	- Service `google_analytics_4_export`: The Project ID.
-        /// 	- Service `mixpanel`: Project ID
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `BigqueryDb`: BigQuery project ID
+        /// 	- Service `GoogleAnalytics360`: The project ID.
+        /// 	- Service `GoogleAnalytics4Export`: The Project ID.
+        /// 	- Service `Mixpanel`: Project ID
         /// </summary>
         public string? ProjectId
         {
@@ -5405,15 +5405,15 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `sentry`: Your Sentry project IDs.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Sentry`: Your Sentry project IDs.
         /// </summary>
         [Input("projectIds", required: true)]
         public string ProjectIds { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `commercetools`: Your commercetools project key.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Commercetools`: Your commercetools project key.
         /// </summary>
         [Input("projectKey", required: true)]
         public string ProjectKey { get; set; } = null!;
@@ -5422,9 +5422,9 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _projects;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `asana`: Specific Project IDs to sync. Must be populated if `syncMode` is set to `SpecificProjects`.
-        /// 	- Service `jira`: Specific projects to sync. Must be populated if `syncMode` is set to `CUSTOM`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Asana`: Specific Project IDs to sync. Must be populated if `syncMode` is set to `SpecificProjects`.
+        /// 	- Service `Jira`: Specific projects to sync. Must be populated if `syncMode` is set to `CUSTOM`.
         /// </summary>
         public List<string> Projects
         {
@@ -5436,8 +5436,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _properties;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_analytics_4`: The array of strings in the `properties/{id}` format where `id` is a Google Analytics 4 property identifier. Must be populated if `sync_mode` is set to `SPECIFIC_ACCOUNTS`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleAnalytics4`: The array of strings in the `properties/{id}` format where `Id` is a Google Analytics 4 property identifier. Must be populated if `SyncMode` is set to `SPECIFIC_ACCOUNTS`.
         /// </summary>
         public List<string> Properties
         {
@@ -5446,8 +5446,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `cloudbeds`: Your Cloudbeds property IDs.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Cloudbeds`: Your Cloudbeds property IDs.
         /// </summary>
         [Input("propertyId", required: true)]
         public string PropertyId { get; set; } = null!;
@@ -5456,66 +5456,66 @@ namespace Pulumi.Fivetran.Inputs
         private string? _publicKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora`: Public Key
-        /// 	- Service `aurora_postgres`: Public Key
-        /// 	- Service `azure_blob_storage`: Public key generated by Fivetran to be copied into the host-machine's authorized keys file.
-        /// 	- Service `azure_cosmos_for_mongo`: Public Key
-        /// 	- Service `azure_postgres`: Public Key
-        /// 	- Service `azure_service_bus`: Public key generated by Fivetran to be copied into the host-machine's authorized keys file.
-        /// 	- Service `azure_sql_db`: Public Key.
-        /// 	- Service `azure_sql_managed_db`: Public Key.
-        /// 	- Service `braintree`: The contents of your PEM certificate file.
-        /// 	- Service `braintree_sandbox`: The contents of your PEM certificate file.
-        /// 	- Service `clarity`: Public Key.
-        /// 	- Service `cockroachdb`: Public Key
-        /// 	- Service `db2i_hva`: Public Key
-        /// 	- Service `db2i_sap_hva`: Public Key
-        /// 	- Service `documentdb`: Public Key
-        /// 	- Service `dynamics_365_fo`: Public Key.
-        /// 	- Service `ehr`: Public Key.
-        /// 	- Service `elastic_cloud`: Public Key
-        /// 	- Service `es_self_hosted`: Public Key
-        /// 	- Service `google_cloud_mysql`: Public Key
-        /// 	- Service `google_cloud_postgresql`: Public Key
-        /// 	- Service `google_cloud_sqlserver`: Public Key.
-        /// 	- Service `hana_sap_hva_b1`: Public Key
-        /// 	- Service `hana_sap_hva_ecc`: Public Key
-        /// 	- Service `hana_sap_hva_ecc_netweaver`: Public Key
-        /// 	- Service `hana_sap_hva_s4`: Public Key
-        /// 	- Service `hana_sap_hva_s4_netweaver`: Public Key
-        /// 	- Service `heroku_postgres`: Public Key
-        /// 	- Service `magento_mysql`: Public Key
-        /// 	- Service `magento_mysql_rds`: Public Key
-        /// 	- Service `maria`: Public Key
-        /// 	- Service `maria_azure`: Public Key
-        /// 	- Service `maria_rds`: Public Key
-        /// 	- Service `mongo`: Public Key
-        /// 	- Service `mongo_sharded`: Public Key
-        /// 	- Service `mysql`: Public Key
-        /// 	- Service `mysql_azure`: Public Key
-        /// 	- Service `mysql_rds`: Public Key
-        /// 	- Service `opendistro`: Public Key
-        /// 	- Service `opensearch`: Public Key
-        /// 	- Service `oracle`: Public Key
-        /// 	- Service `oracle_ebs`: Public Key
-        /// 	- Service `oracle_fusion_cloud_apps_crm`: The Oracle Fusion Cloud public key.
-        /// 	- Service `oracle_fusion_cloud_apps_fscm`: The Oracle Fusion Cloud public key.
-        /// 	- Service `oracle_fusion_cloud_apps_hcm`: The Oracle Fusion Cloud public key.
-        /// 	- Service `oracle_hva`: Public Key
-        /// 	- Service `oracle_rac`: Public Key
-        /// 	- Service `oracle_rds`: Public Key
-        /// 	- Service `oracle_sap_hva`: Public Key
-        /// 	- Service `partnerstack_vendor`: Your PartnerStack Vendor Public key.
-        /// 	- Service `postgres`: Public Key
-        /// 	- Service `postgres_rds`: Public Key
-        /// 	- Service `sap_hana`: Public Key
-        /// 	- Service `sap_s4hana`: Public Key
-        /// 	- Service `sftp`: Public Key
-        /// 	- Service `sql_server`: Public Key.
-        /// 	- Service `sql_server_hva`: Public Key.
-        /// 	- Service `sql_server_rds`: Public Key.
-        /// 	- Service `sql_server_sap_ecc_hva`: Public Key.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Aurora`: Public Key
+        /// 	- Service `AuroraPostgres`: Public Key
+        /// 	- Service `AzureBlobStorage`: Public key generated by Fivetran to be copied into the host-machine's authorized keys file.
+        /// 	- Service `AzureCosmosForMongo`: Public Key
+        /// 	- Service `AzurePostgres`: Public Key
+        /// 	- Service `AzureServiceBus`: Public key generated by Fivetran to be copied into the host-machine's authorized keys file.
+        /// 	- Service `AzureSqlDb`: Public Key.
+        /// 	- Service `AzureSqlManagedDb`: Public Key.
+        /// 	- Service `Braintree`: The contents of your PEM certificate file.
+        /// 	- Service `BraintreeSandbox`: The contents of your PEM certificate file.
+        /// 	- Service `Clarity`: Public Key.
+        /// 	- Service `Cockroachdb`: Public Key
+        /// 	- Service `Db2iHva`: Public Key
+        /// 	- Service `Db2iSapHva`: Public Key
+        /// 	- Service `Documentdb`: Public Key
+        /// 	- Service `Dynamics365Fo`: Public Key.
+        /// 	- Service `Ehr`: Public Key.
+        /// 	- Service `ElasticCloud`: Public Key
+        /// 	- Service `EsSelfHosted`: Public Key
+        /// 	- Service `GoogleCloudMysql`: Public Key
+        /// 	- Service `GoogleCloudPostgresql`: Public Key
+        /// 	- Service `GoogleCloudSqlserver`: Public Key.
+        /// 	- Service `HanaSapHvaB1`: Public Key
+        /// 	- Service `HanaSapHvaEcc`: Public Key
+        /// 	- Service `HanaSapHvaEccNetweaver`: Public Key
+        /// 	- Service `HanaSapHvaS4`: Public Key
+        /// 	- Service `HanaSapHvaS4Netweaver`: Public Key
+        /// 	- Service `HerokuPostgres`: Public Key
+        /// 	- Service `MagentoMysql`: Public Key
+        /// 	- Service `MagentoMysqlRds`: Public Key
+        /// 	- Service `Maria`: Public Key
+        /// 	- Service `MariaAzure`: Public Key
+        /// 	- Service `MariaRds`: Public Key
+        /// 	- Service `Mongo`: Public Key
+        /// 	- Service `MongoSharded`: Public Key
+        /// 	- Service `Mysql`: Public Key
+        /// 	- Service `MysqlAzure`: Public Key
+        /// 	- Service `MysqlRds`: Public Key
+        /// 	- Service `Opendistro`: Public Key
+        /// 	- Service `Opensearch`: Public Key
+        /// 	- Service `Oracle`: Public Key
+        /// 	- Service `OracleEbs`: Public Key
+        /// 	- Service `OracleFusionCloudAppsCrm`: The Oracle Fusion Cloud public key.
+        /// 	- Service `OracleFusionCloudAppsFscm`: The Oracle Fusion Cloud public key.
+        /// 	- Service `OracleFusionCloudAppsHcm`: The Oracle Fusion Cloud public key.
+        /// 	- Service `OracleHva`: Public Key
+        /// 	- Service `OracleRac`: Public Key
+        /// 	- Service `OracleRds`: Public Key
+        /// 	- Service `OracleSapHva`: Public Key
+        /// 	- Service `PartnerstackVendor`: Your PartnerStack Vendor Public key.
+        /// 	- Service `Postgres`: Public Key
+        /// 	- Service `PostgresRds`: Public Key
+        /// 	- Service `SapHana`: Public Key
+        /// 	- Service `SapS4hana`: Public Key
+        /// 	- Service `Sftp`: Public Key
+        /// 	- Service `SqlServer`: Public Key.
+        /// 	- Service `SqlServerHva`: Public Key.
+        /// 	- Service `SqlServerRds`: Public Key.
+        /// 	- Service `SqlServerSapEccHva`: Public Key.
         /// </summary>
         public string? PublicKey
         {
@@ -5524,27 +5524,27 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora_postgres`: Publication name. Specify only for `"updated_method": "WAL_PGOUTPUT"`.
-        /// 	- Service `azure_postgres`: Publication name. Specify only for `"updated_method": "WAL_PGOUTPUT"`.
-        /// 	- Service `google_cloud_postgresql`: Publication name. Specify only for `"updated_method": "WAL_PGOUTPUT"`.
-        /// 	- Service `heroku_postgres`: Publication name. Specify only for `"updated_method": "WAL_PGOUTPUT"`.
-        /// 	- Service `postgres`: Publication name. Specify only for `"updated_method": "WAL_PGOUTPUT"`.
-        /// 	- Service `postgres_rds`: Publication name. Specify only for `"updated_method": "WAL_PGOUTPUT"`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AuroraPostgres`: Publication name. Specify only for `"UpdatedMethod": "WAL_PGOUTPUT"`.
+        /// 	- Service `AzurePostgres`: Publication name. Specify only for `"UpdatedMethod": "WAL_PGOUTPUT"`.
+        /// 	- Service `GoogleCloudPostgresql`: Publication name. Specify only for `"UpdatedMethod": "WAL_PGOUTPUT"`.
+        /// 	- Service `HerokuPostgres`: Publication name. Specify only for `"UpdatedMethod": "WAL_PGOUTPUT"`.
+        /// 	- Service `Postgres`: Publication name. Specify only for `"UpdatedMethod": "WAL_PGOUTPUT"`.
+        /// 	- Service `PostgresRds`: Publication name. Specify only for `"UpdatedMethod": "WAL_PGOUTPUT"`.
         /// </summary>
         [Input("publicationName", required: true)]
         public string PublicationName { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `skimlinks`: Your Skimlinks publisher ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Skimlinks`: Your Skimlinks publisher ID.
         /// </summary>
         [Input("publisherId", required: true)]
         public string PublisherId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `outbrain`: Include or ignore results from archived campaigns
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Outbrain`: Include or ignore results from archived campaigns
         /// </summary>
         [Input("pullArchivedCampaigns", required: true)]
         public bool PullArchivedCampaigns { get; set; }
@@ -5553,8 +5553,8 @@ namespace Pulumi.Fivetran.Inputs
         public string PythonVersion { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_display_and_video_360`: The ID of the query whose configuration you want to reuse. This is a required parameter when `config_method` is set to `REUSE_EXISTING`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleDisplayAndVideo360`: The ID of the query whose configuration you want to reuse. This is a required parameter when `ConfigMethod` is set to `REUSE_EXISTING`.
         /// </summary>
         [Input("queryId", required: true)]
         public string QueryId { get; set; } = null!;
@@ -5563,9 +5563,9 @@ namespace Pulumi.Fivetran.Inputs
         private string? _queryParamValue;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `alchemer`: Your Alchemer API key.
-        /// 	- Service `birdeye`: Your Birdeye query-param-value.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Alchemer`: Your Alchemer API key.
+        /// 	- Service `Birdeye`: Your Birdeye query-param-value.
         /// </summary>
         public string? QueryParamValue
         {
@@ -5574,47 +5574,47 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `bigquery_db`: Specify a different project ID to account for quota and billing of Fivetran query workload
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `BigqueryDb`: Specify a different project ID to account for quota and billing of Fivetran query workload
         /// </summary>
         [Input("quotaProjectId", required: true)]
         public string QuotaProjectId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `azure_blob_storage`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quote_character_enabled is set to true.
-        /// 	- Service `box`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quote_character_enabled is set to true.
-        /// 	- Service `dropbox`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quote_character_enabled is set to true.
-        /// 	- Service `email`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quote_character_enabled is set to true.
-        /// 	- Service `gcs`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quote_character_enabled is set to true.
-        /// 	- Service `google_drive`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quote_character_enabled is set to true.
-        /// 	- Service `s3`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quote_character_enabled is set to true.
-        /// 	- Service `s3_compatible_storage`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quote_character_enabled is set to true.
-        /// 	- Service `sftp`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quote_character_enabled is set to true.
-        /// 	- Service `share_point`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quote_character_enabled is set to true.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureBlobStorage`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and QuoteCharacterEnabled is set to true.
+        /// 	- Service `Box`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and QuoteCharacterEnabled is set to true.
+        /// 	- Service `Dropbox`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and QuoteCharacterEnabled is set to true.
+        /// 	- Service `Email`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and QuoteCharacterEnabled is set to true.
+        /// 	- Service `Gcs`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and QuoteCharacterEnabled is set to true.
+        /// 	- Service `GoogleDrive`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and QuoteCharacterEnabled is set to true.
+        /// 	- Service `S3`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and QuoteCharacterEnabled is set to true.
+        /// 	- Service `S3CompatibleStorage`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and QuoteCharacterEnabled is set to true.
+        /// 	- Service `Sftp`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and QuoteCharacterEnabled is set to true.
+        /// 	- Service `SharePoint`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and QuoteCharacterEnabled is set to true.
         /// </summary>
         [Input("quoteChar", required: true)]
         public string QuoteChar { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `azure_blob_storage`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as a quote character.
-        /// 	- Service `box`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
-        /// 	- Service `dropbox`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
-        /// 	- Service `email`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
-        /// 	- Service `gcs`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
-        /// 	- Service `google_drive`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
-        /// 	- Service `s3`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
-        /// 	- Service `s3_compatible_storage`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
-        /// 	- Service `sftp`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
-        /// 	- Service `share_point`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureBlobStorage`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as a quote character.
+        /// 	- Service `Box`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+        /// 	- Service `Dropbox`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+        /// 	- Service `Email`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+        /// 	- Service `Gcs`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+        /// 	- Service `GoogleDrive`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+        /// 	- Service `S3`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+        /// 	- Service `S3CompatibleStorage`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+        /// 	- Service `Sftp`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+        /// 	- Service `SharePoint`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
         /// </summary>
         [Input("quoteCharacterEnabled", required: true)]
         public bool QuoteCharacterEnabled { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `vimeo`: Your Vimeo rate limit plan.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Vimeo`: Your Vimeo rate limit plan.
         /// </summary>
         [Input("rateLimitPlan", required: true)]
         public string RateLimitPlan { get; set; } = null!;
@@ -5623,8 +5623,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _refreshToken;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `ironsource`: Your Ironsource `Client Secret`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Ironsource`: Your Ironsource `Client Secret`.
         /// </summary>
         public string? RefreshToken
         {
@@ -5633,108 +5633,108 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `pinterest_ads`: The expiration date of the refresh token. Unix timestamp in seconds
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `PinterestAds`: The expiration date of the refresh token. Unix timestamp in seconds
         /// </summary>
         [Input("refreshTokenExpiresAt", required: true)]
         public string RefreshTokenExpiresAt { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `algolia`: Your Algolia analytics region.
-        /// 	- Service `alida`: Your Alida region.
-        /// 	- Service `amazon_ads`: The region used by the Amazon Ads profile.
-        /// 	- Service `amazon_selling_partner`: The region used by the Amazon Selling Partner profile.
-        /// 	- Service `anaplan`: Your Anaplan account region
-        /// 	- Service `atlassian_ops_genie`: Your company's Osgenie region (usually **company**.opsgenie.com)
-        /// 	- Service `awin`: Your Awin Region.
-        /// 	- Service `aws_lambda`: The AWS region code for the DynamoDB instance.
-        /// 	- Service `bigin_by_zoho_crm`: Your Bigin by Zoho CRM Region
-        /// 	- Service `concur`: The region.
-        /// 	- Service `cvent`: Your Cvent region.
-        /// 	- Service `everflow`: Your Everflow region.
-        /// 	- Service `exact_online`: Your Exact Online region.
-        /// 	- Service `getfeedback`: Your GetFeedback region.
-        /// 	- Service `happyfox`: Your HappyFox region.
-        /// 	- Service `keypay`: Your KeyPay region.
-        /// 	- Service `medallia_agile_research`: Your Medallia Agile region.
-        /// 	- Service `messagebird`: Your MessageBird Account region.
-        /// 	- Service `mixpanel`: Data Region
-        /// 	- Service `navan`: Your Navan region.
-        /// 	- Service `on24`: Your ON24 region.
-        /// 	- Service `pendo`: The Pendo account region.
-        /// 	- Service `proofpoint_security_awareness`: Your Proofpoint Security Awareness Region.
-        /// 	- Service `ringover`: Your Ringover region.
-        /// 	- Service `samsara`: The region of your Samsara account. For instance, if your region is `EUROPE`, provide `eu.samsara` in the `Region` field. If your region is not in Europe, provide `samsara`.
-        /// 	- Service `snyk`: Your Snyk region.
-        /// 	- Service `talkdesk`: Your Talkdesk region (".com",".eu","ca.com")
-        /// 	- Service `totango`: Your Totango region.
-        /// 	- Service `transcend`: Your Transcend region.
-        /// 	- Service `vonage_contact_center`: Your Vonage Contact Center region.
-        /// 	- Service `wasabi_cloud_storage`: The Wasabi Cloud Storage bucket region. Required for connector creation. Default value: `US_EAST_1`.
-        /// 	- Service `workday_strategic_sourcing`: Your Workday Strategic Sourcing Region.
-        /// 	- Service `xray`: Your Xray region.
-        /// 	- Service `zoho_books`: Your Zoho Books application host region.
-        /// 	- Service `zoho_campaigns`: Your Zoho Campaigns application host region.
-        /// 	- Service `zoho_desk`: Your Zoho Desk domain.
-        /// 	- Service `zoho_inventory`: Your Zoho Inventory application host region.
-        /// 	- Service `zoho_recruit`: Your Zoho Recruit region.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Algolia`: Your Algolia analytics region.
+        /// 	- Service `Alida`: Your Alida region.
+        /// 	- Service `AmazonAds`: The region used by the Amazon Ads profile.
+        /// 	- Service `AmazonSellingPartner`: The region used by the Amazon Selling Partner profile.
+        /// 	- Service `Anaplan`: Your Anaplan account region
+        /// 	- Service `AtlassianOpsGenie`: Your company's Osgenie region (usually **company**.opsgenie.com)
+        /// 	- Service `Awin`: Your Awin Region.
+        /// 	- Service `AwsLambda`: The AWS region code for the DynamoDB instance.
+        /// 	- Service `BiginByZohoCrm`: Your Bigin by Zoho CRM Region
+        /// 	- Service `Concur`: The region.
+        /// 	- Service `Cvent`: Your Cvent region.
+        /// 	- Service `Everflow`: Your Everflow region.
+        /// 	- Service `ExactOnline`: Your Exact Online region.
+        /// 	- Service `Getfeedback`: Your GetFeedback region.
+        /// 	- Service `Happyfox`: Your HappyFox region.
+        /// 	- Service `Keypay`: Your KeyPay region.
+        /// 	- Service `MedalliaAgileResearch`: Your Medallia Agile region.
+        /// 	- Service `Messagebird`: Your MessageBird Account region.
+        /// 	- Service `Mixpanel`: Data Region
+        /// 	- Service `Navan`: Your Navan region.
+        /// 	- Service `On24`: Your ON24 region.
+        /// 	- Service `Pendo`: The Pendo account region.
+        /// 	- Service `ProofpointSecurityAwareness`: Your Proofpoint Security Awareness Region.
+        /// 	- Service `Ringover`: Your Ringover region.
+        /// 	- Service `Samsara`: The region of your Samsara account. For instance, if your region is `EUROPE`, provide `eu.samsara` in the `Region` field. If your region is not in Europe, provide `Samsara`.
+        /// 	- Service `Snyk`: Your Snyk region.
+        /// 	- Service `Talkdesk`: Your Talkdesk region (".com",".eu","ca.com")
+        /// 	- Service `Totango`: Your Totango region.
+        /// 	- Service `Transcend`: Your Transcend region.
+        /// 	- Service `VonageContactCenter`: Your Vonage Contact Center region.
+        /// 	- Service `WasabiCloudStorage`: The Wasabi Cloud Storage bucket region. Required for connector creation. Default value: `US_EAST_1`.
+        /// 	- Service `WorkdayStrategicSourcing`: Your Workday Strategic Sourcing Region.
+        /// 	- Service `Xray`: Your Xray region.
+        /// 	- Service `ZohoBooks`: Your Zoho Books application host region.
+        /// 	- Service `ZohoCampaigns`: Your Zoho Campaigns application host region.
+        /// 	- Service `ZohoDesk`: Your Zoho Desk domain.
+        /// 	- Service `ZohoInventory`: Your Zoho Inventory application host region.
+        /// 	- Service `ZohoRecruit`: Your Zoho Recruit region.
         /// </summary>
         [Input("region", required: true)]
         public string Region { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `amazon_attribution`: Your Amazon Attribution API URL region.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AmazonAttribution`: Your Amazon Attribution API URL region.
         /// </summary>
         [Input("regionApiUrl", required: true)]
         public string RegionApiUrl { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `amazon_attribution`: Your Amazon Attribution auth URL region.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AmazonAttribution`: Your Amazon Attribution auth URL region.
         /// </summary>
         [Input("regionAuthUrl", required: true)]
         public string RegionAuthUrl { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `amazon_attribution`: Your Amazon Attribution token URL region.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AmazonAttribution`: Your Amazon Attribution token URL region.
         /// </summary>
         [Input("regionTokenUrl", required: true)]
         public string RegionTokenUrl { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `playvox_workforce_management`: Your Playvox Workforce Management region URL.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `PlayvoxWorkforceManagement`: Your Playvox Workforce Management region URL.
         /// </summary>
         [Input("regionUrl", required: true)]
         public string RegionUrl { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora`: Unique ID within the MySQL replica set. Must be an integer different from all other master and replica servers within the same group.
-        /// 	- Service `google_cloud_mysql`: Unique ID within the MySQL replica set. Must be an integer different from all other master and replica servers within the same group.
-        /// 	- Service `magento_mysql`: Unique ID within the MySQL replica set. Must be an integer different from all other master and replica servers within the same group.
-        /// 	- Service `magento_mysql_rds`: Unique ID within the MySQL replica set. Must be an integer different from all other master and replica servers within the same group.
-        /// 	- Service `maria`: Unique ID within the MySQL replica set. Must be an integer different from all other master and replica servers within the same group.
-        /// 	- Service `maria_azure`: Unique ID within the MySQL replica set. Must be an integer different from all other master and replica servers within the same group.
-        /// 	- Service `maria_rds`: Unique ID within the MySQL replica set. Must be an integer different from all other master and replica servers within the same group.
-        /// 	- Service `mysql`: Unique ID within the MySQL replica set. Must be an integer different from all other master and replica servers within the same group.
-        /// 	- Service `mysql_azure`: Unique ID within the MySQL replica set. Must be an integer different from all other master and replica servers within the same group.
-        /// 	- Service `mysql_rds`: Unique ID within the MySQL replica set. Must be an integer different from all other master and replica servers within the same group.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Aurora`: Unique ID within the MySQL replica set. Must be an integer different from all other master and replica servers within the same group.
+        /// 	- Service `GoogleCloudMysql`: Unique ID within the MySQL replica set. Must be an integer different from all other master and replica servers within the same group.
+        /// 	- Service `MagentoMysql`: Unique ID within the MySQL replica set. Must be an integer different from all other master and replica servers within the same group.
+        /// 	- Service `MagentoMysqlRds`: Unique ID within the MySQL replica set. Must be an integer different from all other master and replica servers within the same group.
+        /// 	- Service `Maria`: Unique ID within the MySQL replica set. Must be an integer different from all other master and replica servers within the same group.
+        /// 	- Service `MariaAzure`: Unique ID within the MySQL replica set. Must be an integer different from all other master and replica servers within the same group.
+        /// 	- Service `MariaRds`: Unique ID within the MySQL replica set. Must be an integer different from all other master and replica servers within the same group.
+        /// 	- Service `Mysql`: Unique ID within the MySQL replica set. Must be an integer different from all other master and replica servers within the same group.
+        /// 	- Service `MysqlAzure`: Unique ID within the MySQL replica set. Must be an integer different from all other master and replica servers within the same group.
+        /// 	- Service `MysqlRds`: Unique ID within the MySQL replica set. Must be an integer different from all other master and replica servers within the same group.
         /// </summary>
         [Input("replicaId", required: true)]
         public int ReplicaId { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora_postgres`: Replication slot name. Specify only for `"updated_method": "WAL"` or `"WAL_PGOUTPUT"`.
-        /// 	- Service `azure_postgres`: Replication slot name. Specify only for `"updated_method": "WAL"` or `"WAL_PGOUTPUT"`.
-        /// 	- Service `google_cloud_postgresql`: Replication slot name. Specify only for `"updated_method": "WAL"` or `"WAL_PGOUTPUT"`.
-        /// 	- Service `heroku_postgres`: Replication slot name. Specify only for `"updated_method": "WAL"` or `"WAL_PGOUTPUT"`.
-        /// 	- Service `postgres`: Replication slot name. Specify only for `"updated_method": "WAL"` or `"WAL_PGOUTPUT"`.
-        /// 	- Service `postgres_rds`: Replication slot name. Specify only for `"updated_method": "WAL"` or `"WAL_PGOUTPUT"`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AuroraPostgres`: Replication slot name. Specify only for `"UpdatedMethod": "WAL"` or `"WAL_PGOUTPUT"`.
+        /// 	- Service `AzurePostgres`: Replication slot name. Specify only for `"UpdatedMethod": "WAL"` or `"WAL_PGOUTPUT"`.
+        /// 	- Service `GoogleCloudPostgresql`: Replication slot name. Specify only for `"UpdatedMethod": "WAL"` or `"WAL_PGOUTPUT"`.
+        /// 	- Service `HerokuPostgres`: Replication slot name. Specify only for `"UpdatedMethod": "WAL"` or `"WAL_PGOUTPUT"`.
+        /// 	- Service `Postgres`: Replication slot name. Specify only for `"UpdatedMethod": "WAL"` or `"WAL_PGOUTPUT"`.
+        /// 	- Service `PostgresRds`: Replication slot name. Specify only for `"UpdatedMethod": "WAL"` or `"WAL_PGOUTPUT"`.
         /// </summary>
         [Input("replicationSlot", required: true)]
         public string ReplicationSlot { get; set; } = null!;
@@ -5743,8 +5743,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<Inputs.GetConnectorConfigReportConfigArgs>? _reportConfigs;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `yahoo_dsp`: Specify the reports you want to sync. This is optional.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `YahooDsp`: Specify the reports you want to sync. This is optional.
         /// </summary>
         public List<Inputs.GetConnectorConfigReportConfigArgs> ReportConfigs
         {
@@ -5756,8 +5756,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _reportConfigurationIds;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `double_click_campaign_manager`: You can select only one Floodlight Configuration ID per account.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `DoubleClickCampaignManager`: You can select only one Floodlight Configuration ID per account.
         /// </summary>
         public List<string> ReportConfigurationIds
         {
@@ -5766,22 +5766,22 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `workday`: This is to select report format from JSON and CSV. By default, report format is JSON.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Workday`: This is to select report format from JSON and CSV. By default, report format is JSON.
         /// </summary>
         [Input("reportFormatType", required: true)]
         public string ReportFormatType { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `pinterest_ads`: Granularity at which reports will be
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `PinterestAds`: Granularity at which reports will be
         /// </summary>
         [Input("reportGranularity", required: true)]
         public string ReportGranularity { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `rakutenadvertising`: Your Rakuten Advertising report keys.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Rakutenadvertising`: Your Rakuten Advertising report keys.
         /// </summary>
         [Input("reportKeys", required: true)]
         public string ReportKeys { get; set; } = null!;
@@ -5790,8 +5790,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<Inputs.GetConnectorConfigReportListArgs>? _reportLists;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `spotify_ads`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SpotifyAds`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
         /// </summary>
         public List<Inputs.GetConnectorConfigReportListArgs> ReportLists
         {
@@ -5803,8 +5803,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _reportServiceApiKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adyen`: Your Report Service API key.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adyen`: Your Report Service API key.
         /// </summary>
         public string? ReportServiceApiKey
         {
@@ -5821,25 +5821,25 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `criteo`: Report Timezone
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Criteo`: Report Timezone
         /// </summary>
         [Input("reportTimezone", required: true)]
         public string ReportTimezone { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adroll`: The report type you want. Default value: `ALL_ADS`.
-        /// 	- Service `double_click_campaign_manager`: Type of reporting data to sync. Default value: `STANDARD`.
-        /// 	- Service `google_display_and_video_360`: The type of the report to create. This is a required parameter when `config_method` is set to `CREATE_NEW`.
-        /// 	- Service `youtube_analytics`: The name of report of which connector will sync the data.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adroll`: The report type you want. Default value: `ALL_ADS`.
+        /// 	- Service `DoubleClickCampaignManager`: Type of reporting data to sync. Default value: `STANDARD`.
+        /// 	- Service `GoogleDisplayAndVideo360`: The type of the report to create. This is a required parameter when `ConfigMethod` is set to `CREATE_NEW`.
+        /// 	- Service `YoutubeAnalytics`: The name of report of which connector will sync the data.
         /// </summary>
         [Input("reportType", required: true)]
         public string ReportType { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `workday`: URL for a live custom report.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Workday`: URL for a live custom report.
         /// </summary>
         [Input("reportUrl", required: true)]
         public string ReportUrl { get; set; } = null!;
@@ -5848,14 +5848,14 @@ namespace Pulumi.Fivetran.Inputs
         private List<Inputs.GetConnectorConfigReportArgs>? _reports;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_ads`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
-        /// 	- Service `google_analytics`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
-        /// 	- Service `google_analytics_4`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
-        /// 	- Service `google_display_and_video_360`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
-        /// 	- Service `google_search_ads_360`: The list of reports. Each report corresponds to a table within the schema to which connector syncs the data.
-        /// 	- Service `google_search_console`: The list of reports. Each report corresponds to a table within the schema to which connector syncs the data.
-        /// 	- Service `workday`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleAds`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
+        /// 	- Service `GoogleAnalytics`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
+        /// 	- Service `GoogleAnalytics4`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
+        /// 	- Service `GoogleDisplayAndVideo360`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
+        /// 	- Service `GoogleSearchAds360`: The list of reports. Each report corresponds to a table within the schema to which connector syncs the data.
+        /// 	- Service `GoogleSearchConsole`: The list of reports. Each report corresponds to a table within the schema to which connector syncs the data.
+        /// 	- Service `Workday`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
         /// </summary>
         public List<Inputs.GetConnectorConfigReportArgs> Reports
         {
@@ -5867,8 +5867,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _reportsLinkedinAds;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `linkedin_ads`: Specific analytics reports to sync. Must be populated if adAnalytics is set to 'SpecificReports'.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `LinkedinAds`: Specific analytics reports to sync. Must be populated if adAnalytics is set to 'SpecificReports'.
         /// </summary>
         public List<string> ReportsLinkedinAds
         {
@@ -5880,8 +5880,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _repositories;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `github`: Specific Repository IDs to sync. Must be populated if `syncMode` is set to `SpecificRepositories`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Github`: Specific Repository IDs to sync. Must be populated if `syncMode` is set to `SpecificRepositories`.
         /// </summary>
         public List<string> Repositories
         {
@@ -5893,8 +5893,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _resourceToken;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `cosmos`: A token that provides access to a specific Azure Cosmos DB resource. Required for the `RESOURCE_TOKEN` data access method.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Cosmos`: A token that provides access to a specific Azure Cosmos DB resource. Required for the `RESOURCE_TOKEN` data access method.
         /// </summary>
         public string? ResourceToken
         {
@@ -5903,33 +5903,33 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `dynamics_365`: URL at which Dynamics 365 is accessed
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Dynamics365`: URL at which Dynamics 365 is accessed
         /// </summary>
         [Input("resourceUrl", required: true)]
         public string ResourceUrl { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `pardot`: The number of API calls that the connector should not exceed in a day. Default REST API call limit per day: 150,000.
-        /// 	- Service `pardot_sandbox`: The number of API calls that the connector should not exceed in a day. Default REST API call limit per day: 150,000.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Pardot`: The number of API calls that the connector should not exceed in a day. Default REST API call limit per day: 150,000.
+        /// 	- Service `PardotSandbox`: The number of API calls that the connector should not exceed in a day. Default REST API call limit per day: 150,000.
         /// </summary>
         [Input("restApiLimit", required: true)]
         public int RestApiLimit { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `hana_sap_hva_ecc_netweaver`: Directory path containing the SAP NetWeaver RFC SDK library files.
-        /// 	- Service `hana_sap_hva_s4_netweaver`: Directory path containing the SAP NetWeaver RFC SDK library files.
-        /// 	- Service `oracle_sap_hva_netweaver`: Directory path containing the SAP NetWeaver RFC SDK library files.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `HanaSapHvaEccNetweaver`: Directory path containing the SAP NetWeaver RFC SDK library files.
+        /// 	- Service `HanaSapHvaS4Netweaver`: Directory path containing the SAP NetWeaver RFC SDK library files.
+        /// 	- Service `OracleSapHvaNetweaver`: Directory path containing the SAP NetWeaver RFC SDK library files.
         /// </summary>
         [Input("rfcLibraryPath", required: true)]
         public string RfcLibraryPath { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `netsuite_suiteanalytics`: The NetSuite Role ID for connection.
-        /// 	- Service `snowflake_db`: Snowflake Connector role name
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `NetsuiteSuiteanalytics`: The NetSuite Role ID for connection.
+        /// 	- Service `SnowflakeDb`: Snowflake Connector role name
         /// </summary>
         [Input("role", required: true)]
         public string Role { get; set; } = null!;
@@ -5938,20 +5938,20 @@ namespace Pulumi.Fivetran.Inputs
         private string? _roleArn;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `appsflyer`: S3 Role ARN
-        /// 	- Service `aws_cloudtrail`: The Role ARN required for authentication.
-        /// 	- Service `aws_cost`: The Role ARN required for authentication.
-        /// 	- Service `aws_cost_report`: The Role ARN required for authentication.
-        /// 	- Service `aws_inventory`: The Role ARN required for authentication.
-        /// 	- Service `aws_lambda`: The Role ARN required for authentication.
-        /// 	- Service `aws_msk`: If `sasl_mechanism` is set to `IAM`, enter your Role ARN
-        /// 	- Service `cloudfront`: The Role ARN required for authentication.
-        /// 	- Service `dynamodb`: Role ARN
-        /// 	- Service `heap`: The Role ARN required for authentication.
-        /// 	- Service `kinesis`: The Role ARN required for authentication.
-        /// 	- Service `s3`: The Role ARN required for authentication. Required for connector creation when syncing using private bucket.
-        /// 	- Service `segment`: The Role ARN required for authentication. Must be populated if `sync_type` is set to `S3`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Appsflyer`: S3 Role ARN
+        /// 	- Service `AwsCloudtrail`: The Role ARN required for authentication.
+        /// 	- Service `AwsCost`: The Role ARN required for authentication.
+        /// 	- Service `AwsCostReport`: The Role ARN required for authentication.
+        /// 	- Service `AwsInventory`: The Role ARN required for authentication.
+        /// 	- Service `AwsLambda`: The Role ARN required for authentication.
+        /// 	- Service `AwsMsk`: If `SaslMechanism` is set to `IAM`, enter your Role ARN
+        /// 	- Service `Cloudfront`: The Role ARN required for authentication.
+        /// 	- Service `Dynamodb`: Role ARN
+        /// 	- Service `Heap`: The Role ARN required for authentication.
+        /// 	- Service `Kinesis`: The Role ARN required for authentication.
+        /// 	- Service `S3`: The Role ARN required for authentication. Required for connector creation when syncing using private bucket.
+        /// 	- Service `Segment`: The Role ARN required for authentication. Must be populated if `SyncType` is set to `S3`.
         /// </summary>
         public string? RoleArn
         {
@@ -5960,50 +5960,50 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `appsflyer`: Rollback window
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Appsflyer`: Rollback window
         /// </summary>
         [Input("rollbackWindow", required: true)]
         public int RollbackWindow { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `bingads`: A period of time in days during which a conversion is recorded.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Bingads`: A period of time in days during which a conversion is recorded.
         /// </summary>
         [Input("rollbackWindowSize", required: true)]
         public int RollbackWindowSize { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `oracle_fusion_field_service`: Your Oracle Fusion Field Service rootresourceId.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `OracleFusionFieldService`: Your Oracle Fusion Field Service rootresourceId.
         /// </summary>
         [Input("rootResourceId", required: true)]
         public string RootResourceId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `webhooks`: The S3 bucket name. Required if `bucket_service` is set to `S3`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Webhooks`: The S3 bucket name. Required if `BucketService` is set to `S3`.
         /// </summary>
         [Input("s3Bucket", required: true)]
         public string S3Bucket { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `braze`: Your S3 user export bucket. Required if `AWS_S3` is the `export_storage_type`
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Braze`: Your S3 user export bucket. Required if `AWS_S3` is the `ExportStorageType`
         /// </summary>
         [Input("s3ExportBucket", required: true)]
         public string S3ExportBucket { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `braze`: This is the same as your `group_id`, used if `export_storage_type` is `AWS_S3`
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Braze`: This is the same as your `GroupId`, used if `ExportStorageType` is `AWS_S3`
         /// </summary>
         [Input("s3ExportExternalId", required: true)]
         public string S3ExportExternalId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `braze`: Your S3 user export folder name. Required if `AWS_S3` is the `export_storage_type`
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Braze`: Your S3 user export folder name. Required if `AWS_S3` is the `ExportStorageType`
         /// </summary>
         [Input("s3ExportFolder", required: true)]
         public string S3ExportFolder { get; set; } = null!;
@@ -6012,8 +6012,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _s3ExportRoleArn;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `braze`: The Role ARN required for authentication required if `AWS_S3` is the `export_storage_type`
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Braze`: The Role ARN required for authentication required if `AWS_S3` is the `ExportStorageType`
         /// </summary>
         public string? S3ExportRoleArn
         {
@@ -6025,9 +6025,9 @@ namespace Pulumi.Fivetran.Inputs
         private string? _s3RoleArn;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adjust`: Used if the `export_storage_type` is `AWS_S3`, the Role ARN required for authentication.
-        /// 	- Service `webhooks`: The Role ARN required for authentication. Required if `bucket_service` is set to `S3`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adjust`: Used if the `ExportStorageType` is `AWS_S3`, the Role ARN required for authentication.
+        /// 	- Service `Webhooks`: The Role ARN required for authentication. Required if `BucketService` is set to `S3`.
         /// </summary>
         public string? S3RoleArn
         {
@@ -6036,32 +6036,32 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics_data_feed`: The S3 bucket name.
-        /// 	- Service `braze`: Your S3 bucket required if `AWS_S3` is the `cloud_storage_type`
-        /// 	- Service `sailthru`: Name of the bucket configured to receive sailthru connect data.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalyticsDataFeed`: The S3 bucket name.
+        /// 	- Service `Braze`: Your S3 bucket required if `AWS_S3` is the `CloudStorageType`
+        /// 	- Service `Sailthru`: Name of the bucket configured to receive sailthru connect data.
         /// </summary>
         [Input("s3bucket", required: true)]
         public string S3bucket { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `braze`: This is the same as your `group_id`, used for authentication along with the `role_arn` required if `AWS_S3` is the `cloud_storage_type`
-        /// 	- Service `sailthru`: The external ID is a string that designates who can assume the role.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Braze`: This is the same as your `GroupId`, used for authentication along with the `RoleArn` required if `AWS_S3` is the `CloudStorageType`
+        /// 	- Service `Sailthru`: The external ID is a string that designates who can assume the role.
         /// </summary>
         [Input("s3externalId", required: true)]
         public string S3externalId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `braze`: Your S3 folder name required if `AWS_S3` is the `cloud_storage_type`
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Braze`: Your S3 folder name required if `AWS_S3` is the `CloudStorageType`
         /// </summary>
         [Input("s3folder", required: true)]
         public string S3folder { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `sailthru`: Copy and use this to configure Sailthru Connect in your sailthru account.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Sailthru`: Copy and use this to configure Sailthru Connect in your sailthru account.
         /// </summary>
         [Input("s3path", required: true)]
         public string S3path { get; set; } = null!;
@@ -6070,10 +6070,10 @@ namespace Pulumi.Fivetran.Inputs
         private string? _s3roleArn;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics_data_feed`: The Role ARN required for authentication.
-        /// 	- Service `braze`: The Role ARN required for authentication required if `AWS_S3` is the `cloud_storage_type`
-        /// 	- Service `sailthru`: Role ARN of the IAM role created for Fivetran.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalyticsDataFeed`: The Role ARN required for authentication.
+        /// 	- Service `Braze`: The Role ARN required for authentication required if `AWS_S3` is the `CloudStorageType`
+        /// 	- Service `Sailthru`: Role ARN of the IAM role created for Fivetran.
         /// </summary>
         public string? S3roleArn
         {
@@ -6082,8 +6082,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `itunes_connect`: Whether to sync all sales accounts or specific sales accounts.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ItunesConnect`: Whether to sync all sales accounts or specific sales accounts.
         /// </summary>
         [Input("salesAccountSyncMode", required: true)]
         public string SalesAccountSyncMode { get; set; } = null!;
@@ -6092,8 +6092,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _salesAccounts;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `itunes_connect`: Specific sales account to sync. Must be populated if `sales_account_sync_mode` is set to `SpecificSalesAccounts`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ItunesConnect`: Specific sales account to sync. Must be populated if `SalesAccountSyncMode` is set to `SpecificSalesAccounts`.
         /// </summary>
         public List<string> SalesAccounts
         {
@@ -6105,9 +6105,9 @@ namespace Pulumi.Fivetran.Inputs
         private string? _salesforceSecurityToken;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `pardot`: The Pardot user's Salesforce SSO Account Security Token.
-        /// 	- Service `pardot_sandbox`: The Pardot user's Salesforce SSO Account Security Token.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Pardot`: The Pardot user's Salesforce SSO Account Security Token.
+        /// 	- Service `PardotSandbox`: The Pardot user's Salesforce SSO Account Security Token.
         /// </summary>
         public string? SalesforceSecurityToken
         {
@@ -6116,44 +6116,44 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `gocardless`: Your GoCardless account type.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Gocardless`: Your GoCardless account type.
         /// </summary>
         [Input("sandboxAccount", required: true)]
         public string SandboxAccount { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `db2i_hva`: The SAP schema.
-        /// 	- Service `db2i_sap_hva`: SAP schema name.
-        /// 	- Service `sql_server_hva`: SAP Schema Name. Required only for High-Volume Agent SAP ECC connector.
-        /// 	- Service `sql_server_sap_ecc_hva`: SAP Schema Name.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Db2iHva`: The SAP schema.
+        /// 	- Service `Db2iSapHva`: SAP schema name.
+        /// 	- Service `SqlServerHva`: SAP Schema Name. Required only for High-Volume Agent SAP ECC connector.
+        /// 	- Service `SqlServerSapEccHva`: SAP Schema Name.
         /// </summary>
         [Input("sapSchema", required: true)]
         public string SapSchema { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `hana_sap_hva_b1`: The schema name where the HANA tables reside.
-        /// 	- Service `hana_sap_hva_ecc`: The Hana schema name where the SAP tables reside.
-        /// 	- Service `hana_sap_hva_ecc_netweaver`: The Hana schema name where the SAP tables reside.
-        /// 	- Service `hana_sap_hva_s4`: The Hana schema name where the SAP tables reside.
-        /// 	- Service `hana_sap_hva_s4_netweaver`: The Hana schema name where the SAP tables reside.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `HanaSapHvaB1`: The schema name where the HANA tables reside.
+        /// 	- Service `HanaSapHvaEcc`: The Hana schema name where the SAP tables reside.
+        /// 	- Service `HanaSapHvaEccNetweaver`: The Hana schema name where the SAP tables reside.
+        /// 	- Service `HanaSapHvaS4`: The Hana schema name where the SAP tables reside.
+        /// 	- Service `HanaSapHvaS4Netweaver`: The Hana schema name where the SAP tables reside.
         /// </summary>
         [Input("sapSourceSchema", required: true)]
         public string SapSourceSchema { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `oracle_sap_hva`: The Oracle schema name where the SAP tables reside.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `OracleSapHva`: The Oracle schema name where the SAP tables reside.
         /// </summary>
         [Input("sapUser", required: true)]
         public string SapUser { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `apache_kafka`: SASL Mechanism
-        /// 	- Service `aws_msk`: If `security_protocol` is set to `SASL`, enter the SASL Mechanism
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ApacheKafka`: SASL Mechanism
+        /// 	- Service `AwsMsk`: If `SecurityProtocol` is set to `SASL`, enter the SASL Mechanism
         /// </summary>
         [Input("saslMechanism", required: true)]
         public string SaslMechanism { get; set; } = null!;
@@ -6162,8 +6162,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _saslPlainKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `apache_kafka`: API Key
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ApacheKafka`: API Key
         /// </summary>
         public string? SaslPlainKey
         {
@@ -6175,8 +6175,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _saslPlainSecret;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `apache_kafka`: API Secret
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ApacheKafka`: API Secret
         /// </summary>
         public string? SaslPlainSecret
         {
@@ -6188,8 +6188,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _saslScram256Key;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `apache_kafka`: API Key
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ApacheKafka`: API Key
         /// </summary>
         public string? SaslScram256Key
         {
@@ -6201,8 +6201,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _saslScram256Secret;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `apache_kafka`: API Secret
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ApacheKafka`: API Secret
         /// </summary>
         public string? SaslScram256Secret
         {
@@ -6214,9 +6214,9 @@ namespace Pulumi.Fivetran.Inputs
         private string? _saslScram512Key;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `apache_kafka`: API Key
-        /// 	- Service `aws_msk`: If `sasl_mechanism` is set to `SCRAM_SHA_512`, enter your secret's `saslScram512Key`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ApacheKafka`: API Key
+        /// 	- Service `AwsMsk`: If `SaslMechanism` is set to `SCRAM_SHA_512`, enter your secret's `saslScram512Key`.
         /// </summary>
         public string? SaslScram512Key
         {
@@ -6228,9 +6228,9 @@ namespace Pulumi.Fivetran.Inputs
         private string? _saslScram512Secret;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `apache_kafka`: API Secret
-        /// 	- Service `aws_msk`: If `sasl_mechanism` is set to `SCRAM_SHA_512`, enter your secret's `saslScram512Key`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ApacheKafka`: API Secret
+        /// 	- Service `AwsMsk`: If `SaslMechanism` is set to `SCRAM_SHA_512`, enter your secret's `saslScram512Key`.
         /// </summary>
         public string? SaslScram512Secret
         {
@@ -6239,10 +6239,10 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `apache_kafka`: Schema Registry Credentials source
-        /// 	- Service `aws_msk`: Schema Registry Credentials source
-        /// 	- Service `confluent_cloud`: Schema Registry Credentials source
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ApacheKafka`: Schema Registry Credentials source
+        /// 	- Service `AwsMsk`: Schema Registry Credentials source
+        /// 	- Service `ConfluentCloud`: Schema Registry Credentials source
         /// </summary>
         [Input("schemaRegistryCredentialsSource", required: true)]
         public string SchemaRegistryCredentialsSource { get; set; } = null!;
@@ -6251,11 +6251,11 @@ namespace Pulumi.Fivetran.Inputs
         private string? _schemaRegistryKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `apache_kafka`: Schema Registry Key
-        /// 	- Service `aws_msk`: Schema Registry Key
-        /// 	- Service `azure_service_bus`: The key used to access the schema registry. Required for the `avro` and `protobuf` message types
-        /// 	- Service `confluent_cloud`: Schema Registry Key
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ApacheKafka`: Schema Registry Key
+        /// 	- Service `AwsMsk`: Schema Registry Key
+        /// 	- Service `AzureServiceBus`: The key used to access the schema registry. Required for the `Avro` and `Protobuf` message types
+        /// 	- Service `ConfluentCloud`: Schema Registry Key
         /// </summary>
         public string? SchemaRegistryKey
         {
@@ -6267,11 +6267,11 @@ namespace Pulumi.Fivetran.Inputs
         private string? _schemaRegistrySecret;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `apache_kafka`: Schema Registry Secret
-        /// 	- Service `aws_msk`: Schema Registry Secret
-        /// 	- Service `azure_service_bus`: The secret used to access the schema registry. Required for the `avro` and `protobuf` message types
-        /// 	- Service `confluent_cloud`: Schema Registry Secret
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ApacheKafka`: Schema Registry Secret
+        /// 	- Service `AwsMsk`: Schema Registry Secret
+        /// 	- Service `AzureServiceBus`: The secret used to access the schema registry. Required for the `Avro` and `Protobuf` message types
+        /// 	- Service `ConfluentCloud`: Schema Registry Secret
         /// </summary>
         public string? SchemaRegistrySecret
         {
@@ -6283,11 +6283,11 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _schemaRegistryUrls;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `apache_kafka`: Your schema registry URLs
-        /// 	- Service `aws_msk`: Your schema registry URLs
-        /// 	- Service `azure_service_bus`: The comma-separated list of schema registry servers in the `server:port` format
-        /// 	- Service `confluent_cloud`: Your schema registry URLs
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ApacheKafka`: Your schema registry URLs
+        /// 	- Service `AwsMsk`: Your schema registry URLs
+        /// 	- Service `AzureServiceBus`: The comma-separated list of schema registry servers in the `server:port` format
+        /// 	- Service `ConfluentCloud`: Your schema registry URLs
         /// </summary>
         public List<string> SchemaRegistryUrls
         {
@@ -6296,16 +6296,16 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `ebay`: Your eBay scopes.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Ebay`: Your eBay scopes.
         /// </summary>
         [Input("scope", required: true)]
         public string Scope { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `cornerstone`: Your Cornerstone scopes.
-        /// 	- Service `fortnox`: Your Fortnox app scopes.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Cornerstone`: Your Cornerstone scopes.
+        /// 	- Service `Fortnox`: Your Fortnox app scopes.
         /// </summary>
         [Input("scopes", required: true)]
         public string Scopes { get; set; } = null!;
@@ -6314,8 +6314,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _seats;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `yahoo_dsp`: Specific Seats to sync. Must be populated if `sync_mode_seat` is set to `SPECIFIC_SEATS`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `YahooDsp`: Specific Seats to sync. Must be populated if `SyncModeSeat` is set to `SPECIFIC_SEATS`.
         /// </summary>
         public List<string> Seats
         {
@@ -6327,18 +6327,18 @@ namespace Pulumi.Fivetran.Inputs
         private string? _secret;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `appcues`: Your Appcues Secret.
-        /// 	- Service `buildium`: Your Buildium API secret.
-        /// 	- Service `canvas_data_2_by_instructure`: Your Canvas Data 2 by Instructure secret.
-        /// 	- Service `loopio`: Your Loopio Secret.
-        /// 	- Service `mode`: Your Mode Secret.
-        /// 	- Service `playvox_workforce_management`: Your Playvox Workforce Management client secret.
-        /// 	- Service `tiktok_organic`: The secret of the app registered in your TikTok developer account.
-        /// 	- Service `twilio`: The Twilio API secret
-        /// 	- Service `uservoice`: The UserVoice API secret.
-        /// 	- Service `venminder`: Your Venminder secret.
-        /// 	- Service `vts`: Your VTS secret.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Appcues`: Your Appcues Secret.
+        /// 	- Service `Buildium`: Your Buildium API secret.
+        /// 	- Service `CanvasData2ByInstructure`: Your Canvas Data 2 by Instructure secret.
+        /// 	- Service `Loopio`: Your Loopio Secret.
+        /// 	- Service `Mode`: Your Mode Secret.
+        /// 	- Service `PlayvoxWorkforceManagement`: Your Playvox Workforce Management client secret.
+        /// 	- Service `TiktokOrganic`: The secret of the app registered in your TikTok developer account.
+        /// 	- Service `Twilio`: The Twilio API secret
+        /// 	- Service `Uservoice`: The UserVoice API secret.
+        /// 	- Service `Venminder`: Your Venminder secret.
+        /// 	- Service `Vts`: Your VTS secret.
         /// </summary>
         public string? Secret
         {
@@ -6350,8 +6350,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _secretAccessKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `validio`: Your Validio secret access key.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Validio`: Your Validio secret access key.
         /// </summary>
         public string? SecretAccessKey
         {
@@ -6363,23 +6363,23 @@ namespace Pulumi.Fivetran.Inputs
         private string? _secretKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `afterpay`: Your Afterpay Secret Key.
-        /// 	- Service `appsflyer`: Your AWS secret key.
-        /// 	- Service `bigquery_db`: Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.
-        /// 	- Service `checkr`: Your Checkr secret key.
-        /// 	- Service `ezofficeinventory`: Your EZOfficeInventory API secret key.
-        /// 	- Service `gcs`: Your JSON Private Key. Used to authorize service account. Required if you use a Custom Service Account to authenticate the storage bucket.
-        /// 	- Service `ironsource`: Your Ironsource `Client ID`.
-        /// 	- Service `line_ads`: Your LINE Ads secret key.
-        /// 	- Service `mailjet`: Your Mailjet secret key.
-        /// 	- Service `partnerstack_vendor`: Your PartnerStack Vendor Secret key.
-        /// 	- Service `paypal`: `Client Secret` of your PayPal client application.
-        /// 	- Service `paypal_sandbox`: `Client Secret` of your PayPal client application.
-        /// 	- Service `phoenix_ads`: Your Phoenix Ads Secret key.
-        /// 	- Service `retailnext`: Your RetailNext secret key.
-        /// 	- Service `statsig`: Your Statsig secret key.
-        /// 	- Service `yotpo`: Your Yotpo Secret key
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Afterpay`: Your Afterpay Secret Key.
+        /// 	- Service `Appsflyer`: Your AWS secret key.
+        /// 	- Service `BigqueryDb`: Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.
+        /// 	- Service `Checkr`: Your Checkr secret key.
+        /// 	- Service `Ezofficeinventory`: Your EZOfficeInventory API secret key.
+        /// 	- Service `Gcs`: Your JSON Private Key. Used to authorize service account. Required if you use a Custom Service Account to authenticate the storage bucket.
+        /// 	- Service `Ironsource`: Your Ironsource `Client ID`.
+        /// 	- Service `LineAds`: Your LINE Ads secret key.
+        /// 	- Service `Mailjet`: Your Mailjet secret key.
+        /// 	- Service `PartnerstackVendor`: Your PartnerStack Vendor Secret key.
+        /// 	- Service `Paypal`: `Client Secret` of your PayPal client application.
+        /// 	- Service `PaypalSandbox`: `Client Secret` of your PayPal client application.
+        /// 	- Service `PhoenixAds`: Your Phoenix Ads Secret key.
+        /// 	- Service `Retailnext`: Your RetailNext secret key.
+        /// 	- Service `Statsig`: Your Statsig secret key.
+        /// 	- Service `Yotpo`: Your Yotpo Secret key
         /// </summary>
         public string? SecretKey
         {
@@ -6391,10 +6391,10 @@ namespace Pulumi.Fivetran.Inputs
         private string? _secrets;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_lambda`: The secrets that should be passed to the function at runtime.
-        /// 	- Service `azure_function`: The secrets that should be passed to the function at runtime.
-        /// 	- Service `google_cloud_function`: The secrets that should be passed to the function at runtime.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsLambda`: The secrets that should be passed to the function at runtime.
+        /// 	- Service `AzureFunction`: The secrets that should be passed to the function at runtime.
+        /// 	- Service `GoogleCloudFunction`: The secrets that should be passed to the function at runtime.
         /// </summary>
         public string? Secrets
         {
@@ -6406,10 +6406,10 @@ namespace Pulumi.Fivetran.Inputs
         private List<Inputs.GetConnectorConfigSecretsListArgs>? _secretsLists;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_lambda`: List of Secrets that should be passed to the function at runtime.
-        /// 	- Service `azure_function`: The list of secrets that should be passed to the function at runtime.
-        /// 	- Service `google_cloud_function`: The list of secrets that should be passed to the function at runtime.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsLambda`: List of Secrets that should be passed to the function at runtime.
+        /// 	- Service `AzureFunction`: The list of secrets that should be passed to the function at runtime.
+        /// 	- Service `GoogleCloudFunction`: The list of secrets that should be passed to the function at runtime.
         /// </summary>
         public List<Inputs.GetConnectorConfigSecretsListArgs> SecretsLists
         {
@@ -6418,11 +6418,11 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `apache_kafka`: Security protocol for Kafka interaction.
-        /// 	- Service `aws_msk`: The security protocol for Kafka interaction.
-        /// 	- Service `confluent_cloud`: Security protocol for Confluent Cloud interaction.
-        /// 	- Service `heroku_kafka`: Security protocol for Heroku Kafka interaction.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ApacheKafka`: Security protocol for Kafka interaction.
+        /// 	- Service `AwsMsk`: The security protocol for Kafka interaction.
+        /// 	- Service `ConfluentCloud`: Security protocol for Confluent Cloud interaction.
+        /// 	- Service `HerokuKafka`: Security protocol for Heroku Kafka interaction.
         /// </summary>
         [Input("securityProtocol", required: true)]
         public string SecurityProtocol { get; set; } = null!;
@@ -6431,8 +6431,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _segments;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_analytics`: A segment is a subset of your Analytics data that is made up of one or more non-destructive filters (filters that do not alter the underlying data). Those filters isolate subsets of users, sessions, and hits.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleAnalytics`: A segment is a subset of your Analytics data that is made up of one or more non-destructive filters (filters that do not alter the underlying data). Those filters isolate subsets of users, sessions, and hits.
         /// </summary>
         public List<string> Segments
         {
@@ -6444,8 +6444,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _selectedEventTypes;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `salesforce_marketing_cloud`: Select the event types to be synced.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SalesforceMarketingCloud`: Select the event types to be synced.
         /// </summary>
         public List<string> SelectedEventTypes
         {
@@ -6457,8 +6457,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _selectedExports;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `anaplan`: The list of export IDs in the format `workspace_id_model_id_export_id` that the connector will sync. Must be populated if `sync_mode` is set to `SpecificExports`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Anaplan`: The list of export IDs in the format `WorkspaceIdModelIdExportId` that the connector will sync. Must be populated if `SyncMode` is set to `SpecificExports`.
         /// </summary>
         public List<string> SelectedExports
         {
@@ -6467,8 +6467,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `sage_intacct`: Your Sender ID
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SageIntacct`: Your Sender ID
         /// </summary>
         [Input("senderId", required: true)]
         public string SenderId { get; set; } = null!;
@@ -6477,8 +6477,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _senderPassword;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `sage_intacct`: Your Sender Password
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SageIntacct`: Your Sender Password
         /// </summary>
         public string? SenderPassword
         {
@@ -6487,39 +6487,39 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `castor_edc`: Your Castor EDC server.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `CastorEdc`: Your Castor EDC server.
         /// </summary>
         [Input("server", required: true)]
         public string Server { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `tableau_source`: Your Tableau Source server address.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `TableauSource`: Your Tableau Source server address.
         /// </summary>
         [Input("serverAddress", required: true)]
         public string ServerAddress { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `clockify`: Your Clockify server region.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Clockify`: Your Clockify server region.
         /// </summary>
         [Input("serverRegion", required: true)]
         public string ServerRegion { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `oracle_business_intelligence_publisher`: The Oracle Business Intelligence Instance URL.
-        /// 	- Service `oracle_fusion_cloud_apps_crm`: The Oracle Fusion Cloud Instance URL.
-        /// 	- Service `oracle_fusion_cloud_apps_fscm`: The Oracle Fusion Cloud Instance URL.
-        /// 	- Service `oracle_fusion_cloud_apps_hcm`: The Oracle Fusion Cloud Instance URL.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `OracleBusinessIntelligencePublisher`: The Oracle Business Intelligence Instance URL.
+        /// 	- Service `OracleFusionCloudAppsCrm`: The Oracle Fusion Cloud Instance URL.
+        /// 	- Service `OracleFusionCloudAppsFscm`: The Oracle Fusion Cloud Instance URL.
+        /// 	- Service `OracleFusionCloudAppsHcm`: The Oracle Fusion Cloud Instance URL.
         /// </summary>
         [Input("serverUrl", required: true)]
         public string ServerUrl { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `myosh`: Your myosh server variable.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Myosh`: Your myosh server variable.
         /// </summary>
         [Input("serverVariable", required: true)]
         public string ServerVariable { get; set; } = null!;
@@ -6528,11 +6528,11 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _servers;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `apache_kafka`: Comma-separated list of Kafka servers in the format `server:port`.
-        /// 	- Service `aws_msk`: Comma-separated list of Kafka servers in the `server:port` format.
-        /// 	- Service `confluent_cloud`: Comma-separated list of Confluent Cloud servers in the format `server:port`.
-        /// 	- Service `heroku_kafka`: Comma-separated list of Heroku Kafka servers in the format `server:port`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ApacheKafka`: Comma-separated list of Kafka servers in the format `server:port`.
+        /// 	- Service `AwsMsk`: Comma-separated list of Kafka servers in the `server:port` format.
+        /// 	- Service `ConfluentCloud`: Comma-separated list of Confluent Cloud servers in the format `server:port`.
+        /// 	- Service `HerokuKafka`: Comma-separated list of Heroku Kafka servers in the format `server:port`.
         /// </summary>
         public List<string> Servers
         {
@@ -6541,15 +6541,15 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_drive`: Share the folder with the email address
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleDrive`: Share the folder with the email address
         /// </summary>
         [Input("serviceAccount", required: true)]
         public string ServiceAccount { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_cloud_function`: Provide Invoker role to this service account.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleCloudFunction`: Provide Invoker role to this service account.
         /// </summary>
         [Input("serviceAccountEmail", required: true)]
         public string ServiceAccountEmail { get; set; } = null!;
@@ -6558,8 +6558,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _serviceAccountKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `firebase`: The contents of your service account key file. Required for authentication.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Firebase`: The contents of your service account key file. Required for authentication.
         /// </summary>
         public string? ServiceAccountKey
         {
@@ -6571,8 +6571,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _serviceAccountSecret;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `mixpanel`: Service Account Secret
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Mixpanel`: Service Account Secret
         /// </summary>
         public string? ServiceAccountSecret
         {
@@ -6581,8 +6581,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `mixpanel`: Service Account Username
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Mixpanel`: Service Account Username
         /// </summary>
         [Input("serviceAccountUsername", required: true)]
         public string ServiceAccountUsername { get; set; } = null!;
@@ -6591,8 +6591,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _serviceAuthentication;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `dsv`: A base64 encoded variant of your `username:password` string. Required for authentication.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Dsv`: A base64 encoded variant of your `username:password` string. Required for authentication.
         /// </summary>
         public string? ServiceAuthentication
         {
@@ -6601,10 +6601,10 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `hana_sap_hva_ecc_netweaver`: Unique identifier sapsid of the SAP system. This field is displayed only when the REMOTE SERVICE IDENTIFICATION is set to Service.
-        /// 	- Service `hana_sap_hva_s4_netweaver`: Unique identifier sapsid of the SAP system. This field is displayed only when the REMOTE SERVICE IDENTIFICATION is set to Service.
-        /// 	- Service `walmart_marketplace`: Your Walmart Marketplace service name.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `HanaSapHvaEccNetweaver`: Unique identifier sapsid of the SAP system. This field is displayed only when the REMOTE SERVICE IDENTIFICATION is set to Service.
+        /// 	- Service `HanaSapHvaS4Netweaver`: Unique identifier sapsid of the SAP system. This field is displayed only when the REMOTE SERVICE IDENTIFICATION is set to Service.
+        /// 	- Service `WalmartMarketplace`: Your Walmart Marketplace service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
@@ -6613,17 +6613,17 @@ namespace Pulumi.Fivetran.Inputs
         public string ServiceVersion { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics_data_feed`: SFTP host.
-        /// 	- Service `salesforce_marketing_cloud`: Host
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalyticsDataFeed`: SFTP host.
+        /// 	- Service `SalesforceMarketingCloud`: Host
         /// </summary>
         [Input("sftpHost", required: true)]
         public string SftpHost { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics_data_feed`: Log in with key pair or password
-        /// 	- Service `salesforce_marketing_cloud`: Set this field if you use a key pair for logging into your SFTP server. Don't set it if you use a username and password
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalyticsDataFeed`: Log in with key pair or password
+        /// 	- Service `SalesforceMarketingCloud`: Set this field if you use a key pair for logging into your SFTP server. Don't set it if you use a username and password
         /// </summary>
         [Input("sftpIsKeyPair", required: true)]
         public bool SftpIsKeyPair { get; set; }
@@ -6632,9 +6632,9 @@ namespace Pulumi.Fivetran.Inputs
         private string? _sftpPassword;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics_data_feed`: SFTP password required if sftp_is_key_pair is false
-        /// 	- Service `salesforce_marketing_cloud`: Password
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalyticsDataFeed`: SFTP password required if SftpIsKeyPair is false
+        /// 	- Service `SalesforceMarketingCloud`: Password
         /// </summary>
         public string? SftpPassword
         {
@@ -6643,53 +6643,53 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics_data_feed`: SFTP port.
-        /// 	- Service `salesforce_marketing_cloud`: Port
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalyticsDataFeed`: SFTP port.
+        /// 	- Service `SalesforceMarketingCloud`: Port
         /// </summary>
         [Input("sftpPort", required: true)]
         public int SftpPort { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics_data_feed`: Public Key
-        /// 	- Service `salesforce_marketing_cloud`: Public Key
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalyticsDataFeed`: Public Key
+        /// 	- Service `SalesforceMarketingCloud`: Public Key
         /// </summary>
         [Input("sftpPublicKey", required: true)]
         public string SftpPublicKey { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics_data_feed`: SFTP user.
-        /// 	- Service `salesforce_marketing_cloud`: User
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalyticsDataFeed`: SFTP user.
+        /// 	- Service `SalesforceMarketingCloud`: User
         /// </summary>
         [Input("sftpUser", required: true)]
         public string SftpUser { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `share_point`: Your SharePoint folder URL. You can find the folder URL by following the steps mentioned [here](https://fivetran.com/docs/connectors/files/share-point/setup-guide).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SharePoint`: Your SharePoint folder URL. You can find the folder URL by following the steps mentioned [here](https://fivetran.com/docs/connectors/files/share-point/setup-guide).
         /// </summary>
         [Input("shareUrl", required: true)]
         public string ShareUrl { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_sheets`: The URL of the sheet that can be copied from the browser address bar, or the ID of the sheet that can be found in the sheet's URL between **/d/** and **/edit**.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleSheets`: The URL of the sheet that can be copied from the browser address bar, or the ID of the sheet that can be found in the sheet's URL between **/d/** and **/edit**.
         /// </summary>
         [Input("sheetId", required: true)]
         public string SheetId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `shopify`: The Shopify shop name. Can be found in the URL before **.myshopify.com**.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Shopify`: The Shopify shop name. Can be found in the URL before **.myshopify.com**.
         /// </summary>
         [Input("shop", required: true)]
         public string Shop { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `triple_whale`: Your Triple Whale shop domain.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `TripleWhale`: Your Triple Whale shop domain.
         /// </summary>
         [Input("shopDomain", required: true)]
         public string ShopDomain { get; set; } = null!;
@@ -6698,8 +6698,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _shortCode;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `salesforce_commerce_cloud`: The Salesforce eight-character string assigned to a realm for routing purposes.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SalesforceCommerceCloud`: The Salesforce eight-character string assigned to a realm for routing purposes.
         /// </summary>
         public string? ShortCode
         {
@@ -6708,72 +6708,72 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `klaviyo`: Sync events linked to deleted profiles
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Klaviyo`: Sync events linked to deleted profiles
         /// </summary>
         [Input("shouldSyncEventsWithDeletedProfiles", required: true)]
         public bool ShouldSyncEventsWithDeletedProfiles { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `netsuite_suiteanalytics`: Re-sync re-import tables during every sync
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `NetsuiteSuiteanalytics`: Re-sync re-import tables during every sync
         /// </summary>
         [Input("shouldSyncReimportTables", required: true)]
         public bool ShouldSyncReimportTables { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `apple_search_ads`: Turn the toggle on if you want the reports to also return records without metrics.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AppleSearchAds`: Turn the toggle on if you want the reports to also return records without metrics.
         /// </summary>
         [Input("showRecordsWithNoMetrics", required: true)]
         public bool ShowRecordsWithNoMetrics { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `twilio`: The Twilio API key SID
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Twilio`: The Twilio API key SID
         /// </summary>
         [Input("sid", required: true)]
         public string Sid { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `webhooks`: This is used in HMAC auth method to decode and verify the signature. Supported encodings BASE64 and HEXA_DECIMAL. Default: BASE64
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Webhooks`: This is used in HMAC auth method to decode and verify the signature. Supported encodings BASE64 and HEXA_DECIMAL. Default: BASE64
         /// </summary>
         [Input("signatureEncoding", required: true)]
         public string SignatureEncoding { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `azure_blob_storage`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
-        /// 	- Service `ftp`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
-        /// 	- Service `gcs`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
-        /// 	- Service `s3`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
-        /// 	- Service `s3_compatible_storage`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
-        /// 	- Service `sftp`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
-        /// 	- Service `wasabi_cloud_storage`: The contents of the signer's public key file. Must be populated if `use_pgp_encryption_options` is set to `true` and PGP encrypted files are signed.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureBlobStorage`: The contents of the signer's public key file. Must be populated if `UsePgpEncryptionOptions` is set to `True` and PGP encrypted files are signed.
+        /// 	- Service `Ftp`: The contents of the signer's public key file. Must be populated if `UsePgpEncryptionOptions` is set to `True` and PGP encrypted files are signed.
+        /// 	- Service `Gcs`: The contents of the signer's public key file. Must be populated if `UsePgpEncryptionOptions` is set to `True` and PGP encrypted files are signed.
+        /// 	- Service `S3`: The contents of the signer's public key file. Must be populated if `UsePgpEncryptionOptions` is set to `True` and PGP encrypted files are signed.
+        /// 	- Service `S3CompatibleStorage`: The contents of the signer's public key file. Must be populated if `UsePgpEncryptionOptions` is set to `True` and PGP encrypted files are signed.
+        /// 	- Service `Sftp`: The contents of the signer's public key file. Must be populated if `UsePgpEncryptionOptions` is set to `True` and PGP encrypted files are signed.
+        /// 	- Service `WasabiCloudStorage`: The contents of the signer's public key file. Must be populated if `UsePgpEncryptionOptions` is set to `True` and PGP encrypted files are signed.
         /// </summary>
         [Input("signerPublicKey", required: true)]
         public string SignerPublicKey { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `teamwork`: Your Teamwork site address.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Teamwork`: Your Teamwork site address.
         /// </summary>
         [Input("siteAddress", required: true)]
         public string SiteAddress { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `microsoft_lists`: The Site ID of the SharePoint site from which you want to sync your lists. The Site ID is the `id` field in the [Graph API](https://docs.microsoft.com/en-us/graph/api/site-search?view=graph-rest-1.0&amp;tabs=http) response for sites.
-        /// 	- Service `salesforce_commerce_cloud`: The name of the site from which you want to sync data.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `MicrosoftLists`: The Site ID of the SharePoint site from which you want to sync your lists. The Site ID is the `Id` field in the [Graph API](https://docs.microsoft.com/en-us/graph/api/site-search?view=graph-rest-1.0&amp;tabs=http) response for sites.
+        /// 	- Service `SalesforceCommerceCloud`: The name of the site from which you want to sync data.
         /// </summary>
         [Input("siteId", required: true)]
         public string SiteId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `microsoft_lists`: The Name of the SharePoint site. The Site Name is the `name` field in the Graph API response for sites.
-        /// 	- Service `tableau_source`: Your Tableau Source site name.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `MicrosoftLists`: The Name of the SharePoint site. The Site Name is the `Name` field in the Graph API response for sites.
+        /// 	- Service `TableauSource`: Your Tableau Source site name.
         /// </summary>
         [Input("siteName", required: true)]
         public string SiteName { get; set; } = null!;
@@ -6782,8 +6782,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _siteUrls;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_search_console`: Specific Site URLs to sync. Must be populated if `sync_mode` is set to `SpecificSites`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleSearchConsole`: Specific Site URLs to sync. Must be populated if `SyncMode` is set to `SpecificSites`.
         /// </summary>
         public List<string> SiteUrls
         {
@@ -6792,48 +6792,48 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_cost_report`: Enter 1 or greater
-        /// 	- Service `azure_blob_storage`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
-        /// 	- Service `box`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
-        /// 	- Service `dropbox`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
-        /// 	- Service `email`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
-        /// 	- Service `ftp`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
-        /// 	- Service `gcs`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
-        /// 	- Service `google_drive`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
-        /// 	- Service `kinesis`: Enter 1 or greater
-        /// 	- Service `s3`: We will skip over the number of lines specified at the end to avoid introducing aberrant data into your destination.
-        /// 	- Service `s3_compatible_storage`: We will skip over the number of lines specified at the end to avoid introducing aberrant data into your destination.
-        /// 	- Service `sftp`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
-        /// 	- Service `share_point`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
-        /// 	- Service `wasabi_cloud_storage`: We will skip over the number of lines specified at the end to avoid introducing aberrant data into your destination.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsCostReport`: Enter 1 or greater
+        /// 	- Service `AzureBlobStorage`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
+        /// 	- Service `Box`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
+        /// 	- Service `Dropbox`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
+        /// 	- Service `Email`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
+        /// 	- Service `Ftp`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
+        /// 	- Service `Gcs`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
+        /// 	- Service `GoogleDrive`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
+        /// 	- Service `Kinesis`: Enter 1 or greater
+        /// 	- Service `S3`: We will skip over the number of lines specified at the end to avoid introducing aberrant data into your destination.
+        /// 	- Service `S3CompatibleStorage`: We will skip over the number of lines specified at the end to avoid introducing aberrant data into your destination.
+        /// 	- Service `Sftp`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
+        /// 	- Service `SharePoint`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
+        /// 	- Service `WasabiCloudStorage`: We will skip over the number of lines specified at the end to avoid introducing aberrant data into your destination.
         /// </summary>
         [Input("skipAfter", required: true)]
         public int SkipAfter { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_cost_report`: Enter 1 or greater
-        /// 	- Service `azure_blob_storage`: We will skip over the number of lines specified before syncing data.
-        /// 	- Service `box`: We will skip over the number of lines specified before syncing data.
-        /// 	- Service `dropbox`: We will skip over the number of lines specified before syncing data.
-        /// 	- Service `email`: We will skip over the number of lines specified before syncing data.
-        /// 	- Service `ftp`: We will skip over the number of lines specified before syncing data.
-        /// 	- Service `gcs`: We will skip over the number of lines specified before syncing data.
-        /// 	- Service `google_drive`: We will skip over the number of lines specified before syncing data.
-        /// 	- Service `kinesis`: Enter 1 or greater
-        /// 	- Service `s3`: We will skip over the number of lines specified before syncing data.
-        /// 	- Service `s3_compatible_storage`: We will skip over the number of lines specified before syncing data.
-        /// 	- Service `sftp`: We will skip over the number of lines specified before syncing data.
-        /// 	- Service `share_point`: We will skip over the number of lines specified before syncing data.
-        /// 	- Service `wasabi_cloud_storage`: We will skip over the number of lines specified before syncing data.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsCostReport`: Enter 1 or greater
+        /// 	- Service `AzureBlobStorage`: We will skip over the number of lines specified before syncing data.
+        /// 	- Service `Box`: We will skip over the number of lines specified before syncing data.
+        /// 	- Service `Dropbox`: We will skip over the number of lines specified before syncing data.
+        /// 	- Service `Email`: We will skip over the number of lines specified before syncing data.
+        /// 	- Service `Ftp`: We will skip over the number of lines specified before syncing data.
+        /// 	- Service `Gcs`: We will skip over the number of lines specified before syncing data.
+        /// 	- Service `GoogleDrive`: We will skip over the number of lines specified before syncing data.
+        /// 	- Service `Kinesis`: Enter 1 or greater
+        /// 	- Service `S3`: We will skip over the number of lines specified before syncing data.
+        /// 	- Service `S3CompatibleStorage`: We will skip over the number of lines specified before syncing data.
+        /// 	- Service `Sftp`: We will skip over the number of lines specified before syncing data.
+        /// 	- Service `SharePoint`: We will skip over the number of lines specified before syncing data.
+        /// 	- Service `WasabiCloudStorage`: We will skip over the number of lines specified before syncing data.
         /// </summary>
         [Input("skipBefore", required: true)]
         public int SkipBefore { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_ads`: Toggles the ["Skip empty reports"](https://fivetran.com/docs/connectors/applications/google-ads#skipemptyreports) feature. Enabled by default
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleAds`: Toggles the ["Skip empty reports"](https://fivetran.com/docs/connectors/applications/google-ads#skipemptyreports) feature. Enabled by default
         /// </summary>
         [Input("skipEmptyReports", required: true)]
         public bool SkipEmptyReports { get; set; }
@@ -6858,9 +6858,9 @@ namespace Pulumi.Fivetran.Inputs
         public string SncFivetranName { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `hana_sap_hva_ecc_netweaver`: Path to the external security product's library.
-        /// 	- Service `hana_sap_hva_s4_netweaver`: Path to the external security product's library.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `HanaSapHvaEccNetweaver`: Path to the external security product's library.
+        /// 	- Service `HanaSapHvaS4Netweaver`: Path to the external security product's library.
         /// </summary>
         [Input("sncLibraryPath", required: true)]
         public string SncLibraryPath { get; set; } = null!;
@@ -6872,17 +6872,17 @@ namespace Pulumi.Fivetran.Inputs
         public string SncMyName { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `hana_sap_hva_ecc_netweaver`: Client SNC name.
-        /// 	- Service `hana_sap_hva_s4_netweaver`: Client SNC name.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `HanaSapHvaEccNetweaver`: Client SNC name.
+        /// 	- Service `HanaSapHvaS4Netweaver`: Client SNC name.
         /// </summary>
         [Input("sncName", required: true)]
         public string SncName { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `hana_sap_hva_ecc_netweaver`: Communication partner's SNC name.
-        /// 	- Service `hana_sap_hva_s4_netweaver`: Communication partner's SNC name.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `HanaSapHvaEccNetweaver`: Communication partner's SNC name.
+        /// 	- Service `HanaSapHvaS4Netweaver`: Communication partner's SNC name.
         /// </summary>
         [Input("sncPartnerName", required: true)]
         public string SncPartnerName { get; set; } = null!;
@@ -6891,36 +6891,36 @@ namespace Pulumi.Fivetran.Inputs
         public string SncSourceName { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `marketo`: Marketo SOAP API Endpoint.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Marketo`: Marketo SOAP API Endpoint.
         /// </summary>
         [Input("soapUri", required: true)]
         public string SoapUri { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `linkedin_company_pages`: The social data (UGCPosts, Shares, Comments) sync time frame in months. Default value: `SIX` .
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `LinkedinCompanyPages`: The social data (UGCPosts, Shares, Comments) sync time frame in months. Default value: `SIX` .
         /// </summary>
         [Input("socialDataSyncTimeframe", required: true)]
         public string SocialDataSyncTimeframe { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics_data_feed`: The data source.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalyticsDataFeed`: The data source.
         /// </summary>
         [Input("source", required: true)]
         public string Source { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `big_commerce`: The BigCommerce store hash.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `BigCommerce`: The BigCommerce store hash.
         /// </summary>
         [Input("storeHash", required: true)]
         public string StoreHash { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `reviewsio`: Your REVIEWS.io store ID
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Reviewsio`: Your REVIEWS.io store ID
         /// </summary>
         [Input("storeId", required: true)]
         public string StoreId { get; set; } = null!;
@@ -6929,8 +6929,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _subCollections;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `firebase`: List of nested collections to sync. Only specified subCollections can be synced.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Firebase`: List of nested collections to sync. Only specified subCollections can be synced.
         /// </summary>
         public List<string> SubCollections
         {
@@ -6939,130 +6939,130 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `absorb_lms`: Your Absorb LMS subdomain.
-        /// 	- Service `activecampaign`: Your ActiveCampaign sub-domain.
-        /// 	- Service `acumatica`: Your Acumatica subdomain.
-        /// 	- Service `ada`: Your Ada sub-domain.
-        /// 	- Service `alchemer`: Your Alchemer sub-domain.
-        /// 	- Service `atlassian_jira_align`: Your Jira Align base URL.
-        /// 	- Service `azure_boards`: Your Azure Boards Organization Name.
-        /// 	- Service `azure_devops`: Your Azure Organization Name
-        /// 	- Service `betterworks`: Your Betterworks subdomain.
-        /// 	- Service `bubble`: Your Bubble subdomain.
-        /// 	- Service `buildium`: Your Buildium subdomain.
-        /// 	- Service `canvas_by_instructure`: Your Canvas by Instructure domain.
-        /// 	- Service `chargebee_product_catalog_1`: Your Chargebee Product Catalog 1 subdomain.
-        /// 	- Service `chargebee_product_catalog_2`: Your Chargebee subdomain.
-        /// 	- Service `checkr`: Your Checkr subdomain.
-        /// 	- Service `clubspeed`: Your Clubspeed subdomain.
-        /// 	- Service `collibra`: Your collibra subdomain.
-        /// 	- Service `compliance_checkpoint`: Your Compliance Checkpoint subdomain.
-        /// 	- Service `concord`: Your Concord Sub Domain.
-        /// 	- Service `contrast_security`: Your Contrast Security subdomain.
-        /// 	- Service `customerio`: Your Customer.io region-specific Subdomain.
-        /// 	- Service `dbt_cloud`: Your dbt Cloud API server region.
-        /// 	- Service `deputy`: Your Deputy subdomain.
-        /// 	- Service `docebo`: Your Docebo subdomain.
-        /// 	- Service `drata`: Your Drata sub_domain.
-        /// 	- Service `eventsforce`: Your Eventsforce subdomain.
-        /// 	- Service `ezofficeinventory`: Your EZOfficeInventory Subdomain.
-        /// 	- Service `fountain`: Your Fountain subdomain.
-        /// 	- Service `freshchat`: Your Freshchat Sub Domain
-        /// 	- Service `gainsight_customer_success`: The subdomain of your Gainsight account.
-        /// 	- Service `gainsight_product_experience`: Your Gainsight Product Experience subdomain.
-        /// 	- Service `genesys`: Your Genesys subdomain.
-        /// 	- Service `green_power_monitor`: Your GreenPowerMonitor subdomain.
-        /// 	- Service `heartland_retail_pos`: Your Heartland Retail POS subdomain.
-        /// 	- Service `infobip`: Your Infobip sub_domain.
-        /// 	- Service `insightly`: Your company's Insightly subdomain name.
-        /// 	- Service `instructure`: The Sub domain in which your Instructure account is hosted.
-        /// 	- Service `jamf`: Your Jamf subdomain.
-        /// 	- Service `kandji`: Your Kandji Subdomain.
-        /// 	- Service `khoros_care`: Your Khoros Care subDomain.
-        /// 	- Service `looker_source`: Your looker SubDomain name.
-        /// 	- Service `lucca`: Your Lucca subdomain.
-        /// 	- Service `mailgun`: Your Mailgun subdomain.
-        /// 	- Service `matomo`: Your Matomo subdomain.
-        /// 	- Service `maxio_chargify`: Enter Your Subdomain.
-        /// 	- Service `myosh`: Your myosh subdomain.
-        /// 	- Service `namely`: Your Namely subdomain.
-        /// 	- Service `nylas`: Your Nylas subdomain.
-        /// 	- Service `odoo`: Your Odoo subdomain.
-        /// 	- Service `okta`: Your Okta subdomain.
-        /// 	- Service `oracle_fusion_field_service`: Your Oracle Fusion Field Service subDomain.
-        /// 	- Service `picqer`: Your Picqer subdomain.
-        /// 	- Service `pinpoint`: Your Pinpoint sub domain name.
-        /// 	- Service `piwik_pro`: Your Piwik PRO subdomain.
-        /// 	- Service `playvox`: Your Playvox Subdomain.
-        /// 	- Service `posthog`: Your PostHog data region (`app` or `eu`).
-        /// 	- Service `recurly`: Your company's Recurly subdomain.
-        /// 	- Service `reltio`: Your Reltio subdomain.
-        /// 	- Service `revel`: Your Revel Systems subDomain.
-        /// 	- Service `rundeck`: Your Rundeck subdomain.
-        /// 	- Service `sage_hr`: Your Sage HR subdomain.
-        /// 	- Service `salesforce_marketing_cloud`: Your Salesforce Marketing Cloud subdomain.
-        /// 	- Service `salsify`: Your Salsify Organization ID.
-        /// 	- Service `sap_success_factors`: Your SAP SuccessFactors Subdomain.
-        /// 	- Service `sonarqube`: Your Sonarqube subdomain.
-        /// 	- Service `starrez`: Your StarRez subdomain
-        /// 	- Service `sugarcrm`: Your SugarCRM subdomain.
-        /// 	- Service `tableau_source`: Your Tableau Source subdomain.
-        /// 	- Service `tempo`: Your Tempo subdomain.
-        /// 	- Service `testrail`: Your TestRail subdomain.
-        /// 	- Service `thinkific`: Your Thinkific subdomain.
-        /// 	- Service `totango`: Your Totango Subdomain.
-        /// 	- Service `tymeshift`: Your Tymeshift subdomain.
-        /// 	- Service `upland`: Your Upland Software subDomain.
-        /// 	- Service `validio`: Your Validio subdomain.
-        /// 	- Service `wordpress`: Your WordPress subdomain.
-        /// 	- Service `workable`: Your Workable Subdomain.
-        /// 	- Service `wrike`: Your Wrike Subdomain.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AbsorbLms`: Your Absorb LMS subdomain.
+        /// 	- Service `Activecampaign`: Your ActiveCampaign sub-domain.
+        /// 	- Service `Acumatica`: Your Acumatica subdomain.
+        /// 	- Service `Ada`: Your Ada sub-domain.
+        /// 	- Service `Alchemer`: Your Alchemer sub-domain.
+        /// 	- Service `AtlassianJiraAlign`: Your Jira Align base URL.
+        /// 	- Service `AzureBoards`: Your Azure Boards Organization Name.
+        /// 	- Service `AzureDevops`: Your Azure Organization Name
+        /// 	- Service `Betterworks`: Your Betterworks subdomain.
+        /// 	- Service `Bubble`: Your Bubble subdomain.
+        /// 	- Service `Buildium`: Your Buildium subdomain.
+        /// 	- Service `CanvasByInstructure`: Your Canvas by Instructure domain.
+        /// 	- Service `ChargebeeProductCatalog1`: Your Chargebee Product Catalog 1 subdomain.
+        /// 	- Service `ChargebeeProductCatalog2`: Your Chargebee subdomain.
+        /// 	- Service `Checkr`: Your Checkr subdomain.
+        /// 	- Service `Clubspeed`: Your Clubspeed subdomain.
+        /// 	- Service `Collibra`: Your collibra subdomain.
+        /// 	- Service `ComplianceCheckpoint`: Your Compliance Checkpoint subdomain.
+        /// 	- Service `Concord`: Your Concord Sub Domain.
+        /// 	- Service `ContrastSecurity`: Your Contrast Security subdomain.
+        /// 	- Service `Customerio`: Your Customer.io region-specific Subdomain.
+        /// 	- Service `DbtCloud`: Your dbt Cloud API server region.
+        /// 	- Service `Deputy`: Your Deputy subdomain.
+        /// 	- Service `Docebo`: Your Docebo subdomain.
+        /// 	- Service `Drata`: Your Drata sub_domain.
+        /// 	- Service `Eventsforce`: Your Eventsforce subdomain.
+        /// 	- Service `Ezofficeinventory`: Your EZOfficeInventory Subdomain.
+        /// 	- Service `Fountain`: Your Fountain subdomain.
+        /// 	- Service `Freshchat`: Your Freshchat Sub Domain
+        /// 	- Service `GainsightCustomerSuccess`: The subdomain of your Gainsight account.
+        /// 	- Service `GainsightProductExperience`: Your Gainsight Product Experience subdomain.
+        /// 	- Service `Genesys`: Your Genesys subdomain.
+        /// 	- Service `GreenPowerMonitor`: Your GreenPowerMonitor subdomain.
+        /// 	- Service `HeartlandRetailPos`: Your Heartland Retail POS subdomain.
+        /// 	- Service `Infobip`: Your Infobip sub_domain.
+        /// 	- Service `Insightly`: Your company's Insightly subdomain name.
+        /// 	- Service `Instructure`: The Sub domain in which your Instructure account is hosted.
+        /// 	- Service `Jamf`: Your Jamf subdomain.
+        /// 	- Service `Kandji`: Your Kandji Subdomain.
+        /// 	- Service `KhorosCare`: Your Khoros Care subDomain.
+        /// 	- Service `LookerSource`: Your looker SubDomain name.
+        /// 	- Service `Lucca`: Your Lucca subdomain.
+        /// 	- Service `Mailgun`: Your Mailgun subdomain.
+        /// 	- Service `Matomo`: Your Matomo subdomain.
+        /// 	- Service `MaxioChargify`: Enter Your Subdomain.
+        /// 	- Service `Myosh`: Your myosh subdomain.
+        /// 	- Service `Namely`: Your Namely subdomain.
+        /// 	- Service `Nylas`: Your Nylas subdomain.
+        /// 	- Service `Odoo`: Your Odoo subdomain.
+        /// 	- Service `Okta`: Your Okta subdomain.
+        /// 	- Service `OracleFusionFieldService`: Your Oracle Fusion Field Service subDomain.
+        /// 	- Service `Picqer`: Your Picqer subdomain.
+        /// 	- Service `Pinpoint`: Your Pinpoint sub domain name.
+        /// 	- Service `PiwikPro`: Your Piwik PRO subdomain.
+        /// 	- Service `Playvox`: Your Playvox Subdomain.
+        /// 	- Service `Posthog`: Your PostHog data region (`App` or `Eu`).
+        /// 	- Service `Recurly`: Your company's Recurly subdomain.
+        /// 	- Service `Reltio`: Your Reltio subdomain.
+        /// 	- Service `Revel`: Your Revel Systems subDomain.
+        /// 	- Service `Rundeck`: Your Rundeck subdomain.
+        /// 	- Service `SageHr`: Your Sage HR subdomain.
+        /// 	- Service `SalesforceMarketingCloud`: Your Salesforce Marketing Cloud subdomain.
+        /// 	- Service `Salsify`: Your Salsify Organization ID.
+        /// 	- Service `SapSuccessFactors`: Your SAP SuccessFactors Subdomain.
+        /// 	- Service `Sonarqube`: Your Sonarqube subdomain.
+        /// 	- Service `Starrez`: Your StarRez subdomain
+        /// 	- Service `Sugarcrm`: Your SugarCRM subdomain.
+        /// 	- Service `TableauSource`: Your Tableau Source subdomain.
+        /// 	- Service `Tempo`: Your Tempo subdomain.
+        /// 	- Service `Testrail`: Your TestRail subdomain.
+        /// 	- Service `Thinkific`: Your Thinkific subdomain.
+        /// 	- Service `Totango`: Your Totango Subdomain.
+        /// 	- Service `Tymeshift`: Your Tymeshift subdomain.
+        /// 	- Service `Upland`: Your Upland Software subDomain.
+        /// 	- Service `Validio`: Your Validio subdomain.
+        /// 	- Service `Wordpress`: Your WordPress subdomain.
+        /// 	- Service `Workable`: Your Workable Subdomain.
+        /// 	- Service `Wrike`: Your Wrike Subdomain.
         /// </summary>
         [Input("subDomain", required: true)]
         public string SubDomain { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `bamboohr`: The subdomain used to access your account. If you access BambooHR at 'https://mycompany.bamboohr.com', then the subdomain is 'mycompany'.
-        /// 	- Service `datadog`: Your Datadog subdomain.
-        /// 	- Service `ebay`: Your eBay environment.
-        /// 	- Service `freshdesk`: Your company's freshdesk subdomain (usually **company**.freshdesk.com).
-        /// 	- Service `freshsales`: Your Freshsales domain.
-        /// 	- Service `freshservice`: Your company's freshservice subdomain (usually **company**.freshservice.com).
-        /// 	- Service `freshsuccess`: Your Freshsuccess subdomain.
-        /// 	- Service `gorgias`: Your Gorgias subdomain.
-        /// 	- Service `hex`: Your Hex subdomain.
-        /// 	- Service `jama_software`: Your Jama Software subdomain.
-        /// 	- Service `klarna`: Your Klarna subdomain.
-        /// 	- Service `learnupon`: Your Learnupon subdomain.
-        /// 	- Service `maxio_saasoptics`: Your Maxio SaaSOptics subdomain.
-        /// 	- Service `medallia`: Medallia subdomain
-        /// 	- Service `packiyo`: Your Packiyo subdomain.
-        /// 	- Service `qmatic_data_connect`: Your Qmatic Data Connect subdomain.
-        /// 	- Service `sana`: Your Sana subdomain.
-        /// 	- Service `showpad`: Your Showpad subdomain.
-        /// 	- Service `skillstx`: Your SkillsTX subdomain.
-        /// 	- Service `smarthr`: Your SmartHR subdomain.
-        /// 	- Service `sonarqube`: Your Sonarqube subdomain.
-        /// 	- Service `toast`: Your Toast domain.
-        /// 	- Service `vts`: Your VTS Subdomain.
-        /// 	- Service `yext`: Your Yext subdomain. 
-        /// 	- Service `zendesk_chat`: Your Zendesk domain.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Bamboohr`: The subdomain used to access your account. If you access BambooHR at 'https://mycompany.bamboohr.com', then the subdomain is 'mycompany'.
+        /// 	- Service `Datadog`: Your Datadog subdomain.
+        /// 	- Service `Ebay`: Your eBay environment.
+        /// 	- Service `Freshdesk`: Your company's freshdesk subdomain (usually **company**.freshdesk.com).
+        /// 	- Service `Freshsales`: Your Freshsales domain.
+        /// 	- Service `Freshservice`: Your company's freshservice subdomain (usually **company**.freshservice.com).
+        /// 	- Service `Freshsuccess`: Your Freshsuccess subdomain.
+        /// 	- Service `Gorgias`: Your Gorgias subdomain.
+        /// 	- Service `Hex`: Your Hex subdomain.
+        /// 	- Service `JamaSoftware`: Your Jama Software subdomain.
+        /// 	- Service `Klarna`: Your Klarna subdomain.
+        /// 	- Service `Learnupon`: Your Learnupon subdomain.
+        /// 	- Service `MaxioSaasoptics`: Your Maxio SaaSOptics subdomain.
+        /// 	- Service `Medallia`: Medallia subdomain
+        /// 	- Service `Packiyo`: Your Packiyo subdomain.
+        /// 	- Service `QmaticDataConnect`: Your Qmatic Data Connect subdomain.
+        /// 	- Service `Sana`: Your Sana subdomain.
+        /// 	- Service `Showpad`: Your Showpad subdomain.
+        /// 	- Service `Skillstx`: Your SkillsTX subdomain.
+        /// 	- Service `Smarthr`: Your SmartHR subdomain.
+        /// 	- Service `Sonarqube`: Your Sonarqube subdomain.
+        /// 	- Service `Toast`: Your Toast domain.
+        /// 	- Service `Vts`: Your VTS Subdomain.
+        /// 	- Service `Yext`: Your Yext subdomain. 
+        /// 	- Service `ZendeskChat`: Your Zendesk domain.
         /// </summary>
         [Input("subdomain", required: true)]
         public string Subdomain { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `azure_service_bus`: The subscriber name. If the connection string does not have manage permission, you need to specify a subscriber name we can use to fetch data. If not specified, we default to `fivetran_sub_schema`
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureServiceBus`: The subscriber name. If the connection string does not have manage permission, you need to specify a subscriber name we can use to fetch data. If not specified, we default to `FivetranSubSchema`
         /// </summary>
         [Input("subscriberName", required: true)]
         public string SubscriberName { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `retailnext`: Your RetailNext subscription.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Retailnext`: Your RetailNext subscription.
         /// </summary>
         [Input("subscription", required: true)]
         public string Subscription { get; set; } = null!;
@@ -7071,9 +7071,9 @@ namespace Pulumi.Fivetran.Inputs
         private string? _subscriptionKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `cabcharge`: Your Cabcharge subscription key.
-        /// 	- Service `dsv`: Your DSV subscription key.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Cabcharge`: Your Cabcharge subscription key.
+        /// 	- Service `Dsv`: Your DSV subscription key.
         /// </summary>
         public string? SubscriptionKey
         {
@@ -7082,160 +7082,160 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `stripe`: Sync Connected Accounts. Connected Account Documentation - https://stripe.com/docs/api/connected_accounts.
-        /// 	- Service `stripe_test`: Sync Connected Accounts. Connected Account Documentation - https://stripe.com/docs/api/connected_accounts.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Stripe`: Sync Connected Accounts. Connected Account Documentation - https://stripe.com/docs/api/connected_accounts.
+        /// 	- Service `StripeTest`: Sync Connected Accounts. Connected Account Documentation - https://stripe.com/docs/api/connected_accounts.
         /// </summary>
         [Input("supportConnectedAccountsSync", required: true)]
         public bool SupportConnectedAccountsSync { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `workday`: This option is to unpack the nested columns and sync them separately. By default, we sync the nested columns as JSON objects.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Workday`: This option is to unpack the nested columns and sync them separately. By default, we sync the nested columns as JSON objects.
         /// </summary>
         [Input("supportNestedColumns", required: true)]
         public bool SupportNestedColumns { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `qualaroo`: Array of Qualaroo Survey IDs.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Qualaroo`: Array of Qualaroo Survey IDs.
         /// </summary>
         [Input("surveyIds", required: true)]
         public string SurveyIds { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snapchat_ads`: The time period to attribute conversions based on swipes. Default value: `DAY_28`
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SnapchatAds`: The time period to attribute conversions based on swipes. Default value: `DAY_28`
         /// </summary>
         [Input("swipeAttributionWindow", required: true)]
         public string SwipeAttributionWindow { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `appsflyer`: Sync AppsFlyer Data Locker. Default value is `true`, set it to `false` to sync AppsFlyer data using only webhooks.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Appsflyer`: Sync AppsFlyer Data Locker. Default value is `True`, set it to `False` to sync AppsFlyer data using only webhooks.
         /// </summary>
         [Input("syncDataLocker", required: true)]
         public bool SyncDataLocker { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `webhooks`: The webhooks sync format.  Default value: `Unpacked`. Unpacked messages must be valid JSON.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Webhooks`: The webhooks sync format.  Default value: `Unpacked`. Unpacked messages must be valid JSON.
         /// </summary>
         [Input("syncFormat", required: true)]
         public string SyncFormat { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `financial_force`: Enable this option to sync formula fields directly (default value = `false`)
-        /// 	- Service `salesforce`: Enable this option to sync formula fields directly (default value = `false`)
-        /// 	- Service `salesforce_sandbox`: Enable this option to sync formula fields directly (default value = `false`)
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FinancialForce`: Enable this option to sync formula fields directly (default value = `False`)
+        /// 	- Service `Salesforce`: Enable this option to sync formula fields directly (default value = `False`)
+        /// 	- Service `SalesforceSandbox`: Enable this option to sync formula fields directly (default value = `False`)
         /// </summary>
         [Input("syncFormulaFields", required: true)]
         public bool SyncFormulaFields { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook_ads`: Parameter defining whether to enable or disable metadata synchronisation. Default value: `TRUE`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FacebookAds`: Parameter defining whether to enable or disable metadata synchronisation. Default value: `TRUE`.
         /// </summary>
         [Input("syncMetadata", required: true)]
         public bool SyncMetadata { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_lambda`: Sync Method
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsLambda`: Sync Method
         /// </summary>
         [Input("syncMethod", required: true)]
         public string SyncMethod { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adroll`: Whether to sync all advertisables or specific advertisables. Default value: `AllAdvertisables`.
-        /// 	- Service `amazon_ads`: Option to select connector should sync all profiles or specific profiles.
-        /// 	- Service `anaplan`: Whether to sync all exports or specific exports.
-        /// 	- Service `apple_search_ads`: Sync Mode
-        /// 	- Service `asana`: Whether to sync all projects or specific projects.
-        /// 	- Service `bingads`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
-        /// 	- Service `double_click_campaign_manager`: Whether to sync all user profiles or specific ones. Default value: `AllAccounts`.
-        /// 	- Service `dynamodb`: Which packed mode setting to use. Default value: `UsePackedModeOnly`.
-        /// 	- Service `facebook`: Option to select connector should sync all accounts or specific accounts. [Possible sync_mode values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#syncmode).
-        /// 	- Service `facebook_ad_account`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
-        /// 	- Service `facebook_ads`: Option to select connector should sync all accounts or specific accounts. [Possible sync_mode values](https://fivetran.com/docs/connectors/applications/facebook-ads#syncmode).
-        /// 	- Service `facebook_pages`: Whether to sync all accounts or specific accounts. Default value: `AllPages`.
-        /// 	- Service `github`: Whether to sync all repositories or specific repositories.
-        /// 	- Service `google_ads`: Whether to sync all accounts or specific accounts.
-        /// 	- Service `google_analytics`: Whether to sync all accounts or specific accounts.
-        /// 	- Service `google_analytics_4`: Whether to sync all accounts or specific accounts.
-        /// 	- Service `google_analytics_mcf`: Whether to sync all accounts or specific accounts. Default value: `ALL_ACCOUNTS`
-        /// 	- Service `google_search_console`: Whether to sync all sites or specific sites.
-        /// 	- Service `instagram_business`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
-        /// 	- Service `iterable`: Events Sync Mode.
-        /// 	- Service `jira`: Whether to sync all projects or specific projects.
-        /// 	- Service `linkedin_ads`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`
-        /// 	- Service `pendo`: Whether to sync all App IDs or specific App IDs. Default value: `AllAppIds`.
-        /// 	- Service `pinterest_ads`: Whether to sync all advertisers or specific advertisers.
-        /// 	- Service `reddit_ads`: Whether to sync all accounts or specific accounts.
-        /// 	- Service `salesforce_marketing_cloud`: Select the sync mode.
-        /// 	- Service `snapchat_ads`: Whether to sync all organizations or specific organizations. Default value: `AllOrganizations`.
-        /// 	- Service `spotify_ads`: Whether to sync all ad accounts or specific ad accounts.
-        /// 	- Service `taboola`: Whether to sync all accounts or specific accounts.
-        /// 	- Service `the_trade_desk`: Whether to sync all accounts or specific accounts.
-        /// 	- Service `tiktok_ads`: Whether to sync all advertiser accounts or specific accounts.
-        /// 	- Service `twilio`: Whether to sync all accounts or specific accounts.
-        /// 	- Service `twitter`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
-        /// 	- Service `twitter_ads`: Whether to sync all accounts or specific accounts.
-        /// 	- Service `walmart_dsp`: Whether to sync all accounts or specific accounts.
-        /// 	- Service `yahoo_gemini`: Whether to sync all accounts or specific accounts. Default value: `SpecificAccounts`.
-        /// 	- Service `zuora`: Select `Zuora Billing` to sync exclusively Zuora Billing related records. Choose `Zuora Revenue` for syncing only Zuora Revenue reports. If both Zuora Billing records and Zuora Revenue reports are to be synced, opt for `Both`.
-        /// 	- Service `zuora_sandbox`: Select `Zuora Billing` to sync exclusively Zuora Billing related records. Choose `Zuora Revenue` for syncing only Zuora Revenue reports. If both Zuora Billing records and Zuora Revenue reports are to be synced, opt for `Both`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adroll`: Whether to sync all advertisables or specific advertisables. Default value: `AllAdvertisables`.
+        /// 	- Service `AmazonAds`: Option to select connector should sync all profiles or specific profiles.
+        /// 	- Service `Anaplan`: Whether to sync all exports or specific exports.
+        /// 	- Service `AppleSearchAds`: Sync Mode
+        /// 	- Service `Asana`: Whether to sync all projects or specific projects.
+        /// 	- Service `Bingads`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
+        /// 	- Service `DoubleClickCampaignManager`: Whether to sync all user profiles or specific ones. Default value: `AllAccounts`.
+        /// 	- Service `Dynamodb`: Which packed mode setting to use. Default value: `UsePackedModeOnly`.
+        /// 	- Service `Facebook`: Option to select connector should sync all accounts or specific accounts. [Possible SyncMode values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#syncmode).
+        /// 	- Service `FacebookAdAccount`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
+        /// 	- Service `FacebookAds`: Option to select connector should sync all accounts or specific accounts. [Possible SyncMode values](https://fivetran.com/docs/connectors/applications/facebook-ads#syncmode).
+        /// 	- Service `FacebookPages`: Whether to sync all accounts or specific accounts. Default value: `AllPages`.
+        /// 	- Service `Github`: Whether to sync all repositories or specific repositories.
+        /// 	- Service `GoogleAds`: Whether to sync all accounts or specific accounts.
+        /// 	- Service `GoogleAnalytics`: Whether to sync all accounts or specific accounts.
+        /// 	- Service `GoogleAnalytics4`: Whether to sync all accounts or specific accounts.
+        /// 	- Service `GoogleAnalyticsMcf`: Whether to sync all accounts or specific accounts. Default value: `ALL_ACCOUNTS`
+        /// 	- Service `GoogleSearchConsole`: Whether to sync all sites or specific sites.
+        /// 	- Service `InstagramBusiness`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
+        /// 	- Service `Iterable`: Events Sync Mode.
+        /// 	- Service `Jira`: Whether to sync all projects or specific projects.
+        /// 	- Service `LinkedinAds`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`
+        /// 	- Service `Pendo`: Whether to sync all App IDs or specific App IDs. Default value: `AllAppIds`.
+        /// 	- Service `PinterestAds`: Whether to sync all advertisers or specific advertisers.
+        /// 	- Service `RedditAds`: Whether to sync all accounts or specific accounts.
+        /// 	- Service `SalesforceMarketingCloud`: Select the sync mode.
+        /// 	- Service `SnapchatAds`: Whether to sync all organizations or specific organizations. Default value: `AllOrganizations`.
+        /// 	- Service `SpotifyAds`: Whether to sync all ad accounts or specific ad accounts.
+        /// 	- Service `Taboola`: Whether to sync all accounts or specific accounts.
+        /// 	- Service `TheTradeDesk`: Whether to sync all accounts or specific accounts.
+        /// 	- Service `TiktokAds`: Whether to sync all advertiser accounts or specific accounts.
+        /// 	- Service `Twilio`: Whether to sync all accounts or specific accounts.
+        /// 	- Service `Twitter`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
+        /// 	- Service `TwitterAds`: Whether to sync all accounts or specific accounts.
+        /// 	- Service `WalmartDsp`: Whether to sync all accounts or specific accounts.
+        /// 	- Service `YahooGemini`: Whether to sync all accounts or specific accounts. Default value: `SpecificAccounts`.
+        /// 	- Service `Zuora`: Select `Zuora Billing` to sync exclusively Zuora Billing related records. Choose `Zuora Revenue` for syncing only Zuora Revenue reports. If both Zuora Billing records and Zuora Revenue reports are to be synced, opt for `Both`.
+        /// 	- Service `ZuoraSandbox`: Select `Zuora Billing` to sync exclusively Zuora Billing related records. Choose `Zuora Revenue` for syncing only Zuora Revenue reports. If both Zuora Billing records and Zuora Revenue reports are to be synced, opt for `Both`.
         /// </summary>
         [Input("syncMode", required: true)]
         public string SyncMode { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `yahoo_dsp`: Whether to sync all advertisers or specific advertisers. Default value: `ALL_ADVERTISERS`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `YahooDsp`: Whether to sync all advertisers or specific advertisers. Default value: `ALL_ADVERTISERS`.
         /// </summary>
         [Input("syncModeAdvertiser", required: true)]
         public string SyncModeAdvertiser { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `yahoo_dsp`: Whether to sync all seats or specific seats. Default value: `ALL_SEATS`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `YahooDsp`: Whether to sync all seats or specific seats. Default value: `ALL_SEATS`.
         /// </summary>
         [Input("syncModeSeat", required: true)]
         public string SyncModeSeat { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `reddit_ads`: When this parameter is set to `true`, we sync the data of the additional linked accounts. When this parameter is set to `false`, we sync only the data from the main account that was used for authorization
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `RedditAds`: When this parameter is set to `True`, we sync the data of the additional linked accounts. When this parameter is set to `False`, we sync only the data from the main account that was used for authorization
         /// </summary>
         [Input("syncMultipleAccounts", required: true)]
         public bool SyncMultipleAccounts { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `cosmos`: The packing mode type. Supported values:`STANDARD_UNPACKED_MODE`- Unpacks _one_ layer of nested fields and infers types.`PACKED_MODE`- Delivers packed data as a single destination column value.Learn more in our [Azure Cosmos DB Sync Pack Mode Options documentation](https://fivetran.com/docs/connectors/databases/cosmos#packmodeoptions).
-        /// 	- Service `documentdb`: Indicates whether synced data will be packed into a single entry(column), or unpacked with one layer of nested fields.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Cosmos`: The packing mode type. Supported values:`STANDARD_UNPACKED_MODE`- Unpacks _one_ layer of nested fields and infers types.`PACKED_MODE`- Delivers packed data as a single destination column value.Learn more in our [Azure Cosmos DB Sync Pack Mode Options documentation](https://fivetran.com/docs/connectors/databases/cosmos#packmodeoptions).
+        /// 	- Service `Documentdb`: Indicates whether synced data will be packed into a single entry(column), or unpacked with one layer of nested fields.
         /// </summary>
         [Input("syncPackMode", required: true)]
         public string SyncPackMode { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `appsflyer`: These options are for Appsflyer's Pull API, and are only necessary for syncing events from Pull API.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Appsflyer`: These options are for Appsflyer's Pull API, and are only necessary for syncing events from Pull API.
         /// </summary>
         [Input("syncPullApi", required: true)]
         public bool SyncPullApi { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `apache_kafka`: Kafka sync type.  Unpacked messages must be valid JSON.
-        /// 	- Service `aws_msk`: The sync type.  Unpacked messages must be valid JSON.
-        /// 	- Service `azure_event_hub`: Sync type.  Unpacked messages must be valid JSON.
-        /// 	- Service `azure_service_bus`: The sync type, which is based on the message type. For `text` and `xml`, `packed` is supported. For `protobuf` and `avro`, `unpacked` is supported. For `json`, both `packed` and `unpacked` are supported
-        /// 	- Service `confluent_cloud`: Kafka sync type.  Unpacked messages must be valid JSON.
-        /// 	- Service `heroku_kafka`: Heroku Kafka sync type.  Unpacked messages must be valid JSON.
-        /// 	- Service `segment`: The Segment connector sync type.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ApacheKafka`: Kafka sync type.  Unpacked messages must be valid JSON.
+        /// 	- Service `AwsMsk`: The sync type.  Unpacked messages must be valid JSON.
+        /// 	- Service `AzureEventHub`: Sync type.  Unpacked messages must be valid JSON.
+        /// 	- Service `AzureServiceBus`: The sync type, which is based on the message type. For `Text` and `Xml`, `Packed` is supported. For `Protobuf` and `Avro`, `Unpacked` is supported. For `Json`, both `Packed` and `Unpacked` are supported
+        /// 	- Service `ConfluentCloud`: Kafka sync type.  Unpacked messages must be valid JSON.
+        /// 	- Service `HerokuKafka`: Heroku Kafka sync type.  Unpacked messages must be valid JSON.
+        /// 	- Service `Segment`: The Segment connector sync type.
         /// </summary>
         [Input("syncType", required: true)]
         public string SyncType { get; set; } = null!;
@@ -7244,44 +7244,44 @@ namespace Pulumi.Fivetran.Inputs
         public string Sysnr { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `hana_sap_hva_ecc_netweaver`: Unique identifier sapsid of the SAP system. This field is displayed only when the REMOTE SERVICE IDENTIFICATION is set to System ID.
-        /// 	- Service `hana_sap_hva_s4_netweaver`: Unique identifier sapsid of the SAP system. This field is displayed only when the REMOTE SERVICE IDENTIFICATION is set to System ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `HanaSapHvaEccNetweaver`: Unique identifier sapsid of the SAP system. This field is displayed only when the REMOTE SERVICE IDENTIFICATION is set to System ID.
+        /// 	- Service `HanaSapHvaS4Netweaver`: Unique identifier sapsid of the SAP system. This field is displayed only when the REMOTE SERVICE IDENTIFICATION is set to System ID.
         /// </summary>
         [Input("systemId", required: true)]
         public string SystemId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `pigment`: Your Pigment table ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Pigment`: Your Pigment table ID.
         /// </summary>
         [Input("tableId", required: true)]
         public string TableId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `airtable`: Name of table in Airtable
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Airtable`: Name of table in Airtable
         /// </summary>
         [Input("tableName", required: true)]
         public string TableName { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `hubspot`: Timestamp to indicate when tables without access was updated
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Hubspot`: Timestamp to indicate when tables without access was updated
         /// </summary>
         [Input("tablesWithoutAccessUpdatedAt", required: true)]
         public string TablesWithoutAccessUpdatedAt { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `culture_amp`: Your Culture Amp Target entity ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `CultureAmp`: Your Culture Amp Target entity ID.
         /// </summary>
         [Input("targetEntityId", required: true)]
         public string TargetEntityId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `d2l_brightspace`: Your D2L Brightspace target host.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `D2lBrightspace`: Your D2L Brightspace target host.
         /// </summary>
         [Input("targetHost", required: true)]
         public string TargetHost { get; set; } = null!;
@@ -7290,10 +7290,10 @@ namespace Pulumi.Fivetran.Inputs
         private string? _tdeCertificate;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `sql_server`: Certificate file path used to protect a database encryption key
-        /// 	- Service `sql_server_hva`: Certificate used to protect a database encryption key
-        /// 	- Service `sql_server_sap_ecc_hva`: Certificate used to protect a database encryption key
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SqlServer`: Certificate file path used to protect a database encryption key
+        /// 	- Service `SqlServerHva`: Certificate used to protect a database encryption key
+        /// 	- Service `SqlServerSapEccHva`: Certificate used to protect a database encryption key
         /// </summary>
         public string? TdeCertificate
         {
@@ -7302,9 +7302,9 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `sql_server_hva`: Name of the Certificate used to protect a database encryption key
-        /// 	- Service `sql_server_sap_ecc_hva`: Name of the Certificate used to protect a database encryption key
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SqlServerHva`: Name of the Certificate used to protect a database encryption key
+        /// 	- Service `SqlServerSapEccHva`: Name of the Certificate used to protect a database encryption key
         /// </summary>
         [Input("tdeCertificateName", required: true)]
         public string TdeCertificateName { get; set; } = null!;
@@ -7313,10 +7313,10 @@ namespace Pulumi.Fivetran.Inputs
         private string? _tdePassword;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `sql_server`: Password of the TDE private key
-        /// 	- Service `sql_server_hva`: Password of the TDE private key
-        /// 	- Service `sql_server_sap_ecc_hva`: Password of the TDE private key
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SqlServer`: Password of the TDE private key
+        /// 	- Service `SqlServerHva`: Password of the TDE private key
+        /// 	- Service `SqlServerSapEccHva`: Password of the TDE private key
         /// </summary>
         public string? TdePassword
         {
@@ -7328,10 +7328,10 @@ namespace Pulumi.Fivetran.Inputs
         private string? _tdePrivateKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `sql_server`: Private key file path associated with the TDE certificate
-        /// 	- Service `sql_server_hva`: Private key associated with the TDE certificate
-        /// 	- Service `sql_server_sap_ecc_hva`: Private key associated with the TDE certificate
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SqlServer`: Private key file path associated with the TDE certificate
+        /// 	- Service `SqlServerHva`: Private key associated with the TDE certificate
+        /// 	- Service `SqlServerSapEccHva`: Private key associated with the TDE certificate
         /// </summary>
         public string? TdePrivateKey
         {
@@ -7343,10 +7343,10 @@ namespace Pulumi.Fivetran.Inputs
         private string? _tdeWalletPassword;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `oracle_hva`: TDE wallet password. Required for password based wallet.
-        /// 	- Service `oracle_sap_hva`: TDE wallet password. Required for password based wallet.
-        /// 	- Service `oracle_sap_hva_netweaver`: TDE wallet password. Required for password based wallet.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `OracleHva`: TDE wallet password. Required for password based wallet.
+        /// 	- Service `OracleSapHva`: TDE wallet password. Required for password based wallet.
+        /// 	- Service `OracleSapHvaNetweaver`: TDE wallet password. Required for password based wallet.
         /// </summary>
         public string? TdeWalletPassword
         {
@@ -7355,15 +7355,15 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `asana`: Team ID
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Asana`: Team ID
         /// </summary>
         [Input("teamId", required: true)]
         public string TeamId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics`: Technical Account ID from the Service Account (JWT) credentials of your Adobe Project.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalytics`: Technical Account ID from the Service Account (JWT) credentials of your Adobe Project.
         /// </summary>
         [Input("technicalAccountId", required: true)]
         public string TechnicalAccountId { get; set; } = null!;
@@ -7372,8 +7372,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _templateLabels;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `mandrill`: Provide the labels to filter the templates
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Mandrill`: Provide the labels to filter the templates
         /// </summary>
         public List<string> TemplateLabels
         {
@@ -7382,28 +7382,28 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `microsoft_entra_id`: Your Microsoft Entra ID Tenant.
-        /// 	- Service `microsoft_power_bi`: Your Microsoft Power BI tenant.
-        /// 	- Service `microsoft_teams`: Your Microsoft Teams Tenant.
-        /// 	- Service `unicommerce`: Your uniware tenant.
-        /// 	- Service `workday`: Workday tenant name
-        /// 	- Service `workday_financial_management`: Workday tenant name
-        /// 	- Service `workday_hcm`: Workday tenant name
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `MicrosoftEntraId`: Your Microsoft Entra ID Tenant.
+        /// 	- Service `MicrosoftPowerBi`: Your Microsoft Power BI tenant.
+        /// 	- Service `MicrosoftTeams`: Your Microsoft Teams Tenant.
+        /// 	- Service `Unicommerce`: Your uniware tenant.
+        /// 	- Service `Workday`: Workday tenant name
+        /// 	- Service `WorkdayFinancialManagement`: Workday tenant name
+        /// 	- Service `WorkdayHcm`: Workday tenant name
         /// </summary>
         [Input("tenant", required: true)]
         public string Tenant { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `planful`: Your Planful tenant app URL.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Planful`: Your Planful tenant app URL.
         /// </summary>
         [Input("tenantAppUrl", required: true)]
         public string TenantAppUrl { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `deposco`: Your Deposco tenant code.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Deposco`: Your Deposco tenant code.
         /// </summary>
         [Input("tenantCode", required: true)]
         public string TenantCode { get; set; } = null!;
@@ -7412,8 +7412,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<Inputs.GetConnectorConfigTenantConfigArgs>? _tenantConfigs;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `reltio`: * tenant(s)
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Reltio`: * tenant(s)
         /// </summary>
         public List<Inputs.GetConnectorConfigTenantConfigArgs> TenantConfigs
         {
@@ -7425,14 +7425,14 @@ namespace Pulumi.Fivetran.Inputs
         private string? _tenantId;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `azure_sql_db`: Azure AD tenant ID.
-        /// 	- Service `azure_sql_managed_db`: Azure AD tenant ID.
-        /// 	- Service `business_central`: `Tenant ID` of your Business Central application
-        /// 	- Service `crowddev`: Your  crowd.dev Tenant ID.
-        /// 	- Service `reltio`: Your Reltio tenant ID.
-        /// 	- Service `servicetitan`: Your ServiceTitan tenant ID.
-        /// 	- Service `visma`: Your Visma tenant ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureSqlDb`: Azure AD tenant ID.
+        /// 	- Service `AzureSqlManagedDb`: Azure AD tenant ID.
+        /// 	- Service `BusinessCentral`: `Tenant ID` of your Business Central application
+        /// 	- Service `Crowddev`: Your  crowd.dev Tenant ID.
+        /// 	- Service `Reltio`: Your Reltio tenant ID.
+        /// 	- Service `Servicetitan`: Your ServiceTitan tenant ID.
+        /// 	- Service `Visma`: Your Visma tenant ID.
         /// </summary>
         public string? TenantId
         {
@@ -7441,100 +7441,100 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `mambu`: Your Mambu tenant name.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Mambu`: Your Mambu tenant name.
         /// </summary>
         [Input("tenantName", required: true)]
         public string TenantName { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `ivanti`: Your Ivanti Tenant URL.
-        /// 	- Service `playvox_workforce_management`: Your Playvox Workforce Management tenant URL.
-        /// 	- Service `reltio`: Your Reltio tenant URL.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Ivanti`: Your Ivanti Tenant URL.
+        /// 	- Service `PlayvoxWorkforceManagement`: Your Playvox Workforce Management tenant URL.
+        /// 	- Service `Reltio`: Your Reltio tenant URL.
         /// </summary>
         [Input("tenantUrl", required: true)]
         public string TenantUrl { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `sap_hana`: testTableName
-        /// 	- Service `sap_s4hana`: testTableName
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SapHana`: testTableName
+        /// 	- Service `SapS4hana`: testTableName
         /// </summary>
         [Input("testTableName", required: true)]
         public string TestTableName { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `pardot`: The time zone configured in your Pardot instance. An empty value defaults to `UTC+00:00`.
-        /// 	- Service `pardot_sandbox`: The time zone configured in your Pardot instance. An empty value defaults to `UTC+00:00`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Pardot`: The time zone configured in your Pardot instance. An empty value defaults to `UTC+00:00`.
+        /// 	- Service `PardotSandbox`: The time zone configured in your Pardot instance. An empty value defaults to `UTC+00:00`.
         /// </summary>
         [Input("timeZone", required: true)]
         public string TimeZone { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adobe_analytics`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector has been created. Default value: `TWELVE` .
-        /// 	- Service `adroll`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `TWELVE`.
-        /// 	- Service `apple_search_ads`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once connection is created.  NOTE: The more months of reporting data you sync, the longer your initial sync will take.
-        /// 	- Service `bingads`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `SIX`.
-        /// 	- Service `criteo`: The number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector is created.   NOTE: The greater number of months means the initial sync will take more time.
-        /// 	- Service `double_click_campaign_manager`: Number of months' worth of reporting data you'd like to include in your initial sync. A change of this value will trigger a re-sync for enabled reports during the next connector sync. Default value: `TWELVE`.
-        /// 	- Service `double_click_publishers`: Number of months' worth of reporting data you'd like to include in your initial sync. A change of this value will trigger a re-sync for enabled reports during the next connector sync.
-        /// 	- Service `facebook`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `THREE`.
-        /// 	- Service `facebook_ads`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `THREE`.
-        /// 	- Service `google_ads`: The number of months' worth of reporting data you'd like to include in your initial sync. A change of this value will trigger a re-sync for enabled custom and prebuilt reports during the next connector sync. Default value: `TWELVE`.
-        /// 	- Service `google_analytics`: Number of months' worth of reporting data you'd like to include in your initial sync. A change of this value will trigger a re-sync for enabled reports during the next connector sync. The default value: `TWELVE`.
-        /// 	- Service `google_analytics_4`: The number of months' worth of reporting data you'd like to include in your initial sync. A change of this value will trigger a re-sync for enabled reports during the next connector sync. The default value: `TWELVE`.
-        /// 	- Service `google_analytics_mcf`: Number of months' worth of reporting data you'd like to include in your initial sync. A change of this value will trigger a re-sync for enabled reports during the next connector sync. Default value: `TWELVE`.
-        /// 	- Service `google_display_and_video_360`: Number of months' worth of reporting data you'd like to include in your initial sync. A change of this value will trigger a re-sync for enabled reports during the next connector sync.  NOTE: The more months of reporting data you sync, the longer your initial sync will take.
-        /// 	- Service `google_search_ads_360`: Number of months' worth of reporting data you'd like to include in your initial sync. A change of this value will trigger a re-sync for enabled reports during the next connector sync. 
-        /// 	- Service `google_search_console`: Number of months' worth of reporting data you'd like to include in your initial sync. A change of this value will trigger a re-sync for enabled reports during the next connector sync.
-        /// 	- Service `instagram_business`: Number of months' worth of data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `SIX`.
-        /// 	- Service `itunes_connect`: Historical sync time frame in months.
-        /// 	- Service `linkedin_ads`: Number of months for which to query reporting data included in the initial sync. This number cannot be modified once the connector is created. Default value: `ALL_TIME`.
-        /// 	- Service `outbrain`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once connection is created.  NOTE: The more months of reporting data you sync, the longer your initial sync will take.
-        /// 	- Service `pinterest_ads`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `THREE`.
-        /// 	- Service `reddit_ads`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `TWELVE`.
-        /// 	- Service `snapchat_ads`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `TWELVE`.
-        /// 	- Service `spotify_ads`: The number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `SIX`.
-        /// 	- Service `taboola`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once connection is created.  NOTE: The more months of reporting data you sync, the longer your initial sync will take.
-        /// 	- Service `the_trade_desk`: Number of months' worth of data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `THREE`.
-        /// 	- Service `tiktok_ads`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `THREE`.
-        /// 	- Service `twitter`: Number of months' worth of data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `THREE`.
-        /// 	- Service `twitter_ads`: Historical sync timeframe in months.
-        /// 	- Service `walmart_dsp`: Number of months' worth of data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `THREE`.
-        /// 	- Service `yahoo_dsp`: Number of months` worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `THREE`.
-        /// 	- Service `yahoo_gemini`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `TWELVE`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeAnalytics`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector has been created. Default value: `TWELVE` .
+        /// 	- Service `Adroll`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `TWELVE`.
+        /// 	- Service `AppleSearchAds`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once connection is created.  NOTE: The more months of reporting data you sync, the longer your initial sync will take.
+        /// 	- Service `Bingads`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `SIX`.
+        /// 	- Service `Criteo`: The number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector is created.   NOTE: The greater number of months means the initial sync will take more time.
+        /// 	- Service `DoubleClickCampaignManager`: Number of months' worth of reporting data you'd like to include in your initial sync. A change of this value will trigger a re-sync for enabled reports during the next connector sync. Default value: `TWELVE`.
+        /// 	- Service `DoubleClickPublishers`: Number of months' worth of reporting data you'd like to include in your initial sync. A change of this value will trigger a re-sync for enabled reports during the next connector sync.
+        /// 	- Service `Facebook`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `THREE`.
+        /// 	- Service `FacebookAds`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `THREE`.
+        /// 	- Service `GoogleAds`: The number of months' worth of reporting data you'd like to include in your initial sync. A change of this value will trigger a re-sync for enabled custom and prebuilt reports during the next connector sync. Default value: `TWELVE`.
+        /// 	- Service `GoogleAnalytics`: Number of months' worth of reporting data you'd like to include in your initial sync. A change of this value will trigger a re-sync for enabled reports during the next connector sync. The default value: `TWELVE`.
+        /// 	- Service `GoogleAnalytics4`: The number of months' worth of reporting data you'd like to include in your initial sync. A change of this value will trigger a re-sync for enabled reports during the next connector sync. The default value: `TWELVE`.
+        /// 	- Service `GoogleAnalyticsMcf`: Number of months' worth of reporting data you'd like to include in your initial sync. A change of this value will trigger a re-sync for enabled reports during the next connector sync. Default value: `TWELVE`.
+        /// 	- Service `GoogleDisplayAndVideo360`: Number of months' worth of reporting data you'd like to include in your initial sync. A change of this value will trigger a re-sync for enabled reports during the next connector sync.  NOTE: The more months of reporting data you sync, the longer your initial sync will take.
+        /// 	- Service `GoogleSearchAds360`: Number of months' worth of reporting data you'd like to include in your initial sync. A change of this value will trigger a re-sync for enabled reports during the next connector sync. 
+        /// 	- Service `GoogleSearchConsole`: Number of months' worth of reporting data you'd like to include in your initial sync. A change of this value will trigger a re-sync for enabled reports during the next connector sync.
+        /// 	- Service `InstagramBusiness`: Number of months' worth of data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `SIX`.
+        /// 	- Service `ItunesConnect`: Historical sync time frame in months.
+        /// 	- Service `LinkedinAds`: Number of months for which to query reporting data included in the initial sync. This number cannot be modified once the connector is created. Default value: `ALL_TIME`.
+        /// 	- Service `Outbrain`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once connection is created.  NOTE: The more months of reporting data you sync, the longer your initial sync will take.
+        /// 	- Service `PinterestAds`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `THREE`.
+        /// 	- Service `RedditAds`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `TWELVE`.
+        /// 	- Service `SnapchatAds`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `TWELVE`.
+        /// 	- Service `SpotifyAds`: The number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `SIX`.
+        /// 	- Service `Taboola`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once connection is created.  NOTE: The more months of reporting data you sync, the longer your initial sync will take.
+        /// 	- Service `TheTradeDesk`: Number of months' worth of data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `THREE`.
+        /// 	- Service `TiktokAds`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `THREE`.
+        /// 	- Service `Twitter`: Number of months' worth of data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `THREE`.
+        /// 	- Service `TwitterAds`: Historical sync timeframe in months.
+        /// 	- Service `WalmartDsp`: Number of months' worth of data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `THREE`.
+        /// 	- Service `YahooDsp`: Number of months` worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `THREE`.
+        /// 	- Service `YahooGemini`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `TWELVE`.
         /// </summary>
         [Input("timeframeMonths", required: true)]
         public string TimeframeMonths { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `rokt`: Your Rokt timezone.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Rokt`: Your Rokt timezone.
         /// </summary>
         [Input("timezone", required: true)]
         public string Timezone { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `apple_search_ads`: Determines whether to use UTC or the users timezone from the apple account
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AppleSearchAds`: Determines whether to use UTC or the users timezone from the apple account
         /// </summary>
         [Input("timezoneMode", required: true)]
         public string TimezoneMode { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `oracle_hva`: Single-tenant database: The database's SID.  Multi-tenant database: The database's TNS.
-        /// 	- Service `oracle_sap_hva`: Single-tenant database: The database SID.  Multi-tenant database: The database TNS.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `OracleHva`: Single-tenant database: The database's SID.  Multi-tenant database: The database's TNS.
+        /// 	- Service `OracleSapHva`: Single-tenant database: The database SID.  Multi-tenant database: The database TNS.
         /// </summary>
         [Input("tns", required: true)]
         public string Tns { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `toast`: Your Toast Restaurant External ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Toast`: Your Toast Restaurant External ID.
         /// </summary>
         [Input("toastId", required: true)]
         public string ToastId { get; set; } = null!;
@@ -7543,13 +7543,13 @@ namespace Pulumi.Fivetran.Inputs
         private string? _token;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `khoros_communities`: Your Khoros Communities token.
-        /// 	- Service `matomo`: Your Matomo auth token.
-        /// 	- Service `mode`: Your Mode Token.
-        /// 	- Service `oracle_moat_analytics`: Your Oracle Moat Analytics Token.
-        /// 	- Service `shareasale`: Your ShareASale token.
-        /// 	- Service `solarwinds_service_desk`: Your SolarWinds Service Desk token.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `KhorosCommunities`: Your Khoros Communities token.
+        /// 	- Service `Matomo`: Your Matomo auth token.
+        /// 	- Service `Mode`: Your Mode Token.
+        /// 	- Service `OracleMoatAnalytics`: Your Oracle Moat Analytics Token.
+        /// 	- Service `Shareasale`: Your ShareASale token.
+        /// 	- Service `SolarwindsServiceDesk`: Your SolarWinds Service Desk token.
         /// </summary>
         public string? Token
         {
@@ -7558,15 +7558,15 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `cosmos`: The container name. Required for the `RESOURCE_TOKEN` data access method.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Cosmos`: The container name. Required for the `RESOURCE_TOKEN` data access method.
         /// </summary>
         [Input("tokenAuthenticatedContainer", required: true)]
         public string TokenAuthenticatedContainer { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `cosmos`: The database name. Required for the `RESOURCE_TOKEN` data access method.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Cosmos`: The database name. Required for the `RESOURCE_TOKEN` data access method.
         /// </summary>
         [Input("tokenAuthenticatedDatabase", required: true)]
         public string TokenAuthenticatedDatabase { get; set; } = null!;
@@ -7575,9 +7575,9 @@ namespace Pulumi.Fivetran.Inputs
         private string? _tokenId;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `chargedesk`: Your ChargeDesk token ID.
-        /// 	- Service `mux`: Your Mux token ID
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Chargedesk`: Your ChargeDesk token ID.
+        /// 	- Service `Mux`: Your Mux token ID
         /// </summary>
         public string? TokenId
         {
@@ -7589,10 +7589,10 @@ namespace Pulumi.Fivetran.Inputs
         private string? _tokenKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `netsuite_suiteanalytics`: Token ID
-        /// 	- Service `on24`: Your ON24 token key.
-        /// 	- Service `proofpoint_security_awareness`: Your Proofpoint Security Awareness Token Key.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `NetsuiteSuiteanalytics`: Token ID
+        /// 	- Service `On24`: Your ON24 token key.
+        /// 	- Service `ProofpointSecurityAwareness`: Your Proofpoint Security Awareness Token Key.
         /// </summary>
         public string? TokenKey
         {
@@ -7604,9 +7604,9 @@ namespace Pulumi.Fivetran.Inputs
         private string? _tokenSecret;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `netsuite_suiteanalytics`: Token Secret
-        /// 	- Service `on24`: Your ON24 token secret.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `NetsuiteSuiteanalytics`: Token Secret
+        /// 	- Service `On24`: Your ON24 token secret.
         /// </summary>
         public string? TokenSecret
         {
@@ -7618,8 +7618,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _tokenSecretKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `mux`: Your Mux token secret key
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Mux`: Your Mux token secret key
         /// </summary>
         public string? TokenSecretKey
         {
@@ -7628,8 +7628,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `amazon_dsp`: Your Amazon DSP token URL region.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AmazonDsp`: Your Amazon DSP token URL region.
         /// </summary>
         [Input("tokenUrlRegion", required: true)]
         public string TokenUrlRegion { get; set; } = null!;
@@ -7638,8 +7638,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _topics;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `azure_service_bus`: The comma-separated list of topics which should be synced. Required if you do not have manage permissions
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureServiceBus`: The comma-separated list of topics which should be synced. Required if you do not have manage permissions
         /// </summary>
         public List<string> Topics
         {
@@ -7648,8 +7648,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `heroku_kafka`: Trust Store Type
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `HerokuKafka`: Trust Store Type
         /// </summary>
         [Input("trustStoreType", required: true)]
         public string TrustStoreType { get; set; } = null!;
@@ -7658,9 +7658,9 @@ namespace Pulumi.Fivetran.Inputs
         private string? _trustedCert;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `apache_kafka`: Kafka trusted certificate.
-        /// 	- Service `heroku_kafka`: Heroku Kafka trusted certificate. Required for `TLS` security protocol.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ApacheKafka`: Kafka trusted certificate.
+        /// 	- Service `HerokuKafka`: Heroku Kafka trusted certificate. Required for `TLS` security protocol.
         /// </summary>
         public string? TrustedCert
         {
@@ -7672,8 +7672,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _truststore;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_msk`: If `security_protocol` is set to `TLS`, add the `Truststore File` as Base64 encoded string.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsMsk`: If `SecurityProtocol` is set to `TLS`, add the `Truststore File` as Base64 encoded string.
         /// </summary>
         public string? Truststore
         {
@@ -7682,189 +7682,189 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `aurora_postgres`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `aveva_pi`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `azure_cosmos_for_mongo`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `azure_postgres`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `azure_sql_db`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `azure_sql_managed_db`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `clarity`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `cockroachdb`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `db2i_hva`: SSH host, only specify when connecting via an SSH tunnel (do not use a load balancer). Required for connector creation.
-        /// 	- Service `db2i_sap_hva`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `documentdb`: SSH host, only specify when connecting via an SSH tunnel (do not use a load balancer). Required for connector creation.
-        /// 	- Service `dynamics_365_fo`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `ehr`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `elastic_cloud`: SSH host, specify only to connect using an SSH tunnel (do not use a load balancer).
-        /// 	- Service `es_self_hosted`: SSH host, specify only to connect using an SSH tunnel (do not use a load balancer).
-        /// 	- Service `google_cloud_mysql`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `google_cloud_postgresql`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `google_cloud_sqlserver`: SSH host, only specify when connecting via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `hana_sap_hva_b1`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `hana_sap_hva_ecc`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `hana_sap_hva_ecc_netweaver`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `hana_sap_hva_s4`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `hana_sap_hva_s4_netweaver`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `heroku_postgres`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `magento_mysql`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `magento_mysql_rds`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `maria`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `maria_azure`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `maria_rds`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `mongo`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `mongo_sharded`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `mysql`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `mysql_azure`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `mysql_rds`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `opendistro`: SSH host, specify only to connect using an SSH tunnel (do not use a load balancer).
-        /// 	- Service `opensearch`: SSH host, specify only to connect using an SSH tunnel (do not use a load balancer).
-        /// 	- Service `oracle`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `oracle_ebs`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `oracle_hva`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `oracle_rac`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `oracle_rds`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `oracle_sap_hva`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `oracle_sap_hva_netweaver`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `postgres`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `postgres_rds`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `sap_hana`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `sap_hana_db`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `sap_s4hana`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `sftp`: Tunnel host address, specify only to connect via SSH tunnel.
-        /// 	- Service `sql_server`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `sql_server_hva`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `sql_server_rds`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
-        /// 	- Service `sql_server_sap_ecc_hva`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Aurora`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `AuroraPostgres`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `AvevaPi`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `AzureCosmosForMongo`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `AzurePostgres`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `AzureSqlDb`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `AzureSqlManagedDb`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `Clarity`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `Cockroachdb`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `Db2iHva`: SSH host, only specify when connecting via an SSH tunnel (do not use a load balancer). Required for connector creation.
+        /// 	- Service `Db2iSapHva`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `Documentdb`: SSH host, only specify when connecting via an SSH tunnel (do not use a load balancer). Required for connector creation.
+        /// 	- Service `Dynamics365Fo`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `Ehr`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `ElasticCloud`: SSH host, specify only to connect using an SSH tunnel (do not use a load balancer).
+        /// 	- Service `EsSelfHosted`: SSH host, specify only to connect using an SSH tunnel (do not use a load balancer).
+        /// 	- Service `GoogleCloudMysql`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `GoogleCloudPostgresql`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `GoogleCloudSqlserver`: SSH host, only specify when connecting via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `HanaSapHvaB1`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `HanaSapHvaEcc`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `HanaSapHvaEccNetweaver`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `HanaSapHvaS4`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `HanaSapHvaS4Netweaver`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `HerokuPostgres`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `MagentoMysql`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `MagentoMysqlRds`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `Maria`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `MariaAzure`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `MariaRds`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `Mongo`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `MongoSharded`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `Mysql`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `MysqlAzure`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `MysqlRds`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `Opendistro`: SSH host, specify only to connect using an SSH tunnel (do not use a load balancer).
+        /// 	- Service `Opensearch`: SSH host, specify only to connect using an SSH tunnel (do not use a load balancer).
+        /// 	- Service `Oracle`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `OracleEbs`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `OracleHva`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `OracleRac`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `OracleRds`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `OracleSapHva`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `OracleSapHvaNetweaver`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `Postgres`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `PostgresRds`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `SapHana`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `SapHanaDb`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `SapS4hana`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `Sftp`: Tunnel host address, specify only to connect via SSH tunnel.
+        /// 	- Service `SqlServer`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `SqlServerHva`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `SqlServerRds`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `SqlServerSapEccHva`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
         /// </summary>
         [Input("tunnelHost", required: true)]
         public string TunnelHost { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `aurora_postgres`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `aveva_pi`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `azure_cosmos_for_mongo`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `azure_postgres`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `azure_sql_db`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `azure_sql_managed_db`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `clarity`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `cockroachdb`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `db2i_hva`: SSH port, only specify when connecting via an SSH tunnel. Required for connector creation.
-        /// 	- Service `db2i_sap_hva`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `documentdb`: SSH port, only specify when connecting via an SSH tunnel. Required for connector creation.
-        /// 	- Service `dynamics_365_fo`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `ehr`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `elastic_cloud`: SSH port, specify only to connect using an SSH tunnel.
-        /// 	- Service `es_self_hosted`: SSH port, specify only to connect using an SSH tunnel.
-        /// 	- Service `google_cloud_mysql`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `google_cloud_postgresql`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `google_cloud_sqlserver`: SSH port, only specify when connecting via an SSH tunnel.
-        /// 	- Service `hana_sap_hva_b1`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `hana_sap_hva_ecc`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `hana_sap_hva_ecc_netweaver`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `hana_sap_hva_s4`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `hana_sap_hva_s4_netweaver`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `heroku_postgres`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `magento_mysql`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `magento_mysql_rds`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `maria`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `maria_azure`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `maria_rds`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `mongo`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `mongo_sharded`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `mysql`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `mysql_azure`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `mysql_rds`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `opendistro`: SSH port, specify only to connect using an SSH tunnel.
-        /// 	- Service `opensearch`: SSH port, specify only to connect using an SSH tunnel.
-        /// 	- Service `oracle`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `oracle_ebs`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `oracle_hva`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `oracle_rac`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `oracle_rds`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `oracle_sap_hva`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `oracle_sap_hva_netweaver`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `postgres`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `postgres_rds`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `sap_hana`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `sap_hana_db`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `sap_s4hana`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `sftp`: Tunnel port, specify only to connect via SSH tunnel.
-        /// 	- Service `sql_server`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `sql_server_hva`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `sql_server_rds`: SSH port, specify only to connect via an SSH tunnel.
-        /// 	- Service `sql_server_sap_ecc_hva`: SSH port, specify only to connect via an SSH tunnel.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Aurora`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `AuroraPostgres`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `AvevaPi`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `AzureCosmosForMongo`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `AzurePostgres`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `AzureSqlDb`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `AzureSqlManagedDb`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `Clarity`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `Cockroachdb`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `Db2iHva`: SSH port, only specify when connecting via an SSH tunnel. Required for connector creation.
+        /// 	- Service `Db2iSapHva`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `Documentdb`: SSH port, only specify when connecting via an SSH tunnel. Required for connector creation.
+        /// 	- Service `Dynamics365Fo`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `Ehr`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `ElasticCloud`: SSH port, specify only to connect using an SSH tunnel.
+        /// 	- Service `EsSelfHosted`: SSH port, specify only to connect using an SSH tunnel.
+        /// 	- Service `GoogleCloudMysql`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `GoogleCloudPostgresql`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `GoogleCloudSqlserver`: SSH port, only specify when connecting via an SSH tunnel.
+        /// 	- Service `HanaSapHvaB1`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `HanaSapHvaEcc`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `HanaSapHvaEccNetweaver`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `HanaSapHvaS4`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `HanaSapHvaS4Netweaver`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `HerokuPostgres`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `MagentoMysql`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `MagentoMysqlRds`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `Maria`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `MariaAzure`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `MariaRds`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `Mongo`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `MongoSharded`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `Mysql`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `MysqlAzure`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `MysqlRds`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `Opendistro`: SSH port, specify only to connect using an SSH tunnel.
+        /// 	- Service `Opensearch`: SSH port, specify only to connect using an SSH tunnel.
+        /// 	- Service `Oracle`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `OracleEbs`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `OracleHva`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `OracleRac`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `OracleRds`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `OracleSapHva`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `OracleSapHvaNetweaver`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `Postgres`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `PostgresRds`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `SapHana`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `SapHanaDb`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `SapS4hana`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `Sftp`: Tunnel port, specify only to connect via SSH tunnel.
+        /// 	- Service `SqlServer`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `SqlServerHva`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `SqlServerRds`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `SqlServerSapEccHva`: SSH port, specify only to connect via an SSH tunnel.
         /// </summary>
         [Input("tunnelPort", required: true)]
         public int TunnelPort { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `aurora_postgres`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `aveva_pi`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `azure_cosmos_for_mongo`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `azure_postgres`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `azure_sql_db`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `azure_sql_managed_db`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `clarity`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `cockroachdb`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `db2i_hva`: SSH user, specify only to connect via an SSH tunnel. Required for connector creation.
-        /// 	- Service `db2i_sap_hva`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `documentdb`: SSH user, specify only to connect via an SSH tunnel. Required for connector creation.
-        /// 	- Service `dynamics_365_fo`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `ehr`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `elastic_cloud`: SSH user, specify only to connect using an SSH tunnel.
-        /// 	- Service `es_self_hosted`: SSH user, specify only to connect using an SSH tunnel.
-        /// 	- Service `google_cloud_mysql`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `google_cloud_postgresql`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `google_cloud_sqlserver`: SSH user, only specify when connecting via an SSH tunnel.
-        /// 	- Service `hana_sap_hva_b1`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `hana_sap_hva_ecc`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `hana_sap_hva_ecc_netweaver`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `hana_sap_hva_s4`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `hana_sap_hva_s4_netweaver`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `heroku_postgres`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `magento_mysql`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `magento_mysql_rds`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `maria`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `maria_azure`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `maria_rds`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `mongo`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `mongo_sharded`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `mysql`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `mysql_azure`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `mysql_rds`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `opendistro`: SSH user, specify only to connect using an SSH tunnel.
-        /// 	- Service `opensearch`: SSH user, specify only to connect using an SSH tunnel.
-        /// 	- Service `oracle`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `oracle_ebs`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `oracle_hva`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `oracle_rac`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `oracle_rds`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `oracle_sap_hva`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `oracle_sap_hva_netweaver`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `postgres`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `postgres_rds`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `sap_hana`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `sap_hana_db`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `sap_s4hana`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `sftp`: Tunnel user, specify only to connect via SSH tunnel.
-        /// 	- Service `sql_server`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `sql_server_hva`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `sql_server_rds`: SSH user, specify only to connect via an SSH tunnel.
-        /// 	- Service `sql_server_sap_ecc_hva`: SSH user, specify only to connect via an SSH tunnel.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Aurora`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `AuroraPostgres`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `AvevaPi`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `AzureCosmosForMongo`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `AzurePostgres`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `AzureSqlDb`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `AzureSqlManagedDb`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `Clarity`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `Cockroachdb`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `Db2iHva`: SSH user, specify only to connect via an SSH tunnel. Required for connector creation.
+        /// 	- Service `Db2iSapHva`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `Documentdb`: SSH user, specify only to connect via an SSH tunnel. Required for connector creation.
+        /// 	- Service `Dynamics365Fo`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `Ehr`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `ElasticCloud`: SSH user, specify only to connect using an SSH tunnel.
+        /// 	- Service `EsSelfHosted`: SSH user, specify only to connect using an SSH tunnel.
+        /// 	- Service `GoogleCloudMysql`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `GoogleCloudPostgresql`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `GoogleCloudSqlserver`: SSH user, only specify when connecting via an SSH tunnel.
+        /// 	- Service `HanaSapHvaB1`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `HanaSapHvaEcc`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `HanaSapHvaEccNetweaver`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `HanaSapHvaS4`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `HanaSapHvaS4Netweaver`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `HerokuPostgres`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `MagentoMysql`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `MagentoMysqlRds`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `Maria`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `MariaAzure`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `MariaRds`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `Mongo`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `MongoSharded`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `Mysql`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `MysqlAzure`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `MysqlRds`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `Opendistro`: SSH user, specify only to connect using an SSH tunnel.
+        /// 	- Service `Opensearch`: SSH user, specify only to connect using an SSH tunnel.
+        /// 	- Service `Oracle`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `OracleEbs`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `OracleHva`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `OracleRac`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `OracleRds`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `OracleSapHva`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `OracleSapHvaNetweaver`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `Postgres`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `PostgresRds`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `SapHana`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `SapHanaDb`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `SapS4hana`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `Sftp`: Tunnel user, specify only to connect via SSH tunnel.
+        /// 	- Service `SqlServer`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `SqlServerHva`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `SqlServerRds`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `SqlServerSapEccHva`: SSH user, specify only to connect via an SSH tunnel.
         /// </summary>
         [Input("tunnelUser", required: true)]
         public string TunnelUser { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `akamai`: Your Akamai type name.
-        /// 	- Service `bubble`: Your Bubble type name.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Akamai`: Your Akamai type name.
+        /// 	- Service `Bubble`: Your Bubble type name.
         /// </summary>
         [Input("typeName", required: true)]
         public string TypeName { get; set; } = null!;
@@ -7873,207 +7873,207 @@ namespace Pulumi.Fivetran.Inputs
         public string UniqueId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_display_and_video_360`: Specifies whether the configuration is updated before each sync or only when the connector settings are saved. This parameter only takes effect when `config_method` is set to `REUSE_EXISTING`. The default value is `true`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleDisplayAndVideo360`: Specifies whether the configuration is updated before each sync or only when the connector settings are saved. This parameter only takes effect when `ConfigMethod` is set to `REUSE_EXISTING`. The default value is `True`.
         /// </summary>
         [Input("updateConfigOnEachSync", required: true)]
         public bool UpdateConfigOnEachSync { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `aurora_postgres`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "postgres_rds"`. Supported values:`WAL` - this method replicates new, changed and deleted rows by tailing the write-ahead log (WAL) via a logical slot. This is more efficient than the XMIN method, but requires more setup and monitoring.`XMIN` - this method detects new or changed rows via the XMIN system column, but is not capable of detecting deleted rows.`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot.`TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `azure_postgres`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "postgres_rds"`. Supported values:`WAL` - this method replicates new, changed and deleted rows by tailing the write-ahead log (WAL) via a logical slot. This is more efficient than the XMIN method, but requires more setup and monitoring.`XMIN` - this method detects new or changed rows via the XMIN system column, but is not capable of detecting deleted rows.`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot.`TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `azure_sql_db`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
-        /// 	- Service `azure_sql_managed_db`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
-        /// 	- Service `clarity`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
-        /// 	- Service `dynamics_365_fo`: Update Method
-        /// 	- Service `ehr`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
-        /// 	- Service `google_cloud_mysql`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `google_cloud_postgresql`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "postgres_rds"`. Supported values:`WAL` - this method replicates new, changed and deleted rows by tailing the write-ahead log (WAL) via a logical slot. This is more efficient than the XMIN method, but requires more setup and monitoring.`XMIN` - this method detects new or changed rows via the XMIN system column, but is not capable of detecting deleted rows.`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot.`TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `google_cloud_sqlserver`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
-        /// 	- Service `heroku_postgres`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "postgres_rds"`. Supported values:`WAL` - this method replicates new, changed and deleted rows by tailing the write-ahead log (WAL) via a logical slot. This is more efficient than the XMIN method, but requires more setup and monitoring.`XMIN` - this method detects new or changed rows via the XMIN system column, but is not capable of detecting deleted rows.`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot.`TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `magento_mysql`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `magento_mysql_rds`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `maria`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `maria_azure`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `maria_rds`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `mysql`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `mysql_azure`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `mysql_rds`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `oracle`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `oracle_ebs`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `oracle_hva`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `oracle_rac`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `oracle_rds`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `oracle_sap_hva`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `postgres`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "postgres_rds"`. Supported values:`WAL` - this method replicates new, changed and deleted rows by tailing the write-ahead log (WAL) via a logical slot. This is more efficient than the XMIN method, but requires more setup and monitoring.`XMIN` - this method detects new or changed rows via the XMIN system column, but is not capable of detecting deleted rows.`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot.`TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `postgres_rds`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "postgres_rds"`. Supported values:`WAL` - this method replicates new, changed and deleted rows by tailing the write-ahead log (WAL) via a logical slot. This is more efficient than the XMIN method, but requires more setup and monitoring.`XMIN` - this method detects new or changed rows via the XMIN system column, but is not capable of detecting deleted rows.`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot.`TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `redshift_db`: Default value: `Teleport`
-        /// 	- Service `snowflake_db`: Default value: `Teleport`
-        /// 	- Service `sql_server`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
-        /// 	- Service `sql_server_hva`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
-        /// 	- Service `sql_server_rds`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
-        /// 	- Service `sql_server_sap_ecc_hva`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Aurora`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `AuroraPostgres`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "PostgresRds"`. Supported values:`WAL` - this method replicates new, changed and deleted rows by tailing the write-ahead log (WAL) via a logical slot. This is more efficient than the XMIN method, but requires more setup and monitoring.`XMIN` - this method detects new or changed rows via the XMIN system column, but is not capable of detecting deleted rows.`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot.`TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `AzurePostgres`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "PostgresRds"`. Supported values:`WAL` - this method replicates new, changed and deleted rows by tailing the write-ahead log (WAL) via a logical slot. This is more efficient than the XMIN method, but requires more setup and monitoring.`XMIN` - this method detects new or changed rows via the XMIN system column, but is not capable of detecting deleted rows.`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot.`TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `AzureSqlDb`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `Null` or not specified.
+        /// 	- Service `AzureSqlManagedDb`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `Null` or not specified.
+        /// 	- Service `Clarity`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `Null` or not specified.
+        /// 	- Service `Dynamics365Fo`: Update Method
+        /// 	- Service `Ehr`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `Null` or not specified.
+        /// 	- Service `GoogleCloudMysql`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `GoogleCloudPostgresql`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "PostgresRds"`. Supported values:`WAL` - this method replicates new, changed and deleted rows by tailing the write-ahead log (WAL) via a logical slot. This is more efficient than the XMIN method, but requires more setup and monitoring.`XMIN` - this method detects new or changed rows via the XMIN system column, but is not capable of detecting deleted rows.`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot.`TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `GoogleCloudSqlserver`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `Null` or not specified.
+        /// 	- Service `HerokuPostgres`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "PostgresRds"`. Supported values:`WAL` - this method replicates new, changed and deleted rows by tailing the write-ahead log (WAL) via a logical slot. This is more efficient than the XMIN method, but requires more setup and monitoring.`XMIN` - this method detects new or changed rows via the XMIN system column, but is not capable of detecting deleted rows.`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot.`TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `MagentoMysql`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `MagentoMysqlRds`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `Maria`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `MariaAzure`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `MariaRds`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `Mysql`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `MysqlAzure`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `MysqlRds`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `Oracle`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `OracleEbs`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `OracleHva`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `OracleRac`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `OracleRds`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `OracleSapHva`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `Postgres`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "PostgresRds"`. Supported values:`WAL` - this method replicates new, changed and deleted rows by tailing the write-ahead log (WAL) via a logical slot. This is more efficient than the XMIN method, but requires more setup and monitoring.`XMIN` - this method detects new or changed rows via the XMIN system column, but is not capable of detecting deleted rows.`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot.`TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `PostgresRds`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "PostgresRds"`. Supported values:`WAL` - this method replicates new, changed and deleted rows by tailing the write-ahead log (WAL) via a logical slot. This is more efficient than the XMIN method, but requires more setup and monitoring.`XMIN` - this method detects new or changed rows via the XMIN system column, but is not capable of detecting deleted rows.`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot.`TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `RedshiftDb`: Default value: `Teleport`
+        /// 	- Service `SnowflakeDb`: Default value: `Teleport`
+        /// 	- Service `SqlServer`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `Null` or not specified.
+        /// 	- Service `SqlServerHva`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `Null` or not specified.
+        /// 	- Service `SqlServerRds`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `Null` or not specified.
+        /// 	- Service `SqlServerSapEccHva`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `Null` or not specified.
         /// </summary>
         [Input("updateMethod", required: true)]
         public string UpdateMethod { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `cosmos`: Cosmos resource instance address.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Cosmos`: Cosmos resource instance address.
         /// </summary>
         [Input("uri", required: true)]
         public string Uri { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `fountain`: Your Fountain URL format.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Fountain`: Your Fountain URL format.
         /// </summary>
         [Input("urlFormat", required: true)]
         public string UrlFormat { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `mandrill`: Whether to use multiple API keys for interaction.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Mandrill`: Whether to use multiple API keys for interaction.
         /// </summary>
         [Input("useApiKeys", required: true)]
         public bool UseApiKeys { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `appsflyer`: Use Custom Bucket. Set it to 'true' if the data is being synced to your S3 bucket instead of an AppsFlyer-managed bucket.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Appsflyer`: Use Custom Bucket. Set it to 'true' if the data is being synced to your S3 bucket instead of an AppsFlyer-managed bucket.
         /// </summary>
         [Input("useCustomerBucket", required: true)]
         public bool UseCustomerBucket { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `oracle_hva`: Default value: `false`. Set to `true` if you're using a RAC instance.
-        /// 	- Service `oracle_sap_hva`: Default value: `false`. Set to `true` if you're using a RAC instance.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `OracleHva`: Default value: `False`. Set to `True` if you're using a RAC instance.
+        /// 	- Service `OracleSapHva`: Default value: `False`. Set to `True` if you're using a RAC instance.
         /// </summary>
         [Input("useOracleRac", required: true)]
         public bool UseOracleRac { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `azure_blob_storage`: Set to `true` if files present in the Azure Blob Storage container are encrypted using PGP. Default value: `false`.
-        /// 	- Service `ftp`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
-        /// 	- Service `gcs`: Set to `true` if files are encrypted using PGP in the GCS bucket. Default value: `false`.
-        /// 	- Service `s3`: Set to `true` if files are encrypted using PGP in the S3 bucket. Default value: `false`.
-        /// 	- Service `s3_compatible_storage`: Set to `true` if files are encrypted using PGP in the S3-Compatible Storage bucket. Default value: `false`.
-        /// 	- Service `sftp`: Set to `true` if files present in SFTP server are encrypted using PGP. Default value: `false`.
-        /// 	- Service `wasabi_cloud_storage`: Set to `true` if files are encrypted using PGP in the Wasabi Cloud Storage bucket. Default value: `false`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureBlobStorage`: Set to `True` if files present in the Azure Blob Storage container are encrypted using PGP. Default value: `False`.
+        /// 	- Service `Ftp`: Set to `True` if files are encrypted using PGP in the S3 bucket. Default value: `False`.
+        /// 	- Service `Gcs`: Set to `True` if files are encrypted using PGP in the GCS bucket. Default value: `False`.
+        /// 	- Service `S3`: Set to `True` if files are encrypted using PGP in the S3 bucket. Default value: `False`.
+        /// 	- Service `S3CompatibleStorage`: Set to `True` if files are encrypted using PGP in the S3-Compatible Storage bucket. Default value: `False`.
+        /// 	- Service `Sftp`: Set to `True` if files present in SFTP server are encrypted using PGP. Default value: `False`.
+        /// 	- Service `WasabiCloudStorage`: Set to `True` if files are encrypted using PGP in the Wasabi Cloud Storage bucket. Default value: `False`.
         /// </summary>
         [Input("usePgpEncryptionOptions", required: true)]
         public bool UsePgpEncryptionOptions { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `bigquery_db`: BigQuery use service account; default is false
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `BigqueryDb`: BigQuery use service account; default is false
         /// </summary>
         [Input("useServiceAccount", required: true)]
         public bool UseServiceAccount { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `mandrill`: Use template labels to filter templates for sync
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Mandrill`: Use template labels to filter templates for sync
         /// </summary>
         [Input("useTemplateLabels", required: true)]
         public bool UseTemplateLabels { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `github`: Set to `true` to capture deletes.
-        /// 	- Service `xero`: Updates to few fields like sent_to_contact in Invoice table might be missed if you don't enable this.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Github`: Set to `True` to capture deletes.
+        /// 	- Service `Xero`: Updates to few fields like SentToContact in Invoice table might be missed if you don't enable this.
         /// </summary>
         [Input("useWebhooks", required: true)]
         public bool UseWebhooks { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `bigquery_db`: Create and drop tables in a query results dataset. Default is false
-        /// 	- Service `snowflake_db`: Choose a database and schema to create temporary tables for syncs.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `BigqueryDb`: Create and drop tables in a query results dataset. Default is false
+        /// 	- Service `SnowflakeDb`: Choose a database and schema to create temporary tables for syncs.
         /// </summary>
         [Input("useWorkspace", required: true)]
         public bool UseWorkspace { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora`: The user name.
-        /// 	- Service `aurora_postgres`: The user name.
-        /// 	- Service `aveva_pi`: Username for the user to authenticate as with the AF Server
-        /// 	- Service `azure_cosmos_for_mongo`: Username for source database access.
-        /// 	- Service `azure_postgres`: The user name.
-        /// 	- Service `azure_sql_db`: The user name.  For Azure Databases, the format must be `user@domain`.
-        /// 	- Service `azure_sql_managed_db`: The user name.  For Azure Databases, the format must be `user@domain`.
-        /// 	- Service `clarity`: The user name.  For Azure Databases, the format must be `user@domain`.
-        /// 	- Service `cockroachdb`: The user name.
-        /// 	- Service `db2i_hva`: The user name.
-        /// 	- Service `db2i_sap_hva`: The username.
-        /// 	- Service `documentdb`: The user name.
-        /// 	- Service `dynamics_365_fo`: The user name. The format must be `user@domain`.
-        /// 	- Service `ehr`: The user name.  For Azure Databases, the format must be `user@domain`.
-        /// 	- Service `elastic_cloud`: The user name.
-        /// 	- Service `es_self_hosted`: The user name.
-        /// 	- Service `ftp`: FTP user.
-        /// 	- Service `google_cloud_mysql`: The user name.
-        /// 	- Service `google_cloud_postgresql`: The user name.
-        /// 	- Service `google_cloud_sqlserver`: The user name. For Azure Databases, the format must be `user@domain`.
-        /// 	- Service `hana_sap_hva_b1`: The username.
-        /// 	- Service `hana_sap_hva_ecc`: The username.
-        /// 	- Service `hana_sap_hva_ecc_netweaver`: The username.
-        /// 	- Service `hana_sap_hva_s4`: The username.
-        /// 	- Service `hana_sap_hva_s4_netweaver`: The username.
-        /// 	- Service `heroku_postgres`: The user name.
-        /// 	- Service `jira`: The Jira username.
-        /// 	- Service `magento_mysql`: The user name.
-        /// 	- Service `magento_mysql_rds`: The user name.
-        /// 	- Service `maria`: The user name.
-        /// 	- Service `maria_azure`: The user name.
-        /// 	- Service `maria_rds`: The user name.
-        /// 	- Service `marin`: The Marin username.
-        /// 	- Service `mongo`: The user name.
-        /// 	- Service `mongo_sharded`: The user name.
-        /// 	- Service `mysql`: The user name.
-        /// 	- Service `mysql_azure`: The user name.
-        /// 	- Service `mysql_rds`: The user name.
-        /// 	- Service `opendistro`: The user name.
-        /// 	- Service `opensearch`: The user name.
-        /// 	- Service `oracle`: The user name.
-        /// 	- Service `oracle_ebs`: The user name.
-        /// 	- Service `oracle_hva`: The user name.
-        /// 	- Service `oracle_rac`: The user name.
-        /// 	- Service `oracle_rds`: The user name.
-        /// 	- Service `oracle_sap_hva`: The username.
-        /// 	- Service `oracle_sap_hva_netweaver`: The username.
-        /// 	- Service `outbrain`: The username or email of the Outbrain user.
-        /// 	- Service `postgres`: The user name.
-        /// 	- Service `postgres_rds`: The user name.
-        /// 	- Service `redshift_db`: The Redshift username.
-        /// 	- Service `sap_hana`: Your SAP HANA user name.
-        /// 	- Service `sap_s4hana`: Your SAP S/4 user name.
-        /// 	- Service `sftp`: SFTP user.
-        /// 	- Service `snowflake_db`: The Snowflake username.
-        /// 	- Service `splunk`: The Splunk username.
-        /// 	- Service `sql_server`: The user name.  For Azure Databases, the format must be `user@domain`.
-        /// 	- Service `sql_server_hva`: The user name.  For Azure Databases, the format must be `user@domain`.
-        /// 	- Service `sql_server_rds`: The user name.  For Azure Databases, the format must be `user@domain`.
-        /// 	- Service `sql_server_sap_ecc_hva`: The user name.  For Azure Databases, the format must be `user@domain`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Aurora`: The user name.
+        /// 	- Service `AuroraPostgres`: The user name.
+        /// 	- Service `AvevaPi`: Username for the user to authenticate as with the AF Server
+        /// 	- Service `AzureCosmosForMongo`: Username for source database access.
+        /// 	- Service `AzurePostgres`: The user name.
+        /// 	- Service `AzureSqlDb`: The user name.  For Azure Databases, the format must be `user@domain`.
+        /// 	- Service `AzureSqlManagedDb`: The user name.  For Azure Databases, the format must be `user@domain`.
+        /// 	- Service `Clarity`: The user name.  For Azure Databases, the format must be `user@domain`.
+        /// 	- Service `Cockroachdb`: The user name.
+        /// 	- Service `Db2iHva`: The user name.
+        /// 	- Service `Db2iSapHva`: The username.
+        /// 	- Service `Documentdb`: The user name.
+        /// 	- Service `Dynamics365Fo`: The user name. The format must be `user@domain`.
+        /// 	- Service `Ehr`: The user name.  For Azure Databases, the format must be `user@domain`.
+        /// 	- Service `ElasticCloud`: The user name.
+        /// 	- Service `EsSelfHosted`: The user name.
+        /// 	- Service `Ftp`: FTP user.
+        /// 	- Service `GoogleCloudMysql`: The user name.
+        /// 	- Service `GoogleCloudPostgresql`: The user name.
+        /// 	- Service `GoogleCloudSqlserver`: The user name. For Azure Databases, the format must be `user@domain`.
+        /// 	- Service `HanaSapHvaB1`: The username.
+        /// 	- Service `HanaSapHvaEcc`: The username.
+        /// 	- Service `HanaSapHvaEccNetweaver`: The username.
+        /// 	- Service `HanaSapHvaS4`: The username.
+        /// 	- Service `HanaSapHvaS4Netweaver`: The username.
+        /// 	- Service `HerokuPostgres`: The user name.
+        /// 	- Service `Jira`: The Jira username.
+        /// 	- Service `MagentoMysql`: The user name.
+        /// 	- Service `MagentoMysqlRds`: The user name.
+        /// 	- Service `Maria`: The user name.
+        /// 	- Service `MariaAzure`: The user name.
+        /// 	- Service `MariaRds`: The user name.
+        /// 	- Service `Marin`: The Marin username.
+        /// 	- Service `Mongo`: The user name.
+        /// 	- Service `MongoSharded`: The user name.
+        /// 	- Service `Mysql`: The user name.
+        /// 	- Service `MysqlAzure`: The user name.
+        /// 	- Service `MysqlRds`: The user name.
+        /// 	- Service `Opendistro`: The user name.
+        /// 	- Service `Opensearch`: The user name.
+        /// 	- Service `Oracle`: The user name.
+        /// 	- Service `OracleEbs`: The user name.
+        /// 	- Service `OracleHva`: The user name.
+        /// 	- Service `OracleRac`: The user name.
+        /// 	- Service `OracleRds`: The user name.
+        /// 	- Service `OracleSapHva`: The username.
+        /// 	- Service `OracleSapHvaNetweaver`: The username.
+        /// 	- Service `Outbrain`: The username or email of the Outbrain user.
+        /// 	- Service `Postgres`: The user name.
+        /// 	- Service `PostgresRds`: The user name.
+        /// 	- Service `RedshiftDb`: The Redshift username.
+        /// 	- Service `SapHana`: Your SAP HANA user name.
+        /// 	- Service `SapS4hana`: Your SAP S/4 user name.
+        /// 	- Service `Sftp`: SFTP user.
+        /// 	- Service `SnowflakeDb`: The Snowflake username.
+        /// 	- Service `Splunk`: The Splunk username.
+        /// 	- Service `SqlServer`: The user name.  For Azure Databases, the format must be `user@domain`.
+        /// 	- Service `SqlServerHva`: The user name.  For Azure Databases, the format must be `user@domain`.
+        /// 	- Service `SqlServerRds`: The user name.  For Azure Databases, the format must be `user@domain`.
+        /// 	- Service `SqlServerSapEccHva`: The user name.  For Azure Databases, the format must be `user@domain`.
         /// </summary>
         [Input("user", required: true)]
         public string User { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `coassemble`: Your Coassemble user ID.
-        /// 	- Service `gmail`: (DEPRECATED) Your Gmail user ID.
-        /// 	- Service `hibob`: Your HiBob Service User Token.
-        /// 	- Service `marketo`: Marketo SOAP API User Id.
-        /// 	- Service `okendo`: Your Okendo user ID.
-        /// 	- Service `playvox`: Your Playvox User ID.
-        /// 	- Service `sage_intacct`: User ID
-        /// 	- Service `vimeo`: Your Vimeo user ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Coassemble`: Your Coassemble user ID.
+        /// 	- Service `Gmail`: (DEPRECATED) Your Gmail user ID.
+        /// 	- Service `Hibob`: Your HiBob Service User Token.
+        /// 	- Service `Marketo`: Marketo SOAP API User Id.
+        /// 	- Service `Okendo`: Your Okendo user ID.
+        /// 	- Service `Playvox`: Your Playvox User ID.
+        /// 	- Service `SageIntacct`: User ID
+        /// 	- Service `Vimeo`: Your Vimeo user ID.
         /// </summary>
         [Input("userId", required: true)]
         public string UserId { get; set; } = null!;
@@ -8087,8 +8087,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `workday`: Workday username.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Workday`: Workday username.
         /// </summary>
         [Input("userName", required: true)]
         public string UserName { get; set; } = null!;
@@ -8097,8 +8097,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _userProfiles;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `double_click_campaign_manager`: IDs of specific User Profiles to sync. Must be populated if `sync_mode` is set to `SpecificAccounts`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `DoubleClickCampaignManager`: IDs of specific User Profiles to sync. Must be populated if `SyncMode` is set to `SpecificAccounts`.
         /// </summary>
         public List<string> UserProfiles
         {
@@ -8110,10 +8110,10 @@ namespace Pulumi.Fivetran.Inputs
         private string? _userToken;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `hibob`: Your HiBob Service User ID.
-        /// 	- Service `konnect_insights`: Your Konnect Insights User Token.
-        /// 	- Service `sonarqube`: Your Sonarqube user token.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Hibob`: Your HiBob Service User ID.
+        /// 	- Service `KonnectInsights`: Your Konnect Insights User Token.
+        /// 	- Service `Sonarqube`: Your Sonarqube user token.
         /// </summary>
         public string? UserToken
         {
@@ -8125,79 +8125,79 @@ namespace Pulumi.Fivetran.Inputs
         private string? _username;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `absorb_lms`: Your Absorb LMS username.
-        /// 	- Service `adobe_commerce`: Your Adobe Commerce username.
-        /// 	- Service `akeneo`: Your Akeneo username.
-        /// 	- Service `alida`: Your Alida client ID.
-        /// 	- Service `anaplan`: Your Anaplan user ID. Must be populated if `auth_mode` is set to `Basic`.
-        /// 	- Service `appfigures`: Your Appfigures Username.
-        /// 	- Service `aveva_pi`: Username for the user to authenticate as with the AF Server
-        /// 	- Service `ceridian_dayforce`: Your Ceridian Dayforce username.
-        /// 	- Service `churnzero`: Your ChurnZero username.
-        /// 	- Service `cin7`: Your Cin7 API Username.
-        /// 	- Service `collibra`: Your collibra username.
-        /// 	- Service `compliance_checkpoint`: Your Compliance Checkpoint account username.
-        /// 	- Service `concur`: The SAP Concur username.
-        /// 	- Service `confluence`: Your Confluence username.
-        /// 	- Service `contrast_security`: Your Contrast Security API Username.
-        /// 	- Service `dcl_logistics`: Your DCL Logistics username.
-        /// 	- Service `deposco`: Your Deposco username.
-        /// 	- Service `github`: `Login` of your GitHub profile.
-        /// 	- Service `gladly`: Your Gladly Username.
-        /// 	- Service `globalmeet`: Your GlobalMeet Username.
-        /// 	- Service `gorgias`: Your Gorgias username.
-        /// 	- Service `green_power_monitor`: Your GreenPowerMonitor username.
-        /// 	- Service `guru`: Your Guru username.
-        /// 	- Service `hilti_ontrack`: Your Hilti On!Track username.
-        /// 	- Service `impact`: Your Impact Brand Account SID
-        /// 	- Service `integral_ad_science`: Your integral_ad_science username.
-        /// 	- Service `itunes_connect`: Your Apple ID
-        /// 	- Service `jamf`: Your Jamf username.
-        /// 	- Service `khoros_care`: Your Khoros Care username.
-        /// 	- Service `kissmetrics`: Your Kissmetrics API Username.
-        /// 	- Service `klarna`: Your Klarna Username.
-        /// 	- Service `learnupon`: Your Learnupon username.
-        /// 	- Service `lessonly`: Your Lessonly username.
-        /// 	- Service `mailgun`: Your Mailgun API username.
-        /// 	- Service `myosh`: Your myosh username.
-        /// 	- Service `oracle_business_intelligence_publisher`: The Oracle Business Intelligence username.
-        /// 	- Service `oracle_fusion_cloud_apps_crm`: The Oracle Fusion Cloud username.
-        /// 	- Service `oracle_fusion_cloud_apps_fscm`: The Oracle Fusion Cloud username.
-        /// 	- Service `oracle_fusion_cloud_apps_hcm`: The Oracle Fusion Cloud username.
-        /// 	- Service `partnerize`: Your Partnerize account's username.
-        /// 	- Service `pingdom`: Your Pingdom Username.
-        /// 	- Service `podio`: Your Podio account username.
-        /// 	- Service `qmatic_data_connect`: Your Qmatic Data Connect username.
-        /// 	- Service `quorum`: Your Quorum username .
-        /// 	- Service `revx`: Your RevX Username.
-        /// 	- Service `rtb_house`: Your RTB House username.
-        /// 	- Service `sap_business_by_design`: The SAP Business ByDesign username.
-        /// 	- Service `scorm`: Your Scorm App ID.
-        /// 	- Service `servicenow`: Your ServiceNow User ID (username).
-        /// 	- Service `shiphero`: Your ShipHero username.
-        /// 	- Service `shipstation`: Your ShipStation username.
-        /// 	- Service `shopware`: Your Shopware username.
-        /// 	- Service `splash`: Your Splash username.
-        /// 	- Service `starrez`: Your StarRez API username
-        /// 	- Service `stickyio`: Your sticky.io username .
-        /// 	- Service `stylight`: Your Stylight Username.
-        /// 	- Service `sugarcrm`: Your SugarCRM username.
-        /// 	- Service `teamwork`: Your Teamwork username.
-        /// 	- Service `testrail`: Your TestRail username.
-        /// 	- Service `ukg_pro`: Your UKG Pro username.
-        /// 	- Service `ukg_pro_workforce_management`: Your UKG Pro Workforce Management username.
-        /// 	- Service `unicommerce`: Your uniware login username.
-        /// 	- Service `upland`: Your Upland Software Username.
-        /// 	- Service `veeva_vault`: Username
-        /// 	- Service `veevavault`: Your Veeva Vault username.
-        /// 	- Service `when_i_work`: Your When I Work username.
-        /// 	- Service `wherefour`: Your Wherefour username.
-        /// 	- Service `workday_financial_management`: Workday username.
-        /// 	- Service `workday_hcm`: Username of your Workday Integration System User account
-        /// 	- Service `xandr`: Your Xandr username.
-        /// 	- Service `yougov_brandindex`: Your YouGov BrandIndex username.
-        /// 	- Service `younium`: Your Younium username.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AbsorbLms`: Your Absorb LMS username.
+        /// 	- Service `AdobeCommerce`: Your Adobe Commerce username.
+        /// 	- Service `Akeneo`: Your Akeneo username.
+        /// 	- Service `Alida`: Your Alida client ID.
+        /// 	- Service `Anaplan`: Your Anaplan user ID. Must be populated if `AuthMode` is set to `Basic`.
+        /// 	- Service `Appfigures`: Your Appfigures Username.
+        /// 	- Service `AvevaPi`: Username for the user to authenticate as with the AF Server
+        /// 	- Service `CeridianDayforce`: Your Ceridian Dayforce username.
+        /// 	- Service `Churnzero`: Your ChurnZero username.
+        /// 	- Service `Cin7`: Your Cin7 API Username.
+        /// 	- Service `Collibra`: Your collibra username.
+        /// 	- Service `ComplianceCheckpoint`: Your Compliance Checkpoint account username.
+        /// 	- Service `Concur`: The SAP Concur username.
+        /// 	- Service `Confluence`: Your Confluence username.
+        /// 	- Service `ContrastSecurity`: Your Contrast Security API Username.
+        /// 	- Service `DclLogistics`: Your DCL Logistics username.
+        /// 	- Service `Deposco`: Your Deposco username.
+        /// 	- Service `Github`: `Login` of your GitHub profile.
+        /// 	- Service `Gladly`: Your Gladly Username.
+        /// 	- Service `Globalmeet`: Your GlobalMeet Username.
+        /// 	- Service `Gorgias`: Your Gorgias username.
+        /// 	- Service `GreenPowerMonitor`: Your GreenPowerMonitor username.
+        /// 	- Service `Guru`: Your Guru username.
+        /// 	- Service `HiltiOntrack`: Your Hilti On!Track username.
+        /// 	- Service `Impact`: Your Impact Brand Account SID
+        /// 	- Service `IntegralAdScience`: Your IntegralAdScience username.
+        /// 	- Service `ItunesConnect`: Your Apple ID
+        /// 	- Service `Jamf`: Your Jamf username.
+        /// 	- Service `KhorosCare`: Your Khoros Care username.
+        /// 	- Service `Kissmetrics`: Your Kissmetrics API Username.
+        /// 	- Service `Klarna`: Your Klarna Username.
+        /// 	- Service `Learnupon`: Your Learnupon username.
+        /// 	- Service `Lessonly`: Your Lessonly username.
+        /// 	- Service `Mailgun`: Your Mailgun API username.
+        /// 	- Service `Myosh`: Your myosh username.
+        /// 	- Service `OracleBusinessIntelligencePublisher`: The Oracle Business Intelligence username.
+        /// 	- Service `OracleFusionCloudAppsCrm`: The Oracle Fusion Cloud username.
+        /// 	- Service `OracleFusionCloudAppsFscm`: The Oracle Fusion Cloud username.
+        /// 	- Service `OracleFusionCloudAppsHcm`: The Oracle Fusion Cloud username.
+        /// 	- Service `Partnerize`: Your Partnerize account's username.
+        /// 	- Service `Pingdom`: Your Pingdom Username.
+        /// 	- Service `Podio`: Your Podio account username.
+        /// 	- Service `QmaticDataConnect`: Your Qmatic Data Connect username.
+        /// 	- Service `Quorum`: Your Quorum username .
+        /// 	- Service `Revx`: Your RevX Username.
+        /// 	- Service `RtbHouse`: Your RTB House username.
+        /// 	- Service `SapBusinessByDesign`: The SAP Business ByDesign username.
+        /// 	- Service `Scorm`: Your Scorm App ID.
+        /// 	- Service `Servicenow`: Your ServiceNow User ID (username).
+        /// 	- Service `Shiphero`: Your ShipHero username.
+        /// 	- Service `Shipstation`: Your ShipStation username.
+        /// 	- Service `Shopware`: Your Shopware username.
+        /// 	- Service `Splash`: Your Splash username.
+        /// 	- Service `Starrez`: Your StarRez API username
+        /// 	- Service `Stickyio`: Your sticky.io username .
+        /// 	- Service `Stylight`: Your Stylight Username.
+        /// 	- Service `Sugarcrm`: Your SugarCRM username.
+        /// 	- Service `Teamwork`: Your Teamwork username.
+        /// 	- Service `Testrail`: Your TestRail username.
+        /// 	- Service `UkgPro`: Your UKG Pro username.
+        /// 	- Service `UkgProWorkforceManagement`: Your UKG Pro Workforce Management username.
+        /// 	- Service `Unicommerce`: Your uniware login username.
+        /// 	- Service `Upland`: Your Upland Software Username.
+        /// 	- Service `VeevaVault`: Username
+        /// 	- Service `Veevavault`: Your Veeva Vault username.
+        /// 	- Service `WhenIWork`: Your When I Work username.
+        /// 	- Service `Wherefour`: Your Wherefour username.
+        /// 	- Service `WorkdayFinancialManagement`: Workday username.
+        /// 	- Service `WorkdayHcm`: Username of your Workday Integration System User account
+        /// 	- Service `Xandr`: Your Xandr username.
+        /// 	- Service `YougovBrandindex`: Your YouGov BrandIndex username.
+        /// 	- Service `Younium`: Your Younium username.
         /// </summary>
         public string? Username
         {
@@ -8209,8 +8209,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _vendorsIds;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `itunes_connect`: Your vendors id
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ItunesConnect`: Your vendors id
         /// </summary>
         public List<string> VendorsIds
         {
@@ -8219,31 +8219,31 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `criteo_retail_media`: Your Criteo Retail Media version.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `CriteoRetailMedia`: Your Criteo Retail Media version.
         /// </summary>
         [Input("version", required: true)]
         public string Version { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook`: Time period to attribute conversions based on views. [Possible view_attribution_window values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#viewattributionwindow).
-        /// 	- Service `pinterest_ads`: The number of days to use as the conversion attribution window for a 'view' action.
-        /// 	- Service `snapchat_ads`: The time period to attribute conversions based on views. Default value: `DAY_1`
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Facebook`: Time period to attribute conversions based on views. [Possible ViewAttributionWindow values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#viewattributionwindow).
+        /// 	- Service `PinterestAds`: The number of days to use as the conversion attribution window for a 'view' action.
+        /// 	- Service `SnapchatAds`: The time period to attribute conversions based on views. Default value: `DAY_1`
         /// </summary>
         [Input("viewAttributionWindow", required: true)]
         public string ViewAttributionWindow { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `pigment`: Your Pigment view ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Pigment`: Your Pigment view ID.
         /// </summary>
         [Input("viewId", required: true)]
         public string ViewId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `linkedin_ads`: The time period to attribute conversions based on views. Default value: `DAY_7`
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `LinkedinAds`: The time period to attribute conversions based on views. Default value: `DAY_7`
         /// </summary>
         [Input("viewThroughAttributionWindowSize", required: true)]
         public string ViewThroughAttributionWindowSize { get; set; } = null!;
@@ -8252,8 +8252,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _webServiceApiKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adyen`: Your Adyen Web Service API key.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adyen`: Your Adyen Web Service API key.
         /// </summary>
         public string? WebServiceApiKey
         {
@@ -8262,68 +8262,68 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `appsflyer`: Webhook Url
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Appsflyer`: Webhook Url
         /// </summary>
         [Input("webhookEndpoint", required: true)]
         public string WebhookEndpoint { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `xero`: Webhook Key
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Xero`: Webhook Key
         /// </summary>
         [Input("webhookKey", required: true)]
         public string WebhookKey { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `branch`: Webhook URL
-        /// 	- Service `pipedrive`: The registered URL for webhooks in your Pipedrive dashboard.
-        /// 	- Service `segment`: Webhook URL.
-        /// 	- Service `xero`: (ReadOnly) The Webhook URL generated by Fivetran. You can configure this in XERO.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Branch`: Webhook URL
+        /// 	- Service `Pipedrive`: The registered URL for webhooks in your Pipedrive dashboard.
+        /// 	- Service `Segment`: Webhook URL.
+        /// 	- Service `Xero`: (ReadOnly) The Webhook URL generated by Fivetran. You can configure this in XERO.
         /// </summary>
         [Input("webhookUrl", required: true)]
         public string WebhookUrl { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `woocommerce`: The Site ID of your WordPress hosted WooCommerce instance or the subdomain of your self-hosted WooCommerce instance.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Woocommerce`: The Site ID of your WordPress hosted WooCommerce instance or the subdomain of your self-hosted WooCommerce instance.
         /// </summary>
         [Input("wordPressSiteIdOrWoocommerceDomainName", required: true)]
         public string WordPressSiteIdOrWoocommerceDomainName { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `moloco`: Your Moloco workplace ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Moloco`: Your Moloco workplace ID.
         /// </summary>
         [Input("workplaceId", required: true)]
         public string WorkplaceId { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `mode`: Your Mode Workspace.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Mode`: Your Mode Workspace.
         /// </summary>
         [Input("workspace", required: true)]
         public string Workspace { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `bigquery_db`: Workspace Dataset Name
-        /// 	- Service `snowflake_db`: The name of the database where the temporary tables will be created.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `BigqueryDb`: Workspace Dataset Name
+        /// 	- Service `SnowflakeDb`: The name of the database where the temporary tables will be created.
         /// </summary>
         [Input("workspaceName", required: true)]
         public string WorkspaceName { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `bigquery_db`: Use the source dataset as the workspace dataset
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `BigqueryDb`: Use the source dataset as the workspace dataset
         /// </summary>
         [Input("workspaceSameAsSource", required: true)]
         public bool WorkspaceSameAsSource { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snowflake_db`: The name of the schema that belongs to the workspace database where the temporary tables will be created.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SnowflakeDb`: The name of the schema that belongs to the workspace database where the temporary tables will be created.
         /// </summary>
         [Input("workspaceSchema", required: true)]
         public string WorkspaceSchema { get; set; } = null!;
@@ -8332,8 +8332,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _workspaceToken;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `hex`: Your Hex workspace token.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Hex`: Your Hex workspace token.
         /// </summary>
         public string? WorkspaceToken
         {
@@ -8345,8 +8345,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _wsCertificate;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adp_workforce_now`: Web Services Certificate.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AdpWorkforceNow`: Web Services Certificate.
         /// </summary>
         public string? WsCertificate
         {
@@ -8358,8 +8358,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _xApiKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `workday_strategic_sourcing`: Your Workday Strategic Sourcing X API key.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `WorkdayStrategicSourcing`: Your Workday Strategic Sourcing X API key.
         /// </summary>
         public string? XApiKey
         {
@@ -8371,8 +8371,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _xKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `medallia_agile_research`: Your Medallia Agile Research key.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `MedalliaAgileResearch`: Your Medallia Agile Research key.
         /// </summary>
         public string? XKey
         {
@@ -8384,8 +8384,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _xMasterKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `medallia_agile_research`: Your Medallia Agile Research master key.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `MedalliaAgileResearch`: Your Medallia Agile Research master key.
         /// </summary>
         public string? XMasterKey
         {
@@ -8394,8 +8394,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `workday_strategic_sourcing`: Your Workday Strategic Sourcing X User Email.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `WorkdayStrategicSourcing`: Your Workday Strategic Sourcing X User Email.
         /// </summary>
         [Input("xUserEmail", required: true)]
         public string XUserEmail { get; set; } = null!;
@@ -8404,8 +8404,8 @@ namespace Pulumi.Fivetran.Inputs
         private string? _xUserToken;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `workday_strategic_sourcing`: Your Workday Strategic Sourcing X User Token.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `WorkdayStrategicSourcing`: Your Workday Strategic Sourcing X User Token.
         /// </summary>
         public string? XUserToken
         {

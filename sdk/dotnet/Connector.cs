@@ -10,7 +10,132 @@ using Pulumi.Serialization;
 namespace Pulumi.Fivetran
 {
     /// <summary>
+    /// This resource allows you to create, update, and delete connectors.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Pulumi.Fivetran;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var amplitude = new Fivetran.Index.Connector("amplitude", new()
+    ///     {
+    ///         GroupId = @group.Id,
+    ///         Service = "amplitude",
+    ///         DestinationSchema = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "name", "amplitude_connector" },
+    ///             },
+    ///         },
+    ///         Config = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "projectCredentials", new[]
+    ///                 {
+    ///                     
+    ///                     {
+    ///                         { "project", "project1" },
+    ///                         { "apiKey", "my_api_key" },
+    ///                         { "secretKey", "my_secret_key" },
+    ///                     },
+    ///                     
+    ///                     {
+    ///                         { "project", "project2" },
+    ///                         { "apiKey", "my_api_key" },
+    ///                         { "secretKey", "my_secret_key" },
+    ///                     },
+    ///                 } },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// &gt; Use `DestinationSchema` to define connector schema configuration. Field `destination_schema.name` will be mapped into `config.schema` in REST API payload. Field `destination_schema.table` will be mapped into `config.table` in REST API payload. Field `destination_schema.prefix` will be mapped into `config.schema_prefix` in REST API payload. Field `destination_schema.table_group_name` will be mapped into `config.table_group_name` in REST API payload. Specify values according to [public documentation](https://fivetran.com/docs/rest-api/connectors/config) for particular connector type.
+    /// 
+    /// ## GitHub connector example
+    /// 
+    /// To authorize a GitHub connector via terraform using personal access token you should specify `AuthMode`, `Username` and `Pat` inside `Config` block instead of `Auth` and set `RunSetupTests` to `True`:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Pulumi.Fivetran;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myGithubConnector = new Fivetran.Index.Connector("my_github_connector", new()
+    ///     {
+    ///         GroupId = "group_id",
+    ///         Service = "github",
+    ///         RunSetupTests = true,
+    ///         DestinationSchema = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "name", "github_connector" },
+    ///             },
+    ///         },
+    ///         Config = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "syncMode", "AllRepositories" },
+    ///                 { "useWebhooks", "false" },
+    ///                 { "authMode", "PersonalAccessToken" },
+    ///                 { "username", "git-hub-user-name" },
+    ///                 { "pat", "ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
+    /// 
+    /// 1. To import an existing `fivetran.Connector` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard.
+    /// 
+    /// 2. Retrieve all connectors in a particular group using the [fivetran.getConnectors data source](https://www.terraform.io/docs/data-sources/connectors)
+    /// 
+    /// 3. Define an empty resource in your `.tf` configuration:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Pulumi.Fivetran;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myImportedConnector = new Fivetran.Index.Connector("my_imported_connector");
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// 4. Run the `pulumi import` command:
+    /// 
+    /// ```sh
+    /// terraform import fivetran_connector.my_imported_connector {your Fivetran Connector ID}
+    /// ```
+    /// 
+    /// 5.  Use the `terraform state show` command to get the values from the state:
+    /// 
+    /// ```sh
+    /// terraform state show 'fivetran_connector.my_imported_connector'
+    /// ```
+    /// 6. Copy the values and paste them to your `.tf` configuration.
+    /// 
+    /// &gt; The `Config` object in the state contains all properties defined in the schema. You need to remove properties from the `Config` that are not related to connectors. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/connectors/config) for reference to find the properties you need to keep in the `Config` section.
     /// 
     /// ### How to authorize connector
     /// </summary>
@@ -36,15 +161,13 @@ namespace Pulumi.Fivetran
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
-        /// CUSTOM is only available for customers using the Enterprise plan or above.
+        /// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
         /// </summary>
         [Output("dataDelaySensitivity")]
         public Output<string?> DataDelaySensitivity { get; private set; } = null!;
 
         /// <summary>
-        /// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
-        /// data_delay_sensitivity set to CUSTOM.
+        /// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when DataDelaySensitivity set to CUSTOM.
         /// </summary>
         [Output("dataDelayThreshold")]
         public Output<int> DataDelayThreshold { get; private set; } = null!;
@@ -59,15 +182,13 @@ namespace Pulumi.Fivetran
         public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-        /// value is specified, the system will try to associate the connection with an existing agent.
+        /// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
         /// </summary>
         [Output("hybridDeploymentAgentId")]
         public Output<string?> HybridDeploymentAgentId { get; private set; } = null!;
 
         /// <summary>
-        /// The name used both as the connector's name within the Fivetran system and as the source schema's name within your
-        /// destination.
+        /// The name used both as the connector's name within the Fivetran system and as the source schema's name within your destination.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -106,17 +227,13 @@ namespace Pulumi.Fivetran
         public Output<Outputs.ConnectorTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-        /// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-        /// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        /// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
         /// </summary>
         [Output("trustCertificates")]
         public Output<bool> TrustCertificates { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-        /// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-        /// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        /// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         /// </summary>
         [Output("trustFingerprints")]
         public Output<bool> TrustFingerprints { get; private set; } = null!;
@@ -175,15 +292,13 @@ namespace Pulumi.Fivetran
         public Input<Inputs.ConnectorConfigArgs>? Config { get; set; }
 
         /// <summary>
-        /// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
-        /// CUSTOM is only available for customers using the Enterprise plan or above.
+        /// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
         /// </summary>
         [Input("dataDelaySensitivity")]
         public Input<string>? DataDelaySensitivity { get; set; }
 
         /// <summary>
-        /// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
-        /// data_delay_sensitivity set to CUSTOM.
+        /// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when DataDelaySensitivity set to CUSTOM.
         /// </summary>
         [Input("dataDelayThreshold")]
         public Input<int>? DataDelayThreshold { get; set; }
@@ -198,8 +313,7 @@ namespace Pulumi.Fivetran
         public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
-        /// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-        /// value is specified, the system will try to associate the connection with an existing agent.
+        /// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
         /// </summary>
         [Input("hybridDeploymentAgentId")]
         public Input<string>? HybridDeploymentAgentId { get; set; }
@@ -238,17 +352,13 @@ namespace Pulumi.Fivetran
         public Input<Inputs.ConnectorTimeoutsArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-        /// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-        /// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        /// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
         /// </summary>
         [Input("trustCertificates")]
         public Input<bool>? TrustCertificates { get; set; }
 
         /// <summary>
-        /// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-        /// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-        /// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        /// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         /// </summary>
         [Input("trustFingerprints")]
         public Input<bool>? TrustFingerprints { get; set; }
@@ -280,15 +390,13 @@ namespace Pulumi.Fivetran
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
-        /// CUSTOM is only available for customers using the Enterprise plan or above.
+        /// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
         /// </summary>
         [Input("dataDelaySensitivity")]
         public Input<string>? DataDelaySensitivity { get; set; }
 
         /// <summary>
-        /// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
-        /// data_delay_sensitivity set to CUSTOM.
+        /// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when DataDelaySensitivity set to CUSTOM.
         /// </summary>
         [Input("dataDelayThreshold")]
         public Input<int>? DataDelayThreshold { get; set; }
@@ -303,15 +411,13 @@ namespace Pulumi.Fivetran
         public Input<string>? GroupId { get; set; }
 
         /// <summary>
-        /// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-        /// value is specified, the system will try to associate the connection with an existing agent.
+        /// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
         /// </summary>
         [Input("hybridDeploymentAgentId")]
         public Input<string>? HybridDeploymentAgentId { get; set; }
 
         /// <summary>
-        /// The name used both as the connector's name within the Fivetran system and as the source schema's name within your
-        /// destination.
+        /// The name used both as the connector's name within the Fivetran system and as the source schema's name within your destination.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -350,17 +456,13 @@ namespace Pulumi.Fivetran
         public Input<Inputs.ConnectorTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-        /// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-        /// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        /// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
         /// </summary>
         [Input("trustCertificates")]
         public Input<bool>? TrustCertificates { get; set; }
 
         /// <summary>
-        /// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-        /// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-        /// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        /// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         /// </summary>
         [Input("trustFingerprints")]
         public Input<bool>? TrustFingerprints { get; set; }

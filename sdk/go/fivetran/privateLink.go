@@ -13,6 +13,39 @@ import (
 )
 
 // This resource allows you to create, update, and delete private links.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.NewPrivateLink(ctx, "test_pl", &fivetran.PrivateLinkArgs{
+//				Name:    pulumi.String("name"),
+//				Region:  pulumi.String("region"),
+//				Service: pulumi.String("service"),
+//				Config: []map[string]interface{}{
+//					map[string]interface{}{
+//						"connectionServiceName": "connection_service_name",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type PrivateLink struct {
 	pulumi.CustomResourceState
 
@@ -26,8 +59,7 @@ type PrivateLink struct {
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
 	// The private link host.
 	Host pulumi.StringOutput `pulumi:"host"`
-	// The private link name within the account. The name must start with a letter or underscore and can only contain letters,
-	// numbers, or underscores. Maximum size of name is 23 characters.
+	// The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Data processing location. This is where Fivetran will operate and run computation on data.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -88,8 +120,7 @@ type privateLinkState struct {
 	CreatedBy *string `pulumi:"createdBy"`
 	// The private link host.
 	Host *string `pulumi:"host"`
-	// The private link name within the account. The name must start with a letter or underscore and can only contain letters,
-	// numbers, or underscores. Maximum size of name is 23 characters.
+	// The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
 	Name *string `pulumi:"name"`
 	// Data processing location. This is where Fivetran will operate and run computation on data.
 	Region *string `pulumi:"region"`
@@ -112,8 +143,7 @@ type PrivateLinkState struct {
 	CreatedBy pulumi.StringPtrInput
 	// The private link host.
 	Host pulumi.StringPtrInput
-	// The private link name within the account. The name must start with a letter or underscore and can only contain letters,
-	// numbers, or underscores. Maximum size of name is 23 characters.
+	// The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
 	Name pulumi.StringPtrInput
 	// Data processing location. This is where Fivetran will operate and run computation on data.
 	Region pulumi.StringPtrInput
@@ -132,8 +162,7 @@ func (PrivateLinkState) ElementType() reflect.Type {
 type privateLinkArgs struct {
 	// Configuration.
 	ConfigMap map[string]string `pulumi:"configMap"`
-	// The private link name within the account. The name must start with a letter or underscore and can only contain letters,
-	// numbers, or underscores. Maximum size of name is 23 characters.
+	// The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
 	Name *string `pulumi:"name"`
 	// Data processing location. This is where Fivetran will operate and run computation on data.
 	Region string `pulumi:"region"`
@@ -145,8 +174,7 @@ type privateLinkArgs struct {
 type PrivateLinkArgs struct {
 	// Configuration.
 	ConfigMap pulumi.StringMapInput
-	// The private link name within the account. The name must start with a letter or underscore and can only contain letters,
-	// numbers, or underscores. Maximum size of name is 23 characters.
+	// The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
 	Name pulumi.StringPtrInput
 	// Data processing location. This is where Fivetran will operate and run computation on data.
 	Region pulumi.StringInput
@@ -266,8 +294,7 @@ func (o PrivateLinkOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateLink) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
 }
 
-// The private link name within the account. The name must start with a letter or underscore and can only contain letters,
-// numbers, or underscores. Maximum size of name is 23 characters.
+// The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
 func (o PrivateLinkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateLink) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

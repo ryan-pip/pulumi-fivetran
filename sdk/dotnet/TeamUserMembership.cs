@@ -22,7 +22,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testTeamUserMembership = new Fivetran.TeamUserMembership("test_team_user_membership", new()
+    ///     var testTeamUserMembership = new Fivetran.Index.TeamUserMembership("test_team_user_membership", new()
     ///     {
     ///         TeamId = "test_team",
     ///         Users = new[]
@@ -45,17 +45,23 @@ namespace Pulumi.Fivetran
     /// 
     /// ## Import
     /// 
-    /// 1. To import an existing `fivetran_team_user_membership` resource into your Terraform state, you need to get `team_id` and `user_id`
-    /// 
-    /// You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams).
+    /// 1. To import an existing `fivetran.TeamUserMembership` resource into your Terraform state, you need to get `TeamId` and `UserId`
+    /// You can retrieve all teams using the [fivetran.getTeams data source](https://www.terraform.io/docs/data-sources/teams).
     /// 
     /// 2. Define an empty resource in your `.tf` configuration:
     /// 
-    /// hcl
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Pulumi.Fivetran;
     /// 
-    /// resource "fivetran_team_user_membership" "my_imported_fivetran_team_user_membership" {
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myImportedFivetranTeamUserMembership = new Fivetran.Index.TeamUserMembership("my_imported_fivetran_team_user_membership");
     /// 
-    /// }
+    /// });
+    /// ```
     /// 
     /// 3. Run the `pulumi import` command:
     /// 
@@ -65,8 +71,9 @@ namespace Pulumi.Fivetran
     /// 
     /// 4. Use the `terraform state show` command to get the values from the state:
     /// 
+    /// ```sh
     /// terraform state show 'fivetran_team_user_membership.my_imported_fivetran_team_user_membership'
-    /// 
+    /// ```
     /// 5. Copy the values and paste them to your `.tf` configuration.
     /// </summary>
     [FivetranResourceType("fivetran:index/teamUserMembership:TeamUserMembership")]

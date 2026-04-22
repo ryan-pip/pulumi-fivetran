@@ -10,29 +10,169 @@ using Pulumi.Serialization;
 namespace Pulumi.Fivetran
 {
     /// <summary>
+    /// Resource is in ALPHA state.
+    /// 
+    /// This resource allows you to add, manage and delete transformation projects in your account.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Pulumi.Fivetran;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = new Fivetran.Index.TransformationProject("project", new()
+    ///     {
+    ///         GroupId = "group_id",
+    ///         Type = "DBT_GIT",
+    ///         RunTests = true,
+    ///         ProjectConfig = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "gitRemoteUrl", "git_remote_url" },
+    ///                 { "gitBranch", "git_branch" },
+    ///                 { "folderPath", "folder_path" },
+    ///                 { "dbtVersion", "dbt_version" },
+    ///                 { "defaultSchema", "default_schema" },
+    ///                 { "threads", 1 },
+    ///                 { "targetName", "target_name" },
+    ///                 { "environmentVars", new[]
+    ///                 {
+    ///                     "DBT_VARIABLE=variable_value",
+    ///                 } },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## How to set up a Transformation Project with private Git Repo.
+    /// 
+    /// To be able to use private Transformation Project Git repository you have to grant Fivetran access to this repo.
+    /// To do that you need to add a Deploy Key to your repository.
+    /// To get SSH key from Fivetran create `fivetran.TransformationProject` resource:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Pulumi.Fivetran;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myGroup = new Fivetran.Index.Group("my_group", new()
+    ///     {
+    ///         Name = "My_Group",
+    ///     });
+    /// 
+    ///     var project = new Fivetran.Index.TransformationProject("project", new()
+    ///     {
+    ///         GroupId = "group_id",
+    ///         Type = "DBT_GIT",
+    ///         RunTests = true,
+    ///         ProjectConfig = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "gitRemoteUrl", "git_remote_url" },
+    ///                 { "gitBranch", "git_branch" },
+    ///                 { "folderPath", "folder_path" },
+    ///                 { "dbtVersion", "dbt_version" },
+    ///                 { "defaultSchema", "default_schema" },
+    ///                 { "threads", 1 },
+    ///                 { "targetName", "target_name" },
+    ///                 { "environmentVars", new[]
+    ///                 {
+    ///                     "DBT_VARIABLE=variable_value",
+    ///                 } },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Then you need to set up the Transformation Project public key (field `PublicKey` in created resource) as a deploy key into your repo using:
+    /// 
+    /// GitHub Provider Repository Deploy Key Resource:
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Github = Pulumi.Github;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleRepositoryDeployKey = new Github.Index.RepositoryDeployKey("example_repository_deploy_key", new()
+    ///     {
+    ///         Title = "Repository test key",
+    ///         Repository = "repo-owner/repo-name",
+    ///         Key = testProject.ProjectConfig.PublicKey,
+    ///         ReadOnly = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// or
+    /// 
+    /// [Bitbucket Provider Repository Deploy Key Resource]https://registry.terraform.io/providers/DrFaust92/bitbucket/latest/docs/resources/deploy_key)
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Bitbucket = Pulumi.Bitbucket;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new Bitbucket.Index.DeployKey("test", new()
+    ///     {
+    ///         Workspace = "repo-owner",
+    ///         Repository = "repo-name",
+    ///         Key = testProject.ProjectConfig.PublicKey,
+    ///         Label = "Repository test key",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Since we recommend using third-party providers in this case, please make sure that access to the repositories is provided correctly and the providers are configured correctly for connection.
+    /// 
     /// ## Import
     /// 
-    /// 1. To import an existing `fivetran_transformation_project` resource into your Terraform state, you need to get **Transformation Project ID** via API call `GET https://api.fivetran.com/v1/transformation-projects` to retrieve available projects.
-    /// 
+    /// 1. To import an existing `fivetran.TransformationProject` resource into your Terraform state, you need to get **Transformation Project ID** via API call `GET https://api.fivetran.com/v1/transformation-projects` to retrieve available projects.
     /// 2. Fetch project details for particular `project-id` using `GET https://api.fivetran.com/v1/transformation-projects/{project-id}` to ensure that this is the project you want to import.
-    /// 
     /// 3. Define an empty resource in your `.tf` configuration:
     /// 
-    /// hcl
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Pulumi.Fivetran;
     /// 
-    /// resource "fivetran_transformation_project" "my_imported_fivetran_transformation_project" {
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myImportedFivetranTransformationProject = new Fivetran.Index.TransformationProject("my_imported_fivetran_transformation_project");
     /// 
-    /// }
+    /// });
+    /// ```
     /// 
     /// 4. Run the `pulumi import` command:
     /// 
     /// ```sh
-    /// $ pulumi import fivetran:index/transformationProject:TransformationProject my_imported_fivetran_transformation_project {Transformation Project ID}
+    /// terraform import fivetran_transformation_project.my_imported_fivetran_transformation_project {Transformation Project ID}
     /// ```
     /// 
     /// 4. Use the `terraform state show` command to get the values from the state:
     /// 
+    /// ```sh
     /// terraform state show 'fivetran_transformation_project.my_imported_fivetran_transformation_project'
+    /// ```
     /// 
     /// 5. Copy the values and paste them to your `.tf` configuration.
     /// </summary>

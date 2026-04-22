@@ -64,6 +64,8 @@ def get_destinations(destinations: Optional[Sequence[Union['GetDestinationsDesti
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDestinationsResult:
     """
     This data source returns list of destination objects.
+
+    ## Example Usage
     """
     __args__ = dict()
     __args__['destinations'] = destinations
@@ -77,6 +79,8 @@ def get_destinations_output(destinations: Optional[pulumi.Input[Optional[Sequenc
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDestinationsResult]:
     """
     This data source returns list of destination objects.
+
+    ## Example Usage
     """
     __args__ = dict()
     __args__['destinations'] = destinations

@@ -10,33 +10,79 @@ using Pulumi.Serialization;
 namespace Pulumi.Fivetran
 {
     /// <summary>
+    /// This resource allows you to create, update, and delete logging service.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Pulumi.Fivetran;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var extlog = new Fivetran.Index.ExternalLogging("extlog", new()
+    ///     {
+    ///         GroupId = @group.Id,
+    ///         Service = "azure_monitor_log",
+    ///         Enabled = true,
+    ///         RunSetupTests = true,
+    ///         Config = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "workspaceId", "workspace_id" },
+    ///                 { "primaryKey", "PASSWORD" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Setup tests
+    /// 
+    /// The `RunSetupTests` field doesn't have upstream value, it only defines local resource behavoir. This means that when you update only the `RunSetupTests` value (from `False` to `True`, for example) it won't cause any upstream actions. The value will be just saved in terraform state and then used on effective field updates.
+    /// 
+    /// The default value is `False` - this means that no setup tests will be performed during create/update. To perform setup tests, you should set value to `True`.
+    /// 
     /// ## Import
     /// 
-    /// 1. To import an existing `fivetran_external_logging` resource into your Terraform state, you need to get **External Logging Group ID** on the external logging page in your Fivetran dashboard.
+    /// 1. To import an existing `fivetran.ExternalLogging` resource into your Terraform state, you need to get **External Logging Group ID** on the external logging page in your Fivetran dashboard.
     /// 
-    /// 2. To retrieve existing destinations, use the [fivetran_destinations data source](/docs/data-sources/destinations).
+    /// 2. To retrieve existing destinations, use the [fivetran.getDestinations data source](https://www.terraform.io/docs/data-sources/destinations).
     /// 
     /// 3. Define an empty resource in your `.tf` configuration:
     /// 
-    /// hcl
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Pulumi.Fivetran;
     /// 
-    /// resource "fivetran_external_logging" "my_imported_external_logging" {
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myImportedExternalLogging = new Fivetran.Index.ExternalLogging("my_imported_external_logging");
     /// 
-    /// }
+    /// });
+    /// ```
     /// 
     /// 4. Run the `pulumi import` command with the following parameters:
     /// 
     /// ```sh
-    /// $ pulumi import fivetran:index/externalLogging:ExternalLogging my_imported_external_logging {your External Logging Group ID}
+    /// terraform import fivetran_external_logging.my_imported_external_logging {your External Logging Group ID}
     /// ```
     /// 
     /// 5. Use the `terraform state show` command to get the values from the state:
     /// 
+    /// ```sh
     /// terraform state show 'fivetran_external_logging.my_imported_external_logging'
+    /// ```
     /// 
     /// 6. Copy the values and paste them to your `.tf` configuration.
     /// 
-    /// -&gt; The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/log-service-management#logservicesetupconfigurations) for reference to find the properties you need to keep in the `config` section.
+    /// &gt; The `Config` object in the state contains all properties defined in the schema. You need to remove properties from the `Config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/log-service-management#logservicesetupconfigurations) for reference to find the properties you need to keep in the `Config` section.
     /// </summary>
     [FivetranResourceType("fivetran:index/externalLogging:ExternalLogging")]
     public partial class ExternalLogging : global::Pulumi.CustomResource

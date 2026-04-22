@@ -9,17 +9,17 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * 1. To import an existing `fivetran_webhook` resource into your Terraform state, you need to get `webhook_id`.
- *
- * You can retrieve all webhooks using the [fivetran_webhooks data source](/docs/data-sources/webhooks).
+ * 1. To import an existing `fivetran.Webhook` resource into your Terraform state, you need to get `webhookId`.
+ * You can retrieve all webhooks using the [fivetran.getWebhooks data source](https://www.terraform.io/docs/data-sources/webhooks).
  *
  * 2. Define an empty resource in your `.tf` configuration:
  *
- * hcl
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
- * resource "fivetran_webhook" "my_imported_fivetran_webhook" {
- *
- * }
+ * const myImportedFivetranWebhook = new fivetran.Webhook("my_imported_fivetran_webhook", {});
+ * ```
  *
  * 3. Run the `pulumi import` command:
  *
@@ -29,8 +29,9 @@ import * as utilities from "./utilities";
  *
  * 4. Use the `terraform state show` command to get the values from the state:
  *
+ * ```sh
  * terraform state show 'fivetran_webhook.my_imported_fivetran_webhook'
- *
+ * ```
  * 5. Copy the values and paste them to your `.tf` configuration.
  */
 export class Webhook extends pulumi.CustomResource {
@@ -64,39 +65,39 @@ export class Webhook extends pulumi.CustomResource {
     /**
      * Boolean, if set to true, webhooks are immediately sent in response to events
      */
-    public readonly active!: pulumi.Output<boolean>;
+    declare public readonly active: pulumi.Output<boolean>;
     /**
      * The webhook creation timestamp
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The ID of the user who created the webhook.
      */
-    public /*out*/ readonly createdBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     /**
      * The array of event types
      */
-    public readonly events!: pulumi.Output<string[]>;
+    declare public readonly events: pulumi.Output<string[]>;
     /**
      * The group ID
      */
-    public readonly groupId!: pulumi.Output<string | undefined>;
+    declare public readonly groupId: pulumi.Output<string | undefined>;
     /**
      * Specifies whether the setup tests should be run
      */
-    public readonly runTests!: pulumi.Output<boolean | undefined>;
+    declare public readonly runTests: pulumi.Output<boolean | undefined>;
     /**
      * The secret string used for payload signing and masked in the response.
      */
-    public readonly secret!: pulumi.Output<string>;
+    declare public readonly secret: pulumi.Output<string>;
     /**
      * The webhook type (group, account)
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * Your webhooks URL endpoint for your application
      */
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string>;
 
     /**
      * Create a Webhook resource with the given unique name, arguments, and options.
@@ -111,39 +112,39 @@ export class Webhook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WebhookState | undefined;
-            resourceInputs["active"] = state ? state.active : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
-            resourceInputs["events"] = state ? state.events : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["runTests"] = state ? state.runTests : undefined;
-            resourceInputs["secret"] = state ? state.secret : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["active"] = state?.active;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["events"] = state?.events;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["runTests"] = state?.runTests;
+            resourceInputs["secret"] = state?.secret;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as WebhookArgs | undefined;
-            if ((!args || args.active === undefined) && !opts.urn) {
+            if (args?.active === undefined && !opts.urn) {
                 throw new Error("Missing required property 'active'");
             }
-            if ((!args || args.events === undefined) && !opts.urn) {
+            if (args?.events === undefined && !opts.urn) {
                 throw new Error("Missing required property 'events'");
             }
-            if ((!args || args.secret === undefined) && !opts.urn) {
+            if (args?.secret === undefined && !opts.urn) {
                 throw new Error("Missing required property 'secret'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if ((!args || args.url === undefined) && !opts.urn) {
+            if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            resourceInputs["active"] = args ? args.active : undefined;
-            resourceInputs["events"] = args ? args.events : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["runTests"] = args ? args.runTests : undefined;
+            resourceInputs["active"] = args?.active;
+            resourceInputs["events"] = args?.events;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["runTests"] = args?.runTests;
             resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["url"] = args?.url;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
         }

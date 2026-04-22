@@ -22,7 +22,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var groupUsers = new Fivetran.GroupUsers("group_users", new()
+    ///     var groupUsers = new Fivetran.Index.GroupUsers("group_users", new()
     ///     {
     ///         GroupId = @group.Id,
     ///         Users = new[]

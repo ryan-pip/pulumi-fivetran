@@ -22,27 +22,28 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * 1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
- *
- * To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).
- *
+ * 1. To import an existing `fivetran.Group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+ *    To retrieve existing groups, use the [fivetran.getGroups data source](https://www.terraform.io/docs/data-sources/groups).
  * 2. Define an empty resource in your `.tf` configuration:
  *
- * hcl
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
- * resource "fivetran_group" "my_imported_fivetran_group" {
- *
- * }
+ * const myImportedFivetranGroup = new fivetran.Group("my_imported_fivetran_group", {});
+ * ```
  *
  * 3. Run the `pulumi import` command:
  *
  * ```sh
- * $ pulumi import fivetran:index/group:Group my_imported_fivetran_group {your Destination Group ID}
+ * terraform import fivetran_group.my_imported_fivetran_group {your Destination Group ID}
  * ```
  *
  * 4. Use the `terraform state show` command to get the values from the state:
  *
+ * ```sh
  * terraform state show 'fivetran_group.my_imported_fivetran_group'
+ * ```
  *
  * 5. Copy the values and paste them to your `.tf` configuration.
  */
@@ -77,15 +78,15 @@ export class Group extends pulumi.CustomResource {
     /**
      * The timestamp of when the group was created in your account.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The timestamp of when the resource/datasource was updated last time.
      */
-    public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastUpdated: pulumi.Output<string>;
     /**
      * The name of the group within your account.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -100,12 +101,12 @@ export class Group extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["lastUpdated"] = state?.lastUpdated;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as GroupArgs | undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["name"] = args?.name;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["lastUpdated"] = undefined /*out*/;
         }

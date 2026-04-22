@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Fivetran
 {
     /// <summary>
-    /// -This resource allows you to manage connectors schedule: pause/unpause connector, set daily_sync_time and sync_frequency.
+    /// -This resource allows you to manage connectors schedule: pause/unpause connector, set DailySyncTime and sync_frequency.
     /// 
     /// ## Example Usage
     /// 
@@ -22,7 +22,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myConnectorSchedule = new Fivetran.ConnectorSchedule("my_connector_schedule", new()
+    ///     var myConnectorSchedule = new Fivetran.Index.ConnectorSchedule("my_connector_schedule", new()
     ///     {
     ///         ConnectorId = myConnector.Id,
     ///         SyncFrequency = "1440",
@@ -39,43 +39,47 @@ namespace Pulumi.Fivetran
     /// 
     /// You don't need to import this resource as it is synthetic.
     /// 
-    /// To fetch schedule values from existing connector use `fivetran_connector` data source:
+    /// To fetch schedule values from existing connector use `fivetran.Connector` data source:
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Pulumi.Fivetran;
     /// 
-    /// hcl
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myConnector = Fivetran.Index.GetConnector.Invoke(new()
+    ///     {
+    ///         Id = "my_connector_id",
+    ///     });
     /// 
-    /// data "fivetran_connector" "my_connector" {
-    /// 
-    ///     id = "my_connector_id"
-    /// 
-    /// }
-    /// 
-    /// now you can use schedule values from this data_source:
-    /// 
-    ///   sync_frequency = data.fivetran_connector.my_connector.sync_frequency
-    /// 
-    ///   paused = data.fivetran_connector.my_connector.paused
+    /// });
+    /// ```
     /// 
     /// This resource manages settings for already existing connector instance and doesn't create a new one.
+    /// If you already have an existing connector with id = `MyConnectorId` just define `fivetran.ConnectorSchedule` resource:
     /// 
-    /// If you already have an existing connector with id = `my_connector_id` just define `fivetran_connector_schedule` resource:
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Pulumi.Fivetran;
     /// 
-    /// hcl
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myConnectorSchedule = new Fivetran.Index.ConnectorSchedule("my_connector_schedule", new()
+    ///     {
+    ///         ConnectorId = "my_connector_id",
+    ///         SyncFrequency = "360",
+    ///         Paused = "false",
+    ///         PauseAfterTrial = "true",
+    ///         ScheduleType = "auto",
+    ///     });
     /// 
-    /// resource "fivetran_connector_schedule" "my_connector_schedule" {
+    /// });
+    /// ```
     /// 
-    ///     connector_id = "my_connector_id"
-    ///     
-    ///     sync_frequency     = "360"
-    ///     
-    ///     paused             = false
-    ///     
-    ///     pause_after_trial  = true
-    ///     
-    ///     schedule_type      = "auto"
-    /// 
-    /// }
-    /// 
-    /// -&gt; NOTE: You can't have several resources managing the same `connector_id`. They will be in conflict ater each `apply`.
+    /// &gt; NOTE: You can't have several resources managing the same `ConnectorId`. They will be in conflict ater each `Apply`.
     /// </summary>
     [FivetranResourceType("fivetran:index/connectorSchedule:ConnectorSchedule")]
     public partial class ConnectorSchedule : global::Pulumi.CustomResource

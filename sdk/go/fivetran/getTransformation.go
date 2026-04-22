@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.LookupTransformation(ctx, &fivetran.LookupTransformationArgs{
+//			_, err := fivetran.GetTransformation(ctx, &fivetran.LookupTransformationArgs{
 //				Id: "id",
 //			}, nil)
 //			if err != nil {

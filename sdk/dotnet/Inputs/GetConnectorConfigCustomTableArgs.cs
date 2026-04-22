@@ -16,8 +16,8 @@ namespace Pulumi.Fivetran.Inputs
         private InputList<string>? _actionBreakdowns;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook_ads`: List of action_breakdowns which connector will sync. [Possible action_breakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads#actionbreakdowns).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FacebookAds`: List of ActionBreakdowns which connector will sync. [Possible ActionBreakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads#actionbreakdowns).
         /// </summary>
         public InputList<string> ActionBreakdowns
         {
@@ -26,15 +26,15 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook_ads`: The report time of action stats. [Possible action_report time values](https://fivetran.com/docs/connectors/applications/facebook-ads#actionreporttime).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FacebookAds`: The report time of action stats. [Possible ActionReport time values](https://fivetran.com/docs/connectors/applications/facebook-ads#actionreporttime).
         /// </summary>
         [Input("actionReportTime", required: true)]
         public Input<string> ActionReportTime { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook_ads`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/connectors/applications/facebook-ads#aggregation).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FacebookAds`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/connectors/applications/facebook-ads#aggregation).
         /// </summary>
         [Input("aggregation", required: true)]
         public Input<string> Aggregation { get; set; } = null!;
@@ -43,8 +43,8 @@ namespace Pulumi.Fivetran.Inputs
         private InputList<string>? _breakdowns;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook_ads`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads#breakdowns).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FacebookAds`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads#breakdowns).
         /// </summary>
         public InputList<string> Breakdowns
         {
@@ -53,22 +53,22 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook_ads`: Time period to attribute conversions based on clicks. [Possible click_attribution_window values](https://fivetran.com/docs/connectors/applications/facebook-ads#clickattributionwindow).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FacebookAds`: Time period to attribute conversions based on clicks. [Possible ClickAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads#clickattributionwindow).
         /// </summary>
         [Input("clickAttributionWindow", required: true)]
         public Input<string> ClickAttributionWindow { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook_ads`: Option to select Prebuilt Reports or Custom Reports. [Possible config_type values](https://fivetran.com/docs/connectors/applications/facebook-ads#configtype).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FacebookAds`: Option to select Prebuilt Reports or Custom Reports. [Possible ConfigType values](https://fivetran.com/docs/connectors/applications/facebook-ads#configtype).
         /// </summary>
         [Input("configType", required: true)]
         public Input<string> ConfigType { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook_ads`: Time period to attribute conversions based on engaged views. [Possible view_attribution_window values](https://fivetran.com/docs/connectors/applications/facebook-ads#engagedviewattributionwindow).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FacebookAds`: Time period to attribute conversions based on engaged views. [Possible ViewAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads#engagedviewattributionwindow).
         /// </summary>
         [Input("engagedViewAttributionWindow", required: true)]
         public Input<string> EngagedViewAttributionWindow { get; set; } = null!;
@@ -77,8 +77,8 @@ namespace Pulumi.Fivetran.Inputs
         private InputList<string>? _fields;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook_ads`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/connectors/applications/facebook-ads#fields).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FacebookAds`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/connectors/applications/facebook-ads#fields).
         /// </summary>
         public InputList<string> Fields
         {
@@ -90,15 +90,15 @@ namespace Pulumi.Fivetran.Inputs
         public Input<string> Level { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook_ads`: The report name to which connector will sync the data. [Possible prebuilt_report values](https://fivetran.com/docs/connectors/applications/facebook-ads#prebuiltreport).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FacebookAds`: The report name to which connector will sync the data. [Possible PrebuiltReport values](https://fivetran.com/docs/connectors/applications/facebook-ads#prebuiltreport).
         /// </summary>
         [Input("prebuiltReportName", required: true)]
         public Input<string> PrebuiltReportName { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook_ads`: The table name within the schema to which the connector will sync the data. It must be unique within the connector and must comply with [Fivetran's naming conventions](https://fivetran.com/docs/getting-started/core-concepts#namingconventions).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FacebookAds`: The table name within the schema to which the connector will sync the data. It must be unique within the connector and must comply with [Fivetran's naming conventions](https://fivetran.com/docs/getting-started/core-concepts#namingconventions).
         /// </summary>
         [Input("tableName", required: true)]
         public Input<string> TableName { get; set; } = null!;
@@ -107,8 +107,8 @@ namespace Pulumi.Fivetran.Inputs
         public Input<bool> UseUnifiedAttributionSetting { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook_ads`: Time period to attribute conversions based on views. [Possible view_attribution_window values](https://fivetran.com/docs/connectors/applications/facebook-ads#viewattributionwindow).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FacebookAds`: Time period to attribute conversions based on views. [Possible ViewAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads#viewattributionwindow).
         /// </summary>
         [Input("viewAttributionWindow", required: true)]
         public Input<string> ViewAttributionWindow { get; set; } = null!;

@@ -32,27 +32,30 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * 1. To import an existing `fivetran_destination_certificates` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+ * 1. To import an existing `fivetran.DestinationCertificates` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
  *
- * 2. To retrieve existing destinations, use the [fivetran_destinations data source](/docs/data-sources/destinations).
+ * 2. To retrieve existing destinations, use the [fivetran.getDestinations data source](https://www.terraform.io/docs/data-sources/destinations).
  *
  * 3. Define an empty resource in your `.tf` configuration:
  *
- * hcl
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
- * resource "fivetran_destination_certificates" "my_imported_destination_certificates" {
- *
- * }
+ * const myImportedDestinationCertificates = new fivetran.DestinationCertificates("my_imported_destination_certificates", {});
+ * ```
  *
  * 4. Run the `pulumi import` command:
  *
  * ```sh
- * $ pulumi import fivetran:index/destinationCertificates:DestinationCertificates my_imported_destination_certificates {your Destination Group ID}
+ * terraform import fivetran_destination_certificates.my_imported_destination_certificates {your Destination Group ID}
  * ```
  *
  * 5.  Use the `terraform state show` command to get the values from the state:
  *
+ * ```sh
  * terraform state show 'fivetran_destination_certificates.my_imported_destination_certificates'
+ * ```
  *
  * 6. Copy the values and paste them to your `.tf` configuration.
  */
@@ -84,11 +87,11 @@ export class DestinationCertificates extends pulumi.CustomResource {
         return obj['__pulumiType'] === DestinationCertificates.__pulumiType;
     }
 
-    public readonly certificates!: pulumi.Output<outputs.DestinationCertificatesCertificate[] | undefined>;
+    declare public readonly certificates: pulumi.Output<outputs.DestinationCertificatesCertificate[] | undefined>;
     /**
      * The unique identifier for the target destination within the Fivetran system.
      */
-    public readonly destinationId!: pulumi.Output<string>;
+    declare public readonly destinationId: pulumi.Output<string>;
 
     /**
      * Create a DestinationCertificates resource with the given unique name, arguments, and options.
@@ -103,15 +106,15 @@ export class DestinationCertificates extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DestinationCertificatesState | undefined;
-            resourceInputs["certificates"] = state ? state.certificates : undefined;
-            resourceInputs["destinationId"] = state ? state.destinationId : undefined;
+            resourceInputs["certificates"] = state?.certificates;
+            resourceInputs["destinationId"] = state?.destinationId;
         } else {
             const args = argsOrState as DestinationCertificatesArgs | undefined;
-            if ((!args || args.destinationId === undefined) && !opts.urn) {
+            if (args?.destinationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationId'");
             }
-            resourceInputs["certificates"] = args ? args.certificates : undefined;
-            resourceInputs["destinationId"] = args ? args.destinationId : undefined;
+            resourceInputs["certificates"] = args?.certificates;
+            resourceInputs["destinationId"] = args?.destinationId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DestinationCertificates.__pulumiType, name, resourceInputs, opts);

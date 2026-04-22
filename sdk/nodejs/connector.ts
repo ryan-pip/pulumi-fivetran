@@ -7,7 +7,93 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * This resource allows you to create, update, and delete connectors.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
+ *
+ * const amplitude = new fivetran.Connector("amplitude", {
+ *     groupId: group.id,
+ *     service: "amplitude",
+ *     destinationSchema: [{
+ *         name: "amplitude_connector",
+ *     }],
+ *     config: [{
+ *         projectCredentials: [
+ *             {
+ *                 project: "project1",
+ *                 apiKey: "my_api_key",
+ *                 secretKey: "my_secret_key",
+ *             },
+ *             {
+ *                 project: "project2",
+ *                 apiKey: "my_api_key",
+ *                 secretKey: "my_secret_key",
+ *             },
+ *         ],
+ *     }],
+ * });
+ * ```
+ *
+ * > Use `destinationSchema` to define connector schema configuration. Field `destination_schema.name` will be mapped into `config.schema` in REST API payload. Field `destination_schema.table` will be mapped into `config.table` in REST API payload. Field `destination_schema.prefix` will be mapped into `config.schema_prefix` in REST API payload. Field `destination_schema.table_group_name` will be mapped into `config.table_group_name` in REST API payload. Specify values according to [public documentation](https://fivetran.com/docs/rest-api/connectors/config) for particular connector type.
+ *
+ * ## GitHub connector example
+ *
+ * To authorize a GitHub connector via terraform using personal access token you should specify `authMode`, `username` and `pat` inside `config` block instead of `auth` and set `runSetupTests` to `true`:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
+ *
+ * const myGithubConnector = new fivetran.Connector("my_github_connector", {
+ *     groupId: "group_id",
+ *     service: "github",
+ *     runSetupTests: true,
+ *     destinationSchema: [{
+ *         name: "github_connector",
+ *     }],
+ *     config: [{
+ *         syncMode: "AllRepositories",
+ *         useWebhooks: "false",
+ *         authMode: "PersonalAccessToken",
+ *         username: "git-hub-user-name",
+ *         pat: "ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
+ *
+ * 1. To import an existing `fivetran.Connector` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard.
+ *
+ * 2. Retrieve all connectors in a particular group using the [fivetran.getConnectors data source](https://www.terraform.io/docs/data-sources/connectors)
+ *
+ * 3. Define an empty resource in your `.tf` configuration:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
+ *
+ * const myImportedConnector = new fivetran.Connector("my_imported_connector", {});
+ * ```
+ *
+ * 4. Run the `pulumi import` command:
+ *
+ * ```sh
+ * terraform import fivetran_connector.my_imported_connector {your Fivetran Connector ID}
+ * ```
+ *
+ * 5.  Use the `terraform state show` command to get the values from the state:
+ *
+ * ```sh
+ * terraform state show 'fivetran_connector.my_imported_connector'
+ * ```
+ * 6. Copy the values and paste them to your `.tf` configuration.
+ *
+ * > The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to connectors. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/connectors/config) for reference to find the properties you need to keep in the `config` section.
  *
  * ### How to authorize connector
  */
@@ -39,74 +125,66 @@ export class Connector extends pulumi.CustomResource {
         return obj['__pulumiType'] === Connector.__pulumiType;
     }
 
-    public readonly auth!: pulumi.Output<outputs.ConnectorAuth | undefined>;
-    public readonly config!: pulumi.Output<outputs.ConnectorConfig | undefined>;
+    declare public readonly auth: pulumi.Output<outputs.ConnectorAuth | undefined>;
+    declare public readonly config: pulumi.Output<outputs.ConnectorConfig | undefined>;
     /**
      * The unique identifier of the user who has created the connector in your account.
      */
-    public /*out*/ readonly connectedBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectedBy: pulumi.Output<string>;
     /**
      * The timestamp of the time the connector was created in your account.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
-     * CUSTOM is only available for customers using the Enterprise plan or above.
+     * The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
      */
-    public readonly dataDelaySensitivity!: pulumi.Output<string | undefined>;
+    declare public readonly dataDelaySensitivity: pulumi.Output<string | undefined>;
     /**
-     * Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
-     * dataDelaySensitivity set to CUSTOM.
+     * Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when dataDelaySensitivity set to CUSTOM.
      */
-    public readonly dataDelayThreshold!: pulumi.Output<number>;
-    public readonly destinationSchema!: pulumi.Output<outputs.ConnectorDestinationSchema | undefined>;
+    declare public readonly dataDelayThreshold: pulumi.Output<number>;
+    declare public readonly destinationSchema: pulumi.Output<outputs.ConnectorDestinationSchema | undefined>;
     /**
      * The unique identifier for the Group (Destination) within the Fivetran system.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
-     * The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-     * value is specified, the system will try to associate the connection with an existing agent.
+     * The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
      */
-    public readonly hybridDeploymentAgentId!: pulumi.Output<string | undefined>;
+    declare public readonly hybridDeploymentAgentId: pulumi.Output<string | undefined>;
     /**
-     * The name used both as the connector's name within the Fivetran system and as the source schema's name within your
-     * destination.
+     * The name used both as the connector's name within the Fivetran system and as the source schema's name within your destination.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Possible values: Directly, SshTunnel, ProxyAgent.
      */
-    public readonly networkingMethod!: pulumi.Output<string>;
+    declare public readonly networkingMethod: pulumi.Output<string>;
     /**
      * The private link ID.
      */
-    public readonly privateLinkId!: pulumi.Output<string | undefined>;
+    declare public readonly privateLinkId: pulumi.Output<string | undefined>;
     /**
      * The proxy agent ID.
      */
-    public readonly proxyAgentId!: pulumi.Output<string | undefined>;
+    declare public readonly proxyAgentId: pulumi.Output<string | undefined>;
     /**
      * Specifies whether the setup tests should be run automatically. The default value is FALSE.
      */
-    public readonly runSetupTests!: pulumi.Output<boolean>;
+    declare public readonly runSetupTests: pulumi.Output<boolean>;
     /**
      * The connector type id within the Fivetran system.
      */
-    public readonly service!: pulumi.Output<string>;
-    public readonly timeouts!: pulumi.Output<outputs.ConnectorTimeouts | undefined>;
+    declare public readonly service: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.ConnectorTimeouts | undefined>;
     /**
-     * Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-     * trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-     * certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+     * Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
      */
-    public readonly trustCertificates!: pulumi.Output<boolean>;
+    declare public readonly trustCertificates: pulumi.Output<boolean>;
     /**
-     * Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-     * trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-     * fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+     * Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
      */
-    public readonly trustFingerprints!: pulumi.Output<boolean>;
+    declare public readonly trustFingerprints: pulumi.Output<boolean>;
 
     /**
      * Create a Connector resource with the given unique name, arguments, and options.
@@ -121,47 +199,47 @@ export class Connector extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectorState | undefined;
-            resourceInputs["auth"] = state ? state.auth : undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["connectedBy"] = state ? state.connectedBy : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["dataDelaySensitivity"] = state ? state.dataDelaySensitivity : undefined;
-            resourceInputs["dataDelayThreshold"] = state ? state.dataDelayThreshold : undefined;
-            resourceInputs["destinationSchema"] = state ? state.destinationSchema : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["hybridDeploymentAgentId"] = state ? state.hybridDeploymentAgentId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkingMethod"] = state ? state.networkingMethod : undefined;
-            resourceInputs["privateLinkId"] = state ? state.privateLinkId : undefined;
-            resourceInputs["proxyAgentId"] = state ? state.proxyAgentId : undefined;
-            resourceInputs["runSetupTests"] = state ? state.runSetupTests : undefined;
-            resourceInputs["service"] = state ? state.service : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
-            resourceInputs["trustCertificates"] = state ? state.trustCertificates : undefined;
-            resourceInputs["trustFingerprints"] = state ? state.trustFingerprints : undefined;
+            resourceInputs["auth"] = state?.auth;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["connectedBy"] = state?.connectedBy;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["dataDelaySensitivity"] = state?.dataDelaySensitivity;
+            resourceInputs["dataDelayThreshold"] = state?.dataDelayThreshold;
+            resourceInputs["destinationSchema"] = state?.destinationSchema;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["hybridDeploymentAgentId"] = state?.hybridDeploymentAgentId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkingMethod"] = state?.networkingMethod;
+            resourceInputs["privateLinkId"] = state?.privateLinkId;
+            resourceInputs["proxyAgentId"] = state?.proxyAgentId;
+            resourceInputs["runSetupTests"] = state?.runSetupTests;
+            resourceInputs["service"] = state?.service;
+            resourceInputs["timeouts"] = state?.timeouts;
+            resourceInputs["trustCertificates"] = state?.trustCertificates;
+            resourceInputs["trustFingerprints"] = state?.trustFingerprints;
         } else {
             const args = argsOrState as ConnectorArgs | undefined;
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.service === undefined) && !opts.urn) {
+            if (args?.service === undefined && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            resourceInputs["auth"] = args ? args.auth : undefined;
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["dataDelaySensitivity"] = args ? args.dataDelaySensitivity : undefined;
-            resourceInputs["dataDelayThreshold"] = args ? args.dataDelayThreshold : undefined;
-            resourceInputs["destinationSchema"] = args ? args.destinationSchema : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["hybridDeploymentAgentId"] = args ? args.hybridDeploymentAgentId : undefined;
-            resourceInputs["networkingMethod"] = args ? args.networkingMethod : undefined;
-            resourceInputs["privateLinkId"] = args ? args.privateLinkId : undefined;
-            resourceInputs["proxyAgentId"] = args ? args.proxyAgentId : undefined;
-            resourceInputs["runSetupTests"] = args ? args.runSetupTests : undefined;
-            resourceInputs["service"] = args ? args.service : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
-            resourceInputs["trustCertificates"] = args ? args.trustCertificates : undefined;
-            resourceInputs["trustFingerprints"] = args ? args.trustFingerprints : undefined;
+            resourceInputs["auth"] = args?.auth;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["dataDelaySensitivity"] = args?.dataDelaySensitivity;
+            resourceInputs["dataDelayThreshold"] = args?.dataDelayThreshold;
+            resourceInputs["destinationSchema"] = args?.destinationSchema;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["hybridDeploymentAgentId"] = args?.hybridDeploymentAgentId;
+            resourceInputs["networkingMethod"] = args?.networkingMethod;
+            resourceInputs["privateLinkId"] = args?.privateLinkId;
+            resourceInputs["proxyAgentId"] = args?.proxyAgentId;
+            resourceInputs["runSetupTests"] = args?.runSetupTests;
+            resourceInputs["service"] = args?.service;
+            resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["trustCertificates"] = args?.trustCertificates;
+            resourceInputs["trustFingerprints"] = args?.trustFingerprints;
             resourceInputs["connectedBy"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -186,13 +264,11 @@ export interface ConnectorState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
-     * CUSTOM is only available for customers using the Enterprise plan or above.
+     * The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
      */
     dataDelaySensitivity?: pulumi.Input<string>;
     /**
-     * Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
-     * dataDelaySensitivity set to CUSTOM.
+     * Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when dataDelaySensitivity set to CUSTOM.
      */
     dataDelayThreshold?: pulumi.Input<number>;
     destinationSchema?: pulumi.Input<inputs.ConnectorDestinationSchema>;
@@ -201,13 +277,11 @@ export interface ConnectorState {
      */
     groupId?: pulumi.Input<string>;
     /**
-     * The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-     * value is specified, the system will try to associate the connection with an existing agent.
+     * The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
      */
     hybridDeploymentAgentId?: pulumi.Input<string>;
     /**
-     * The name used both as the connector's name within the Fivetran system and as the source schema's name within your
-     * destination.
+     * The name used both as the connector's name within the Fivetran system and as the source schema's name within your destination.
      */
     name?: pulumi.Input<string>;
     /**
@@ -232,15 +306,11 @@ export interface ConnectorState {
     service?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.ConnectorTimeouts>;
     /**
-     * Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-     * trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-     * certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+     * Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
      */
     trustCertificates?: pulumi.Input<boolean>;
     /**
-     * Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-     * trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-     * fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+     * Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
      */
     trustFingerprints?: pulumi.Input<boolean>;
 }
@@ -252,13 +322,11 @@ export interface ConnectorArgs {
     auth?: pulumi.Input<inputs.ConnectorAuth>;
     config?: pulumi.Input<inputs.ConnectorConfig>;
     /**
-     * The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL.
-     * CUSTOM is only available for customers using the Enterprise plan or above.
+     * The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
      */
     dataDelaySensitivity?: pulumi.Input<string>;
     /**
-     * Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when
-     * dataDelaySensitivity set to CUSTOM.
+     * Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when dataDelaySensitivity set to CUSTOM.
      */
     dataDelayThreshold?: pulumi.Input<number>;
     destinationSchema?: pulumi.Input<inputs.ConnectorDestinationSchema>;
@@ -267,8 +335,7 @@ export interface ConnectorArgs {
      */
     groupId: pulumi.Input<string>;
     /**
-     * The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-     * value is specified, the system will try to associate the connection with an existing agent.
+     * The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
      */
     hybridDeploymentAgentId?: pulumi.Input<string>;
     /**
@@ -293,15 +360,11 @@ export interface ConnectorArgs {
     service: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.ConnectorTimeouts>;
     /**
-     * Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-     * trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-     * certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+     * Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
      */
     trustCertificates?: pulumi.Input<boolean>;
     /**
-     * Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-     * trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-     * fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+     * Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
      */
     trustFingerprints?: pulumi.Input<boolean>;
 }
