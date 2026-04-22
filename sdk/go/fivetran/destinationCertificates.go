@@ -52,27 +52,45 @@ import (
 //
 // ## Import
 //
-// 1. To import an existing `fivetran_destination_certificates` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+// 1. To import an existing `DestinationCertificates` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
 //
-// 2. To retrieve existing destinations, use the [fivetran_destinations data source](/docs/data-sources/destinations).
+// 2. To retrieve existing destinations, use the [getDestinations data source](https://www.terraform.io/docs/data-sources/destinations).
 //
 // 3. Define an empty resource in your `.tf` configuration:
 //
-// hcl
+// ```go
+// package main
 //
-// resource "fivetran_destination_certificates" "my_imported_destination_certificates" {
+// import (
 //
-// }
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.NewDestinationCertificates(ctx, "my_imported_destination_certificates", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // 4. Run the `pulumi import` command:
 //
 // ```sh
-// $ pulumi import fivetran:index/destinationCertificates:DestinationCertificates my_imported_destination_certificates {your Destination Group ID}
+// terraform import fivetran_destination_certificates.my_imported_destination_certificates {your Destination Group ID}
 // ```
 //
 // 5.  Use the `terraform state show` command to get the values from the state:
 //
+// ```sh
 // terraform state show 'fivetran_destination_certificates.my_imported_destination_certificates'
+// ```
 //
 // 6. Copy the values and paste them to your `.tf` configuration.
 type DestinationCertificates struct {

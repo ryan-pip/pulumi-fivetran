@@ -13,15 +13,15 @@ namespace Pulumi.Fivetran.Inputs
     public sealed class GetConnectorConfigDataModelPathAliasListInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `oracle_business_intelligence_publisher`: Schema name
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `OracleBusinessIntelligencePublisher`: Schema name
         /// </summary>
         [Input("alias", required: true)]
         public Input<string> Alias { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `oracle_business_intelligence_publisher`: Path
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `OracleBusinessIntelligencePublisher`: Path
         /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;

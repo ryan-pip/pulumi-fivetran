@@ -13,18 +13,24 @@ namespace Pulumi.Fivetran
     {
         /// <summary>
         /// This data source returns list of logging service objects.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetExternalLogsResult> InvokeAsync(GetExternalLogsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetExternalLogsResult>("fivetran:index/getExternalLogs:getExternalLogs", args ?? new GetExternalLogsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source returns list of logging service objects.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetExternalLogsResult> Invoke(GetExternalLogsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetExternalLogsResult>("fivetran:index/getExternalLogs:getExternalLogs", args ?? new GetExternalLogsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source returns list of logging service objects.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetExternalLogsResult> Invoke(GetExternalLogsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetExternalLogsResult>("fivetran:index/getExternalLogs:getExternalLogs", args ?? new GetExternalLogsInvokeArgs(), options.WithDefaults());

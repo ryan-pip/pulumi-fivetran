@@ -25,6 +25,7 @@ class GroupUsersArgs:
                  users: Optional[pulumi.Input[Sequence[pulumi.Input['GroupUsersUserArgs']]]] = None):
         """
         The set of arguments for constructing a GroupUsers resource.
+
         :param pulumi.Input[_builtins.str] group_id: The unique identifier for the Group within the Fivetran system.
         """
         pulumi.set(__self__, "group_id", group_id)
@@ -61,6 +62,7 @@ class _GroupUsersState:
                  users: Optional[pulumi.Input[Sequence[pulumi.Input['GroupUsersUserArgs']]]] = None):
         """
         Input properties used for looking up and filtering GroupUsers resources.
+
         :param pulumi.Input[_builtins.str] group_id: The unique identifier for the Group within the Fivetran system.
         """
         if group_id is not None:
@@ -133,6 +135,7 @@ class GroupUsers(pulumi.CustomResource):
             ])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] group_id: The unique identifier for the Group within the Fivetran system.
@@ -165,6 +168,7 @@ class GroupUsers(pulumi.CustomResource):
                 },
             ])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GroupUsersArgs args: The arguments to use to populate this resource's properties.

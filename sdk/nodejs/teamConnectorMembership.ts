@@ -34,17 +34,17 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * 1. To import an existing `fivetran_team_connector_membership` resource into your Terraform state, you need to get `team_id` and `connector_id`
- *
- * You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams).
+ * 1. To import an existing `fivetran.TeamConnectorMembership` resource into your Terraform state, you need to get `teamId` and `connectorId`
+ * You can retrieve all teams using the [fivetran.getTeams data source](https://www.terraform.io/docs/data-sources/teams).
  *
  * 2. Define an empty resource in your `.tf` configuration:
  *
- * hcl
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
- * resource "fivetran_team_connector_membership" "my_imported_fivetran_team_connector_membership" {
- *
- * }
+ * const myImportedFivetranTeamConnectorMembership = new fivetran.TeamConnectorMembership("my_imported_fivetran_team_connector_membership", {});
+ * ```
  *
  * 3. Run the `pulumi import` command:
  *
@@ -54,8 +54,9 @@ import * as utilities from "./utilities";
  *
  * 4. Use the `terraform state show` command to get the values from the state:
  *
+ * ```sh
  * terraform state show 'fivetran_team_connector_membership.my_imported_fivetran_team_connector_membership'
- *
+ * ```
  * 5. Copy the values and paste them to your `.tf` configuration.
  */
 export class TeamConnectorMembership extends pulumi.CustomResource {
@@ -86,11 +87,11 @@ export class TeamConnectorMembership extends pulumi.CustomResource {
         return obj['__pulumiType'] === TeamConnectorMembership.__pulumiType;
     }
 
-    public readonly connectors!: pulumi.Output<outputs.TeamConnectorMembershipConnector[] | undefined>;
+    declare public readonly connectors: pulumi.Output<outputs.TeamConnectorMembershipConnector[] | undefined>;
     /**
      * The unique identifier for the team within your account.
      */
-    public readonly teamId!: pulumi.Output<string>;
+    declare public readonly teamId: pulumi.Output<string>;
 
     /**
      * Create a TeamConnectorMembership resource with the given unique name, arguments, and options.
@@ -105,15 +106,15 @@ export class TeamConnectorMembership extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TeamConnectorMembershipState | undefined;
-            resourceInputs["connectors"] = state ? state.connectors : undefined;
-            resourceInputs["teamId"] = state ? state.teamId : undefined;
+            resourceInputs["connectors"] = state?.connectors;
+            resourceInputs["teamId"] = state?.teamId;
         } else {
             const args = argsOrState as TeamConnectorMembershipArgs | undefined;
-            if ((!args || args.teamId === undefined) && !opts.urn) {
+            if (args?.teamId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'teamId'");
             }
-            resourceInputs["connectors"] = args ? args.connectors : undefined;
-            resourceInputs["teamId"] = args ? args.teamId : undefined;
+            resourceInputs["connectors"] = args?.connectors;
+            resourceInputs["teamId"] = args?.teamId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TeamConnectorMembership.__pulumiType, name, resourceInputs, opts);

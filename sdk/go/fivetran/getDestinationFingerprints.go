@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.LookupDestinationFingerprints(ctx, &fivetran.LookupDestinationFingerprintsArgs{
+//			_, err := fivetran.GetDestinationFingerprints(ctx, &fivetran.LookupDestinationFingerprintsArgs{
 //				Id: "destination_id",
 //			}, nil)
 //			if err != nil {

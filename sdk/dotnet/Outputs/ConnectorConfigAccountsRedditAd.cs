@@ -14,8 +14,8 @@ namespace Pulumi.Fivetran.Outputs
     public sealed class ConnectorConfigAccountsRedditAd
     {
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `reddit_ads`: Reddit username of the additional linked account.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `RedditAds`: Reddit username of the additional linked account.
         /// </summary>
         public readonly string? Name;
 

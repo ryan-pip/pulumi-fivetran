@@ -25,6 +25,7 @@ class DestinationCertificatesArgs:
                  certificates: Optional[pulumi.Input[Sequence[pulumi.Input['DestinationCertificatesCertificateArgs']]]] = None):
         """
         The set of arguments for constructing a DestinationCertificates resource.
+
         :param pulumi.Input[_builtins.str] destination_id: The unique identifier for the target destination within the Fivetran system.
         """
         pulumi.set(__self__, "destination_id", destination_id)
@@ -60,6 +61,7 @@ class _DestinationCertificatesState:
                  destination_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DestinationCertificates resources.
+
         :param pulumi.Input[_builtins.str] destination_id: The unique identifier for the target destination within the Fivetran system.
         """
         if certificates is not None:
@@ -123,29 +125,33 @@ class DestinationCertificates(pulumi.CustomResource):
 
         ## Import
 
-        1. To import an existing `fivetran_destination_certificates` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+        1. To import an existing `DestinationCertificates` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
 
-        2. To retrieve existing destinations, use the [fivetran_destinations data source](/docs/data-sources/destinations).
+        2. To retrieve existing destinations, use the [get_destinations data source](https://www.terraform.io/docs/data-sources/destinations).
 
         3. Define an empty resource in your `.tf` configuration:
 
-        hcl
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
 
-        resource "fivetran_destination_certificates" "my_imported_destination_certificates" {
-
-        }
+        my_imported_destination_certificates = fivetran.DestinationCertificates("my_imported_destination_certificates")
+        ```
 
         4. Run the `pulumi import` command:
 
         ```sh
-        $ pulumi import fivetran:index/destinationCertificates:DestinationCertificates my_imported_destination_certificates {your Destination Group ID}
+        terraform import fivetran_destination_certificates.my_imported_destination_certificates {your Destination Group ID}
         ```
 
         5.  Use the `terraform state show` command to get the values from the state:
 
+        ```sh
         terraform state show 'fivetran_destination_certificates.my_imported_destination_certificates'
+        ```
 
         6. Copy the values and paste them to your `.tf` configuration.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -182,29 +188,33 @@ class DestinationCertificates(pulumi.CustomResource):
 
         ## Import
 
-        1. To import an existing `fivetran_destination_certificates` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+        1. To import an existing `DestinationCertificates` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
 
-        2. To retrieve existing destinations, use the [fivetran_destinations data source](/docs/data-sources/destinations).
+        2. To retrieve existing destinations, use the [get_destinations data source](https://www.terraform.io/docs/data-sources/destinations).
 
         3. Define an empty resource in your `.tf` configuration:
 
-        hcl
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
 
-        resource "fivetran_destination_certificates" "my_imported_destination_certificates" {
-
-        }
+        my_imported_destination_certificates = fivetran.DestinationCertificates("my_imported_destination_certificates")
+        ```
 
         4. Run the `pulumi import` command:
 
         ```sh
-        $ pulumi import fivetran:index/destinationCertificates:DestinationCertificates my_imported_destination_certificates {your Destination Group ID}
+        terraform import fivetran_destination_certificates.my_imported_destination_certificates {your Destination Group ID}
         ```
 
         5.  Use the `terraform state show` command to get the values from the state:
 
+        ```sh
         terraform state show 'fivetran_destination_certificates.my_imported_destination_certificates'
+        ```
 
         6. Copy the values and paste them to your `.tf` configuration.
+
 
         :param str resource_name: The name of the resource.
         :param DestinationCertificatesArgs args: The arguments to use to populate this resource's properties.

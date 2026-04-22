@@ -10,33 +10,90 @@ using Pulumi.Serialization;
 namespace Pulumi.Fivetran
 {
     /// <summary>
+    /// This resource allows you to create, update, and delete destinations.
+    /// 
+    /// IMPORTANT: Groups and destinations are mapped 1:1 to each other. We do this mapping using the group's id value that we automatically generate when you create a group using our REST API, and the destination's GroupId value that you specify when you create a destination using our REST API. This means that if you use our REST API to create a destination, you must create a group in your Fivetran account before you can create a destination in it.
+    /// 
+    /// When you create a destination in your Fivetran dashboard, we automatically create a group and assign a value to its id and a destination with the same GroupId value, which is unique in your Fivetran account. The group's name corresponds to the Destination name you specify in your Fivetran dashboard when creating the destination in your Fivetran dashboard.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Pulumi.Fivetran;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dest = new Fivetran.Index.Destination("dest", new()
+    ///     {
+    ///         GroupId = @group.Id,
+    ///         Service = "postgres_rds_warehouse",
+    ///         TimeZoneOffset = "0",
+    ///         Region = "GCP_US_EAST4",
+    ///         TrustCertificates = true,
+    ///         TrustFingerprints = true,
+    ///         DaylightSavingTimeEnabled = true,
+    ///         RunSetupTests = true,
+    ///         Config = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "host", "destination.fqdn" },
+    ///                 { "port", 5432 },
+    ///                 { "user", "postgres" },
+    ///                 { "password", "myPass" },
+    ///                 { "database", "fivetran" },
+    ///                 { "connectionType", "Directly" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Setup tests
+    /// 
+    /// The `RunSetupTests` field doesn't have upstream value, it only defines local resource behavoir. This means that when you update only the `RunSetupTests` value (from `False` to `True`, for example) it won't cause any upstream actions. The value will be just saved in terraform state and then used on effective field updates.
+    /// 
+    /// The default value is `False` - this means that no setup tests will be performed during create/update. To perform setup tests, you should set value to `True`.
+    /// 
     /// ## Import
     /// 
-    /// 1. To import an existing `fivetran_destination` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+    /// 1. To import an existing `fivetran.Destination` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
     /// 
-    /// 2. To retrieve existing destinations, use the [fivetran_destinations data source](/docs/data-sources/destinations).
+    /// 2. To retrieve existing destinations, use the [fivetran.getDestinations data source](https://www.terraform.io/docs/data-sources/destinations).
     /// 
     /// 3. Define an empty resource in your `.tf` configuration:
     /// 
-    /// hcl
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Pulumi.Fivetran;
     /// 
-    /// resource "fivetran_destination" "my_imported_destination" {
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myImportedDestination = new Fivetran.Index.Destination("my_imported_destination");
     /// 
-    /// }
+    /// });
+    /// ```
     /// 
     /// 4. Run the `pulumi import` command with the following parameters:
     /// 
     /// ```sh
-    /// $ pulumi import fivetran:index/destination:Destination my_imported_destination {your Destination Group ID}
+    /// terraform import fivetran_destination.my_imported_destination {your Destination Group ID}
     /// ```
     /// 
     /// 5. Use the `terraform state show` command to get the values from the state:
     /// 
+    /// ```sh
     /// terraform state show 'fivetran_destination.my_imported_destination'
-    /// 
+    /// ```
     /// 6. Copy the values and paste them to your `.tf` configuration.
     /// 
-    /// -&gt; The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/destinations/config) for reference to find the properties you need to keep in the `config` section.
+    /// &gt; The `Config` object in the state contains all properties defined in the schema. You need to remove properties from the `Config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/destinations/config) for reference to find the properties you need to keep in the `Config` section.
     /// </summary>
     [FivetranResourceType("fivetran:index/destination:Destination")]
     public partial class Destination : global::Pulumi.CustomResource
@@ -57,8 +114,7 @@ namespace Pulumi.Fivetran
         public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-        /// value is specified, the system will try to associate the connection with an existing agent.
+        /// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
         /// </summary>
         [Output("hybridDeploymentAgentId")]
         public Output<string?> HybridDeploymentAgentId { get; private set; } = null!;
@@ -109,17 +165,13 @@ namespace Pulumi.Fivetran
         public Output<Outputs.DestinationTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-        /// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-        /// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        /// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
         /// </summary>
         [Output("trustCertificates")]
         public Output<bool> TrustCertificates { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-        /// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-        /// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        /// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         /// </summary>
         [Output("trustFingerprints")]
         public Output<bool> TrustFingerprints { get; private set; } = null!;
@@ -187,8 +239,7 @@ namespace Pulumi.Fivetran
         public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
-        /// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-        /// value is specified, the system will try to associate the connection with an existing agent.
+        /// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
         /// </summary>
         [Input("hybridDeploymentAgentId")]
         public Input<string>? HybridDeploymentAgentId { get; set; }
@@ -233,17 +284,13 @@ namespace Pulumi.Fivetran
         public Input<Inputs.DestinationTimeoutsArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-        /// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-        /// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        /// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
         /// </summary>
         [Input("trustCertificates")]
         public Input<bool>? TrustCertificates { get; set; }
 
         /// <summary>
-        /// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-        /// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-        /// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        /// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         /// </summary>
         [Input("trustFingerprints")]
         public Input<bool>? TrustFingerprints { get; set; }
@@ -272,8 +319,7 @@ namespace Pulumi.Fivetran
         public Input<string>? GroupId { get; set; }
 
         /// <summary>
-        /// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-        /// value is specified, the system will try to associate the connection with an existing agent.
+        /// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
         /// </summary>
         [Input("hybridDeploymentAgentId")]
         public Input<string>? HybridDeploymentAgentId { get; set; }
@@ -324,17 +370,13 @@ namespace Pulumi.Fivetran
         public Input<Inputs.DestinationTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-        /// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-        /// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        /// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
         /// </summary>
         [Input("trustCertificates")]
         public Input<bool>? TrustCertificates { get; set; }
 
         /// <summary>
-        /// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-        /// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-        /// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        /// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         /// </summary>
         [Input("trustFingerprints")]
         public Input<bool>? TrustFingerprints { get; set; }

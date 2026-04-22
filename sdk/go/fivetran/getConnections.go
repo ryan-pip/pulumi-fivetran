@@ -12,6 +12,8 @@ import (
 )
 
 // This data source returns list of connection objects.
+//
+// ## Example Usage
 func GetConnections(ctx *pulumi.Context, args *GetConnectionsArgs, opts ...pulumi.InvokeOption) (*GetConnectionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetConnectionsResult

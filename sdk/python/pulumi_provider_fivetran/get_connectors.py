@@ -64,6 +64,8 @@ def get_connectors(connectors: Optional[Sequence[Union['GetConnectorsConnectorAr
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConnectorsResult:
     """
     This data source returns list of connector objects.
+
+    ## Example Usage
     """
     __args__ = dict()
     __args__['connectors'] = connectors
@@ -77,6 +79,8 @@ def get_connectors_output(connectors: Optional[pulumi.Input[Optional[Sequence[Un
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectorsResult]:
     """
     This data source returns list of connector objects.
+
+    ## Example Usage
     """
     __args__ = dict()
     __args__['connectors'] = connectors

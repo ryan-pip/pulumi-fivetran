@@ -25,6 +25,7 @@ class ConnectorCertificatesArgs:
                  certificates: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorCertificatesCertificateArgs']]]] = None):
         """
         The set of arguments for constructing a ConnectorCertificates resource.
+
         :param pulumi.Input[_builtins.str] connector_id: The unique identifier for the target connection within the Fivetran system.
         """
         pulumi.set(__self__, "connector_id", connector_id)
@@ -60,6 +61,7 @@ class _ConnectorCertificatesState:
                  connector_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectorCertificates resources.
+
         :param pulumi.Input[_builtins.str] connector_id: The unique identifier for the target connection within the Fivetran system.
         """
         if certificates is not None:
@@ -121,29 +123,33 @@ class ConnectorCertificates(pulumi.CustomResource):
 
         ## Import
 
-        1. To import an existing `fivetran_connector_certificates` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard.
+        1. To import an existing `ConnectorCertificates` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard.
 
-        2. Retrieve all connectors in a particular group using the [fivetran_connectors data source](/docs/data-sources/connectors)
+        2. Retrieve all connectors in a particular group using the [get_connectors data source](https://www.terraform.io/docs/data-sources/connectors)
 
         3. Define an empty resource in your `.tf` configuration:
 
-        hcl
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
 
-        resource "fivetran_connector_certificates" "my_imported_connector_fingerprints" {
-
-        }
+        my_imported_connector_fingerprints = fivetran.ConnectorCertificates("my_imported_connector_fingerprints")
+        ```
 
         4. Run the `pulumi import` command:
 
         ```sh
-        $ pulumi import fivetran:index/connectorCertificates:ConnectorCertificates my_imported_connector_fingerprints {your Fivetran Connector ID}
+        terraform import fivetran_connector_certificates.my_imported_connector_fingerprints {your Fivetran Connector ID}
         ```
 
         5.  Use the `terraform state show` command to get the values from the state:
 
+        ```sh
         terraform state show 'fivetran_connector_certificates.my_imported_connector_fingerprints'
+        ```
 
         6. Copy the values and paste them to your `.tf` configuration.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -178,29 +184,33 @@ class ConnectorCertificates(pulumi.CustomResource):
 
         ## Import
 
-        1. To import an existing `fivetran_connector_certificates` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard.
+        1. To import an existing `ConnectorCertificates` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard.
 
-        2. Retrieve all connectors in a particular group using the [fivetran_connectors data source](/docs/data-sources/connectors)
+        2. Retrieve all connectors in a particular group using the [get_connectors data source](https://www.terraform.io/docs/data-sources/connectors)
 
         3. Define an empty resource in your `.tf` configuration:
 
-        hcl
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
 
-        resource "fivetran_connector_certificates" "my_imported_connector_fingerprints" {
-
-        }
+        my_imported_connector_fingerprints = fivetran.ConnectorCertificates("my_imported_connector_fingerprints")
+        ```
 
         4. Run the `pulumi import` command:
 
         ```sh
-        $ pulumi import fivetran:index/connectorCertificates:ConnectorCertificates my_imported_connector_fingerprints {your Fivetran Connector ID}
+        terraform import fivetran_connector_certificates.my_imported_connector_fingerprints {your Fivetran Connector ID}
         ```
 
         5.  Use the `terraform state show` command to get the values from the state:
 
+        ```sh
         terraform state show 'fivetran_connector_certificates.my_imported_connector_fingerprints'
+        ```
 
         6. Copy the values and paste them to your `.tf` configuration.
+
 
         :param str resource_name: The name of the resource.
         :param ConnectorCertificatesArgs args: The arguments to use to populate this resource's properties.

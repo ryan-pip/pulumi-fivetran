@@ -22,7 +22,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var hybridDeploymentAgent = new Fivetran.HybridDeploymentAgent("hybrid_deployment_agent", new()
+    ///     var hybridDeploymentAgent = new Fivetran.Index.HybridDeploymentAgent("hybrid_deployment_agent", new()
     ///     {
     ///         DisplayName = "display_name",
     ///         GroupId = "group_id",

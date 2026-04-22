@@ -8,6 +8,8 @@ import * as utilities from "./utilities";
 
 /**
  * This data source returns list of logging service objects.
+ *
+ * ## Example Usage
  */
 export function getExternalLogs(args?: GetExternalLogsArgs, opts?: pulumi.InvokeOptions): Promise<GetExternalLogsResult> {
     args = args || {};
@@ -36,6 +38,8 @@ export interface GetExternalLogsResult {
 }
 /**
  * This data source returns list of logging service objects.
+ *
+ * ## Example Usage
  */
 export function getExternalLogsOutput(args?: GetExternalLogsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetExternalLogsResult> {
     args = args || {};

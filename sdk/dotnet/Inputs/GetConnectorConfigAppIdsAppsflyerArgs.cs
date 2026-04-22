@@ -13,8 +13,8 @@ namespace Pulumi.Fivetran.Inputs
     public sealed class GetConnectorConfigAppIdsAppsflyerInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `appsflyer`: Your App ID
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Appsflyer`: Your App ID
         /// </summary>
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;

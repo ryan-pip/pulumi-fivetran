@@ -23,17 +23,17 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * 1. To import an existing `fivetran_user` resource into your Terraform state, you need to get `user_id`.
- *
- * You can retrieve all users using the [fivetran_users data source](/docs/data-sources/users).
+ * 1. To import an existing `fivetran.User` resource into your Terraform state, you need to get `userId`.
+ * You can retrieve all users using the [fivetran.getUsers data source](https://www.terraform.io/docs/data-sources/users).
  *
  * 2. Define an empty resource in your `.tf` configuration:
  *
- * hcl
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
- * resource "fivetran_user" "my_imported_fivetran_user" {
- *
- * }
+ * const myImportedFivetranUser = new fivetran.User("my_imported_fivetran_user", {});
+ * ```
  *
  * 3. Run the `pulumi import` command:
  *
@@ -43,8 +43,9 @@ import * as utilities from "./utilities";
  *
  * 4. Use the `terraform state show` command to get the values from the state:
  *
+ * ```sh
  * terraform state show 'fivetran_user.my_imported_fivetran_user'
- *
+ * ```
  * 5. Copy the values and paste them to your `.tf` configuration.
  */
 export class User extends pulumi.CustomResource {
@@ -78,43 +79,43 @@ export class User extends pulumi.CustomResource {
     /**
      * The timestamp that the user created their Fivetran account.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The email address that the user has associated with their user profile.
      */
-    public readonly email!: pulumi.Output<string>;
+    declare public readonly email: pulumi.Output<string>;
     /**
      * The last name of the user.
      */
-    public readonly familyName!: pulumi.Output<string>;
+    declare public readonly familyName: pulumi.Output<string>;
     /**
      * The first name of the user.
      */
-    public readonly givenName!: pulumi.Output<string>;
+    declare public readonly givenName: pulumi.Output<string>;
     /**
      * The field indicates whether the user has been invited to your account.
      */
-    public readonly invited!: pulumi.Output<boolean>;
+    declare public readonly invited: pulumi.Output<boolean>;
     /**
      * The last time that the user has logged into their Fivetran account.
      */
-    public /*out*/ readonly loggedInAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly loggedInAt: pulumi.Output<string>;
     /**
      * The phone number of the user.
      */
-    public readonly phone!: pulumi.Output<string | undefined>;
+    declare public readonly phone: pulumi.Output<string | undefined>;
     /**
      * The user's avatar as a URL link (for example, 'http://mycompany.com/avatars/john_white.png') or base64 data URI (for example, 'data:image/png;base64,aHR0cDovL215Y29tcGFueS5jb20vYXZhdGFycy9qb2huX3doaXRlLnBuZw==')
      */
-    public readonly picture!: pulumi.Output<string | undefined>;
+    declare public readonly picture: pulumi.Output<string | undefined>;
     /**
      * The role that you would like to assign to the user.
      */
-    public readonly role!: pulumi.Output<string | undefined>;
+    declare public readonly role: pulumi.Output<string | undefined>;
     /**
      * The field indicates whether the user has verified their email address in the account creation process.
      */
-    public readonly verified!: pulumi.Output<boolean>;
+    declare public readonly verified: pulumi.Output<boolean>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -129,35 +130,35 @@ export class User extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["familyName"] = state ? state.familyName : undefined;
-            resourceInputs["givenName"] = state ? state.givenName : undefined;
-            resourceInputs["invited"] = state ? state.invited : undefined;
-            resourceInputs["loggedInAt"] = state ? state.loggedInAt : undefined;
-            resourceInputs["phone"] = state ? state.phone : undefined;
-            resourceInputs["picture"] = state ? state.picture : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["verified"] = state ? state.verified : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["familyName"] = state?.familyName;
+            resourceInputs["givenName"] = state?.givenName;
+            resourceInputs["invited"] = state?.invited;
+            resourceInputs["loggedInAt"] = state?.loggedInAt;
+            resourceInputs["phone"] = state?.phone;
+            resourceInputs["picture"] = state?.picture;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["verified"] = state?.verified;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            if ((!args || args.email === undefined) && !opts.urn) {
+            if (args?.email === undefined && !opts.urn) {
                 throw new Error("Missing required property 'email'");
             }
-            if ((!args || args.familyName === undefined) && !opts.urn) {
+            if (args?.familyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'familyName'");
             }
-            if ((!args || args.givenName === undefined) && !opts.urn) {
+            if (args?.givenName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'givenName'");
             }
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["familyName"] = args ? args.familyName : undefined;
-            resourceInputs["givenName"] = args ? args.givenName : undefined;
-            resourceInputs["invited"] = args ? args.invited : undefined;
-            resourceInputs["phone"] = args ? args.phone : undefined;
-            resourceInputs["picture"] = args ? args.picture : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["verified"] = args ? args.verified : undefined;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["familyName"] = args?.familyName;
+            resourceInputs["givenName"] = args?.givenName;
+            resourceInputs["invited"] = args?.invited;
+            resourceInputs["phone"] = args?.phone;
+            resourceInputs["picture"] = args?.picture;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["verified"] = args?.verified;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["loggedInAt"] = undefined /*out*/;
         }

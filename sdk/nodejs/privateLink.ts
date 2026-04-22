@@ -6,6 +6,22 @@ import * as utilities from "./utilities";
 
 /**
  * This resource allows you to create, update, and delete private links.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
+ *
+ * const testPl = new fivetran.PrivateLink("test_pl", {
+ *     name: "name",
+ *     region: "region",
+ *     service: "service",
+ *     config: [{
+ *         connectionServiceName: "connection_service_name",
+ *     }],
+ * });
+ * ```
  */
 export class PrivateLink extends pulumi.CustomResource {
     /**
@@ -38,44 +54,43 @@ export class PrivateLink extends pulumi.CustomResource {
     /**
      * The cloud provider name.
      */
-    public /*out*/ readonly cloudProvider!: pulumi.Output<string>;
+    declare public /*out*/ readonly cloudProvider: pulumi.Output<string>;
     /**
      * Configuration.
      */
-    public readonly configMap!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly configMap: pulumi.Output<{[key: string]: string}>;
     /**
      * The date and time the membership was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The unique identifier for the User within the Fivetran system.
      */
-    public /*out*/ readonly createdBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     /**
      * The private link host.
      */
-    public /*out*/ readonly host!: pulumi.Output<string>;
+    declare public /*out*/ readonly host: pulumi.Output<string>;
     /**
-     * The private link name within the account. The name must start with a letter or underscore and can only contain letters,
-     * numbers, or underscores. Maximum size of name is 23 characters.
+     * The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Data processing location. This is where Fivetran will operate and run computation on data.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Service type.
      */
-    public readonly service!: pulumi.Output<string>;
+    declare public readonly service: pulumi.Output<string>;
     /**
      * The state of the private link.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The state of the private link.
      */
-    public /*out*/ readonly stateSummary!: pulumi.Output<string>;
+    declare public /*out*/ readonly stateSummary: pulumi.Output<string>;
 
     /**
      * Create a PrivateLink resource with the given unique name, arguments, and options.
@@ -90,31 +105,31 @@ export class PrivateLink extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PrivateLinkState | undefined;
-            resourceInputs["cloudProvider"] = state ? state.cloudProvider : undefined;
-            resourceInputs["configMap"] = state ? state.configMap : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["service"] = state ? state.service : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["stateSummary"] = state ? state.stateSummary : undefined;
+            resourceInputs["cloudProvider"] = state?.cloudProvider;
+            resourceInputs["configMap"] = state?.configMap;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["service"] = state?.service;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["stateSummary"] = state?.stateSummary;
         } else {
             const args = argsOrState as PrivateLinkArgs | undefined;
-            if ((!args || args.configMap === undefined) && !opts.urn) {
+            if (args?.configMap === undefined && !opts.urn) {
                 throw new Error("Missing required property 'configMap'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.service === undefined) && !opts.urn) {
+            if (args?.service === undefined && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            resourceInputs["configMap"] = args ? args.configMap : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["configMap"] = args?.configMap;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["service"] = args?.service;
             resourceInputs["cloudProvider"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
@@ -152,8 +167,7 @@ export interface PrivateLinkState {
      */
     host?: pulumi.Input<string>;
     /**
-     * The private link name within the account. The name must start with a letter or underscore and can only contain letters,
-     * numbers, or underscores. Maximum size of name is 23 characters.
+     * The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
      */
     name?: pulumi.Input<string>;
     /**
@@ -183,8 +197,7 @@ export interface PrivateLinkArgs {
      */
     configMap: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The private link name within the account. The name must start with a letter or underscore and can only contain letters,
-     * numbers, or underscores. Maximum size of name is 23 characters.
+     * The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
      */
     name?: pulumi.Input<string>;
     /**

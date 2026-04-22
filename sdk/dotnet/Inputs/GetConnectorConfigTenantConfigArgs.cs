@@ -13,15 +13,15 @@ namespace Pulumi.Fivetran.Inputs
     public sealed class GetConnectorConfigTenantConfigInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `reltio`: Your Reltio subdomain.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Reltio`: Your Reltio subdomain.
         /// </summary>
         [Input("subdomain", required: true)]
         public Input<string> Subdomain { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `reltio`: Your Reltio tenant ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Reltio`: Your Reltio tenant ID.
         /// </summary>
         [Input("tenantId", required: true)]
         public Input<string> TenantId { get; set; } = null!;

@@ -13,70 +13,70 @@ namespace Pulumi.Fivetran.Inputs
     public sealed class DestinationConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora_postgres_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `aurora_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `azure_postgres_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `azure_sql_data_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `azure_sql_database`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `azure_sql_managed_db_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `maria_rds_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `maria_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `mysql_rds_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `mysql_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `oracle_rac_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `oracle_rds_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `oracle_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `panoply`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `periscope_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `postgres_gcp_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `postgres_rds_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `postgres_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `redshift`: Require TLS through Tunnel
-        /// 	- Service `sql_server_rds_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `sql_server_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AuroraPostgresWarehouse`: Specifies whether TLS is required. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `AuroraWarehouse`: Specifies whether TLS is required. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `AzurePostgresWarehouse`: Specifies whether TLS is required. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `AzureSqlDataWarehouse`: Specifies whether TLS is required. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `AzureSqlDatabase`: Specifies whether TLS is required. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `AzureSqlManagedDbWarehouse`: Specifies whether TLS is required. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `MariaRdsWarehouse`: Specifies whether TLS is required. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `MariaWarehouse`: Specifies whether TLS is required. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `MysqlRdsWarehouse`: Specifies whether TLS is required. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `MysqlWarehouse`: Specifies whether TLS is required. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `OracleRacWarehouse`: Specifies whether TLS is required. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `OracleRdsWarehouse`: Specifies whether TLS is required. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `OracleWarehouse`: Specifies whether TLS is required. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `Panoply`: Specifies whether TLS is required. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `PeriscopeWarehouse`: Specifies whether TLS is required. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `PostgresGcpWarehouse`: Specifies whether TLS is required. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `PostgresRdsWarehouse`: Specifies whether TLS is required. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `PostgresWarehouse`: Specifies whether TLS is required. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `Redshift`: Require TLS through Tunnel
+        /// 	- Service `SqlServerRdsWarehouse`: Specifies whether TLS is required. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `SqlServerWarehouse`: Specifies whether TLS is required. Must be populated if `ConnectionType` is set to `SshTunnel`.
         /// </summary>
         [Input("alwaysEncrypted")]
         public Input<bool>? AlwaysEncrypted { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snowflake`: Application ID of your app created in Azure
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Snowflake`: Application ID of your app created in Azure
         /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snowflake`: Password-based or key-based authentication type
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Snowflake`: Password-based or key-based authentication type
         /// </summary>
         [Input("auth")]
         public Input<string>? Auth { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adls`: Authentication type
-        /// 	- Service `databricks`: Authentication type
-        /// 	- Service `managed_data_lake`: Authentication type
-        /// 	- Service `new_s3_datalake`: Authentication type
-        /// 	- Service `onelake`: Authentication type
-        /// 	- Service `redshift`: Authentication type. Default value: `PASSWORD`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adls`: Authentication type
+        /// 	- Service `Databricks`: Authentication type
+        /// 	- Service `ManagedDataLake`: Authentication type
+        /// 	- Service `NewS3Datalake`: Authentication type
+        /// 	- Service `Onelake`: Authentication type
+        /// 	- Service `Redshift`: Authentication type. Default value: `PASSWORD`.
         /// </summary>
         [Input("authType")]
         public Input<string>? AuthType { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `new_s3_datalake`: AWS access key to access the S3 bucket and AWS Glue
-        /// 	- Service `redshift`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
-        /// 	- Service `snowflake`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment, want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `NewS3Datalake`: AWS access key to access the S3 bucket and AWS Glue
+        /// 	- Service `Redshift`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+        /// 	- Service `Snowflake`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment, want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
         /// </summary>
         [Input("awsAccessKeyId")]
         public Input<string>? AwsAccessKeyId { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snowflake`: Type of authentication configured for the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Snowflake`: Type of authentication configured for the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
         /// </summary>
         [Input("awsBucketAuthType")]
         public Input<string>? AwsBucketAuthType { get; set; }
@@ -85,10 +85,10 @@ namespace Pulumi.Fivetran.Inputs
         private Input<string>? _awsSecretAccessKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `new_s3_datalake`: AWS secret access key to access the S3 bucket and AWS Glue
-        /// 	- Service `redshift`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
-        /// 	- Service `snowflake`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment , want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `NewS3Datalake`: AWS secret access key to access the S3 bucket and AWS Glue
+        /// 	- Service `Redshift`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+        /// 	- Service `Snowflake`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment , want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
         /// </summary>
         public Input<string>? AwsSecretAccessKey
         {
@@ -104,8 +104,8 @@ namespace Pulumi.Fivetran.Inputs
         private InputList<string>? _bootstrapServers;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `confluent_cloud_wh`: Comma-separated list of Confluent Cloud servers in the `server:port` format.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ConfluentCloudWh`: Comma-separated list of Confluent Cloud servers in the `server:port` format.
         /// </summary>
         public InputList<string> BootstrapServers
         {
@@ -114,67 +114,67 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `big_query`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
-        /// 	- Service `big_query_dts`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
-        /// 	- Service `managed_big_query`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
-        /// 	- Service `managed_data_lake`: (Immutable) The name of the bucket to be used as destination
-        /// 	- Service `new_s3_datalake`: (Immutable) The name of the bucket to be used as destination
-        /// 	- Service `redshift`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
-        /// 	- Service `snowflake`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 or GCS bucket to stage your data.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `BigQuery`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
+        /// 	- Service `BigQueryDts`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
+        /// 	- Service `ManagedBigQuery`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
+        /// 	- Service `ManagedDataLake`: (Immutable) The name of the bucket to be used as destination
+        /// 	- Service `NewS3Datalake`: (Immutable) The name of the bucket to be used as destination
+        /// 	- Service `Redshift`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+        /// 	- Service `Snowflake`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 or GCS bucket to stage your data.
         /// </summary>
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `redshift`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
-        /// 	- Service `snowflake`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Redshift`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+        /// 	- Service `Snowflake`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
         /// </summary>
         [Input("bucketRegion")]
         public Input<string>? BucketRegion { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adls`: Catalog name
-        /// 	- Service `databricks`: Catalog name
-        /// 	- Service `managed_data_lake`: Catalog name
-        /// 	- Service `new_s3_datalake`: Catalog name
-        /// 	- Service `onelake`: Catalog name
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adls`: Catalog name
+        /// 	- Service `Databricks`: Catalog name
+        /// 	- Service `ManagedDataLake`: Catalog name
+        /// 	- Service `NewS3Datalake`: Catalog name
+        /// 	- Service `Onelake`: Catalog name
         /// </summary>
         [Input("catalog")]
         public Input<string>? Catalog { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adls`: Client id of service principal
-        /// 	- Service `managed_data_lake`: Client id of service principal
-        /// 	- Service `onelake`: Client ID of service principal
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adls`: Client id of service principal
+        /// 	- Service `ManagedDataLake`: Client id of service principal
+        /// 	- Service `Onelake`: Client ID of service principal
         /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `databricks`: Databricks deployment cloud
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Databricks`: Databricks deployment cloud
         /// </summary>
         [Input("cloudProvider")]
         public Input<string>? CloudProvider { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `panoply`: Cluster ID.
-        /// 	- Service `periscope_warehouse`: Cluster ID.
-        /// 	- Service `redshift`: Cluster ID. Must be populated if `connection_type` is set to `SshTunnel` and `auth_type` is set to `IAM`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Panoply`: Cluster ID.
+        /// 	- Service `PeriscopeWarehouse`: Cluster ID.
+        /// 	- Service `Redshift`: Cluster ID. Must be populated if `ConnectionType` is set to `SshTunnel` and `AuthType` is set to `IAM`.
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `panoply`: Cluster region.
-        /// 	- Service `periscope_warehouse`: Cluster region.
-        /// 	- Service `redshift`: Cluster region. Must be populated if `connection_type` is set to `SshTunnel` and `auth_type` is set to `IAM`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Panoply`: Cluster region.
+        /// 	- Service `PeriscopeWarehouse`: Cluster region.
+        /// 	- Service `Redshift`: Cluster region. Must be populated if `ConnectionType` is set to `SshTunnel` and `AuthType` is set to `IAM`.
         /// </summary>
         [Input("clusterRegion")]
         public Input<string>? ClusterRegion { get; set; }
@@ -183,41 +183,41 @@ namespace Pulumi.Fivetran.Inputs
         public Input<string>? ConnectionMethod { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adls`: Connection method. Default value: `Directly`.
-        /// 	- Service `aurora_postgres_warehouse`: Connection method. Default value: `Directly`.
-        /// 	- Service `aurora_warehouse`: Connection method. Default value: `Directly`.
-        /// 	- Service `azure_postgres_warehouse`: Connection method. Default value: `Directly`.
-        /// 	- Service `azure_sql_data_warehouse`: Connection method. Default value: `Directly`.
-        /// 	- Service `azure_sql_database`: Connection method. Default value: `Directly`.
-        /// 	- Service `azure_sql_managed_db_warehouse`: Connection method. Default value: `Directly`.
-        /// 	- Service `databricks`: Connection method. Default value: `Directly`.
-        /// 	- Service `managed_data_lake`: connection type
-        /// 	- Service `maria_rds_warehouse`: Connection method. Default value: `Directly`.
-        /// 	- Service `maria_warehouse`: Connection method. Default value: `Directly`.
-        /// 	- Service `mysql_rds_warehouse`: Connection method. Default value: `Directly`.
-        /// 	- Service `mysql_warehouse`: Connection method. Default value: `Directly`.
-        /// 	- Service `oracle_rac_warehouse`: Connection method. Default value: `Directly`.
-        /// 	- Service `oracle_rds_warehouse`: Connection method. Default value: `Directly`.
-        /// 	- Service `oracle_warehouse`: Connection method. Default value: `Directly`.
-        /// 	- Service `panoply`: Connection method. Default value: `Directly`.
-        /// 	- Service `periscope_warehouse`: Connection method. Default value: `Directly`.
-        /// 	- Service `postgres_gcp_warehouse`: Connection method. Default value: `Directly`.
-        /// 	- Service `postgres_rds_warehouse`: Connection method. Default value: `Directly`.
-        /// 	- Service `postgres_warehouse`: Connection method. Default value: `Directly`.
-        /// 	- Service `redshift`: Connection method. Default value: `Directly`.
-        /// 	- Service `snowflake`: Connection method. Default value: `Directly`.
-        /// 	- Service `sql_server_rds_warehouse`: Connection method. Default value: `Directly`.
-        /// 	- Service `sql_server_warehouse`: Connection method. Default value: `Directly`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adls`: Connection method. Default value: `Directly`.
+        /// 	- Service `AuroraPostgresWarehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `AuroraWarehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `AzurePostgresWarehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `AzureSqlDataWarehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `AzureSqlDatabase`: Connection method. Default value: `Directly`.
+        /// 	- Service `AzureSqlManagedDbWarehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `Databricks`: Connection method. Default value: `Directly`.
+        /// 	- Service `ManagedDataLake`: connection type
+        /// 	- Service `MariaRdsWarehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `MariaWarehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `MysqlRdsWarehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `MysqlWarehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `OracleRacWarehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `OracleRdsWarehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `OracleWarehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `Panoply`: Connection method. Default value: `Directly`.
+        /// 	- Service `PeriscopeWarehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `PostgresGcpWarehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `PostgresRdsWarehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `PostgresWarehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `Redshift`: Connection method. Default value: `Directly`.
+        /// 	- Service `Snowflake`: Connection method. Default value: `Directly`.
+        /// 	- Service `SqlServerRdsWarehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `SqlServerWarehouse`: Connection method. Default value: `Directly`.
         /// </summary>
         [Input("connectionType")]
         public Input<string>? ConnectionType { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adls`: (Immutable) Container to store delta table files
-        /// 	- Service `managed_data_lake`: (Immutable) Container to store delta table files
-        /// 	- Service `onelake`: Workspace name to store delta table files
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adls`: (Immutable) Container to store delta table files
+        /// 	- Service `ManagedDataLake`: (Immutable) Container to store delta table files
+        /// 	- Service `Onelake`: Workspace name to store delta table files
         /// </summary>
         [Input("containerName")]
         public Input<string>? ContainerName { get; set; }
@@ -226,76 +226,76 @@ namespace Pulumi.Fivetran.Inputs
         public Input<string>? ControllerId { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `databricks`: Whether to create external tables
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Databricks`: Whether to create external tables
         /// </summary>
         [Input("createExternalTables")]
         public Input<bool>? CreateExternalTables { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `confluent_cloud_wh`: Confluent Cloud message format.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ConfluentCloudWh`: Confluent Cloud message format.
         /// </summary>
         [Input("dataFormat")]
         public Input<string>? DataFormat { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `big_query`: Data location. Datasets will reside in this location.
-        /// 	- Service `big_query_dts`: Data location. Datasets will reside in this location.
-        /// 	- Service `managed_big_query`: Data location. Datasets will reside in this location.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `BigQuery`: Data location. Datasets will reside in this location.
+        /// 	- Service `BigQueryDts`: Data location. Datasets will reside in this location.
+        /// 	- Service `ManagedBigQuery`: Data location. Datasets will reside in this location.
         /// </summary>
         [Input("dataSetLocation")]
         public Input<string>? DataSetLocation { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora_postgres_warehouse`: Database name
-        /// 	- Service `aurora_warehouse`: Database name
-        /// 	- Service `azure_postgres_warehouse`: Database name
-        /// 	- Service `azure_sql_data_warehouse`: Database name
-        /// 	- Service `azure_sql_database`: Database name
-        /// 	- Service `azure_sql_managed_db_warehouse`: Database name
-        /// 	- Service `maria_rds_warehouse`: Database name
-        /// 	- Service `maria_warehouse`: Database name
-        /// 	- Service `mysql_rds_warehouse`: Database name
-        /// 	- Service `mysql_warehouse`: Database name
-        /// 	- Service `oracle_rac_warehouse`: Database name
-        /// 	- Service `oracle_rds_warehouse`: Database name
-        /// 	- Service `oracle_warehouse`: Database name
-        /// 	- Service `panoply`: Database name
-        /// 	- Service `periscope_warehouse`: Database name
-        /// 	- Service `postgres_gcp_warehouse`: Database name
-        /// 	- Service `postgres_rds_warehouse`: Database name
-        /// 	- Service `postgres_warehouse`: Database name
-        /// 	- Service `redshift`: Database name
-        /// 	- Service `snowflake`: Database name
-        /// 	- Service `sql_server_rds_warehouse`: Database name
-        /// 	- Service `sql_server_warehouse`: Database name
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AuroraPostgresWarehouse`: Database name
+        /// 	- Service `AuroraWarehouse`: Database name
+        /// 	- Service `AzurePostgresWarehouse`: Database name
+        /// 	- Service `AzureSqlDataWarehouse`: Database name
+        /// 	- Service `AzureSqlDatabase`: Database name
+        /// 	- Service `AzureSqlManagedDbWarehouse`: Database name
+        /// 	- Service `MariaRdsWarehouse`: Database name
+        /// 	- Service `MariaWarehouse`: Database name
+        /// 	- Service `MysqlRdsWarehouse`: Database name
+        /// 	- Service `MysqlWarehouse`: Database name
+        /// 	- Service `OracleRacWarehouse`: Database name
+        /// 	- Service `OracleRdsWarehouse`: Database name
+        /// 	- Service `OracleWarehouse`: Database name
+        /// 	- Service `Panoply`: Database name
+        /// 	- Service `PeriscopeWarehouse`: Database name
+        /// 	- Service `PostgresGcpWarehouse`: Database name
+        /// 	- Service `PostgresRdsWarehouse`: Database name
+        /// 	- Service `PostgresWarehouse`: Database name
+        /// 	- Service `Redshift`: Database name
+        /// 	- Service `Snowflake`: Database name
+        /// 	- Service `SqlServerRdsWarehouse`: Database name
+        /// 	- Service `SqlServerWarehouse`: Database name
         /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adls`: Databricks Connection method. Default value: `Directly`.
-        /// 	- Service `managed_data_lake`: Databricks Connection method. Default value: `Directly`.
-        /// 	- Service `new_s3_datalake`: Databricks Connection method. Default value: `Directly`.
-        /// 	- Service `onelake`: Databricks Connection method. Default value: `Directly`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adls`: Databricks Connection method. Default value: `Directly`.
+        /// 	- Service `ManagedDataLake`: Databricks Connection method. Default value: `Directly`.
+        /// 	- Service `NewS3Datalake`: Databricks Connection method. Default value: `Directly`.
+        /// 	- Service `Onelake`: Databricks Connection method. Default value: `Directly`.
         /// </summary>
         [Input("databricksConnectionType")]
         public Input<string>? DatabricksConnectionType { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snowflake`: Tenant ID of your app created in Azure
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Snowflake`: Tenant ID of your app created in Azure
         /// </summary>
         [Input("directoryId")]
         public Input<string>? DirectoryId { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snowflake`: Set to `true` if you want to enable external storage for unstructured files.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Snowflake`: Set to `True` if you want to enable external storage for unstructured files.
         /// </summary>
         [Input("enableExternalStorageForUnstructuredFiles")]
         public Input<bool>? EnableExternalStorageForUnstructuredFiles { get; set; }
@@ -304,60 +304,60 @@ namespace Pulumi.Fivetran.Inputs
         public Input<bool>? EnableRemoteExecution { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `confluent_cloud_wh`: Populate all tables in a single topic.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ConfluentCloudWh`: Populate all tables in a single topic.
         /// </summary>
         [Input("enableSingleTopic")]
         public Input<bool>? EnableSingleTopic { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `redshift`: Enable to convert JSON data type to SUPER
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Redshift`: Enable to convert JSON data type to SUPER
         /// </summary>
         [Input("enableSuperType")]
         public Input<bool>? EnableSuperType { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aws_msk_wh`: Fivetran generated External ID
-        /// 	- Service `panoply`: Fivetran generated External ID
-        /// 	- Service `periscope_warehouse`: Fivetran generated External ID
-        /// 	- Service `redshift`: Fivetran generated External ID
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AwsMskWh`: Fivetran generated External ID
+        /// 	- Service `Panoply`: Fivetran generated External ID
+        /// 	- Service `PeriscopeWarehouse`: Fivetran generated External ID
+        /// 	- Service `Redshift`: Fivetran generated External ID
         /// </summary>
         [Input("externalId")]
         public Input<string>? ExternalId { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `databricks`: External location to store Delta tables. Default value: `""`  (null). By default, the external tables will reside in the `/{schema}/{table}` path, and if you specify an external location in the `{externalLocation}/{schema}/{table}` path.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Databricks`: External location to store Delta tables. Default value: `""`  (null). By default, the external tables will reside in the `/{schema}/{table}` path, and if you specify an external location in the `{externalLocation}/{schema}/{table}` path.
         /// </summary>
         [Input("externalLocation")]
         public Input<string>? ExternalLocation { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snowflake`: External stage storage provider[Internal, S3, Azure,GCS]
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Snowflake`: External stage storage provider[Internal, S3, Azure,GCS]
         /// </summary>
         [Input("externalStageStorageProvider")]
         public Input<string>? ExternalStageStorageProvider { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snowflake`: The cloud service provider you want to use for staging data. Use this parameter only if you are using Hybrid Deployment.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Snowflake`: The cloud service provider you want to use for staging data. Use this parameter only if you are using Hybrid Deployment.
         /// </summary>
         [Input("externalStorageCloudProvider")]
         public Input<string>? ExternalStorageCloudProvider { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snowflake`: External storage integration name
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Snowflake`: External storage integration name
         /// </summary>
         [Input("externalStorageIntegration")]
         public Input<string>? ExternalStorageIntegration { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snowflake`: External storage parent folder URL
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Snowflake`: External storage parent folder URL
         /// </summary>
         [Input("externalStorageParentFolderUri")]
         public Input<string>? ExternalStorageParentFolderUri { get; set; }
@@ -369,91 +369,91 @@ namespace Pulumi.Fivetran.Inputs
         public Input<string>? FivetranMskRoleArn { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `managed_data_lake`: (Immutable) ARN of the role which you created with different required policy mentioned in our setup guide
-        /// 	- Service `new_s3_datalake`: ARN of the role which you created with different required policy mentioned in our setup guide
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ManagedDataLake`: (Immutable) ARN of the role which you created with different required policy mentioned in our setup guide
+        /// 	- Service `NewS3Datalake`: ARN of the role which you created with different required policy mentioned in our setup guide
         /// </summary>
         [Input("fivetranRoleArn")]
         public Input<string>? FivetranRoleArn { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snowflake`: The path to the JSON file that contains the service account credentials for the GCS bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use a GCS bucket to stage your data.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Snowflake`: The path to the JSON file that contains the service account credentials for the GCS bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use a GCS bucket to stage your data.
         /// </summary>
         [Input("gcsServiceAccountCredentialsPath")]
         public Input<string>? GcsServiceAccountCredentialsPath { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora_postgres_warehouse`: Server name
-        /// 	- Service `aurora_warehouse`: Server name
-        /// 	- Service `azure_postgres_warehouse`: Server name
-        /// 	- Service `azure_sql_data_warehouse`: Server name
-        /// 	- Service `azure_sql_database`: Server name
-        /// 	- Service `azure_sql_managed_db_warehouse`: Server name
-        /// 	- Service `maria_rds_warehouse`: Server name
-        /// 	- Service `maria_warehouse`: Server name
-        /// 	- Service `mysql_rds_warehouse`: Server name
-        /// 	- Service `mysql_warehouse`: Server name
-        /// 	- Service `oracle_rac_warehouse`: Server name
-        /// 	- Service `oracle_rds_warehouse`: Server name
-        /// 	- Service `oracle_warehouse`: Server name
-        /// 	- Service `panoply`: Server name
-        /// 	- Service `periscope_warehouse`: Server name
-        /// 	- Service `postgres_gcp_warehouse`: Server name
-        /// 	- Service `postgres_rds_warehouse`: Server name
-        /// 	- Service `postgres_warehouse`: Server name
-        /// 	- Service `redshift`: Server name
-        /// 	- Service `snowflake`: Server name
-        /// 	- Service `sql_server_rds_warehouse`: Server name
-        /// 	- Service `sql_server_warehouse`: Server name
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AuroraPostgresWarehouse`: Server name
+        /// 	- Service `AuroraWarehouse`: Server name
+        /// 	- Service `AzurePostgresWarehouse`: Server name
+        /// 	- Service `AzureSqlDataWarehouse`: Server name
+        /// 	- Service `AzureSqlDatabase`: Server name
+        /// 	- Service `AzureSqlManagedDbWarehouse`: Server name
+        /// 	- Service `MariaRdsWarehouse`: Server name
+        /// 	- Service `MariaWarehouse`: Server name
+        /// 	- Service `MysqlRdsWarehouse`: Server name
+        /// 	- Service `MysqlWarehouse`: Server name
+        /// 	- Service `OracleRacWarehouse`: Server name
+        /// 	- Service `OracleRdsWarehouse`: Server name
+        /// 	- Service `OracleWarehouse`: Server name
+        /// 	- Service `Panoply`: Server name
+        /// 	- Service `PeriscopeWarehouse`: Server name
+        /// 	- Service `PostgresGcpWarehouse`: Server name
+        /// 	- Service `PostgresRdsWarehouse`: Server name
+        /// 	- Service `PostgresWarehouse`: Server name
+        /// 	- Service `Redshift`: Server name
+        /// 	- Service `Snowflake`: Server name
+        /// 	- Service `SqlServerRdsWarehouse`: Server name
+        /// 	- Service `SqlServerWarehouse`: Server name
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adls`: HTTP path
-        /// 	- Service `databricks`: HTTP path
-        /// 	- Service `managed_data_lake`: HTTP path
-        /// 	- Service `new_s3_datalake`: HTTP path
-        /// 	- Service `onelake`: HTTP path
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adls`: HTTP path
+        /// 	- Service `Databricks`: HTTP path
+        /// 	- Service `ManagedDataLake`: HTTP path
+        /// 	- Service `NewS3Datalake`: HTTP path
+        /// 	- Service `Onelake`: HTTP path
         /// </summary>
         [Input("httpPath")]
         public Input<string>? HttpPath { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snowflake`: Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Snowflake`: Indicates that a private key is encrypted. The default value: `False`. The field can be specified if authentication type is `KEY_PAIR`.
         /// </summary>
         [Input("isPrivateKeyEncrypted")]
         public Input<bool>? IsPrivateKeyEncrypted { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `new_s3_datalake`: We use PrivateLink by default if your s3 bucket is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to s3 bucket over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options#awsprivatelinkbeta).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `NewS3Datalake`: We use PrivateLink by default if your s3 bucket is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to s3 bucket over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options#awsprivatelinkbeta).
         /// </summary>
         [Input("isPrivateLinkRequired")]
         public Input<bool>? IsPrivateLinkRequired { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `redshift`: Is your destination Redshift Serverless
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Redshift`: Is your destination Redshift Serverless
         /// </summary>
         [Input("isRedshiftServerless")]
         public Input<bool>? IsRedshiftServerless { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `managed_data_lake`: (Immutable) OneLake lakehouse GUID
-        /// 	- Service `onelake`: (Immutable) OneLake lakehouse GUID
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ManagedDataLake`: (Immutable) OneLake lakehouse GUID
+        /// 	- Service `Onelake`: (Immutable) OneLake lakehouse GUID
         /// </summary>
         [Input("lakehouseGuid")]
         public Input<string>? LakehouseGuid { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `onelake`: (Immutable) Name of your lakehouse
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Onelake`: (Immutable) Name of your lakehouse
         /// </summary>
         [Input("lakehouseName")]
         public Input<string>? LakehouseName { get; set; }
@@ -462,19 +462,19 @@ namespace Pulumi.Fivetran.Inputs
         public Input<string>? MskStsRegion { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `confluent_cloud_wh`: Number of partitions per topic.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ConfluentCloudWh`: Number of partitions per topic.
         /// </summary>
         [Input("numOfPartitions")]
         public Input<int>? NumOfPartitions { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adls`: OAuth 2.0 client ID
-        /// 	- Service `databricks`: OAuth 2.0 client ID
-        /// 	- Service `managed_data_lake`: OAuth 2.0 client ID
-        /// 	- Service `new_s3_datalake`: OAuth 2.0 client ID
-        /// 	- Service `onelake`: OAuth 2.0 client ID
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adls`: OAuth 2.0 client ID
+        /// 	- Service `Databricks`: OAuth 2.0 client ID
+        /// 	- Service `ManagedDataLake`: OAuth 2.0 client ID
+        /// 	- Service `NewS3Datalake`: OAuth 2.0 client ID
+        /// 	- Service `Onelake`: OAuth 2.0 client ID
         /// </summary>
         [Input("oauth2ClientId")]
         public Input<string>? Oauth2ClientId { get; set; }
@@ -483,12 +483,12 @@ namespace Pulumi.Fivetran.Inputs
         private Input<string>? _oauth2Secret;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adls`: OAuth 2.0 secret
-        /// 	- Service `databricks`: OAuth 2.0 secret
-        /// 	- Service `managed_data_lake`: OAuth 2.0 secret
-        /// 	- Service `new_s3_datalake`: OAuth 2.0 secret
-        /// 	- Service `onelake`: OAuth 2.0 secret
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adls`: OAuth 2.0 secret
+        /// 	- Service `Databricks`: OAuth 2.0 secret
+        /// 	- Service `ManagedDataLake`: OAuth 2.0 secret
+        /// 	- Service `NewS3Datalake`: OAuth 2.0 secret
+        /// 	- Service `Onelake`: OAuth 2.0 secret
         /// </summary>
         public Input<string>? Oauth2Secret
         {
@@ -504,8 +504,8 @@ namespace Pulumi.Fivetran.Inputs
         private Input<string>? _passphrase;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snowflake`: In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Snowflake`: In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
         /// </summary>
         public Input<string>? Passphrase
         {
@@ -521,29 +521,29 @@ namespace Pulumi.Fivetran.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora_postgres_warehouse`: Database user password
-        /// 	- Service `aurora_warehouse`: Database user password
-        /// 	- Service `azure_postgres_warehouse`: Database user password
-        /// 	- Service `azure_sql_data_warehouse`: Database user password
-        /// 	- Service `azure_sql_database`: Database user password
-        /// 	- Service `azure_sql_managed_db_warehouse`: Database user password
-        /// 	- Service `maria_rds_warehouse`: Database user password
-        /// 	- Service `maria_warehouse`: Database user password
-        /// 	- Service `mysql_rds_warehouse`: Database user password
-        /// 	- Service `mysql_warehouse`: Database user password
-        /// 	- Service `oracle_rac_warehouse`: Database user password
-        /// 	- Service `oracle_rds_warehouse`: Database user password
-        /// 	- Service `oracle_warehouse`: Database user password
-        /// 	- Service `panoply`: Database user password
-        /// 	- Service `periscope_warehouse`: Database user password
-        /// 	- Service `postgres_gcp_warehouse`: Database user password
-        /// 	- Service `postgres_rds_warehouse`: Database user password
-        /// 	- Service `postgres_warehouse`: Database user password
-        /// 	- Service `redshift`: Database user password. Required if authentication type is `PASSWORD`.
-        /// 	- Service `snowflake`: Database user password. The field should be specified if authentication type is `PASSWORD`.
-        /// 	- Service `sql_server_rds_warehouse`: Database user password
-        /// 	- Service `sql_server_warehouse`: Database user password
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AuroraPostgresWarehouse`: Database user password
+        /// 	- Service `AuroraWarehouse`: Database user password
+        /// 	- Service `AzurePostgresWarehouse`: Database user password
+        /// 	- Service `AzureSqlDataWarehouse`: Database user password
+        /// 	- Service `AzureSqlDatabase`: Database user password
+        /// 	- Service `AzureSqlManagedDbWarehouse`: Database user password
+        /// 	- Service `MariaRdsWarehouse`: Database user password
+        /// 	- Service `MariaWarehouse`: Database user password
+        /// 	- Service `MysqlRdsWarehouse`: Database user password
+        /// 	- Service `MysqlWarehouse`: Database user password
+        /// 	- Service `OracleRacWarehouse`: Database user password
+        /// 	- Service `OracleRdsWarehouse`: Database user password
+        /// 	- Service `OracleWarehouse`: Database user password
+        /// 	- Service `Panoply`: Database user password
+        /// 	- Service `PeriscopeWarehouse`: Database user password
+        /// 	- Service `PostgresGcpWarehouse`: Database user password
+        /// 	- Service `PostgresRdsWarehouse`: Database user password
+        /// 	- Service `PostgresWarehouse`: Database user password
+        /// 	- Service `Redshift`: Database user password. Required if authentication type is `PASSWORD`.
+        /// 	- Service `Snowflake`: Database user password. The field should be specified if authentication type is `PASSWORD`.
+        /// 	- Service `SqlServerRdsWarehouse`: Database user password
+        /// 	- Service `SqlServerWarehouse`: Database user password
         /// </summary>
         public Input<string>? Password
         {
@@ -559,12 +559,12 @@ namespace Pulumi.Fivetran.Inputs
         private Input<string>? _personalAccessToken;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adls`: Personal access token
-        /// 	- Service `databricks`: Personal access token
-        /// 	- Service `managed_data_lake`: Personal access token
-        /// 	- Service `new_s3_datalake`: Personal access token
-        /// 	- Service `onelake`: Personal access token
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adls`: Personal access token
+        /// 	- Service `Databricks`: Personal access token
+        /// 	- Service `ManagedDataLake`: Personal access token
+        /// 	- Service `NewS3Datalake`: Personal access token
+        /// 	- Service `Onelake`: Personal access token
         /// </summary>
         public Input<string>? PersonalAccessToken
         {
@@ -577,44 +577,44 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adls`: Server port number
-        /// 	- Service `aurora_postgres_warehouse`: Server port number
-        /// 	- Service `aurora_warehouse`: Server port number
-        /// 	- Service `azure_postgres_warehouse`: Server port number
-        /// 	- Service `azure_sql_data_warehouse`: Server port number
-        /// 	- Service `azure_sql_database`: Server port number
-        /// 	- Service `azure_sql_managed_db_warehouse`: Server port number
-        /// 	- Service `databricks`: Server port number
-        /// 	- Service `managed_data_lake`: Server port number
-        /// 	- Service `maria_rds_warehouse`: Server port number
-        /// 	- Service `maria_warehouse`: Server port number
-        /// 	- Service `mysql_rds_warehouse`: Server port number
-        /// 	- Service `mysql_warehouse`: Server port number
-        /// 	- Service `new_s3_datalake`: Server port number
-        /// 	- Service `onelake`: Server port number
-        /// 	- Service `oracle_rac_warehouse`: Server port number
-        /// 	- Service `oracle_rds_warehouse`: Server port number
-        /// 	- Service `oracle_warehouse`: Server port number
-        /// 	- Service `panoply`: Server port number
-        /// 	- Service `periscope_warehouse`: Server port number
-        /// 	- Service `postgres_gcp_warehouse`: Server port number
-        /// 	- Service `postgres_rds_warehouse`: Server port number
-        /// 	- Service `postgres_warehouse`: Server port number
-        /// 	- Service `redshift`: Server port number
-        /// 	- Service `snowflake`: Server port number
-        /// 	- Service `sql_server_rds_warehouse`: Server port number
-        /// 	- Service `sql_server_warehouse`: Server port number
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adls`: Server port number
+        /// 	- Service `AuroraPostgresWarehouse`: Server port number
+        /// 	- Service `AuroraWarehouse`: Server port number
+        /// 	- Service `AzurePostgresWarehouse`: Server port number
+        /// 	- Service `AzureSqlDataWarehouse`: Server port number
+        /// 	- Service `AzureSqlDatabase`: Server port number
+        /// 	- Service `AzureSqlManagedDbWarehouse`: Server port number
+        /// 	- Service `Databricks`: Server port number
+        /// 	- Service `ManagedDataLake`: Server port number
+        /// 	- Service `MariaRdsWarehouse`: Server port number
+        /// 	- Service `MariaWarehouse`: Server port number
+        /// 	- Service `MysqlRdsWarehouse`: Server port number
+        /// 	- Service `MysqlWarehouse`: Server port number
+        /// 	- Service `NewS3Datalake`: Server port number
+        /// 	- Service `Onelake`: Server port number
+        /// 	- Service `OracleRacWarehouse`: Server port number
+        /// 	- Service `OracleRdsWarehouse`: Server port number
+        /// 	- Service `OracleWarehouse`: Server port number
+        /// 	- Service `Panoply`: Server port number
+        /// 	- Service `PeriscopeWarehouse`: Server port number
+        /// 	- Service `PostgresGcpWarehouse`: Server port number
+        /// 	- Service `PostgresRdsWarehouse`: Server port number
+        /// 	- Service `PostgresWarehouse`: Server port number
+        /// 	- Service `Redshift`: Server port number
+        /// 	- Service `Snowflake`: Server port number
+        /// 	- Service `SqlServerRdsWarehouse`: Server port number
+        /// 	- Service `SqlServerWarehouse`: Server port number
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adls`: (Immutable) path/to/data within the container
-        /// 	- Service `managed_data_lake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
-        /// 	- Service `new_s3_datalake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
-        /// 	- Service `onelake`: (Immutable) path/to/data within your lakehouse inside the Files directory
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adls`: (Immutable) path/to/data within the container
+        /// 	- Service `ManagedDataLake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
+        /// 	- Service `NewS3Datalake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
+        /// 	- Service `Onelake`: (Immutable) path/to/data within your lakehouse inside the Files directory
         /// </summary>
         [Input("prefixPath")]
         public Input<string>? PrefixPath { get; set; }
@@ -623,8 +623,8 @@ namespace Pulumi.Fivetran.Inputs
         private Input<string>? _privateKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snowflake`: Private access key.  The field should be specified if authentication type is `KEY_PAIR`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Snowflake`: Private access key.  The field should be specified if authentication type is `KEY_PAIR`.
         /// </summary>
         public Input<string>? PrivateKey
         {
@@ -637,40 +637,40 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `big_query`: BigQuery project ID
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `BigQuery`: BigQuery project ID
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora_postgres_warehouse`: Public Key
-        /// 	- Service `aurora_warehouse`: Public Key
-        /// 	- Service `azure_postgres_warehouse`: Public Key
-        /// 	- Service `azure_sql_data_warehouse`: Public Key
-        /// 	- Service `azure_sql_database`: Public Key
-        /// 	- Service `azure_sql_managed_db_warehouse`: Public Key
-        /// 	- Service `maria_rds_warehouse`: Public Key
-        /// 	- Service `maria_warehouse`: Public Key
-        /// 	- Service `mysql_rds_warehouse`: Public Key
-        /// 	- Service `mysql_warehouse`: Public Key
-        /// 	- Service `panoply`: Public Key
-        /// 	- Service `periscope_warehouse`: Public Key
-        /// 	- Service `postgres_gcp_warehouse`: Public Key
-        /// 	- Service `postgres_rds_warehouse`: Public Key
-        /// 	- Service `postgres_warehouse`: Public Key
-        /// 	- Service `redshift`: Public Key
-        /// 	- Service `sql_server_rds_warehouse`: Public Key
-        /// 	- Service `sql_server_warehouse`: Public Key
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AuroraPostgresWarehouse`: Public Key
+        /// 	- Service `AuroraWarehouse`: Public Key
+        /// 	- Service `AzurePostgresWarehouse`: Public Key
+        /// 	- Service `AzureSqlDataWarehouse`: Public Key
+        /// 	- Service `AzureSqlDatabase`: Public Key
+        /// 	- Service `AzureSqlManagedDbWarehouse`: Public Key
+        /// 	- Service `MariaRdsWarehouse`: Public Key
+        /// 	- Service `MariaWarehouse`: Public Key
+        /// 	- Service `MysqlRdsWarehouse`: Public Key
+        /// 	- Service `MysqlWarehouse`: Public Key
+        /// 	- Service `Panoply`: Public Key
+        /// 	- Service `PeriscopeWarehouse`: Public Key
+        /// 	- Service `PostgresGcpWarehouse`: Public Key
+        /// 	- Service `PostgresRdsWarehouse`: Public Key
+        /// 	- Service `PostgresWarehouse`: Public Key
+        /// 	- Service `Redshift`: Public Key
+        /// 	- Service `SqlServerRdsWarehouse`: Public Key
+        /// 	- Service `SqlServerWarehouse`: Public Key
         /// </summary>
         [Input("publicKey")]
         public Input<string>? PublicKey { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `managed_data_lake`: (Immutable) Region of your AWS S3 bucket
-        /// 	- Service `new_s3_datalake`: Region of your AWS S3 bucket
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ManagedDataLake`: (Immutable) Region of your AWS S3 bucket
+        /// 	- Service `NewS3Datalake`: Region of your AWS S3 bucket
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -682,41 +682,41 @@ namespace Pulumi.Fivetran.Inputs
         public Input<string>? RegistryStsRegion { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `confluent_cloud_wh`: Replication factor.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ConfluentCloudWh`: Replication factor.
         /// </summary>
         [Input("replicationFactor")]
         public Input<int>? ReplicationFactor { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora_postgres_warehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
-        /// 	- Service `aurora_warehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
-        /// 	- Service `azure_postgres_warehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
-        /// 	- Service `azure_sql_data_warehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
-        /// 	- Service `azure_sql_database`: Field to test Self serve Private Link
-        /// 	- Service `azure_sql_managed_db_warehouse`: Field to test Self serve Private Link
-        /// 	- Service `databricks`: This field is currently being introduced to test the Self-serve Private Link functionality
-        /// 	- Service `maria_rds_warehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
-        /// 	- Service `maria_warehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
-        /// 	- Service `mysql_rds_warehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
-        /// 	- Service `mysql_warehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
-        /// 	- Service `panoply`: This field is currently being introduced to test the Self-serve Private Link functionality
-        /// 	- Service `periscope_warehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
-        /// 	- Service `postgres_gcp_warehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
-        /// 	- Service `postgres_rds_warehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
-        /// 	- Service `postgres_warehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
-        /// 	- Service `redshift`: This field is currently being introduced to test the Self-serve Private Link functionality
-        /// 	- Service `snowflake`: This field is currently being introduced to test the Self-serve Private Link functionality
-        /// 	- Service `sql_server_rds_warehouse`: Field to test Self serve Private Link
-        /// 	- Service `sql_server_warehouse`: Field to test Self serve Private Link
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AuroraPostgresWarehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `AuroraWarehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `AzurePostgresWarehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `AzureSqlDataWarehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `AzureSqlDatabase`: Field to test Self serve Private Link
+        /// 	- Service `AzureSqlManagedDbWarehouse`: Field to test Self serve Private Link
+        /// 	- Service `Databricks`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `MariaRdsWarehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `MariaWarehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `MysqlRdsWarehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `MysqlWarehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `Panoply`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `PeriscopeWarehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `PostgresGcpWarehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `PostgresRdsWarehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `PostgresWarehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `Redshift`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `Snowflake`: This field is currently being introduced to test the Self-serve Private Link functionality
+        /// 	- Service `SqlServerRdsWarehouse`: Field to test Self serve Private Link
+        /// 	- Service `SqlServerWarehouse`: Field to test Self serve Private Link
         /// </summary>
         [Input("resourceId")]
         public Input<string>? ResourceId { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snowflake`: If not specified, Fivetran will use the user's default role
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Snowflake`: If not specified, Fivetran will use the user's default role
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
@@ -725,8 +725,8 @@ namespace Pulumi.Fivetran.Inputs
         private Input<string>? _roleArn;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
         /// </summary>
         public Input<string>? RoleArn
         {
@@ -739,8 +739,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `confluent_cloud_wh`: Security protocol for Confluent Cloud interaction.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ConfluentCloudWh`: Security protocol for Confluent Cloud interaction.
         /// </summary>
         [Input("saslMechanism")]
         public Input<string>? SaslMechanism { get; set; }
@@ -749,8 +749,8 @@ namespace Pulumi.Fivetran.Inputs
         private Input<string>? _saslPlainKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `confluent_cloud_wh`: Confluent Cloud SASL key.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ConfluentCloudWh`: Confluent Cloud SASL key.
         /// </summary>
         public Input<string>? SaslPlainKey
         {
@@ -766,8 +766,8 @@ namespace Pulumi.Fivetran.Inputs
         private Input<string>? _saslPlainSecret;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `confluent_cloud_wh`: Confluent Cloud SASL secret.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ConfluentCloudWh`: Confluent Cloud SASL secret.
         /// </summary>
         public Input<string>? SaslPlainSecret
         {
@@ -783,8 +783,8 @@ namespace Pulumi.Fivetran.Inputs
         public Input<string>? SchemaCompatibility { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `confluent_cloud_wh`: Schema Registry
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ConfluentCloudWh`: Schema Registry
         /// </summary>
         [Input("schemaRegistry")]
         public Input<string>? SchemaRegistry { get; set; }
@@ -793,8 +793,8 @@ namespace Pulumi.Fivetran.Inputs
         private Input<string>? _schemaRegistryApiKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `confluent_cloud_wh`: Schema registry API key.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ConfluentCloudWh`: Schema registry API key.
         /// </summary>
         public Input<string>? SchemaRegistryApiKey
         {
@@ -810,8 +810,8 @@ namespace Pulumi.Fivetran.Inputs
         private Input<string>? _schemaRegistryApiSecret;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `confluent_cloud_wh`: Schema registry API secret.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ConfluentCloudWh`: Schema registry API secret.
         /// </summary>
         public Input<string>? SchemaRegistryApiSecret
         {
@@ -824,8 +824,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `confluent_cloud_wh`: Schema registry URL.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ConfluentCloudWh`: Schema registry URL.
         /// </summary>
         [Input("schemaRegistryUrl")]
         public Input<string>? SchemaRegistryUrl { get; set; }
@@ -834,10 +834,10 @@ namespace Pulumi.Fivetran.Inputs
         private Input<string>? _secretKey;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `big_query`: Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.
-        /// 	- Service `big_query_dts`: Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.
-        /// 	- Service `managed_big_query`: Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `BigQuery`: Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.
+        /// 	- Service `BigQueryDts`: Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.
+        /// 	- Service `ManagedBigQuery`: Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.
         /// </summary>
         public Input<string>? SecretKey
         {
@@ -853,10 +853,10 @@ namespace Pulumi.Fivetran.Inputs
         private Input<string>? _secretValue;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adls`: Secret value for service principal
-        /// 	- Service `managed_data_lake`: Secret value for service principal
-        /// 	- Service `onelake`: Secret value for service principal
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adls`: Secret value for service principal
+        /// 	- Service `ManagedDataLake`: Secret value for service principal
+        /// 	- Service `Onelake`: Secret value for service principal
         /// </summary>
         public Input<string>? SecretValue
         {
@@ -869,46 +869,46 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `confluent_cloud_wh`: Security protocol for Confluent Cloud interaction.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ConfluentCloudWh`: Security protocol for Confluent Cloud interaction.
         /// </summary>
         [Input("securityProtocol")]
         public Input<string>? SecurityProtocol { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adls`: Server Host name
-        /// 	- Service `databricks`: Server name
-        /// 	- Service `managed_data_lake`: Server host name
-        /// 	- Service `new_s3_datalake`: Server host name
-        /// 	- Service `onelake`: Server Host name
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adls`: Server Host name
+        /// 	- Service `Databricks`: Server name
+        /// 	- Service `ManagedDataLake`: Server host name
+        /// 	- Service `NewS3Datalake`: Server host name
+        /// 	- Service `Onelake`: Server Host name
         /// </summary>
         [Input("serverHostName")]
         public Input<string>? ServerHostName { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adls`: Should maintain tables in Databricks 
-        /// 	- Service `managed_data_lake`: Should maintain tables in Databricks 
-        /// 	- Service `new_s3_datalake`: Should maintain tables in Databricks 
-        /// 	- Service `onelake`: Should maintain tables in Databricks
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adls`: Should maintain tables in Databricks 
+        /// 	- Service `ManagedDataLake`: Should maintain tables in Databricks 
+        /// 	- Service `NewS3Datalake`: Should maintain tables in Databricks 
+        /// 	- Service `Onelake`: Should maintain tables in Databricks
         /// </summary>
         [Input("shouldMaintainTablesInDatabricks")]
         public Input<bool>? ShouldMaintainTablesInDatabricks { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `managed_data_lake`: Should maintain tables in Glue. Only applicable if storage provider is AWS
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ManagedDataLake`: Should maintain tables in Glue. Only applicable if storage provider is AWS
         /// </summary>
         [Input("shouldMaintainTablesInGlue")]
         public Input<bool>? ShouldMaintainTablesInGlue { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
-        /// 	- Service `managed_data_lake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
-        /// 	- Service `new_s3_datalake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
-        /// 	- Service `onelake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
+        /// 	- Service `ManagedDataLake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
+        /// 	- Service `NewS3Datalake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
+        /// 	- Service `Onelake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
         /// </summary>
         [Input("snapshotRetentionPeriod")]
         public Input<string>? SnapshotRetentionPeriod { get; set; }
@@ -920,174 +920,174 @@ namespace Pulumi.Fivetran.Inputs
         public Input<string>? SnowflakeRegion { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `azure_sql_data_warehouse`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
-        /// 	- Service `snowflake`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureSqlDataWarehouse`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+        /// 	- Service `Snowflake`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
         /// </summary>
         [Input("storageAccountKey")]
         public Input<string>? StorageAccountKey { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adls`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
-        /// 	- Service `azure_sql_data_warehouse`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
-        /// 	- Service `managed_data_lake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
-        /// 	- Service `onelake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
-        /// 	- Service `snowflake`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adls`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
+        /// 	- Service `AzureSqlDataWarehouse`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
+        /// 	- Service `ManagedDataLake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
+        /// 	- Service `Onelake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
+        /// 	- Service `Snowflake`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
         /// </summary>
         [Input("storageAccountName")]
         public Input<string>? StorageAccountName { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `managed_data_lake`: Storage Provider
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ManagedDataLake`: Storage Provider
         /// </summary>
         [Input("storageProvider")]
         public Input<string>? StorageProvider { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `new_s3_datalake`: (Immutable) The table format in which you want to sync your tables. Valid values are ICEBERG and DELTA_LAKE
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `NewS3Datalake`: (Immutable) The table format in which you want to sync your tables. Valid values are ICEBERG and DELTA_LAKE
         /// </summary>
         [Input("tableFormat")]
         public Input<string>? TableFormat { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adls`: Tenant id of service principal
-        /// 	- Service `managed_data_lake`: Tenant id of service principal
-        /// 	- Service `onelake`: Tenant ID of service principal
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adls`: Tenant id of service principal
+        /// 	- Service `ManagedDataLake`: Tenant id of service principal
+        /// 	- Service `Onelake`: Tenant ID of service principal
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora_postgres_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `aurora_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `azure_postgres_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `azure_sql_data_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `azure_sql_database`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `azure_sql_managed_db_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `maria_rds_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `maria_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `mysql_rds_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `mysql_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `oracle_rac_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `oracle_rds_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `oracle_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `panoply`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `periscope_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `postgres_gcp_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `postgres_rds_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `postgres_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `redshift`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `sql_server_rds_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `sql_server_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AuroraPostgresWarehouse`: SSH server name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `AuroraWarehouse`: SSH server name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `AzurePostgresWarehouse`: SSH server name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `AzureSqlDataWarehouse`: SSH server name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `AzureSqlDatabase`: SSH server name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `AzureSqlManagedDbWarehouse`: SSH server name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `MariaRdsWarehouse`: SSH server name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `MariaWarehouse`: SSH server name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `MysqlRdsWarehouse`: SSH server name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `MysqlWarehouse`: SSH server name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `OracleRacWarehouse`: SSH server name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `OracleRdsWarehouse`: SSH server name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `OracleWarehouse`: SSH server name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `Panoply`: SSH server name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `PeriscopeWarehouse`: SSH server name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `PostgresGcpWarehouse`: SSH server name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `PostgresRdsWarehouse`: SSH server name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `PostgresWarehouse`: SSH server name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `Redshift`: SSH server name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `SqlServerRdsWarehouse`: SSH server name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `SqlServerWarehouse`: SSH server name. Must be populated if `ConnectionType` is set to `SshTunnel`.
         /// </summary>
         [Input("tunnelHost")]
         public Input<string>? TunnelHost { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora_postgres_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `aurora_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `azure_postgres_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `azure_sql_data_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `azure_sql_database`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `azure_sql_managed_db_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `maria_rds_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `maria_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `mysql_rds_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `mysql_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `oracle_rac_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `oracle_rds_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `oracle_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `panoply`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `periscope_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `postgres_gcp_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `postgres_rds_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `postgres_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `redshift`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `sql_server_rds_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `sql_server_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AuroraPostgresWarehouse`: SSH server port name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `AuroraWarehouse`: SSH server port name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `AzurePostgresWarehouse`: SSH server port name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `AzureSqlDataWarehouse`: SSH server port name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `AzureSqlDatabase`: SSH server port name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `AzureSqlManagedDbWarehouse`: SSH server port name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `MariaRdsWarehouse`: SSH server port name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `MariaWarehouse`: SSH server port name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `MysqlRdsWarehouse`: SSH server port name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `MysqlWarehouse`: SSH server port name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `OracleRacWarehouse`: SSH server port name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `OracleRdsWarehouse`: SSH server port name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `OracleWarehouse`: SSH server port name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `Panoply`: SSH server port name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `PeriscopeWarehouse`: SSH server port name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `PostgresGcpWarehouse`: SSH server port name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `PostgresRdsWarehouse`: SSH server port name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `PostgresWarehouse`: SSH server port name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `Redshift`: SSH server port name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `SqlServerRdsWarehouse`: SSH server port name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `SqlServerWarehouse`: SSH server port name. Must be populated if `ConnectionType` is set to `SshTunnel`.
         /// </summary>
         [Input("tunnelPort")]
         public Input<int>? TunnelPort { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora_postgres_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `aurora_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `azure_postgres_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `azure_sql_data_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `azure_sql_database`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `azure_sql_managed_db_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `maria_rds_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `maria_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `mysql_rds_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `mysql_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `oracle_rac_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `oracle_rds_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `oracle_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `panoply`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `periscope_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `postgres_gcp_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `postgres_rds_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `postgres_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `redshift`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `sql_server_rds_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
-        /// 	- Service `sql_server_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AuroraPostgresWarehouse`: SSH user name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `AuroraWarehouse`: SSH user name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `AzurePostgresWarehouse`: SSH user name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `AzureSqlDataWarehouse`: SSH user name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `AzureSqlDatabase`: SSH user name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `AzureSqlManagedDbWarehouse`: SSH user name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `MariaRdsWarehouse`: SSH user name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `MariaWarehouse`: SSH user name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `MysqlRdsWarehouse`: SSH user name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `MysqlWarehouse`: SSH user name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `OracleRacWarehouse`: SSH user name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `OracleRdsWarehouse`: SSH user name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `OracleWarehouse`: SSH user name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `Panoply`: SSH user name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `PeriscopeWarehouse`: SSH user name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `PostgresGcpWarehouse`: SSH user name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `PostgresRdsWarehouse`: SSH user name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `PostgresWarehouse`: SSH user name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `Redshift`: SSH user name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `SqlServerRdsWarehouse`: SSH user name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `SqlServerWarehouse`: SSH user name. Must be populated if `ConnectionType` is set to `SshTunnel`.
         /// </summary>
         [Input("tunnelUser")]
         public Input<string>? TunnelUser { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snowflake`: Set to `true` if you want to use an S3 bucket to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Snowflake`: Set to `True` if you want to use an S3 bucket to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
         /// </summary>
         [Input("useCustomerStaging")]
         public Input<bool>? UseCustomerStaging { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `aurora_postgres_warehouse`: Database user name
-        /// 	- Service `aurora_warehouse`: Database user name
-        /// 	- Service `azure_postgres_warehouse`: Database user name
-        /// 	- Service `azure_sql_data_warehouse`: Database user name
-        /// 	- Service `azure_sql_database`: Database user name
-        /// 	- Service `azure_sql_managed_db_warehouse`: Database user name
-        /// 	- Service `maria_rds_warehouse`: Database user name
-        /// 	- Service `maria_warehouse`: Database user name
-        /// 	- Service `mysql_rds_warehouse`: Database user name
-        /// 	- Service `mysql_warehouse`: Database user name
-        /// 	- Service `oracle_rac_warehouse`: Database user name
-        /// 	- Service `oracle_rds_warehouse`: Database user name
-        /// 	- Service `oracle_warehouse`: Database user name
-        /// 	- Service `panoply`: Database user name
-        /// 	- Service `periscope_warehouse`: Database user name
-        /// 	- Service `postgres_gcp_warehouse`: Database user name
-        /// 	- Service `postgres_rds_warehouse`: Database user name
-        /// 	- Service `postgres_warehouse`: Database user name
-        /// 	- Service `redshift`: Database user name
-        /// 	- Service `snowflake`: Database user name
-        /// 	- Service `sql_server_rds_warehouse`: Database user name
-        /// 	- Service `sql_server_warehouse`: Database user name
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AuroraPostgresWarehouse`: Database user name
+        /// 	- Service `AuroraWarehouse`: Database user name
+        /// 	- Service `AzurePostgresWarehouse`: Database user name
+        /// 	- Service `AzureSqlDataWarehouse`: Database user name
+        /// 	- Service `AzureSqlDatabase`: Database user name
+        /// 	- Service `AzureSqlManagedDbWarehouse`: Database user name
+        /// 	- Service `MariaRdsWarehouse`: Database user name
+        /// 	- Service `MariaWarehouse`: Database user name
+        /// 	- Service `MysqlRdsWarehouse`: Database user name
+        /// 	- Service `MysqlWarehouse`: Database user name
+        /// 	- Service `OracleRacWarehouse`: Database user name
+        /// 	- Service `OracleRdsWarehouse`: Database user name
+        /// 	- Service `OracleWarehouse`: Database user name
+        /// 	- Service `Panoply`: Database user name
+        /// 	- Service `PeriscopeWarehouse`: Database user name
+        /// 	- Service `PostgresGcpWarehouse`: Database user name
+        /// 	- Service `PostgresRdsWarehouse`: Database user name
+        /// 	- Service `PostgresWarehouse`: Database user name
+        /// 	- Service `Redshift`: Database user name
+        /// 	- Service `Snowflake`: Database user name
+        /// 	- Service `SqlServerRdsWarehouse`: Database user name
+        /// 	- Service `SqlServerWarehouse`: Database user name
         /// </summary>
         [Input("user")]
         public Input<string>? User { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `managed_data_lake`: (Immutable) OneLake workspace GUID
-        /// 	- Service `onelake`: (Immutable) OneLake workspace GUID
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ManagedDataLake`: (Immutable) OneLake workspace GUID
+        /// 	- Service `Onelake`: (Immutable) OneLake workspace GUID
         /// </summary>
         [Input("workspaceGuid")]
         public Input<string>? WorkspaceGuid { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `onelake`: OneLake workspace name
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Onelake`: OneLake workspace name
         /// </summary>
         [Input("workspaceName")]
         public Input<string>? WorkspaceName { get; set; }

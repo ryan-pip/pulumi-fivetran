@@ -14,19 +14,72 @@ import (
 
 // This resource allows you to create, update, and delete group membership for teams
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.NewTeamGroupMembership(ctx, "test_team_group_membership", &fivetran.TeamGroupMembershipArgs{
+//				TeamId: pulumi.String("test_team"),
+//				Groups: fivetran.TeamGroupMembershipGroupArray{
+//					&fivetran.TeamGroupMembershipGroupArgs{
+//						ConnectorId: "test_connector",
+//						GroupId:     pulumi.String("test_group"),
+//						Role:        pulumi.String("Destination Administrator"),
+//					},
+//					&fivetran.TeamGroupMembershipGroupArgs{
+//						ConnectorId: "test_connector",
+//						GroupId:     pulumi.String("test_group"),
+//						Role:        pulumi.String("Destination Administrator"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
-// 1. To import an existing `fivetran_team_group_membership` resource into your Terraform state, you need to get `team_id` and `group_id`
-//
-// You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams).
+// 1. To import an existing `TeamGroupMembership` resource into your Terraform state, you need to get `teamId` and `groupId`
+// You can retrieve all teams using the [getTeams data source](https://www.terraform.io/docs/data-sources/teams).
 //
 // 2. Define an empty resource in your `.tf` configuration:
 //
-// hcl
+// ```go
+// package main
 //
-// resource "fivetran_team_group_membership" "my_imported_fivetran_team_group_membership" {
+// import (
 //
-// }
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.NewTeamGroupMembership(ctx, "my_imported_fivetran_team_group_membership", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // 3. Run the `pulumi import` command:
 //
@@ -36,8 +89,9 @@ import (
 //
 // 4. Use the `terraform state show` command to get the values from the state:
 //
+// ```sh
 // terraform state show 'fivetran_team_group_membership.my_imported_fivetran_team_group_membership'
-//
+// ```
 // 5. Copy the values and paste them to your `.tf` configuration.
 type TeamGroupMembership struct {
 	pulumi.CustomResourceState

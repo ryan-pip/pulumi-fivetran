@@ -13,29 +13,87 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ### Dbt Core Transformation
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
+ *
+ * const transformation = new fivetran.Transformation("transformation", {
+ *     type: "DBT_CORE",
+ *     paused: true,
+ *     schedule: [{
+ *         scheduleType: "TIME_OF_DAY",
+ *         timeOfDay: "11:00",
+ *     }],
+ *     transformationConfig: [{
+ *         projectId: "project_id",
+ *         name: "name",
+ *         steps: [
+ *             {
+ *                 name: "name1",
+ *                 command: "command1",
+ *             },
+ *             {
+ *                 name: "name2",
+ *                 command: "command2",
+ *             },
+ *         ],
+ *     }],
+ * });
+ * ```
+ *
+ * ### Quickstart Transformation
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
+ *
+ * const transformation = new fivetran.Transformation("transformation", {
+ *     type: "QUICKSTART",
+ *     paused: true,
+ *     schedule: [{
+ *         scheduleType: "TIME_OF_DAY",
+ *         timeOfDay: "11:00",
+ *     }],
+ *     transformationConfig: [{
+ *         packageName: "package_name",
+ *         connectionIds: [
+ *             "connection_id1",
+ *             "connection_id2",
+ *         ],
+ *         excludedModels: [
+ *             "excluded_model1",
+ *             "excluded_model2",
+ *         ],
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
- * 1. To import an existing `fivetran_transformation` resource into your Terraform state, you need to get **Transformation ID** via API call `GET https://api.fivetran.com/v1/transformations` to retrieve available projects.
- *
+ * 1. To import an existing `fivetran.Transformation` resource into your Terraform state, you need to get **Transformation ID** via API call `GET https://api.fivetran.com/v1/transformations` to retrieve available projects.
  * 2. Fetch transformation details for particular `transformation-id` using `GET https://api.fivetran.com/v1/transformations/{transformation-id}` to ensure that this is the transformation you want to import.
- *
  * 3. Define an empty resource in your `.tf` configuration:
  *
- * hcl
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
- * resource "fivetran_transformation" "my_imported_fivetran_transformation" {
- *
- * }
+ * const myImportedFivetranTransformation = new fivetran.Transformation("my_imported_fivetran_transformation", {});
+ * ```
  *
  * 4. Run the `pulumi import` command:
  *
  * ```sh
- * $ pulumi import fivetran:index/transformation:Transformation my_imported_fivetran_transformation {Transformation ID}
+ * terraform import fivetran_transformation.my_imported_fivetran_transformation {Transformation ID}
  * ```
  *
  * 4. Use the `terraform state show` command to get the values from the state:
  *
+ * ```sh
  * terraform state show 'fivetran_transformation.my_imported_fivetran_transformation'
+ * ```
  *
  * 5. Copy the values and paste them to your `.tf` configuration.
  */
@@ -70,29 +128,29 @@ export class Transformation extends pulumi.CustomResource {
     /**
      * The timestamp of when the transformation was created in your account.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The unique identifier for the User within the Fivetran system who created the transformation.
      */
-    public /*out*/ readonly createdById!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdById: pulumi.Output<string>;
     /**
      * Identifiers of related models.
      */
-    public /*out*/ readonly outputModelNames!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly outputModelNames: pulumi.Output<string[]>;
     /**
      * The field indicating whether the transformation will be set into the paused state. By default, the value is false.
      */
-    public readonly paused!: pulumi.Output<boolean>;
-    public readonly schedule!: pulumi.Output<outputs.TransformationSchedule | undefined>;
+    declare public readonly paused: pulumi.Output<boolean>;
+    declare public readonly schedule: pulumi.Output<outputs.TransformationSchedule | undefined>;
     /**
      * Status of transformation Project (NOT_READY, READY, ERROR).
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
-    public readonly transformationConfig!: pulumi.Output<outputs.TransformationTransformationConfig | undefined>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
+    declare public readonly transformationConfig: pulumi.Output<outputs.TransformationTransformationConfig | undefined>;
     /**
      * Transformation type. The following values are supported: DBT_CORE, QUICKSTART.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a Transformation resource with the given unique name, arguments, and options.
@@ -107,20 +165,20 @@ export class Transformation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransformationState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["createdById"] = state ? state.createdById : undefined;
-            resourceInputs["outputModelNames"] = state ? state.outputModelNames : undefined;
-            resourceInputs["paused"] = state ? state.paused : undefined;
-            resourceInputs["schedule"] = state ? state.schedule : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["transformationConfig"] = state ? state.transformationConfig : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["createdById"] = state?.createdById;
+            resourceInputs["outputModelNames"] = state?.outputModelNames;
+            resourceInputs["paused"] = state?.paused;
+            resourceInputs["schedule"] = state?.schedule;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["transformationConfig"] = state?.transformationConfig;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as TransformationArgs | undefined;
-            resourceInputs["paused"] = args ? args.paused : undefined;
-            resourceInputs["schedule"] = args ? args.schedule : undefined;
-            resourceInputs["transformationConfig"] = args ? args.transformationConfig : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["paused"] = args?.paused;
+            resourceInputs["schedule"] = args?.schedule;
+            resourceInputs["transformationConfig"] = args?.transformationConfig;
+            resourceInputs["type"] = args?.type;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdById"] = undefined /*out*/;
             resourceInputs["outputModelNames"] = undefined /*out*/;

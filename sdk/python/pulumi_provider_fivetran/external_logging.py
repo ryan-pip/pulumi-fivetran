@@ -28,6 +28,7 @@ class ExternalLoggingArgs:
                  run_setup_tests: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ExternalLogging resource.
+
         :param pulumi.Input[_builtins.str] group_id: The unique identifier for the log service within the Fivetran system.
         :param pulumi.Input[_builtins.str] service: The name for the log service type within the Fivetran system. We support the following log services: azure*monitor*log, cloudwatch, datadog*log, new*relic_log, splunkLog, stackdriver.
         :param pulumi.Input[_builtins.bool] enabled: The boolean value specifying whether the log service is enabled.
@@ -110,6 +111,7 @@ class _ExternalLoggingState:
                  service: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ExternalLogging resources.
+
         :param pulumi.Input[_builtins.bool] enabled: The boolean value specifying whether the log service is enabled.
         :param pulumi.Input[_builtins.str] group_id: The unique identifier for the log service within the Fivetran system.
         :param pulumi.Input[_builtins.bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
@@ -197,33 +199,62 @@ class ExternalLogging(pulumi.CustomResource):
                  service: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        This resource allows you to create, update, and delete logging service.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        extlog = fivetran.ExternalLogging("extlog",
+            group_id=group["id"],
+            service="azure_monitor_log",
+            enabled=True,
+            run_setup_tests=True,
+            config=[{
+                "workspaceId": "workspace_id",
+                "primaryKey": "PASSWORD",
+            }])
+        ```
+
+        ## Setup tests
+
+        The `run_setup_tests` field doesn't have upstream value, it only defines local resource behavoir. This means that when you update only the `run_setup_tests` value (from `false` to `true`, for example) it won't cause any upstream actions. The value will be just saved in terraform state and then used on effective field updates.
+
+        The default value is `false` - this means that no setup tests will be performed during create/update. To perform setup tests, you should set value to `true`.
+
         ## Import
 
-        1. To import an existing `fivetran_external_logging` resource into your Terraform state, you need to get **External Logging Group ID** on the external logging page in your Fivetran dashboard.
+        1. To import an existing `ExternalLogging` resource into your Terraform state, you need to get **External Logging Group ID** on the external logging page in your Fivetran dashboard.
 
-        2. To retrieve existing destinations, use the [fivetran_destinations data source](/docs/data-sources/destinations).
+        2. To retrieve existing destinations, use the [get_destinations data source](https://www.terraform.io/docs/data-sources/destinations).
 
         3. Define an empty resource in your `.tf` configuration:
 
-        hcl
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
 
-        resource "fivetran_external_logging" "my_imported_external_logging" {
-
-        }
+        my_imported_external_logging = fivetran.ExternalLogging("my_imported_external_logging")
+        ```
 
         4. Run the `pulumi import` command with the following parameters:
 
         ```sh
-        $ pulumi import fivetran:index/externalLogging:ExternalLogging my_imported_external_logging {your External Logging Group ID}
+        terraform import fivetran_external_logging.my_imported_external_logging {your External Logging Group ID}
         ```
 
         5. Use the `terraform state show` command to get the values from the state:
 
+        ```sh
         terraform state show 'fivetran_external_logging.my_imported_external_logging'
+        ```
 
         6. Copy the values and paste them to your `.tf` configuration.
 
-        -> The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/log-service-management#logservicesetupconfigurations) for reference to find the properties you need to keep in the `config` section.
+        > The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/log-service-management#logservicesetupconfigurations) for reference to find the properties you need to keep in the `config` section.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -239,33 +270,62 @@ class ExternalLogging(pulumi.CustomResource):
                  args: ExternalLoggingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        This resource allows you to create, update, and delete logging service.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        extlog = fivetran.ExternalLogging("extlog",
+            group_id=group["id"],
+            service="azure_monitor_log",
+            enabled=True,
+            run_setup_tests=True,
+            config=[{
+                "workspaceId": "workspace_id",
+                "primaryKey": "PASSWORD",
+            }])
+        ```
+
+        ## Setup tests
+
+        The `run_setup_tests` field doesn't have upstream value, it only defines local resource behavoir. This means that when you update only the `run_setup_tests` value (from `false` to `true`, for example) it won't cause any upstream actions. The value will be just saved in terraform state and then used on effective field updates.
+
+        The default value is `false` - this means that no setup tests will be performed during create/update. To perform setup tests, you should set value to `true`.
+
         ## Import
 
-        1. To import an existing `fivetran_external_logging` resource into your Terraform state, you need to get **External Logging Group ID** on the external logging page in your Fivetran dashboard.
+        1. To import an existing `ExternalLogging` resource into your Terraform state, you need to get **External Logging Group ID** on the external logging page in your Fivetran dashboard.
 
-        2. To retrieve existing destinations, use the [fivetran_destinations data source](/docs/data-sources/destinations).
+        2. To retrieve existing destinations, use the [get_destinations data source](https://www.terraform.io/docs/data-sources/destinations).
 
         3. Define an empty resource in your `.tf` configuration:
 
-        hcl
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
 
-        resource "fivetran_external_logging" "my_imported_external_logging" {
-
-        }
+        my_imported_external_logging = fivetran.ExternalLogging("my_imported_external_logging")
+        ```
 
         4. Run the `pulumi import` command with the following parameters:
 
         ```sh
-        $ pulumi import fivetran:index/externalLogging:ExternalLogging my_imported_external_logging {your External Logging Group ID}
+        terraform import fivetran_external_logging.my_imported_external_logging {your External Logging Group ID}
         ```
 
         5. Use the `terraform state show` command to get the values from the state:
 
+        ```sh
         terraform state show 'fivetran_external_logging.my_imported_external_logging'
+        ```
 
         6. Copy the values and paste them to your `.tf` configuration.
 
-        -> The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/log-service-management#logservicesetupconfigurations) for reference to find the properties you need to keep in the `config` section.
+        > The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/log-service-management#logservicesetupconfigurations) for reference to find the properties you need to keep in the `config` section.
+
 
         :param str resource_name: The name of the resource.
         :param ExternalLoggingArgs args: The arguments to use to populate this resource's properties.

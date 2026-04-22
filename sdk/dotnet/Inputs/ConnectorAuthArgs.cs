@@ -16,41 +16,41 @@ namespace Pulumi.Fivetran.Inputs
         private Input<string>? _accessToken;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `autodesk_bim_360`: Your Autodesk BIM 360 Access Token.
-        /// 	- Service `azure_sql_db`: The long-lived Access token carries the information necessary to access API resources.
-        /// 	- Service `azure_sql_managed_db`: The long-lived Access token carries the information necessary to access API resources.
-        /// 	- Service `billing_platform`: Your BillingPlatform access token.
-        /// 	- Service `calendly`: Your Calendly access token.
-        /// 	- Service `docebo`: Your Docebo Access Token.
-        /// 	- Service `drift`: Your Drift access token.
-        /// 	- Service `employment_hero`: Your Employment Hero access token.
-        /// 	- Service `facebook_ads`: The long-lived `Access token` along with the `client_id` and `client_secret` parameters carry the information necessary to query the Facebook Ads API
-        /// 	- Service `facebook_pages`: The `Access Token` carries the information necessary for API resources to fetch data
-        /// 	- Service `freshbooks`: Your FreshBooks Access Token.
-        /// 	- Service `gitlab`: Your GitLab access token.
-        /// 	- Service `google_business_profile`: Your Google Business Profile Access token.
-        /// 	- Service `google_calendar`: Your Google Calendar access token.
-        /// 	- Service `google_classroom`: The `Access Token` that carries the information necessary for API resources to fetch data.
-        /// 	- Service `google_tasks`: The access token that carries the information necessary for API resources to your Google Tasks fetch data.
-        /// 	- Service `instagram_business`: The `Access Token` carries the information necessary for API resources to fetch data
-        /// 	- Service `intercom`: The long-lived `Access Token` carries the information necessary for API resources to fetch data.
-        /// 	- Service `medallia`: Your Medallia access token that contains all the information necessary for the API resources to fetch your data.
-        /// 	- Service `pinterest_organic`: Your Pinterest access token.
-        /// 	- Service `ramp`: Your Ramp access token.
-        /// 	- Service `ringcentral`: The long-lived `Access token` carries the information necessary to access API resources.
-        /// 	- Service `shopify`: The Shopify access token.
-        /// 	- Service `slack`: Your Slack access token.
-        /// 	- Service `stripe`: The Stripe API Restricted Key
-        /// 	- Service `stripe_test`: The Stripe API Restricted Key
-        /// 	- Service `survey_monkey`: The long-lived `Access token` carries the information necessary to access API resources.
-        /// 	- Service `tiktok_ads`: The long-lived `Access token` carries the information necessary to access API resources.
-        /// 	- Service `typeform`: The Typeform API access token.
-        /// 	- Service `yahoo_search_ads_yahoo_japan`: Your Yahoo Search Ads Access Token.
-        /// 	- Service `zendesk`: The long-lived `Access token` carries the information necessary to access API resources.
-        /// 	- Service `zendesk_chat`: The long-lived `Access token` carries the information necessary to access API resources.
-        /// 	- Service `zendesk_sell`: The long-lived `Access token` carries the information necessary to access API resources.
-        /// 	- Service `zoom`: Your Zoom Access token.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AutodeskBim360`: Your Autodesk BIM 360 Access Token.
+        /// 	- Service `AzureSqlDb`: The long-lived Access token carries the information necessary to access API resources.
+        /// 	- Service `AzureSqlManagedDb`: The long-lived Access token carries the information necessary to access API resources.
+        /// 	- Service `BillingPlatform`: Your BillingPlatform access token.
+        /// 	- Service `Calendly`: Your Calendly access token.
+        /// 	- Service `Docebo`: Your Docebo Access Token.
+        /// 	- Service `Drift`: Your Drift access token.
+        /// 	- Service `EmploymentHero`: Your Employment Hero access token.
+        /// 	- Service `FacebookAds`: The long-lived `Access token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to query the Facebook Ads API
+        /// 	- Service `FacebookPages`: The `Access Token` carries the information necessary for API resources to fetch data
+        /// 	- Service `Freshbooks`: Your FreshBooks Access Token.
+        /// 	- Service `Gitlab`: Your GitLab access token.
+        /// 	- Service `GoogleBusinessProfile`: Your Google Business Profile Access token.
+        /// 	- Service `GoogleCalendar`: Your Google Calendar access token.
+        /// 	- Service `GoogleClassroom`: The `Access Token` that carries the information necessary for API resources to fetch data.
+        /// 	- Service `GoogleTasks`: The access token that carries the information necessary for API resources to your Google Tasks fetch data.
+        /// 	- Service `InstagramBusiness`: The `Access Token` carries the information necessary for API resources to fetch data
+        /// 	- Service `Intercom`: The long-lived `Access Token` carries the information necessary for API resources to fetch data.
+        /// 	- Service `Medallia`: Your Medallia access token that contains all the information necessary for the API resources to fetch your data.
+        /// 	- Service `PinterestOrganic`: Your Pinterest access token.
+        /// 	- Service `Ramp`: Your Ramp access token.
+        /// 	- Service `Ringcentral`: The long-lived `Access token` carries the information necessary to access API resources.
+        /// 	- Service `Shopify`: The Shopify access token.
+        /// 	- Service `Slack`: Your Slack access token.
+        /// 	- Service `Stripe`: The Stripe API Restricted Key
+        /// 	- Service `StripeTest`: The Stripe API Restricted Key
+        /// 	- Service `SurveyMonkey`: The long-lived `Access token` carries the information necessary to access API resources.
+        /// 	- Service `TiktokAds`: The long-lived `Access token` carries the information necessary to access API resources.
+        /// 	- Service `Typeform`: The Typeform API access token.
+        /// 	- Service `YahooSearchAdsYahooJapan`: Your Yahoo Search Ads Access Token.
+        /// 	- Service `Zendesk`: The long-lived `Access token` carries the information necessary to access API resources.
+        /// 	- Service `ZendeskChat`: The long-lived `Access token` carries the information necessary to access API resources.
+        /// 	- Service `ZendeskSell`: The long-lived `Access token` carries the information necessary to access API resources.
+        /// 	- Service `Zoom`: Your Zoom Access token.
         /// </summary>
         public Input<string>? AccessToken
         {
@@ -63,23 +63,23 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `elastic_cloud`: The Elasticsearch API key. If omitted, then basic user and password authentication will apply.
-        /// 	- Service `es_self_hosted`: The Elasticsearch API key. If omitted, then basic user and password authentication will apply.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ElasticCloud`: The Elasticsearch API key. If omitted, then basic user and password authentication will apply.
+        /// 	- Service `EsSelfHosted`: The Elasticsearch API key. If omitted, then basic user and password authentication will apply.
         /// </summary>
         [Input("apiKey")]
         public Input<string>? ApiKey { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `amazon_selling_partner`: `AWS Access Key` of your AWS Account User.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AmazonSellingPartner`: `AWS Access Key` of your AWS Account User.
         /// </summary>
         [Input("awsAccessKey")]
         public Input<string>? AwsAccessKey { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `amazon_selling_partner`: `AWS Secret Key` of your AWS Account User.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AmazonSellingPartner`: `AWS Secret Key` of your AWS Account User.
         /// </summary>
         [Input("awsSecretKey")]
         public Input<string>? AwsSecretKey { get; set; }
@@ -88,63 +88,63 @@ namespace Pulumi.Fivetran.Inputs
         public Input<Inputs.ConnectorAuthClientAccessArgs>? ClientAccess { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `amazon_selling_partner`: `Client ID` of your Amazon Seller/Vendor Central client application.
-        /// 	- Service `apple_search_ads`: Apple Search Ads REST API Client ID. Must be populated if `is_auth2_enabled` is set to `true`.
-        /// 	- Service `workday`: Client ID
-        /// 	- Service `workday_financial_management`: ID of your Workday Client App
-        /// 	- Service `workday_hcm`: ID of your Workday Client App
-        /// 	- Service `yahoo_dsp`: Your Yahoo DSP Client ID.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AmazonSellingPartner`: `Client ID` of your Amazon Seller/Vendor Central client application.
+        /// 	- Service `AppleSearchAds`: Apple Search Ads REST API Client ID. Must be populated if `IsAuth2Enabled` is set to `True`.
+        /// 	- Service `Workday`: Client ID
+        /// 	- Service `WorkdayFinancialManagement`: ID of your Workday Client App
+        /// 	- Service `WorkdayHcm`: ID of your Workday Client App
+        /// 	- Service `YahooDsp`: Your Yahoo DSP Client ID.
         /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `amazon_selling_partner`: `Client Secret` of your Amazon Seller/Vendor Central client application.
-        /// 	- Service `workday`: Client Secret
-        /// 	- Service `workday_financial_management`: Secret of your Workday Client App
-        /// 	- Service `workday_hcm`: Secret of your Workday Client App
-        /// 	- Service `yahoo_dsp`: Your Yahoo DSP Client Secret.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AmazonSellingPartner`: `Client Secret` of your Amazon Seller/Vendor Central client application.
+        /// 	- Service `Workday`: Client Secret
+        /// 	- Service `WorkdayFinancialManagement`: Secret of your Workday Client App
+        /// 	- Service `WorkdayHcm`: Secret of your Workday Client App
+        /// 	- Service `YahooDsp`: Your Yahoo DSP Client Secret.
         /// </summary>
         [Input("clientSecret")]
         public Input<string>? ClientSecret { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `twitter`: API Key of your app
-        /// 	- Service `twitter_ads`: The Twitter App consumer key.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Twitter`: API Key of your app
+        /// 	- Service `TwitterAds`: The Twitter App consumer key.
         /// </summary>
         [Input("consumerKey")]
         public Input<string>? ConsumerKey { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `twitter`: API Secret of your app
-        /// 	- Service `twitter_ads`: The Twitter App consumer secret.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Twitter`: API Secret of your app
+        /// 	- Service `TwitterAds`: The Twitter App consumer secret.
         /// </summary>
         [Input("consumerSecret")]
         public Input<string>? ConsumerSecret { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `apple_search_ads`: Apple Search Ads REST API Key ID. Must be populated if `is_auth2_enabled` is set to `true`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AppleSearchAds`: Apple Search Ads REST API Key ID. Must be populated if `IsAuth2Enabled` is set to `True`.
         /// </summary>
         [Input("keyId")]
         public Input<string>? KeyId { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `twitter`: The Twitter App access token.
-        /// 	- Service `twitter_ads`: The Twitter App access token.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Twitter`: The Twitter App access token.
+        /// 	- Service `TwitterAds`: The Twitter App access token.
         /// </summary>
         [Input("oauthToken")]
         public Input<string>? OauthToken { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `twitter`: The Twitter App access token secret.
-        /// 	- Service `twitter_ads`: The Twitter App access token secret.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Twitter`: The Twitter App access token secret.
+        /// 	- Service `TwitterAds`: The Twitter App access token secret.
         /// </summary>
         [Input("oauthTokenSecret")]
         public Input<string>? OauthTokenSecret { get; set; }
@@ -159,8 +159,8 @@ namespace Pulumi.Fivetran.Inputs
         private Input<string>? _previousRefreshToken;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `dynamics_365`: Previous `Refresh token` of your application.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Dynamics365`: Previous `Refresh token` of your application.
         /// </summary>
         public Input<string>? PreviousRefreshToken
         {
@@ -173,8 +173,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `quickbooks`: `Realm ID` of your QuickBooks application.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Quickbooks`: `Realm ID` of your QuickBooks application.
         /// </summary>
         [Input("realmId")]
         public Input<string>? RealmId { get; set; }
@@ -183,70 +183,70 @@ namespace Pulumi.Fivetran.Inputs
         private Input<string>? _refreshToken;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `adroll`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `airtable`: The long-lived refresh token along with the client ID and client secret carry the information necessary to get a new access token for API resources.
-        /// 	- Service `amazon_ads`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `amazon_selling_partner`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `asana`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `autodesk_bim_360`: Your Autodesk BIM 360 Refresh Token.
-        /// 	- Service `azure_service_bus`: The refresh token. Required if the authentication type is `AzureActiveDirectory`
-        /// 	- Service `azure_sql_db`: The long-lived Refresh token carries the information necessary to get a new access token for API resources.
-        /// 	- Service `azure_sql_managed_db`: The long-lived Refresh token carries the information necessary to get a new access token for API resources.
-        /// 	- Service `billing_platform`: Your BillingPlatform refresh token.
-        /// 	- Service `bingads`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `business_central`: The long-lived refresh token along with the client ID and client secret parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `calendly`: Your Calendly refresh token.
-        /// 	- Service `docebo`: Your Docebo Refresh Token.
-        /// 	- Service `double_click_campaign_manager`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `double_click_publishers`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `drift`: Your Drift refresh token.
-        /// 	- Service `dropbox`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `dynamics_365`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `employment_hero`: Your Employment Hero refresh token.
-        /// 	- Service `financial_force`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `freshbooks`: Your FreshBooks Refresh Token.
-        /// 	- Service `front`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `gitlab`: Your GitLab refresh token.
-        /// 	- Service `google_ads`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `google_analytics`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `google_analytics_4`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `google_analytics_mcf`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `google_business_profile`: Your Google Business Profile Refresh token.
-        /// 	- Service `google_calendar`: Your Google Calendar refresh token.
-        /// 	- Service `google_classroom`: The long-lived `Refresh token` of your Google Calendar client application.
-        /// 	- Service `google_display_and_video_360`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `google_play`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `google_search_ads_360`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `google_sheets`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `google_tasks`: The long-lived refresh token of your Google Tasks client application.
-        /// 	- Service `helpscout`: The long-lived `refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `hubspot`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `linkedin_ads`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `linkedin_company_pages`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `microsoft_lists`: The long-lived Refresh token carries the information necessary to get a new access token for API resources.
-        /// 	- Service `one_drive`: The long-lived `Refresh token` carries the information necessary to get a new access token for API resources.
-        /// 	- Service `optimizely`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `outreach`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `pinterest_ads`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `pinterest_organic`: Your Pinterest refresh token.
-        /// 	- Service `pipedrive`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `qualtrics`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `quickbooks`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `ramp`: Your Ramp refresh token.
-        /// 	- Service `reddit_ads`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `salesforce`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `salesforce_sandbox`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `salesloft`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `share_point`: The long-lived Refresh token carries the information necessary to get a new access token for API resources.
-        /// 	- Service `slack`: Your Slack refresh token.
-        /// 	- Service `snapchat_ads`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `spotify_ads`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `typeform`: The Typeform API refresh token.
-        /// 	- Service `workday`: OAuth Refresh Token
-        /// 	- Service `yahoo_search_ads_yahoo_japan`: Your Yahoo Search Ads Refresh Token.
-        /// 	- Service `zoho_crm`: The long-lived `Refresh token`, along with the `client_id` and `client_secret` parameters, carries the information necessary to get a new access token for API resources.
-        /// 	- Service `zoom`: Your Zoom Refresh token.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Adroll`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `Airtable`: The long-lived refresh token along with the client ID and client secret carry the information necessary to get a new access token for API resources.
+        /// 	- Service `AmazonAds`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `AmazonSellingPartner`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `Asana`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `AutodeskBim360`: Your Autodesk BIM 360 Refresh Token.
+        /// 	- Service `AzureServiceBus`: The refresh token. Required if the authentication type is `AzureActiveDirectory`
+        /// 	- Service `AzureSqlDb`: The long-lived Refresh token carries the information necessary to get a new access token for API resources.
+        /// 	- Service `AzureSqlManagedDb`: The long-lived Refresh token carries the information necessary to get a new access token for API resources.
+        /// 	- Service `BillingPlatform`: Your BillingPlatform refresh token.
+        /// 	- Service `Bingads`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `BusinessCentral`: The long-lived refresh token along with the client ID and client secret parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `Calendly`: Your Calendly refresh token.
+        /// 	- Service `Docebo`: Your Docebo Refresh Token.
+        /// 	- Service `DoubleClickCampaignManager`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `DoubleClickPublishers`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `Drift`: Your Drift refresh token.
+        /// 	- Service `Dropbox`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `Dynamics365`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `EmploymentHero`: Your Employment Hero refresh token.
+        /// 	- Service `FinancialForce`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `Freshbooks`: Your FreshBooks Refresh Token.
+        /// 	- Service `Front`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `Gitlab`: Your GitLab refresh token.
+        /// 	- Service `GoogleAds`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `GoogleAnalytics`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `GoogleAnalytics4`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `GoogleAnalyticsMcf`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `GoogleBusinessProfile`: Your Google Business Profile Refresh token.
+        /// 	- Service `GoogleCalendar`: Your Google Calendar refresh token.
+        /// 	- Service `GoogleClassroom`: The long-lived `Refresh token` of your Google Calendar client application.
+        /// 	- Service `GoogleDisplayAndVideo360`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `GooglePlay`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `GoogleSearchAds360`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `GoogleSheets`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `GoogleTasks`: The long-lived refresh token of your Google Tasks client application.
+        /// 	- Service `Helpscout`: The long-lived `refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `Hubspot`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `LinkedinAds`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `LinkedinCompanyPages`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `MicrosoftLists`: The long-lived Refresh token carries the information necessary to get a new access token for API resources.
+        /// 	- Service `OneDrive`: The long-lived `Refresh token` carries the information necessary to get a new access token for API resources.
+        /// 	- Service `Optimizely`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `Outreach`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `PinterestAds`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `PinterestOrganic`: Your Pinterest refresh token.
+        /// 	- Service `Pipedrive`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `Qualtrics`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `Quickbooks`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `Ramp`: Your Ramp refresh token.
+        /// 	- Service `RedditAds`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `Salesforce`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `SalesforceSandbox`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `Salesloft`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `SharePoint`: The long-lived Refresh token carries the information necessary to get a new access token for API resources.
+        /// 	- Service `Slack`: Your Slack refresh token.
+        /// 	- Service `SnapchatAds`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `SpotifyAds`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `Typeform`: The Typeform API refresh token.
+        /// 	- Service `Workday`: OAuth Refresh Token
+        /// 	- Service `YahooSearchAdsYahooJapan`: Your Yahoo Search Ads Refresh Token.
+        /// 	- Service `ZohoCrm`: The long-lived `Refresh token`, along with the `ClientId` and `ClientSecret` parameters, carries the information necessary to get a new access token for API resources.
+        /// 	- Service `Zoom`: Your Zoom Refresh token.
         /// </summary>
         public Input<string>? RefreshToken
         {
@@ -259,22 +259,22 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `amazon_selling_partner`: `IAM Role ARN` of your AWS Account.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AmazonSellingPartner`: `IAM Role ARN` of your AWS Account.
         /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `apple_search_ads`: Apple Search Ads REST API Team ID. Must be populated if `is_auth2_enabled` is set to `true`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AppleSearchAds`: Apple Search Ads REST API Team ID. Must be populated if `IsAuth2Enabled` is set to `True`.
         /// </summary>
         [Input("teamId")]
         public Input<string>? TeamId { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook_ads`: Access Token
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FacebookAds`: Access Token
         /// </summary>
         [Input("userAccessToken")]
         public Input<string>? UserAccessToken { get; set; }

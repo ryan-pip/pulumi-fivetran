@@ -52,35 +52,35 @@ export class ProxyAgent extends pulumi.CustomResource {
     /**
      * Client certificate.
      */
-    public /*out*/ readonly clientCert!: pulumi.Output<string>;
+    declare public /*out*/ readonly clientCert: pulumi.Output<string>;
     /**
      * Client private key.
      */
-    public /*out*/ readonly clientPrivateKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly clientPrivateKey: pulumi.Output<string>;
     /**
      * The actor who created the proxy agent.
      */
-    public /*out*/ readonly createdBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     /**
      * Proxy agent name.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Data processing location. This is where Fivetran will operate and run computation on data.
      */
-    public readonly groupRegion!: pulumi.Output<string>;
+    declare public readonly groupRegion: pulumi.Output<string>;
     /**
      * Determines whether regenerarion secrets needs to be performed.
      */
-    public readonly regenerationCounter!: pulumi.Output<number>;
+    declare public readonly regenerationCounter: pulumi.Output<number>;
     /**
      * The timestamp of the time the proxy agent was created in your account.
      */
-    public /*out*/ readonly registredAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly registredAt: pulumi.Output<string>;
     /**
      * The auth token.
      */
-    public /*out*/ readonly token!: pulumi.Output<string>;
+    declare public /*out*/ readonly token: pulumi.Output<string>;
 
     /**
      * Create a ProxyAgent resource with the given unique name, arguments, and options.
@@ -95,25 +95,25 @@ export class ProxyAgent extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProxyAgentState | undefined;
-            resourceInputs["clientCert"] = state ? state.clientCert : undefined;
-            resourceInputs["clientPrivateKey"] = state ? state.clientPrivateKey : undefined;
-            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["groupRegion"] = state ? state.groupRegion : undefined;
-            resourceInputs["regenerationCounter"] = state ? state.regenerationCounter : undefined;
-            resourceInputs["registredAt"] = state ? state.registredAt : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
+            resourceInputs["clientCert"] = state?.clientCert;
+            resourceInputs["clientPrivateKey"] = state?.clientPrivateKey;
+            resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["groupRegion"] = state?.groupRegion;
+            resourceInputs["regenerationCounter"] = state?.regenerationCounter;
+            resourceInputs["registredAt"] = state?.registredAt;
+            resourceInputs["token"] = state?.token;
         } else {
             const args = argsOrState as ProxyAgentArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.groupRegion === undefined) && !opts.urn) {
+            if (args?.groupRegion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupRegion'");
             }
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["groupRegion"] = args ? args.groupRegion : undefined;
-            resourceInputs["regenerationCounter"] = args ? args.regenerationCounter : undefined;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["groupRegion"] = args?.groupRegion;
+            resourceInputs["regenerationCounter"] = args?.regenerationCounter;
             resourceInputs["clientCert"] = undefined /*out*/;
             resourceInputs["clientPrivateKey"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;

@@ -14,60 +14,60 @@ namespace Pulumi.Fivetran.Outputs
     public sealed class ConnectorConfigCustomTable
     {
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook_ads`: List of action_breakdowns which connector will sync. [Possible action_breakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads#actionbreakdowns).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FacebookAds`: List of ActionBreakdowns which connector will sync. [Possible ActionBreakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads#actionbreakdowns).
         /// </summary>
         public readonly ImmutableArray<string> ActionBreakdowns;
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook_ads`: The report time of action stats. [Possible action_report time values](https://fivetran.com/docs/connectors/applications/facebook-ads#actionreporttime).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FacebookAds`: The report time of action stats. [Possible ActionReport time values](https://fivetran.com/docs/connectors/applications/facebook-ads#actionreporttime).
         /// </summary>
         public readonly string? ActionReportTime;
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook_ads`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/connectors/applications/facebook-ads#aggregation).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FacebookAds`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/connectors/applications/facebook-ads#aggregation).
         /// </summary>
         public readonly string? Aggregation;
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook_ads`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads#breakdowns).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FacebookAds`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads#breakdowns).
         /// </summary>
         public readonly ImmutableArray<string> Breakdowns;
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook_ads`: Time period to attribute conversions based on clicks. [Possible click_attribution_window values](https://fivetran.com/docs/connectors/applications/facebook-ads#clickattributionwindow).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FacebookAds`: Time period to attribute conversions based on clicks. [Possible ClickAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads#clickattributionwindow).
         /// </summary>
         public readonly string? ClickAttributionWindow;
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook_ads`: Option to select Prebuilt Reports or Custom Reports. [Possible config_type values](https://fivetran.com/docs/connectors/applications/facebook-ads#configtype).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FacebookAds`: Option to select Prebuilt Reports or Custom Reports. [Possible ConfigType values](https://fivetran.com/docs/connectors/applications/facebook-ads#configtype).
         /// </summary>
         public readonly string? ConfigType;
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook_ads`: Time period to attribute conversions based on engaged views. [Possible view_attribution_window values](https://fivetran.com/docs/connectors/applications/facebook-ads#engagedviewattributionwindow).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FacebookAds`: Time period to attribute conversions based on engaged views. [Possible ViewAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads#engagedviewattributionwindow).
         /// </summary>
         public readonly string? EngagedViewAttributionWindow;
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook_ads`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/connectors/applications/facebook-ads#fields).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FacebookAds`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/connectors/applications/facebook-ads#fields).
         /// </summary>
         public readonly ImmutableArray<string> Fields;
         public readonly string? Level;
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook_ads`: The report name to which connector will sync the data. [Possible prebuilt_report values](https://fivetran.com/docs/connectors/applications/facebook-ads#prebuiltreport).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FacebookAds`: The report name to which connector will sync the data. [Possible PrebuiltReport values](https://fivetran.com/docs/connectors/applications/facebook-ads#prebuiltreport).
         /// </summary>
         public readonly string? PrebuiltReportName;
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook_ads`: The table name within the schema to which the connector will sync the data. It must be unique within the connector and must comply with [Fivetran's naming conventions](https://fivetran.com/docs/getting-started/core-concepts#namingconventions).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FacebookAds`: The table name within the schema to which the connector will sync the data. It must be unique within the connector and must comply with [Fivetran's naming conventions](https://fivetran.com/docs/getting-started/core-concepts#namingconventions).
         /// </summary>
         public readonly string? TableName;
         public readonly bool? UseUnifiedAttributionSetting;
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `facebook_ads`: Time period to attribute conversions based on views. [Possible view_attribution_window values](https://fivetran.com/docs/connectors/applications/facebook-ads#viewattributionwindow).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FacebookAds`: Time period to attribute conversions based on views. [Possible ViewAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads#viewattributionwindow).
         /// </summary>
         public readonly string? ViewAttributionWindow;
 

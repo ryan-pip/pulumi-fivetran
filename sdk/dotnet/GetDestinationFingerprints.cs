@@ -24,7 +24,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var destinationFingerprints = Fivetran.GetDestinationFingerprints.Invoke(new()
+        ///     var destinationFingerprints = Fivetran.Index.GetDestinationFingerprints.Invoke(new()
         ///     {
         ///         Id = "destination_id",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var destinationFingerprints = Fivetran.GetDestinationFingerprints.Invoke(new()
+        ///     var destinationFingerprints = Fivetran.Index.GetDestinationFingerprints.Invoke(new()
         ///     {
         ///         Id = "destination_id",
         ///     });
@@ -72,7 +72,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var destinationFingerprints = Fivetran.GetDestinationFingerprints.Invoke(new()
+        ///     var destinationFingerprints = Fivetran.Index.GetDestinationFingerprints.Invoke(new()
         ///     {
         ///         Id = "destination_id",
         ///     });

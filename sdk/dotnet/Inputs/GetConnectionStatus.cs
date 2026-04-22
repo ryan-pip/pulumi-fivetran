@@ -19,13 +19,13 @@ namespace Pulumi.Fivetran.Inputs
         public bool IsHistoricalSync { get; set; }
 
         /// <summary>
-        /// The current setup state of the connection. The available values are: \n\n - incomplete - the setup config is incomplete, the setup tests never succeeded  `connected` - the connection is properly set up, `broken` - the connection setup config is broken.
+        /// The current setup state of the connection. The available values are: \n\n - incomplete - the setup config is incomplete, the setup tests never succeeded  `Connected` - the connection is properly set up, `Broken` - the connection setup config is broken.
         /// </summary>
         [Input("setupState", required: true)]
         public string SetupState { get; set; } = null!;
 
         /// <summary>
-        /// The current sync state of the connection. The available values are: `scheduled` - the sync is waiting to be run, `syncing` - the sync is currently running, `paused` - the sync is currently paused, `rescheduled` - the sync is waiting until more API calls are available in the source service.
+        /// The current sync state of the connection. The available values are: `Scheduled` - the sync is waiting to be run, `Syncing` - the sync is currently running, `Paused` - the sync is currently paused, `Rescheduled` - the sync is waiting until more API calls are available in the source service.
         /// </summary>
         [Input("syncState", required: true)]
         public string SyncState { get; set; } = null!;
@@ -43,7 +43,7 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// The current data update state of the connection. The available values are: `on_schedule` - the sync is running smoothly, no delays, `delayed` - the data is delayed for a longer time than expected for the update.
+        /// The current data update state of the connection. The available values are: `OnSchedule` - the sync is running smoothly, no delays, `Delayed` - the data is delayed for a longer time than expected for the update.
         /// </summary>
         [Input("updateState", required: true)]
         public string UpdateState { get; set; } = null!;

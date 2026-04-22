@@ -12,33 +12,105 @@ import (
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
+// This resource allows you to create, update, and delete destinations.
+//
+// IMPORTANT: Groups and destinations are mapped 1:1 to each other. We do this mapping using the group's id value that we automatically generate when you create a group using our REST API, and the destination's groupId value that you specify when you create a destination using our REST API. This means that if you use our REST API to create a destination, you must create a group in your Fivetran account before you can create a destination in it.
+//
+// When you create a destination in your Fivetran dashboard, we automatically create a group and assign a value to its id and a destination with the same groupId value, which is unique in your Fivetran account. The group's name corresponds to the Destination name you specify in your Fivetran dashboard when creating the destination in your Fivetran dashboard.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.NewDestination(ctx, "dest", &fivetran.DestinationArgs{
+//				GroupId:                   pulumi.Any(group.Id),
+//				Service:                   pulumi.String("postgres_rds_warehouse"),
+//				TimeZoneOffset:            pulumi.String("0"),
+//				Region:                    pulumi.String("GCP_US_EAST4"),
+//				TrustCertificates:         pulumi.Bool(true),
+//				TrustFingerprints:         pulumi.Bool(true),
+//				DaylightSavingTimeEnabled: pulumi.Bool(true),
+//				RunSetupTests:             pulumi.Bool(true),
+//				Config: fivetran.DestinationConfigArgs{
+//					map[string]interface{}{
+//						"host":           "destination.fqdn",
+//						"port":           5432,
+//						"user":           "postgres",
+//						"password":       "myPass",
+//						"database":       "fivetran",
+//						"connectionType": "Directly",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Setup tests
+//
+// The `runSetupTests` field doesn't have upstream value, it only defines local resource behavoir. This means that when you update only the `runSetupTests` value (from `false` to `true`, for example) it won't cause any upstream actions. The value will be just saved in terraform state and then used on effective field updates.
+//
+// The default value is `false` - this means that no setup tests will be performed during create/update. To perform setup tests, you should set value to `true`.
+//
 // ## Import
 //
-// 1. To import an existing `fivetran_destination` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+// 1. To import an existing `Destination` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
 //
-// 2. To retrieve existing destinations, use the [fivetran_destinations data source](/docs/data-sources/destinations).
+// 2. To retrieve existing destinations, use the [getDestinations data source](https://www.terraform.io/docs/data-sources/destinations).
 //
 // 3. Define an empty resource in your `.tf` configuration:
 //
-// hcl
+// ```go
+// package main
 //
-// resource "fivetran_destination" "my_imported_destination" {
+// import (
 //
-// }
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.NewDestination(ctx, "my_imported_destination", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // 4. Run the `pulumi import` command with the following parameters:
 //
 // ```sh
-// $ pulumi import fivetran:index/destination:Destination my_imported_destination {your Destination Group ID}
+// terraform import fivetran_destination.my_imported_destination {your Destination Group ID}
 // ```
 //
 // 5. Use the `terraform state show` command to get the values from the state:
 //
+// ```sh
 // terraform state show 'fivetran_destination.my_imported_destination'
-//
+// ```
 // 6. Copy the values and paste them to your `.tf` configuration.
 //
-// -> The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/destinations/config) for reference to find the properties you need to keep in the `config` section.
+// > The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/destinations/config) for reference to find the properties you need to keep in the `config` section.
 type Destination struct {
 	pulumi.CustomResourceState
 
@@ -47,8 +119,7 @@ type Destination struct {
 	DaylightSavingTimeEnabled pulumi.BoolOutput `pulumi:"daylightSavingTimeEnabled"`
 	// The unique identifier for the Group within the Fivetran system.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
-	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-	// value is specified, the system will try to associate the connection with an existing agent.
+	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
 	HybridDeploymentAgentId pulumi.StringPtrOutput `pulumi:"hybridDeploymentAgentId"`
 	// Possible values: Directly, SshTunnel, ProxyAgent.
 	NetworkingMethod pulumi.StringOutput `pulumi:"networkingMethod"`
@@ -65,13 +136,9 @@ type Destination struct {
 	// Determines the time zone for the Fivetran sync schedule.
 	TimeZoneOffset pulumi.StringOutput          `pulumi:"timeZoneOffset"`
 	Timeouts       DestinationTimeoutsPtrOutput `pulumi:"timeouts"`
-	// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-	// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+	// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
 	TrustCertificates pulumi.BoolOutput `pulumi:"trustCertificates"`
-	// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-	// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+	// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
 	TrustFingerprints pulumi.BoolOutput `pulumi:"trustFingerprints"`
 }
 
@@ -122,8 +189,7 @@ type destinationState struct {
 	DaylightSavingTimeEnabled *bool `pulumi:"daylightSavingTimeEnabled"`
 	// The unique identifier for the Group within the Fivetran system.
 	GroupId *string `pulumi:"groupId"`
-	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-	// value is specified, the system will try to associate the connection with an existing agent.
+	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
 	HybridDeploymentAgentId *string `pulumi:"hybridDeploymentAgentId"`
 	// Possible values: Directly, SshTunnel, ProxyAgent.
 	NetworkingMethod *string `pulumi:"networkingMethod"`
@@ -140,13 +206,9 @@ type destinationState struct {
 	// Determines the time zone for the Fivetran sync schedule.
 	TimeZoneOffset *string              `pulumi:"timeZoneOffset"`
 	Timeouts       *DestinationTimeouts `pulumi:"timeouts"`
-	// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-	// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+	// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
 	TrustCertificates *bool `pulumi:"trustCertificates"`
-	// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-	// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+	// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
 	TrustFingerprints *bool `pulumi:"trustFingerprints"`
 }
 
@@ -156,8 +218,7 @@ type DestinationState struct {
 	DaylightSavingTimeEnabled pulumi.BoolPtrInput
 	// The unique identifier for the Group within the Fivetran system.
 	GroupId pulumi.StringPtrInput
-	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-	// value is specified, the system will try to associate the connection with an existing agent.
+	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
 	HybridDeploymentAgentId pulumi.StringPtrInput
 	// Possible values: Directly, SshTunnel, ProxyAgent.
 	NetworkingMethod pulumi.StringPtrInput
@@ -174,13 +235,9 @@ type DestinationState struct {
 	// Determines the time zone for the Fivetran sync schedule.
 	TimeZoneOffset pulumi.StringPtrInput
 	Timeouts       DestinationTimeoutsPtrInput
-	// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-	// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+	// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
 	TrustCertificates pulumi.BoolPtrInput
-	// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-	// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+	// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
 	TrustFingerprints pulumi.BoolPtrInput
 }
 
@@ -194,8 +251,7 @@ type destinationArgs struct {
 	DaylightSavingTimeEnabled *bool `pulumi:"daylightSavingTimeEnabled"`
 	// The unique identifier for the Group within the Fivetran system.
 	GroupId string `pulumi:"groupId"`
-	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-	// value is specified, the system will try to associate the connection with an existing agent.
+	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
 	HybridDeploymentAgentId *string `pulumi:"hybridDeploymentAgentId"`
 	// Possible values: Directly, SshTunnel, ProxyAgent.
 	NetworkingMethod *string `pulumi:"networkingMethod"`
@@ -210,13 +266,9 @@ type destinationArgs struct {
 	// Determines the time zone for the Fivetran sync schedule.
 	TimeZoneOffset string               `pulumi:"timeZoneOffset"`
 	Timeouts       *DestinationTimeouts `pulumi:"timeouts"`
-	// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-	// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+	// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
 	TrustCertificates *bool `pulumi:"trustCertificates"`
-	// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-	// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+	// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
 	TrustFingerprints *bool `pulumi:"trustFingerprints"`
 }
 
@@ -227,8 +279,7 @@ type DestinationArgs struct {
 	DaylightSavingTimeEnabled pulumi.BoolPtrInput
 	// The unique identifier for the Group within the Fivetran system.
 	GroupId pulumi.StringInput
-	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-	// value is specified, the system will try to associate the connection with an existing agent.
+	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
 	HybridDeploymentAgentId pulumi.StringPtrInput
 	// Possible values: Directly, SshTunnel, ProxyAgent.
 	NetworkingMethod pulumi.StringPtrInput
@@ -243,13 +294,9 @@ type DestinationArgs struct {
 	// Determines the time zone for the Fivetran sync schedule.
 	TimeZoneOffset pulumi.StringInput
 	Timeouts       DestinationTimeoutsPtrInput
-	// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-	// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+	// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
 	TrustCertificates pulumi.BoolPtrInput
-	// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-	// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-	// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+	// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
 	TrustFingerprints pulumi.BoolPtrInput
 }
 
@@ -354,8 +401,7 @@ func (o DestinationOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Destination) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
 }
 
-// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-// value is specified, the system will try to associate the connection with an existing agent.
+// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
 func (o DestinationOutput) HybridDeploymentAgentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Destination) pulumi.StringPtrOutput { return v.HybridDeploymentAgentId }).(pulumi.StringPtrOutput)
 }
@@ -399,16 +445,12 @@ func (o DestinationOutput) Timeouts() DestinationTimeoutsPtrOutput {
 	return o.ApplyT(func(v *Destination) DestinationTimeoutsPtrOutput { return v.Timeouts }).(DestinationTimeoutsPtrOutput)
 }
 
-// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-// certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+// Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
 func (o DestinationOutput) TrustCertificates() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Destination) pulumi.BoolOutput { return v.TrustCertificates }).(pulumi.BoolOutput)
 }
 
-// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-// trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-// fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+// Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
 func (o DestinationOutput) TrustFingerprints() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Destination) pulumi.BoolOutput { return v.TrustFingerprints }).(pulumi.BoolOutput)
 }

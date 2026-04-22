@@ -8,6 +8,8 @@ import * as utilities from "./utilities";
 
 /**
  * This data source returns list of destination objects.
+ *
+ * ## Example Usage
  */
 export function getDestinations(args?: GetDestinationsArgs, opts?: pulumi.InvokeOptions): Promise<GetDestinationsResult> {
     args = args || {};
@@ -36,6 +38,8 @@ export interface GetDestinationsResult {
 }
 /**
  * This data source returns list of destination objects.
+ *
+ * ## Example Usage
  */
 export function getDestinationsOutput(args?: GetDestinationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDestinationsResult> {
     args = args || {};

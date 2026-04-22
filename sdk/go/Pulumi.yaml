@@ -1,0 +1,3 @@
+name: fivetran
+description: A Pulumi resource provider for fivetran.
+language: go

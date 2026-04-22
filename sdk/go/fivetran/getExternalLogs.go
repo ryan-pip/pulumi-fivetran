@@ -12,6 +12,8 @@ import (
 )
 
 // This data source returns list of logging service objects.
+//
+// ## Example Usage
 func GetExternalLogs(ctx *pulumi.Context, args *GetExternalLogsArgs, opts ...pulumi.InvokeOption) (*GetExternalLogsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetExternalLogsResult

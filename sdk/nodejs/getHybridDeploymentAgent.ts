@@ -6,6 +6,8 @@ import * as utilities from "./utilities";
 
 /**
  * This data source returns a hybrid deployment agent object.
+ *
+ * ## Example Usage
  */
 export function getHybridDeploymentAgent(args: GetHybridDeploymentAgentArgs, opts?: pulumi.InvokeOptions): Promise<GetHybridDeploymentAgentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -47,6 +49,8 @@ export interface GetHybridDeploymentAgentResult {
 }
 /**
  * This data source returns a hybrid deployment agent object.
+ *
+ * ## Example Usage
  */
 export function getHybridDeploymentAgentOutput(args: GetHybridDeploymentAgentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHybridDeploymentAgentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

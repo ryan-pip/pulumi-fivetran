@@ -24,7 +24,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myGroupPublicKey = Fivetran.GetGroupSshKey.Invoke(new()
+        ///     var myGroupPublicKey = Fivetran.Index.GetGroupSshKey.Invoke(new()
         ///     {
         ///         Id = "group_id",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myGroupPublicKey = Fivetran.GetGroupSshKey.Invoke(new()
+        ///     var myGroupPublicKey = Fivetran.Index.GetGroupSshKey.Invoke(new()
         ///     {
         ///         Id = "group_id",
         ///     });
@@ -72,7 +72,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myGroupPublicKey = Fivetran.GetGroupSshKey.Invoke(new()
+        ///     var myGroupPublicKey = Fivetran.Index.GetGroupSshKey.Invoke(new()
         ///     {
         ///         Id = "group_id",
         ///     });

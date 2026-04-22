@@ -25,6 +25,7 @@ class TeamUserMembershipArgs:
                  users: Optional[pulumi.Input[Sequence[pulumi.Input['TeamUserMembershipUserArgs']]]] = None):
         """
         The set of arguments for constructing a TeamUserMembership resource.
+
         :param pulumi.Input[_builtins.str] team_id: The unique identifier for the team within your account.
         """
         pulumi.set(__self__, "team_id", team_id)
@@ -60,6 +61,7 @@ class _TeamUserMembershipState:
                  users: Optional[pulumi.Input[Sequence[pulumi.Input['TeamUserMembershipUserArgs']]]] = None):
         """
         Input properties used for looking up and filtering TeamUserMembership resources.
+
         :param pulumi.Input[_builtins.str] team_id: The unique identifier for the team within your account.
         """
         if team_id is not None:
@@ -123,17 +125,17 @@ class TeamUserMembership(pulumi.CustomResource):
 
         ## Import
 
-        1. To import an existing `fivetran_team_user_membership` resource into your Terraform state, you need to get `team_id` and `user_id`
-
-        You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams).
+        1. To import an existing `TeamUserMembership` resource into your Terraform state, you need to get `team_id` and `user_id`
+        You can retrieve all teams using the [get_teams data source](https://www.terraform.io/docs/data-sources/teams).
 
         2. Define an empty resource in your `.tf` configuration:
 
-        hcl
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
 
-        resource "fivetran_team_user_membership" "my_imported_fivetran_team_user_membership" {
-
-        }
+        my_imported_fivetran_team_user_membership = fivetran.TeamUserMembership("my_imported_fivetran_team_user_membership")
+        ```
 
         3. Run the `pulumi import` command:
 
@@ -143,9 +145,11 @@ class TeamUserMembership(pulumi.CustomResource):
 
         4. Use the `terraform state show` command to get the values from the state:
 
+        ```sh
         terraform state show 'fivetran_team_user_membership.my_imported_fivetran_team_user_membership'
-
+        ```
         5. Copy the values and paste them to your `.tf` configuration.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -182,17 +186,17 @@ class TeamUserMembership(pulumi.CustomResource):
 
         ## Import
 
-        1. To import an existing `fivetran_team_user_membership` resource into your Terraform state, you need to get `team_id` and `user_id`
-
-        You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams).
+        1. To import an existing `TeamUserMembership` resource into your Terraform state, you need to get `team_id` and `user_id`
+        You can retrieve all teams using the [get_teams data source](https://www.terraform.io/docs/data-sources/teams).
 
         2. Define an empty resource in your `.tf` configuration:
 
-        hcl
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
 
-        resource "fivetran_team_user_membership" "my_imported_fivetran_team_user_membership" {
-
-        }
+        my_imported_fivetran_team_user_membership = fivetran.TeamUserMembership("my_imported_fivetran_team_user_membership")
+        ```
 
         3. Run the `pulumi import` command:
 
@@ -202,9 +206,11 @@ class TeamUserMembership(pulumi.CustomResource):
 
         4. Use the `terraform state show` command to get the values from the state:
 
+        ```sh
         terraform state show 'fivetran_team_user_membership.my_imported_fivetran_team_user_membership'
-
+        ```
         5. Copy the values and paste them to your `.tf` configuration.
+
 
         :param str resource_name: The name of the resource.
         :param TeamUserMembershipArgs args: The arguments to use to populate this resource's properties.

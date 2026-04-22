@@ -24,7 +24,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var hybridDeploymentAgents = Fivetran.GetHybridDeploymentAgents.Invoke();
+        ///     var hybridDeploymentAgents = Fivetran.Index.GetHybridDeploymentAgents.Invoke();
         /// 
         /// });
         /// ```
@@ -45,7 +45,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var hybridDeploymentAgents = Fivetran.GetHybridDeploymentAgents.Invoke();
+        ///     var hybridDeploymentAgents = Fivetran.Index.GetHybridDeploymentAgents.Invoke();
         /// 
         /// });
         /// ```
@@ -66,7 +66,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var hybridDeploymentAgents = Fivetran.GetHybridDeploymentAgents.Invoke();
+        ///     var hybridDeploymentAgents = Fivetran.Index.GetHybridDeploymentAgents.Invoke();
         /// 
         /// });
         /// ```

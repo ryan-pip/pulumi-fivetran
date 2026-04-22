@@ -9,19 +9,42 @@ import * as utilities from "./utilities";
 /**
  * This resource allows you to create, update, and delete group membership for user
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
+ *
+ * const testUserGroupMembership = new fivetran.UserGroupMembership("test_user_group_membership", {
+ *     userId: "test_user",
+ *     groups: [
+ *         {
+ *             connectorId: "test_connector",
+ *             groupId: "test_group",
+ *             role: "Destination Administrator",
+ *         },
+ *         {
+ *             connectorId: "test_connector",
+ *             groupId: "test_group",
+ *             role: "Destination Administrator",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
- * 1. To import an existing `fivetran_user_group_membership` resource into your Terraform state, you need to get `user_id` and `group_id`
- *
- * You can retrieve all users using the [fivetran_users data source](/docs/data-sources/users).
+ * 1. To import an existing `fivetran.UserGroupMembership` resource into your Terraform state, you need to get `userId` and `groupId`
+ * You can retrieve all users using the [fivetran.getUsers data source](https://www.terraform.io/docs/data-sources/users).
  *
  * 2. Define an empty resource in your `.tf` configuration:
  *
- * hcl
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
- * resource "fivetran_user_group_membership" "my_imported_fivetran_user_group_membership" {
- *
- * }
+ * const myImportedFivetranUserGroupMembership = new fivetran.UserGroupMembership("my_imported_fivetran_user_group_membership", {});
+ * ```
  *
  * 3. Run the `pulumi import` command:
  *
@@ -31,8 +54,9 @@ import * as utilities from "./utilities";
  *
  * 4. Use the `terraform state show` command to get the values from the state:
  *
+ * ```sh
  * terraform state show 'fivetran_user_group_membership.my_imported_fivetran_user_group_membership'
- *
+ * ```
  * 5. Copy the values and paste them to your `.tf` configuration.
  */
 export class UserGroupMembership extends pulumi.CustomResource {
@@ -63,11 +87,11 @@ export class UserGroupMembership extends pulumi.CustomResource {
         return obj['__pulumiType'] === UserGroupMembership.__pulumiType;
     }
 
-    public readonly groups!: pulumi.Output<outputs.UserGroupMembershipGroup[] | undefined>;
+    declare public readonly groups: pulumi.Output<outputs.UserGroupMembershipGroup[] | undefined>;
     /**
      * The unique identifier for the user within your account.
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
 
     /**
      * Create a UserGroupMembership resource with the given unique name, arguments, and options.
@@ -82,15 +106,15 @@ export class UserGroupMembership extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserGroupMembershipState | undefined;
-            resourceInputs["groups"] = state ? state.groups : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["groups"] = state?.groups;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as UserGroupMembershipArgs | undefined;
-            if ((!args || args.userId === undefined) && !opts.urn) {
+            if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            resourceInputs["groups"] = args ? args.groups : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["groups"] = args?.groups;
+            resourceInputs["userId"] = args?.userId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(UserGroupMembership.__pulumiType, name, resourceInputs, opts);

@@ -32,27 +32,30 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * 1. To import an existing `fivetran_destination_fingerprints` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+ * 1. To import an existing `fivetran.DestinationFingerprints` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
  *
- * 2. To retrieve existing destinations, use the [fivetran_destinations data source](/docs/data-sources/destinations).
+ * 2. To retrieve existing destinations, use the [fivetran.getDestinations data source](https://www.terraform.io/docs/data-sources/destinations).
  *
  * 3. Define an empty resource in your `.tf` configuration:
  *
- * hcl
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
- * resource "fivetran_destination_fingerprints" "my_imported_destination_fingerprints" {
- *
- * }
+ * const myImportedDestinationFingerprints = new fivetran.DestinationFingerprints("my_imported_destination_fingerprints", {});
+ * ```
  *
  * 4. Run the `pulumi import` command:
  *
  * ```sh
- * $ pulumi import fivetran:index/destinationFingerprints:DestinationFingerprints my_imported_destination_fingerprints {your Destination Group ID}
+ * terraform import fivetran_destination_fingerprints.my_imported_destination_fingerprints {your Destination Group ID}
  * ```
  *
  * 5.  Use the `terraform state show` command to get the values from the state:
  *
+ * ```sh
  * terraform state show 'fivetran_destination_fingerprints.my_imported_destination_fingerprints'
+ * ```
  *
  * 6. Copy the values and paste them to your `.tf` configuration.
  */
@@ -87,8 +90,8 @@ export class DestinationFingerprints extends pulumi.CustomResource {
     /**
      * The unique identifier for the target destination within the Fivetran system.
      */
-    public readonly destinationId!: pulumi.Output<string>;
-    public readonly fingerprints!: pulumi.Output<outputs.DestinationFingerprintsFingerprint[] | undefined>;
+    declare public readonly destinationId: pulumi.Output<string>;
+    declare public readonly fingerprints: pulumi.Output<outputs.DestinationFingerprintsFingerprint[] | undefined>;
 
     /**
      * Create a DestinationFingerprints resource with the given unique name, arguments, and options.
@@ -103,15 +106,15 @@ export class DestinationFingerprints extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DestinationFingerprintsState | undefined;
-            resourceInputs["destinationId"] = state ? state.destinationId : undefined;
-            resourceInputs["fingerprints"] = state ? state.fingerprints : undefined;
+            resourceInputs["destinationId"] = state?.destinationId;
+            resourceInputs["fingerprints"] = state?.fingerprints;
         } else {
             const args = argsOrState as DestinationFingerprintsArgs | undefined;
-            if ((!args || args.destinationId === undefined) && !opts.urn) {
+            if (args?.destinationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationId'");
             }
-            resourceInputs["destinationId"] = args ? args.destinationId : undefined;
-            resourceInputs["fingerprints"] = args ? args.fingerprints : undefined;
+            resourceInputs["destinationId"] = args?.destinationId;
+            resourceInputs["fingerprints"] = args?.fingerprints;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DestinationFingerprints.__pulumiType, name, resourceInputs, opts);

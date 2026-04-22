@@ -24,6 +24,7 @@ class TeamArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Team resource.
+
         :param pulumi.Input[_builtins.str] role: The account role of the team.
         :param pulumi.Input[_builtins.str] description: The description of the team within your account.
         :param pulumi.Input[_builtins.str] name: The name of the team within your account.
@@ -79,6 +80,7 @@ class _TeamState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Team resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the team within your account.
         :param pulumi.Input[_builtins.str] name: The name of the team within your account.
         :param pulumi.Input[_builtins.str] role: The account role of the team.
@@ -154,17 +156,17 @@ class Team(pulumi.CustomResource):
 
         ## Import
 
-        1. To import an existing `fivetran_team` resource into your Terraform state, you need to get `team_id`.
-
-        You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams).
+        1. To import an existing `Team` resource into your Terraform state, you need to get `team_id`.
+        You can retrieve all teams using the [get_teams data source](https://www.terraform.io/docs/data-sources/teams).
 
         2. Define an empty resource in your `.tf` configuration:
 
-        hcl
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
 
-        resource "fivetran_team" "my_imported_fivetran_team" {
-
-        }
+        my_imported_fivetran_team = fivetran.Team("my_imported_fivetran_team")
+        ```
 
         3. Run the `pulumi import` command:
 
@@ -174,9 +176,11 @@ class Team(pulumi.CustomResource):
 
         4. Use the `terraform state show` command to get the values from the state:
 
+        ```sh
         terraform state show 'fivetran_team.my_imported_fivetran_team'
-
+        ```
         5. Copy the values and paste them to your `.tf` configuration.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -207,17 +211,17 @@ class Team(pulumi.CustomResource):
 
         ## Import
 
-        1. To import an existing `fivetran_team` resource into your Terraform state, you need to get `team_id`.
-
-        You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams).
+        1. To import an existing `Team` resource into your Terraform state, you need to get `team_id`.
+        You can retrieve all teams using the [get_teams data source](https://www.terraform.io/docs/data-sources/teams).
 
         2. Define an empty resource in your `.tf` configuration:
 
-        hcl
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
 
-        resource "fivetran_team" "my_imported_fivetran_team" {
-
-        }
+        my_imported_fivetran_team = fivetran.Team("my_imported_fivetran_team")
+        ```
 
         3. Run the `pulumi import` command:
 
@@ -227,9 +231,11 @@ class Team(pulumi.CustomResource):
 
         4. Use the `terraform state show` command to get the values from the state:
 
+        ```sh
         terraform state show 'fivetran_team.my_imported_fivetran_team'
-
+        ```
         5. Copy the values and paste them to your `.tf` configuration.
+
 
         :param str resource_name: The name of the resource.
         :param TeamArgs args: The arguments to use to populate this resource's properties.

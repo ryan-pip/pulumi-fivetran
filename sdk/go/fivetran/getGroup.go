@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.LookupGroup(ctx, &fivetran.LookupGroupArgs{
+//			_, err := fivetran.GetGroup(ctx, &fivetran.LookupGroupArgs{
 //				Id: "anonymous_mystery",
 //			}, nil)
 //			if err != nil {

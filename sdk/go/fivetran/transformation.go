@@ -17,29 +17,140 @@ import (
 //
 // ## Example Usage
 //
+// ### Dbt Core Transformation
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.NewTransformation(ctx, "transformation", &fivetran.TransformationArgs{
+//				Type:   pulumi.String("DBT_CORE"),
+//				Paused: pulumi.Bool(true),
+//				Schedule: fivetran.TransformationScheduleArgs{
+//					map[string]interface{}{
+//						"scheduleType": "TIME_OF_DAY",
+//						"timeOfDay":    "11:00",
+//					},
+//				},
+//				TransformationConfig: fivetran.TransformationTransformationConfigArgs{
+//					map[string]interface{}{
+//						"projectId": "project_id",
+//						"name":      "name",
+//						"steps": []map[string]interface{}{
+//							map[string]interface{}{
+//								"name":    "name1",
+//								"command": "command1",
+//							},
+//							map[string]interface{}{
+//								"name":    "name2",
+//								"command": "command2",
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Quickstart Transformation
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.NewTransformation(ctx, "transformation", &fivetran.TransformationArgs{
+//				Type:   pulumi.String("QUICKSTART"),
+//				Paused: pulumi.Bool(true),
+//				Schedule: fivetran.TransformationScheduleArgs{
+//					map[string]interface{}{
+//						"scheduleType": "TIME_OF_DAY",
+//						"timeOfDay":    "11:00",
+//					},
+//				},
+//				TransformationConfig: fivetran.TransformationTransformationConfigArgs{
+//					map[string]interface{}{
+//						"packageName": "package_name",
+//						"connectionIds": []string{
+//							"connection_id1",
+//							"connection_id2",
+//						},
+//						"excludedModels": []string{
+//							"excluded_model1",
+//							"excluded_model2",
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
-// 1. To import an existing `fivetran_transformation` resource into your Terraform state, you need to get **Transformation ID** via API call `GET https://api.fivetran.com/v1/transformations` to retrieve available projects.
-//
+// 1. To import an existing `Transformation` resource into your Terraform state, you need to get **Transformation ID** via API call `GET https://api.fivetran.com/v1/transformations` to retrieve available projects.
 // 2. Fetch transformation details for particular `transformation-id` using `GET https://api.fivetran.com/v1/transformations/{transformation-id}` to ensure that this is the transformation you want to import.
-//
 // 3. Define an empty resource in your `.tf` configuration:
 //
-// hcl
+// ```go
+// package main
 //
-// resource "fivetran_transformation" "my_imported_fivetran_transformation" {
+// import (
 //
-// }
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.NewTransformation(ctx, "my_imported_fivetran_transformation", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // 4. Run the `pulumi import` command:
 //
 // ```sh
-// $ pulumi import fivetran:index/transformation:Transformation my_imported_fivetran_transformation {Transformation ID}
+// terraform import fivetran_transformation.my_imported_fivetran_transformation {Transformation ID}
 // ```
 //
 // 4. Use the `terraform state show` command to get the values from the state:
 //
+// ```sh
 // terraform state show 'fivetran_transformation.my_imported_fivetran_transformation'
+// ```
 //
 // 5. Copy the values and paste them to your `.tf` configuration.
 type Transformation struct {

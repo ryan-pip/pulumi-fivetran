@@ -12,19 +12,58 @@ namespace Pulumi.Fivetran
     /// <summary>
     /// This resource allows you to create, update, and delete group membership for user
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Pulumi.Fivetran;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var testUserGroupMembership = new Fivetran.Index.UserGroupMembership("test_user_group_membership", new()
+    ///     {
+    ///         UserId = "test_user",
+    ///         Groups = new[]
+    ///         {
+    ///             new Fivetran.Inputs.UserGroupMembershipGroupArgs
+    ///             {
+    ///                 ConnectorId = "test_connector",
+    ///                 GroupId = "test_group",
+    ///                 Role = "Destination Administrator",
+    ///             },
+    ///             new Fivetran.Inputs.UserGroupMembershipGroupArgs
+    ///             {
+    ///                 ConnectorId = "test_connector",
+    ///                 GroupId = "test_group",
+    ///                 Role = "Destination Administrator",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// 1. To import an existing `fivetran_user_group_membership` resource into your Terraform state, you need to get `user_id` and `group_id`
-    /// 
-    /// You can retrieve all users using the [fivetran_users data source](/docs/data-sources/users).
+    /// 1. To import an existing `fivetran.UserGroupMembership` resource into your Terraform state, you need to get `UserId` and `GroupId`
+    /// You can retrieve all users using the [fivetran.getUsers data source](https://www.terraform.io/docs/data-sources/users).
     /// 
     /// 2. Define an empty resource in your `.tf` configuration:
     /// 
-    /// hcl
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Pulumi.Fivetran;
     /// 
-    /// resource "fivetran_user_group_membership" "my_imported_fivetran_user_group_membership" {
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myImportedFivetranUserGroupMembership = new Fivetran.Index.UserGroupMembership("my_imported_fivetran_user_group_membership");
     /// 
-    /// }
+    /// });
+    /// ```
     /// 
     /// 3. Run the `pulumi import` command:
     /// 
@@ -34,8 +73,9 @@ namespace Pulumi.Fivetran
     /// 
     /// 4. Use the `terraform state show` command to get the values from the state:
     /// 
+    /// ```sh
     /// terraform state show 'fivetran_user_group_membership.my_imported_fivetran_user_group_membership'
-    /// 
+    /// ```
     /// 5. Copy the values and paste them to your `.tf` configuration.
     /// </summary>
     [FivetranResourceType("fivetran:index/userGroupMembership:UserGroupMembership")]

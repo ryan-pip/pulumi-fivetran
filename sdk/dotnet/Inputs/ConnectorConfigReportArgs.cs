@@ -16,8 +16,8 @@ namespace Pulumi.Fivetran.Inputs
         private InputList<string>? _advertisers;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_display_and_video_360`: The list of advertisers to include into a sync. This parameter only takes effect when `config_method` is set to `CREATE_NEW`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleDisplayAndVideo360`: The list of advertisers to include into a sync. This parameter only takes effect when `ConfigMethod` is set to `CREATE_NEW`.
         /// </summary>
         public InputList<string> Advertisers
         {
@@ -26,8 +26,8 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_search_console`: (Optional) Aggregation type. Supported only for the `SEARCH_RESULTS` report type
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleSearchConsole`: (Optional) Aggregation type. Supported only for the `SEARCH_RESULTS` report type
         /// </summary>
         [Input("aggregation")]
         public Input<string>? Aggregation { get; set; }
@@ -36,8 +36,8 @@ namespace Pulumi.Fivetran.Inputs
         private InputList<string>? _attributes;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_search_ads_360`: The report attributes included to sync.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleSearchAds360`: The report attributes included to sync.
         /// </summary>
         public InputList<string> Attributes
         {
@@ -46,16 +46,16 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_display_and_video_360`: The report configuration method. Specifies whether a new configuration is defined manually or an existing configuration is reused. The default value is `CREATE_NEW`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleDisplayAndVideo360`: The report configuration method. Specifies whether a new configuration is defined manually or an existing configuration is reused. The default value is `CREATE_NEW`.
         /// </summary>
         [Input("configMethod")]
         public Input<string>? ConfigMethod { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_analytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/connectors/applications/google-analytics#schemainformation).
-        /// 	- Service `google_analytics_4`: Whether to use the Prebuilt Reports or Custom Reports.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleAnalytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/connectors/applications/google-analytics#schemainformation).
+        /// 	- Service `GoogleAnalytics4`: Whether to use the Prebuilt Reports or Custom Reports.
         /// </summary>
         [Input("configType")]
         public Input<string>? ConfigType { get; set; }
@@ -64,11 +64,11 @@ namespace Pulumi.Fivetran.Inputs
         private InputList<string>? _dimensions;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_analytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
-        /// 	- Service `google_analytics_4`: The report dimensions to include into a sync.
-        /// 	- Service `google_display_and_video_360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `config_method` is set to `CREATE_NEW`.
-        /// 	- Service `google_search_console`: The report dimensions included to sync.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleAnalytics`: The report dimensions to include into a sync. The `Date` dimension is mandatory for all the report types.
+        /// 	- Service `GoogleAnalytics4`: The report dimensions to include into a sync.
+        /// 	- Service `GoogleDisplayAndVideo360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `ConfigMethod` is set to `CREATE_NEW`.
+        /// 	- Service `GoogleSearchConsole`: The report dimensions included to sync.
         /// </summary>
         public InputList<string> Dimensions
         {
@@ -77,15 +77,15 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `workday`: Dynamic parameter field name
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Workday`: Dynamic parameter field name
         /// </summary>
         [Input("dynamicParameterField")]
         public Input<string>? DynamicParameterField { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `workday`: Select this option to enable dynamic report parameters.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Workday`: Select this option to enable dynamic report parameters.
         /// </summary>
         [Input("enableDynamicParameters")]
         public Input<bool>? EnableDynamicParameters { get; set; }
@@ -94,8 +94,8 @@ namespace Pulumi.Fivetran.Inputs
         private InputList<string>? _fields;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_ads`: A list of the fields to sync. Must be populated if `config_type` is set to `Custom`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleAds`: A list of the fields to sync. Must be populated if `ConfigType` is set to `Custom`.
         /// </summary>
         public InputList<string> Fields
         {
@@ -104,22 +104,22 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_analytics`: String parameter restricts the data returned for your report. To use the filter parameter, specify a dimension or metric on which to filter, followed by the filter expression
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleAnalytics`: String parameter restricts the data returned for your report. To use the filter parameter, specify a dimension or metric on which to filter, followed by the filter expression
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_analytics_4`: The dimension name to filter on.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleAnalytics4`: The dimension name to filter on.
         /// </summary>
         [Input("filterFieldName")]
         public Input<string>? FilterFieldName { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_analytics_4`: Filter type for reports request. Possible values are INCLUDE and EXCLUDE
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleAnalytics4`: Filter type for reports request. Possible values are INCLUDE and EXCLUDE
         /// </summary>
         [Input("filterType")]
         public Input<string>? FilterType { get; set; }
@@ -128,8 +128,8 @@ namespace Pulumi.Fivetran.Inputs
         public Input<string>? FilterValue { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `workday`: Select this option to generate a Primary Key for reports where no single column or combination of columns can be used to form a Primary Key.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Workday`: Select this option to generate a Primary Key for reports where no single column or combination of columns can be used to form a Primary Key.
         /// </summary>
         [Input("generateFivetranPk")]
         public Input<bool>? GenerateFivetranPk { get; set; }
@@ -138,11 +138,11 @@ namespace Pulumi.Fivetran.Inputs
         private InputList<string>? _metrics;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_analytics`: The report metrics to include into a sync.
-        /// 	- Service `google_analytics_4`: The report metrics to include into a sync.
-        /// 	- Service `google_display_and_video_360`: The report metrics to include into a sync. The metric names are provided in the API format. This is a required parameter when `config_method` is set to `CREATE_NEW`.
-        /// 	- Service `google_search_ads_360`: The report metrics included to sync.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleAnalytics`: The report metrics to include into a sync.
+        /// 	- Service `GoogleAnalytics4`: The report metrics to include into a sync.
+        /// 	- Service `GoogleDisplayAndVideo360`: The report metrics to include into a sync. The metric names are provided in the API format. This is a required parameter when `ConfigMethod` is set to `CREATE_NEW`.
+        /// 	- Service `GoogleSearchAds360`: The report metrics included to sync.
         /// </summary>
         public InputList<string> Metrics
         {
@@ -154,8 +154,8 @@ namespace Pulumi.Fivetran.Inputs
         private InputList<string>? _partners;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_display_and_video_360`: The list of partners to include into a sync. This parameter only takes effect when `config_method` is set to `CREATE_NEW`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleDisplayAndVideo360`: The list of partners to include into a sync. This parameter only takes effect when `ConfigMethod` is set to `CREATE_NEW`.
         /// </summary>
         public InputList<string> Partners
         {
@@ -164,9 +164,9 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_analytics`: The name of the Prebuilt Report from which the connector will sync the data.
-        /// 	- Service `google_analytics_4`: The name of the Prebuilt Report from which the connector will sync the data.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleAnalytics`: The name of the Prebuilt Report from which the connector will sync the data.
+        /// 	- Service `GoogleAnalytics4`: The name of the Prebuilt Report from which the connector will sync the data.
         /// </summary>
         [Input("prebuiltReport")]
         public Input<string>? PrebuiltReport { get; set; }
@@ -175,8 +175,8 @@ namespace Pulumi.Fivetran.Inputs
         private InputList<string>? _primaryKeys;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `workday`: Primary Keys
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Workday`: Primary Keys
         /// </summary>
         public InputList<string> PrimaryKeys
         {
@@ -185,39 +185,39 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_display_and_video_360`: The ID of the query whose configuration you want to reuse. This is a required parameter when `config_method` is set to `REUSE_EXISTING`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleDisplayAndVideo360`: The ID of the query whose configuration you want to reuse. This is a required parameter when `ConfigMethod` is set to `REUSE_EXISTING`.
         /// </summary>
         [Input("queryId")]
         public Input<string>? QueryId { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `workday`: This is to select report format from JSON and CSV. By default, report format is JSON.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Workday`: This is to select report format from JSON and CSV. By default, report format is JSON.
         /// </summary>
         [Input("reportFormatType")]
         public Input<string>? ReportFormatType { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_ads`: The name of the Google Ads report from which the connector will sync the data. [Possible report_type values](https://developers.google.com/adwords/api/docs/appendix/reports#report-types).
-        /// 	- Service `google_display_and_video_360`: The type of the report to create. This is a required parameter when `config_method` is set to `CREATE_NEW`.
-        /// 	- Service `google_search_ads_360`: The type of report
-        /// 	- Service `google_search_console`: The type of report
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleAds`: The name of the Google Ads report from which the connector will sync the data. [Possible ReportType values](https://developers.google.com/adwords/api/docs/appendix/reports#report-types).
+        /// 	- Service `GoogleDisplayAndVideo360`: The type of the report to create. This is a required parameter when `ConfigMethod` is set to `CREATE_NEW`.
+        /// 	- Service `GoogleSearchAds360`: The type of report
+        /// 	- Service `GoogleSearchConsole`: The type of report
         /// </summary>
         [Input("reportType")]
         public Input<string>? ReportType { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `workday`: URL for a live custom report.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Workday`: URL for a live custom report.
         /// </summary>
         [Input("reportUrl")]
         public Input<string>? ReportUrl { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_analytics_4`: The custom window size for rollback syncs.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleAnalytics4`: The custom window size for rollback syncs.
         /// </summary>
         [Input("rollbackWindow")]
         public Input<int>? RollbackWindow { get; set; }
@@ -226,8 +226,8 @@ namespace Pulumi.Fivetran.Inputs
         private InputList<string>? _searchTypes;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_search_console`: Search types included to sync. Supported only for the `SEARCH_RESULTS` report type
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleSearchConsole`: Search types included to sync. Supported only for the `SEARCH_RESULTS` report type
         /// </summary>
         public InputList<string> SearchTypes
         {
@@ -247,9 +247,9 @@ namespace Pulumi.Fivetran.Inputs
         private InputList<string>? _segments;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_analytics`: A segment is a subset of your Analytics data that is made up of one or more non-destructive filters (filters that do not alter the underlying data). Those filters isolate subsets of users, sessions, and hits.
-        /// 	- Service `google_search_ads_360`: The report segments included to sync.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleAnalytics`: A segment is a subset of your Analytics data that is made up of one or more non-destructive filters (filters that do not alter the underlying data). Those filters isolate subsets of users, sessions, and hits.
+        /// 	- Service `GoogleSearchAds360`: The report segments included to sync.
         /// </summary>
         public InputList<string> Segments
         {
@@ -258,62 +258,62 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `workday`: Start date
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Workday`: Start date
         /// </summary>
         [Input("startDate")]
         public Input<string>? StartDate { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `workday`: Start date parameter field name
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Workday`: Start date parameter field name
         /// </summary>
         [Input("startDateParameterField")]
         public Input<string>? StartDateParameterField { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `workday`: This option is to unpack the nested columns and sync them separately. By default, we sync the nested columns as JSON objects.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Workday`: This option is to unpack the nested columns and sync them separately. By default, we sync the nested columns as JSON objects.
         /// </summary>
         [Input("supportNestedColumns")]
         public Input<bool>? SupportNestedColumns { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `workday`: Dynamic report parameters sync strategy
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Workday`: Dynamic report parameters sync strategy
         /// </summary>
         [Input("syncStrategy")]
         public Input<string>? SyncStrategy { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_ads`: The table name within the schema to which connector will sync the data of the specific report.
-        /// 	- Service `google_analytics`: The table name within the schema to which connector will sync the data of the specific report.
-        /// 	- Service `google_analytics_4`: The table name within the schema to which connector will sync the data of the specific report.
-        /// 	- Service `google_search_ads_360`: The name of a table within the schema to which connector syncs the data of a given report.
-        /// 	- Service `google_search_console`: The name of a table within the schema to which connector syncs the data of a given report.
-        /// 	- Service `workday`: The table name within the schema to which connector will sync the data of the specific report.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleAds`: The table name within the schema to which connector will sync the data of the specific report.
+        /// 	- Service `GoogleAnalytics`: The table name within the schema to which connector will sync the data of the specific report.
+        /// 	- Service `GoogleAnalytics4`: The table name within the schema to which connector will sync the data of the specific report.
+        /// 	- Service `GoogleSearchAds360`: The name of a table within the schema to which connector syncs the data of a given report.
+        /// 	- Service `GoogleSearchConsole`: The name of a table within the schema to which connector syncs the data of a given report.
+        /// 	- Service `Workday`: The table name within the schema to which connector will sync the data of the specific report.
         /// </summary>
         [Input("table")]
         public Input<string>? Table { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_display_and_video_360`: The table name within the schema to which connector will sync the data of the specific report.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleDisplayAndVideo360`: The table name within the schema to which connector will sync the data of the specific report.
         /// </summary>
         [Input("tableName")]
         public Input<string>? TableName { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_analytics_4`: The report data aggregation time granularity.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleAnalytics4`: The report data aggregation time granularity.
         /// </summary>
         [Input("timeAggregationGranularity")]
         public Input<string>? TimeAggregationGranularity { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `google_display_and_video_360`: Specifies whether the configuration is updated before each sync or only when the connector settings are saved. This parameter only takes effect when `config_method` is set to `REUSE_EXISTING`. The default value is `true`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleDisplayAndVideo360`: Specifies whether the configuration is updated before each sync or only when the connector settings are saved. This parameter only takes effect when `ConfigMethod` is set to `REUSE_EXISTING`. The default value is `True`.
         /// </summary>
         [Input("updateConfigOnEachSync")]
         public Input<bool>? UpdateConfigOnEachSync { get; set; }

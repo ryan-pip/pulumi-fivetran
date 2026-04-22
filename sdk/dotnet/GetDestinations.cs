@@ -13,18 +13,24 @@ namespace Pulumi.Fivetran
     {
         /// <summary>
         /// This data source returns list of destination objects.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetDestinationsResult> InvokeAsync(GetDestinationsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDestinationsResult>("fivetran:index/getDestinations:getDestinations", args ?? new GetDestinationsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source returns list of destination objects.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetDestinationsResult> Invoke(GetDestinationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDestinationsResult>("fivetran:index/getDestinations:getDestinations", args ?? new GetDestinationsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source returns list of destination objects.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetDestinationsResult> Invoke(GetDestinationsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDestinationsResult>("fivetran:index/getDestinations:getDestinations", args ?? new GetDestinationsInvokeArgs(), options.WithDefaults());

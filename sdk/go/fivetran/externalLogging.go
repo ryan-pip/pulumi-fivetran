@@ -12,33 +12,94 @@ import (
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
+// This resource allows you to create, update, and delete logging service.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.NewExternalLogging(ctx, "extlog", &fivetran.ExternalLoggingArgs{
+//				GroupId:       pulumi.Any(group.Id),
+//				Service:       pulumi.String("azure_monitor_log"),
+//				Enabled:       pulumi.Bool(true),
+//				RunSetupTests: pulumi.Bool(true),
+//				Config: fivetran.ExternalLoggingConfigArgs{
+//					map[string]interface{}{
+//						"workspaceId": "workspace_id",
+//						"primaryKey":  "PASSWORD",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Setup tests
+//
+// The `runSetupTests` field doesn't have upstream value, it only defines local resource behavoir. This means that when you update only the `runSetupTests` value (from `false` to `true`, for example) it won't cause any upstream actions. The value will be just saved in terraform state and then used on effective field updates.
+//
+// The default value is `false` - this means that no setup tests will be performed during create/update. To perform setup tests, you should set value to `true`.
+//
 // ## Import
 //
-// 1. To import an existing `fivetran_external_logging` resource into your Terraform state, you need to get **External Logging Group ID** on the external logging page in your Fivetran dashboard.
+// 1. To import an existing `ExternalLogging` resource into your Terraform state, you need to get **External Logging Group ID** on the external logging page in your Fivetran dashboard.
 //
-// 2. To retrieve existing destinations, use the [fivetran_destinations data source](/docs/data-sources/destinations).
+// 2. To retrieve existing destinations, use the [getDestinations data source](https://www.terraform.io/docs/data-sources/destinations).
 //
 // 3. Define an empty resource in your `.tf` configuration:
 //
-// hcl
+// ```go
+// package main
 //
-// resource "fivetran_external_logging" "my_imported_external_logging" {
+// import (
 //
-// }
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.NewExternalLogging(ctx, "my_imported_external_logging", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // 4. Run the `pulumi import` command with the following parameters:
 //
 // ```sh
-// $ pulumi import fivetran:index/externalLogging:ExternalLogging my_imported_external_logging {your External Logging Group ID}
+// terraform import fivetran_external_logging.my_imported_external_logging {your External Logging Group ID}
 // ```
 //
 // 5. Use the `terraform state show` command to get the values from the state:
 //
+// ```sh
 // terraform state show 'fivetran_external_logging.my_imported_external_logging'
+// ```
 //
 // 6. Copy the values and paste them to your `.tf` configuration.
 //
-// -> The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/log-service-management#logservicesetupconfigurations) for reference to find the properties you need to keep in the `config` section.
+// > The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/log-service-management#logservicesetupconfigurations) for reference to find the properties you need to keep in the `config` section.
 type ExternalLogging struct {
 	pulumi.CustomResourceState
 

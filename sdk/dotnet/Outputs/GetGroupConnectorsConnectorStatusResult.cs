@@ -30,7 +30,7 @@ namespace Pulumi.Fivetran.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGroupConnectorsConnectorStatusTaskResult> Tasks;
         /// <summary>
-        /// The current data update state of the connector. The available values are: \n\n - on_schedule - the sync is running smoothly, no delays \n\n - delayed - the data is delayed for a longer time than expected for the update.
+        /// The current data update state of the connector. The available values are: \n\n - OnSchedule - the sync is running smoothly, no delays \n\n - delayed - the data is delayed for a longer time than expected for the update.
         /// </summary>
         public readonly string UpdateState;
         /// <summary>

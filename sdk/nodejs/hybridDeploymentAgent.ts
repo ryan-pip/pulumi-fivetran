@@ -51,43 +51,43 @@ export class HybridDeploymentAgent extends pulumi.CustomResource {
     /**
      * Base64-encoded content of the auth.json file.
      */
-    public /*out*/ readonly authJson!: pulumi.Output<string>;
+    declare public /*out*/ readonly authJson: pulumi.Output<string>;
     /**
      * Type of authentification. Possible values `AUTO`,`MANUAL`
      */
-    public readonly authType!: pulumi.Output<string>;
+    declare public readonly authType: pulumi.Output<string>;
     /**
      * Determines whether re-authentication needs to be performed.
      */
-    public readonly authenticationCounter!: pulumi.Output<number>;
+    declare public readonly authenticationCounter: pulumi.Output<number>;
     /**
      * Base64-encoded content of the config.json file.
      */
-    public /*out*/ readonly configJson!: pulumi.Output<string>;
+    declare public /*out*/ readonly configJson: pulumi.Output<string>;
     /**
      * The unique name for the hybrid deployment agent.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * Base64-encoded content of the compose file for the chosen containerization type.
      */
-    public /*out*/ readonly dockerComposeYaml!: pulumi.Output<string>;
+    declare public /*out*/ readonly dockerComposeYaml: pulumi.Output<string>;
     /**
      * Environment type. Possible values `DOCKER`,`PODMAN`,`KUBERNETES`,`SNOWPARK`
      */
-    public readonly envType!: pulumi.Output<string>;
+    declare public readonly envType: pulumi.Output<string>;
     /**
      * The unique identifier for the Group within the Fivetran system.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * The timestamp of the time the hybrid deployment agent was created in your account.
      */
-    public /*out*/ readonly registeredAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly registeredAt: pulumi.Output<string>;
     /**
      * Base64 encoded content of token.
      */
-    public /*out*/ readonly token!: pulumi.Output<string>;
+    declare public /*out*/ readonly token: pulumi.Output<string>;
 
     /**
      * Create a HybridDeploymentAgent resource with the given unique name, arguments, and options.
@@ -102,35 +102,35 @@ export class HybridDeploymentAgent extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HybridDeploymentAgentState | undefined;
-            resourceInputs["authJson"] = state ? state.authJson : undefined;
-            resourceInputs["authType"] = state ? state.authType : undefined;
-            resourceInputs["authenticationCounter"] = state ? state.authenticationCounter : undefined;
-            resourceInputs["configJson"] = state ? state.configJson : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["dockerComposeYaml"] = state ? state.dockerComposeYaml : undefined;
-            resourceInputs["envType"] = state ? state.envType : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["registeredAt"] = state ? state.registeredAt : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
+            resourceInputs["authJson"] = state?.authJson;
+            resourceInputs["authType"] = state?.authType;
+            resourceInputs["authenticationCounter"] = state?.authenticationCounter;
+            resourceInputs["configJson"] = state?.configJson;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["dockerComposeYaml"] = state?.dockerComposeYaml;
+            resourceInputs["envType"] = state?.envType;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["registeredAt"] = state?.registeredAt;
+            resourceInputs["token"] = state?.token;
         } else {
             const args = argsOrState as HybridDeploymentAgentArgs | undefined;
-            if ((!args || args.authType === undefined) && !opts.urn) {
+            if (args?.authType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'authType'");
             }
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.envType === undefined) && !opts.urn) {
+            if (args?.envType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'envType'");
             }
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            resourceInputs["authType"] = args ? args.authType : undefined;
-            resourceInputs["authenticationCounter"] = args ? args.authenticationCounter : undefined;
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["envType"] = args ? args.envType : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["authType"] = args?.authType;
+            resourceInputs["authenticationCounter"] = args?.authenticationCounter;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["envType"] = args?.envType;
+            resourceInputs["groupId"] = args?.groupId;
             resourceInputs["authJson"] = undefined /*out*/;
             resourceInputs["configJson"] = undefined /*out*/;
             resourceInputs["dockerComposeYaml"] = undefined /*out*/;

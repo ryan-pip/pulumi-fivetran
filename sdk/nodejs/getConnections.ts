@@ -8,6 +8,8 @@ import * as utilities from "./utilities";
 
 /**
  * This data source returns list of connection objects.
+ *
+ * ## Example Usage
  */
 export function getConnections(args?: GetConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionsResult> {
     args = args || {};
@@ -36,6 +38,8 @@ export interface GetConnectionsResult {
 }
 /**
  * This data source returns list of connection objects.
+ *
+ * ## Example Usage
  */
 export function getConnectionsOutput(args?: GetConnectionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectionsResult> {
     args = args || {};

@@ -14,48 +14,48 @@ namespace Pulumi.Fivetran.Outputs
     public sealed class ConnectorConfigReportConfig
     {
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `yahoo_dsp`: Set the value to `PREBUILT` if it's one of the preconfigured reports (see the `prebuilt_report_type` option). Otherwise, set to `CUSTOM`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `YahooDsp`: Set the value to `PREBUILT` if it's one of the preconfigured reports (see the `PrebuiltReportType` option). Otherwise, set to `CUSTOM`.
         /// </summary>
         public readonly string? ConfigType;
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `yahoo_dsp`: [Currency](https://developer.yahooinc.com/dsp/api/docs/reporting/payloadspec.html) used in a report. Default value: `USD`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `YahooDsp`: [Currency](https://developer.yahooinc.com/dsp/api/docs/reporting/payloadspec.html) used in a report. Default value: `USD`.
         /// </summary>
         public readonly string? Currency;
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `yahoo_dsp`: [Dimensions](https://developer.yahooinc.com/dsp/api/docs/reporting/dimensions.html) used in a report. Must be populated if `config_type` is set to `CUSTOM`. PUBLISHER, DESKTOP_OS_DEPRECATED, LINE_TYPE, GOAL_TYPE, BID_REQUEST_AD_SIZE, CHANNEL_TYPE, SITE_NAME, and SITE_GROUP_NAME are deprecated dimension, and shouldn't be used anymore
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `YahooDsp`: [Dimensions](https://developer.yahooinc.com/dsp/api/docs/reporting/dimensions.html) used in a report. Must be populated if `ConfigType` is set to `CUSTOM`. PUBLISHER, DESKTOP_OS_DEPRECATED, LINE_TYPE, GOAL_TYPE, BID_REQUEST_AD_SIZE, CHANNEL_TYPE, SITE_NAME, and SITE_GROUP_NAME are deprecated dimension, and shouldn't be used anymore
         /// </summary>
         public readonly ImmutableArray<string> Dimensions;
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `yahoo_dsp`: The [granularity](https://developer.yahooinc.com/dsp/api/docs/reporting/range-examples.html#interval-type-id) of data in a report. Default value: `DAY`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `YahooDsp`: The [granularity](https://developer.yahooinc.com/dsp/api/docs/reporting/range-examples.html#interval-type-id) of data in a report. Default value: `DAY`.
         /// </summary>
         public readonly string? IntervalType;
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `yahoo_dsp`: [Metrics](https://developer.yahooinc.com/dsp/api/docs/reporting/metrics.html) used in a report. Must be populated if `config_type` is set to `CUSTOM`. PUBLISHER_EARNINGS, PUBLISHER_EARNINGS_PERCENTAGE, INVENTORY_ECPM_DEPRECATED, SEAT_TECH_FEE, and SEAT_DATA_FEE are deprecated and shouldn't be used anymore
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `YahooDsp`: [Metrics](https://developer.yahooinc.com/dsp/api/docs/reporting/metrics.html) used in a report. Must be populated if `ConfigType` is set to `CUSTOM`. PUBLISHER_EARNINGS, PUBLISHER_EARNINGS_PERCENTAGE, INVENTORY_ECPM_DEPRECATED, SEAT_TECH_FEE, and SEAT_DATA_FEE are deprecated and shouldn't be used anymore
         /// </summary>
         public readonly ImmutableArray<string> Metrics;
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `yahoo_dsp`: Specific report type to sync. Must be populated if `config_type` is set to `PREBUILT`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `YahooDsp`: Specific report type to sync. Must be populated if `ConfigType` is set to `PREBUILT`.
         /// </summary>
         public readonly string? PrebuiltReportType;
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `yahoo_dsp`: Table name in destination.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `YahooDsp`: Table name in destination.
         /// </summary>
         public readonly string? ReportName;
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `yahoo_dsp`: Specify the time zone to be used to request report data
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `YahooDsp`: Specify the time zone to be used to request report data
         /// </summary>
         public readonly string? TimeZone;
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `yahoo_dsp`: Use advertiser timezone to request report data.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `YahooDsp`: Use advertiser timezone to request report data.
         /// </summary>
         public readonly bool? UseAdvertiserTimezone;
 

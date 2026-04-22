@@ -14,8 +14,8 @@ namespace Pulumi.Fivetran.Outputs
     public sealed class ConnectorConfigAppIdsAppsflyer
     {
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `appsflyer`: Your App ID
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Appsflyer`: Your App ID
         /// </summary>
         public readonly string? AppId;
 

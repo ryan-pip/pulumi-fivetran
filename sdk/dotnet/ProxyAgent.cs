@@ -24,7 +24,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testProxyAgent = new Fivetran.ProxyAgent("test_proxy_agent", new()
+    ///     var testProxyAgent = new Fivetran.Index.ProxyAgent("test_proxy_agent", new()
     ///     {
     ///         DisplayName = "display_name",
     ///         GroupRegion = "group_region",

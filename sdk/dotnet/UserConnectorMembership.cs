@@ -22,7 +22,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testUserConnectorMembership = new Fivetran.UserConnectorMembership("test_user_connector_membership", new()
+    ///     var testUserConnectorMembership = new Fivetran.Index.UserConnectorMembership("test_user_connector_membership", new()
     ///     {
     ///         UserId = "test_user",
     ///         Connectors = new[]
@@ -47,17 +47,23 @@ namespace Pulumi.Fivetran
     /// 
     /// ## Import
     /// 
-    /// 1. To import an existing `fivetran_user_connector_membership` resource into your Terraform state, you need to get `user_id` and `connector_id`
-    /// 
-    /// You can retrieve all users using the [fivetran_users data source](/docs/data-sources/users).
+    /// 1. To import an existing `fivetran.UserConnectorMembership` resource into your Terraform state, you need to get `UserId` and `ConnectorId`
+    /// You can retrieve all users using the [fivetran.getUsers data source](https://www.terraform.io/docs/data-sources/users).
     /// 
     /// 2. Define an empty resource in your `.tf` configuration:
     /// 
-    /// hcl
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Pulumi.Fivetran;
     /// 
-    /// resource "fivetran_user_connector_membership" "my_imported_fivetran_user_connector_membership" {
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myImportedFivetranUserConnectorMembership = new Fivetran.Index.UserConnectorMembership("my_imported_fivetran_user_connector_membership");
     /// 
-    /// }
+    /// });
+    /// ```
     /// 
     /// 3. Run the `pulumi import` command:
     /// 
@@ -67,8 +73,9 @@ namespace Pulumi.Fivetran
     /// 
     /// 4. Use the `terraform state show` command to get the values from the state:
     /// 
+    /// ```sh
     /// terraform state show 'fivetran_user_connector_membership.my_imported_fivetran_user_connector_membership'
-    /// 
+    /// ```
     /// 5. Copy the values and paste them to your `.tf` configuration.
     /// </summary>
     [FivetranResourceType("fivetran:index/userConnectorMembership:UserConnectorMembership")]

@@ -32,27 +32,30 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * 1. To import an existing `fivetran_connector_fingerprints` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard.
+ * 1. To import an existing `fivetran.ConnectorFingerprints` resource into your Terraform state, you need to get **Fivetran Connector ID** on the **Setup** tab of the connector page in your Fivetran dashboard.
  *
- * 2. Retrieve all connectors in a particular group using the [fivetran_connectors data source](/docs/data-sources/connectors)
+ * 2. Retrieve all connectors in a particular group using the [fivetran.getConnectors data source](https://www.terraform.io/docs/data-sources/connectors)
  *
  * 3. Define an empty resource in your `.tf` configuration:
  *
- * hcl
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
- * resource "fivetran_connector_fingerprints" "my_imported_connector_fingerprints" {
- *
- * }
+ * const myImportedConnectorFingerprints = new fivetran.ConnectorFingerprints("my_imported_connector_fingerprints", {});
+ * ```
  *
  * 4. Run the `pulumi import` command:
  *
  * ```sh
- * $ pulumi import fivetran:index/connectorFingerprints:ConnectorFingerprints my_imported_connector_fingerprints {your Fivetran Connector ID}
+ * terraform import fivetran_connector_fingerprints.my_imported_connector_fingerprints {your Fivetran Connector ID}
  * ```
  *
  * 5.  Use the `terraform state show` command to get the values from the state:
  *
+ * ```sh
  * terraform state show 'fivetran_connector_fingerprints.my_imported_connector_fingerprints'
+ * ```
  *
  * 6. Copy the values and paste them to your `.tf` configuration.
  */
@@ -87,8 +90,8 @@ export class ConnectorFingerprints extends pulumi.CustomResource {
     /**
      * The unique identifier for the target connection within the Fivetran system.
      */
-    public readonly connectorId!: pulumi.Output<string>;
-    public readonly fingerprints!: pulumi.Output<outputs.ConnectorFingerprintsFingerprint[] | undefined>;
+    declare public readonly connectorId: pulumi.Output<string>;
+    declare public readonly fingerprints: pulumi.Output<outputs.ConnectorFingerprintsFingerprint[] | undefined>;
 
     /**
      * Create a ConnectorFingerprints resource with the given unique name, arguments, and options.
@@ -103,15 +106,15 @@ export class ConnectorFingerprints extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectorFingerprintsState | undefined;
-            resourceInputs["connectorId"] = state ? state.connectorId : undefined;
-            resourceInputs["fingerprints"] = state ? state.fingerprints : undefined;
+            resourceInputs["connectorId"] = state?.connectorId;
+            resourceInputs["fingerprints"] = state?.fingerprints;
         } else {
             const args = argsOrState as ConnectorFingerprintsArgs | undefined;
-            if ((!args || args.connectorId === undefined) && !opts.urn) {
+            if (args?.connectorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectorId'");
             }
-            resourceInputs["connectorId"] = args ? args.connectorId : undefined;
-            resourceInputs["fingerprints"] = args ? args.fingerprints : undefined;
+            resourceInputs["connectorId"] = args?.connectorId;
+            resourceInputs["fingerprints"] = args?.fingerprints;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConnectorFingerprints.__pulumiType, name, resourceInputs, opts);

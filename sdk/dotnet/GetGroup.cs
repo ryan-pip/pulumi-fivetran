@@ -24,7 +24,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myGroup = Fivetran.GetGroup.Invoke(new()
+        ///     var myGroup = Fivetran.Index.GetGroup.Invoke(new()
         ///     {
         ///         Id = "anonymous_mystery",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myGroup = Fivetran.GetGroup.Invoke(new()
+        ///     var myGroup = Fivetran.Index.GetGroup.Invoke(new()
         ///     {
         ///         Id = "anonymous_mystery",
         ///     });
@@ -72,7 +72,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myGroup = Fivetran.GetGroup.Invoke(new()
+        ///     var myGroup = Fivetran.Index.GetGroup.Invoke(new()
         ///     {
         ///         Id = "anonymous_mystery",
         ///     });

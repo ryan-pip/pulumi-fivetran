@@ -22,6 +22,7 @@ class GroupArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Group resource.
+
         :param pulumi.Input[_builtins.str] name: The name of the group within your account.
         """
         if name is not None:
@@ -48,6 +49,7 @@ class _GroupState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Group resources.
+
         :param pulumi.Input[_builtins.str] created_at: The timestamp of when the group was created in your account.
         :param pulumi.Input[_builtins.str] last_updated: The timestamp of when the resource/datasource was updated last time.
         :param pulumi.Input[_builtins.str] name: The name of the group within your account.
@@ -122,29 +124,31 @@ class Group(pulumi.CustomResource):
 
         ## Import
 
-        1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
-
-        To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).
-
+        1. To import an existing `Group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+           To retrieve existing groups, use the [get_groups data source](https://www.terraform.io/docs/data-sources/groups).
         2. Define an empty resource in your `.tf` configuration:
 
-        hcl
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
 
-        resource "fivetran_group" "my_imported_fivetran_group" {
-
-        }
+        my_imported_fivetran_group = fivetran.Group("my_imported_fivetran_group")
+        ```
 
         3. Run the `pulumi import` command:
 
         ```sh
-        $ pulumi import fivetran:index/group:Group my_imported_fivetran_group {your Destination Group ID}
+        terraform import fivetran_group.my_imported_fivetran_group {your Destination Group ID}
         ```
 
         4. Use the `terraform state show` command to get the values from the state:
 
+        ```sh
         terraform state show 'fivetran_group.my_imported_fivetran_group'
+        ```
 
         5. Copy the values and paste them to your `.tf` configuration.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -174,29 +178,31 @@ class Group(pulumi.CustomResource):
 
         ## Import
 
-        1. To import an existing `fivetran_group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
-
-        To retrieve existing groups, use the [fivetran_groups data source](/docs/data-sources/groups).
-
+        1. To import an existing `Group` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+           To retrieve existing groups, use the [get_groups data source](https://www.terraform.io/docs/data-sources/groups).
         2. Define an empty resource in your `.tf` configuration:
 
-        hcl
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
 
-        resource "fivetran_group" "my_imported_fivetran_group" {
-
-        }
+        my_imported_fivetran_group = fivetran.Group("my_imported_fivetran_group")
+        ```
 
         3. Run the `pulumi import` command:
 
         ```sh
-        $ pulumi import fivetran:index/group:Group my_imported_fivetran_group {your Destination Group ID}
+        terraform import fivetran_group.my_imported_fivetran_group {your Destination Group ID}
         ```
 
         4. Use the `terraform state show` command to get the values from the state:
 
+        ```sh
         terraform state show 'fivetran_group.my_imported_fivetran_group'
+        ```
 
         5. Copy the values and paste them to your `.tf` configuration.
+
 
         :param str resource_name: The name of the resource.
         :param GroupArgs args: The arguments to use to populate this resource's properties.

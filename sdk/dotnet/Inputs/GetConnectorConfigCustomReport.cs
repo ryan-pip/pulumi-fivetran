@@ -13,22 +13,22 @@ namespace Pulumi.Fivetran.Inputs
     public sealed class GetConnectorConfigCustomReportArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snapchat_ads`: [Determines if reports will be based on imression on coversion time](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports)
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SnapchatAds`: [Determines if reports will be based on imression on coversion time](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports)
         /// </summary>
         [Input("actionReportTime", required: true)]
         public string ActionReportTime { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snapchat_ads`: Add fields for separate \"swipe-up\" and \"view\" variants of selected metrics
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SnapchatAds`: Add fields for separate \"swipe-up\" and \"view\" variants of selected metrics
         /// </summary>
         [Input("addMetricVariants", required: true)]
         public bool AddMetricVariants { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `tiktok_ads`: Time aggregation of report
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `TiktokAds`: Time aggregation of report
         /// </summary>
         [Input("aggregate", required: true)]
         public string Aggregate { get; set; } = null!;
@@ -37,8 +37,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _baseMetricsFields;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snapchat_ads`: [List of Core, Additional and Conversion Metrics Stats Fields](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#basemetricsfields).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SnapchatAds`: [List of Core, Additional and Conversion Metrics Stats Fields](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#basemetricsfields).
         /// </summary>
         public List<string> BaseMetricsFields
         {
@@ -47,36 +47,36 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snapchat_ads`: [Sets Breakdown on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#breakdown).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SnapchatAds`: [Sets Breakdown on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#breakdown).
         /// </summary>
         [Input("breakdown", required: true)]
         public string Breakdown { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snapchat_ads`: [Sets Breakout on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#breakout).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SnapchatAds`: [Sets Breakout on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#breakout).
         /// </summary>
         [Input("breakout", required: true)]
         public string Breakout { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `reddit_ads`: The boolean value specifying whether to enable or disable event conversions data synchronisation. Default value: `false`
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `RedditAds`: The boolean value specifying whether to enable or disable event conversions data synchronisation. Default value: `False`
         /// </summary>
         [Input("conversionsReportIncluded", required: true)]
         public bool ConversionsReportIncluded { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `reddit_ads`: The boolean value specifying whether the custom events are included in event conversions report. Default value: `false`
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `RedditAds`: The boolean value specifying whether the custom events are included in event conversions report. Default value: `False`
         /// </summary>
         [Input("customEventsIncluded", required: true)]
         public bool CustomEventsIncluded { get; set; }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snapchat_ads`: [Sets Dimension on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#dimension).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SnapchatAds`: [Sets Dimension on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#dimension).
         /// </summary>
         [Input("dimension", required: true)]
         public string Dimension { get; set; } = null!;
@@ -85,8 +85,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _dimensions;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `tiktok_ads`: Dimensions to synced
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `TiktokAds`: Dimensions to synced
         /// </summary>
         public List<string> Dimensions
         {
@@ -98,8 +98,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _eventNames;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `reddit_ads`: The list of events the conversion data will be synchronised for
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `RedditAds`: The list of events the conversion data will be synchronised for
         /// </summary>
         public List<string> EventNames
         {
@@ -108,15 +108,15 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snapchat_ads`: [Sets Granularity on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#granularity).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SnapchatAds`: [Sets Granularity on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#granularity).
         /// </summary>
         [Input("granularity", required: true)]
         public string Granularity { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `reddit_ads`: Level of custom report.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `RedditAds`: Level of custom report.
         /// </summary>
         [Input("level", required: true)]
         public string Level { get; set; } = null!;
@@ -125,8 +125,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _metrics;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `tiktok_ads`: Metrics to be synced
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `TiktokAds`: Metrics to be synced
         /// </summary>
         public List<string> Metrics
         {
@@ -138,8 +138,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _reportFields;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `reddit_ads`: The list of fields included in custom report
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `RedditAds`: The list of fields included in custom report
         /// </summary>
         public List<string> ReportFields
         {
@@ -148,23 +148,23 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `reddit_ads`: The table name within the schema to which connector syncs the data of the specific report.
-        /// 	- Service `snapchat_ads`: Custom report name (must be unique)
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `RedditAds`: The table name within the schema to which connector syncs the data of the specific report.
+        /// 	- Service `SnapchatAds`: Custom report name (must be unique)
         /// </summary>
         [Input("reportName", required: true)]
         public string ReportName { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `tiktok_ads`: Type of report to be generated
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `TiktokAds`: Type of report to be generated
         /// </summary>
         [Input("reportType", required: true)]
         public string ReportType { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `reddit_ads`: Level of custom report.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `RedditAds`: Level of custom report.
         /// </summary>
         [Input("segmentation", required: true)]
         public string Segmentation { get; set; } = null!;
@@ -173,8 +173,8 @@ namespace Pulumi.Fivetran.Inputs
         private List<string>? _skAdMetricsFields;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `snapchat_ads`: [List of SKAd  Metrics fields in custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#skadmetricsfields).
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SnapchatAds`: [List of SKAd  Metrics fields in custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#skadmetricsfields).
         /// </summary>
         public List<string> SkAdMetricsFields
         {
@@ -183,22 +183,22 @@ namespace Pulumi.Fivetran.Inputs
         }
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `tiktok_ads`: Destination Table name of report
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `TiktokAds`: Destination Table name of report
         /// </summary>
         [Input("tableName", required: true)]
         public string TableName { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `reddit_ads`: The specific time zone to sync report data if  `useAccountTimeZone` set to `false`.
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `RedditAds`: The specific time zone to sync report data if  `useAccountTimeZone` set to `False`.
         /// </summary>
         [Input("timeZone", required: true)]
         public string TimeZone { get; set; } = null!;
 
         /// <summary>
-        /// Field usage depends on `service` value: 
-        /// 	- Service `reddit_ads`: When this parameter is set to `ACCOUNT`, connector will use account related time zone to sync report data. Default value: `ACCOUNT`. Possible values: `ACCOUNT`, `USER`
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `RedditAds`: When this parameter is set to `ACCOUNT`, connector will use account related time zone to sync report data. Default value: `ACCOUNT`. Possible values: `ACCOUNT`, `USER`
         /// </summary>
         [Input("timeZoneMode", required: true)]
         public string TimeZoneMode { get; set; } = null!;

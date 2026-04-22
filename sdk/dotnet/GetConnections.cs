@@ -13,18 +13,24 @@ namespace Pulumi.Fivetran
     {
         /// <summary>
         /// This data source returns list of connection objects.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetConnectionsResult> InvokeAsync(GetConnectionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectionsResult>("fivetran:index/getConnections:getConnections", args ?? new GetConnectionsArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source returns list of connection objects.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetConnectionsResult> Invoke(GetConnectionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectionsResult>("fivetran:index/getConnections:getConnections", args ?? new GetConnectionsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source returns list of connection objects.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetConnectionsResult> Invoke(GetConnectionsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectionsResult>("fivetran:index/getConnections:getConnections", args ?? new GetConnectionsInvokeArgs(), options.WithDefaults());

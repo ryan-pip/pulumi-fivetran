@@ -36,22 +36,18 @@ class DestinationArgs:
                  trust_fingerprints: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Destination resource.
+
         :param pulumi.Input[_builtins.str] group_id: The unique identifier for the Group within the Fivetran system.
         :param pulumi.Input[_builtins.str] region: Data processing location. This is where Fivetran will operate and run computation on data.
         :param pulumi.Input[_builtins.str] service: The destination type id within the Fivetran system.
         :param pulumi.Input[_builtins.str] time_zone_offset: Determines the time zone for the Fivetran sync schedule.
         :param pulumi.Input[_builtins.bool] daylight_saving_time_enabled: Shift my UTC offset with daylight savings time (US Only)
-        :param pulumi.Input[_builtins.str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-               value is specified, the system will try to associate the connection with an existing agent.
+        :param pulumi.Input[_builtins.str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
         :param pulumi.Input[_builtins.str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
         :param pulumi.Input[_builtins.str] private_link_id: The private link ID.
         :param pulumi.Input[_builtins.bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
-        :param pulumi.Input[_builtins.bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-               trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-               certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
-        :param pulumi.Input[_builtins.bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-               trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-               fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        :param pulumi.Input[_builtins.bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        :param pulumi.Input[_builtins.bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "region", region)
@@ -149,8 +145,7 @@ class DestinationArgs:
     @pulumi.getter(name="hybridDeploymentAgentId")
     def hybrid_deployment_agent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-        value is specified, the system will try to associate the connection with an existing agent.
+        The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
         """
         return pulumi.get(self, "hybrid_deployment_agent_id")
 
@@ -207,9 +202,7 @@ class DestinationArgs:
     @pulumi.getter(name="trustCertificates")
     def trust_certificates(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-        trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-        certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
         """
         return pulumi.get(self, "trust_certificates")
 
@@ -221,9 +214,7 @@ class DestinationArgs:
     @pulumi.getter(name="trustFingerprints")
     def trust_fingerprints(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-        trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-        fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
         return pulumi.get(self, "trust_fingerprints")
 
@@ -251,10 +242,10 @@ class _DestinationState:
                  trust_fingerprints: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Destination resources.
+
         :param pulumi.Input[_builtins.bool] daylight_saving_time_enabled: Shift my UTC offset with daylight savings time (US Only)
         :param pulumi.Input[_builtins.str] group_id: The unique identifier for the Group within the Fivetran system.
-        :param pulumi.Input[_builtins.str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-               value is specified, the system will try to associate the connection with an existing agent.
+        :param pulumi.Input[_builtins.str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
         :param pulumi.Input[_builtins.str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
         :param pulumi.Input[_builtins.str] private_link_id: The private link ID.
         :param pulumi.Input[_builtins.str] region: Data processing location. This is where Fivetran will operate and run computation on data.
@@ -262,12 +253,8 @@ class _DestinationState:
         :param pulumi.Input[_builtins.str] service: The destination type id within the Fivetran system.
         :param pulumi.Input[_builtins.str] setup_status: Destination setup status.
         :param pulumi.Input[_builtins.str] time_zone_offset: Determines the time zone for the Fivetran sync schedule.
-        :param pulumi.Input[_builtins.bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-               trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-               certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
-        :param pulumi.Input[_builtins.bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-               trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-               fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        :param pulumi.Input[_builtins.bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        :param pulumi.Input[_builtins.bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -335,8 +322,7 @@ class _DestinationState:
     @pulumi.getter(name="hybridDeploymentAgentId")
     def hybrid_deployment_agent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-        value is specified, the system will try to associate the connection with an existing agent.
+        The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
         """
         return pulumi.get(self, "hybrid_deployment_agent_id")
 
@@ -441,9 +427,7 @@ class _DestinationState:
     @pulumi.getter(name="trustCertificates")
     def trust_certificates(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-        trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-        certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
         """
         return pulumi.get(self, "trust_certificates")
 
@@ -455,9 +439,7 @@ class _DestinationState:
     @pulumi.getter(name="trustFingerprints")
     def trust_fingerprints(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-        trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-        fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
         return pulumi.get(self, "trust_fingerprints")
 
@@ -487,52 +469,87 @@ class Destination(pulumi.CustomResource):
                  trust_fingerprints: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
+        This resource allows you to create, update, and delete destinations.
+
+        IMPORTANT: Groups and destinations are mapped 1:1 to each other. We do this mapping using the group's id value that we automatically generate when you create a group using our REST API, and the destination's group_id value that you specify when you create a destination using our REST API. This means that if you use our REST API to create a destination, you must create a group in your Fivetran account before you can create a destination in it.
+
+        When you create a destination in your Fivetran dashboard, we automatically create a group and assign a value to its id and a destination with the same group_id value, which is unique in your Fivetran account. The group's name corresponds to the Destination name you specify in your Fivetran dashboard when creating the destination in your Fivetran dashboard.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        dest = fivetran.Destination("dest",
+            group_id=group["id"],
+            service="postgres_rds_warehouse",
+            time_zone_offset="0",
+            region="GCP_US_EAST4",
+            trust_certificates=True,
+            trust_fingerprints=True,
+            daylight_saving_time_enabled=True,
+            run_setup_tests=True,
+            config=[{
+                "host": "destination.fqdn",
+                "port": 5432,
+                "user": "postgres",
+                "password": "myPass",
+                "database": "fivetran",
+                "connectionType": "Directly",
+            }])
+        ```
+
+        ## Setup tests
+
+        The `run_setup_tests` field doesn't have upstream value, it only defines local resource behavoir. This means that when you update only the `run_setup_tests` value (from `false` to `true`, for example) it won't cause any upstream actions. The value will be just saved in terraform state and then used on effective field updates.
+
+        The default value is `false` - this means that no setup tests will be performed during create/update. To perform setup tests, you should set value to `true`.
+
         ## Import
 
-        1. To import an existing `fivetran_destination` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+        1. To import an existing `Destination` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
 
-        2. To retrieve existing destinations, use the [fivetran_destinations data source](/docs/data-sources/destinations).
+        2. To retrieve existing destinations, use the [get_destinations data source](https://www.terraform.io/docs/data-sources/destinations).
 
         3. Define an empty resource in your `.tf` configuration:
 
-        hcl
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
 
-        resource "fivetran_destination" "my_imported_destination" {
-
-        }
+        my_imported_destination = fivetran.Destination("my_imported_destination")
+        ```
 
         4. Run the `pulumi import` command with the following parameters:
 
         ```sh
-        $ pulumi import fivetran:index/destination:Destination my_imported_destination {your Destination Group ID}
+        terraform import fivetran_destination.my_imported_destination {your Destination Group ID}
         ```
 
         5. Use the `terraform state show` command to get the values from the state:
 
+        ```sh
         terraform state show 'fivetran_destination.my_imported_destination'
-
+        ```
         6. Copy the values and paste them to your `.tf` configuration.
 
-        -> The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/destinations/config) for reference to find the properties you need to keep in the `config` section.
+        > The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/destinations/config) for reference to find the properties you need to keep in the `config` section.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] daylight_saving_time_enabled: Shift my UTC offset with daylight savings time (US Only)
         :param pulumi.Input[_builtins.str] group_id: The unique identifier for the Group within the Fivetran system.
-        :param pulumi.Input[_builtins.str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-               value is specified, the system will try to associate the connection with an existing agent.
+        :param pulumi.Input[_builtins.str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
         :param pulumi.Input[_builtins.str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
         :param pulumi.Input[_builtins.str] private_link_id: The private link ID.
         :param pulumi.Input[_builtins.str] region: Data processing location. This is where Fivetran will operate and run computation on data.
         :param pulumi.Input[_builtins.bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
         :param pulumi.Input[_builtins.str] service: The destination type id within the Fivetran system.
         :param pulumi.Input[_builtins.str] time_zone_offset: Determines the time zone for the Fivetran sync schedule.
-        :param pulumi.Input[_builtins.bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-               trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-               certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
-        :param pulumi.Input[_builtins.bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-               trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-               fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        :param pulumi.Input[_builtins.bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        :param pulumi.Input[_builtins.bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
         ...
     @overload
@@ -541,33 +558,73 @@ class Destination(pulumi.CustomResource):
                  args: DestinationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        This resource allows you to create, update, and delete destinations.
+
+        IMPORTANT: Groups and destinations are mapped 1:1 to each other. We do this mapping using the group's id value that we automatically generate when you create a group using our REST API, and the destination's group_id value that you specify when you create a destination using our REST API. This means that if you use our REST API to create a destination, you must create a group in your Fivetran account before you can create a destination in it.
+
+        When you create a destination in your Fivetran dashboard, we automatically create a group and assign a value to its id and a destination with the same group_id value, which is unique in your Fivetran account. The group's name corresponds to the Destination name you specify in your Fivetran dashboard when creating the destination in your Fivetran dashboard.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
+
+        dest = fivetran.Destination("dest",
+            group_id=group["id"],
+            service="postgres_rds_warehouse",
+            time_zone_offset="0",
+            region="GCP_US_EAST4",
+            trust_certificates=True,
+            trust_fingerprints=True,
+            daylight_saving_time_enabled=True,
+            run_setup_tests=True,
+            config=[{
+                "host": "destination.fqdn",
+                "port": 5432,
+                "user": "postgres",
+                "password": "myPass",
+                "database": "fivetran",
+                "connectionType": "Directly",
+            }])
+        ```
+
+        ## Setup tests
+
+        The `run_setup_tests` field doesn't have upstream value, it only defines local resource behavoir. This means that when you update only the `run_setup_tests` value (from `false` to `true`, for example) it won't cause any upstream actions. The value will be just saved in terraform state and then used on effective field updates.
+
+        The default value is `false` - this means that no setup tests will be performed during create/update. To perform setup tests, you should set value to `true`.
+
         ## Import
 
-        1. To import an existing `fivetran_destination` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+        1. To import an existing `Destination` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
 
-        2. To retrieve existing destinations, use the [fivetran_destinations data source](/docs/data-sources/destinations).
+        2. To retrieve existing destinations, use the [get_destinations data source](https://www.terraform.io/docs/data-sources/destinations).
 
         3. Define an empty resource in your `.tf` configuration:
 
-        hcl
+        ```python
+        import pulumi
+        import pulumi_provider_fivetran as fivetran
 
-        resource "fivetran_destination" "my_imported_destination" {
-
-        }
+        my_imported_destination = fivetran.Destination("my_imported_destination")
+        ```
 
         4. Run the `pulumi import` command with the following parameters:
 
         ```sh
-        $ pulumi import fivetran:index/destination:Destination my_imported_destination {your Destination Group ID}
+        terraform import fivetran_destination.my_imported_destination {your Destination Group ID}
         ```
 
         5. Use the `terraform state show` command to get the values from the state:
 
+        ```sh
         terraform state show 'fivetran_destination.my_imported_destination'
-
+        ```
         6. Copy the values and paste them to your `.tf` configuration.
 
-        -> The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/destinations/config) for reference to find the properties you need to keep in the `config` section.
+        > The `config` object in the state contains all properties defined in the schema. You need to remove properties from the `config` that are not related to destinations. See the [Fivetran REST API documentation](https://fivetran.com/docs/rest-api/destinations/config) for reference to find the properties you need to keep in the `config` section.
+
 
         :param str resource_name: The name of the resource.
         :param DestinationArgs args: The arguments to use to populate this resource's properties.
@@ -661,8 +718,7 @@ class Destination(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] daylight_saving_time_enabled: Shift my UTC offset with daylight savings time (US Only)
         :param pulumi.Input[_builtins.str] group_id: The unique identifier for the Group within the Fivetran system.
-        :param pulumi.Input[_builtins.str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-               value is specified, the system will try to associate the connection with an existing agent.
+        :param pulumi.Input[_builtins.str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
         :param pulumi.Input[_builtins.str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
         :param pulumi.Input[_builtins.str] private_link_id: The private link ID.
         :param pulumi.Input[_builtins.str] region: Data processing location. This is where Fivetran will operate and run computation on data.
@@ -670,12 +726,8 @@ class Destination(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] service: The destination type id within the Fivetran system.
         :param pulumi.Input[_builtins.str] setup_status: Destination setup status.
         :param pulumi.Input[_builtins.str] time_zone_offset: Determines the time zone for the Fivetran sync schedule.
-        :param pulumi.Input[_builtins.bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-               trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-               certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
-        :param pulumi.Input[_builtins.bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-               trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-               fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        :param pulumi.Input[_builtins.bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        :param pulumi.Input[_builtins.bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -722,8 +774,7 @@ class Destination(pulumi.CustomResource):
     @pulumi.getter(name="hybridDeploymentAgentId")
     def hybrid_deployment_agent_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the
-        value is specified, the system will try to associate the connection with an existing agent.
+        The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
         """
         return pulumi.get(self, "hybrid_deployment_agent_id")
 
@@ -792,9 +843,7 @@ class Destination(pulumi.CustomResource):
     @pulumi.getter(name="trustCertificates")
     def trust_certificates(self) -> pulumi.Output[_builtins.bool]:
         """
-        Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not
-        trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-        certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
+        Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
         """
         return pulumi.get(self, "trust_certificates")
 
@@ -802,9 +851,7 @@ class Destination(pulumi.CustomResource):
     @pulumi.getter(name="trustFingerprints")
     def trust_fingerprints(self) -> pulumi.Output[_builtins.bool]:
         """
-        Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not
-        trusted automatically, it has to be approved with [Certificates Management API Approve a destination
-        fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
+        Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
         return pulumi.get(self, "trust_fingerprints")
 

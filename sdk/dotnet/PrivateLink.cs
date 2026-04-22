@@ -11,6 +11,33 @@ namespace Pulumi.Fivetran
 {
     /// <summary>
     /// This resource allows you to create, update, and delete private links.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Pulumi.Fivetran;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var testPl = new Fivetran.Index.PrivateLink("test_pl", new()
+    ///     {
+    ///         Name = "name",
+    ///         Region = "region",
+    ///         Service = "service",
+    ///         Config = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "connectionServiceName", "connection_service_name" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [FivetranResourceType("fivetran:index/privateLink:PrivateLink")]
     public partial class PrivateLink : global::Pulumi.CustomResource
@@ -46,8 +73,7 @@ namespace Pulumi.Fivetran
         public Output<string> Host { get; private set; } = null!;
 
         /// <summary>
-        /// The private link name within the account. The name must start with a letter or underscore and can only contain letters,
-        /// numbers, or underscores. Maximum size of name is 23 characters.
+        /// The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -136,8 +162,7 @@ namespace Pulumi.Fivetran
         }
 
         /// <summary>
-        /// The private link name within the account. The name must start with a letter or underscore and can only contain letters,
-        /// numbers, or underscores. Maximum size of name is 23 characters.
+        /// The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -199,8 +224,7 @@ namespace Pulumi.Fivetran
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// The private link name within the account. The name must start with a letter or underscore and can only contain letters,
-        /// numbers, or underscores. Maximum size of name is 23 characters.
+        /// The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

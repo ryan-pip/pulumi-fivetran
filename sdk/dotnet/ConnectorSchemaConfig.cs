@@ -10,6 +10,253 @@ using Pulumi.Serialization;
 namespace Pulumi.Fivetran
 {
     /// <summary>
+    /// ## page_title: "Resource: fivetran.ConnectorSchemaConfig"
+    /// 
+    /// ***
+    /// 
+    /// # Resource: fivetran.ConnectorSchemaConfig
+    /// 
+    /// This resource allows you to manage the Standard Configuration settings of a connector:
+    ///  - Define the schema change handling settings
+    ///  - Enable and disable schemas, tables, and columns
+    /// 
+    /// The resource is in **ALPHA** state. The resource schema and behavior are subject to change without prior notice.
+    /// 
+    /// Known issues:
+    ///  - Definition of `SyncMode` for table may cause infinite drifting changes in plan.
+    ///  - Using `Schema` field causes very slow plan preparation because of slow performance for SetTypable fields in terraform-framework, please use MapTypable `Schemas` field instead.
+    /// 
+    /// ## Usage guide
+    /// 
+    /// Note that all configuration settings are aligned to the `SchemaChangeHandling` settings,  except the settings explicitly specified in `Schemas`.
+    /// In `Schemas`, you only override the default settings defined by the chosen `SchemaChangeHandling` option.
+    /// The allowed `SchemaChangeHandling` options are as follows:
+    /// - `ALLOW_ALL`- all schemas, tables and columns are ENABLED by default. You only need  to explicitly specify DISABLED items or hashed tables
+    /// - `BLOCK_ALL` - all schemas, tables and columns are DISABLED by default, the configuration only specifies ENABLED items
+    /// - `ALLOW_COLUMNS` - all schemas and tables are DISABLED by default, but all columns are ENABLED by default, the configuration specifies ENABLED schemas and tables, and DISABLED columns
+    /// 
+    /// Note that system-enabled tables and columns (such as primary and foreign key columns, and [system tables and columns](https://fivetran.com/docs/getting-started/system-columns-and-tables)) are synced regardless of the `SchemaChangeHandling` settings and configuration. You can only disable non-locked columns in the system-enabled tables. If the configuration specifies any system tables or locked system table columns as disabled ( `enabled = "false"`), the provider just ignores these statements.
+    /// 
+    /// ## Usage examples
+    /// 
+    /// ### Example for the ALLOW_ALL option
+    /// 
+    /// In `Schemas`,  you only need to specify schemas and tables you want to disable (`enabled = "false"`) and columns you want to disable or hash (`hashed = "true"`).
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Pulumi.Fivetran;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var schema = new Fivetran.Index.ConnectorSchemaConfig("schema", new()
+    ///     {
+    ///         ConnectorId = "connector_id",
+    ///         SchemaChangeHandling = "ALLOW_ALL",
+    ///         Schemas = 
+    ///         {
+    ///             { "schema_name", new Fivetran.Inputs.ConnectorSchemaConfigSchemasArgs
+    ///             {
+    ///                 Tables = 
+    ///                 {
+    ///                     { "table_name", new Fivetran.Inputs.ConnectorSchemaConfigSchemasTablesArgs
+    ///                     {
+    ///                         Columns = 
+    ///                         {
+    ///                             { "hashed_column_name", new Fivetran.Inputs.ConnectorSchemaConfigSchemasTablesColumnsArgs
+    ///                             {
+    ///                                 Hashed = true,
+    ///                             } },
+    ///                             { "blocked_column_name", new Fivetran.Inputs.ConnectorSchemaConfigSchemasTablesColumnsArgs
+    ///                             {
+    ///                                 Enabled = false,
+    ///                             } },
+    ///                         },
+    ///                     } },
+    ///                     { "blocked_table_name", new Fivetran.Inputs.ConnectorSchemaConfigSchemasTablesArgs
+    ///                     {
+    ///                         Enabled = false,
+    ///                     } },
+    ///                 },
+    ///             } },
+    ///             { "blocked_schema", new Fivetran.Inputs.ConnectorSchemaConfigSchemasArgs
+    ///             {
+    ///                 Enabled = false,
+    ///             } },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// The configuration resulting from the example request is as follows:
+    /// - All new and existing schemas except `BlockedSchema` are enabled
+    /// - All new and existing tables in the `SchemaName` schema except the `BlockedTableName` table are enabled
+    /// - All new and existing columns in the`TableName` of the `SchemaName` schema except the `BlockedColumnName` column are enabled
+    /// - The `HashedColumnName` column is hashed in the `TableName` table in the `SchemaName` schema
+    /// - All new schemas, tables, and columns are enabled once captured by the connector during the sync except those disabled by the system
+    /// 
+    /// ### Example for the BLOCK_ALL option
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Pulumi.Fivetran;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var schema = new Fivetran.Index.ConnectorSchemaConfig("schema", new()
+    ///     {
+    ///         ConnectorId = "connector_id",
+    ///         SchemaChangeHandling = "BLOCK_ALL",
+    ///         Schemas = 
+    ///         {
+    ///             { "schema_name", new Fivetran.Inputs.ConnectorSchemaConfigSchemasArgs
+    ///             {
+    ///                 Tables = 
+    ///                 {
+    ///                     { "table_name", new Fivetran.Inputs.ConnectorSchemaConfigSchemasTablesArgs
+    ///                     {
+    ///                         Columns = 
+    ///                         {
+    ///                             { "hashed_column_name", new Fivetran.Inputs.ConnectorSchemaConfigSchemasTablesColumnsArgs
+    ///                             {
+    ///                                 Hashed = true,
+    ///                             } },
+    ///                         },
+    ///                     } },
+    ///                     { "enabled_table_name", new Fivetran.Inputs.ConnectorSchemaConfigSchemasTablesArgs
+    ///                     {
+    ///                         Enabled = true,
+    ///                     } },
+    ///                 },
+    ///             } },
+    ///             { "enabled_schema", new Fivetran.Inputs.ConnectorSchemaConfigSchemasArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             } },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// The configuration resulting from the example request is as follows:
+    /// 
+    /// - All new and existing schemas except the `EnabledSchema` and `SchemaName` are disabled
+    /// - Only system-enabled tables and columns are enabled in the `EnabledSchema` schema
+    /// - All new and existing tables in the `SchemaName` schema except  the `EnabledTableName`, `TableName` tables and system tables are disabled
+    /// - All new and existing columns in the `TableName` table of the `SchemaName` schema are disabled except the `HashedColumnName` column and system columns
+    /// - The `HashedColumnName` column in the `TableName`  table the `SchemaName` schema is hashed
+    /// - All new columns except the system-enabled columns, all schemas and tables are disabled once captured by the connector during the sync
+    /// 
+    /// ### Example for the ALLOW_COLUMNS option
+    /// 
+    /// In `Schemas`, you only need to specify schemas and tables you want to enable `enabled = "true"`) and columns you want to disable (`enabled = "false"`) or hash (`hashed = "true"`).
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Pulumi.Fivetran;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var schema = new Fivetran.Index.ConnectorSchemaConfig("schema", new()
+    ///     {
+    ///         ConnectorId = "connector_id",
+    ///         SchemaChangeHandling = "ALLOW_COLUMNS",
+    ///         Schemas = 
+    ///         {
+    ///             { "schema_name", new Fivetran.Inputs.ConnectorSchemaConfigSchemasArgs
+    ///             {
+    ///                 Tables = 
+    ///                 {
+    ///                     { "table_name", new Fivetran.Inputs.ConnectorSchemaConfigSchemasTablesArgs
+    ///                     {
+    ///                         Columns = 
+    ///                         {
+    ///                             { "hashed_column_name", new Fivetran.Inputs.ConnectorSchemaConfigSchemasTablesColumnsArgs
+    ///                             {
+    ///                                 Hashed = true,
+    ///                             } },
+    ///                             { "disabled_column_name", new Fivetran.Inputs.ConnectorSchemaConfigSchemasTablesColumnsArgs
+    ///                             {
+    ///                                 Enabled = false,
+    ///                             } },
+    ///                         },
+    ///                     } },
+    ///                     { "enabled_table", new Fivetran.Inputs.ConnectorSchemaConfigSchemasTablesArgs
+    ///                     {
+    ///                         Enabled = true,
+    ///                     } },
+    ///                 },
+    ///             } },
+    ///             { "enabled_schema_name", new Fivetran.Inputs.ConnectorSchemaConfigSchemasArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             } },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// The configuration resulting from the example request is as follows:
+    /// 
+    /// - All specified existing schemas and tables are enabled and all columns inside them are enabled by default, unless `enabled = "false"` is specified for the column
+    /// - All new and existing schemas except the `EnabledSchemaName` and `SchemaName` are disabled
+    /// - Only system-enabled tables and columns would be enabled in  the`EnabledSchemaName` schema
+    /// - All new and existing tables in the `SchemaName` schema except the `EnabledTableName`, `TableName` and system-enabled tables are disabled
+    /// - All new and existing columns in the`TableName` table of the `SchemaName` schema except the `DisabledColumnsName` and system-enabled columns are enabled
+    /// - The `HashedColumnName` would be hashed in table `TableName` in schema `SchemaName`
+    /// - All new non system-enabled tables/schemas would be disabled once captured by connector on sync
+    /// - All new non system-enabled columns inside enabled tables (including system enabled-tables) would be enabled once captured by connector on sync
+    /// 
+    /// &lt;a id="nestedblock--nonlocked"&gt;&lt;/a&gt;
+    /// ### Non-locked table column management in system-enabled tables
+    /// 
+    /// You cannot manage system-enabled tables, but you can manage its non-locked columns. For example, your schema `SchemaName` has a system-enabled table `SystemEnabledTable` that can't be disabled, and you want to disable one of its columns named `ColumnName`:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Pulumi.Fivetran;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var schema = new Fivetran.Index.ConnectorSchemaConfig("schema", new()
+    ///     {
+    ///         ConnectorId = "connector_id",
+    ///         SchemaChangeHandling = "ALLOW_COLUMNS",
+    ///         Schemas = 
+    ///         {
+    ///             { "schema_name", new Fivetran.Inputs.ConnectorSchemaConfigSchemasArgs
+    ///             {
+    ///                 Tables = 
+    ///                 {
+    ///                     { "system_enabled_table", new Fivetran.Inputs.ConnectorSchemaConfigSchemasTablesArgs
+    ///                     {
+    ///                         Columns = 
+    ///                         {
+    ///                             { "column_name", new Fivetran.Inputs.ConnectorSchemaConfigSchemasTablesColumnsArgs
+    ///                             {
+    ///                                 Enabled = false,
+    ///                             } },
+    ///                         },
+    ///                     } },
+    ///                 },
+    ///             } },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// You don't need to import this resource as it is synthetic (doesn't create new instances in upstream).
@@ -39,7 +286,7 @@ namespace Pulumi.Fivetran
         public Output<ImmutableDictionary<string, Outputs.ConnectorSchemaConfigSchemas>?> Schemas { get; private set; } = null!;
 
         /// <summary>
-        /// Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
+        /// Schema settings in Json format, following Fivetran API endpoint contract for `Schemas` field (a map of schemas).
         /// </summary>
         [Output("schemasJson")]
         public Output<string?> SchemasJson { get; private set; } = null!;
@@ -48,9 +295,10 @@ namespace Pulumi.Fivetran
         public Output<Outputs.ConnectorSchemaConfigTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
-        /// The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
-        /// fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
-        /// names. The resource will try to fetch columns for every configured table and verify column names.
+        /// The value defines validation method. 
+        /// - NONE: no validation, any configuration accepted. 
+        /// - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
+        /// - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
         /// </summary>
         [Output("validationLevel")]
         public Output<string> ValidationLevel { get; private set; } = null!;
@@ -110,7 +358,7 @@ namespace Pulumi.Fivetran
 
         [Input("schema")]
         private InputList<Inputs.ConnectorSchemaConfigSchemaArgs>? _schema;
-        [Obsolete(@"Configure `schemas` instead. This attribute will be removed in the next major version of the provider.")]
+        [Obsolete(@"Configure `Schemas` instead. This attribute will be removed in the next major version of the provider.")]
         public InputList<Inputs.ConnectorSchemaConfigSchemaArgs> Schema
         {
             get => _schema ?? (_schema = new InputList<Inputs.ConnectorSchemaConfigSchemaArgs>());
@@ -136,7 +384,7 @@ namespace Pulumi.Fivetran
         }
 
         /// <summary>
-        /// Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
+        /// Schema settings in Json format, following Fivetran API endpoint contract for `Schemas` field (a map of schemas).
         /// </summary>
         [Input("schemasJson")]
         public Input<string>? SchemasJson { get; set; }
@@ -145,9 +393,10 @@ namespace Pulumi.Fivetran
         public Input<Inputs.ConnectorSchemaConfigTimeoutsArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
-        /// fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
-        /// names. The resource will try to fetch columns for every configured table and verify column names.
+        /// The value defines validation method. 
+        /// - NONE: no validation, any configuration accepted. 
+        /// - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
+        /// - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
         /// </summary>
         [Input("validationLevel")]
         public Input<string>? ValidationLevel { get; set; }
@@ -168,7 +417,7 @@ namespace Pulumi.Fivetran
 
         [Input("schema")]
         private InputList<Inputs.ConnectorSchemaConfigSchemaGetArgs>? _schema;
-        [Obsolete(@"Configure `schemas` instead. This attribute will be removed in the next major version of the provider.")]
+        [Obsolete(@"Configure `Schemas` instead. This attribute will be removed in the next major version of the provider.")]
         public InputList<Inputs.ConnectorSchemaConfigSchemaGetArgs> Schema
         {
             get => _schema ?? (_schema = new InputList<Inputs.ConnectorSchemaConfigSchemaGetArgs>());
@@ -194,7 +443,7 @@ namespace Pulumi.Fivetran
         }
 
         /// <summary>
-        /// Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
+        /// Schema settings in Json format, following Fivetran API endpoint contract for `Schemas` field (a map of schemas).
         /// </summary>
         [Input("schemasJson")]
         public Input<string>? SchemasJson { get; set; }
@@ -203,9 +452,10 @@ namespace Pulumi.Fivetran
         public Input<Inputs.ConnectorSchemaConfigTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// The value defines validation method. - NONE: no validation, any configuration accepted. - TABLES: validate table names,
-        /// fail on attempt to configure non-existing schemas/tables. - COLUMNS: validate the whole schema config including column
-        /// names. The resource will try to fetch columns for every configured table and verify column names.
+        /// The value defines validation method. 
+        /// - NONE: no validation, any configuration accepted. 
+        /// - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
+        /// - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
         /// </summary>
         [Input("validationLevel")]
         public Input<string>? ValidationLevel { get; set; }

@@ -13,18 +13,24 @@ namespace Pulumi.Fivetran
     {
         /// <summary>
         /// This data source returns a hybrid deployment agent object.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Task<GetHybridDeploymentAgentResult> InvokeAsync(GetHybridDeploymentAgentArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHybridDeploymentAgentResult>("fivetran:index/getHybridDeploymentAgent:getHybridDeploymentAgent", args ?? new GetHybridDeploymentAgentArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source returns a hybrid deployment agent object.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetHybridDeploymentAgentResult> Invoke(GetHybridDeploymentAgentInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHybridDeploymentAgentResult>("fivetran:index/getHybridDeploymentAgent:getHybridDeploymentAgent", args ?? new GetHybridDeploymentAgentInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source returns a hybrid deployment agent object.
+        /// 
+        /// ## Example Usage
         /// </summary>
         public static Output<GetHybridDeploymentAgentResult> Invoke(GetHybridDeploymentAgentInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetHybridDeploymentAgentResult>("fivetran:index/getHybridDeploymentAgent:getHybridDeploymentAgent", args ?? new GetHybridDeploymentAgentInvokeArgs(), options.WithDefaults());

@@ -9,19 +9,42 @@ import * as utilities from "./utilities";
 /**
  * This resource allows you to create, update, and delete group membership for teams
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
+ *
+ * const testTeamGroupMembership = new fivetran.TeamGroupMembership("test_team_group_membership", {
+ *     teamId: "test_team",
+ *     groups: [
+ *         {
+ *             connectorId: "test_connector",
+ *             groupId: "test_group",
+ *             role: "Destination Administrator",
+ *         },
+ *         {
+ *             connectorId: "test_connector",
+ *             groupId: "test_group",
+ *             role: "Destination Administrator",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
- * 1. To import an existing `fivetran_team_group_membership` resource into your Terraform state, you need to get `team_id` and `group_id`
- *
- * You can retrieve all teams using the [fivetran_teams data source](/docs/data-sources/teams).
+ * 1. To import an existing `fivetran.TeamGroupMembership` resource into your Terraform state, you need to get `teamId` and `groupId`
+ * You can retrieve all teams using the [fivetran.getTeams data source](https://www.terraform.io/docs/data-sources/teams).
  *
  * 2. Define an empty resource in your `.tf` configuration:
  *
- * hcl
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
- * resource "fivetran_team_group_membership" "my_imported_fivetran_team_group_membership" {
- *
- * }
+ * const myImportedFivetranTeamGroupMembership = new fivetran.TeamGroupMembership("my_imported_fivetran_team_group_membership", {});
+ * ```
  *
  * 3. Run the `pulumi import` command:
  *
@@ -31,8 +54,9 @@ import * as utilities from "./utilities";
  *
  * 4. Use the `terraform state show` command to get the values from the state:
  *
+ * ```sh
  * terraform state show 'fivetran_team_group_membership.my_imported_fivetran_team_group_membership'
- *
+ * ```
  * 5. Copy the values and paste them to your `.tf` configuration.
  */
 export class TeamGroupMembership extends pulumi.CustomResource {
@@ -63,11 +87,11 @@ export class TeamGroupMembership extends pulumi.CustomResource {
         return obj['__pulumiType'] === TeamGroupMembership.__pulumiType;
     }
 
-    public readonly groups!: pulumi.Output<outputs.TeamGroupMembershipGroup[] | undefined>;
+    declare public readonly groups: pulumi.Output<outputs.TeamGroupMembershipGroup[] | undefined>;
     /**
      * The unique identifier for the team within your account.
      */
-    public readonly teamId!: pulumi.Output<string>;
+    declare public readonly teamId: pulumi.Output<string>;
 
     /**
      * Create a TeamGroupMembership resource with the given unique name, arguments, and options.
@@ -82,15 +106,15 @@ export class TeamGroupMembership extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TeamGroupMembershipState | undefined;
-            resourceInputs["groups"] = state ? state.groups : undefined;
-            resourceInputs["teamId"] = state ? state.teamId : undefined;
+            resourceInputs["groups"] = state?.groups;
+            resourceInputs["teamId"] = state?.teamId;
         } else {
             const args = argsOrState as TeamGroupMembershipArgs | undefined;
-            if ((!args || args.teamId === undefined) && !opts.urn) {
+            if (args?.teamId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'teamId'");
             }
-            resourceInputs["groups"] = args ? args.groups : undefined;
-            resourceInputs["teamId"] = args ? args.teamId : undefined;
+            resourceInputs["groups"] = args?.groups;
+            resourceInputs["teamId"] = args?.teamId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TeamGroupMembership.__pulumiType, name, resourceInputs, opts);
