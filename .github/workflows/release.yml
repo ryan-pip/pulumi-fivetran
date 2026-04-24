@@ -109,6 +109,9 @@ jobs:
         with:
           python-version: ${{matrix.pythonversion}}
 
+      - name: Set Provider Version
+        run: echo "PROVIDER_VERSION=$(pulumictl get version --language generic)" >> $GITHUB_ENV
+
       - name: Build SDK
         run: make build_${{ matrix.language }}
 

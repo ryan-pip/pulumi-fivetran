@@ -146,7 +146,9 @@ build_nodejs: .make/build_nodejs
 	cd sdk/nodejs/ && \
 		yarn install && \
 		yarn run tsc && \
-		cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/
+		cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/ && \
+		sed -i.bak -e 's/$${VERSION}/$(PROVIDER_VERSION)/g' ./bin/package.json && \
+		rm -f ./bin/package.json.bak
 	@touch $@
 .PHONY: generate_nodejs build_nodejs
 
