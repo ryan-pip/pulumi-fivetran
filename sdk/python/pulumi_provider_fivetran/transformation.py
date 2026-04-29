@@ -239,12 +239,12 @@ class Transformation(pulumi.CustomResource):
         transformation = fivetran.Transformation("transformation",
             type="DBT_CORE",
             paused=True,
-            schedule=[{
-                "scheduleType": "TIME_OF_DAY",
-                "timeOfDay": "11:00",
-            }],
-            transformation_config=[{
-                "projectId": "project_id",
+            schedule={
+                "schedule_type": "TIME_OF_DAY",
+                "time_of_day": "11:00",
+            },
+            transformation_config={
+                "project_id": "project_id",
                 "name": "name",
                 "steps": [
                     {
@@ -256,7 +256,7 @@ class Transformation(pulumi.CustomResource):
                         "command": "command2",
                     },
                 ],
-            }])
+            })
         ```
 
         ### Quickstart Transformation
@@ -268,21 +268,21 @@ class Transformation(pulumi.CustomResource):
         transformation = fivetran.Transformation("transformation",
             type="QUICKSTART",
             paused=True,
-            schedule=[{
-                "scheduleType": "TIME_OF_DAY",
-                "timeOfDay": "11:00",
-            }],
-            transformation_config=[{
-                "packageName": "package_name",
-                "connectionIds": [
+            schedule={
+                "schedule_type": "TIME_OF_DAY",
+                "time_of_day": "11:00",
+            },
+            transformation_config={
+                "package_name": "package_name",
+                "connection_ids": [
                     "connection_id1",
                     "connection_id2",
                 ],
-                "excludedModels": [
+                "excluded_models": [
                     "excluded_model1",
                     "excluded_model2",
                 ],
-            }])
+            })
         ```
 
         ## Import
@@ -340,12 +340,12 @@ class Transformation(pulumi.CustomResource):
         transformation = fivetran.Transformation("transformation",
             type="DBT_CORE",
             paused=True,
-            schedule=[{
-                "scheduleType": "TIME_OF_DAY",
-                "timeOfDay": "11:00",
-            }],
-            transformation_config=[{
-                "projectId": "project_id",
+            schedule={
+                "schedule_type": "TIME_OF_DAY",
+                "time_of_day": "11:00",
+            },
+            transformation_config={
+                "project_id": "project_id",
                 "name": "name",
                 "steps": [
                     {
@@ -357,7 +357,7 @@ class Transformation(pulumi.CustomResource):
                         "command": "command2",
                     },
                 ],
-            }])
+            })
         ```
 
         ### Quickstart Transformation
@@ -369,21 +369,21 @@ class Transformation(pulumi.CustomResource):
         transformation = fivetran.Transformation("transformation",
             type="QUICKSTART",
             paused=True,
-            schedule=[{
-                "scheduleType": "TIME_OF_DAY",
-                "timeOfDay": "11:00",
-            }],
-            transformation_config=[{
-                "packageName": "package_name",
-                "connectionIds": [
+            schedule={
+                "schedule_type": "TIME_OF_DAY",
+                "time_of_day": "11:00",
+            },
+            transformation_config={
+                "package_name": "package_name",
+                "connection_ids": [
                     "connection_id1",
                     "connection_id2",
                 ],
-                "excludedModels": [
+                "excluded_models": [
                     "excluded_model1",
                     "excluded_model2",
                 ],
-            }])
+            })
         ```
 
         ## Import

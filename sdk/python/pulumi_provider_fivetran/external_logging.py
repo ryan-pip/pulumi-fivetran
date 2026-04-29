@@ -212,10 +212,10 @@ class ExternalLogging(pulumi.CustomResource):
             service="azure_monitor_log",
             enabled=True,
             run_setup_tests=True,
-            config=[{
-                "workspaceId": "workspace_id",
-                "primaryKey": "PASSWORD",
-            }])
+            config={
+                "workspace_id": "workspace_id",
+                "primary_key": "PASSWORD",
+            })
         ```
 
         ## Setup tests
@@ -283,10 +283,10 @@ class ExternalLogging(pulumi.CustomResource):
             service="azure_monitor_log",
             enabled=True,
             run_setup_tests=True,
-            config=[{
-                "workspaceId": "workspace_id",
-                "primaryKey": "PASSWORD",
-            }])
+            config={
+                "workspace_id": "workspace_id",
+                "primary_key": "PASSWORD",
+            })
         ```
 
         ## Setup tests

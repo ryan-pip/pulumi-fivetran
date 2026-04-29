@@ -41,15 +41,13 @@ import (
 //				TrustFingerprints:         pulumi.Bool(true),
 //				DaylightSavingTimeEnabled: pulumi.Bool(true),
 //				RunSetupTests:             pulumi.Bool(true),
-//				Config: fivetran.DestinationConfigArgs{
-//					map[string]interface{}{
-//						"host":           "destination.fqdn",
-//						"port":           5432,
-//						"user":           "postgres",
-//						"password":       "myPass",
-//						"database":       "fivetran",
-//						"connectionType": "Directly",
-//					},
+//				Config: &fivetran.DestinationConfigArgs{
+//					Host:           pulumi.String("destination.fqdn"),
+//					Port:           pulumi.Int(5432),
+//					User:           pulumi.String("postgres"),
+//					Password:       pulumi.String("myPass"),
+//					Database:       pulumi.String("fivetran"),
+//					ConnectionType: pulumi.String("Directly"),
 //				},
 //			})
 //			if err != nil {

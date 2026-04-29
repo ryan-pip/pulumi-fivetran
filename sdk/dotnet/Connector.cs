@@ -26,32 +26,26 @@ namespace Pulumi.Fivetran
     ///     {
     ///         GroupId = @group.Id,
     ///         Service = "amplitude",
-    ///         DestinationSchema = new[]
+    ///         DestinationSchema = new Fivetran.Inputs.ConnectorDestinationSchemaArgs
     ///         {
-    ///             
-    ///             {
-    ///                 { "name", "amplitude_connector" },
-    ///             },
+    ///             Name = "amplitude_connector",
     ///         },
-    ///         Config = new[]
+    ///         Config = new Fivetran.Inputs.ConnectorConfigArgs
     ///         {
-    ///             
+    ///             ProjectCredentials = new[]
     ///             {
-    ///                 { "projectCredentials", new[]
+    ///                 new Fivetran.Inputs.ConnectorConfigProjectCredentialArgs
     ///                 {
-    ///                     
-    ///                     {
-    ///                         { "project", "project1" },
-    ///                         { "apiKey", "my_api_key" },
-    ///                         { "secretKey", "my_secret_key" },
-    ///                     },
-    ///                     
-    ///                     {
-    ///                         { "project", "project2" },
-    ///                         { "apiKey", "my_api_key" },
-    ///                         { "secretKey", "my_secret_key" },
-    ///                     },
-    ///                 } },
+    ///                     Project = "project1",
+    ///                     ApiKey = "my_api_key",
+    ///                     SecretKey = "my_secret_key",
+    ///                 },
+    ///                 new Fivetran.Inputs.ConnectorConfigProjectCredentialArgs
+    ///                 {
+    ///                     Project = "project2",
+    ///                     ApiKey = "my_api_key",
+    ///                     SecretKey = "my_secret_key",
+    ///                 },
     ///             },
     ///         },
     ///     });
@@ -78,23 +72,17 @@ namespace Pulumi.Fivetran
     ///         GroupId = "group_id",
     ///         Service = "github",
     ///         RunSetupTests = true,
-    ///         DestinationSchema = new[]
+    ///         DestinationSchema = new Fivetran.Inputs.ConnectorDestinationSchemaArgs
     ///         {
-    ///             
-    ///             {
-    ///                 { "name", "github_connector" },
-    ///             },
+    ///             Name = "github_connector",
     ///         },
-    ///         Config = new[]
+    ///         Config = new Fivetran.Inputs.ConnectorConfigArgs
     ///         {
-    ///             
-    ///             {
-    ///                 { "syncMode", "AllRepositories" },
-    ///                 { "useWebhooks", "false" },
-    ///                 { "authMode", "PersonalAccessToken" },
-    ///                 { "username", "git-hub-user-name" },
-    ///                 { "pat", "ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" },
-    ///             },
+    ///             SyncMode = "AllRepositories",
+    ///             UseWebhooks = false,
+    ///             AuthMode = "PersonalAccessToken",
+    ///             Username = "git-hub-user-name",
+    ///             Pat = "ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     ///         },
     ///     });
     /// 

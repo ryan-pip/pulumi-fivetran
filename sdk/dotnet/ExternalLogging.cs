@@ -28,13 +28,10 @@ namespace Pulumi.Fivetran
     ///         Service = "azure_monitor_log",
     ///         Enabled = true,
     ///         RunSetupTests = true,
-    ///         Config = new[]
+    ///         Config = new Fivetran.Inputs.ExternalLoggingConfigArgs
     ///         {
-    ///             
-    ///             {
-    ///                 { "workspaceId", "workspace_id" },
-    ///                 { "primaryKey", "PASSWORD" },
-    ///             },
+    ///             WorkspaceId = "workspace_id",
+    ///             PrimaryKey = "PASSWORD",
     ///         },
     ///     });
     /// 

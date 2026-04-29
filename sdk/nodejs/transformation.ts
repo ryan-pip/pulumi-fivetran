@@ -22,11 +22,11 @@ import * as utilities from "./utilities";
  * const transformation = new fivetran.Transformation("transformation", {
  *     type: "DBT_CORE",
  *     paused: true,
- *     schedule: [{
+ *     schedule: {
  *         scheduleType: "TIME_OF_DAY",
  *         timeOfDay: "11:00",
- *     }],
- *     transformationConfig: [{
+ *     },
+ *     transformationConfig: {
  *         projectId: "project_id",
  *         name: "name",
  *         steps: [
@@ -39,7 +39,7 @@ import * as utilities from "./utilities";
  *                 command: "command2",
  *             },
  *         ],
- *     }],
+ *     },
  * });
  * ```
  *
@@ -52,11 +52,11 @@ import * as utilities from "./utilities";
  * const transformation = new fivetran.Transformation("transformation", {
  *     type: "QUICKSTART",
  *     paused: true,
- *     schedule: [{
+ *     schedule: {
  *         scheduleType: "TIME_OF_DAY",
  *         timeOfDay: "11:00",
- *     }],
- *     transformationConfig: [{
+ *     },
+ *     transformationConfig: {
  *         packageName: "package_name",
  *         connectionIds: [
  *             "connection_id1",
@@ -66,7 +66,7 @@ import * as utilities from "./utilities";
  *             "excluded_model1",
  *             "excluded_model2",
  *         ],
- *     }],
+ *     },
  * });
  * ```
  *

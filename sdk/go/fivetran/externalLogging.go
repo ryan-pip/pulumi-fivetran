@@ -33,11 +33,9 @@ import (
 //				Service:       pulumi.String("azure_monitor_log"),
 //				Enabled:       pulumi.Bool(true),
 //				RunSetupTests: pulumi.Bool(true),
-//				Config: fivetran.ExternalLoggingConfigArgs{
-//					map[string]interface{}{
-//						"workspaceId": "workspace_id",
-//						"primaryKey":  "PASSWORD",
-//					},
+//				Config: &fivetran.ExternalLoggingConfigArgs{
+//					WorkspaceId: pulumi.String("workspace_id"),
+//					PrimaryKey:  pulumi.String("PASSWORD"),
 //				},
 //			})
 //			if err != nil {

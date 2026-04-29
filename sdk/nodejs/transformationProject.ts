@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  *     groupId: "group_id",
  *     type: "DBT_GIT",
  *     runTests: true,
- *     projectConfig: [{
+ *     projectConfig: {
  *         gitRemoteUrl: "git_remote_url",
  *         gitBranch: "git_branch",
  *         folderPath: "folder_path",
@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  *         threads: 1,
  *         targetName: "target_name",
  *         environmentVars: ["DBT_VARIABLE=variable_value"],
- *     }],
+ *     },
  * });
  * ```
  *
@@ -49,7 +49,7 @@ import * as utilities from "./utilities";
  *     groupId: "group_id",
  *     type: "DBT_GIT",
  *     runTests: true,
- *     projectConfig: [{
+ *     projectConfig: {
  *         gitRemoteUrl: "git_remote_url",
  *         gitBranch: "git_branch",
  *         folderPath: "folder_path",
@@ -58,7 +58,7 @@ import * as utilities from "./utilities";
  *         threads: 1,
  *         targetName: "target_name",
  *         environmentVars: ["DBT_VARIABLE=variable_value"],
- *     }],
+ *     },
  * });
  * ```
  *
@@ -69,7 +69,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as github from "@pulumi/github";
  *
- * const exampleRepositoryDeployKey = new github.index.RepositoryDeployKey("example_repository_deploy_key", {
+ * const exampleRepositoryDeployKey = new github.RepositoryDeployKey("example_repository_deploy_key", {
  *     title: "Repository test key",
  *     repository: "repo-owner/repo-name",
  *     key: testProject.projectConfig.publicKey,

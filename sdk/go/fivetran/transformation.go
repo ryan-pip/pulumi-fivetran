@@ -34,25 +34,21 @@ import (
 //			_, err := fivetran.NewTransformation(ctx, "transformation", &fivetran.TransformationArgs{
 //				Type:   pulumi.String("DBT_CORE"),
 //				Paused: pulumi.Bool(true),
-//				Schedule: fivetran.TransformationScheduleArgs{
-//					map[string]interface{}{
-//						"scheduleType": "TIME_OF_DAY",
-//						"timeOfDay":    "11:00",
-//					},
+//				Schedule: &fivetran.TransformationScheduleArgs{
+//					ScheduleType: pulumi.String("TIME_OF_DAY"),
+//					TimeOfDay:    pulumi.String("11:00"),
 //				},
-//				TransformationConfig: fivetran.TransformationTransformationConfigArgs{
-//					map[string]interface{}{
-//						"projectId": "project_id",
-//						"name":      "name",
-//						"steps": []map[string]interface{}{
-//							map[string]interface{}{
-//								"name":    "name1",
-//								"command": "command1",
-//							},
-//							map[string]interface{}{
-//								"name":    "name2",
-//								"command": "command2",
-//							},
+//				TransformationConfig: &fivetran.TransformationTransformationConfigArgs{
+//					ProjectId: pulumi.String("project_id"),
+//					Name:      pulumi.String("name"),
+//					Steps: fivetran.TransformationTransformationConfigStepArray{
+//						&fivetran.TransformationTransformationConfigStepArgs{
+//							Name:    pulumi.String("name1"),
+//							Command: pulumi.String("command1"),
+//						},
+//						&fivetran.TransformationTransformationConfigStepArgs{
+//							Name:    pulumi.String("name2"),
+//							Command: pulumi.String("command2"),
 //						},
 //					},
 //				},
@@ -83,23 +79,19 @@ import (
 //			_, err := fivetran.NewTransformation(ctx, "transformation", &fivetran.TransformationArgs{
 //				Type:   pulumi.String("QUICKSTART"),
 //				Paused: pulumi.Bool(true),
-//				Schedule: fivetran.TransformationScheduleArgs{
-//					map[string]interface{}{
-//						"scheduleType": "TIME_OF_DAY",
-//						"timeOfDay":    "11:00",
-//					},
+//				Schedule: &fivetran.TransformationScheduleArgs{
+//					ScheduleType: pulumi.String("TIME_OF_DAY"),
+//					TimeOfDay:    pulumi.String("11:00"),
 //				},
-//				TransformationConfig: fivetran.TransformationTransformationConfigArgs{
-//					map[string]interface{}{
-//						"packageName": "package_name",
-//						"connectionIds": []string{
-//							"connection_id1",
-//							"connection_id2",
-//						},
-//						"excludedModels": []string{
-//							"excluded_model1",
-//							"excluded_model2",
-//						},
+//				TransformationConfig: &fivetran.TransformationTransformationConfigArgs{
+//					PackageName: pulumi.String("package_name"),
+//					ConnectionIds: pulumi.StringArray{
+//						pulumi.String("connection_id1"),
+//						pulumi.String("connection_id2"),
+//					},
+//					ExcludedModels: pulumi.StringArray{
+//						pulumi.String("excluded_model1"),
+//						pulumi.String("excluded_model2"),
 //					},
 //				},
 //			})

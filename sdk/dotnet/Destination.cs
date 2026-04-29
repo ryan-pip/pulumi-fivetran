@@ -36,17 +36,14 @@ namespace Pulumi.Fivetran
     ///         TrustFingerprints = true,
     ///         DaylightSavingTimeEnabled = true,
     ///         RunSetupTests = true,
-    ///         Config = new[]
+    ///         Config = new Fivetran.Inputs.DestinationConfigArgs
     ///         {
-    ///             
-    ///             {
-    ///                 { "host", "destination.fqdn" },
-    ///                 { "port", 5432 },
-    ///                 { "user", "postgres" },
-    ///                 { "password", "myPass" },
-    ///                 { "database", "fivetran" },
-    ///                 { "connectionType", "Directly" },
-    ///             },
+    ///             Host = "destination.fqdn",
+    ///             Port = 5432,
+    ///             User = "postgres",
+    ///             Password = "myPass",
+    ///             Database = "fivetran",
+    ///             ConnectionType = "Directly",
     ///         },
     ///     });
     /// 

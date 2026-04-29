@@ -31,24 +31,20 @@ import (
 //			_, err := fivetran.NewConnector(ctx, "amplitude", &fivetran.ConnectorArgs{
 //				GroupId: pulumi.Any(group.Id),
 //				Service: pulumi.String("amplitude"),
-//				DestinationSchema: fivetran.ConnectorDestinationSchemaArgs{
-//					map[string]interface{}{
-//						"name": "amplitude_connector",
-//					},
+//				DestinationSchema: &fivetran.ConnectorDestinationSchemaArgs{
+//					Name: pulumi.String("amplitude_connector"),
 //				},
-//				Config: fivetran.ConnectorConfigArgs{
-//					map[string]interface{}{
-//						"projectCredentials": []map[string]interface{}{
-//							map[string]interface{}{
-//								"project":   "project1",
-//								"apiKey":    "my_api_key",
-//								"secretKey": "my_secret_key",
-//							},
-//							map[string]interface{}{
-//								"project":   "project2",
-//								"apiKey":    "my_api_key",
-//								"secretKey": "my_secret_key",
-//							},
+//				Config: &fivetran.ConnectorConfigArgs{
+//					ProjectCredentials: fivetran.ConnectorConfigProjectCredentialArray{
+//						&fivetran.ConnectorConfigProjectCredentialArgs{
+//							Project:   pulumi.String("project1"),
+//							ApiKey:    pulumi.String("my_api_key"),
+//							SecretKey: pulumi.String("my_secret_key"),
+//						},
+//						&fivetran.ConnectorConfigProjectCredentialArgs{
+//							Project:   pulumi.String("project2"),
+//							ApiKey:    pulumi.String("my_api_key"),
+//							SecretKey: pulumi.String("my_secret_key"),
 //						},
 //					},
 //				},
@@ -84,19 +80,15 @@ import (
 //				GroupId:       pulumi.String("group_id"),
 //				Service:       pulumi.String("github"),
 //				RunSetupTests: pulumi.Bool(true),
-//				DestinationSchema: fivetran.ConnectorDestinationSchemaArgs{
-//					map[string]interface{}{
-//						"name": "github_connector",
-//					},
+//				DestinationSchema: &fivetran.ConnectorDestinationSchemaArgs{
+//					Name: pulumi.String("github_connector"),
 //				},
-//				Config: fivetran.ConnectorConfigArgs{
-//					map[string]interface{}{
-//						"syncMode":    "AllRepositories",
-//						"useWebhooks": "false",
-//						"authMode":    "PersonalAccessToken",
-//						"username":    "git-hub-user-name",
-//						"pat":         "ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-//					},
+//				Config: &fivetran.ConnectorConfigArgs{
+//					SyncMode:    pulumi.String("AllRepositories"),
+//					UseWebhooks: pulumi.Bool(false),
+//					AuthMode:    pulumi.String("PersonalAccessToken"),
+//					Username:    pulumi.String("git-hub-user-name"),
+//					Pat:         pulumi.String("ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //				},
 //			})
 //			if err != nil {

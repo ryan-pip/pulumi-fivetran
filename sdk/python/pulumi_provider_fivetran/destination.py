@@ -490,14 +490,14 @@ class Destination(pulumi.CustomResource):
             trust_fingerprints=True,
             daylight_saving_time_enabled=True,
             run_setup_tests=True,
-            config=[{
+            config={
                 "host": "destination.fqdn",
                 "port": 5432,
                 "user": "postgres",
                 "password": "myPass",
                 "database": "fivetran",
-                "connectionType": "Directly",
-            }])
+                "connection_type": "Directly",
+            })
         ```
 
         ## Setup tests
@@ -579,14 +579,14 @@ class Destination(pulumi.CustomResource):
             trust_fingerprints=True,
             daylight_saving_time_enabled=True,
             run_setup_tests=True,
-            config=[{
+            config={
                 "host": "destination.fqdn",
                 "port": 5432,
                 "user": "postgres",
                 "password": "myPass",
                 "database": "fivetran",
-                "connectionType": "Directly",
-            }])
+                "connection_type": "Directly",
+            })
         ```
 
         ## Setup tests
