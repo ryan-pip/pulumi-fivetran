@@ -20,10 +20,10 @@ import * as utilities from "./utilities";
  *     service: "azure_monitor_log",
  *     enabled: true,
  *     runSetupTests: true,
- *     config: [{
+ *     config: {
  *         workspaceId: "workspace_id",
  *         primaryKey: "PASSWORD",
- *     }],
+ *     },
  * });
  * ```
  *

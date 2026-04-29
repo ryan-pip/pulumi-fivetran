@@ -34,18 +34,16 @@ import (
 //				GroupId:  pulumi.String("group_id"),
 //				Type:     pulumi.String("DBT_GIT"),
 //				RunTests: pulumi.Bool(true),
-//				ProjectConfig: fivetran.TransformationProjectProjectConfigArgs{
-//					map[string]interface{}{
-//						"gitRemoteUrl":  "git_remote_url",
-//						"gitBranch":     "git_branch",
-//						"folderPath":    "folder_path",
-//						"dbtVersion":    "dbt_version",
-//						"defaultSchema": "default_schema",
-//						"threads":       1,
-//						"targetName":    "target_name",
-//						"environmentVars": []string{
-//							"DBT_VARIABLE=variable_value",
-//						},
+//				ProjectConfig: &fivetran.TransformationProjectProjectConfigArgs{
+//					GitRemoteUrl:  pulumi.String("git_remote_url"),
+//					GitBranch:     pulumi.String("git_branch"),
+//					FolderPath:    pulumi.String("folder_path"),
+//					DbtVersion:    pulumi.String("dbt_version"),
+//					DefaultSchema: pulumi.String("default_schema"),
+//					Threads:       pulumi.Int(1),
+//					TargetName:    pulumi.String("target_name"),
+//					EnvironmentVars: pulumi.StringArray{
+//						pulumi.String("DBT_VARIABLE=variable_value"),
 //					},
 //				},
 //			})
@@ -86,18 +84,16 @@ import (
 //				GroupId:  pulumi.String("group_id"),
 //				Type:     pulumi.String("DBT_GIT"),
 //				RunTests: pulumi.Bool(true),
-//				ProjectConfig: fivetran.TransformationProjectProjectConfigArgs{
-//					map[string]interface{}{
-//						"gitRemoteUrl":  "git_remote_url",
-//						"gitBranch":     "git_branch",
-//						"folderPath":    "folder_path",
-//						"dbtVersion":    "dbt_version",
-//						"defaultSchema": "default_schema",
-//						"threads":       1,
-//						"targetName":    "target_name",
-//						"environmentVars": []string{
-//							"DBT_VARIABLE=variable_value",
-//						},
+//				ProjectConfig: &fivetran.TransformationProjectProjectConfigArgs{
+//					GitRemoteUrl:  pulumi.String("git_remote_url"),
+//					GitBranch:     pulumi.String("git_branch"),
+//					FolderPath:    pulumi.String("folder_path"),
+//					DbtVersion:    pulumi.String("dbt_version"),
+//					DefaultSchema: pulumi.String("default_schema"),
+//					Threads:       pulumi.Int(1),
+//					TargetName:    pulumi.String("target_name"),
+//					EnvironmentVars: pulumi.StringArray{
+//						pulumi.String("DBT_VARIABLE=variable_value"),
 //					},
 //				},
 //			})
@@ -118,7 +114,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-github/sdk/go/github"
+//	"github.com/pulumi/pulumi-github/sdk/v6/go/github"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -126,10 +122,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := github.NewRepositoryDeployKey(ctx, "example_repository_deploy_key", &github.RepositoryDeployKeyArgs{
-//				Title:      "Repository test key",
-//				Repository: "repo-owner/repo-name",
-//				Key:        testProject.ProjectConfig.PublicKey,
-//				ReadOnly:   true,
+//				Title:      pulumi.String("Repository test key"),
+//				Repository: pulumi.String("repo-owner/repo-name"),
+//				Key:        pulumi.Any(testProject.ProjectConfig.PublicKey),
+//				ReadOnly:   pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

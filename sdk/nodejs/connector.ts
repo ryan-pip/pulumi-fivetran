@@ -18,10 +18,10 @@ import * as utilities from "./utilities";
  * const amplitude = new fivetran.Connector("amplitude", {
  *     groupId: group.id,
  *     service: "amplitude",
- *     destinationSchema: [{
+ *     destinationSchema: {
  *         name: "amplitude_connector",
- *     }],
- *     config: [{
+ *     },
+ *     config: {
  *         projectCredentials: [
  *             {
  *                 project: "project1",
@@ -34,7 +34,7 @@ import * as utilities from "./utilities";
  *                 secretKey: "my_secret_key",
  *             },
  *         ],
- *     }],
+ *     },
  * });
  * ```
  *
@@ -52,16 +52,16 @@ import * as utilities from "./utilities";
  *     groupId: "group_id",
  *     service: "github",
  *     runSetupTests: true,
- *     destinationSchema: [{
+ *     destinationSchema: {
  *         name: "github_connector",
- *     }],
- *     config: [{
+ *     },
+ *     config: {
  *         syncMode: "AllRepositories",
- *         useWebhooks: "false",
+ *         useWebhooks: false,
  *         authMode: "PersonalAccessToken",
  *         username: "git-hub-user-name",
  *         pat: "ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
- *     }],
+ *     },
  * });
  * ```
  *

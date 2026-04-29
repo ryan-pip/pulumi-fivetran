@@ -28,14 +28,14 @@ import * as utilities from "./utilities";
  *     trustFingerprints: true,
  *     daylightSavingTimeEnabled: true,
  *     runSetupTests: true,
- *     config: [{
+ *     config: {
  *         host: "destination.fqdn",
  *         port: 5432,
  *         user: "postgres",
  *         password: "myPass",
  *         database: "fivetran",
  *         connectionType: "Directly",
- *     }],
+ *     },
  * });
  * ```
  *

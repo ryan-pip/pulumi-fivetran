@@ -29,21 +29,18 @@ namespace Pulumi.Fivetran
     ///         GroupId = "group_id",
     ///         Type = "DBT_GIT",
     ///         RunTests = true,
-    ///         ProjectConfig = new[]
+    ///         ProjectConfig = new Fivetran.Inputs.TransformationProjectProjectConfigArgs
     ///         {
-    ///             
+    ///             GitRemoteUrl = "git_remote_url",
+    ///             GitBranch = "git_branch",
+    ///             FolderPath = "folder_path",
+    ///             DbtVersion = "dbt_version",
+    ///             DefaultSchema = "default_schema",
+    ///             Threads = 1,
+    ///             TargetName = "target_name",
+    ///             EnvironmentVars = new[]
     ///             {
-    ///                 { "gitRemoteUrl", "git_remote_url" },
-    ///                 { "gitBranch", "git_branch" },
-    ///                 { "folderPath", "folder_path" },
-    ///                 { "dbtVersion", "dbt_version" },
-    ///                 { "defaultSchema", "default_schema" },
-    ///                 { "threads", 1 },
-    ///                 { "targetName", "target_name" },
-    ///                 { "environmentVars", new[]
-    ///                 {
-    ///                     "DBT_VARIABLE=variable_value",
-    ///                 } },
+    ///                 "DBT_VARIABLE=variable_value",
     ///             },
     ///         },
     ///     });
@@ -75,21 +72,18 @@ namespace Pulumi.Fivetran
     ///         GroupId = "group_id",
     ///         Type = "DBT_GIT",
     ///         RunTests = true,
-    ///         ProjectConfig = new[]
+    ///         ProjectConfig = new Fivetran.Inputs.TransformationProjectProjectConfigArgs
     ///         {
-    ///             
+    ///             GitRemoteUrl = "git_remote_url",
+    ///             GitBranch = "git_branch",
+    ///             FolderPath = "folder_path",
+    ///             DbtVersion = "dbt_version",
+    ///             DefaultSchema = "default_schema",
+    ///             Threads = 1,
+    ///             TargetName = "target_name",
+    ///             EnvironmentVars = new[]
     ///             {
-    ///                 { "gitRemoteUrl", "git_remote_url" },
-    ///                 { "gitBranch", "git_branch" },
-    ///                 { "folderPath", "folder_path" },
-    ///                 { "dbtVersion", "dbt_version" },
-    ///                 { "defaultSchema", "default_schema" },
-    ///                 { "threads", 1 },
-    ///                 { "targetName", "target_name" },
-    ///                 { "environmentVars", new[]
-    ///                 {
-    ///                     "DBT_VARIABLE=variable_value",
-    ///                 } },
+    ///                 "DBT_VARIABLE=variable_value",
     ///             },
     ///         },
     ///     });

@@ -244,16 +244,16 @@ class TransformationProject(pulumi.CustomResource):
             group_id="group_id",
             type="DBT_GIT",
             run_tests=True,
-            project_config=[{
-                "gitRemoteUrl": "git_remote_url",
-                "gitBranch": "git_branch",
-                "folderPath": "folder_path",
-                "dbtVersion": "dbt_version",
-                "defaultSchema": "default_schema",
+            project_config={
+                "git_remote_url": "git_remote_url",
+                "git_branch": "git_branch",
+                "folder_path": "folder_path",
+                "dbt_version": "dbt_version",
+                "default_schema": "default_schema",
                 "threads": 1,
-                "targetName": "target_name",
-                "environmentVars": ["DBT_VARIABLE=variable_value"],
-            }])
+                "target_name": "target_name",
+                "environment_vars": ["DBT_VARIABLE=variable_value"],
+            })
         ```
 
         ## How to set up a Transformation Project with private Git Repo.
@@ -271,16 +271,16 @@ class TransformationProject(pulumi.CustomResource):
             group_id="group_id",
             type="DBT_GIT",
             run_tests=True,
-            project_config=[{
-                "gitRemoteUrl": "git_remote_url",
-                "gitBranch": "git_branch",
-                "folderPath": "folder_path",
-                "dbtVersion": "dbt_version",
-                "defaultSchema": "default_schema",
+            project_config={
+                "git_remote_url": "git_remote_url",
+                "git_branch": "git_branch",
+                "folder_path": "folder_path",
+                "dbt_version": "dbt_version",
+                "default_schema": "default_schema",
                 "threads": 1,
-                "targetName": "target_name",
-                "environmentVars": ["DBT_VARIABLE=variable_value"],
-            }])
+                "target_name": "target_name",
+                "environment_vars": ["DBT_VARIABLE=variable_value"],
+            })
         ```
 
         Then you need to set up the Transformation Project public key (field `public_key` in created resource) as a deploy key into your repo using:
@@ -291,9 +291,9 @@ class TransformationProject(pulumi.CustomResource):
         import pulumi_github as github
 
         example_repository_deploy_key = github.RepositoryDeployKey("example_repository_deploy_key",
-            title=Repository test key,
-            repository=repo-owner/repo-name,
-            key=test_project.project_config.public_key,
+            title="Repository test key",
+            repository="repo-owner/repo-name",
+            key=test_project["projectConfig"]["publicKey"],
             read_only=True)
         ```
 
@@ -368,16 +368,16 @@ class TransformationProject(pulumi.CustomResource):
             group_id="group_id",
             type="DBT_GIT",
             run_tests=True,
-            project_config=[{
-                "gitRemoteUrl": "git_remote_url",
-                "gitBranch": "git_branch",
-                "folderPath": "folder_path",
-                "dbtVersion": "dbt_version",
-                "defaultSchema": "default_schema",
+            project_config={
+                "git_remote_url": "git_remote_url",
+                "git_branch": "git_branch",
+                "folder_path": "folder_path",
+                "dbt_version": "dbt_version",
+                "default_schema": "default_schema",
                 "threads": 1,
-                "targetName": "target_name",
-                "environmentVars": ["DBT_VARIABLE=variable_value"],
-            }])
+                "target_name": "target_name",
+                "environment_vars": ["DBT_VARIABLE=variable_value"],
+            })
         ```
 
         ## How to set up a Transformation Project with private Git Repo.
@@ -395,16 +395,16 @@ class TransformationProject(pulumi.CustomResource):
             group_id="group_id",
             type="DBT_GIT",
             run_tests=True,
-            project_config=[{
-                "gitRemoteUrl": "git_remote_url",
-                "gitBranch": "git_branch",
-                "folderPath": "folder_path",
-                "dbtVersion": "dbt_version",
-                "defaultSchema": "default_schema",
+            project_config={
+                "git_remote_url": "git_remote_url",
+                "git_branch": "git_branch",
+                "folder_path": "folder_path",
+                "dbt_version": "dbt_version",
+                "default_schema": "default_schema",
                 "threads": 1,
-                "targetName": "target_name",
-                "environmentVars": ["DBT_VARIABLE=variable_value"],
-            }])
+                "target_name": "target_name",
+                "environment_vars": ["DBT_VARIABLE=variable_value"],
+            })
         ```
 
         Then you need to set up the Transformation Project public key (field `public_key` in created resource) as a deploy key into your repo using:
@@ -415,9 +415,9 @@ class TransformationProject(pulumi.CustomResource):
         import pulumi_github as github
 
         example_repository_deploy_key = github.RepositoryDeployKey("example_repository_deploy_key",
-            title=Repository test key,
-            repository=repo-owner/repo-name,
-            key=test_project.project_config.public_key,
+            title="Repository test key",
+            repository="repo-owner/repo-name",
+            key=test_project["projectConfig"]["publicKey"],
             read_only=True)
         ```
 

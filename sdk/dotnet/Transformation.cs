@@ -30,33 +30,27 @@ namespace Pulumi.Fivetran
     ///     {
     ///         Type = "DBT_CORE",
     ///         Paused = true,
-    ///         Schedule = new[]
+    ///         Schedule = new Fivetran.Inputs.TransformationScheduleArgs
     ///         {
-    ///             
-    ///             {
-    ///                 { "scheduleType", "TIME_OF_DAY" },
-    ///                 { "timeOfDay", "11:00" },
-    ///             },
+    ///             ScheduleType = "TIME_OF_DAY",
+    ///             TimeOfDay = "11:00",
     ///         },
-    ///         TransformationConfig = new[]
+    ///         TransformationConfig = new Fivetran.Inputs.TransformationTransformationConfigArgs
     ///         {
-    ///             
+    ///             ProjectId = "project_id",
+    ///             Name = "name",
+    ///             Steps = new[]
     ///             {
-    ///                 { "projectId", "project_id" },
-    ///                 { "name", "name" },
-    ///                 { "steps", new[]
+    ///                 new Fivetran.Inputs.TransformationTransformationConfigStepArgs
     ///                 {
-    ///                     
-    ///                     {
-    ///                         { "name", "name1" },
-    ///                         { "command", "command1" },
-    ///                     },
-    ///                     
-    ///                     {
-    ///                         { "name", "name2" },
-    ///                         { "command", "command2" },
-    ///                     },
-    ///                 } },
+    ///                     Name = "name1",
+    ///                     Command = "command1",
+    ///                 },
+    ///                 new Fivetran.Inputs.TransformationTransformationConfigStepArgs
+    ///                 {
+    ///                     Name = "name2",
+    ///                     Command = "command2",
+    ///                 },
     ///             },
     ///         },
     ///     });
@@ -78,29 +72,23 @@ namespace Pulumi.Fivetran
     ///     {
     ///         Type = "QUICKSTART",
     ///         Paused = true,
-    ///         Schedule = new[]
+    ///         Schedule = new Fivetran.Inputs.TransformationScheduleArgs
     ///         {
-    ///             
-    ///             {
-    ///                 { "scheduleType", "TIME_OF_DAY" },
-    ///                 { "timeOfDay", "11:00" },
-    ///             },
+    ///             ScheduleType = "TIME_OF_DAY",
+    ///             TimeOfDay = "11:00",
     ///         },
-    ///         TransformationConfig = new[]
+    ///         TransformationConfig = new Fivetran.Inputs.TransformationTransformationConfigArgs
     ///         {
-    ///             
+    ///             PackageName = "package_name",
+    ///             ConnectionIds = new[]
     ///             {
-    ///                 { "packageName", "package_name" },
-    ///                 { "connectionIds", new[]
-    ///                 {
-    ///                     "connection_id1",
-    ///                     "connection_id2",
-    ///                 } },
-    ///                 { "excludedModels", new[]
-    ///                 {
-    ///                     "excluded_model1",
-    ///                     "excluded_model2",
-    ///                 } },
+    ///                 "connection_id1",
+    ///                 "connection_id2",
+    ///             },
+    ///             ExcludedModels = new[]
+    ///             {
+    ///                 "excluded_model1",
+    ///                 "excluded_model2",
     ///             },
     ///         },
     ///     });
