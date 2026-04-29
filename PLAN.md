@@ -1,6 +1,6 @@
 # Plan: Automate Provider Updates + Quality Uplift for pulumi-fivetran
 
-**Last updated**: 2026-04-16  
+**Last updated**: 2026-04-16
 **Working branch**: `claude/automate-provider-updates-2DiaM`
 
 ---
@@ -83,7 +83,7 @@ done
 
 ## Phase 2 — Bridge Upgrade v3.111.0 → v3.126.0
 
-**Blocked until Phase 0 PR is merged to main.**  
+**Blocked until Phase 0 PR is merged to main.**
 Branch: `upgrade-bridge-to-v3.126.0` from `main`.
 
 ### Pre-conditions confirmed during Phase 0
@@ -152,7 +152,7 @@ runs `make generate`, commits, pushes.
 
 ## Phase 3 — Provider Upgrade v1.9.4 → v1.9.29
 
-**Blocked until Phase 2 is merged to main.**  
+**Blocked until Phase 2 is merged to main.**
 Branch: `upgrade-provider-to-v1.9.29` from `main`.
 
 ```bash
