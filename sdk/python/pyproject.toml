@@ -10,7 +10,7 @@
     text = "Apache-2.0"
   [project.urls]
     Homepage = "https://www.pulumi.com"
-    Repository = "https://github.com/ryan-packer/pulumi-fivetran"
+    Repository = "https://github.com/ryan-pip/pulumi-fivetran"
 
 [build-system]
   requires = ["setuptools>=61.0"]
