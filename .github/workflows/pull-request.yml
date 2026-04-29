@@ -7,137 +7,45 @@ on:
       - .devcontainer
       - examples
 
+permissions:
+  contents: read
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
-  build_sdk:
-    name: build_sdk
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: true
-      matrix:
-        dotnetversion:
-          - 8.0.x
-        goversion:
-          - 1.25.x
-        nodeversion:
-          - 20.x
-        pythonversion:
-          - "3.11"
-        javaversion:
-          - "11"
-        language:
-          - nodejs
-          - python
-          # - dotnet
-          - go
-          # - java
-
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
-
-      - name: Unshallow clone for tags
-        run: git fetch --prune --unshallow --tags
-      - name: Install Go
-        uses: actions/setup-go@v5
-        with:
-          go-version: ${{matrix.goversion}}
-
-      - name: Install pulumictl
-        uses: jaxxstorm/action-install-gh-release@v1.11.0
-        with:
-          repo: pulumi/pulumictl
-
-      - name: Install pulumi
-        uses: pulumi/actions@v5
-
-      - if: ${{ matrix.language == 'nodejs'}}
-        name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{matrix.nodeversion}}
-          registry-url: https://registry.npmjs.org
-
-      - if: ${{ matrix.language == 'dotnet'}}
-        name: Setup DotNet
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: ${{matrix.dotnetversion}}
-
-      - if: ${{ matrix.language == 'python'}}
-        name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{matrix.pythonversion}}
-
-      - if: ${{ matrix.language == 'java'}}
-        name: Setup Java
-        uses: actions/setup-java@v4
-        with:
-          cache: gradle
-          distribution: temurin
-          java-version: ${{matrix.javaversion}}
-
-      - name: Build SDK
-        run: make build_${{ matrix.language }}
-
-      - name: Check worktree clean
-        run: |
-          git update-index -q --refresh
-          if ! git diff-files --quiet; then
-              >&2 echo "error: working tree is not clean, aborting!"
-              git status
-              git diff
-              exit 1
-          fi
+  # ── parallel, no dependencies ─────────────────────────────────────────────
 
   lint:
     name: lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
-      - name: Install Go
-        uses: actions/setup-go@v5
+      - name: Setup Go
+        uses: actions/setup-go@4a3601121dd01d1626a1e23e37211e3254c1c06c # v6.4.0
         with:
-          go-version: 1.25.x
+          go-version-file: provider/go.mod
+          cache-dependency-path: |
+            provider/go.sum
+            provider/shim/go.sum
+            sdk/go.sum
+            examples/go.sum
 
-      - name: Install golangci-lint v2
-        run: |
-          curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/HEAD/install.sh | \
-            sh -s -- -b $(go env GOPATH)/bin v2.5.0
-          golangci-lint --version
+      - name: Setup mise (CI subset)
+        uses: ./.github/actions/setup-mise
 
       - name: Run golangci-lint
-        # Lint library packages only; cmd/ depends on schema-embed.json which is generated at build time.
+        # Lint library packages only; cmd/ depends on schema-embed.json which is generated.
         run: cd provider && golangci-lint run --path-prefix provider -c ../.golangci.yml . ./pkg/...
-
-  unit_test:
-    name: unit-test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
-
-      - name: Install Go
-        uses: actions/setup-go@v5
-        with:
-          go-version: 1.25.x
-
-      - name: go vet
-        # Exclude cmd/ packages: they embed schema-embed.json which is generated at build time.
-        run: cd provider && go vet . ./pkg/...
-
-      - name: go test
-        # Exclude cmd/ packages for the same reason (schema-embed.json not present without make generate).
-        run: cd provider && go test -v -short -parallel 10 . ./pkg/...
 
   schema_validation:
     name: schema-validation
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Validate schema is valid JSON
         run: |
@@ -149,6 +57,199 @@ jobs:
           COUNT=$(jq '.resources | length' provider/cmd/pulumi-resource-fivetran/schema.json)
           echo "Schema contains $COUNT resources"
           if [ "$COUNT" -eq 0 ]; then
-            echo "ERROR: Schema has zero resources - something went wrong with generation"
+            echo "ERROR: Schema has zero resources"
             exit 1
           fi
+
+  go_test:
+    name: go-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Unshallow clone for tags
+        run: git fetch --prune --unshallow --tags
+
+      - name: Setup Go
+        uses: actions/setup-go@4a3601121dd01d1626a1e23e37211e3254c1c06c # v6.4.0
+        with:
+          go-version-file: provider/go.mod
+          cache-dependency-path: |
+            provider/go.sum
+            provider/shim/go.sum
+            sdk/go.sum
+            examples/go.sum
+
+      - name: Setup mise (CI subset)
+        uses: ./.github/actions/setup-mise
+
+      - name: go vet
+        # Exclude cmd/: depends on schema-embed.json which is generated at build time.
+        run: cd provider && go vet . ./pkg/...
+
+      - name: go test
+        run: cd provider && go test -v -short -parallel 10 . ./pkg/...
+
+  # ── prerequisites: build provider once, share artifact ────────────────────
+
+  prerequisites:
+    name: prerequisites
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Unshallow clone for tags
+        run: git fetch --prune --unshallow --tags
+
+      - name: Setup Go
+        uses: actions/setup-go@4a3601121dd01d1626a1e23e37211e3254c1c06c # v6.4.0
+        with:
+          go-version-file: provider/go.mod
+          cache-dependency-path: |
+            provider/go.sum
+            provider/shim/go.sum
+            sdk/go.sum
+            examples/go.sum
+
+      - name: Setup mise (CI subset)
+        uses: ./.github/actions/setup-mise
+        with:
+          cache_save: "true" # This job populates the mise cache for the rest of the workflow.
+
+      - name: Set provider version
+        run: echo "PROVIDER_VERSION=$(pulumictl get version -o)" >> "$GITHUB_ENV"
+
+      - name: Build provider
+        run: make prepare_local_workspace
+
+      - name: Upload prerequisites
+        uses: ./.github/actions/upload-prerequisites
+
+  # ── build SDKs (matrix, needs prerequisites) ──────────────────────────────
+
+  build_sdk:
+    name: build_sdk
+    runs-on: ubuntu-latest
+    needs: prerequisites
+    strategy:
+      fail-fast: true
+      matrix:
+        language:
+          - nodejs
+          - python
+          - go
+          - dotnet
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Unshallow clone for tags
+        run: git fetch --prune --unshallow --tags
+
+      - name: Setup Go
+        if: matrix.language == 'go'
+        uses: actions/setup-go@4a3601121dd01d1626a1e23e37211e3254c1c06c # v6.4.0
+        with:
+          go-version-file: provider/go.mod
+          cache-dependency-path: |
+            provider/go.sum
+            provider/shim/go.sum
+            sdk/go.sum
+            examples/go.sum
+
+      - name: Setup mise (CI subset)
+        uses: ./.github/actions/setup-mise
+
+      - name: Set provider version
+        run: echo "PROVIDER_VERSION=$(pulumictl get version -o)" >> "$GITHUB_ENV"
+
+      - name: Download prerequisites
+        uses: ./.github/actions/download-prerequisites
+
+      - name: Restore makefile progress
+        # Marks schema + provider as done so make build_$lang skips rebuilding them.
+        run: make --touch schema provider
+
+      - name: Build SDK
+        run: make build_${{ matrix.language }}
+
+      - name: Check worktree clean
+        # Inline replacement for unmaintained pulumi/git-status-check-action.
+        # Version-bearing files are regenerated per build; everything else must match.
+        run: |
+          set -euo pipefail
+          ALLOWED='^(sdk/.*/pulumi-plugin\.json|sdk/nodejs/package\.json|sdk/python/pyproject\.toml|sdk/go/.*/internal/pulumiUtilities\.go)$'
+          UNEXPECTED=$(git status --porcelain | awk '{print $2}' | grep -vE "$ALLOWED" || true)
+          if [ -n "$UNEXPECTED" ]; then
+            echo "::error::Unexpected worktree changes after SDK build:"
+            printf '%s\n' "$UNEXPECTED"
+            git --no-pager diff --stat
+            exit 1
+          fi
+
+      - name: Compress SDK
+        if: matrix.language == 'python'
+        run: tar -czf sdk/python.tar.gz -C sdk/python .
+
+      - name: Upload Python SDK
+        if: matrix.language == 'python'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: python-sdk
+          path: sdk/python.tar.gz
+          retention-days: 1
+          if-no-files-found: error
+
+  # ── Python tests (needs prerequisites + python SDK) ───────────────────────
+
+  python_tests:
+    name: python-tests
+    runs-on: ubuntu-latest
+    needs:
+      - prerequisites
+      - build_sdk
+    # The fivetran-live environment gate was intentionally dropped so PRs run
+    # end-to-end without a required-reviewer pause. The `pull_request` trigger
+    # means fork PRs run with fork-owned code and no secrets — make test_python
+    # skips itself when FIVETRAN_APIKEY is unset.
+    env:
+      FIVETRAN_APIKEY: ${{ secrets.FIVETRAN_APIKEY }}
+      FIVETRAN_APISECRET: ${{ secrets.FIVETRAN_APISECRET }}
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Unshallow clone for tags
+        run: git fetch --prune --unshallow --tags
+
+      - name: Setup mise (CI subset)
+        uses: ./.github/actions/setup-mise
+
+      - name: Set provider version
+        run: echo "PROVIDER_VERSION=$(pulumictl get version -o)" >> "$GITHUB_ENV"
+
+      - name: Download prerequisites
+        uses: ./.github/actions/download-prerequisites
+
+      - name: Download Python SDK
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: python-sdk
+          path: sdk
+
+      - name: Extract Python SDK
+        run: mkdir -p sdk/python && tar -xzf sdk/python.tar.gz -C sdk/python
+
+      - name: Restore makefile progress
+        # Touch schema → provider → build_python in order so each target's output
+        # file is newer than its prerequisite and make skips all rebuilds.
+        run: make --touch schema provider build_python
+
+      - name: Python SDK smoke tests
+        run: make test_python_smoke
+
+      - name: Live integration tests
+        run: make test_python

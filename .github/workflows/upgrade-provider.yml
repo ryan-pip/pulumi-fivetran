@@ -1,8 +1,6 @@
 name: Upgrade provider
 on:
-  issues:
-    types:
-      - opened
+  workflow_dispatch:
   schedule:
     - cron: '0 5 * * *'
 env:
@@ -16,7 +14,50 @@ jobs:
       pull-requests: write
       issues: write
     steps:
-      - name: Call upgrade provider action
-        uses: pulumi/pulumi-upgrade-provider-action@v1
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Fetch main
+        run: git fetch --depth=1 origin main:main
+        shell: bash
+
+      - name: Setup mise
+        uses: jdx/mise-action@1648a7812b9aeae629881980618f079932869151 # v4.0.1
+        env:
+          MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
         with:
-          kind: all
+          version: 2026.3.7
+          cache_save: false
+          cache_key: "mise-full-{{platform}}-{{file_hash}}"
+
+      - name: Install upgrade-provider
+        run: go install github.com/pulumi/upgrade-provider@main
+        shell: bash
+
+      - name: Set up git identity
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+        shell: bash
+
+      - name: Run upgrade-provider
+        run: upgrade-provider "$GITHUB_REPOSITORY" --kind=all --allow-missing-docs=true --repo-path=.
+        shell: bash
+
+      - name: Enable auto-merge on upgrade PR
+        # safety filter — both bot author + branch prefix required
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          BRANCH=$(git branch --show-current)
+          case "$BRANCH" in
+            upgrade-pulumi-terraform-bridge-*|upgrade-terraform-provider-*|upgrade-pulumi-version-*) ;;
+            *) echo "branch $BRANCH not an upgrade branch; skipping"; exit 0 ;;
+          esac
+          AUTHOR=$(gh pr view --json author --jq .author.login)
+          if [ "$AUTHOR" != "app/github-actions" ]; then
+            echo "PR author is $AUTHOR (not app/github-actions); skipping"
+            exit 0
+          fi
+          gh pr merge --auto --squash --delete-branch
+        shell: bash

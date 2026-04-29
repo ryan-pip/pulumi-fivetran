@@ -1,0 +1,36 @@
+name: Setup mise (CI subset)
+description: |
+  Install only the trimmed CI tool set defined in mise.ci.toml. Stages the
+  CI config in $RUNNER_TEMP so mise-action's `mise install` reads from there
+  instead of the full repo-root mise.toml. Tools land on PATH globally.
+
+inputs:
+  cache_save:
+    description: |
+      Whether this job should write the mise cache. Set to "true" on exactly
+      one job per workflow (typically `prerequisites`); "false" elsewhere so
+      parallel jobs only restore.
+    required: false
+    default: "false"
+
+runs:
+  using: composite
+  steps:
+    - name: Stage CI mise config
+      shell: bash
+      run: |
+        mkdir -p "$RUNNER_TEMP/mise-ci"
+        cp "$GITHUB_WORKSPACE/mise.ci.toml" "$RUNNER_TEMP/mise-ci/mise.toml"
+
+    - name: Setup mise
+      uses: jdx/mise-action@1648a7812b9aeae629881980618f079932869151 # v4.0.1
+      env:
+        MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
+      with:
+        version: 2026.3.7
+        working_directory: ${{ runner.temp }}/mise-ci
+        cache_save: ${{ inputs.cache_save }}
+        # Key on platform + mise.ci.toml hash only. Omitting {{version}}
+        # keeps the cache valid across the near-daily mise CLI releases — it
+        # would otherwise invalidate every time we bump the pinned version.
+        cache_key: "mise-{{platform}}-{{file_hash}}"

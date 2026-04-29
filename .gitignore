@@ -35,5 +35,11 @@ sdk/java/gradlew.bat
 
 sdk/python/venv
 
+# Python test artifacts (created by `make test_python_smoke`)
+**/__pycache__/
+*.py[cod]
+.venv/
+**/.venv/
+
 # Ignore local build tracking directory
 .make
