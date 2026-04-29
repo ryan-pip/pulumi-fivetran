@@ -41,7 +41,7 @@ DESCRIPTION
   We want to maintain changes to the upstream repository in a way that is easy
   to manage and track. Rather than creating a fork of the upstream repository,
   we maintain a set of patches (in the 'patches' directory) that we can apply
-  directly to the upstream code in the 'upstream' submodule. Our patches are 
+  directly to the upstream code in the 'upstream' submodule. Our patches are
   never pushed to the remote upstream repository.
 
 EXAMPLES
@@ -299,7 +299,7 @@ rebase() {
 export_patches() {
   # Remove all existing patches before creating the new ones in case they've been renamed or removed.
   rm -f patches/*.patch
-  
+
   # Extract patches from the commits in the 'pulumi/patch-checkout' branch into the 'patches' directory.
   # Use the 'pulumi/checkout-base' branch to determine the base commit of the patches.
   (cd upstream && git format-patch pulumi/checkout-base -o ../patches --zero-commit --no-signature --no-stat --no-numbered)

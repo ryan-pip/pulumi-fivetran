@@ -1,0 +1,60 @@
+amends "package://github.com/jdx/hk/releases/download/v1.36.0/hk@1.36.0#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v1.36.0/hk@1.36.0#/Builtins.pkl"
+
+// tfgen / language-codegen overwrite these files on every build with their
+// own formatting; if hk rewrites them they'll show as dirty in the next CI
+// worktree-clean check.
+local generatedFiles = List(
+    "provider/cmd/*/schema.json",
+    "provider/cmd/*/bridge-metadata.json",
+    "sdk/*",
+)
+
+local linters = new Mapping<String, Step> {
+    ["trailing-whitespace"] = (Builtins.trailing_whitespace) {
+        exclude = generatedFiles
+    }
+    ["end-of-file-fixer"] = (Builtins.newlines) {
+        exclude = generatedFiles
+    }
+    ["check-yaml"] = (Builtins.yamllint) {
+        check = "yamllint --strict -d \"{extends: relaxed, rules: {line-length: {max: 120}}}\" {{ files }}"
+        exclude = List("sdk/*")
+    }
+    ["check-toml"] = (Builtins.taplo) {
+    }
+    ["check-json"] = (Builtins.jq) {
+        exclude = List("sdk/*","provider/cmd/*",".devcontainer/*")
+    }
+    ["detect-private-key"] = (Builtins.detect_private_key) {
+        // Generated SDK code names fields like `private_key` for connector
+        // configs (e.g. SFTP, S3) — those aren't actual keys.
+        exclude = generatedFiles
+    }
+    ["check-merge-conflict"] = (Builtins.check_merge_conflict) {
+    }
+
+    ["actionlint"] = (Builtins.actionlint) {
+    }
+    //["go-fmt"] = (Builtins.go_fmt) {
+    //}
+
+}
+
+hooks {
+    ["pre-commit"] {
+        fix = true
+        stash = "git"
+        steps = linters
+    }
+    ["fix"] {
+        fix = true
+        steps = linters
+    }
+    ["check"] {
+        steps = linters
+    }
+}
+
+// Enable fail-fast for quicker feedback
+fail_fast = true

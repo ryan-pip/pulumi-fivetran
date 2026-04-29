@@ -1,5 +1,6 @@
 .idea
 .code
+.vscode
 **/vendor/
 .pulumi
 **/bin/
@@ -7,6 +8,8 @@
 Pulumi.*.yaml
 **/node_modules/
 .DS_Store
+*.local.toml
+*.local.json
 
 **/command-output/
 
@@ -34,6 +37,3 @@ sdk/python/venv
 
 # Ignore local build tracking directory
 .make
-
-# AI
-.claude

@@ -2,7 +2,7 @@ name: Upgrade provider
 on:
   issues:
     types:
-    - opened
+      - opened
   schedule:
     - cron: '0 5 * * *'
 env:
