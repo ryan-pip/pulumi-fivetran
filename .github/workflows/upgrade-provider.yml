@@ -3,20 +3,26 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '0 5 * * *'
-env:
-  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   upgrade_provider:
     name: upgrade-provider
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      pull-requests: write
-      issues: write
+      contents: read
     steps:
+      - name: Mint pulumi-release-bot token
+        id: app-token
+        uses: actions/create-github-app-token@1b10c78c7865c340bc4f6099eb2f838309f1e8c3 # v3.1.1
+        with:
+          app-id: ${{ vars.RELEASE_BOT_APP_ID }}
+          private-key: ${{ secrets.RELEASE_BOT_PRIVATE_KEY }}
+
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          token: ${{ steps.app-token.outputs.token }}
 
       - name: Fetch main
+        if: github.ref != 'refs/heads/main'
         run: git fetch --depth=1 origin main:main
         shell: bash
 
@@ -35,18 +41,20 @@ jobs:
 
       - name: Set up git identity
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git config --global user.name 'pulumi-release-bot[bot]'
+          git config --global user.email 'pulumi-release-bot[bot]@users.noreply.github.com'
         shell: bash
 
       - name: Run upgrade-provider
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: upgrade-provider "$GITHUB_REPOSITORY" --kind=all --allow-missing-docs=true --repo-path=.
         shell: bash
 
       - name: Enable auto-merge on upgrade PR
         # safety filter — both bot author + branch prefix required
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
           set -euo pipefail
           BRANCH=$(git branch --show-current)
@@ -55,8 +63,8 @@ jobs:
             *) echo "branch $BRANCH not an upgrade branch; skipping"; exit 0 ;;
           esac
           AUTHOR=$(gh pr view --json author --jq .author.login)
-          if [ "$AUTHOR" != "app/github-actions" ]; then
-            echo "PR author is $AUTHOR (not app/github-actions); skipping"
+          if [ "$AUTHOR" != "app/pulumi-release-bot" ]; then
+            echo "PR author is $AUTHOR (not app/pulumi-release-bot); skipping"
             exit 0
           fi
           gh pr merge --auto --squash --delete-branch

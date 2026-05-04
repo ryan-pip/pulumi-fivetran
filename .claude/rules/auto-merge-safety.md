@@ -1,5 +1,5 @@
 ---
-description: Auto-merge in upgrade-provider.yml requires BOTH the github-actions[bot] author filter AND the upgrade-* branch prefix regex. Don't loosen either.
+description: Auto-merge in upgrade-provider.yml requires BOTH the pulumi-release-bot[bot] author filter AND the upgrade-* branch prefix regex. Don't loosen either.
 paths:
   - ".github/workflows/upgrade-provider.yml"
   - ".github/workflows/auto-tag.yml"
@@ -9,7 +9,7 @@ paths:
 
 `upgrade-provider.yml` enables auto-merge **only** when both filters pass:
 
-1. `--author 'app/github-actions'` — bot identity (the action's identity when `GH_TOKEN=GITHUB_TOKEN`).
+1. `--author 'app/pulumi-release-bot'` — bot identity (the GitHub App that mints the token via `actions/create-github-app-token`). Using a non-`GITHUB_TOKEN` identity is load-bearing: PRs opened with `GITHUB_TOKEN` don't trigger `pull-request.yml`, so required checks never run and auto-merge stalls.
 2. Branch name matches `^upgrade-(pulumi-terraform-bridge|terraform-provider|pulumi-version)-`.
 
 Together they prevent auto-merging a human PR even if:
@@ -26,4 +26,4 @@ Together they prevent auto-merging a human PR even if:
 
 ## When adding a new upgrade type
 
-If a new bumper opens PRs with a different branch prefix (e.g. `upgrade-go-toolchain-*`), add the prefix to the regex **and** verify the new bumper actually authors as `app/github-actions`. If it uses a different bot identity, the author filter needs widening too — and that's a load-bearing decision; flag it for review rather than silently expanding it.
+If a new bumper opens PRs with a different branch prefix (e.g. `upgrade-go-toolchain-*`), add the prefix to the regex **and** verify the new bumper actually authors as `app/pulumi-release-bot`. If it uses a different bot identity, the author filter needs widening too — and that's a load-bearing decision; flag it for review rather than silently expanding it.
