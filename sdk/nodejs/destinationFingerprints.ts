@@ -128,8 +128,8 @@ export interface DestinationFingerprintsState {
     /**
      * The unique identifier for the target destination within the Fivetran system.
      */
-    destinationId?: pulumi.Input<string>;
-    fingerprints?: pulumi.Input<pulumi.Input<inputs.DestinationFingerprintsFingerprint>[]>;
+    destinationId?: pulumi.Input<string | undefined>;
+    fingerprints?: pulumi.Input<pulumi.Input<inputs.DestinationFingerprintsFingerprint>[] | undefined>;
 }
 
 /**
@@ -140,5 +140,5 @@ export interface DestinationFingerprintsArgs {
      * The unique identifier for the target destination within the Fivetran system.
      */
     destinationId: pulumi.Input<string>;
-    fingerprints?: pulumi.Input<pulumi.Input<inputs.DestinationFingerprintsFingerprint>[]>;
+    fingerprints?: pulumi.Input<pulumi.Input<inputs.DestinationFingerprintsFingerprint>[] | undefined>;
 }

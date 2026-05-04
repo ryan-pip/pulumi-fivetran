@@ -125,18 +125,18 @@ export class UserGroupMembership extends pulumi.CustomResource {
  * Input properties used for looking up and filtering UserGroupMembership resources.
  */
 export interface UserGroupMembershipState {
-    groups?: pulumi.Input<pulumi.Input<inputs.UserGroupMembershipGroup>[]>;
+    groups?: pulumi.Input<pulumi.Input<inputs.UserGroupMembershipGroup>[] | undefined>;
     /**
      * The unique identifier for the user within your account.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a UserGroupMembership resource.
  */
 export interface UserGroupMembershipArgs {
-    groups?: pulumi.Input<pulumi.Input<inputs.UserGroupMembershipGroup>[]>;
+    groups?: pulumi.Input<pulumi.Input<inputs.UserGroupMembershipGroup>[] | undefined>;
     /**
      * The unique identifier for the user within your account.
      */

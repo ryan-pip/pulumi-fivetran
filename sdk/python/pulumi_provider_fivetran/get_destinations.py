@@ -75,7 +75,7 @@ def get_destinations(destinations: Optional[Sequence[Union['GetDestinationsDesti
     return AwaitableGetDestinationsResult(
         destinations=pulumi.get(__ret__, 'destinations'),
         id=pulumi.get(__ret__, 'id'))
-def get_destinations_output(destinations: Optional[pulumi.Input[Optional[Sequence[Union['GetDestinationsDestinationArgs', 'GetDestinationsDestinationArgsDict']]]]] = None,
+def get_destinations_output(destinations: pulumi.Input[Optional[Optional[Sequence[Union['GetDestinationsDestinationArgs', 'GetDestinationsDestinationArgsDict']]]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDestinationsResult]:
     """
     This data source returns list of destination objects.

@@ -79,7 +79,7 @@ export function getDestinationFingerprintsOutput(args: GetDestinationFingerprint
  * A collection of arguments for invoking getDestinationFingerprints.
  */
 export interface GetDestinationFingerprintsOutputArgs {
-    fingerprints?: pulumi.Input<pulumi.Input<inputs.GetDestinationFingerprintsFingerprintArgs>[]>;
+    fingerprints?: pulumi.Input<pulumi.Input<inputs.GetDestinationFingerprintsFingerprintArgs>[] | undefined>;
     /**
      * The unique identifier for the resource. Equal to target destination id.
      */

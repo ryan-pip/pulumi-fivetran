@@ -23,8 +23,8 @@ class TransformationProjectArgs:
     def __init__(__self__, *,
                  group_id: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 project_config: Optional[pulumi.Input['TransformationProjectProjectConfigArgs']] = None,
-                 run_tests: Optional[pulumi.Input[_builtins.bool]] = None):
+                 project_config: pulumi.Input[Optional['TransformationProjectProjectConfigArgs']] = None,
+                 run_tests: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a TransformationProject resource.
 
@@ -65,37 +65,37 @@ class TransformationProjectArgs:
 
     @_builtins.property
     @pulumi.getter(name="projectConfig")
-    def project_config(self) -> Optional[pulumi.Input['TransformationProjectProjectConfigArgs']]:
+    def project_config(self) -> pulumi.Input[Optional['TransformationProjectProjectConfigArgs']]:
         return pulumi.get(self, "project_config")
 
     @project_config.setter
-    def project_config(self, value: Optional[pulumi.Input['TransformationProjectProjectConfigArgs']]):
+    def project_config(self, value: pulumi.Input[Optional['TransformationProjectProjectConfigArgs']]):
         pulumi.set(self, "project_config", value)
 
     @_builtins.property
     @pulumi.getter(name="runTests")
-    def run_tests(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_tests(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the setup tests should be run automatically. The default value is TRUE.
         """
         return pulumi.get(self, "run_tests")
 
     @run_tests.setter
-    def run_tests(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_tests(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_tests", value)
 
 
 @pulumi.input_type
 class _TransformationProjectState:
     def __init__(__self__, *,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_by_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 errors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_config: Optional[pulumi.Input['TransformationProjectProjectConfigArgs']] = None,
-                 run_tests: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_by_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 errors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_config: pulumi.Input[Optional['TransformationProjectProjectConfigArgs']] = None,
+                 run_tests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransformationProject resources.
 
@@ -126,95 +126,95 @@ class _TransformationProjectState:
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp of the transformation Project creation.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="createdById")
-    def created_by_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_by_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the User within the Fivetran system who created the dbt Project.
         """
         return pulumi.get(self, "created_by_id")
 
     @created_by_id.setter
-    def created_by_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_by_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
         """
         return pulumi.get(self, "errors")
 
     @errors.setter
-    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "errors", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the group within the Fivetran system.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectConfig")
-    def project_config(self) -> Optional[pulumi.Input['TransformationProjectProjectConfigArgs']]:
+    def project_config(self) -> pulumi.Input[Optional['TransformationProjectProjectConfigArgs']]:
         return pulumi.get(self, "project_config")
 
     @project_config.setter
-    def project_config(self, value: Optional[pulumi.Input['TransformationProjectProjectConfigArgs']]):
+    def project_config(self, value: pulumi.Input[Optional['TransformationProjectProjectConfigArgs']]):
         pulumi.set(self, "project_config", value)
 
     @_builtins.property
     @pulumi.getter(name="runTests")
-    def run_tests(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_tests(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the setup tests should be run automatically. The default value is TRUE.
         """
         return pulumi.get(self, "run_tests")
 
     @run_tests.setter
-    def run_tests(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_tests(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_tests", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status of transformation Project (NOT_READY, READY, ERROR).
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Transformation project type.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -224,10 +224,10 @@ class TransformationProject(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_config: Optional[pulumi.Input[Union['TransformationProjectProjectConfigArgs', 'TransformationProjectProjectConfigArgsDict']]] = None,
-                 run_tests: Optional[pulumi.Input[_builtins.bool]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_config: pulumi.Input[Optional[Union['TransformationProjectProjectConfigArgs', 'TransformationProjectProjectConfigArgsDict']]] = None,
+                 run_tests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource is in ALPHA state.
@@ -480,10 +480,10 @@ class TransformationProject(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_config: Optional[pulumi.Input[Union['TransformationProjectProjectConfigArgs', 'TransformationProjectProjectConfigArgsDict']]] = None,
-                 run_tests: Optional[pulumi.Input[_builtins.bool]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_config: pulumi.Input[Optional[Union['TransformationProjectProjectConfigArgs', 'TransformationProjectProjectConfigArgsDict']]] = None,
+                 run_tests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -515,14 +515,14 @@ class TransformationProject(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            created_by_id: Optional[pulumi.Input[_builtins.str]] = None,
-            errors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_config: Optional[pulumi.Input[Union['TransformationProjectProjectConfigArgs', 'TransformationProjectProjectConfigArgsDict']]] = None,
-            run_tests: Optional[pulumi.Input[_builtins.bool]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'TransformationProject':
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by_id: pulumi.Input[Optional[_builtins.str]] = None,
+            errors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_config: pulumi.Input[Optional[Union['TransformationProjectProjectConfigArgs', 'TransformationProjectProjectConfigArgsDict']]] = None,
+            run_tests: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'TransformationProject':
         """
         Get an existing TransformationProject resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

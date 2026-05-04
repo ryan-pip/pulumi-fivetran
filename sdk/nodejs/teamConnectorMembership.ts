@@ -125,18 +125,18 @@ export class TeamConnectorMembership extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TeamConnectorMembership resources.
  */
 export interface TeamConnectorMembershipState {
-    connectors?: pulumi.Input<pulumi.Input<inputs.TeamConnectorMembershipConnector>[]>;
+    connectors?: pulumi.Input<pulumi.Input<inputs.TeamConnectorMembershipConnector>[] | undefined>;
     /**
      * The unique identifier for the team within your account.
      */
-    teamId?: pulumi.Input<string>;
+    teamId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a TeamConnectorMembership resource.
  */
 export interface TeamConnectorMembershipArgs {
-    connectors?: pulumi.Input<pulumi.Input<inputs.TeamConnectorMembershipConnector>[]>;
+    connectors?: pulumi.Input<pulumi.Input<inputs.TeamConnectorMembershipConnector>[] | undefined>;
     /**
      * The unique identifier for the team within your account.
      */

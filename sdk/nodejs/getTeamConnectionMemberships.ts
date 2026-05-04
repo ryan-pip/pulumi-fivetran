@@ -53,7 +53,7 @@ export function getTeamConnectionMembershipsOutput(args: GetTeamConnectionMember
  * A collection of arguments for invoking getTeamConnectionMemberships.
  */
 export interface GetTeamConnectionMembershipsOutputArgs {
-    connections?: pulumi.Input<pulumi.Input<inputs.GetTeamConnectionMembershipsConnectionArgs>[]>;
+    connections?: pulumi.Input<pulumi.Input<inputs.GetTeamConnectionMembershipsConnectionArgs>[] | undefined>;
     /**
      * The unique identifier for the team within your account.
      */

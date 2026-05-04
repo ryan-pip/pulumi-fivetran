@@ -75,7 +75,7 @@ def get_connectors(connectors: Optional[Sequence[Union['GetConnectorsConnectorAr
     return AwaitableGetConnectorsResult(
         connectors=pulumi.get(__ret__, 'connectors'),
         id=pulumi.get(__ret__, 'id'))
-def get_connectors_output(connectors: Optional[pulumi.Input[Optional[Sequence[Union['GetConnectorsConnectorArgs', 'GetConnectorsConnectorArgsDict']]]]] = None,
+def get_connectors_output(connectors: pulumi.Input[Optional[Optional[Sequence[Union['GetConnectorsConnectorArgs', 'GetConnectorsConnectorArgsDict']]]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectorsResult]:
     """
     This data source returns list of connector objects.

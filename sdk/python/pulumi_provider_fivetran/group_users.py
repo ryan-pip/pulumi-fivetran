@@ -22,7 +22,7 @@ __all__ = ['GroupUsersArgs', 'GroupUsers']
 class GroupUsersArgs:
     def __init__(__self__, *,
                  group_id: pulumi.Input[_builtins.str],
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input['GroupUsersUserArgs']]]] = None):
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input['GroupUsersUserArgs']]]] = None):
         """
         The set of arguments for constructing a GroupUsers resource.
 
@@ -46,20 +46,20 @@ class GroupUsersArgs:
 
     @_builtins.property
     @pulumi.getter
-    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupUsersUserArgs']]]]:
+    def users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GroupUsersUserArgs']]]]:
         return pulumi.get(self, "users")
 
     @users.setter
-    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GroupUsersUserArgs']]]]):
+    def users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GroupUsersUserArgs']]]]):
         pulumi.set(self, "users", value)
 
 
 @pulumi.input_type
 class _GroupUsersState:
     def __init__(__self__, *,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_updated: Optional[pulumi.Input[_builtins.str]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input['GroupUsersUserArgs']]]] = None):
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_updated: pulumi.Input[Optional[_builtins.str]] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input['GroupUsersUserArgs']]]] = None):
         """
         Input properties used for looking up and filtering GroupUsers resources.
 
@@ -74,32 +74,32 @@ class _GroupUsersState:
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the Group within the Fivetran system.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="lastUpdated")
-    def last_updated(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_updated(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "last_updated")
 
     @last_updated.setter
-    def last_updated(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_updated(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_updated", value)
 
     @_builtins.property
     @pulumi.getter
-    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupUsersUserArgs']]]]:
+    def users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GroupUsersUserArgs']]]]:
         return pulumi.get(self, "users")
 
     @users.setter
-    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GroupUsersUserArgs']]]]):
+    def users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GroupUsersUserArgs']]]]):
         pulumi.set(self, "users", value)
 
 
@@ -109,8 +109,8 @@ class GroupUsers(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupUsersUserArgs', 'GroupUsersUserArgsDict']]]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupUsersUserArgs', 'GroupUsersUserArgsDict']]]]] = None,
                  __props__=None):
         """
         This resource allows you to create, update, and delete user memberships in groups.
@@ -185,8 +185,8 @@ class GroupUsers(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupUsersUserArgs', 'GroupUsersUserArgsDict']]]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupUsersUserArgs', 'GroupUsersUserArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -211,9 +211,9 @@ class GroupUsers(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            last_updated: Optional[pulumi.Input[_builtins.str]] = None,
-            users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupUsersUserArgs', 'GroupUsersUserArgsDict']]]]] = None) -> 'GroupUsers':
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            last_updated: pulumi.Input[Optional[_builtins.str]] = None,
+            users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupUsersUserArgs', 'GroupUsersUserArgsDict']]]]] = None) -> 'GroupUsers':
         """
         Get an existing GroupUsers resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

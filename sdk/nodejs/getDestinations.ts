@@ -53,5 +53,5 @@ export function getDestinationsOutput(args?: GetDestinationsOutputArgs, opts?: p
  * A collection of arguments for invoking getDestinations.
  */
 export interface GetDestinationsOutputArgs {
-    destinations?: pulumi.Input<pulumi.Input<inputs.GetDestinationsDestinationArgs>[]>;
+    destinations?: pulumi.Input<pulumi.Input<inputs.GetDestinationsDestinationArgs>[] | undefined>;
 }

@@ -346,9 +346,9 @@ def get_connection(destination_schema: Optional[Union['GetConnectionDestinationS
         status=pulumi.get(__ret__, 'status'),
         succeeded_at=pulumi.get(__ret__, 'succeeded_at'),
         sync_frequency=pulumi.get(__ret__, 'sync_frequency'))
-def get_connection_output(destination_schema: Optional[pulumi.Input[Optional[Union['GetConnectionDestinationSchemaArgs', 'GetConnectionDestinationSchemaArgsDict']]]] = None,
-                          id: Optional[pulumi.Input[_builtins.str]] = None,
-                          status: Optional[pulumi.Input[Optional[Union['GetConnectionStatusArgs', 'GetConnectionStatusArgsDict']]]] = None,
+def get_connection_output(destination_schema: pulumi.Input[Optional[Optional[Union['GetConnectionDestinationSchemaArgs', 'GetConnectionDestinationSchemaArgsDict']]]] = None,
+                          id: pulumi.Input[Optional[_builtins.str]] = None,
+                          status: pulumi.Input[Optional[Optional[Union['GetConnectionStatusArgs', 'GetConnectionStatusArgsDict']]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectionResult]:
     """
     This data source returns a connection object.

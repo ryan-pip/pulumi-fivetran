@@ -100,8 +100,8 @@ def get_team_user_memberships(team_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         team_id=pulumi.get(__ret__, 'team_id'),
         users=pulumi.get(__ret__, 'users'))
-def get_team_user_memberships_output(team_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                     users: Optional[pulumi.Input[Optional[Sequence[Union['GetTeamUserMembershipsUserArgs', 'GetTeamUserMembershipsUserArgsDict']]]]] = None,
+def get_team_user_memberships_output(team_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                     users: pulumi.Input[Optional[Optional[Sequence[Union['GetTeamUserMembershipsUserArgs', 'GetTeamUserMembershipsUserArgsDict']]]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTeamUserMembershipsResult]:
     """
     This data source returns a list of user memberships within team object.

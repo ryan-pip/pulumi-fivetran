@@ -105,7 +105,7 @@ def get_hybrid_deployment_agent(id: Optional[_builtins.str] = None,
         group_id=pulumi.get(__ret__, 'group_id'),
         id=pulumi.get(__ret__, 'id'),
         registered_at=pulumi.get(__ret__, 'registered_at'))
-def get_hybrid_deployment_agent_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_hybrid_deployment_agent_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHybridDeploymentAgentResult]:
     """
     This data source returns a hybrid deployment agent object.

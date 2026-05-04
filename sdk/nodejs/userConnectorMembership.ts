@@ -125,18 +125,18 @@ export class UserConnectorMembership extends pulumi.CustomResource {
  * Input properties used for looking up and filtering UserConnectorMembership resources.
  */
 export interface UserConnectorMembershipState {
-    connectors?: pulumi.Input<pulumi.Input<inputs.UserConnectorMembershipConnector>[]>;
+    connectors?: pulumi.Input<pulumi.Input<inputs.UserConnectorMembershipConnector>[] | undefined>;
     /**
      * The unique identifier for the user within your account.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a UserConnectorMembership resource.
  */
 export interface UserConnectorMembershipArgs {
-    connectors?: pulumi.Input<pulumi.Input<inputs.UserConnectorMembershipConnector>[]>;
+    connectors?: pulumi.Input<pulumi.Input<inputs.UserConnectorMembershipConnector>[] | undefined>;
     /**
      * The unique identifier for the user within your account.
      */

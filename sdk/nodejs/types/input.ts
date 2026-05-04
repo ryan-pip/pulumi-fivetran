@@ -43,24 +43,24 @@ export interface ConnectorAuth {
      * 	- Service `zendeskSell`: The long-lived `Access token` carries the information necessary to access API resources.
      * 	- Service `zoom`: Your Zoom Access token.
      */
-    accessToken?: pulumi.Input<string>;
+    accessToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `elasticCloud`: The Elasticsearch API key. If omitted, then basic user and password authentication will apply.
      * 	- Service `esSelfHosted`: The Elasticsearch API key. If omitted, then basic user and password authentication will apply.
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amazonSellingPartner`: `AWS Access Key` of your AWS Account User.
      */
-    awsAccessKey?: pulumi.Input<string>;
+    awsAccessKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amazonSellingPartner`: `AWS Secret Key` of your AWS Account User.
      */
-    awsSecretKey?: pulumi.Input<string>;
-    clientAccess?: pulumi.Input<inputs.ConnectorAuthClientAccess>;
+    awsSecretKey?: pulumi.Input<string | undefined>;
+    clientAccess?: pulumi.Input<inputs.ConnectorAuthClientAccess | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amazonSellingPartner`: `Client ID` of your Amazon Seller/Vendor Central client application.
@@ -70,7 +70,7 @@ export interface ConnectorAuth {
      * 	- Service `workdayHcm`: ID of your Workday Client App
      * 	- Service `yahooDsp`: Your Yahoo DSP Client ID.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amazonSellingPartner`: `Client Secret` of your Amazon Seller/Vendor Central client application.
@@ -79,48 +79,48 @@ export interface ConnectorAuth {
      * 	- Service `workdayHcm`: Secret of your Workday Client App
      * 	- Service `yahooDsp`: Your Yahoo DSP Client Secret.
      */
-    clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `twitter`: API Key of your app
      * 	- Service `twitterAds`: The Twitter App consumer key.
      */
-    consumerKey?: pulumi.Input<string>;
+    consumerKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `twitter`: API Secret of your app
      * 	- Service `twitterAds`: The Twitter App consumer secret.
      */
-    consumerSecret?: pulumi.Input<string>;
+    consumerSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appleSearchAds`: Apple Search Ads REST API Key ID. Must be populated if `isAuth2Enabled` is set to `true`.
      */
-    keyId?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `twitter`: The Twitter App access token.
      * 	- Service `twitterAds`: The Twitter App access token.
      */
-    oauthToken?: pulumi.Input<string>;
+    oauthToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `twitter`: The Twitter App access token secret.
      * 	- Service `twitterAds`: The Twitter App access token secret.
      */
-    oauthTokenSecret?: pulumi.Input<string>;
-    ocapiAccessToken?: pulumi.Input<string>;
-    ocapiRefreshToken?: pulumi.Input<string>;
+    oauthTokenSecret?: pulumi.Input<string | undefined>;
+    ocapiAccessToken?: pulumi.Input<string | undefined>;
+    ocapiRefreshToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `dynamics365`: Previous `Refresh token` of your application.
      */
-    previousRefreshToken?: pulumi.Input<string>;
+    previousRefreshToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `quickbooks`: `Realm ID` of your QuickBooks application.
      */
-    realmId?: pulumi.Input<string>;
+    realmId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adroll`: The long-lived `Refresh token` along with the `clientId` and `clientSecret` parameters carry the information necessary to get a new access token for API resources.
@@ -187,22 +187,22 @@ export interface ConnectorAuth {
      * 	- Service `zohoCrm`: The long-lived `Refresh token`, along with the `clientId` and `clientSecret` parameters, carries the information necessary to get a new access token for API resources.
      * 	- Service `zoom`: Your Zoom Refresh token.
      */
-    refreshToken?: pulumi.Input<string>;
+    refreshToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amazonSellingPartner`: `IAM Role ARN` of your AWS Account.
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appleSearchAds`: Apple Search Ads REST API Team ID. Must be populated if `isAuth2Enabled` is set to `true`.
      */
-    teamId?: pulumi.Input<string>;
+    teamId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebookAds`: Access Token
      */
-    userAccessToken?: pulumi.Input<string>;
+    userAccessToken?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectorAuthClientAccess {
@@ -261,7 +261,7 @@ export interface ConnectorAuthClientAccess {
      * 	- Service `youtubeAnalytics`: `Client ID` of your Youtube client application.
      * 	- Service `zohoCrm`: `Client ID` of your Zoho client application.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adroll`: `Client Secret` of your AdRoll client application.
@@ -317,17 +317,17 @@ export interface ConnectorAuthClientAccess {
      * 	- Service `youtubeAnalytics`: `Client Secret` of your Youtube client application.
      * 	- Service `zohoCrm`: `Client Secret` of your Zoho client application.
      */
-    clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAds`: Your approved `Developer token` to connect to the Google Ads API.
      */
-    developerToken?: pulumi.Input<string>;
+    developerToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAds`: Your company's name in your Google Ads client application.
      */
-    userAgent?: pulumi.Input<string>;
+    userAgent?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectorCertificatesCertificate {
@@ -342,31 +342,31 @@ export interface ConnectorCertificatesCertificate {
     /**
      * Certificate name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The SSH public key.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * Certificate sha1.
      */
-    sha1?: pulumi.Input<string>;
+    sha1?: pulumi.Input<string | undefined>;
     /**
      * Certificate sha256.
      */
-    sha256?: pulumi.Input<string>;
+    sha256?: pulumi.Input<string | undefined>;
     /**
      * Type of the certificate.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * User name who validated the certificate.
      */
-    validatedBy?: pulumi.Input<string>;
+    validatedBy?: pulumi.Input<string | undefined>;
     /**
      * The date when certificate was approved.
      */
-    validatedDate?: pulumi.Input<string>;
+    validatedDate?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectorConfig {
@@ -374,59 +374,59 @@ export interface ConnectorConfig {
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: Azure Blob Storage connection method
      */
-    absConnectionMethod?: pulumi.Input<string>;
+    absConnectionMethod?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: Azure Blob Storage connection string.
      * 	- Service `braze`: Connection String
      */
-    absConnectionString?: pulumi.Input<string>;
+    absConnectionString?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: Azure Blob Storage container address
      */
-    absContainerAddress?: pulumi.Input<string>;
+    absContainerAddress?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: Azure Blob Storage container name.
      * 	- Service `braze`: Container Name
      */
-    absContainerName?: pulumi.Input<string>;
+    absContainerName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: Azure Blob Storage host IP
      */
-    absHostIp?: pulumi.Input<string>;
+    absHostIp?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: Azure Blob Storage username
      */
-    absHostUser?: pulumi.Input<string>;
+    absHostUser?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: Prefix
      */
-    absPrefix?: pulumi.Input<string>;
+    absPrefix?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: Azure Blob Storage public key
      */
-    absPublicKey?: pulumi.Input<string>;
+    absPublicKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workramp`: Your WorkRamp academy ID.
      */
-    academyId?: pulumi.Input<string>;
+    academyId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `ceridianDayforce`: Your confirmation that you have granted Fivetran access to all the RESTful services and fields you want to sync. Possible values: `true`, `false`.
      */
-    accessConfirmation?: pulumi.Input<string>;
+    accessConfirmation?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `planful`: Your Planful access ID.
      */
-    accessId?: pulumi.Input<string>;
+    accessId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `gainsightCustomerSuccess`: The access key for API authentication.
@@ -435,7 +435,7 @@ export interface ConnectorConfig {
      * 	- Service `planful`: Your Planful access key.
      * 	- Service `retailnext`: Your RetailNext access key.
      */
-    accessKey?: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appsflyer`: Your AWS access key ID.
@@ -448,7 +448,7 @@ export interface ConnectorConfig {
      * 	- Service `validio`: Your Validio access key ID.
      * 	- Service `wasabiCloudStorage`: Access Key ID
      */
-    accessKeyId?: pulumi.Input<string>;
+    accessKeyId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Access Key Secret
@@ -460,7 +460,7 @@ export interface ConnectorConfig {
      * 	- Service `s3CompatibleStorage`: Access Key Secret
      * 	- Service `wasabiCloudStorage`: Access Key Secret
      */
-    accessKeySecret?: pulumi.Input<string>;
+    accessKeySecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `7shifts`: Your 7shifts access token.
@@ -493,23 +493,23 @@ export interface ConnectorConfig {
      * 	- Service `workable`: Your Workable Access Token.
      * 	- Service `workramp`: Your WorkRamp access token.
      */
-    accessToken?: pulumi.Input<string>;
+    accessToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sharePoint`: Access Type
      */
-    accessType?: pulumi.Input<string>;
+    accessType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `netsuiteSuiteanalytics`: The NetSuite Account ID.
      * 	- Service `ordway`: Your Ordway account type.
      */
-    account?: pulumi.Input<string>;
+    account?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `rollbar`: Your Rollbar account access token.
      */
-    accountAccessToken?: pulumi.Input<string>;
+    accountAccessToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appcues`: Your Appcues Account ID.
@@ -521,18 +521,18 @@ export interface ConnectorConfig {
      * 	- Service `rokt`: Your Rokt account ID.
      * 	- Service `udemyBusiness`: Your Udemy Business account ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `taboola`: Specific Account IDs to sync.  Must be populated if `syncMode` is set to `SpecificAccounts`.
      */
-    accountIds?: pulumi.Input<pulumi.Input<string>[]>;
+    accountIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cosmos`: The read-only primary or secondary account key for the database account. Required for the `ACCOUNT_KEY` data access method.
      * 	- Service `simplesat`: Your Simplesat account key.
      */
-    accountKey?: pulumi.Input<string>;
+    accountKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `eventsforce`: Your Eventsforce account name.
@@ -542,39 +542,39 @@ export interface ConnectorConfig {
      * 	- Service `talkdesk`: Your Talkdesk Account Name.
      * 	- Service `udemyBusiness`: Your Udemy Business account name.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `tymeshift`: Your Tymeshift account plan.
      */
-    accountPlan?: pulumi.Input<string>;
+    accountPlan?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `iterable`: If your Iterable account URL starts with `https://app.eu.iterable.com` then provide `EU` else `US`
      */
-    accountRegion?: pulumi.Input<string>;
+    accountRegion?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `foneDynamics`: Your Fone Dynamics account SID.
      * 	- Service `impactPartner`: Your Impact Partner account SID
      */
-    accountSid?: pulumi.Input<string>;
+    accountSid?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `itunesConnect`: Account Sync Mode
      * 	- Service `snapchatAds`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
      */
-    accountSyncMode?: pulumi.Input<string>;
+    accountSyncMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `konnectInsights`: Your Konnect Insights Account Token.
      */
-    accountToken?: pulumi.Input<string>;
+    accountToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `freightview`: Your Freightview account type.
      */
-    accountType?: pulumi.Input<string>;
+    accountType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bingads`: Specific accounts to sync. Must be populated if `syncMode` is set to `SpecificAccounts`.
@@ -596,72 +596,72 @@ export interface ConnectorConfig {
      * 	- Service `twitter`: Specific accounts to sync. Must be populated if `syncMode` is set to `SpecificAccounts`.
      * 	- Service `twitterAds`: Specific Accounts to sync.  Must be populated if `syncMode` is set to `SpecificAccounts`.
      */
-    accounts?: pulumi.Input<pulumi.Input<string>[]>;
-    accountsRedditAds?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigAccountsRedditAd>[]>;
+    accounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    accountsRedditAds?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigAccountsRedditAd>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleSearchAds360`: Whether to sync all accounts or specific.
      */
-    accountsSyncMode?: pulumi.Input<string>;
+    accountsSyncMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebook`: List of actionBreakdowns which connector will sync. [Possible actionBreakdowns values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#actionbreakdowns).
      */
-    actionBreakdowns?: pulumi.Input<pulumi.Input<string>[]>;
+    actionBreakdowns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebook`: The report time of action stats. [Possible actionReport time values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#actionreporttime).
      */
-    actionReportTime?: pulumi.Input<string>;
+    actionReportTime?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `linkedinAds`: Whether to sync all analytic reports or specific. Default value: `AllReports`
      */
-    adAnalytics?: pulumi.Input<string>;
+    adAnalytics?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `doubleClickPublishers`: Ad unit view for the report.
      */
-    adUnitView?: pulumi.Input<string>;
+    adUnitView?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `splitio`: Your Split admin api key.
      */
-    adminApiKey?: pulumi.Input<string>;
+    adminApiKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `brivo`: Your Brivo Admin username.
      */
-    adminUsername?: pulumi.Input<string>;
-    adobeAnalyticsConfigurations?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigAdobeAnalyticsConfiguration>[]>;
+    adminUsername?: pulumi.Input<string | undefined>;
+    adobeAnalyticsConfigurations?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigAdobeAnalyticsConfiguration>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adroll`: Specific advertisables to sync. Must be populated if `syncMode` is set to `SpecificAdvertisables`.
      */
-    advertisables?: pulumi.Input<pulumi.Input<string>[]>;
+    advertisables?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleDisplayAndVideo360`: The list of advertisers to include into a sync. This parameter only takes effect when `configMethod` is set to `CREATE_NEW`.
      * 	- Service `googleSearchAds360`: Specific advertisers to sync. Must be populated if `advertisersSyncMode` is set to `SPECIFIC_ADVERTISERS`.
      * 	- Service `pinterestAds`: Specific Advertisers to sync.  Must be populated if `syncMode` is set to `SpecificAdvertisers`.
      */
-    advertisers?: pulumi.Input<pulumi.Input<string>[]>;
+    advertisers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `yahooGemini`: Specific Advertiser IDs to sync. Must be populated if `syncMode` is set to `SpecificAccounts`.
      */
-    advertisersIds?: pulumi.Input<pulumi.Input<string>[]>;
+    advertisersIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleSearchAds360`: Whether to sync all or specific advertisers.
      */
-    advertisersSyncMode?: pulumi.Input<string>;
+    advertisersSyncMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: Specific Advertisers to sync. Must be populated if `syncModeAdvertiser` is set to `SPECIFIC_ADVERTISERS`. Pay attention to the format: `AdvertiserId:SeatId`
      */
-    advertisersWithSeats?: pulumi.Input<pulumi.Input<string>[]>;
-    agentConfigMethod?: pulumi.Input<string>;
+    advertisersWithSeats?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    agentConfigMethod?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `db2iHva`: The agent host.
@@ -677,18 +677,18 @@ export interface ConnectorConfig {
      * 	- Service `sqlServerHva`: The host address of the machine running the agent. Often the same as the DB host.
      * 	- Service `sqlServerSapEccHva`: The host address of the machine running the agent. Often the same as the DB host.
      */
-    agentHost?: pulumi.Input<string>;
+    agentHost?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `phoenixAds`: Your Phoenix Ads Agent ID.
      */
-    agentId?: pulumi.Input<string>;
+    agentId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleHva`: The home directory of the Oracle database.
      * 	- Service `oracleSapHva`: The home directory of the Oracle database.
      */
-    agentOraHome?: pulumi.Input<string>;
+    agentOraHome?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `db2iHva`: The agent password.
@@ -704,7 +704,7 @@ export interface ConnectorConfig {
      * 	- Service `sqlServerHva`: The password for the agent user.
      * 	- Service `sqlServerSapEccHva`: The password for the agent user.
      */
-    agentPassword?: pulumi.Input<string>;
+    agentPassword?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `db2iHva`: The agent port.
@@ -720,7 +720,7 @@ export interface ConnectorConfig {
      * 	- Service `sqlServerHva`: The port that the agent has open for Fivetran's connection. Default value is 4343.
      * 	- Service `sqlServerSapEccHva`: The port that the agent has open for Fivetran's connection. Default value is 4343.
      */
-    agentPort?: pulumi.Input<number>;
+    agentPort?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `db2iHva`: The public certificate for the agent.
@@ -736,7 +736,7 @@ export interface ConnectorConfig {
      * 	- Service `sqlServerHva`: The public certificate generated by the agent.
      * 	- Service `sqlServerSapEccHva`: The public certificate generated by the agent.
      */
-    agentPublicCert?: pulumi.Input<string>;
+    agentPublicCert?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `db2iHva`: The agent user name.
@@ -752,22 +752,22 @@ export interface ConnectorConfig {
      * 	- Service `sqlServerHva`: The agent's username.
      * 	- Service `sqlServerSapEccHva`: The agent's username.
      */
-    agentUser?: pulumi.Input<string>;
+    agentUser?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebook`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#aggregation).
      */
-    aggregation?: pulumi.Input<string>;
+    aggregation?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `economic`: Your E-conomic X-AgreementGrantToken goes here.
      */
-    agreementGrantToken?: pulumi.Input<string>;
+    agreementGrantToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `webhooks`: HMAC algorithm used for generating the HMAC signature. Supported algorithms  INFER_FROM_HEADER, MD5, SHA_1, SHA_224, SHA_256, SHA_384, SHA_512. Default: SHA_256
      */
-    algorithm?: pulumi.Input<string>;
+    algorithm?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: Require TLS through Tunnel
@@ -816,12 +816,12 @@ export interface ConnectorConfig {
      * 	- Service `sqlServerRds`: Require TLS.
      * 	- Service `sqlServerSapEccHva`: Require TLS.
      */
-    alwaysEncrypted?: pulumi.Input<boolean>;
+    alwaysEncrypted?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `freshsuccess`: Set this parameter to `api`.
      */
-    api?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `deviceMagic`: Your Device Magic API access token.
@@ -829,18 +829,18 @@ export interface ConnectorConfig {
      * 	- Service `shopify`: API access token of your custom app.
      * 	- Service `square`: The Square API access token of your application.
      */
-    apiAccessToken?: pulumi.Input<string>;
+    apiAccessToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `afterpay`: Your Afterpay API environment.
      * 	- Service `tiktokOrganic`: Your TikTok Organic API environment.
      */
-    apiEnvironment?: pulumi.Input<string>;
+    apiEnvironment?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aircall`: Your Aircall API ID.
      */
-    apiId?: pulumi.Input<string>;
+    apiId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `15five`: Your 15five API key.
@@ -1056,37 +1056,37 @@ export interface ConnectorConfig {
      * 	- Service `zingtree`: Your Zingtree API key.
      * 	- Service `zip`: Your Zip API key.
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `revel`: Your Revel Systems API Key and API Secret.
      */
-    apiKeyApiSecret?: pulumi.Input<string>;
+    apiKeyApiSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `mandrill`: Comma-separated list of API keys.  Required if `useApiKeys` is set to `true`.
      */
-    apiKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    apiKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `duoplane`: Your Duoplane API password.
      */
-    apiPassword?: pulumi.Input<string>;
+    apiPassword?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `marketo`: Allowed number of API requests to Marketo instance per day, the default value is 10000.
      */
-    apiQuota?: pulumi.Input<number>;
+    apiQuota?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `theMovieDatabase`: Your The Movie Database API read access token.
      */
-    apiReadAccessToken?: pulumi.Input<string>;
+    apiReadAccessToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `qualtrics`: Allowed number of API requests to Qualtrics per minute, the default value is 2000. Maximum allowed number is 3000 because brands may make up to 3000 API requests per minute across all of its API calls.
      */
-    apiRequestsPerMinute?: pulumi.Input<number>;
+    apiRequestsPerMinute?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `confluentCloud`: API Secret
@@ -1100,17 +1100,17 @@ export interface ConnectorConfig {
      * 	- Service `shareasale`: Your ShareASale API secret.
      * 	- Service `vonage`: Your Vonage API Secret.
      */
-    apiSecret?: pulumi.Input<string>;
+    apiSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `alchemer`: Your Alchemer API Secret key.
      */
-    apiSecretKey?: pulumi.Input<string>;
+    apiSecretKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sigmaComputingSource`: Your Sigma Computing api server.
      */
-    apiServer?: pulumi.Input<string>;
+    apiServer?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aha`: Your Aha! API key.
@@ -1173,44 +1173,44 @@ export interface ConnectorConfig {
      * 	- Service `zendesk`: Zendesk API tokens are auto-generated passwords in the Support admin interface.
      * 	- Service `zendeskSunshine`: Zendesk API tokens are auto-generated passwords in the Support admin interface.
      */
-    apiToken?: pulumi.Input<string>;
-    apiType?: pulumi.Input<string>;
+    apiToken?: pulumi.Input<string | undefined>;
+    apiType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: Your Braze API URL.
      */
-    apiUrl?: pulumi.Input<string>;
+    apiUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amazonDsp`: Your Amazon DSP API URL region.
      */
-    apiUrlRegion?: pulumi.Input<string>;
+    apiUrlRegion?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `zendesk`: Maximum Zendesk Api Usage allowed
      */
-    apiUsage?: pulumi.Input<string>;
+    apiUsage?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `shipnetwork`: Your ShipNetwork API user identifier.
      */
-    apiUserIdentifier?: pulumi.Input<string>;
+    apiUserIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `shipnetwork`: Your ShipNetwork API user secret.
      */
-    apiUserSecret?: pulumi.Input<string>;
+    apiUserSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `kustomer`: Api Utilization Percentage
      */
-    apiUtilizationPercentage?: pulumi.Input<string>;
+    apiUtilizationPercentage?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: API Version
      * 	- Service `pardotSandbox`: API Version
      */
-    apiVersion?: pulumi.Input<string>;
+    apiVersion?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `churnkey`: Your Churnkey APP ID.
@@ -1218,13 +1218,13 @@ export interface ConnectorConfig {
      * 	- Service `rokt`: Your Rokt app ID.
      * 	- Service `tiktokOrganic`: Your Tiktok Organic app ID.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pendo`: Specific App IDs to sync. Must be populated if `syncMode` is set to `SpecificAppIds`.
      */
-    appIds?: pulumi.Input<pulumi.Input<string>[]>;
-    appIdsAppsflyers?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigAppIdsAppsflyer>[]>;
+    appIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    appIdsAppsflyers?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigAppIdsAppsflyer>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `loopio`: Your Loopio App Key.
@@ -1232,28 +1232,28 @@ export interface ConnectorConfig {
      * 	- Service `yotpo`: Your Yotpo app key.
      * 	- Service `yotpoApp`: Your Yotpo App key.
      */
-    appKey?: pulumi.Input<string>;
+    appKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `brightpearl`: Your Brightpearl app reference.
      */
-    appReference?: pulumi.Input<string>;
+    appReference?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `rokt`: Your Rokt app secret.
      */
-    appSecret?: pulumi.Input<string>;
-    appSecretToken?: pulumi.Input<string>;
+    appSecret?: pulumi.Input<string | undefined>;
+    appSecretToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `itunesConnect`: Your app-specific password
      */
-    appSpecificPassword?: pulumi.Input<string>;
+    appSpecificPassword?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `itunesConnect`: Whether to sync all apps or specific apps.
      */
-    appSyncMode?: pulumi.Input<string>;
+    appSyncMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: If you know that the source completely overwrites the same file with new data, you can append the changes instead of upserting based on filename and line number.
@@ -1271,13 +1271,13 @@ export interface ConnectorConfig {
      * 	- Service `sharePoint`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `wasabiCloudStorage`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      */
-    appendFileOption?: pulumi.Input<string>;
+    appendFileOption?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `algolia`: Your Algolia application ID.
      * 	- Service `xactly`: Your Xactly Application ID.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cin7core`: Your Cin7 Core application key.
@@ -1285,12 +1285,12 @@ export interface ConnectorConfig {
      * 	- Service `dear`: Your Dear Application key.
      * 	- Service `partnerize`: Your Partnerize user application key.
      */
-    applicationKey?: pulumi.Input<string>;
+    applicationKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `itunesConnect`: Specific apps to sync. Must be populated if `appSyncMode` is set to `SpecificApps`.
      */
-    apps?: pulumi.Input<pulumi.Input<string>[]>;
+    apps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleHva`: Archive log format.
@@ -1299,7 +1299,7 @@ export interface ConnectorConfig {
      * 	- Service `sqlServerHva`: Format for archive log file names
      * 	- Service `sqlServerSapEccHva`: Format for archive log file names
      */
-    archiveLogFormat?: pulumi.Input<string>;
+    archiveLogFormat?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleHva`: Archive log path.
@@ -1308,7 +1308,7 @@ export interface ConnectorConfig {
      * 	- Service `sqlServerHva`: Directory where archive logs are located
      * 	- Service `sqlServerSapEccHva`: Directory where archive logs are located
      */
-    archiveLogPath?: pulumi.Input<string>;
+    archiveLogPath?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Optional. Files inside of compressed archives with filenames matching this regular expression will be synced.
@@ -1326,84 +1326,84 @@ export interface ConnectorConfig {
      * 	- Service `sharePoint`: Files inside of compressed archives with filenames matching this regular expression will be synced.
      * 	- Service `wasabiCloudStorage`: Files inside compressed archives with filenames matching this regular expression will be synced.
      */
-    archivePattern?: pulumi.Input<string>;
+    archivePattern?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `marketo`: Marketo SOAP credentials provided.
      */
-    areSoapCredentialsProvided?: pulumi.Input<boolean>;
+    areSoapCredentialsProvided?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureServiceBus`: The IP address (or) the URL of ASB namespace
      */
-    asbIp?: pulumi.Input<string>;
+    asbIp?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleHva`: Default value: `false`. Set to `true` if you're using ASM on a non-RAC instance.
      * 	- Service `oracleSapHva`: Default value: `false`. Set to `true` if you are using ASM on a non-RAC instance.
      */
-    asmOption?: pulumi.Input<boolean>;
+    asmOption?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleHva`: ASM Oracle Home path.
      * 	- Service `oracleSapHva`: The Oracle ASM home directory.
      */
-    asmOracleHome?: pulumi.Input<string>;
+    asmOracleHome?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleHva`: ASM password. Mandatory if `useOracleRac` or `asmOption` is set to `true`.
      * 	- Service `oracleSapHva`: The ASM user's password. Mandatory if `useOracleRac` or `asmOption` is set to `true`.
      */
-    asmPassword?: pulumi.Input<string>;
+    asmPassword?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleHva`: ASM TNS.
      * 	- Service `oracleSapHva`: ASM TNS.
      */
-    asmTns?: pulumi.Input<string>;
+    asmTns?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleHva`: ASM user. Mandatory if `useOracleRac` or `asmOption` is set to `true`.
      * 	- Service `oracleSapHva`: The ASM user. Mandatory if `useOracleRac` or `asmOption` is set to `true`.
      */
-    asmUser?: pulumi.Input<string>;
+    asmUser?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amazonAds`: Time period used to attribute conversions based on clicks.
      */
-    attributionWindow?: pulumi.Input<string>;
+    attributionWindow?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `tiktokAds`: Rollback sync duration to capture conversions. Set this to your configured attribution window in TikTok Ads. The default value is 7 days.
      */
-    attributionWindowSize?: pulumi.Input<string>;
+    attributionWindowSize?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auth0`: Your Auth0 API audience.
      */
-    audience?: pulumi.Input<string>;
+    audience?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `databricksDb`: Token-based authentication type
      * 	- Service `redshiftDb`: Password-based authentication type
      * 	- Service `snowflakeDb`: Password-based or key-based authentication type
      */
-    auth?: pulumi.Input<string>;
+    auth?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `happyfox`: Your HappyFox auth code.
      */
-    authCode?: pulumi.Input<string>;
+    authCode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `younium`: Your Younium auth environment.
      */
-    authEnvironment?: pulumi.Input<string>;
+    authEnvironment?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `webhooks`: Set if you use HMAC/token-based auth methods. This is used to retrieve a key in headers
      */
-    authHeaderKey?: pulumi.Input<string>;
+    authHeaderKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: Database authentication method
@@ -1428,7 +1428,7 @@ export interface ConnectorConfig {
      * 	- Service `sqlServerSapEccHva`: Authentication Method
      * 	- Service `webhooks`: The authentication mechanism you want to use
      */
-    authMethod?: pulumi.Input<string>;
+    authMethod?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `anaplan`: The Anaplan authentication method.
@@ -1436,18 +1436,18 @@ export interface ConnectorConfig {
      * 	- Service `github`: Authorization type.
      * 	- Service `workday`: Authentication Mode
      */
-    authMode?: pulumi.Input<string>;
+    authMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `webhooks`: The secret you want to use for HMAC/token-based auth methods
      */
-    authSecret?: pulumi.Input<string>;
+    authSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `impactPartner`: Your Impact Partner auth token
      * 	- Service `zonkaFeedback`: Your Zonka Feedback auth token.
      */
-    authToken?: pulumi.Input<string>;
+    authToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `airtable`: Type of authentication being used by connector
@@ -1465,12 +1465,12 @@ export interface ConnectorConfig {
      * 	- Service `s3CompatibleStorage`: Access approach
      * 	- Service `wasabiCloudStorage`: The Wasabi Cloud Storage Access approach. Required for connector creation. Default value: `ACCESS_KEY`.
      */
-    authType?: pulumi.Input<string>;
+    authType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amazonDsp`: Your Amazon DSP auth grant URL region.
      */
-    authUrlRegion?: pulumi.Input<string>;
+    authUrlRegion?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalytics`: Authentication Method
@@ -1484,21 +1484,21 @@ export interface ConnectorConfig {
      * 	- Service `salesforce`: (Optional) Authentication type (default value = `STANDARD`)
      * 	- Service `salesforceSandbox`: (Optional) Authentication type (default value = `STANDARD`)
      */
-    authenticationMethod?: pulumi.Input<string>;
-    authorizationMethod?: pulumi.Input<string>;
+    authenticationMethod?: pulumi.Input<string | undefined>;
+    authorizationMethod?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `tiktokOrganic`: The authorization URL of the app registered in your TikTok developer account.
      * 	- Service `workday`: Authorization URL
      */
-    authorizationUrl?: pulumi.Input<string>;
+    authorizationUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `dynamodb`: The AWS region code for the DynamoDB instance, e.g. `us-east-1`.
      */
-    awsRegionCode?: pulumi.Input<string>;
-    backintConfigurationPath?: pulumi.Input<string>;
-    backintExecutablePath?: pulumi.Input<string>;
+    awsRegionCode?: pulumi.Input<string | undefined>;
+    backintConfigurationPath?: pulumi.Input<string | undefined>;
+    backintExecutablePath?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `shopify`: Limit of the Historical Sync Time for selected tables
@@ -1506,27 +1506,27 @@ export interface ConnectorConfig {
      * 	- Service `stripeTest`: Limit of the Historical Sync Time for selected tables
      * 	- Service `zendesk`: Date Limit of the Historical Sync Time for selected tables. The format should be YYYY-MM-DD
      */
-    backwardSyncLimit?: pulumi.Input<string>;
+    backwardSyncLimit?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hubspot`: Date Limit of the Historical Sync Time for selected tables. The Format should be YYYY-MM-DD
      */
-    backwardSyncLimitDate?: pulumi.Input<string>;
+    backwardSyncLimitDate?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `openExchangeRates`: Your Open Exchange Rates Base Currency.
      */
-    baseCurrency?: pulumi.Input<string>;
+    baseCurrency?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `freshteam`: Your company's Freshteam base domain name (usually **company**.freshteam.com).
      */
-    baseDomain?: pulumi.Input<string>;
+    baseDomain?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `airtable`: ID of base in Airtable
      */
-    baseId?: pulumi.Input<string>;
+    baseId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aha`: Your Aha! subdomain.
@@ -1560,7 +1560,7 @@ export interface ConnectorConfig {
      * 	- Service `veevavault`: Your Veeva Vault base URL.
      * 	- Service `vitally`: Your Vitally base URL.
      */
-    baseUrl?: pulumi.Input<string>;
+    baseUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `ada`: Your Ada API key.
@@ -1574,32 +1574,32 @@ export interface ConnectorConfig {
      * 	- Service `sprout`: Your Sprout Social API Access Token.
      * 	- Service `zenefits`: Your Zenefits bearer token.
      */
-    bearerToken?: pulumi.Input<string>;
+    bearerToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sqlServer`: Transaction log type. Possible values: `"ONLINE"`, `"BACK_AZURE"`. Default"  value is `"ONLINE"`.
      */
-    binaryLogType?: pulumi.Input<string>;
+    binaryLogType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `webhooks`: The blob SAS URL of your Azure container. Required if `bucketService` is set to `AZURE`.
      */
-    blobSasUrl?: pulumi.Input<string>;
+    blobSasUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `rarible`: Your Rarible Blockchain.
      */
-    blockchain?: pulumi.Input<string>;
+    blockchain?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleMoatAnalytics`: Your Oracle Moat Analytics Brand ID.
      */
-    brandId?: pulumi.Input<string>;
+    brandId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebook`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#breakdowns).
      */
-    breakdowns?: pulumi.Input<pulumi.Input<string>[]>;
+    breakdowns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appsflyer`: Customer S3 Bucket
@@ -1617,45 +1617,45 @@ export interface ConnectorConfig {
      * 	- Service `segment`: The name of the Segment bucket. Must be populated if `syncType` is set to `S3`.
      * 	- Service `wasabiCloudStorage`: The Wasabi Cloud Storage bucket name. Required for connector creation.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adjust`: Your AWS S3 or GCS bucket.
      * 	- Service `googleAnalytics360`: The name of the bucket.
      * 	- Service `googleAnalytics4Export`: The name of the bucket.
      */
-    bucketName?: pulumi.Input<string>;
+    bucketName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `webhooks`: Whether to store the events in Fivetran's container service or your S3 bucket. Default value: `Fivetran`.
      */
-    bucketService?: pulumi.Input<string>;
+    bucketService?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redditAds`: Specific Accounts to sync.  Must be populated if `syncMode` is set to `SpecificAccounts`.
      */
-    businessAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    businessAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `birdeye`: Your Birdeye Business ID.
      */
-    businessId?: pulumi.Input<string>;
+    businessId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `deposco`: Your Deposco business unit.
      */
-    businessUnit?: pulumi.Input<string>;
+    businessUnit?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: Business Unit Id
      * 	- Service `pardotSandbox`: Business Unit Id
      */
-    businessUnitId?: pulumi.Input<string>;
+    businessUnitId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `databricksDb`: catalog to sync
      */
-    catalog?: pulumi.Input<string>;
+    catalog?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `anaplan`: The contents of your PEM certificate file. Must be populated if `authMode` is set to `Certificate`.
@@ -1663,36 +1663,36 @@ export interface ConnectorConfig {
      * 	- Service `salesforce`: Provide content of the `.pem` certificate (only when authenticationMethod = `ADVANCED`).
      * 	- Service `salesforceSandbox`: Provide content of the `.pem` certificate (only when authenticationMethod = `ADVANCED`).
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `netsuiteSuiteanalytics`: Certificate Id
      */
-    certificateId?: pulumi.Input<string>;
+    certificateId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebook`: Time period to attribute conversions based on clicks. [Possible clickAttributionWindow values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#clickattributionwindow).
      * 	- Service `pinterestAds`: The number of days to use as the conversion attribution window for a 'click' action.
      */
-    clickAttributionWindow?: pulumi.Input<string>;
-    client?: pulumi.Input<string>;
+    clickAttributionWindow?: pulumi.Input<string | undefined>;
+    client?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: Kafka client certificate.
      * 	- Service `herokuKafka`: Heroku Kafka client certificate. Required for `TLS` security protocol.
      */
-    clientCert?: pulumi.Input<string>;
+    clientCert?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: Kafka client certificate key.
      * 	- Service `herokuKafka`: Heroku Kafka client certificate key.  Required for `TLS` security protocol.
      */
-    clientCertKey?: pulumi.Input<string>;
+    clientCertKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `ceridianDayforce`: Your Ceridian Dayforce client host.
      */
-    clientHost?: pulumi.Input<string>;
+    clientHost?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `acumatica`: Your Acumatica client ID.
@@ -1813,25 +1813,25 @@ export interface ConnectorConfig {
      * 	- Service `zuora`: Zuora Client ID.
      * 	- Service `zuoraSandbox`: Zuora Client ID.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appfigures`: Your Appfigures Client Key.
      * 	- Service `thinkific`: Your Thinkific client key.
      * 	- Service `yougovSport`: Your Yougov Sport client key.
      */
-    clientKey?: pulumi.Input<string>;
+    clientKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `destini`: Your Destini Client Name.
      * 	- Service `medallia`: Medallia company name
      */
-    clientName?: pulumi.Input<string>;
+    clientName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `ceridianDayforce`: Your Ceridian Dayforce client namespace.
      */
-    clientNamespace?: pulumi.Input<string>;
+    clientNamespace?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: Client Private Key in .pem format.
@@ -1851,7 +1851,7 @@ export interface ConnectorConfig {
      * 	- Service `postgres`: Client Private Key in .pem format.
      * 	- Service `postgresRds`: Client Private Key in .pem format.
      */
-    clientPrivateKey?: pulumi.Input<string>;
+    clientPrivateKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: Client Certificate in .pem format.
@@ -1871,7 +1871,7 @@ export interface ConnectorConfig {
      * 	- Service `postgres`: Client Certificate in .pem format.
      * 	- Service `postgresRds`: Client Certificate in .pem format.
      */
-    clientPublicCertificate?: pulumi.Input<string>;
+    clientPublicCertificate?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `acumatica`: Your Acumatica client secret.
@@ -1981,80 +1981,80 @@ export interface ConnectorConfig {
      * 	- Service `zuora`: Zuora Client Secret.
      * 	- Service `zuoraSandbox`: Zuora Client Secret.
      */
-    clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: Cloud storage type Braze Current is connected to.
      */
-    cloudStorageType?: pulumi.Input<string>;
+    cloudStorageType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `rarible`: Your Rarible Collection Address.
      */
-    collectionAddress?: pulumi.Input<string>;
+    collectionAddress?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `doubleClickPublishers`: Columns provide all trafficking statistics and revenue information available for the chosen Dimensions.
      */
-    columns?: pulumi.Input<pulumi.Input<string>[]>;
+    columns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `alida`: Your Alida community API key name.
      */
-    communityApiKeyName?: pulumi.Input<string>;
+    communityApiKeyName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `khorosCommunities`: Your Khoros Communities community domain.
      */
-    communityDomain?: pulumi.Input<string>;
+    communityDomain?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `khorosCommunities`: Your Khoros Communities community ID.
      */
-    communityId?: pulumi.Input<string>;
+    communityId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `businessCentral`: List of companies to sync
      */
-    companies?: pulumi.Input<pulumi.Input<string>[]>;
+    companies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `ordway`: Your Ordway company name.
      */
-    company?: pulumi.Input<string>;
+    company?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `360learning`: Your 360Learning Company ID.
      * 	- Service `sageIntacct`: Company ID
      * 	- Service `sapSuccessFactors`: Your SAP SuccessFactors Company ID.
      */
-    companyId?: pulumi.Input<string>;
+    companyId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cjCommissionDetail`: Your CJ Commission Detail company IDs.
      */
-    companyIds?: pulumi.Input<string>;
+    companyIds?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `khorosCare`: Your Khoros Care companyKey.
      * 	- Service `upland`: Your Upland Software Company Key.
      */
-    companyKey?: pulumi.Input<string>;
+    companyKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `clockodo`: Your Clockodo company name.
      */
-    companyName?: pulumi.Input<string>;
+    companyName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `concur`: The SAP Concur Company Request Token
      */
-    companyRequestToken?: pulumi.Input<string>;
+    companyRequestToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `concur`: The SAP Concur Company UUID
      */
-    companyUuid?: pulumi.Input<string>;
+    companyUuid?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: If your files are compressed, but do not have extensions indicating the compression method, you can force them to be uncompressed according to the selected compression algorithm. Leave the value as infer if your files are saved with the correct compression extensions.
@@ -2072,35 +2072,35 @@ export interface ConnectorConfig {
      * 	- Service `sharePoint`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
      * 	- Service `wasabiCloudStorage`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
      */
-    compression?: pulumi.Input<string>;
+    compression?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleDisplayAndVideo360`: The report configuration method. Specifies whether a new configuration is defined manually or an existing configuration is reused. The default value is `CREATE_NEW`.
      */
-    configMethod?: pulumi.Input<string>;
+    configMethod?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowplow`: Public repository URL containing JSON configuration files.
      */
-    configRepositoryUrl?: pulumi.Input<string>;
+    configRepositoryUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebook`: Option to select Prebuilt Reports or Custom Reports. [Possible configType values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#configtype).
      * 	- Service `googleAnalytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/connectors/applications/google-analytics#schemainformation).
      */
-    configType?: pulumi.Input<string>;
+    configType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `xactly`: Your Xactly Connect password.
      */
-    connectPassword?: pulumi.Input<string>;
+    connectPassword?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `xactly`: Your Xactly Connect username.
      */
-    connectUsername?: pulumi.Input<string>;
-    connectingUser?: pulumi.Input<string>;
-    connectingUserEmail?: pulumi.Input<string>;
+    connectUsername?: pulumi.Input<string | undefined>;
+    connectingUser?: pulumi.Input<string | undefined>;
+    connectingUserEmail?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsMsk`: How Fivetran connects to your message brokers in the cluster
@@ -2109,12 +2109,12 @@ export interface ConnectorConfig {
      * 	- Service `azureServiceBus`: The connection method
      * 	- Service `sftp`: The connection method used to connect to SFTP Server.
      */
-    connectionMethod?: pulumi.Input<string>;
+    connectionMethod?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appsflyer`: Your Data Locker Connection Name. Default value: `data-locker-hourly/
      */
-    connectionName?: pulumi.Input<string>;
+    connectionName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: The blob storage container connection string.
@@ -2124,7 +2124,7 @@ export interface ConnectorConfig {
      * 	- Service `microsoftDynamics365Fo`: The blob storage container connection string.
      * 	- Service `sqlServer`: The Azure Blob Storage container connection string.
      */
-    connectionString?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
@@ -2189,12 +2189,12 @@ export interface ConnectorConfig {
      * 	- Service `sqlServerRds`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
      * 	- Service `sqlServerSapEccHva`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
      */
-    connectionType?: pulumi.Input<string>;
+    connectionType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `prismaCloud`: Your Prisma Cloud console URL.
      */
-    consoleUrl?: pulumi.Input<string>;
+    consoleUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: Kafka consumer group name.
@@ -2203,7 +2203,7 @@ export interface ConnectorConfig {
      * 	- Service `confluentCloud`: Confluent Cloud consumer group name.
      * 	- Service `herokuKafka`: Heroku Kafka consumer group name.
      */
-    consumerGroup?: pulumi.Input<string>;
+    consumerGroup?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `netsuiteSuiteanalytics`: Consumer Key
@@ -2212,12 +2212,12 @@ export interface ConnectorConfig {
      * 	- Service `twitterAds`: The Twitter App consumer key.
      * 	- Service `woocommerce`: Your WooCommerce Consumer key.
      */
-    consumerKey?: pulumi.Input<string>;
+    consumerKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `xactly`: Your Xactly Connect consumer name.
      */
-    consumerName?: pulumi.Input<string>;
+    consumerName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `netsuiteSuiteanalytics`: Consumer Secret
@@ -2226,12 +2226,12 @@ export interface ConnectorConfig {
      * 	- Service `twitterAds`: The Twitter App consumer secret.
      * 	- Service `woocommerce`: Your WooCommerce Consumer secret.
      */
-    consumerSecret?: pulumi.Input<string>;
+    consumerSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: IP address of the Azure Storage Container which is accessible from host machine.
      */
-    containerAddress?: pulumi.Input<string>;
+    containerAddress?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: The name of the blob container.
@@ -2239,125 +2239,125 @@ export interface ConnectorConfig {
      * 	- Service `microsoftDynamics365Fo`: The name of the blob container.
      * 	- Service `sqlServer`: The name of the Azure Blob Storage container.
      */
-    containerName?: pulumi.Input<string>;
+    containerName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `youtubeAnalytics`: Used only for Content Owner reports. The ID of the content owner for whom the API request is being made.
      */
-    contentOwnerId?: pulumi.Input<string>;
+    contentOwnerId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `acumatica`: Your Acumatica contract version.
      */
-    contractVersion?: pulumi.Input<string>;
+    contractVersion?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `helpscout`: Your conversation webhook URL
      */
-    conversationWebhookUrl?: pulumi.Input<string>;
+    conversationWebhookUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `doubleClickCampaignManager`: Conversion Dimensions.
      */
-    conversionDimensions?: pulumi.Input<pulumi.Input<string>[]>;
+    conversionDimensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pinterestAds`: The date that the user interacted with the ad OR completed a conversion event.
      */
-    conversionReportTime?: pulumi.Input<string>;
+    conversionReportTime?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAds`: A period of time in days during which a conversion is recorded.
      */
-    conversionWindowSize?: pulumi.Input<number>;
-    convertDatsTypeToDate?: pulumi.Input<boolean>;
+    conversionWindowSize?: pulumi.Input<number | undefined>;
+    convertDatsTypeToDate?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adjust`: CSV definition for the CSV export (https://help.adjust.com/en/article/csv-uploads#how-do-i-format-my-csv-definition).
      */
-    csvDefinition?: pulumi.Input<string>;
+    csvDefinition?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `criteo`: Currency
      * 	- Service `rokt`: Your Rokt currency.
      */
-    currency?: pulumi.Input<string>;
+    currency?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `coalesce`: Your Coalesce custom base URL.
      * 	- Service `datadog`: Your Datadog custom base url.
      * 	- Service `deposco`: Your Deposco custom base URL.
      */
-    customBaseUrl?: pulumi.Input<string>;
+    customBaseUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `iterable`: Custom Events Sync Mode.
      */
-    customEventSyncMode?: pulumi.Input<string>;
+    customEventSyncMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `iterable`: List of custom events to sync. Should be specified when `customEventSyncMode` is `SelectedEvents`
      */
-    customEvents?: pulumi.Input<pulumi.Input<string>[]>;
+    customEvents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `doubleClickPublishers`: The list of custom field IDs included in the report. Custom fields can only be selected with their corresponding dimensions.
      */
-    customFieldIds?: pulumi.Input<pulumi.Input<string>[]>;
+    customFieldIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `doubleClickCampaignManager`: Custom Floodlight variables enable you to capture information beyond the basics (visits and revenue) that you can collect with standard parameters in your tags.
      */
-    customFloodlightVariables?: pulumi.Input<pulumi.Input<string>[]>;
-    customPayloads?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigCustomPayload>[]>;
-    customReports?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigCustomReport>[]>;
-    customTables?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigCustomTable>[]>;
+    customFloodlightVariables?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    customPayloads?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigCustomPayload>[] | undefined>;
+    customReports?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigCustomReport>[] | undefined>;
+    customTables?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigCustomTable>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `dbtCloud`: Your dbt Cloud access url.
      * 	- Service `factbird`: Your Factbird custom base url.
      * 	- Service `jotform`: Your Jotform custom base URL.
      */
-    customUrl?: pulumi.Input<string>;
+    customUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `ukgPro`: Your UKG Pro Customer API key.
      */
-    customerApiKey?: pulumi.Input<string>;
+    customerApiKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAds`: ID of the customer, can be retrieved from your AdWords dashboard.
      */
-    customerId?: pulumi.Input<string>;
+    customerId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `salesforceCommerceCloud`: The parameter to retrieve customer details.
      */
-    customerListId?: pulumi.Input<string>;
-    dailyApiCallLimit?: pulumi.Input<number>;
+    customerListId?: pulumi.Input<string | undefined>;
+    dailyApiCallLimit?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cosmos`: The source data access method. Supported values:`ACCOUNT_KEY`- Data access method that uses account keys to authenticate to the source database. It comes in both read-write and read-only variants.`RESOURCE_TOKEN`- Fine-grained permission model based on native Azure Cosmos DB users and permissions. Learn more in our [Azure Cosmos DB Data Access Methods documentation](https://fivetran.com/docs/connectors/databases/cosmos#dataaccessmethods).
      */
-    dataAccessMethod?: pulumi.Input<string>;
+    dataAccessMethod?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `brightpearl`: Your Brightpearl data center.
      * 	- Service `qualtrics`: Data center ID of the Qualtrics account. Can be found in the URL before `qualtrics.com`. (For example, if your URL is `youraccount.ca1.qualtrics.com`, then the data center is `ca1`.)
      * 	- Service `zohoCrm`: Data Center, depending on the Domain name
      */
-    dataCenter?: pulumi.Input<string>;
+    dataCenter?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `zonkaFeedback`: Your Zonka Feedback data center ID.
      */
-    dataCenterId?: pulumi.Input<string>;
-    dataModelPathAliasLists?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigDataModelPathAliasList>[]>;
+    dataCenterId?: pulumi.Input<string | undefined>;
+    dataModelPathAliasLists?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigDataModelPathAliasList>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bigqueryDb`: Data set name
      */
-    dataSetName?: pulumi.Input<string>;
+    dataSetName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: The database name.
@@ -2406,33 +2406,33 @@ export interface ConnectorConfig {
      * 	- Service `sqlServerRds`: The database name.
      * 	- Service `sqlServerSapEccHva`: The database name.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `firebase`: Database Name
      */
-    databaseName?: pulumi.Input<string>;
+    databaseName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics360`: The dataset ID.
      * 	- Service `googleAnalytics4Export`: The Dataset ID.
      */
-    datasetId?: pulumi.Input<string>;
+    datasetId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `netsuiteSuiteanalytics`: The NetSuite data source value: `NetSuite.com`.
      */
-    datasource?: pulumi.Input<string>;
+    datasource?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalytics`: The aggregation duration you want. Default value: `HOUR` .
      */
-    dateGranularity?: pulumi.Input<string>;
+    dateGranularity?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `myosh`: Your Myosh Server variables/db .
      */
-    db?: pulumi.Input<string>;
+    db?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Optional. You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible. If your files sync with the wrong number of columns, consider setting this value
@@ -2450,17 +2450,17 @@ export interface ConnectorConfig {
      * 	- Service `sharePoint`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
      * 	- Service `wasabiCloudStorage`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
      */
-    delimiter?: pulumi.Input<string>;
+    delimiter?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `brightpearl`: Your Brightpearl dev reference.
      */
-    developerReference?: pulumi.Input<string>;
+    developerReference?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `doubleClickPublishers`: Dimension attributes provide additional fields associated with a Dimension. Dimension attributes can only be selected with their corresponding Dimensions.
      */
-    dimensionAttributes?: pulumi.Input<pulumi.Input<string>[]>;
+    dimensionAttributes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adroll`: The dimenstions that you want to sync.
@@ -2469,34 +2469,34 @@ export interface ConnectorConfig {
      * 	- Service `googleAnalytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
      * 	- Service `googleDisplayAndVideo360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
      */
-    dimensions?: pulumi.Input<pulumi.Input<string>[]>;
+    dimensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleHva`: Possible values:`DIRECT`, `BFILE`, `ASM`, `ARCHIVE_ONLY`
      * 	- Service `oracleSapHva`: Possible values:`DIRECT`, `BFILE`, `ASM`, `ARCHIVE_ONLY`
      */
-    directCaptureMethod?: pulumi.Input<string>;
+    directCaptureMethod?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `qualtrics`: Set of directories to be synced when syncMode is CUSTOM
      */
-    directories?: pulumi.Input<pulumi.Input<string>[]>;
+    directories?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `qualtrics`: Sync mode to be used for fetching select directories. The Allowed Values are ALL and CUSTOM. If CUSTOM add the directories to be synced in the `directories` field.
      */
-    directorySyncMode?: pulumi.Input<string>;
+    directorySyncMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cosmos`: Specifies the total number of connectors in the Distributed Connector Cluster running in parallel.
      * 	- Service `dynamodb`: Specifies the total number of connectors in the Distributed Connector Cluster running in parallel.
      */
-    distributedConnectorClusterSize?: pulumi.Input<number>;
+    distributedConnectorClusterSize?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `qualtrics`: Can be used to set the distributions fetch window for incremental sync. Fetch window cannot be lesser than 60 days.
      */
-    distributionIncrementalFetchWindowDays?: pulumi.Input<number>;
+    distributionIncrementalFetchWindowDays?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auth0`: Your Auth0 domain.
@@ -2512,35 +2512,35 @@ export interface ConnectorConfig {
      * 	- Service `zendesk`: Zendesk domain.
      * 	- Service `zendeskSunshine`: Zendesk domain.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: Workday host name.
      * 	- Service `workdayFinancialManagement`: Workday host name.
      * 	- Service `workdayHcm`: Workday host name.
      */
-    domainHostName?: pulumi.Input<string>;
+    domainHostName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `calabrio`: Your Calabrio domain name
      * 	- Service `dynamics365`: The custom domain name associated with Dynamics 365.
      * 	- Service `helpshift`: Your Helpshift domain name.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `medallia`: Domain type of your Medallia URL
      */
-    domainType?: pulumi.Input<string>;
-    dsvServiceAuth?: pulumi.Input<string>;
-    dsvSubscriptionKey?: pulumi.Input<string>;
+    domainType?: pulumi.Input<string | undefined>;
+    dsvServiceAuth?: pulumi.Input<string | undefined>;
+    dsvSubscriptionKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `mailchimp`: List of IDs of the Mailchimp E-Commerce Stores to Sync
      */
-    ecommerceStores?: pulumi.Input<pulumi.Input<string>[]>;
-    edition?: pulumi.Input<string>;
-    elements?: pulumi.Input<pulumi.Input<string>[]>;
+    ecommerceStores?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    edition?: pulumi.Input<string | undefined>;
+    elements?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appcues`: Your Appcues Email.
@@ -2557,19 +2557,19 @@ export interface ConnectorConfig {
      * 	- Service `zendesk`: Zendesk email.
      * 	- Service `zendeskSunshine`: Zendesk email.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `clockodo`: Your Clockodo email address.
      */
-    emailAddress?: pulumi.Input<string>;
+    emailAddress?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cabcharge`: Your Cabcharge email ID.
      * 	- Service `ordway`: Your Ordway user email ID.
      * 	- Service `planful`: Your Planful email ID.
      */
-    emailId?: pulumi.Input<string>;
+    emailId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
@@ -2587,12 +2587,12 @@ export interface ConnectorConfig {
      * 	- Service `sharePoint`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
      * 	- Service `wasabiCloudStorage`: If your CSVs are headerless, set this is as `true`. When `true`, we will generate generic column names following the convention of `column0`, `column1`, ... `columnN` to map the rows. Default value: `false`.
      */
-    emptyHeader?: pulumi.Input<boolean>;
+    emptyHeader?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `doubleClickCampaignManager`: Whether to enable all reach dimension combinations in the report. Default value: `false`
      */
-    enableAllDimensionCombinations?: pulumi.Input<boolean>;
+    enableAllDimensionCombinations?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleHva`: Default value: `false`. Set to `true` if you're using archive log only mode.
@@ -2601,48 +2601,48 @@ export interface ConnectorConfig {
      * 	- Service `sqlServerHva`: Use archive log only mode
      * 	- Service `sqlServerSapEccHva`: Use archive log only mode
      */
-    enableArchiveLogOnly?: pulumi.Input<boolean>;
-    enableDataExtensionsSyncing?: pulumi.Input<boolean>;
+    enableArchiveLogOnly?: pulumi.Input<boolean | undefined>;
+    enableDataExtensionsSyncing?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cosmos`: Enable to allow the connector to join a cluster of connectors forming a Distributed Connector Cluster. This cluster allows parallel syncs from the same source to the same destination using multiple connectors.
      * 	- Service `dynamodb`: Enable to allow the connector to join a cluster of connectors forming a Distributed Connector Cluster. This cluster allows parallel syncs from the same source to the same destination using multiple connectors.
      */
-    enableDistributedConnectorMode?: pulumi.Input<boolean>;
+    enableDistributedConnectorMode?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowplow`: Enable Enrichments
      */
-    enableEnrichments?: pulumi.Input<boolean>;
+    enableEnrichments?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: Enable User Profile Exports
      */
-    enableExports?: pulumi.Input<boolean>;
+    enableExports?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sqlServer`: Use transparent data encryption (TDE)
      * 	- Service `sqlServerHva`: Using Transparent Data Encryption (TDE)
      * 	- Service `sqlServerSapEccHva`: Using Transparent Data Encryption (TDE)
      */
-    enableTde?: pulumi.Input<boolean>;
+    enableTde?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleHva`: Default value: `false`. Set to `true` if you're using TDE encryption.
      * 	- Service `oracleSapHva`: Default value: `false`. Set to `true` if you're using TDE encryption.
      * 	- Service `oracleSapHvaNetweaver`: Default value: `false`. Set to `true` if you're using TDE encryption.
      */
-    enableTdeEncryption?: pulumi.Input<boolean>;
+    enableTdeEncryption?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appleSearchAds`: Use the public key to grant Fivetran access to Apple Search Ads api.
      */
-    encodedPublicKey?: pulumi.Input<string>;
+    encodedPublicKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `marketo`: Marketo SOAP API Encryption Key.
      */
-    encryptionKey?: pulumi.Input<string>;
+    encryptionKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `branch`: Webhook Endpoint
@@ -2651,29 +2651,29 @@ export interface ConnectorConfig {
      * 	- Service `snowplow`: Connection-specific collector endpoint. The collector endpoint will have the `webhooks.fivetran.com/snowplow/endpoint_ID` format. You will need it to configure Snowplow to connect with Fivetran.
      * 	- Service `webhooks`: You can send your events to https://webhooks.fivetran.com/webhooks/{endpoint}
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `s3CompatibleStorage`: S3-Compatible Storage Endpoint URL.
      */
-    endpointUrl?: pulumi.Input<string>;
+    endpointUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pinterestAds`: The number of days to use as the conversion attribution window for an engagement (i.e. closeup or save) action.
      */
-    engagementAttributionWindow?: pulumi.Input<string>;
+    engagementAttributionWindow?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `optimizely`: Enriched Events S3 bucket
      */
-    enrichedExport?: pulumi.Input<string>;
+    enrichedExport?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `checkout`: Your Checkout.com entity ID.
      * 	- Service `zuora`: If `isMultiEntityFeatureEnabled` is `true`, then it's `EntityId`.
      * 	- Service `zuoraSandbox`: If `isMultiEntityFeatureEnabled` is `true`, then it's `EntityId`.
      */
-    entityId?: pulumi.Input<string>;
+    entityId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgres`: Registered Application ID (for Entra ID authentication).
@@ -2683,7 +2683,7 @@ export interface ConnectorConfig {
      * 	- Service `postgres`: Registered Application ID (for Entra ID authentication).
      * 	- Service `postgresRds`: Registered Application ID (for Entra ID authentication).
      */
-    entraAppId?: pulumi.Input<string>;
+    entraAppId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgres`: Azure Tenant ID (for Entra ID authentication).
@@ -2693,7 +2693,7 @@ export interface ConnectorConfig {
      * 	- Service `postgres`: Azure Tenant ID (for Entra ID authentication).
      * 	- Service `postgresRds`: Azure Tenant ID (for Entra ID authentication).
      */
-    entraTenantId?: pulumi.Input<string>;
+    entraTenantId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bazaarvoice`: Your Bazaarvoice environment.
@@ -2719,17 +2719,17 @@ export interface ConnectorConfig {
      * 	- Service `zuora`: Zuora Sandbox Environment. This accepts either of the two values Sandbox or Central Sandbox based on your subscription. The default environment is Sandbox.
      * 	- Service `zuoraSandbox`: Zuora Sandbox Environment. This accepts either of the two values Sandbox or Central Sandbox based on your subscription. The default environment is Sandbox.
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `xactly`: Your Xactly environment host.
      */
-    environmentHost?: pulumi.Input<string>;
+    environmentHost?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `businessCentral`: Name of the environment
      */
-    environmentName?: pulumi.Input<string>;
+    environmentName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Optional. If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
@@ -2747,30 +2747,30 @@ export interface ConnectorConfig {
      * 	- Service `sharePoint`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
      * 	- Service `wasabiCloudStorage`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
      */
-    escapeChar?: pulumi.Input<string>;
+    escapeChar?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `gcs`: Approach used by CSV parser. Default  value: `CUSTOM_ESCAPE_CHAR`. required for CSV parsing when `nonStandardEscapeChar` is `true`.
      * 	- Service `s3`: Approach used by CSV parser. Default  value: `CUSTOM_ESCAPE_CHAR`. required for CSV parsing when `nonStandardEscapeChar` is `true`.
      */
-    escapeCharOptions?: pulumi.Input<string>;
+    escapeCharOptions?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `kustomer`: Turn it on if your app is on EU region
      * 	- Service `surveyMonkey`: The SurveyMonkey account region. Specify `true`, if your account is hosted in the EU region. Default value is `false`.
      */
-    euRegion?: pulumi.Input<boolean>;
+    euRegion?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `iterable`: List of events to sync. Should be specified when `syncMode` is `SelectedEvents`
      */
-    events?: pulumi.Input<pulumi.Input<string>[]>;
+    events?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adjust`: Your cloud storage.
      * 	- Service `braze`: Export Storage. Required if `enableExports` is `true`
      */
-    exportStorageType?: pulumi.Input<string>;
+    exportStorageType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appsflyer`: The external ID is a string that designates who can assume the role. For more information, click a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html"here/a
@@ -2785,17 +2785,17 @@ export interface ConnectorConfig {
      * 	- Service `s3`: Used for authentication along with the `roleArn`. If not provided, it uses connector's `groupId`. Use the [List All Groups endpoint](https://fivetran.com/docs/rest-api/groups#listallgroups) to find the `groupId`.
      * 	- Service `segment`: The external ID is a string that designates who can assume the role. For more information, see a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html"Amazon's AWS Identity and Access Management User Guide/a.
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `unicommerce`: Your uniware facility codes.
      */
-    facilityCodes?: pulumi.Input<string>;
+    facilityCodes?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebook`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#fields).
      */
-    fields?: pulumi.Input<pulumi.Input<string>[]>;
+    fields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: If your files are saved with improper extensions, you can force them to by synced as the selected filetype. Leave the value as infer if your files have the correct extensions
@@ -2813,128 +2813,128 @@ export interface ConnectorConfig {
      * 	- Service `sharePoint`: If your files are saved with improper extensions, you can force them to be synced as the selected file type.
      * 	- Service `wasabiCloudStorage`: If your files are saved with improper extensions, you can force them to be synced as the selected file type.
      */
-    fileType?: pulumi.Input<string>;
-    files?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigFile>[]>;
+    fileType?: pulumi.Input<string | undefined>;
+    files?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigFile>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: String parameter restricts the data returned for your report. To use the filter parameter, specify a dimension or metric on which to filter, followed by the filter expression
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `itunesConnect`: Whether to sync all finance accounts or specific finance accounts.
      */
-    financeAccountSyncMode?: pulumi.Input<string>;
+    financeAccountSyncMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `itunesConnect`: Specific finance accounts to sync. Must be populated if `financeAccountSyncMode` is set to `SpecificFinanceAccounts`.
      */
-    financeAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    financeAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `dropbox`: Your Dropbox Folder URL.
      */
-    folder?: pulumi.Input<string>;
+    folder?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `box`: Folder URL
      * 	- Service `googleDrive`: Folder URL
      */
-    folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: Folder Path
      * 	- Service `oneDrive`: Your OneDrive folder URL
      * 	- Service `oracleBusinessIntelligencePublisher`: The folder path to save data models and reports.
      */
-    folderPath?: pulumi.Input<string>;
+    folderPath?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `clari`: Your Clari Forecast id .
      */
-    forecastId?: pulumi.Input<string>;
+    forecastId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: FTP host.
      */
-    ftpHost?: pulumi.Input<string>;
+    ftpHost?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: FTP password.
      */
-    ftpPassword?: pulumi.Input<string>;
+    ftpPassword?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: FTP port.
      */
-    ftpPort?: pulumi.Input<number>;
+    ftpPort?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: FTP user.
      */
-    ftpUser?: pulumi.Input<string>;
+    ftpUser?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsLambda`: The name of your AWS Lambda Function.
      */
-    function?: pulumi.Input<string>;
+    function?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureFunction`: Function app name in Azure portal.
      */
-    functionApp?: pulumi.Input<string>;
+    functionApp?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureFunction`: Function key used for authorization.
      */
-    functionKey?: pulumi.Input<string>;
+    functionKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureFunction`: Name of the function to be triggered.
      */
-    functionName?: pulumi.Input<string>;
+    functionName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleCloudFunction`: The trigger URL of the cloud function.
      */
-    functionTrigger?: pulumi.Input<string>;
+    functionTrigger?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: Your GCS bucket. Required if `GCS` is the `cloudStorageType`
      * 	- Service `webhooks`: The GCS bucket name. Required if `bucketService` is set to `GCS`.
      */
-    gcsBucket?: pulumi.Input<string>;
+    gcsBucket?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: Your GCS bucket. Required if `GCS` is the `exportStorageType`
      */
-    gcsExportBucket?: pulumi.Input<string>;
+    gcsExportBucket?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: Your GCS folder name. Required if `GCS` is the `exportStorageType`
      */
-    gcsExportFolder?: pulumi.Input<string>;
+    gcsExportFolder?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: Your GCS folder name. Required if `GCS` is the `cloudStorageType`
      */
-    gcsFolder?: pulumi.Input<string>;
+    gcsFolder?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: Select this option to generate a Primary Key for reports where no single column or combination of columns can be used to form a Primary Key.
      */
-    generateFivetranPk?: pulumi.Input<boolean>;
+    generateFivetranPk?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `lineAds`: Your LINE Ads group ID(s).
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `fivetranLog`: (Optional) The group name of the `targetGroupId`.
      */
-    groupName?: pulumi.Input<string>;
-    hanaBackupPassword?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
+    hanaBackupPassword?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hanaSapHvaB1`: The mode for connecting to HANA server. Available options: Single container (default), Multiple containers - Tenant database, Multiple containers - System database, Manual port selection - This option is used only if the database port needs to be specified manually.
@@ -2943,12 +2943,12 @@ export interface ConnectorConfig {
      * 	- Service `hanaSapHvaS4`: The mode for connecting to HANA server. Available options: Single container (default), Multiple containers - Tenant database, Multiple containers - System database, Manual port selection - This option is used only if the database port needs to be specified manually.
      * 	- Service `hanaSapHvaS4Netweaver`: The mode for connecting to HANA server. Available options: Single container (default), Multiple containers - Tenant database, Multiple containers - System database, Manual port selection - This option is used only if the database port needs to be specified manually.
      */
-    hanaMode?: pulumi.Input<string>;
+    hanaMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureServiceBus`: The boolean value specifying whether the connection string has manage permissions
      */
-    hasManagePermissions?: pulumi.Input<boolean>;
+    hasManagePermissions?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: Range of data in history you would like to include in the initial sync.
@@ -2958,7 +2958,7 @@ export interface ConnectorConfig {
      * 	- Service `sailthru`: Range of historical data you would like to include in the initial sync. Default value: `ALL_TIME`.
      * 	- Service `salesforceMarketingCloud`: Range of data in history you would like to include in the initial sync. Default value: `ALL_TIME`.
      */
-    historicSyncTimeFrame?: pulumi.Input<string>;
+    historicSyncTimeFrame?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: Range of data in history you would like to include in the initial sync. Valid values are `ALL_TIME` and `DATE_LIMIT`
@@ -2973,7 +2973,7 @@ export interface ConnectorConfig {
      * 	- Service `sailthru`: The time range for which historical data should be synced. Default value: `All Time`.
      * 	- Service `salesforceMarketingCloud`: The time range for which historical data should be synced. Default value: `All Time`.
      */
-    historicalSyncLimit?: pulumi.Input<string>;
+    historicalSyncLimit?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: The start date (in YYYY-MM-DD) from which to sync historical data. Only used when `historicalSyncLimit` is set to `DATE_LIMIT`.
@@ -2985,13 +2985,13 @@ export interface ConnectorConfig {
      * 	- Service `sailthru`: The start date (YYYY-MM-DD) from which to sync historical data.
      * 	- Service `salesforceMarketingCloud`: The start date (YYYY-MM-DD) from which to sync historical data.
      */
-    historicalSyncLimitDate?: pulumi.Input<string>;
+    historicalSyncLimitDate?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: The options for time range for which historical data should be synced. Default value: `All Time`.
      * 	- Service `pardotSandbox`: The options for time range for which historical data should be synced. Default value: `All Time`.
      */
-    historicalSyncLimitTimeFrame?: pulumi.Input<string>;
+    historicalSyncLimitTimeFrame?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `ascendByPartnerize`: Your Ascend by Partnerize Historical sync time frame
@@ -3004,12 +3004,12 @@ export interface ConnectorConfig {
      * 	- Service `vimeo`: Your Vimeo Historical sync time frame.
      * 	- Service `zendesk`: Used to configure Historical sync timeframe for selected tables
      */
-    historicalSyncTimeFrame?: pulumi.Input<string>;
+    historicalSyncTimeFrame?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appsflyer`: Your S3 home folder path of the Data Locker.
      */
-    homeFolder?: pulumi.Input<string>;
+    homeFolder?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: DB instance host or IP address.
@@ -3072,66 +3072,66 @@ export interface ConnectorConfig {
      * 	- Service `sqlServerRds`: DB instance host or IP address.
      * 	- Service `sqlServerSapEccHva`: DB instance host or IP address.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: IP address of host tunnel machine which is used to connect to the Storage container.
      * 	- Service `azureServiceBus`: The IP address of the host machine which we use to connect to ASB via ssh
      */
-    hostIp?: pulumi.Input<string>;
+    hostIp?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `coassemble`: Your Coassemble Hostname.
      * 	- Service `datadog`: Your Datadog host name.
      * 	- Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management hostname.
      */
-    hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeCommerce`: Your Adobe Commerce host url.
      * 	- Service `sparkpost`: Your SparkPost host URL.
      */
-    hostUrl?: pulumi.Input<string>;
+    hostUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: Username in the host machine.
      * 	- Service `azureServiceBus`: The username on the host machine which we use to connect to ASB via ssh
      */
-    hostUser?: pulumi.Input<string>;
+    hostUser?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `akamai`: Your Akamai hostname.
      * 	- Service `ukgPro`: Your UKG Pro hostname.
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureCosmosForMongo`: A list of host addresses for Azure Cosmos DB for Mongo DB.
      * 	- Service `mongo`: A list of host addresses of the primary node and all replicas. Each list item is either: a DB instance host/IP address with a port number, or SRV host record.
      * 	- Service `mongoSharded`: A list of host addresses of the primary node and all replicas. Each list item is either: a DB instance host/IP address with a port number, or SRV host record.
      */
-    hosts?: pulumi.Input<pulumi.Input<string>[]>;
+    hosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `databricksDb`: http path
      */
-    httpPath?: pulumi.Input<string>;
+    httpPath?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `playvoxWorkforceManagement`: Your Playvox Workforce Management client identifier.
      * 	- Service `statisticsNetherlandsCbs`: Your Statistics Netherlands CBS catalog identifier.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `marketo`: Marketo REST API identity url.
      */
-    identity?: pulumi.Input<string>;
+    identity?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `salesforceCommerceCloud`: Whether to sync data through OCAPI endpoints.
      */
-    includeOcapiEndpoints?: pulumi.Input<boolean>;
+    includeOcapiEndpoints?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `acumatica`: Your Acumatica instance name.
@@ -3140,7 +3140,7 @@ export interface ConnectorConfig {
      * 	- Service `salesforceMarketingCloud`: The Salesforce Marketing Cloud instance ID
      * 	- Service `servicenow`: ServiceNow Instance ID.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hanaSapHvaB1`: Two-digit number (00-97) of the SAP instance within its host.
@@ -3150,97 +3150,97 @@ export interface ConnectorConfig {
      * 	- Service `hanaSapHvaS4Netweaver`: Two-digit number (00-97) of the SAP instance within its host.
      * 	- Service `oracleSapHvaNetweaver`: Two-digit number (00-97) of the SAP instance within its host.
      */
-    instanceNumber?: pulumi.Input<string>;
+    instanceNumber?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sapBusinessByDesign`: The SAP Business ByDesign instance URL.
      */
-    instanceUrl?: pulumi.Input<string>;
+    instanceUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pendo`: The integration key of the Pendo account.
      */
-    integrationKey?: pulumi.Input<string>;
+    integrationKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `avevaPi`: IP address of the AF Server
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `fivetranLog`: (Optional) Retrieve account-level logs.
      */
-    isAccountLevelConnector?: pulumi.Input<boolean>;
+    isAccountLevelConnector?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appleSearchAds`: The contents of your PEM certificate file. Default value: `false`
      */
-    isAuth2Enabled?: pulumi.Input<boolean>;
+    isAuth2Enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `twitterAds`: Custom API credentials
      */
-    isCustomApiCredentials?: pulumi.Input<boolean>;
+    isCustomApiCredentials?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: Whether the `EXTERNAL_ACTIVITY` table must be synced or not.
      * 	- Service `pardotSandbox`: Whether the `EXTERNAL_ACTIVITY` table must be synced or not.
      */
-    isExternalActivitiesEndpointSelected?: pulumi.Input<boolean>;
+    isExternalActivitiesEndpointSelected?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: Use Secure FTP (FTPS).
      */
-    isFtps?: pulumi.Input<boolean>;
+    isFtps?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sftp`: Whether to use a key pair for authentication.  When `true`, do not use `password`.
      */
-    isKeypair?: pulumi.Input<boolean>;
+    isKeypair?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `zuora`: Set to `true` if there are multiple entities in your Zuora account and you only want to use one entity. Otherwise, set to `false`.
      * 	- Service `zuoraSandbox`: Set to `true` if there are multiple entities in your Zuora account and you only want to use one entity. Otherwise, set to `false`.
      */
-    isMultiEntityFeatureEnabled?: pulumi.Input<boolean>;
+    isMultiEntityFeatureEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `salesforceMarketingCloud`: Indicates that that your installed package uses OAuth 2.0. Default value: `false`
      */
-    isNewPackage?: pulumi.Input<boolean>;
+    isNewPackage?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflakeDb`: Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.
      */
-    isPrivateKeyEncrypted?: pulumi.Input<boolean>;
+    isPrivateKeyEncrypted?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsLambda`: We use PrivateLink by default if your AWS Lambda is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to AWS lambda over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options#awsprivatelink).
      * 	- Service `s3`: Set to `true` if you want to connect to S3 bucket over PrivateLink. Default value: `false`.
      */
-    isPrivateLinkRequired?: pulumi.Input<boolean>;
+    isPrivateLinkRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Whether you are syncing from a public bucket. Default value: `false`.
      * 	- Service `kinesis`: Is the bucket public? (you don't need an AWS account for syncing public buckets!)
      * 	- Service `s3`: Whether you are syncing from a public bucket. Default value: `false`.
      */
-    isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sailthru`: Enable this if you want to sync Sailthru Connect
      */
-    isSailthruConnectEnabled?: pulumi.Input<boolean>;
+    isSailthruConnectEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `ftp`: Whether the server supports FTPS.
      */
-    isSecure?: pulumi.Input<boolean>;
+    isSecure?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `salesforceMarketingCloud`: Provide SFTP credentials
      */
-    isSftpCredsAvailable?: pulumi.Input<boolean>;
+    isSftpCredsAvailable?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `box`: Allows the creation of connector using Merge Mode strategy.
@@ -3249,29 +3249,29 @@ export interface ConnectorConfig {
      * 	- Service `sftp`: Allows the creation of connector using the specified Sync strategy.
      * 	- Service `sharePoint`: Allows the creation of connector using Merge Mode strategy.
      */
-    isSingleTableMode?: pulumi.Input<boolean>;
+    isSingleTableMode?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adyen`: Whether or not your Adyen Account is a Test Account. Default value: `false`.
      */
-    isTestAccount?: pulumi.Input<boolean>;
+    isTestAccount?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amazonSellingPartner`: Whether or not you have a Vendor Account. Default value: `false`.
      */
-    isVendor?: pulumi.Input<boolean>;
+    isVendor?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleFusionCloudAppsCrm`: The Oracle Fusion Cloud issuer name.
      * 	- Service `oracleFusionCloudAppsFscm`: The Oracle Fusion Cloud issuer name.
      * 	- Service `oracleFusionCloudAppsHcm`: The Oracle Fusion Cloud issuer name.
      */
-    issuer?: pulumi.Input<string>;
+    issuer?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `itunesConnect`: Your Issuer ID
      */
-    issuerId?: pulumi.Input<string>;
+    issuerId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Control how your JSON data is delivered into your destination
@@ -3289,50 +3289,50 @@ export interface ConnectorConfig {
      * 	- Service `sharePoint`: Control how your JSON data is delivered into your destination
      * 	- Service `wasabiCloudStorage`: Specifies how Fivetran should handle your JSON data. Default value: `Packed`.
      */
-    jsonDeliveryMode?: pulumi.Input<string>;
+    jsonDeliveryMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `uservoice`: The UserVoice API key.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `itunesConnect`: Your Key ID
      */
-    keyId?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsMsk`: If `securityProtocol` is set to `TLS`, enter your `Key Password`.
      */
-    keyPassword?: pulumi.Input<string>;
+    keyPassword?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `herokuKafka`: Key Store Type
      */
-    keyStoreType?: pulumi.Input<string>;
+    keyStoreType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsMsk`: If `securityProtocol` is set to `TLS`, add the `Keystore File` as Base64 encoded string.
      */
-    keystore?: pulumi.Input<string>;
+    keystore?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsMsk`: If `securityProtocol` is set to `TLS`, enter your `Keystore Password`.
      */
-    keystorePassword?: pulumi.Input<string>;
-    lastSyncedChangesUtc_?: pulumi.Input<string>;
-    latestVersion?: pulumi.Input<string>;
+    keystorePassword?: pulumi.Input<string | undefined>;
+    lastSyncedChangesUtc_?: pulumi.Input<string | undefined>;
+    latestVersion?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `younium`: Your Younium legal entity ID.
      */
-    legalEntityId?: pulumi.Input<string>;
+    legalEntityId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: API limit for the external activities endpoint.
      * 	- Service `pardotSandbox`: API limit for the external activities endpoint.
      */
-    limitForApiCallsToExternalActivitiesEndpoint?: pulumi.Input<number>;
+    limitForApiCallsToExternalActivitiesEndpoint?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
@@ -3350,17 +3350,17 @@ export interface ConnectorConfig {
      * 	- Service `sharePoint`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
      * 	- Service `wasabiCloudStorage`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
      */
-    lineSeparator?: pulumi.Input<string>;
+    lineSeparator?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pigment`: Your Pigment list ID.
      */
-    listId?: pulumi.Input<string>;
+    listId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cjCommissionDetail`: Your CJ Commission Detail list of company IDs.
      */
-    listOfCompanyIds?: pulumi.Input<string>;
+    listOfCompanyIds?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Optional. If you have a file structure where new files are always named in lexicographically increasing order such as files being named in increasing order of time, you can select codetime_based_pattern_listing/code.
@@ -3368,58 +3368,58 @@ export interface ConnectorConfig {
      * 	- Service `s3`: The listing strategy you want to use. Default value: `completeListing`.
      * 	- Service `s3CompatibleStorage`: The listing strategy you want to use. Default value: `completeListing`.
      */
-    listStrategy?: pulumi.Input<string>;
+    listStrategy?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics4Export`: The Sync Mode
      */
-    listSyncMode?: pulumi.Input<string>;
+    listSyncMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `db2iHva`: The log journal name.
      * 	- Service `db2iSapHva`: The log journal name.
      */
-    logJournal?: pulumi.Input<string>;
+    logJournal?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `db2iHva`: The log journal schema.
      * 	- Service `db2iSapHva`: The log journal schema.
      */
-    logJournalSchema?: pulumi.Input<string>;
+    logJournalSchema?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hanaSapHvaEccNetweaver`: Name of the SAP logon group. The default value is PUBLIC. This field is optional.
      * 	- Service `hanaSapHvaS4Netweaver`: Name of the SAP logon group. The default value is PUBLIC. This field is optional.
      */
-    logOnGroup?: pulumi.Input<string>;
+    logOnGroup?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `reboundReturns`: Your ReBound Returns login.
      * 	- Service `theTradeDesk`: The Trade Desk email. It is a part of the login credentials.
      * 	- Service `walmartDsp`: Walmart DSP email. It is a part of the login credentials.
      */
-    login?: pulumi.Input<string>;
+    login?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `concur`: The SAP Concur password.
      * 	- Service `sageIntacct`: The login password. It is a part of the login credentials.
      */
-    loginPassword?: pulumi.Input<string>;
+    loginPassword?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sageIntacct`: Lookback window for GL Batch endpoint lookback sync
      */
-    lookBackWindowForGlBatchEndpoint?: pulumi.Input<number>;
+    lookBackWindowForGlBatchEndpoint?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAds`: The list of the Manager Account IDs whose clients will be synced. Must be populated if `syncMode` is set to `ManagerAccounts`.
      */
-    managerAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    managerAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `reltio`: Maximum API requests per day
      */
-    maxApiRequestsPerDay?: pulumi.Input<number>;
+    maxApiRequestsPerDay?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `afterpay`: Your Afterpay Merchant ID.
@@ -3430,7 +3430,7 @@ export interface ConnectorConfig {
      * 	- Service `shareasale`: Your ShareASale merchant ID.
      * 	- Service `xsolla`: Your Xsolla Merchant ID.
      */
-    merchantId?: pulumi.Input<string>;
+    merchantId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: Kafka message type.
@@ -3440,12 +3440,12 @@ export interface ConnectorConfig {
      * 	- Service `confluentCloud`: Confluent Cloud message type.
      * 	- Service `herokuKafka`: Heroku Kafka message type.
      */
-    messageType?: pulumi.Input<string>;
+    messageType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pigment`: Your Pigment metric ID.
      */
-    metricId?: pulumi.Input<string>;
+    metricId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adroll`: The metrics that you want to sync.
@@ -3454,28 +3454,28 @@ export interface ConnectorConfig {
      * 	- Service `googleAnalytics`: The report metrics to include into a sync.
      * 	- Service `googleDisplayAndVideo360`: The report metrics to include into a sync. The metric names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
      */
-    metrics?: pulumi.Input<pulumi.Input<string>[]>;
+    metrics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleSheets`: The name of the named data range on the sheet that contains the data to be synced.
      */
-    namedRange?: pulumi.Input<string>;
+    namedRange?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureServiceBus`: The ASB namespace which we have to sync. Required for `AzureActiveDirectory` authentication.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `doubleClickPublishers`: Network code is a unique, numeric identifier for your Ad Manager network.
      */
-    networkCode?: pulumi.Input<number>;
+    networkCode?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `gcs`: Use this if your CSV generator uses non-standard ways of escaping characters. Default value: `false`.
      * 	- Service `s3`: Use this if your CSV generator uses non-standard ways of escaping characters. Default value: `false`.
      */
-    nonStandardEscapeChar?: pulumi.Input<boolean>;
+    nonStandardEscapeChar?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Optional. If your CSVs use a special value indicating null, you can specify it here.
@@ -3493,43 +3493,43 @@ export interface ConnectorConfig {
      * 	- Service `sharePoint`: If your CSVs use a special value indicating null, you can specify it here.
      * 	- Service `wasabiCloudStorage`: If your CSVs use a special value indicating null, you can specify it here.
      */
-    nullSequence?: pulumi.Input<string>;
-    oauthToken?: pulumi.Input<string>;
-    oauthTokenSecret?: pulumi.Input<string>;
+    nullSequence?: pulumi.Input<string | undefined>;
+    oauthToken?: pulumi.Input<string | undefined>;
+    oauthTokenSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `salesforceCommerceCloud`: The Salesforce Commerce Cloud OCAPI Client ID.
      */
-    ocapiClientId?: pulumi.Input<string>;
+    ocapiClientId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `salesforceCommerceCloud`: The Salesforce Commerce Cloud OCAPI Client secret.
      */
-    ocapiClientSecret?: pulumi.Input<string>;
+    ocapiClientSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `salesforceCommerceCloud`: The Salesforce Commerce Cloud OCAPI custom object types.
      */
-    ocapiCustomObjectTypes?: pulumi.Input<string>;
+    ocapiCustomObjectTypes?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `salesforceCommerceCloud`: The Salesforce Commerce Cloud OCAPI hostname.
      */
-    ocapiHostname?: pulumi.Input<string>;
+    ocapiHostname?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hanaSapHvaB1`: ODBC manager library path
      * 	- Service `hanaSapHvaEcc`: ODBC manager library path
      * 	- Service `hanaSapHvaS4`: ODBC manager library path
      */
-    odbcDriverManagerLibraryPath?: pulumi.Input<string>;
+    odbcDriverManagerLibraryPath?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hanaSapHvaB1`: odbc.ini and odbcsinst.ini location
      * 	- Service `hanaSapHvaEcc`: odbc.ini and odbcsinst.ini location
      * 	- Service `hanaSapHvaS4`: odbc.ini and odbcsinst.ini location
      */
-    odbcSysIniPath?: pulumi.Input<string>;
+    odbcSysIniPath?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
@@ -3546,23 +3546,23 @@ export interface ConnectorConfig {
      * 	- Service `sharePoint`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
      * 	- Service `wasabiCloudStorage`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as `fail` unless you are certain that you have undesirable, malformed data.
      */
-    onError?: pulumi.Input<string>;
+    onError?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `jira`: Whether the Jira instance is local or in cloud.
      */
-    onPremise?: pulumi.Input<boolean>;
+    onPremise?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `gladly`: Your Gladly Organization Name.
      * 	- Service `statuspage`: Your Statuspage Organization ID.
      */
-    organization?: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeWorkfront`: Your Adobe Workfront organization domain.
      */
-    organizationDomain?: pulumi.Input<string>;
+    organizationDomain?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalytics`: Organization ID from the Service Account (JWT) credentials of your Adobe Project.
@@ -3575,19 +3575,19 @@ export interface ConnectorConfig {
      * 	- Service `zohoBooks`: Your Zoho Books Organization ID.
      * 	- Service `zohoInventory`: Your Zoho Inventory organization ID.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `brightpearl`: Your Brightpearl organization name.
      * 	- Service `confluence`: Your Confluence organization name.
      */
-    organizationName?: pulumi.Input<string>;
+    organizationName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appleSearchAds`: Organizations
      * 	- Service `snapchatAds`: Specific organizations IDs to sync. Must be populated if `syncMode` is set to `SpecificOrganizations`.
      */
-    organizations?: pulumi.Input<pulumi.Input<string>[]>;
+    organizations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureCosmosForMongo`: List of tables to be synced in packed mode; format:`db.table`(case-sensitive).
@@ -3596,7 +3596,7 @@ export interface ConnectorConfig {
      * 	- Service `mongo`: List of tables to be synced in packed mode; format:`db.table`(case-sensitive).
      * 	- Service `mongoSharded`: List of tables to be synced in packed mode; format:`db.table`(case-sensitive).
      */
-    packedModeTables?: pulumi.Input<pulumi.Input<string>[]>;
+    packedModeTables?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureCosmosForMongo`: Indicates the desired sync pack mode. Accepted values are `UsePackedModeOnly` and `UseUnpackedModeOnly`. `SelectTablesForPackedMode` is deprecated. 
@@ -3607,44 +3607,44 @@ export interface ConnectorConfig {
      * 	- Service `optimizely`: Packing mode for conversion and decision tables.
      * 	- Service `sailthru`: Packing mode for LIST_STATE and USER tables.
      */
-    packingMode?: pulumi.Input<string>;
+    packingMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebookPages`: Specific pages to sync. Must be populated if `syncMode` is set to `SpecificPages`.
      */
-    pages?: pulumi.Input<pulumi.Input<string>[]>;
+    pages?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `careQualityCommission`: Your Care Quality Commission partner code.
      */
-    partnerCode?: pulumi.Input<string>;
+    partnerCode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `expensify`: Your Expensify partnerUserID.
      */
-    partnerUserId?: pulumi.Input<string>;
+    partnerUserId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `expensify`: Your Expensify partnerUserSecret.
      */
-    partnerUserSecret?: pulumi.Input<string>;
+    partnerUserSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleDisplayAndVideo360`: The list of partners to include into a sync. This parameter only takes effect when `configMethod` is set to `CREATE_NEW`.
      * 	- Service `theTradeDesk`: Specific Partner IDs to sync.  Must be populated if `syncMode` is set to `SpecificAccounts`.
      * 	- Service `walmartDsp`: Specific Partner IDs to sync.  Must be populated if `syncMode` is set to `SpecificAccounts`.
      */
-    partners?: pulumi.Input<pulumi.Input<string>[]>;
+    partners?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `qualtrics`: Pass Phrase
      */
-    passPhrase?: pulumi.Input<string>;
+    passPhrase?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflakeDb`: In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
      */
-    passphrase?: pulumi.Input<string>;
+    passphrase?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `absorbLms`: Your Absorb LMS password.
@@ -3780,32 +3780,32 @@ export interface ConnectorConfig {
      * 	- Service `yougovBrandindex`: Your YouGov BrandIndex password.
      * 	- Service `younium`: Your Younium password.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `github`: The `Personal Access Token` generated in Github.
      */
-    pat?: pulumi.Input<string>;
+    pat?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `tableauSource`: Your Tableau Source PAT Name.
      */
-    patName?: pulumi.Input<string>;
+    patName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `tableauSource`: Your Tableau Source PAT Secret.
      */
-    patSecret?: pulumi.Input<string>;
+    patSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `jira`: A URL subdirectory where the Jira instance is working.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `github`: The `Personal Access Tokens`.
      */
-    pats?: pulumi.Input<pulumi.Input<string>[]>;
+    pats?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Optional. All files in your search path matching this regular expression will be synced. This parameter is optional.
@@ -3822,7 +3822,7 @@ export interface ConnectorConfig {
      * 	- Service `sharePoint`: All files in your search path matching this regular expression will be synced.
      * 	- Service `wasabiCloudStorage`: All files in your search path matching this regular expression will be synced.
      */
-    pattern?: pulumi.Input<string>;
+    pattern?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracle`: Optional: Required only for containerized database.
@@ -3832,22 +3832,22 @@ export interface ConnectorConfig {
      * 	- Service `oracleRds`: Optional: Required only for containerized database.
      * 	- Service `oracleSapHva`: (Multi-tenant databases only) The database's PDB name. Exclude this parameter for single-tenant databases.
      */
-    pdbName?: pulumi.Input<string>;
+    pdbName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appleSearchAds`: The contents of your PEM certificate file. Must be populated if `isAuth2Enabled` is set to `false`.
      */
-    pemCertificate?: pulumi.Input<string>;
+    pemCertificate?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appleSearchAds`: The contents of your PEM secret key file. Must be populated if `isAuth2Enabled` is set to `true`.
      */
-    pemPrivateKey?: pulumi.Input<string>;
+    pemPrivateKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `doubleClickCampaignManager`: Per Interaction Dimensions.
      */
-    perInteractionDimensions?: pulumi.Input<pulumi.Input<string>[]>;
+    perInteractionDimensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cjCommissionDetail`: Your CJ Commission Detail personal access token.
@@ -3856,13 +3856,13 @@ export interface ConnectorConfig {
      * 	- Service `productive`: Your Productive personal access token.
      * 	- Service `totango`: Your Totango personal access token.
      */
-    personalAccessToken?: pulumi.Input<string>;
+    personalAccessToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `circleci`: Your CircleCI Personal API token.
      * 	- Service `monday`: Your Monday.com Personal API Token.
      */
-    personalApiToken?: pulumi.Input<string>;
+    personalApiToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
@@ -3873,7 +3873,7 @@ export interface ConnectorConfig {
      * 	- Service `sftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `wasabiCloudStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      */
-    pgpPassPhrase?: pulumi.Input<string>;
+    pgpPassPhrase?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
@@ -3884,22 +3884,22 @@ export interface ConnectorConfig {
      * 	- Service `sftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `wasabiCloudStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      */
-    pgpSecretKey?: pulumi.Input<string>;
+    pgpSecretKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `itunesConnect`: Register the number on AppleId Account Page for 2FA
      */
-    phoneNumber?: pulumi.Input<string>;
+    phoneNumber?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `wrike`: Your Wrike Subscription Plan.
      */
-    plan?: pulumi.Input<string>;
+    plan?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `justcall`: Your JustCall Plan Type.
      */
-    planType?: pulumi.Input<string>;
+    planType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: The port number.
@@ -3959,18 +3959,18 @@ export interface ConnectorConfig {
      * 	- Service `sqlServerRds`: The port number.
      * 	- Service `sqlServerSapEccHva`: The port number.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `linkedinAds`: The time period to attribute conversions based on clicks. Default value: `DAY_30`
      */
-    postClickAttributionWindowSize?: pulumi.Input<string>;
+    postClickAttributionWindowSize?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebook`: The name of report of which connector will sync the data. [Possible prebuiltReport values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#prebuiltreport).
      * 	- Service `googleAnalytics`: The name of the Prebuilt Report from which the connector will sync the data.
      */
-    prebuiltReport?: pulumi.Input<string>;
+    prebuiltReport?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCloudtrail`: If prefix is present when configuring the bucket.
@@ -3993,27 +3993,27 @@ export interface ConnectorConfig {
      * 	- Service `sharePoint`: All files and folders under this folder path link will be searched for files to sync. This can be any shared folder link.
      * 	- Service `wasabiCloudStorage`: All files and folders under this folder path will be searched for files to sync.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `careQualityCommission`: Your Care Quality Commission primary key.
      */
-    primaryKey?: pulumi.Input<string>;
+    primaryKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: Primary Keys
      */
-    primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    primaryKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `marketo`: Use BULK for both LEAD and ACTIITIES
      */
-    prioritiseBulkExportOverRest?: pulumi.Input<boolean>;
+    prioritiseBulkExportOverRest?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `purpleDot`: Your PurpleDot Private access token.
      */
-    privateAccessToken?: pulumi.Input<string>;
+    privateAccessToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `absorbLms`: Your Absorb LMS REST API private key.
@@ -4033,35 +4033,35 @@ export interface ConnectorConfig {
      * 	- Service `salesforceSandbox`: Provide content of the `.key` private key (only when authenticationMethod = `ADVANCED`).
      * 	- Service `snowflakeDb`: Private access key.  The field should be specified if authentication type is `KEY_PAIR`.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `eventbrite`: Your Eventbrite private token.
      */
-    privateToken?: pulumi.Input<string>;
+    privateToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `webconnex`: Your Webconnex product.
      */
-    product?: pulumi.Input<string>;
+    product?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amazonAds`: Specific User Profile IDs to sync. Must be populated if `syncMode` is set to `SpecificProfiles`.
      * 	- Service `googleAnalytics`: Specific User Profile IDs to sync.  Must be populated if `syncMode` is set to `SpecificAccounts`.
      * 	- Service `googleAnalyticsMcf`: Specific User Profile IDs to sync.  Must be populated if `syncMode` is set to `SPECIFIC_ACCOUNTS`.
      */
-    profiles?: pulumi.Input<pulumi.Input<string>[]>;
+    profiles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amazonDsp`: your Amazon DSP profiles pass it inside an Array list.
      */
-    profilesAmazonDsp?: pulumi.Input<string>;
+    profilesAmazonDsp?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `rollbar`: Your Rollbar project access token.
      */
-    projectAccessToken?: pulumi.Input<string>;
-    projectCredentials?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigProjectCredential>[]>;
+    projectAccessToken?: pulumi.Input<string | undefined>;
+    projectCredentials?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigProjectCredential>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bigqueryDb`: BigQuery project ID
@@ -4069,33 +4069,33 @@ export interface ConnectorConfig {
      * 	- Service `googleAnalytics4Export`: The Project ID.
      * 	- Service `mixpanel`: Project ID
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sentry`: Your Sentry project IDs.
      */
-    projectIds?: pulumi.Input<string>;
+    projectIds?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `commercetools`: Your commercetools project key.
      */
-    projectKey?: pulumi.Input<string>;
+    projectKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `asana`: Specific Project IDs to sync. Must be populated if `syncMode` is set to `SpecificProjects`.
      * 	- Service `jira`: Specific projects to sync. Must be populated if `syncMode` is set to `CUSTOM`.
      */
-    projects?: pulumi.Input<pulumi.Input<string>[]>;
+    projects?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics4`: The array of strings in the `properties/{id}` format where `id` is a Google Analytics 4 property identifier. Must be populated if `syncMode` is set to `SPECIFIC_ACCOUNTS`.
      */
-    properties?: pulumi.Input<pulumi.Input<string>[]>;
+    properties?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cloudbeds`: Your Cloudbeds property IDs.
      */
-    propertyId?: pulumi.Input<string>;
+    propertyId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: Public Key
@@ -4158,7 +4158,7 @@ export interface ConnectorConfig {
      * 	- Service `sqlServerRds`: Public Key.
      * 	- Service `sqlServerSapEccHva`: Public Key.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgres`: Publication name. Specify only for `"updatedMethod": "WAL_PGOUTPUT"`.
@@ -4168,34 +4168,34 @@ export interface ConnectorConfig {
      * 	- Service `postgres`: Publication name. Specify only for `"updatedMethod": "WAL_PGOUTPUT"`.
      * 	- Service `postgresRds`: Publication name. Specify only for `"updatedMethod": "WAL_PGOUTPUT"`.
      */
-    publicationName?: pulumi.Input<string>;
+    publicationName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `skimlinks`: Your Skimlinks publisher ID.
      */
-    publisherId?: pulumi.Input<string>;
+    publisherId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `outbrain`: Include or ignore results from archived campaigns
      */
-    pullArchivedCampaigns?: pulumi.Input<boolean>;
-    pythonVersion?: pulumi.Input<string>;
+    pullArchivedCampaigns?: pulumi.Input<boolean | undefined>;
+    pythonVersion?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleDisplayAndVideo360`: The ID of the query whose configuration you want to reuse. This is a required parameter when `configMethod` is set to `REUSE_EXISTING`.
      */
-    queryId?: pulumi.Input<string>;
+    queryId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `alchemer`: Your Alchemer API key.
      * 	- Service `birdeye`: Your Birdeye query-param-value.
      */
-    queryParamValue?: pulumi.Input<string>;
+    queryParamValue?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bigqueryDb`: Specify a different project ID to account for quota and billing of Fivetran query workload
      */
-    quotaProjectId?: pulumi.Input<string>;
+    quotaProjectId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
@@ -4209,7 +4209,7 @@ export interface ConnectorConfig {
      * 	- Service `sftp`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
      * 	- Service `sharePoint`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
      */
-    quoteChar?: pulumi.Input<string>;
+    quoteChar?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as a quote character.
@@ -4223,22 +4223,22 @@ export interface ConnectorConfig {
      * 	- Service `sftp`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
      * 	- Service `sharePoint`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
      */
-    quoteCharacterEnabled?: pulumi.Input<boolean>;
+    quoteCharacterEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `vimeo`: Your Vimeo rate limit plan.
      */
-    rateLimitPlan?: pulumi.Input<string>;
+    rateLimitPlan?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `ironsource`: Your Ironsource `Client Secret`.
      */
-    refreshToken?: pulumi.Input<string>;
+    refreshToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pinterestAds`: The expiration date of the refresh token. Unix timestamp in seconds
      */
-    refreshTokenExpiresAt?: pulumi.Input<string>;
+    refreshTokenExpiresAt?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `algolia`: Your Algolia analytics region.
@@ -4280,27 +4280,27 @@ export interface ConnectorConfig {
      * 	- Service `zohoInventory`: Your Zoho Inventory application host region.
      * 	- Service `zohoRecruit`: Your Zoho Recruit region.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amazonAttribution`: Your Amazon Attribution API URL region.
      */
-    regionApiUrl?: pulumi.Input<string>;
+    regionApiUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amazonAttribution`: Your Amazon Attribution auth URL region.
      */
-    regionAuthUrl?: pulumi.Input<string>;
+    regionAuthUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amazonAttribution`: Your Amazon Attribution token URL region.
      */
-    regionTokenUrl?: pulumi.Input<string>;
+    regionTokenUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `playvoxWorkforceManagement`: Your Playvox Workforce Management region URL.
      */
-    regionUrl?: pulumi.Input<string>;
+    regionUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: Unique ID within the MySQL replica set. Must be an integer different from all other master and replica servers within the same group.
@@ -4314,7 +4314,7 @@ export interface ConnectorConfig {
      * 	- Service `mysqlAzure`: Unique ID within the MySQL replica set. Must be an integer different from all other master and replica servers within the same group.
      * 	- Service `mysqlRds`: Unique ID within the MySQL replica set. Must be an integer different from all other master and replica servers within the same group.
      */
-    replicaId?: pulumi.Input<number>;
+    replicaId?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgres`: Replication slot name. Specify only for `"updatedMethod": "WAL"` or `"WAL_PGOUTPUT"`.
@@ -4324,40 +4324,40 @@ export interface ConnectorConfig {
      * 	- Service `postgres`: Replication slot name. Specify only for `"updatedMethod": "WAL"` or `"WAL_PGOUTPUT"`.
      * 	- Service `postgresRds`: Replication slot name. Specify only for `"updatedMethod": "WAL"` or `"WAL_PGOUTPUT"`.
      */
-    replicationSlot?: pulumi.Input<string>;
-    reportConfigs?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigReportConfig>[]>;
+    replicationSlot?: pulumi.Input<string | undefined>;
+    reportConfigs?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigReportConfig>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `doubleClickCampaignManager`: You can select only one Floodlight Configuration ID per account.
      */
-    reportConfigurationIds?: pulumi.Input<pulumi.Input<string>[]>;
+    reportConfigurationIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: This is to select report format from JSON and CSV. By default, report format is JSON.
      */
-    reportFormatType?: pulumi.Input<string>;
+    reportFormatType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pinterestAds`: Granularity at which reports will be
      */
-    reportGranularity?: pulumi.Input<string>;
+    reportGranularity?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `rakutenadvertising`: Your Rakuten Advertising report keys.
      */
-    reportKeys?: pulumi.Input<string>;
-    reportLists?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigReportList>[]>;
+    reportKeys?: pulumi.Input<string | undefined>;
+    reportLists?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigReportList>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adyen`: Your Report Service API key.
      */
-    reportServiceApiKey?: pulumi.Input<string>;
-    reportSuites?: pulumi.Input<pulumi.Input<string>[]>;
+    reportServiceApiKey?: pulumi.Input<string | undefined>;
+    reportSuites?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `criteo`: Report Timezone
      */
-    reportTimezone?: pulumi.Input<string>;
+    reportTimezone?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adroll`: The report type you want. Default value: `ALL_ADS`.
@@ -4365,52 +4365,52 @@ export interface ConnectorConfig {
      * 	- Service `googleDisplayAndVideo360`: The type of the report to create. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
      * 	- Service `youtubeAnalytics`: The name of report of which connector will sync the data.
      */
-    reportType?: pulumi.Input<string>;
+    reportType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: URL for a live custom report.
      */
-    reportUrl?: pulumi.Input<string>;
-    reports?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigReport>[]>;
+    reportUrl?: pulumi.Input<string | undefined>;
+    reports?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigReport>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `linkedinAds`: Specific analytics reports to sync. Must be populated if adAnalytics is set to 'SpecificReports'.
      */
-    reportsLinkedinAds?: pulumi.Input<pulumi.Input<string>[]>;
+    reportsLinkedinAds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `github`: Specific Repository IDs to sync. Must be populated if `syncMode` is set to `SpecificRepositories`.
      */
-    repositories?: pulumi.Input<pulumi.Input<string>[]>;
+    repositories?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cosmos`: A token that provides access to a specific Azure Cosmos DB resource. Required for the `RESOURCE_TOKEN` data access method.
      */
-    resourceToken?: pulumi.Input<string>;
+    resourceToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `dynamics365`: URL at which Dynamics 365 is accessed
      */
-    resourceUrl?: pulumi.Input<string>;
+    resourceUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: The number of API calls that the connector should not exceed in a day. Default REST API call limit per day: 150,000.
      * 	- Service `pardotSandbox`: The number of API calls that the connector should not exceed in a day. Default REST API call limit per day: 150,000.
      */
-    restApiLimit?: pulumi.Input<number>;
+    restApiLimit?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hanaSapHvaEccNetweaver`: Directory path containing the SAP NetWeaver RFC SDK library files.
      * 	- Service `hanaSapHvaS4Netweaver`: Directory path containing the SAP NetWeaver RFC SDK library files.
      * 	- Service `oracleSapHvaNetweaver`: Directory path containing the SAP NetWeaver RFC SDK library files.
      */
-    rfcLibraryPath?: pulumi.Input<string>;
+    rfcLibraryPath?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `netsuiteSuiteanalytics`: The NetSuite Role ID for connection.
      * 	- Service `snowflakeDb`: Snowflake Connector role name
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appsflyer`: S3 Role ARN
@@ -4427,104 +4427,104 @@ export interface ConnectorConfig {
      * 	- Service `s3`: The Role ARN required for authentication. Required for connector creation when syncing using private bucket.
      * 	- Service `segment`: The Role ARN required for authentication. Must be populated if `syncType` is set to `S3`.
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appsflyer`: Rollback window
      */
-    rollbackWindow?: pulumi.Input<number>;
+    rollbackWindow?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bingads`: A period of time in days during which a conversion is recorded.
      */
-    rollbackWindowSize?: pulumi.Input<number>;
+    rollbackWindowSize?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleFusionFieldService`: Your Oracle Fusion Field Service rootresourceId.
      */
-    rootResourceId?: pulumi.Input<string>;
+    rootResourceId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `webhooks`: The S3 bucket name. Required if `bucketService` is set to `S3`.
      */
-    s3Bucket?: pulumi.Input<string>;
+    s3Bucket?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: Your S3 user export bucket. Required if `AWS_S3` is the `exportStorageType`
      */
-    s3ExportBucket?: pulumi.Input<string>;
+    s3ExportBucket?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: This is the same as your `groupId`, used if `exportStorageType` is `AWS_S3`
      */
-    s3ExportExternalId?: pulumi.Input<string>;
+    s3ExportExternalId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: Your S3 user export folder name. Required if `AWS_S3` is the `exportStorageType`
      */
-    s3ExportFolder?: pulumi.Input<string>;
+    s3ExportFolder?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: The Role ARN required for authentication required if `AWS_S3` is the `exportStorageType`
      */
-    s3ExportRoleArn?: pulumi.Input<string>;
+    s3ExportRoleArn?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adjust`: Used if the `exportStorageType` is `AWS_S3`, the Role ARN required for authentication.
      * 	- Service `webhooks`: The Role ARN required for authentication. Required if `bucketService` is set to `S3`.
      */
-    s3RoleArn?: pulumi.Input<string>;
+    s3RoleArn?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: The S3 bucket name.
      * 	- Service `braze`: Your S3 bucket required if `AWS_S3` is the `cloudStorageType`
      * 	- Service `sailthru`: Name of the bucket configured to receive sailthru connect data.
      */
-    s3bucket?: pulumi.Input<string>;
+    s3bucket?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: This is the same as your `groupId`, used for authentication along with the `roleArn` required if `AWS_S3` is the `cloudStorageType`
      * 	- Service `sailthru`: The external ID is a string that designates who can assume the role.
      */
-    s3externalId?: pulumi.Input<string>;
+    s3externalId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: Your S3 folder name required if `AWS_S3` is the `cloudStorageType`
      */
-    s3folder?: pulumi.Input<string>;
+    s3folder?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sailthru`: Copy and use this to configure Sailthru Connect in your sailthru account.
      */
-    s3path?: pulumi.Input<string>;
+    s3path?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: The Role ARN required for authentication.
      * 	- Service `braze`: The Role ARN required for authentication required if `AWS_S3` is the `cloudStorageType`
      * 	- Service `sailthru`: Role ARN of the IAM role created for Fivetran.
      */
-    s3roleArn?: pulumi.Input<string>;
+    s3roleArn?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `itunesConnect`: Whether to sync all sales accounts or specific sales accounts.
      */
-    salesAccountSyncMode?: pulumi.Input<string>;
+    salesAccountSyncMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `itunesConnect`: Specific sales account to sync. Must be populated if `salesAccountSyncMode` is set to `SpecificSalesAccounts`.
      */
-    salesAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    salesAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: The Pardot user's Salesforce SSO Account Security Token.
      * 	- Service `pardotSandbox`: The Pardot user's Salesforce SSO Account Security Token.
      */
-    salesforceSecurityToken?: pulumi.Input<string>;
+    salesforceSecurityToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `gocardless`: Your GoCardless account type.
      */
-    sandboxAccount?: pulumi.Input<string>;
+    sandboxAccount?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `db2iHva`: The SAP schema.
@@ -4532,7 +4532,7 @@ export interface ConnectorConfig {
      * 	- Service `sqlServerHva`: SAP Schema Name. Required only for High-Volume Agent SAP ECC connector.
      * 	- Service `sqlServerSapEccHva`: SAP Schema Name.
      */
-    sapSchema?: pulumi.Input<string>;
+    sapSchema?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hanaSapHvaB1`: The schema name where the HANA tables reside.
@@ -4541,57 +4541,57 @@ export interface ConnectorConfig {
      * 	- Service `hanaSapHvaS4`: The Hana schema name where the SAP tables reside.
      * 	- Service `hanaSapHvaS4Netweaver`: The Hana schema name where the SAP tables reside.
      */
-    sapSourceSchema?: pulumi.Input<string>;
+    sapSourceSchema?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleSapHva`: The Oracle schema name where the SAP tables reside.
      */
-    sapUser?: pulumi.Input<string>;
+    sapUser?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: SASL Mechanism
      * 	- Service `awsMsk`: If `securityProtocol` is set to `SASL`, enter the SASL Mechanism
      */
-    saslMechanism?: pulumi.Input<string>;
+    saslMechanism?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: API Key
      */
-    saslPlainKey?: pulumi.Input<string>;
+    saslPlainKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: API Secret
      */
-    saslPlainSecret?: pulumi.Input<string>;
+    saslPlainSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: API Key
      */
-    saslScram256Key?: pulumi.Input<string>;
+    saslScram256Key?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: API Secret
      */
-    saslScram256Secret?: pulumi.Input<string>;
+    saslScram256Secret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: API Key
      * 	- Service `awsMsk`: If `saslMechanism` is set to `SCRAM_SHA_512`, enter your secret's `saslScram512Key`.
      */
-    saslScram512Key?: pulumi.Input<string>;
+    saslScram512Key?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: API Secret
      * 	- Service `awsMsk`: If `saslMechanism` is set to `SCRAM_SHA_512`, enter your secret's `saslScram512Key`.
      */
-    saslScram512Secret?: pulumi.Input<string>;
+    saslScram512Secret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: Schema Registry Credentials source
      * 	- Service `awsMsk`: Schema Registry Credentials source
      * 	- Service `confluentCloud`: Schema Registry Credentials source
      */
-    schemaRegistryCredentialsSource?: pulumi.Input<string>;
+    schemaRegistryCredentialsSource?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: Schema Registry Key
@@ -4599,7 +4599,7 @@ export interface ConnectorConfig {
      * 	- Service `azureServiceBus`: The key used to access the schema registry. Required for the `avro` and `protobuf` message types
      * 	- Service `confluentCloud`: Schema Registry Key
      */
-    schemaRegistryKey?: pulumi.Input<string>;
+    schemaRegistryKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: Schema Registry Secret
@@ -4607,7 +4607,7 @@ export interface ConnectorConfig {
      * 	- Service `azureServiceBus`: The secret used to access the schema registry. Required for the `avro` and `protobuf` message types
      * 	- Service `confluentCloud`: Schema Registry Secret
      */
-    schemaRegistrySecret?: pulumi.Input<string>;
+    schemaRegistrySecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: Your schema registry URLs
@@ -4615,23 +4615,23 @@ export interface ConnectorConfig {
      * 	- Service `azureServiceBus`: The comma-separated list of schema registry servers in the `server:port` format
      * 	- Service `confluentCloud`: Your schema registry URLs
      */
-    schemaRegistryUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    schemaRegistryUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `ebay`: Your eBay scopes.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cornerstone`: Your Cornerstone scopes.
      * 	- Service `fortnox`: Your Fortnox app scopes.
      */
-    scopes?: pulumi.Input<string>;
+    scopes?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: Specific Seats to sync. Must be populated if `syncModeSeat` is set to `SPECIFIC_SEATS`.
      */
-    seats?: pulumi.Input<pulumi.Input<string>[]>;
+    seats?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appcues`: Your Appcues Secret.
@@ -4646,12 +4646,12 @@ export interface ConnectorConfig {
      * 	- Service `venminder`: Your Venminder secret.
      * 	- Service `vts`: Your VTS secret.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `validio`: Your Validio secret access key.
      */
-    secretAccessKey?: pulumi.Input<string>;
+    secretAccessKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `afterpay`: Your Afterpay Secret Key.
@@ -4671,15 +4671,15 @@ export interface ConnectorConfig {
      * 	- Service `statsig`: Your Statsig secret key.
      * 	- Service `yotpo`: Your Yotpo Secret key
      */
-    secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsLambda`: The secrets that should be passed to the function at runtime.
      * 	- Service `azureFunction`: The secrets that should be passed to the function at runtime.
      * 	- Service `googleCloudFunction`: The secrets that should be passed to the function at runtime.
      */
-    secrets?: pulumi.Input<string>;
-    secretsLists?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigSecretsList>[]>;
+    secrets?: pulumi.Input<string | undefined>;
+    secretsLists?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigSecretsList>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: Security protocol for Kafka interaction.
@@ -4687,47 +4687,47 @@ export interface ConnectorConfig {
      * 	- Service `confluentCloud`: Security protocol for Confluent Cloud interaction.
      * 	- Service `herokuKafka`: Security protocol for Heroku Kafka interaction.
      */
-    securityProtocol?: pulumi.Input<string>;
+    securityProtocol?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: A segment is a subset of your Analytics data that is made up of one or more non-destructive filters (filters that do not alter the underlying data). Those filters isolate subsets of users, sessions, and hits.
      */
-    segments?: pulumi.Input<pulumi.Input<string>[]>;
+    segments?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `salesforceMarketingCloud`: Select the event types to be synced.
      */
-    selectedEventTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    selectedEventTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `anaplan`: The list of export IDs in the format `workspaceIdModelIdExportId` that the connector will sync. Must be populated if `syncMode` is set to `SpecificExports`.
      */
-    selectedExports?: pulumi.Input<pulumi.Input<string>[]>;
+    selectedExports?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sageIntacct`: Your Sender ID
      */
-    senderId?: pulumi.Input<string>;
+    senderId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sageIntacct`: Your Sender Password
      */
-    senderPassword?: pulumi.Input<string>;
+    senderPassword?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `castorEdc`: Your Castor EDC server.
      */
-    server?: pulumi.Input<string>;
+    server?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `tableauSource`: Your Tableau Source server address.
      */
-    serverAddress?: pulumi.Input<string>;
+    serverAddress?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `clockify`: Your Clockify server region.
      */
-    serverRegion?: pulumi.Input<string>;
+    serverRegion?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleBusinessIntelligencePublisher`: The Oracle Business Intelligence Instance URL.
@@ -4735,12 +4735,12 @@ export interface ConnectorConfig {
      * 	- Service `oracleFusionCloudAppsFscm`: The Oracle Fusion Cloud Instance URL.
      * 	- Service `oracleFusionCloudAppsHcm`: The Oracle Fusion Cloud Instance URL.
      */
-    serverUrl?: pulumi.Input<string>;
+    serverUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `myosh`: Your myosh server variable.
      */
-    serverVariable?: pulumi.Input<string>;
+    serverVariable?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: Comma-separated list of Kafka servers in the format `server:port`.
@@ -4748,131 +4748,131 @@ export interface ConnectorConfig {
      * 	- Service `confluentCloud`: Comma-separated list of Confluent Cloud servers in the format `server:port`.
      * 	- Service `herokuKafka`: Comma-separated list of Heroku Kafka servers in the format `server:port`.
      */
-    servers?: pulumi.Input<pulumi.Input<string>[]>;
+    servers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleDrive`: Share the folder with the email address
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleCloudFunction`: Provide Invoker role to this service account.
      */
-    serviceAccountEmail?: pulumi.Input<string>;
+    serviceAccountEmail?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `firebase`: The contents of your service account key file. Required for authentication.
      */
-    serviceAccountKey?: pulumi.Input<string>;
+    serviceAccountKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `mixpanel`: Service Account Secret
      */
-    serviceAccountSecret?: pulumi.Input<string>;
+    serviceAccountSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `mixpanel`: Service Account Username
      */
-    serviceAccountUsername?: pulumi.Input<string>;
+    serviceAccountUsername?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `dsv`: A base64 encoded variant of your `username:password` string. Required for authentication.
      */
-    serviceAuthentication?: pulumi.Input<string>;
+    serviceAuthentication?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hanaSapHvaEccNetweaver`: Unique identifier sapsid of the SAP system. This field is displayed only when the REMOTE SERVICE IDENTIFICATION is set to Service.
      * 	- Service `hanaSapHvaS4Netweaver`: Unique identifier sapsid of the SAP system. This field is displayed only when the REMOTE SERVICE IDENTIFICATION is set to Service.
      * 	- Service `walmartMarketplace`: Your Walmart Marketplace service name.
      */
-    serviceName?: pulumi.Input<string>;
-    serviceVersion?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
+    serviceVersion?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: SFTP host.
      * 	- Service `salesforceMarketingCloud`: Host
      */
-    sftpHost?: pulumi.Input<string>;
+    sftpHost?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: Log in with key pair or password
      * 	- Service `salesforceMarketingCloud`: Set this field if you use a key pair for logging into your SFTP server. Don't set it if you use a username and password
      */
-    sftpIsKeyPair?: pulumi.Input<boolean>;
+    sftpIsKeyPair?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: SFTP password required if sftpIsKeyPair is false
      * 	- Service `salesforceMarketingCloud`: Password
      */
-    sftpPassword?: pulumi.Input<string>;
+    sftpPassword?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: SFTP port.
      * 	- Service `salesforceMarketingCloud`: Port
      */
-    sftpPort?: pulumi.Input<number>;
+    sftpPort?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: Public Key
      * 	- Service `salesforceMarketingCloud`: Public Key
      */
-    sftpPublicKey?: pulumi.Input<string>;
+    sftpPublicKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: SFTP user.
      * 	- Service `salesforceMarketingCloud`: User
      */
-    sftpUser?: pulumi.Input<string>;
+    sftpUser?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sharePoint`: Your SharePoint folder URL. You can find the folder URL by following the steps mentioned [here](https://fivetran.com/docs/connectors/files/share-point/setup-guide).
      */
-    shareUrl?: pulumi.Input<string>;
+    shareUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleSheets`: The URL of the sheet that can be copied from the browser address bar, or the ID of the sheet that can be found in the sheet's URL between **&#47;d/** and **&#47;edit**.
      */
-    sheetId?: pulumi.Input<string>;
+    sheetId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `shopify`: The Shopify shop name. Can be found in the URL before **.myshopify.com**.
      */
-    shop?: pulumi.Input<string>;
+    shop?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `tripleWhale`: Your Triple Whale shop domain.
      */
-    shopDomain?: pulumi.Input<string>;
+    shopDomain?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `salesforceCommerceCloud`: The Salesforce eight-character string assigned to a realm for routing purposes.
      */
-    shortCode?: pulumi.Input<string>;
+    shortCode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `klaviyo`: Sync events linked to deleted profiles
      */
-    shouldSyncEventsWithDeletedProfiles?: pulumi.Input<boolean>;
+    shouldSyncEventsWithDeletedProfiles?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `netsuiteSuiteanalytics`: Re-sync re-import tables during every sync
      */
-    shouldSyncReimportTables?: pulumi.Input<boolean>;
+    shouldSyncReimportTables?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appleSearchAds`: Turn the toggle on if you want the reports to also return records without metrics.
      */
-    showRecordsWithNoMetrics?: pulumi.Input<boolean>;
+    showRecordsWithNoMetrics?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `twilio`: The Twilio API key SID
      */
-    sid?: pulumi.Input<string>;
+    sid?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `webhooks`: This is used in HMAC auth method to decode and verify the signature. Supported encodings BASE64 and HEXA_DECIMAL. Default: BASE64
      */
-    signatureEncoding?: pulumi.Input<string>;
+    signatureEncoding?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
@@ -4883,29 +4883,29 @@ export interface ConnectorConfig {
      * 	- Service `sftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      * 	- Service `wasabiCloudStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      */
-    signerPublicKey?: pulumi.Input<string>;
+    signerPublicKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `teamwork`: Your Teamwork site address.
      */
-    siteAddress?: pulumi.Input<string>;
+    siteAddress?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `microsoftLists`: The Site ID of the SharePoint site from which you want to sync your lists. The Site ID is the `id` field in the [Graph API](https://docs.microsoft.com/en-us/graph/api/site-search?view=graph-rest-1.0&tabs=http) response for sites.
      * 	- Service `salesforceCommerceCloud`: The name of the site from which you want to sync data.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `microsoftLists`: The Name of the SharePoint site. The Site Name is the `name` field in the Graph API response for sites.
      * 	- Service `tableauSource`: Your Tableau Source site name.
      */
-    siteName?: pulumi.Input<string>;
+    siteName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleSearchConsole`: Specific Site URLs to sync. Must be populated if `syncMode` is set to `SpecificSites`.
      */
-    siteUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    siteUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Enter 1 or greater
@@ -4923,7 +4923,7 @@ export interface ConnectorConfig {
      * 	- Service `sharePoint`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
      * 	- Service `wasabiCloudStorage`: We will skip over the number of lines specified at the end to avoid introducing aberrant data into your destination.
      */
-    skipAfter?: pulumi.Input<number>;
+    skipAfter?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Enter 1 or greater
@@ -4941,66 +4941,66 @@ export interface ConnectorConfig {
      * 	- Service `sharePoint`: We will skip over the number of lines specified before syncing data.
      * 	- Service `wasabiCloudStorage`: We will skip over the number of lines specified before syncing data.
      */
-    skipBefore?: pulumi.Input<number>;
+    skipBefore?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAds`: Toggles the ["Skip empty reports"](https://fivetran.com/docs/connectors/applications/google-ads#skipemptyreports) feature. Enabled by default
      */
-    skipEmptyReports?: pulumi.Input<boolean>;
-    sncCertificate?: pulumi.Input<string>;
-    sncCertificateSource?: pulumi.Input<string>;
-    sncFivetranName?: pulumi.Input<string>;
+    skipEmptyReports?: pulumi.Input<boolean | undefined>;
+    sncCertificate?: pulumi.Input<string | undefined>;
+    sncCertificateSource?: pulumi.Input<string | undefined>;
+    sncFivetranName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hanaSapHvaEccNetweaver`: Path to the external security product's library.
      * 	- Service `hanaSapHvaS4Netweaver`: Path to the external security product's library.
      */
-    sncLibraryPath?: pulumi.Input<string>;
-    sncMode?: pulumi.Input<string>;
-    sncMyName?: pulumi.Input<string>;
+    sncLibraryPath?: pulumi.Input<string | undefined>;
+    sncMode?: pulumi.Input<string | undefined>;
+    sncMyName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hanaSapHvaEccNetweaver`: Client SNC name.
      * 	- Service `hanaSapHvaS4Netweaver`: Client SNC name.
      */
-    sncName?: pulumi.Input<string>;
+    sncName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hanaSapHvaEccNetweaver`: Communication partner's SNC name.
      * 	- Service `hanaSapHvaS4Netweaver`: Communication partner's SNC name.
      */
-    sncPartnerName?: pulumi.Input<string>;
-    sncSourceName?: pulumi.Input<string>;
+    sncPartnerName?: pulumi.Input<string | undefined>;
+    sncSourceName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `marketo`: Marketo SOAP API Endpoint.
      */
-    soapUri?: pulumi.Input<string>;
+    soapUri?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `linkedinCompanyPages`: The social data (UGCPosts, Shares, Comments) sync time frame in months. Default value: `SIX` .
      */
-    socialDataSyncTimeframe?: pulumi.Input<string>;
+    socialDataSyncTimeframe?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: The data source.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bigCommerce`: The BigCommerce store hash.
      */
-    storeHash?: pulumi.Input<string>;
+    storeHash?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `reviewsio`: Your REVIEWS.io store ID
      */
-    storeId?: pulumi.Input<string>;
+    storeId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `firebase`: List of nested collections to sync. Only specified subCollections can be synced.
      */
-    subCollections?: pulumi.Input<pulumi.Input<string>[]>;
+    subCollections?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `absorbLms`: Your Absorb LMS subdomain.
@@ -5082,7 +5082,7 @@ export interface ConnectorConfig {
      * 	- Service `workable`: Your Workable Subdomain.
      * 	- Service `wrike`: Your Wrike Subdomain.
      */
-    subDomain?: pulumi.Input<string>;
+    subDomain?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bamboohr`: The subdomain used to access your account. If you access BambooHR at 'https://mycompany.bamboohr.com', then the subdomain is 'mycompany'.
@@ -5111,71 +5111,71 @@ export interface ConnectorConfig {
      * 	- Service `yext`: Your Yext subdomain. 
      * 	- Service `zendeskChat`: Your Zendesk domain.
      */
-    subdomain?: pulumi.Input<string>;
+    subdomain?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureServiceBus`: The subscriber name. If the connection string does not have manage permission, you need to specify a subscriber name we can use to fetch data. If not specified, we default to `fivetranSubSchema`
      */
-    subscriberName?: pulumi.Input<string>;
+    subscriberName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `retailnext`: Your RetailNext subscription.
      */
-    subscription?: pulumi.Input<string>;
+    subscription?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cabcharge`: Your Cabcharge subscription key.
      * 	- Service `dsv`: Your DSV subscription key.
      */
-    subscriptionKey?: pulumi.Input<string>;
+    subscriptionKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `stripe`: Sync Connected Accounts. Connected Account Documentation - https://stripe.com/docs/api/connected_accounts.
      * 	- Service `stripeTest`: Sync Connected Accounts. Connected Account Documentation - https://stripe.com/docs/api/connected_accounts.
      */
-    supportConnectedAccountsSync?: pulumi.Input<boolean>;
+    supportConnectedAccountsSync?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: This option is to unpack the nested columns and sync them separately. By default, we sync the nested columns as JSON objects.
      */
-    supportNestedColumns?: pulumi.Input<boolean>;
+    supportNestedColumns?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `qualaroo`: Array of Qualaroo Survey IDs.
      */
-    surveyIds?: pulumi.Input<string>;
+    surveyIds?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snapchatAds`: The time period to attribute conversions based on swipes. Default value: `DAY_28`
      */
-    swipeAttributionWindow?: pulumi.Input<string>;
+    swipeAttributionWindow?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appsflyer`: Sync AppsFlyer Data Locker. Default value is `true`, set it to `false` to sync AppsFlyer data using only webhooks.
      */
-    syncDataLocker?: pulumi.Input<boolean>;
+    syncDataLocker?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `webhooks`: The webhooks sync format.  Default value: `Unpacked`. Unpacked messages must be valid JSON.
      */
-    syncFormat?: pulumi.Input<string>;
+    syncFormat?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `financialForce`: Enable this option to sync formula fields directly (default value = `false`)
      * 	- Service `salesforce`: Enable this option to sync formula fields directly (default value = `false`)
      * 	- Service `salesforceSandbox`: Enable this option to sync formula fields directly (default value = `false`)
      */
-    syncFormulaFields?: pulumi.Input<boolean>;
+    syncFormulaFields?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebookAds`: Parameter defining whether to enable or disable metadata synchronisation. Default value: `TRUE`.
      */
-    syncMetadata?: pulumi.Input<boolean>;
+    syncMetadata?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsLambda`: Sync Method
      */
-    syncMethod?: pulumi.Input<string>;
+    syncMethod?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adroll`: Whether to sync all advertisables or specific advertisables. Default value: `AllAdvertisables`.
@@ -5217,33 +5217,33 @@ export interface ConnectorConfig {
      * 	- Service `zuora`: Select `Zuora Billing` to sync exclusively Zuora Billing related records. Choose `Zuora Revenue` for syncing only Zuora Revenue reports. If both Zuora Billing records and Zuora Revenue reports are to be synced, opt for `Both`.
      * 	- Service `zuoraSandbox`: Select `Zuora Billing` to sync exclusively Zuora Billing related records. Choose `Zuora Revenue` for syncing only Zuora Revenue reports. If both Zuora Billing records and Zuora Revenue reports are to be synced, opt for `Both`.
      */
-    syncMode?: pulumi.Input<string>;
+    syncMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: Whether to sync all advertisers or specific advertisers. Default value: `ALL_ADVERTISERS`.
      */
-    syncModeAdvertiser?: pulumi.Input<string>;
+    syncModeAdvertiser?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: Whether to sync all seats or specific seats. Default value: `ALL_SEATS`.
      */
-    syncModeSeat?: pulumi.Input<string>;
+    syncModeSeat?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redditAds`: When this parameter is set to `true`, we sync the data of the additional linked accounts. When this parameter is set to `false`, we sync only the data from the main account that was used for authorization
      */
-    syncMultipleAccounts?: pulumi.Input<boolean>;
+    syncMultipleAccounts?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cosmos`: The packing mode type. Supported values:`STANDARD_UNPACKED_MODE`- Unpacks _one_ layer of nested fields and infers types.`PACKED_MODE`- Delivers packed data as a single destination column value.Learn more in our [Azure Cosmos DB Sync Pack Mode Options documentation](https://fivetran.com/docs/connectors/databases/cosmos#packmodeoptions).
      * 	- Service `documentdb`: Indicates whether synced data will be packed into a single entry(column), or unpacked with one layer of nested fields.
      */
-    syncPackMode?: pulumi.Input<string>;
+    syncPackMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appsflyer`: These options are for Appsflyer's Pull API, and are only necessary for syncing events from Pull API.
      */
-    syncPullApi?: pulumi.Input<boolean>;
+    syncPullApi?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: Kafka sync type.  Unpacked messages must be valid JSON.
@@ -5254,88 +5254,88 @@ export interface ConnectorConfig {
      * 	- Service `herokuKafka`: Heroku Kafka sync type.  Unpacked messages must be valid JSON.
      * 	- Service `segment`: The Segment connector sync type.
      */
-    syncType?: pulumi.Input<string>;
-    sysnr?: pulumi.Input<string>;
+    syncType?: pulumi.Input<string | undefined>;
+    sysnr?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hanaSapHvaEccNetweaver`: Unique identifier sapsid of the SAP system. This field is displayed only when the REMOTE SERVICE IDENTIFICATION is set to System ID.
      * 	- Service `hanaSapHvaS4Netweaver`: Unique identifier sapsid of the SAP system. This field is displayed only when the REMOTE SERVICE IDENTIFICATION is set to System ID.
      */
-    systemId?: pulumi.Input<string>;
+    systemId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pigment`: Your Pigment table ID.
      */
-    tableId?: pulumi.Input<string>;
+    tableId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `airtable`: Name of table in Airtable
      */
-    tableName?: pulumi.Input<string>;
+    tableName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hubspot`: Timestamp to indicate when tables without access was updated
      */
-    tablesWithoutAccessUpdatedAt?: pulumi.Input<string>;
+    tablesWithoutAccessUpdatedAt?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cultureAmp`: Your Culture Amp Target entity ID.
      */
-    targetEntityId?: pulumi.Input<string>;
+    targetEntityId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `d2lBrightspace`: Your D2L Brightspace target host.
      */
-    targetHost?: pulumi.Input<string>;
+    targetHost?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sqlServer`: Certificate file path used to protect a database encryption key
      * 	- Service `sqlServerHva`: Certificate used to protect a database encryption key
      * 	- Service `sqlServerSapEccHva`: Certificate used to protect a database encryption key
      */
-    tdeCertificate?: pulumi.Input<string>;
+    tdeCertificate?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sqlServerHva`: Name of the Certificate used to protect a database encryption key
      * 	- Service `sqlServerSapEccHva`: Name of the Certificate used to protect a database encryption key
      */
-    tdeCertificateName?: pulumi.Input<string>;
+    tdeCertificateName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sqlServer`: Password of the TDE private key
      * 	- Service `sqlServerHva`: Password of the TDE private key
      * 	- Service `sqlServerSapEccHva`: Password of the TDE private key
      */
-    tdePassword?: pulumi.Input<string>;
+    tdePassword?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sqlServer`: Private key file path associated with the TDE certificate
      * 	- Service `sqlServerHva`: Private key associated with the TDE certificate
      * 	- Service `sqlServerSapEccHva`: Private key associated with the TDE certificate
      */
-    tdePrivateKey?: pulumi.Input<string>;
+    tdePrivateKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleHva`: TDE wallet password. Required for password based wallet.
      * 	- Service `oracleSapHva`: TDE wallet password. Required for password based wallet.
      * 	- Service `oracleSapHvaNetweaver`: TDE wallet password. Required for password based wallet.
      */
-    tdeWalletPassword?: pulumi.Input<string>;
+    tdeWalletPassword?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `asana`: Team ID
      */
-    teamId?: pulumi.Input<string>;
+    teamId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalytics`: Technical Account ID from the Service Account (JWT) credentials of your Adobe Project.
      */
-    technicalAccountId?: pulumi.Input<string>;
+    technicalAccountId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `mandrill`: Provide the labels to filter the templates
      */
-    templateLabels?: pulumi.Input<pulumi.Input<string>[]>;
+    templateLabels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `microsoftEntraId`: Your Microsoft Entra ID Tenant.
@@ -5346,18 +5346,18 @@ export interface ConnectorConfig {
      * 	- Service `workdayFinancialManagement`: Workday tenant name
      * 	- Service `workdayHcm`: Workday tenant name
      */
-    tenant?: pulumi.Input<string>;
+    tenant?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `planful`: Your Planful tenant app URL.
      */
-    tenantAppUrl?: pulumi.Input<string>;
+    tenantAppUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `deposco`: Your Deposco tenant code.
      */
-    tenantCode?: pulumi.Input<string>;
-    tenantConfigs?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigTenantConfig>[]>;
+    tenantCode?: pulumi.Input<string | undefined>;
+    tenantConfigs?: pulumi.Input<pulumi.Input<inputs.ConnectorConfigTenantConfig>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureSqlDb`: Azure AD tenant ID.
@@ -5368,31 +5368,31 @@ export interface ConnectorConfig {
      * 	- Service `servicetitan`: Your ServiceTitan tenant ID.
      * 	- Service `visma`: Your Visma tenant ID.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `mambu`: Your Mambu tenant name.
      */
-    tenantName?: pulumi.Input<string>;
+    tenantName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `ivanti`: Your Ivanti Tenant URL.
      * 	- Service `playvoxWorkforceManagement`: Your Playvox Workforce Management tenant URL.
      * 	- Service `reltio`: Your Reltio tenant URL.
      */
-    tenantUrl?: pulumi.Input<string>;
+    tenantUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sapHana`: testTableName
      * 	- Service `sapS4hana`: testTableName
      */
-    testTableName?: pulumi.Input<string>;
+    testTableName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: The time zone configured in your Pardot instance. An empty value defaults to `UTC+00:00`.
      * 	- Service `pardotSandbox`: The time zone configured in your Pardot instance. An empty value defaults to `UTC+00:00`.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalytics`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector has been created. Default value: `TWELVE` .
@@ -5428,28 +5428,28 @@ export interface ConnectorConfig {
      * 	- Service `yahooDsp`: Number of months` worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `THREE`.
      * 	- Service `yahooGemini`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `TWELVE`.
      */
-    timeframeMonths?: pulumi.Input<string>;
+    timeframeMonths?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `rokt`: Your Rokt timezone.
      */
-    timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appleSearchAds`: Determines whether to use UTC or the users timezone from the apple account
      */
-    timezoneMode?: pulumi.Input<string>;
+    timezoneMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleHva`: Single-tenant database: The database's SID.  Multi-tenant database: The database's TNS.
      * 	- Service `oracleSapHva`: Single-tenant database: The database SID.  Multi-tenant database: The database TNS.
      */
-    tns?: pulumi.Input<string>;
+    tns?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `toast`: Your Toast Restaurant External ID.
      */
-    toastId?: pulumi.Input<string>;
+    toastId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `khorosCommunities`: Your Khoros Communities token.
@@ -5459,67 +5459,67 @@ export interface ConnectorConfig {
      * 	- Service `shareasale`: Your ShareASale token.
      * 	- Service `solarwindsServiceDesk`: Your SolarWinds Service Desk token.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cosmos`: The container name. Required for the `RESOURCE_TOKEN` data access method.
      */
-    tokenAuthenticatedContainer?: pulumi.Input<string>;
+    tokenAuthenticatedContainer?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cosmos`: The database name. Required for the `RESOURCE_TOKEN` data access method.
      */
-    tokenAuthenticatedDatabase?: pulumi.Input<string>;
+    tokenAuthenticatedDatabase?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `chargedesk`: Your ChargeDesk token ID.
      * 	- Service `mux`: Your Mux token ID
      */
-    tokenId?: pulumi.Input<string>;
+    tokenId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `netsuiteSuiteanalytics`: Token ID
      * 	- Service `on24`: Your ON24 token key.
      * 	- Service `proofpointSecurityAwareness`: Your Proofpoint Security Awareness Token Key.
      */
-    tokenKey?: pulumi.Input<string>;
+    tokenKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `netsuiteSuiteanalytics`: Token Secret
      * 	- Service `on24`: Your ON24 token secret.
      */
-    tokenSecret?: pulumi.Input<string>;
+    tokenSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `mux`: Your Mux token secret key
      */
-    tokenSecretKey?: pulumi.Input<string>;
+    tokenSecretKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amazonDsp`: Your Amazon DSP token URL region.
      */
-    tokenUrlRegion?: pulumi.Input<string>;
+    tokenUrlRegion?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureServiceBus`: The comma-separated list of topics which should be synced. Required if you do not have manage permissions
      */
-    topics?: pulumi.Input<pulumi.Input<string>[]>;
+    topics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `herokuKafka`: Trust Store Type
      */
-    trustStoreType?: pulumi.Input<string>;
+    trustStoreType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: Kafka trusted certificate.
      * 	- Service `herokuKafka`: Heroku Kafka trusted certificate. Required for `TLS` security protocol.
      */
-    trustedCert?: pulumi.Input<string>;
+    trustedCert?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsMsk`: If `securityProtocol` is set to `TLS`, add the `Truststore File` as Base64 encoded string.
      */
-    truststore?: pulumi.Input<string>;
+    truststore?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
@@ -5577,7 +5577,7 @@ export interface ConnectorConfig {
      * 	- Service `sqlServerRds`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
      * 	- Service `sqlServerSapEccHva`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
      */
-    tunnelHost?: pulumi.Input<string>;
+    tunnelHost?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: SSH port, specify only to connect via an SSH tunnel.
@@ -5635,7 +5635,7 @@ export interface ConnectorConfig {
      * 	- Service `sqlServerRds`: SSH port, specify only to connect via an SSH tunnel.
      * 	- Service `sqlServerSapEccHva`: SSH port, specify only to connect via an SSH tunnel.
      */
-    tunnelPort?: pulumi.Input<number>;
+    tunnelPort?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: SSH user, specify only to connect via an SSH tunnel.
@@ -5693,19 +5693,19 @@ export interface ConnectorConfig {
      * 	- Service `sqlServerRds`: SSH user, specify only to connect via an SSH tunnel.
      * 	- Service `sqlServerSapEccHva`: SSH user, specify only to connect via an SSH tunnel.
      */
-    tunnelUser?: pulumi.Input<string>;
+    tunnelUser?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `akamai`: Your Akamai type name.
      * 	- Service `bubble`: Your Bubble type name.
      */
-    typeName?: pulumi.Input<string>;
-    uniqueId?: pulumi.Input<string>;
+    typeName?: pulumi.Input<string | undefined>;
+    uniqueId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleDisplayAndVideo360`: Specifies whether the configuration is updated before each sync or only when the connector settings are saved. This parameter only takes effect when `configMethod` is set to `REUSE_EXISTING`. The default value is `true`.
      */
-    updateConfigOnEachSync?: pulumi.Input<boolean>;
+    updateConfigOnEachSync?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
@@ -5743,33 +5743,33 @@ export interface ConnectorConfig {
      * 	- Service `sqlServerRds`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
      * 	- Service `sqlServerSapEccHva`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
      */
-    updateMethod?: pulumi.Input<string>;
+    updateMethod?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cosmos`: Cosmos resource instance address.
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `fountain`: Your Fountain URL format.
      */
-    urlFormat?: pulumi.Input<string>;
+    urlFormat?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `mandrill`: Whether to use multiple API keys for interaction.
      */
-    useApiKeys?: pulumi.Input<boolean>;
+    useApiKeys?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appsflyer`: Use Custom Bucket. Set it to 'true' if the data is being synced to your S3 bucket instead of an AppsFlyer-managed bucket.
      */
-    useCustomerBucket?: pulumi.Input<boolean>;
+    useCustomerBucket?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleHva`: Default value: `false`. Set to `true` if you're using a RAC instance.
      * 	- Service `oracleSapHva`: Default value: `false`. Set to `true` if you're using a RAC instance.
      */
-    useOracleRac?: pulumi.Input<boolean>;
+    useOracleRac?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: Set to `true` if files present in the Azure Blob Storage container are encrypted using PGP. Default value: `false`.
@@ -5780,29 +5780,29 @@ export interface ConnectorConfig {
      * 	- Service `sftp`: Set to `true` if files present in SFTP server are encrypted using PGP. Default value: `false`.
      * 	- Service `wasabiCloudStorage`: Set to `true` if files are encrypted using PGP in the Wasabi Cloud Storage bucket. Default value: `false`.
      */
-    usePgpEncryptionOptions?: pulumi.Input<boolean>;
+    usePgpEncryptionOptions?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bigqueryDb`: BigQuery use service account; default is false
      */
-    useServiceAccount?: pulumi.Input<boolean>;
+    useServiceAccount?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `mandrill`: Use template labels to filter templates for sync
      */
-    useTemplateLabels?: pulumi.Input<boolean>;
+    useTemplateLabels?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `github`: Set to `true` to capture deletes.
      * 	- Service `xero`: Updates to few fields like sentToContact in Invoice table might be missed if you don't enable this.
      */
-    useWebhooks?: pulumi.Input<boolean>;
+    useWebhooks?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bigqueryDb`: Create and drop tables in a query results dataset. Default is false
      * 	- Service `snowflakeDb`: Choose a database and schema to create temporary tables for syncs.
      */
-    useWorkspace?: pulumi.Input<boolean>;
+    useWorkspace?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: The user name.
@@ -5866,7 +5866,7 @@ export interface ConnectorConfig {
      * 	- Service `sqlServerRds`: The user name.  For Azure Databases, the format must be `user@domain`.
      * 	- Service `sqlServerSapEccHva`: The user name.  For Azure Databases, the format must be `user@domain`.
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `coassemble`: Your Coassemble user ID.
@@ -5878,25 +5878,25 @@ export interface ConnectorConfig {
      * 	- Service `sageIntacct`: User ID
      * 	- Service `vimeo`: Your Vimeo user ID.
      */
-    userId?: pulumi.Input<string>;
-    userKey?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
+    userKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: Workday username.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `doubleClickCampaignManager`: IDs of specific User Profiles to sync. Must be populated if `syncMode` is set to `SpecificAccounts`.
      */
-    userProfiles?: pulumi.Input<pulumi.Input<string>[]>;
+    userProfiles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hibob`: Your HiBob Service User ID.
      * 	- Service `konnectInsights`: Your Konnect Insights User Token.
      * 	- Service `sonarqube`: Your Sonarqube user token.
      */
-    userToken?: pulumi.Input<string>;
+    userToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `absorbLms`: Your Absorb LMS username.
@@ -5972,49 +5972,49 @@ export interface ConnectorConfig {
      * 	- Service `yougovBrandindex`: Your YouGov BrandIndex username.
      * 	- Service `younium`: Your Younium username.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `itunesConnect`: Your vendors id
      */
-    vendorsIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vendorsIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `criteoRetailMedia`: Your Criteo Retail Media version.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebook`: Time period to attribute conversions based on views. [Possible viewAttributionWindow values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#viewattributionwindow).
      * 	- Service `pinterestAds`: The number of days to use as the conversion attribution window for a 'view' action.
      * 	- Service `snapchatAds`: The time period to attribute conversions based on views. Default value: `DAY_1`
      */
-    viewAttributionWindow?: pulumi.Input<string>;
+    viewAttributionWindow?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pigment`: Your Pigment view ID.
      */
-    viewId?: pulumi.Input<string>;
+    viewId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `linkedinAds`: The time period to attribute conversions based on views. Default value: `DAY_7`
      */
-    viewThroughAttributionWindowSize?: pulumi.Input<string>;
+    viewThroughAttributionWindowSize?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adyen`: Your Adyen Web Service API key.
      */
-    webServiceApiKey?: pulumi.Input<string>;
+    webServiceApiKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appsflyer`: Webhook Url
      */
-    webhookEndpoint?: pulumi.Input<string>;
+    webhookEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `xero`: Webhook Key
      */
-    webhookKey?: pulumi.Input<string>;
+    webhookKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `branch`: Webhook URL
@@ -6022,73 +6022,73 @@ export interface ConnectorConfig {
      * 	- Service `segment`: Webhook URL.
      * 	- Service `xero`: (ReadOnly) The Webhook URL generated by Fivetran. You can configure this in XERO.
      */
-    webhookUrl?: pulumi.Input<string>;
+    webhookUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `woocommerce`: The Site ID of your WordPress hosted WooCommerce instance or the subdomain of your self-hosted WooCommerce instance.
      */
-    wordPressSiteIdOrWoocommerceDomainName?: pulumi.Input<string>;
+    wordPressSiteIdOrWoocommerceDomainName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `moloco`: Your Moloco workplace ID.
      */
-    workplaceId?: pulumi.Input<string>;
+    workplaceId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `mode`: Your Mode Workspace.
      */
-    workspace?: pulumi.Input<string>;
+    workspace?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bigqueryDb`: Workspace Dataset Name
      * 	- Service `snowflakeDb`: The name of the database where the temporary tables will be created.
      */
-    workspaceName?: pulumi.Input<string>;
+    workspaceName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bigqueryDb`: Use the source dataset as the workspace dataset
      */
-    workspaceSameAsSource?: pulumi.Input<boolean>;
+    workspaceSameAsSource?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflakeDb`: The name of the schema that belongs to the workspace database where the temporary tables will be created.
      */
-    workspaceSchema?: pulumi.Input<string>;
+    workspaceSchema?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hex`: Your Hex workspace token.
      */
-    workspaceToken?: pulumi.Input<string>;
+    workspaceToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adpWorkforceNow`: Web Services Certificate.
      */
-    wsCertificate?: pulumi.Input<string>;
+    wsCertificate?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workdayStrategicSourcing`: Your Workday Strategic Sourcing X API key.
      */
-    xApiKey?: pulumi.Input<string>;
+    xApiKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `medalliaAgileResearch`: Your Medallia Agile Research key.
      */
-    xKey?: pulumi.Input<string>;
+    xKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `medalliaAgileResearch`: Your Medallia Agile Research master key.
      */
-    xMasterKey?: pulumi.Input<string>;
+    xMasterKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workdayStrategicSourcing`: Your Workday Strategic Sourcing X User Email.
      */
-    xUserEmail?: pulumi.Input<string>;
+    xUserEmail?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workdayStrategicSourcing`: Your Workday Strategic Sourcing X User Token.
      */
-    xUserToken?: pulumi.Input<string>;
+    xUserToken?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectorConfigAccountsRedditAd {
@@ -6096,7 +6096,7 @@ export interface ConnectorConfigAccountsRedditAd {
      * Field usage depends on `service` value: 
      * 	- Service `redditAds`: Reddit username of the additional linked account.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectorConfigAdobeAnalyticsConfiguration {
@@ -6104,37 +6104,37 @@ export interface ConnectorConfigAdobeAnalyticsConfiguration {
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalytics`: The calculatedMetrics that you want to sync.
      */
-    calculatedMetrics?: pulumi.Input<pulumi.Input<string>[]>;
+    calculatedMetrics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalytics`: The elements that you want to sync.
      */
-    elements?: pulumi.Input<pulumi.Input<string>[]>;
+    elements?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalytics`: The metrics that you want to sync.
      */
-    metrics?: pulumi.Input<pulumi.Input<string>[]>;
+    metrics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalytics`: Specific report suites to sync. Must be populated if `syncMode` is set to `SpecificReportSuites`.
      */
-    reportSuites?: pulumi.Input<pulumi.Input<string>[]>;
+    reportSuites?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalytics`: The segments that you want to sync.
      */
-    segments?: pulumi.Input<pulumi.Input<string>[]>;
+    segments?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalytics`: Whether to sync all report suites or specific report suites. Default value: `AllReportSuites` .
      */
-    syncMode?: pulumi.Input<string>;
+    syncMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalytics`: The table name unique within the schema to which connector will sync the data. Required for connector creation.
      */
-    table?: pulumi.Input<string>;
+    table?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectorConfigAppIdsAppsflyer {
@@ -6142,7 +6142,7 @@ export interface ConnectorConfigAppIdsAppsflyer {
      * Field usage depends on `service` value: 
      * 	- Service `appsflyer`: Your App ID
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectorConfigCustomPayload {
@@ -6152,14 +6152,14 @@ export interface ConnectorConfigCustomPayload {
      * 	- Service `azureFunction`: Payload Key
      * 	- Service `googleCloudFunction`: Payload Key
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsLambda`: Payload Value
      * 	- Service `azureFunction`: Payload Value
      * 	- Service `googleCloudFunction`: Payload Value
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectorConfigCustomReport {
@@ -6167,113 +6167,113 @@ export interface ConnectorConfigCustomReport {
      * Field usage depends on `service` value: 
      * 	- Service `snapchatAds`: [Determines if reports will be based on imression on coversion time](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports)
      */
-    actionReportTime?: pulumi.Input<string>;
+    actionReportTime?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snapchatAds`: Add fields for separate \"swipe-up\" and \"view\" variants of selected metrics
      */
-    addMetricVariants?: pulumi.Input<boolean>;
+    addMetricVariants?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `tiktokAds`: Time aggregation of report
      */
-    aggregate?: pulumi.Input<string>;
+    aggregate?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snapchatAds`: [List of Core, Additional and Conversion Metrics Stats Fields](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#basemetricsfields).
      */
-    baseMetricsFields?: pulumi.Input<pulumi.Input<string>[]>;
+    baseMetricsFields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snapchatAds`: [Sets Breakdown on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#breakdown).
      */
-    breakdown?: pulumi.Input<string>;
+    breakdown?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snapchatAds`: [Sets Breakout on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#breakout).
      */
-    breakout?: pulumi.Input<string>;
+    breakout?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redditAds`: The boolean value specifying whether to enable or disable event conversions data synchronisation. Default value: `false`
      */
-    conversionsReportIncluded?: pulumi.Input<boolean>;
+    conversionsReportIncluded?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redditAds`: The boolean value specifying whether the custom events are included in event conversions report. Default value: `false`
      */
-    customEventsIncluded?: pulumi.Input<boolean>;
+    customEventsIncluded?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snapchatAds`: [Sets Dimension on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#dimension).
      */
-    dimension?: pulumi.Input<string>;
+    dimension?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `tiktokAds`: Dimensions to synced
      */
-    dimensions?: pulumi.Input<pulumi.Input<string>[]>;
+    dimensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redditAds`: The list of events the conversion data will be synchronised for
      */
-    eventNames?: pulumi.Input<pulumi.Input<string>[]>;
+    eventNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snapchatAds`: [Sets Granularity on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#granularity).
      */
-    granularity?: pulumi.Input<string>;
+    granularity?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redditAds`: Level of custom report.
      */
-    level?: pulumi.Input<string>;
+    level?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `tiktokAds`: Metrics to be synced
      */
-    metrics?: pulumi.Input<pulumi.Input<string>[]>;
+    metrics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redditAds`: The list of fields included in custom report
      */
-    reportFields?: pulumi.Input<pulumi.Input<string>[]>;
+    reportFields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redditAds`: The table name within the schema to which connector syncs the data of the specific report.
      * 	- Service `snapchatAds`: Custom report name (must be unique)
      */
-    reportName?: pulumi.Input<string>;
+    reportName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `tiktokAds`: Type of report to be generated
      */
-    reportType?: pulumi.Input<string>;
+    reportType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redditAds`: Level of custom report.
      */
-    segmentation?: pulumi.Input<string>;
+    segmentation?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snapchatAds`: [List of SKAd  Metrics fields in custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#skadmetricsfields).
      */
-    skAdMetricsFields?: pulumi.Input<pulumi.Input<string>[]>;
+    skAdMetricsFields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `tiktokAds`: Destination Table name of report
      */
-    tableName?: pulumi.Input<string>;
+    tableName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redditAds`: The specific time zone to sync report data if  `useAccountTimeZone` set to `false`.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redditAds`: When this parameter is set to `ACCOUNT`, connector will use account related time zone to sync report data. Default value: `ACCOUNT`. Possible values: `ACCOUNT`, `USER`
      */
-    timeZoneMode?: pulumi.Input<string>;
+    timeZoneMode?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectorConfigCustomTable {
@@ -6281,59 +6281,59 @@ export interface ConnectorConfigCustomTable {
      * Field usage depends on `service` value: 
      * 	- Service `facebookAds`: List of actionBreakdowns which connector will sync. [Possible actionBreakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads#actionbreakdowns).
      */
-    actionBreakdowns?: pulumi.Input<pulumi.Input<string>[]>;
+    actionBreakdowns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebookAds`: The report time of action stats. [Possible actionReport time values](https://fivetran.com/docs/connectors/applications/facebook-ads#actionreporttime).
      */
-    actionReportTime?: pulumi.Input<string>;
+    actionReportTime?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebookAds`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/connectors/applications/facebook-ads#aggregation).
      */
-    aggregation?: pulumi.Input<string>;
+    aggregation?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebookAds`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads#breakdowns).
      */
-    breakdowns?: pulumi.Input<pulumi.Input<string>[]>;
+    breakdowns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebookAds`: Time period to attribute conversions based on clicks. [Possible clickAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads#clickattributionwindow).
      */
-    clickAttributionWindow?: pulumi.Input<string>;
+    clickAttributionWindow?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebookAds`: Option to select Prebuilt Reports or Custom Reports. [Possible configType values](https://fivetran.com/docs/connectors/applications/facebook-ads#configtype).
      */
-    configType?: pulumi.Input<string>;
+    configType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebookAds`: Time period to attribute conversions based on engaged views. [Possible viewAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads#engagedviewattributionwindow).
      */
-    engagedViewAttributionWindow?: pulumi.Input<string>;
+    engagedViewAttributionWindow?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebookAds`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/connectors/applications/facebook-ads#fields).
      */
-    fields?: pulumi.Input<pulumi.Input<string>[]>;
-    level?: pulumi.Input<string>;
+    fields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    level?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebookAds`: The report name to which connector will sync the data. [Possible prebuiltReport values](https://fivetran.com/docs/connectors/applications/facebook-ads#prebuiltreport).
      */
-    prebuiltReportName?: pulumi.Input<string>;
+    prebuiltReportName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebookAds`: The table name within the schema to which the connector will sync the data. It must be unique within the connector and must comply with [Fivetran's naming conventions](https://fivetran.com/docs/getting-started/core-concepts#namingconventions).
      */
-    tableName?: pulumi.Input<string>;
-    useUnifiedAttributionSetting?: pulumi.Input<boolean>;
+    tableName?: pulumi.Input<string | undefined>;
+    useUnifiedAttributionSetting?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebookAds`: Time period to attribute conversions based on views. [Possible viewAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads#viewattributionwindow).
      */
-    viewAttributionWindow?: pulumi.Input<string>;
+    viewAttributionWindow?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectorConfigDataModelPathAliasList {
@@ -6341,12 +6341,12 @@ export interface ConnectorConfigDataModelPathAliasList {
      * Field usage depends on `service` value: 
      * 	- Service `oracleBusinessIntelligencePublisher`: Schema name
      */
-    alias?: pulumi.Input<string>;
+    alias?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleBusinessIntelligencePublisher`: Path
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectorConfigFile {
@@ -6354,7 +6354,7 @@ export interface ConnectorConfigFile {
      * Field usage depends on `service` value: 
      * 	- Service `email`: Only attachments from emails with this subject will be synced. Leave this field blank to sync all attachments.
      */
-    emailSubject?: pulumi.Input<string>;
+    emailSubject?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: All files in your search path matching this regular expression will be synced per table. We have discontinued this field, and will delete it by August 31, 2025.
@@ -6366,7 +6366,7 @@ export interface ConnectorConfigFile {
      * 	- Service `sftp`: All files in your search path matching this regular expression will be synced per table.
      * 	- Service `sharePoint`: All files in your search path matching this regular expression will be synced per table.
      */
-    filePattern?: pulumi.Input<string>;
+    filePattern?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: All files matching the above pattern will be synced to this table.
@@ -6378,7 +6378,7 @@ export interface ConnectorConfigFile {
      * 	- Service `sftp`: All files matching the above pattern will be synced to this table.
      * 	- Service `sharePoint`: All files matching the above pattern will be synced to this table.
      */
-    tableName?: pulumi.Input<string>;
+    tableName?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectorConfigProjectCredential {
@@ -6386,17 +6386,17 @@ export interface ConnectorConfigProjectCredential {
      * Field usage depends on `service` value: 
      * 	- Service `amplitude`: The API key of the project.
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amplitude`: The project name you wish to use with Fivetran.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amplitude`: The secret key of the project.
      */
-    secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectorConfigReport {
@@ -6404,28 +6404,28 @@ export interface ConnectorConfigReport {
      * Field usage depends on `service` value: 
      * 	- Service `googleDisplayAndVideo360`: The list of advertisers to include into a sync. This parameter only takes effect when `configMethod` is set to `CREATE_NEW`.
      */
-    advertisers?: pulumi.Input<pulumi.Input<string>[]>;
+    advertisers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleSearchConsole`: (Optional) Aggregation type. Supported only for the `SEARCH_RESULTS` report type
      */
-    aggregation?: pulumi.Input<string>;
+    aggregation?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleSearchAds360`: The report attributes included to sync.
      */
-    attributes?: pulumi.Input<pulumi.Input<string>[]>;
+    attributes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleDisplayAndVideo360`: The report configuration method. Specifies whether a new configuration is defined manually or an existing configuration is reused. The default value is `CREATE_NEW`.
      */
-    configMethod?: pulumi.Input<string>;
+    configMethod?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/connectors/applications/google-analytics#schemainformation).
      * 	- Service `googleAnalytics4`: Whether to use the Prebuilt Reports or Custom Reports.
      */
-    configType?: pulumi.Input<string>;
+    configType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
@@ -6433,43 +6433,43 @@ export interface ConnectorConfigReport {
      * 	- Service `googleDisplayAndVideo360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
      * 	- Service `googleSearchConsole`: The report dimensions included to sync.
      */
-    dimensions?: pulumi.Input<pulumi.Input<string>[]>;
+    dimensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: Dynamic parameter field name
      */
-    dynamicParameterField?: pulumi.Input<string>;
+    dynamicParameterField?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: Select this option to enable dynamic report parameters.
      */
-    enableDynamicParameters?: pulumi.Input<boolean>;
+    enableDynamicParameters?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAds`: A list of the fields to sync. Must be populated if `configType` is set to `Custom`.
      */
-    fields?: pulumi.Input<pulumi.Input<string>[]>;
+    fields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: String parameter restricts the data returned for your report. To use the filter parameter, specify a dimension or metric on which to filter, followed by the filter expression
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics4`: The dimension name to filter on.
      */
-    filterFieldName?: pulumi.Input<string>;
+    filterFieldName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics4`: Filter type for reports request. Possible values are INCLUDE and EXCLUDE
      */
-    filterType?: pulumi.Input<string>;
-    filterValue?: pulumi.Input<string>;
+    filterType?: pulumi.Input<string | undefined>;
+    filterValue?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: Select this option to generate a Primary Key for reports where no single column or combination of columns can be used to form a Primary Key.
      */
-    generateFivetranPk?: pulumi.Input<boolean>;
+    generateFivetranPk?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: The report metrics to include into a sync.
@@ -6477,33 +6477,33 @@ export interface ConnectorConfigReport {
      * 	- Service `googleDisplayAndVideo360`: The report metrics to include into a sync. The metric names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
      * 	- Service `googleSearchAds360`: The report metrics included to sync.
      */
-    metrics?: pulumi.Input<pulumi.Input<string>[]>;
+    metrics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleDisplayAndVideo360`: The list of partners to include into a sync. This parameter only takes effect when `configMethod` is set to `CREATE_NEW`.
      */
-    partners?: pulumi.Input<pulumi.Input<string>[]>;
+    partners?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: The name of the Prebuilt Report from which the connector will sync the data.
      * 	- Service `googleAnalytics4`: The name of the Prebuilt Report from which the connector will sync the data.
      */
-    prebuiltReport?: pulumi.Input<string>;
+    prebuiltReport?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: Primary Keys
      */
-    primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    primaryKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleDisplayAndVideo360`: The ID of the query whose configuration you want to reuse. This is a required parameter when `configMethod` is set to `REUSE_EXISTING`.
      */
-    queryId?: pulumi.Input<string>;
+    queryId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: This is to select report format from JSON and CSV. By default, report format is JSON.
      */
-    reportFormatType?: pulumi.Input<string>;
+    reportFormatType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAds`: The name of the Google Ads report from which the connector will sync the data. [Possible reportType values](https://developers.google.com/adwords/api/docs/appendix/reports#report-types).
@@ -6511,49 +6511,49 @@ export interface ConnectorConfigReport {
      * 	- Service `googleSearchAds360`: The type of report
      * 	- Service `googleSearchConsole`: The type of report
      */
-    reportType?: pulumi.Input<string>;
+    reportType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: URL for a live custom report.
      */
-    reportUrl?: pulumi.Input<string>;
+    reportUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics4`: The custom window size for rollback syncs.
      */
-    rollbackWindow?: pulumi.Input<number>;
+    rollbackWindow?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleSearchConsole`: Search types included to sync. Supported only for the `SEARCH_RESULTS` report type
      */
-    searchTypes?: pulumi.Input<pulumi.Input<string>[]>;
-    segmentIds?: pulumi.Input<pulumi.Input<string>[]>;
+    searchTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    segmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: A segment is a subset of your Analytics data that is made up of one or more non-destructive filters (filters that do not alter the underlying data). Those filters isolate subsets of users, sessions, and hits.
      * 	- Service `googleSearchAds360`: The report segments included to sync.
      */
-    segments?: pulumi.Input<pulumi.Input<string>[]>;
+    segments?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: Start date
      */
-    startDate?: pulumi.Input<string>;
+    startDate?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: Start date parameter field name
      */
-    startDateParameterField?: pulumi.Input<string>;
+    startDateParameterField?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: This option is to unpack the nested columns and sync them separately. By default, we sync the nested columns as JSON objects.
      */
-    supportNestedColumns?: pulumi.Input<boolean>;
+    supportNestedColumns?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: Dynamic report parameters sync strategy
      */
-    syncStrategy?: pulumi.Input<string>;
+    syncStrategy?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAds`: The table name within the schema to which connector will sync the data of the specific report.
@@ -6563,22 +6563,22 @@ export interface ConnectorConfigReport {
      * 	- Service `googleSearchConsole`: The name of a table within the schema to which connector syncs the data of a given report.
      * 	- Service `workday`: The table name within the schema to which connector will sync the data of the specific report.
      */
-    table?: pulumi.Input<string>;
+    table?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleDisplayAndVideo360`: The table name within the schema to which connector will sync the data of the specific report.
      */
-    tableName?: pulumi.Input<string>;
+    tableName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics4`: The report data aggregation time granularity.
      */
-    timeAggregationGranularity?: pulumi.Input<string>;
+    timeAggregationGranularity?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleDisplayAndVideo360`: Specifies whether the configuration is updated before each sync or only when the connector settings are saved. This parameter only takes effect when `configMethod` is set to `REUSE_EXISTING`. The default value is `true`.
      */
-    updateConfigOnEachSync?: pulumi.Input<boolean>;
+    updateConfigOnEachSync?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ConnectorConfigReportConfig {
@@ -6586,47 +6586,47 @@ export interface ConnectorConfigReportConfig {
      * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: Set the value to `PREBUILT` if it's one of the preconfigured reports (see the `prebuiltReportType` option). Otherwise, set to `CUSTOM`.
      */
-    configType?: pulumi.Input<string>;
+    configType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: [Currency](https://developer.yahooinc.com/dsp/api/docs/reporting/payloadspec.html) used in a report. Default value: `USD`.
      */
-    currency?: pulumi.Input<string>;
+    currency?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: [Dimensions](https://developer.yahooinc.com/dsp/api/docs/reporting/dimensions.html) used in a report. Must be populated if `configType` is set to `CUSTOM`. PUBLISHER, DESKTOP_OS_DEPRECATED, LINE_TYPE, GOAL_TYPE, BID_REQUEST_AD_SIZE, CHANNEL_TYPE, SITE_NAME, and SITE_GROUP_NAME are deprecated dimension, and shouldn't be used anymore
      */
-    dimensions?: pulumi.Input<pulumi.Input<string>[]>;
+    dimensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: The [granularity](https://developer.yahooinc.com/dsp/api/docs/reporting/range-examples.html#interval-type-id) of data in a report. Default value: `DAY`.
      */
-    intervalType?: pulumi.Input<string>;
+    intervalType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: [Metrics](https://developer.yahooinc.com/dsp/api/docs/reporting/metrics.html) used in a report. Must be populated if `configType` is set to `CUSTOM`. PUBLISHER_EARNINGS, PUBLISHER_EARNINGS_PERCENTAGE, INVENTORY_ECPM_DEPRECATED, SEAT_TECH_FEE, and SEAT_DATA_FEE are deprecated and shouldn't be used anymore
      */
-    metrics?: pulumi.Input<pulumi.Input<string>[]>;
+    metrics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: Specific report type to sync. Must be populated if `configType` is set to `PREBUILT`.
      */
-    prebuiltReportType?: pulumi.Input<string>;
+    prebuiltReportType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: Table name in destination.
      */
-    reportName?: pulumi.Input<string>;
+    reportName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: Specify the time zone to be used to request report data
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: Use advertiser timezone to request report data.
      */
-    useAdvertiserTimezone?: pulumi.Input<boolean>;
+    useAdvertiserTimezone?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ConnectorConfigReportList {
@@ -6634,22 +6634,22 @@ export interface ConnectorConfigReportList {
      * Field usage depends on `service` value: 
      * 	- Service `spotifyAds`: The dimension (entity_type) to sync.
      */
-    dimension?: pulumi.Input<string>;
+    dimension?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `spotifyAds`: A list of the fields (metrics) to sync.
      */
-    fields?: pulumi.Input<pulumi.Input<string>[]>;
+    fields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `spotifyAds`: The report granularity.
      */
-    granularity?: pulumi.Input<string>;
+    granularity?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `spotifyAds`: The table name within the schema to which connector will sync the data of the specific report.
      */
-    table?: pulumi.Input<string>;
+    table?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectorConfigSecretsList {
@@ -6659,14 +6659,14 @@ export interface ConnectorConfigSecretsList {
      * 	- Service `azureFunction`: Key
      * 	- Service `googleCloudFunction`: Key
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsLambda`: Secret Value.
      * 	- Service `azureFunction`: Value
      * 	- Service `googleCloudFunction`: Value
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectorConfigTenantConfig {
@@ -6674,31 +6674,31 @@ export interface ConnectorConfigTenantConfig {
      * Field usage depends on `service` value: 
      * 	- Service `reltio`: Your Reltio subdomain.
      */
-    subdomain?: pulumi.Input<string>;
+    subdomain?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `reltio`: Your Reltio tenant ID.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectorDestinationSchema {
     /**
      * The connector schema name in destination. Has to be unique within the group (destination). Required for connector creation.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The connector schema prefix has to be unique within the group (destination). Each replicated schema is prefixed with the provided value. Required for connector creation.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     /**
      * The table name unique within the schema to which connector will sync the data. Required for connector creation.
      */
-    table?: pulumi.Input<string>;
+    table?: pulumi.Input<string | undefined>;
     /**
      * Table group name.
      */
-    tableGroupName?: pulumi.Input<string>;
+    tableGroupName?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectorFingerprintsFingerprint {
@@ -6713,31 +6713,31 @@ export interface ConnectorFingerprintsFingerprint {
     /**
      * User name who validated the fingerprint.
      */
-    validatedBy?: pulumi.Input<string>;
+    validatedBy?: pulumi.Input<string | undefined>;
     /**
      * The date when fingerprint was approved.
      */
-    validatedDate?: pulumi.Input<string>;
+    validatedDate?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectorSchemaConfigSchema {
     /**
      * The boolean value specifying whether the sync for the schema into the destination is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The schema name within your destination in accordance with Fivetran conventional rules.
      */
     name: pulumi.Input<string>;
-    tables?: pulumi.Input<pulumi.Input<inputs.ConnectorSchemaConfigSchemaTable>[]>;
+    tables?: pulumi.Input<pulumi.Input<inputs.ConnectorSchemaConfigSchemaTable>[] | undefined>;
 }
 
 export interface ConnectorSchemaConfigSchemaTable {
-    columns?: pulumi.Input<pulumi.Input<inputs.ConnectorSchemaConfigSchemaTableColumn>[]>;
+    columns?: pulumi.Input<pulumi.Input<inputs.ConnectorSchemaConfigSchemaTableColumn>[] | undefined>;
     /**
      * The boolean value specifying whether the sync of table into the destination is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The table name within your destination in accordance with Fivetran conventional rules.
      */
@@ -6745,19 +6745,19 @@ export interface ConnectorSchemaConfigSchemaTable {
     /**
      * This field appears in the response if the connector supports switching sync modes for tables.
      */
-    syncMode?: pulumi.Input<string>;
+    syncMode?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectorSchemaConfigSchemaTableColumn {
     /**
      * The boolean value specifying whether the sync of the column into the destination is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The boolean value specifying whether a column should be hashed.
      */
-    hashed?: pulumi.Input<boolean>;
-    isPrimaryKey?: pulumi.Input<boolean>;
+    hashed?: pulumi.Input<boolean | undefined>;
+    isPrimaryKey?: pulumi.Input<boolean | undefined>;
     /**
      * The column name within your destination in accordance with Fivetran conventional rules.
      */
@@ -6768,64 +6768,64 @@ export interface ConnectorSchemaConfigSchemas {
     /**
      * The boolean value specifying whether the sync for the schema into the destination is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Map of table configurations.
      */
-    tables?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ConnectorSchemaConfigSchemasTables>}>;
+    tables?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ConnectorSchemaConfigSchemasTables>} | undefined>;
 }
 
 export interface ConnectorSchemaConfigSchemasTables {
     /**
      * Map of table configurations.
      */
-    columns?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ConnectorSchemaConfigSchemasTablesColumns>}>;
+    columns?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ConnectorSchemaConfigSchemasTablesColumns>} | undefined>;
     /**
      * The boolean value specifying whether the sync for the table into the destination is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * This field appears in the response if the connector supports switching sync modes for tables.
      */
-    syncMode?: pulumi.Input<string>;
+    syncMode?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectorSchemaConfigSchemasTablesColumns {
     /**
      * The boolean value specifying whether the sync of the column into the destination is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The boolean value specifying whether a column should be hashed.
      */
-    hashed?: pulumi.Input<boolean>;
-    isPrimaryKey?: pulumi.Input<boolean>;
+    hashed?: pulumi.Input<boolean | undefined>;
+    isPrimaryKey?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ConnectorSchemaConfigTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectorTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface DestinationCertificatesCertificate {
@@ -6840,31 +6840,31 @@ export interface DestinationCertificatesCertificate {
     /**
      * Certificate name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The SSH public key.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * Certificate sha1.
      */
-    sha1?: pulumi.Input<string>;
+    sha1?: pulumi.Input<string | undefined>;
     /**
      * Certificate sha256.
      */
-    sha256?: pulumi.Input<string>;
+    sha256?: pulumi.Input<string | undefined>;
     /**
      * Type of the certificate.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * User name who validated the certificate.
      */
-    validatedBy?: pulumi.Input<string>;
+    validatedBy?: pulumi.Input<string | undefined>;
     /**
      * The date when certificate was approved.
      */
-    validatedDate?: pulumi.Input<string>;
+    validatedDate?: pulumi.Input<string | undefined>;
 }
 
 export interface DestinationConfig {
@@ -6892,17 +6892,17 @@ export interface DestinationConfig {
      * 	- Service `sqlServerRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `sqlServerWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
      */
-    alwaysEncrypted?: pulumi.Input<boolean>;
+    alwaysEncrypted?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: Application ID of your app created in Azure
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: Password-based or key-based authentication type
      */
-    auth?: pulumi.Input<string>;
+    auth?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Authentication type
@@ -6912,31 +6912,31 @@ export interface DestinationConfig {
      * 	- Service `onelake`: Authentication type
      * 	- Service `redshift`: Authentication type. Default value: `PASSWORD`.
      */
-    authType?: pulumi.Input<string>;
+    authType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `newS3Datalake`: AWS access key to access the S3 bucket and AWS Glue
      * 	- Service `redshift`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
      * 	- Service `snowflake`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment, want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
      */
-    awsAccessKeyId?: pulumi.Input<string>;
+    awsAccessKeyId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: Type of authentication configured for the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
      */
-    awsBucketAuthType?: pulumi.Input<string>;
+    awsBucketAuthType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `newS3Datalake`: AWS secret access key to access the S3 bucket and AWS Glue
      * 	- Service `redshift`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
      * 	- Service `snowflake`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment , want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
      */
-    awsSecretAccessKey?: pulumi.Input<string>;
+    awsSecretAccessKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `confluentCloudWh`: Comma-separated list of Confluent Cloud servers in the `server:port` format.
      */
-    bootstrapServers?: pulumi.Input<pulumi.Input<string>[]>;
+    bootstrapServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bigQuery`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
@@ -6947,13 +6947,13 @@ export interface DestinationConfig {
      * 	- Service `redshift`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
      * 	- Service `snowflake`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 or GCS bucket to stage your data.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redshift`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
      * 	- Service `snowflake`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
      */
-    bucketRegion?: pulumi.Input<string>;
+    bucketRegion?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Catalog name
@@ -6962,34 +6962,34 @@ export interface DestinationConfig {
      * 	- Service `newS3Datalake`: Catalog name
      * 	- Service `onelake`: Catalog name
      */
-    catalog?: pulumi.Input<string>;
+    catalog?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Client id of service principal
      * 	- Service `managedDataLake`: Client id of service principal
      * 	- Service `onelake`: Client ID of service principal
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `databricks`: Databricks deployment cloud
      */
-    cloudProvider?: pulumi.Input<string>;
+    cloudProvider?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `panoply`: Cluster ID.
      * 	- Service `periscopeWarehouse`: Cluster ID.
      * 	- Service `redshift`: Cluster ID. Must be populated if `connectionType` is set to `SshTunnel` and `authType` is set to `IAM`.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `panoply`: Cluster region.
      * 	- Service `periscopeWarehouse`: Cluster region.
      * 	- Service `redshift`: Cluster region. Must be populated if `connectionType` is set to `SshTunnel` and `authType` is set to `IAM`.
      */
-    clusterRegion?: pulumi.Input<string>;
-    connectionMethod?: pulumi.Input<string>;
+    clusterRegion?: pulumi.Input<string | undefined>;
+    connectionMethod?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Connection method. Default value: `Directly`.
@@ -7018,32 +7018,32 @@ export interface DestinationConfig {
      * 	- Service `sqlServerRdsWarehouse`: Connection method. Default value: `Directly`.
      * 	- Service `sqlServerWarehouse`: Connection method. Default value: `Directly`.
      */
-    connectionType?: pulumi.Input<string>;
+    connectionType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: (Immutable) Container to store delta table files
      * 	- Service `managedDataLake`: (Immutable) Container to store delta table files
      * 	- Service `onelake`: Workspace name to store delta table files
      */
-    containerName?: pulumi.Input<string>;
-    controllerId?: pulumi.Input<string>;
+    containerName?: pulumi.Input<string | undefined>;
+    controllerId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `databricks`: Whether to create external tables
      */
-    createExternalTables?: pulumi.Input<boolean>;
+    createExternalTables?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `confluentCloudWh`: Confluent Cloud message format.
      */
-    dataFormat?: pulumi.Input<string>;
+    dataFormat?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bigQuery`: Data location. Datasets will reside in this location.
      * 	- Service `bigQueryDts`: Data location. Datasets will reside in this location.
      * 	- Service `managedBigQuery`: Data location. Datasets will reside in this location.
      */
-    dataSetLocation?: pulumi.Input<string>;
+    dataSetLocation?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgresWarehouse`: Database name
@@ -7069,7 +7069,7 @@ export interface DestinationConfig {
      * 	- Service `sqlServerRdsWarehouse`: Database name
      * 	- Service `sqlServerWarehouse`: Database name
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Databricks Connection method. Default value: `Directly`.
@@ -7077,28 +7077,28 @@ export interface DestinationConfig {
      * 	- Service `newS3Datalake`: Databricks Connection method. Default value: `Directly`.
      * 	- Service `onelake`: Databricks Connection method. Default value: `Directly`.
      */
-    databricksConnectionType?: pulumi.Input<string>;
+    databricksConnectionType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: Tenant ID of your app created in Azure
      */
-    directoryId?: pulumi.Input<string>;
+    directoryId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: Set to `true` if you want to enable external storage for unstructured files.
      */
-    enableExternalStorageForUnstructuredFiles?: pulumi.Input<boolean>;
-    enableRemoteExecution?: pulumi.Input<boolean>;
+    enableExternalStorageForUnstructuredFiles?: pulumi.Input<boolean | undefined>;
+    enableRemoteExecution?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `confluentCloudWh`: Populate all tables in a single topic.
      */
-    enableSingleTopic?: pulumi.Input<boolean>;
+    enableSingleTopic?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redshift`: Enable to convert JSON data type to SUPER
      */
-    enableSuperType?: pulumi.Input<boolean>;
+    enableSuperType?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsMskWh`: Fivetran generated External ID
@@ -7106,45 +7106,45 @@ export interface DestinationConfig {
      * 	- Service `periscopeWarehouse`: Fivetran generated External ID
      * 	- Service `redshift`: Fivetran generated External ID
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `databricks`: External location to store Delta tables. Default value: `""`  (null). By default, the external tables will reside in the `/{schema}/{table}` path, and if you specify an external location in the `{externalLocation}/{schema}/{table}` path.
      */
-    externalLocation?: pulumi.Input<string>;
+    externalLocation?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: External stage storage provider[Internal, S3, Azure,GCS]
      */
-    externalStageStorageProvider?: pulumi.Input<string>;
+    externalStageStorageProvider?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: The cloud service provider you want to use for staging data. Use this parameter only if you are using Hybrid Deployment.
      */
-    externalStorageCloudProvider?: pulumi.Input<string>;
+    externalStorageCloudProvider?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: External storage integration name
      */
-    externalStorageIntegration?: pulumi.Input<string>;
+    externalStorageIntegration?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: External storage parent folder URL
      */
-    externalStorageParentFolderUri?: pulumi.Input<string>;
-    fivetranGlueRoleArn?: pulumi.Input<string>;
-    fivetranMskRoleArn?: pulumi.Input<string>;
+    externalStorageParentFolderUri?: pulumi.Input<string | undefined>;
+    fivetranGlueRoleArn?: pulumi.Input<string | undefined>;
+    fivetranMskRoleArn?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `managedDataLake`: (Immutable) ARN of the role which you created with different required policy mentioned in our setup guide
      * 	- Service `newS3Datalake`: ARN of the role which you created with different required policy mentioned in our setup guide
      */
-    fivetranRoleArn?: pulumi.Input<string>;
+    fivetranRoleArn?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: The path to the JSON file that contains the service account credentials for the GCS bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use a GCS bucket to stage your data.
      */
-    gcsServiceAccountCredentialsPath?: pulumi.Input<string>;
+    gcsServiceAccountCredentialsPath?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgresWarehouse`: Server name
@@ -7170,7 +7170,7 @@ export interface DestinationConfig {
      * 	- Service `sqlServerRdsWarehouse`: Server name
      * 	- Service `sqlServerWarehouse`: Server name
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: HTTP path
@@ -7179,39 +7179,39 @@ export interface DestinationConfig {
      * 	- Service `newS3Datalake`: HTTP path
      * 	- Service `onelake`: HTTP path
      */
-    httpPath?: pulumi.Input<string>;
+    httpPath?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.
      */
-    isPrivateKeyEncrypted?: pulumi.Input<boolean>;
+    isPrivateKeyEncrypted?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `newS3Datalake`: We use PrivateLink by default if your s3 bucket is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to s3 bucket over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options#awsprivatelinkbeta).
      */
-    isPrivateLinkRequired?: pulumi.Input<boolean>;
+    isPrivateLinkRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redshift`: Is your destination Redshift Serverless
      */
-    isRedshiftServerless?: pulumi.Input<boolean>;
+    isRedshiftServerless?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `managedDataLake`: (Immutable) OneLake lakehouse GUID
      * 	- Service `onelake`: (Immutable) OneLake lakehouse GUID
      */
-    lakehouseGuid?: pulumi.Input<string>;
+    lakehouseGuid?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `onelake`: (Immutable) Name of your lakehouse
      */
-    lakehouseName?: pulumi.Input<string>;
-    mskStsRegion?: pulumi.Input<string>;
+    lakehouseName?: pulumi.Input<string | undefined>;
+    mskStsRegion?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `confluentCloudWh`: Number of partitions per topic.
      */
-    numOfPartitions?: pulumi.Input<number>;
+    numOfPartitions?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: OAuth 2.0 client ID
@@ -7220,7 +7220,7 @@ export interface DestinationConfig {
      * 	- Service `newS3Datalake`: OAuth 2.0 client ID
      * 	- Service `onelake`: OAuth 2.0 client ID
      */
-    oauth2ClientId?: pulumi.Input<string>;
+    oauth2ClientId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: OAuth 2.0 secret
@@ -7229,12 +7229,12 @@ export interface DestinationConfig {
      * 	- Service `newS3Datalake`: OAuth 2.0 secret
      * 	- Service `onelake`: OAuth 2.0 secret
      */
-    oauth2Secret?: pulumi.Input<string>;
+    oauth2Secret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
      */
-    passphrase?: pulumi.Input<string>;
+    passphrase?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgresWarehouse`: Database user password
@@ -7260,7 +7260,7 @@ export interface DestinationConfig {
      * 	- Service `sqlServerRdsWarehouse`: Database user password
      * 	- Service `sqlServerWarehouse`: Database user password
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Personal access token
@@ -7269,7 +7269,7 @@ export interface DestinationConfig {
      * 	- Service `newS3Datalake`: Personal access token
      * 	- Service `onelake`: Personal access token
      */
-    personalAccessToken?: pulumi.Input<string>;
+    personalAccessToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Server port number
@@ -7300,7 +7300,7 @@ export interface DestinationConfig {
      * 	- Service `sqlServerRdsWarehouse`: Server port number
      * 	- Service `sqlServerWarehouse`: Server port number
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: (Immutable) path/to/data within the container
@@ -7308,17 +7308,17 @@ export interface DestinationConfig {
      * 	- Service `newS3Datalake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
      * 	- Service `onelake`: (Immutable) path/to/data within your lakehouse inside the Files directory
      */
-    prefixPath?: pulumi.Input<string>;
+    prefixPath?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: Private access key.  The field should be specified if authentication type is `KEY_PAIR`.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bigQuery`: BigQuery project ID
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgresWarehouse`: Public Key
@@ -7340,20 +7340,20 @@ export interface DestinationConfig {
      * 	- Service `sqlServerRdsWarehouse`: Public Key
      * 	- Service `sqlServerWarehouse`: Public Key
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `managedDataLake`: (Immutable) Region of your AWS S3 bucket
      * 	- Service `newS3Datalake`: Region of your AWS S3 bucket
      */
-    region?: pulumi.Input<string>;
-    registryName?: pulumi.Input<string>;
-    registryStsRegion?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
+    registryName?: pulumi.Input<string | undefined>;
+    registryStsRegion?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `confluentCloudWh`: Replication factor.
      */
-    replicationFactor?: pulumi.Input<number>;
+    replicationFactor?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgresWarehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
@@ -7377,72 +7377,72 @@ export interface DestinationConfig {
      * 	- Service `sqlServerRdsWarehouse`: Field to test Self serve Private Link
      * 	- Service `sqlServerWarehouse`: Field to test Self serve Private Link
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: If not specified, Fivetran will use the user's default role
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `confluentCloudWh`: Security protocol for Confluent Cloud interaction.
      */
-    saslMechanism?: pulumi.Input<string>;
+    saslMechanism?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `confluentCloudWh`: Confluent Cloud SASL key.
      */
-    saslPlainKey?: pulumi.Input<string>;
+    saslPlainKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `confluentCloudWh`: Confluent Cloud SASL secret.
      */
-    saslPlainSecret?: pulumi.Input<string>;
-    schemaCompatibility?: pulumi.Input<string>;
+    saslPlainSecret?: pulumi.Input<string | undefined>;
+    schemaCompatibility?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `confluentCloudWh`: Schema Registry
      */
-    schemaRegistry?: pulumi.Input<string>;
+    schemaRegistry?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `confluentCloudWh`: Schema registry API key.
      */
-    schemaRegistryApiKey?: pulumi.Input<string>;
+    schemaRegistryApiKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `confluentCloudWh`: Schema registry API secret.
      */
-    schemaRegistryApiSecret?: pulumi.Input<string>;
+    schemaRegistryApiSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `confluentCloudWh`: Schema registry URL.
      */
-    schemaRegistryUrl?: pulumi.Input<string>;
+    schemaRegistryUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bigQuery`: Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.
      * 	- Service `bigQueryDts`: Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.
      * 	- Service `managedBigQuery`: Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.
      */
-    secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Secret value for service principal
      * 	- Service `managedDataLake`: Secret value for service principal
      * 	- Service `onelake`: Secret value for service principal
      */
-    secretValue?: pulumi.Input<string>;
+    secretValue?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `confluentCloudWh`: Security protocol for Confluent Cloud interaction.
      */
-    securityProtocol?: pulumi.Input<string>;
+    securityProtocol?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Server Host name
@@ -7451,7 +7451,7 @@ export interface DestinationConfig {
      * 	- Service `newS3Datalake`: Server host name
      * 	- Service `onelake`: Server Host name
      */
-    serverHostName?: pulumi.Input<string>;
+    serverHostName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Should maintain tables in Databricks 
@@ -7459,12 +7459,12 @@ export interface DestinationConfig {
      * 	- Service `newS3Datalake`: Should maintain tables in Databricks 
      * 	- Service `onelake`: Should maintain tables in Databricks
      */
-    shouldMaintainTablesInDatabricks?: pulumi.Input<boolean>;
+    shouldMaintainTablesInDatabricks?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `managedDataLake`: Should maintain tables in Glue. Only applicable if storage provider is AWS
      */
-    shouldMaintainTablesInGlue?: pulumi.Input<boolean>;
+    shouldMaintainTablesInGlue?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
@@ -7472,15 +7472,15 @@ export interface DestinationConfig {
      * 	- Service `newS3Datalake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
      * 	- Service `onelake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
      */
-    snapshotRetentionPeriod?: pulumi.Input<string>;
-    snowflakeCloud?: pulumi.Input<string>;
-    snowflakeRegion?: pulumi.Input<string>;
+    snapshotRetentionPeriod?: pulumi.Input<string | undefined>;
+    snowflakeCloud?: pulumi.Input<string | undefined>;
+    snowflakeRegion?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureSqlDataWarehouse`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
      * 	- Service `snowflake`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
      */
-    storageAccountKey?: pulumi.Input<string>;
+    storageAccountKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
@@ -7489,24 +7489,24 @@ export interface DestinationConfig {
      * 	- Service `onelake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
      * 	- Service `snowflake`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
      */
-    storageAccountName?: pulumi.Input<string>;
+    storageAccountName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `managedDataLake`: Storage Provider
      */
-    storageProvider?: pulumi.Input<string>;
+    storageProvider?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `newS3Datalake`: (Immutable) The table format in which you want to sync your tables. Valid values are ICEBERG and DELTA_LAKE
      */
-    tableFormat?: pulumi.Input<string>;
+    tableFormat?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Tenant id of service principal
      * 	- Service `managedDataLake`: Tenant id of service principal
      * 	- Service `onelake`: Tenant ID of service principal
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgresWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -7531,7 +7531,7 @@ export interface DestinationConfig {
      * 	- Service `sqlServerRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `sqlServerWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      */
-    tunnelHost?: pulumi.Input<string>;
+    tunnelHost?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgresWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -7556,7 +7556,7 @@ export interface DestinationConfig {
      * 	- Service `sqlServerRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `sqlServerWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
      */
-    tunnelPort?: pulumi.Input<number>;
+    tunnelPort?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgresWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -7581,12 +7581,12 @@ export interface DestinationConfig {
      * 	- Service `sqlServerRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `sqlServerWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
      */
-    tunnelUser?: pulumi.Input<string>;
+    tunnelUser?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: Set to `true` if you want to use an S3 bucket to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
      */
-    useCustomerStaging?: pulumi.Input<boolean>;
+    useCustomerStaging?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgresWarehouse`: Database user name
@@ -7612,18 +7612,18 @@ export interface DestinationConfig {
      * 	- Service `sqlServerRdsWarehouse`: Database user name
      * 	- Service `sqlServerWarehouse`: Database user name
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `managedDataLake`: (Immutable) OneLake workspace GUID
      * 	- Service `onelake`: (Immutable) OneLake workspace GUID
      */
-    workspaceGuid?: pulumi.Input<string>;
+    workspaceGuid?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `onelake`: OneLake workspace name
      */
-    workspaceName?: pulumi.Input<string>;
+    workspaceName?: pulumi.Input<string | undefined>;
 }
 
 export interface DestinationFingerprintsFingerprint {
@@ -7638,85 +7638,85 @@ export interface DestinationFingerprintsFingerprint {
     /**
      * User name who validated the fingerprint.
      */
-    validatedBy?: pulumi.Input<string>;
+    validatedBy?: pulumi.Input<string | undefined>;
     /**
      * The date when fingerprint was approved.
      */
-    validatedDate?: pulumi.Input<string>;
+    validatedDate?: pulumi.Input<string | undefined>;
 }
 
 export interface DestinationTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface ExternalLoggingConfig {
     /**
      * API Key
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * Channel
      */
-    channel?: pulumi.Input<string>;
+    channel?: pulumi.Input<string | undefined>;
     /**
      * Enable SSL
      */
-    enableSsl?: pulumi.Input<boolean>;
+    enableSsl?: pulumi.Input<boolean | undefined>;
     /**
      * external_id
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * Server name
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * Server name
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * Log Group Name
      */
-    logGroupName?: pulumi.Input<string>;
+    logGroupName?: pulumi.Input<string | undefined>;
     /**
      * Port
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * Primary Key
      */
-    primaryKey?: pulumi.Input<string>;
+    primaryKey?: pulumi.Input<string | undefined>;
     /**
      * Project Id for Google Cloud Logging
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Region
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Role Arn
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
     /**
      * Sub Domain
      */
-    subDomain?: pulumi.Input<string>;
+    subDomain?: pulumi.Input<string | undefined>;
     /**
      * Token
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * Workspace ID
      */
-    workspaceId?: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConnectionCertificatesCertificate {
@@ -7762,31 +7762,31 @@ export interface GetConnectionCertificatesCertificateArgs {
     /**
      * Certificate name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The SSH public key.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * Certificate sha1.
      */
-    sha1?: pulumi.Input<string>;
+    sha1?: pulumi.Input<string | undefined>;
     /**
      * Certificate sha256.
      */
-    sha256?: pulumi.Input<string>;
+    sha256?: pulumi.Input<string | undefined>;
     /**
      * Type of the certificate.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * User name who validated the certificate.
      */
-    validatedBy?: pulumi.Input<string>;
+    validatedBy?: pulumi.Input<string | undefined>;
     /**
      * The date when certificate was approved.
      */
-    validatedDate?: pulumi.Input<string>;
+    validatedDate?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConnectionDestinationSchema {
@@ -7812,19 +7812,19 @@ export interface GetConnectionDestinationSchemaArgs {
     /**
      * The connector schema name in destination. Has to be unique within the group (destination). Required for connector creation.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The connector schema prefix has to be unique within the group (destination). Each replicated schema is prefixed with the provided value. Required for connector creation.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     /**
      * The table name unique within the schema to which connector will sync the data. Required for connector creation.
      */
-    table?: pulumi.Input<string>;
+    table?: pulumi.Input<string | undefined>;
     /**
      * Table group name.
      */
-    tableGroupName?: pulumi.Input<string>;
+    tableGroupName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConnectionFingerprintsFingerprint {
@@ -7854,15 +7854,15 @@ export interface GetConnectionFingerprintsFingerprintArgs {
     /**
      * The SSH public key.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * User name who validated the fingerprint.
      */
-    validatedBy?: pulumi.Input<string>;
+    validatedBy?: pulumi.Input<string | undefined>;
     /**
      * The date when fingerprint was approved.
      */
-    validatedDate?: pulumi.Input<string>;
+    validatedDate?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConnectionStatus {
@@ -7896,27 +7896,27 @@ export interface GetConnectionStatusArgs {
     /**
      * The boolean specifying whether the connection should be triggered to re-sync all historical data. If you set this parameter to TRUE, the next scheduled sync will be historical. If the value is FALSE or not specified, the connection will not re-sync historical data. NOTE: When the value is TRUE, only the next scheduled sync will be historical, all subsequent ones will be incremental. This parameter is set to FALSE once the historical sync is completed.
      */
-    isHistoricalSync?: pulumi.Input<boolean>;
+    isHistoricalSync?: pulumi.Input<boolean | undefined>;
     /**
      * The current setup state of the connection. The available values are: \n\n - incomplete - the setup config is incomplete, the setup tests never succeeded  `connected` - the connection is properly set up, `broken` - the connection setup config is broken.
      */
-    setupState?: pulumi.Input<string>;
+    setupState?: pulumi.Input<string | undefined>;
     /**
      * The current sync state of the connection. The available values are: `scheduled` - the sync is waiting to be run, `syncing` - the sync is currently running, `paused` - the sync is currently paused, `rescheduled` - the sync is waiting until more API calls are available in the source service.
      */
-    syncState?: pulumi.Input<string>;
+    syncState?: pulumi.Input<string | undefined>;
     /**
      * The collection of tasks for the connection.
      */
-    tasks?: pulumi.Input<pulumi.Input<inputs.GetConnectionStatusTaskArgs>[]>;
+    tasks?: pulumi.Input<pulumi.Input<inputs.GetConnectionStatusTaskArgs>[] | undefined>;
     /**
      * The current data update state of the connection. The available values are: `onSchedule` - the sync is running smoothly, no delays, `delayed` - the data is delayed for a longer time than expected for the update.
      */
-    updateState?: pulumi.Input<string>;
+    updateState?: pulumi.Input<string | undefined>;
     /**
      * The collection of warnings for the connection.
      */
-    warnings?: pulumi.Input<pulumi.Input<inputs.GetConnectionStatusWarningArgs>[]>;
+    warnings?: pulumi.Input<pulumi.Input<inputs.GetConnectionStatusWarningArgs>[] | undefined>;
 }
 
 export interface GetConnectionStatusTask {
@@ -7934,11 +7934,11 @@ export interface GetConnectionStatusTaskArgs {
     /**
      * Task code.
      */
-    code?: pulumi.Input<string>;
+    code?: pulumi.Input<string | undefined>;
     /**
      * Task message.
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConnectionStatusWarning {
@@ -7956,11 +7956,11 @@ export interface GetConnectionStatusWarningArgs {
     /**
      * Warning code.
      */
-    code?: pulumi.Input<string>;
+    code?: pulumi.Input<string | undefined>;
     /**
      * Warning message.
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConnectionsConnection {
@@ -8050,83 +8050,83 @@ export interface GetConnectionsConnectionArgs {
     /**
      * The unique identifier of the user who has created the connection in your account.
      */
-    connectedBy?: pulumi.Input<string>;
+    connectedBy?: pulumi.Input<string | undefined>;
     /**
      * The timestamp of the time the connection was created in your account.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
      */
-    dailySyncTime?: pulumi.Input<string>;
+    dailySyncTime?: pulumi.Input<string | undefined>;
     /**
      * The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
      */
-    dataDelaySensitivity?: pulumi.Input<string>;
+    dataDelaySensitivity?: pulumi.Input<string | undefined>;
     /**
      * Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data*delay*sensitivity set to CUSTOM.
      */
-    dataDelayThreshold?: pulumi.Input<number>;
+    dataDelayThreshold?: pulumi.Input<number | undefined>;
     /**
      * The timestamp of the time the connection sync failed last time.
      */
-    failedAt?: pulumi.Input<string>;
+    failedAt?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the Group (Destination) within the Fivetran system.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
      */
-    hybridDeploymentAgentId?: pulumi.Input<string>;
+    hybridDeploymentAgentId?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the connection within the Fivetran system.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Possible values: Directly, SshTunnel, ProxyAgent.
      */
-    networkingMethod?: pulumi.Input<string>;
+    networkingMethod?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the connection should be paused after the free trial period has ended.
      */
-    pauseAfterTrial?: pulumi.Input<boolean>;
+    pauseAfterTrial?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether the connection is paused.
      */
-    paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean | undefined>;
     /**
      * The private link ID.
      */
-    privateLinkId?: pulumi.Input<string>;
+    privateLinkId?: pulumi.Input<string | undefined>;
     /**
      * The proxy agent ID.
      */
-    proxyAgentId?: pulumi.Input<string>;
+    proxyAgentId?: pulumi.Input<string | undefined>;
     /**
      * The connection schedule configuration type. Supported values: auto, manual.
      */
-    scheduleType?: pulumi.Input<string>;
+    scheduleType?: pulumi.Input<string | undefined>;
     /**
      * The connector type id within the Fivetran system.
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
     /**
      * The connector type version within the Fivetran system.
      */
-    serviceVersion?: pulumi.Input<string>;
+    serviceVersion?: pulumi.Input<string | undefined>;
     /**
      * The timestamp of the time the connection sync succeeded last time.
      */
-    succeededAt?: pulumi.Input<string>;
+    succeededAt?: pulumi.Input<string | undefined>;
     /**
      * The connection sync frequency in minutes.
      */
-    syncFrequency?: pulumi.Input<number>;
+    syncFrequency?: pulumi.Input<number | undefined>;
 }
 
 export interface GetConnectorCertificatesCertificate {
@@ -8172,31 +8172,31 @@ export interface GetConnectorCertificatesCertificateArgs {
     /**
      * Certificate name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The SSH public key.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * Certificate sha1.
      */
-    sha1?: pulumi.Input<string>;
+    sha1?: pulumi.Input<string | undefined>;
     /**
      * Certificate sha256.
      */
-    sha256?: pulumi.Input<string>;
+    sha256?: pulumi.Input<string | undefined>;
     /**
      * Type of the certificate.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * User name who validated the certificate.
      */
-    validatedBy?: pulumi.Input<string>;
+    validatedBy?: pulumi.Input<string | undefined>;
     /**
      * The date when certificate was approved.
      */
-    validatedDate?: pulumi.Input<string>;
+    validatedDate?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConnectorConfig {
@@ -14001,59 +14001,59 @@ export interface GetConnectorConfigArgs {
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: Azure Blob Storage connection method
      */
-    absConnectionMethod?: pulumi.Input<string>;
+    absConnectionMethod?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: Azure Blob Storage connection string.
      * 	- Service `braze`: Connection String
      */
-    absConnectionString?: pulumi.Input<string>;
+    absConnectionString?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: Azure Blob Storage container address
      */
-    absContainerAddress?: pulumi.Input<string>;
+    absContainerAddress?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: Azure Blob Storage container name.
      * 	- Service `braze`: Container Name
      */
-    absContainerName?: pulumi.Input<string>;
+    absContainerName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: Azure Blob Storage host IP
      */
-    absHostIp?: pulumi.Input<string>;
+    absHostIp?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: Azure Blob Storage username
      */
-    absHostUser?: pulumi.Input<string>;
+    absHostUser?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: Prefix
      */
-    absPrefix?: pulumi.Input<string>;
+    absPrefix?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: Azure Blob Storage public key
      */
-    absPublicKey?: pulumi.Input<string>;
+    absPublicKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workramp`: Your WorkRamp academy ID.
      */
-    academyId?: pulumi.Input<string>;
+    academyId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `ceridianDayforce`: Your confirmation that you have granted Fivetran access to all the RESTful services and fields you want to sync. Possible values: `true`, `false`.
      */
-    accessConfirmation?: pulumi.Input<string>;
+    accessConfirmation?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `planful`: Your Planful access ID.
      */
-    accessId?: pulumi.Input<string>;
+    accessId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `gainsightCustomerSuccess`: The access key for API authentication.
@@ -14062,7 +14062,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `planful`: Your Planful access key.
      * 	- Service `retailnext`: Your RetailNext access key.
      */
-    accessKey?: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appsflyer`: Your AWS access key ID.
@@ -14075,7 +14075,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `validio`: Your Validio access key ID.
      * 	- Service `wasabiCloudStorage`: Access Key ID
      */
-    accessKeyId?: pulumi.Input<string>;
+    accessKeyId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Access Key Secret
@@ -14087,7 +14087,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `s3CompatibleStorage`: Access Key Secret
      * 	- Service `wasabiCloudStorage`: Access Key Secret
      */
-    accessKeySecret?: pulumi.Input<string>;
+    accessKeySecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `7shifts`: Your 7shifts access token.
@@ -14120,23 +14120,23 @@ export interface GetConnectorConfigArgs {
      * 	- Service `workable`: Your Workable Access Token.
      * 	- Service `workramp`: Your WorkRamp access token.
      */
-    accessToken?: pulumi.Input<string>;
+    accessToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sharePoint`: Access Type
      */
-    accessType?: pulumi.Input<string>;
+    accessType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `netsuiteSuiteanalytics`: The NetSuite Account ID.
      * 	- Service `ordway`: Your Ordway account type.
      */
-    account?: pulumi.Input<string>;
+    account?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `rollbar`: Your Rollbar account access token.
      */
-    accountAccessToken?: pulumi.Input<string>;
+    accountAccessToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appcues`: Your Appcues Account ID.
@@ -14148,18 +14148,18 @@ export interface GetConnectorConfigArgs {
      * 	- Service `rokt`: Your Rokt account ID.
      * 	- Service `udemyBusiness`: Your Udemy Business account ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `taboola`: Specific Account IDs to sync.  Must be populated if `syncMode` is set to `SpecificAccounts`.
      */
-    accountIds?: pulumi.Input<pulumi.Input<string>[]>;
+    accountIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cosmos`: The read-only primary or secondary account key for the database account. Required for the `ACCOUNT_KEY` data access method.
      * 	- Service `simplesat`: Your Simplesat account key.
      */
-    accountKey?: pulumi.Input<string>;
+    accountKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `eventsforce`: Your Eventsforce account name.
@@ -14169,39 +14169,39 @@ export interface GetConnectorConfigArgs {
      * 	- Service `talkdesk`: Your Talkdesk Account Name.
      * 	- Service `udemyBusiness`: Your Udemy Business account name.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `tymeshift`: Your Tymeshift account plan.
      */
-    accountPlan?: pulumi.Input<string>;
+    accountPlan?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `iterable`: If your Iterable account URL starts with `https://app.eu.iterable.com` then provide `EU` else `US`
      */
-    accountRegion?: pulumi.Input<string>;
+    accountRegion?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `foneDynamics`: Your Fone Dynamics account SID.
      * 	- Service `impactPartner`: Your Impact Partner account SID
      */
-    accountSid?: pulumi.Input<string>;
+    accountSid?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `itunesConnect`: Account Sync Mode
      * 	- Service `snapchatAds`: Whether to sync all accounts or specific accounts. Default value: `AllAccounts`.
      */
-    accountSyncMode?: pulumi.Input<string>;
+    accountSyncMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `konnectInsights`: Your Konnect Insights Account Token.
      */
-    accountToken?: pulumi.Input<string>;
+    accountToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `freightview`: Your Freightview account type.
      */
-    accountType?: pulumi.Input<string>;
+    accountType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bingads`: Specific accounts to sync. Must be populated if `syncMode` is set to `SpecificAccounts`.
@@ -14223,80 +14223,80 @@ export interface GetConnectorConfigArgs {
      * 	- Service `twitter`: Specific accounts to sync. Must be populated if `syncMode` is set to `SpecificAccounts`.
      * 	- Service `twitterAds`: Specific Accounts to sync.  Must be populated if `syncMode` is set to `SpecificAccounts`.
      */
-    accounts?: pulumi.Input<pulumi.Input<string>[]>;
+    accounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redditAds`: Accounts
      */
-    accountsRedditAds?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigAccountsRedditAdArgs>[]>;
+    accountsRedditAds?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigAccountsRedditAdArgs>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleSearchAds360`: Whether to sync all accounts or specific.
      */
-    accountsSyncMode?: pulumi.Input<string>;
+    accountsSyncMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebook`: List of actionBreakdowns which connector will sync. [Possible actionBreakdowns values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#actionbreakdowns).
      */
-    actionBreakdowns?: pulumi.Input<pulumi.Input<string>[]>;
+    actionBreakdowns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebook`: The report time of action stats. [Possible actionReport time values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#actionreporttime).
      */
-    actionReportTime?: pulumi.Input<string>;
+    actionReportTime?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `linkedinAds`: Whether to sync all analytic reports or specific. Default value: `AllReports`
      */
-    adAnalytics?: pulumi.Input<string>;
+    adAnalytics?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `doubleClickPublishers`: Ad unit view for the report.
      */
-    adUnitView?: pulumi.Input<string>;
+    adUnitView?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `splitio`: Your Split admin api key.
      */
-    adminApiKey?: pulumi.Input<string>;
+    adminApiKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `brivo`: Your Brivo Admin username.
      */
-    adminUsername?: pulumi.Input<string>;
+    adminUsername?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalytics`: The list of configurations of tables you want to sync. The number of tables and their configurations is limited to 5. Required for connector creation.
      */
-    adobeAnalyticsConfigurations?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigAdobeAnalyticsConfigurationArgs>[]>;
+    adobeAnalyticsConfigurations?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigAdobeAnalyticsConfigurationArgs>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adroll`: Specific advertisables to sync. Must be populated if `syncMode` is set to `SpecificAdvertisables`.
      */
-    advertisables?: pulumi.Input<pulumi.Input<string>[]>;
+    advertisables?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleDisplayAndVideo360`: The list of advertisers to include into a sync. This parameter only takes effect when `configMethod` is set to `CREATE_NEW`.
      * 	- Service `googleSearchAds360`: Specific advertisers to sync. Must be populated if `advertisersSyncMode` is set to `SPECIFIC_ADVERTISERS`.
      * 	- Service `pinterestAds`: Specific Advertisers to sync.  Must be populated if `syncMode` is set to `SpecificAdvertisers`.
      */
-    advertisers?: pulumi.Input<pulumi.Input<string>[]>;
+    advertisers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `yahooGemini`: Specific Advertiser IDs to sync. Must be populated if `syncMode` is set to `SpecificAccounts`.
      */
-    advertisersIds?: pulumi.Input<pulumi.Input<string>[]>;
+    advertisersIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleSearchAds360`: Whether to sync all or specific advertisers.
      */
-    advertisersSyncMode?: pulumi.Input<string>;
+    advertisersSyncMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: Specific Advertisers to sync. Must be populated if `syncModeAdvertiser` is set to `SPECIFIC_ADVERTISERS`. Pay attention to the format: `AdvertiserId:SeatId`
      */
-    advertisersWithSeats?: pulumi.Input<pulumi.Input<string>[]>;
-    agentConfigMethod?: pulumi.Input<string>;
+    advertisersWithSeats?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    agentConfigMethod?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `db2iHva`: The agent host.
@@ -14312,18 +14312,18 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sqlServerHva`: The host address of the machine running the agent. Often the same as the DB host.
      * 	- Service `sqlServerSapEccHva`: The host address of the machine running the agent. Often the same as the DB host.
      */
-    agentHost?: pulumi.Input<string>;
+    agentHost?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `phoenixAds`: Your Phoenix Ads Agent ID.
      */
-    agentId?: pulumi.Input<string>;
+    agentId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleHva`: The home directory of the Oracle database.
      * 	- Service `oracleSapHva`: The home directory of the Oracle database.
      */
-    agentOraHome?: pulumi.Input<string>;
+    agentOraHome?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `db2iHva`: The agent password.
@@ -14339,7 +14339,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sqlServerHva`: The password for the agent user.
      * 	- Service `sqlServerSapEccHva`: The password for the agent user.
      */
-    agentPassword?: pulumi.Input<string>;
+    agentPassword?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `db2iHva`: The agent port.
@@ -14355,7 +14355,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sqlServerHva`: The port that the agent has open for Fivetran's connection. Default value is 4343.
      * 	- Service `sqlServerSapEccHva`: The port that the agent has open for Fivetran's connection. Default value is 4343.
      */
-    agentPort?: pulumi.Input<number>;
+    agentPort?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `db2iHva`: The public certificate for the agent.
@@ -14371,7 +14371,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sqlServerHva`: The public certificate generated by the agent.
      * 	- Service `sqlServerSapEccHva`: The public certificate generated by the agent.
      */
-    agentPublicCert?: pulumi.Input<string>;
+    agentPublicCert?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `db2iHva`: The agent user name.
@@ -14387,22 +14387,22 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sqlServerHva`: The agent's username.
      * 	- Service `sqlServerSapEccHva`: The agent's username.
      */
-    agentUser?: pulumi.Input<string>;
+    agentUser?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebook`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#aggregation).
      */
-    aggregation?: pulumi.Input<string>;
+    aggregation?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `economic`: Your E-conomic X-AgreementGrantToken goes here.
      */
-    agreementGrantToken?: pulumi.Input<string>;
+    agreementGrantToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `webhooks`: HMAC algorithm used for generating the HMAC signature. Supported algorithms  INFER_FROM_HEADER, MD5, SHA_1, SHA_224, SHA_256, SHA_384, SHA_512. Default: SHA_256
      */
-    algorithm?: pulumi.Input<string>;
+    algorithm?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: Require TLS through Tunnel
@@ -14451,12 +14451,12 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sqlServerRds`: Require TLS.
      * 	- Service `sqlServerSapEccHva`: Require TLS.
      */
-    alwaysEncrypted?: pulumi.Input<boolean>;
+    alwaysEncrypted?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `freshsuccess`: Set this parameter to `api`.
      */
-    api?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `deviceMagic`: Your Device Magic API access token.
@@ -14464,18 +14464,18 @@ export interface GetConnectorConfigArgs {
      * 	- Service `shopify`: API access token of your custom app.
      * 	- Service `square`: The Square API access token of your application.
      */
-    apiAccessToken?: pulumi.Input<string>;
+    apiAccessToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `afterpay`: Your Afterpay API environment.
      * 	- Service `tiktokOrganic`: Your TikTok Organic API environment.
      */
-    apiEnvironment?: pulumi.Input<string>;
+    apiEnvironment?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aircall`: Your Aircall API ID.
      */
-    apiId?: pulumi.Input<string>;
+    apiId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `15five`: Your 15five API key.
@@ -14691,37 +14691,37 @@ export interface GetConnectorConfigArgs {
      * 	- Service `zingtree`: Your Zingtree API key.
      * 	- Service `zip`: Your Zip API key.
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `revel`: Your Revel Systems API Key and API Secret.
      */
-    apiKeyApiSecret?: pulumi.Input<string>;
+    apiKeyApiSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `mandrill`: Comma-separated list of API keys.  Required if `useApiKeys` is set to `true`.
      */
-    apiKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    apiKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `duoplane`: Your Duoplane API password.
      */
-    apiPassword?: pulumi.Input<string>;
+    apiPassword?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `marketo`: Allowed number of API requests to Marketo instance per day, the default value is 10000.
      */
-    apiQuota?: pulumi.Input<number>;
+    apiQuota?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `theMovieDatabase`: Your The Movie Database API read access token.
      */
-    apiReadAccessToken?: pulumi.Input<string>;
+    apiReadAccessToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `qualtrics`: Allowed number of API requests to Qualtrics per minute, the default value is 2000. Maximum allowed number is 3000 because brands may make up to 3000 API requests per minute across all of its API calls.
      */
-    apiRequestsPerMinute?: pulumi.Input<number>;
+    apiRequestsPerMinute?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `confluentCloud`: API Secret
@@ -14735,17 +14735,17 @@ export interface GetConnectorConfigArgs {
      * 	- Service `shareasale`: Your ShareASale API secret.
      * 	- Service `vonage`: Your Vonage API Secret.
      */
-    apiSecret?: pulumi.Input<string>;
+    apiSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `alchemer`: Your Alchemer API Secret key.
      */
-    apiSecretKey?: pulumi.Input<string>;
+    apiSecretKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sigmaComputingSource`: Your Sigma Computing api server.
      */
-    apiServer?: pulumi.Input<string>;
+    apiServer?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aha`: Your Aha! API key.
@@ -14808,44 +14808,44 @@ export interface GetConnectorConfigArgs {
      * 	- Service `zendesk`: Zendesk API tokens are auto-generated passwords in the Support admin interface.
      * 	- Service `zendeskSunshine`: Zendesk API tokens are auto-generated passwords in the Support admin interface.
      */
-    apiToken?: pulumi.Input<string>;
-    apiType?: pulumi.Input<string>;
+    apiToken?: pulumi.Input<string | undefined>;
+    apiType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: Your Braze API URL.
      */
-    apiUrl?: pulumi.Input<string>;
+    apiUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amazonDsp`: Your Amazon DSP API URL region.
      */
-    apiUrlRegion?: pulumi.Input<string>;
+    apiUrlRegion?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `zendesk`: Maximum Zendesk Api Usage allowed
      */
-    apiUsage?: pulumi.Input<string>;
+    apiUsage?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `shipnetwork`: Your ShipNetwork API user identifier.
      */
-    apiUserIdentifier?: pulumi.Input<string>;
+    apiUserIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `shipnetwork`: Your ShipNetwork API user secret.
      */
-    apiUserSecret?: pulumi.Input<string>;
+    apiUserSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `kustomer`: Api Utilization Percentage
      */
-    apiUtilizationPercentage?: pulumi.Input<string>;
+    apiUtilizationPercentage?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: API Version
      * 	- Service `pardotSandbox`: API Version
      */
-    apiVersion?: pulumi.Input<string>;
+    apiVersion?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `churnkey`: Your Churnkey APP ID.
@@ -14853,17 +14853,17 @@ export interface GetConnectorConfigArgs {
      * 	- Service `rokt`: Your Rokt app ID.
      * 	- Service `tiktokOrganic`: Your Tiktok Organic app ID.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pendo`: Specific App IDs to sync. Must be populated if `syncMode` is set to `SpecificAppIds`.
      */
-    appIds?: pulumi.Input<pulumi.Input<string>[]>;
+    appIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appsflyer`: *  App ID(s)
      */
-    appIdsAppsflyers?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigAppIdsAppsflyerArgs>[]>;
+    appIdsAppsflyers?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigAppIdsAppsflyerArgs>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `loopio`: Your Loopio App Key.
@@ -14871,28 +14871,28 @@ export interface GetConnectorConfigArgs {
      * 	- Service `yotpo`: Your Yotpo app key.
      * 	- Service `yotpoApp`: Your Yotpo App key.
      */
-    appKey?: pulumi.Input<string>;
+    appKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `brightpearl`: Your Brightpearl app reference.
      */
-    appReference?: pulumi.Input<string>;
+    appReference?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `rokt`: Your Rokt app secret.
      */
-    appSecret?: pulumi.Input<string>;
-    appSecretToken?: pulumi.Input<string>;
+    appSecret?: pulumi.Input<string | undefined>;
+    appSecretToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `itunesConnect`: Your app-specific password
      */
-    appSpecificPassword?: pulumi.Input<string>;
+    appSpecificPassword?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `itunesConnect`: Whether to sync all apps or specific apps.
      */
-    appSyncMode?: pulumi.Input<string>;
+    appSyncMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: If you know that the source completely overwrites the same file with new data, you can append the changes instead of upserting based on filename and line number.
@@ -14910,13 +14910,13 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sharePoint`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      * 	- Service `wasabiCloudStorage`: If you know that the source completely over-writes the same file with new data, you can append the changes instead of upserting based on filename and line number.
      */
-    appendFileOption?: pulumi.Input<string>;
+    appendFileOption?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `algolia`: Your Algolia application ID.
      * 	- Service `xactly`: Your Xactly Application ID.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cin7core`: Your Cin7 Core application key.
@@ -14924,12 +14924,12 @@ export interface GetConnectorConfigArgs {
      * 	- Service `dear`: Your Dear Application key.
      * 	- Service `partnerize`: Your Partnerize user application key.
      */
-    applicationKey?: pulumi.Input<string>;
+    applicationKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `itunesConnect`: Specific apps to sync. Must be populated if `appSyncMode` is set to `SpecificApps`.
      */
-    apps?: pulumi.Input<pulumi.Input<string>[]>;
+    apps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleHva`: Archive log format.
@@ -14938,7 +14938,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sqlServerHva`: Format for archive log file names
      * 	- Service `sqlServerSapEccHva`: Format for archive log file names
      */
-    archiveLogFormat?: pulumi.Input<string>;
+    archiveLogFormat?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleHva`: Archive log path.
@@ -14947,7 +14947,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sqlServerHva`: Directory where archive logs are located
      * 	- Service `sqlServerSapEccHva`: Directory where archive logs are located
      */
-    archiveLogPath?: pulumi.Input<string>;
+    archiveLogPath?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Optional. Files inside of compressed archives with filenames matching this regular expression will be synced.
@@ -14965,84 +14965,84 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sharePoint`: Files inside of compressed archives with filenames matching this regular expression will be synced.
      * 	- Service `wasabiCloudStorage`: Files inside compressed archives with filenames matching this regular expression will be synced.
      */
-    archivePattern?: pulumi.Input<string>;
+    archivePattern?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `marketo`: Marketo SOAP credentials provided.
      */
-    areSoapCredentialsProvided?: pulumi.Input<boolean>;
+    areSoapCredentialsProvided?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureServiceBus`: The IP address (or) the URL of ASB namespace
      */
-    asbIp?: pulumi.Input<string>;
+    asbIp?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleHva`: Default value: `false`. Set to `true` if you're using ASM on a non-RAC instance.
      * 	- Service `oracleSapHva`: Default value: `false`. Set to `true` if you are using ASM on a non-RAC instance.
      */
-    asmOption?: pulumi.Input<boolean>;
+    asmOption?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleHva`: ASM Oracle Home path.
      * 	- Service `oracleSapHva`: The Oracle ASM home directory.
      */
-    asmOracleHome?: pulumi.Input<string>;
+    asmOracleHome?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleHva`: ASM password. Mandatory if `useOracleRac` or `asmOption` is set to `true`.
      * 	- Service `oracleSapHva`: The ASM user's password. Mandatory if `useOracleRac` or `asmOption` is set to `true`.
      */
-    asmPassword?: pulumi.Input<string>;
+    asmPassword?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleHva`: ASM TNS.
      * 	- Service `oracleSapHva`: ASM TNS.
      */
-    asmTns?: pulumi.Input<string>;
+    asmTns?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleHva`: ASM user. Mandatory if `useOracleRac` or `asmOption` is set to `true`.
      * 	- Service `oracleSapHva`: The ASM user. Mandatory if `useOracleRac` or `asmOption` is set to `true`.
      */
-    asmUser?: pulumi.Input<string>;
+    asmUser?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amazonAds`: Time period used to attribute conversions based on clicks.
      */
-    attributionWindow?: pulumi.Input<string>;
+    attributionWindow?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `tiktokAds`: Rollback sync duration to capture conversions. Set this to your configured attribution window in TikTok Ads. The default value is 7 days.
      */
-    attributionWindowSize?: pulumi.Input<string>;
+    attributionWindowSize?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auth0`: Your Auth0 API audience.
      */
-    audience?: pulumi.Input<string>;
+    audience?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `databricksDb`: Token-based authentication type
      * 	- Service `redshiftDb`: Password-based authentication type
      * 	- Service `snowflakeDb`: Password-based or key-based authentication type
      */
-    auth?: pulumi.Input<string>;
+    auth?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `happyfox`: Your HappyFox auth code.
      */
-    authCode?: pulumi.Input<string>;
+    authCode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `younium`: Your Younium auth environment.
      */
-    authEnvironment?: pulumi.Input<string>;
+    authEnvironment?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `webhooks`: Set if you use HMAC/token-based auth methods. This is used to retrieve a key in headers
      */
-    authHeaderKey?: pulumi.Input<string>;
+    authHeaderKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: Database authentication method
@@ -15067,7 +15067,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sqlServerSapEccHva`: Authentication Method
      * 	- Service `webhooks`: The authentication mechanism you want to use
      */
-    authMethod?: pulumi.Input<string>;
+    authMethod?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `anaplan`: The Anaplan authentication method.
@@ -15075,18 +15075,18 @@ export interface GetConnectorConfigArgs {
      * 	- Service `github`: Authorization type.
      * 	- Service `workday`: Authentication Mode
      */
-    authMode?: pulumi.Input<string>;
+    authMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `webhooks`: The secret you want to use for HMAC/token-based auth methods
      */
-    authSecret?: pulumi.Input<string>;
+    authSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `impactPartner`: Your Impact Partner auth token
      * 	- Service `zonkaFeedback`: Your Zonka Feedback auth token.
      */
-    authToken?: pulumi.Input<string>;
+    authToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `airtable`: Type of authentication being used by connector
@@ -15104,12 +15104,12 @@ export interface GetConnectorConfigArgs {
      * 	- Service `s3CompatibleStorage`: Access approach
      * 	- Service `wasabiCloudStorage`: The Wasabi Cloud Storage Access approach. Required for connector creation. Default value: `ACCESS_KEY`.
      */
-    authType?: pulumi.Input<string>;
+    authType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amazonDsp`: Your Amazon DSP auth grant URL region.
      */
-    authUrlRegion?: pulumi.Input<string>;
+    authUrlRegion?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalytics`: Authentication Method
@@ -15123,21 +15123,21 @@ export interface GetConnectorConfigArgs {
      * 	- Service `salesforce`: (Optional) Authentication type (default value = `STANDARD`)
      * 	- Service `salesforceSandbox`: (Optional) Authentication type (default value = `STANDARD`)
      */
-    authenticationMethod?: pulumi.Input<string>;
-    authorizationMethod?: pulumi.Input<string>;
+    authenticationMethod?: pulumi.Input<string | undefined>;
+    authorizationMethod?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `tiktokOrganic`: The authorization URL of the app registered in your TikTok developer account.
      * 	- Service `workday`: Authorization URL
      */
-    authorizationUrl?: pulumi.Input<string>;
+    authorizationUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `dynamodb`: The AWS region code for the DynamoDB instance, e.g. `us-east-1`.
      */
-    awsRegionCode?: pulumi.Input<string>;
-    backintConfigurationPath?: pulumi.Input<string>;
-    backintExecutablePath?: pulumi.Input<string>;
+    awsRegionCode?: pulumi.Input<string | undefined>;
+    backintConfigurationPath?: pulumi.Input<string | undefined>;
+    backintExecutablePath?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `shopify`: Limit of the Historical Sync Time for selected tables
@@ -15145,27 +15145,27 @@ export interface GetConnectorConfigArgs {
      * 	- Service `stripeTest`: Limit of the Historical Sync Time for selected tables
      * 	- Service `zendesk`: Date Limit of the Historical Sync Time for selected tables. The format should be YYYY-MM-DD
      */
-    backwardSyncLimit?: pulumi.Input<string>;
+    backwardSyncLimit?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hubspot`: Date Limit of the Historical Sync Time for selected tables. The Format should be YYYY-MM-DD
      */
-    backwardSyncLimitDate?: pulumi.Input<string>;
+    backwardSyncLimitDate?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `openExchangeRates`: Your Open Exchange Rates Base Currency.
      */
-    baseCurrency?: pulumi.Input<string>;
+    baseCurrency?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `freshteam`: Your company's Freshteam base domain name (usually **company**.freshteam.com).
      */
-    baseDomain?: pulumi.Input<string>;
+    baseDomain?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `airtable`: ID of base in Airtable
      */
-    baseId?: pulumi.Input<string>;
+    baseId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aha`: Your Aha! subdomain.
@@ -15199,7 +15199,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `veevavault`: Your Veeva Vault base URL.
      * 	- Service `vitally`: Your Vitally base URL.
      */
-    baseUrl?: pulumi.Input<string>;
+    baseUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `ada`: Your Ada API key.
@@ -15213,32 +15213,32 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sprout`: Your Sprout Social API Access Token.
      * 	- Service `zenefits`: Your Zenefits bearer token.
      */
-    bearerToken?: pulumi.Input<string>;
+    bearerToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sqlServer`: Transaction log type. Possible values: `"ONLINE"`, `"BACK_AZURE"`. Default"  value is `"ONLINE"`.
      */
-    binaryLogType?: pulumi.Input<string>;
+    binaryLogType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `webhooks`: The blob SAS URL of your Azure container. Required if `bucketService` is set to `AZURE`.
      */
-    blobSasUrl?: pulumi.Input<string>;
+    blobSasUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `rarible`: Your Rarible Blockchain.
      */
-    blockchain?: pulumi.Input<string>;
+    blockchain?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleMoatAnalytics`: Your Oracle Moat Analytics Brand ID.
      */
-    brandId?: pulumi.Input<string>;
+    brandId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebook`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#breakdowns).
      */
-    breakdowns?: pulumi.Input<pulumi.Input<string>[]>;
+    breakdowns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appsflyer`: Customer S3 Bucket
@@ -15256,45 +15256,45 @@ export interface GetConnectorConfigArgs {
      * 	- Service `segment`: The name of the Segment bucket. Must be populated if `syncType` is set to `S3`.
      * 	- Service `wasabiCloudStorage`: The Wasabi Cloud Storage bucket name. Required for connector creation.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adjust`: Your AWS S3 or GCS bucket.
      * 	- Service `googleAnalytics360`: The name of the bucket.
      * 	- Service `googleAnalytics4Export`: The name of the bucket.
      */
-    bucketName?: pulumi.Input<string>;
+    bucketName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `webhooks`: Whether to store the events in Fivetran's container service or your S3 bucket. Default value: `Fivetran`.
      */
-    bucketService?: pulumi.Input<string>;
+    bucketService?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redditAds`: Specific Accounts to sync.  Must be populated if `syncMode` is set to `SpecificAccounts`.
      */
-    businessAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    businessAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `birdeye`: Your Birdeye Business ID.
      */
-    businessId?: pulumi.Input<string>;
+    businessId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `deposco`: Your Deposco business unit.
      */
-    businessUnit?: pulumi.Input<string>;
+    businessUnit?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: Business Unit Id
      * 	- Service `pardotSandbox`: Business Unit Id
      */
-    businessUnitId?: pulumi.Input<string>;
+    businessUnitId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `databricksDb`: catalog to sync
      */
-    catalog?: pulumi.Input<string>;
+    catalog?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `anaplan`: The contents of your PEM certificate file. Must be populated if `authMode` is set to `Certificate`.
@@ -15302,36 +15302,36 @@ export interface GetConnectorConfigArgs {
      * 	- Service `salesforce`: Provide content of the `.pem` certificate (only when authenticationMethod = `ADVANCED`).
      * 	- Service `salesforceSandbox`: Provide content of the `.pem` certificate (only when authenticationMethod = `ADVANCED`).
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `netsuiteSuiteanalytics`: Certificate Id
      */
-    certificateId?: pulumi.Input<string>;
+    certificateId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebook`: Time period to attribute conversions based on clicks. [Possible clickAttributionWindow values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#clickattributionwindow).
      * 	- Service `pinterestAds`: The number of days to use as the conversion attribution window for a 'click' action.
      */
-    clickAttributionWindow?: pulumi.Input<string>;
-    client?: pulumi.Input<string>;
+    clickAttributionWindow?: pulumi.Input<string | undefined>;
+    client?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: Kafka client certificate.
      * 	- Service `herokuKafka`: Heroku Kafka client certificate. Required for `TLS` security protocol.
      */
-    clientCert?: pulumi.Input<string>;
+    clientCert?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: Kafka client certificate key.
      * 	- Service `herokuKafka`: Heroku Kafka client certificate key.  Required for `TLS` security protocol.
      */
-    clientCertKey?: pulumi.Input<string>;
+    clientCertKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `ceridianDayforce`: Your Ceridian Dayforce client host.
      */
-    clientHost?: pulumi.Input<string>;
+    clientHost?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `acumatica`: Your Acumatica client ID.
@@ -15452,25 +15452,25 @@ export interface GetConnectorConfigArgs {
      * 	- Service `zuora`: Zuora Client ID.
      * 	- Service `zuoraSandbox`: Zuora Client ID.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appfigures`: Your Appfigures Client Key.
      * 	- Service `thinkific`: Your Thinkific client key.
      * 	- Service `yougovSport`: Your Yougov Sport client key.
      */
-    clientKey?: pulumi.Input<string>;
+    clientKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `destini`: Your Destini Client Name.
      * 	- Service `medallia`: Medallia company name
      */
-    clientName?: pulumi.Input<string>;
+    clientName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `ceridianDayforce`: Your Ceridian Dayforce client namespace.
      */
-    clientNamespace?: pulumi.Input<string>;
+    clientNamespace?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: Client Private Key in .pem format.
@@ -15490,7 +15490,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `postgres`: Client Private Key in .pem format.
      * 	- Service `postgresRds`: Client Private Key in .pem format.
      */
-    clientPrivateKey?: pulumi.Input<string>;
+    clientPrivateKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: Client Certificate in .pem format.
@@ -15510,7 +15510,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `postgres`: Client Certificate in .pem format.
      * 	- Service `postgresRds`: Client Certificate in .pem format.
      */
-    clientPublicCertificate?: pulumi.Input<string>;
+    clientPublicCertificate?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `acumatica`: Your Acumatica client secret.
@@ -15620,80 +15620,80 @@ export interface GetConnectorConfigArgs {
      * 	- Service `zuora`: Zuora Client Secret.
      * 	- Service `zuoraSandbox`: Zuora Client Secret.
      */
-    clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: Cloud storage type Braze Current is connected to.
      */
-    cloudStorageType?: pulumi.Input<string>;
+    cloudStorageType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `rarible`: Your Rarible Collection Address.
      */
-    collectionAddress?: pulumi.Input<string>;
+    collectionAddress?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `doubleClickPublishers`: Columns provide all trafficking statistics and revenue information available for the chosen Dimensions.
      */
-    columns?: pulumi.Input<pulumi.Input<string>[]>;
+    columns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `alida`: Your Alida community API key name.
      */
-    communityApiKeyName?: pulumi.Input<string>;
+    communityApiKeyName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `khorosCommunities`: Your Khoros Communities community domain.
      */
-    communityDomain?: pulumi.Input<string>;
+    communityDomain?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `khorosCommunities`: Your Khoros Communities community ID.
      */
-    communityId?: pulumi.Input<string>;
+    communityId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `businessCentral`: List of companies to sync
      */
-    companies?: pulumi.Input<pulumi.Input<string>[]>;
+    companies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `ordway`: Your Ordway company name.
      */
-    company?: pulumi.Input<string>;
+    company?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `360learning`: Your 360Learning Company ID.
      * 	- Service `sageIntacct`: Company ID
      * 	- Service `sapSuccessFactors`: Your SAP SuccessFactors Company ID.
      */
-    companyId?: pulumi.Input<string>;
+    companyId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cjCommissionDetail`: Your CJ Commission Detail company IDs.
      */
-    companyIds?: pulumi.Input<string>;
+    companyIds?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `khorosCare`: Your Khoros Care companyKey.
      * 	- Service `upland`: Your Upland Software Company Key.
      */
-    companyKey?: pulumi.Input<string>;
+    companyKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `clockodo`: Your Clockodo company name.
      */
-    companyName?: pulumi.Input<string>;
+    companyName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `concur`: The SAP Concur Company Request Token
      */
-    companyRequestToken?: pulumi.Input<string>;
+    companyRequestToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `concur`: The SAP Concur Company UUID
      */
-    companyUuid?: pulumi.Input<string>;
+    companyUuid?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: If your files are compressed, but do not have extensions indicating the compression method, you can force them to be uncompressed according to the selected compression algorithm. Leave the value as infer if your files are saved with the correct compression extensions.
@@ -15711,35 +15711,35 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sharePoint`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
      * 	- Service `wasabiCloudStorage`: The compression format is used to let Fivetran know that even files without a compression extension should be decompressed using the selected compression format.
      */
-    compression?: pulumi.Input<string>;
+    compression?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleDisplayAndVideo360`: The report configuration method. Specifies whether a new configuration is defined manually or an existing configuration is reused. The default value is `CREATE_NEW`.
      */
-    configMethod?: pulumi.Input<string>;
+    configMethod?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowplow`: Public repository URL containing JSON configuration files.
      */
-    configRepositoryUrl?: pulumi.Input<string>;
+    configRepositoryUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebook`: Option to select Prebuilt Reports or Custom Reports. [Possible configType values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#configtype).
      * 	- Service `googleAnalytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/connectors/applications/google-analytics#schemainformation).
      */
-    configType?: pulumi.Input<string>;
+    configType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `xactly`: Your Xactly Connect password.
      */
-    connectPassword?: pulumi.Input<string>;
+    connectPassword?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `xactly`: Your Xactly Connect username.
      */
-    connectUsername?: pulumi.Input<string>;
-    connectingUser?: pulumi.Input<string>;
-    connectingUserEmail?: pulumi.Input<string>;
+    connectUsername?: pulumi.Input<string | undefined>;
+    connectingUser?: pulumi.Input<string | undefined>;
+    connectingUserEmail?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsMsk`: How Fivetran connects to your message brokers in the cluster
@@ -15748,12 +15748,12 @@ export interface GetConnectorConfigArgs {
      * 	- Service `azureServiceBus`: The connection method
      * 	- Service `sftp`: The connection method used to connect to SFTP Server.
      */
-    connectionMethod?: pulumi.Input<string>;
+    connectionMethod?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appsflyer`: Your Data Locker Connection Name. Default value: `data-locker-hourly/
      */
-    connectionName?: pulumi.Input<string>;
+    connectionName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: The blob storage container connection string.
@@ -15763,7 +15763,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `microsoftDynamics365Fo`: The blob storage container connection string.
      * 	- Service `sqlServer`: The Azure Blob Storage container connection string.
      */
-    connectionString?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
@@ -15828,12 +15828,12 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sqlServerRds`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
      * 	- Service `sqlServerSapEccHva`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
      */
-    connectionType?: pulumi.Input<string>;
+    connectionType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `prismaCloud`: Your Prisma Cloud console URL.
      */
-    consoleUrl?: pulumi.Input<string>;
+    consoleUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: Kafka consumer group name.
@@ -15842,7 +15842,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `confluentCloud`: Confluent Cloud consumer group name.
      * 	- Service `herokuKafka`: Heroku Kafka consumer group name.
      */
-    consumerGroup?: pulumi.Input<string>;
+    consumerGroup?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `netsuiteSuiteanalytics`: Consumer Key
@@ -15851,12 +15851,12 @@ export interface GetConnectorConfigArgs {
      * 	- Service `twitterAds`: The Twitter App consumer key.
      * 	- Service `woocommerce`: Your WooCommerce Consumer key.
      */
-    consumerKey?: pulumi.Input<string>;
+    consumerKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `xactly`: Your Xactly Connect consumer name.
      */
-    consumerName?: pulumi.Input<string>;
+    consumerName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `netsuiteSuiteanalytics`: Consumer Secret
@@ -15865,12 +15865,12 @@ export interface GetConnectorConfigArgs {
      * 	- Service `twitterAds`: The Twitter App consumer secret.
      * 	- Service `woocommerce`: Your WooCommerce Consumer secret.
      */
-    consumerSecret?: pulumi.Input<string>;
+    consumerSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: IP address of the Azure Storage Container which is accessible from host machine.
      */
-    containerAddress?: pulumi.Input<string>;
+    containerAddress?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: The name of the blob container.
@@ -15878,145 +15878,145 @@ export interface GetConnectorConfigArgs {
      * 	- Service `microsoftDynamics365Fo`: The name of the blob container.
      * 	- Service `sqlServer`: The name of the Azure Blob Storage container.
      */
-    containerName?: pulumi.Input<string>;
+    containerName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `youtubeAnalytics`: Used only for Content Owner reports. The ID of the content owner for whom the API request is being made.
      */
-    contentOwnerId?: pulumi.Input<string>;
+    contentOwnerId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `acumatica`: Your Acumatica contract version.
      */
-    contractVersion?: pulumi.Input<string>;
+    contractVersion?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `helpscout`: Your conversation webhook URL
      */
-    conversationWebhookUrl?: pulumi.Input<string>;
+    conversationWebhookUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `doubleClickCampaignManager`: Conversion Dimensions.
      */
-    conversionDimensions?: pulumi.Input<pulumi.Input<string>[]>;
+    conversionDimensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pinterestAds`: The date that the user interacted with the ad OR completed a conversion event.
      */
-    conversionReportTime?: pulumi.Input<string>;
+    conversionReportTime?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAds`: A period of time in days during which a conversion is recorded.
      */
-    conversionWindowSize?: pulumi.Input<number>;
-    convertDatsTypeToDate?: pulumi.Input<boolean>;
+    conversionWindowSize?: pulumi.Input<number | undefined>;
+    convertDatsTypeToDate?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adjust`: CSV definition for the CSV export (https://help.adjust.com/en/article/csv-uploads#how-do-i-format-my-csv-definition).
      */
-    csvDefinition?: pulumi.Input<string>;
+    csvDefinition?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `criteo`: Currency
      * 	- Service `rokt`: Your Rokt currency.
      */
-    currency?: pulumi.Input<string>;
+    currency?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `coalesce`: Your Coalesce custom base URL.
      * 	- Service `datadog`: Your Datadog custom base url.
      * 	- Service `deposco`: Your Deposco custom base URL.
      */
-    customBaseUrl?: pulumi.Input<string>;
+    customBaseUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `iterable`: Custom Events Sync Mode.
      */
-    customEventSyncMode?: pulumi.Input<string>;
+    customEventSyncMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `iterable`: List of custom events to sync. Should be specified when `customEventSyncMode` is `SelectedEvents`
      */
-    customEvents?: pulumi.Input<pulumi.Input<string>[]>;
+    customEvents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `doubleClickPublishers`: The list of custom field IDs included in the report. Custom fields can only be selected with their corresponding dimensions.
      */
-    customFieldIds?: pulumi.Input<pulumi.Input<string>[]>;
+    customFieldIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `doubleClickCampaignManager`: Custom Floodlight variables enable you to capture information beyond the basics (visits and revenue) that you can collect with standard parameters in your tags.
      */
-    customFloodlightVariables?: pulumi.Input<pulumi.Input<string>[]>;
+    customFloodlightVariables?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsLambda`: The list of key-value pairs that can be used to specify custom information to the function at runtime.
      * 	- Service `azureFunction`: The list of key-value pairs that can be used to specify custom information to the function at runtime.
      * 	- Service `googleCloudFunction`: The list of key-value pairs that can be used to specify custom information to the function at runtime.
      */
-    customPayloads?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigCustomPayloadArgs>[]>;
+    customPayloads?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigCustomPayloadArgs>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redditAds`: The list of custom report configurations. Each report corresponds to a table within the schema to which connector will sync the data.
      * 	- Service `snapchatAds`: [Custom reports for Snapchat Ads connector](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports).
      * 	- Service `tiktokAds`: Title of Custom Report
      */
-    customReports?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigCustomReportArgs>[]>;
+    customReports?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigCustomReportArgs>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebookAds`: List of custom tables. Each custom table corresponds to a table within the schema to which connector will sync the data.
      */
-    customTables?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigCustomTableArgs>[]>;
+    customTables?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigCustomTableArgs>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `dbtCloud`: Your dbt Cloud access url.
      * 	- Service `factbird`: Your Factbird custom base url.
      * 	- Service `jotform`: Your Jotform custom base URL.
      */
-    customUrl?: pulumi.Input<string>;
+    customUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `ukgPro`: Your UKG Pro Customer API key.
      */
-    customerApiKey?: pulumi.Input<string>;
+    customerApiKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAds`: ID of the customer, can be retrieved from your AdWords dashboard.
      */
-    customerId?: pulumi.Input<string>;
+    customerId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `salesforceCommerceCloud`: The parameter to retrieve customer details.
      */
-    customerListId?: pulumi.Input<string>;
-    dailyApiCallLimit?: pulumi.Input<number>;
+    customerListId?: pulumi.Input<string | undefined>;
+    dailyApiCallLimit?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cosmos`: The source data access method. Supported values:`ACCOUNT_KEY`- Data access method that uses account keys to authenticate to the source database. It comes in both read-write and read-only variants.`RESOURCE_TOKEN`- Fine-grained permission model based on native Azure Cosmos DB users and permissions. Learn more in our [Azure Cosmos DB Data Access Methods documentation](https://fivetran.com/docs/connectors/databases/cosmos#dataaccessmethods).
      */
-    dataAccessMethod?: pulumi.Input<string>;
+    dataAccessMethod?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `brightpearl`: Your Brightpearl data center.
      * 	- Service `qualtrics`: Data center ID of the Qualtrics account. Can be found in the URL before `qualtrics.com`. (For example, if your URL is `youraccount.ca1.qualtrics.com`, then the data center is `ca1`.)
      * 	- Service `zohoCrm`: Data Center, depending on the Domain name
      */
-    dataCenter?: pulumi.Input<string>;
+    dataCenter?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `zonkaFeedback`: Your Zonka Feedback data center ID.
      */
-    dataCenterId?: pulumi.Input<string>;
+    dataCenterId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleBusinessIntelligencePublisher`: Data Model Paths (Optional)
      */
-    dataModelPathAliasLists?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigDataModelPathAliasListArgs>[]>;
+    dataModelPathAliasLists?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigDataModelPathAliasListArgs>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bigqueryDb`: Data set name
      */
-    dataSetName?: pulumi.Input<string>;
+    dataSetName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: The database name.
@@ -16065,33 +16065,33 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sqlServerRds`: The database name.
      * 	- Service `sqlServerSapEccHva`: The database name.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `firebase`: Database Name
      */
-    databaseName?: pulumi.Input<string>;
+    databaseName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics360`: The dataset ID.
      * 	- Service `googleAnalytics4Export`: The Dataset ID.
      */
-    datasetId?: pulumi.Input<string>;
+    datasetId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `netsuiteSuiteanalytics`: The NetSuite data source value: `NetSuite.com`.
      */
-    datasource?: pulumi.Input<string>;
+    datasource?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalytics`: The aggregation duration you want. Default value: `HOUR` .
      */
-    dateGranularity?: pulumi.Input<string>;
+    dateGranularity?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `myosh`: Your Myosh Server variables/db .
      */
-    db?: pulumi.Input<string>;
+    db?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Optional. You can specify your the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible. If your files sync with the wrong number of columns, consider setting this value
@@ -16109,17 +16109,17 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sharePoint`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
      * 	- Service `wasabiCloudStorage`: You can specify the delimiter that your CSVs use here. Fivetran generally tries to infer the delimiter, but in some cases this is impossible.
      */
-    delimiter?: pulumi.Input<string>;
+    delimiter?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `brightpearl`: Your Brightpearl dev reference.
      */
-    developerReference?: pulumi.Input<string>;
+    developerReference?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `doubleClickPublishers`: Dimension attributes provide additional fields associated with a Dimension. Dimension attributes can only be selected with their corresponding Dimensions.
      */
-    dimensionAttributes?: pulumi.Input<pulumi.Input<string>[]>;
+    dimensionAttributes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adroll`: The dimenstions that you want to sync.
@@ -16128,34 +16128,34 @@ export interface GetConnectorConfigArgs {
      * 	- Service `googleAnalytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
      * 	- Service `googleDisplayAndVideo360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
      */
-    dimensions?: pulumi.Input<pulumi.Input<string>[]>;
+    dimensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleHva`: Possible values:`DIRECT`, `BFILE`, `ASM`, `ARCHIVE_ONLY`
      * 	- Service `oracleSapHva`: Possible values:`DIRECT`, `BFILE`, `ASM`, `ARCHIVE_ONLY`
      */
-    directCaptureMethod?: pulumi.Input<string>;
+    directCaptureMethod?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `qualtrics`: Set of directories to be synced when syncMode is CUSTOM
      */
-    directories?: pulumi.Input<pulumi.Input<string>[]>;
+    directories?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `qualtrics`: Sync mode to be used for fetching select directories. The Allowed Values are ALL and CUSTOM. If CUSTOM add the directories to be synced in the `directories` field.
      */
-    directorySyncMode?: pulumi.Input<string>;
+    directorySyncMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cosmos`: Specifies the total number of connectors in the Distributed Connector Cluster running in parallel.
      * 	- Service `dynamodb`: Specifies the total number of connectors in the Distributed Connector Cluster running in parallel.
      */
-    distributedConnectorClusterSize?: pulumi.Input<number>;
+    distributedConnectorClusterSize?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `qualtrics`: Can be used to set the distributions fetch window for incremental sync. Fetch window cannot be lesser than 60 days.
      */
-    distributionIncrementalFetchWindowDays?: pulumi.Input<number>;
+    distributionIncrementalFetchWindowDays?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auth0`: Your Auth0 domain.
@@ -16171,35 +16171,35 @@ export interface GetConnectorConfigArgs {
      * 	- Service `zendesk`: Zendesk domain.
      * 	- Service `zendeskSunshine`: Zendesk domain.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: Workday host name.
      * 	- Service `workdayFinancialManagement`: Workday host name.
      * 	- Service `workdayHcm`: Workday host name.
      */
-    domainHostName?: pulumi.Input<string>;
+    domainHostName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `calabrio`: Your Calabrio domain name
      * 	- Service `dynamics365`: The custom domain name associated with Dynamics 365.
      * 	- Service `helpshift`: Your Helpshift domain name.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `medallia`: Domain type of your Medallia URL
      */
-    domainType?: pulumi.Input<string>;
-    dsvServiceAuth?: pulumi.Input<string>;
-    dsvSubscriptionKey?: pulumi.Input<string>;
+    domainType?: pulumi.Input<string | undefined>;
+    dsvServiceAuth?: pulumi.Input<string | undefined>;
+    dsvSubscriptionKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `mailchimp`: List of IDs of the Mailchimp E-Commerce Stores to Sync
      */
-    ecommerceStores?: pulumi.Input<pulumi.Input<string>[]>;
-    edition?: pulumi.Input<string>;
-    elements?: pulumi.Input<pulumi.Input<string>[]>;
+    ecommerceStores?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    edition?: pulumi.Input<string | undefined>;
+    elements?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appcues`: Your Appcues Email.
@@ -16216,19 +16216,19 @@ export interface GetConnectorConfigArgs {
      * 	- Service `zendesk`: Zendesk email.
      * 	- Service `zendeskSunshine`: Zendesk email.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `clockodo`: Your Clockodo email address.
      */
-    emailAddress?: pulumi.Input<string>;
+    emailAddress?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cabcharge`: Your Cabcharge email ID.
      * 	- Service `ordway`: Your Ordway user email ID.
      * 	- Service `planful`: Your Planful email ID.
      */
-    emailId?: pulumi.Input<string>;
+    emailId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
@@ -16246,12 +16246,12 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sharePoint`: Optional. If your CSV generating software doesn't provide header line for the documents, Fivetran can generate the generic column names and sync data rows with them.
      * 	- Service `wasabiCloudStorage`: If your CSVs are headerless, set this is as `true`. When `true`, we will generate generic column names following the convention of `column0`, `column1`, ... `columnN` to map the rows. Default value: `false`.
      */
-    emptyHeader?: pulumi.Input<boolean>;
+    emptyHeader?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `doubleClickCampaignManager`: Whether to enable all reach dimension combinations in the report. Default value: `false`
      */
-    enableAllDimensionCombinations?: pulumi.Input<boolean>;
+    enableAllDimensionCombinations?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleHva`: Default value: `false`. Set to `true` if you're using archive log only mode.
@@ -16260,48 +16260,48 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sqlServerHva`: Use archive log only mode
      * 	- Service `sqlServerSapEccHva`: Use archive log only mode
      */
-    enableArchiveLogOnly?: pulumi.Input<boolean>;
-    enableDataExtensionsSyncing?: pulumi.Input<boolean>;
+    enableArchiveLogOnly?: pulumi.Input<boolean | undefined>;
+    enableDataExtensionsSyncing?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cosmos`: Enable to allow the connector to join a cluster of connectors forming a Distributed Connector Cluster. This cluster allows parallel syncs from the same source to the same destination using multiple connectors.
      * 	- Service `dynamodb`: Enable to allow the connector to join a cluster of connectors forming a Distributed Connector Cluster. This cluster allows parallel syncs from the same source to the same destination using multiple connectors.
      */
-    enableDistributedConnectorMode?: pulumi.Input<boolean>;
+    enableDistributedConnectorMode?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowplow`: Enable Enrichments
      */
-    enableEnrichments?: pulumi.Input<boolean>;
+    enableEnrichments?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: Enable User Profile Exports
      */
-    enableExports?: pulumi.Input<boolean>;
+    enableExports?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sqlServer`: Use transparent data encryption (TDE)
      * 	- Service `sqlServerHva`: Using Transparent Data Encryption (TDE)
      * 	- Service `sqlServerSapEccHva`: Using Transparent Data Encryption (TDE)
      */
-    enableTde?: pulumi.Input<boolean>;
+    enableTde?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleHva`: Default value: `false`. Set to `true` if you're using TDE encryption.
      * 	- Service `oracleSapHva`: Default value: `false`. Set to `true` if you're using TDE encryption.
      * 	- Service `oracleSapHvaNetweaver`: Default value: `false`. Set to `true` if you're using TDE encryption.
      */
-    enableTdeEncryption?: pulumi.Input<boolean>;
+    enableTdeEncryption?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appleSearchAds`: Use the public key to grant Fivetran access to Apple Search Ads api.
      */
-    encodedPublicKey?: pulumi.Input<string>;
+    encodedPublicKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `marketo`: Marketo SOAP API Encryption Key.
      */
-    encryptionKey?: pulumi.Input<string>;
+    encryptionKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `branch`: Webhook Endpoint
@@ -16310,29 +16310,29 @@ export interface GetConnectorConfigArgs {
      * 	- Service `snowplow`: Connection-specific collector endpoint. The collector endpoint will have the `webhooks.fivetran.com/snowplow/endpoint_ID` format. You will need it to configure Snowplow to connect with Fivetran.
      * 	- Service `webhooks`: You can send your events to https://webhooks.fivetran.com/webhooks/{endpoint}
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `s3CompatibleStorage`: S3-Compatible Storage Endpoint URL.
      */
-    endpointUrl?: pulumi.Input<string>;
+    endpointUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pinterestAds`: The number of days to use as the conversion attribution window for an engagement (i.e. closeup or save) action.
      */
-    engagementAttributionWindow?: pulumi.Input<string>;
+    engagementAttributionWindow?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `optimizely`: Enriched Events S3 bucket
      */
-    enrichedExport?: pulumi.Input<string>;
+    enrichedExport?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `checkout`: Your Checkout.com entity ID.
      * 	- Service `zuora`: If `isMultiEntityFeatureEnabled` is `true`, then it's `EntityId`.
      * 	- Service `zuoraSandbox`: If `isMultiEntityFeatureEnabled` is `true`, then it's `EntityId`.
      */
-    entityId?: pulumi.Input<string>;
+    entityId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgres`: Registered Application ID (for Entra ID authentication).
@@ -16342,7 +16342,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `postgres`: Registered Application ID (for Entra ID authentication).
      * 	- Service `postgresRds`: Registered Application ID (for Entra ID authentication).
      */
-    entraAppId?: pulumi.Input<string>;
+    entraAppId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgres`: Azure Tenant ID (for Entra ID authentication).
@@ -16352,7 +16352,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `postgres`: Azure Tenant ID (for Entra ID authentication).
      * 	- Service `postgresRds`: Azure Tenant ID (for Entra ID authentication).
      */
-    entraTenantId?: pulumi.Input<string>;
+    entraTenantId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bazaarvoice`: Your Bazaarvoice environment.
@@ -16378,17 +16378,17 @@ export interface GetConnectorConfigArgs {
      * 	- Service `zuora`: Zuora Sandbox Environment. This accepts either of the two values Sandbox or Central Sandbox based on your subscription. The default environment is Sandbox.
      * 	- Service `zuoraSandbox`: Zuora Sandbox Environment. This accepts either of the two values Sandbox or Central Sandbox based on your subscription. The default environment is Sandbox.
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `xactly`: Your Xactly environment host.
      */
-    environmentHost?: pulumi.Input<string>;
+    environmentHost?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `businessCentral`: Name of the environment
      */
-    environmentName?: pulumi.Input<string>;
+    environmentName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Optional. If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
@@ -16406,30 +16406,30 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sharePoint`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
      * 	- Service `wasabiCloudStorage`: If your CSV generator follows non-standard rules for escaping quotation marks, you can set the escape character here.
      */
-    escapeChar?: pulumi.Input<string>;
+    escapeChar?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `gcs`: Approach used by CSV parser. Default  value: `CUSTOM_ESCAPE_CHAR`. required for CSV parsing when `nonStandardEscapeChar` is `true`.
      * 	- Service `s3`: Approach used by CSV parser. Default  value: `CUSTOM_ESCAPE_CHAR`. required for CSV parsing when `nonStandardEscapeChar` is `true`.
      */
-    escapeCharOptions?: pulumi.Input<string>;
+    escapeCharOptions?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `kustomer`: Turn it on if your app is on EU region
      * 	- Service `surveyMonkey`: The SurveyMonkey account region. Specify `true`, if your account is hosted in the EU region. Default value is `false`.
      */
-    euRegion?: pulumi.Input<boolean>;
+    euRegion?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `iterable`: List of events to sync. Should be specified when `syncMode` is `SelectedEvents`
      */
-    events?: pulumi.Input<pulumi.Input<string>[]>;
+    events?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adjust`: Your cloud storage.
      * 	- Service `braze`: Export Storage. Required if `enableExports` is `true`
      */
-    exportStorageType?: pulumi.Input<string>;
+    exportStorageType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appsflyer`: The external ID is a string that designates who can assume the role. For more information, click a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html"here/a
@@ -16444,17 +16444,17 @@ export interface GetConnectorConfigArgs {
      * 	- Service `s3`: Used for authentication along with the `roleArn`. If not provided, it uses connector's `groupId`. Use the [List All Groups endpoint](https://fivetran.com/docs/rest-api/groups#listallgroups) to find the `groupId`.
      * 	- Service `segment`: The external ID is a string that designates who can assume the role. For more information, see a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html"Amazon's AWS Identity and Access Management User Guide/a.
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `unicommerce`: Your uniware facility codes.
      */
-    facilityCodes?: pulumi.Input<string>;
+    facilityCodes?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebook`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#fields).
      */
-    fields?: pulumi.Input<pulumi.Input<string>[]>;
+    fields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: If your files are saved with improper extensions, you can force them to by synced as the selected filetype. Leave the value as infer if your files have the correct extensions
@@ -16472,7 +16472,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sharePoint`: If your files are saved with improper extensions, you can force them to be synced as the selected file type.
      * 	- Service `wasabiCloudStorage`: If your files are saved with improper extensions, you can force them to be synced as the selected file type.
      */
-    fileType?: pulumi.Input<string>;
+    fileType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: Mapped file name patterns to a destination table.
@@ -16484,127 +16484,127 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sftp`: Mapped file name patterns to a destination table.
      * 	- Service `sharePoint`: Mapped file name patterns to a destination table.
      */
-    files?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigFileArgs>[]>;
+    files?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigFileArgs>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: String parameter restricts the data returned for your report. To use the filter parameter, specify a dimension or metric on which to filter, followed by the filter expression
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `itunesConnect`: Whether to sync all finance accounts or specific finance accounts.
      */
-    financeAccountSyncMode?: pulumi.Input<string>;
+    financeAccountSyncMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `itunesConnect`: Specific finance accounts to sync. Must be populated if `financeAccountSyncMode` is set to `SpecificFinanceAccounts`.
      */
-    financeAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    financeAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `dropbox`: Your Dropbox Folder URL.
      */
-    folder?: pulumi.Input<string>;
+    folder?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `box`: Folder URL
      * 	- Service `googleDrive`: Folder URL
      */
-    folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: Folder Path
      * 	- Service `oneDrive`: Your OneDrive folder URL
      * 	- Service `oracleBusinessIntelligencePublisher`: The folder path to save data models and reports.
      */
-    folderPath?: pulumi.Input<string>;
+    folderPath?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `clari`: Your Clari Forecast id .
      */
-    forecastId?: pulumi.Input<string>;
+    forecastId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: FTP host.
      */
-    ftpHost?: pulumi.Input<string>;
+    ftpHost?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: FTP password.
      */
-    ftpPassword?: pulumi.Input<string>;
+    ftpPassword?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: FTP port.
      */
-    ftpPort?: pulumi.Input<number>;
+    ftpPort?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: FTP user.
      */
-    ftpUser?: pulumi.Input<string>;
+    ftpUser?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsLambda`: The name of your AWS Lambda Function.
      */
-    function?: pulumi.Input<string>;
+    function?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureFunction`: Function app name in Azure portal.
      */
-    functionApp?: pulumi.Input<string>;
+    functionApp?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureFunction`: Function key used for authorization.
      */
-    functionKey?: pulumi.Input<string>;
+    functionKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureFunction`: Name of the function to be triggered.
      */
-    functionName?: pulumi.Input<string>;
+    functionName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleCloudFunction`: The trigger URL of the cloud function.
      */
-    functionTrigger?: pulumi.Input<string>;
+    functionTrigger?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: Your GCS bucket. Required if `GCS` is the `cloudStorageType`
      * 	- Service `webhooks`: The GCS bucket name. Required if `bucketService` is set to `GCS`.
      */
-    gcsBucket?: pulumi.Input<string>;
+    gcsBucket?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: Your GCS bucket. Required if `GCS` is the `exportStorageType`
      */
-    gcsExportBucket?: pulumi.Input<string>;
+    gcsExportBucket?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: Your GCS folder name. Required if `GCS` is the `exportStorageType`
      */
-    gcsExportFolder?: pulumi.Input<string>;
+    gcsExportFolder?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: Your GCS folder name. Required if `GCS` is the `cloudStorageType`
      */
-    gcsFolder?: pulumi.Input<string>;
+    gcsFolder?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: Select this option to generate a Primary Key for reports where no single column or combination of columns can be used to form a Primary Key.
      */
-    generateFivetranPk?: pulumi.Input<boolean>;
+    generateFivetranPk?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `lineAds`: Your LINE Ads group ID(s).
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `fivetranLog`: (Optional) The group name of the `targetGroupId`.
      */
-    groupName?: pulumi.Input<string>;
-    hanaBackupPassword?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
+    hanaBackupPassword?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hanaSapHvaB1`: The mode for connecting to HANA server. Available options: Single container (default), Multiple containers - Tenant database, Multiple containers - System database, Manual port selection - This option is used only if the database port needs to be specified manually.
@@ -16613,12 +16613,12 @@ export interface GetConnectorConfigArgs {
      * 	- Service `hanaSapHvaS4`: The mode for connecting to HANA server. Available options: Single container (default), Multiple containers - Tenant database, Multiple containers - System database, Manual port selection - This option is used only if the database port needs to be specified manually.
      * 	- Service `hanaSapHvaS4Netweaver`: The mode for connecting to HANA server. Available options: Single container (default), Multiple containers - Tenant database, Multiple containers - System database, Manual port selection - This option is used only if the database port needs to be specified manually.
      */
-    hanaMode?: pulumi.Input<string>;
+    hanaMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureServiceBus`: The boolean value specifying whether the connection string has manage permissions
      */
-    hasManagePermissions?: pulumi.Input<boolean>;
+    hasManagePermissions?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: Range of data in history you would like to include in the initial sync.
@@ -16628,7 +16628,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sailthru`: Range of historical data you would like to include in the initial sync. Default value: `ALL_TIME`.
      * 	- Service `salesforceMarketingCloud`: Range of data in history you would like to include in the initial sync. Default value: `ALL_TIME`.
      */
-    historicSyncTimeFrame?: pulumi.Input<string>;
+    historicSyncTimeFrame?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: Range of data in history you would like to include in the initial sync. Valid values are `ALL_TIME` and `DATE_LIMIT`
@@ -16643,7 +16643,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sailthru`: The time range for which historical data should be synced. Default value: `All Time`.
      * 	- Service `salesforceMarketingCloud`: The time range for which historical data should be synced. Default value: `All Time`.
      */
-    historicalSyncLimit?: pulumi.Input<string>;
+    historicalSyncLimit?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: The start date (in YYYY-MM-DD) from which to sync historical data. Only used when `historicalSyncLimit` is set to `DATE_LIMIT`.
@@ -16655,13 +16655,13 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sailthru`: The start date (YYYY-MM-DD) from which to sync historical data.
      * 	- Service `salesforceMarketingCloud`: The start date (YYYY-MM-DD) from which to sync historical data.
      */
-    historicalSyncLimitDate?: pulumi.Input<string>;
+    historicalSyncLimitDate?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: The options for time range for which historical data should be synced. Default value: `All Time`.
      * 	- Service `pardotSandbox`: The options for time range for which historical data should be synced. Default value: `All Time`.
      */
-    historicalSyncLimitTimeFrame?: pulumi.Input<string>;
+    historicalSyncLimitTimeFrame?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `ascendByPartnerize`: Your Ascend by Partnerize Historical sync time frame
@@ -16674,12 +16674,12 @@ export interface GetConnectorConfigArgs {
      * 	- Service `vimeo`: Your Vimeo Historical sync time frame.
      * 	- Service `zendesk`: Used to configure Historical sync timeframe for selected tables
      */
-    historicalSyncTimeFrame?: pulumi.Input<string>;
+    historicalSyncTimeFrame?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appsflyer`: Your S3 home folder path of the Data Locker.
      */
-    homeFolder?: pulumi.Input<string>;
+    homeFolder?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: DB instance host or IP address.
@@ -16742,66 +16742,66 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sqlServerRds`: DB instance host or IP address.
      * 	- Service `sqlServerSapEccHva`: DB instance host or IP address.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: IP address of host tunnel machine which is used to connect to the Storage container.
      * 	- Service `azureServiceBus`: The IP address of the host machine which we use to connect to ASB via ssh
      */
-    hostIp?: pulumi.Input<string>;
+    hostIp?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `coassemble`: Your Coassemble Hostname.
      * 	- Service `datadog`: Your Datadog host name.
      * 	- Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management hostname.
      */
-    hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeCommerce`: Your Adobe Commerce host url.
      * 	- Service `sparkpost`: Your SparkPost host URL.
      */
-    hostUrl?: pulumi.Input<string>;
+    hostUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: Username in the host machine.
      * 	- Service `azureServiceBus`: The username on the host machine which we use to connect to ASB via ssh
      */
-    hostUser?: pulumi.Input<string>;
+    hostUser?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `akamai`: Your Akamai hostname.
      * 	- Service `ukgPro`: Your UKG Pro hostname.
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureCosmosForMongo`: A list of host addresses for Azure Cosmos DB for Mongo DB.
      * 	- Service `mongo`: A list of host addresses of the primary node and all replicas. Each list item is either: a DB instance host/IP address with a port number, or SRV host record.
      * 	- Service `mongoSharded`: A list of host addresses of the primary node and all replicas. Each list item is either: a DB instance host/IP address with a port number, or SRV host record.
      */
-    hosts?: pulumi.Input<pulumi.Input<string>[]>;
+    hosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `databricksDb`: http path
      */
-    httpPath?: pulumi.Input<string>;
+    httpPath?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `playvoxWorkforceManagement`: Your Playvox Workforce Management client identifier.
      * 	- Service `statisticsNetherlandsCbs`: Your Statistics Netherlands CBS catalog identifier.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `marketo`: Marketo REST API identity url.
      */
-    identity?: pulumi.Input<string>;
+    identity?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `salesforceCommerceCloud`: Whether to sync data through OCAPI endpoints.
      */
-    includeOcapiEndpoints?: pulumi.Input<boolean>;
+    includeOcapiEndpoints?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `acumatica`: Your Acumatica instance name.
@@ -16810,7 +16810,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `salesforceMarketingCloud`: The Salesforce Marketing Cloud instance ID
      * 	- Service `servicenow`: ServiceNow Instance ID.
      */
-    instance?: pulumi.Input<string>;
+    instance?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hanaSapHvaB1`: Two-digit number (00-97) of the SAP instance within its host.
@@ -16820,97 +16820,97 @@ export interface GetConnectorConfigArgs {
      * 	- Service `hanaSapHvaS4Netweaver`: Two-digit number (00-97) of the SAP instance within its host.
      * 	- Service `oracleSapHvaNetweaver`: Two-digit number (00-97) of the SAP instance within its host.
      */
-    instanceNumber?: pulumi.Input<string>;
+    instanceNumber?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sapBusinessByDesign`: The SAP Business ByDesign instance URL.
      */
-    instanceUrl?: pulumi.Input<string>;
+    instanceUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pendo`: The integration key of the Pendo account.
      */
-    integrationKey?: pulumi.Input<string>;
+    integrationKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `avevaPi`: IP address of the AF Server
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `fivetranLog`: (Optional) Retrieve account-level logs.
      */
-    isAccountLevelConnector?: pulumi.Input<boolean>;
+    isAccountLevelConnector?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appleSearchAds`: The contents of your PEM certificate file. Default value: `false`
      */
-    isAuth2Enabled?: pulumi.Input<boolean>;
+    isAuth2Enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `twitterAds`: Custom API credentials
      */
-    isCustomApiCredentials?: pulumi.Input<boolean>;
+    isCustomApiCredentials?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: Whether the `EXTERNAL_ACTIVITY` table must be synced or not.
      * 	- Service `pardotSandbox`: Whether the `EXTERNAL_ACTIVITY` table must be synced or not.
      */
-    isExternalActivitiesEndpointSelected?: pulumi.Input<boolean>;
+    isExternalActivitiesEndpointSelected?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: Use Secure FTP (FTPS).
      */
-    isFtps?: pulumi.Input<boolean>;
+    isFtps?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sftp`: Whether to use a key pair for authentication.  When `true`, do not use `password`.
      */
-    isKeypair?: pulumi.Input<boolean>;
+    isKeypair?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `zuora`: Set to `true` if there are multiple entities in your Zuora account and you only want to use one entity. Otherwise, set to `false`.
      * 	- Service `zuoraSandbox`: Set to `true` if there are multiple entities in your Zuora account and you only want to use one entity. Otherwise, set to `false`.
      */
-    isMultiEntityFeatureEnabled?: pulumi.Input<boolean>;
+    isMultiEntityFeatureEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `salesforceMarketingCloud`: Indicates that that your installed package uses OAuth 2.0. Default value: `false`
      */
-    isNewPackage?: pulumi.Input<boolean>;
+    isNewPackage?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflakeDb`: Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.
      */
-    isPrivateKeyEncrypted?: pulumi.Input<boolean>;
+    isPrivateKeyEncrypted?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsLambda`: We use PrivateLink by default if your AWS Lambda is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to AWS lambda over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options#awsprivatelink).
      * 	- Service `s3`: Set to `true` if you want to connect to S3 bucket over PrivateLink. Default value: `false`.
      */
-    isPrivateLinkRequired?: pulumi.Input<boolean>;
+    isPrivateLinkRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Whether you are syncing from a public bucket. Default value: `false`.
      * 	- Service `kinesis`: Is the bucket public? (you don't need an AWS account for syncing public buckets!)
      * 	- Service `s3`: Whether you are syncing from a public bucket. Default value: `false`.
      */
-    isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sailthru`: Enable this if you want to sync Sailthru Connect
      */
-    isSailthruConnectEnabled?: pulumi.Input<boolean>;
+    isSailthruConnectEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `ftp`: Whether the server supports FTPS.
      */
-    isSecure?: pulumi.Input<boolean>;
+    isSecure?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `salesforceMarketingCloud`: Provide SFTP credentials
      */
-    isSftpCredsAvailable?: pulumi.Input<boolean>;
+    isSftpCredsAvailable?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `box`: Allows the creation of connector using Merge Mode strategy.
@@ -16919,29 +16919,29 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sftp`: Allows the creation of connector using the specified Sync strategy.
      * 	- Service `sharePoint`: Allows the creation of connector using Merge Mode strategy.
      */
-    isSingleTableMode?: pulumi.Input<boolean>;
+    isSingleTableMode?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adyen`: Whether or not your Adyen Account is a Test Account. Default value: `false`.
      */
-    isTestAccount?: pulumi.Input<boolean>;
+    isTestAccount?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amazonSellingPartner`: Whether or not you have a Vendor Account. Default value: `false`.
      */
-    isVendor?: pulumi.Input<boolean>;
+    isVendor?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleFusionCloudAppsCrm`: The Oracle Fusion Cloud issuer name.
      * 	- Service `oracleFusionCloudAppsFscm`: The Oracle Fusion Cloud issuer name.
      * 	- Service `oracleFusionCloudAppsHcm`: The Oracle Fusion Cloud issuer name.
      */
-    issuer?: pulumi.Input<string>;
+    issuer?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `itunesConnect`: Your Issuer ID
      */
-    issuerId?: pulumi.Input<string>;
+    issuerId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Control how your JSON data is delivered into your destination
@@ -16959,50 +16959,50 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sharePoint`: Control how your JSON data is delivered into your destination
      * 	- Service `wasabiCloudStorage`: Specifies how Fivetran should handle your JSON data. Default value: `Packed`.
      */
-    jsonDeliveryMode?: pulumi.Input<string>;
+    jsonDeliveryMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `uservoice`: The UserVoice API key.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `itunesConnect`: Your Key ID
      */
-    keyId?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsMsk`: If `securityProtocol` is set to `TLS`, enter your `Key Password`.
      */
-    keyPassword?: pulumi.Input<string>;
+    keyPassword?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `herokuKafka`: Key Store Type
      */
-    keyStoreType?: pulumi.Input<string>;
+    keyStoreType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsMsk`: If `securityProtocol` is set to `TLS`, add the `Keystore File` as Base64 encoded string.
      */
-    keystore?: pulumi.Input<string>;
+    keystore?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsMsk`: If `securityProtocol` is set to `TLS`, enter your `Keystore Password`.
      */
-    keystorePassword?: pulumi.Input<string>;
-    lastSyncedChangesUtc_?: pulumi.Input<string>;
-    latestVersion?: pulumi.Input<string>;
+    keystorePassword?: pulumi.Input<string | undefined>;
+    lastSyncedChangesUtc_?: pulumi.Input<string | undefined>;
+    latestVersion?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `younium`: Your Younium legal entity ID.
      */
-    legalEntityId?: pulumi.Input<string>;
+    legalEntityId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: API limit for the external activities endpoint.
      * 	- Service `pardotSandbox`: API limit for the external activities endpoint.
      */
-    limitForApiCallsToExternalActivitiesEndpoint?: pulumi.Input<number>;
+    limitForApiCallsToExternalActivitiesEndpoint?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
@@ -17020,17 +17020,17 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sharePoint`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
      * 	- Service `wasabiCloudStorage`: You can specify the custom line separator for your CSV files. The line separator is used in files to separate one row from the next.
      */
-    lineSeparator?: pulumi.Input<string>;
+    lineSeparator?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pigment`: Your Pigment list ID.
      */
-    listId?: pulumi.Input<string>;
+    listId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cjCommissionDetail`: Your CJ Commission Detail list of company IDs.
      */
-    listOfCompanyIds?: pulumi.Input<string>;
+    listOfCompanyIds?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Optional. If you have a file structure where new files are always named in lexicographically increasing order such as files being named in increasing order of time, you can select codetime_based_pattern_listing/code.
@@ -17038,58 +17038,58 @@ export interface GetConnectorConfigArgs {
      * 	- Service `s3`: The listing strategy you want to use. Default value: `completeListing`.
      * 	- Service `s3CompatibleStorage`: The listing strategy you want to use. Default value: `completeListing`.
      */
-    listStrategy?: pulumi.Input<string>;
+    listStrategy?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics4Export`: The Sync Mode
      */
-    listSyncMode?: pulumi.Input<string>;
+    listSyncMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `db2iHva`: The log journal name.
      * 	- Service `db2iSapHva`: The log journal name.
      */
-    logJournal?: pulumi.Input<string>;
+    logJournal?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `db2iHva`: The log journal schema.
      * 	- Service `db2iSapHva`: The log journal schema.
      */
-    logJournalSchema?: pulumi.Input<string>;
+    logJournalSchema?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hanaSapHvaEccNetweaver`: Name of the SAP logon group. The default value is PUBLIC. This field is optional.
      * 	- Service `hanaSapHvaS4Netweaver`: Name of the SAP logon group. The default value is PUBLIC. This field is optional.
      */
-    logOnGroup?: pulumi.Input<string>;
+    logOnGroup?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `reboundReturns`: Your ReBound Returns login.
      * 	- Service `theTradeDesk`: The Trade Desk email. It is a part of the login credentials.
      * 	- Service `walmartDsp`: Walmart DSP email. It is a part of the login credentials.
      */
-    login?: pulumi.Input<string>;
+    login?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `concur`: The SAP Concur password.
      * 	- Service `sageIntacct`: The login password. It is a part of the login credentials.
      */
-    loginPassword?: pulumi.Input<string>;
+    loginPassword?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sageIntacct`: Lookback window for GL Batch endpoint lookback sync
      */
-    lookBackWindowForGlBatchEndpoint?: pulumi.Input<number>;
+    lookBackWindowForGlBatchEndpoint?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAds`: The list of the Manager Account IDs whose clients will be synced. Must be populated if `syncMode` is set to `ManagerAccounts`.
      */
-    managerAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    managerAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `reltio`: Maximum API requests per day
      */
-    maxApiRequestsPerDay?: pulumi.Input<number>;
+    maxApiRequestsPerDay?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `afterpay`: Your Afterpay Merchant ID.
@@ -17100,7 +17100,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `shareasale`: Your ShareASale merchant ID.
      * 	- Service `xsolla`: Your Xsolla Merchant ID.
      */
-    merchantId?: pulumi.Input<string>;
+    merchantId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: Kafka message type.
@@ -17110,12 +17110,12 @@ export interface GetConnectorConfigArgs {
      * 	- Service `confluentCloud`: Confluent Cloud message type.
      * 	- Service `herokuKafka`: Heroku Kafka message type.
      */
-    messageType?: pulumi.Input<string>;
+    messageType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pigment`: Your Pigment metric ID.
      */
-    metricId?: pulumi.Input<string>;
+    metricId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adroll`: The metrics that you want to sync.
@@ -17124,28 +17124,28 @@ export interface GetConnectorConfigArgs {
      * 	- Service `googleAnalytics`: The report metrics to include into a sync.
      * 	- Service `googleDisplayAndVideo360`: The report metrics to include into a sync. The metric names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
      */
-    metrics?: pulumi.Input<pulumi.Input<string>[]>;
+    metrics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleSheets`: The name of the named data range on the sheet that contains the data to be synced.
      */
-    namedRange?: pulumi.Input<string>;
+    namedRange?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureServiceBus`: The ASB namespace which we have to sync. Required for `AzureActiveDirectory` authentication.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `doubleClickPublishers`: Network code is a unique, numeric identifier for your Ad Manager network.
      */
-    networkCode?: pulumi.Input<number>;
+    networkCode?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `gcs`: Use this if your CSV generator uses non-standard ways of escaping characters. Default value: `false`.
      * 	- Service `s3`: Use this if your CSV generator uses non-standard ways of escaping characters. Default value: `false`.
      */
-    nonStandardEscapeChar?: pulumi.Input<boolean>;
+    nonStandardEscapeChar?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Optional. If your CSVs use a special value indicating null, you can specify it here.
@@ -17163,43 +17163,43 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sharePoint`: If your CSVs use a special value indicating null, you can specify it here.
      * 	- Service `wasabiCloudStorage`: If your CSVs use a special value indicating null, you can specify it here.
      */
-    nullSequence?: pulumi.Input<string>;
-    oauthToken?: pulumi.Input<string>;
-    oauthTokenSecret?: pulumi.Input<string>;
+    nullSequence?: pulumi.Input<string | undefined>;
+    oauthToken?: pulumi.Input<string | undefined>;
+    oauthTokenSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `salesforceCommerceCloud`: The Salesforce Commerce Cloud OCAPI Client ID.
      */
-    ocapiClientId?: pulumi.Input<string>;
+    ocapiClientId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `salesforceCommerceCloud`: The Salesforce Commerce Cloud OCAPI Client secret.
      */
-    ocapiClientSecret?: pulumi.Input<string>;
+    ocapiClientSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `salesforceCommerceCloud`: The Salesforce Commerce Cloud OCAPI custom object types.
      */
-    ocapiCustomObjectTypes?: pulumi.Input<string>;
+    ocapiCustomObjectTypes?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `salesforceCommerceCloud`: The Salesforce Commerce Cloud OCAPI hostname.
      */
-    ocapiHostname?: pulumi.Input<string>;
+    ocapiHostname?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hanaSapHvaB1`: ODBC manager library path
      * 	- Service `hanaSapHvaEcc`: ODBC manager library path
      * 	- Service `hanaSapHvaS4`: ODBC manager library path
      */
-    odbcDriverManagerLibraryPath?: pulumi.Input<string>;
+    odbcDriverManagerLibraryPath?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hanaSapHvaB1`: odbc.ini and odbcsinst.ini location
      * 	- Service `hanaSapHvaEcc`: odbc.ini and odbcsinst.ini location
      * 	- Service `hanaSapHvaS4`: odbc.ini and odbcsinst.ini location
      */
-    odbcSysIniPath?: pulumi.Input<string>;
+    odbcSysIniPath?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
@@ -17216,23 +17216,23 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sharePoint`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as fail unless you are certain that you have undesirable, malformed data.
      * 	- Service `wasabiCloudStorage`: If you know that your files contain some errors, you can choose to have poorly formatted lines skipped. We recommend leaving the value as `fail` unless you are certain that you have undesirable, malformed data.
      */
-    onError?: pulumi.Input<string>;
+    onError?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `jira`: Whether the Jira instance is local or in cloud.
      */
-    onPremise?: pulumi.Input<boolean>;
+    onPremise?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `gladly`: Your Gladly Organization Name.
      * 	- Service `statuspage`: Your Statuspage Organization ID.
      */
-    organization?: pulumi.Input<string>;
+    organization?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeWorkfront`: Your Adobe Workfront organization domain.
      */
-    organizationDomain?: pulumi.Input<string>;
+    organizationDomain?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalytics`: Organization ID from the Service Account (JWT) credentials of your Adobe Project.
@@ -17245,19 +17245,19 @@ export interface GetConnectorConfigArgs {
      * 	- Service `zohoBooks`: Your Zoho Books Organization ID.
      * 	- Service `zohoInventory`: Your Zoho Inventory organization ID.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `brightpearl`: Your Brightpearl organization name.
      * 	- Service `confluence`: Your Confluence organization name.
      */
-    organizationName?: pulumi.Input<string>;
+    organizationName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appleSearchAds`: Organizations
      * 	- Service `snapchatAds`: Specific organizations IDs to sync. Must be populated if `syncMode` is set to `SpecificOrganizations`.
      */
-    organizations?: pulumi.Input<pulumi.Input<string>[]>;
+    organizations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureCosmosForMongo`: List of tables to be synced in packed mode; format:`db.table`(case-sensitive).
@@ -17266,7 +17266,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `mongo`: List of tables to be synced in packed mode; format:`db.table`(case-sensitive).
      * 	- Service `mongoSharded`: List of tables to be synced in packed mode; format:`db.table`(case-sensitive).
      */
-    packedModeTables?: pulumi.Input<pulumi.Input<string>[]>;
+    packedModeTables?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureCosmosForMongo`: Indicates the desired sync pack mode. Accepted values are `UsePackedModeOnly` and `UseUnpackedModeOnly`. `SelectTablesForPackedMode` is deprecated. 
@@ -17277,44 +17277,44 @@ export interface GetConnectorConfigArgs {
      * 	- Service `optimizely`: Packing mode for conversion and decision tables.
      * 	- Service `sailthru`: Packing mode for LIST_STATE and USER tables.
      */
-    packingMode?: pulumi.Input<string>;
+    packingMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebookPages`: Specific pages to sync. Must be populated if `syncMode` is set to `SpecificPages`.
      */
-    pages?: pulumi.Input<pulumi.Input<string>[]>;
+    pages?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `careQualityCommission`: Your Care Quality Commission partner code.
      */
-    partnerCode?: pulumi.Input<string>;
+    partnerCode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `expensify`: Your Expensify partnerUserID.
      */
-    partnerUserId?: pulumi.Input<string>;
+    partnerUserId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `expensify`: Your Expensify partnerUserSecret.
      */
-    partnerUserSecret?: pulumi.Input<string>;
+    partnerUserSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleDisplayAndVideo360`: The list of partners to include into a sync. This parameter only takes effect when `configMethod` is set to `CREATE_NEW`.
      * 	- Service `theTradeDesk`: Specific Partner IDs to sync.  Must be populated if `syncMode` is set to `SpecificAccounts`.
      * 	- Service `walmartDsp`: Specific Partner IDs to sync.  Must be populated if `syncMode` is set to `SpecificAccounts`.
      */
-    partners?: pulumi.Input<pulumi.Input<string>[]>;
+    partners?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `qualtrics`: Pass Phrase
      */
-    passPhrase?: pulumi.Input<string>;
+    passPhrase?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflakeDb`: In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
      */
-    passphrase?: pulumi.Input<string>;
+    passphrase?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `absorbLms`: Your Absorb LMS password.
@@ -17450,32 +17450,32 @@ export interface GetConnectorConfigArgs {
      * 	- Service `yougovBrandindex`: Your YouGov BrandIndex password.
      * 	- Service `younium`: Your Younium password.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `github`: The `Personal Access Token` generated in Github.
      */
-    pat?: pulumi.Input<string>;
+    pat?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `tableauSource`: Your Tableau Source PAT Name.
      */
-    patName?: pulumi.Input<string>;
+    patName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `tableauSource`: Your Tableau Source PAT Secret.
      */
-    patSecret?: pulumi.Input<string>;
+    patSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `jira`: A URL subdirectory where the Jira instance is working.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `github`: The `Personal Access Tokens`.
      */
-    pats?: pulumi.Input<pulumi.Input<string>[]>;
+    pats?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Optional. All files in your search path matching this regular expression will be synced. This parameter is optional.
@@ -17492,7 +17492,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sharePoint`: All files in your search path matching this regular expression will be synced.
      * 	- Service `wasabiCloudStorage`: All files in your search path matching this regular expression will be synced.
      */
-    pattern?: pulumi.Input<string>;
+    pattern?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracle`: Optional: Required only for containerized database.
@@ -17502,22 +17502,22 @@ export interface GetConnectorConfigArgs {
      * 	- Service `oracleRds`: Optional: Required only for containerized database.
      * 	- Service `oracleSapHva`: (Multi-tenant databases only) The database's PDB name. Exclude this parameter for single-tenant databases.
      */
-    pdbName?: pulumi.Input<string>;
+    pdbName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appleSearchAds`: The contents of your PEM certificate file. Must be populated if `isAuth2Enabled` is set to `false`.
      */
-    pemCertificate?: pulumi.Input<string>;
+    pemCertificate?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appleSearchAds`: The contents of your PEM secret key file. Must be populated if `isAuth2Enabled` is set to `true`.
      */
-    pemPrivateKey?: pulumi.Input<string>;
+    pemPrivateKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `doubleClickCampaignManager`: Per Interaction Dimensions.
      */
-    perInteractionDimensions?: pulumi.Input<pulumi.Input<string>[]>;
+    perInteractionDimensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cjCommissionDetail`: Your CJ Commission Detail personal access token.
@@ -17526,13 +17526,13 @@ export interface GetConnectorConfigArgs {
      * 	- Service `productive`: Your Productive personal access token.
      * 	- Service `totango`: Your Totango personal access token.
      */
-    personalAccessToken?: pulumi.Input<string>;
+    personalAccessToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `circleci`: Your CircleCI Personal API token.
      * 	- Service `monday`: Your Monday.com Personal API Token.
      */
-    personalApiToken?: pulumi.Input<string>;
+    personalApiToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
@@ -17543,7 +17543,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sftp`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `wasabiCloudStorage`: The PGP passphrase used to create the key. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      */
-    pgpPassPhrase?: pulumi.Input<string>;
+    pgpPassPhrase?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
@@ -17554,22 +17554,22 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sftp`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      * 	- Service `wasabiCloudStorage`: The contents of your PGP secret key file. Must be populated if `usePgpEncryptionOptions` is set to `true`.
      */
-    pgpSecretKey?: pulumi.Input<string>;
+    pgpSecretKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `itunesConnect`: Register the number on AppleId Account Page for 2FA
      */
-    phoneNumber?: pulumi.Input<string>;
+    phoneNumber?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `wrike`: Your Wrike Subscription Plan.
      */
-    plan?: pulumi.Input<string>;
+    plan?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `justcall`: Your JustCall Plan Type.
      */
-    planType?: pulumi.Input<string>;
+    planType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: The port number.
@@ -17629,18 +17629,18 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sqlServerRds`: The port number.
      * 	- Service `sqlServerSapEccHva`: The port number.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `linkedinAds`: The time period to attribute conversions based on clicks. Default value: `DAY_30`
      */
-    postClickAttributionWindowSize?: pulumi.Input<string>;
+    postClickAttributionWindowSize?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebook`: The name of report of which connector will sync the data. [Possible prebuiltReport values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#prebuiltreport).
      * 	- Service `googleAnalytics`: The name of the Prebuilt Report from which the connector will sync the data.
      */
-    prebuiltReport?: pulumi.Input<string>;
+    prebuiltReport?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCloudtrail`: If prefix is present when configuring the bucket.
@@ -17663,27 +17663,27 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sharePoint`: All files and folders under this folder path link will be searched for files to sync. This can be any shared folder link.
      * 	- Service `wasabiCloudStorage`: All files and folders under this folder path will be searched for files to sync.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `careQualityCommission`: Your Care Quality Commission primary key.
      */
-    primaryKey?: pulumi.Input<string>;
+    primaryKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: Primary Keys
      */
-    primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    primaryKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `marketo`: Use BULK for both LEAD and ACTIITIES
      */
-    prioritiseBulkExportOverRest?: pulumi.Input<boolean>;
+    prioritiseBulkExportOverRest?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `purpleDot`: Your PurpleDot Private access token.
      */
-    privateAccessToken?: pulumi.Input<string>;
+    privateAccessToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `absorbLms`: Your Absorb LMS REST API private key.
@@ -17703,39 +17703,39 @@ export interface GetConnectorConfigArgs {
      * 	- Service `salesforceSandbox`: Provide content of the `.key` private key (only when authenticationMethod = `ADVANCED`).
      * 	- Service `snowflakeDb`: Private access key.  The field should be specified if authentication type is `KEY_PAIR`.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `eventbrite`: Your Eventbrite private token.
      */
-    privateToken?: pulumi.Input<string>;
+    privateToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `webconnex`: Your Webconnex product.
      */
-    product?: pulumi.Input<string>;
+    product?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amazonAds`: Specific User Profile IDs to sync. Must be populated if `syncMode` is set to `SpecificProfiles`.
      * 	- Service `googleAnalytics`: Specific User Profile IDs to sync.  Must be populated if `syncMode` is set to `SpecificAccounts`.
      * 	- Service `googleAnalyticsMcf`: Specific User Profile IDs to sync.  Must be populated if `syncMode` is set to `SPECIFIC_ACCOUNTS`.
      */
-    profiles?: pulumi.Input<pulumi.Input<string>[]>;
+    profiles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amazonDsp`: your Amazon DSP profiles pass it inside an Array list.
      */
-    profilesAmazonDsp?: pulumi.Input<string>;
+    profilesAmazonDsp?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `rollbar`: Your Rollbar project access token.
      */
-    projectAccessToken?: pulumi.Input<string>;
+    projectAccessToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amplitude`: *  Project(s)
      */
-    projectCredentials?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigProjectCredentialArgs>[]>;
+    projectCredentials?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigProjectCredentialArgs>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bigqueryDb`: BigQuery project ID
@@ -17743,33 +17743,33 @@ export interface GetConnectorConfigArgs {
      * 	- Service `googleAnalytics4Export`: The Project ID.
      * 	- Service `mixpanel`: Project ID
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sentry`: Your Sentry project IDs.
      */
-    projectIds?: pulumi.Input<string>;
+    projectIds?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `commercetools`: Your commercetools project key.
      */
-    projectKey?: pulumi.Input<string>;
+    projectKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `asana`: Specific Project IDs to sync. Must be populated if `syncMode` is set to `SpecificProjects`.
      * 	- Service `jira`: Specific projects to sync. Must be populated if `syncMode` is set to `CUSTOM`.
      */
-    projects?: pulumi.Input<pulumi.Input<string>[]>;
+    projects?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics4`: The array of strings in the `properties/{id}` format where `id` is a Google Analytics 4 property identifier. Must be populated if `syncMode` is set to `SPECIFIC_ACCOUNTS`.
      */
-    properties?: pulumi.Input<pulumi.Input<string>[]>;
+    properties?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cloudbeds`: Your Cloudbeds property IDs.
      */
-    propertyId?: pulumi.Input<string>;
+    propertyId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: Public Key
@@ -17832,7 +17832,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sqlServerRds`: Public Key.
      * 	- Service `sqlServerSapEccHva`: Public Key.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgres`: Publication name. Specify only for `"updatedMethod": "WAL_PGOUTPUT"`.
@@ -17842,34 +17842,34 @@ export interface GetConnectorConfigArgs {
      * 	- Service `postgres`: Publication name. Specify only for `"updatedMethod": "WAL_PGOUTPUT"`.
      * 	- Service `postgresRds`: Publication name. Specify only for `"updatedMethod": "WAL_PGOUTPUT"`.
      */
-    publicationName?: pulumi.Input<string>;
+    publicationName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `skimlinks`: Your Skimlinks publisher ID.
      */
-    publisherId?: pulumi.Input<string>;
+    publisherId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `outbrain`: Include or ignore results from archived campaigns
      */
-    pullArchivedCampaigns?: pulumi.Input<boolean>;
-    pythonVersion?: pulumi.Input<string>;
+    pullArchivedCampaigns?: pulumi.Input<boolean | undefined>;
+    pythonVersion?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleDisplayAndVideo360`: The ID of the query whose configuration you want to reuse. This is a required parameter when `configMethod` is set to `REUSE_EXISTING`.
      */
-    queryId?: pulumi.Input<string>;
+    queryId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `alchemer`: Your Alchemer API key.
      * 	- Service `birdeye`: Your Birdeye query-param-value.
      */
-    queryParamValue?: pulumi.Input<string>;
+    queryParamValue?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bigqueryDb`: Specify a different project ID to account for quota and billing of Fivetran query workload
      */
-    quotaProjectId?: pulumi.Input<string>;
+    quotaProjectId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
@@ -17883,7 +17883,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sftp`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
      * 	- Service `sharePoint`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and quoteCharacterEnabled is set to true.
      */
-    quoteChar?: pulumi.Input<string>;
+    quoteChar?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as a quote character.
@@ -17897,22 +17897,22 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sftp`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
      * 	- Service `sharePoint`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
      */
-    quoteCharacterEnabled?: pulumi.Input<boolean>;
+    quoteCharacterEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `vimeo`: Your Vimeo rate limit plan.
      */
-    rateLimitPlan?: pulumi.Input<string>;
+    rateLimitPlan?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `ironsource`: Your Ironsource `Client Secret`.
      */
-    refreshToken?: pulumi.Input<string>;
+    refreshToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pinterestAds`: The expiration date of the refresh token. Unix timestamp in seconds
      */
-    refreshTokenExpiresAt?: pulumi.Input<string>;
+    refreshTokenExpiresAt?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `algolia`: Your Algolia analytics region.
@@ -17954,27 +17954,27 @@ export interface GetConnectorConfigArgs {
      * 	- Service `zohoInventory`: Your Zoho Inventory application host region.
      * 	- Service `zohoRecruit`: Your Zoho Recruit region.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amazonAttribution`: Your Amazon Attribution API URL region.
      */
-    regionApiUrl?: pulumi.Input<string>;
+    regionApiUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amazonAttribution`: Your Amazon Attribution auth URL region.
      */
-    regionAuthUrl?: pulumi.Input<string>;
+    regionAuthUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amazonAttribution`: Your Amazon Attribution token URL region.
      */
-    regionTokenUrl?: pulumi.Input<string>;
+    regionTokenUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `playvoxWorkforceManagement`: Your Playvox Workforce Management region URL.
      */
-    regionUrl?: pulumi.Input<string>;
+    regionUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: Unique ID within the MySQL replica set. Must be an integer different from all other master and replica servers within the same group.
@@ -17988,7 +17988,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `mysqlAzure`: Unique ID within the MySQL replica set. Must be an integer different from all other master and replica servers within the same group.
      * 	- Service `mysqlRds`: Unique ID within the MySQL replica set. Must be an integer different from all other master and replica servers within the same group.
      */
-    replicaId?: pulumi.Input<number>;
+    replicaId?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgres`: Replication slot name. Specify only for `"updatedMethod": "WAL"` or `"WAL_PGOUTPUT"`.
@@ -17998,48 +17998,48 @@ export interface GetConnectorConfigArgs {
      * 	- Service `postgres`: Replication slot name. Specify only for `"updatedMethod": "WAL"` or `"WAL_PGOUTPUT"`.
      * 	- Service `postgresRds`: Replication slot name. Specify only for `"updatedMethod": "WAL"` or `"WAL_PGOUTPUT"`.
      */
-    replicationSlot?: pulumi.Input<string>;
+    replicationSlot?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: Specify the reports you want to sync. This is optional.
      */
-    reportConfigs?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigReportConfigArgs>[]>;
+    reportConfigs?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigReportConfigArgs>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `doubleClickCampaignManager`: You can select only one Floodlight Configuration ID per account.
      */
-    reportConfigurationIds?: pulumi.Input<pulumi.Input<string>[]>;
+    reportConfigurationIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: This is to select report format from JSON and CSV. By default, report format is JSON.
      */
-    reportFormatType?: pulumi.Input<string>;
+    reportFormatType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pinterestAds`: Granularity at which reports will be
      */
-    reportGranularity?: pulumi.Input<string>;
+    reportGranularity?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `rakutenadvertising`: Your Rakuten Advertising report keys.
      */
-    reportKeys?: pulumi.Input<string>;
+    reportKeys?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `spotifyAds`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
      */
-    reportLists?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigReportListArgs>[]>;
+    reportLists?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigReportListArgs>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adyen`: Your Report Service API key.
      */
-    reportServiceApiKey?: pulumi.Input<string>;
-    reportSuites?: pulumi.Input<pulumi.Input<string>[]>;
+    reportServiceApiKey?: pulumi.Input<string | undefined>;
+    reportSuites?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `criteo`: Report Timezone
      */
-    reportTimezone?: pulumi.Input<string>;
+    reportTimezone?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adroll`: The report type you want. Default value: `ALL_ADS`.
@@ -18047,12 +18047,12 @@ export interface GetConnectorConfigArgs {
      * 	- Service `googleDisplayAndVideo360`: The type of the report to create. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
      * 	- Service `youtubeAnalytics`: The name of report of which connector will sync the data.
      */
-    reportType?: pulumi.Input<string>;
+    reportType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: URL for a live custom report.
      */
-    reportUrl?: pulumi.Input<string>;
+    reportUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAds`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
@@ -18063,46 +18063,46 @@ export interface GetConnectorConfigArgs {
      * 	- Service `googleSearchConsole`: The list of reports. Each report corresponds to a table within the schema to which connector syncs the data.
      * 	- Service `workday`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
      */
-    reports?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigReportArgs>[]>;
+    reports?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigReportArgs>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `linkedinAds`: Specific analytics reports to sync. Must be populated if adAnalytics is set to 'SpecificReports'.
      */
-    reportsLinkedinAds?: pulumi.Input<pulumi.Input<string>[]>;
+    reportsLinkedinAds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `github`: Specific Repository IDs to sync. Must be populated if `syncMode` is set to `SpecificRepositories`.
      */
-    repositories?: pulumi.Input<pulumi.Input<string>[]>;
+    repositories?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cosmos`: A token that provides access to a specific Azure Cosmos DB resource. Required for the `RESOURCE_TOKEN` data access method.
      */
-    resourceToken?: pulumi.Input<string>;
+    resourceToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `dynamics365`: URL at which Dynamics 365 is accessed
      */
-    resourceUrl?: pulumi.Input<string>;
+    resourceUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: The number of API calls that the connector should not exceed in a day. Default REST API call limit per day: 150,000.
      * 	- Service `pardotSandbox`: The number of API calls that the connector should not exceed in a day. Default REST API call limit per day: 150,000.
      */
-    restApiLimit?: pulumi.Input<number>;
+    restApiLimit?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hanaSapHvaEccNetweaver`: Directory path containing the SAP NetWeaver RFC SDK library files.
      * 	- Service `hanaSapHvaS4Netweaver`: Directory path containing the SAP NetWeaver RFC SDK library files.
      * 	- Service `oracleSapHvaNetweaver`: Directory path containing the SAP NetWeaver RFC SDK library files.
      */
-    rfcLibraryPath?: pulumi.Input<string>;
+    rfcLibraryPath?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `netsuiteSuiteanalytics`: The NetSuite Role ID for connection.
      * 	- Service `snowflakeDb`: Snowflake Connector role name
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appsflyer`: S3 Role ARN
@@ -18119,104 +18119,104 @@ export interface GetConnectorConfigArgs {
      * 	- Service `s3`: The Role ARN required for authentication. Required for connector creation when syncing using private bucket.
      * 	- Service `segment`: The Role ARN required for authentication. Must be populated if `syncType` is set to `S3`.
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appsflyer`: Rollback window
      */
-    rollbackWindow?: pulumi.Input<number>;
+    rollbackWindow?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bingads`: A period of time in days during which a conversion is recorded.
      */
-    rollbackWindowSize?: pulumi.Input<number>;
+    rollbackWindowSize?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleFusionFieldService`: Your Oracle Fusion Field Service rootresourceId.
      */
-    rootResourceId?: pulumi.Input<string>;
+    rootResourceId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `webhooks`: The S3 bucket name. Required if `bucketService` is set to `S3`.
      */
-    s3Bucket?: pulumi.Input<string>;
+    s3Bucket?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: Your S3 user export bucket. Required if `AWS_S3` is the `exportStorageType`
      */
-    s3ExportBucket?: pulumi.Input<string>;
+    s3ExportBucket?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: This is the same as your `groupId`, used if `exportStorageType` is `AWS_S3`
      */
-    s3ExportExternalId?: pulumi.Input<string>;
+    s3ExportExternalId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: Your S3 user export folder name. Required if `AWS_S3` is the `exportStorageType`
      */
-    s3ExportFolder?: pulumi.Input<string>;
+    s3ExportFolder?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: The Role ARN required for authentication required if `AWS_S3` is the `exportStorageType`
      */
-    s3ExportRoleArn?: pulumi.Input<string>;
+    s3ExportRoleArn?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adjust`: Used if the `exportStorageType` is `AWS_S3`, the Role ARN required for authentication.
      * 	- Service `webhooks`: The Role ARN required for authentication. Required if `bucketService` is set to `S3`.
      */
-    s3RoleArn?: pulumi.Input<string>;
+    s3RoleArn?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: The S3 bucket name.
      * 	- Service `braze`: Your S3 bucket required if `AWS_S3` is the `cloudStorageType`
      * 	- Service `sailthru`: Name of the bucket configured to receive sailthru connect data.
      */
-    s3bucket?: pulumi.Input<string>;
+    s3bucket?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: This is the same as your `groupId`, used for authentication along with the `roleArn` required if `AWS_S3` is the `cloudStorageType`
      * 	- Service `sailthru`: The external ID is a string that designates who can assume the role.
      */
-    s3externalId?: pulumi.Input<string>;
+    s3externalId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `braze`: Your S3 folder name required if `AWS_S3` is the `cloudStorageType`
      */
-    s3folder?: pulumi.Input<string>;
+    s3folder?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sailthru`: Copy and use this to configure Sailthru Connect in your sailthru account.
      */
-    s3path?: pulumi.Input<string>;
+    s3path?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: The Role ARN required for authentication.
      * 	- Service `braze`: The Role ARN required for authentication required if `AWS_S3` is the `cloudStorageType`
      * 	- Service `sailthru`: Role ARN of the IAM role created for Fivetran.
      */
-    s3roleArn?: pulumi.Input<string>;
+    s3roleArn?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `itunesConnect`: Whether to sync all sales accounts or specific sales accounts.
      */
-    salesAccountSyncMode?: pulumi.Input<string>;
+    salesAccountSyncMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `itunesConnect`: Specific sales account to sync. Must be populated if `salesAccountSyncMode` is set to `SpecificSalesAccounts`.
      */
-    salesAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    salesAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: The Pardot user's Salesforce SSO Account Security Token.
      * 	- Service `pardotSandbox`: The Pardot user's Salesforce SSO Account Security Token.
      */
-    salesforceSecurityToken?: pulumi.Input<string>;
+    salesforceSecurityToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `gocardless`: Your GoCardless account type.
      */
-    sandboxAccount?: pulumi.Input<string>;
+    sandboxAccount?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `db2iHva`: The SAP schema.
@@ -18224,7 +18224,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sqlServerHva`: SAP Schema Name. Required only for High-Volume Agent SAP ECC connector.
      * 	- Service `sqlServerSapEccHva`: SAP Schema Name.
      */
-    sapSchema?: pulumi.Input<string>;
+    sapSchema?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hanaSapHvaB1`: The schema name where the HANA tables reside.
@@ -18233,57 +18233,57 @@ export interface GetConnectorConfigArgs {
      * 	- Service `hanaSapHvaS4`: The Hana schema name where the SAP tables reside.
      * 	- Service `hanaSapHvaS4Netweaver`: The Hana schema name where the SAP tables reside.
      */
-    sapSourceSchema?: pulumi.Input<string>;
+    sapSourceSchema?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleSapHva`: The Oracle schema name where the SAP tables reside.
      */
-    sapUser?: pulumi.Input<string>;
+    sapUser?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: SASL Mechanism
      * 	- Service `awsMsk`: If `securityProtocol` is set to `SASL`, enter the SASL Mechanism
      */
-    saslMechanism?: pulumi.Input<string>;
+    saslMechanism?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: API Key
      */
-    saslPlainKey?: pulumi.Input<string>;
+    saslPlainKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: API Secret
      */
-    saslPlainSecret?: pulumi.Input<string>;
+    saslPlainSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: API Key
      */
-    saslScram256Key?: pulumi.Input<string>;
+    saslScram256Key?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: API Secret
      */
-    saslScram256Secret?: pulumi.Input<string>;
+    saslScram256Secret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: API Key
      * 	- Service `awsMsk`: If `saslMechanism` is set to `SCRAM_SHA_512`, enter your secret's `saslScram512Key`.
      */
-    saslScram512Key?: pulumi.Input<string>;
+    saslScram512Key?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: API Secret
      * 	- Service `awsMsk`: If `saslMechanism` is set to `SCRAM_SHA_512`, enter your secret's `saslScram512Key`.
      */
-    saslScram512Secret?: pulumi.Input<string>;
+    saslScram512Secret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: Schema Registry Credentials source
      * 	- Service `awsMsk`: Schema Registry Credentials source
      * 	- Service `confluentCloud`: Schema Registry Credentials source
      */
-    schemaRegistryCredentialsSource?: pulumi.Input<string>;
+    schemaRegistryCredentialsSource?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: Schema Registry Key
@@ -18291,7 +18291,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `azureServiceBus`: The key used to access the schema registry. Required for the `avro` and `protobuf` message types
      * 	- Service `confluentCloud`: Schema Registry Key
      */
-    schemaRegistryKey?: pulumi.Input<string>;
+    schemaRegistryKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: Schema Registry Secret
@@ -18299,7 +18299,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `azureServiceBus`: The secret used to access the schema registry. Required for the `avro` and `protobuf` message types
      * 	- Service `confluentCloud`: Schema Registry Secret
      */
-    schemaRegistrySecret?: pulumi.Input<string>;
+    schemaRegistrySecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: Your schema registry URLs
@@ -18307,23 +18307,23 @@ export interface GetConnectorConfigArgs {
      * 	- Service `azureServiceBus`: The comma-separated list of schema registry servers in the `server:port` format
      * 	- Service `confluentCloud`: Your schema registry URLs
      */
-    schemaRegistryUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    schemaRegistryUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `ebay`: Your eBay scopes.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cornerstone`: Your Cornerstone scopes.
      * 	- Service `fortnox`: Your Fortnox app scopes.
      */
-    scopes?: pulumi.Input<string>;
+    scopes?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: Specific Seats to sync. Must be populated if `syncModeSeat` is set to `SPECIFIC_SEATS`.
      */
-    seats?: pulumi.Input<pulumi.Input<string>[]>;
+    seats?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appcues`: Your Appcues Secret.
@@ -18338,12 +18338,12 @@ export interface GetConnectorConfigArgs {
      * 	- Service `venminder`: Your Venminder secret.
      * 	- Service `vts`: Your VTS secret.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `validio`: Your Validio secret access key.
      */
-    secretAccessKey?: pulumi.Input<string>;
+    secretAccessKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `afterpay`: Your Afterpay Secret Key.
@@ -18363,21 +18363,21 @@ export interface GetConnectorConfigArgs {
      * 	- Service `statsig`: Your Statsig secret key.
      * 	- Service `yotpo`: Your Yotpo Secret key
      */
-    secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsLambda`: The secrets that should be passed to the function at runtime.
      * 	- Service `azureFunction`: The secrets that should be passed to the function at runtime.
      * 	- Service `googleCloudFunction`: The secrets that should be passed to the function at runtime.
      */
-    secrets?: pulumi.Input<string>;
+    secrets?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsLambda`: List of Secrets that should be passed to the function at runtime.
      * 	- Service `azureFunction`: The list of secrets that should be passed to the function at runtime.
      * 	- Service `googleCloudFunction`: The list of secrets that should be passed to the function at runtime.
      */
-    secretsLists?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigSecretsListArgs>[]>;
+    secretsLists?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigSecretsListArgs>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: Security protocol for Kafka interaction.
@@ -18385,47 +18385,47 @@ export interface GetConnectorConfigArgs {
      * 	- Service `confluentCloud`: Security protocol for Confluent Cloud interaction.
      * 	- Service `herokuKafka`: Security protocol for Heroku Kafka interaction.
      */
-    securityProtocol?: pulumi.Input<string>;
+    securityProtocol?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: A segment is a subset of your Analytics data that is made up of one or more non-destructive filters (filters that do not alter the underlying data). Those filters isolate subsets of users, sessions, and hits.
      */
-    segments?: pulumi.Input<pulumi.Input<string>[]>;
+    segments?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `salesforceMarketingCloud`: Select the event types to be synced.
      */
-    selectedEventTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    selectedEventTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `anaplan`: The list of export IDs in the format `workspaceIdModelIdExportId` that the connector will sync. Must be populated if `syncMode` is set to `SpecificExports`.
      */
-    selectedExports?: pulumi.Input<pulumi.Input<string>[]>;
+    selectedExports?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sageIntacct`: Your Sender ID
      */
-    senderId?: pulumi.Input<string>;
+    senderId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sageIntacct`: Your Sender Password
      */
-    senderPassword?: pulumi.Input<string>;
+    senderPassword?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `castorEdc`: Your Castor EDC server.
      */
-    server?: pulumi.Input<string>;
+    server?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `tableauSource`: Your Tableau Source server address.
      */
-    serverAddress?: pulumi.Input<string>;
+    serverAddress?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `clockify`: Your Clockify server region.
      */
-    serverRegion?: pulumi.Input<string>;
+    serverRegion?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleBusinessIntelligencePublisher`: The Oracle Business Intelligence Instance URL.
@@ -18433,12 +18433,12 @@ export interface GetConnectorConfigArgs {
      * 	- Service `oracleFusionCloudAppsFscm`: The Oracle Fusion Cloud Instance URL.
      * 	- Service `oracleFusionCloudAppsHcm`: The Oracle Fusion Cloud Instance URL.
      */
-    serverUrl?: pulumi.Input<string>;
+    serverUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `myosh`: Your myosh server variable.
      */
-    serverVariable?: pulumi.Input<string>;
+    serverVariable?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: Comma-separated list of Kafka servers in the format `server:port`.
@@ -18446,131 +18446,131 @@ export interface GetConnectorConfigArgs {
      * 	- Service `confluentCloud`: Comma-separated list of Confluent Cloud servers in the format `server:port`.
      * 	- Service `herokuKafka`: Comma-separated list of Heroku Kafka servers in the format `server:port`.
      */
-    servers?: pulumi.Input<pulumi.Input<string>[]>;
+    servers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleDrive`: Share the folder with the email address
      */
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleCloudFunction`: Provide Invoker role to this service account.
      */
-    serviceAccountEmail?: pulumi.Input<string>;
+    serviceAccountEmail?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `firebase`: The contents of your service account key file. Required for authentication.
      */
-    serviceAccountKey?: pulumi.Input<string>;
+    serviceAccountKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `mixpanel`: Service Account Secret
      */
-    serviceAccountSecret?: pulumi.Input<string>;
+    serviceAccountSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `mixpanel`: Service Account Username
      */
-    serviceAccountUsername?: pulumi.Input<string>;
+    serviceAccountUsername?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `dsv`: A base64 encoded variant of your `username:password` string. Required for authentication.
      */
-    serviceAuthentication?: pulumi.Input<string>;
+    serviceAuthentication?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hanaSapHvaEccNetweaver`: Unique identifier sapsid of the SAP system. This field is displayed only when the REMOTE SERVICE IDENTIFICATION is set to Service.
      * 	- Service `hanaSapHvaS4Netweaver`: Unique identifier sapsid of the SAP system. This field is displayed only when the REMOTE SERVICE IDENTIFICATION is set to Service.
      * 	- Service `walmartMarketplace`: Your Walmart Marketplace service name.
      */
-    serviceName?: pulumi.Input<string>;
-    serviceVersion?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
+    serviceVersion?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: SFTP host.
      * 	- Service `salesforceMarketingCloud`: Host
      */
-    sftpHost?: pulumi.Input<string>;
+    sftpHost?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: Log in with key pair or password
      * 	- Service `salesforceMarketingCloud`: Set this field if you use a key pair for logging into your SFTP server. Don't set it if you use a username and password
      */
-    sftpIsKeyPair?: pulumi.Input<boolean>;
+    sftpIsKeyPair?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: SFTP password required if sftpIsKeyPair is false
      * 	- Service `salesforceMarketingCloud`: Password
      */
-    sftpPassword?: pulumi.Input<string>;
+    sftpPassword?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: SFTP port.
      * 	- Service `salesforceMarketingCloud`: Port
      */
-    sftpPort?: pulumi.Input<number>;
+    sftpPort?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: Public Key
      * 	- Service `salesforceMarketingCloud`: Public Key
      */
-    sftpPublicKey?: pulumi.Input<string>;
+    sftpPublicKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: SFTP user.
      * 	- Service `salesforceMarketingCloud`: User
      */
-    sftpUser?: pulumi.Input<string>;
+    sftpUser?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sharePoint`: Your SharePoint folder URL. You can find the folder URL by following the steps mentioned [here](https://fivetran.com/docs/connectors/files/share-point/setup-guide).
      */
-    shareUrl?: pulumi.Input<string>;
+    shareUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleSheets`: The URL of the sheet that can be copied from the browser address bar, or the ID of the sheet that can be found in the sheet's URL between **&#47;d/** and **&#47;edit**.
      */
-    sheetId?: pulumi.Input<string>;
+    sheetId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `shopify`: The Shopify shop name. Can be found in the URL before **.myshopify.com**.
      */
-    shop?: pulumi.Input<string>;
+    shop?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `tripleWhale`: Your Triple Whale shop domain.
      */
-    shopDomain?: pulumi.Input<string>;
+    shopDomain?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `salesforceCommerceCloud`: The Salesforce eight-character string assigned to a realm for routing purposes.
      */
-    shortCode?: pulumi.Input<string>;
+    shortCode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `klaviyo`: Sync events linked to deleted profiles
      */
-    shouldSyncEventsWithDeletedProfiles?: pulumi.Input<boolean>;
+    shouldSyncEventsWithDeletedProfiles?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `netsuiteSuiteanalytics`: Re-sync re-import tables during every sync
      */
-    shouldSyncReimportTables?: pulumi.Input<boolean>;
+    shouldSyncReimportTables?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appleSearchAds`: Turn the toggle on if you want the reports to also return records without metrics.
      */
-    showRecordsWithNoMetrics?: pulumi.Input<boolean>;
+    showRecordsWithNoMetrics?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `twilio`: The Twilio API key SID
      */
-    sid?: pulumi.Input<string>;
+    sid?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `webhooks`: This is used in HMAC auth method to decode and verify the signature. Supported encodings BASE64 and HEXA_DECIMAL. Default: BASE64
      */
-    signatureEncoding?: pulumi.Input<string>;
+    signatureEncoding?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
@@ -18581,29 +18581,29 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sftp`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      * 	- Service `wasabiCloudStorage`: The contents of the signer's public key file. Must be populated if `usePgpEncryptionOptions` is set to `true` and PGP encrypted files are signed.
      */
-    signerPublicKey?: pulumi.Input<string>;
+    signerPublicKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `teamwork`: Your Teamwork site address.
      */
-    siteAddress?: pulumi.Input<string>;
+    siteAddress?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `microsoftLists`: The Site ID of the SharePoint site from which you want to sync your lists. The Site ID is the `id` field in the [Graph API](https://docs.microsoft.com/en-us/graph/api/site-search?view=graph-rest-1.0&tabs=http) response for sites.
      * 	- Service `salesforceCommerceCloud`: The name of the site from which you want to sync data.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `microsoftLists`: The Name of the SharePoint site. The Site Name is the `name` field in the Graph API response for sites.
      * 	- Service `tableauSource`: Your Tableau Source site name.
      */
-    siteName?: pulumi.Input<string>;
+    siteName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleSearchConsole`: Specific Site URLs to sync. Must be populated if `syncMode` is set to `SpecificSites`.
      */
-    siteUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    siteUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Enter 1 or greater
@@ -18621,7 +18621,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sharePoint`: We will skip over the number of lines specified at the end so as to not introduce aberrant data into your destination.
      * 	- Service `wasabiCloudStorage`: We will skip over the number of lines specified at the end to avoid introducing aberrant data into your destination.
      */
-    skipAfter?: pulumi.Input<number>;
+    skipAfter?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsCostReport`: Enter 1 or greater
@@ -18639,66 +18639,66 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sharePoint`: We will skip over the number of lines specified before syncing data.
      * 	- Service `wasabiCloudStorage`: We will skip over the number of lines specified before syncing data.
      */
-    skipBefore?: pulumi.Input<number>;
+    skipBefore?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAds`: Toggles the ["Skip empty reports"](https://fivetran.com/docs/connectors/applications/google-ads#skipemptyreports) feature. Enabled by default
      */
-    skipEmptyReports?: pulumi.Input<boolean>;
-    sncCertificate?: pulumi.Input<string>;
-    sncCertificateSource?: pulumi.Input<string>;
-    sncFivetranName?: pulumi.Input<string>;
+    skipEmptyReports?: pulumi.Input<boolean | undefined>;
+    sncCertificate?: pulumi.Input<string | undefined>;
+    sncCertificateSource?: pulumi.Input<string | undefined>;
+    sncFivetranName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hanaSapHvaEccNetweaver`: Path to the external security product's library.
      * 	- Service `hanaSapHvaS4Netweaver`: Path to the external security product's library.
      */
-    sncLibraryPath?: pulumi.Input<string>;
-    sncMode?: pulumi.Input<string>;
-    sncMyName?: pulumi.Input<string>;
+    sncLibraryPath?: pulumi.Input<string | undefined>;
+    sncMode?: pulumi.Input<string | undefined>;
+    sncMyName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hanaSapHvaEccNetweaver`: Client SNC name.
      * 	- Service `hanaSapHvaS4Netweaver`: Client SNC name.
      */
-    sncName?: pulumi.Input<string>;
+    sncName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hanaSapHvaEccNetweaver`: Communication partner's SNC name.
      * 	- Service `hanaSapHvaS4Netweaver`: Communication partner's SNC name.
      */
-    sncPartnerName?: pulumi.Input<string>;
-    sncSourceName?: pulumi.Input<string>;
+    sncPartnerName?: pulumi.Input<string | undefined>;
+    sncSourceName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `marketo`: Marketo SOAP API Endpoint.
      */
-    soapUri?: pulumi.Input<string>;
+    soapUri?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `linkedinCompanyPages`: The social data (UGCPosts, Shares, Comments) sync time frame in months. Default value: `SIX` .
      */
-    socialDataSyncTimeframe?: pulumi.Input<string>;
+    socialDataSyncTimeframe?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalyticsDataFeed`: The data source.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bigCommerce`: The BigCommerce store hash.
      */
-    storeHash?: pulumi.Input<string>;
+    storeHash?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `reviewsio`: Your REVIEWS.io store ID
      */
-    storeId?: pulumi.Input<string>;
+    storeId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `firebase`: List of nested collections to sync. Only specified subCollections can be synced.
      */
-    subCollections?: pulumi.Input<pulumi.Input<string>[]>;
+    subCollections?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `absorbLms`: Your Absorb LMS subdomain.
@@ -18780,7 +18780,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `workable`: Your Workable Subdomain.
      * 	- Service `wrike`: Your Wrike Subdomain.
      */
-    subDomain?: pulumi.Input<string>;
+    subDomain?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bamboohr`: The subdomain used to access your account. If you access BambooHR at 'https://mycompany.bamboohr.com', then the subdomain is 'mycompany'.
@@ -18809,71 +18809,71 @@ export interface GetConnectorConfigArgs {
      * 	- Service `yext`: Your Yext subdomain. 
      * 	- Service `zendeskChat`: Your Zendesk domain.
      */
-    subdomain?: pulumi.Input<string>;
+    subdomain?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureServiceBus`: The subscriber name. If the connection string does not have manage permission, you need to specify a subscriber name we can use to fetch data. If not specified, we default to `fivetranSubSchema`
      */
-    subscriberName?: pulumi.Input<string>;
+    subscriberName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `retailnext`: Your RetailNext subscription.
      */
-    subscription?: pulumi.Input<string>;
+    subscription?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cabcharge`: Your Cabcharge subscription key.
      * 	- Service `dsv`: Your DSV subscription key.
      */
-    subscriptionKey?: pulumi.Input<string>;
+    subscriptionKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `stripe`: Sync Connected Accounts. Connected Account Documentation - https://stripe.com/docs/api/connected_accounts.
      * 	- Service `stripeTest`: Sync Connected Accounts. Connected Account Documentation - https://stripe.com/docs/api/connected_accounts.
      */
-    supportConnectedAccountsSync?: pulumi.Input<boolean>;
+    supportConnectedAccountsSync?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: This option is to unpack the nested columns and sync them separately. By default, we sync the nested columns as JSON objects.
      */
-    supportNestedColumns?: pulumi.Input<boolean>;
+    supportNestedColumns?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `qualaroo`: Array of Qualaroo Survey IDs.
      */
-    surveyIds?: pulumi.Input<string>;
+    surveyIds?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snapchatAds`: The time period to attribute conversions based on swipes. Default value: `DAY_28`
      */
-    swipeAttributionWindow?: pulumi.Input<string>;
+    swipeAttributionWindow?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appsflyer`: Sync AppsFlyer Data Locker. Default value is `true`, set it to `false` to sync AppsFlyer data using only webhooks.
      */
-    syncDataLocker?: pulumi.Input<boolean>;
+    syncDataLocker?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `webhooks`: The webhooks sync format.  Default value: `Unpacked`. Unpacked messages must be valid JSON.
      */
-    syncFormat?: pulumi.Input<string>;
+    syncFormat?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `financialForce`: Enable this option to sync formula fields directly (default value = `false`)
      * 	- Service `salesforce`: Enable this option to sync formula fields directly (default value = `false`)
      * 	- Service `salesforceSandbox`: Enable this option to sync formula fields directly (default value = `false`)
      */
-    syncFormulaFields?: pulumi.Input<boolean>;
+    syncFormulaFields?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebookAds`: Parameter defining whether to enable or disable metadata synchronisation. Default value: `TRUE`.
      */
-    syncMetadata?: pulumi.Input<boolean>;
+    syncMetadata?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsLambda`: Sync Method
      */
-    syncMethod?: pulumi.Input<string>;
+    syncMethod?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adroll`: Whether to sync all advertisables or specific advertisables. Default value: `AllAdvertisables`.
@@ -18915,33 +18915,33 @@ export interface GetConnectorConfigArgs {
      * 	- Service `zuora`: Select `Zuora Billing` to sync exclusively Zuora Billing related records. Choose `Zuora Revenue` for syncing only Zuora Revenue reports. If both Zuora Billing records and Zuora Revenue reports are to be synced, opt for `Both`.
      * 	- Service `zuoraSandbox`: Select `Zuora Billing` to sync exclusively Zuora Billing related records. Choose `Zuora Revenue` for syncing only Zuora Revenue reports. If both Zuora Billing records and Zuora Revenue reports are to be synced, opt for `Both`.
      */
-    syncMode?: pulumi.Input<string>;
+    syncMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: Whether to sync all advertisers or specific advertisers. Default value: `ALL_ADVERTISERS`.
      */
-    syncModeAdvertiser?: pulumi.Input<string>;
+    syncModeAdvertiser?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: Whether to sync all seats or specific seats. Default value: `ALL_SEATS`.
      */
-    syncModeSeat?: pulumi.Input<string>;
+    syncModeSeat?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redditAds`: When this parameter is set to `true`, we sync the data of the additional linked accounts. When this parameter is set to `false`, we sync only the data from the main account that was used for authorization
      */
-    syncMultipleAccounts?: pulumi.Input<boolean>;
+    syncMultipleAccounts?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cosmos`: The packing mode type. Supported values:`STANDARD_UNPACKED_MODE`- Unpacks _one_ layer of nested fields and infers types.`PACKED_MODE`- Delivers packed data as a single destination column value.Learn more in our [Azure Cosmos DB Sync Pack Mode Options documentation](https://fivetran.com/docs/connectors/databases/cosmos#packmodeoptions).
      * 	- Service `documentdb`: Indicates whether synced data will be packed into a single entry(column), or unpacked with one layer of nested fields.
      */
-    syncPackMode?: pulumi.Input<string>;
+    syncPackMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appsflyer`: These options are for Appsflyer's Pull API, and are only necessary for syncing events from Pull API.
      */
-    syncPullApi?: pulumi.Input<boolean>;
+    syncPullApi?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: Kafka sync type.  Unpacked messages must be valid JSON.
@@ -18952,88 +18952,88 @@ export interface GetConnectorConfigArgs {
      * 	- Service `herokuKafka`: Heroku Kafka sync type.  Unpacked messages must be valid JSON.
      * 	- Service `segment`: The Segment connector sync type.
      */
-    syncType?: pulumi.Input<string>;
-    sysnr?: pulumi.Input<string>;
+    syncType?: pulumi.Input<string | undefined>;
+    sysnr?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hanaSapHvaEccNetweaver`: Unique identifier sapsid of the SAP system. This field is displayed only when the REMOTE SERVICE IDENTIFICATION is set to System ID.
      * 	- Service `hanaSapHvaS4Netweaver`: Unique identifier sapsid of the SAP system. This field is displayed only when the REMOTE SERVICE IDENTIFICATION is set to System ID.
      */
-    systemId?: pulumi.Input<string>;
+    systemId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pigment`: Your Pigment table ID.
      */
-    tableId?: pulumi.Input<string>;
+    tableId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `airtable`: Name of table in Airtable
      */
-    tableName?: pulumi.Input<string>;
+    tableName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hubspot`: Timestamp to indicate when tables without access was updated
      */
-    tablesWithoutAccessUpdatedAt?: pulumi.Input<string>;
+    tablesWithoutAccessUpdatedAt?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cultureAmp`: Your Culture Amp Target entity ID.
      */
-    targetEntityId?: pulumi.Input<string>;
+    targetEntityId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `d2lBrightspace`: Your D2L Brightspace target host.
      */
-    targetHost?: pulumi.Input<string>;
+    targetHost?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sqlServer`: Certificate file path used to protect a database encryption key
      * 	- Service `sqlServerHva`: Certificate used to protect a database encryption key
      * 	- Service `sqlServerSapEccHva`: Certificate used to protect a database encryption key
      */
-    tdeCertificate?: pulumi.Input<string>;
+    tdeCertificate?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sqlServerHva`: Name of the Certificate used to protect a database encryption key
      * 	- Service `sqlServerSapEccHva`: Name of the Certificate used to protect a database encryption key
      */
-    tdeCertificateName?: pulumi.Input<string>;
+    tdeCertificateName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sqlServer`: Password of the TDE private key
      * 	- Service `sqlServerHva`: Password of the TDE private key
      * 	- Service `sqlServerSapEccHva`: Password of the TDE private key
      */
-    tdePassword?: pulumi.Input<string>;
+    tdePassword?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sqlServer`: Private key file path associated with the TDE certificate
      * 	- Service `sqlServerHva`: Private key associated with the TDE certificate
      * 	- Service `sqlServerSapEccHva`: Private key associated with the TDE certificate
      */
-    tdePrivateKey?: pulumi.Input<string>;
+    tdePrivateKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleHva`: TDE wallet password. Required for password based wallet.
      * 	- Service `oracleSapHva`: TDE wallet password. Required for password based wallet.
      * 	- Service `oracleSapHvaNetweaver`: TDE wallet password. Required for password based wallet.
      */
-    tdeWalletPassword?: pulumi.Input<string>;
+    tdeWalletPassword?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `asana`: Team ID
      */
-    teamId?: pulumi.Input<string>;
+    teamId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalytics`: Technical Account ID from the Service Account (JWT) credentials of your Adobe Project.
      */
-    technicalAccountId?: pulumi.Input<string>;
+    technicalAccountId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `mandrill`: Provide the labels to filter the templates
      */
-    templateLabels?: pulumi.Input<pulumi.Input<string>[]>;
+    templateLabels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `microsoftEntraId`: Your Microsoft Entra ID Tenant.
@@ -19044,22 +19044,22 @@ export interface GetConnectorConfigArgs {
      * 	- Service `workdayFinancialManagement`: Workday tenant name
      * 	- Service `workdayHcm`: Workday tenant name
      */
-    tenant?: pulumi.Input<string>;
+    tenant?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `planful`: Your Planful tenant app URL.
      */
-    tenantAppUrl?: pulumi.Input<string>;
+    tenantAppUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `deposco`: Your Deposco tenant code.
      */
-    tenantCode?: pulumi.Input<string>;
+    tenantCode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `reltio`: * tenant(s)
      */
-    tenantConfigs?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigTenantConfigArgs>[]>;
+    tenantConfigs?: pulumi.Input<pulumi.Input<inputs.GetConnectorConfigTenantConfigArgs>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureSqlDb`: Azure AD tenant ID.
@@ -19070,31 +19070,31 @@ export interface GetConnectorConfigArgs {
      * 	- Service `servicetitan`: Your ServiceTitan tenant ID.
      * 	- Service `visma`: Your Visma tenant ID.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `mambu`: Your Mambu tenant name.
      */
-    tenantName?: pulumi.Input<string>;
+    tenantName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `ivanti`: Your Ivanti Tenant URL.
      * 	- Service `playvoxWorkforceManagement`: Your Playvox Workforce Management tenant URL.
      * 	- Service `reltio`: Your Reltio tenant URL.
      */
-    tenantUrl?: pulumi.Input<string>;
+    tenantUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `sapHana`: testTableName
      * 	- Service `sapS4hana`: testTableName
      */
-    testTableName?: pulumi.Input<string>;
+    testTableName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pardot`: The time zone configured in your Pardot instance. An empty value defaults to `UTC+00:00`.
      * 	- Service `pardotSandbox`: The time zone configured in your Pardot instance. An empty value defaults to `UTC+00:00`.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalytics`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector has been created. Default value: `TWELVE` .
@@ -19130,28 +19130,28 @@ export interface GetConnectorConfigArgs {
      * 	- Service `yahooDsp`: Number of months` worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `THREE`.
      * 	- Service `yahooGemini`: Number of months' worth of reporting data you'd like to include in your initial sync. This cannot be modified once the connector is created. Default value: `TWELVE`.
      */
-    timeframeMonths?: pulumi.Input<string>;
+    timeframeMonths?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `rokt`: Your Rokt timezone.
      */
-    timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appleSearchAds`: Determines whether to use UTC or the users timezone from the apple account
      */
-    timezoneMode?: pulumi.Input<string>;
+    timezoneMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleHva`: Single-tenant database: The database's SID.  Multi-tenant database: The database's TNS.
      * 	- Service `oracleSapHva`: Single-tenant database: The database SID.  Multi-tenant database: The database TNS.
      */
-    tns?: pulumi.Input<string>;
+    tns?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `toast`: Your Toast Restaurant External ID.
      */
-    toastId?: pulumi.Input<string>;
+    toastId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `khorosCommunities`: Your Khoros Communities token.
@@ -19161,67 +19161,67 @@ export interface GetConnectorConfigArgs {
      * 	- Service `shareasale`: Your ShareASale token.
      * 	- Service `solarwindsServiceDesk`: Your SolarWinds Service Desk token.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cosmos`: The container name. Required for the `RESOURCE_TOKEN` data access method.
      */
-    tokenAuthenticatedContainer?: pulumi.Input<string>;
+    tokenAuthenticatedContainer?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cosmos`: The database name. Required for the `RESOURCE_TOKEN` data access method.
      */
-    tokenAuthenticatedDatabase?: pulumi.Input<string>;
+    tokenAuthenticatedDatabase?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `chargedesk`: Your ChargeDesk token ID.
      * 	- Service `mux`: Your Mux token ID
      */
-    tokenId?: pulumi.Input<string>;
+    tokenId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `netsuiteSuiteanalytics`: Token ID
      * 	- Service `on24`: Your ON24 token key.
      * 	- Service `proofpointSecurityAwareness`: Your Proofpoint Security Awareness Token Key.
      */
-    tokenKey?: pulumi.Input<string>;
+    tokenKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `netsuiteSuiteanalytics`: Token Secret
      * 	- Service `on24`: Your ON24 token secret.
      */
-    tokenSecret?: pulumi.Input<string>;
+    tokenSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `mux`: Your Mux token secret key
      */
-    tokenSecretKey?: pulumi.Input<string>;
+    tokenSecretKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amazonDsp`: Your Amazon DSP token URL region.
      */
-    tokenUrlRegion?: pulumi.Input<string>;
+    tokenUrlRegion?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureServiceBus`: The comma-separated list of topics which should be synced. Required if you do not have manage permissions
      */
-    topics?: pulumi.Input<pulumi.Input<string>[]>;
+    topics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `herokuKafka`: Trust Store Type
      */
-    trustStoreType?: pulumi.Input<string>;
+    trustStoreType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `apacheKafka`: Kafka trusted certificate.
      * 	- Service `herokuKafka`: Heroku Kafka trusted certificate. Required for `TLS` security protocol.
      */
-    trustedCert?: pulumi.Input<string>;
+    trustedCert?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsMsk`: If `securityProtocol` is set to `TLS`, add the `Truststore File` as Base64 encoded string.
      */
-    truststore?: pulumi.Input<string>;
+    truststore?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
@@ -19279,7 +19279,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sqlServerRds`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
      * 	- Service `sqlServerSapEccHva`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
      */
-    tunnelHost?: pulumi.Input<string>;
+    tunnelHost?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: SSH port, specify only to connect via an SSH tunnel.
@@ -19337,7 +19337,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sqlServerRds`: SSH port, specify only to connect via an SSH tunnel.
      * 	- Service `sqlServerSapEccHva`: SSH port, specify only to connect via an SSH tunnel.
      */
-    tunnelPort?: pulumi.Input<number>;
+    tunnelPort?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: SSH user, specify only to connect via an SSH tunnel.
@@ -19395,19 +19395,19 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sqlServerRds`: SSH user, specify only to connect via an SSH tunnel.
      * 	- Service `sqlServerSapEccHva`: SSH user, specify only to connect via an SSH tunnel.
      */
-    tunnelUser?: pulumi.Input<string>;
+    tunnelUser?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `akamai`: Your Akamai type name.
      * 	- Service `bubble`: Your Bubble type name.
      */
-    typeName?: pulumi.Input<string>;
-    uniqueId?: pulumi.Input<string>;
+    typeName?: pulumi.Input<string | undefined>;
+    uniqueId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleDisplayAndVideo360`: Specifies whether the configuration is updated before each sync or only when the connector settings are saved. This parameter only takes effect when `configMethod` is set to `REUSE_EXISTING`. The default value is `true`.
      */
-    updateConfigOnEachSync?: pulumi.Input<boolean>;
+    updateConfigOnEachSync?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
@@ -19445,33 +19445,33 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sqlServerRds`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
      * 	- Service `sqlServerSapEccHva`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `null` or not specified.
      */
-    updateMethod?: pulumi.Input<string>;
+    updateMethod?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `cosmos`: Cosmos resource instance address.
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `fountain`: Your Fountain URL format.
      */
-    urlFormat?: pulumi.Input<string>;
+    urlFormat?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `mandrill`: Whether to use multiple API keys for interaction.
      */
-    useApiKeys?: pulumi.Input<boolean>;
+    useApiKeys?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appsflyer`: Use Custom Bucket. Set it to 'true' if the data is being synced to your S3 bucket instead of an AppsFlyer-managed bucket.
      */
-    useCustomerBucket?: pulumi.Input<boolean>;
+    useCustomerBucket?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleHva`: Default value: `false`. Set to `true` if you're using a RAC instance.
      * 	- Service `oracleSapHva`: Default value: `false`. Set to `true` if you're using a RAC instance.
      */
-    useOracleRac?: pulumi.Input<boolean>;
+    useOracleRac?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: Set to `true` if files present in the Azure Blob Storage container are encrypted using PGP. Default value: `false`.
@@ -19482,29 +19482,29 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sftp`: Set to `true` if files present in SFTP server are encrypted using PGP. Default value: `false`.
      * 	- Service `wasabiCloudStorage`: Set to `true` if files are encrypted using PGP in the Wasabi Cloud Storage bucket. Default value: `false`.
      */
-    usePgpEncryptionOptions?: pulumi.Input<boolean>;
+    usePgpEncryptionOptions?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bigqueryDb`: BigQuery use service account; default is false
      */
-    useServiceAccount?: pulumi.Input<boolean>;
+    useServiceAccount?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `mandrill`: Use template labels to filter templates for sync
      */
-    useTemplateLabels?: pulumi.Input<boolean>;
+    useTemplateLabels?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `github`: Set to `true` to capture deletes.
      * 	- Service `xero`: Updates to few fields like sentToContact in Invoice table might be missed if you don't enable this.
      */
-    useWebhooks?: pulumi.Input<boolean>;
+    useWebhooks?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bigqueryDb`: Create and drop tables in a query results dataset. Default is false
      * 	- Service `snowflakeDb`: Choose a database and schema to create temporary tables for syncs.
      */
-    useWorkspace?: pulumi.Input<boolean>;
+    useWorkspace?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `aurora`: The user name.
@@ -19568,7 +19568,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sqlServerRds`: The user name.  For Azure Databases, the format must be `user@domain`.
      * 	- Service `sqlServerSapEccHva`: The user name.  For Azure Databases, the format must be `user@domain`.
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `coassemble`: Your Coassemble user ID.
@@ -19580,25 +19580,25 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sageIntacct`: User ID
      * 	- Service `vimeo`: Your Vimeo user ID.
      */
-    userId?: pulumi.Input<string>;
-    userKey?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
+    userKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: Workday username.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `doubleClickCampaignManager`: IDs of specific User Profiles to sync. Must be populated if `syncMode` is set to `SpecificAccounts`.
      */
-    userProfiles?: pulumi.Input<pulumi.Input<string>[]>;
+    userProfiles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hibob`: Your HiBob Service User ID.
      * 	- Service `konnectInsights`: Your Konnect Insights User Token.
      * 	- Service `sonarqube`: Your Sonarqube user token.
      */
-    userToken?: pulumi.Input<string>;
+    userToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `absorbLms`: Your Absorb LMS username.
@@ -19674,49 +19674,49 @@ export interface GetConnectorConfigArgs {
      * 	- Service `yougovBrandindex`: Your YouGov BrandIndex username.
      * 	- Service `younium`: Your Younium username.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `itunesConnect`: Your vendors id
      */
-    vendorsIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vendorsIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `criteoRetailMedia`: Your Criteo Retail Media version.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebook`: Time period to attribute conversions based on views. [Possible viewAttributionWindow values](https://fivetran.com/docs/applications/facebook-ad-insights/api-config#viewattributionwindow).
      * 	- Service `pinterestAds`: The number of days to use as the conversion attribution window for a 'view' action.
      * 	- Service `snapchatAds`: The time period to attribute conversions based on views. Default value: `DAY_1`
      */
-    viewAttributionWindow?: pulumi.Input<string>;
+    viewAttributionWindow?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `pigment`: Your Pigment view ID.
      */
-    viewId?: pulumi.Input<string>;
+    viewId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `linkedinAds`: The time period to attribute conversions based on views. Default value: `DAY_7`
      */
-    viewThroughAttributionWindowSize?: pulumi.Input<string>;
+    viewThroughAttributionWindowSize?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adyen`: Your Adyen Web Service API key.
      */
-    webServiceApiKey?: pulumi.Input<string>;
+    webServiceApiKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `appsflyer`: Webhook Url
      */
-    webhookEndpoint?: pulumi.Input<string>;
+    webhookEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `xero`: Webhook Key
      */
-    webhookKey?: pulumi.Input<string>;
+    webhookKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `branch`: Webhook URL
@@ -19724,73 +19724,73 @@ export interface GetConnectorConfigArgs {
      * 	- Service `segment`: Webhook URL.
      * 	- Service `xero`: (ReadOnly) The Webhook URL generated by Fivetran. You can configure this in XERO.
      */
-    webhookUrl?: pulumi.Input<string>;
+    webhookUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `woocommerce`: The Site ID of your WordPress hosted WooCommerce instance or the subdomain of your self-hosted WooCommerce instance.
      */
-    wordPressSiteIdOrWoocommerceDomainName?: pulumi.Input<string>;
+    wordPressSiteIdOrWoocommerceDomainName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `moloco`: Your Moloco workplace ID.
      */
-    workplaceId?: pulumi.Input<string>;
+    workplaceId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `mode`: Your Mode Workspace.
      */
-    workspace?: pulumi.Input<string>;
+    workspace?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bigqueryDb`: Workspace Dataset Name
      * 	- Service `snowflakeDb`: The name of the database where the temporary tables will be created.
      */
-    workspaceName?: pulumi.Input<string>;
+    workspaceName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bigqueryDb`: Use the source dataset as the workspace dataset
      */
-    workspaceSameAsSource?: pulumi.Input<boolean>;
+    workspaceSameAsSource?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflakeDb`: The name of the schema that belongs to the workspace database where the temporary tables will be created.
      */
-    workspaceSchema?: pulumi.Input<string>;
+    workspaceSchema?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `hex`: Your Hex workspace token.
      */
-    workspaceToken?: pulumi.Input<string>;
+    workspaceToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adpWorkforceNow`: Web Services Certificate.
      */
-    wsCertificate?: pulumi.Input<string>;
+    wsCertificate?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workdayStrategicSourcing`: Your Workday Strategic Sourcing X API key.
      */
-    xApiKey?: pulumi.Input<string>;
+    xApiKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `medalliaAgileResearch`: Your Medallia Agile Research key.
      */
-    xKey?: pulumi.Input<string>;
+    xKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `medalliaAgileResearch`: Your Medallia Agile Research master key.
      */
-    xMasterKey?: pulumi.Input<string>;
+    xMasterKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workdayStrategicSourcing`: Your Workday Strategic Sourcing X User Email.
      */
-    xUserEmail?: pulumi.Input<string>;
+    xUserEmail?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workdayStrategicSourcing`: Your Workday Strategic Sourcing X User Token.
      */
-    xUserToken?: pulumi.Input<string>;
+    xUserToken?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConnectorConfigAccountsRedditAd {
@@ -19806,7 +19806,7 @@ export interface GetConnectorConfigAccountsRedditAdArgs {
      * Field usage depends on `service` value: 
      * 	- Service `redditAds`: Reddit username of the additional linked account.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConnectorConfigAdobeAnalyticsConfiguration {
@@ -19852,37 +19852,37 @@ export interface GetConnectorConfigAdobeAnalyticsConfigurationArgs {
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalytics`: The calculatedMetrics that you want to sync.
      */
-    calculatedMetrics?: pulumi.Input<pulumi.Input<string>[]>;
+    calculatedMetrics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalytics`: The elements that you want to sync.
      */
-    elements?: pulumi.Input<pulumi.Input<string>[]>;
+    elements?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalytics`: The metrics that you want to sync.
      */
-    metrics?: pulumi.Input<pulumi.Input<string>[]>;
+    metrics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalytics`: Specific report suites to sync. Must be populated if `syncMode` is set to `SpecificReportSuites`.
      */
-    reportSuites?: pulumi.Input<pulumi.Input<string>[]>;
+    reportSuites?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalytics`: The segments that you want to sync.
      */
-    segments?: pulumi.Input<pulumi.Input<string>[]>;
+    segments?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalytics`: Whether to sync all report suites or specific report suites. Default value: `AllReportSuites` .
      */
-    syncMode?: pulumi.Input<string>;
+    syncMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adobeAnalytics`: The table name unique within the schema to which connector will sync the data. Required for connector creation.
      */
-    table?: pulumi.Input<string>;
+    table?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConnectorConfigAppIdsAppsflyer {
@@ -19898,7 +19898,7 @@ export interface GetConnectorConfigAppIdsAppsflyerArgs {
      * Field usage depends on `service` value: 
      * 	- Service `appsflyer`: Your App ID
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConnectorConfigCustomPayload {
@@ -19925,14 +19925,14 @@ export interface GetConnectorConfigCustomPayloadArgs {
      * 	- Service `azureFunction`: Payload Key
      * 	- Service `googleCloudFunction`: Payload Key
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsLambda`: Payload Value
      * 	- Service `azureFunction`: Payload Value
      * 	- Service `googleCloudFunction`: Payload Value
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConnectorConfigCustomReport {
@@ -20054,113 +20054,113 @@ export interface GetConnectorConfigCustomReportArgs {
      * Field usage depends on `service` value: 
      * 	- Service `snapchatAds`: [Determines if reports will be based on imression on coversion time](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports)
      */
-    actionReportTime?: pulumi.Input<string>;
+    actionReportTime?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snapchatAds`: Add fields for separate \"swipe-up\" and \"view\" variants of selected metrics
      */
-    addMetricVariants?: pulumi.Input<boolean>;
+    addMetricVariants?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `tiktokAds`: Time aggregation of report
      */
-    aggregate?: pulumi.Input<string>;
+    aggregate?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snapchatAds`: [List of Core, Additional and Conversion Metrics Stats Fields](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#basemetricsfields).
      */
-    baseMetricsFields?: pulumi.Input<pulumi.Input<string>[]>;
+    baseMetricsFields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snapchatAds`: [Sets Breakdown on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#breakdown).
      */
-    breakdown?: pulumi.Input<string>;
+    breakdown?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snapchatAds`: [Sets Breakout on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#breakout).
      */
-    breakout?: pulumi.Input<string>;
+    breakout?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redditAds`: The boolean value specifying whether to enable or disable event conversions data synchronisation. Default value: `false`
      */
-    conversionsReportIncluded?: pulumi.Input<boolean>;
+    conversionsReportIncluded?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redditAds`: The boolean value specifying whether the custom events are included in event conversions report. Default value: `false`
      */
-    customEventsIncluded?: pulumi.Input<boolean>;
+    customEventsIncluded?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snapchatAds`: [Sets Dimension on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#dimension).
      */
-    dimension?: pulumi.Input<string>;
+    dimension?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `tiktokAds`: Dimensions to synced
      */
-    dimensions?: pulumi.Input<pulumi.Input<string>[]>;
+    dimensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redditAds`: The list of events the conversion data will be synchronised for
      */
-    eventNames?: pulumi.Input<pulumi.Input<string>[]>;
+    eventNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snapchatAds`: [Sets Granularity on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#granularity).
      */
-    granularity?: pulumi.Input<string>;
+    granularity?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redditAds`: Level of custom report.
      */
-    level?: pulumi.Input<string>;
+    level?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `tiktokAds`: Metrics to be synced
      */
-    metrics?: pulumi.Input<pulumi.Input<string>[]>;
+    metrics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redditAds`: The list of fields included in custom report
      */
-    reportFields?: pulumi.Input<pulumi.Input<string>[]>;
+    reportFields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redditAds`: The table name within the schema to which connector syncs the data of the specific report.
      * 	- Service `snapchatAds`: Custom report name (must be unique)
      */
-    reportName?: pulumi.Input<string>;
+    reportName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `tiktokAds`: Type of report to be generated
      */
-    reportType?: pulumi.Input<string>;
+    reportType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redditAds`: Level of custom report.
      */
-    segmentation?: pulumi.Input<string>;
+    segmentation?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snapchatAds`: [List of SKAd  Metrics fields in custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#skadmetricsfields).
      */
-    skAdMetricsFields?: pulumi.Input<pulumi.Input<string>[]>;
+    skAdMetricsFields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `tiktokAds`: Destination Table name of report
      */
-    tableName?: pulumi.Input<string>;
+    tableName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redditAds`: The specific time zone to sync report data if  `useAccountTimeZone` set to `false`.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redditAds`: When this parameter is set to `ACCOUNT`, connector will use account related time zone to sync report data. Default value: `ACCOUNT`. Possible values: `ACCOUNT`, `USER`
      */
-    timeZoneMode?: pulumi.Input<string>;
+    timeZoneMode?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConnectorConfigCustomTable {
@@ -20228,59 +20228,59 @@ export interface GetConnectorConfigCustomTableArgs {
      * Field usage depends on `service` value: 
      * 	- Service `facebookAds`: List of actionBreakdowns which connector will sync. [Possible actionBreakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads#actionbreakdowns).
      */
-    actionBreakdowns?: pulumi.Input<pulumi.Input<string>[]>;
+    actionBreakdowns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebookAds`: The report time of action stats. [Possible actionReport time values](https://fivetran.com/docs/connectors/applications/facebook-ads#actionreporttime).
      */
-    actionReportTime?: pulumi.Input<string>;
+    actionReportTime?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebookAds`: Options to select aggregation duration. [Possible aggregation values](https://fivetran.com/docs/connectors/applications/facebook-ads#aggregation).
      */
-    aggregation?: pulumi.Input<string>;
+    aggregation?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebookAds`: List of breakdowns which connector will sync. [Possible breakdowns values](https://fivetran.com/docs/connectors/applications/facebook-ads#breakdowns).
      */
-    breakdowns?: pulumi.Input<pulumi.Input<string>[]>;
+    breakdowns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebookAds`: Time period to attribute conversions based on clicks. [Possible clickAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads#clickattributionwindow).
      */
-    clickAttributionWindow?: pulumi.Input<string>;
+    clickAttributionWindow?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebookAds`: Option to select Prebuilt Reports or Custom Reports. [Possible configType values](https://fivetran.com/docs/connectors/applications/facebook-ads#configtype).
      */
-    configType?: pulumi.Input<string>;
+    configType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebookAds`: Time period to attribute conversions based on engaged views. [Possible viewAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads#engagedviewattributionwindow).
      */
-    engagedViewAttributionWindow?: pulumi.Input<string>;
+    engagedViewAttributionWindow?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebookAds`: List of fields which connector will sync. [Possible field values](https://fivetran.com/docs/connectors/applications/facebook-ads#fields).
      */
-    fields?: pulumi.Input<pulumi.Input<string>[]>;
-    level?: pulumi.Input<string>;
+    fields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    level?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebookAds`: The report name to which connector will sync the data. [Possible prebuiltReport values](https://fivetran.com/docs/connectors/applications/facebook-ads#prebuiltreport).
      */
-    prebuiltReportName?: pulumi.Input<string>;
+    prebuiltReportName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebookAds`: The table name within the schema to which the connector will sync the data. It must be unique within the connector and must comply with [Fivetran's naming conventions](https://fivetran.com/docs/getting-started/core-concepts#namingconventions).
      */
-    tableName?: pulumi.Input<string>;
-    useUnifiedAttributionSetting?: pulumi.Input<boolean>;
+    tableName?: pulumi.Input<string | undefined>;
+    useUnifiedAttributionSetting?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `facebookAds`: Time period to attribute conversions based on views. [Possible viewAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads#viewattributionwindow).
      */
-    viewAttributionWindow?: pulumi.Input<string>;
+    viewAttributionWindow?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConnectorConfigDataModelPathAliasList {
@@ -20301,12 +20301,12 @@ export interface GetConnectorConfigDataModelPathAliasListArgs {
      * Field usage depends on `service` value: 
      * 	- Service `oracleBusinessIntelligencePublisher`: Schema name
      */
-    alias?: pulumi.Input<string>;
+    alias?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `oracleBusinessIntelligencePublisher`: Path
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConnectorConfigFile {
@@ -20346,7 +20346,7 @@ export interface GetConnectorConfigFileArgs {
      * Field usage depends on `service` value: 
      * 	- Service `email`: Only attachments from emails with this subject will be synced. Leave this field blank to sync all attachments.
      */
-    emailSubject?: pulumi.Input<string>;
+    emailSubject?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: All files in your search path matching this regular expression will be synced per table. We have discontinued this field, and will delete it by August 31, 2025.
@@ -20358,7 +20358,7 @@ export interface GetConnectorConfigFileArgs {
      * 	- Service `sftp`: All files in your search path matching this regular expression will be synced per table.
      * 	- Service `sharePoint`: All files in your search path matching this regular expression will be synced per table.
      */
-    filePattern?: pulumi.Input<string>;
+    filePattern?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureBlobStorage`: All files matching the above pattern will be synced to this table.
@@ -20370,7 +20370,7 @@ export interface GetConnectorConfigFileArgs {
      * 	- Service `sftp`: All files matching the above pattern will be synced to this table.
      * 	- Service `sharePoint`: All files matching the above pattern will be synced to this table.
      */
-    tableName?: pulumi.Input<string>;
+    tableName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConnectorConfigProjectCredential {
@@ -20396,17 +20396,17 @@ export interface GetConnectorConfigProjectCredentialArgs {
      * Field usage depends on `service` value: 
      * 	- Service `amplitude`: The API key of the project.
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amplitude`: The project name you wish to use with Fivetran.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `amplitude`: The secret key of the project.
      */
-    secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConnectorConfigReport {
@@ -20596,28 +20596,28 @@ export interface GetConnectorConfigReportArgs {
      * Field usage depends on `service` value: 
      * 	- Service `googleDisplayAndVideo360`: The list of advertisers to include into a sync. This parameter only takes effect when `configMethod` is set to `CREATE_NEW`.
      */
-    advertisers?: pulumi.Input<pulumi.Input<string>[]>;
+    advertisers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleSearchConsole`: (Optional) Aggregation type. Supported only for the `SEARCH_RESULTS` report type
      */
-    aggregation?: pulumi.Input<string>;
+    aggregation?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleSearchAds360`: The report attributes included to sync.
      */
-    attributes?: pulumi.Input<pulumi.Input<string>[]>;
+    attributes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleDisplayAndVideo360`: The report configuration method. Specifies whether a new configuration is defined manually or an existing configuration is reused. The default value is `CREATE_NEW`.
      */
-    configMethod?: pulumi.Input<string>;
+    configMethod?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: Whether to use the [Prebuilt Reports or Custom Reports](https://fivetran.com/docs/connectors/applications/google-analytics#schemainformation).
      * 	- Service `googleAnalytics4`: Whether to use the Prebuilt Reports or Custom Reports.
      */
-    configType?: pulumi.Input<string>;
+    configType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
@@ -20625,43 +20625,43 @@ export interface GetConnectorConfigReportArgs {
      * 	- Service `googleDisplayAndVideo360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
      * 	- Service `googleSearchConsole`: The report dimensions included to sync.
      */
-    dimensions?: pulumi.Input<pulumi.Input<string>[]>;
+    dimensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: Dynamic parameter field name
      */
-    dynamicParameterField?: pulumi.Input<string>;
+    dynamicParameterField?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: Select this option to enable dynamic report parameters.
      */
-    enableDynamicParameters?: pulumi.Input<boolean>;
+    enableDynamicParameters?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAds`: A list of the fields to sync. Must be populated if `configType` is set to `Custom`.
      */
-    fields?: pulumi.Input<pulumi.Input<string>[]>;
+    fields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: String parameter restricts the data returned for your report. To use the filter parameter, specify a dimension or metric on which to filter, followed by the filter expression
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics4`: The dimension name to filter on.
      */
-    filterFieldName?: pulumi.Input<string>;
+    filterFieldName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics4`: Filter type for reports request. Possible values are INCLUDE and EXCLUDE
      */
-    filterType?: pulumi.Input<string>;
-    filterValue?: pulumi.Input<string>;
+    filterType?: pulumi.Input<string | undefined>;
+    filterValue?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: Select this option to generate a Primary Key for reports where no single column or combination of columns can be used to form a Primary Key.
      */
-    generateFivetranPk?: pulumi.Input<boolean>;
+    generateFivetranPk?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: The report metrics to include into a sync.
@@ -20669,33 +20669,33 @@ export interface GetConnectorConfigReportArgs {
      * 	- Service `googleDisplayAndVideo360`: The report metrics to include into a sync. The metric names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
      * 	- Service `googleSearchAds360`: The report metrics included to sync.
      */
-    metrics?: pulumi.Input<pulumi.Input<string>[]>;
+    metrics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleDisplayAndVideo360`: The list of partners to include into a sync. This parameter only takes effect when `configMethod` is set to `CREATE_NEW`.
      */
-    partners?: pulumi.Input<pulumi.Input<string>[]>;
+    partners?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: The name of the Prebuilt Report from which the connector will sync the data.
      * 	- Service `googleAnalytics4`: The name of the Prebuilt Report from which the connector will sync the data.
      */
-    prebuiltReport?: pulumi.Input<string>;
+    prebuiltReport?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: Primary Keys
      */
-    primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    primaryKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleDisplayAndVideo360`: The ID of the query whose configuration you want to reuse. This is a required parameter when `configMethod` is set to `REUSE_EXISTING`.
      */
-    queryId?: pulumi.Input<string>;
+    queryId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: This is to select report format from JSON and CSV. By default, report format is JSON.
      */
-    reportFormatType?: pulumi.Input<string>;
+    reportFormatType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAds`: The name of the Google Ads report from which the connector will sync the data. [Possible reportType values](https://developers.google.com/adwords/api/docs/appendix/reports#report-types).
@@ -20703,49 +20703,49 @@ export interface GetConnectorConfigReportArgs {
      * 	- Service `googleSearchAds360`: The type of report
      * 	- Service `googleSearchConsole`: The type of report
      */
-    reportType?: pulumi.Input<string>;
+    reportType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: URL for a live custom report.
      */
-    reportUrl?: pulumi.Input<string>;
+    reportUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics4`: The custom window size for rollback syncs.
      */
-    rollbackWindow?: pulumi.Input<number>;
+    rollbackWindow?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleSearchConsole`: Search types included to sync. Supported only for the `SEARCH_RESULTS` report type
      */
-    searchTypes?: pulumi.Input<pulumi.Input<string>[]>;
-    segmentIds?: pulumi.Input<pulumi.Input<string>[]>;
+    searchTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    segmentIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics`: A segment is a subset of your Analytics data that is made up of one or more non-destructive filters (filters that do not alter the underlying data). Those filters isolate subsets of users, sessions, and hits.
      * 	- Service `googleSearchAds360`: The report segments included to sync.
      */
-    segments?: pulumi.Input<pulumi.Input<string>[]>;
+    segments?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: Start date
      */
-    startDate?: pulumi.Input<string>;
+    startDate?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: Start date parameter field name
      */
-    startDateParameterField?: pulumi.Input<string>;
+    startDateParameterField?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: This option is to unpack the nested columns and sync them separately. By default, we sync the nested columns as JSON objects.
      */
-    supportNestedColumns?: pulumi.Input<boolean>;
+    supportNestedColumns?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `workday`: Dynamic report parameters sync strategy
      */
-    syncStrategy?: pulumi.Input<string>;
+    syncStrategy?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAds`: The table name within the schema to which connector will sync the data of the specific report.
@@ -20755,22 +20755,22 @@ export interface GetConnectorConfigReportArgs {
      * 	- Service `googleSearchConsole`: The name of a table within the schema to which connector syncs the data of a given report.
      * 	- Service `workday`: The table name within the schema to which connector will sync the data of the specific report.
      */
-    table?: pulumi.Input<string>;
+    table?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleDisplayAndVideo360`: The table name within the schema to which connector will sync the data of the specific report.
      */
-    tableName?: pulumi.Input<string>;
+    tableName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleAnalytics4`: The report data aggregation time granularity.
      */
-    timeAggregationGranularity?: pulumi.Input<string>;
+    timeAggregationGranularity?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `googleDisplayAndVideo360`: Specifies whether the configuration is updated before each sync or only when the connector settings are saved. This parameter only takes effect when `configMethod` is set to `REUSE_EXISTING`. The default value is `true`.
      */
-    updateConfigOnEachSync?: pulumi.Input<boolean>;
+    updateConfigOnEachSync?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetConnectorConfigReportConfig {
@@ -20826,47 +20826,47 @@ export interface GetConnectorConfigReportConfigArgs {
      * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: Set the value to `PREBUILT` if it's one of the preconfigured reports (see the `prebuiltReportType` option). Otherwise, set to `CUSTOM`.
      */
-    configType?: pulumi.Input<string>;
+    configType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: [Currency](https://developer.yahooinc.com/dsp/api/docs/reporting/payloadspec.html) used in a report. Default value: `USD`.
      */
-    currency?: pulumi.Input<string>;
+    currency?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: [Dimensions](https://developer.yahooinc.com/dsp/api/docs/reporting/dimensions.html) used in a report. Must be populated if `configType` is set to `CUSTOM`. PUBLISHER, DESKTOP_OS_DEPRECATED, LINE_TYPE, GOAL_TYPE, BID_REQUEST_AD_SIZE, CHANNEL_TYPE, SITE_NAME, and SITE_GROUP_NAME are deprecated dimension, and shouldn't be used anymore
      */
-    dimensions?: pulumi.Input<pulumi.Input<string>[]>;
+    dimensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: The [granularity](https://developer.yahooinc.com/dsp/api/docs/reporting/range-examples.html#interval-type-id) of data in a report. Default value: `DAY`.
      */
-    intervalType?: pulumi.Input<string>;
+    intervalType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: [Metrics](https://developer.yahooinc.com/dsp/api/docs/reporting/metrics.html) used in a report. Must be populated if `configType` is set to `CUSTOM`. PUBLISHER_EARNINGS, PUBLISHER_EARNINGS_PERCENTAGE, INVENTORY_ECPM_DEPRECATED, SEAT_TECH_FEE, and SEAT_DATA_FEE are deprecated and shouldn't be used anymore
      */
-    metrics?: pulumi.Input<pulumi.Input<string>[]>;
+    metrics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: Specific report type to sync. Must be populated if `configType` is set to `PREBUILT`.
      */
-    prebuiltReportType?: pulumi.Input<string>;
+    prebuiltReportType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: Table name in destination.
      */
-    reportName?: pulumi.Input<string>;
+    reportName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: Specify the time zone to be used to request report data
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `yahooDsp`: Use advertiser timezone to request report data.
      */
-    useAdvertiserTimezone?: pulumi.Input<boolean>;
+    useAdvertiserTimezone?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetConnectorConfigReportList {
@@ -20897,22 +20897,22 @@ export interface GetConnectorConfigReportListArgs {
      * Field usage depends on `service` value: 
      * 	- Service `spotifyAds`: The dimension (entity_type) to sync.
      */
-    dimension?: pulumi.Input<string>;
+    dimension?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `spotifyAds`: A list of the fields (metrics) to sync.
      */
-    fields?: pulumi.Input<pulumi.Input<string>[]>;
+    fields?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `spotifyAds`: The report granularity.
      */
-    granularity?: pulumi.Input<string>;
+    granularity?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `spotifyAds`: The table name within the schema to which connector will sync the data of the specific report.
      */
-    table?: pulumi.Input<string>;
+    table?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConnectorConfigSecretsList {
@@ -20939,14 +20939,14 @@ export interface GetConnectorConfigSecretsListArgs {
      * 	- Service `azureFunction`: Key
      * 	- Service `googleCloudFunction`: Key
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsLambda`: Secret Value.
      * 	- Service `azureFunction`: Value
      * 	- Service `googleCloudFunction`: Value
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConnectorConfigTenantConfig {
@@ -20967,12 +20967,12 @@ export interface GetConnectorConfigTenantConfigArgs {
      * Field usage depends on `service` value: 
      * 	- Service `reltio`: Your Reltio subdomain.
      */
-    subdomain?: pulumi.Input<string>;
+    subdomain?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `reltio`: Your Reltio tenant ID.
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConnectorDestinationSchema {
@@ -20998,19 +20998,19 @@ export interface GetConnectorDestinationSchemaArgs {
     /**
      * The connector schema name in destination. Has to be unique within the group (destination). Required for connector creation.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The connector schema prefix has to be unique within the group (destination). Each replicated schema is prefixed with the provided value. Required for connector creation.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     /**
      * The table name unique within the schema to which connector will sync the data. Required for connector creation.
      */
-    table?: pulumi.Input<string>;
+    table?: pulumi.Input<string | undefined>;
     /**
      * Table group name.
      */
-    tableGroupName?: pulumi.Input<string>;
+    tableGroupName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConnectorFingerprintsFingerprint {
@@ -21040,15 +21040,15 @@ export interface GetConnectorFingerprintsFingerprintArgs {
     /**
      * The SSH public key.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * User name who validated the fingerprint.
      */
-    validatedBy?: pulumi.Input<string>;
+    validatedBy?: pulumi.Input<string | undefined>;
     /**
      * The date when fingerprint was approved.
      */
-    validatedDate?: pulumi.Input<string>;
+    validatedDate?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConnectorStatus {
@@ -21082,27 +21082,27 @@ export interface GetConnectorStatusArgs {
     /**
      * The boolean specifying whether the connector should be triggered to re-sync all historical data. If you set this parameter to TRUE, the next scheduled sync will be historical. If the value is FALSE or not specified, the connector will not re-sync historical data. NOTE: When the value is TRUE, only the next scheduled sync will be historical, all subsequent ones will be incremental. This parameter is set to FALSE once the historical sync is completed.
      */
-    isHistoricalSync?: pulumi.Input<boolean>;
+    isHistoricalSync?: pulumi.Input<boolean | undefined>;
     /**
      * The current setup state of the connector. The available values are: <br /> - incomplete - the setup config is incomplete, the setup tests never succeeded  `connected` - the connector is properly set up, `broken` - the connector setup config is broken.
      */
-    setupState?: pulumi.Input<string>;
+    setupState?: pulumi.Input<string | undefined>;
     /**
      * The current sync state of the connector. The available values are: `scheduled` - the sync is waiting to be run, `syncing` - the sync is currently running, `paused` - the sync is currently paused, `rescheduled` - the sync is waiting until more API calls are available in the source service.
      */
-    syncState?: pulumi.Input<string>;
+    syncState?: pulumi.Input<string | undefined>;
     /**
      * The collection of tasks for the connector.
      */
-    tasks?: pulumi.Input<pulumi.Input<inputs.GetConnectorStatusTaskArgs>[]>;
+    tasks?: pulumi.Input<pulumi.Input<inputs.GetConnectorStatusTaskArgs>[] | undefined>;
     /**
      * The current data update state of the connector. The available values are: `onSchedule` - the sync is running smoothly, no delays, `delayed` - the data is delayed for a longer time than expected for the update.
      */
-    updateState?: pulumi.Input<string>;
+    updateState?: pulumi.Input<string | undefined>;
     /**
      * The collection of warnings for the connector.
      */
-    warnings?: pulumi.Input<pulumi.Input<inputs.GetConnectorStatusWarningArgs>[]>;
+    warnings?: pulumi.Input<pulumi.Input<inputs.GetConnectorStatusWarningArgs>[] | undefined>;
 }
 
 export interface GetConnectorStatusTask {
@@ -21120,11 +21120,11 @@ export interface GetConnectorStatusTaskArgs {
     /**
      * Task code.
      */
-    code?: pulumi.Input<string>;
+    code?: pulumi.Input<string | undefined>;
     /**
      * Task message.
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConnectorStatusWarning {
@@ -21142,11 +21142,11 @@ export interface GetConnectorStatusWarningArgs {
     /**
      * Warning code.
      */
-    code?: pulumi.Input<string>;
+    code?: pulumi.Input<string | undefined>;
     /**
      * Warning message.
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConnectorsConnector {
@@ -21236,83 +21236,83 @@ export interface GetConnectorsConnectorArgs {
     /**
      * The unique identifier of the user who has created the connector in your account.
      */
-    connectedBy?: pulumi.Input<string>;
+    connectedBy?: pulumi.Input<string | undefined>;
     /**
      * The timestamp of the time the connector was created in your account.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
      */
-    dailySyncTime?: pulumi.Input<string>;
+    dailySyncTime?: pulumi.Input<string | undefined>;
     /**
      * The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
      */
-    dataDelaySensitivity?: pulumi.Input<string>;
+    dataDelaySensitivity?: pulumi.Input<string | undefined>;
     /**
      * Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data*delay*sensitivity set to CUSTOM.
      */
-    dataDelayThreshold?: pulumi.Input<number>;
+    dataDelayThreshold?: pulumi.Input<number | undefined>;
     /**
      * The timestamp of the time the connector sync failed last time.
      */
-    failedAt?: pulumi.Input<string>;
+    failedAt?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the Group (Destination) within the Fivetran system.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
      */
-    hybridDeploymentAgentId?: pulumi.Input<string>;
+    hybridDeploymentAgentId?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the connector within the Fivetran system.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name used both as the connector's name within the Fivetran system and as the source schema's name within your destination.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Possible values: Directly, SshTunnel, ProxyAgent.
      */
-    networkingMethod?: pulumi.Input<string>;
+    networkingMethod?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the connector should be paused after the free trial period has ended.
      */
-    pauseAfterTrial?: pulumi.Input<boolean>;
+    pauseAfterTrial?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether the connector is paused.
      */
-    paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean | undefined>;
     /**
      * The private link ID.
      */
-    privateLinkId?: pulumi.Input<string>;
+    privateLinkId?: pulumi.Input<string | undefined>;
     /**
      * The proxy agent ID.
      */
-    proxyAgentId?: pulumi.Input<string>;
+    proxyAgentId?: pulumi.Input<string | undefined>;
     /**
      * The connector schedule configuration type. Supported values: auto, manual.
      */
-    scheduleType?: pulumi.Input<string>;
+    scheduleType?: pulumi.Input<string | undefined>;
     /**
      * The connector type id within the Fivetran system.
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
     /**
      * The connector type version within the Fivetran system.
      */
-    serviceVersion?: pulumi.Input<string>;
+    serviceVersion?: pulumi.Input<string | undefined>;
     /**
      * The timestamp of the time the connector sync succeeded last time.
      */
-    succeededAt?: pulumi.Input<string>;
+    succeededAt?: pulumi.Input<string | undefined>;
     /**
      * The connector sync frequency in minutes.
      */
-    syncFrequency?: pulumi.Input<number>;
+    syncFrequency?: pulumi.Input<number | undefined>;
 }
 
 export interface GetConnectorsMetadataSource {
@@ -21350,31 +21350,31 @@ export interface GetConnectorsMetadataSourceArgs {
     /**
      * The description characterizing the purpose of the connector.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The icon resource URL.
      */
-    iconUrl?: pulumi.Input<string>;
+    iconUrl?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the connector within the Fivetran system
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The link to the connector documentation.
      */
-    linkToDocs?: pulumi.Input<string>;
+    linkToDocs?: pulumi.Input<string | undefined>;
     /**
      * The link to the connector ERD (entity–relationship diagram).
      */
-    linkToErd?: pulumi.Input<string>;
+    linkToErd?: pulumi.Input<string | undefined>;
     /**
      * The connector service name within the Fivetran system.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The connector service type within the Fivetran system.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface GetDestinationCertificatesCertificate {
@@ -21420,31 +21420,31 @@ export interface GetDestinationCertificatesCertificateArgs {
     /**
      * Certificate name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The SSH public key.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * Certificate sha1.
      */
-    sha1?: pulumi.Input<string>;
+    sha1?: pulumi.Input<string | undefined>;
     /**
      * Certificate sha256.
      */
-    sha256?: pulumi.Input<string>;
+    sha256?: pulumi.Input<string | undefined>;
     /**
      * Type of the certificate.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * User name who validated the certificate.
      */
-    validatedBy?: pulumi.Input<string>;
+    validatedBy?: pulumi.Input<string | undefined>;
     /**
      * The date when certificate was approved.
      */
-    validatedDate?: pulumi.Input<string>;
+    validatedDate?: pulumi.Input<string | undefined>;
 }
 
 export interface GetDestinationConfig {
@@ -22231,17 +22231,17 @@ export interface GetDestinationConfigArgs {
      * 	- Service `sqlServerRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `sqlServerWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
      */
-    alwaysEncrypted?: pulumi.Input<boolean>;
+    alwaysEncrypted?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: Application ID of your app created in Azure
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: Password-based or key-based authentication type
      */
-    auth?: pulumi.Input<string>;
+    auth?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Authentication type
@@ -22251,31 +22251,31 @@ export interface GetDestinationConfigArgs {
      * 	- Service `onelake`: Authentication type
      * 	- Service `redshift`: Authentication type. Default value: `PASSWORD`.
      */
-    authType?: pulumi.Input<string>;
+    authType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `newS3Datalake`: AWS access key to access the S3 bucket and AWS Glue
      * 	- Service `redshift`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
      * 	- Service `snowflake`: The unique access key ID of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment, want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
      */
-    awsAccessKeyId?: pulumi.Input<string>;
+    awsAccessKeyId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: Type of authentication configured for the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
      */
-    awsBucketAuthType?: pulumi.Input<string>;
+    awsBucketAuthType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `newS3Datalake`: AWS secret access key to access the S3 bucket and AWS Glue
      * 	- Service `redshift`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
      * 	- Service `snowflake`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment , want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
      */
-    awsSecretAccessKey?: pulumi.Input<string>;
+    awsSecretAccessKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `confluentCloudWh`: Comma-separated list of Confluent Cloud servers in the `server:port` format.
      */
-    bootstrapServers?: pulumi.Input<pulumi.Input<string>[]>;
+    bootstrapServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bigQuery`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
@@ -22286,13 +22286,13 @@ export interface GetDestinationConfigArgs {
      * 	- Service `redshift`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
      * 	- Service `snowflake`: The name of the storage bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 or GCS bucket to stage your data.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redshift`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
      * 	- Service `snowflake`: The AWS Region of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
      */
-    bucketRegion?: pulumi.Input<string>;
+    bucketRegion?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Catalog name
@@ -22301,34 +22301,34 @@ export interface GetDestinationConfigArgs {
      * 	- Service `newS3Datalake`: Catalog name
      * 	- Service `onelake`: Catalog name
      */
-    catalog?: pulumi.Input<string>;
+    catalog?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Client id of service principal
      * 	- Service `managedDataLake`: Client id of service principal
      * 	- Service `onelake`: Client ID of service principal
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `databricks`: Databricks deployment cloud
      */
-    cloudProvider?: pulumi.Input<string>;
+    cloudProvider?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `panoply`: Cluster ID.
      * 	- Service `periscopeWarehouse`: Cluster ID.
      * 	- Service `redshift`: Cluster ID. Must be populated if `connectionType` is set to `SshTunnel` and `authType` is set to `IAM`.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `panoply`: Cluster region.
      * 	- Service `periscopeWarehouse`: Cluster region.
      * 	- Service `redshift`: Cluster region. Must be populated if `connectionType` is set to `SshTunnel` and `authType` is set to `IAM`.
      */
-    clusterRegion?: pulumi.Input<string>;
-    connectionMethod?: pulumi.Input<string>;
+    clusterRegion?: pulumi.Input<string | undefined>;
+    connectionMethod?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Connection method. Default value: `Directly`.
@@ -22357,32 +22357,32 @@ export interface GetDestinationConfigArgs {
      * 	- Service `sqlServerRdsWarehouse`: Connection method. Default value: `Directly`.
      * 	- Service `sqlServerWarehouse`: Connection method. Default value: `Directly`.
      */
-    connectionType?: pulumi.Input<string>;
+    connectionType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: (Immutable) Container to store delta table files
      * 	- Service `managedDataLake`: (Immutable) Container to store delta table files
      * 	- Service `onelake`: Workspace name to store delta table files
      */
-    containerName?: pulumi.Input<string>;
-    controllerId?: pulumi.Input<string>;
+    containerName?: pulumi.Input<string | undefined>;
+    controllerId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `databricks`: Whether to create external tables
      */
-    createExternalTables?: pulumi.Input<boolean>;
+    createExternalTables?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `confluentCloudWh`: Confluent Cloud message format.
      */
-    dataFormat?: pulumi.Input<string>;
+    dataFormat?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bigQuery`: Data location. Datasets will reside in this location.
      * 	- Service `bigQueryDts`: Data location. Datasets will reside in this location.
      * 	- Service `managedBigQuery`: Data location. Datasets will reside in this location.
      */
-    dataSetLocation?: pulumi.Input<string>;
+    dataSetLocation?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgresWarehouse`: Database name
@@ -22408,7 +22408,7 @@ export interface GetDestinationConfigArgs {
      * 	- Service `sqlServerRdsWarehouse`: Database name
      * 	- Service `sqlServerWarehouse`: Database name
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Databricks Connection method. Default value: `Directly`.
@@ -22416,28 +22416,28 @@ export interface GetDestinationConfigArgs {
      * 	- Service `newS3Datalake`: Databricks Connection method. Default value: `Directly`.
      * 	- Service `onelake`: Databricks Connection method. Default value: `Directly`.
      */
-    databricksConnectionType?: pulumi.Input<string>;
+    databricksConnectionType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: Tenant ID of your app created in Azure
      */
-    directoryId?: pulumi.Input<string>;
+    directoryId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: Set to `true` if you want to enable external storage for unstructured files.
      */
-    enableExternalStorageForUnstructuredFiles?: pulumi.Input<boolean>;
-    enableRemoteExecution?: pulumi.Input<boolean>;
+    enableExternalStorageForUnstructuredFiles?: pulumi.Input<boolean | undefined>;
+    enableRemoteExecution?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `confluentCloudWh`: Populate all tables in a single topic.
      */
-    enableSingleTopic?: pulumi.Input<boolean>;
+    enableSingleTopic?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redshift`: Enable to convert JSON data type to SUPER
      */
-    enableSuperType?: pulumi.Input<boolean>;
+    enableSuperType?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `awsMskWh`: Fivetran generated External ID
@@ -22445,45 +22445,45 @@ export interface GetDestinationConfigArgs {
      * 	- Service `periscopeWarehouse`: Fivetran generated External ID
      * 	- Service `redshift`: Fivetran generated External ID
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `databricks`: External location to store Delta tables. Default value: `""`  (null). By default, the external tables will reside in the `/{schema}/{table}` path, and if you specify an external location in the `{externalLocation}/{schema}/{table}` path.
      */
-    externalLocation?: pulumi.Input<string>;
+    externalLocation?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: External stage storage provider[Internal, S3, Azure,GCS]
      */
-    externalStageStorageProvider?: pulumi.Input<string>;
+    externalStageStorageProvider?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: The cloud service provider you want to use for staging data. Use this parameter only if you are using Hybrid Deployment.
      */
-    externalStorageCloudProvider?: pulumi.Input<string>;
+    externalStorageCloudProvider?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: External storage integration name
      */
-    externalStorageIntegration?: pulumi.Input<string>;
+    externalStorageIntegration?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: External storage parent folder URL
      */
-    externalStorageParentFolderUri?: pulumi.Input<string>;
-    fivetranGlueRoleArn?: pulumi.Input<string>;
-    fivetranMskRoleArn?: pulumi.Input<string>;
+    externalStorageParentFolderUri?: pulumi.Input<string | undefined>;
+    fivetranGlueRoleArn?: pulumi.Input<string | undefined>;
+    fivetranMskRoleArn?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `managedDataLake`: (Immutable) ARN of the role which you created with different required policy mentioned in our setup guide
      * 	- Service `newS3Datalake`: ARN of the role which you created with different required policy mentioned in our setup guide
      */
-    fivetranRoleArn?: pulumi.Input<string>;
+    fivetranRoleArn?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: The path to the JSON file that contains the service account credentials for the GCS bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use a GCS bucket to stage your data.
      */
-    gcsServiceAccountCredentialsPath?: pulumi.Input<string>;
+    gcsServiceAccountCredentialsPath?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgresWarehouse`: Server name
@@ -22509,7 +22509,7 @@ export interface GetDestinationConfigArgs {
      * 	- Service `sqlServerRdsWarehouse`: Server name
      * 	- Service `sqlServerWarehouse`: Server name
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: HTTP path
@@ -22518,39 +22518,39 @@ export interface GetDestinationConfigArgs {
      * 	- Service `newS3Datalake`: HTTP path
      * 	- Service `onelake`: HTTP path
      */
-    httpPath?: pulumi.Input<string>;
+    httpPath?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: Indicates that a private key is encrypted. The default value: `false`. The field can be specified if authentication type is `KEY_PAIR`.
      */
-    isPrivateKeyEncrypted?: pulumi.Input<boolean>;
+    isPrivateKeyEncrypted?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `newS3Datalake`: We use PrivateLink by default if your s3 bucket is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to s3 bucket over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options#awsprivatelinkbeta).
      */
-    isPrivateLinkRequired?: pulumi.Input<boolean>;
+    isPrivateLinkRequired?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redshift`: Is your destination Redshift Serverless
      */
-    isRedshiftServerless?: pulumi.Input<boolean>;
+    isRedshiftServerless?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `managedDataLake`: (Immutable) OneLake lakehouse GUID
      * 	- Service `onelake`: (Immutable) OneLake lakehouse GUID
      */
-    lakehouseGuid?: pulumi.Input<string>;
+    lakehouseGuid?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `onelake`: (Immutable) Name of your lakehouse
      */
-    lakehouseName?: pulumi.Input<string>;
-    mskStsRegion?: pulumi.Input<string>;
+    lakehouseName?: pulumi.Input<string | undefined>;
+    mskStsRegion?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `confluentCloudWh`: Number of partitions per topic.
      */
-    numOfPartitions?: pulumi.Input<number>;
+    numOfPartitions?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: OAuth 2.0 client ID
@@ -22559,7 +22559,7 @@ export interface GetDestinationConfigArgs {
      * 	- Service `newS3Datalake`: OAuth 2.0 client ID
      * 	- Service `onelake`: OAuth 2.0 client ID
      */
-    oauth2ClientId?: pulumi.Input<string>;
+    oauth2ClientId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: OAuth 2.0 secret
@@ -22568,12 +22568,12 @@ export interface GetDestinationConfigArgs {
      * 	- Service `newS3Datalake`: OAuth 2.0 secret
      * 	- Service `onelake`: OAuth 2.0 secret
      */
-    oauth2Secret?: pulumi.Input<string>;
+    oauth2Secret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: In case private key is encrypted, you are required to enter passphrase that was used to encrypt the private key. The field can be specified if authentication type is `KEY_PAIR`.
      */
-    passphrase?: pulumi.Input<string>;
+    passphrase?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgresWarehouse`: Database user password
@@ -22599,7 +22599,7 @@ export interface GetDestinationConfigArgs {
      * 	- Service `sqlServerRdsWarehouse`: Database user password
      * 	- Service `sqlServerWarehouse`: Database user password
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Personal access token
@@ -22608,7 +22608,7 @@ export interface GetDestinationConfigArgs {
      * 	- Service `newS3Datalake`: Personal access token
      * 	- Service `onelake`: Personal access token
      */
-    personalAccessToken?: pulumi.Input<string>;
+    personalAccessToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Server port number
@@ -22639,7 +22639,7 @@ export interface GetDestinationConfigArgs {
      * 	- Service `sqlServerRdsWarehouse`: Server port number
      * 	- Service `sqlServerWarehouse`: Server port number
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: (Immutable) path/to/data within the container
@@ -22647,17 +22647,17 @@ export interface GetDestinationConfigArgs {
      * 	- Service `newS3Datalake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
      * 	- Service `onelake`: (Immutable) path/to/data within your lakehouse inside the Files directory
      */
-    prefixPath?: pulumi.Input<string>;
+    prefixPath?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: Private access key.  The field should be specified if authentication type is `KEY_PAIR`.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bigQuery`: BigQuery project ID
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgresWarehouse`: Public Key
@@ -22679,20 +22679,20 @@ export interface GetDestinationConfigArgs {
      * 	- Service `sqlServerRdsWarehouse`: Public Key
      * 	- Service `sqlServerWarehouse`: Public Key
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `managedDataLake`: (Immutable) Region of your AWS S3 bucket
      * 	- Service `newS3Datalake`: Region of your AWS S3 bucket
      */
-    region?: pulumi.Input<string>;
-    registryName?: pulumi.Input<string>;
-    registryStsRegion?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
+    registryName?: pulumi.Input<string | undefined>;
+    registryStsRegion?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `confluentCloudWh`: Replication factor.
      */
-    replicationFactor?: pulumi.Input<number>;
+    replicationFactor?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgresWarehouse`: This field is currently being introduced to test the Self-serve Private Link functionality
@@ -22716,72 +22716,72 @@ export interface GetDestinationConfigArgs {
      * 	- Service `sqlServerRdsWarehouse`: Field to test Self serve Private Link
      * 	- Service `sqlServerWarehouse`: Field to test Self serve Private Link
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: If not specified, Fivetran will use the user's default role
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `confluentCloudWh`: Security protocol for Confluent Cloud interaction.
      */
-    saslMechanism?: pulumi.Input<string>;
+    saslMechanism?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `confluentCloudWh`: Confluent Cloud SASL key.
      */
-    saslPlainKey?: pulumi.Input<string>;
+    saslPlainKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `confluentCloudWh`: Confluent Cloud SASL secret.
      */
-    saslPlainSecret?: pulumi.Input<string>;
-    schemaCompatibility?: pulumi.Input<string>;
+    saslPlainSecret?: pulumi.Input<string | undefined>;
+    schemaCompatibility?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `confluentCloudWh`: Schema Registry
      */
-    schemaRegistry?: pulumi.Input<string>;
+    schemaRegistry?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `confluentCloudWh`: Schema registry API key.
      */
-    schemaRegistryApiKey?: pulumi.Input<string>;
+    schemaRegistryApiKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `confluentCloudWh`: Schema registry API secret.
      */
-    schemaRegistryApiSecret?: pulumi.Input<string>;
+    schemaRegistryApiSecret?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `confluentCloudWh`: Schema registry URL.
      */
-    schemaRegistryUrl?: pulumi.Input<string>;
+    schemaRegistryUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `bigQuery`: Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.
      * 	- Service `bigQueryDts`: Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.
      * 	- Service `managedBigQuery`: Private key of the customer service account. If specified, your service account will be used to process the data instead of the Fivetran-managed service account.
      */
-    secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Secret value for service principal
      * 	- Service `managedDataLake`: Secret value for service principal
      * 	- Service `onelake`: Secret value for service principal
      */
-    secretValue?: pulumi.Input<string>;
+    secretValue?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `confluentCloudWh`: Security protocol for Confluent Cloud interaction.
      */
-    securityProtocol?: pulumi.Input<string>;
+    securityProtocol?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Server Host name
@@ -22790,7 +22790,7 @@ export interface GetDestinationConfigArgs {
      * 	- Service `newS3Datalake`: Server host name
      * 	- Service `onelake`: Server Host name
      */
-    serverHostName?: pulumi.Input<string>;
+    serverHostName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Should maintain tables in Databricks 
@@ -22798,12 +22798,12 @@ export interface GetDestinationConfigArgs {
      * 	- Service `newS3Datalake`: Should maintain tables in Databricks 
      * 	- Service `onelake`: Should maintain tables in Databricks
      */
-    shouldMaintainTablesInDatabricks?: pulumi.Input<boolean>;
+    shouldMaintainTablesInDatabricks?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `managedDataLake`: Should maintain tables in Glue. Only applicable if storage provider is AWS
      */
-    shouldMaintainTablesInGlue?: pulumi.Input<boolean>;
+    shouldMaintainTablesInGlue?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
@@ -22811,15 +22811,15 @@ export interface GetDestinationConfigArgs {
      * 	- Service `newS3Datalake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
      * 	- Service `onelake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
      */
-    snapshotRetentionPeriod?: pulumi.Input<string>;
-    snowflakeCloud?: pulumi.Input<string>;
-    snowflakeRegion?: pulumi.Input<string>;
+    snapshotRetentionPeriod?: pulumi.Input<string | undefined>;
+    snowflakeCloud?: pulumi.Input<string | undefined>;
+    snowflakeRegion?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `azureSqlDataWarehouse`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
      * 	- Service `snowflake`: The access key of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
      */
-    storageAccountKey?: pulumi.Input<string>;
+    storageAccountKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
@@ -22828,24 +22828,24 @@ export interface GetDestinationConfigArgs {
      * 	- Service `onelake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
      * 	- Service `snowflake`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
      */
-    storageAccountName?: pulumi.Input<string>;
+    storageAccountName?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `managedDataLake`: Storage Provider
      */
-    storageProvider?: pulumi.Input<string>;
+    storageProvider?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `newS3Datalake`: (Immutable) The table format in which you want to sync your tables. Valid values are ICEBERG and DELTA_LAKE
      */
-    tableFormat?: pulumi.Input<string>;
+    tableFormat?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `adls`: Tenant id of service principal
      * 	- Service `managedDataLake`: Tenant id of service principal
      * 	- Service `onelake`: Tenant ID of service principal
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgresWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -22870,7 +22870,7 @@ export interface GetDestinationConfigArgs {
      * 	- Service `sqlServerRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `sqlServerWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      */
-    tunnelHost?: pulumi.Input<string>;
+    tunnelHost?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgresWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -22895,7 +22895,7 @@ export interface GetDestinationConfigArgs {
      * 	- Service `sqlServerRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `sqlServerWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
      */
-    tunnelPort?: pulumi.Input<number>;
+    tunnelPort?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgresWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -22920,12 +22920,12 @@ export interface GetDestinationConfigArgs {
      * 	- Service `sqlServerRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `sqlServerWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
      */
-    tunnelUser?: pulumi.Input<string>;
+    tunnelUser?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `snowflake`: Set to `true` if you want to use an S3 bucket to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an S3 bucket to stage your data.
      */
-    useCustomerStaging?: pulumi.Input<boolean>;
+    useCustomerStaging?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `auroraPostgresWarehouse`: Database user name
@@ -22951,18 +22951,18 @@ export interface GetDestinationConfigArgs {
      * 	- Service `sqlServerRdsWarehouse`: Database user name
      * 	- Service `sqlServerWarehouse`: Database user name
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `managedDataLake`: (Immutable) OneLake workspace GUID
      * 	- Service `onelake`: (Immutable) OneLake workspace GUID
      */
-    workspaceGuid?: pulumi.Input<string>;
+    workspaceGuid?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value: 
      * 	- Service `onelake`: OneLake workspace name
      */
-    workspaceName?: pulumi.Input<string>;
+    workspaceName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetDestinationFingerprintsFingerprint {
@@ -22992,15 +22992,15 @@ export interface GetDestinationFingerprintsFingerprintArgs {
     /**
      * The SSH public key.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * User name who validated the fingerprint.
      */
-    validatedBy?: pulumi.Input<string>;
+    validatedBy?: pulumi.Input<string | undefined>;
     /**
      * The date when fingerprint was approved.
      */
-    validatedDate?: pulumi.Input<string>;
+    validatedDate?: pulumi.Input<string | undefined>;
 }
 
 export interface GetDestinationsDestination {
@@ -23050,43 +23050,43 @@ export interface GetDestinationsDestinationArgs {
     /**
      * Shift my UTC offset with daylight savings time (US Only)
      */
-    daylightSavingTimeEnabled?: pulumi.Input<boolean>;
+    daylightSavingTimeEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The unique identifier for the Group within the Fivetran system.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
      */
-    hybridDeploymentAgentId?: pulumi.Input<string>;
+    hybridDeploymentAgentId?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the destination within the Fivetran system.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Possible values: Directly, SshTunnel, ProxyAgent.
      */
-    networkingMethod?: pulumi.Input<string>;
+    networkingMethod?: pulumi.Input<string | undefined>;
     /**
      * The private link ID.
      */
-    privateLinkId?: pulumi.Input<string>;
+    privateLinkId?: pulumi.Input<string | undefined>;
     /**
      * Data processing location. This is where Fivetran will operate and run computation on data.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The destination type id within the Fivetran system.
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
     /**
      * Destination setup status.
      */
-    setupStatus?: pulumi.Input<string>;
+    setupStatus?: pulumi.Input<string | undefined>;
     /**
      * Determines the time zone for the Fivetran sync schedule.
      */
-    timeZoneOffset?: pulumi.Input<string>;
+    timeZoneOffset?: pulumi.Input<string | undefined>;
 }
 
 export interface GetExternalLoggingConfig {
@@ -23156,63 +23156,63 @@ export interface GetExternalLoggingConfigArgs {
     /**
      * API Key
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * Channel
      */
-    channel?: pulumi.Input<string>;
+    channel?: pulumi.Input<string | undefined>;
     /**
      * Enable SSL
      */
-    enableSsl?: pulumi.Input<boolean>;
+    enableSsl?: pulumi.Input<boolean | undefined>;
     /**
      * external_id
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * Server name
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * Server name
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * Log Group Name
      */
-    logGroupName?: pulumi.Input<string>;
+    logGroupName?: pulumi.Input<string | undefined>;
     /**
      * Port
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * Primary Key
      */
-    primaryKey?: pulumi.Input<string>;
+    primaryKey?: pulumi.Input<string | undefined>;
     /**
      * Project Id for Google Cloud Logging
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Region
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Role Arn
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
     /**
      * Sub Domain
      */
-    subDomain?: pulumi.Input<string>;
+    subDomain?: pulumi.Input<string | undefined>;
     /**
      * Token
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * Workspace ID
      */
-    workspaceId?: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetExternalLogsLog {
@@ -23234,15 +23234,15 @@ export interface GetExternalLogsLogArgs {
     /**
      * The boolean value specifying whether the log service is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The unique identifier for the log service within the Fivetran system.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name for the log service type within the Fivetran system. We support the following log services: azure*monitor*log, cloudwatch, datadog*log, new*relic_log, splunkLog, stackdriver.
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGroupConnectionsConnection {
@@ -23301,52 +23301,52 @@ export interface GetGroupConnectionsConnectionArgs {
     /**
      * The unique identifier of the user who has created the connection in your account
      */
-    connectedBy?: pulumi.Input<string>;
+    connectedBy?: pulumi.Input<string | undefined>;
     /**
      * The timestamp of the time the connection was created in your account
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time
      */
-    dailySyncTime?: pulumi.Input<string>;
+    dailySyncTime?: pulumi.Input<string | undefined>;
     /**
      * The timestamp of the time the connection sync failed last time
      */
-    failedAt?: pulumi.Input<string>;
+    failedAt?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the Group within the Fivetran system.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the Connector within the Fivetran system.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The connection schedule configuration type. Supported values: auto, manual
      */
-    scheduleType?: pulumi.Input<string>;
+    scheduleType?: pulumi.Input<string | undefined>;
     /**
      * The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * The connector type name within the Fivetran system
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
     /**
      * The connector type version within the Fivetran system
      */
-    serviceVersion?: pulumi.Input<number>;
-    status?: pulumi.Input<inputs.GetGroupConnectionsConnectionStatusArgs>;
+    serviceVersion?: pulumi.Input<number | undefined>;
+    status?: pulumi.Input<inputs.GetGroupConnectionsConnectionStatusArgs | undefined>;
     /**
      * The timestamp of the time the connection sync succeeded last time
      */
-    succeededAt?: pulumi.Input<string>;
+    succeededAt?: pulumi.Input<string | undefined>;
     /**
      * The connection sync frequency in minutes
      */
-    syncFrequency?: pulumi.Input<number>;
+    syncFrequency?: pulumi.Input<number | undefined>;
 }
 
 export interface GetGroupConnectionsConnectionStatus {
@@ -23380,27 +23380,27 @@ export interface GetGroupConnectionsConnectionStatusArgs {
     /**
      * The boolean specifying whether the connection should be triggered to re-sync all historical data. If you set this parameter to TRUE, the next scheduled sync will be historical. If the value is FALSE or not specified, the connection will not re-sync historical data. NOTE: When the value is TRUE, only the next scheduled sync will be historical, all subsequent ones will be incremental. This parameter is set to FALSE once the historical sync is completed.
      */
-    isHistoricalSync?: pulumi.Input<boolean>;
+    isHistoricalSync?: pulumi.Input<boolean | undefined>;
     /**
      * The current setup state of the connection. The available values are: \n\n - incomplete - the setup config is incomplete, the setup tests never succeeded \n\n - connected - the connection is properly set up \n\n - broken - the connection setup config is broken.
      */
-    setupState?: pulumi.Input<string>;
+    setupState?: pulumi.Input<string | undefined>;
     /**
      * The current sync state of the connection. The available values are: \n\n - scheduled - the sync is waiting to be run \n\n - syncing - the sync is currently running \n\n - paused - the sync is currently paused \n\n - rescheduled - the sync is waiting until more API calls are available in the source service.
      */
-    syncState?: pulumi.Input<string>;
+    syncState?: pulumi.Input<string | undefined>;
     /**
      * The collection of tasks for the connection
      */
-    tasks?: pulumi.Input<pulumi.Input<inputs.GetGroupConnectionsConnectionStatusTaskArgs>[]>;
+    tasks?: pulumi.Input<pulumi.Input<inputs.GetGroupConnectionsConnectionStatusTaskArgs>[] | undefined>;
     /**
      * The current data update state of the connection. The available values are: \n\n - onSchedule - the sync is running smoothly, no delays \n\n - delayed - the data is delayed for a longer time than expected for the update.
      */
-    updateState?: pulumi.Input<string>;
+    updateState?: pulumi.Input<string | undefined>;
     /**
      * The collection of warnings for the connection.
      */
-    warnings?: pulumi.Input<pulumi.Input<inputs.GetGroupConnectionsConnectionStatusWarningArgs>[]>;
+    warnings?: pulumi.Input<pulumi.Input<inputs.GetGroupConnectionsConnectionStatusWarningArgs>[] | undefined>;
 }
 
 export interface GetGroupConnectionsConnectionStatusTask {
@@ -23418,11 +23418,11 @@ export interface GetGroupConnectionsConnectionStatusTaskArgs {
     /**
      * Response status code
      */
-    code?: pulumi.Input<string>;
+    code?: pulumi.Input<string | undefined>;
     /**
      * Response status text
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGroupConnectionsConnectionStatusWarning {
@@ -23440,11 +23440,11 @@ export interface GetGroupConnectionsConnectionStatusWarningArgs {
     /**
      * Response status code
      */
-    code?: pulumi.Input<string>;
+    code?: pulumi.Input<string | undefined>;
     /**
      * Response status text
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGroupConnectorsConnector {
@@ -23503,52 +23503,52 @@ export interface GetGroupConnectorsConnectorArgs {
     /**
      * The unique identifier of the user who has created the connector in your account
      */
-    connectedBy?: pulumi.Input<string>;
+    connectedBy?: pulumi.Input<string | undefined>;
     /**
      * The timestamp of the time the connector was created in your account
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time
      */
-    dailySyncTime?: pulumi.Input<string>;
+    dailySyncTime?: pulumi.Input<string | undefined>;
     /**
      * The timestamp of the time the connector sync failed last time
      */
-    failedAt?: pulumi.Input<string>;
+    failedAt?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the Group within the Fivetran system.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the Connector within the Fivetran system.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The connector schedule configuration type. Supported values: auto, manual
      */
-    scheduleType?: pulumi.Input<string>;
+    scheduleType?: pulumi.Input<string | undefined>;
     /**
      * The name used both as the connector's name within the Fivetran system and as the source schema's name within your destination
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * The connector type name within the Fivetran system
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
     /**
      * The connector type version within the Fivetran system
      */
-    serviceVersion?: pulumi.Input<number>;
-    status?: pulumi.Input<inputs.GetGroupConnectorsConnectorStatusArgs>;
+    serviceVersion?: pulumi.Input<number | undefined>;
+    status?: pulumi.Input<inputs.GetGroupConnectorsConnectorStatusArgs | undefined>;
     /**
      * The timestamp of the time the connector sync succeeded last time
      */
-    succeededAt?: pulumi.Input<string>;
+    succeededAt?: pulumi.Input<string | undefined>;
     /**
      * The connector sync frequency in minutes
      */
-    syncFrequency?: pulumi.Input<number>;
+    syncFrequency?: pulumi.Input<number | undefined>;
 }
 
 export interface GetGroupConnectorsConnectorStatus {
@@ -23582,27 +23582,27 @@ export interface GetGroupConnectorsConnectorStatusArgs {
     /**
      * The boolean specifying whether the connector should be triggered to re-sync all historical data. If you set this parameter to TRUE, the next scheduled sync will be historical. If the value is FALSE or not specified, the connector will not re-sync historical data. NOTE: When the value is TRUE, only the next scheduled sync will be historical, all subsequent ones will be incremental. This parameter is set to FALSE once the historical sync is completed.
      */
-    isHistoricalSync?: pulumi.Input<boolean>;
+    isHistoricalSync?: pulumi.Input<boolean | undefined>;
     /**
      * The current setup state of the connector. The available values are: \n\n - incomplete - the setup config is incomplete, the setup tests never succeeded \n\n - connected - the connector is properly set up \n\n - broken - the connector setup config is broken.
      */
-    setupState?: pulumi.Input<string>;
+    setupState?: pulumi.Input<string | undefined>;
     /**
      * The current sync state of the connector. The available values are: \n\n - scheduled - the sync is waiting to be run \n\n - syncing - the sync is currently running \n\n - paused - the sync is currently paused \n\n - rescheduled - the sync is waiting until more API calls are available in the source service.
      */
-    syncState?: pulumi.Input<string>;
+    syncState?: pulumi.Input<string | undefined>;
     /**
      * The collection of tasks for the connector
      */
-    tasks?: pulumi.Input<pulumi.Input<inputs.GetGroupConnectorsConnectorStatusTaskArgs>[]>;
+    tasks?: pulumi.Input<pulumi.Input<inputs.GetGroupConnectorsConnectorStatusTaskArgs>[] | undefined>;
     /**
      * The current data update state of the connector. The available values are: \n\n - onSchedule - the sync is running smoothly, no delays \n\n - delayed - the data is delayed for a longer time than expected for the update.
      */
-    updateState?: pulumi.Input<string>;
+    updateState?: pulumi.Input<string | undefined>;
     /**
      * The collection of warnings for the connector.
      */
-    warnings?: pulumi.Input<pulumi.Input<inputs.GetGroupConnectorsConnectorStatusWarningArgs>[]>;
+    warnings?: pulumi.Input<pulumi.Input<inputs.GetGroupConnectorsConnectorStatusWarningArgs>[] | undefined>;
 }
 
 export interface GetGroupConnectorsConnectorStatusTask {
@@ -23620,11 +23620,11 @@ export interface GetGroupConnectorsConnectorStatusTaskArgs {
     /**
      * Response status code
      */
-    code?: pulumi.Input<string>;
+    code?: pulumi.Input<string | undefined>;
     /**
      * Response status text
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGroupConnectorsConnectorStatusWarning {
@@ -23642,11 +23642,11 @@ export interface GetGroupConnectorsConnectorStatusWarningArgs {
     /**
      * Response status code
      */
-    code?: pulumi.Input<string>;
+    code?: pulumi.Input<string | undefined>;
     /**
      * Response status text
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGroupUsersUser {
@@ -23700,7 +23700,7 @@ export interface GetGroupUsersUserArgs {
     /**
      * The timestamp that the user created their Fivetran account
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The email address that the user has associated with their user profile.
      */
@@ -23708,31 +23708,31 @@ export interface GetGroupUsersUserArgs {
     /**
      * The last name of the user.
      */
-    familyName?: pulumi.Input<string>;
+    familyName?: pulumi.Input<string | undefined>;
     /**
      * The first name of the user.
      */
-    givenName?: pulumi.Input<string>;
+    givenName?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the user within the account.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The field indicates whether the user has verified their email address in the account creation process.
      */
-    invited?: pulumi.Input<boolean>;
+    invited?: pulumi.Input<boolean | undefined>;
     /**
      * The last time that the user has logged into their Fivetran account.
      */
-    loggedInAt?: pulumi.Input<string>;
+    loggedInAt?: pulumi.Input<string | undefined>;
     /**
      * The phone number of the user.
      */
-    phone?: pulumi.Input<string>;
+    phone?: pulumi.Input<string | undefined>;
     /**
      * The user's avatar as a URL link (for example, 'http://mycompany.com/avatars/john_white.png') or base64 data URI (for example, 'data:image/png;base64,aHR0cDovL215Y29tcGFueS5jb20vYXZhdGFycy9qb2huX3doaXRlLnBuZw==')
      */
-    picture?: pulumi.Input<string>;
+    picture?: pulumi.Input<string | undefined>;
     /**
      * The group role that you would like to assign this new user to. Supported group roles: ‘Destination Administrator‘, ‘Destination Reviewer‘, ‘Destination Analyst‘, ‘Connector Creator‘, or a custom destination role
      */
@@ -23740,7 +23740,7 @@ export interface GetGroupUsersUserArgs {
     /**
      * The field indicates whether the user has verified their email address in the account creation process.
      */
-    verified?: pulumi.Input<boolean>;
+    verified?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetGroupsGroup {
@@ -23766,7 +23766,7 @@ export interface GetGroupsGroupArgs {
     /**
      * The timestamp of when the group was created in your account.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the group within the Fivetran system.
      */
@@ -23774,11 +23774,11 @@ export interface GetGroupsGroupArgs {
     /**
      * The timestamp of when the resource/datasource was updated last time.
      */
-    lastUpdated?: pulumi.Input<string>;
+    lastUpdated?: pulumi.Input<string | undefined>;
     /**
      * The name of the group within your account.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface GetPrivateLinksItem {
@@ -23828,43 +23828,43 @@ export interface GetPrivateLinksItemArgs {
     /**
      * The cloud provider name.
      */
-    cloudProvider?: pulumi.Input<string>;
+    cloudProvider?: pulumi.Input<string | undefined>;
     /**
      * The date and time the membership was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the User within the Fivetran system.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * The private link host.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the private link within the Fivetran system.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Data processing location. This is where Fivetran will operate and run computation on data.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Service type.
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
     /**
      * The state of the private link.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The state of the private link.
      */
-    stateSummary?: pulumi.Input<string>;
+    stateSummary?: pulumi.Input<string | undefined>;
 }
 
 export interface GetProxyAgentsItem {
@@ -23894,15 +23894,15 @@ export interface GetProxyAgentsItemArgs {
     /**
      * The actor who created the proxy agent.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Proxy agent name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Data processing location. This is where Fivetran will operate and run computation on data.
      */
-    groupRegion?: pulumi.Input<string>;
+    groupRegion?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the proxy within your account.
      */
@@ -23910,7 +23910,7 @@ export interface GetProxyAgentsItemArgs {
     /**
      * The timestamp of the time the proxy agent was created in your account.
      */
-    registredAt?: pulumi.Input<string>;
+    registredAt?: pulumi.Input<string | undefined>;
 }
 
 export interface GetQuickstartPackagesPackage {
@@ -23940,23 +23940,23 @@ export interface GetQuickstartPackagesPackageArgs {
     /**
      * The set of connector types
      */
-    connectorTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    connectorTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The unique identifier for the Quickstart transformation package definition within the Fivetran system
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The Quickstart transformation package name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The list of transformation output models
      */
-    outputModelNames?: pulumi.Input<pulumi.Input<string>[]>;
+    outputModelNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Quickstart package definition version
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 export interface GetRolesRole {
@@ -23990,27 +23990,27 @@ export interface GetRolesRoleArgs {
     /**
      * The role description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Defines whether the role is standard or custom
      */
-    isCustom?: pulumi.Input<boolean>;
+    isCustom?: pulumi.Input<boolean | undefined>;
     /**
      * Defines whether the role is deprecated
      */
-    isDeprecated?: pulumi.Input<boolean>;
+    isDeprecated?: pulumi.Input<boolean | undefined>;
     /**
      * The role name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the new role replacing the deprecated role
      */
-    replacementRoleName?: pulumi.Input<string>;
+    replacementRoleName?: pulumi.Input<string | undefined>;
     /**
      * Defines the list of resources the role manages. Supported values: ACCOUNT, DESTINATION, CONNECTOR, and TEAM
      */
-    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface GetTeamConnectionMembershipsConnection {
@@ -24036,11 +24036,11 @@ export interface GetTeamConnectionMembershipsConnectionArgs {
     /**
      * The date and time the membership was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The team's role that links the team and the connection
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 export interface GetTeamConnectorMembershipsConnector {
@@ -24066,11 +24066,11 @@ export interface GetTeamConnectorMembershipsConnectorArgs {
     /**
      * The date and time the membership was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The team's role that links the team and the connector
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 export interface GetTeamGroupMembershipsGroup {
@@ -24092,7 +24092,7 @@ export interface GetTeamGroupMembershipsGroupArgs {
     /**
      * The date and time the membership was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The group unique identifier
      */
@@ -24100,7 +24100,7 @@ export interface GetTeamGroupMembershipsGroupArgs {
     /**
      * The team's role that links the team and the group
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 export interface GetTeamUserMembershipsUser {
@@ -24118,7 +24118,7 @@ export interface GetTeamUserMembershipsUserArgs {
     /**
      * The team's role that links the team and the user
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * The user unique identifier
      */
@@ -24148,7 +24148,7 @@ export interface GetTeamsTeamArgs {
     /**
      * The description of the team within your account.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the team within your account.
      */
@@ -24156,11 +24156,11 @@ export interface GetTeamsTeamArgs {
     /**
      * The name of the team within your account.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The account role of the team.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 export interface GetTransformationProjectProjectConfig {
@@ -24206,39 +24206,39 @@ export interface GetTransformationProjectProjectConfigArgs {
     /**
      * The version of transformation that should run the project
      */
-    dbtVersion?: pulumi.Input<string>;
+    dbtVersion?: pulumi.Input<string | undefined>;
     /**
      * Default schema in destination. This production schema will contain your transformed data.
      */
-    defaultSchema?: pulumi.Input<string>;
+    defaultSchema?: pulumi.Input<string | undefined>;
     /**
      * List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
      */
-    environmentVars?: pulumi.Input<pulumi.Input<string>[]>;
+    environmentVars?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Folder in Git repo with your transformation project
      */
-    folderPath?: pulumi.Input<string>;
+    folderPath?: pulumi.Input<string | undefined>;
     /**
      * Git branch
      */
-    gitBranch?: pulumi.Input<string>;
+    gitBranch?: pulumi.Input<string | undefined>;
     /**
      * Git remote URL with your transformation project
      */
-    gitRemoteUrl?: pulumi.Input<string>;
+    gitRemoteUrl?: pulumi.Input<string | undefined>;
     /**
      * Public key to grant Fivetran SSH access to git repository.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * Target name to set or override the value from the deployment.yaml
      */
-    targetName?: pulumi.Input<string>;
+    targetName?: pulumi.Input<string | undefined>;
     /**
      * The number of threads transformation will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
      */
-    threads?: pulumi.Input<number>;
+    threads?: pulumi.Input<number | undefined>;
 }
 
 export interface GetTransformationSchedule {
@@ -24276,31 +24276,31 @@ export interface GetTransformationScheduleArgs {
     /**
      * The list of the connection identifiers to be used for the integrated schedule. Not expected for QUICKSTART transformations
      */
-    connectionIds?: pulumi.Input<pulumi.Input<string>[]>;
+    connectionIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Cron schedule: list of CRON strings. Used for for CRON schedule type
      */
-    crons?: pulumi.Input<pulumi.Input<string>[]>;
+    crons?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The set of the days of the week the transformation should be launched on. The following values are supported: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY. Used for for INTEGRATED schedule type
      */
-    daysOfWeeks?: pulumi.Input<pulumi.Input<string>[]>;
+    daysOfWeeks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The time interval in minutes between subsequent transformation runs. Used for for INTERVAL schedule type
      */
-    interval?: pulumi.Input<number>;
+    interval?: pulumi.Input<number | undefined>;
     /**
      * The type of the schedule to run the Transformation on. The following values are supported: INTEGRATED, TIME*OF*DAY, INTERVAL, CRON.
      */
-    scheduleType?: pulumi.Input<string>;
+    scheduleType?: pulumi.Input<string | undefined>;
     /**
      * The boolean flag that enables the Smart Syncing schedule
      */
-    smartSyncing?: pulumi.Input<boolean>;
+    smartSyncing?: pulumi.Input<boolean | undefined>;
     /**
      * The time of the day the transformation should be launched at. Supported values are: "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00". Used for for TIME*OF*DAY schedule type
      */
-    timeOfDay?: pulumi.Input<string>;
+    timeOfDay?: pulumi.Input<string | undefined>;
 }
 
 export interface GetTransformationTransformationConfig {
@@ -24335,28 +24335,28 @@ export interface GetTransformationTransformationConfigArgs {
     /**
      * The list of the connection identifiers to be used for the integrated schedule. Also used to identify package*name automatically if package*name was not specified
      */
-    connectionIds?: pulumi.Input<pulumi.Input<string>[]>;
+    connectionIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of excluded output model names
      */
-    excludedModels?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedModels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The transformation name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Quickstart transformation package name
      */
-    packageName?: pulumi.Input<string>;
+    packageName?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the dbt Core project within the Fivetran system
      */
-    projectId?: pulumi.Input<string>;
-    steps?: pulumi.Input<pulumi.Input<inputs.GetTransformationTransformationConfigStepArgs>[]>;
+    projectId?: pulumi.Input<string | undefined>;
+    steps?: pulumi.Input<pulumi.Input<inputs.GetTransformationTransformationConfigStepArgs>[] | undefined>;
     /**
      * The boolean flag indicating that a newer version is available for the transformation package
      */
-    upgradeAvailable?: pulumi.Input<boolean>;
+    upgradeAvailable?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetTransformationTransformationConfigStep {
@@ -24374,11 +24374,11 @@ export interface GetTransformationTransformationConfigStepArgs {
     /**
      * The dbt command in the transformation step
      */
-    command?: pulumi.Input<string>;
+    command?: pulumi.Input<string | undefined>;
     /**
      * The step name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface GetTransformationsTransformation {
@@ -24418,11 +24418,11 @@ export interface GetTransformationsTransformationArgs {
     /**
      * The timestamp of when the transformation was created in your account.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the User within the Fivetran system who created the transformation.
      */
-    createdById?: pulumi.Input<string>;
+    createdById?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the Transformation within the Fivetran system.
      */
@@ -24430,21 +24430,21 @@ export interface GetTransformationsTransformationArgs {
     /**
      * Identifiers of related models.
      */
-    outputModelNames?: pulumi.Input<pulumi.Input<string>[]>;
+    outputModelNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The field indicating whether the transformation will be set into the paused state. By default, the value is false.
      */
-    paused?: pulumi.Input<boolean>;
-    schedule?: pulumi.Input<inputs.GetTransformationsTransformationScheduleArgs>;
+    paused?: pulumi.Input<boolean | undefined>;
+    schedule?: pulumi.Input<inputs.GetTransformationsTransformationScheduleArgs | undefined>;
     /**
      * Status of transformation Project (NOT_READY, READY, ERROR).
      */
-    status?: pulumi.Input<string>;
-    transformationConfig?: pulumi.Input<inputs.GetTransformationsTransformationTransformationConfigArgs>;
+    status?: pulumi.Input<string | undefined>;
+    transformationConfig?: pulumi.Input<inputs.GetTransformationsTransformationTransformationConfigArgs | undefined>;
     /**
      * Transformation type. The following values are supported: DBT_CORE, QUICKSTART.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface GetTransformationsTransformationSchedule {
@@ -24482,31 +24482,31 @@ export interface GetTransformationsTransformationScheduleArgs {
     /**
      * The list of the connection identifiers to be used for the integrated schedule. Not expected for QUICKSTART transformations
      */
-    connectionIds?: pulumi.Input<pulumi.Input<string>[]>;
+    connectionIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Cron schedule: list of CRON strings. Used for for CRON schedule type
      */
-    crons?: pulumi.Input<pulumi.Input<string>[]>;
+    crons?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The set of the days of the week the transformation should be launched on. The following values are supported: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY. Used for for INTEGRATED schedule type
      */
-    daysOfWeeks?: pulumi.Input<pulumi.Input<string>[]>;
+    daysOfWeeks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The time interval in minutes between subsequent transformation runs. Used for for INTERVAL schedule type
      */
-    interval?: pulumi.Input<number>;
+    interval?: pulumi.Input<number | undefined>;
     /**
      * The type of the schedule to run the Transformation on. The following values are supported: INTEGRATED, TIME*OF*DAY, INTERVAL, CRON.
      */
-    scheduleType?: pulumi.Input<string>;
+    scheduleType?: pulumi.Input<string | undefined>;
     /**
      * The boolean flag that enables the Smart Syncing schedule
      */
-    smartSyncing?: pulumi.Input<boolean>;
+    smartSyncing?: pulumi.Input<boolean | undefined>;
     /**
      * The time of the day the transformation should be launched at. Supported values are: "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00". Used for for TIME*OF*DAY schedule type
      */
-    timeOfDay?: pulumi.Input<string>;
+    timeOfDay?: pulumi.Input<string | undefined>;
 }
 
 export interface GetTransformationsTransformationTransformationConfig {
@@ -24541,28 +24541,28 @@ export interface GetTransformationsTransformationTransformationConfigArgs {
     /**
      * The list of the connection identifiers to be used for the integrated schedule. Also used to identify package*name automatically if package*name was not specified
      */
-    connectionIds?: pulumi.Input<pulumi.Input<string>[]>;
+    connectionIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of excluded output model names
      */
-    excludedModels?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedModels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The transformation name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Quickstart transformation package name
      */
-    packageName?: pulumi.Input<string>;
+    packageName?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the dbt Core project within the Fivetran system
      */
-    projectId?: pulumi.Input<string>;
-    steps?: pulumi.Input<pulumi.Input<inputs.GetTransformationsTransformationTransformationConfigStepArgs>[]>;
+    projectId?: pulumi.Input<string | undefined>;
+    steps?: pulumi.Input<pulumi.Input<inputs.GetTransformationsTransformationTransformationConfigStepArgs>[] | undefined>;
     /**
      * The boolean flag indicating that a newer version is available for the transformation package
      */
-    upgradeAvailable?: pulumi.Input<boolean>;
+    upgradeAvailable?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetTransformationsTransformationTransformationConfigStep {
@@ -24580,11 +24580,11 @@ export interface GetTransformationsTransformationTransformationConfigStepArgs {
     /**
      * The dbt command in the transformation step
      */
-    command?: pulumi.Input<string>;
+    command?: pulumi.Input<string | undefined>;
     /**
      * The step name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface GetUserConnectionMembershipsConnection {
@@ -24606,15 +24606,15 @@ export interface GetUserConnectionMembershipsConnectionArgs {
     /**
      * The connection unique identifier
      */
-    connectionId?: pulumi.Input<string>;
+    connectionId?: pulumi.Input<string | undefined>;
     /**
      * The date and time the membership was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The user's role that links the user and the connection
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 export interface GetUserConnectorMembershipsConnector {
@@ -24636,15 +24636,15 @@ export interface GetUserConnectorMembershipsConnectorArgs {
     /**
      * The connector unique identifier
      */
-    connectorId?: pulumi.Input<string>;
+    connectorId?: pulumi.Input<string | undefined>;
     /**
      * The date and time the membership was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The user's role that links the user and the connector
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 export interface GetUserGroupMembershipsGroup {
@@ -24666,15 +24666,15 @@ export interface GetUserGroupMembershipsGroupArgs {
     /**
      * The date and time the membership was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The group unique identifier
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The user's role that links the user and the group
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 export interface GetUsersUser {
@@ -24724,43 +24724,43 @@ export interface GetUsersUserArgs {
     /**
      * The timestamp that the user created their Fivetran account
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The email address that the user has associated with their user profile.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The last name of the user.
      */
-    familyName?: pulumi.Input<string>;
+    familyName?: pulumi.Input<string | undefined>;
     /**
      * The first name of the user.
      */
-    givenName?: pulumi.Input<string>;
+    givenName?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the user within your account.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The field indicates whether the user has been invited to your account.
      */
-    invited?: pulumi.Input<boolean>;
+    invited?: pulumi.Input<boolean | undefined>;
     /**
      * The last time that the user has logged into their Fivetran account.
      */
-    loggedInAt?: pulumi.Input<string>;
+    loggedInAt?: pulumi.Input<string | undefined>;
     /**
      * The phone number of the user.
      */
-    phone?: pulumi.Input<string>;
+    phone?: pulumi.Input<string | undefined>;
     /**
      * The user's avatar as a URL link (for example, 'http://mycompany.com/avatars/john_white.png') or base64 data URI (for example, 'data:image/png;base64,aHR0cDovL215Y29tcGFueS5jb20vYXZhdGFycy9qb2huX3doaXRlLnBuZw==')
      */
-    picture?: pulumi.Input<string>;
+    picture?: pulumi.Input<string | undefined>;
     /**
      * The field indicates whether the user has verified their email address in the account creation process.
      */
-    verified?: pulumi.Input<boolean>;
+    verified?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GroupUsersUser {
@@ -24771,7 +24771,7 @@ export interface GroupUsersUser {
     /**
      * The unique identifier for the user within the account.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The group role that you would like to assign this new user to. Supported group roles: ‘Destination Administrator‘, ‘Destination Reviewer‘, ‘Destination Analyst‘, ‘Connector Creator‘, or a custom destination role
      */
@@ -24786,7 +24786,7 @@ export interface TeamConnectorMembershipConnector {
     /**
      * The date and time the membership was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The team's role that links the team and the connector
      */
@@ -24797,7 +24797,7 @@ export interface TeamGroupMembershipGroup {
     /**
      * The date and time the membership was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The group unique identifier
      */
@@ -24823,109 +24823,109 @@ export interface TransformationProjectProjectConfig {
     /**
      * The version of transformation that should run the project
      */
-    dbtVersion?: pulumi.Input<string>;
+    dbtVersion?: pulumi.Input<string | undefined>;
     /**
      * Default schema in destination. This production schema will contain your transformed data.
      */
-    defaultSchema?: pulumi.Input<string>;
+    defaultSchema?: pulumi.Input<string | undefined>;
     /**
      * List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
      */
-    environmentVars?: pulumi.Input<pulumi.Input<string>[]>;
+    environmentVars?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Folder in Git repo with your transformation project
      */
-    folderPath?: pulumi.Input<string>;
+    folderPath?: pulumi.Input<string | undefined>;
     /**
      * Git branch
      */
-    gitBranch?: pulumi.Input<string>;
+    gitBranch?: pulumi.Input<string | undefined>;
     /**
      * Git remote URL with your transformation project
      */
-    gitRemoteUrl?: pulumi.Input<string>;
+    gitRemoteUrl?: pulumi.Input<string | undefined>;
     /**
      * Public key to grant Fivetran SSH access to git repository.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * Target name to set or override the value from the deployment.yaml
      */
-    targetName?: pulumi.Input<string>;
+    targetName?: pulumi.Input<string | undefined>;
     /**
      * The number of threads transformation will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
      */
-    threads?: pulumi.Input<number>;
+    threads?: pulumi.Input<number | undefined>;
 }
 
 export interface TransformationSchedule {
     /**
      * The list of the connection identifiers to be used for the integrated schedule. Not expected for QUICKSTART transformations
      */
-    connectionIds?: pulumi.Input<pulumi.Input<string>[]>;
+    connectionIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Cron schedule: list of CRON strings. Used for for CRON schedule type
      */
-    crons?: pulumi.Input<pulumi.Input<string>[]>;
+    crons?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The set of the days of the week the transformation should be launched on. The following values are supported: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY. Used for for INTEGRATED schedule type
      */
-    daysOfWeeks?: pulumi.Input<pulumi.Input<string>[]>;
+    daysOfWeeks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The time interval in minutes between subsequent transformation runs. Used for for INTERVAL schedule type
      */
-    interval?: pulumi.Input<number>;
+    interval?: pulumi.Input<number | undefined>;
     /**
      * The type of the schedule to run the Transformation on. The following values are supported: INTEGRATED, TIME*OF*DAY, INTERVAL, CRON.
      */
-    scheduleType?: pulumi.Input<string>;
+    scheduleType?: pulumi.Input<string | undefined>;
     /**
      * The boolean flag that enables the Smart Syncing schedule
      */
-    smartSyncing?: pulumi.Input<boolean>;
+    smartSyncing?: pulumi.Input<boolean | undefined>;
     /**
      * The time of the day the transformation should be launched at. Supported values are: "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00". Used for for TIME*OF*DAY schedule type
      */
-    timeOfDay?: pulumi.Input<string>;
+    timeOfDay?: pulumi.Input<string | undefined>;
 }
 
 export interface TransformationTransformationConfig {
     /**
      * The list of the connection identifiers to be used for the integrated schedule. Also used to identify package*name automatically if package*name was not specified
      */
-    connectionIds?: pulumi.Input<pulumi.Input<string>[]>;
+    connectionIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of excluded output model names
      */
-    excludedModels?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedModels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The transformation name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Quickstart transformation package name
      */
-    packageName?: pulumi.Input<string>;
+    packageName?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the dbt Core project within the Fivetran system
      */
-    projectId?: pulumi.Input<string>;
-    steps?: pulumi.Input<pulumi.Input<inputs.TransformationTransformationConfigStep>[]>;
+    projectId?: pulumi.Input<string | undefined>;
+    steps?: pulumi.Input<pulumi.Input<inputs.TransformationTransformationConfigStep>[] | undefined>;
     /**
      * The boolean flag indicating that a newer version is available for the transformation package
      */
-    upgradeAvailable?: pulumi.Input<boolean>;
+    upgradeAvailable?: pulumi.Input<boolean | undefined>;
 }
 
 export interface TransformationTransformationConfigStep {
     /**
      * The dbt command in the transformation step
      */
-    command?: pulumi.Input<string>;
+    command?: pulumi.Input<string | undefined>;
     /**
      * The step name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface UserConnectorMembershipConnector {
@@ -24936,7 +24936,7 @@ export interface UserConnectorMembershipConnector {
     /**
      * The date and time the membership was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The user's role that links the user and the connector
      */
@@ -24947,7 +24947,7 @@ export interface UserGroupMembershipGroup {
     /**
      * The date and time the membership was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The group unique identifier
      */

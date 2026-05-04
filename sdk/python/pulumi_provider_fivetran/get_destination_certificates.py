@@ -90,8 +90,8 @@ def get_destination_certificates(certificates: Optional[Sequence[Union['GetDesti
         certificates=pulumi.get(__ret__, 'certificates'),
         destination_id=pulumi.get(__ret__, 'destination_id'),
         id=pulumi.get(__ret__, 'id'))
-def get_destination_certificates_output(certificates: Optional[pulumi.Input[Optional[Sequence[Union['GetDestinationCertificatesCertificateArgs', 'GetDestinationCertificatesCertificateArgsDict']]]]] = None,
-                                        id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_destination_certificates_output(certificates: pulumi.Input[Optional[Optional[Sequence[Union['GetDestinationCertificatesCertificateArgs', 'GetDestinationCertificatesCertificateArgsDict']]]]] = None,
+                                        id: pulumi.Input[Optional[_builtins.str]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDestinationCertificatesResult]:
     """
     Use this data source to access information about an existing resource.

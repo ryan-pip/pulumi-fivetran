@@ -165,8 +165,8 @@ def get_transformation_project(id: Optional[_builtins.str] = None,
         project_config=pulumi.get(__ret__, 'project_config'),
         status=pulumi.get(__ret__, 'status'),
         type=pulumi.get(__ret__, 'type'))
-def get_transformation_project_output(id: Optional[pulumi.Input[_builtins.str]] = None,
-                                      project_config: Optional[pulumi.Input[Optional[Union['GetTransformationProjectProjectConfigArgs', 'GetTransformationProjectProjectConfigArgsDict']]]] = None,
+def get_transformation_project_output(id: pulumi.Input[Optional[_builtins.str]] = None,
+                                      project_config: pulumi.Input[Optional[Optional[Union['GetTransformationProjectProjectConfigArgs', 'GetTransformationProjectProjectConfigArgsDict']]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransformationProjectResult]:
     """
     Returns transformation project details if a valid identifier was provided

@@ -83,5 +83,5 @@ export interface GetTeamUserMembershipsOutputArgs {
      * The unique identifier for the team within your account.
      */
     teamId: pulumi.Input<string>;
-    users?: pulumi.Input<pulumi.Input<inputs.GetTeamUserMembershipsUserArgs>[]>;
+    users?: pulumi.Input<pulumi.Input<inputs.GetTeamUserMembershipsUserArgs>[] | undefined>;
 }

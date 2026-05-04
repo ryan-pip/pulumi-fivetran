@@ -86,7 +86,7 @@ def get_group_ssh_key(id: Optional[_builtins.str] = None,
     return AwaitableGetGroupSshKeyResult(
         id=pulumi.get(__ret__, 'id'),
         public_key=pulumi.get(__ret__, 'public_key'))
-def get_group_ssh_key_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_group_ssh_key_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupSshKeyResult]:
     """
     This data source returns public key from SSH key pair associated with the group.

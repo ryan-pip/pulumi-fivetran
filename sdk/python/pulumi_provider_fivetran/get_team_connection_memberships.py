@@ -78,8 +78,8 @@ def get_team_connection_memberships(connections: Optional[Sequence[Union['GetTea
     return AwaitableGetTeamConnectionMembershipsResult(
         connections=pulumi.get(__ret__, 'connections'),
         id=pulumi.get(__ret__, 'id'))
-def get_team_connection_memberships_output(connections: Optional[pulumi.Input[Optional[Sequence[Union['GetTeamConnectionMembershipsConnectionArgs', 'GetTeamConnectionMembershipsConnectionArgsDict']]]]] = None,
-                                           id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_team_connection_memberships_output(connections: pulumi.Input[Optional[Optional[Sequence[Union['GetTeamConnectionMembershipsConnectionArgs', 'GetTeamConnectionMembershipsConnectionArgsDict']]]]] = None,
+                                           id: pulumi.Input[Optional[_builtins.str]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTeamConnectionMembershipsResult]:
     """
     This data source returns a connection membership within team object.

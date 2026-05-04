@@ -103,5 +103,5 @@ export interface GetTransformationProjectOutputArgs {
      * The unique identifier for the transformation Project within the Fivetran system.
      */
     id: pulumi.Input<string>;
-    projectConfig?: pulumi.Input<inputs.GetTransformationProjectProjectConfigArgs>;
+    projectConfig?: pulumi.Input<inputs.GetTransformationProjectProjectConfigArgs | undefined>;
 }

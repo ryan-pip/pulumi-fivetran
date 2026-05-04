@@ -75,7 +75,7 @@ export function getConnectionFingerprintsOutput(args: GetConnectionFingerprintsO
  * A collection of arguments for invoking getConnectionFingerprints.
  */
 export interface GetConnectionFingerprintsOutputArgs {
-    fingerprints?: pulumi.Input<pulumi.Input<inputs.GetConnectionFingerprintsFingerprintArgs>[]>;
+    fingerprints?: pulumi.Input<pulumi.Input<inputs.GetConnectionFingerprintsFingerprintArgs>[] | undefined>;
     /**
      * The unique identifier for the target connection within the Fivetran system.
      */

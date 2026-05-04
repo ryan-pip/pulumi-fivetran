@@ -79,7 +79,7 @@ export function getConnectorCertificatesOutput(args: GetConnectorCertificatesOut
  * A collection of arguments for invoking getConnectorCertificates.
  */
 export interface GetConnectorCertificatesOutputArgs {
-    certificates?: pulumi.Input<pulumi.Input<inputs.GetConnectorCertificatesCertificateArgs>[]>;
+    certificates?: pulumi.Input<pulumi.Input<inputs.GetConnectorCertificatesCertificateArgs>[] | undefined>;
     /**
      * The unique identifier for the resource. Equal to target connection id.
      */

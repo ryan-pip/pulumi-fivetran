@@ -22,7 +22,7 @@ __all__ = ['ConnectorCertificatesArgs', 'ConnectorCertificates']
 class ConnectorCertificatesArgs:
     def __init__(__self__, *,
                  connector_id: pulumi.Input[_builtins.str],
-                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorCertificatesCertificateArgs']]]] = None):
+                 certificates: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectorCertificatesCertificateArgs']]]] = None):
         """
         The set of arguments for constructing a ConnectorCertificates resource.
 
@@ -46,19 +46,19 @@ class ConnectorCertificatesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorCertificatesCertificateArgs']]]]:
+    def certificates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectorCertificatesCertificateArgs']]]]:
         return pulumi.get(self, "certificates")
 
     @certificates.setter
-    def certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorCertificatesCertificateArgs']]]]):
+    def certificates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectorCertificatesCertificateArgs']]]]):
         pulumi.set(self, "certificates", value)
 
 
 @pulumi.input_type
 class _ConnectorCertificatesState:
     def __init__(__self__, *,
-                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorCertificatesCertificateArgs']]]] = None,
-                 connector_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 certificates: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectorCertificatesCertificateArgs']]]] = None,
+                 connector_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectorCertificates resources.
 
@@ -71,23 +71,23 @@ class _ConnectorCertificatesState:
 
     @_builtins.property
     @pulumi.getter
-    def certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorCertificatesCertificateArgs']]]]:
+    def certificates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectorCertificatesCertificateArgs']]]]:
         return pulumi.get(self, "certificates")
 
     @certificates.setter
-    def certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorCertificatesCertificateArgs']]]]):
+    def certificates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectorCertificatesCertificateArgs']]]]):
         pulumi.set(self, "certificates", value)
 
     @_builtins.property
     @pulumi.getter(name="connectorId")
-    def connector_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connector_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the target connection within the Fivetran system.
         """
         return pulumi.get(self, "connector_id")
 
     @connector_id.setter
-    def connector_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connector_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connector_id", value)
 
 
@@ -97,8 +97,8 @@ class ConnectorCertificates(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectorCertificatesCertificateArgs', 'ConnectorCertificatesCertificateArgsDict']]]]] = None,
-                 connector_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorCertificatesCertificateArgs', 'ConnectorCertificatesCertificateArgsDict']]]]] = None,
+                 connector_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource allows you to create, update, and delete connector certificates.
@@ -227,8 +227,8 @@ class ConnectorCertificates(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectorCertificatesCertificateArgs', 'ConnectorCertificatesCertificateArgsDict']]]]] = None,
-                 connector_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorCertificatesCertificateArgs', 'ConnectorCertificatesCertificateArgsDict']]]]] = None,
+                 connector_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -252,8 +252,8 @@ class ConnectorCertificates(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            certificates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectorCertificatesCertificateArgs', 'ConnectorCertificatesCertificateArgsDict']]]]] = None,
-            connector_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ConnectorCertificates':
+            certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorCertificatesCertificateArgs', 'ConnectorCertificatesCertificateArgsDict']]]]] = None,
+            connector_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ConnectorCertificates':
         """
         Get an existing ConnectorCertificates resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

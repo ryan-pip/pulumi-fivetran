@@ -104,9 +104,9 @@ def get_group_connectors(connectors: Optional[Sequence[Union['GetGroupConnectors
         connectors=pulumi.get(__ret__, 'connectors'),
         id=pulumi.get(__ret__, 'id'),
         schema=pulumi.get(__ret__, 'schema'))
-def get_group_connectors_output(connectors: Optional[pulumi.Input[Optional[Sequence[Union['GetGroupConnectorsConnectorArgs', 'GetGroupConnectorsConnectorArgsDict']]]]] = None,
-                                id: Optional[pulumi.Input[_builtins.str]] = None,
-                                schema: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_group_connectors_output(connectors: pulumi.Input[Optional[Optional[Sequence[Union['GetGroupConnectorsConnectorArgs', 'GetGroupConnectorsConnectorArgsDict']]]]] = None,
+                                id: pulumi.Input[Optional[_builtins.str]] = None,
+                                schema: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupConnectorsResult]:
     """
     This data source returns a list of information about all connectors within a group in your Fivetran account.

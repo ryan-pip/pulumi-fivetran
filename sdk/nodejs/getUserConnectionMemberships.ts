@@ -75,7 +75,7 @@ export function getUserConnectionMembershipsOutput(args: GetUserConnectionMember
  * A collection of arguments for invoking getUserConnectionMemberships.
  */
 export interface GetUserConnectionMembershipsOutputArgs {
-    connections?: pulumi.Input<pulumi.Input<inputs.GetUserConnectionMembershipsConnectionArgs>[]>;
+    connections?: pulumi.Input<pulumi.Input<inputs.GetUserConnectionMembershipsConnectionArgs>[] | undefined>;
     /**
      * The unique identifier for the user within your account.
      */

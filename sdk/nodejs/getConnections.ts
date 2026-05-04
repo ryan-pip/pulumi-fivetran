@@ -53,5 +53,5 @@ export function getConnectionsOutput(args?: GetConnectionsOutputArgs, opts?: pul
  * A collection of arguments for invoking getConnections.
  */
 export interface GetConnectionsOutputArgs {
-    connections?: pulumi.Input<pulumi.Input<inputs.GetConnectionsConnectionArgs>[]>;
+    connections?: pulumi.Input<pulumi.Input<inputs.GetConnectionsConnectionArgs>[] | undefined>;
 }

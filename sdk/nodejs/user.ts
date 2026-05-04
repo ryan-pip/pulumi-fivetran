@@ -174,43 +174,43 @@ export interface UserState {
     /**
      * The timestamp that the user created their Fivetran account.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The email address that the user has associated with their user profile.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The last name of the user.
      */
-    familyName?: pulumi.Input<string>;
+    familyName?: pulumi.Input<string | undefined>;
     /**
      * The first name of the user.
      */
-    givenName?: pulumi.Input<string>;
+    givenName?: pulumi.Input<string | undefined>;
     /**
      * The field indicates whether the user has been invited to your account.
      */
-    invited?: pulumi.Input<boolean>;
+    invited?: pulumi.Input<boolean | undefined>;
     /**
      * The last time that the user has logged into their Fivetran account.
      */
-    loggedInAt?: pulumi.Input<string>;
+    loggedInAt?: pulumi.Input<string | undefined>;
     /**
      * The phone number of the user.
      */
-    phone?: pulumi.Input<string>;
+    phone?: pulumi.Input<string | undefined>;
     /**
      * The user's avatar as a URL link (for example, 'http://mycompany.com/avatars/john_white.png') or base64 data URI (for example, 'data:image/png;base64,aHR0cDovL215Y29tcGFueS5jb20vYXZhdGFycy9qb2huX3doaXRlLnBuZw==')
      */
-    picture?: pulumi.Input<string>;
+    picture?: pulumi.Input<string | undefined>;
     /**
      * The role that you would like to assign to the user.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * The field indicates whether the user has verified their email address in the account creation process.
      */
-    verified?: pulumi.Input<boolean>;
+    verified?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -232,21 +232,21 @@ export interface UserArgs {
     /**
      * The field indicates whether the user has been invited to your account.
      */
-    invited?: pulumi.Input<boolean>;
+    invited?: pulumi.Input<boolean | undefined>;
     /**
      * The phone number of the user.
      */
-    phone?: pulumi.Input<string>;
+    phone?: pulumi.Input<string | undefined>;
     /**
      * The user's avatar as a URL link (for example, 'http://mycompany.com/avatars/john_white.png') or base64 data URI (for example, 'data:image/png;base64,aHR0cDovL215Y29tcGFueS5jb20vYXZhdGFycy9qb2huX3doaXRlLnBuZw==')
      */
-    picture?: pulumi.Input<string>;
+    picture?: pulumi.Input<string | undefined>;
     /**
      * The role that you would like to assign to the user.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * The field indicates whether the user has verified their email address in the account creation process.
      */
-    verified?: pulumi.Input<boolean>;
+    verified?: pulumi.Input<boolean | undefined>;
 }

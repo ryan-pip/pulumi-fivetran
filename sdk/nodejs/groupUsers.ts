@@ -102,9 +102,9 @@ export interface GroupUsersState {
     /**
      * The unique identifier for the Group within the Fivetran system.
      */
-    groupId?: pulumi.Input<string>;
-    lastUpdated?: pulumi.Input<string>;
-    users?: pulumi.Input<pulumi.Input<inputs.GroupUsersUser>[]>;
+    groupId?: pulumi.Input<string | undefined>;
+    lastUpdated?: pulumi.Input<string | undefined>;
+    users?: pulumi.Input<pulumi.Input<inputs.GroupUsersUser>[] | undefined>;
 }
 
 /**
@@ -115,5 +115,5 @@ export interface GroupUsersArgs {
      * The unique identifier for the Group within the Fivetran system.
      */
     groupId: pulumi.Input<string>;
-    users?: pulumi.Input<pulumi.Input<inputs.GroupUsersUser>[]>;
+    users?: pulumi.Input<pulumi.Input<inputs.GroupUsersUser>[] | undefined>;
 }

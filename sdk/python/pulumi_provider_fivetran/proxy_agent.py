@@ -21,7 +21,7 @@ class ProxyAgentArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
                  group_region: pulumi.Input[_builtins.str],
-                 regeneration_counter: Optional[pulumi.Input[_builtins.int]] = None):
+                 regeneration_counter: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a ProxyAgent resource.
 
@@ -60,28 +60,28 @@ class ProxyAgentArgs:
 
     @_builtins.property
     @pulumi.getter(name="regenerationCounter")
-    def regeneration_counter(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def regeneration_counter(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Determines whether regenerarion secrets needs to be performed.
         """
         return pulumi.get(self, "regeneration_counter")
 
     @regeneration_counter.setter
-    def regeneration_counter(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def regeneration_counter(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "regeneration_counter", value)
 
 
 @pulumi.input_type
 class _ProxyAgentState:
     def __init__(__self__, *,
-                 client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 regeneration_counter: Optional[pulumi.Input[_builtins.int]] = None,
-                 registred_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 regeneration_counter: pulumi.Input[Optional[_builtins.int]] = None,
+                 registred_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProxyAgent resources.
 
@@ -113,98 +113,98 @@ class _ProxyAgentState:
 
     @_builtins.property
     @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client certificate.
         """
         return pulumi.get(self, "client_cert")
 
     @client_cert.setter
-    def client_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="clientPrivateKey")
-    def client_private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client private key.
         """
         return pulumi.get(self, "client_private_key")
 
     @client_private_key.setter
-    def client_private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_private_key", value)
 
     @_builtins.property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The actor who created the proxy agent.
         """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Proxy agent name.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="groupRegion")
-    def group_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data processing location. This is where Fivetran will operate and run computation on data.
         """
         return pulumi.get(self, "group_region")
 
     @group_region.setter
-    def group_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_region", value)
 
     @_builtins.property
     @pulumi.getter(name="regenerationCounter")
-    def regeneration_counter(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def regeneration_counter(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Determines whether regenerarion secrets needs to be performed.
         """
         return pulumi.get(self, "regeneration_counter")
 
     @regeneration_counter.setter
-    def regeneration_counter(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def regeneration_counter(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "regeneration_counter", value)
 
     @_builtins.property
     @pulumi.getter(name="registredAt")
-    def registred_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def registred_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp of the time the proxy agent was created in your account.
         """
         return pulumi.get(self, "registred_at")
 
     @registred_at.setter
-    def registred_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def registred_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "registred_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The auth token.
         """
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
 
@@ -214,9 +214,9 @@ class ProxyAgent(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 regeneration_counter: Optional[pulumi.Input[_builtins.int]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 regeneration_counter: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         This resource allows you to create, update, and delete proxy agent.
@@ -279,9 +279,9 @@ class ProxyAgent(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 regeneration_counter: Optional[pulumi.Input[_builtins.int]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 regeneration_counter: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -313,14 +313,14 @@ class ProxyAgent(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-            client_private_key: Optional[pulumi.Input[_builtins.str]] = None,
-            created_by: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            group_region: Optional[pulumi.Input[_builtins.str]] = None,
-            regeneration_counter: Optional[pulumi.Input[_builtins.int]] = None,
-            registred_at: Optional[pulumi.Input[_builtins.str]] = None,
-            token: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProxyAgent':
+            client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            client_private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            group_region: pulumi.Input[Optional[_builtins.str]] = None,
+            regeneration_counter: pulumi.Input[Optional[_builtins.int]] = None,
+            registred_at: pulumi.Input[Optional[_builtins.str]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProxyAgent':
         """
         Get an existing ProxyAgent resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

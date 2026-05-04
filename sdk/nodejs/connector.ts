@@ -253,83 +253,83 @@ export class Connector extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Connector resources.
  */
 export interface ConnectorState {
-    auth?: pulumi.Input<inputs.ConnectorAuth>;
-    config?: pulumi.Input<inputs.ConnectorConfig>;
+    auth?: pulumi.Input<inputs.ConnectorAuth | undefined>;
+    config?: pulumi.Input<inputs.ConnectorConfig | undefined>;
     /**
      * The unique identifier of the user who has created the connector in your account.
      */
-    connectedBy?: pulumi.Input<string>;
+    connectedBy?: pulumi.Input<string | undefined>;
     /**
      * The timestamp of the time the connector was created in your account.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
      */
-    dataDelaySensitivity?: pulumi.Input<string>;
+    dataDelaySensitivity?: pulumi.Input<string | undefined>;
     /**
      * Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when dataDelaySensitivity set to CUSTOM.
      */
-    dataDelayThreshold?: pulumi.Input<number>;
-    destinationSchema?: pulumi.Input<inputs.ConnectorDestinationSchema>;
+    dataDelayThreshold?: pulumi.Input<number | undefined>;
+    destinationSchema?: pulumi.Input<inputs.ConnectorDestinationSchema | undefined>;
     /**
      * The unique identifier for the Group (Destination) within the Fivetran system.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
      */
-    hybridDeploymentAgentId?: pulumi.Input<string>;
+    hybridDeploymentAgentId?: pulumi.Input<string | undefined>;
     /**
      * The name used both as the connector's name within the Fivetran system and as the source schema's name within your destination.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Possible values: Directly, SshTunnel, ProxyAgent.
      */
-    networkingMethod?: pulumi.Input<string>;
+    networkingMethod?: pulumi.Input<string | undefined>;
     /**
      * The private link ID.
      */
-    privateLinkId?: pulumi.Input<string>;
+    privateLinkId?: pulumi.Input<string | undefined>;
     /**
      * The proxy agent ID.
      */
-    proxyAgentId?: pulumi.Input<string>;
+    proxyAgentId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the setup tests should be run automatically. The default value is FALSE.
      */
-    runSetupTests?: pulumi.Input<boolean>;
+    runSetupTests?: pulumi.Input<boolean | undefined>;
     /**
      * The connector type id within the Fivetran system.
      */
-    service?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.ConnectorTimeouts>;
+    service?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.ConnectorTimeouts | undefined>;
     /**
      * Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
      */
-    trustCertificates?: pulumi.Input<boolean>;
+    trustCertificates?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
      */
-    trustFingerprints?: pulumi.Input<boolean>;
+    trustFingerprints?: pulumi.Input<boolean | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Connector resource.
  */
 export interface ConnectorArgs {
-    auth?: pulumi.Input<inputs.ConnectorAuth>;
-    config?: pulumi.Input<inputs.ConnectorConfig>;
+    auth?: pulumi.Input<inputs.ConnectorAuth | undefined>;
+    config?: pulumi.Input<inputs.ConnectorConfig | undefined>;
     /**
      * The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
      */
-    dataDelaySensitivity?: pulumi.Input<string>;
+    dataDelaySensitivity?: pulumi.Input<string | undefined>;
     /**
      * Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when dataDelaySensitivity set to CUSTOM.
      */
-    dataDelayThreshold?: pulumi.Input<number>;
-    destinationSchema?: pulumi.Input<inputs.ConnectorDestinationSchema>;
+    dataDelayThreshold?: pulumi.Input<number | undefined>;
+    destinationSchema?: pulumi.Input<inputs.ConnectorDestinationSchema | undefined>;
     /**
      * The unique identifier for the Group (Destination) within the Fivetran system.
      */
@@ -337,34 +337,34 @@ export interface ConnectorArgs {
     /**
      * The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
      */
-    hybridDeploymentAgentId?: pulumi.Input<string>;
+    hybridDeploymentAgentId?: pulumi.Input<string | undefined>;
     /**
      * Possible values: Directly, SshTunnel, ProxyAgent.
      */
-    networkingMethod?: pulumi.Input<string>;
+    networkingMethod?: pulumi.Input<string | undefined>;
     /**
      * The private link ID.
      */
-    privateLinkId?: pulumi.Input<string>;
+    privateLinkId?: pulumi.Input<string | undefined>;
     /**
      * The proxy agent ID.
      */
-    proxyAgentId?: pulumi.Input<string>;
+    proxyAgentId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the setup tests should be run automatically. The default value is FALSE.
      */
-    runSetupTests?: pulumi.Input<boolean>;
+    runSetupTests?: pulumi.Input<boolean | undefined>;
     /**
      * The connector type id within the Fivetran system.
      */
     service: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.ConnectorTimeouts>;
+    timeouts?: pulumi.Input<inputs.ConnectorTimeouts | undefined>;
     /**
      * Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
      */
-    trustCertificates?: pulumi.Input<boolean>;
+    trustCertificates?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
      */
-    trustFingerprints?: pulumi.Input<boolean>;
+    trustFingerprints?: pulumi.Input<boolean | undefined>;
 }

@@ -22,7 +22,7 @@ __all__ = ['UserConnectorMembershipArgs', 'UserConnectorMembership']
 class UserConnectorMembershipArgs:
     def __init__(__self__, *,
                  user_id: pulumi.Input[_builtins.str],
-                 connectors: Optional[pulumi.Input[Sequence[pulumi.Input['UserConnectorMembershipConnectorArgs']]]] = None):
+                 connectors: pulumi.Input[Optional[Sequence[pulumi.Input['UserConnectorMembershipConnectorArgs']]]] = None):
         """
         The set of arguments for constructing a UserConnectorMembership resource.
 
@@ -46,19 +46,19 @@ class UserConnectorMembershipArgs:
 
     @_builtins.property
     @pulumi.getter
-    def connectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserConnectorMembershipConnectorArgs']]]]:
+    def connectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserConnectorMembershipConnectorArgs']]]]:
         return pulumi.get(self, "connectors")
 
     @connectors.setter
-    def connectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserConnectorMembershipConnectorArgs']]]]):
+    def connectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserConnectorMembershipConnectorArgs']]]]):
         pulumi.set(self, "connectors", value)
 
 
 @pulumi.input_type
 class _UserConnectorMembershipState:
     def __init__(__self__, *,
-                 connectors: Optional[pulumi.Input[Sequence[pulumi.Input['UserConnectorMembershipConnectorArgs']]]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 connectors: pulumi.Input[Optional[Sequence[pulumi.Input['UserConnectorMembershipConnectorArgs']]]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserConnectorMembership resources.
 
@@ -71,23 +71,23 @@ class _UserConnectorMembershipState:
 
     @_builtins.property
     @pulumi.getter
-    def connectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserConnectorMembershipConnectorArgs']]]]:
+    def connectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserConnectorMembershipConnectorArgs']]]]:
         return pulumi.get(self, "connectors")
 
     @connectors.setter
-    def connectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserConnectorMembershipConnectorArgs']]]]):
+    def connectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserConnectorMembershipConnectorArgs']]]]):
         pulumi.set(self, "connectors", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the user within your account.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
 
@@ -97,8 +97,8 @@ class UserConnectorMembership(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserConnectorMembershipConnectorArgs', 'UserConnectorMembershipConnectorArgsDict']]]]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserConnectorMembershipConnectorArgs', 'UserConnectorMembershipConnectorArgsDict']]]]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource allows you to create, update, and delete connector membership for user
@@ -231,8 +231,8 @@ class UserConnectorMembership(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserConnectorMembershipConnectorArgs', 'UserConnectorMembershipConnectorArgsDict']]]]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserConnectorMembershipConnectorArgs', 'UserConnectorMembershipConnectorArgsDict']]]]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -256,8 +256,8 @@ class UserConnectorMembership(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserConnectorMembershipConnectorArgs', 'UserConnectorMembershipConnectorArgsDict']]]]] = None,
-            user_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'UserConnectorMembership':
+            connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserConnectorMembershipConnectorArgs', 'UserConnectorMembershipConnectorArgsDict']]]]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'UserConnectorMembership':
         """
         Get an existing UserConnectorMembership resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -177,9 +177,9 @@ def get_transformation(id: Optional[_builtins.str] = None,
         status=pulumi.get(__ret__, 'status'),
         transformation_config=pulumi.get(__ret__, 'transformation_config'),
         type=pulumi.get(__ret__, 'type'))
-def get_transformation_output(id: Optional[pulumi.Input[_builtins.str]] = None,
-                              schedule: Optional[pulumi.Input[Optional[Union['GetTransformationScheduleArgs', 'GetTransformationScheduleArgsDict']]]] = None,
-                              transformation_config: Optional[pulumi.Input[Optional[Union['GetTransformationTransformationConfigArgs', 'GetTransformationTransformationConfigArgsDict']]]] = None,
+def get_transformation_output(id: pulumi.Input[Optional[_builtins.str]] = None,
+                              schedule: pulumi.Input[Optional[Optional[Union['GetTransformationScheduleArgs', 'GetTransformationScheduleArgsDict']]]] = None,
+                              transformation_config: pulumi.Input[Optional[Optional[Union['GetTransformationTransformationConfigArgs', 'GetTransformationTransformationConfigArgsDict']]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransformationResult]:
     """
     Returns transformation details if a valid identifier was provided

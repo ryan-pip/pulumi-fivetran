@@ -125,18 +125,18 @@ export class DestinationCertificates extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DestinationCertificates resources.
  */
 export interface DestinationCertificatesState {
-    certificates?: pulumi.Input<pulumi.Input<inputs.DestinationCertificatesCertificate>[]>;
+    certificates?: pulumi.Input<pulumi.Input<inputs.DestinationCertificatesCertificate>[] | undefined>;
     /**
      * The unique identifier for the target destination within the Fivetran system.
      */
-    destinationId?: pulumi.Input<string>;
+    destinationId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a DestinationCertificates resource.
  */
 export interface DestinationCertificatesArgs {
-    certificates?: pulumi.Input<pulumi.Input<inputs.DestinationCertificatesCertificate>[]>;
+    certificates?: pulumi.Input<pulumi.Input<inputs.DestinationCertificatesCertificate>[] | undefined>;
     /**
      * The unique identifier for the target destination within the Fivetran system.
      */

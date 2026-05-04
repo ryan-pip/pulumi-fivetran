@@ -100,8 +100,8 @@ def get_destination_fingerprints(fingerprints: Optional[Sequence[Union['GetDesti
         destination_id=pulumi.get(__ret__, 'destination_id'),
         fingerprints=pulumi.get(__ret__, 'fingerprints'),
         id=pulumi.get(__ret__, 'id'))
-def get_destination_fingerprints_output(fingerprints: Optional[pulumi.Input[Optional[Sequence[Union['GetDestinationFingerprintsFingerprintArgs', 'GetDestinationFingerprintsFingerprintArgsDict']]]]] = None,
-                                        id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_destination_fingerprints_output(fingerprints: pulumi.Input[Optional[Optional[Sequence[Union['GetDestinationFingerprintsFingerprintArgs', 'GetDestinationFingerprintsFingerprintArgsDict']]]]] = None,
+                                        id: pulumi.Input[Optional[_builtins.str]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDestinationFingerprintsResult]:
     """
     This data source returns a list of SSH fingerprints approved for specified destination.

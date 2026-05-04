@@ -79,7 +79,7 @@ export function getTeamGroupMembershipsOutput(args: GetTeamGroupMembershipsOutpu
  * A collection of arguments for invoking getTeamGroupMemberships.
  */
 export interface GetTeamGroupMembershipsOutputArgs {
-    groups?: pulumi.Input<pulumi.Input<inputs.GetTeamGroupMembershipsGroupArgs>[]>;
+    groups?: pulumi.Input<pulumi.Input<inputs.GetTeamGroupMembershipsGroupArgs>[] | undefined>;
     /**
      * The unique identifier for the team within your account.
      */

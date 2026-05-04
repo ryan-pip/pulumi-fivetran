@@ -203,7 +203,7 @@ def get_private_link(id: Optional[_builtins.str] = None,
         service=pulumi.get(__ret__, 'service'),
         state=pulumi.get(__ret__, 'state'),
         state_summary=pulumi.get(__ret__, 'state_summary'))
-def get_private_link_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_private_link_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPrivateLinkResult]:
     """
     This data source returns a private link object.

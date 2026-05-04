@@ -43,5 +43,5 @@ export function getPrivateLinksOutput(args?: GetPrivateLinksOutputArgs, opts?: p
  * A collection of arguments for invoking getPrivateLinks.
  */
 export interface GetPrivateLinksOutputArgs {
-    items?: pulumi.Input<pulumi.Input<inputs.GetPrivateLinksItemArgs>[]>;
+    items?: pulumi.Input<pulumi.Input<inputs.GetPrivateLinksItemArgs>[] | undefined>;
 }

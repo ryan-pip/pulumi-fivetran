@@ -22,7 +22,7 @@ __all__ = ['TeamUserMembershipArgs', 'TeamUserMembership']
 class TeamUserMembershipArgs:
     def __init__(__self__, *,
                  team_id: pulumi.Input[_builtins.str],
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input['TeamUserMembershipUserArgs']]]] = None):
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input['TeamUserMembershipUserArgs']]]] = None):
         """
         The set of arguments for constructing a TeamUserMembership resource.
 
@@ -46,19 +46,19 @@ class TeamUserMembershipArgs:
 
     @_builtins.property
     @pulumi.getter
-    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TeamUserMembershipUserArgs']]]]:
+    def users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TeamUserMembershipUserArgs']]]]:
         return pulumi.get(self, "users")
 
     @users.setter
-    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TeamUserMembershipUserArgs']]]]):
+    def users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TeamUserMembershipUserArgs']]]]):
         pulumi.set(self, "users", value)
 
 
 @pulumi.input_type
 class _TeamUserMembershipState:
     def __init__(__self__, *,
-                 team_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input['TeamUserMembershipUserArgs']]]] = None):
+                 team_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input['TeamUserMembershipUserArgs']]]] = None):
         """
         Input properties used for looking up and filtering TeamUserMembership resources.
 
@@ -71,23 +71,23 @@ class _TeamUserMembershipState:
 
     @_builtins.property
     @pulumi.getter(name="teamId")
-    def team_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def team_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the team within your account.
         """
         return pulumi.get(self, "team_id")
 
     @team_id.setter
-    def team_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def team_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "team_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TeamUserMembershipUserArgs']]]]:
+    def users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TeamUserMembershipUserArgs']]]]:
         return pulumi.get(self, "users")
 
     @users.setter
-    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TeamUserMembershipUserArgs']]]]):
+    def users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TeamUserMembershipUserArgs']]]]):
         pulumi.set(self, "users", value)
 
 
@@ -97,8 +97,8 @@ class TeamUserMembership(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 team_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TeamUserMembershipUserArgs', 'TeamUserMembershipUserArgsDict']]]]] = None,
+                 team_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TeamUserMembershipUserArgs', 'TeamUserMembershipUserArgsDict']]]]] = None,
                  __props__=None):
         """
         This resource allows you to create, update, and delete user membership for teams
@@ -227,8 +227,8 @@ class TeamUserMembership(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 team_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TeamUserMembershipUserArgs', 'TeamUserMembershipUserArgsDict']]]]] = None,
+                 team_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TeamUserMembershipUserArgs', 'TeamUserMembershipUserArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -252,8 +252,8 @@ class TeamUserMembership(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            team_id: Optional[pulumi.Input[_builtins.str]] = None,
-            users: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TeamUserMembershipUserArgs', 'TeamUserMembershipUserArgsDict']]]]] = None) -> 'TeamUserMembership':
+            team_id: pulumi.Input[Optional[_builtins.str]] = None,
+            users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TeamUserMembershipUserArgs', 'TeamUserMembershipUserArgsDict']]]]] = None) -> 'TeamUserMembership':
         """
         Get an existing TeamUserMembership resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

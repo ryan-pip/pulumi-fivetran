@@ -79,5 +79,5 @@ export interface GetGroupUsersOutputArgs {
      * The unique identifier for the group within the Fivetran system. Data-source will represent a set of users who has membership in this group.
      */
     id: pulumi.Input<string>;
-    users?: pulumi.Input<pulumi.Input<inputs.GetGroupUsersUserArgs>[]>;
+    users?: pulumi.Input<pulumi.Input<inputs.GetGroupUsersUserArgs>[] | undefined>;
 }

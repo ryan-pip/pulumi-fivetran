@@ -51,7 +51,7 @@ export function getDestinationCertificatesOutput(args: GetDestinationCertificate
  * A collection of arguments for invoking getDestinationCertificates.
  */
 export interface GetDestinationCertificatesOutputArgs {
-    certificates?: pulumi.Input<pulumi.Input<inputs.GetDestinationCertificatesCertificateArgs>[]>;
+    certificates?: pulumi.Input<pulumi.Input<inputs.GetDestinationCertificatesCertificateArgs>[] | undefined>;
     /**
      * The unique identifier for the resource. Equal to target destination id.
      */

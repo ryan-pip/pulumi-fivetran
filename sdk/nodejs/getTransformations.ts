@@ -67,5 +67,5 @@ export function getTransformationsOutput(args?: GetTransformationsOutputArgs, op
  * A collection of arguments for invoking getTransformations.
  */
 export interface GetTransformationsOutputArgs {
-    transformations?: pulumi.Input<pulumi.Input<inputs.GetTransformationsTransformationArgs>[]>;
+    transformations?: pulumi.Input<pulumi.Input<inputs.GetTransformationsTransformationArgs>[] | undefined>;
 }

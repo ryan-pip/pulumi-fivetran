@@ -300,31 +300,31 @@ export interface ConnectorSchemaConfigState {
     /**
      * The unique identifier for the connector within the Fivetran system.
      */
-    connectorId?: pulumi.Input<string>;
+    connectorId?: pulumi.Input<string | undefined>;
     /**
      * @deprecated Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
      */
-    schema?: pulumi.Input<pulumi.Input<inputs.ConnectorSchemaConfigSchema>[]>;
+    schema?: pulumi.Input<pulumi.Input<inputs.ConnectorSchemaConfigSchema>[] | undefined>;
     /**
      * The value specifying how new source data is handled.
      */
-    schemaChangeHandling?: pulumi.Input<string>;
+    schemaChangeHandling?: pulumi.Input<string | undefined>;
     /**
      * Map of schema configurations.
      */
-    schemas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ConnectorSchemaConfigSchemas>}>;
+    schemas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ConnectorSchemaConfigSchemas>} | undefined>;
     /**
      * Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
      */
-    schemasJson?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.ConnectorSchemaConfigTimeouts>;
+    schemasJson?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.ConnectorSchemaConfigTimeouts | undefined>;
     /**
      * The value defines validation method. 
      * - NONE: no validation, any configuration accepted. 
      * - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
      * - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
      */
-    validationLevel?: pulumi.Input<string>;
+    validationLevel?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -338,25 +338,25 @@ export interface ConnectorSchemaConfigArgs {
     /**
      * @deprecated Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
      */
-    schema?: pulumi.Input<pulumi.Input<inputs.ConnectorSchemaConfigSchema>[]>;
+    schema?: pulumi.Input<pulumi.Input<inputs.ConnectorSchemaConfigSchema>[] | undefined>;
     /**
      * The value specifying how new source data is handled.
      */
-    schemaChangeHandling?: pulumi.Input<string>;
+    schemaChangeHandling?: pulumi.Input<string | undefined>;
     /**
      * Map of schema configurations.
      */
-    schemas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ConnectorSchemaConfigSchemas>}>;
+    schemas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.ConnectorSchemaConfigSchemas>} | undefined>;
     /**
      * Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
      */
-    schemasJson?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.ConnectorSchemaConfigTimeouts>;
+    schemasJson?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.ConnectorSchemaConfigTimeouts | undefined>;
     /**
      * The value defines validation method. 
      * - NONE: no validation, any configuration accepted. 
      * - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
      * - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
      */
-    validationLevel?: pulumi.Input<string>;
+    validationLevel?: pulumi.Input<string | undefined>;
 }

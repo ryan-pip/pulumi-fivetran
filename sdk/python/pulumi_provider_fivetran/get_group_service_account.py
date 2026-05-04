@@ -86,7 +86,7 @@ def get_group_service_account(id: Optional[_builtins.str] = None,
     return AwaitableGetGroupServiceAccountResult(
         id=pulumi.get(__ret__, 'id'),
         service_account=pulumi.get(__ret__, 'service_account'))
-def get_group_service_account_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_group_service_account_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupServiceAccountResult]:
     """
     This data source returns Fivetran service account associated with the group.

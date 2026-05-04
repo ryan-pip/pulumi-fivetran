@@ -155,10 +155,10 @@ export function getConnectionOutput(args: GetConnectionOutputArgs, opts?: pulumi
  * A collection of arguments for invoking getConnection.
  */
 export interface GetConnectionOutputArgs {
-    destinationSchema?: pulumi.Input<inputs.GetConnectionDestinationSchemaArgs>;
+    destinationSchema?: pulumi.Input<inputs.GetConnectionDestinationSchemaArgs | undefined>;
     /**
      * The unique identifier for the connection within the Fivetran system.
      */
     id: pulumi.Input<string>;
-    status?: pulumi.Input<inputs.GetConnectionStatusArgs>;
+    status?: pulumi.Input<inputs.GetConnectionStatusArgs | undefined>;
 }

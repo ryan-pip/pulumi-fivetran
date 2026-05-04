@@ -171,8 +171,8 @@ def get_destination(config: Optional[Union['GetDestinationConfigArgs', 'GetDesti
         service=pulumi.get(__ret__, 'service'),
         setup_status=pulumi.get(__ret__, 'setup_status'),
         time_zone_offset=pulumi.get(__ret__, 'time_zone_offset'))
-def get_destination_output(config: Optional[pulumi.Input[Optional[Union['GetDestinationConfigArgs', 'GetDestinationConfigArgsDict']]]] = None,
-                           id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_destination_output(config: pulumi.Input[Optional[Optional[Union['GetDestinationConfigArgs', 'GetDestinationConfigArgsDict']]]] = None,
+                           id: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDestinationResult]:
     """
     This data source returns a destination object.

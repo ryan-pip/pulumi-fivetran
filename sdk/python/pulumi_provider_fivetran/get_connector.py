@@ -295,10 +295,10 @@ def get_connector(config: Optional[Union['GetConnectorConfigArgs', 'GetConnector
         status=pulumi.get(__ret__, 'status'),
         succeeded_at=pulumi.get(__ret__, 'succeeded_at'),
         sync_frequency=pulumi.get(__ret__, 'sync_frequency'))
-def get_connector_output(config: Optional[pulumi.Input[Optional[Union['GetConnectorConfigArgs', 'GetConnectorConfigArgsDict']]]] = None,
-                         destination_schema: Optional[pulumi.Input[Optional[Union['GetConnectorDestinationSchemaArgs', 'GetConnectorDestinationSchemaArgsDict']]]] = None,
-                         id: Optional[pulumi.Input[_builtins.str]] = None,
-                         status: Optional[pulumi.Input[Optional[Union['GetConnectorStatusArgs', 'GetConnectorStatusArgsDict']]]] = None,
+def get_connector_output(config: pulumi.Input[Optional[Optional[Union['GetConnectorConfigArgs', 'GetConnectorConfigArgsDict']]]] = None,
+                         destination_schema: pulumi.Input[Optional[Optional[Union['GetConnectorDestinationSchemaArgs', 'GetConnectorDestinationSchemaArgsDict']]]] = None,
+                         id: pulumi.Input[Optional[_builtins.str]] = None,
+                         status: pulumi.Input[Optional[Optional[Union['GetConnectorStatusArgs', 'GetConnectorStatusArgsDict']]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectorResult]:
     """
     This data source returns a connector object.

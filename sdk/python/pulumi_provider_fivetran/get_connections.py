@@ -75,7 +75,7 @@ def get_connections(connections: Optional[Sequence[Union['GetConnectionsConnecti
     return AwaitableGetConnectionsResult(
         connections=pulumi.get(__ret__, 'connections'),
         id=pulumi.get(__ret__, 'id'))
-def get_connections_output(connections: Optional[pulumi.Input[Optional[Sequence[Union['GetConnectionsConnectionArgs', 'GetConnectionsConnectionArgsDict']]]]] = None,
+def get_connections_output(connections: pulumi.Input[Optional[Optional[Sequence[Union['GetConnectionsConnectionArgs', 'GetConnectionsConnectionArgsDict']]]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectionsResult]:
     """
     This data source returns list of connection objects.

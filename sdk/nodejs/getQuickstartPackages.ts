@@ -67,5 +67,5 @@ export function getQuickstartPackagesOutput(args?: GetQuickstartPackagesOutputAr
  * A collection of arguments for invoking getQuickstartPackages.
  */
 export interface GetQuickstartPackagesOutputArgs {
-    packages?: pulumi.Input<pulumi.Input<inputs.GetQuickstartPackagesPackageArgs>[]>;
+    packages?: pulumi.Input<pulumi.Input<inputs.GetQuickstartPackagesPackageArgs>[] | undefined>;
 }

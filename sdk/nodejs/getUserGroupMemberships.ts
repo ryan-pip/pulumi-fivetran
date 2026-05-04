@@ -79,7 +79,7 @@ export function getUserGroupMembershipsOutput(args: GetUserGroupMembershipsOutpu
  * A collection of arguments for invoking getUserGroupMemberships.
  */
 export interface GetUserGroupMembershipsOutputArgs {
-    groups?: pulumi.Input<pulumi.Input<inputs.GetUserGroupMembershipsGroupArgs>[]>;
+    groups?: pulumi.Input<pulumi.Input<inputs.GetUserGroupMembershipsGroupArgs>[] | undefined>;
     /**
      * The unique identifier for the user within your account.
      */

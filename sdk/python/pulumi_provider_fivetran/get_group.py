@@ -112,7 +112,7 @@ def get_group(id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         last_updated=pulumi.get(__ret__, 'last_updated'),
         name=pulumi.get(__ret__, 'name'))
-def get_group_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_group_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupResult]:
     """
     This data source returns a group object.
