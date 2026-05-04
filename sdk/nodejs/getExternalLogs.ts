@@ -53,5 +53,5 @@ export function getExternalLogsOutput(args?: GetExternalLogsOutputArgs, opts?: p
  * A collection of arguments for invoking getExternalLogs.
  */
 export interface GetExternalLogsOutputArgs {
-    logs?: pulumi.Input<pulumi.Input<inputs.GetExternalLogsLogArgs>[]>;
+    logs?: pulumi.Input<pulumi.Input<inputs.GetExternalLogsLogArgs>[] | undefined>;
 }

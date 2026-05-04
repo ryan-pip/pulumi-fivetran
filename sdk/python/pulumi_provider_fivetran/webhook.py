@@ -24,8 +24,8 @@ class WebhookArgs:
                  secret: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
                  url: pulumi.Input[_builtins.str],
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_tests: Optional[pulumi.Input[_builtins.bool]] = None):
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_tests: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Webhook resource.
 
@@ -109,41 +109,41 @@ class WebhookArgs:
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The group ID
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="runTests")
-    def run_tests(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_tests(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the setup tests should be run
         """
         return pulumi.get(self, "run_tests")
 
     @run_tests.setter
-    def run_tests(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_tests(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_tests", value)
 
 
 @pulumi.input_type
 class _WebhookState:
     def __init__(__self__, *,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 events: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_tests: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_tests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Webhook resources.
 
@@ -178,110 +178,110 @@ class _WebhookState:
 
     @_builtins.property
     @pulumi.getter
-    def active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def active(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean, if set to true, webhooks are immediately sent in response to events
         """
         return pulumi.get(self, "active")
 
     @active.setter
-    def active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def active(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "active", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The webhook creation timestamp
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the user who created the webhook.
         """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by", value)
 
     @_builtins.property
     @pulumi.getter
-    def events(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def events(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The array of event types
         """
         return pulumi.get(self, "events")
 
     @events.setter
-    def events(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def events(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "events", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The group ID
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="runTests")
-    def run_tests(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_tests(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the setup tests should be run
         """
         return pulumi.get(self, "run_tests")
 
     @run_tests.setter
-    def run_tests(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_tests(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_tests", value)
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The secret string used for payload signing and masked in the response.
         """
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The webhook type (group, account)
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Your webhooks URL endpoint for your application
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
@@ -291,13 +291,13 @@ class Webhook(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 events: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_tests: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_tests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource allows you to create, update, and delete webhooks.
@@ -392,13 +392,13 @@ class Webhook(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 events: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_tests: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_tests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -439,15 +439,15 @@ class Webhook(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            active: Optional[pulumi.Input[_builtins.bool]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            created_by: Optional[pulumi.Input[_builtins.str]] = None,
-            events: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            run_tests: Optional[pulumi.Input[_builtins.bool]] = None,
-            secret: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None) -> 'Webhook':
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            run_tests: pulumi.Input[Optional[_builtins.bool]] = None,
+            secret: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> 'Webhook':
         """
         Get an existing Webhook resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

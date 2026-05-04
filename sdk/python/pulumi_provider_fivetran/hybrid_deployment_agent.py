@@ -23,7 +23,7 @@ class HybridDeploymentAgentArgs:
                  display_name: pulumi.Input[_builtins.str],
                  env_type: pulumi.Input[_builtins.str],
                  group_id: pulumi.Input[_builtins.str],
-                 authentication_counter: Optional[pulumi.Input[_builtins.int]] = None):
+                 authentication_counter: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a HybridDeploymentAgent resource.
 
@@ -90,30 +90,30 @@ class HybridDeploymentAgentArgs:
 
     @_builtins.property
     @pulumi.getter(name="authenticationCounter")
-    def authentication_counter(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def authentication_counter(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Determines whether re-authentication needs to be performed.
         """
         return pulumi.get(self, "authentication_counter")
 
     @authentication_counter.setter
-    def authentication_counter(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def authentication_counter(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "authentication_counter", value)
 
 
 @pulumi.input_type
 class _HybridDeploymentAgentState:
     def __init__(__self__, *,
-                 auth_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 authentication_counter: Optional[pulumi.Input[_builtins.int]] = None,
-                 config_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 docker_compose_yaml: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 registered_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 authentication_counter: pulumi.Input[Optional[_builtins.int]] = None,
+                 config_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 docker_compose_yaml: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 registered_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HybridDeploymentAgent resources.
 
@@ -151,122 +151,122 @@ class _HybridDeploymentAgentState:
 
     @_builtins.property
     @pulumi.getter(name="authJson")
-    def auth_json(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_json(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Base64-encoded content of the auth.json file.
         """
         return pulumi.get(self, "auth_json")
 
     @auth_json.setter
-    def auth_json(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_json(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_json", value)
 
     @_builtins.property
     @pulumi.getter(name="authType")
-    def auth_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of authentification. Possible values `AUTO`,`MANUAL`
         """
         return pulumi.get(self, "auth_type")
 
     @auth_type.setter
-    def auth_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_type", value)
 
     @_builtins.property
     @pulumi.getter(name="authenticationCounter")
-    def authentication_counter(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def authentication_counter(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Determines whether re-authentication needs to be performed.
         """
         return pulumi.get(self, "authentication_counter")
 
     @authentication_counter.setter
-    def authentication_counter(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def authentication_counter(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "authentication_counter", value)
 
     @_builtins.property
     @pulumi.getter(name="configJson")
-    def config_json(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_json(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Base64-encoded content of the config.json file.
         """
         return pulumi.get(self, "config_json")
 
     @config_json.setter
-    def config_json(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_json(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_json", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique name for the hybrid deployment agent.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dockerComposeYaml")
-    def docker_compose_yaml(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def docker_compose_yaml(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Base64-encoded content of the compose file for the chosen containerization type.
         """
         return pulumi.get(self, "docker_compose_yaml")
 
     @docker_compose_yaml.setter
-    def docker_compose_yaml(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def docker_compose_yaml(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "docker_compose_yaml", value)
 
     @_builtins.property
     @pulumi.getter(name="envType")
-    def env_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def env_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Environment type. Possible values `DOCKER`,`PODMAN`,`KUBERNETES`,`SNOWPARK`
         """
         return pulumi.get(self, "env_type")
 
     @env_type.setter
-    def env_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def env_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "env_type", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the Group within the Fivetran system.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="registeredAt")
-    def registered_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def registered_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp of the time the hybrid deployment agent was created in your account.
         """
         return pulumi.get(self, "registered_at")
 
     @registered_at.setter
-    def registered_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def registered_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "registered_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Base64 encoded content of token.
         """
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
 
@@ -276,11 +276,11 @@ class HybridDeploymentAgent(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 authentication_counter: Optional[pulumi.Input[_builtins.int]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 authentication_counter: pulumi.Input[Optional[_builtins.int]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource allows you to create, update, and delete hybrid deployment agents.
@@ -343,11 +343,11 @@ class HybridDeploymentAgent(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 authentication_counter: Optional[pulumi.Input[_builtins.int]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 authentication_counter: pulumi.Input[Optional[_builtins.int]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -385,16 +385,16 @@ class HybridDeploymentAgent(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auth_json: Optional[pulumi.Input[_builtins.str]] = None,
-            auth_type: Optional[pulumi.Input[_builtins.str]] = None,
-            authentication_counter: Optional[pulumi.Input[_builtins.int]] = None,
-            config_json: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            docker_compose_yaml: Optional[pulumi.Input[_builtins.str]] = None,
-            env_type: Optional[pulumi.Input[_builtins.str]] = None,
-            group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            registered_at: Optional[pulumi.Input[_builtins.str]] = None,
-            token: Optional[pulumi.Input[_builtins.str]] = None) -> 'HybridDeploymentAgent':
+            auth_json: pulumi.Input[Optional[_builtins.str]] = None,
+            auth_type: pulumi.Input[Optional[_builtins.str]] = None,
+            authentication_counter: pulumi.Input[Optional[_builtins.int]] = None,
+            config_json: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            docker_compose_yaml: pulumi.Input[Optional[_builtins.str]] = None,
+            env_type: pulumi.Input[Optional[_builtins.str]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            registered_at: pulumi.Input[Optional[_builtins.str]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None) -> 'HybridDeploymentAgent':
         """
         Get an existing HybridDeploymentAgent resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

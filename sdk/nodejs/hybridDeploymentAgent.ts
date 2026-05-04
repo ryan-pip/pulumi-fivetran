@@ -149,43 +149,43 @@ export interface HybridDeploymentAgentState {
     /**
      * Base64-encoded content of the auth.json file.
      */
-    authJson?: pulumi.Input<string>;
+    authJson?: pulumi.Input<string | undefined>;
     /**
      * Type of authentification. Possible values `AUTO`,`MANUAL`
      */
-    authType?: pulumi.Input<string>;
+    authType?: pulumi.Input<string | undefined>;
     /**
      * Determines whether re-authentication needs to be performed.
      */
-    authenticationCounter?: pulumi.Input<number>;
+    authenticationCounter?: pulumi.Input<number | undefined>;
     /**
      * Base64-encoded content of the config.json file.
      */
-    configJson?: pulumi.Input<string>;
+    configJson?: pulumi.Input<string | undefined>;
     /**
      * The unique name for the hybrid deployment agent.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Base64-encoded content of the compose file for the chosen containerization type.
      */
-    dockerComposeYaml?: pulumi.Input<string>;
+    dockerComposeYaml?: pulumi.Input<string | undefined>;
     /**
      * Environment type. Possible values `DOCKER`,`PODMAN`,`KUBERNETES`,`SNOWPARK`
      */
-    envType?: pulumi.Input<string>;
+    envType?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the Group within the Fivetran system.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The timestamp of the time the hybrid deployment agent was created in your account.
      */
-    registeredAt?: pulumi.Input<string>;
+    registeredAt?: pulumi.Input<string | undefined>;
     /**
      * Base64 encoded content of token.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -199,7 +199,7 @@ export interface HybridDeploymentAgentArgs {
     /**
      * Determines whether re-authentication needs to be performed.
      */
-    authenticationCounter?: pulumi.Input<number>;
+    authenticationCounter?: pulumi.Input<number | undefined>;
     /**
      * The unique name for the hybrid deployment agent.
      */

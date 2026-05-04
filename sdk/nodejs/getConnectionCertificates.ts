@@ -75,7 +75,7 @@ export function getConnectionCertificatesOutput(args: GetConnectionCertificatesO
  * A collection of arguments for invoking getConnectionCertificates.
  */
 export interface GetConnectionCertificatesOutputArgs {
-    certificates?: pulumi.Input<pulumi.Input<inputs.GetConnectionCertificatesCertificateArgs>[]>;
+    certificates?: pulumi.Input<pulumi.Input<inputs.GetConnectionCertificatesCertificateArgs>[] | undefined>;
     /**
      * The unique identifier for the target connection within the Fivetran system.
      */

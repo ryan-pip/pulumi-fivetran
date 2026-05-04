@@ -96,8 +96,8 @@ export function getConnectorOutput(args: GetConnectorOutputArgs, opts?: pulumi.I
  * A collection of arguments for invoking getConnector.
  */
 export interface GetConnectorOutputArgs {
-    config?: pulumi.Input<inputs.GetConnectorConfigArgs>;
-    destinationSchema?: pulumi.Input<inputs.GetConnectorDestinationSchemaArgs>;
+    config?: pulumi.Input<inputs.GetConnectorConfigArgs | undefined>;
+    destinationSchema?: pulumi.Input<inputs.GetConnectorDestinationSchemaArgs | undefined>;
     id: pulumi.Input<string>;
-    status?: pulumi.Input<inputs.GetConnectorStatusArgs>;
+    status?: pulumi.Input<inputs.GetConnectorStatusArgs | undefined>;
 }

@@ -22,7 +22,7 @@ __all__ = ['DestinationFingerprintsArgs', 'DestinationFingerprints']
 class DestinationFingerprintsArgs:
     def __init__(__self__, *,
                  destination_id: pulumi.Input[_builtins.str],
-                 fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input['DestinationFingerprintsFingerprintArgs']]]] = None):
+                 fingerprints: pulumi.Input[Optional[Sequence[pulumi.Input['DestinationFingerprintsFingerprintArgs']]]] = None):
         """
         The set of arguments for constructing a DestinationFingerprints resource.
 
@@ -46,19 +46,19 @@ class DestinationFingerprintsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def fingerprints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DestinationFingerprintsFingerprintArgs']]]]:
+    def fingerprints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DestinationFingerprintsFingerprintArgs']]]]:
         return pulumi.get(self, "fingerprints")
 
     @fingerprints.setter
-    def fingerprints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DestinationFingerprintsFingerprintArgs']]]]):
+    def fingerprints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DestinationFingerprintsFingerprintArgs']]]]):
         pulumi.set(self, "fingerprints", value)
 
 
 @pulumi.input_type
 class _DestinationFingerprintsState:
     def __init__(__self__, *,
-                 destination_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input['DestinationFingerprintsFingerprintArgs']]]] = None):
+                 destination_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 fingerprints: pulumi.Input[Optional[Sequence[pulumi.Input['DestinationFingerprintsFingerprintArgs']]]] = None):
         """
         Input properties used for looking up and filtering DestinationFingerprints resources.
 
@@ -71,23 +71,23 @@ class _DestinationFingerprintsState:
 
     @_builtins.property
     @pulumi.getter(name="destinationId")
-    def destination_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the target destination within the Fivetran system.
         """
         return pulumi.get(self, "destination_id")
 
     @destination_id.setter
-    def destination_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def fingerprints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DestinationFingerprintsFingerprintArgs']]]]:
+    def fingerprints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DestinationFingerprintsFingerprintArgs']]]]:
         return pulumi.get(self, "fingerprints")
 
     @fingerprints.setter
-    def fingerprints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DestinationFingerprintsFingerprintArgs']]]]):
+    def fingerprints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DestinationFingerprintsFingerprintArgs']]]]):
         pulumi.set(self, "fingerprints", value)
 
 
@@ -97,8 +97,8 @@ class DestinationFingerprints(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 destination_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DestinationFingerprintsFingerprintArgs', 'DestinationFingerprintsFingerprintArgsDict']]]]] = None,
+                 destination_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 fingerprints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DestinationFingerprintsFingerprintArgs', 'DestinationFingerprintsFingerprintArgsDict']]]]] = None,
                  __props__=None):
         """
         This resource allows you to manage list of approved SSH fingerprints for a particular destination.
@@ -231,8 +231,8 @@ class DestinationFingerprints(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 destination_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DestinationFingerprintsFingerprintArgs', 'DestinationFingerprintsFingerprintArgsDict']]]]] = None,
+                 destination_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 fingerprints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DestinationFingerprintsFingerprintArgs', 'DestinationFingerprintsFingerprintArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -256,8 +256,8 @@ class DestinationFingerprints(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            destination_id: Optional[pulumi.Input[_builtins.str]] = None,
-            fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DestinationFingerprintsFingerprintArgs', 'DestinationFingerprintsFingerprintArgsDict']]]]] = None) -> 'DestinationFingerprints':
+            destination_id: pulumi.Input[Optional[_builtins.str]] = None,
+            fingerprints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DestinationFingerprintsFingerprintArgs', 'DestinationFingerprintsFingerprintArgsDict']]]]] = None) -> 'DestinationFingerprints':
         """
         Get an existing DestinationFingerprints resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

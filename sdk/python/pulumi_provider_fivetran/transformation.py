@@ -21,10 +21,10 @@ __all__ = ['TransformationArgs', 'Transformation']
 @pulumi.input_type
 class TransformationArgs:
     def __init__(__self__, *,
-                 paused: Optional[pulumi.Input[_builtins.bool]] = None,
-                 schedule: Optional[pulumi.Input['TransformationScheduleArgs']] = None,
-                 transformation_config: Optional[pulumi.Input['TransformationTransformationConfigArgs']] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 paused: pulumi.Input[Optional[_builtins.bool]] = None,
+                 schedule: pulumi.Input[Optional['TransformationScheduleArgs']] = None,
+                 transformation_config: pulumi.Input[Optional['TransformationTransformationConfigArgs']] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Transformation resource.
 
@@ -42,58 +42,58 @@ class TransformationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def paused(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def paused(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The field indicating whether the transformation will be set into the paused state. By default, the value is false.
         """
         return pulumi.get(self, "paused")
 
     @paused.setter
-    def paused(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def paused(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "paused", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input['TransformationScheduleArgs']]:
+    def schedule(self) -> pulumi.Input[Optional['TransformationScheduleArgs']]:
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input['TransformationScheduleArgs']]):
+    def schedule(self, value: pulumi.Input[Optional['TransformationScheduleArgs']]):
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="transformationConfig")
-    def transformation_config(self) -> Optional[pulumi.Input['TransformationTransformationConfigArgs']]:
+    def transformation_config(self) -> pulumi.Input[Optional['TransformationTransformationConfigArgs']]:
         return pulumi.get(self, "transformation_config")
 
     @transformation_config.setter
-    def transformation_config(self, value: Optional[pulumi.Input['TransformationTransformationConfigArgs']]):
+    def transformation_config(self, value: pulumi.Input[Optional['TransformationTransformationConfigArgs']]):
         pulumi.set(self, "transformation_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Transformation type. The following values are supported: DBT_CORE, QUICKSTART.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _TransformationState:
     def __init__(__self__, *,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_by_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_model_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 paused: Optional[pulumi.Input[_builtins.bool]] = None,
-                 schedule: Optional[pulumi.Input['TransformationScheduleArgs']] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 transformation_config: Optional[pulumi.Input['TransformationTransformationConfigArgs']] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_by_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_model_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 paused: pulumi.Input[Optional[_builtins.bool]] = None,
+                 schedule: pulumi.Input[Optional['TransformationScheduleArgs']] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 transformation_config: pulumi.Input[Optional['TransformationTransformationConfigArgs']] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Transformation resources.
 
@@ -123,92 +123,92 @@ class _TransformationState:
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp of when the transformation was created in your account.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="createdById")
-    def created_by_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_by_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the User within the Fivetran system who created the transformation.
         """
         return pulumi.get(self, "created_by_id")
 
     @created_by_id.setter
-    def created_by_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_by_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by_id", value)
 
     @_builtins.property
     @pulumi.getter(name="outputModelNames")
-    def output_model_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def output_model_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Identifiers of related models.
         """
         return pulumi.get(self, "output_model_names")
 
     @output_model_names.setter
-    def output_model_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def output_model_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "output_model_names", value)
 
     @_builtins.property
     @pulumi.getter
-    def paused(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def paused(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The field indicating whether the transformation will be set into the paused state. By default, the value is false.
         """
         return pulumi.get(self, "paused")
 
     @paused.setter
-    def paused(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def paused(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "paused", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input['TransformationScheduleArgs']]:
+    def schedule(self) -> pulumi.Input[Optional['TransformationScheduleArgs']]:
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input['TransformationScheduleArgs']]):
+    def schedule(self, value: pulumi.Input[Optional['TransformationScheduleArgs']]):
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status of transformation Project (NOT_READY, READY, ERROR).
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="transformationConfig")
-    def transformation_config(self) -> Optional[pulumi.Input['TransformationTransformationConfigArgs']]:
+    def transformation_config(self) -> pulumi.Input[Optional['TransformationTransformationConfigArgs']]:
         return pulumi.get(self, "transformation_config")
 
     @transformation_config.setter
-    def transformation_config(self, value: Optional[pulumi.Input['TransformationTransformationConfigArgs']]):
+    def transformation_config(self, value: pulumi.Input[Optional['TransformationTransformationConfigArgs']]):
         pulumi.set(self, "transformation_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Transformation type. The following values are supported: DBT_CORE, QUICKSTART.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -218,10 +218,10 @@ class Transformation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 paused: Optional[pulumi.Input[_builtins.bool]] = None,
-                 schedule: Optional[pulumi.Input[Union['TransformationScheduleArgs', 'TransformationScheduleArgsDict']]] = None,
-                 transformation_config: Optional[pulumi.Input[Union['TransformationTransformationConfigArgs', 'TransformationTransformationConfigArgsDict']]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 paused: pulumi.Input[Optional[_builtins.bool]] = None,
+                 schedule: pulumi.Input[Optional[Union['TransformationScheduleArgs', 'TransformationScheduleArgsDict']]] = None,
+                 transformation_config: pulumi.Input[Optional[Union['TransformationTransformationConfigArgs', 'TransformationTransformationConfigArgsDict']]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource is in ALPHA state.
@@ -429,10 +429,10 @@ class Transformation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 paused: Optional[pulumi.Input[_builtins.bool]] = None,
-                 schedule: Optional[pulumi.Input[Union['TransformationScheduleArgs', 'TransformationScheduleArgsDict']]] = None,
-                 transformation_config: Optional[pulumi.Input[Union['TransformationTransformationConfigArgs', 'TransformationTransformationConfigArgsDict']]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 paused: pulumi.Input[Optional[_builtins.bool]] = None,
+                 schedule: pulumi.Input[Optional[Union['TransformationScheduleArgs', 'TransformationScheduleArgsDict']]] = None,
+                 transformation_config: pulumi.Input[Optional[Union['TransformationTransformationConfigArgs', 'TransformationTransformationConfigArgsDict']]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -460,14 +460,14 @@ class Transformation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            created_by_id: Optional[pulumi.Input[_builtins.str]] = None,
-            output_model_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            paused: Optional[pulumi.Input[_builtins.bool]] = None,
-            schedule: Optional[pulumi.Input[Union['TransformationScheduleArgs', 'TransformationScheduleArgsDict']]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            transformation_config: Optional[pulumi.Input[Union['TransformationTransformationConfigArgs', 'TransformationTransformationConfigArgsDict']]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Transformation':
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by_id: pulumi.Input[Optional[_builtins.str]] = None,
+            output_model_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            paused: pulumi.Input[Optional[_builtins.bool]] = None,
+            schedule: pulumi.Input[Optional[Union['TransformationScheduleArgs', 'TransformationScheduleArgsDict']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            transformation_config: pulumi.Input[Optional[Union['TransformationTransformationConfigArgs', 'TransformationTransformationConfigArgsDict']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Transformation':
         """
         Get an existing Transformation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

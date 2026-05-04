@@ -87,8 +87,8 @@ def get_connection_fingerprints(fingerprints: Optional[Sequence[Union['GetConnec
     return AwaitableGetConnectionFingerprintsResult(
         fingerprints=pulumi.get(__ret__, 'fingerprints'),
         id=pulumi.get(__ret__, 'id'))
-def get_connection_fingerprints_output(fingerprints: Optional[pulumi.Input[Optional[Sequence[Union['GetConnectionFingerprintsFingerprintArgs', 'GetConnectionFingerprintsFingerprintArgsDict']]]]] = None,
-                                       id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_connection_fingerprints_output(fingerprints: pulumi.Input[Optional[Optional[Sequence[Union['GetConnectionFingerprintsFingerprintArgs', 'GetConnectionFingerprintsFingerprintArgsDict']]]]] = None,
+                                       id: pulumi.Input[Optional[_builtins.str]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectionFingerprintsResult]:
     """
     This data source returns a list of SSH fingerprints approved for specified connection.

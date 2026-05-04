@@ -20,11 +20,11 @@ __all__ = ['ConnectorScheduleArgs', 'ConnectorSchedule']
 class ConnectorScheduleArgs:
     def __init__(__self__, *,
                  connector_id: pulumi.Input[_builtins.str],
-                 daily_sync_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 pause_after_trial: Optional[pulumi.Input[_builtins.str]] = None,
-                 paused: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_frequency: Optional[pulumi.Input[_builtins.str]] = None):
+                 daily_sync_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 pause_after_trial: pulumi.Input[Optional[_builtins.str]] = None,
+                 paused: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_frequency: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConnectorSchedule resource.
 
@@ -61,74 +61,74 @@ class ConnectorScheduleArgs:
 
     @_builtins.property
     @pulumi.getter(name="dailySyncTime")
-    def daily_sync_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def daily_sync_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
         """
         return pulumi.get(self, "daily_sync_time")
 
     @daily_sync_time.setter
-    def daily_sync_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def daily_sync_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "daily_sync_time", value)
 
     @_builtins.property
     @pulumi.getter(name="pauseAfterTrial")
-    def pause_after_trial(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pause_after_trial(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether the connector should be paused after the free trial period has ended.
         """
         return pulumi.get(self, "pause_after_trial")
 
     @pause_after_trial.setter
-    def pause_after_trial(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pause_after_trial(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pause_after_trial", value)
 
     @_builtins.property
     @pulumi.getter
-    def paused(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def paused(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether the connector is paused.
         """
         return pulumi.get(self, "paused")
 
     @paused.setter
-    def paused(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def paused(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "paused", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduleType")
-    def schedule_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connector schedule configuration type. Supported values: auto, manual.
         """
         return pulumi.get(self, "schedule_type")
 
     @schedule_type.setter
-    def schedule_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule_type", value)
 
     @_builtins.property
     @pulumi.getter(name="syncFrequency")
-    def sync_frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
         """
         return pulumi.get(self, "sync_frequency")
 
     @sync_frequency.setter
-    def sync_frequency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_frequency", value)
 
 
 @pulumi.input_type
 class _ConnectorScheduleState:
     def __init__(__self__, *,
-                 connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 daily_sync_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 pause_after_trial: Optional[pulumi.Input[_builtins.str]] = None,
-                 paused: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_frequency: Optional[pulumi.Input[_builtins.str]] = None):
+                 connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 daily_sync_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 pause_after_trial: pulumi.Input[Optional[_builtins.str]] = None,
+                 paused: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_frequency: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectorSchedule resources.
 
@@ -154,74 +154,74 @@ class _ConnectorScheduleState:
 
     @_builtins.property
     @pulumi.getter(name="connectorId")
-    def connector_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connector_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the connector within the Fivetran system.
         """
         return pulumi.get(self, "connector_id")
 
     @connector_id.setter
-    def connector_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connector_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connector_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dailySyncTime")
-    def daily_sync_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def daily_sync_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
         """
         return pulumi.get(self, "daily_sync_time")
 
     @daily_sync_time.setter
-    def daily_sync_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def daily_sync_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "daily_sync_time", value)
 
     @_builtins.property
     @pulumi.getter(name="pauseAfterTrial")
-    def pause_after_trial(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pause_after_trial(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether the connector should be paused after the free trial period has ended.
         """
         return pulumi.get(self, "pause_after_trial")
 
     @pause_after_trial.setter
-    def pause_after_trial(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pause_after_trial(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pause_after_trial", value)
 
     @_builtins.property
     @pulumi.getter
-    def paused(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def paused(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether the connector is paused.
         """
         return pulumi.get(self, "paused")
 
     @paused.setter
-    def paused(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def paused(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "paused", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduleType")
-    def schedule_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connector schedule configuration type. Supported values: auto, manual.
         """
         return pulumi.get(self, "schedule_type")
 
     @schedule_type.setter
-    def schedule_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule_type", value)
 
     @_builtins.property
     @pulumi.getter(name="syncFrequency")
-    def sync_frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
         """
         return pulumi.get(self, "sync_frequency")
 
     @sync_frequency.setter
-    def sync_frequency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_frequency", value)
 
 
@@ -231,12 +231,12 @@ class ConnectorSchedule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 daily_sync_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 pause_after_trial: Optional[pulumi.Input[_builtins.str]] = None,
-                 paused: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_frequency: Optional[pulumi.Input[_builtins.str]] = None,
+                 connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 daily_sync_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 pause_after_trial: pulumi.Input[Optional[_builtins.str]] = None,
+                 paused: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_frequency: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         -This resource allows you to manage connectors schedule: pause/unpause connector, set daily_sync_time and sync_frequency.
@@ -364,12 +364,12 @@ class ConnectorSchedule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 daily_sync_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 pause_after_trial: Optional[pulumi.Input[_builtins.str]] = None,
-                 paused: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_frequency: Optional[pulumi.Input[_builtins.str]] = None,
+                 connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 daily_sync_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 pause_after_trial: pulumi.Input[Optional[_builtins.str]] = None,
+                 paused: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_frequency: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -397,12 +397,12 @@ class ConnectorSchedule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-            daily_sync_time: Optional[pulumi.Input[_builtins.str]] = None,
-            pause_after_trial: Optional[pulumi.Input[_builtins.str]] = None,
-            paused: Optional[pulumi.Input[_builtins.str]] = None,
-            schedule_type: Optional[pulumi.Input[_builtins.str]] = None,
-            sync_frequency: Optional[pulumi.Input[_builtins.str]] = None) -> 'ConnectorSchedule':
+            connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            daily_sync_time: pulumi.Input[Optional[_builtins.str]] = None,
+            pause_after_trial: pulumi.Input[Optional[_builtins.str]] = None,
+            paused: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_frequency: pulumi.Input[Optional[_builtins.str]] = None) -> 'ConnectorSchedule':
         """
         Get an existing ConnectorSchedule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

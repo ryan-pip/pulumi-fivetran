@@ -196,29 +196,29 @@ export interface TransformationState {
     /**
      * The timestamp of when the transformation was created in your account.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the User within the Fivetran system who created the transformation.
      */
-    createdById?: pulumi.Input<string>;
+    createdById?: pulumi.Input<string | undefined>;
     /**
      * Identifiers of related models.
      */
-    outputModelNames?: pulumi.Input<pulumi.Input<string>[]>;
+    outputModelNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The field indicating whether the transformation will be set into the paused state. By default, the value is false.
      */
-    paused?: pulumi.Input<boolean>;
-    schedule?: pulumi.Input<inputs.TransformationSchedule>;
+    paused?: pulumi.Input<boolean | undefined>;
+    schedule?: pulumi.Input<inputs.TransformationSchedule | undefined>;
     /**
      * Status of transformation Project (NOT_READY, READY, ERROR).
      */
-    status?: pulumi.Input<string>;
-    transformationConfig?: pulumi.Input<inputs.TransformationTransformationConfig>;
+    status?: pulumi.Input<string | undefined>;
+    transformationConfig?: pulumi.Input<inputs.TransformationTransformationConfig | undefined>;
     /**
      * Transformation type. The following values are supported: DBT_CORE, QUICKSTART.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -228,11 +228,11 @@ export interface TransformationArgs {
     /**
      * The field indicating whether the transformation will be set into the paused state. By default, the value is false.
      */
-    paused?: pulumi.Input<boolean>;
-    schedule?: pulumi.Input<inputs.TransformationSchedule>;
-    transformationConfig?: pulumi.Input<inputs.TransformationTransformationConfig>;
+    paused?: pulumi.Input<boolean | undefined>;
+    schedule?: pulumi.Input<inputs.TransformationSchedule | undefined>;
+    transformationConfig?: pulumi.Input<inputs.TransformationTransformationConfig | undefined>;
     /**
      * Transformation type. The following values are supported: DBT_CORE, QUICKSTART.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

@@ -22,11 +22,11 @@ class UserArgs:
                  email: pulumi.Input[_builtins.str],
                  family_name: pulumi.Input[_builtins.str],
                  given_name: pulumi.Input[_builtins.str],
-                 invited: Optional[pulumi.Input[_builtins.bool]] = None,
-                 phone: Optional[pulumi.Input[_builtins.str]] = None,
-                 picture: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 verified: Optional[pulumi.Input[_builtins.bool]] = None):
+                 invited: pulumi.Input[Optional[_builtins.bool]] = None,
+                 phone: pulumi.Input[Optional[_builtins.str]] = None,
+                 picture: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 verified: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a User resource.
 
@@ -91,78 +91,78 @@ class UserArgs:
 
     @_builtins.property
     @pulumi.getter
-    def invited(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def invited(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The field indicates whether the user has been invited to your account.
         """
         return pulumi.get(self, "invited")
 
     @invited.setter
-    def invited(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def invited(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "invited", value)
 
     @_builtins.property
     @pulumi.getter
-    def phone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def phone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The phone number of the user.
         """
         return pulumi.get(self, "phone")
 
     @phone.setter
-    def phone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def phone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "phone", value)
 
     @_builtins.property
     @pulumi.getter
-    def picture(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def picture(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user's avatar as a URL link (for example, 'http://mycompany.com/avatars/john_white.png') or base64 data URI (for example, 'data:image/png;base64,aHR0cDovL215Y29tcGFueS5jb20vYXZhdGFycy9qb2huX3doaXRlLnBuZw==')
         """
         return pulumi.get(self, "picture")
 
     @picture.setter
-    def picture(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def picture(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "picture", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role that you would like to assign to the user.
         """
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter
-    def verified(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def verified(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The field indicates whether the user has verified their email address in the account creation process.
         """
         return pulumi.get(self, "verified")
 
     @verified.setter
-    def verified(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def verified(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "verified", value)
 
 
 @pulumi.input_type
 class _UserState:
     def __init__(__self__, *,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 family_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 given_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 invited: Optional[pulumi.Input[_builtins.bool]] = None,
-                 logged_in_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 phone: Optional[pulumi.Input[_builtins.str]] = None,
-                 picture: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 verified: Optional[pulumi.Input[_builtins.bool]] = None):
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 family_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 given_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 invited: pulumi.Input[Optional[_builtins.bool]] = None,
+                 logged_in_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 phone: pulumi.Input[Optional[_builtins.str]] = None,
+                 picture: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 verified: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering User resources.
 
@@ -200,122 +200,122 @@ class _UserState:
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp that the user created their Fivetran account.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email address that the user has associated with their user profile.
         """
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter(name="familyName")
-    def family_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def family_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The last name of the user.
         """
         return pulumi.get(self, "family_name")
 
     @family_name.setter
-    def family_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def family_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "family_name", value)
 
     @_builtins.property
     @pulumi.getter(name="givenName")
-    def given_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def given_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The first name of the user.
         """
         return pulumi.get(self, "given_name")
 
     @given_name.setter
-    def given_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def given_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "given_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def invited(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def invited(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The field indicates whether the user has been invited to your account.
         """
         return pulumi.get(self, "invited")
 
     @invited.setter
-    def invited(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def invited(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "invited", value)
 
     @_builtins.property
     @pulumi.getter(name="loggedInAt")
-    def logged_in_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logged_in_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The last time that the user has logged into their Fivetran account.
         """
         return pulumi.get(self, "logged_in_at")
 
     @logged_in_at.setter
-    def logged_in_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logged_in_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logged_in_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def phone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def phone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The phone number of the user.
         """
         return pulumi.get(self, "phone")
 
     @phone.setter
-    def phone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def phone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "phone", value)
 
     @_builtins.property
     @pulumi.getter
-    def picture(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def picture(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user's avatar as a URL link (for example, 'http://mycompany.com/avatars/john_white.png') or base64 data URI (for example, 'data:image/png;base64,aHR0cDovL215Y29tcGFueS5jb20vYXZhdGFycy9qb2huX3doaXRlLnBuZw==')
         """
         return pulumi.get(self, "picture")
 
     @picture.setter
-    def picture(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def picture(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "picture", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role that you would like to assign to the user.
         """
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter
-    def verified(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def verified(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The field indicates whether the user has verified their email address in the account creation process.
         """
         return pulumi.get(self, "verified")
 
     @verified.setter
-    def verified(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def verified(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "verified", value)
 
 
@@ -325,14 +325,14 @@ class User(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 family_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 given_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 invited: Optional[pulumi.Input[_builtins.bool]] = None,
-                 phone: Optional[pulumi.Input[_builtins.str]] = None,
-                 picture: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 verified: Optional[pulumi.Input[_builtins.bool]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 family_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 given_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 invited: pulumi.Input[Optional[_builtins.bool]] = None,
+                 phone: pulumi.Input[Optional[_builtins.str]] = None,
+                 picture: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 verified: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         -This resource allows you to create, update, and delete users.
@@ -454,14 +454,14 @@ class User(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 family_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 given_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 invited: Optional[pulumi.Input[_builtins.bool]] = None,
-                 phone: Optional[pulumi.Input[_builtins.str]] = None,
-                 picture: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 verified: Optional[pulumi.Input[_builtins.bool]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 family_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 given_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 invited: pulumi.Input[Optional[_builtins.bool]] = None,
+                 phone: pulumi.Input[Optional[_builtins.str]] = None,
+                 picture: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 verified: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -497,16 +497,16 @@ class User(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            email: Optional[pulumi.Input[_builtins.str]] = None,
-            family_name: Optional[pulumi.Input[_builtins.str]] = None,
-            given_name: Optional[pulumi.Input[_builtins.str]] = None,
-            invited: Optional[pulumi.Input[_builtins.bool]] = None,
-            logged_in_at: Optional[pulumi.Input[_builtins.str]] = None,
-            phone: Optional[pulumi.Input[_builtins.str]] = None,
-            picture: Optional[pulumi.Input[_builtins.str]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None,
-            verified: Optional[pulumi.Input[_builtins.bool]] = None) -> 'User':
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            family_name: pulumi.Input[Optional[_builtins.str]] = None,
+            given_name: pulumi.Input[Optional[_builtins.str]] = None,
+            invited: pulumi.Input[Optional[_builtins.bool]] = None,
+            logged_in_at: pulumi.Input[Optional[_builtins.str]] = None,
+            phone: pulumi.Input[Optional[_builtins.str]] = None,
+            picture: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            verified: pulumi.Input[Optional[_builtins.bool]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

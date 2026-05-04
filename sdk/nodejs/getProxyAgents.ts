@@ -67,5 +67,5 @@ export function getProxyAgentsOutput(args?: GetProxyAgentsOutputArgs, opts?: pul
  * A collection of arguments for invoking getProxyAgents.
  */
 export interface GetProxyAgentsOutputArgs {
-    items?: pulumi.Input<pulumi.Input<inputs.GetProxyAgentsItemArgs>[]>;
+    items?: pulumi.Input<pulumi.Input<inputs.GetProxyAgentsItemArgs>[] | undefined>;
 }

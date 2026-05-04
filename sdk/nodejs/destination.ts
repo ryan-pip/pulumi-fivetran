@@ -219,67 +219,67 @@ export class Destination extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Destination resources.
  */
 export interface DestinationState {
-    config?: pulumi.Input<inputs.DestinationConfig>;
+    config?: pulumi.Input<inputs.DestinationConfig | undefined>;
     /**
      * Shift my UTC offset with daylight savings time (US Only)
      */
-    daylightSavingTimeEnabled?: pulumi.Input<boolean>;
+    daylightSavingTimeEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The unique identifier for the Group within the Fivetran system.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
      */
-    hybridDeploymentAgentId?: pulumi.Input<string>;
+    hybridDeploymentAgentId?: pulumi.Input<string | undefined>;
     /**
      * Possible values: Directly, SshTunnel, ProxyAgent.
      */
-    networkingMethod?: pulumi.Input<string>;
+    networkingMethod?: pulumi.Input<string | undefined>;
     /**
      * The private link ID.
      */
-    privateLinkId?: pulumi.Input<string>;
+    privateLinkId?: pulumi.Input<string | undefined>;
     /**
      * Data processing location. This is where Fivetran will operate and run computation on data.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the setup tests should be run automatically. The default value is TRUE.
      */
-    runSetupTests?: pulumi.Input<boolean>;
+    runSetupTests?: pulumi.Input<boolean | undefined>;
     /**
      * The destination type id within the Fivetran system.
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
     /**
      * Destination setup status.
      */
-    setupStatus?: pulumi.Input<string>;
+    setupStatus?: pulumi.Input<string | undefined>;
     /**
      * Determines the time zone for the Fivetran sync schedule.
      */
-    timeZoneOffset?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.DestinationTimeouts>;
+    timeZoneOffset?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.DestinationTimeouts | undefined>;
     /**
      * Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
      */
-    trustCertificates?: pulumi.Input<boolean>;
+    trustCertificates?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
      */
-    trustFingerprints?: pulumi.Input<boolean>;
+    trustFingerprints?: pulumi.Input<boolean | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Destination resource.
  */
 export interface DestinationArgs {
-    config?: pulumi.Input<inputs.DestinationConfig>;
+    config?: pulumi.Input<inputs.DestinationConfig | undefined>;
     /**
      * Shift my UTC offset with daylight savings time (US Only)
      */
-    daylightSavingTimeEnabled?: pulumi.Input<boolean>;
+    daylightSavingTimeEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The unique identifier for the Group within the Fivetran system.
      */
@@ -287,15 +287,15 @@ export interface DestinationArgs {
     /**
      * The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
      */
-    hybridDeploymentAgentId?: pulumi.Input<string>;
+    hybridDeploymentAgentId?: pulumi.Input<string | undefined>;
     /**
      * Possible values: Directly, SshTunnel, ProxyAgent.
      */
-    networkingMethod?: pulumi.Input<string>;
+    networkingMethod?: pulumi.Input<string | undefined>;
     /**
      * The private link ID.
      */
-    privateLinkId?: pulumi.Input<string>;
+    privateLinkId?: pulumi.Input<string | undefined>;
     /**
      * Data processing location. This is where Fivetran will operate and run computation on data.
      */
@@ -303,7 +303,7 @@ export interface DestinationArgs {
     /**
      * Specifies whether the setup tests should be run automatically. The default value is TRUE.
      */
-    runSetupTests?: pulumi.Input<boolean>;
+    runSetupTests?: pulumi.Input<boolean | undefined>;
     /**
      * The destination type id within the Fivetran system.
      */
@@ -312,13 +312,13 @@ export interface DestinationArgs {
      * Determines the time zone for the Fivetran sync schedule.
      */
     timeZoneOffset: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.DestinationTimeouts>;
+    timeouts?: pulumi.Input<inputs.DestinationTimeouts | undefined>;
     /**
      * Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
      */
-    trustCertificates?: pulumi.Input<boolean>;
+    trustCertificates?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
      */
-    trustFingerprints?: pulumi.Input<boolean>;
+    trustFingerprints?: pulumi.Input<boolean | undefined>;
 }

@@ -87,7 +87,7 @@ export function getGroupConnectorsOutput(args: GetGroupConnectorsOutputArgs, opt
  * A collection of arguments for invoking getGroupConnectors.
  */
 export interface GetGroupConnectorsOutputArgs {
-    connectors?: pulumi.Input<pulumi.Input<inputs.GetGroupConnectorsConnectorArgs>[]>;
+    connectors?: pulumi.Input<pulumi.Input<inputs.GetGroupConnectorsConnectorArgs>[] | undefined>;
     /**
      * The ID of this resource.
      */
@@ -95,5 +95,5 @@ export interface GetGroupConnectorsOutputArgs {
     /**
      * Optional filter. When defined, the data source will only contain information for the connector with the specified schema name.
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
 }

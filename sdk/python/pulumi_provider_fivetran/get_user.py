@@ -203,7 +203,7 @@ def get_user(id: Optional[_builtins.str] = None,
         picture=pulumi.get(__ret__, 'picture'),
         role=pulumi.get(__ret__, 'role'),
         verified=pulumi.get(__ret__, 'verified'))
-def get_user_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_user_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
     This data source returns a user object.

@@ -82,7 +82,7 @@ def get_quickstart_packages(packages: Optional[Sequence[Union['GetQuickstartPack
     return AwaitableGetQuickstartPackagesResult(
         id=pulumi.get(__ret__, 'id'),
         packages=pulumi.get(__ret__, 'packages'))
-def get_quickstart_packages_output(packages: Optional[pulumi.Input[Optional[Sequence[Union['GetQuickstartPackagesPackageArgs', 'GetQuickstartPackagesPackageArgsDict']]]]] = None,
+def get_quickstart_packages_output(packages: pulumi.Input[Optional[Optional[Sequence[Union['GetQuickstartPackagesPackageArgs', 'GetQuickstartPackagesPackageArgsDict']]]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQuickstartPackagesResult]:
     """
     Returns a list of available Quickstart transformation package metadata details

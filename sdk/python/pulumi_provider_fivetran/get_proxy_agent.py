@@ -125,7 +125,7 @@ def get_proxy_agent(id: Optional[_builtins.str] = None,
         group_region=pulumi.get(__ret__, 'group_region'),
         id=pulumi.get(__ret__, 'id'),
         registred_at=pulumi.get(__ret__, 'registred_at'))
-def get_proxy_agent_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_proxy_agent_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProxyAgentResult]:
     """
     This data source returns a proxy agent object.

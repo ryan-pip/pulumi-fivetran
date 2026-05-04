@@ -82,7 +82,7 @@ def get_transformations(transformations: Optional[Sequence[Union['GetTransformat
     return AwaitableGetTransformationsResult(
         id=pulumi.get(__ret__, 'id'),
         transformations=pulumi.get(__ret__, 'transformations'))
-def get_transformations_output(transformations: Optional[pulumi.Input[Optional[Sequence[Union['GetTransformationsTransformationArgs', 'GetTransformationsTransformationArgsDict']]]]] = None,
+def get_transformations_output(transformations: pulumi.Input[Optional[Optional[Sequence[Union['GetTransformationsTransformationArgs', 'GetTransformationsTransformationArgsDict']]]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransformationsResult]:
     """
     Returns a list of all transformations available via API within your Fivetran account.

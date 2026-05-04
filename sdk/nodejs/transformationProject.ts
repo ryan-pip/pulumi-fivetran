@@ -229,32 +229,32 @@ export interface TransformationProjectState {
     /**
      * The timestamp of the transformation Project creation.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the User within the Fivetran system who created the dbt Project.
      */
-    createdById?: pulumi.Input<string>;
+    createdById?: pulumi.Input<string | undefined>;
     /**
      * List of environment variables defined as key-value pairs in the raw string format using = as a separator. The variable name should have the DBT_ prefix and can contain A-Z, 0-9, dash, underscore, or dot characters. Example: "DBT*VARIABLE=variable*value"
      */
-    errors?: pulumi.Input<pulumi.Input<string>[]>;
+    errors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The unique identifier for the group within the Fivetran system.
      */
-    groupId?: pulumi.Input<string>;
-    projectConfig?: pulumi.Input<inputs.TransformationProjectProjectConfig>;
+    groupId?: pulumi.Input<string | undefined>;
+    projectConfig?: pulumi.Input<inputs.TransformationProjectProjectConfig | undefined>;
     /**
      * Specifies whether the setup tests should be run automatically. The default value is TRUE.
      */
-    runTests?: pulumi.Input<boolean>;
+    runTests?: pulumi.Input<boolean | undefined>;
     /**
      * Status of transformation Project (NOT_READY, READY, ERROR).
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Transformation project type.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -265,11 +265,11 @@ export interface TransformationProjectArgs {
      * The unique identifier for the group within the Fivetran system.
      */
     groupId: pulumi.Input<string>;
-    projectConfig?: pulumi.Input<inputs.TransformationProjectProjectConfig>;
+    projectConfig?: pulumi.Input<inputs.TransformationProjectProjectConfig | undefined>;
     /**
      * Specifies whether the setup tests should be run automatically. The default value is TRUE.
      */
-    runTests?: pulumi.Input<boolean>;
+    runTests?: pulumi.Input<boolean | undefined>;
     /**
      * Transformation project type.
      */

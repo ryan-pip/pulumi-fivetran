@@ -162,39 +162,39 @@ export interface WebhookState {
     /**
      * Boolean, if set to true, webhooks are immediately sent in response to events
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * The webhook creation timestamp
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The ID of the user who created the webhook.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * The array of event types
      */
-    events?: pulumi.Input<pulumi.Input<string>[]>;
+    events?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The group ID
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the setup tests should be run
      */
-    runTests?: pulumi.Input<boolean>;
+    runTests?: pulumi.Input<boolean | undefined>;
     /**
      * The secret string used for payload signing and masked in the response.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * The webhook type (group, account)
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Your webhooks URL endpoint for your application
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -212,11 +212,11 @@ export interface WebhookArgs {
     /**
      * The group ID
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the setup tests should be run
      */
-    runTests?: pulumi.Input<boolean>;
+    runTests?: pulumi.Input<boolean | undefined>;
     /**
      * The secret string used for payload signing and masked in the response.
      */

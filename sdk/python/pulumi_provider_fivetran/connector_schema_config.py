@@ -22,12 +22,12 @@ __all__ = ['ConnectorSchemaConfigArgs', 'ConnectorSchemaConfig']
 class ConnectorSchemaConfigArgs:
     def __init__(__self__, *,
                  connector_id: pulumi.Input[_builtins.str],
-                 schema: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]] = None,
-                 schema_change_handling: Optional[pulumi.Input[_builtins.str]] = None,
-                 schemas: Optional[pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]]] = None,
-                 schemas_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['ConnectorSchemaConfigTimeoutsArgs']] = None,
-                 validation_level: Optional[pulumi.Input[_builtins.str]] = None):
+                 schema: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]] = None,
+                 schema_change_handling: pulumi.Input[Optional[_builtins.str]] = None,
+                 schemas: pulumi.Input[Optional[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]]] = None,
+                 schemas_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['ConnectorSchemaConfigTimeoutsArgs']] = None,
+                 validation_level: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConnectorSchemaConfig resource.
 
@@ -72,61 +72,61 @@ class ConnectorSchemaConfigArgs:
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Configure `schemas` instead. This attribute will be removed in the next major version of the provider.""")
-    def schema(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]]:
+    def schema(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]]:
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]]):
+    def schema(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]]):
         pulumi.set(self, "schema", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaChangeHandling")
-    def schema_change_handling(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema_change_handling(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value specifying how new source data is handled.
         """
         return pulumi.get(self, "schema_change_handling")
 
     @schema_change_handling.setter
-    def schema_change_handling(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema_change_handling(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema_change_handling", value)
 
     @_builtins.property
     @pulumi.getter
-    def schemas(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]]]:
+    def schemas(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]]]:
         """
         Map of schema configurations.
         """
         return pulumi.get(self, "schemas")
 
     @schemas.setter
-    def schemas(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]]]):
+    def schemas(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]]]):
         pulumi.set(self, "schemas", value)
 
     @_builtins.property
     @pulumi.getter(name="schemasJson")
-    def schemas_json(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schemas_json(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
         """
         return pulumi.get(self, "schemas_json")
 
     @schemas_json.setter
-    def schemas_json(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schemas_json(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schemas_json", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['ConnectorSchemaConfigTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['ConnectorSchemaConfigTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['ConnectorSchemaConfigTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['ConnectorSchemaConfigTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="validationLevel")
-    def validation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def validation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value defines validation method. 
         - NONE: no validation, any configuration accepted. 
@@ -136,20 +136,20 @@ class ConnectorSchemaConfigArgs:
         return pulumi.get(self, "validation_level")
 
     @validation_level.setter
-    def validation_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def validation_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "validation_level", value)
 
 
 @pulumi.input_type
 class _ConnectorSchemaConfigState:
     def __init__(__self__, *,
-                 connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]] = None,
-                 schema_change_handling: Optional[pulumi.Input[_builtins.str]] = None,
-                 schemas: Optional[pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]]] = None,
-                 schemas_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['ConnectorSchemaConfigTimeoutsArgs']] = None,
-                 validation_level: Optional[pulumi.Input[_builtins.str]] = None):
+                 connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]] = None,
+                 schema_change_handling: pulumi.Input[Optional[_builtins.str]] = None,
+                 schemas: pulumi.Input[Optional[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]]] = None,
+                 schemas_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['ConnectorSchemaConfigTimeoutsArgs']] = None,
+                 validation_level: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectorSchemaConfig resources.
 
@@ -182,74 +182,74 @@ class _ConnectorSchemaConfigState:
 
     @_builtins.property
     @pulumi.getter(name="connectorId")
-    def connector_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connector_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the connector within the Fivetran system.
         """
         return pulumi.get(self, "connector_id")
 
     @connector_id.setter
-    def connector_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connector_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connector_id", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Configure `schemas` instead. This attribute will be removed in the next major version of the provider.""")
-    def schema(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]]:
+    def schema(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]]:
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]]):
+    def schema(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]]):
         pulumi.set(self, "schema", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaChangeHandling")
-    def schema_change_handling(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema_change_handling(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value specifying how new source data is handled.
         """
         return pulumi.get(self, "schema_change_handling")
 
     @schema_change_handling.setter
-    def schema_change_handling(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema_change_handling(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema_change_handling", value)
 
     @_builtins.property
     @pulumi.getter
-    def schemas(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]]]:
+    def schemas(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]]]:
         """
         Map of schema configurations.
         """
         return pulumi.get(self, "schemas")
 
     @schemas.setter
-    def schemas(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]]]):
+    def schemas(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]]]):
         pulumi.set(self, "schemas", value)
 
     @_builtins.property
     @pulumi.getter(name="schemasJson")
-    def schemas_json(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schemas_json(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
         """
         return pulumi.get(self, "schemas_json")
 
     @schemas_json.setter
-    def schemas_json(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schemas_json(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schemas_json", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['ConnectorSchemaConfigTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['ConnectorSchemaConfigTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['ConnectorSchemaConfigTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['ConnectorSchemaConfigTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="validationLevel")
-    def validation_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def validation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value defines validation method. 
         - NONE: no validation, any configuration accepted. 
@@ -259,7 +259,7 @@ class _ConnectorSchemaConfigState:
         return pulumi.get(self, "validation_level")
 
     @validation_level.setter
-    def validation_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def validation_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "validation_level", value)
 
 
@@ -269,13 +269,13 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectorSchemaConfigSchemaArgs', 'ConnectorSchemaConfigSchemaArgsDict']]]]] = None,
-                 schema_change_handling: Optional[pulumi.Input[_builtins.str]] = None,
-                 schemas: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ConnectorSchemaConfigSchemasArgs', 'ConnectorSchemaConfigSchemasArgsDict']]]]] = None,
-                 schemas_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['ConnectorSchemaConfigTimeoutsArgs', 'ConnectorSchemaConfigTimeoutsArgsDict']]] = None,
-                 validation_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorSchemaConfigSchemaArgs', 'ConnectorSchemaConfigSchemaArgsDict']]]]] = None,
+                 schema_change_handling: pulumi.Input[Optional[_builtins.str]] = None,
+                 schemas: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['ConnectorSchemaConfigSchemasArgs', 'ConnectorSchemaConfigSchemasArgsDict']]]]] = None,
+                 schemas_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ConnectorSchemaConfigTimeoutsArgs', 'ConnectorSchemaConfigTimeoutsArgsDict']]] = None,
+                 validation_level: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         ## page_title: "Resource: ConnectorSchemaConfig"
@@ -687,13 +687,13 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectorSchemaConfigSchemaArgs', 'ConnectorSchemaConfigSchemaArgsDict']]]]] = None,
-                 schema_change_handling: Optional[pulumi.Input[_builtins.str]] = None,
-                 schemas: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ConnectorSchemaConfigSchemasArgs', 'ConnectorSchemaConfigSchemasArgsDict']]]]] = None,
-                 schemas_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['ConnectorSchemaConfigTimeoutsArgs', 'ConnectorSchemaConfigTimeoutsArgsDict']]] = None,
-                 validation_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorSchemaConfigSchemaArgs', 'ConnectorSchemaConfigSchemaArgsDict']]]]] = None,
+                 schema_change_handling: pulumi.Input[Optional[_builtins.str]] = None,
+                 schemas: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['ConnectorSchemaConfigSchemasArgs', 'ConnectorSchemaConfigSchemasArgsDict']]]]] = None,
+                 schemas_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ConnectorSchemaConfigTimeoutsArgs', 'ConnectorSchemaConfigTimeoutsArgsDict']]] = None,
+                 validation_level: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -722,13 +722,13 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-            schema: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectorSchemaConfigSchemaArgs', 'ConnectorSchemaConfigSchemaArgsDict']]]]] = None,
-            schema_change_handling: Optional[pulumi.Input[_builtins.str]] = None,
-            schemas: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['ConnectorSchemaConfigSchemasArgs', 'ConnectorSchemaConfigSchemasArgsDict']]]]] = None,
-            schemas_json: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['ConnectorSchemaConfigTimeoutsArgs', 'ConnectorSchemaConfigTimeoutsArgsDict']]] = None,
-            validation_level: Optional[pulumi.Input[_builtins.str]] = None) -> 'ConnectorSchemaConfig':
+            connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            schema: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorSchemaConfigSchemaArgs', 'ConnectorSchemaConfigSchemaArgsDict']]]]] = None,
+            schema_change_handling: pulumi.Input[Optional[_builtins.str]] = None,
+            schemas: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['ConnectorSchemaConfigSchemasArgs', 'ConnectorSchemaConfigSchemasArgsDict']]]]] = None,
+            schemas_json: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['ConnectorSchemaConfigTimeoutsArgs', 'ConnectorSchemaConfigTimeoutsArgsDict']]] = None,
+            validation_level: pulumi.Input[Optional[_builtins.str]] = None) -> 'ConnectorSchemaConfig':
         """
         Get an existing ConnectorSchemaConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

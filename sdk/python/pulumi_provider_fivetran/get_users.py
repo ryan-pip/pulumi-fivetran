@@ -87,8 +87,8 @@ def get_users(id: Optional[_builtins.str] = None,
     return AwaitableGetUsersResult(
         id=pulumi.get(__ret__, 'id'),
         users=pulumi.get(__ret__, 'users'))
-def get_users_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     users: Optional[pulumi.Input[Optional[Sequence[Union['GetUsersUserArgs', 'GetUsersUserArgsDict']]]]] = None,
+def get_users_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     users: pulumi.Input[Optional[Optional[Sequence[Union['GetUsersUserArgs', 'GetUsersUserArgsDict']]]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUsersResult]:
     """
     This data source returns a list of all users within your Fivetran account.

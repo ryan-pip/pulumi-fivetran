@@ -149,43 +149,43 @@ export interface PrivateLinkState {
     /**
      * The cloud provider name.
      */
-    cloudProvider?: pulumi.Input<string>;
+    cloudProvider?: pulumi.Input<string | undefined>;
     /**
      * Configuration.
      */
-    configMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    configMap?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The date and time the membership was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the User within the Fivetran system.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * The private link host.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Data processing location. This is where Fivetran will operate and run computation on data.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Service type.
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
     /**
      * The state of the private link.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The state of the private link.
      */
-    stateSummary?: pulumi.Input<string>;
+    stateSummary?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -199,7 +199,7 @@ export interface PrivateLinkArgs {
     /**
      * The private link name within the account. The name must start with a letter or underscore and can only contain letters, numbers, or underscores. Maximum size of name is 23 characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Data processing location. This is where Fivetran will operate and run computation on data.
      */

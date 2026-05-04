@@ -23,9 +23,9 @@ class ExternalLoggingArgs:
     def __init__(__self__, *,
                  group_id: pulumi.Input[_builtins.str],
                  service: pulumi.Input[_builtins.str],
-                 config: Optional[pulumi.Input['ExternalLoggingConfigArgs']] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_setup_tests: Optional[pulumi.Input[_builtins.bool]] = None):
+                 config: pulumi.Input[Optional['ExternalLoggingConfigArgs']] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_setup_tests: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ExternalLogging resource.
 
@@ -69,46 +69,46 @@ class ExternalLoggingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['ExternalLoggingConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['ExternalLoggingConfigArgs']]:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['ExternalLoggingConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['ExternalLoggingConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The boolean value specifying whether the log service is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="runSetupTests")
-    def run_setup_tests(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_setup_tests(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the setup tests should be run automatically. The default value is TRUE.
         """
         return pulumi.get(self, "run_setup_tests")
 
     @run_setup_tests.setter
-    def run_setup_tests(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_setup_tests(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_setup_tests", value)
 
 
 @pulumi.input_type
 class _ExternalLoggingState:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input['ExternalLoggingConfigArgs']] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_setup_tests: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None):
+                 config: pulumi.Input[Optional['ExternalLoggingConfigArgs']] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_setup_tests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ExternalLogging resources.
 
@@ -130,59 +130,59 @@ class _ExternalLoggingState:
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['ExternalLoggingConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['ExternalLoggingConfigArgs']]:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['ExternalLoggingConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['ExternalLoggingConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The boolean value specifying whether the log service is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the log service within the Fivetran system.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="runSetupTests")
-    def run_setup_tests(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_setup_tests(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the setup tests should be run automatically. The default value is TRUE.
         """
         return pulumi.get(self, "run_setup_tests")
 
     @run_setup_tests.setter
-    def run_setup_tests(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_setup_tests(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_setup_tests", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name for the log service type within the Fivetran system. We support the following log services: azure*monitor*log, cloudwatch, datadog*log, new*relic_log, splunkLog, stackdriver.
         """
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
 
@@ -192,11 +192,11 @@ class ExternalLogging(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Union['ExternalLoggingConfigArgs', 'ExternalLoggingConfigArgsDict']]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_setup_tests: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[Union['ExternalLoggingConfigArgs', 'ExternalLoggingConfigArgsDict']]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_setup_tests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource allows you to create, update, and delete logging service.
@@ -342,11 +342,11 @@ class ExternalLogging(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Union['ExternalLoggingConfigArgs', 'ExternalLoggingConfigArgsDict']]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_setup_tests: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[Union['ExternalLoggingConfigArgs', 'ExternalLoggingConfigArgsDict']]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_setup_tests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -375,11 +375,11 @@ class ExternalLogging(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: Optional[pulumi.Input[Union['ExternalLoggingConfigArgs', 'ExternalLoggingConfigArgsDict']]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            run_setup_tests: Optional[pulumi.Input[_builtins.bool]] = None,
-            service: Optional[pulumi.Input[_builtins.str]] = None) -> 'ExternalLogging':
+            config: pulumi.Input[Optional[Union['ExternalLoggingConfigArgs', 'ExternalLoggingConfigArgsDict']]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            run_setup_tests: pulumi.Input[Optional[_builtins.bool]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None) -> 'ExternalLogging':
         """
         Get an existing ExternalLogging resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -23,19 +23,19 @@ class ConnectorArgs:
     def __init__(__self__, *,
                  group_id: pulumi.Input[_builtins.str],
                  service: pulumi.Input[_builtins.str],
-                 auth: Optional[pulumi.Input['ConnectorAuthArgs']] = None,
-                 config: Optional[pulumi.Input['ConnectorConfigArgs']] = None,
-                 data_delay_sensitivity: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_delay_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 destination_schema: Optional[pulumi.Input['ConnectorDestinationSchemaArgs']] = None,
-                 hybrid_deployment_agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 networking_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_link_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_setup_tests: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeouts: Optional[pulumi.Input['ConnectorTimeoutsArgs']] = None,
-                 trust_certificates: Optional[pulumi.Input[_builtins.bool]] = None,
-                 trust_fingerprints: Optional[pulumi.Input[_builtins.bool]] = None):
+                 auth: pulumi.Input[Optional['ConnectorAuthArgs']] = None,
+                 config: pulumi.Input[Optional['ConnectorConfigArgs']] = None,
+                 data_delay_sensitivity: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_delay_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 destination_schema: pulumi.Input[Optional['ConnectorDestinationSchemaArgs']] = None,
+                 hybrid_deployment_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 networking_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_link_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_setup_tests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeouts: pulumi.Input[Optional['ConnectorTimeoutsArgs']] = None,
+                 trust_certificates: pulumi.Input[Optional[_builtins.bool]] = None,
+                 trust_fingerprints: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Connector resource.
 
@@ -106,170 +106,170 @@ class ConnectorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def auth(self) -> Optional[pulumi.Input['ConnectorAuthArgs']]:
+    def auth(self) -> pulumi.Input[Optional['ConnectorAuthArgs']]:
         return pulumi.get(self, "auth")
 
     @auth.setter
-    def auth(self, value: Optional[pulumi.Input['ConnectorAuthArgs']]):
+    def auth(self, value: pulumi.Input[Optional['ConnectorAuthArgs']]):
         pulumi.set(self, "auth", value)
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['ConnectorConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['ConnectorConfigArgs']]:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['ConnectorConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['ConnectorConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDelaySensitivity")
-    def data_delay_sensitivity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_delay_sensitivity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
         """
         return pulumi.get(self, "data_delay_sensitivity")
 
     @data_delay_sensitivity.setter
-    def data_delay_sensitivity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_delay_sensitivity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_delay_sensitivity", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDelayThreshold")
-    def data_delay_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def data_delay_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data_delay_sensitivity set to CUSTOM.
         """
         return pulumi.get(self, "data_delay_threshold")
 
     @data_delay_threshold.setter
-    def data_delay_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def data_delay_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_delay_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationSchema")
-    def destination_schema(self) -> Optional[pulumi.Input['ConnectorDestinationSchemaArgs']]:
+    def destination_schema(self) -> pulumi.Input[Optional['ConnectorDestinationSchemaArgs']]:
         return pulumi.get(self, "destination_schema")
 
     @destination_schema.setter
-    def destination_schema(self, value: Optional[pulumi.Input['ConnectorDestinationSchemaArgs']]):
+    def destination_schema(self, value: pulumi.Input[Optional['ConnectorDestinationSchemaArgs']]):
         pulumi.set(self, "destination_schema", value)
 
     @_builtins.property
     @pulumi.getter(name="hybridDeploymentAgentId")
-    def hybrid_deployment_agent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hybrid_deployment_agent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
         """
         return pulumi.get(self, "hybrid_deployment_agent_id")
 
     @hybrid_deployment_agent_id.setter
-    def hybrid_deployment_agent_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hybrid_deployment_agent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hybrid_deployment_agent_id", value)
 
     @_builtins.property
     @pulumi.getter(name="networkingMethod")
-    def networking_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def networking_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values: Directly, SshTunnel, ProxyAgent.
         """
         return pulumi.get(self, "networking_method")
 
     @networking_method.setter
-    def networking_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def networking_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "networking_method", value)
 
     @_builtins.property
     @pulumi.getter(name="privateLinkId")
-    def private_link_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_link_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private link ID.
         """
         return pulumi.get(self, "private_link_id")
 
     @private_link_id.setter
-    def private_link_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_link_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_link_id", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyAgentId")
-    def proxy_agent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_agent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The proxy agent ID.
         """
         return pulumi.get(self, "proxy_agent_id")
 
     @proxy_agent_id.setter
-    def proxy_agent_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_agent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_agent_id", value)
 
     @_builtins.property
     @pulumi.getter(name="runSetupTests")
-    def run_setup_tests(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_setup_tests(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the setup tests should be run automatically. The default value is FALSE.
         """
         return pulumi.get(self, "run_setup_tests")
 
     @run_setup_tests.setter
-    def run_setup_tests(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_setup_tests(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_setup_tests", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['ConnectorTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['ConnectorTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['ConnectorTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['ConnectorTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="trustCertificates")
-    def trust_certificates(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def trust_certificates(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
         """
         return pulumi.get(self, "trust_certificates")
 
     @trust_certificates.setter
-    def trust_certificates(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def trust_certificates(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "trust_certificates", value)
 
     @_builtins.property
     @pulumi.getter(name="trustFingerprints")
-    def trust_fingerprints(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def trust_fingerprints(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
         return pulumi.get(self, "trust_fingerprints")
 
     @trust_fingerprints.setter
-    def trust_fingerprints(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def trust_fingerprints(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "trust_fingerprints", value)
 
 
 @pulumi.input_type
 class _ConnectorState:
     def __init__(__self__, *,
-                 auth: Optional[pulumi.Input['ConnectorAuthArgs']] = None,
-                 config: Optional[pulumi.Input['ConnectorConfigArgs']] = None,
-                 connected_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_delay_sensitivity: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_delay_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 destination_schema: Optional[pulumi.Input['ConnectorDestinationSchemaArgs']] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 hybrid_deployment_agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 networking_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_link_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_setup_tests: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['ConnectorTimeoutsArgs']] = None,
-                 trust_certificates: Optional[pulumi.Input[_builtins.bool]] = None,
-                 trust_fingerprints: Optional[pulumi.Input[_builtins.bool]] = None):
+                 auth: pulumi.Input[Optional['ConnectorAuthArgs']] = None,
+                 config: pulumi.Input[Optional['ConnectorConfigArgs']] = None,
+                 connected_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_delay_sensitivity: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_delay_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 destination_schema: pulumi.Input[Optional['ConnectorDestinationSchemaArgs']] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 hybrid_deployment_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 networking_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_link_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_setup_tests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['ConnectorTimeoutsArgs']] = None,
+                 trust_certificates: pulumi.Input[Optional[_builtins.bool]] = None,
+                 trust_fingerprints: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Connector resources.
 
@@ -327,206 +327,206 @@ class _ConnectorState:
 
     @_builtins.property
     @pulumi.getter
-    def auth(self) -> Optional[pulumi.Input['ConnectorAuthArgs']]:
+    def auth(self) -> pulumi.Input[Optional['ConnectorAuthArgs']]:
         return pulumi.get(self, "auth")
 
     @auth.setter
-    def auth(self, value: Optional[pulumi.Input['ConnectorAuthArgs']]):
+    def auth(self, value: pulumi.Input[Optional['ConnectorAuthArgs']]):
         pulumi.set(self, "auth", value)
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['ConnectorConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['ConnectorConfigArgs']]:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['ConnectorConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['ConnectorConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter(name="connectedBy")
-    def connected_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connected_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the user who has created the connector in your account.
         """
         return pulumi.get(self, "connected_by")
 
     @connected_by.setter
-    def connected_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connected_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connected_by", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp of the time the connector was created in your account.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDelaySensitivity")
-    def data_delay_sensitivity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_delay_sensitivity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
         """
         return pulumi.get(self, "data_delay_sensitivity")
 
     @data_delay_sensitivity.setter
-    def data_delay_sensitivity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_delay_sensitivity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_delay_sensitivity", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDelayThreshold")
-    def data_delay_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def data_delay_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data_delay_sensitivity set to CUSTOM.
         """
         return pulumi.get(self, "data_delay_threshold")
 
     @data_delay_threshold.setter
-    def data_delay_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def data_delay_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_delay_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationSchema")
-    def destination_schema(self) -> Optional[pulumi.Input['ConnectorDestinationSchemaArgs']]:
+    def destination_schema(self) -> pulumi.Input[Optional['ConnectorDestinationSchemaArgs']]:
         return pulumi.get(self, "destination_schema")
 
     @destination_schema.setter
-    def destination_schema(self, value: Optional[pulumi.Input['ConnectorDestinationSchemaArgs']]):
+    def destination_schema(self, value: pulumi.Input[Optional['ConnectorDestinationSchemaArgs']]):
         pulumi.set(self, "destination_schema", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the Group (Destination) within the Fivetran system.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="hybridDeploymentAgentId")
-    def hybrid_deployment_agent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hybrid_deployment_agent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
         """
         return pulumi.get(self, "hybrid_deployment_agent_id")
 
     @hybrid_deployment_agent_id.setter
-    def hybrid_deployment_agent_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hybrid_deployment_agent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hybrid_deployment_agent_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name used both as the connector's name within the Fivetran system and as the source schema's name within your destination.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkingMethod")
-    def networking_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def networking_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values: Directly, SshTunnel, ProxyAgent.
         """
         return pulumi.get(self, "networking_method")
 
     @networking_method.setter
-    def networking_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def networking_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "networking_method", value)
 
     @_builtins.property
     @pulumi.getter(name="privateLinkId")
-    def private_link_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_link_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private link ID.
         """
         return pulumi.get(self, "private_link_id")
 
     @private_link_id.setter
-    def private_link_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_link_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_link_id", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyAgentId")
-    def proxy_agent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_agent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The proxy agent ID.
         """
         return pulumi.get(self, "proxy_agent_id")
 
     @proxy_agent_id.setter
-    def proxy_agent_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_agent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_agent_id", value)
 
     @_builtins.property
     @pulumi.getter(name="runSetupTests")
-    def run_setup_tests(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_setup_tests(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the setup tests should be run automatically. The default value is FALSE.
         """
         return pulumi.get(self, "run_setup_tests")
 
     @run_setup_tests.setter
-    def run_setup_tests(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_setup_tests(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_setup_tests", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connector type id within the Fivetran system.
         """
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['ConnectorTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['ConnectorTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['ConnectorTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['ConnectorTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="trustCertificates")
-    def trust_certificates(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def trust_certificates(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
         """
         return pulumi.get(self, "trust_certificates")
 
     @trust_certificates.setter
-    def trust_certificates(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def trust_certificates(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "trust_certificates", value)
 
     @_builtins.property
     @pulumi.getter(name="trustFingerprints")
-    def trust_fingerprints(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def trust_fingerprints(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
         return pulumi.get(self, "trust_fingerprints")
 
     @trust_fingerprints.setter
-    def trust_fingerprints(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def trust_fingerprints(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "trust_fingerprints", value)
 
 
@@ -536,21 +536,21 @@ class Connector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth: Optional[pulumi.Input[Union['ConnectorAuthArgs', 'ConnectorAuthArgsDict']]] = None,
-                 config: Optional[pulumi.Input[Union['ConnectorConfigArgs', 'ConnectorConfigArgsDict']]] = None,
-                 data_delay_sensitivity: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_delay_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 destination_schema: Optional[pulumi.Input[Union['ConnectorDestinationSchemaArgs', 'ConnectorDestinationSchemaArgsDict']]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 hybrid_deployment_agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 networking_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_link_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_setup_tests: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['ConnectorTimeoutsArgs', 'ConnectorTimeoutsArgsDict']]] = None,
-                 trust_certificates: Optional[pulumi.Input[_builtins.bool]] = None,
-                 trust_fingerprints: Optional[pulumi.Input[_builtins.bool]] = None,
+                 auth: pulumi.Input[Optional[Union['ConnectorAuthArgs', 'ConnectorAuthArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['ConnectorConfigArgs', 'ConnectorConfigArgsDict']]] = None,
+                 data_delay_sensitivity: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_delay_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 destination_schema: pulumi.Input[Optional[Union['ConnectorDestinationSchemaArgs', 'ConnectorDestinationSchemaArgsDict']]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 hybrid_deployment_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 networking_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_link_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_setup_tests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ConnectorTimeoutsArgs', 'ConnectorTimeoutsArgsDict']]] = None,
+                 trust_certificates: pulumi.Input[Optional[_builtins.bool]] = None,
+                 trust_fingerprints: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         This resource allows you to create, update, and delete connectors.
@@ -767,21 +767,21 @@ class Connector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth: Optional[pulumi.Input[Union['ConnectorAuthArgs', 'ConnectorAuthArgsDict']]] = None,
-                 config: Optional[pulumi.Input[Union['ConnectorConfigArgs', 'ConnectorConfigArgsDict']]] = None,
-                 data_delay_sensitivity: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_delay_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 destination_schema: Optional[pulumi.Input[Union['ConnectorDestinationSchemaArgs', 'ConnectorDestinationSchemaArgsDict']]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 hybrid_deployment_agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 networking_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_link_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_setup_tests: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['ConnectorTimeoutsArgs', 'ConnectorTimeoutsArgsDict']]] = None,
-                 trust_certificates: Optional[pulumi.Input[_builtins.bool]] = None,
-                 trust_fingerprints: Optional[pulumi.Input[_builtins.bool]] = None,
+                 auth: pulumi.Input[Optional[Union['ConnectorAuthArgs', 'ConnectorAuthArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['ConnectorConfigArgs', 'ConnectorConfigArgsDict']]] = None,
+                 data_delay_sensitivity: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_delay_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 destination_schema: pulumi.Input[Optional[Union['ConnectorDestinationSchemaArgs', 'ConnectorDestinationSchemaArgsDict']]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 hybrid_deployment_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 networking_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_link_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_setup_tests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ConnectorTimeoutsArgs', 'ConnectorTimeoutsArgsDict']]] = None,
+                 trust_certificates: pulumi.Input[Optional[_builtins.bool]] = None,
+                 trust_fingerprints: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -823,24 +823,24 @@ class Connector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auth: Optional[pulumi.Input[Union['ConnectorAuthArgs', 'ConnectorAuthArgsDict']]] = None,
-            config: Optional[pulumi.Input[Union['ConnectorConfigArgs', 'ConnectorConfigArgsDict']]] = None,
-            connected_by: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            data_delay_sensitivity: Optional[pulumi.Input[_builtins.str]] = None,
-            data_delay_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-            destination_schema: Optional[pulumi.Input[Union['ConnectorDestinationSchemaArgs', 'ConnectorDestinationSchemaArgsDict']]] = None,
-            group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            hybrid_deployment_agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            networking_method: Optional[pulumi.Input[_builtins.str]] = None,
-            private_link_id: Optional[pulumi.Input[_builtins.str]] = None,
-            proxy_agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-            run_setup_tests: Optional[pulumi.Input[_builtins.bool]] = None,
-            service: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['ConnectorTimeoutsArgs', 'ConnectorTimeoutsArgsDict']]] = None,
-            trust_certificates: Optional[pulumi.Input[_builtins.bool]] = None,
-            trust_fingerprints: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Connector':
+            auth: pulumi.Input[Optional[Union['ConnectorAuthArgs', 'ConnectorAuthArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['ConnectorConfigArgs', 'ConnectorConfigArgsDict']]] = None,
+            connected_by: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            data_delay_sensitivity: pulumi.Input[Optional[_builtins.str]] = None,
+            data_delay_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            destination_schema: pulumi.Input[Optional[Union['ConnectorDestinationSchemaArgs', 'ConnectorDestinationSchemaArgsDict']]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            hybrid_deployment_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            networking_method: pulumi.Input[Optional[_builtins.str]] = None,
+            private_link_id: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            run_setup_tests: pulumi.Input[Optional[_builtins.bool]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['ConnectorTimeoutsArgs', 'ConnectorTimeoutsArgsDict']]] = None,
+            trust_certificates: pulumi.Input[Optional[_builtins.bool]] = None,
+            trust_fingerprints: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Connector':
         """
         Get an existing Connector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

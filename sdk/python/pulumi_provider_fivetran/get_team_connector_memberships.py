@@ -91,8 +91,8 @@ def get_team_connector_memberships(connectors: Optional[Sequence[Union['GetTeamC
         connectors=pulumi.get(__ret__, 'connectors'),
         id=pulumi.get(__ret__, 'id'),
         team_id=pulumi.get(__ret__, 'team_id'))
-def get_team_connector_memberships_output(connectors: Optional[pulumi.Input[Optional[Sequence[Union['GetTeamConnectorMembershipsConnectorArgs', 'GetTeamConnectorMembershipsConnectorArgsDict']]]]] = None,
-                                          team_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_team_connector_memberships_output(connectors: pulumi.Input[Optional[Optional[Sequence[Union['GetTeamConnectorMembershipsConnectorArgs', 'GetTeamConnectorMembershipsConnectorArgsDict']]]]] = None,
+                                          team_id: pulumi.Input[Optional[_builtins.str]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTeamConnectorMembershipsResult]:
     """
     This data source returns a connector membership within team object.

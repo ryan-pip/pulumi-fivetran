@@ -87,8 +87,8 @@ def get_user_connection_memberships(connections: Optional[Sequence[Union['GetUse
     return AwaitableGetUserConnectionMembershipsResult(
         connections=pulumi.get(__ret__, 'connections'),
         id=pulumi.get(__ret__, 'id'))
-def get_user_connection_memberships_output(connections: Optional[pulumi.Input[Optional[Sequence[Union['GetUserConnectionMembershipsConnectionArgs', 'GetUserConnectionMembershipsConnectionArgsDict']]]]] = None,
-                                           id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_user_connection_memberships_output(connections: pulumi.Input[Optional[Optional[Sequence[Union['GetUserConnectionMembershipsConnectionArgs', 'GetUserConnectionMembershipsConnectionArgsDict']]]]] = None,
+                                           id: pulumi.Input[Optional[_builtins.str]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserConnectionMembershipsResult]:
     """
     This data source returns a connection membership for user.

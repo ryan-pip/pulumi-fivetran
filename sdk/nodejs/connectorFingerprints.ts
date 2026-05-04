@@ -128,8 +128,8 @@ export interface ConnectorFingerprintsState {
     /**
      * The unique identifier for the target connection within the Fivetran system.
      */
-    connectorId?: pulumi.Input<string>;
-    fingerprints?: pulumi.Input<pulumi.Input<inputs.ConnectorFingerprintsFingerprint>[]>;
+    connectorId?: pulumi.Input<string | undefined>;
+    fingerprints?: pulumi.Input<pulumi.Input<inputs.ConnectorFingerprintsFingerprint>[] | undefined>;
 }
 
 /**
@@ -140,5 +140,5 @@ export interface ConnectorFingerprintsArgs {
      * The unique identifier for the target connection within the Fivetran system.
      */
     connectorId: pulumi.Input<string>;
-    fingerprints?: pulumi.Input<pulumi.Input<inputs.ConnectorFingerprintsFingerprint>[]>;
+    fingerprints?: pulumi.Input<pulumi.Input<inputs.ConnectorFingerprintsFingerprint>[] | undefined>;
 }

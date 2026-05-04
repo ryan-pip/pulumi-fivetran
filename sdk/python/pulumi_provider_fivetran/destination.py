@@ -25,15 +25,15 @@ class DestinationArgs:
                  region: pulumi.Input[_builtins.str],
                  service: pulumi.Input[_builtins.str],
                  time_zone_offset: pulumi.Input[_builtins.str],
-                 config: Optional[pulumi.Input['DestinationConfigArgs']] = None,
-                 daylight_saving_time_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hybrid_deployment_agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 networking_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_link_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_setup_tests: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeouts: Optional[pulumi.Input['DestinationTimeoutsArgs']] = None,
-                 trust_certificates: Optional[pulumi.Input[_builtins.bool]] = None,
-                 trust_fingerprints: Optional[pulumi.Input[_builtins.bool]] = None):
+                 config: pulumi.Input[Optional['DestinationConfigArgs']] = None,
+                 daylight_saving_time_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hybrid_deployment_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 networking_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_link_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_setup_tests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeouts: pulumi.Input[Optional['DestinationTimeoutsArgs']] = None,
+                 trust_certificates: pulumi.Input[Optional[_builtins.bool]] = None,
+                 trust_fingerprints: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Destination resource.
 
@@ -122,124 +122,124 @@ class DestinationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['DestinationConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['DestinationConfigArgs']]:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['DestinationConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['DestinationConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter(name="daylightSavingTimeEnabled")
-    def daylight_saving_time_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def daylight_saving_time_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Shift my UTC offset with daylight savings time (US Only)
         """
         return pulumi.get(self, "daylight_saving_time_enabled")
 
     @daylight_saving_time_enabled.setter
-    def daylight_saving_time_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def daylight_saving_time_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "daylight_saving_time_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="hybridDeploymentAgentId")
-    def hybrid_deployment_agent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hybrid_deployment_agent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
         """
         return pulumi.get(self, "hybrid_deployment_agent_id")
 
     @hybrid_deployment_agent_id.setter
-    def hybrid_deployment_agent_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hybrid_deployment_agent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hybrid_deployment_agent_id", value)
 
     @_builtins.property
     @pulumi.getter(name="networkingMethod")
-    def networking_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def networking_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values: Directly, SshTunnel, ProxyAgent.
         """
         return pulumi.get(self, "networking_method")
 
     @networking_method.setter
-    def networking_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def networking_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "networking_method", value)
 
     @_builtins.property
     @pulumi.getter(name="privateLinkId")
-    def private_link_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_link_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private link ID.
         """
         return pulumi.get(self, "private_link_id")
 
     @private_link_id.setter
-    def private_link_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_link_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_link_id", value)
 
     @_builtins.property
     @pulumi.getter(name="runSetupTests")
-    def run_setup_tests(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_setup_tests(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the setup tests should be run automatically. The default value is TRUE.
         """
         return pulumi.get(self, "run_setup_tests")
 
     @run_setup_tests.setter
-    def run_setup_tests(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_setup_tests(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_setup_tests", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['DestinationTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['DestinationTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['DestinationTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['DestinationTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="trustCertificates")
-    def trust_certificates(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def trust_certificates(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
         """
         return pulumi.get(self, "trust_certificates")
 
     @trust_certificates.setter
-    def trust_certificates(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def trust_certificates(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "trust_certificates", value)
 
     @_builtins.property
     @pulumi.getter(name="trustFingerprints")
-    def trust_fingerprints(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def trust_fingerprints(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
         return pulumi.get(self, "trust_fingerprints")
 
     @trust_fingerprints.setter
-    def trust_fingerprints(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def trust_fingerprints(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "trust_fingerprints", value)
 
 
 @pulumi.input_type
 class _DestinationState:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input['DestinationConfigArgs']] = None,
-                 daylight_saving_time_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 hybrid_deployment_agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 networking_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_link_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_setup_tests: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 setup_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_zone_offset: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['DestinationTimeoutsArgs']] = None,
-                 trust_certificates: Optional[pulumi.Input[_builtins.bool]] = None,
-                 trust_fingerprints: Optional[pulumi.Input[_builtins.bool]] = None):
+                 config: pulumi.Input[Optional['DestinationConfigArgs']] = None,
+                 daylight_saving_time_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 hybrid_deployment_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 networking_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_link_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_setup_tests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 setup_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_zone_offset: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['DestinationTimeoutsArgs']] = None,
+                 trust_certificates: pulumi.Input[Optional[_builtins.bool]] = None,
+                 trust_fingerprints: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Destination resources.
 
@@ -287,164 +287,164 @@ class _DestinationState:
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['DestinationConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['DestinationConfigArgs']]:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['DestinationConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['DestinationConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter(name="daylightSavingTimeEnabled")
-    def daylight_saving_time_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def daylight_saving_time_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Shift my UTC offset with daylight savings time (US Only)
         """
         return pulumi.get(self, "daylight_saving_time_enabled")
 
     @daylight_saving_time_enabled.setter
-    def daylight_saving_time_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def daylight_saving_time_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "daylight_saving_time_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the Group within the Fivetran system.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="hybridDeploymentAgentId")
-    def hybrid_deployment_agent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hybrid_deployment_agent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
         """
         return pulumi.get(self, "hybrid_deployment_agent_id")
 
     @hybrid_deployment_agent_id.setter
-    def hybrid_deployment_agent_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hybrid_deployment_agent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hybrid_deployment_agent_id", value)
 
     @_builtins.property
     @pulumi.getter(name="networkingMethod")
-    def networking_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def networking_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Possible values: Directly, SshTunnel, ProxyAgent.
         """
         return pulumi.get(self, "networking_method")
 
     @networking_method.setter
-    def networking_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def networking_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "networking_method", value)
 
     @_builtins.property
     @pulumi.getter(name="privateLinkId")
-    def private_link_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_link_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private link ID.
         """
         return pulumi.get(self, "private_link_id")
 
     @private_link_id.setter
-    def private_link_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_link_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_link_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data processing location. This is where Fivetran will operate and run computation on data.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="runSetupTests")
-    def run_setup_tests(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_setup_tests(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the setup tests should be run automatically. The default value is TRUE.
         """
         return pulumi.get(self, "run_setup_tests")
 
     @run_setup_tests.setter
-    def run_setup_tests(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_setup_tests(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_setup_tests", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination type id within the Fivetran system.
         """
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
     @_builtins.property
     @pulumi.getter(name="setupStatus")
-    def setup_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def setup_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Destination setup status.
         """
         return pulumi.get(self, "setup_status")
 
     @setup_status.setter
-    def setup_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def setup_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "setup_status", value)
 
     @_builtins.property
     @pulumi.getter(name="timeZoneOffset")
-    def time_zone_offset(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_zone_offset(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Determines the time zone for the Fivetran sync schedule.
         """
         return pulumi.get(self, "time_zone_offset")
 
     @time_zone_offset.setter
-    def time_zone_offset(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_zone_offset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_zone_offset", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['DestinationTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['DestinationTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['DestinationTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['DestinationTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="trustCertificates")
-    def trust_certificates(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def trust_certificates(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
         """
         return pulumi.get(self, "trust_certificates")
 
     @trust_certificates.setter
-    def trust_certificates(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def trust_certificates(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "trust_certificates", value)
 
     @_builtins.property
     @pulumi.getter(name="trustFingerprints")
-    def trust_fingerprints(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def trust_fingerprints(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
         return pulumi.get(self, "trust_fingerprints")
 
     @trust_fingerprints.setter
-    def trust_fingerprints(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def trust_fingerprints(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "trust_fingerprints", value)
 
 
@@ -454,19 +454,19 @@ class Destination(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Union['DestinationConfigArgs', 'DestinationConfigArgsDict']]] = None,
-                 daylight_saving_time_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 hybrid_deployment_agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 networking_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_link_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_setup_tests: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_zone_offset: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['DestinationTimeoutsArgs', 'DestinationTimeoutsArgsDict']]] = None,
-                 trust_certificates: Optional[pulumi.Input[_builtins.bool]] = None,
-                 trust_fingerprints: Optional[pulumi.Input[_builtins.bool]] = None,
+                 config: pulumi.Input[Optional[Union['DestinationConfigArgs', 'DestinationConfigArgsDict']]] = None,
+                 daylight_saving_time_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 hybrid_deployment_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 networking_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_link_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_setup_tests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_zone_offset: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['DestinationTimeoutsArgs', 'DestinationTimeoutsArgsDict']]] = None,
+                 trust_certificates: pulumi.Input[Optional[_builtins.bool]] = None,
+                 trust_fingerprints: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         This resource allows you to create, update, and delete destinations.
@@ -641,19 +641,19 @@ class Destination(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Union['DestinationConfigArgs', 'DestinationConfigArgsDict']]] = None,
-                 daylight_saving_time_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 hybrid_deployment_agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 networking_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_link_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_setup_tests: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_zone_offset: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['DestinationTimeoutsArgs', 'DestinationTimeoutsArgsDict']]] = None,
-                 trust_certificates: Optional[pulumi.Input[_builtins.bool]] = None,
-                 trust_fingerprints: Optional[pulumi.Input[_builtins.bool]] = None,
+                 config: pulumi.Input[Optional[Union['DestinationConfigArgs', 'DestinationConfigArgsDict']]] = None,
+                 daylight_saving_time_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 hybrid_deployment_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 networking_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_link_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_setup_tests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_zone_offset: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['DestinationTimeoutsArgs', 'DestinationTimeoutsArgsDict']]] = None,
+                 trust_certificates: pulumi.Input[Optional[_builtins.bool]] = None,
+                 trust_fingerprints: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -695,20 +695,20 @@ class Destination(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: Optional[pulumi.Input[Union['DestinationConfigArgs', 'DestinationConfigArgsDict']]] = None,
-            daylight_saving_time_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            hybrid_deployment_agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-            networking_method: Optional[pulumi.Input[_builtins.str]] = None,
-            private_link_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            run_setup_tests: Optional[pulumi.Input[_builtins.bool]] = None,
-            service: Optional[pulumi.Input[_builtins.str]] = None,
-            setup_status: Optional[pulumi.Input[_builtins.str]] = None,
-            time_zone_offset: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['DestinationTimeoutsArgs', 'DestinationTimeoutsArgsDict']]] = None,
-            trust_certificates: Optional[pulumi.Input[_builtins.bool]] = None,
-            trust_fingerprints: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Destination':
+            config: pulumi.Input[Optional[Union['DestinationConfigArgs', 'DestinationConfigArgsDict']]] = None,
+            daylight_saving_time_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            hybrid_deployment_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            networking_method: pulumi.Input[Optional[_builtins.str]] = None,
+            private_link_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            run_setup_tests: pulumi.Input[Optional[_builtins.bool]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None,
+            setup_status: pulumi.Input[Optional[_builtins.str]] = None,
+            time_zone_offset: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['DestinationTimeoutsArgs', 'DestinationTimeoutsArgsDict']]] = None,
+            trust_certificates: pulumi.Input[Optional[_builtins.bool]] = None,
+            trust_fingerprints: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Destination':
         """
         Get an existing Destination resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

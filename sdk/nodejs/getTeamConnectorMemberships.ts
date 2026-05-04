@@ -57,7 +57,7 @@ export function getTeamConnectorMembershipsOutput(args: GetTeamConnectorMembersh
  * A collection of arguments for invoking getTeamConnectorMemberships.
  */
 export interface GetTeamConnectorMembershipsOutputArgs {
-    connectors?: pulumi.Input<pulumi.Input<inputs.GetTeamConnectorMembershipsConnectorArgs>[]>;
+    connectors?: pulumi.Input<pulumi.Input<inputs.GetTeamConnectorMembershipsConnectorArgs>[] | undefined>;
     /**
      * The unique identifier for the team within your account.
      */

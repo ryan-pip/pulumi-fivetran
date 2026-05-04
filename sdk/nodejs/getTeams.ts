@@ -76,6 +76,6 @@ export interface GetTeamsOutputArgs {
     /**
      * The ID of this resource.
      */
-    id?: pulumi.Input<string>;
-    teams?: pulumi.Input<pulumi.Input<inputs.GetTeamsTeamArgs>[]>;
+    id?: pulumi.Input<string | undefined>;
+    teams?: pulumi.Input<pulumi.Input<inputs.GetTeamsTeamArgs>[] | undefined>;
 }

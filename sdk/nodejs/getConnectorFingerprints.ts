@@ -79,7 +79,7 @@ export function getConnectorFingerprintsOutput(args: GetConnectorFingerprintsOut
  * A collection of arguments for invoking getConnectorFingerprints.
  */
 export interface GetConnectorFingerprintsOutputArgs {
-    fingerprints?: pulumi.Input<pulumi.Input<inputs.GetConnectorFingerprintsFingerprintArgs>[]>;
+    fingerprints?: pulumi.Input<pulumi.Input<inputs.GetConnectorFingerprintsFingerprintArgs>[] | undefined>;
     /**
      * The unique identifier for the resource. Equal to target connection id.
      */

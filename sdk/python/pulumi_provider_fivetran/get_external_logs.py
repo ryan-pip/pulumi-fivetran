@@ -75,7 +75,7 @@ def get_external_logs(logs: Optional[Sequence[Union['GetExternalLogsLogArgs', 'G
     return AwaitableGetExternalLogsResult(
         id=pulumi.get(__ret__, 'id'),
         logs=pulumi.get(__ret__, 'logs'))
-def get_external_logs_output(logs: Optional[pulumi.Input[Optional[Sequence[Union['GetExternalLogsLogArgs', 'GetExternalLogsLogArgsDict']]]]] = None,
+def get_external_logs_output(logs: pulumi.Input[Optional[Optional[Sequence[Union['GetExternalLogsLogArgs', 'GetExternalLogsLogArgsDict']]]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalLogsResult]:
     """
     This data source returns list of logging service objects.

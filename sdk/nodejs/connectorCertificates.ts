@@ -122,18 +122,18 @@ export class ConnectorCertificates extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ConnectorCertificates resources.
  */
 export interface ConnectorCertificatesState {
-    certificates?: pulumi.Input<pulumi.Input<inputs.ConnectorCertificatesCertificate>[]>;
+    certificates?: pulumi.Input<pulumi.Input<inputs.ConnectorCertificatesCertificate>[] | undefined>;
     /**
      * The unique identifier for the target connection within the Fivetran system.
      */
-    connectorId?: pulumi.Input<string>;
+    connectorId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ConnectorCertificates resource.
  */
 export interface ConnectorCertificatesArgs {
-    certificates?: pulumi.Input<pulumi.Input<inputs.ConnectorCertificatesCertificate>[]>;
+    certificates?: pulumi.Input<pulumi.Input<inputs.ConnectorCertificatesCertificate>[] | undefined>;
     /**
      * The unique identifier for the target connection within the Fivetran system.
      */

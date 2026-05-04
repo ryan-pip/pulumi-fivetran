@@ -76,6 +76,6 @@ export interface GetUsersOutputArgs {
     /**
      * The ID of this resource.
      */
-    id?: pulumi.Input<string>;
-    users?: pulumi.Input<pulumi.Input<inputs.GetUsersUserArgs>[]>;
+    id?: pulumi.Input<string | undefined>;
+    users?: pulumi.Input<pulumi.Input<inputs.GetUsersUserArgs>[] | undefined>;
 }

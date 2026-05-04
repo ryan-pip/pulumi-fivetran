@@ -126,8 +126,8 @@ export interface TeamUserMembershipState {
     /**
      * The unique identifier for the team within your account.
      */
-    teamId?: pulumi.Input<string>;
-    users?: pulumi.Input<pulumi.Input<inputs.TeamUserMembershipUser>[]>;
+    teamId?: pulumi.Input<string | undefined>;
+    users?: pulumi.Input<pulumi.Input<inputs.TeamUserMembershipUser>[] | undefined>;
 }
 
 /**
@@ -138,5 +138,5 @@ export interface TeamUserMembershipArgs {
      * The unique identifier for the team within your account.
      */
     teamId: pulumi.Input<string>;
-    users?: pulumi.Input<pulumi.Input<inputs.TeamUserMembershipUser>[]>;
+    users?: pulumi.Input<pulumi.Input<inputs.TeamUserMembershipUser>[] | undefined>;
 }

@@ -142,9 +142,9 @@ def get_external_logging(config: Optional[Union['GetExternalLoggingConfigArgs', 
         id=pulumi.get(__ret__, 'id'),
         run_setup_tests=pulumi.get(__ret__, 'run_setup_tests'),
         service=pulumi.get(__ret__, 'service'))
-def get_external_logging_output(config: Optional[pulumi.Input[Optional[Union['GetExternalLoggingConfigArgs', 'GetExternalLoggingConfigArgsDict']]]] = None,
-                                id: Optional[pulumi.Input[_builtins.str]] = None,
-                                run_setup_tests: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+def get_external_logging_output(config: pulumi.Input[Optional[Optional[Union['GetExternalLoggingConfigArgs', 'GetExternalLoggingConfigArgsDict']]]] = None,
+                                id: pulumi.Input[Optional[_builtins.str]] = None,
+                                run_setup_tests: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalLoggingResult]:
     """
     This data source returns a logging service object.

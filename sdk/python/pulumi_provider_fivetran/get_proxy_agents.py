@@ -82,7 +82,7 @@ def get_proxy_agents(items: Optional[Sequence[Union['GetProxyAgentsItemArgs', 'G
     return AwaitableGetProxyAgentsResult(
         id=pulumi.get(__ret__, 'id'),
         items=pulumi.get(__ret__, 'items'))
-def get_proxy_agents_output(items: Optional[pulumi.Input[Optional[Sequence[Union['GetProxyAgentsItemArgs', 'GetProxyAgentsItemArgsDict']]]]] = None,
+def get_proxy_agents_output(items: pulumi.Input[Optional[Optional[Sequence[Union['GetProxyAgentsItemArgs', 'GetProxyAgentsItemArgsDict']]]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProxyAgentsResult]:
     """
     This data source returns a list of all proxy agents within your Fivetran account.

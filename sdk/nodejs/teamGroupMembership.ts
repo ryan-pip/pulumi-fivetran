@@ -125,18 +125,18 @@ export class TeamGroupMembership extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TeamGroupMembership resources.
  */
 export interface TeamGroupMembershipState {
-    groups?: pulumi.Input<pulumi.Input<inputs.TeamGroupMembershipGroup>[]>;
+    groups?: pulumi.Input<pulumi.Input<inputs.TeamGroupMembershipGroup>[] | undefined>;
     /**
      * The unique identifier for the team within your account.
      */
-    teamId?: pulumi.Input<string>;
+    teamId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a TeamGroupMembership resource.
  */
 export interface TeamGroupMembershipArgs {
-    groups?: pulumi.Input<pulumi.Input<inputs.TeamGroupMembershipGroup>[]>;
+    groups?: pulumi.Input<pulumi.Input<inputs.TeamGroupMembershipGroup>[] | undefined>;
     /**
      * The unique identifier for the team within your account.
      */

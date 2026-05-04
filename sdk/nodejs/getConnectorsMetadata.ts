@@ -67,5 +67,5 @@ export function getConnectorsMetadataOutput(args?: GetConnectorsMetadataOutputAr
  * A collection of arguments for invoking getConnectorsMetadata.
  */
 export interface GetConnectorsMetadataOutputArgs {
-    sources?: pulumi.Input<pulumi.Input<inputs.GetConnectorsMetadataSourceArgs>[]>;
+    sources?: pulumi.Input<pulumi.Input<inputs.GetConnectorsMetadataSourceArgs>[] | undefined>;
 }

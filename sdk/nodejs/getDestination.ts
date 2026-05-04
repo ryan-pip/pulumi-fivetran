@@ -78,6 +78,6 @@ export function getDestinationOutput(args: GetDestinationOutputArgs, opts?: pulu
  * A collection of arguments for invoking getDestination.
  */
 export interface GetDestinationOutputArgs {
-    config?: pulumi.Input<inputs.GetDestinationConfigArgs>;
+    config?: pulumi.Input<inputs.GetDestinationConfigArgs | undefined>;
     id: pulumi.Input<string>;
 }

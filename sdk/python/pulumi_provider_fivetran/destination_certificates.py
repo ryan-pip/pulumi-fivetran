@@ -22,7 +22,7 @@ __all__ = ['DestinationCertificatesArgs', 'DestinationCertificates']
 class DestinationCertificatesArgs:
     def __init__(__self__, *,
                  destination_id: pulumi.Input[_builtins.str],
-                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input['DestinationCertificatesCertificateArgs']]]] = None):
+                 certificates: pulumi.Input[Optional[Sequence[pulumi.Input['DestinationCertificatesCertificateArgs']]]] = None):
         """
         The set of arguments for constructing a DestinationCertificates resource.
 
@@ -46,19 +46,19 @@ class DestinationCertificatesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DestinationCertificatesCertificateArgs']]]]:
+    def certificates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DestinationCertificatesCertificateArgs']]]]:
         return pulumi.get(self, "certificates")
 
     @certificates.setter
-    def certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DestinationCertificatesCertificateArgs']]]]):
+    def certificates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DestinationCertificatesCertificateArgs']]]]):
         pulumi.set(self, "certificates", value)
 
 
 @pulumi.input_type
 class _DestinationCertificatesState:
     def __init__(__self__, *,
-                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input['DestinationCertificatesCertificateArgs']]]] = None,
-                 destination_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 certificates: pulumi.Input[Optional[Sequence[pulumi.Input['DestinationCertificatesCertificateArgs']]]] = None,
+                 destination_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DestinationCertificates resources.
 
@@ -71,23 +71,23 @@ class _DestinationCertificatesState:
 
     @_builtins.property
     @pulumi.getter
-    def certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DestinationCertificatesCertificateArgs']]]]:
+    def certificates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DestinationCertificatesCertificateArgs']]]]:
         return pulumi.get(self, "certificates")
 
     @certificates.setter
-    def certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DestinationCertificatesCertificateArgs']]]]):
+    def certificates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DestinationCertificatesCertificateArgs']]]]):
         pulumi.set(self, "certificates", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationId")
-    def destination_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the target destination within the Fivetran system.
         """
         return pulumi.get(self, "destination_id")
 
     @destination_id.setter
-    def destination_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_id", value)
 
 
@@ -97,8 +97,8 @@ class DestinationCertificates(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DestinationCertificatesCertificateArgs', 'DestinationCertificatesCertificateArgsDict']]]]] = None,
-                 destination_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DestinationCertificatesCertificateArgs', 'DestinationCertificatesCertificateArgsDict']]]]] = None,
+                 destination_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource allows you to manage list of approved SSH fingerprints for a particular destination.
@@ -231,8 +231,8 @@ class DestinationCertificates(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DestinationCertificatesCertificateArgs', 'DestinationCertificatesCertificateArgsDict']]]]] = None,
-                 destination_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DestinationCertificatesCertificateArgs', 'DestinationCertificatesCertificateArgsDict']]]]] = None,
+                 destination_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -256,8 +256,8 @@ class DestinationCertificates(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            certificates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DestinationCertificatesCertificateArgs', 'DestinationCertificatesCertificateArgsDict']]]]] = None,
-            destination_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DestinationCertificates':
+            certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DestinationCertificatesCertificateArgs', 'DestinationCertificatesCertificateArgsDict']]]]] = None,
+            destination_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'DestinationCertificates':
         """
         Get an existing DestinationCertificates resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

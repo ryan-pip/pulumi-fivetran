@@ -97,7 +97,7 @@ export function getExternalLoggingOutput(args: GetExternalLoggingOutputArgs, opt
  * A collection of arguments for invoking getExternalLogging.
  */
 export interface GetExternalLoggingOutputArgs {
-    config?: pulumi.Input<inputs.GetExternalLoggingConfigArgs>;
+    config?: pulumi.Input<inputs.GetExternalLoggingConfigArgs | undefined>;
     /**
      * The unique identifier for the log service within the Fivetran system.
      */
@@ -105,5 +105,5 @@ export interface GetExternalLoggingOutputArgs {
     /**
      * Specifies whether the setup tests should be run automatically. The default value is TRUE.
      */
-    runSetupTests?: pulumi.Input<boolean>;
+    runSetupTests?: pulumi.Input<boolean | undefined>;
 }

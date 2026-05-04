@@ -125,7 +125,7 @@ def get_quickstart_package(id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         output_model_names=pulumi.get(__ret__, 'output_model_names'),
         version=pulumi.get(__ret__, 'version'))
-def get_quickstart_package_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_quickstart_package_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQuickstartPackageResult]:
     """
     This data source returns the metadata details of the Quickstart transformation package if a valid identifier is provided

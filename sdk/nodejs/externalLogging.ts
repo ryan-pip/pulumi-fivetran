@@ -151,34 +151,34 @@ export class ExternalLogging extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ExternalLogging resources.
  */
 export interface ExternalLoggingState {
-    config?: pulumi.Input<inputs.ExternalLoggingConfig>;
+    config?: pulumi.Input<inputs.ExternalLoggingConfig | undefined>;
     /**
      * The boolean value specifying whether the log service is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The unique identifier for the log service within the Fivetran system.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the setup tests should be run automatically. The default value is TRUE.
      */
-    runSetupTests?: pulumi.Input<boolean>;
+    runSetupTests?: pulumi.Input<boolean | undefined>;
     /**
      * The name for the log service type within the Fivetran system. We support the following log services: azure*monitor*log, cloudwatch, datadog*log, new*relic_log, splunkLog, stackdriver.
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ExternalLogging resource.
  */
 export interface ExternalLoggingArgs {
-    config?: pulumi.Input<inputs.ExternalLoggingConfig>;
+    config?: pulumi.Input<inputs.ExternalLoggingConfig | undefined>;
     /**
      * The boolean value specifying whether the log service is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The unique identifier for the log service within the Fivetran system.
      */
@@ -186,7 +186,7 @@ export interface ExternalLoggingArgs {
     /**
      * Specifies whether the setup tests should be run automatically. The default value is TRUE.
      */
-    runSetupTests?: pulumi.Input<boolean>;
+    runSetupTests?: pulumi.Input<boolean | undefined>;
     /**
      * The name for the log service type within the Fivetran system. We support the following log services: azure*monitor*log, cloudwatch, datadog*log, new*relic_log, splunkLog, stackdriver.
      */

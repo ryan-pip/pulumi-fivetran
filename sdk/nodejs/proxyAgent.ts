@@ -132,35 +132,35 @@ export interface ProxyAgentState {
     /**
      * Client certificate.
      */
-    clientCert?: pulumi.Input<string>;
+    clientCert?: pulumi.Input<string | undefined>;
     /**
      * Client private key.
      */
-    clientPrivateKey?: pulumi.Input<string>;
+    clientPrivateKey?: pulumi.Input<string | undefined>;
     /**
      * The actor who created the proxy agent.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Proxy agent name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Data processing location. This is where Fivetran will operate and run computation on data.
      */
-    groupRegion?: pulumi.Input<string>;
+    groupRegion?: pulumi.Input<string | undefined>;
     /**
      * Determines whether regenerarion secrets needs to be performed.
      */
-    regenerationCounter?: pulumi.Input<number>;
+    regenerationCounter?: pulumi.Input<number | undefined>;
     /**
      * The timestamp of the time the proxy agent was created in your account.
      */
-    registredAt?: pulumi.Input<string>;
+    registredAt?: pulumi.Input<string | undefined>;
     /**
      * The auth token.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -178,5 +178,5 @@ export interface ProxyAgentArgs {
     /**
      * Determines whether regenerarion secrets needs to be performed.
      */
-    regenerationCounter?: pulumi.Input<number>;
+    regenerationCounter?: pulumi.Input<number | undefined>;
 }

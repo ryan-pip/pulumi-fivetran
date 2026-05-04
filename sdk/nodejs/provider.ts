@@ -64,9 +64,9 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
-    apiKey?: pulumi.Input<string>;
-    apiSecret?: pulumi.Input<string>;
-    apiUrl?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
+    apiSecret?: pulumi.Input<string | undefined>;
+    apiUrl?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

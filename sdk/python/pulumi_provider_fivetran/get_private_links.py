@@ -73,7 +73,7 @@ def get_private_links(items: Optional[Sequence[Union['GetPrivateLinksItemArgs', 
     return AwaitableGetPrivateLinksResult(
         id=pulumi.get(__ret__, 'id'),
         items=pulumi.get(__ret__, 'items'))
-def get_private_links_output(items: Optional[pulumi.Input[Optional[Sequence[Union['GetPrivateLinksItemArgs', 'GetPrivateLinksItemArgsDict']]]]] = None,
+def get_private_links_output(items: pulumi.Input[Optional[Optional[Sequence[Union['GetPrivateLinksItemArgs', 'GetPrivateLinksItemArgsDict']]]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPrivateLinksResult]:
     """
     Use this data source to access information about an existing resource.

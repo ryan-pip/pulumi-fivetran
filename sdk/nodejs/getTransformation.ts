@@ -107,6 +107,6 @@ export interface GetTransformationOutputArgs {
      * The unique identifier for the Transformation within the Fivetran system.
      */
     id: pulumi.Input<string>;
-    schedule?: pulumi.Input<inputs.GetTransformationScheduleArgs>;
-    transformationConfig?: pulumi.Input<inputs.GetTransformationTransformationConfigArgs>;
+    schedule?: pulumi.Input<inputs.GetTransformationScheduleArgs | undefined>;
+    transformationConfig?: pulumi.Input<inputs.GetTransformationTransformationConfigArgs | undefined>;
 }

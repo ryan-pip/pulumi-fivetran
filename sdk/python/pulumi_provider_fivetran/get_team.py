@@ -112,7 +112,7 @@ def get_team(id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         role=pulumi.get(__ret__, 'role'))
-def get_team_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_team_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTeamResult]:
     """
     This data source returns a team object.

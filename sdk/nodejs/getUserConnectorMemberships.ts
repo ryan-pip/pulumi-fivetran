@@ -79,7 +79,7 @@ export function getUserConnectorMembershipsOutput(args: GetUserConnectorMembersh
  * A collection of arguments for invoking getUserConnectorMemberships.
  */
 export interface GetUserConnectorMembershipsOutputArgs {
-    connectors?: pulumi.Input<pulumi.Input<inputs.GetUserConnectorMembershipsConnectorArgs>[]>;
+    connectors?: pulumi.Input<pulumi.Input<inputs.GetUserConnectorMembershipsConnectorArgs>[] | undefined>;
     /**
      * The unique identifier for the user within your account.
      */

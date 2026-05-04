@@ -22,7 +22,7 @@ __all__ = ['ConnectorFingerprintsArgs', 'ConnectorFingerprints']
 class ConnectorFingerprintsArgs:
     def __init__(__self__, *,
                  connector_id: pulumi.Input[_builtins.str],
-                 fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorFingerprintsFingerprintArgs']]]] = None):
+                 fingerprints: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectorFingerprintsFingerprintArgs']]]] = None):
         """
         The set of arguments for constructing a ConnectorFingerprints resource.
 
@@ -46,19 +46,19 @@ class ConnectorFingerprintsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def fingerprints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorFingerprintsFingerprintArgs']]]]:
+    def fingerprints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectorFingerprintsFingerprintArgs']]]]:
         return pulumi.get(self, "fingerprints")
 
     @fingerprints.setter
-    def fingerprints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorFingerprintsFingerprintArgs']]]]):
+    def fingerprints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectorFingerprintsFingerprintArgs']]]]):
         pulumi.set(self, "fingerprints", value)
 
 
 @pulumi.input_type
 class _ConnectorFingerprintsState:
     def __init__(__self__, *,
-                 connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorFingerprintsFingerprintArgs']]]] = None):
+                 connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 fingerprints: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectorFingerprintsFingerprintArgs']]]] = None):
         """
         Input properties used for looking up and filtering ConnectorFingerprints resources.
 
@@ -71,23 +71,23 @@ class _ConnectorFingerprintsState:
 
     @_builtins.property
     @pulumi.getter(name="connectorId")
-    def connector_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connector_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the target connection within the Fivetran system.
         """
         return pulumi.get(self, "connector_id")
 
     @connector_id.setter
-    def connector_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connector_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connector_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def fingerprints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorFingerprintsFingerprintArgs']]]]:
+    def fingerprints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectorFingerprintsFingerprintArgs']]]]:
         return pulumi.get(self, "fingerprints")
 
     @fingerprints.setter
-    def fingerprints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectorFingerprintsFingerprintArgs']]]]):
+    def fingerprints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectorFingerprintsFingerprintArgs']]]]):
         pulumi.set(self, "fingerprints", value)
 
 
@@ -97,8 +97,8 @@ class ConnectorFingerprints(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectorFingerprintsFingerprintArgs', 'ConnectorFingerprintsFingerprintArgsDict']]]]] = None,
+                 connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 fingerprints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorFingerprintsFingerprintArgs', 'ConnectorFingerprintsFingerprintArgsDict']]]]] = None,
                  __props__=None):
         """
         This resource allows you to manage list of approved SSH fingerprints for a particular connector.
@@ -231,8 +231,8 @@ class ConnectorFingerprints(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectorFingerprintsFingerprintArgs', 'ConnectorFingerprintsFingerprintArgsDict']]]]] = None,
+                 connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 fingerprints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorFingerprintsFingerprintArgs', 'ConnectorFingerprintsFingerprintArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -256,8 +256,8 @@ class ConnectorFingerprints(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-            fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectorFingerprintsFingerprintArgs', 'ConnectorFingerprintsFingerprintArgsDict']]]]] = None) -> 'ConnectorFingerprints':
+            connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            fingerprints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorFingerprintsFingerprintArgs', 'ConnectorFingerprintsFingerprintArgsDict']]]]] = None) -> 'ConnectorFingerprints':
         """
         Get an existing ConnectorFingerprints resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
