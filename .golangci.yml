@@ -1,8 +1,9 @@
 version: "2"
 
 linters:
+  default: none
   enable:
-    # Core correctness (also enabled by default in v2, listed explicitly for clarity)
+    # Core correctness
     - errcheck
     - govet
     - ineffassign
@@ -18,16 +19,25 @@ linters:
     - gosec
     # Replaces golint / interfacer (removed in golangci-lint v1.57+)
     - revive
-  enable-all: false
-
-issues:
-  exclude-files:
-    - schema.go
-    - pulumiManifest.go
-  # cmd/ packages depend on schema-embed.json which is generated at build time.
-  # Lint only the library packages; cmd/ is a thin entry-point with no logic to lint.
-  exclude-dirs:
-    - cmd
+  settings:
+    goconst:
+      # Tests legitimately repeat resource-name literals across expectedResources
+      # and resourcesWithCustomComputeID; without this each name reaches the
+      # default min-occurrences=3 across files and trips the linter.
+      ignore-tests: true
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    paths:
+      - schema.go
+      - pulumiManifest.go
+      # cmd/ depends on schema-embed.json generated at build time;
+      # entry point has no logic to lint.
+      - cmd
 
 run:
   timeout: 20m
