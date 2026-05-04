@@ -21,6 +21,7 @@ runs:
       run: |
         mkdir -p "$RUNNER_TEMP/mise-ci"
         cp "$GITHUB_WORKSPACE/mise.ci.toml" "$RUNNER_TEMP/mise-ci/mise.toml"
+        cp "$GITHUB_WORKSPACE/mise.lock" "$RUNNER_TEMP/mise-ci/mise.lock"
 
     - name: Setup mise
       uses: jdx/mise-action@1648a7812b9aeae629881980618f079932869151 # v4.0.1
