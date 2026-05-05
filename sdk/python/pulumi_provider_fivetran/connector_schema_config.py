@@ -21,7 +21,9 @@ __all__ = ['ConnectorSchemaConfigArgs', 'ConnectorSchemaConfig']
 @pulumi.input_type
 class ConnectorSchemaConfigArgs:
     def __init__(__self__, *,
-                 connector_id: pulumi.Input[_builtins.str],
+                 connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 connector_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  schema: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]] = None,
                  schema_change_handling: pulumi.Input[Optional[_builtins.str]] = None,
                  schemas: pulumi.Input[Optional[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]]] = None,
@@ -32,6 +34,8 @@ class ConnectorSchemaConfigArgs:
         The set of arguments for constructing a ConnectorSchemaConfig resource.
 
         :param pulumi.Input[_builtins.str] connector_id: The unique identifier for the connector within the Fivetran system.
+        :param pulumi.Input[_builtins.str] connector_name: The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+        :param pulumi.Input[_builtins.str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
         :param pulumi.Input[_builtins.str] schema_change_handling: The value specifying how new source data is handled.
         :param pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]] schemas: Map of schema configurations.
         :param pulumi.Input[_builtins.str] schemas_json: Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
@@ -40,7 +44,12 @@ class ConnectorSchemaConfigArgs:
                - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
                - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
         """
-        pulumi.set(__self__, "connector_id", connector_id)
+        if connector_id is not None:
+            pulumi.set(__self__, "connector_id", connector_id)
+        if connector_name is not None:
+            pulumi.set(__self__, "connector_name", connector_name)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
         if schema is not None:
             warnings.warn("""Configure `schemas` instead. This attribute will be removed in the next major version of the provider.""", DeprecationWarning)
             pulumi.log.warn("""schema is deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.""")
@@ -59,15 +68,39 @@ class ConnectorSchemaConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectorId")
-    def connector_id(self) -> pulumi.Input[_builtins.str]:
+    def connector_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the connector within the Fivetran system.
         """
         return pulumi.get(self, "connector_id")
 
     @connector_id.setter
-    def connector_id(self, value: pulumi.Input[_builtins.str]):
+    def connector_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connector_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="connectorName")
+    def connector_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+        """
+        return pulumi.get(self, "connector_name")
+
+    @connector_name.setter
+    def connector_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "connector_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The unique identifier for the Group (Destination) within the Fivetran system.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -144,6 +177,8 @@ class ConnectorSchemaConfigArgs:
 class _ConnectorSchemaConfigState:
     def __init__(__self__, *,
                  connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 connector_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  schema: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaArgs']]]] = None,
                  schema_change_handling: pulumi.Input[Optional[_builtins.str]] = None,
                  schemas: pulumi.Input[Optional[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]]] = None,
@@ -154,6 +189,8 @@ class _ConnectorSchemaConfigState:
         Input properties used for looking up and filtering ConnectorSchemaConfig resources.
 
         :param pulumi.Input[_builtins.str] connector_id: The unique identifier for the connector within the Fivetran system.
+        :param pulumi.Input[_builtins.str] connector_name: The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+        :param pulumi.Input[_builtins.str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
         :param pulumi.Input[_builtins.str] schema_change_handling: The value specifying how new source data is handled.
         :param pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]] schemas: Map of schema configurations.
         :param pulumi.Input[_builtins.str] schemas_json: Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
@@ -164,6 +201,10 @@ class _ConnectorSchemaConfigState:
         """
         if connector_id is not None:
             pulumi.set(__self__, "connector_id", connector_id)
+        if connector_name is not None:
+            pulumi.set(__self__, "connector_name", connector_name)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
         if schema is not None:
             warnings.warn("""Configure `schemas` instead. This attribute will be removed in the next major version of the provider.""", DeprecationWarning)
             pulumi.log.warn("""schema is deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.""")
@@ -191,6 +232,30 @@ class _ConnectorSchemaConfigState:
     @connector_id.setter
     def connector_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connector_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="connectorName")
+    def connector_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+        """
+        return pulumi.get(self, "connector_name")
+
+    @connector_name.setter
+    def connector_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "connector_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The unique identifier for the Group (Destination) within the Fivetran system.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -270,6 +335,8 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 connector_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  schema: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorSchemaConfigSchemaArgs', 'ConnectorSchemaConfigSchemaArgsDict']]]]] = None,
                  schema_change_handling: pulumi.Input[Optional[_builtins.str]] = None,
                  schemas: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['ConnectorSchemaConfigSchemasArgs', 'ConnectorSchemaConfigSchemasArgsDict']]]]] = None,
@@ -469,6 +536,8 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connector_id: The unique identifier for the connector within the Fivetran system.
+        :param pulumi.Input[_builtins.str] connector_name: The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+        :param pulumi.Input[_builtins.str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
         :param pulumi.Input[_builtins.str] schema_change_handling: The value specifying how new source data is handled.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['ConnectorSchemaConfigSchemasArgs', 'ConnectorSchemaConfigSchemasArgsDict']]]] schemas: Map of schema configurations.
         :param pulumi.Input[_builtins.str] schemas_json: Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
@@ -481,7 +550,7 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ConnectorSchemaConfigArgs,
+                 args: Optional[ConnectorSchemaConfigArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## page_title: "Resource: ConnectorSchemaConfig"
@@ -688,6 +757,8 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 connector_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  schema: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorSchemaConfigSchemaArgs', 'ConnectorSchemaConfigSchemaArgsDict']]]]] = None,
                  schema_change_handling: pulumi.Input[Optional[_builtins.str]] = None,
                  schemas: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['ConnectorSchemaConfigSchemasArgs', 'ConnectorSchemaConfigSchemasArgsDict']]]]] = None,
@@ -703,9 +774,9 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectorSchemaConfigArgs.__new__(ConnectorSchemaConfigArgs)
 
-            if connector_id is None and not opts.urn:
-                raise TypeError("Missing required property 'connector_id'")
             __props__.__dict__["connector_id"] = connector_id
+            __props__.__dict__["connector_name"] = connector_name
+            __props__.__dict__["group_id"] = group_id
             __props__.__dict__["schema"] = schema
             __props__.__dict__["schema_change_handling"] = schema_change_handling
             __props__.__dict__["schemas"] = schemas
@@ -723,6 +794,8 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            connector_name: pulumi.Input[Optional[_builtins.str]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
             schema: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorSchemaConfigSchemaArgs', 'ConnectorSchemaConfigSchemaArgsDict']]]]] = None,
             schema_change_handling: pulumi.Input[Optional[_builtins.str]] = None,
             schemas: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['ConnectorSchemaConfigSchemasArgs', 'ConnectorSchemaConfigSchemasArgsDict']]]]] = None,
@@ -737,6 +810,8 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connector_id: The unique identifier for the connector within the Fivetran system.
+        :param pulumi.Input[_builtins.str] connector_name: The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+        :param pulumi.Input[_builtins.str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
         :param pulumi.Input[_builtins.str] schema_change_handling: The value specifying how new source data is handled.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['ConnectorSchemaConfigSchemasArgs', 'ConnectorSchemaConfigSchemasArgsDict']]]] schemas: Map of schema configurations.
         :param pulumi.Input[_builtins.str] schemas_json: Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
@@ -750,6 +825,8 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
         __props__ = _ConnectorSchemaConfigState.__new__(_ConnectorSchemaConfigState)
 
         __props__.__dict__["connector_id"] = connector_id
+        __props__.__dict__["connector_name"] = connector_name
+        __props__.__dict__["group_id"] = group_id
         __props__.__dict__["schema"] = schema
         __props__.__dict__["schema_change_handling"] = schema_change_handling
         __props__.__dict__["schemas"] = schemas
@@ -765,6 +842,22 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
         The unique identifier for the connector within the Fivetran system.
         """
         return pulumi.get(self, "connector_id")
+
+    @_builtins.property
+    @pulumi.getter(name="connectorName")
+    def connector_name(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+        """
+        return pulumi.get(self, "connector_name")
+
+    @_builtins.property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The unique identifier for the Group (Destination) within the Fivetran system.
+        """
+        return pulumi.get(self, "group_id")
 
     @_builtins.property
     @pulumi.getter

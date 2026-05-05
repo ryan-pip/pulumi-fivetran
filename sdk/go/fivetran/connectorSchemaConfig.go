@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
@@ -267,6 +266,10 @@ type ConnectorSchemaConfig struct {
 
 	// The unique identifier for the connector within the Fivetran system.
 	ConnectorId pulumi.StringOutput `pulumi:"connectorId"`
+	// The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+	ConnectorName pulumi.StringPtrOutput `pulumi:"connectorName"`
+	// The unique identifier for the Group (Destination) within the Fivetran system.
+	GroupId pulumi.StringPtrOutput `pulumi:"groupId"`
 	// Deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
 	Schema ConnectorSchemaConfigSchemaArrayOutput `pulumi:"schema"`
 	// The value specifying how new source data is handled.
@@ -287,12 +290,9 @@ type ConnectorSchemaConfig struct {
 func NewConnectorSchemaConfig(ctx *pulumi.Context,
 	name string, args *ConnectorSchemaConfigArgs, opts ...pulumi.ResourceOption) (*ConnectorSchemaConfig, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ConnectorSchemaConfigArgs{}
 	}
 
-	if args.ConnectorId == nil {
-		return nil, errors.New("invalid value for required argument 'ConnectorId'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ConnectorSchemaConfig
 	err := ctx.RegisterResource("fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig", name, args, &resource, opts...)
@@ -318,6 +318,10 @@ func GetConnectorSchemaConfig(ctx *pulumi.Context,
 type connectorSchemaConfigState struct {
 	// The unique identifier for the connector within the Fivetran system.
 	ConnectorId *string `pulumi:"connectorId"`
+	// The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+	ConnectorName *string `pulumi:"connectorName"`
+	// The unique identifier for the Group (Destination) within the Fivetran system.
+	GroupId *string `pulumi:"groupId"`
 	// Deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
 	Schema []ConnectorSchemaConfigSchema `pulumi:"schema"`
 	// The value specifying how new source data is handled.
@@ -337,6 +341,10 @@ type connectorSchemaConfigState struct {
 type ConnectorSchemaConfigState struct {
 	// The unique identifier for the connector within the Fivetran system.
 	ConnectorId pulumi.StringPtrInput
+	// The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+	ConnectorName pulumi.StringPtrInput
+	// The unique identifier for the Group (Destination) within the Fivetran system.
+	GroupId pulumi.StringPtrInput
 	// Deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
 	Schema ConnectorSchemaConfigSchemaArrayInput
 	// The value specifying how new source data is handled.
@@ -359,7 +367,11 @@ func (ConnectorSchemaConfigState) ElementType() reflect.Type {
 
 type connectorSchemaConfigArgs struct {
 	// The unique identifier for the connector within the Fivetran system.
-	ConnectorId string `pulumi:"connectorId"`
+	ConnectorId *string `pulumi:"connectorId"`
+	// The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+	ConnectorName *string `pulumi:"connectorName"`
+	// The unique identifier for the Group (Destination) within the Fivetran system.
+	GroupId *string `pulumi:"groupId"`
 	// Deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
 	Schema []ConnectorSchemaConfigSchema `pulumi:"schema"`
 	// The value specifying how new source data is handled.
@@ -379,7 +391,11 @@ type connectorSchemaConfigArgs struct {
 // The set of arguments for constructing a ConnectorSchemaConfig resource.
 type ConnectorSchemaConfigArgs struct {
 	// The unique identifier for the connector within the Fivetran system.
-	ConnectorId pulumi.StringInput
+	ConnectorId pulumi.StringPtrInput
+	// The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+	ConnectorName pulumi.StringPtrInput
+	// The unique identifier for the Group (Destination) within the Fivetran system.
+	GroupId pulumi.StringPtrInput
 	// Deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
 	Schema ConnectorSchemaConfigSchemaArrayInput
 	// The value specifying how new source data is handled.
@@ -486,6 +502,16 @@ func (o ConnectorSchemaConfigOutput) ToConnectorSchemaConfigOutputWithContext(ct
 // The unique identifier for the connector within the Fivetran system.
 func (o ConnectorSchemaConfigOutput) ConnectorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectorSchemaConfig) pulumi.StringOutput { return v.ConnectorId }).(pulumi.StringOutput)
+}
+
+// The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+func (o ConnectorSchemaConfigOutput) ConnectorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorSchemaConfig) pulumi.StringPtrOutput { return v.ConnectorName }).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier for the Group (Destination) within the Fivetran system.
+func (o ConnectorSchemaConfigOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorSchemaConfig) pulumi.StringPtrOutput { return v.GroupId }).(pulumi.StringPtrOutput)
 }
 
 // Deprecated: Configure `schemas` instead. This attribute will be removed in the next major version of the provider.

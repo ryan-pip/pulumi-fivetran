@@ -31,7 +31,7 @@ namespace Pulumi.Fivetran.Inputs
         public string DailySyncTime { get; set; } = null!;
 
         /// <summary>
-        /// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
+        /// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.
         /// </summary>
         [Input("dataDelaySensitivity", required: true)]
         public string DataDelaySensitivity { get; set; } = null!;
@@ -73,7 +73,7 @@ namespace Pulumi.Fivetran.Inputs
         public string Name { get; set; } = null!;
 
         /// <summary>
-        /// Possible values: Directly, SshTunnel, ProxyAgent.
+        /// The networking method for the connection. Possible values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`.
         /// </summary>
         [Input("networkingMethod", required: true)]
         public string NetworkingMethod { get; set; } = null!;
@@ -91,13 +91,13 @@ namespace Pulumi.Fivetran.Inputs
         public bool Paused { get; set; }
 
         /// <summary>
-        /// The private link ID.
+        /// The private link ID. Required when `NetworkingMethod` is `PrivateLink`.
         /// </summary>
         [Input("privateLinkId", required: true)]
         public string PrivateLinkId { get; set; } = null!;
 
         /// <summary>
-        /// The proxy agent ID.
+        /// The ID of the proxy agent to use. Required when `NetworkingMethod` is `ProxyAgent`.
         /// </summary>
         [Input("proxyAgentId", required: true)]
         public string ProxyAgentId { get; set; } = null!;
@@ -109,13 +109,13 @@ namespace Pulumi.Fivetran.Inputs
         public string ScheduleType { get; set; } = null!;
 
         /// <summary>
-        /// The connector type id within the Fivetran system.
+        /// The connection service type (e.g., `Postgres`, `Mysql`, `S3`, `Snowflake`). See [Fivetran connection types documentation](https://fivetran.com/docs/connectors) for available services.
         /// </summary>
         [Input("service", required: true)]
         public string Service { get; set; } = null!;
 
         /// <summary>
-        /// The connector type version within the Fivetran system.
+        /// The connection type version within the Fivetran system.
         /// </summary>
         [Input("serviceVersion", required: true)]
         public string ServiceVersion { get; set; } = null!;

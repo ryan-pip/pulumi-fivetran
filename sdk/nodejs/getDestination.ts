@@ -47,6 +47,7 @@ export interface GetDestinationResult {
     readonly id: string;
     readonly networkingMethod: string;
     readonly privateLinkId: string;
+    readonly proxyAgentId: string;
     readonly region: string;
     readonly service: string;
     readonly setupStatus: string;

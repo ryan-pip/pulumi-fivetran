@@ -117,13 +117,17 @@ export class Destination extends pulumi.CustomResource {
      */
     declare public readonly hybridDeploymentAgentId: pulumi.Output<string | undefined>;
     /**
-     * Possible values: Directly, SshTunnel, ProxyAgent.
+     * Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
      */
     declare public readonly networkingMethod: pulumi.Output<string>;
     /**
      * The private link ID.
      */
     declare public readonly privateLinkId: pulumi.Output<string | undefined>;
+    /**
+     * The proxy agent ID.
+     */
+    declare public readonly proxyAgentId: pulumi.Output<string | undefined>;
     /**
      * Data processing location. This is where Fivetran will operate and run computation on data.
      */
@@ -173,6 +177,7 @@ export class Destination extends pulumi.CustomResource {
             resourceInputs["hybridDeploymentAgentId"] = state?.hybridDeploymentAgentId;
             resourceInputs["networkingMethod"] = state?.networkingMethod;
             resourceInputs["privateLinkId"] = state?.privateLinkId;
+            resourceInputs["proxyAgentId"] = state?.proxyAgentId;
             resourceInputs["region"] = state?.region;
             resourceInputs["runSetupTests"] = state?.runSetupTests;
             resourceInputs["service"] = state?.service;
@@ -201,6 +206,7 @@ export class Destination extends pulumi.CustomResource {
             resourceInputs["hybridDeploymentAgentId"] = args?.hybridDeploymentAgentId;
             resourceInputs["networkingMethod"] = args?.networkingMethod;
             resourceInputs["privateLinkId"] = args?.privateLinkId;
+            resourceInputs["proxyAgentId"] = args?.proxyAgentId;
             resourceInputs["region"] = args?.region;
             resourceInputs["runSetupTests"] = args?.runSetupTests;
             resourceInputs["service"] = args?.service;
@@ -233,13 +239,17 @@ export interface DestinationState {
      */
     hybridDeploymentAgentId?: pulumi.Input<string | undefined>;
     /**
-     * Possible values: Directly, SshTunnel, ProxyAgent.
+     * Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
      */
     networkingMethod?: pulumi.Input<string | undefined>;
     /**
      * The private link ID.
      */
     privateLinkId?: pulumi.Input<string | undefined>;
+    /**
+     * The proxy agent ID.
+     */
+    proxyAgentId?: pulumi.Input<string | undefined>;
     /**
      * Data processing location. This is where Fivetran will operate and run computation on data.
      */
@@ -289,13 +299,17 @@ export interface DestinationArgs {
      */
     hybridDeploymentAgentId?: pulumi.Input<string | undefined>;
     /**
-     * Possible values: Directly, SshTunnel, ProxyAgent.
+     * Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
      */
     networkingMethod?: pulumi.Input<string | undefined>;
     /**
      * The private link ID.
      */
     privateLinkId?: pulumi.Input<string | undefined>;
+    /**
+     * The proxy agent ID.
+     */
+    proxyAgentId?: pulumi.Input<string | undefined>;
     /**
      * Data processing location. This is where Fivetran will operate and run computation on data.
      */

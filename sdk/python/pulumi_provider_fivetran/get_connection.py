@@ -124,7 +124,7 @@ class GetConnectionResult:
     @pulumi.getter(name="dataDelaySensitivity")
     def data_delay_sensitivity(self) -> _builtins.str:
         """
-        The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
+        The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.
         """
         return pulumi.get(self, "data_delay_sensitivity")
 
@@ -185,7 +185,7 @@ class GetConnectionResult:
     @pulumi.getter(name="networkingMethod")
     def networking_method(self) -> _builtins.str:
         """
-        Possible values: Directly, SshTunnel, ProxyAgent.
+        The networking method for the connection. Possible values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`.
         """
         return pulumi.get(self, "networking_method")
 
@@ -209,7 +209,7 @@ class GetConnectionResult:
     @pulumi.getter(name="privateLinkId")
     def private_link_id(self) -> _builtins.str:
         """
-        The private link ID.
+        The private link ID. Required when `networking_method` is `PrivateLink`.
         """
         return pulumi.get(self, "private_link_id")
 
@@ -217,7 +217,7 @@ class GetConnectionResult:
     @pulumi.getter(name="proxyAgentId")
     def proxy_agent_id(self) -> _builtins.str:
         """
-        The proxy agent ID.
+        The ID of the proxy agent to use. Required when `networking_method` is `ProxyAgent`.
         """
         return pulumi.get(self, "proxy_agent_id")
 
@@ -233,7 +233,7 @@ class GetConnectionResult:
     @pulumi.getter
     def service(self) -> _builtins.str:
         """
-        The connector type id within the Fivetran system.
+        The connection service type (e.g., `postgres`, `mysql`, `s3`, `snowflake`). See [Fivetran connection types documentation](https://fivetran.com/docs/connectors) for available services.
         """
         return pulumi.get(self, "service")
 
@@ -241,7 +241,7 @@ class GetConnectionResult:
     @pulumi.getter(name="serviceVersion")
     def service_version(self) -> _builtins.str:
         """
-        The connector type version within the Fivetran system.
+        The connection type version within the Fivetran system.
         """
         return pulumi.get(self, "service_version")
 

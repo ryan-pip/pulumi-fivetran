@@ -12,6 +12,28 @@ namespace Pulumi.Fivetran.Inputs
 
     public sealed class ConnectorConfigReportGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `WorkdayAdaptive`: Account sync mode for the table. Options: `SYNC_ALL_ACCOUNTS` (sync all accounts) or `SELECT_SPECIFIC_ACCOUNTS` (sync selected accounts only).
+        /// </summary>
+        [Input("accountSyncMode")]
+        public Input<string>? AccountSyncMode { get; set; }
+
+        [Input("accounts")]
+        private InputList<Inputs.ConnectorConfigReportAccountGetArgs>? _accounts;
+        public InputList<Inputs.ConnectorConfigReportAccountGetArgs> Accounts
+        {
+            get => _accounts ?? (_accounts = new InputList<Inputs.ConnectorConfigReportAccountGetArgs>());
+            set => _accounts = value;
+        }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `DoubleClickPublishers`: Ad unit view for the report.
+        /// </summary>
+        [Input("adUnitView")]
+        public Input<string>? AdUnitView { get; set; }
+
         [Input("advertisers")]
         private InputList<string>? _advertisers;
 
@@ -45,6 +67,19 @@ namespace Pulumi.Fivetran.Inputs
             set => _attributes = value;
         }
 
+        [Input("columns")]
+        private InputList<string>? _columns;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `DoubleClickPublishers`: Columns provide all trafficking statistics and revenue information available for the chosen dimensions.
+        /// </summary>
+        public InputList<string> Columns
+        {
+            get => _columns ?? (_columns = new InputList<string>());
+            set => _columns = value;
+        }
+
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `GoogleDisplayAndVideo360`: The report configuration method. Specifies whether a new configuration is defined manually or an existing configuration is reused. The default value is `CREATE_NEW`.
@@ -60,15 +95,110 @@ namespace Pulumi.Fivetran.Inputs
         [Input("configType")]
         public Input<string>? ConfigType { get; set; }
 
+        [Input("conversionDimensions")]
+        private InputList<string>? _conversionDimensions;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `DoubleClickCampaignManager`: Conversion Dimensions.
+        /// </summary>
+        public InputList<string> ConversionDimensions
+        {
+            get => _conversionDimensions ?? (_conversionDimensions = new InputList<string>());
+            set => _conversionDimensions = value;
+        }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Klaviyo`: The ID of the conversion metric.
+        /// </summary>
+        [Input("conversionMetricId")]
+        public Input<string>? ConversionMetricId { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `WorkdayAdaptive`: List of currencies to sync for the table, if applicable.
+        /// </summary>
+        [Input("currency")]
+        public Input<string>? Currency { get; set; }
+
+        [Input("customColumnIds")]
+        private InputList<string>? _customColumnIds;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleSearchAds360`: The report custom column IDs included to sync.
+        /// </summary>
+        public InputList<string> CustomColumnIds
+        {
+            get => _customColumnIds ?? (_customColumnIds = new InputList<string>());
+            set => _customColumnIds = value;
+        }
+
+        [Input("customDimensionKeyIds")]
+        private InputList<string>? _customDimensionKeyIds;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `DoubleClickPublishers`: The list of custom dimension key IDs included in the report. Custom dimension keys can only be selected with the CUSTOM_DIMENSION dimension.
+        /// </summary>
+        public InputList<string> CustomDimensionKeyIds
+        {
+            get => _customDimensionKeyIds ?? (_customDimensionKeyIds = new InputList<string>());
+            set => _customDimensionKeyIds = value;
+        }
+
+        [Input("customFieldIds")]
+        private InputList<string>? _customFieldIds;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `DoubleClickPublishers`: The list of custom field IDs included in the report. Custom fields can only be selected with their corresponding dimensions.
+        /// </summary>
+        public InputList<string> CustomFieldIds
+        {
+            get => _customFieldIds ?? (_customFieldIds = new InputList<string>());
+            set => _customFieldIds = value;
+        }
+
+        [Input("customFloodlightVariables")]
+        private InputList<string>? _customFloodlightVariables;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `DoubleClickCampaignManager`: Custom Floodlight variables enable you to capture information beyond the basics (visits and revenue) that you can collect with standard parameters in your tags.
+        /// </summary>
+        public InputList<string> CustomFloodlightVariables
+        {
+            get => _customFloodlightVariables ?? (_customFloodlightVariables = new InputList<string>());
+            set => _customFloodlightVariables = value;
+        }
+
+        [Input("dimensionAttributes")]
+        private InputList<string>? _dimensionAttributes;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `DoubleClickPublishers`: Dimension attributes provide additional fields associated with a dimension. Dimension attributes can only be selected with their corresponding dimensions.
+        /// </summary>
+        public InputList<string> DimensionAttributes
+        {
+            get => _dimensionAttributes ?? (_dimensionAttributes = new InputList<string>());
+            set => _dimensionAttributes = value;
+        }
+
         [Input("dimensions")]
         private InputList<string>? _dimensions;
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `DoubleClickCampaignManager`: Report dimensions to include in a sync. The `Date` dimension is mandatory for all report types. The `Advertiser` dimension is mandatory for the `REACH` report type
+        /// 	- Service `DoubleClickPublishers`: Report dimensions to include in the sync. The `Date` dimension is mandatory for all the report types.
         /// 	- Service `GoogleAnalytics`: The report dimensions to include into a sync. The `Date` dimension is mandatory for all the report types.
         /// 	- Service `GoogleAnalytics4`: The report dimensions to include into a sync.
         /// 	- Service `GoogleDisplayAndVideo360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `ConfigMethod` is set to `CREATE_NEW`.
         /// 	- Service `GoogleSearchConsole`: The report dimensions included to sync.
+        /// 	- Service `WorkdayAdaptive`: List of dimensions to sync for the table, if applicable.
         /// </summary>
         public InputList<string> Dimensions
         {
@@ -82,6 +212,13 @@ namespace Pulumi.Fivetran.Inputs
         /// </summary>
         [Input("dynamicParameterField")]
         public Input<string>? DynamicParameterField { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `DoubleClickCampaignManager`: Specifies whether to enable all reach dimension combinations in the report. Default value: `False`
+        /// </summary>
+        [Input("enableAllDimensionCombinations")]
+        public Input<bool>? EnableAllDimensionCombinations { get; set; }
 
         /// <summary>
         /// Field usage depends on `Service` value: 
@@ -127,6 +264,14 @@ namespace Pulumi.Fivetran.Inputs
         [Input("filterValue")]
         public Input<string>? FilterValue { get; set; }
 
+        [Input("filters")]
+        private InputList<Inputs.ConnectorConfigReportFilterGetArgs>? _filters;
+        public InputList<Inputs.ConnectorConfigReportFilterGetArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<Inputs.ConnectorConfigReportFilterGetArgs>());
+            set => _filters = value;
+        }
+
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Workday`: Select this option to generate a Primary Key for reports where no single column or combination of columns can be used to form a Primary Key.
@@ -134,11 +279,41 @@ namespace Pulumi.Fivetran.Inputs
         [Input("generateFivetranPk")]
         public Input<bool>? GenerateFivetranPk { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `WorkdayAdaptive`: Include zero rows in the table sync.
+        /// </summary>
+        [Input("includeZeroRows")]
+        public Input<bool>? IncludeZeroRows { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Klaviyo`: The interval used in the API calls to retrieve the reports.
+        /// </summary>
+        [Input("interval")]
+        public Input<string>? Interval { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `WorkdayAdaptive`: Level sync mode for the table. Options: `SYNC_ALL_LEVELS` (sync all levels) or `SELECT_SPECIFIC_LEVELS` (sync selected levels only).
+        /// </summary>
+        [Input("levelSyncMode")]
+        public Input<string>? LevelSyncMode { get; set; }
+
+        [Input("levels")]
+        private InputList<Inputs.ConnectorConfigReportLevelGetArgs>? _levels;
+        public InputList<Inputs.ConnectorConfigReportLevelGetArgs> Levels
+        {
+            get => _levels ?? (_levels = new InputList<Inputs.ConnectorConfigReportLevelGetArgs>());
+            set => _levels = value;
+        }
+
         [Input("metrics")]
         private InputList<string>? _metrics;
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `DoubleClickCampaignManager`: Report metrics to include into a sync.
         /// 	- Service `GoogleAnalytics`: The report metrics to include into a sync.
         /// 	- Service `GoogleAnalytics4`: The report metrics to include into a sync.
         /// 	- Service `GoogleDisplayAndVideo360`: The report metrics to include into a sync. The metric names are provided in the API format. This is a required parameter when `ConfigMethod` is set to `CREATE_NEW`.
@@ -149,6 +324,13 @@ namespace Pulumi.Fivetran.Inputs
             get => _metrics ?? (_metrics = new InputList<string>());
             set => _metrics = value;
         }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Klaviyo`: The name of the custom report. The same name is used to name the table in the destination.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("partners")]
         private InputList<string>? _partners;
@@ -161,6 +343,19 @@ namespace Pulumi.Fivetran.Inputs
         {
             get => _partners ?? (_partners = new InputList<string>());
             set => _partners = value;
+        }
+
+        [Input("perInteractionDimensions")]
+        private InputList<string>? _perInteractionDimensions;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `DoubleClickCampaignManager`: Per Interaction Dimensions.
+        /// </summary>
+        public InputList<string> PerInteractionDimensions
+        {
+            get => _perInteractionDimensions ?? (_perInteractionDimensions = new InputList<string>());
+            set => _perInteractionDimensions = value;
         }
 
         /// <summary>
@@ -191,6 +386,19 @@ namespace Pulumi.Fivetran.Inputs
         [Input("queryId")]
         public Input<string>? QueryId { get; set; }
 
+        [Input("reportConfigurationIds")]
+        private InputList<string>? _reportConfigurationIds;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `DoubleClickCampaignManager`: You can select only one Floodlight Configuration ID per account.
+        /// </summary>
+        public InputList<string> ReportConfigurationIds
+        {
+            get => _reportConfigurationIds ?? (_reportConfigurationIds = new InputList<string>());
+            set => _reportConfigurationIds = value;
+        }
+
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Workday`: This is to select report format from JSON and CSV. By default, report format is JSON.
@@ -200,6 +408,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `DoubleClickCampaignManager`: Type of reporting data to sync. Default value: `STANDARD`.
         /// 	- Service `GoogleAds`: The name of the Google Ads report from which the connector will sync the data. [Possible ReportType values](https://developers.google.com/adwords/api/docs/appendix/reports#report-types).
         /// 	- Service `GoogleDisplayAndVideo360`: The type of the report to create. This is a required parameter when `ConfigMethod` is set to `CREATE_NEW`.
         /// 	- Service `GoogleSearchAds360`: The type of report
@@ -217,10 +426,19 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `DoubleClickCampaignManager`: The custom window size for rollback syncs (between 1 and 90).
         /// 	- Service `GoogleAnalytics4`: The custom window size for rollback syncs.
+        /// 	- Service `GoogleSearchAds360`: The custom window size for rollback syncs (between 2 and 90).
         /// </summary>
         [Input("rollbackWindow")]
         public Input<int>? RollbackWindow { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Klaviyo`: The number of days to look back during each sync to capture late-arriving data. Valid range: 2 to 90 days. Default: 5 days.
+        /// </summary>
+        [Input("rollbackWindowInDays")]
+        public Input<int>? RollbackWindowInDays { get; set; }
 
         [Input("searchTypes")]
         private InputList<string>? _searchTypes;
@@ -257,6 +475,39 @@ namespace Pulumi.Fivetran.Inputs
             set => _segments = value;
         }
 
+        [Input("selectedAccounts")]
+        private InputList<string>? _selectedAccounts;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `WorkdayAdaptive`: List of account IDs to sync when `accountSyncMode` is `SELECT_SPECIFIC_ACCOUNTS`. Each ID should be in the format: `accountId,isAssumption` (e.g., `1,false`).
+        /// </summary>
+        public InputList<string> SelectedAccounts
+        {
+            get => _selectedAccounts ?? (_selectedAccounts = new InputList<string>());
+            set => _selectedAccounts = value;
+        }
+
+        [Input("selectedLevels")]
+        private InputList<string>? _selectedLevels;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `WorkdayAdaptive`: List of level IDs to sync when `levelSyncMode` is `SELECT_SPECIFIC_LEVELS`.
+        /// </summary>
+        public InputList<string> SelectedLevels
+        {
+            get => _selectedLevels ?? (_selectedLevels = new InputList<string>());
+            set => _selectedLevels = value;
+        }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleDisplayAndVideo360`: If enabled, the report will be queried separately for each advertiser, and the FILTER_ADVERTISER dimension will be added automatically if not already selected. This parameter only takes effect when `ConfigMethod` is set to `CREATE_NEW`. The default value is `False`.
+        /// </summary>
+        [Input("splitByAdvertiser")]
+        public Input<bool>? SplitByAdvertiser { get; set; }
+
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Workday`: Start date
@@ -273,10 +524,51 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `WorkdayAdaptive`: Start month for the table sync, in MM format
+        /// </summary>
+        [Input("startMonth")]
+        public Input<string>? StartMonth { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `WorkdayAdaptive`: Start year for the table sync, in YYYY format
+        /// </summary>
+        [Input("startYear")]
+        public Input<string>? StartYear { get; set; }
+
+        [Input("statistics")]
+        private InputList<string>? _statistics;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Klaviyo`: The list of statistics to be retrieved.
+        /// </summary>
+        public InputList<string> Statistics
+        {
+            get => _statistics ?? (_statistics = new InputList<string>());
+            set => _statistics = value;
+        }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `Workday`: This option is to unpack the nested columns and sync them separately. By default, we sync the nested columns as JSON objects.
         /// </summary>
         [Input("supportNestedColumns")]
         public Input<bool>? SupportNestedColumns { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `WorkdayAdaptive`: Flag to indicate if descendant accounts should be included for the selected accounts.
+        /// </summary>
+        [Input("syncDescendantAccounts")]
+        public Input<bool>? SyncDescendantAccounts { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `WorkdayAdaptive`: Flag to indicate if descendant levels should be included for the selected levels.
+        /// </summary>
+        [Input("syncDescendantLevels")]
+        public Input<bool>? SyncDescendantLevels { get; set; }
 
         /// <summary>
         /// Field usage depends on `Service` value: 
@@ -287,12 +579,15 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `DoubleClickCampaignManager`: Destination table name. It must be unique within this connection and must comply with Fivetran's naming conventions.
+        /// 	- Service `DoubleClickPublishers`: The name of the table within the schema storing the data for a given report.
         /// 	- Service `GoogleAds`: The table name within the schema to which connector will sync the data of the specific report.
         /// 	- Service `GoogleAnalytics`: The table name within the schema to which connector will sync the data of the specific report.
         /// 	- Service `GoogleAnalytics4`: The table name within the schema to which connector will sync the data of the specific report.
         /// 	- Service `GoogleSearchAds360`: The name of a table within the schema to which connector syncs the data of a given report.
         /// 	- Service `GoogleSearchConsole`: The name of a table within the schema to which connector syncs the data of a given report.
         /// 	- Service `Workday`: The table name within the schema to which connector will sync the data of the specific report.
+        /// 	- Service `WorkdayAdaptive`: Table name to be synced.
         /// </summary>
         [Input("table")]
         public Input<string>? Table { get; set; }
@@ -313,10 +608,37 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Klaviyo`: The type of the custom report.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `GoogleDisplayAndVideo360`: Specifies whether the configuration is updated before each sync or only when the connector settings are saved. This parameter only takes effect when `ConfigMethod` is set to `REUSE_EXISTING`. The default value is `True`.
         /// </summary>
         [Input("updateConfigOnEachSync")]
         public Input<bool>? UpdateConfigOnEachSync { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `WorkdayAdaptive`: Version sync strategy for the table, `SYNC_ALL_AND_NEW_VERSIONS` or `SYNC_SELECT_VERSIONS`.
+        /// </summary>
+        [Input("versionSyncStrategy")]
+        public Input<string>? VersionSyncStrategy { get; set; }
+
+        [Input("versions")]
+        private InputList<string>? _versions;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `WorkdayAdaptive`: List of versions to sync for the table, if versionSyncStrategy is `SYNC_SELECT_VERSIONS`.
+        /// </summary>
+        public InputList<string> Versions
+        {
+            get => _versions ?? (_versions = new InputList<string>());
+            set => _versions = value;
+        }
 
         public ConnectorConfigReportGetArgs()
         {

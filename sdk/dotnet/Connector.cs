@@ -12,6 +12,8 @@ namespace Pulumi.Fivetran
     /// <summary>
     /// This resource allows you to create, update, and delete connectors.
     /// 
+    /// &gt; NOTE: The `fivetran.Connector` resource creates a paused connector. In order to start data syncs, please create corresponding fivetran.ConnectorSchedule resource with `paused = false`
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -182,7 +184,7 @@ namespace Pulumi.Fivetran
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Possible values: Directly, SshTunnel, ProxyAgent.
+        /// Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
         /// </summary>
         [Output("networkingMethod")]
         public Output<string> NetworkingMethod { get; private set; } = null!;
@@ -307,7 +309,7 @@ namespace Pulumi.Fivetran
         public Input<string>? HybridDeploymentAgentId { get; set; }
 
         /// <summary>
-        /// Possible values: Directly, SshTunnel, ProxyAgent.
+        /// Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
         /// </summary>
         [Input("networkingMethod")]
         public Input<string>? NetworkingMethod { get; set; }
@@ -411,7 +413,7 @@ namespace Pulumi.Fivetran
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Possible values: Directly, SshTunnel, ProxyAgent.
+        /// Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
         /// </summary>
         [Input("networkingMethod")]
         public Input<string>? NetworkingMethod { get; set; }

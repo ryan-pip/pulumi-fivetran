@@ -7,8 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Resource is in ALPHA state.
- *
  * This resource allows you to add, manage and delete transformation projects in your account.
  *
  * ## Example Usage

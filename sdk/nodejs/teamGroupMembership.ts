@@ -21,12 +21,12 @@ import * as utilities from "./utilities";
  *         {
  *             connectorId: "test_connector",
  *             groupId: "test_group",
- *             role: "Destination Administrator",
+ *             role: "Manage Destination",
  *         },
  *         {
  *             connectorId: "test_connector",
  *             groupId: "test_group",
- *             role: "Destination Administrator",
+ *             role: "Manage Destination",
  *         },
  *     ],
  * });

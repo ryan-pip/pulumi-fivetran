@@ -124,6 +124,7 @@ namespace Pulumi.Fivetran
         public readonly string Id;
         public readonly string NetworkingMethod;
         public readonly string PrivateLinkId;
+        public readonly string ProxyAgentId;
         public readonly string Region;
         public readonly string Service;
         public readonly string SetupStatus;
@@ -145,6 +146,8 @@ namespace Pulumi.Fivetran
 
             string privateLinkId,
 
+            string proxyAgentId,
+
             string region,
 
             string service,
@@ -160,6 +163,7 @@ namespace Pulumi.Fivetran
             Id = id;
             NetworkingMethod = networkingMethod;
             PrivateLinkId = privateLinkId;
+            ProxyAgentId = proxyAgentId;
             Region = region;
             Service = service;
             SetupStatus = setupStatus;

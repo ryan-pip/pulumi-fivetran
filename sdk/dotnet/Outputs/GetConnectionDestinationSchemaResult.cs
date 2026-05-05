@@ -14,15 +14,15 @@ namespace Pulumi.Fivetran.Outputs
     public sealed class GetConnectionDestinationSchemaResult
     {
         /// <summary>
-        /// The connector schema name in destination. Has to be unique within the group (destination). Required for connector creation.
+        /// The connection schema name in destination. Has to be unique within the group (destination). Required for connection creation.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The connector schema prefix has to be unique within the group (destination). Each replicated schema is prefixed with the provided value. Required for connector creation.
+        /// The connection schema prefix has to be unique within the group (destination). Each replicated schema is prefixed with the provided value. Required for connection creation.
         /// </summary>
         public readonly string Prefix;
         /// <summary>
-        /// The table name unique within the schema to which connector will sync the data. Required for connector creation.
+        /// The table name unique within the schema to which connection will sync the data. Required for connection creation.
         /// </summary>
         public readonly string Table;
         /// <summary>

@@ -13,6 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
 
 __all__ = [
     'GetQuickstartPackageResult',
@@ -26,7 +27,10 @@ class GetQuickstartPackageResult:
     """
     A collection of values returned by getQuickstartPackage.
     """
-    def __init__(__self__, connector_types=None, id=None, name=None, output_model_names=None, version=None):
+    def __init__(__self__, configurable_variables=None, connector_types=None, id=None, name=None, output_model_names=None, version=None):
+        if configurable_variables and not isinstance(configurable_variables, dict):
+            raise TypeError("Expected argument 'configurable_variables' to be a dict")
+        pulumi.set(__self__, "configurable_variables", configurable_variables)
         if connector_types and not isinstance(connector_types, list):
             raise TypeError("Expected argument 'connector_types' to be a list")
         pulumi.set(__self__, "connector_types", connector_types)
@@ -42,6 +46,14 @@ class GetQuickstartPackageResult:
         if version and not isinstance(version, str):
             raise TypeError("Expected argument 'version' to be a str")
         pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter(name="configurableVariables")
+    def configurable_variables(self) -> Mapping[str, 'outputs.GetQuickstartPackageConfigurableVariablesResult']:
+        """
+        Map of configurable variable definitions for the package, keyed by variable name.
+        """
+        return pulumi.get(self, "configurable_variables")
 
     @_builtins.property
     @pulumi.getter(name="connectorTypes")
@@ -90,6 +102,7 @@ class AwaitableGetQuickstartPackageResult(GetQuickstartPackageResult):
         if False:
             yield self
         return GetQuickstartPackageResult(
+            configurable_variables=self.configurable_variables,
             connector_types=self.connector_types,
             id=self.id,
             name=self.name,
@@ -120,6 +133,7 @@ def get_quickstart_package(id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('fivetran:index/getQuickstartPackage:getQuickstartPackage', __args__, opts=opts, typ=GetQuickstartPackageResult).value
 
     return AwaitableGetQuickstartPackageResult(
+        configurable_variables=pulumi.get(__ret__, 'configurable_variables'),
         connector_types=pulumi.get(__ret__, 'connector_types'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
@@ -147,6 +161,7 @@ def get_quickstart_package_output(id: pulumi.Input[Optional[_builtins.str]] = No
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getQuickstartPackage:getQuickstartPackage', __args__, opts=opts, typ=GetQuickstartPackageResult)
     return __ret__.apply(lambda __response__: GetQuickstartPackageResult(
+        configurable_variables=pulumi.get(__response__, 'configurable_variables'),
         connector_types=pulumi.get(__response__, 'connector_types'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),

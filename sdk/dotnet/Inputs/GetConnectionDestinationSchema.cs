@@ -13,19 +13,19 @@ namespace Pulumi.Fivetran.Inputs
     public sealed class GetConnectionDestinationSchemaArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The connector schema name in destination. Has to be unique within the group (destination). Required for connector creation.
+        /// The connection schema name in destination. Has to be unique within the group (destination). Required for connection creation.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
         /// <summary>
-        /// The connector schema prefix has to be unique within the group (destination). Each replicated schema is prefixed with the provided value. Required for connector creation.
+        /// The connection schema prefix has to be unique within the group (destination). Each replicated schema is prefixed with the provided value. Required for connection creation.
         /// </summary>
         [Input("prefix", required: true)]
         public string Prefix { get; set; } = null!;
 
         /// <summary>
-        /// The table name unique within the schema to which connector will sync the data. Required for connector creation.
+        /// The table name unique within the schema to which connection will sync the data. Required for connection creation.
         /// </summary>
         [Input("table", required: true)]
         public string Table { get; set; } = null!;

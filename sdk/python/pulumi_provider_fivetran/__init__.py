@@ -6,11 +6,14 @@ import builtins as _builtins
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .connection import *
+from .connection_config import *
 from .connector import *
 from .connector_certificates import *
 from .connector_fingerprints import *
 from .connector_schedule import *
 from .connector_schema_config import *
+from .connector_sdk_package import *
 from .destination import *
 from .destination_certificates import *
 from .destination_fingerprints import *
@@ -94,6 +97,22 @@ _utilities.register(
 [
  {
   "pkg": "fivetran",
+  "mod": "index/connection",
+  "fqn": "pulumi_provider_fivetran",
+  "classes": {
+   "fivetran:index/connection:Connection": "Connection"
+  }
+ },
+ {
+  "pkg": "fivetran",
+  "mod": "index/connectionConfig",
+  "fqn": "pulumi_provider_fivetran",
+  "classes": {
+   "fivetran:index/connectionConfig:ConnectionConfig": "ConnectionConfig"
+  }
+ },
+ {
+  "pkg": "fivetran",
   "mod": "index/connector",
   "fqn": "pulumi_provider_fivetran",
   "classes": {
@@ -130,6 +149,14 @@ _utilities.register(
   "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig": "ConnectorSchemaConfig"
+  }
+ },
+ {
+  "pkg": "fivetran",
+  "mod": "index/connectorSdkPackage",
+  "fqn": "pulumi_provider_fivetran",
+  "classes": {
+   "fivetran:index/connectorSdkPackage:ConnectorSdkPackage": "ConnectorSdkPackage"
   }
  },
  {

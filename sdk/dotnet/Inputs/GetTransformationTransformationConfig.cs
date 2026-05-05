@@ -12,6 +12,18 @@ namespace Pulumi.Fivetran.Inputs
 
     public sealed class GetTransformationTransformationConfigArgs : global::Pulumi.InvokeArgs
     {
+        [Input("configurableVariables", required: true)]
+        private Dictionary<string, string>? _configurableVariables;
+
+        /// <summary>
+        /// Map of configurable variable values for the Quickstart transformation, keyed by variable name.
+        /// </summary>
+        public Dictionary<string, string> ConfigurableVariables
+        {
+            get => _configurableVariables ?? (_configurableVariables = new Dictionary<string, string>());
+            set => _configurableVariables = value;
+        }
+
         [Input("connectionIds", required: true)]
         private List<string>? _connectionIds;
 

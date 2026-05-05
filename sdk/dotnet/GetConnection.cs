@@ -142,7 +142,7 @@ namespace Pulumi.Fivetran
         /// </summary>
         public readonly string DailySyncTime;
         /// <summary>
-        /// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
+        /// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.
         /// </summary>
         public readonly string DataDelaySensitivity;
         /// <summary>
@@ -171,7 +171,7 @@ namespace Pulumi.Fivetran
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Possible values: Directly, SshTunnel, ProxyAgent.
+        /// The networking method for the connection. Possible values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`.
         /// </summary>
         public readonly string NetworkingMethod;
         /// <summary>
@@ -183,11 +183,11 @@ namespace Pulumi.Fivetran
         /// </summary>
         public readonly bool Paused;
         /// <summary>
-        /// The private link ID.
+        /// The private link ID. Required when `NetworkingMethod` is `PrivateLink`.
         /// </summary>
         public readonly string PrivateLinkId;
         /// <summary>
-        /// The proxy agent ID.
+        /// The ID of the proxy agent to use. Required when `NetworkingMethod` is `ProxyAgent`.
         /// </summary>
         public readonly string ProxyAgentId;
         /// <summary>
@@ -195,11 +195,11 @@ namespace Pulumi.Fivetran
         /// </summary>
         public readonly string ScheduleType;
         /// <summary>
-        /// The connector type id within the Fivetran system.
+        /// The connection service type (e.g., `Postgres`, `Mysql`, `S3`, `Snowflake`). See [Fivetran connection types documentation](https://fivetran.com/docs/connectors) for available services.
         /// </summary>
         public readonly string Service;
         /// <summary>
-        /// The connector type version within the Fivetran system.
+        /// The connection type version within the Fivetran system.
         /// </summary>
         public readonly string ServiceVersion;
         public readonly Outputs.GetConnectionStatusResult? Status;

@@ -102,7 +102,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
-        /// 	- Service `GainsightCustomerSuccess`: The access key for API authentication.
+        /// 	- Service `GainsightCustomerSuccess`: The API key for API authentication.
         /// 	- Service `Gongio`: Your Gongio Access key.
         /// 	- Service `LineAds`: Your LINE Ads access key.
         /// 	- Service `Planful`: Your Planful access key.
@@ -162,12 +162,13 @@ namespace Pulumi.Fivetran.Inputs
         /// Field usage depends on `Service` value: 
         /// 	- Service `7shifts`: Your 7shifts access token.
         /// 	- Service `Attio`: Your Attio bearer token
-        /// 	- Service `BigCommerce`: API access token of your store.
+        /// 	- Service `BigCommerce`: Your [API access token ](https://fivetran.com/docs/connectors/applications/big-commerce/setup-guide#createaccesstoken).
         /// 	- Service `Bitly`: Your Bitly access token.
         /// 	- Service `Calabrio`: Your Calabrio access token.
         /// 	- Service `Coalesce`: Your Coalesce access token.
         /// 	- Service `Coheris`: Your Coheris access token.
         /// 	- Service `Coupa`: Your Coupa access token fetched using ClientId and ClientSecret
+        /// 	- Service `Deel`: Your Deel access token.
         /// 	- Service `Deputy`: Your Deputy API access token.
         /// 	- Service `Getfeedback`: Your GetFeedback Access token.
         /// 	- Service `Gocardless`: Your GoCardless API token.
@@ -227,6 +228,8 @@ namespace Pulumi.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Appcues`: Your Appcues Account ID.
+        /// 	- Service `BizzaboApp`: Your Bizzabo account ID.
+        /// 	- Service `BizzaboV2`: Your Bizzabo account ID.
         /// 	- Service `Brightcove`: Your Brightcove account ID.
         /// 	- Service `Cin7core`: Your Cin7 Core account ID.
         /// 	- Service `Dear`: Your Dear Account ID.
@@ -270,6 +273,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Eventsforce`: Your Eventsforce account name.
         /// 	- Service `FreshdeskContactCenter`: Your Freshdesk Contact Center account name.
         /// 	- Service `Happyfox`: Your HappyFox account name.
+        /// 	- Service `Helpjuice`: Your Helpjuice account name.
         /// 	- Service `MaxioSaasoptics`: Your Maxio SaaSOptics account name.
         /// 	- Service `Talkdesk`: Your Talkdesk Account Name.
         /// 	- Service `UdemyBusiness`: Your Udemy Business account name.
@@ -659,10 +663,13 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Cockroachdb`: Require TLS
         /// 	- Service `Db2iHva`: Require TLS through Tunnel
         /// 	- Service `Db2iSapHva`: Require TLS through Tunnel
+        /// 	- Service `Db2luw`: Require TLS through Tunnel
+        /// 	- Service `Db2z`: Require TLS
         /// 	- Service `Documentdb`: Require TLS encryption.
         /// 	- Service `Dynamics365Fo`: Require TLS through Tunnel.
         /// 	- Service `Ehr`: Require TLS through Tunnel.
         /// 	- Service `ElasticCloud`: Default value: true. Set to false if TLS is not required when using an SSH tunnel.
+        /// 	- Service `EpicClarity`: Require TLS through Tunnel.
         /// 	- Service `EsSelfHosted`: Default value: true. Set to false if TLS is not required when using an SSH tunnel.
         /// 	- Service `GoogleCloudMysql`: Require TLS through Tunnel
         /// 	- Service `GoogleCloudPostgresql`: Require TLS through Tunnel
@@ -720,10 +727,24 @@ namespace Pulumi.Fivetran.Inputs
             set => _apiAccessToken = value;
         }
 
+        [Input("apiAdminKey", required: true)]
+        private string? _apiAdminKey;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AnthropicClaude`: Your Claude Platform Admin API key.
+        /// </summary>
+        public string? ApiAdminKey
+        {
+            get => _apiAdminKey;
+            set => _apiAdminKey = value;
+        }
+
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Afterpay`: Your Afterpay API environment.
         /// 	- Service `TiktokOrganic`: Your TikTok Organic API environment.
+        /// 	- Service `TiktokOrganicApp`: Your TikTok Organic API environment.
         /// </summary>
         [Input("apiEnvironment", required: true)]
         public string ApiEnvironment { get; set; } = null!;
@@ -734,6 +755,13 @@ namespace Pulumi.Fivetran.Inputs
         /// </summary>
         [Input("apiId", required: true)]
         public string ApiId { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Onetrust`: Your OneTrust API integration type.
+        /// </summary>
+        [Input("apiIntegrationType", required: true)]
+        public string ApiIntegrationType { get; set; } = null!;
 
         [Input("apiKey", required: true)]
         private string? _apiKey;
@@ -749,9 +777,12 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Airtable`: API key of the Airtable account.
         /// 	- Service `Algolia`: Your Algolia API key.
         /// 	- Service `Alida`: Your Alida API key.
+        /// 	- Service `AnthropicClaude`: Your Claude Platform standard API key.
         /// 	- Service `Anvyl`: Your Anvyl API key.
         /// 	- Service `Apollo`: Your Apollo API key.
         /// 	- Service `Appcues`: Your Appcues API key.
+        /// 	- Service `Applovin`: Your AppLovin API key.
+        /// 	- Service `AscendByPartnerize`: Your Ascend by Partnerize API Key
         /// 	- Service `Ashby`: Your Ashby API key.
         /// 	- Service `Assembled`: Your Assembled API key.
         /// 	- Service `AtlassianJiraAlign`: Your Jira Align API key.
@@ -767,15 +798,18 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Bizzabo`: Your Bizzabo API key.
         /// 	- Service `BraveAds`: Your Brave Ads API key
         /// 	- Service `Braze`: Your Braze API Key.
+        /// 	- Service `BreatheHr`: Your Breathe HR API key.
         /// 	- Service `Brevo`: Your Brevo API key.
         /// 	- Service `Brivo`: Your Brivo API key.
         /// 	- Service `Bubble`: Your Bubble API token.
         /// 	- Service `Buildium`: Your Buildium private API key.
         /// 	- Service `Callrail`: Your CallRail API key.
         /// 	- Service `Campaignmonitor`: Your Campaign Monitor API key.
+        /// 	- Service `Campfire`: Your Campfire API key.
         /// 	- Service `Canny`: Your Canny API key.
         /// 	- Service `ChargebeeProductCatalog1`: Your Chargebee Product Catalog 1 API key.
         /// 	- Service `ChargebeeProductCatalog2`: Your Chargebee API key.
+        /// 	- Service `Charthop`: Your ChartHop app API key.
         /// 	- Service `Chartmogul`: Your ChartMogul API key.
         /// 	- Service `Chorusai`: Your Chorus API key.
         /// 	- Service `Churnkey`: Your Churnkey API Key.
@@ -793,6 +827,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Column`: Your Column API key.
         /// 	- Service `Concord`: Your Concord API key.
         /// 	- Service `ConfluentCloud`: API Key
+        /// 	- Service `ConsensusDemoAutomationPlatform`: Your Consensus Demo Automation Platform API key.
         /// 	- Service `ContrastSecurity`: Your Contrast Security API Key.
         /// 	- Service `Copper`: Your Copper API key.
         /// 	- Service `Coupa`: Your Coupa API key.
@@ -802,11 +837,13 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `DclLogistics`: Your DCL Logistics API key.
         /// 	- Service `Delighted`: API Key for your Delighted account
         /// 	- Service `Destini`: Your Destini API Key.
+        /// 	- Service `Discourse`: Your Discourse API key.
         /// 	- Service `Donus`: Your Donus API key.
         /// 	- Service `Doorloop`: Your DoorLoop API key.
         /// 	- Service `Drata`: Your Drata API Key.
         /// 	- Service `DropboxSign`: Your Dropbox Sign API key.
         /// 	- Service `Duoplane`: Your Duoplane API key.
+        /// 	- Service `Dutchie`: Your Dutchie API key.
         /// 	- Service `Easypost`: Your EasyPost API Key.
         /// 	- Service `ElectronicTenantSolutions`: Your Electronic Tenant Solutions API key.
         /// 	- Service `Eventsforce`: Your Eventsforce API secret key.
@@ -814,6 +851,8 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Everhour`: Your Everhour API Token.
         /// 	- Service `Expensein`: Your ExpenseIn API key.
         /// 	- Service `Factorial`: Your Factorial API key.
+        /// 	- Service `Fathom`: Your Fathom API key.
+        /// 	- Service `Fireflies`: Your Fireflies API key.
         /// 	- Service `Firehydrant`: Your FireHydrant API key.
         /// 	- Service `Float`: Your Float API key.
         /// 	- Service `ForjCommunity`: Your Forj Community API key.
@@ -826,6 +865,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Freshsuccess`: Your Freshsuccess API key.
         /// 	- Service `Freshteam`: Your Freshteam API key.
         /// 	- Service `Friendbuy`: Your Friendbuy API key.
+        /// 	- Service `Fulfil`: Your Fulfil API key.
         /// 	- Service `Fullstory`: Your Fullstory API key.
         /// 	- Service `GainsightProductExperience`: Your Gainsight Product Experience API key.
         /// 	- Service `Gem`: Your Gem API key.
@@ -835,7 +875,9 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Grepsr`: Your Grepsr API Key.
         /// 	- Service `Grin`: Your Grin API key.
         /// 	- Service `Happyfox`: Your HappyFox API key.
+        /// 	- Service `Healthie`: Your Healthie API key.
         /// 	- Service `Height`: Your Height API key.
+        /// 	- Service `Helpjuice`: Your Helpjuice API key.
         /// 	- Service `Helpshift`: Your Helpshift API Key.
         /// 	- Service `Incidentio`: Your incident.io API key.
         /// 	- Service `Infobip`: Your Infobip API key.
@@ -844,6 +886,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Invoiced`: Your Invoiced API key.
         /// 	- Service `Iterable`: Your Iterable API key.
         /// 	- Service `Ivanti`: Your Ivanti API Key.
+        /// 	- Service `Jobnimbus`: Your JobNimbus API key.
         /// 	- Service `Jotform`: Your Jotform API key.
         /// 	- Service `Justcall`: Your JustCall API key.
         /// 	- Service `Katana`: Your Katana API key.
@@ -851,12 +894,14 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Keypay`: Your KeyPay API key.
         /// 	- Service `Kisi`: Your Kisi API key.
         /// 	- Service `Klaviyo`: Your Klaviyo API key.
-        /// 	- Service `Learnupon`: Your Learnupon API key.
+        /// 	- Service `Learnupon`: Your LearnUpon API key.
         /// 	- Service `Lemlist`: Your Lemlist API key.
         /// 	- Service `Lever`: Your Lever API key.
         /// 	- Service `Liftoff`: Your Liftoff API key.
         /// 	- Service `Linear`: Your Linear API key.
         /// 	- Service `Linksquares`: Your LinkSquares API key.
+        /// 	- Service `Listen360`: Your Listen360 API key.
+        /// 	- Service `Livestorm`: Your Livestorm API key.
         /// 	- Service `Lob`: Your Lob API key.
         /// 	- Service `Loop`: Your Loop API key.
         /// 	- Service `Lucca`: Your Lucca API key.
@@ -864,17 +909,20 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Maileon`: Your Maileon API key.
         /// 	- Service `Mailgun`: Your Mailgun API key.
         /// 	- Service `Mailjet`: Your Mailjet API key.
+        /// 	- Service `Maintainx`: Your MaintainX API key.
         /// 	- Service `Malomo`: Your Malomo API key.
         /// 	- Service `Mambu`: Your Mambu API key.
         /// 	- Service `Mandrill`: Your Mandrill API key.
         /// 	- Service `MaxioChargify`: Enter Your API Key.
         /// 	- Service `Messagebird`: Your MessageBird API key.
+        /// 	- Service `Mollie`: Your Mollie API key.
         /// 	- Service `Moloco`: Your Moloco ApiKey
         /// 	- Service `Mountain`: Your MNTN API key.
         /// 	- Service `Myosh`: Your myosh API key.
         /// 	- Service `Okendo`: Your Okendo API key.
         /// 	- Service `Ometria`: Your Ometria API Key.
         /// 	- Service `Oncehub`: Your OnceHub API key.
+        /// 	- Service `Openai`: Your OpenAI Admin API key.
         /// 	- Service `Ordergroove`: Your Ordergroove API key.
         /// 	- Service `Ordway`: Your Ordway API key.
         /// 	- Service `Ortto`: Your Ortto API key.
@@ -883,6 +931,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Pandadoc`: Your PandaDoc API key.
         /// 	- Service `Papershift`: Your Papershift API Key
         /// 	- Service `Partnerize`: Your Partnerize user API key.
+        /// 	- Service `Peopleforce`: Your PeopleForce API key.
         /// 	- Service `Persona`: Your Persona API key.
         /// 	- Service `Picqer`: Your Picqer API key.
         /// 	- Service `Pigment`: Your Pigment API key.
@@ -897,13 +946,15 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Quorum`: Your Quorum API key.
         /// 	- Service `ReboundReturns`: Your ReBound Returns API key.
         /// 	- Service `Recurly`: The Recurly API key.
+        /// 	- Service `Refiner`: Your Refiner API key.
         /// 	- Service `Replyio`: Your Reply API key.
         /// 	- Service `Revenuecat`: Your RevenueCat API key.
         /// 	- Service `Reviewsio`: Your REVIEWS.io API key.
         /// 	- Service `Revops`: Your RevOps bearer token.
         /// 	- Service `Ricochet360`: Your Ricochet360 API key.
         /// 	- Service `Ringover`: Your Ringover API key.
-        /// 	- Service `Rippling`: Your Rippling API key.
+        /// 	- Service `Rippling`: Your Rippling API token.
+        /// 	- Service `Rivo`: Your Rivo API key.
         /// 	- Service `Rocketlane`: Your Rocketlane API key.
         /// 	- Service `Rootly`: Your Rootly API key.
         /// 	- Service `Ruddr`: Your Ruddr API key.
@@ -914,6 +965,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `SecurityJourney`: Your Security Journey API key.
         /// 	- Service `Sendgrid`: The SendGrid API key.
         /// 	- Service `Sendinblue`: Your Sendinblue API key.
+        /// 	- Service `Shipmonk`: Your Shipmonk API key.
         /// 	- Service `Shortcut`: Your Shortcut API token.
         /// 	- Service `Shortio`: Your Short.io API key.
         /// 	- Service `Simplesat`: Your Simplesat API key.
@@ -925,6 +977,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Sparkpost`: Your SparkPost API key.
         /// 	- Service `Squarespace`: Your Squarespace API key.
         /// 	- Service `Stackadapt`: Your StackAdapt API key.
+        /// 	- Service `StackadaptGraphql`: Your StackAdapt API key.
         /// 	- Service `Statuspage`: Your Statuspage API Key.
         /// 	- Service `Stripe`: Restricted API key
         /// 	- Service `StripeTest`: Restricted API key
@@ -937,6 +990,8 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Transcend`: Your Transcend API key.
         /// 	- Service `Trello`: Your TRELLO api key.
         /// 	- Service `TripleWhale`: Your Triple Whale API key.
+        /// 	- Service `Trustpilot`: Your Trustpilot API key.
+        /// 	- Service `Upland`: Your Upland Software API key.
         /// 	- Service `Uppromote`: Your UpPromote API key.
         /// 	- Service `Veeqo`: Your Veeqo API key.
         /// 	- Service `Venminder`: Your Venminder API key.
@@ -947,6 +1002,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Webconnex`: Your Webconnex API key.
         /// 	- Service `WickedReports`: Your Wicked Reports API key.
         /// 	- Service `WorkleapOfficevibe`: Your Workleap Officevibe API key.
+        /// 	- Service `Writesonic`: Your Writesonic API key.
         /// 	- Service `Xsolla`: Your Xsolla API key.
         /// 	- Service `Yext`: Your Yext API key.
         /// 	- Service `YougovSport`: Your Yougov Sport API key.
@@ -957,6 +1013,19 @@ namespace Pulumi.Fivetran.Inputs
         {
             get => _apiKey;
             set => _apiKey = value;
+        }
+
+        [Input("apiKey2", required: true)]
+        private string? _apiKey2;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Openai`: Your OpenAI API key.
+        /// </summary>
+        public string? ApiKey2
+        {
+            get => _apiKey2;
+            set => _apiKey2 = value;
         }
 
         [Input("apiKeyApiSecret", required: true)]
@@ -1025,20 +1094,32 @@ namespace Pulumi.Fivetran.Inputs
         [Input("apiRequestsPerMinute", required: true)]
         public int ApiRequestsPerMinute { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Zuora`: The API role assigned to the integration user.
+        /// 	- Service `ZuoraSandbox`: The API role assigned to the integration user.
+        /// </summary>
+        [Input("apiRole", required: true)]
+        public string ApiRole { get; set; } = null!;
+
         [Input("apiSecret", required: true)]
         private string? _apiSecret;
 
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `ConfluentCloud`: API Secret
+        /// 	- Service `ConsensusDemoAutomationPlatform`: Your Consensus Demo Automation Platform API secret.
         /// 	- Service `ForjCommunity`: Your Forj Community API secret.
         /// 	- Service `Friendbuy`: Your Friendbuy API secret.
+        /// 	- Service `Integrate`: Your Integrate API secret.
         /// 	- Service `Justcall`: Your JustCall API secret.
+        /// 	- Service `Leapsome`: your Leapsome API secret
         /// 	- Service `Liftoff`: Your Liftoff API secret.
         /// 	- Service `Mixpanel`: Mixpanel API Secret.
         /// 	- Service `Qualaroo`: Your Qualaroo API Secret.
         /// 	- Service `Sailthru`: The Sailthru API secret.
         /// 	- Service `Shareasale`: Your ShareASale API secret.
+        /// 	- Service `Trustpilot`: Your Trustpilot API secret.
         /// 	- Service `Vonage`: Your Vonage API Secret.
         /// </summary>
         public string? ApiSecret
@@ -1085,7 +1166,9 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Chameleon`: Your Chameleon API token.
         /// 	- Service `Clari`: Your Clari API token.
         /// 	- Service `CloudflareAnalytics`: Your Cloudflare Analytics API token.
+        /// 	- Service `Coda`: Your Coda API token.
         /// 	- Service `Confluence`: The Confluence API token.
+        /// 	- Service `Credly`: Enter your Credly API token
         /// 	- Service `Dixa`: Your Dixa API token.
         /// 	- Service `Drip`: Your Drip API Token.
         /// 	- Service `Factbird`: Your Factbird API token.
@@ -1122,6 +1205,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `SensorTower`: Your Sensor Tower API token.
         /// 	- Service `Sentry`: Your Sentry auth token.
         /// 	- Service `Simplecast`: Your Simplecast API token.
+        /// 	- Service `Smartsheet`: API token generated from your Smartsheet account.
         /// 	- Service `Snyk`: Your Snyk API token.
         /// 	- Service `Textus`: Your TextUs API token.
         /// 	- Service `TogglTrack`: Your Toggl Track API token
@@ -1129,8 +1213,9 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Trisolute`: Your Trisolute API token.
         /// 	- Service `Vwo`: Your VWO API token.
         /// 	- Service `WebScraper`: Your Web Scraper API token.
-        /// 	- Service `Zendesk`: Zendesk API tokens are auto-generated passwords in the Support admin interface.
+        /// 	- Service `Zendesk`: Deprecated: Use Confidential OAuth client authentication instead. Zendesk API tokens are auto-generated passwords in the Support admin interface.
         /// 	- Service `ZendeskSunshine`: Zendesk API tokens are auto-generated passwords in the Support admin interface.
+        /// 	- Service `ZendeskWorkforceManagement`: Your Zendesk Workforce Management API token.
         /// </summary>
         public string? ApiToken
         {
@@ -1162,6 +1247,14 @@ namespace Pulumi.Fivetran.Inputs
         [Input("apiUsage", required: true)]
         public string ApiUsage { get; set; } = null!;
 
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Salesforce`: (Optional) The percentage of your Salesforce [daily API limit](https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm) that Fivetran should consume. Value must be between 50 and 90 (default value = `90`)
+        /// 	- Service `SalesforceSandbox`: (Optional) The percentage of your Salesforce [daily API limit](https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm) that Fivetran should consume. Value must be between 50 and 90 (default value = `90`)
+        /// </summary>
+        [Input("apiUsageLimit", required: true)]
+        public int ApiUsageLimit { get; set; }
+
         [Input("apiUserIdentifier", required: true)]
         private string? _apiUserIdentifier;
 
@@ -1188,6 +1281,19 @@ namespace Pulumi.Fivetran.Inputs
             set => _apiUserSecret = value;
         }
 
+        [Input("apiUsername", required: true)]
+        private string? _apiUsername;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Discourse`: Your Discourse API username.
+        /// </summary>
+        public string? ApiUsername
+        {
+            get => _apiUsername;
+            set => _apiUsername = value;
+        }
+
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Kustomer`: Api Utilization Percentage
@@ -1211,6 +1317,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Churnkey`: Your Churnkey APP ID.
         /// 	- Service `OpenExchangeRates`: Your Open Exchange Rates App Id.
         /// 	- Service `Rokt`: Your Rokt app ID.
+        /// 	- Service `Samsara`: App ID for your OAuth 2.0 app.
         /// 	- Service `TiktokOrganic`: Your Tiktok Organic app ID.
         /// </summary>
         public string? AppId
@@ -1263,6 +1370,13 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `SlackApp`: Your Slack app level.
+        /// </summary>
+        [Input("appLevel", required: true)]
+        public string AppLevel { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `Brightpearl`: Your Brightpearl app reference.
         /// </summary>
         [Input("appReference", required: true)]
@@ -1274,6 +1388,7 @@ namespace Pulumi.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Rokt`: Your Rokt app secret.
+        /// 	- Service `Samsara`: App secret for your OAuth 2.0 app.
         /// </summary>
         public string? AppSecret
         {
@@ -1283,6 +1398,11 @@ namespace Pulumi.Fivetran.Inputs
 
         [Input("appSecretToken", required: true)]
         private string? _appSecretToken;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Economic`: Your E-conomic X-AppSecretToken goes here.
+        /// </summary>
         public string? AppSecretToken
         {
             get => _appSecretToken;
@@ -1308,6 +1428,13 @@ namespace Pulumi.Fivetran.Inputs
         /// </summary>
         [Input("appSyncMode", required: true)]
         public string AppSyncMode { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Shopify`: App store url of your public app
+        /// </summary>
+        [Input("appUrl", required: true)]
+        public string AppUrl { get; set; } = null!;
 
         /// <summary>
         /// Field usage depends on `Service` value: 
@@ -1352,6 +1479,13 @@ namespace Pulumi.Fivetran.Inputs
             get => _applicationKey;
             set => _applicationKey = value;
         }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Db2z`: The application name used to generate an RACF PassTicket for user authentication. Specify only when `AuthenticationMethod` is `LEGACY_PASS_TICKET` or `ENHANCED_PASS_TICKET`.
+        /// </summary>
+        [Input("applicationName", required: true)]
+        public string ApplicationName { get; set; } = null!;
 
         [Input("apps", required: true)]
         private List<string>? _apps;
@@ -1498,6 +1632,7 @@ namespace Pulumi.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `DatabricksDb`: Token-based authentication type
+        /// 	- Service `Gitlab`: Your GitLab auth type.
         /// 	- Service `RedshiftDb`: Password-based authentication type
         /// 	- Service `SnowflakeDb`: Password-based or key-based authentication type
         /// </summary>
@@ -1535,6 +1670,7 @@ namespace Pulumi.Fivetran.Inputs
         /// Field usage depends on `Service` value: 
         /// 	- Service `Aurora`: Database authentication method
         /// 	- Service `AuroraPostgres`: Database authentication method
+        /// 	- Service `AzureBlobStorage`: Authentication Method
         /// 	- Service `AzurePostgres`: Database authentication method
         /// 	- Service `AzureSqlDb`: Authentication Method.
         /// 	- Service `AzureSqlManagedDb`: Authentication Method.
@@ -1546,6 +1682,8 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Maria`: Database authentication method
         /// 	- Service `MariaAzure`: Database authentication method
         /// 	- Service `MariaRds`: Database authentication method
+        /// 	- Service `MicrosoftDynamics365Fno`: Authentication Method
+        /// 	- Service `MicrosoftLists`: Authentication Method
         /// 	- Service `Mysql`: Database authentication method
         /// 	- Service `MysqlAzure`: Database authentication method
         /// 	- Service `MysqlRds`: Database authentication method
@@ -1563,7 +1701,10 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Anaplan`: The Anaplan authentication method.
         /// 	- Service `Concur`: The Authentication Mode used by SAP Concur. It can be PasswordGrant or CompanyLevel auth mode
         /// 	- Service `Github`: Authorization type.
+        /// 	- Service `Smartsheet`: Authorization type.
         /// 	- Service `Workday`: Authentication Mode
+        /// 	- Service `WorkdayFinancialManagement`: Authentication Mode
+        /// 	- Service `WorkdayHcm`: Authentication Mode
         /// </summary>
         [Input("authMode", required: true)]
         public string AuthMode { get; set; } = null!;
@@ -1597,7 +1738,9 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `360learning`: Your 360Learning auth type.
         /// 	- Service `Airtable`: Type of authentication being used by connector
+        /// 	- Service `Amqp`: Authentication method (BasicAuth or MutualTLS).
         /// 	- Service `AwsCostReport`: Access approach
         /// 	- Service `AzureServiceBus`: The authentication mode to access the topic
         /// 	- Service `Dynamics365`: Authentication mechanism. Either one of `OAUTH2`, or `SERVICE_PRINCIPAL`. Default value `OAUTH2`
@@ -1610,6 +1753,8 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Qualtrics`: Type of authentication being used by connector
         /// 	- Service `S3`: Access approach
         /// 	- Service `S3CompatibleStorage`: Access approach
+        /// 	- Service `Samsara`: The authentication method you want to use for your connection.
+        /// 	- Service `Upland`: Authentication method you want to use for your connection.
         /// 	- Service `WasabiCloudStorage`: The Wasabi Cloud Storage Access approach. Required for connector creation. Default value: `ACCESS_KEY`.
         /// </summary>
         [Input("authType", required: true)]
@@ -1625,8 +1770,10 @@ namespace Pulumi.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `AdobeAnalytics`: Authentication Method
+        /// 	- Service `Db2z`: User authentication method. Supported values:`PASSWORD`- Authenticate with the database server using an RACF user ID and password. If the parameter is omitted, `PASSWORD` is used by default. `LEGACY_PASS_TICKET`- Authenticate with the database server using an RACF user ID and legacy PassTicket. `ENHANCED_PASS_TICKET`- Authenticate with the database server using an RACF user ID and an enhanced PassTicket. Enhanced PassTickets are more secure than legacy PassTickets.
         /// 	- Service `ElasticCloud`: The authentication method used to connect to your cluster.
         /// 	- Service `EsSelfHosted`: The authentication method used to connect to your cluster.
+        /// 	- Service `GainsightCustomerSuccess`: The authentication method to use. Can be either OAUTH or API_KEY.
         /// 	- Service `Opendistro`: The authentication method used to connect to your cluster.
         /// 	- Service `Opensearch`: The authentication method used to connect to your cluster.
         /// 	- Service `OracleFusionCloudAppsCrm`: The Oracle Fusion Cloud authentication method.
@@ -1651,10 +1798,29 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Amplitude`: Amazon S3 Credentials
+        /// 	- Service `Pendo`: Configuration for AWS S3 Storage
+        /// </summary>
+        [Input("awsCredentials", required: true)]
+        public Inputs.GetConnectorConfigAwsCredentialsArgs AwsCredentials { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Aurora`: The AWS region code for your RDS instance. Required if the authentication method is `AWS_IAM`.
         /// 	- Service `Dynamodb`: The AWS region code for the DynamoDB instance, e.g. `us-east-1`.
+        /// 	- Service `MagentoMysqlRds`: The AWS region code for your RDS instance. Required if the authentication method is `AWS_IAM`.
+        /// 	- Service `MariaRds`: The AWS region code for your RDS instance. Required if the authentication method is `AWS_IAM`.
+        /// 	- Service `MysqlRds`: The AWS region code for your RDS instance. Required if the authentication method is `AWS_IAM`.
         /// </summary>
         [Input("awsRegionCode", required: true)]
         public string AwsRegionCode { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Pendo`: Configuration for Azure Blob Storage
+        /// </summary>
+        [Input("azureCredentials", required: true)]
+        public Inputs.GetConnectorConfigAzureCredentialsArgs AzureCredentials { get; set; } = null!;
 
         [Input("backintConfigurationPath", required: true)]
         public string BackintConfigurationPath { get; set; } = null!;
@@ -1664,17 +1830,41 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `SqlServer`: Filename pattern for transaction log backup files.
+        /// </summary>
+        [Input("backupLogFormat", required: true)]
+        public string BackupLogFormat { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SqlServer`: Full path to the local directory containing transaction log backup files. Required if `BackupStorageType` is `ALTERNATE_LOCATION`
+        /// </summary>
+        [Input("backupLogPath", required: true)]
+        public string BackupLogPath { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SqlServer`: Location of transaction log backup files when using BACKUP binary log type. Possible values: `"AZURE"`, `"ALTERNATE_LOCATION"`, `"AWS"`.
+        /// </summary>
+        [Input("backupStorageType", required: true)]
+        public string BackupStorageType { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AmazonSellingPartner`: The earliest date to sync data from, in YYYY-MM-DD format. Cannot be before 1994-01-01 or in the future.
         /// 	- Service `Shopify`: Limit of the Historical Sync Time for selected tables
         /// 	- Service `Stripe`: Limit of the Historical Sync Time for selected tables
         /// 	- Service `StripeTest`: Limit of the Historical Sync Time for selected tables
-        /// 	- Service `Zendesk`: Date Limit of the Historical Sync Time for selected tables. The format should be YYYY-MM-DD
+        /// 	- Service `Zendesk`: Date Limit of the Historical Sync Time for selected tables. The format should be YYYY-MM-DD.
         /// </summary>
         [Input("backwardSyncLimit", required: true)]
         public string BackwardSyncLimit { get; set; } = null!;
 
         /// <summary>
         /// Field usage depends on `Service` value: 
-        /// 	- Service `Hubspot`: Date Limit of the Historical Sync Time for selected tables. The Format should be YYYY-MM-DD
+        /// 	- Service `Hubspot`: Date Limit of the Historical Sync Time for selected tables. The Format should be YYYY-MM-DD.
+        /// 	- Service `Mixpanel`: Date from which data needs to be synced.
+        /// 	- Service `Pendo`: The start date (YYYY-MM-DD) from which to sync historical data.
         /// </summary>
         [Input("backwardSyncLimitDate", required: true)]
         public string BackwardSyncLimitDate { get; set; } = null!;
@@ -1702,6 +1892,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `360learning`: Your 360Learning base URL.
         /// 	- Service `Aha`: Your Aha! subdomain.
         /// 	- Service `Akeneo`: Your Akeneo base URL.
         /// 	- Service `Bigmarker`: Your BigMarker base URL.
@@ -1718,6 +1909,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Fillout`: Your Fillout Base URL.
         /// 	- Service `FinancialForce`: (Optional) The custom Salesforce domain. Make sure that the `BaseUrl` starts with `https://`.
         /// 	- Service `Freshsales`: Your Freshsales product.
+        /// 	- Service `Gitlab`: Your GitLab base URL.
         /// 	- Service `Gongio`: Your Gong API Base URL.
         /// 	- Service `HigherLogicVanilla`: Your Higher Logic Vanilla base URL.
         /// 	- Service `Ironclad`: Your Ironclad base url.
@@ -1760,10 +1952,26 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
-        /// 	- Service `SqlServer`: Transaction log type. Possible values: `"ONLINE"`, `"BACK_AZURE"`. Default"  value is `"ONLINE"`.
+        /// 	- Service `SqlServer`: Determine who is responsible for truncating the online transaction log. Possible values: `"FIVETRAN"`, `"USER_MANAGED"`, `"SQL_SERVER_AGENT"`. Default value is `"FIVETRAN"`.
+        /// </summary>
+        [Input("binaryLogTruncater", required: true)]
+        public string BinaryLogTruncater { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SqlServer`: Source of transaction log data when using Binary Log Reader. Possible values: `"ONLINE"`, `"BACKUP"`. Default value is `"ONLINE"`.
         /// </summary>
         [Input("binaryLogType", required: true)]
         public string BinaryLogType { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureCosmosForMongo`: How binary data is represented in the database. Possible values: 'Base64' (default), 'Uuid'.
+        /// 	- Service `Mongo`: How binary data is represented in the database. Possible values: 'Base64' (default), 'Uuid'.
+        /// 	- Service `MongoSharded`: How binary data is represented in the database. Possible values: 'Base64' (default), 'Uuid'.
+        /// </summary>
+        [Input("binaryRepresentation", required: true)]
+        public string BinaryRepresentation { get; set; } = null!;
 
         [Input("blobSasUrl", required: true)]
         private string? _blobSasUrl;
@@ -1820,6 +2028,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `S3`: The S3 bucket name. Required for connector creation.
         /// 	- Service `S3CompatibleStorage`: The S3-Compatible Storage bucket name. Required for connector creation.
         /// 	- Service `Segment`: The name of the Segment bucket. Must be populated if `SyncType` is set to `S3`.
+        /// 	- Service `SqlServer`: The name of the S3 bucket.
         /// 	- Service `WasabiCloudStorage`: The Wasabi Cloud Storage bucket name. Required for connector creation.
         /// </summary>
         [Input("bucket", required: true)]
@@ -1854,6 +2063,13 @@ namespace Pulumi.Fivetran.Inputs
             set => _businessAccounts = value;
         }
 
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `TiktokOrganicApp`: The TikTok business category whose data you want to sync.
+        /// </summary>
+        [Input("businessCategory", required: true)]
+        public string BusinessCategory { get; set; } = null!;
+
         [Input("businessId", required: true)]
         private string? _businessId;
 
@@ -1884,6 +2100,13 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Sailthru`: The number of days to look back for campaign query data during incremental syncs. Valid range: 2-90. Default: 60.
+        /// </summary>
+        [Input("campaignQueryLookbackWindowInDays", required: true)]
+        public int CampaignQueryLookbackWindowInDays { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `DatabricksDb`: catalog to sync
         /// </summary>
         [Input("catalog", required: true)]
@@ -1895,6 +2118,7 @@ namespace Pulumi.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Anaplan`: The contents of your PEM certificate file. Must be populated if `AuthMode` is set to `Certificate`.
+        /// 	- Service `Db2z`: Db2 for z/OS host certificate
         /// 	- Service `Qualtrics`: Your Client Certificate
         /// 	- Service `Salesforce`: Provide content of the `.pem` certificate (only when AuthenticationMethod = `ADVANCED`).
         /// 	- Service `SalesforceSandbox`: Provide content of the `.pem` certificate (only when AuthenticationMethod = `ADVANCED`).
@@ -1957,6 +2181,34 @@ namespace Pulumi.Fivetran.Inputs
             set => _clientCertKey = value;
         }
 
+        [Input("clientCertificate", required: true)]
+        private string? _clientCertificate;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Amqp`: Client certificate for mutual TLS authentication.
+        /// 	- Service `Gitlab`: Your GitLab client certificate content.
+        /// 	- Service `SharePoint`: `Client Certificate` of your Microsoft client application.
+        /// </summary>
+        public string? ClientCertificate
+        {
+            get => _clientCertificate;
+            set => _clientCertificate = value;
+        }
+
+        [Input("clientCertificatePrivateKey", required: true)]
+        private string? _clientCertificatePrivateKey;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SharePoint`: `Certificate Private Key` of your Microsoft client application.
+        /// </summary>
+        public string? ClientCertificatePrivateKey
+        {
+            get => _clientCertificatePrivateKey;
+            set => _clientCertificatePrivateKey = value;
+        }
+
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `CeridianDayforce`: Your Ceridian Dayforce client host.
@@ -1969,25 +2221,34 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `360learning`: Your 360Learning client ID.
         /// 	- Service `Acumatica`: Your Acumatica client ID.
-        /// 	- Service `AdobeAnalytics`: Client ID from the OAuth Server-to-Server or Service Account (JWT) credentials of your Adobe Project.
+        /// 	- Service `Adform`: Your Adform client ID.
+        /// 	- Service `AdobeAnalytics`: Client ID from the OAuth Server-to-Server credentials of your Adobe Project.
+        /// 	- Service `AdobeExperiencePlatform`: Your Adobe Experience Platform client ID.
         /// 	- Service `AdobeWorkfront`: Your Adobe Workfront client ID.
         /// 	- Service `AdpWorkforceNow`: Your ADP Client ID.
         /// 	- Service `Akamai`: Your Akamai client ID.
         /// 	- Service `Akeneo`: Your Akeneo client ID.
+        /// 	- Service `Alation`: Client ID of the OAuth client application registered in Alation for this connection.
         /// 	- Service `Auth0`: Your Auth0 client ID.
-        /// 	- Service `AutodeskBim360`: Your Autodesk BIM 360 client ID.
+        /// 	- Service `AutodeskBim360`: Your Autodesk BIM 360 &amp; Construction Cloud client ID.
         /// 	- Service `BiginByZohoCrm`: Your Bigin by Zoho CRM Client Id
         /// 	- Service `BillingPlatform`: Your BillingPlatform client ID.
         /// 	- Service `BingWebmasterTools`: Your Bing Webmaster Tools client ID.
+        /// 	- Service `BizzaboApp`: Your Bizzabo client ID.
+        /// 	- Service `BizzaboV2`: Your Bizzabo client ID.
         /// 	- Service `Brightcove`: Your Brightcove client ID.
+        /// 	- Service `Brightflag`: Your Brightflag client ID.
         /// 	- Service `Brightpearl`: Your Brightpearl client ID.
         /// 	- Service `Brivo`: Your Brivo client ID.
         /// 	- Service `Buildium`: Your Buildium API client ID.
+        /// 	- Service `Bynder`: Client ID of the OAuth app that you created in Bynder for the connection.
         /// 	- Service `Cabcharge`: Your Cabcharge client ID.
         /// 	- Service `CanvasByInstructure`: Your Canvas by Instructure client ID.
         /// 	- Service `CanvasData2ByInstructure`: Your Canvas Data 2 by Instructure client ID.
         /// 	- Service `CastorEdc`: Your Castor EDC client Id.
+        /// 	- Service `Classy`: Your Classy client ID.
         /// 	- Service `Clazar`: Your Clazar client ID.
         /// 	- Service `Cloudbeds`: Your Cloudbeds client ID.
         /// 	- Service `Commercetools`: Your commercetools client ID.
@@ -1995,8 +2256,11 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `ConstantContact`: Your Constant Contact client ID.
         /// 	- Service `Cornerstone`: Your Cornerstone client ID.
         /// 	- Service `Coupa`: Your Coupa ClientId
+        /// 	- Service `Credly`: Enter your Credly Client ID
         /// 	- Service `Criteo`: Your Criteo Client ID.
         /// 	- Service `CriteoRetailMedia`: Your Criteo Retail Media client ID.
+        /// 	- Service `Cube`: Your Cube client ID.
+        /// 	- Service `CubeSoftware`: Your Cube client ID.
         /// 	- Service `CultureAmp`: Your Culture Amp client ID.
         /// 	- Service `Cvent`: Your Cvent client ID.
         /// 	- Service `D2lBrightspace`: Your D2L Brightspace client ID.
@@ -2008,10 +2272,15 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Formstack`: Your Formstack client ID.
         /// 	- Service `Fortnox`: Your Fortnox client ID.
         /// 	- Service `Genesys`: Your Genesys client ID.
+        /// 	- Service `Github`: GitHub App Client ID
+        /// 	- Service `GofundmePro`: Client ID of the API application in your GoFundMe Pro account.
+        /// 	- Service `Greenhouse`: Your Greenhouse client ID.
+        /// 	- Service `HLevel`: Your HighLevel client ID.
         /// 	- Service `HanaSapHvaEccNetweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
         /// 	- Service `HanaSapHvaS4Netweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
         /// 	- Service `Helpdesk`: Your HelpDesk client ID.
         /// 	- Service `HiltiOntrack`: Your Hilti On!Track client ID.
+        /// 	- Service `Ibacos`: Your IBACOS Client ID.
         /// 	- Service `Ilevel`: Your iLevel Client ID.
         /// 	- Service `Instructure`: Your Instructure client ID.
         /// 	- Service `IntegralAdScience`: Your IntegralAdScience client id.
@@ -2020,7 +2289,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Jibble`: Your Jibble client ID.
         /// 	- Service `KhorosCommunities`: Your Khoros Communities client ID.
         /// 	- Service `LearnAmp`: Your Learn Amp client ID.
-        /// 	- Service `LookerSource`: Your Looker Client ID.
+        /// 	- Service `LookerSource`: Your Looker client ID.
         /// 	- Service `Marketo`: Marketo REST API Client Id.
         /// 	- Service `Medallia`: Medallia Client ID
         /// 	- Service `MicrosoftEntraId`: Your Microsoft Entra ID Client ID.
@@ -2029,17 +2298,21 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Navan`: Your Navan client ID.
         /// 	- Service `Nice`: Your NICE client ID.
         /// 	- Service `On24`: Your ON24 client ID.
+        /// 	- Service `Onetrust`: Your OneTrust client ID.
         /// 	- Service `OracleFusionFieldService`: Your Oracle Fusion Field Service client ID.
+        /// 	- Service `OracleNetsuiteOpenair`: Your NetSuite SuiteProjects Pro client ID.
         /// 	- Service `OracleSapHvaNetweaver`: Three-digit (000-999) identifier of the SAP client, which is sent to an AS ABAP upon logon.
         /// 	- Service `Paychex`: Your Paychex client ID.
+        /// 	- Service `Paylocity`: Your Paylocity client ID.
         /// 	- Service `Paypal`: `Client ID` of your PayPal client application.
-        /// 	- Service `PaypalSandbox`: `Client ID` of your PayPal client application.
+        /// 	- Service `PaypalSandbox`: Client ID of your PayPal client application.
         /// 	- Service `Personio`: Your Personio Client ID.
         /// 	- Service `PiwikPro`: Your Piwik PRO client ID.
         /// 	- Service `Podio`: Your Podio client ID.
         /// 	- Service `PowerReviewsEnterprise`: Your PowerReviews Enterprise Client ID.
         /// 	- Service `PrismaCloud`: Your Prisma Cloud access key ID.
         /// 	- Service `Procore`: Your Procore client ID.
+        /// 	- Service `Quickbooks`: Client ID of your QuickBooks client application.
         /// 	- Service `QuoraAds`: Your Quora Ads client ID.
         /// 	- Service `Reltio`: Your Reltio client ID.
         /// 	- Service `SalesforceCommerceCloud`: The Salesforce Commerce Cloud Client ID.
@@ -2051,10 +2324,14 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Servicetitan`: Your ServiceTitan client ID.
         /// 	- Service `Sharetribe`: Your Sharetribe client ID.
         /// 	- Service `Shipnetwork`: Your ShipNetwork client ID.
+        /// 	- Service `Shopify`: Client ID of your public app
         /// 	- Service `Showpad`: Your Showpad client ID.
+        /// 	- Service `SiemensBuildingXOpenness`: Your Siemens Building X Openness client ID.
         /// 	- Service `SigmaComputingSource`: Your Sigma Computing client ID.
         /// 	- Service `Skillstx`: Your SkillsTX client ID.
         /// 	- Service `Skimlinks`: Your Skimlinks client ID.
+        /// 	- Service `SlackAdminData`: Your Slack admin client ID.
+        /// 	- Service `SlackApp`: Your Slack app Client ID.
         /// 	- Service `Smartrecruiters`: Your SmartRecruiters client ID.
         /// 	- Service `Splash`: Your Splash client ID.
         /// 	- Service `Square`: The Application ID of your organization.
@@ -2115,6 +2392,8 @@ namespace Pulumi.Fivetran.Inputs
         /// Field usage depends on `Service` value: 
         /// 	- Service `Destini`: Your Destini Client Name.
         /// 	- Service `Medallia`: Medallia company name
+        /// 	- Service `Zuora`: The name of your organization as registered with Zuora Revenue.
+        /// 	- Service `ZuoraSandbox`: The name of your organization as registered with Zuora Revenue.
         /// </summary>
         public string? ClientName
         {
@@ -2134,9 +2413,11 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Amqp`: Client private key for mutual TLS authentication.
         /// 	- Service `Aurora`: Client Private Key in .pem format.
         /// 	- Service `AuroraPostgres`: Client Private Key in .pem format.
         /// 	- Service `AzurePostgres`: Client Private Key in .pem format.
+        /// 	- Service `Gitlab`: Your GitLab client private key content.
         /// 	- Service `GoogleCloudMysql`: Client Private Key in .pem format.
         /// 	- Service `GoogleCloudPostgresql`: Client Private Key in .pem format.
         /// 	- Service `HerokuPostgres`: Client Private Key in .pem format.
@@ -2184,22 +2465,31 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `360learning`: Your 360Learning client secret.
         /// 	- Service `Acumatica`: Your Acumatica client secret.
-        /// 	- Service `AdobeAnalytics`: Client Secret from the OAuth Server-to-Server or Service Account (JWT) credentials of your Adobe Project.
+        /// 	- Service `Adform`: Your Adform client secret.
+        /// 	- Service `AdobeAnalytics`: Client Secret from the OAuth Server-to-Server credentials of your Adobe Project.
+        /// 	- Service `AdobeExperiencePlatform`: Your Adobe Experience Platform client secret.
         /// 	- Service `AdobeWorkfront`: Your Adobe Workfront client secret.
         /// 	- Service `AdpWorkforceNow`: Your ADP Client Secret.
         /// 	- Service `Akamai`: Your Akamai client secret.
         /// 	- Service `Akeneo`: Your Akeneo client secret.
+        /// 	- Service `Alation`: Client secret of the OAuth client application registered in Alation for this connection.
         /// 	- Service `Auth0`: Your Auth0 client secret.
-        /// 	- Service `AutodeskBim360`: Your Autodesk BIM 360 client secret.
+        /// 	- Service `AutodeskBim360`: Your Autodesk BIM 360 &amp; Construction Cloud client secret.
         /// 	- Service `BiginByZohoCrm`: Your Bigin by Zoho CRM Client Secret
         /// 	- Service `BillingPlatform`: Your BillingPlatform client secret.
         /// 	- Service `BingWebmasterTools`: Your Bing Webmaster Tools client secret.
+        /// 	- Service `BizzaboApp`: Your Bizzabo client secret.
+        /// 	- Service `BizzaboV2`: Your Bizzabo client secret.
         /// 	- Service `Brightcove`: Your Brightcove client secret.
+        /// 	- Service `Brightflag`: Your Brightflag client secret.
         /// 	- Service `Brightpearl`: Your Brightpearl client secret.
         /// 	- Service `Brivo`: Your Brivo client secret.
+        /// 	- Service `Bynder`: Client secret of the OAuth app that you created in Bynder for the connection.
         /// 	- Service `CanvasByInstructure`: Your Canvas by Instructure client secret.
         /// 	- Service `CastorEdc`: Your Castor EDC client secret.
+        /// 	- Service `Classy`: Your Classy client secret.
         /// 	- Service `Clazar`: Your Clazar client secret.
         /// 	- Service `Cloudbeds`: Your Cloudbeds client secret.
         /// 	- Service `Commercetools`: Your commercetools client secret.
@@ -2207,8 +2497,11 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `ConstantContact`: Your Constant Contact client secret.
         /// 	- Service `Cornerstone`: Your Cornerstone client secret.
         /// 	- Service `Coupa`: Your Coupa ClientId
+        /// 	- Service `Credly`: Enter your Credly Client Secret
         /// 	- Service `Criteo`: Your Criteo client secret key.
         /// 	- Service `CriteoRetailMedia`: Your Criteo Retail Media client secret.
+        /// 	- Service `Cube`: Your Cube client secret.
+        /// 	- Service `CubeSoftware`: Your Cube client secret.
         /// 	- Service `CultureAmp`: Your Culture Amp client secret.
         /// 	- Service `Cvent`: Your Cvent client secret.
         /// 	- Service `D2lBrightspace`: Your D2L Brightspace client secret.
@@ -2220,8 +2513,13 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Formstack`: Your Formstack client secret.
         /// 	- Service `Fortnox`: Your Fortnox client secret.
         /// 	- Service `Genesys`: Your Genesys client secret.
+        /// 	- Service `GofundmePro`: Client secret of the API application in your GoFundMe Pro account.
+        /// 	- Service `Greenhouse`: Your Greenhouse client secret.
+        /// 	- Service `HLevel`: Your HighLevel client secret.
         /// 	- Service `Helpdesk`: Your HelpDesk client secret.
         /// 	- Service `HiltiOntrack`: Your Hilti On!Track client secret.
+        /// 	- Service `Hubspot`: Client secret for private custom app authentication.
+        /// 	- Service `Ibacos`: Your IBACOS Client secret.
         /// 	- Service `Ilevel`: Your iLevel Client Secret.
         /// 	- Service `Instructure`: Your Instructure client secret.
         /// 	- Service `IntegralAdScience`: Your IntegralAdScience client secret.
@@ -2229,7 +2527,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `JamaSoftware`: Your Jama Software client secret.
         /// 	- Service `Jibble`: Your Jibble client secret.
         /// 	- Service `LearnAmp`: Your Learn Amp client secret.
-        /// 	- Service `LookerSource`: Your Looker Client Secret.
+        /// 	- Service `LookerSource`: Your Looker client secret.
         /// 	- Service `Marketo`: Marketo REST API Client Secret.
         /// 	- Service `Medallia`: Medallia Client Secret key
         /// 	- Service `MicrosoftEntraId`: Your Microsoft Entra ID Client Secret.
@@ -2237,14 +2535,18 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `MicrosoftTeams`: Your Microsoft Teams client secret.
         /// 	- Service `Navan`: Your Navan client secret.
         /// 	- Service `Nice`: Your NICE client secret.
+        /// 	- Service `Onetrust`: Your OneTrust client secret.
         /// 	- Service `OracleFusionFieldService`: Your Oracle Fusion Field Service client secret.
+        /// 	- Service `OracleNetsuiteOpenair`: Your NetSuite SuiteProjects Pro client secret.
         /// 	- Service `Paychex`: Your Paychex client secret.
+        /// 	- Service `Paylocity`: Your Paylocity client secret.
         /// 	- Service `Personio`: Your Personio secret.
         /// 	- Service `PiwikPro`: Your Piwik PRO client secret.
         /// 	- Service `Podio`: Your Podio client secret.
         /// 	- Service `PowerReviewsEnterprise`: Your PowerReviews Enterprise Client Secret.
         /// 	- Service `PrismaCloud`: Your Prisma Cloud secret access Key.
         /// 	- Service `Procore`: Your Procore client secret.
+        /// 	- Service `Quickbooks`: Client Secret of your QuickBooks client application.
         /// 	- Service `QuoraAds`: Your Quora Ads client secret.
         /// 	- Service `Reltio`: Your Reltio client secret.
         /// 	- Service `SalesforceCommerceCloud`: The Salesforce Commerce Cloud Client secret.
@@ -2255,10 +2557,14 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Servicenow`: ServiceNow Client Secret.
         /// 	- Service `Servicetitan`: Your ServiceTitan secret key.
         /// 	- Service `Sharetribe`: Your Sharetribe client secret.
+        /// 	- Service `Shopify`: Client secret of your public app
         /// 	- Service `Showpad`: Your Showpad client secret.
+        /// 	- Service `SiemensBuildingXOpenness`: Your Siemens Building X Openness client secret.
         /// 	- Service `SigmaComputingSource`: Your Sigma Computing client secret.
         /// 	- Service `Skillstx`: Your SkillsTX client secret.
         /// 	- Service `Skimlinks`: Your Skimlinks client secret.
+        /// 	- Service `SlackAdminData`: Your Slack admin client secret.
+        /// 	- Service `SlackApp`: Your Slack app Client Secret.
         /// 	- Service `Smartrecruiters`: Your SmartRecruiters client secret.
         /// 	- Service `Splash`: Your Splash client secret.
         /// 	- Service `Square`: The Application Secret of your organization.
@@ -2367,7 +2673,11 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
-        /// 	- Service `360learning`: Your 360Learning Company ID.
+        /// 	- Service `360learning`: Your 360Learning company ID.
+        /// 	- Service `Cube`: Your Cube company ID.
+        /// 	- Service `CubeSoftware`: Your Cube company ID.
+        /// 	- Service `OracleNetsuiteOpenair`: Your NetSuite SuiteProjects Pro company ID.
+        /// 	- Service `Paylocity`: Your Paylocity company ID.
         /// 	- Service `SageIntacct`: Company ID
         /// 	- Service `SapSuccessFactors`: Your SAP SuccessFactors Company ID.
         /// </summary>
@@ -2387,7 +2697,7 @@ namespace Pulumi.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `KhorosCare`: Your Khoros Care companyKey.
-        /// 	- Service `Upland`: Your Upland Software Company Key.
+        /// 	- Service `Upland`: Your Upland Software company key.
         /// </summary>
         public string? CompanyKey
         {
@@ -2543,11 +2853,14 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Cockroachdb`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
         /// 	- Service `Db2iHva`: Possible values:`SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and the following parameter's values are specified: `TunnelHost`, `TunnelPort`, `TunnelUser`.
         /// 	- Service `Db2iSapHva`: Possible values:`SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`.
+        /// 	- Service `Db2luw`: Possible values:`SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and the following parameter's values are specified: `TunnelHost`, `TunnelPort`, `TunnelUser`.
+        /// 	- Service `Db2z`: Possible values: `Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
         /// 	- Service `Documentdb`: Possible values:`SshTunnel`, `PrivateLink` . `SshTunnel` is used as a value if this parameter is omitted in the request and the following parameter's values are specified: `TunnelHost`, `TunnelPort`, `TunnelUser`.
         /// 	- Service `Dynamics365Fo`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
         /// 	- Service `Ehr`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
         /// 	- Service `ElasticCloud`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
         /// 	- Service `Email`: Connection method. Default value: `Directly`.
+        /// 	- Service `EpicClarity`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
         /// 	- Service `EsSelfHosted`: Possible values:`Directly`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
         /// 	- Service `GoogleCloudMysql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
         /// 	- Service `GoogleCloudPostgresql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `TunnelHost`, `TunnelPort`, `TunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
@@ -2728,6 +3041,13 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Sistrix`: Your SISTRIX country code.
+        /// </summary>
+        [Input("country", required: true)]
+        public string Country { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `Adjust`: CSV definition for the CSV export (https://help.adjust.com/en/article/csv-uploads#how-do-i-format-my-csv-definition).
         /// </summary>
         [Input("csvDefinition", required: true)]
@@ -2746,9 +3066,23 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Coalesce`: Your Coalesce custom base URL.
         /// 	- Service `Datadog`: Your Datadog custom base url.
         /// 	- Service `Deposco`: Your Deposco custom base URL.
+        /// 	- Service `Gitlab`: Your GitLab custom base URL.
         /// </summary>
         [Input("customBaseUrl", required: true)]
         public string CustomBaseUrl { get; set; } = null!;
+
+        [Input("customDimensionKeyIds", required: true)]
+        private List<string>? _customDimensionKeyIds;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `DoubleClickPublishers`: The list of custom dimension key IDs included in the report. Custom dimension keys can only be selected with the CUSTOM_DIMENSION dimension.
+        /// </summary>
+        public List<string> CustomDimensionKeyIds
+        {
+            get => _customDimensionKeyIds ?? (_customDimensionKeyIds = new List<string>());
+            set => _customDimensionKeyIds = value;
+        }
 
         /// <summary>
         /// Field usage depends on `Service` value: 
@@ -2811,11 +3145,26 @@ namespace Pulumi.Fivetran.Inputs
             set => _customPayloads = value;
         }
 
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `TogglTrack`: Your Toggl Track custom rate limit. Supports only numeric characters (0-9).
+        /// </summary>
+        [Input("customRateLimit", required: true)]
+        public string CustomRateLimit { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Learnupon`: Your LearnUpon custom region.
+        /// </summary>
+        [Input("customRegion", required: true)]
+        public string CustomRegion { get; set; } = null!;
+
         [Input("customReports", required: true)]
         private List<Inputs.GetConnectorConfigCustomReportArgs>? _customReports;
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Criteo`: Title of Custom Report
         /// 	- Service `RedditAds`: The list of custom report configurations. Each report corresponds to a table within the schema to which connector will sync the data.
         /// 	- Service `SnapchatAds`: [Custom reports for Snapchat Ads connector](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports).
         /// 	- Service `TiktokAds`: Title of Custom Report
@@ -2916,6 +3265,13 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Intercom`: The Intercom region for your app. Options - empty string (US/default), 'eu' (Europe), 'au' (Australia). Based on your Intercom app URL (app.intercom.io for US, app.eu.intercom.io for EU, app.au.intercom.io for AU). Cannot be changed after initial connection creation.
+        /// </summary>
+        [Input("dataRegion", required: true)]
+        public string DataRegion { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `BigqueryDb`: Data set name
         /// </summary>
         [Input("dataSetName", required: true)]
@@ -2933,8 +3289,11 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Cockroachdb`: The database name.
         /// 	- Service `Db2iHva`: The database name.
         /// 	- Service `Db2iSapHva`: The database name.
+        /// 	- Service `Db2luw`: The database name.
+        /// 	- Service `Db2z`: The database name.
         /// 	- Service `Dynamics365Fo`: The database name.
         /// 	- Service `Ehr`: The database name.
+        /// 	- Service `EpicClarity`: The database name.
         /// 	- Service `GoogleCloudMysql`: The database name.
         /// 	- Service `GoogleCloudPostgresql`: The database name.
         /// 	- Service `GoogleCloudSqlserver`: The database name.
@@ -3007,6 +3366,28 @@ namespace Pulumi.Fivetran.Inputs
         /// </summary>
         [Input("db", required: true)]
         public string Db { get; set; } = null!;
+
+        [Input("defaultHost", required: true)]
+        private string? _defaultHost;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Discourse`: Your Discourse default host.
+        /// </summary>
+        public string? DefaultHost
+        {
+            get => _defaultHost;
+            set => _defaultHost = value;
+        }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `OracleFusionCloudAppsCrm`: Use this option to configure how often the connection captures deletes.
+        /// 	- Service `OracleFusionCloudAppsFscm`: Use this option to configure how often the connection captures deletes.
+        /// 	- Service `OracleFusionCloudAppsHcm`: Use this option to configure how often the connection captures deletes.
+        /// </summary>
+        [Input("deleteCaptureFrequency", required: true)]
+        public string DeleteCaptureFrequency { get; set; } = null!;
 
         /// <summary>
         /// Field usage depends on `Service` value: 
@@ -3110,6 +3491,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeExperiencePlatform`: Your Adobe Experience Platform environment.
         /// 	- Service `Auth0`: Your Auth0 domain.
         /// 	- Service `Bubble`: Your Bubble app name or domain name.
         /// 	- Service `Confluence`: Your Confluence domain.
@@ -3140,9 +3522,17 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Calabrio`: Your Calabrio domain name
         /// 	- Service `Dynamics365`: The custom domain name associated with Dynamics 365.
         /// 	- Service `Helpshift`: Your Helpshift domain name.
+        /// 	- Service `Trustpilot`: Your Trustpilot domain name.
         /// </summary>
         [Input("domainName", required: true)]
         public string DomainName { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `LightspeedRetailXseries`: Your Lightspeed Retail X-Series store domain prefix.
+        /// </summary>
+        [Input("domainPrefix", required: true)]
+        public string DomainPrefix { get; set; } = null!;
 
         /// <summary>
         /// Field usage depends on `Service` value: 
@@ -3150,6 +3540,19 @@ namespace Pulumi.Fivetran.Inputs
         /// </summary>
         [Input("domainType", required: true)]
         public string DomainType { get; set; } = null!;
+
+        [Input("dsvPassword", required: true)]
+        private string? _dsvPassword;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Dsv`: Your DSV Password.
+        /// </summary>
+        public string? DsvPassword
+        {
+            get => _dsvPassword;
+            set => _dsvPassword = value;
+        }
 
         [Input("dsvServiceAuth", required: true)]
         private string? _dsvServiceAuth;
@@ -3167,6 +3570,13 @@ namespace Pulumi.Fivetran.Inputs
             set => _dsvSubscriptionKey = value;
         }
 
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Dsv`: Your DSV Username
+        /// </summary>
+        [Input("dsvUsername", required: true)]
+        public string DsvUsername { get; set; } = null!;
+
         [Input("ecommerceStores", required: true)]
         private List<string>? _ecommerceStores;
 
@@ -3180,8 +3590,34 @@ namespace Pulumi.Fivetran.Inputs
             set => _ecommerceStores = value;
         }
 
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `BiginByZohoCrm`: Your Bigin by Zoho CRM pricing plan
+        /// </summary>
         [Input("edition", required: true)]
         public string Edition { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `OracleFusionCloudAppsCrm`: Select this option to extract all historical records without applying a date filter. Console allows setting this option for all datastores in the connector.
+        /// 	- Service `OracleFusionCloudAppsFscm`: Select this option to extract all historical records without applying a date filter. Console allows setting this option for all datastores in the connector.
+        /// 	- Service `OracleFusionCloudAppsHcm`: Select this option to extract all historical records without applying a date filter. Console allows setting this option for all datastores in the connector.
+        /// </summary>
+        [Input("effectiveDateDisabled", required: true)]
+        public bool EffectiveDateDisabled { get; set; }
+
+        [Input("ekmKeyIdentifiers", required: true)]
+        private List<string>? _ekmKeyIdentifiers;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SqlServer`: The list of Azure Key Vault key identifiers used for TDE. Each identifier should be in the format `https://vault-name.vault.azure.net/keys/key-name` or `https://vault-name.vault.azure.net/keys/key-name/version`.
+        /// </summary>
+        public List<string> EkmKeyIdentifiers
+        {
+            get => _ekmKeyIdentifiers ?? (_ekmKeyIdentifiers = new List<string>());
+            set => _ekmKeyIdentifiers = value;
+        }
 
         [Input("elements", required: true)]
         private List<string>? _elements;
@@ -3196,6 +3632,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Appcues`: Your Appcues Email.
         /// 	- Service `AssetPanda`: Your Asset Panda email.
         /// 	- Service `Boostr`: Your Boostr email.
+        /// 	- Service `ConsensusDemoAutomationPlatform`: The email address of the Consensus Demo Automation Platform account you want Fivetran to use to access your data.
         /// 	- Service `Copper`: Your Copper email address.
         /// 	- Service `Email`: Send your emails to this address.
         /// 	- Service `Moloco`: Your Moloco account email.
@@ -3222,6 +3659,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Cabcharge`: Your Cabcharge email ID.
         /// 	- Service `Ordway`: Your Ordway user email ID.
         /// 	- Service `Planful`: Your Planful email ID.
+        /// 	- Service `ZendeskWorkforceManagement`: Email ID associated with the Zendesk Workforce Management account you want Fivetran to use to access your data.
         /// </summary>
         [Input("emailId", required: true)]
         public string EmailId { get; set; } = null!;
@@ -3291,6 +3729,13 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Gitlab`: The confirmation that you have allowed Fivetran to connect with your self-hosted instance. Possible values: `True`, `False`.
+        /// </summary>
+        [Input("enableMtlsConnection", required: true)]
+        public string EnableMtlsConnection { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `SqlServer`: Use transparent data encryption (TDE)
         /// 	- Service `SqlServerHva`: Using Transparent Data Encryption (TDE)
         /// 	- Service `SqlServerSapEccHva`: Using Transparent Data Encryption (TDE)
@@ -3319,7 +3764,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
-        /// 	- Service `Marketo`: Marketo SOAP API Encryption Key.
+        /// 	- Service `Marketo`: Marketo SOAP API Encryption Key (Discontinued).
         /// </summary>
         public string? EncryptionKey
         {
@@ -3351,6 +3796,13 @@ namespace Pulumi.Fivetran.Inputs
         /// </summary>
         [Input("engagementAttributionWindow", required: true)]
         public string EngagementAttributionWindow { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Db2z`: Determines whether the Enhanced PassTicket is sent in mixed case or uppercase before authentication. Specify only when `AuthenticationMethod` is `ENHANCED_PASS_TICKET`. Supported values:`UPPER`- The generated PassTicket consist of uppercase alphanumeric characters.`MIXED`- The generated PassTicket consists of mixed-case alphanumeric characters and may include '-' and '_'.
+        /// </summary>
+        [Input("enhancedPassTicketType", required: true)]
+        public string EnhancedPassTicketType { get; set; } = null!;
 
         /// <summary>
         /// Field usage depends on `Service` value: 
@@ -3395,25 +3847,31 @@ namespace Pulumi.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Bazaarvoice`: Your Bazaarvoice environment.
+        /// 	- Service `BreatheHr`: Your Breathe HR environment.
         /// 	- Service `Buildium`: Your Buildium environment.
         /// 	- Service `Checkout`: Your Checkout.com environment.
         /// 	- Service `Concord`: Your Concord environment.
         /// 	- Service `Deposco`: Your Deposco environment.
         /// 	- Service `Dialpad`: Your Dialpad environment.
+        /// 	- Service `Dsv`: Your API Development Environment.
+        /// 	- Service `Healthie`: Your Healthie environment.
         /// 	- Service `Invoiced`: Your Invoiced environment.
         /// 	- Service `Jibble`: Your Jibble environment.
         /// 	- Service `Lucca`: Your Lucca environment.
+        /// 	- Service `OracleNetsuiteOpenair`: Your NetSuite SuiteProjects Pro environment.
         /// 	- Service `Ordergroove`: Your Ordergroove environment.
         /// 	- Service `Paddle`: Your Paddle environment.
         /// 	- Service `Procore`: Your Procore account environment.
         /// 	- Service `Reltio`: Your Reltio environment.
         /// 	- Service `Servicetitan`: Your ServiceTitan environment.
         /// 	- Service `Smarthr`: Your SmartHR environment.
+        /// 	- Service `StackadaptGraphql`: Your StackAdapt environment.
         /// 	- Service `Trelica`: Your Trelica environment.
         /// 	- Service `Tremendous`: Your Tremendous environment.
         /// 	- Service `Vts`: Your VTS environment.
         /// 	- Service `Xactly`: Your Xactly environment.
         /// 	- Service `Younium`: Your Younium API environment.
+        /// 	- Service `Zip`: Your Zip environment.
         /// 	- Service `Zuora`: Zuora Sandbox Environment. This accepts either of the two values Sandbox or Central Sandbox based on your subscription. The default environment is Sandbox.
         /// 	- Service `ZuoraSandbox`: Zuora Sandbox Environment. This accepts either of the two values Sandbox or Central Sandbox based on your subscription. The default environment is Sandbox.
         /// </summary>
@@ -3485,8 +3943,17 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleDrive`: Optional. Set to true to export your Google Docs and Slides as PDF documents. By default, we export Google Docs and Slides as .docx and .pptx files, respectively.
+        /// </summary>
+        [Input("exportNativeTypesAsPdf", required: true)]
+        public bool ExportNativeTypesAsPdf { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `Adjust`: Your cloud storage.
+        /// 	- Service `Amplitude`: Your cloud storage type
         /// 	- Service `Braze`: Export Storage. Required if `EnableExports` is `True`
+        /// 	- Service `Pendo`: Denotes which storage option is chosen
         /// </summary>
         [Input("exportStorageType", required: true)]
         public string ExportStorageType { get; set; } = null!;
@@ -3504,9 +3971,20 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Kinesis`: The external ID is a string that designates who can assume the role. For more information, click a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html"here/a
         /// 	- Service `S3`: Used for authentication along with the `RoleArn`. If not provided, it uses connector's `GroupId`. Use the [List All Groups endpoint](https://fivetran.com/docs/rest-api/groups#listallgroups) to find the `GroupId`.
         /// 	- Service `Segment`: The external ID is a string that designates who can assume the role. For more information, see a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html"Amazon's AWS Identity and Access Management User Guide/a.
+        /// 	- Service `SqlServer`: The external ID to be used when assuming the IAM role.
         /// </summary>
         [Input("externalId", required: true)]
         public string ExternalId { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureBlobStorage`: Required when `FileMappingMethod` = `EXTRACT_TABLES`. A regular expression with a named capture group `(?table...)` to extract table names from file paths.
+        /// 	- Service `Gcs`: Required when `FileMappingMethod` = `EXTRACT_TABLES`. A regular expression with a named capture group `(?table...)` to extract table names from file paths.
+        /// 	- Service `S3`: Required when `FileMappingMethod` = `EXTRACT_TABLES`. A regular expression with a named capture group `(?table...)` to extract table names from file paths.
+        /// 	- Service `Sftp`: Required when `FileMappingMethod` = `EXTRACT_TABLES`. A regular expression with a named capture group `(?table...)` to extract table names from file paths.
+        /// </summary>
+        [Input("extractionPattern", required: true)]
+        public string ExtractionPattern { get; set; } = null!;
 
         /// <summary>
         /// Field usage depends on `Service` value: 
@@ -3527,6 +4005,26 @@ namespace Pulumi.Fivetran.Inputs
             get => _fields ?? (_fields = new List<string>());
             set => _fields = value;
         }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Box`: Files will be processed and synced according to the selected file handling option. Supported values:`Structured`- (Default) Extract structured data into destination tables for analysis. Commonly used.`Unstructured`- Replicate files in their original format. Best for PDFs, images, and other unstructured content.  Learn more about unstructured file replication in our [documentation.](https://fivetran.com/docs/using-fivetran/features/unstructured-file-replication).
+        /// 	- Service `GoogleDrive`: Files will be processed and synced according to the selected file handling option. Supported values:`Structured`- (Default) Extract structured data into destination tables for analysis. Commonly used.`Unstructured`- Replicate files in their original format. Best for PDFs, images, and other unstructured content.  Learn more about unstructured file replication in our [documentation.](https://fivetran.com/docs/using-fivetran/features/unstructured-file-replication).
+        /// 	- Service `Sftp`: Files will be processed and synced according to the selected file handling option. Supported values:`Structured`- (Default) Extract structured data into destination tables for analysis. Commonly used.`Unstructured`- Replicate files in their original format. Best for PDFs, images, and other unstructured content.  Learn more about unstructured file replication in our [documentation.](https://fivetran.com/docs/using-fivetran/features/unstructured-file-replication).
+        /// 	- Service `SharePoint`: Files will be processed and synced according to the selected file handling option. Supported values:`Structured`- (Default) Extract structured data into destination tables for analysis. Commonly used.`Unstructured`- Replicate files in their original format. Best for PDFs, images, and other unstructured content.  Learn more about unstructured file replication in our [documentation.](https://fivetran.com/docs/using-fivetran/features/unstructured-file-replication).
+        /// </summary>
+        [Input("fileHandling", required: true)]
+        public string FileHandling { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureBlobStorage`: The method used to map files to destination tables. Use `DEFINE_PER_TABLE` to manually configure each table with its own file pattern, or `EXTRACT_TABLES` to automatically discover tables based on a single extraction pattern.
+        /// 	- Service `Gcs`: The method used to map files to destination tables. Use `DEFINE_PER_TABLE` to manually configure each table with its own file pattern, or `EXTRACT_TABLES` to automatically discover tables based on a single extraction pattern.
+        /// 	- Service `S3`: The method used to map files to destination tables. Use `DEFINE_PER_TABLE` to manually configure each table with its own file pattern, or `EXTRACT_TABLES` to automatically discover tables based on a single extraction pattern.
+        /// 	- Service `Sftp`: The method used to map files to destination tables. Use `DEFINE_PER_TABLE` to manually configure each table with its own file pattern, or `EXTRACT_TABLES` to automatically discover tables based on a single extraction pattern.
+        /// </summary>
+        [Input("fileMappingMethod", required: true)]
+        public string FileMappingMethod { get; set; } = null!;
 
         /// <summary>
         /// Field usage depends on `Service` value: 
@@ -3553,13 +4051,16 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
-        /// 	- Service `AzureBlobStorage`: Mapped file name patterns to a destination table.
+        /// 	- Service `AzureBlobStorage`: Required when `FileMappingMethod` = `DEFINE_PER_TABLE`. Mapped file name patterns to a destination table.
+        /// 	- Service `Box`: Mapped file name patterns to a destination table.
+        /// 	- Service `Dropbox`: Mapped file name patterns to a destination table.
         /// 	- Service `Email`: Mapped file name patterns to a destination table.
-        /// 	- Service `Gcs`: Mapped file name patterns to a destination table.
+        /// 	- Service `Ftp`: Mapped file name patterns to a destination table.
+        /// 	- Service `Gcs`: Required when `FileMappingMethod` = `DEFINE_PER_TABLE`. Mapped file name patterns to a destination table.
         /// 	- Service `GoogleDrive`: Mapped file name patterns to a destination table.
-        /// 	- Service `S3`: Mapped file name patterns to a destination table.
+        /// 	- Service `S3`: Required when `FileMappingMethod` = `DEFINE_PER_TABLE`. Mapped file name patterns to a destination table.
         /// 	- Service `S3CompatibleStorage`: Mapped file name patterns to a destination table.
-        /// 	- Service `Sftp`: Mapped file name patterns to a destination table.
+        /// 	- Service `Sftp`: Required when `FileMappingMethod` = `DEFINE_PER_TABLE`. Mapped file name patterns to a destination table.
         /// 	- Service `SharePoint`: Mapped file name patterns to a destination table.
         /// </summary>
         public List<Inputs.GetConnectorConfigFileArgs> Files
@@ -3717,6 +4218,14 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Amplitude`: GCS Credentials
+        /// 	- Service `Pendo`: Configuration for GCS Bucket
+        /// </summary>
+        [Input("gcsCredentials", required: true)]
+        public Inputs.GetConnectorConfigGcsCredentialsArgs GcsCredentials { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `Braze`: Your GCS bucket. Required if `GCS` is the `ExportStorageType`
         /// </summary>
         [Input("gcsExportBucket", required: true)]
@@ -3745,6 +4254,13 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `SapHanaDb`: SAP Logon Group name for load balancing
+        /// </summary>
+        [Input("group", required: true)]
+        public string Group { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `LineAds`: Your LINE Ads group ID(s).
         /// </summary>
         [Input("groupId", required: true)]
@@ -3764,6 +4280,13 @@ namespace Pulumi.Fivetran.Inputs
             get => _hanaBackupPassword;
             set => _hanaBackupPassword = value;
         }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SapHanaDb`: Port number of the SAP HANA database
+        /// </summary>
+        [Input("hanaDbPort", required: true)]
+        public int HanaDbPort { get; set; }
 
         /// <summary>
         /// Field usage depends on `Service` value: 
@@ -3801,7 +4324,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Concur`: Historical Sync Limit for the Sync
         /// 	- Service `Eloqua`: Range of data in history you would like to include in the initial sync. Default value: `ALL_TIME`.
         /// 	- Service `Iterable`: The time range for which historical data should be synced. Default value: `All Time`.
-        /// 	- Service `Klaviyo`: The time range for which historical data should be synced. Default value: `All Time`.
+        /// 	- Service `Klaviyo`: The time range for which historical data should be synced. Default value: `ALL_TIME`.
         /// 	- Service `Marketo`: The time range for which historical data should be synced. Default value: `All Time`.
         /// 	- Service `Pardot`: The time range for which historical data should be synced. Default value: `All Time`.
         /// 	- Service `PardotSandbox`: The time range for which historical data should be synced. Default value: `All Time`.
@@ -3836,15 +4359,18 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `AmazonSellingPartner`: The time frame for historical data synchronization. Default value: `ALL_TIME`.
         /// 	- Service `AscendByPartnerize`: Your Ascend by Partnerize Historical sync time frame
-        /// 	- Service `Hubspot`: Used to configure Historical sync timeframe for selected tables
+        /// 	- Service `Hubspot`: Used to configure Historical sync timeframe for selected tables.
+        /// 	- Service `Mixpanel`: Should sync all data or adhere to `BackwardSyncLimitDate`
+        /// 	- Service `Pendo`: The time range for which historical data should be synced. Default value: `All Time`.
         /// 	- Service `Rokt`: Your Rokt historical sync time frame.
         /// 	- Service `Shopify`: Used to configure Historical sync timeframe for selected tables
         /// 	- Service `Skimlinks`: Your Skimlinks Historical sync time frame.
         /// 	- Service `Stripe`: Used to configure Historical sync timeframe for selected tables
         /// 	- Service `StripeTest`: Used to configure Historical sync timeframe for selected tables
         /// 	- Service `Vimeo`: Your Vimeo Historical sync time frame.
-        /// 	- Service `Zendesk`: Used to configure Historical sync timeframe for selected tables
+        /// 	- Service `Zendesk`: Used to configure Historical sync timeframe for selected tables.
         /// </summary>
         [Input("historicalSyncTimeFrame", required: true)]
         public string HistoricalSyncTimeFrame { get; set; } = null!;
@@ -3858,6 +4384,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Amqp`: AMQP broker host address.
         /// 	- Service `Aurora`: DB instance host or IP address.
         /// 	- Service `AuroraPostgres`: DB instance host or IP address.
         /// 	- Service `AvevaPi`: IP address of the AF Server
@@ -3870,10 +4397,13 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `DatabricksDb`: The host URL for your Databricks account.
         /// 	- Service `Db2iHva`: A host address of the primary node. It should be a DB instance host/IP address with a port number.
         /// 	- Service `Db2iSapHva`: DB instance host or IP address.
+        /// 	- Service `Db2luw`: A host address of the primary node. It should be a DB instance host/IP address with a port number.
+        /// 	- Service `Db2z`: DB instance host or IP address.
         /// 	- Service `Documentdb`: Host IP address of the primary node. Ignored if `Hosts` value is provided.
         /// 	- Service `Dynamics365Fo`: DB instance host or IP address.
         /// 	- Service `Ehr`: DB instance host or IP address.
         /// 	- Service `ElasticCloud`: DB instance host or IP address.
+        /// 	- Service `EpicClarity`: DB instance host or IP address.
         /// 	- Service `EsSelfHosted`: DB instance host or IP address.
         /// 	- Service `Ftp`: FTP host address.
         /// 	- Service `GoogleCloudMysql`: DB instance host or IP address.
@@ -3934,6 +4464,8 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Coassemble`: Your Coassemble Hostname.
         /// 	- Service `Datadog`: Your Datadog host name.
         /// 	- Service `UkgProWorkforceManagement`: Your UKG Pro Workforce Management hostname.
+        /// 	- Service `Zuora`: The domain or URL of your Zuora Revenue instance.
+        /// 	- Service `ZuoraSandbox`: The domain or URL of your Zuora Revenue instance.
         /// </summary>
         [Input("hostName", required: true)]
         public string HostName { get; set; } = null!;
@@ -3941,6 +4473,7 @@ namespace Pulumi.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `AdobeCommerce`: Your Adobe Commerce host url.
+        /// 	- Service `Github`: The GHES instance host address. Only for on-premises installations.
         /// 	- Service `Sparkpost`: Your SparkPost host URL.
         /// </summary>
         [Input("hostUrl", required: true)]
@@ -3954,13 +4487,21 @@ namespace Pulumi.Fivetran.Inputs
         [Input("hostUser", required: true)]
         public string HostUser { get; set; } = null!;
 
+        [Input("hostname", required: true)]
+        private string? _hostname;
+
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Akamai`: Your Akamai hostname.
+        /// 	- Service `Discourse`: Your Discourse hostname.
+        /// 	- Service `NationalHeavyVehicleRegulator`: Your National Heavy Vehicle Regulator hostname.
         /// 	- Service `UkgPro`: Your UKG Pro hostname.
         /// </summary>
-        [Input("hostname", required: true)]
-        public string Hostname { get; set; } = null!;
+        public string? Hostname
+        {
+            get => _hostname;
+            set => _hostname = value;
+        }
 
         [Input("hosts", required: true)]
         private List<string>? _hosts;
@@ -4001,6 +4542,13 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Servicenow`: (Immutable) Include inherited columns.
+        /// </summary>
+        [Input("includeInheritedColumns", required: true)]
+        public bool IncludeInheritedColumns { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `SalesforceCommerceCloud`: Whether to sync data through OCAPI endpoints.
         /// </summary>
         [Input("includeOcapiEndpoints", required: true)]
@@ -4016,6 +4564,13 @@ namespace Pulumi.Fivetran.Inputs
         /// </summary>
         [Input("instance", required: true)]
         public string Instance { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `WorkdayAdaptive`: Instance code for Workday Adaptive Planning.
+        /// </summary>
+        [Input("instanceCode", required: true)]
+        public string InstanceCode { get; set; } = null!;
 
         /// <summary>
         /// Field usage depends on `Service` value: 
@@ -4123,7 +4678,8 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
-        /// 	- Service `AwsLambda`: We use PrivateLink by default if your AWS Lambda is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to AWS lambda over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options#awsprivatelink).
+        /// 	- Service `AwsLambda`: We use PrivateLink by default if your AWS Lambda is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to AWS lambda over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options/aws-private-link).
+        /// 	- Service `Dynamodb`: We use PrivateLink by default if your DynamoDB instance is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to DynamoDB over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options/aws-private-link).
         /// 	- Service `S3`: Set to `True` if you want to connect to S3 bucket over PrivateLink. Default value: `False`.
         /// </summary>
         [Input("isPrivateLinkRequired", required: true)]
@@ -4202,6 +4758,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Amqp`: JSON delivery mode (Packed or Unpacked).
         /// 	- Service `AwsCostReport`: Control how your JSON data is delivered into your destination
         /// 	- Service `AzureBlobStorage`: Control how your JSON data is delivered into your destination
         /// 	- Service `Box`: Control how your JSON data is delivered into your destination
@@ -4360,6 +4917,13 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `HLevel`: Your HighLevel location ID.
+        /// </summary>
+        [Input("locationIds", required: true)]
+        public string LocationIds { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `Db2iHva`: The log journal name.
         /// 	- Service `Db2iSapHva`: The log journal name.
         /// </summary>
@@ -4387,6 +4951,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `ReboundReturns`: Your ReBound Returns login.
         /// 	- Service `TheTradeDesk`: The Trade Desk email. It is a part of the login credentials.
         /// 	- Service `WalmartDsp`: Walmart DSP email. It is a part of the login credentials.
+        /// 	- Service `WorkdayAdaptive`: User email address
         /// </summary>
         [Input("login", required: true)]
         public string Login { get; set; } = null!;
@@ -4447,6 +5012,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Amqp`: Message type (Text or JSON).
         /// 	- Service `ApacheKafka`: Kafka message type.
         /// 	- Service `AwsMsk`: The Message type.
         /// 	- Service `AzureEventHub`: Message type.
@@ -4483,6 +5049,20 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `SapHanaDb`: SAP Message Server host name
+        /// </summary>
+        [Input("msHost", required: true)]
+        public string MsHost { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SapHanaDb`: SAP Message Server service port number
+        /// </summary>
+        [Input("msServ", required: true)]
+        public string MsServ { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `GoogleSheets`: The name of the named data range on the sheet that contains the data to be synced.
         /// </summary>
         [Input("namedRange", required: true)]
@@ -4490,6 +5070,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Amqp`: AMQP namespace or virtual host.
         /// 	- Service `AzureServiceBus`: The ASB namespace which we have to sync. Required for `AzureActiveDirectory` authentication.
         /// </summary>
         [Input("namespace", required: true)]
@@ -4529,6 +5110,19 @@ namespace Pulumi.Fivetran.Inputs
         /// </summary>
         [Input("nullSequence", required: true)]
         public string NullSequence { get; set; } = null!;
+
+        [Input("oauthSubscriptionKey", required: true)]
+        private string? _oauthSubscriptionKey;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Dsv`: Your OAuth subscription key.
+        /// </summary>
+        public string? OauthSubscriptionKey
+        {
+            get => _oauthSubscriptionKey;
+            set => _oauthSubscriptionKey = value;
+        }
 
         [Input("oauthToken", required: true)]
         private string? _oauthToken;
@@ -4626,6 +5220,13 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeExperiencePlatform`: Your Adobe Experience Platform organization ID.
+        /// </summary>
+        [Input("orgId", required: true)]
+        public string OrgId { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `Gladly`: Your Gladly Organization Name.
         /// 	- Service `Statuspage`: Your Statuspage Organization ID.
         /// </summary>
@@ -4676,6 +5277,9 @@ namespace Pulumi.Fivetran.Inputs
             set => _organizations = value;
         }
 
+        [Input("packageId", required: true)]
+        public string PackageId { get; set; } = null!;
+
         [Input("packedModeTables", required: true)]
         private List<string>? _packedModeTables;
 
@@ -4697,7 +5301,7 @@ namespace Pulumi.Fivetran.Inputs
         /// Field usage depends on `Service` value: 
         /// 	- Service `AzureCosmosForMongo`: Indicates the desired sync pack mode. Accepted values are `UsePackedModeOnly` and `UseUnpackedModeOnly`. `SelectTablesForPackedMode` is deprecated. 
         /// 	- Service `Firebase`: Whether to sync all tables in unpacked mode or specific tables in packed mode. Default value: `UseUnpackedModeOnly`.
-        /// 	- Service `Klaviyo`: Packing mode for EVENT and PERSON tables.
+        /// 	- Service `Klaviyo`: Packing mode for EVENT and `PERSON` tables.
         /// 	- Service `Mongo`: Whether to sync all tables in unpacked mode only, all tables in packed mode only, or specific tables in packed mode. Default value: `UseUnpackedModeOnly`.
         /// 	- Service `MongoSharded`: Whether to sync all tables in unpacked mode only, all tables in packed mode only, or specific tables in packed mode. Default value: `UseUnpackedModeOnly`.
         /// 	- Service `Optimizely`: Packing mode for conversion and decision tables.
@@ -4796,6 +5400,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `AdobeCommerce`: Your Adobe Commerce password.
         /// 	- Service `Akeneo`: Your Akeneo password.
         /// 	- Service `Alida`: Your Alida client secret.
+        /// 	- Service `Amqp`: Password for basic authentication.
         /// 	- Service `Anaplan`: Your Anaplan password. Must be populated if `AuthMode` is set to `Basic`.
         /// 	- Service `Appfigures`: Your Appfigures Password.
         /// 	- Service `AssetPanda`: Your Asset Panda password.
@@ -4817,11 +5422,15 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `ContrastSecurity`: Your Contrast Security API Password.
         /// 	- Service `Db2iHva`: The user's password.
         /// 	- Service `Db2iSapHva`: The user's password.
+        /// 	- Service `Db2luw`: The user's password.
+        /// 	- Service `Db2z`: The user's password. Specify only when `AuthenticationMethod` is `PASSWORD`.
+        /// 	- Service `Delighted`: Pass an empty string
         /// 	- Service `Deposco`: Your Deposco password.
         /// 	- Service `Documentdb`: The user's password.
         /// 	- Service `Dynamics365Fo`: The user's password.
         /// 	- Service `Ehr`: The user's password.
         /// 	- Service `ElasticCloud`: The user's password.
+        /// 	- Service `EpicClarity`: The user's password.
         /// 	- Service `EsSelfHosted`: The user's password.
         /// 	- Service `Ftp`: FTP password.
         /// 	- Service `Globalmeet`: Your GlobalMeet Password.
@@ -4889,6 +5498,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `SapS4hana`: Your SAP S/4 password.
         /// 	- Service `Scorm`: Your Scorm Secret Key.
         /// 	- Service `Servicenow`: Your account password.
+        /// 	- Service `Servicetrade`: Your ServiceTrade password.
         /// 	- Service `Sftp`: SFTP password.
         /// 	- Service `Shiphero`: Your ShipHero password.
         /// 	- Service `Shipstation`: Your ShipStation password.
@@ -4912,18 +5522,22 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `UkgPro`: Your UKG Pro password.
         /// 	- Service `UkgProWorkforceManagement`: Your UKG Pro Workforce Management password.
         /// 	- Service `Unicommerce`: Your uniware login password.
-        /// 	- Service `Upland`: Your Upland Software Password.
+        /// 	- Service `Upland`: Your Upland Software password.
+        /// 	- Service `Uptempo`: Your Uptempo password.
         /// 	- Service `VeevaVault`: Password
         /// 	- Service `Veevavault`: Your Veeva Vault password.
         /// 	- Service `WalmartDsp`: Walmart DSP password. It is a part of the login credentials.
         /// 	- Service `WhenIWork`: Your When I Work password.
         /// 	- Service `Wherefour`: Your Wherefour password.
         /// 	- Service `Workday`: Workday password.
+        /// 	- Service `WorkdayAdaptive`: User password
         /// 	- Service `WorkdayFinancialManagement`: Workday password.
         /// 	- Service `WorkdayHcm`: Workday password.
         /// 	- Service `Xandr`: Your Xandr password.
         /// 	- Service `YougovBrandindex`: Your YouGov BrandIndex password.
         /// 	- Service `Younium`: Your Younium password.
+        /// 	- Service `Zuora`: The corresponding password for the API user.
+        /// 	- Service `ZuoraSandbox`: The corresponding password for the API user.
         /// </summary>
         public string? Password
         {
@@ -5007,7 +5621,7 @@ namespace Pulumi.Fivetran.Inputs
         /// Field usage depends on `Service` value: 
         /// 	- Service `Oracle`: Optional: Required only for containerized database.
         /// 	- Service `OracleEbs`: Optional: Required only for containerized database.
-        /// 	- Service `OracleHva`: (Multi-tenant databases only) The database's PDB name. Exclude this parameter for single-tenant databases.
+        /// 	- Service `OracleHva`: (Multi-tenant databases only) The database's PDB name. Omit this parameter for single-tenant databases.
         /// 	- Service `OracleRac`: Optional: Required only for containerized database.
         /// 	- Service `OracleRds`: Optional: Required only for containerized database.
         /// 	- Service `OracleSapHva`: (Multi-tenant databases only) The database's PDB name. Exclude this parameter for single-tenant databases.
@@ -5061,6 +5675,7 @@ namespace Pulumi.Fivetran.Inputs
         /// Field usage depends on `Service` value: 
         /// 	- Service `CjCommissionDetail`: Your CJ Commission Detail personal access token.
         /// 	- Service `DatabricksDb`: Access Token
+        /// 	- Service `Gitlab`: Your GitLab personal access token.
         /// 	- Service `Harvest`: Your Harvest Personal Access Token.
         /// 	- Service `Productive`: Your Productive personal access token.
         /// 	- Service `Totango`: Your Totango personal access token.
@@ -5146,6 +5761,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Amqp`: AMQP broker port.
         /// 	- Service `Aurora`: The port number.
         /// 	- Service `AuroraPostgres`: The port number.
         /// 	- Service `AvevaPi`: Port number at which the AF Server is running
@@ -5157,10 +5773,13 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `DatabricksDb`: The port of your SQL warehouse.
         /// 	- Service `Db2iHva`: The port number.
         /// 	- Service `Db2iSapHva`: The port number.
+        /// 	- Service `Db2luw`: The port number.
+        /// 	- Service `Db2z`: The port number.
         /// 	- Service `Documentdb`: Port of the primary node. Ignored if `Hosts` value is provided.
         /// 	- Service `Dynamics365Fo`: The port number.
         /// 	- Service `Ehr`: The port number.
         /// 	- Service `ElasticCloud`: The port number.
+        /// 	- Service `EpicClarity`: The port number.
         /// 	- Service `EsSelfHosted`: The port number.
         /// 	- Service `Ftp`: FTP port.
         /// 	- Service `GoogleCloudMysql`: The port number.
@@ -5227,20 +5846,20 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `AwsCostReport`: Folder path to the AwsCostReport files within the bucket.
         /// 	- Service `AwsInventory`: The prefix if you used one when configuring the bucket.
         /// 	- Service `AzureBlobStorage`: All files and folders under this folder path will be searched for files to sync.
-        /// 	- Service `Box`: All files and folders under this folder path will be searched for files to sync.
+        /// 	- Service `Box`: The connection will look for files in this folder path. Choose the lowest common folder in a folder hierarchy that includes all the files you want to sync. This defines a specific location where Fivetran scans for files and helps ensure optimal performance.
         /// 	- Service `Cloudfront`: The name of the CloudFront folder in the bucket.
-        /// 	- Service `Dropbox`: All files and folders under this folder path will be searched for files to sync.
-        /// 	- Service `Ftp`: All files and folders under this folder path will be searched for files to sync.
-        /// 	- Service `Gcs`: All files and folders under this folder path will be searched for files to sync.
-        /// 	- Service `GoogleDrive`: All files and folders under this folder path will be searched for files to sync, this can be the entire drive link or a folder URL
+        /// 	- Service `Dropbox`: The connection will look for files in this folder path. Choose the lowest common folder in a folder hierarchy that includes all the files you want to sync. This defines a specific location where Fivetran scans for files and helps ensure optimal performance.
+        /// 	- Service `Ftp`: The connection will look for files in this folder path. Choose the lowest common folder in a folder hierarchy that includes all the files you want to sync. This defines a specific location where Fivetran scans for files and helps ensure optimal performance.
+        /// 	- Service `Gcs`: The connection will look for files in this folder path. Choose the lowest common folder in a folder hierarchy that includes all the files you want to sync. This defines a specific location where Fivetran scans for files and helps ensure optimal performance.
+        /// 	- Service `GoogleDrive`: The connection will look for files in the folder of the URL you provide. Choose the lowest common folder in a folder hierarchy that includes all the files you want to sync. This defines a specific location where Fivetran scans for files and helps ensure optimal performance.
         /// 	- Service `Kinesis`: Folder path to the Kinesis files within the bucket.
         /// 	- Service `Marin`: Folder path to the Marin manifest file.
         /// 	- Service `MicrosoftDynamics365Fo`: Folder name in which the exported dynamics 365 data resides.
-        /// 	- Service `S3`: All files and folders under this folder path will be searched for files to sync.
-        /// 	- Service `S3CompatibleStorage`: All files and folders under this folder path will be searched for files to sync.
+        /// 	- Service `S3`: The connection will look for files in this folder path. Choose the lowest common folder in a folder hierarchy that includes all the files you want to sync. This defines a specific location where Fivetran scans for files and helps ensure optimal performance.
+        /// 	- Service `S3CompatibleStorage`: The connection will look for files in this folder path. Choose the lowest common folder in a folder hierarchy that includes all the files you want to sync. This defines a specific location where Fivetran scans for files and helps ensure optimal performance.
         /// 	- Service `Segment`: Folder path to the Segment files within the bucket. Must be populated if `SyncType` is set to `S3`.
-        /// 	- Service `Sftp`: All files and folders under this folder path will be searched for files to sync.
-        /// 	- Service `SharePoint`: All files and folders under this folder path link will be searched for files to sync. This can be any shared folder link.
+        /// 	- Service `Sftp`: The connection will look for files in this folder path. Choose the lowest common folder in a folder hierarchy that includes all the files you want to sync. This defines a specific location where Fivetran scans for files and helps ensure optimal performance.
+        /// 	- Service `SharePoint`: The connection will look for files in the folder of the URL you provide. Choose the lowest common folder in a folder hierarchy that includes all the files you want to sync. This defines a specific location where Fivetran scans for files and helps ensure optimal performance.
         /// 	- Service `WasabiCloudStorage`: All files and folders under this folder path will be searched for files to sync.
         /// </summary>
         [Input("prefix", required: true)]
@@ -5304,6 +5923,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `AppleSearchAds`: The contents of your secret key file. Must be populated if `IsAuth2Enabled` is set to `False`.
         /// 	- Service `Braintree`: The contents of your secret key file.
         /// 	- Service `BraintreeSandbox`: The contents of your secret key file.
+        /// 	- Service `Github`: Your Private Key
         /// 	- Service `ItunesConnect`: Your Private Key
         /// 	- Service `NetsuiteSuiteanalytics`: Private Key
         /// 	- Service `OracleFusionCloudAppsCrm`: The Oracle Fusion Cloud private key.
@@ -5417,6 +6037,13 @@ namespace Pulumi.Fivetran.Inputs
         /// </summary>
         [Input("projectKey", required: true)]
         public string ProjectKey { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Writesonic`: Website URL of your Writesonic project.
+        /// </summary>
+        [Input("projectWebsiteUrl", required: true)]
+        public string ProjectWebsiteUrl { get; set; } = null!;
 
         [Input("projects", required: true)]
         private List<string>? _projects;
@@ -5549,6 +6176,10 @@ namespace Pulumi.Fivetran.Inputs
         [Input("pullArchivedCampaigns", required: true)]
         public bool PullArchivedCampaigns { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ConnectorSdk`: The Python version to be used at runtime.
+        /// </summary>
         [Input("pythonVersion", required: true)]
         public string PythonVersion { get; set; } = null!;
 
@@ -5575,6 +6206,13 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Amqp`: AMQP queue name to consume messages from.
+        /// </summary>
+        [Input("queueName", required: true)]
+        public string QueueName { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `BigqueryDb`: Specify a different project ID to account for quota and billing of Fivetran query workload
         /// </summary>
         [Input("quotaProjectId", required: true)]
@@ -5586,6 +6224,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Box`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and QuoteCharacterEnabled is set to true.
         /// 	- Service `Dropbox`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and QuoteCharacterEnabled is set to true.
         /// 	- Service `Email`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and QuoteCharacterEnabled is set to true.
+        /// 	- Service `Ftp`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and QuoteCharacterEnabled is set to true.
         /// 	- Service `Gcs`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and QuoteCharacterEnabled is set to true.
         /// 	- Service `GoogleDrive`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and QuoteCharacterEnabled is set to true.
         /// 	- Service `S3`: You can specify the enclosing character used in your CSVs here. Fivetran will consider " as the quote character if this field is empty and QuoteCharacterEnabled is set to true.
@@ -5602,6 +6241,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Box`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
         /// 	- Service `Dropbox`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
         /// 	- Service `Email`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
+        /// 	- Service `Ftp`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
         /// 	- Service `Gcs`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
         /// 	- Service `GoogleDrive`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
         /// 	- Service `S3`: If you don’t want to use an enclosing character while processing the files, set the value to false. By default, the value is set to true and is considered " as quote character.
@@ -5614,6 +6254,14 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `SapHanaDb`: SAP System ID (SID)
+        /// </summary>
+        [Input("r3Name", required: true)]
+        public string R3Name { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `TogglTrack`: Your Toggl Track plan type.
         /// 	- Service `Vimeo`: Your Vimeo rate limit plan.
         /// </summary>
         [Input("rateLimitPlan", required: true)]
@@ -5646,10 +6294,12 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `AmazonAds`: The region used by the Amazon Ads profile.
         /// 	- Service `AmazonSellingPartner`: The region used by the Amazon Selling Partner profile.
         /// 	- Service `Anaplan`: Your Anaplan account region
+        /// 	- Service `Appcues`: Your Appcues region.
         /// 	- Service `AtlassianOpsGenie`: Your company's Osgenie region (usually **company**.opsgenie.com)
         /// 	- Service `Awin`: Your Awin Region.
         /// 	- Service `AwsLambda`: The AWS region code for the DynamoDB instance.
         /// 	- Service `BiginByZohoCrm`: Your Bigin by Zoho CRM Region
+        /// 	- Service `Brightflag`: Your Brightflag region.
         /// 	- Service `Concur`: The region.
         /// 	- Service `Cvent`: Your Cvent region.
         /// 	- Service `Everflow`: Your Everflow region.
@@ -5657,6 +6307,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Getfeedback`: Your GetFeedback region.
         /// 	- Service `Happyfox`: Your HappyFox region.
         /// 	- Service `Keypay`: Your KeyPay region.
+        /// 	- Service `Learnupon`: Your LearnUpon region.
         /// 	- Service `MedalliaAgileResearch`: Your Medallia Agile region.
         /// 	- Service `Messagebird`: Your MessageBird Account region.
         /// 	- Service `Mixpanel`: Data Region
@@ -5664,6 +6315,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `On24`: Your ON24 region.
         /// 	- Service `Pendo`: The Pendo account region.
         /// 	- Service `ProofpointSecurityAwareness`: Your Proofpoint Security Awareness Region.
+        /// 	- Service `Recurly`: Your Recurly region.
         /// 	- Service `Ringover`: Your Ringover region.
         /// 	- Service `Samsara`: The region of your Samsara account. For instance, if your region is `EUROPE`, provide `eu.samsara` in the `Region` field. If your region is not in Europe, provide `Samsara`.
         /// 	- Service `Snyk`: Your Snyk region.
@@ -5730,11 +6382,11 @@ namespace Pulumi.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `AuroraPostgres`: Replication slot name. Specify only for `"UpdatedMethod": "WAL"` or `"WAL_PGOUTPUT"`.
-        /// 	- Service `AzurePostgres`: Replication slot name. Specify only for `"UpdatedMethod": "WAL"` or `"WAL_PGOUTPUT"`.
-        /// 	- Service `GoogleCloudPostgresql`: Replication slot name. Specify only for `"UpdatedMethod": "WAL"` or `"WAL_PGOUTPUT"`.
-        /// 	- Service `HerokuPostgres`: Replication slot name. Specify only for `"UpdatedMethod": "WAL"` or `"WAL_PGOUTPUT"`.
-        /// 	- Service `Postgres`: Replication slot name. Specify only for `"UpdatedMethod": "WAL"` or `"WAL_PGOUTPUT"`.
-        /// 	- Service `PostgresRds`: Replication slot name. Specify only for `"UpdatedMethod": "WAL"` or `"WAL_PGOUTPUT"`.
+        /// 	- Service `AzurePostgres`: Replication slot name. Specify only for `"UpdatedMethod": "WAL_PGOUTPUT"`.
+        /// 	- Service `GoogleCloudPostgresql`: Replication slot name. Specify only for `"UpdatedMethod": "WAL_PGOUTPUT"`.
+        /// 	- Service `HerokuPostgres`: Replication slot name. Specify only for `"UpdatedMethod": "WAL_PGOUTPUT"`.
+        /// 	- Service `Postgres`: Replication slot name. Specify only for `"UpdatedMethod": "WAL_PGOUTPUT"`.
+        /// 	- Service `PostgresRds`: Replication slot name. Specify only for `"UpdatedMethod": "WAL_PGOUTPUT"`.
         /// </summary>
         [Input("replicationSlot", required: true)]
         public string ReplicationSlot { get; set; } = null!;
@@ -5849,13 +6501,17 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `DoubleClickCampaignManager`: List of reports
+        /// 	- Service `DoubleClickPublishers`: The list of reports. We create a table within the schema for each report.
         /// 	- Service `GoogleAds`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
         /// 	- Service `GoogleAnalytics`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
         /// 	- Service `GoogleAnalytics4`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
         /// 	- Service `GoogleDisplayAndVideo360`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
         /// 	- Service `GoogleSearchAds360`: The list of reports. Each report corresponds to a table within the schema to which connector syncs the data.
         /// 	- Service `GoogleSearchConsole`: The list of reports. Each report corresponds to a table within the schema to which connector syncs the data.
+        /// 	- Service `Klaviyo`: *  custom report(s)
         /// 	- Service `Workday`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
+        /// 	- Service `WorkdayAdaptive`: Custom Report
         /// </summary>
         public List<Inputs.GetConnectorConfigReportArgs> Reports
         {
@@ -5940,6 +6596,7 @@ namespace Pulumi.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Appsflyer`: S3 Role ARN
+        /// 	- Service `Aurora`: The ARN of the IAM role with RDS permissions. Required if the authentication method is `AWS_IAM` in the SaaS Deployment model.
         /// 	- Service `AwsCloudtrail`: The Role ARN required for authentication.
         /// 	- Service `AwsCost`: The Role ARN required for authentication.
         /// 	- Service `AwsCostReport`: The Role ARN required for authentication.
@@ -5950,8 +6607,12 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Dynamodb`: Role ARN
         /// 	- Service `Heap`: The Role ARN required for authentication.
         /// 	- Service `Kinesis`: The Role ARN required for authentication.
+        /// 	- Service `MagentoMysqlRds`: The ARN of the IAM role with RDS permissions. Required if the authentication method is `AWS_IAM` in the SaaS Deployment model.
+        /// 	- Service `MariaRds`: The ARN of the IAM role with RDS permissions. Required if the authentication method is `AWS_IAM` in the SaaS Deployment model.
+        /// 	- Service `MysqlRds`: The ARN of the IAM role with RDS permissions. Required if the authentication method is `AWS_IAM` in the SaaS Deployment model.
         /// 	- Service `S3`: The Role ARN required for authentication. Required for connector creation when syncing using private bucket.
         /// 	- Service `Segment`: The Role ARN required for authentication. Must be populated if `SyncType` is set to `S3`.
+        /// 	- Service `SqlServer`: The ARN of the IAM role that has access to the S3 bucket.
         /// </summary>
         public string? RoleArn
         {
@@ -5962,6 +6623,8 @@ namespace Pulumi.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Appsflyer`: Rollback window
+        /// 	- Service `Servicenow`: Set a rollback window between 0 and 7 days. The default is 0 days.
+        /// 	- Service `Splunk`: Set a rollback window between 0 and 7 days. The default is 2 days.
         /// </summary>
         [Input("rollbackWindow", required: true)]
         public int RollbackWindow { get; set; }
@@ -6124,6 +6787,27 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeExperiencePlatform`: Your Adobe Experience Platform sandbox name.
+        /// </summary>
+        [Input("sandboxName", required: true)]
+        public string SandboxName { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SapHanaDb`: Connection mode for SAP HANA database (DIRECT or NETWEAVER)
+        /// </summary>
+        [Input("sapHanaConnectionMode", required: true)]
+        public string SapHanaConnectionMode { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SapHanaDb`: SAP Router connection string (format: /H/hostname/S/port)
+        /// </summary>
+        [Input("sapRouter", required: true)]
+        public string SapRouter { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `Db2iHva`: The SAP schema.
         /// 	- Service `Db2iSapHva`: SAP schema name.
         /// 	- Service `SqlServerHva`: SAP Schema Name. Required only for High-Volume Agent SAP ECC connector.
@@ -6237,6 +6921,13 @@ namespace Pulumi.Fivetran.Inputs
             get => _saslScram512Secret;
             set => _saslScram512Secret = value;
         }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SapHanaDb`: SAP schema name
+        /// </summary>
+        [Input("schemaName", required: true)]
+        public string SchemaName { get; set; } = null!;
 
         /// <summary>
         /// Field usage depends on `Service` value: 
@@ -6374,8 +7065,8 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `LineAds`: Your LINE Ads secret key.
         /// 	- Service `Mailjet`: Your Mailjet secret key.
         /// 	- Service `PartnerstackVendor`: Your PartnerStack Vendor Secret key.
-        /// 	- Service `Paypal`: `Client Secret` of your PayPal client application.
-        /// 	- Service `PaypalSandbox`: `Client Secret` of your PayPal client application.
+        /// 	- Service `Paypal`: `Secret Key` of your PayPal client application.
+        /// 	- Service `PaypalSandbox`: Secret key of your PayPal client application.
         /// 	- Service `PhoenixAds`: Your Phoenix Ads Secret key.
         /// 	- Service `Retailnext`: Your RetailNext secret key.
         /// 	- Service `Statsig`: Your Statsig secret key.
@@ -6409,12 +7100,26 @@ namespace Pulumi.Fivetran.Inputs
         /// Field usage depends on `Service` value: 
         /// 	- Service `AwsLambda`: List of Secrets that should be passed to the function at runtime.
         /// 	- Service `AzureFunction`: The list of secrets that should be passed to the function at runtime.
+        /// 	- Service `ConnectorSdk`: The list of secrets that should be passed to the function at runtime.
         /// 	- Service `GoogleCloudFunction`: The list of secrets that should be passed to the function at runtime.
         /// </summary>
         public List<Inputs.GetConnectorConfigSecretsListArgs> SecretsLists
         {
             get => _secretsLists ?? (_secretsLists = new List<Inputs.GetConnectorConfigSecretsListArgs>());
             set => _secretsLists = value;
+        }
+
+        [Input("securedSignonKey", required: true)]
+        private string? _securedSignonKey;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Db2z`: Application secret key registered in RACF for the application. Used to generate a PassTicket when `AuthenticationMethod` is `LEGACY_PASS_TICKET` or `ENHANCED_PASS_TICKET`.
+        /// </summary>
+        public string? SecuredSignonKey
+        {
+            get => _securedSignonKey;
+            set => _securedSignonKey = value;
         }
 
         /// <summary>
@@ -6465,6 +7170,21 @@ namespace Pulumi.Fivetran.Inputs
             get => _selectedExports ?? (_selectedExports = new List<string>());
             set => _selectedExports = value;
         }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureBlobStorage`: Cell reference that will be used to sync all contiguous data starting from the top-left cell in all the spreadsheets matching the name. Cell reference is in the `'sheetName'!startColumnNamestartRowName` format.
+        /// 	- Service `Box`: Cell reference that will be used to sync all contiguous data starting from the top-left cell in all the spreadsheets matching the name. Cell reference is in the `'sheetName'!startColumnNamestartRowName` format.
+        /// 	- Service `Dropbox`: Cell reference that will be used to sync all contiguous data starting from the top-left cell in all the spreadsheets matching the name. Cell reference is in the `'sheetName'!startColumnNamestartRowName` format.
+        /// 	- Service `Email`: Cell reference that will be used to sync all contiguous data starting from the top-left cell in all the spreadsheets matching the name. Cell reference is in the `'sheetName'!startColumnNamestartRowName` format.
+        /// 	- Service `Ftp`: Cell reference that will be used to sync all contiguous data starting from the top-left cell in all the spreadsheets matching the name. Cell reference is in the `'sheetName'!startColumnNamestartRowName` format.
+        /// 	- Service `Gcs`: Cell reference that will be used to sync all contiguous data starting from the top-left cell in all the spreadsheets matching the name. Cell reference is in the `'sheetName'!startColumnNamestartRowName` format.
+        /// 	- Service `S3`: Cell reference that will be used to sync all contiguous data starting from the top-left cell in all the spreadsheets matching the name. Cell reference is in the `'sheetName'!startColumnNamestartRowName` format.
+        /// 	- Service `Sftp`: Cell reference that will be used to sync all contiguous data starting from the top-left cell in all the spreadsheets matching the name. Cell reference is in the `'sheetName'!startColumnNamestartRowName` format.
+        /// 	- Service `SharePoint`: Cell reference that will be used to sync all contiguous data starting from the top-left cell in all the spreadsheets matching the name. Cell reference is in the `'sheetName'!startColumnNamestartRowName` format.
+        /// </summary>
+        [Input("selectedRange", required: true)]
+        public string SelectedRange { get; set; } = null!;
 
         /// <summary>
         /// Field usage depends on `Service` value: 
@@ -6716,6 +7436,13 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Klaviyo`: Sync predictive analytics for `PERSON` table
+        /// </summary>
+        [Input("shouldSyncPredictiveAnalytics", required: true)]
+        public bool ShouldSyncPredictiveAnalytics { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `NetsuiteSuiteanalytics`: Re-sync re-import tables during every sync
         /// </summary>
         [Input("shouldSyncReimportTables", required: true)]
@@ -6892,7 +7619,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
-        /// 	- Service `Marketo`: Marketo SOAP API Endpoint.
+        /// 	- Service `Marketo`: Marketo SOAP API Endpoint (Discontinued).
         /// </summary>
         [Input("soapUri", required: true)]
         public string SoapUri { get; set; } = null!;
@@ -6913,7 +7640,29 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
-        /// 	- Service `BigCommerce`: The BigCommerce store hash.
+        /// 	- Service `MicrosoftDynamics365Fno`: The file type of the source files. Supported file types are `CSV` and `PARQUET`.
+        /// </summary>
+        [Input("sourceFileType", required: true)]
+        public string SourceFileType { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ConsensusDemoAutomationPlatform`: Your Consensus Demo Automation Platform source name.
+        /// </summary>
+        [Input("sourceName", required: true)]
+        public string SourceName { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureBlobStorage`: The name of the Azure Storage account.
+        /// 	- Service `MicrosoftDynamics365Fno`: The name of the Azure Storage account.
+        /// </summary>
+        [Input("storageAccountName", required: true)]
+        public string StorageAccountName { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `BigCommerce`: The [store hash](https://fivetran.com/docs/connectors/applications/big-commerce/setup-guide#createaccesstoken) in your API path.
         /// </summary>
         [Input("storeHash", required: true)]
         public string StoreHash { get; set; } = null!;
@@ -6955,6 +7704,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `ChargebeeProductCatalog1`: Your Chargebee Product Catalog 1 subdomain.
         /// 	- Service `ChargebeeProductCatalog2`: Your Chargebee subdomain.
         /// 	- Service `Checkr`: Your Checkr subdomain.
+        /// 	- Service `Churnzero`: Your ChurnZero subdomain
         /// 	- Service `Clubspeed`: Your Clubspeed subdomain.
         /// 	- Service `Collibra`: Your collibra subdomain.
         /// 	- Service `ComplianceCheckpoint`: Your Compliance Checkpoint subdomain.
@@ -6969,18 +7719,21 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Ezofficeinventory`: Your EZOfficeInventory Subdomain.
         /// 	- Service `Fountain`: Your Fountain subdomain.
         /// 	- Service `Freshchat`: Your Freshchat Sub Domain
-        /// 	- Service `GainsightCustomerSuccess`: The subdomain of your Gainsight account.
+        /// 	- Service `GainsightCustomerSuccess`: The subdomain of your Gainsight Customer Success account.
         /// 	- Service `GainsightProductExperience`: Your Gainsight Product Experience subdomain.
         /// 	- Service `Genesys`: Your Genesys subdomain.
         /// 	- Service `GreenPowerMonitor`: Your GreenPowerMonitor subdomain.
+        /// 	- Service `HLevel`: Your HighLevel subdomain.
         /// 	- Service `HeartlandRetailPos`: Your Heartland Retail POS subdomain.
+        /// 	- Service `Ilevel`: Your iLevel Environment.
         /// 	- Service `Infobip`: Your Infobip sub_domain.
         /// 	- Service `Insightly`: Your company's Insightly subdomain name.
         /// 	- Service `Instructure`: The Sub domain in which your Instructure account is hosted.
         /// 	- Service `Jamf`: Your Jamf subdomain.
         /// 	- Service `Kandji`: Your Kandji Subdomain.
         /// 	- Service `KhorosCare`: Your Khoros Care subDomain.
-        /// 	- Service `LookerSource`: Your looker SubDomain name.
+        /// 	- Service `Lattice`: Your Lattice subdomain.
+        /// 	- Service `LookerSource`: Your Looker domain name.
         /// 	- Service `Lucca`: Your Lucca subdomain.
         /// 	- Service `Mailgun`: Your Mailgun subdomain.
         /// 	- Service `Matomo`: Your Matomo subdomain.
@@ -6990,7 +7743,9 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Nylas`: Your Nylas subdomain.
         /// 	- Service `Odoo`: Your Odoo subdomain.
         /// 	- Service `Okta`: Your Okta subdomain.
+        /// 	- Service `Onetrust`: Your OneTrust subdomain.
         /// 	- Service `OracleFusionFieldService`: Your Oracle Fusion Field Service subDomain.
+        /// 	- Service `Paylocity`: Your Paylocity subdomain.
         /// 	- Service `Picqer`: Your Picqer subdomain.
         /// 	- Service `Pinpoint`: Your Pinpoint sub domain name.
         /// 	- Service `PiwikPro`: Your Piwik PRO subdomain.
@@ -7013,7 +7768,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Thinkific`: Your Thinkific subdomain.
         /// 	- Service `Totango`: Your Totango Subdomain.
         /// 	- Service `Tymeshift`: Your Tymeshift subdomain.
-        /// 	- Service `Upland`: Your Upland Software subDomain.
+        /// 	- Service `Upland`: Your Upland Software subdomain.
         /// 	- Service `Validio`: Your Validio subdomain.
         /// 	- Service `Wordpress`: Your WordPress subdomain.
         /// 	- Service `Workable`: Your Workable Subdomain.
@@ -7024,7 +7779,10 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `AdobeExperiencePlatform`: Your Adobe Experience Platform IMS region.
+        /// 	- Service `Alation`: Your Alation base URL.
         /// 	- Service `Bamboohr`: The subdomain used to access your account. If you access BambooHR at 'https://mycompany.bamboohr.com', then the subdomain is 'mycompany'.
+        /// 	- Service `Bynder`: Your Bynder subdomain.
         /// 	- Service `Datadog`: Your Datadog subdomain.
         /// 	- Service `Ebay`: Your eBay environment.
         /// 	- Service `Freshdesk`: Your company's freshdesk subdomain (usually **company**.freshdesk.com).
@@ -7033,9 +7791,10 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Freshsuccess`: Your Freshsuccess subdomain.
         /// 	- Service `Gorgias`: Your Gorgias subdomain.
         /// 	- Service `Hex`: Your Hex subdomain.
+        /// 	- Service `Ibacos`: Your IBACOS Server.
         /// 	- Service `JamaSoftware`: Your Jama Software subdomain.
         /// 	- Service `Klarna`: Your Klarna subdomain.
-        /// 	- Service `Learnupon`: Your Learnupon subdomain.
+        /// 	- Service `Learnupon`: Your LearnUpon subdomain.
         /// 	- Service `MaxioSaasoptics`: Your Maxio SaaSOptics subdomain.
         /// 	- Service `Medallia`: Medallia subdomain
         /// 	- Service `Packiyo`: Your Packiyo subdomain.
@@ -7046,9 +7805,11 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Smarthr`: Your SmartHR subdomain.
         /// 	- Service `Sonarqube`: Your Sonarqube subdomain.
         /// 	- Service `Toast`: Your Toast domain.
+        /// 	- Service `Uptempo`: Your Uptempo subdomain.
         /// 	- Service `Vts`: Your VTS Subdomain.
         /// 	- Service `Yext`: Your Yext subdomain. 
         /// 	- Service `ZendeskChat`: Your Zendesk domain.
+        /// 	- Service `ZendeskWorkforceManagement`: Your Zendesk Workforce Management subdomain.
         /// </summary>
         [Input("subdomain", required: true)]
         public string Subdomain { get; set; } = null!;
@@ -7074,6 +7835,7 @@ namespace Pulumi.Fivetran.Inputs
         /// Field usage depends on `Service` value: 
         /// 	- Service `Cabcharge`: Your Cabcharge subscription key.
         /// 	- Service `Dsv`: Your DSV subscription key.
+        /// 	- Service `NationalHeavyVehicleRegulator`: Your NHVR Portal API subscription key.
         /// </summary>
         public string? SubscriptionKey
         {
@@ -7109,6 +7871,13 @@ namespace Pulumi.Fivetran.Inputs
         /// </summary>
         [Input("swipeAttributionWindow", required: true)]
         public string SwipeAttributionWindow { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `MicrosoftDynamics365Fno`: Specify if all versions of the records should be synced. If set to `True`, all versions of the records will be synced. If set to `False`, only the latest version of the records will be synced.
+        /// </summary>
+        [Input("syncAllVersions", required: true)]
+        public bool SyncAllVersions { get; set; }
 
         /// <summary>
         /// Field usage depends on `Service` value: 
@@ -7174,7 +7943,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Pendo`: Whether to sync all App IDs or specific App IDs. Default value: `AllAppIds`.
         /// 	- Service `PinterestAds`: Whether to sync all advertisers or specific advertisers.
         /// 	- Service `RedditAds`: Whether to sync all accounts or specific accounts.
-        /// 	- Service `SalesforceMarketingCloud`: Select the sync mode.
+        /// 	- Service `SalesforceMarketingCloud`: Filter event types.
         /// 	- Service `SnapchatAds`: Whether to sync all organizations or specific organizations. Default value: `AllOrganizations`.
         /// 	- Service `SpotifyAds`: Whether to sync all ad accounts or specific ad accounts.
         /// 	- Service `Taboola`: Whether to sync all accounts or specific accounts.
@@ -7214,6 +7983,17 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Box`: Optional. Set this to true to sync files from nested folders within the specified folder.
+        /// 	- Service `Dropbox`: Optional. Set this to true to sync files from nested folders within the specified folder.
+        /// 	- Service `GoogleDrive`: Optional. Set to true to sync files from nested folders within the specified folder.
+        /// 	- Service `Sftp`: Optional. Set to true to sync files from nested folders within the specified folder.
+        /// 	- Service `SharePoint`: Optional. Set to true to sync files from nested folders within the specified folder.
+        /// </summary>
+        [Input("syncNestedFiles", required: true)]
+        public bool SyncNestedFiles { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `Cosmos`: The packing mode type. Supported values:`STANDARD_UNPACKED_MODE`- Unpacks _one_ layer of nested fields and infers types.`PACKED_MODE`- Delivers packed data as a single destination column value.Learn more in our [Azure Cosmos DB Sync Pack Mode Options documentation](https://fivetran.com/docs/connectors/databases/cosmos#packmodeoptions).
         /// 	- Service `Documentdb`: Indicates whether synced data will be packed into a single entry(column), or unpacked with one layer of nested fields.
         /// </summary>
@@ -7222,10 +8002,25 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleDrive`: Optional. Set to true to sync per-user file access permissions to control visibility in downstream applications.
+        /// 	- Service `SharePoint`: Optional. Set to true to sync per-user file access permissions to control visibility in downstream applications.
+        /// </summary>
+        [Input("syncPermissions", required: true)]
+        public bool SyncPermissions { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `Appsflyer`: These options are for Appsflyer's Pull API, and are only necessary for syncing events from Pull API.
         /// </summary>
         [Input("syncPullApi", required: true)]
         public bool SyncPullApi { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GoogleAnalytics4Export`: Sync Table
+        /// </summary>
+        [Input("syncTables", required: true)]
+        public string SyncTables { get; set; } = null!;
 
         /// <summary>
         /// Field usage depends on `Service` value: 
@@ -7267,7 +8062,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
-        /// 	- Service `Hubspot`: Timestamp to indicate when tables without access was updated
+        /// 	- Service `Hubspot`: Timestamp to indicate when tables without access was updated.
         /// </summary>
         [Input("tablesWithoutAccessUpdatedAt", required: true)]
         public string TablesWithoutAccessUpdatedAt { get; set; } = null!;
@@ -7301,6 +8096,19 @@ namespace Pulumi.Fivetran.Inputs
             set => _tdeCertificate = value;
         }
 
+        [Input("tdeCertificateBackup", required: true)]
+        private string? _tdeCertificateBackup;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SqlServer`: Certificate file used to protect a database encryption key. Used when decrypting backup logs.
+        /// </summary>
+        public string? TdeCertificateBackup
+        {
+            get => _tdeCertificateBackup;
+            set => _tdeCertificateBackup = value;
+        }
+
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `SqlServerHva`: Name of the Certificate used to protect a database encryption key
@@ -7308,6 +8116,19 @@ namespace Pulumi.Fivetran.Inputs
         /// </summary>
         [Input("tdeCertificateName", required: true)]
         public string TdeCertificateName { get; set; } = null!;
+
+        [Input("tdeCertificatePath", required: true)]
+        private string? _tdeCertificatePath;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SqlServer`: Certificate file path used to protect a database encryption key. Used when decrypting online logs
+        /// </summary>
+        public string? TdeCertificatePath
+        {
+            get => _tdeCertificatePath;
+            set => _tdeCertificatePath = value;
+        }
 
         [Input("tdePassword", required: true)]
         private string? _tdePassword;
@@ -7338,6 +8159,39 @@ namespace Pulumi.Fivetran.Inputs
             get => _tdePrivateKey;
             set => _tdePrivateKey = value;
         }
+
+        [Input("tdePrivateKeyBackup", required: true)]
+        private string? _tdePrivateKeyBackup;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SqlServer`: Private key file associated with the TDE certificate. Used when decrypting backup logs.
+        /// </summary>
+        public string? TdePrivateKeyBackup
+        {
+            get => _tdePrivateKeyBackup;
+            set => _tdePrivateKeyBackup = value;
+        }
+
+        [Input("tdePrivateKeyPath", required: true)]
+        private string? _tdePrivateKeyPath;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SqlServer`: Private key file path associated with the TDE certificate. Used when decrypting online logs.
+        /// </summary>
+        public string? TdePrivateKeyPath
+        {
+            get => _tdePrivateKeyPath;
+            set => _tdePrivateKeyPath = value;
+        }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SqlServer`: Transparent Data Encryption (TDE) setting. Possible values: `"OFF"`, `"CERTIFICATE"`. Default value is `"OFF"`.
+        /// </summary>
+        [Input("tdeSetting", required: true)]
+        public string TdeSetting { get; set; } = null!;
 
         [Input("tdeWalletPassword", required: true)]
         private string? _tdeWalletPassword;
@@ -7430,8 +8284,10 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `AzureSqlManagedDb`: Azure AD tenant ID.
         /// 	- Service `BusinessCentral`: `Tenant ID` of your Business Central application
         /// 	- Service `Crowddev`: Your  crowd.dev Tenant ID.
+        /// 	- Service `MicrosoftTeams`: Your Microsoft Teams tenant ID.
         /// 	- Service `Reltio`: Your Reltio tenant ID.
         /// 	- Service `Servicetitan`: Your ServiceTitan tenant ID.
+        /// 	- Service `SharePoint`: `Tenant ID` of your Microsoft client application.
         /// 	- Service `Visma`: Your Visma tenant ID.
         /// </summary>
         public string? TenantId
@@ -7647,6 +8503,19 @@ namespace Pulumi.Fivetran.Inputs
             set => _topics = value;
         }
 
+        [Input("trackingSubscriptionKey", required: true)]
+        private string? _trackingSubscriptionKey;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Dsv`: Your DSV Tracking subscription key.
+        /// </summary>
+        public string? TrackingSubscriptionKey
+        {
+            get => _trackingSubscriptionKey;
+            set => _trackingSubscriptionKey = value;
+        }
+
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `HerokuKafka`: Trust Store Type
@@ -7694,10 +8563,13 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Cockroachdb`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
         /// 	- Service `Db2iHva`: SSH host, only specify when connecting via an SSH tunnel (do not use a load balancer). Required for connector creation.
         /// 	- Service `Db2iSapHva`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
+        /// 	- Service `Db2luw`: SSH host, only specify when connecting via an SSH tunnel (do not use a load balancer). Required for connector creation.
+        /// 	- Service `Db2z`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
         /// 	- Service `Documentdb`: SSH host, only specify when connecting via an SSH tunnel (do not use a load balancer). Required for connector creation.
         /// 	- Service `Dynamics365Fo`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
         /// 	- Service `Ehr`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
         /// 	- Service `ElasticCloud`: SSH host, specify only to connect using an SSH tunnel (do not use a load balancer).
+        /// 	- Service `EpicClarity`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
         /// 	- Service `EsSelfHosted`: SSH host, specify only to connect using an SSH tunnel (do not use a load balancer).
         /// 	- Service `GoogleCloudMysql`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
         /// 	- Service `GoogleCloudPostgresql`: SSH host, specify only to connect via an SSH tunnel (do not use a load balancer).
@@ -7754,10 +8626,13 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Cockroachdb`: SSH port, specify only to connect via an SSH tunnel.
         /// 	- Service `Db2iHva`: SSH port, only specify when connecting via an SSH tunnel. Required for connector creation.
         /// 	- Service `Db2iSapHva`: SSH port, specify only to connect via an SSH tunnel.
+        /// 	- Service `Db2luw`: SSH port, only specify when connecting via an SSH tunnel. Required for connector creation.
+        /// 	- Service `Db2z`: SSH port, specify only to connect via an SSH tunnel.
         /// 	- Service `Documentdb`: SSH port, only specify when connecting via an SSH tunnel. Required for connector creation.
         /// 	- Service `Dynamics365Fo`: SSH port, specify only to connect via an SSH tunnel.
         /// 	- Service `Ehr`: SSH port, specify only to connect via an SSH tunnel.
         /// 	- Service `ElasticCloud`: SSH port, specify only to connect using an SSH tunnel.
+        /// 	- Service `EpicClarity`: SSH port, specify only to connect via an SSH tunnel.
         /// 	- Service `EsSelfHosted`: SSH port, specify only to connect using an SSH tunnel.
         /// 	- Service `GoogleCloudMysql`: SSH port, specify only to connect via an SSH tunnel.
         /// 	- Service `GoogleCloudPostgresql`: SSH port, specify only to connect via an SSH tunnel.
@@ -7814,10 +8689,13 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Cockroachdb`: SSH user, specify only to connect via an SSH tunnel.
         /// 	- Service `Db2iHva`: SSH user, specify only to connect via an SSH tunnel. Required for connector creation.
         /// 	- Service `Db2iSapHva`: SSH user, specify only to connect via an SSH tunnel.
+        /// 	- Service `Db2luw`: SSH user, specify only to connect via an SSH tunnel. Required for connector creation.
+        /// 	- Service `Db2z`: SSH user, specify only to connect via an SSH tunnel.
         /// 	- Service `Documentdb`: SSH user, specify only to connect via an SSH tunnel. Required for connector creation.
         /// 	- Service `Dynamics365Fo`: SSH user, specify only to connect via an SSH tunnel.
         /// 	- Service `Ehr`: SSH user, specify only to connect via an SSH tunnel.
         /// 	- Service `ElasticCloud`: SSH user, specify only to connect using an SSH tunnel.
+        /// 	- Service `EpicClarity`: SSH user, specify only to connect via an SSH tunnel.
         /// 	- Service `EsSelfHosted`: SSH user, specify only to connect using an SSH tunnel.
         /// 	- Service `GoogleCloudMysql`: SSH user, specify only to connect via an SSH tunnel.
         /// 	- Service `GoogleCloudPostgresql`: SSH user, specify only to connect via an SSH tunnel.
@@ -7881,18 +8759,27 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Salesforce`: Enable this option to sync infrequently updated tables during every sync (default value = `False`)
+        /// 	- Service `SalesforceSandbox`: Enable this option to sync infrequently updated tables during every sync (default value = `False`)
+        /// </summary>
+        [Input("updateInfrequentObjectsInEverySync", required: true)]
+        public bool UpdateInfrequentObjectsInEverySync { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `Aurora`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `AuroraPostgres`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "PostgresRds"`. Supported values:`WAL` - this method replicates new, changed and deleted rows by tailing the write-ahead log (WAL) via a logical slot. This is more efficient than the XMIN method, but requires more setup and monitoring.`XMIN` - this method detects new or changed rows via the XMIN system column, but is not capable of detecting deleted rows.`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot.`TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `AzurePostgres`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "PostgresRds"`. Supported values:`WAL` - this method replicates new, changed and deleted rows by tailing the write-ahead log (WAL) via a logical slot. This is more efficient than the XMIN method, but requires more setup and monitoring.`XMIN` - this method detects new or changed rows via the XMIN system column, but is not capable of detecting deleted rows.`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot.`TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `AuroraPostgres`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "PostgresRds"`. Supported values:`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot. This is more efficient than the query-based method, but requires more setup and monitoring.`QUERY_BASED` - this method replicates new, changed and deleted rows via the `Xmin` and `Ctid` system columns
+        /// 	- Service `AzurePostgres`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "PostgresRds"`. Supported values:`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot. This is more efficient than the query-based method, but requires more setup and monitoring.`QUERY_BASED` - this method replicates new, changed and deleted rows via the `Xmin` and `Ctid` system columns
         /// 	- Service `AzureSqlDb`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `Null` or not specified.
         /// 	- Service `AzureSqlManagedDb`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `Null` or not specified.
         /// 	- Service `Clarity`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `Null` or not specified.
         /// 	- Service `Dynamics365Fo`: Update Method
         /// 	- Service `Ehr`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `Null` or not specified.
+        /// 	- Service `EpicClarity`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `Null` or not specified.
         /// 	- Service `GoogleCloudMysql`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `GoogleCloudPostgresql`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "PostgresRds"`. Supported values:`WAL` - this method replicates new, changed and deleted rows by tailing the write-ahead log (WAL) via a logical slot. This is more efficient than the XMIN method, but requires more setup and monitoring.`XMIN` - this method detects new or changed rows via the XMIN system column, but is not capable of detecting deleted rows.`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot.`TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `GoogleCloudPostgresql`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "PostgresRds"`. Supported values:`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot. This is more efficient than the query-based method, but requires more setup and monitoring.`QUERY_BASED` - this method replicates new, changed and deleted rows via the `Xmin` and `Ctid` system columns
         /// 	- Service `GoogleCloudSqlserver`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `Null` or not specified.
-        /// 	- Service `HerokuPostgres`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "PostgresRds"`. Supported values:`WAL` - this method replicates new, changed and deleted rows by tailing the write-ahead log (WAL) via a logical slot. This is more efficient than the XMIN method, but requires more setup and monitoring.`XMIN` - this method detects new or changed rows via the XMIN system column, but is not capable of detecting deleted rows.`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot.`TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `HerokuPostgres`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "PostgresRds"`. Supported values:`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot. This is more efficient than the query-based method, but requires more setup and monitoring.`QUERY_BASED` - this method replicates new, changed and deleted rows via the `Xmin` and `Ctid` system columns
         /// 	- Service `MagentoMysql`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
         /// 	- Service `MagentoMysqlRds`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
         /// 	- Service `Maria`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
@@ -7907,8 +8794,8 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `OracleRac`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
         /// 	- Service `OracleRds`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
         /// 	- Service `OracleSapHva`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `Postgres`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "PostgresRds"`. Supported values:`WAL` - this method replicates new, changed and deleted rows by tailing the write-ahead log (WAL) via a logical slot. This is more efficient than the XMIN method, but requires more setup and monitoring.`XMIN` - this method detects new or changed rows via the XMIN system column, but is not capable of detecting deleted rows.`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot.`TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `PostgresRds`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "PostgresRds"`. Supported values:`WAL` - this method replicates new, changed and deleted rows by tailing the write-ahead log (WAL) via a logical slot. This is more efficient than the XMIN method, but requires more setup and monitoring.`XMIN` - this method detects new or changed rows via the XMIN system column, but is not capable of detecting deleted rows.`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot.`TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `Postgres`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "PostgresRds"`. Supported values:`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the  write-ahead log (WAL) using a logical slot.This is more efficient than the query-based method, but requires more setup and monitoring.`QUERY_BASED` - this method replicates new, changed and deleted rows via the `Xmin` and `Ctid` system columns
+        /// 	- Service `PostgresRds`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "PostgresRds"`. Supported values:`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot. This is more efficient than the query-based method, but requires more setup and monitoring.`QUERY_BASED` - this method replicates new, changed and deleted rows via the `Xmin` and `Ctid` system columns
         /// 	- Service `RedshiftDb`: Default value: `Teleport`
         /// 	- Service `SnowflakeDb`: Default value: `Teleport`
         /// 	- Service `SqlServer`: (Optional) The incremental update method the connector will use. The possible values are `"TELEPORT"` or `"NATIVE_UPDATE"`. The type defaults to `"NATIVE_UPDATE"` if the value is set to `Null` or not specified.
@@ -7942,10 +8829,45 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Amplitude`: Sync events from cloud storage
+        /// </summary>
+        [Input("useCloudStorage", required: true)]
+        public bool UseCloudStorage { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `Appsflyer`: Use Custom Bucket. Set it to 'true' if the data is being synced to your S3 bucket instead of an AppsFlyer-managed bucket.
         /// </summary>
         [Input("useCustomerBucket", required: true)]
         public bool UseCustomerBucket { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Sailthru`: Enable this if you want to sync Sailthru Connect using your own"  S3 bucket.
+        /// </summary>
+        [Input("useCustomerS3Bucket", required: true)]
+        public bool UseCustomerS3Bucket { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Pendo`: Toggle field to determine whether connector is syncing from API or from Data Sync
+        /// </summary>
+        [Input("useDataSync", required: true)]
+        public bool UseDataSync { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Greenhouse`: The confirmation that you want to connect to Harvest V3 API. Possible values: `True`, `False`.
+        /// </summary>
+        [Input("useHarvestApiV3", required: true)]
+        public string UseHarvestApiV3 { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SapHanaDb`: Enable connection via SAP Message Server for load balancing
+        /// </summary>
+        [Input("useMessageServer", required: true)]
+        public bool UseMessageServer { get; set; }
 
         /// <summary>
         /// Field usage depends on `Service` value: 
@@ -7954,6 +8876,13 @@ namespace Pulumi.Fivetran.Inputs
         /// </summary>
         [Input("useOracleRac", required: true)]
         public bool UseOracleRac { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `OracleHva`: Default value: `False`. Set to `True` to connect directly to a single PDB. When `True`, set `Database` to the PDB name and omit the `pdbName` field. Use only for Direct or Archive Log Only capture. Not supported with TDE, ASM, or RAC.
+        /// </summary>
+        [Input("usePdbOnly", required: true)]
+        public bool UsePdbOnly { get; set; }
 
         /// <summary>
         /// Field usage depends on `Service` value: 
@@ -7967,6 +8896,13 @@ namespace Pulumi.Fivetran.Inputs
         /// </summary>
         [Input("usePgpEncryptionOptions", required: true)]
         public bool UsePgpEncryptionOptions { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SapHanaDb`: Enable connection via SAP Router
+        /// </summary>
+        [Input("useSapRouter", required: true)]
+        public bool UseSapRouter { get; set; }
 
         /// <summary>
         /// Field usage depends on `Service` value: 
@@ -8011,10 +8947,13 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Cockroachdb`: The user name.
         /// 	- Service `Db2iHva`: The user name.
         /// 	- Service `Db2iSapHva`: The username.
+        /// 	- Service `Db2luw`: The user name.
+        /// 	- Service `Db2z`: The user name.
         /// 	- Service `Documentdb`: The user name.
         /// 	- Service `Dynamics365Fo`: The user name. The format must be `user@domain`.
         /// 	- Service `Ehr`: The user name.  For Azure Databases, the format must be `user@domain`.
         /// 	- Service `ElasticCloud`: The user name.
+        /// 	- Service `EpicClarity`: The user name.  For Azure Databases, the format must be `user@domain`.
         /// 	- Service `EsSelfHosted`: The user name.
         /// 	- Service `Ftp`: FTP user.
         /// 	- Service `GoogleCloudMysql`: The user name.
@@ -8069,7 +9008,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Coassemble`: Your Coassemble user ID.
         /// 	- Service `Gmail`: (DEPRECATED) Your Gmail user ID.
         /// 	- Service `Hibob`: Your HiBob Service User Token.
-        /// 	- Service `Marketo`: Marketo SOAP API User Id.
+        /// 	- Service `Marketo`: Marketo SOAP API User Id (Discontinued).
         /// 	- Service `Okendo`: Your Okendo user ID.
         /// 	- Service `Playvox`: Your Playvox User ID.
         /// 	- Service `SageIntacct`: User ID
@@ -8130,6 +9069,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `AdobeCommerce`: Your Adobe Commerce username.
         /// 	- Service `Akeneo`: Your Akeneo username.
         /// 	- Service `Alida`: Your Alida client ID.
+        /// 	- Service `Amqp`: Username for basic authentication.
         /// 	- Service `Anaplan`: Your Anaplan user ID. Must be populated if `AuthMode` is set to `Basic`.
         /// 	- Service `Appfigures`: Your Appfigures Username.
         /// 	- Service `AvevaPi`: Username for the user to authenticate as with the AF Server
@@ -8157,7 +9097,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `KhorosCare`: Your Khoros Care username.
         /// 	- Service `Kissmetrics`: Your Kissmetrics API Username.
         /// 	- Service `Klarna`: Your Klarna Username.
-        /// 	- Service `Learnupon`: Your Learnupon username.
+        /// 	- Service `Learnupon`: Your LearnUpon username.
         /// 	- Service `Lessonly`: Your Lessonly username.
         /// 	- Service `Mailgun`: Your Mailgun API username.
         /// 	- Service `Myosh`: Your myosh username.
@@ -8175,6 +9115,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `SapBusinessByDesign`: The SAP Business ByDesign username.
         /// 	- Service `Scorm`: Your Scorm App ID.
         /// 	- Service `Servicenow`: Your ServiceNow User ID (username).
+        /// 	- Service `Servicetrade`: Your ServiceTrade username.
         /// 	- Service `Shiphero`: Your ShipHero username.
         /// 	- Service `Shipstation`: Your ShipStation username.
         /// 	- Service `Shopware`: Your Shopware username.
@@ -8188,7 +9129,8 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `UkgPro`: Your UKG Pro username.
         /// 	- Service `UkgProWorkforceManagement`: Your UKG Pro Workforce Management username.
         /// 	- Service `Unicommerce`: Your uniware login username.
-        /// 	- Service `Upland`: Your Upland Software Username.
+        /// 	- Service `Upland`: Your Upland Software username.
+        /// 	- Service `Uptempo`: Your Uptempo username.
         /// 	- Service `VeevaVault`: Username
         /// 	- Service `Veevavault`: Your Veeva Vault username.
         /// 	- Service `WhenIWork`: Your When I Work username.
@@ -8198,6 +9140,8 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Xandr`: Your Xandr username.
         /// 	- Service `YougovBrandindex`: Your YouGov BrandIndex username.
         /// 	- Service `Younium`: Your Younium username.
+        /// 	- Service `Zuora`: The API username with the necessary access permissions.
+        /// 	- Service `ZuoraSandbox`: The API username with the necessary access permissions.
         /// </summary>
         public string? Username
         {
@@ -8277,6 +9221,13 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Ordway`: Your Ordway Webhook name.
+        /// </summary>
+        [Input("webhookName", required: true)]
+        public string WebhookName { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `Branch`: Webhook URL
         /// 	- Service `Pipedrive`: The registered URL for webhooks in your Pipedrive dashboard.
         /// 	- Service `Segment`: Webhook URL.
@@ -8305,6 +9256,13 @@ namespace Pulumi.Fivetran.Inputs
         /// </summary>
         [Input("workspace", required: true)]
         public string Workspace { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Fulfil`: Your Fulfil workspace ID.
+        /// </summary>
+        [Input("workspaceId", required: true)]
+        public string WorkspaceId { get; set; } = null!;
 
         /// <summary>
         /// Field usage depends on `Service` value: 

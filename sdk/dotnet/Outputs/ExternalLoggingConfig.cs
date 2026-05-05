@@ -13,69 +13,37 @@ namespace Pulumi.Fivetran.Outputs
     [OutputType]
     public sealed class ExternalLoggingConfig
     {
-        /// <summary>
-        /// API Key
-        /// </summary>
+        public readonly string? AccessKeyId;
+        public readonly string? AccessKeySecret;
         public readonly string? ApiKey;
-        /// <summary>
-        /// Channel
-        /// </summary>
         public readonly string? Channel;
         /// <summary>
         /// Enable SSL
         /// </summary>
         public readonly bool? EnableSsl;
-        /// <summary>
-        /// external_id
-        /// </summary>
         public readonly string? ExternalId;
-        /// <summary>
-        /// Server name
-        /// </summary>
         public readonly string? Host;
-        /// <summary>
-        /// Server name
-        /// </summary>
         public readonly string? Hostname;
-        /// <summary>
-        /// Log Group Name
-        /// </summary>
         public readonly string? LogGroupName;
         /// <summary>
         /// Port
         /// </summary>
         public readonly int? Port;
-        /// <summary>
-        /// Primary Key
-        /// </summary>
         public readonly string? PrimaryKey;
-        /// <summary>
-        /// Project Id for Google Cloud Logging
-        /// </summary>
         public readonly string? ProjectId;
-        /// <summary>
-        /// Region
-        /// </summary>
         public readonly string? Region;
-        /// <summary>
-        /// Role Arn
-        /// </summary>
         public readonly string? RoleArn;
-        /// <summary>
-        /// Sub Domain
-        /// </summary>
+        public readonly string? ServiceAccountKey;
         public readonly string? SubDomain;
-        /// <summary>
-        /// Token
-        /// </summary>
         public readonly string? Token;
-        /// <summary>
-        /// Workspace ID
-        /// </summary>
         public readonly string? WorkspaceId;
 
         [OutputConstructor]
         private ExternalLoggingConfig(
+            string? accessKeyId,
+
+            string? accessKeySecret,
+
             string? apiKey,
 
             string? channel,
@@ -100,12 +68,16 @@ namespace Pulumi.Fivetran.Outputs
 
             string? roleArn,
 
+            string? serviceAccountKey,
+
             string? subDomain,
 
             string? token,
 
             string? workspaceId)
         {
+            AccessKeyId = accessKeyId;
+            AccessKeySecret = accessKeySecret;
             ApiKey = apiKey;
             Channel = channel;
             EnableSsl = enableSsl;
@@ -118,6 +90,7 @@ namespace Pulumi.Fivetran.Outputs
             ProjectId = projectId;
             Region = region;
             RoleArn = roleArn;
+            ServiceAccountKey = serviceAccountKey;
             SubDomain = subDomain;
             Token = token;
             WorkspaceId = workspaceId;

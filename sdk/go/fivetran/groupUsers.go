@@ -33,11 +33,11 @@ import (
 //				Users: fivetran.GroupUsersUserArray{
 //					&fivetran.GroupUsersUserArgs{
 //						Email: pulumi.String("mail@example.com"),
-//						Role:  pulumi.String("Destination Analyst"),
+//						Role:  pulumi.String("Edit Destination"),
 //					},
 //					&fivetran.GroupUsersUserArgs{
 //						Email: pulumi.String("another_mail@example.com"),
-//						Role:  pulumi.String("Destination Analyst"),
+//						Role:  pulumi.String("Edit Destination"),
 //					},
 //				},
 //			})
@@ -49,6 +49,47 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+//  1. To import an existing `GroupUsers` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+//     To retrieve existing groups, use the [getGroups data source](https://www.terraform.io/docs/data-sources/groups).
+//  2. Define an empty resource in your `.tf` configuration:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.NewGroupUsers(ctx, "my_imported_fivetran_group_users", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// 3. Run the `pulumi import` command:
+//
+// ```sh
+// terraform import fivetran_group_users.my_imported_fivetran_group_users {your Destination Group ID}
+// ```
+//
+// 4. Use the `terraform state show` command to get the values from the state:
+//
+// ```sh
+// terraform state show 'fivetran_group_users.my_imported_fivetran_group_users'
+// ```
+// 5. Copy the values and paste them to your `.tf` configuration.
 type GroupUsers struct {
 	pulumi.CustomResourceState
 

@@ -30,6 +30,7 @@ class DestinationArgs:
                  hybrid_deployment_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  networking_method: pulumi.Input[Optional[_builtins.str]] = None,
                  private_link_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  run_setup_tests: pulumi.Input[Optional[_builtins.bool]] = None,
                  timeouts: pulumi.Input[Optional['DestinationTimeoutsArgs']] = None,
                  trust_certificates: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -43,8 +44,9 @@ class DestinationArgs:
         :param pulumi.Input[_builtins.str] time_zone_offset: Determines the time zone for the Fivetran sync schedule.
         :param pulumi.Input[_builtins.bool] daylight_saving_time_enabled: Shift my UTC offset with daylight savings time (US Only)
         :param pulumi.Input[_builtins.str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
-        :param pulumi.Input[_builtins.str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
+        :param pulumi.Input[_builtins.str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
         :param pulumi.Input[_builtins.str] private_link_id: The private link ID.
+        :param pulumi.Input[_builtins.str] proxy_agent_id: The proxy agent ID.
         :param pulumi.Input[_builtins.bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
         :param pulumi.Input[_builtins.bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
         :param pulumi.Input[_builtins.bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
@@ -63,6 +65,8 @@ class DestinationArgs:
             pulumi.set(__self__, "networking_method", networking_method)
         if private_link_id is not None:
             pulumi.set(__self__, "private_link_id", private_link_id)
+        if proxy_agent_id is not None:
+            pulumi.set(__self__, "proxy_agent_id", proxy_agent_id)
         if run_setup_tests is not None:
             pulumi.set(__self__, "run_setup_tests", run_setup_tests)
         if timeouts is not None:
@@ -157,7 +161,7 @@ class DestinationArgs:
     @pulumi.getter(name="networkingMethod")
     def networking_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Possible values: Directly, SshTunnel, ProxyAgent.
+        Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
         """
         return pulumi.get(self, "networking_method")
 
@@ -176,6 +180,18 @@ class DestinationArgs:
     @private_link_id.setter
     def private_link_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_link_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="proxyAgentId")
+    def proxy_agent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The proxy agent ID.
+        """
+        return pulumi.get(self, "proxy_agent_id")
+
+    @proxy_agent_id.setter
+    def proxy_agent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "proxy_agent_id", value)
 
     @_builtins.property
     @pulumi.getter(name="runSetupTests")
@@ -232,6 +248,7 @@ class _DestinationState:
                  hybrid_deployment_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  networking_method: pulumi.Input[Optional[_builtins.str]] = None,
                  private_link_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  run_setup_tests: pulumi.Input[Optional[_builtins.bool]] = None,
                  service: pulumi.Input[Optional[_builtins.str]] = None,
@@ -246,8 +263,9 @@ class _DestinationState:
         :param pulumi.Input[_builtins.bool] daylight_saving_time_enabled: Shift my UTC offset with daylight savings time (US Only)
         :param pulumi.Input[_builtins.str] group_id: The unique identifier for the Group within the Fivetran system.
         :param pulumi.Input[_builtins.str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
-        :param pulumi.Input[_builtins.str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
+        :param pulumi.Input[_builtins.str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
         :param pulumi.Input[_builtins.str] private_link_id: The private link ID.
+        :param pulumi.Input[_builtins.str] proxy_agent_id: The proxy agent ID.
         :param pulumi.Input[_builtins.str] region: Data processing location. This is where Fivetran will operate and run computation on data.
         :param pulumi.Input[_builtins.bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
         :param pulumi.Input[_builtins.str] service: The destination type id within the Fivetran system.
@@ -268,6 +286,8 @@ class _DestinationState:
             pulumi.set(__self__, "networking_method", networking_method)
         if private_link_id is not None:
             pulumi.set(__self__, "private_link_id", private_link_id)
+        if proxy_agent_id is not None:
+            pulumi.set(__self__, "proxy_agent_id", proxy_agent_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if run_setup_tests is not None:
@@ -334,7 +354,7 @@ class _DestinationState:
     @pulumi.getter(name="networkingMethod")
     def networking_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Possible values: Directly, SshTunnel, ProxyAgent.
+        Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
         """
         return pulumi.get(self, "networking_method")
 
@@ -353,6 +373,18 @@ class _DestinationState:
     @private_link_id.setter
     def private_link_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_link_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="proxyAgentId")
+    def proxy_agent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The proxy agent ID.
+        """
+        return pulumi.get(self, "proxy_agent_id")
+
+    @proxy_agent_id.setter
+    def proxy_agent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "proxy_agent_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -460,6 +492,7 @@ class Destination(pulumi.CustomResource):
                  hybrid_deployment_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  networking_method: pulumi.Input[Optional[_builtins.str]] = None,
                  private_link_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  run_setup_tests: pulumi.Input[Optional[_builtins.bool]] = None,
                  service: pulumi.Input[Optional[_builtins.str]] = None,
@@ -542,8 +575,9 @@ class Destination(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] daylight_saving_time_enabled: Shift my UTC offset with daylight savings time (US Only)
         :param pulumi.Input[_builtins.str] group_id: The unique identifier for the Group within the Fivetran system.
         :param pulumi.Input[_builtins.str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
-        :param pulumi.Input[_builtins.str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
+        :param pulumi.Input[_builtins.str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
         :param pulumi.Input[_builtins.str] private_link_id: The private link ID.
+        :param pulumi.Input[_builtins.str] proxy_agent_id: The proxy agent ID.
         :param pulumi.Input[_builtins.str] region: Data processing location. This is where Fivetran will operate and run computation on data.
         :param pulumi.Input[_builtins.bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
         :param pulumi.Input[_builtins.str] service: The destination type id within the Fivetran system.
@@ -647,6 +681,7 @@ class Destination(pulumi.CustomResource):
                  hybrid_deployment_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  networking_method: pulumi.Input[Optional[_builtins.str]] = None,
                  private_link_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  run_setup_tests: pulumi.Input[Optional[_builtins.bool]] = None,
                  service: pulumi.Input[Optional[_builtins.str]] = None,
@@ -671,6 +706,7 @@ class Destination(pulumi.CustomResource):
             __props__.__dict__["hybrid_deployment_agent_id"] = hybrid_deployment_agent_id
             __props__.__dict__["networking_method"] = networking_method
             __props__.__dict__["private_link_id"] = private_link_id
+            __props__.__dict__["proxy_agent_id"] = proxy_agent_id
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
@@ -701,6 +737,7 @@ class Destination(pulumi.CustomResource):
             hybrid_deployment_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
             networking_method: pulumi.Input[Optional[_builtins.str]] = None,
             private_link_id: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             run_setup_tests: pulumi.Input[Optional[_builtins.bool]] = None,
             service: pulumi.Input[Optional[_builtins.str]] = None,
@@ -719,8 +756,9 @@ class Destination(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] daylight_saving_time_enabled: Shift my UTC offset with daylight savings time (US Only)
         :param pulumi.Input[_builtins.str] group_id: The unique identifier for the Group within the Fivetran system.
         :param pulumi.Input[_builtins.str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
-        :param pulumi.Input[_builtins.str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent.
+        :param pulumi.Input[_builtins.str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
         :param pulumi.Input[_builtins.str] private_link_id: The private link ID.
+        :param pulumi.Input[_builtins.str] proxy_agent_id: The proxy agent ID.
         :param pulumi.Input[_builtins.str] region: Data processing location. This is where Fivetran will operate and run computation on data.
         :param pulumi.Input[_builtins.bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
         :param pulumi.Input[_builtins.str] service: The destination type id within the Fivetran system.
@@ -739,6 +777,7 @@ class Destination(pulumi.CustomResource):
         __props__.__dict__["hybrid_deployment_agent_id"] = hybrid_deployment_agent_id
         __props__.__dict__["networking_method"] = networking_method
         __props__.__dict__["private_link_id"] = private_link_id
+        __props__.__dict__["proxy_agent_id"] = proxy_agent_id
         __props__.__dict__["region"] = region
         __props__.__dict__["run_setup_tests"] = run_setup_tests
         __props__.__dict__["service"] = service
@@ -782,7 +821,7 @@ class Destination(pulumi.CustomResource):
     @pulumi.getter(name="networkingMethod")
     def networking_method(self) -> pulumi.Output[_builtins.str]:
         """
-        Possible values: Directly, SshTunnel, ProxyAgent.
+        Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
         """
         return pulumi.get(self, "networking_method")
 
@@ -793,6 +832,14 @@ class Destination(pulumi.CustomResource):
         The private link ID.
         """
         return pulumi.get(self, "private_link_id")
+
+    @_builtins.property
+    @pulumi.getter(name="proxyAgentId")
+    def proxy_agent_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The proxy agent ID.
+        """
+        return pulumi.get(self, "proxy_agent_id")
 
     @_builtins.property
     @pulumi.getter

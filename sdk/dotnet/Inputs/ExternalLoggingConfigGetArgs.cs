@@ -12,12 +12,23 @@ namespace Pulumi.Fivetran.Inputs
 
     public sealed class ExternalLoggingConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accessKeyId")]
+        public Input<string>? AccessKeyId { get; set; }
+
+        [Input("accessKeySecret")]
+        private Input<string>? _accessKeySecret;
+        public Input<string>? AccessKeySecret
+        {
+            get => _accessKeySecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKeySecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         [Input("apiKey")]
         private Input<string>? _apiKey;
-
-        /// <summary>
-        /// API Key
-        /// </summary>
         public Input<string>? ApiKey
         {
             get => _apiKey;
@@ -28,9 +39,6 @@ namespace Pulumi.Fivetran.Inputs
             }
         }
 
-        /// <summary>
-        /// Channel
-        /// </summary>
         [Input("channel")]
         public Input<string>? Channel { get; set; }
 
@@ -40,27 +48,15 @@ namespace Pulumi.Fivetran.Inputs
         [Input("enableSsl")]
         public Input<bool>? EnableSsl { get; set; }
 
-        /// <summary>
-        /// external_id
-        /// </summary>
         [Input("externalId")]
         public Input<string>? ExternalId { get; set; }
 
-        /// <summary>
-        /// Server name
-        /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
-        /// <summary>
-        /// Server name
-        /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
-        /// <summary>
-        /// Log Group Name
-        /// </summary>
         [Input("logGroupName")]
         public Input<string>? LogGroupName { get; set; }
 
@@ -72,10 +68,6 @@ namespace Pulumi.Fivetran.Inputs
 
         [Input("primaryKey")]
         private Input<string>? _primaryKey;
-
-        /// <summary>
-        /// Primary Key
-        /// </summary>
         public Input<string>? PrimaryKey
         {
             get => _primaryKey;
@@ -86,36 +78,23 @@ namespace Pulumi.Fivetran.Inputs
             }
         }
 
-        /// <summary>
-        /// Project Id for Google Cloud Logging
-        /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
-        /// <summary>
-        /// Region
-        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
-        /// <summary>
-        /// Role Arn
-        /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 
-        /// <summary>
-        /// Sub Domain
-        /// </summary>
+        [Input("serviceAccountKey")]
+        public Input<string>? ServiceAccountKey { get; set; }
+
         [Input("subDomain")]
         public Input<string>? SubDomain { get; set; }
 
         [Input("token")]
         private Input<string>? _token;
-
-        /// <summary>
-        /// Token
-        /// </summary>
         public Input<string>? Token
         {
             get => _token;
@@ -126,9 +105,6 @@ namespace Pulumi.Fivetran.Inputs
             }
         }
 
-        /// <summary>
-        /// Workspace ID
-        /// </summary>
         [Input("workspaceId")]
         public Input<string>? WorkspaceId { get; set; }
 

@@ -14,6 +14,23 @@ namespace Pulumi.Fivetran.Inputs
     {
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureBlobStorage`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `Box`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `Dropbox`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `Email`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `Ftp`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `Gcs`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `GoogleDrive`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `S3`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `S3CompatibleStorage`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `Sftp`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// 	- Service `SharePoint`: All Files inside of compressed archives with filenames matching this regular expression will be synced.
+        /// </summary>
+        [Input("archivePattern", required: true)]
+        public Input<string> ArchivePattern { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `Email`: Only attachments from emails with this subject will be synced. Leave this field blank to sync all attachments.
         /// </summary>
         [Input("emailSubject", required: true)]
@@ -22,7 +39,10 @@ namespace Pulumi.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `AzureBlobStorage`: All files in your search path matching this regular expression will be synced per table. We have discontinued this field, and will delete it by August 31, 2025.
+        /// 	- Service `Box`: All files in your search path matching this regular expression will be synced per table.
+        /// 	- Service `Dropbox`: All files in your search path matching this regular expression will be synced per table.
         /// 	- Service `Email`: All files in your search path matching this regular expression will be synced per table.
+        /// 	- Service `Ftp`: All files in your search path matching this regular expression will be synced per table.
         /// 	- Service `Gcs`: All files in your search path matching this regular expression will be synced per table.
         /// 	- Service `GoogleDrive`: All files in your search path matching this regular expression will be synced per table.
         /// 	- Service `S3`: All files in your search path matching this regular expression will be synced per table.
@@ -35,8 +55,28 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureBlobStorage`: Cell reference that will be used to sync all contiguous data starting from the top-left cell in all the spreadsheets matching the name. Cell reference is in the `'sheetName'!startColumnNamestartRowNumber` format.
+        /// 	- Service `Box`: Cell reference that will be used to sync all contiguous data starting from the top-left cell in all the spreadsheets matching the name. Cell reference is in the `'sheetName'!startColumnNamestartRowNumber` format.
+        /// 	- Service `Dropbox`: Cell reference that will be used to sync all contiguous data starting from the top-left cell in all the spreadsheets matching the name. Cell reference is in the `'sheetName'!startColumnNamestartRowNumber` format.
+        /// 	- Service `Email`: Cell reference that will be used to sync all contiguous data starting from the top-left cell in all the spreadsheets matching the name. Cell reference is in the `'sheetName'!startColumnNamestartRowNumber` format.
+        /// 	- Service `Ftp`: Cell reference that will be used to sync all contiguous data starting from the top-left cell in all the spreadsheets matching the name. Cell reference is in the `'sheetName'!startColumnNamestartRowNumber` format.
+        /// 	- Service `Gcs`: Cell reference that will be used to sync all contiguous data starting from the top-left cell in all the spreadsheets matching the name. Cell reference is in the `'sheetName'!startColumnNamestartRowNumber` format.
+        /// 	- Service `GoogleDrive`: Cell reference that will be used to sync all contiguous data starting from the top-left cell in all the spreadsheets matching the name. Cell reference is in the `'sheetName'!startColumnNamestartRowNumber` format.
+        /// 	- Service `S3`: Cell reference that will be used to sync all contiguous data starting from the top-left cell in all the spreadsheets matching the name. Cell reference is in the `'sheetName'!startColumnNamestartRowNumber` format.
+        /// 	- Service `S3CompatibleStorage`: Cell reference that will be used to sync all contiguous data starting from the top-left cell in all the spreadsheets matching the name. Cell reference is in the `'sheetName'!startColumnNamestartRowNumber` format.
+        /// 	- Service `Sftp`: Cell reference that will be used to sync all contiguous data starting from the top-left cell in all the spreadsheets matching the name. Cell reference is in the `'sheetName'!startColumnNamestartRowNumber` format.
+        /// 	- Service `SharePoint`: Cell reference that will be used to sync all contiguous data starting from the top-left cell in all the spreadsheets matching the name. Cell reference is in the `'sheetName'!startColumnNamestartRowNumber` format.
+        /// </summary>
+        [Input("selectedRange", required: true)]
+        public Input<string> SelectedRange { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `AzureBlobStorage`: All files matching the above pattern will be synced to this table.
+        /// 	- Service `Box`: All files matching the above pattern will be synced to this table.
+        /// 	- Service `Dropbox`: All files matching the above pattern will be synced to this table.
         /// 	- Service `Email`: All files matching the above pattern will be synced to this table.
+        /// 	- Service `Ftp`: All files matching the above pattern will be synced to this table.
         /// 	- Service `Gcs`: All files matching the above pattern will be synced to this table.
         /// 	- Service `GoogleDrive`: All files matching the above pattern will be synced to this table.
         /// 	- Service `S3`: All files matching the above pattern will be synced to this table.

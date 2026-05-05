@@ -91,10 +91,22 @@ namespace Pulumi.Fivetran
         public Output<string> ConnectorId { get; private set; } = null!;
 
         /// <summary>
+        /// The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+        /// </summary>
+        [Output("connectorName")]
+        public Output<string?> ConnectorName { get; private set; } = null!;
+
+        /// <summary>
         /// The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
         /// </summary>
         [Output("dailySyncTime")]
         public Output<string> DailySyncTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique identifier for the Group (Destination) within the Fivetran system.
+        /// </summary>
+        [Output("groupId")]
+        public Output<string?> GroupId { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether the connector should be paused after the free trial period has ended.
@@ -109,13 +121,19 @@ namespace Pulumi.Fivetran
         public Output<string> Paused { get; private set; } = null!;
 
         /// <summary>
+        /// Flexible sync schedule configuration. When set, takes precedence over `SyncFrequency`.
+        /// </summary>
+        [Output("schedule")]
+        public Output<Outputs.ConnectorScheduleSchedule?> Schedule { get; private set; } = null!;
+
+        /// <summary>
         /// The connector schedule configuration type. Supported values: auto, manual.
         /// </summary>
         [Output("scheduleType")]
         public Output<string> ScheduleType { get; private set; } = null!;
 
         /// <summary>
-        /// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+        /// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440. Deprecated: use `Schedule` block instead.
         /// </summary>
         [Output("syncFrequency")]
         public Output<string> SyncFrequency { get; private set; } = null!;
@@ -128,7 +146,7 @@ namespace Pulumi.Fivetran
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ConnectorSchedule(string name, ConnectorScheduleArgs args, CustomResourceOptions? options = null)
+        public ConnectorSchedule(string name, ConnectorScheduleArgs? args = null, CustomResourceOptions? options = null)
             : base("fivetran:index/connectorSchedule:ConnectorSchedule", name, args ?? new ConnectorScheduleArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -170,14 +188,26 @@ namespace Pulumi.Fivetran
         /// <summary>
         /// The unique identifier for the connector within the Fivetran system.
         /// </summary>
-        [Input("connectorId", required: true)]
-        public Input<string> ConnectorId { get; set; } = null!;
+        [Input("connectorId")]
+        public Input<string>? ConnectorId { get; set; }
+
+        /// <summary>
+        /// The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+        /// </summary>
+        [Input("connectorName")]
+        public Input<string>? ConnectorName { get; set; }
 
         /// <summary>
         /// The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
         /// </summary>
         [Input("dailySyncTime")]
         public Input<string>? DailySyncTime { get; set; }
+
+        /// <summary>
+        /// The unique identifier for the Group (Destination) within the Fivetran system.
+        /// </summary>
+        [Input("groupId")]
+        public Input<string>? GroupId { get; set; }
 
         /// <summary>
         /// Specifies whether the connector should be paused after the free trial period has ended.
@@ -192,13 +222,19 @@ namespace Pulumi.Fivetran
         public Input<string>? Paused { get; set; }
 
         /// <summary>
+        /// Flexible sync schedule configuration. When set, takes precedence over `SyncFrequency`.
+        /// </summary>
+        [Input("schedule")]
+        public Input<Inputs.ConnectorScheduleScheduleArgs>? Schedule { get; set; }
+
+        /// <summary>
         /// The connector schedule configuration type. Supported values: auto, manual.
         /// </summary>
         [Input("scheduleType")]
         public Input<string>? ScheduleType { get; set; }
 
         /// <summary>
-        /// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+        /// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440. Deprecated: use `Schedule` block instead.
         /// </summary>
         [Input("syncFrequency")]
         public Input<string>? SyncFrequency { get; set; }
@@ -218,10 +254,22 @@ namespace Pulumi.Fivetran
         public Input<string>? ConnectorId { get; set; }
 
         /// <summary>
+        /// The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+        /// </summary>
+        [Input("connectorName")]
+        public Input<string>? ConnectorName { get; set; }
+
+        /// <summary>
         /// The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
         /// </summary>
         [Input("dailySyncTime")]
         public Input<string>? DailySyncTime { get; set; }
+
+        /// <summary>
+        /// The unique identifier for the Group (Destination) within the Fivetran system.
+        /// </summary>
+        [Input("groupId")]
+        public Input<string>? GroupId { get; set; }
 
         /// <summary>
         /// Specifies whether the connector should be paused after the free trial period has ended.
@@ -236,13 +284,19 @@ namespace Pulumi.Fivetran
         public Input<string>? Paused { get; set; }
 
         /// <summary>
+        /// Flexible sync schedule configuration. When set, takes precedence over `SyncFrequency`.
+        /// </summary>
+        [Input("schedule")]
+        public Input<Inputs.ConnectorScheduleScheduleGetArgs>? Schedule { get; set; }
+
+        /// <summary>
         /// The connector schedule configuration type. Supported values: auto, manual.
         /// </summary>
         [Input("scheduleType")]
         public Input<string>? ScheduleType { get; set; }
 
         /// <summary>
-        /// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
+        /// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440. Deprecated: use `Schedule` block instead.
         /// </summary>
         [Input("syncFrequency")]
         public Input<string>? SyncFrequency { get; set; }

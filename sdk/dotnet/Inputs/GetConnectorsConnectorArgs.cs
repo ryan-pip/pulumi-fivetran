@@ -73,7 +73,7 @@ namespace Pulumi.Fivetran.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Possible values: Directly, SshTunnel, ProxyAgent.
+        /// Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
         /// </summary>
         [Input("networkingMethod", required: true)]
         public Input<string> NetworkingMethod { get; set; } = null!;

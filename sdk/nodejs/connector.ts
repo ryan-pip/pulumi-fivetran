@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * This resource allows you to create, update, and delete connectors.
  *
+ * > NOTE: The `fivetran.Connector` resource creates a paused connector. In order to start data syncs, please create corresponding fivetran.ConnectorSchedule resource with `paused = false`
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -157,7 +159,7 @@ export class Connector extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
-     * Possible values: Directly, SshTunnel, ProxyAgent.
+     * Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
      */
     declare public readonly networkingMethod: pulumi.Output<string>;
     /**
@@ -285,7 +287,7 @@ export interface ConnectorState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Possible values: Directly, SshTunnel, ProxyAgent.
+     * Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
      */
     networkingMethod?: pulumi.Input<string | undefined>;
     /**
@@ -339,7 +341,7 @@ export interface ConnectorArgs {
      */
     hybridDeploymentAgentId?: pulumi.Input<string | undefined>;
     /**
-     * Possible values: Directly, SshTunnel, ProxyAgent.
+     * Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
      */
     networkingMethod?: pulumi.Input<string | undefined>;
     /**

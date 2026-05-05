@@ -5,6 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { ConnectionArgs, ConnectionState } from "./connection";
+export type Connection = import("./connection").Connection;
+export const Connection: typeof import("./connection").Connection = null as any;
+utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
+
+export { ConnectionConfigArgs, ConnectionConfigState } from "./connectionConfig";
+export type ConnectionConfig = import("./connectionConfig").ConnectionConfig;
+export const ConnectionConfig: typeof import("./connectionConfig").ConnectionConfig = null as any;
+utilities.lazyLoad(exports, ["ConnectionConfig"], () => require("./connectionConfig"));
+
 export { ConnectorArgs, ConnectorState } from "./connector";
 export type Connector = import("./connector").Connector;
 export const Connector: typeof import("./connector").Connector = null as any;
@@ -29,6 +39,11 @@ export { ConnectorSchemaConfigArgs, ConnectorSchemaConfigState } from "./connect
 export type ConnectorSchemaConfig = import("./connectorSchemaConfig").ConnectorSchemaConfig;
 export const ConnectorSchemaConfig: typeof import("./connectorSchemaConfig").ConnectorSchemaConfig = null as any;
 utilities.lazyLoad(exports, ["ConnectorSchemaConfig"], () => require("./connectorSchemaConfig"));
+
+export { ConnectorSdkPackageArgs, ConnectorSdkPackageState } from "./connectorSdkPackage";
+export type ConnectorSdkPackage = import("./connectorSdkPackage").ConnectorSdkPackage;
+export const ConnectorSdkPackage: typeof import("./connectorSdkPackage").ConnectorSdkPackage = null as any;
+utilities.lazyLoad(exports, ["ConnectorSdkPackage"], () => require("./connectorSdkPackage"));
 
 export { DestinationArgs, DestinationState } from "./destination";
 export type Destination = import("./destination").Destination;
@@ -382,6 +397,10 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "fivetran:index/connection:Connection":
+                return new Connection(name, <any>undefined, { urn })
+            case "fivetran:index/connectionConfig:ConnectionConfig":
+                return new ConnectionConfig(name, <any>undefined, { urn })
             case "fivetran:index/connector:Connector":
                 return new Connector(name, <any>undefined, { urn })
             case "fivetran:index/connectorCertificates:ConnectorCertificates":
@@ -392,6 +411,8 @@ const _module = {
                 return new ConnectorSchedule(name, <any>undefined, { urn })
             case "fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig":
                 return new ConnectorSchemaConfig(name, <any>undefined, { urn })
+            case "fivetran:index/connectorSdkPackage:ConnectorSdkPackage":
+                return new ConnectorSdkPackage(name, <any>undefined, { urn })
             case "fivetran:index/destination:Destination":
                 return new Destination(name, <any>undefined, { urn })
             case "fivetran:index/destinationCertificates:DestinationCertificates":
@@ -435,11 +456,14 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("fivetran", "index/connection", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/connectionConfig", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/connector", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/connectorCertificates", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/connectorFingerprints", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/connectorSchedule", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/connectorSchemaConfig", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/connectorSdkPackage", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/destination", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/destinationCertificates", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/destinationFingerprints", _module)

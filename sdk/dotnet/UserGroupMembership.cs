@@ -31,13 +31,13 @@ namespace Pulumi.Fivetran
     ///             {
     ///                 ConnectorId = "test_connector",
     ///                 GroupId = "test_group",
-    ///                 Role = "Destination Administrator",
+    ///                 Role = "Manage Destination",
     ///             },
     ///             new Fivetran.Inputs.UserGroupMembershipGroupArgs
     ///             {
     ///                 ConnectorId = "test_connector",
     ///                 GroupId = "test_group",
-    ///                 Role = "Destination Administrator",
+    ///                 Role = "Manage Destination",
     ///             },
     ///         },
     ///     });

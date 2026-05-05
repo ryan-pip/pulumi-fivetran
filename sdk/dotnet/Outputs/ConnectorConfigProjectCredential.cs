@@ -25,6 +25,11 @@ namespace Pulumi.Fivetran.Outputs
         public readonly string? Project;
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Amplitude`: The project ID you wish to use with Fivetran.
+        /// </summary>
+        public readonly string? ProjectId;
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `Amplitude`: The secret key of the project.
         /// </summary>
         public readonly string? SecretKey;
@@ -35,10 +40,13 @@ namespace Pulumi.Fivetran.Outputs
 
             string? project,
 
+            string? projectId,
+
             string? secretKey)
         {
             ApiKey = apiKey;
             Project = project;
+            ProjectId = projectId;
             SecretKey = secretKey;
         }
     }

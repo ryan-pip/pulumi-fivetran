@@ -30,18 +30,50 @@ namespace Pulumi.Fivetran
     ///             new Fivetran.Inputs.GroupUsersUserArgs
     ///             {
     ///                 Email = "mail@example.com",
-    ///                 Role = "Destination Analyst",
+    ///                 Role = "Edit Destination",
     ///             },
     ///             new Fivetran.Inputs.GroupUsersUserArgs
     ///             {
     ///                 Email = "another_mail@example.com",
-    ///                 Role = "Destination Analyst",
+    ///                 Role = "Edit Destination",
     ///             },
     ///         },
     ///     });
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// 1. To import an existing `fivetran.GroupUsers` resource into your Terraform state, you need to get **Destination Group ID** on the destination page in your Fivetran dashboard.
+    ///    To retrieve existing groups, use the [fivetran.getGroups data source](https://www.terraform.io/docs/data-sources/groups).
+    /// 2. Define an empty resource in your `.tf` configuration:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Pulumi.Fivetran;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myImportedFivetranGroupUsers = new Fivetran.Index.GroupUsers("my_imported_fivetran_group_users");
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// 3. Run the `pulumi import` command:
+    /// 
+    /// ```sh
+    /// terraform import fivetran_group_users.my_imported_fivetran_group_users {your Destination Group ID}
+    /// ```
+    /// 
+    /// 4. Use the `terraform state show` command to get the values from the state:
+    /// 
+    /// ```sh
+    /// terraform state show 'fivetran_group_users.my_imported_fivetran_group_users'
+    /// ```
+    /// 5. Copy the values and paste them to your `.tf` configuration.
     /// </summary>
     [FivetranResourceType("fivetran:index/groupUsers:GroupUsers")]
     public partial class GroupUsers : global::Pulumi.CustomResource

@@ -119,10 +119,12 @@ type Destination struct {
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
 	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
 	HybridDeploymentAgentId pulumi.StringPtrOutput `pulumi:"hybridDeploymentAgentId"`
-	// Possible values: Directly, SshTunnel, ProxyAgent.
+	// Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
 	NetworkingMethod pulumi.StringOutput `pulumi:"networkingMethod"`
 	// The private link ID.
 	PrivateLinkId pulumi.StringPtrOutput `pulumi:"privateLinkId"`
+	// The proxy agent ID.
+	ProxyAgentId pulumi.StringPtrOutput `pulumi:"proxyAgentId"`
 	// Data processing location. This is where Fivetran will operate and run computation on data.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
@@ -189,10 +191,12 @@ type destinationState struct {
 	GroupId *string `pulumi:"groupId"`
 	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
 	HybridDeploymentAgentId *string `pulumi:"hybridDeploymentAgentId"`
-	// Possible values: Directly, SshTunnel, ProxyAgent.
+	// Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
 	NetworkingMethod *string `pulumi:"networkingMethod"`
 	// The private link ID.
 	PrivateLinkId *string `pulumi:"privateLinkId"`
+	// The proxy agent ID.
+	ProxyAgentId *string `pulumi:"proxyAgentId"`
 	// Data processing location. This is where Fivetran will operate and run computation on data.
 	Region *string `pulumi:"region"`
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
@@ -218,10 +222,12 @@ type DestinationState struct {
 	GroupId pulumi.StringPtrInput
 	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
 	HybridDeploymentAgentId pulumi.StringPtrInput
-	// Possible values: Directly, SshTunnel, ProxyAgent.
+	// Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
 	NetworkingMethod pulumi.StringPtrInput
 	// The private link ID.
 	PrivateLinkId pulumi.StringPtrInput
+	// The proxy agent ID.
+	ProxyAgentId pulumi.StringPtrInput
 	// Data processing location. This is where Fivetran will operate and run computation on data.
 	Region pulumi.StringPtrInput
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
@@ -251,10 +257,12 @@ type destinationArgs struct {
 	GroupId string `pulumi:"groupId"`
 	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
 	HybridDeploymentAgentId *string `pulumi:"hybridDeploymentAgentId"`
-	// Possible values: Directly, SshTunnel, ProxyAgent.
+	// Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
 	NetworkingMethod *string `pulumi:"networkingMethod"`
 	// The private link ID.
 	PrivateLinkId *string `pulumi:"privateLinkId"`
+	// The proxy agent ID.
+	ProxyAgentId *string `pulumi:"proxyAgentId"`
 	// Data processing location. This is where Fivetran will operate and run computation on data.
 	Region string `pulumi:"region"`
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
@@ -279,10 +287,12 @@ type DestinationArgs struct {
 	GroupId pulumi.StringInput
 	// The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
 	HybridDeploymentAgentId pulumi.StringPtrInput
-	// Possible values: Directly, SshTunnel, ProxyAgent.
+	// Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
 	NetworkingMethod pulumi.StringPtrInput
 	// The private link ID.
 	PrivateLinkId pulumi.StringPtrInput
+	// The proxy agent ID.
+	ProxyAgentId pulumi.StringPtrInput
 	// Data processing location. This is where Fivetran will operate and run computation on data.
 	Region pulumi.StringInput
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
@@ -404,7 +414,7 @@ func (o DestinationOutput) HybridDeploymentAgentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Destination) pulumi.StringPtrOutput { return v.HybridDeploymentAgentId }).(pulumi.StringPtrOutput)
 }
 
-// Possible values: Directly, SshTunnel, ProxyAgent.
+// Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
 func (o DestinationOutput) NetworkingMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *Destination) pulumi.StringOutput { return v.NetworkingMethod }).(pulumi.StringOutput)
 }
@@ -412,6 +422,11 @@ func (o DestinationOutput) NetworkingMethod() pulumi.StringOutput {
 // The private link ID.
 func (o DestinationOutput) PrivateLinkId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Destination) pulumi.StringPtrOutput { return v.PrivateLinkId }).(pulumi.StringPtrOutput)
+}
+
+// The proxy agent ID.
+func (o DestinationOutput) ProxyAgentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Destination) pulumi.StringPtrOutput { return v.ProxyAgentId }).(pulumi.StringPtrOutput)
 }
 
 // Data processing location. This is where Fivetran will operate and run computation on data.

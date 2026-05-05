@@ -28,7 +28,7 @@ class GetDestinationResult:
     """
     A collection of values returned by getDestination.
     """
-    def __init__(__self__, config=None, daylight_saving_time_enabled=None, group_id=None, hybrid_deployment_agent_id=None, id=None, networking_method=None, private_link_id=None, region=None, service=None, setup_status=None, time_zone_offset=None):
+    def __init__(__self__, config=None, daylight_saving_time_enabled=None, group_id=None, hybrid_deployment_agent_id=None, id=None, networking_method=None, private_link_id=None, proxy_agent_id=None, region=None, service=None, setup_status=None, time_zone_offset=None):
         if config and not isinstance(config, dict):
             raise TypeError("Expected argument 'config' to be a dict")
         pulumi.set(__self__, "config", config)
@@ -50,6 +50,9 @@ class GetDestinationResult:
         if private_link_id and not isinstance(private_link_id, str):
             raise TypeError("Expected argument 'private_link_id' to be a str")
         pulumi.set(__self__, "private_link_id", private_link_id)
+        if proxy_agent_id and not isinstance(proxy_agent_id, str):
+            raise TypeError("Expected argument 'proxy_agent_id' to be a str")
+        pulumi.set(__self__, "proxy_agent_id", proxy_agent_id)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -99,6 +102,11 @@ class GetDestinationResult:
         return pulumi.get(self, "private_link_id")
 
     @_builtins.property
+    @pulumi.getter(name="proxyAgentId")
+    def proxy_agent_id(self) -> _builtins.str:
+        return pulumi.get(self, "proxy_agent_id")
+
+    @_builtins.property
     @pulumi.getter
     def region(self) -> _builtins.str:
         return pulumi.get(self, "region")
@@ -132,6 +140,7 @@ class AwaitableGetDestinationResult(GetDestinationResult):
             id=self.id,
             networking_method=self.networking_method,
             private_link_id=self.private_link_id,
+            proxy_agent_id=self.proxy_agent_id,
             region=self.region,
             service=self.service,
             setup_status=self.setup_status,
@@ -167,6 +176,7 @@ def get_destination(config: Optional[Union['GetDestinationConfigArgs', 'GetDesti
         id=pulumi.get(__ret__, 'id'),
         networking_method=pulumi.get(__ret__, 'networking_method'),
         private_link_id=pulumi.get(__ret__, 'private_link_id'),
+        proxy_agent_id=pulumi.get(__ret__, 'proxy_agent_id'),
         region=pulumi.get(__ret__, 'region'),
         service=pulumi.get(__ret__, 'service'),
         setup_status=pulumi.get(__ret__, 'setup_status'),
@@ -199,6 +209,7 @@ def get_destination_output(config: pulumi.Input[Optional[Optional[Union['GetDest
         id=pulumi.get(__response__, 'id'),
         networking_method=pulumi.get(__response__, 'networking_method'),
         private_link_id=pulumi.get(__response__, 'private_link_id'),
+        proxy_agent_id=pulumi.get(__response__, 'proxy_agent_id'),
         region=pulumi.get(__response__, 'region'),
         service=pulumi.get(__response__, 'service'),
         setup_status=pulumi.get(__response__, 'setup_status'),

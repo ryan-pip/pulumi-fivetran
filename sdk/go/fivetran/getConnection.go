@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := fivetran.GetConnection(ctx, &fivetran.GetConnectionArgs{
+//			_, err := fivetran.GetConnection(ctx, &fivetran.LookupConnectionArgs{
 //				Id: "anonymous_mystery",
 //			}, nil)
 //			if err != nil {
@@ -38,9 +38,9 @@ import (
 //	}
 //
 // ```
-func GetConnection(ctx *pulumi.Context, args *GetConnectionArgs, opts ...pulumi.InvokeOption) (*GetConnectionResult, error) {
+func LookupConnection(ctx *pulumi.Context, args *LookupConnectionArgs, opts ...pulumi.InvokeOption) (*LookupConnectionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetConnectionResult
+	var rv LookupConnectionResult
 	err := ctx.Invoke("fivetran:index/getConnection:getConnection", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -49,7 +49,7 @@ func GetConnection(ctx *pulumi.Context, args *GetConnectionArgs, opts ...pulumi.
 }
 
 // A collection of arguments for invoking getConnection.
-type GetConnectionArgs struct {
+type LookupConnectionArgs struct {
 	DestinationSchema *GetConnectionDestinationSchema `pulumi:"destinationSchema"`
 	// The unique identifier for the connection within the Fivetran system.
 	Id     string               `pulumi:"id"`
@@ -57,14 +57,14 @@ type GetConnectionArgs struct {
 }
 
 // A collection of values returned by getConnection.
-type GetConnectionResult struct {
+type LookupConnectionResult struct {
 	// The unique identifier of the user who has created the connection in your account.
 	ConnectedBy string `pulumi:"connectedBy"`
 	// The timestamp of the time the connection was created in your account.
 	CreatedAt string `pulumi:"createdAt"`
 	// The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
 	DailySyncTime string `pulumi:"dailySyncTime"`
-	// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
+	// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.
 	DataDelaySensitivity string `pulumi:"dataDelaySensitivity"`
 	// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data*delay*sensitivity set to CUSTOM.
 	DataDelayThreshold int                             `pulumi:"dataDelayThreshold"`
@@ -79,21 +79,21 @@ type GetConnectionResult struct {
 	Id string `pulumi:"id"`
 	// The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
 	Name string `pulumi:"name"`
-	// Possible values: Directly, SshTunnel, ProxyAgent.
+	// The networking method for the connection. Possible values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`.
 	NetworkingMethod string `pulumi:"networkingMethod"`
 	// Specifies whether the connection should be paused after the free trial period has ended.
 	PauseAfterTrial bool `pulumi:"pauseAfterTrial"`
 	// Specifies whether the connection is paused.
 	Paused bool `pulumi:"paused"`
-	// The private link ID.
+	// The private link ID. Required when `networkingMethod` is `PrivateLink`.
 	PrivateLinkId string `pulumi:"privateLinkId"`
-	// The proxy agent ID.
+	// The ID of the proxy agent to use. Required when `networkingMethod` is `ProxyAgent`.
 	ProxyAgentId string `pulumi:"proxyAgentId"`
 	// The connection schedule configuration type. Supported values: auto, manual.
 	ScheduleType string `pulumi:"scheduleType"`
-	// The connector type id within the Fivetran system.
+	// The connection service type (e.g., `postgres`, `mysql`, `s3`, `snowflake`). See [Fivetran connection types documentation](https://fivetran.com/docs/connectors) for available services.
 	Service string `pulumi:"service"`
-	// The connector type version within the Fivetran system.
+	// The connection type version within the Fivetran system.
 	ServiceVersion string               `pulumi:"serviceVersion"`
 	Status         *GetConnectionStatus `pulumi:"status"`
 	// The timestamp of the time the connection sync succeeded last time.
@@ -102,150 +102,150 @@ type GetConnectionResult struct {
 	SyncFrequency int `pulumi:"syncFrequency"`
 }
 
-func GetConnectionOutput(ctx *pulumi.Context, args GetConnectionOutputArgs, opts ...pulumi.InvokeOption) GetConnectionResultOutput {
+func LookupConnectionOutput(ctx *pulumi.Context, args LookupConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetConnectionResultOutput, error) {
-			args := v.(GetConnectionArgs)
+		ApplyT(func(v interface{}) (LookupConnectionResultOutput, error) {
+			args := v.(LookupConnectionArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("fivetran:index/getConnection:getConnection", args, GetConnectionResultOutput{}, options).(GetConnectionResultOutput), nil
-		}).(GetConnectionResultOutput)
+			return ctx.InvokeOutput("fivetran:index/getConnection:getConnection", args, LookupConnectionResultOutput{}, options).(LookupConnectionResultOutput), nil
+		}).(LookupConnectionResultOutput)
 }
 
 // A collection of arguments for invoking getConnection.
-type GetConnectionOutputArgs struct {
+type LookupConnectionOutputArgs struct {
 	DestinationSchema GetConnectionDestinationSchemaPtrInput `pulumi:"destinationSchema"`
 	// The unique identifier for the connection within the Fivetran system.
 	Id     pulumi.StringInput          `pulumi:"id"`
 	Status GetConnectionStatusPtrInput `pulumi:"status"`
 }
 
-func (GetConnectionOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetConnectionArgs)(nil)).Elem()
+func (LookupConnectionOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupConnectionArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getConnection.
-type GetConnectionResultOutput struct{ *pulumi.OutputState }
+type LookupConnectionResultOutput struct{ *pulumi.OutputState }
 
-func (GetConnectionResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetConnectionResult)(nil)).Elem()
+func (LookupConnectionResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupConnectionResult)(nil)).Elem()
 }
 
-func (o GetConnectionResultOutput) ToGetConnectionResultOutput() GetConnectionResultOutput {
+func (o LookupConnectionResultOutput) ToLookupConnectionResultOutput() LookupConnectionResultOutput {
 	return o
 }
 
-func (o GetConnectionResultOutput) ToGetConnectionResultOutputWithContext(ctx context.Context) GetConnectionResultOutput {
+func (o LookupConnectionResultOutput) ToLookupConnectionResultOutputWithContext(ctx context.Context) LookupConnectionResultOutput {
 	return o
 }
 
 // The unique identifier of the user who has created the connection in your account.
-func (o GetConnectionResultOutput) ConnectedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionResult) string { return v.ConnectedBy }).(pulumi.StringOutput)
+func (o LookupConnectionResultOutput) ConnectedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.ConnectedBy }).(pulumi.StringOutput)
 }
 
 // The timestamp of the time the connection was created in your account.
-func (o GetConnectionResultOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+func (o LookupConnectionResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 // The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
-func (o GetConnectionResultOutput) DailySyncTime() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionResult) string { return v.DailySyncTime }).(pulumi.StringOutput)
+func (o LookupConnectionResultOutput) DailySyncTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.DailySyncTime }).(pulumi.StringOutput)
 }
 
-// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
-func (o GetConnectionResultOutput) DataDelaySensitivity() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionResult) string { return v.DataDelaySensitivity }).(pulumi.StringOutput)
+// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.
+func (o LookupConnectionResultOutput) DataDelaySensitivity() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.DataDelaySensitivity }).(pulumi.StringOutput)
 }
 
 // Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data*delay*sensitivity set to CUSTOM.
-func (o GetConnectionResultOutput) DataDelayThreshold() pulumi.IntOutput {
-	return o.ApplyT(func(v GetConnectionResult) int { return v.DataDelayThreshold }).(pulumi.IntOutput)
+func (o LookupConnectionResultOutput) DataDelayThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupConnectionResult) int { return v.DataDelayThreshold }).(pulumi.IntOutput)
 }
 
-func (o GetConnectionResultOutput) DestinationSchema() GetConnectionDestinationSchemaPtrOutput {
-	return o.ApplyT(func(v GetConnectionResult) *GetConnectionDestinationSchema { return v.DestinationSchema }).(GetConnectionDestinationSchemaPtrOutput)
+func (o LookupConnectionResultOutput) DestinationSchema() GetConnectionDestinationSchemaPtrOutput {
+	return o.ApplyT(func(v LookupConnectionResult) *GetConnectionDestinationSchema { return v.DestinationSchema }).(GetConnectionDestinationSchemaPtrOutput)
 }
 
 // The timestamp of the time the connection sync failed last time.
-func (o GetConnectionResultOutput) FailedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionResult) string { return v.FailedAt }).(pulumi.StringOutput)
+func (o LookupConnectionResultOutput) FailedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.FailedAt }).(pulumi.StringOutput)
 }
 
 // The unique identifier for the Group (Destination) within the Fivetran system.
-func (o GetConnectionResultOutput) GroupId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionResult) string { return v.GroupId }).(pulumi.StringOutput)
+func (o LookupConnectionResultOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.GroupId }).(pulumi.StringOutput)
 }
 
 // The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
-func (o GetConnectionResultOutput) HybridDeploymentAgentId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionResult) string { return v.HybridDeploymentAgentId }).(pulumi.StringOutput)
+func (o LookupConnectionResultOutput) HybridDeploymentAgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.HybridDeploymentAgentId }).(pulumi.StringOutput)
 }
 
 // The unique identifier for the connection within the Fivetran system.
-func (o GetConnectionResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupConnectionResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
-func (o GetConnectionResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionResult) string { return v.Name }).(pulumi.StringOutput)
+func (o LookupConnectionResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Possible values: Directly, SshTunnel, ProxyAgent.
-func (o GetConnectionResultOutput) NetworkingMethod() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionResult) string { return v.NetworkingMethod }).(pulumi.StringOutput)
+// The networking method for the connection. Possible values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`.
+func (o LookupConnectionResultOutput) NetworkingMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.NetworkingMethod }).(pulumi.StringOutput)
 }
 
 // Specifies whether the connection should be paused after the free trial period has ended.
-func (o GetConnectionResultOutput) PauseAfterTrial() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetConnectionResult) bool { return v.PauseAfterTrial }).(pulumi.BoolOutput)
+func (o LookupConnectionResultOutput) PauseAfterTrial() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupConnectionResult) bool { return v.PauseAfterTrial }).(pulumi.BoolOutput)
 }
 
 // Specifies whether the connection is paused.
-func (o GetConnectionResultOutput) Paused() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetConnectionResult) bool { return v.Paused }).(pulumi.BoolOutput)
+func (o LookupConnectionResultOutput) Paused() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupConnectionResult) bool { return v.Paused }).(pulumi.BoolOutput)
 }
 
-// The private link ID.
-func (o GetConnectionResultOutput) PrivateLinkId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionResult) string { return v.PrivateLinkId }).(pulumi.StringOutput)
+// The private link ID. Required when `networkingMethod` is `PrivateLink`.
+func (o LookupConnectionResultOutput) PrivateLinkId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.PrivateLinkId }).(pulumi.StringOutput)
 }
 
-// The proxy agent ID.
-func (o GetConnectionResultOutput) ProxyAgentId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionResult) string { return v.ProxyAgentId }).(pulumi.StringOutput)
+// The ID of the proxy agent to use. Required when `networkingMethod` is `ProxyAgent`.
+func (o LookupConnectionResultOutput) ProxyAgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.ProxyAgentId }).(pulumi.StringOutput)
 }
 
 // The connection schedule configuration type. Supported values: auto, manual.
-func (o GetConnectionResultOutput) ScheduleType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionResult) string { return v.ScheduleType }).(pulumi.StringOutput)
+func (o LookupConnectionResultOutput) ScheduleType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.ScheduleType }).(pulumi.StringOutput)
 }
 
-// The connector type id within the Fivetran system.
-func (o GetConnectionResultOutput) Service() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionResult) string { return v.Service }).(pulumi.StringOutput)
+// The connection service type (e.g., `postgres`, `mysql`, `s3`, `snowflake`). See [Fivetran connection types documentation](https://fivetran.com/docs/connectors) for available services.
+func (o LookupConnectionResultOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.Service }).(pulumi.StringOutput)
 }
 
-// The connector type version within the Fivetran system.
-func (o GetConnectionResultOutput) ServiceVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionResult) string { return v.ServiceVersion }).(pulumi.StringOutput)
+// The connection type version within the Fivetran system.
+func (o LookupConnectionResultOutput) ServiceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.ServiceVersion }).(pulumi.StringOutput)
 }
 
-func (o GetConnectionResultOutput) Status() GetConnectionStatusPtrOutput {
-	return o.ApplyT(func(v GetConnectionResult) *GetConnectionStatus { return v.Status }).(GetConnectionStatusPtrOutput)
+func (o LookupConnectionResultOutput) Status() GetConnectionStatusPtrOutput {
+	return o.ApplyT(func(v LookupConnectionResult) *GetConnectionStatus { return v.Status }).(GetConnectionStatusPtrOutput)
 }
 
 // The timestamp of the time the connection sync succeeded last time.
-func (o GetConnectionResultOutput) SucceededAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionResult) string { return v.SucceededAt }).(pulumi.StringOutput)
+func (o LookupConnectionResultOutput) SucceededAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectionResult) string { return v.SucceededAt }).(pulumi.StringOutput)
 }
 
 // The connection sync frequency in minutes.
-func (o GetConnectionResultOutput) SyncFrequency() pulumi.IntOutput {
-	return o.ApplyT(func(v GetConnectionResult) int { return v.SyncFrequency }).(pulumi.IntOutput)
+func (o LookupConnectionResultOutput) SyncFrequency() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupConnectionResult) int { return v.SyncFrequency }).(pulumi.IntOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetConnectionResultOutput{})
+	pulumi.RegisterOutputType(LookupConnectionResultOutput{})
 }

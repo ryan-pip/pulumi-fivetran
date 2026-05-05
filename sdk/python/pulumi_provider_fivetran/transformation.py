@@ -224,8 +224,6 @@ class Transformation(pulumi.CustomResource):
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        Resource is in ALPHA state.
-
         This resource allows you to add, manage and delete transformation projects in your account.
 
         ## Example Usage
@@ -325,8 +323,6 @@ class Transformation(pulumi.CustomResource):
                  args: Optional[TransformationArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource is in ALPHA state.
-
         This resource allows you to add, manage and delete transformation projects in your account.
 
         ## Example Usage
