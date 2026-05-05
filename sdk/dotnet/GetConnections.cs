@@ -47,6 +47,18 @@ namespace Pulumi.Fivetran
             set => _connections = value;
         }
 
+        /// <summary>
+        /// The ID of the group (destination) to filter connections by.
+        /// </summary>
+        [Input("groupId")]
+        public string? GroupId { get; set; }
+
+        /// <summary>
+        /// The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+        /// </summary>
+        [Input("schemaName")]
+        public string? SchemaName { get; set; }
+
         public GetConnectionsArgs()
         {
         }
@@ -63,6 +75,18 @@ namespace Pulumi.Fivetran
             set => _connections = value;
         }
 
+        /// <summary>
+        /// The ID of the group (destination) to filter connections by.
+        /// </summary>
+        [Input("groupId")]
+        public Input<string>? GroupId { get; set; }
+
+        /// <summary>
+        /// The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+        /// </summary>
+        [Input("schemaName")]
+        public Input<string>? SchemaName { get; set; }
+
         public GetConnectionsInvokeArgs()
         {
         }
@@ -75,18 +99,32 @@ namespace Pulumi.Fivetran
     {
         public readonly ImmutableArray<Outputs.GetConnectionsConnectionResult> Connections;
         /// <summary>
+        /// The ID of the group (destination) to filter connections by.
+        /// </summary>
+        public readonly string? GroupId;
+        /// <summary>
         /// The ID of this resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+        /// </summary>
+        public readonly string? SchemaName;
 
         [OutputConstructor]
         private GetConnectionsResult(
             ImmutableArray<Outputs.GetConnectionsConnectionResult> connections,
 
-            string id)
+            string? groupId,
+
+            string id,
+
+            string? schemaName)
         {
             Connections = connections;
+            GroupId = groupId;
             Id = id;
+            SchemaName = schemaName;
         }
     }
 }

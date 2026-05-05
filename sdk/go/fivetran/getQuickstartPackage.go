@@ -56,6 +56,8 @@ type GetQuickstartPackageArgs struct {
 
 // A collection of values returned by getQuickstartPackage.
 type GetQuickstartPackageResult struct {
+	// Map of configurable variable definitions for the package, keyed by variable name.
+	ConfigurableVariables map[string]GetQuickstartPackageConfigurableVariables `pulumi:"configurableVariables"`
 	// The set of connector types
 	ConnectorTypes []string `pulumi:"connectorTypes"`
 	// The unique identifier for the Quickstart transformation package definition within the Fivetran system
@@ -100,6 +102,13 @@ func (o GetQuickstartPackageResultOutput) ToGetQuickstartPackageResultOutput() G
 
 func (o GetQuickstartPackageResultOutput) ToGetQuickstartPackageResultOutputWithContext(ctx context.Context) GetQuickstartPackageResultOutput {
 	return o
+}
+
+// Map of configurable variable definitions for the package, keyed by variable name.
+func (o GetQuickstartPackageResultOutput) ConfigurableVariables() GetQuickstartPackageConfigurableVariablesMapOutput {
+	return o.ApplyT(func(v GetQuickstartPackageResult) map[string]GetQuickstartPackageConfigurableVariables {
+		return v.ConfigurableVariables
+	}).(GetQuickstartPackageConfigurableVariablesMapOutput)
 }
 
 // The set of connector types

@@ -14,6 +14,10 @@ namespace Pulumi.Fivetran.Outputs
     public sealed class GetTransformationsTransformationTransformationConfigResult
     {
         /// <summary>
+        /// Map of configurable variable values for the Quickstart transformation, keyed by variable name.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> ConfigurableVariables;
+        /// <summary>
         /// The list of the connection identifiers to be used for the integrated schedule. Also used to identify package*name automatically if package*name was not specified
         /// </summary>
         public readonly ImmutableArray<string> ConnectionIds;
@@ -41,6 +45,8 @@ namespace Pulumi.Fivetran.Outputs
 
         [OutputConstructor]
         private GetTransformationsTransformationTransformationConfigResult(
+            ImmutableDictionary<string, string> configurableVariables,
+
             ImmutableArray<string> connectionIds,
 
             ImmutableArray<string> excludedModels,
@@ -55,6 +61,7 @@ namespace Pulumi.Fivetran.Outputs
 
             bool upgradeAvailable)
         {
+            ConfigurableVariables = configurableVariables;
             ConnectionIds = connectionIds;
             ExcludedModels = excludedModels;
             Name = name;

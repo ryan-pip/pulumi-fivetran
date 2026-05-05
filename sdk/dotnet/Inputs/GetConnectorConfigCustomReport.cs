@@ -53,6 +53,19 @@ namespace Pulumi.Fivetran.Inputs
         [Input("breakdown", required: true)]
         public string Breakdown { get; set; } = null!;
 
+        [Input("breakdowns", required: true)]
+        private List<string>? _breakdowns;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `RedditAds`: Breakdowns are now used instead of level and segmentation. They provide a filter for report data.
+        /// </summary>
+        public List<string> Breakdowns
+        {
+            get => _breakdowns ?? (_breakdowns = new List<string>());
+            set => _breakdowns = value;
+        }
+
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `SnapchatAds`: [Sets Breakout on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#breakout).
@@ -86,6 +99,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Criteo`: Dimensions to be synced
         /// 	- Service `TiktokAds`: Dimensions to synced
         /// </summary>
         public List<string> Dimensions
@@ -126,6 +140,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Criteo`: Metrics to be synced
         /// 	- Service `TiktokAds`: Metrics to be synced
         /// </summary>
         public List<string> Metrics
@@ -157,6 +172,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Criteo`: Type of report to be generated
         /// 	- Service `TiktokAds`: Type of report to be generated
         /// </summary>
         [Input("reportType", required: true)]
@@ -184,10 +200,24 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Criteo`: Destination Table name of report
         /// 	- Service `TiktokAds`: Destination Table name of report
         /// </summary>
         [Input("tableName", required: true)]
         public string TableName { get; set; } = null!;
+
+        [Input("timeDimensions", required: true)]
+        private List<string>? _timeDimensions;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Criteo`: Time dimensions to be synced
+        /// </summary>
+        public List<string> TimeDimensions
+        {
+            get => _timeDimensions ?? (_timeDimensions = new List<string>());
+            set => _timeDimensions = value;
+        }
 
         /// <summary>
         /// Field usage depends on `Service` value: 

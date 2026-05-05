@@ -67,7 +67,7 @@ namespace Pulumi.Fivetran.Inputs
         public Input<string> Picture { get; set; } = null!;
 
         /// <summary>
-        /// The group role that you would like to assign this new user to. Supported group roles: ‘Destination Administrator‘, ‘Destination Reviewer‘, ‘Destination Analyst‘, ‘Connector Creator‘, or a custom destination role
+        /// The group role that you would like to assign this new user to. Supported group roles: ‘Manage Destination‘, ‘View Destination‘, ‘Edit Destination‘, ‘Create Connection‘, or a custom destination role
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;

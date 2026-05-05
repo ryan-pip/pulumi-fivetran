@@ -12,12 +12,23 @@ namespace Pulumi.Fivetran.Inputs
 
     public sealed class GetExternalLoggingConfigInputArgs : global::Pulumi.ResourceArgs
     {
-        [Input("apiKey")]
-        private Input<string>? _apiKey;
+        [Input("accessKeyId", required: true)]
+        public Input<string> AccessKeyId { get; set; } = null!;
 
-        /// <summary>
-        /// API Key
-        /// </summary>
+        [Input("accessKeySecret", required: true)]
+        private Input<string>? _accessKeySecret;
+        public Input<string>? AccessKeySecret
+        {
+            get => _accessKeySecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKeySecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("apiKey", required: true)]
+        private Input<string>? _apiKey;
         public Input<string>? ApiKey
         {
             get => _apiKey;
@@ -28,54 +39,29 @@ namespace Pulumi.Fivetran.Inputs
             }
         }
 
-        /// <summary>
-        /// Channel
-        /// </summary>
-        [Input("channel")]
-        public Input<string>? Channel { get; set; }
+        [Input("channel", required: true)]
+        public Input<string> Channel { get; set; } = null!;
 
-        /// <summary>
-        /// Enable SSL
-        /// </summary>
-        [Input("enableSsl")]
-        public Input<bool>? EnableSsl { get; set; }
+        [Input("enableSsl", required: true)]
+        public Input<bool> EnableSsl { get; set; } = null!;
 
-        /// <summary>
-        /// external_id
-        /// </summary>
-        [Input("externalId")]
-        public Input<string>? ExternalId { get; set; }
+        [Input("externalId", required: true)]
+        public Input<string> ExternalId { get; set; } = null!;
 
-        /// <summary>
-        /// Server name
-        /// </summary>
-        [Input("host")]
-        public Input<string>? Host { get; set; }
+        [Input("host", required: true)]
+        public Input<string> Host { get; set; } = null!;
 
-        /// <summary>
-        /// Server name
-        /// </summary>
-        [Input("hostname")]
-        public Input<string>? Hostname { get; set; }
+        [Input("hostname", required: true)]
+        public Input<string> Hostname { get; set; } = null!;
 
-        /// <summary>
-        /// Log Group Name
-        /// </summary>
-        [Input("logGroupName")]
-        public Input<string>? LogGroupName { get; set; }
+        [Input("logGroupName", required: true)]
+        public Input<string> LogGroupName { get; set; } = null!;
 
-        /// <summary>
-        /// Port
-        /// </summary>
-        [Input("port")]
-        public Input<int>? Port { get; set; }
+        [Input("port", required: true)]
+        public Input<int> Port { get; set; } = null!;
 
-        [Input("primaryKey")]
+        [Input("primaryKey", required: true)]
         private Input<string>? _primaryKey;
-
-        /// <summary>
-        /// Primary Key
-        /// </summary>
         public Input<string>? PrimaryKey
         {
             get => _primaryKey;
@@ -86,36 +72,23 @@ namespace Pulumi.Fivetran.Inputs
             }
         }
 
-        /// <summary>
-        /// Project Id for Google Cloud Logging
-        /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("projectId", required: true)]
+        public Input<string> ProjectId { get; set; } = null!;
 
-        /// <summary>
-        /// Region
-        /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
 
-        /// <summary>
-        /// Role Arn
-        /// </summary>
-        [Input("roleArn")]
-        public Input<string>? RoleArn { get; set; }
+        [Input("roleArn", required: true)]
+        public Input<string> RoleArn { get; set; } = null!;
 
-        /// <summary>
-        /// Sub Domain
-        /// </summary>
-        [Input("subDomain")]
-        public Input<string>? SubDomain { get; set; }
+        [Input("serviceAccountKey", required: true)]
+        public Input<string> ServiceAccountKey { get; set; } = null!;
 
-        [Input("token")]
+        [Input("subDomain", required: true)]
+        public Input<string> SubDomain { get; set; } = null!;
+
+        [Input("token", required: true)]
         private Input<string>? _token;
-
-        /// <summary>
-        /// Token
-        /// </summary>
         public Input<string>? Token
         {
             get => _token;
@@ -126,11 +99,8 @@ namespace Pulumi.Fivetran.Inputs
             }
         }
 
-        /// <summary>
-        /// Workspace ID
-        /// </summary>
-        [Input("workspaceId")]
-        public Input<string>? WorkspaceId { get; set; }
+        [Input("workspaceId", required: true)]
+        public Input<string> WorkspaceId { get; set; } = null!;
 
         public GetExternalLoggingConfigInputArgs()
         {

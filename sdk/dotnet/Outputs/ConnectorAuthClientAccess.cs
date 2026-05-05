@@ -25,11 +25,12 @@ namespace Pulumi.Fivetran.Outputs
         /// 	- Service `DoubleClickCampaignManager`: `Client ID` of your Google Campaign Manager 360 client application.
         /// 	- Service `DoubleClickPublishers`: `Client ID` of your Google Ad Manager client application.
         /// 	- Service `Dropbox`: `Client ID` of your Dropbox client application.
-        /// 	- Service `Dynamics365`: `Client ID` of your Dynamic 365 client application, or Service Principal.
+        /// 	- Service `Dynamics365`: Client ID of your Dynamics 365 client application, or service principal.
         /// 	- Service `FacebookAds`: `Client ID` of your Facebook client application.
         /// 	- Service `FacebookPages`: `Client ID` of your Facebook  client application.
         /// 	- Service `FinancialForce`: `Client ID` of your Salesforce client application.
         /// 	- Service `Front`: `Client ID` of your Front client application.
+        /// 	- Service `Gmail`: `Client ID` of your Gmail client application.
         /// 	- Service `GoogleAds`: `Client ID` of your Google Ads client application.
         /// 	- Service `GoogleAnalytics`: `Client ID` of your Google Analytics client application.
         /// 	- Service `GoogleAnalytics4`: `Client ID` of your Google Analytics client application.
@@ -41,7 +42,8 @@ namespace Pulumi.Fivetran.Outputs
         /// 	- Service `GoogleSheets`: `Client ID` of your Google Sheets client application.
         /// 	- Service `Helpscout`: `Client ID` of your Help Scout client application.
         /// 	- Service `Hubspot`: `Client ID` of your HubSpot client application.
-        /// 	- Service `InstagramBusiness`: `Client ID` of your Facebook  client application.
+        /// 	- Service `InstagramBusiness`: `Client ID` of your Facebook client application.
+        /// 	- Service `LightspeedRetailXseries`: `Client ID` of your Lightspeed Retail X-Series client application.
         /// 	- Service `LinkedinAds`: `Client ID` of your LinkedIn client application.
         /// 	- Service `LinkedinCompanyPages`: `Client ID` of your LinkedIn client application.
         /// 	- Service `MicrosoftLists`: `Client ID` of your Microsoft client application.
@@ -49,6 +51,7 @@ namespace Pulumi.Fivetran.Outputs
         /// 	- Service `Optimizely`: `Client ID` of your Optimizely client application.
         /// 	- Service `Outreach`: `Client ID` of your Outreach client application.
         /// 	- Service `Pardot`: `Client ID` of your Pardot client application.
+        /// 	- Service `PardotSandbox`: `Client ID` of your Pardot client application.
         /// 	- Service `PinterestAds`: `Client ID` of your Pinterest client application.
         /// 	- Service `Pipedrive`: `Client ID` of your Pipedrive client application.
         /// 	- Service `Qualtrics`: `Client ID` of your Qualtrics client application.
@@ -66,6 +69,7 @@ namespace Pulumi.Fivetran.Outputs
         /// 	- Service `Typeform`: The Typeform client ID.
         /// 	- Service `YahooGemini`: `Client ID` of your Yahoo Gemini client application.
         /// 	- Service `YoutubeAnalytics`: `Client ID` of your Youtube client application.
+        /// 	- Service `Zendesk`: `Identifier` of your Zendesk Confidential OAuth client app.
         /// 	- Service `ZohoCrm`: `Client ID` of your Zoho client application.
         /// </summary>
         public readonly string? ClientId;
@@ -81,11 +85,12 @@ namespace Pulumi.Fivetran.Outputs
         /// 	- Service `DoubleClickCampaignManager`: `Client Secret` of your Google Campaign Manager 360 client application.
         /// 	- Service `DoubleClickPublishers`: `Client Secret` of your Google Ad Manager client application.
         /// 	- Service `Dropbox`: `Client Secret` of your Dropbox client application.
-        /// 	- Service `Dynamics365`: `Client Secret` of your Dynamic 365 client application, or Service Principal.
+        /// 	- Service `Dynamics365`: Client Secret of your Dynamics 365 client application, or service principal.
         /// 	- Service `FacebookAds`: `Client Secret` of your Facebook client application.
         /// 	- Service `FacebookPages`: `Client Secret` of your Facebook client application.
         /// 	- Service `FinancialForce`: `Client Secret` of your Salesforce client application.
         /// 	- Service `Front`: `Client Secret` of your Front client application.
+        /// 	- Service `Gmail`: `Client Secret` of your Gmail client application.
         /// 	- Service `GoogleAds`: `Client Secret` of your Google Ads client application.
         /// 	- Service `GoogleAnalytics`: `Client Secret` of your Google Analytics client application.
         /// 	- Service `GoogleAnalytics4`: `Client Secret` of your Google Analytics client application.
@@ -98,6 +103,7 @@ namespace Pulumi.Fivetran.Outputs
         /// 	- Service `Helpscout`: `Client Secret` of your Help Scout client application.
         /// 	- Service `Hubspot`: `Client Secret` of your HubSpot client application.
         /// 	- Service `InstagramBusiness`: `Client Secret` of your Facebook client application.
+        /// 	- Service `LightspeedRetailXseries`: `Client Secret` of your Lightspeed Retail X-Series client application.
         /// 	- Service `LinkedinAds`: `Client Secret` of your LinkedIn client application.
         /// 	- Service `LinkedinCompanyPages`: `Client Secret` of your LinkedIn client application.
         /// 	- Service `MicrosoftLists`: `Client Secret` of your Microsoft client application.
@@ -105,6 +111,7 @@ namespace Pulumi.Fivetran.Outputs
         /// 	- Service `Optimizely`: `Client Secret` of your Optimizely client application.
         /// 	- Service `Outreach`: `Client Secret` of your Outreach client application.
         /// 	- Service `Pardot`: `Client Secret` of your Pardot client application.
+        /// 	- Service `PardotSandbox`: `Client Secret` of your Pardot client application.
         /// 	- Service `PinterestAds`: `Client Secret` of your Pinterest client application.
         /// 	- Service `Pipedrive`: `Client Secret` of your Pipedrive client application.
         /// 	- Service `Qualtrics`: `Client Secret` of your Qualtrics client application.
@@ -122,12 +129,13 @@ namespace Pulumi.Fivetran.Outputs
         /// 	- Service `Typeform`: The Typeform client secret.
         /// 	- Service `YahooGemini`: `Client Secret` of your Yahoo Gemini client application.
         /// 	- Service `YoutubeAnalytics`: `Client Secret` of your Youtube client application.
+        /// 	- Service `Zendesk`: `Client Secret` of your Zendesk Confidential OAuth client app.
         /// 	- Service `ZohoCrm`: `Client Secret` of your Zoho client application.
         /// </summary>
         public readonly string? ClientSecret;
         /// <summary>
         /// Field usage depends on `Service` value: 
-        /// 	- Service `GoogleAds`: Your approved `Developer token` to connect to the Google Ads API.
+        /// 	- Service `GoogleAds`: Not required. You can provide your own developer token with your custom client.
         /// </summary>
         public readonly string? DeveloperToken;
         /// <summary>

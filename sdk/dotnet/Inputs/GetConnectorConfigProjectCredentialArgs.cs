@@ -36,6 +36,13 @@ namespace Pulumi.Fivetran.Inputs
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Amplitude`: The project ID you wish to use with Fivetran.
+        /// </summary>
+        [Input("projectId", required: true)]
+        public Input<string> ProjectId { get; set; } = null!;
+
         [Input("secretKey", required: true)]
         private Input<string>? _secretKey;
 

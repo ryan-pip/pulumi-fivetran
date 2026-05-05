@@ -63,6 +63,7 @@ type LookupDestinationResult struct {
 	Id                        string                `pulumi:"id"`
 	NetworkingMethod          string                `pulumi:"networkingMethod"`
 	PrivateLinkId             string                `pulumi:"privateLinkId"`
+	ProxyAgentId              string                `pulumi:"proxyAgentId"`
 	Region                    string                `pulumi:"region"`
 	Service                   string                `pulumi:"service"`
 	SetupStatus               string                `pulumi:"setupStatus"`
@@ -129,6 +130,10 @@ func (o LookupDestinationResultOutput) NetworkingMethod() pulumi.StringOutput {
 
 func (o LookupDestinationResultOutput) PrivateLinkId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDestinationResult) string { return v.PrivateLinkId }).(pulumi.StringOutput)
+}
+
+func (o LookupDestinationResultOutput) ProxyAgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDestinationResult) string { return v.ProxyAgentId }).(pulumi.StringOutput)
 }
 
 func (o LookupDestinationResultOutput) Region() pulumi.StringOutput {

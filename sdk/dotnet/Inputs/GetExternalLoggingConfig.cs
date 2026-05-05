@@ -12,113 +12,79 @@ namespace Pulumi.Fivetran.Inputs
 
     public sealed class GetExternalLoggingConfigArgs : global::Pulumi.InvokeArgs
     {
-        [Input("apiKey")]
-        private string? _apiKey;
+        [Input("accessKeyId", required: true)]
+        public string AccessKeyId { get; set; } = null!;
 
-        /// <summary>
-        /// API Key
-        /// </summary>
+        [Input("accessKeySecret", required: true)]
+        private string? _accessKeySecret;
+        public string? AccessKeySecret
+        {
+            get => _accessKeySecret;
+            set => _accessKeySecret = value;
+        }
+
+        [Input("apiKey", required: true)]
+        private string? _apiKey;
         public string? ApiKey
         {
             get => _apiKey;
             set => _apiKey = value;
         }
 
-        /// <summary>
-        /// Channel
-        /// </summary>
-        [Input("channel")]
-        public string? Channel { get; set; }
+        [Input("channel", required: true)]
+        public string Channel { get; set; } = null!;
 
-        /// <summary>
-        /// Enable SSL
-        /// </summary>
-        [Input("enableSsl")]
-        public bool? EnableSsl { get; set; }
+        [Input("enableSsl", required: true)]
+        public bool EnableSsl { get; set; }
 
-        /// <summary>
-        /// external_id
-        /// </summary>
-        [Input("externalId")]
-        public string? ExternalId { get; set; }
+        [Input("externalId", required: true)]
+        public string ExternalId { get; set; } = null!;
 
-        /// <summary>
-        /// Server name
-        /// </summary>
-        [Input("host")]
-        public string? Host { get; set; }
+        [Input("host", required: true)]
+        public string Host { get; set; } = null!;
 
-        /// <summary>
-        /// Server name
-        /// </summary>
-        [Input("hostname")]
-        public string? Hostname { get; set; }
+        [Input("hostname", required: true)]
+        public string Hostname { get; set; } = null!;
 
-        /// <summary>
-        /// Log Group Name
-        /// </summary>
-        [Input("logGroupName")]
-        public string? LogGroupName { get; set; }
+        [Input("logGroupName", required: true)]
+        public string LogGroupName { get; set; } = null!;
 
-        /// <summary>
-        /// Port
-        /// </summary>
-        [Input("port")]
-        public int? Port { get; set; }
+        [Input("port", required: true)]
+        public int Port { get; set; }
 
-        [Input("primaryKey")]
+        [Input("primaryKey", required: true)]
         private string? _primaryKey;
-
-        /// <summary>
-        /// Primary Key
-        /// </summary>
         public string? PrimaryKey
         {
             get => _primaryKey;
             set => _primaryKey = value;
         }
 
-        /// <summary>
-        /// Project Id for Google Cloud Logging
-        /// </summary>
-        [Input("projectId")]
-        public string? ProjectId { get; set; }
+        [Input("projectId", required: true)]
+        public string ProjectId { get; set; } = null!;
 
-        /// <summary>
-        /// Region
-        /// </summary>
-        [Input("region")]
-        public string? Region { get; set; }
+        [Input("region", required: true)]
+        public string Region { get; set; } = null!;
 
-        /// <summary>
-        /// Role Arn
-        /// </summary>
-        [Input("roleArn")]
-        public string? RoleArn { get; set; }
+        [Input("roleArn", required: true)]
+        public string RoleArn { get; set; } = null!;
 
-        /// <summary>
-        /// Sub Domain
-        /// </summary>
-        [Input("subDomain")]
-        public string? SubDomain { get; set; }
+        [Input("serviceAccountKey", required: true)]
+        public string ServiceAccountKey { get; set; } = null!;
 
-        [Input("token")]
+        [Input("subDomain", required: true)]
+        public string SubDomain { get; set; } = null!;
+
+        [Input("token", required: true)]
         private string? _token;
-
-        /// <summary>
-        /// Token
-        /// </summary>
         public string? Token
         {
             get => _token;
             set => _token = value;
         }
 
-        /// <summary>
-        /// Workspace ID
-        /// </summary>
-        [Input("workspaceId")]
-        public string? WorkspaceId { get; set; }
+        [Input("workspaceId", required: true)]
+        public string WorkspaceId { get; set; } = null!;
 
         public GetExternalLoggingConfigArgs()
         {

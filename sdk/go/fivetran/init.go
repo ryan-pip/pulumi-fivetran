@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "fivetran:index/connection:Connection":
+		r = &Connection{}
+	case "fivetran:index/connectionConfig:ConnectionConfig":
+		r = &ConnectionConfig{}
 	case "fivetran:index/connector:Connector":
 		r = &Connector{}
 	case "fivetran:index/connectorCertificates:ConnectorCertificates":
@@ -31,6 +35,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ConnectorSchedule{}
 	case "fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig":
 		r = &ConnectorSchemaConfig{}
+	case "fivetran:index/connectorSdkPackage:ConnectorSdkPackage":
+		r = &ConnectorSdkPackage{}
 	case "fivetran:index/destination:Destination":
 		r = &Destination{}
 	case "fivetran:index/destinationCertificates:DestinationCertificates":
@@ -102,6 +108,16 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"fivetran",
+		"index/connection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"fivetran",
+		"index/connectionConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"fivetran",
 		"index/connector",
 		&module{version},
 	)
@@ -123,6 +139,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"fivetran",
 		"index/connectorSchemaConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"fivetran",
+		"index/connectorSdkPackage",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

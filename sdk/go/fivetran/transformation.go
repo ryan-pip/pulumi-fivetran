@@ -11,8 +11,6 @@ import (
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
-// Resource is in ALPHA state.
-//
 // This resource allows you to add, manage and delete transformation projects in your account.
 //
 // ## Example Usage

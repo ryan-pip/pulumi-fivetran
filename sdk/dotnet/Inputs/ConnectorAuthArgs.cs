@@ -17,6 +17,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `AmazonDsp`: Your Amazon DSP access token.
         /// 	- Service `AutodeskBim360`: Your Autodesk BIM 360 Access Token.
         /// 	- Service `AzureSqlDb`: The long-lived Access token carries the information necessary to access API resources.
         /// 	- Service `AzureSqlManagedDb`: The long-lived Access token carries the information necessary to access API resources.
@@ -25,16 +26,19 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Docebo`: Your Docebo Access Token.
         /// 	- Service `Drift`: Your Drift access token.
         /// 	- Service `EmploymentHero`: Your Employment Hero access token.
-        /// 	- Service `FacebookAds`: The long-lived `Access token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to query the Facebook Ads API
+        /// 	- Service `FacebookAds`: The long-lived `Access token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to query the Facebook Ads API. Use either `AccessToken` or `UserAccessToken`, not both at the same time.
         /// 	- Service `FacebookPages`: The `Access Token` carries the information necessary for API resources to fetch data
         /// 	- Service `Freshbooks`: Your FreshBooks Access Token.
         /// 	- Service `Gitlab`: Your GitLab access token.
+        /// 	- Service `Gmail`: The `Access Token` that carries the information necessary for API resources to fetch data.
         /// 	- Service `GoogleBusinessProfile`: Your Google Business Profile Access token.
         /// 	- Service `GoogleCalendar`: Your Google Calendar access token.
         /// 	- Service `GoogleClassroom`: The `Access Token` that carries the information necessary for API resources to fetch data.
+        /// 	- Service `GoogleTagManager`: Your Google Tag Manager access token.
         /// 	- Service `GoogleTasks`: The access token that carries the information necessary for API resources to your Google Tasks fetch data.
         /// 	- Service `InstagramBusiness`: The `Access Token` carries the information necessary for API resources to fetch data
         /// 	- Service `Intercom`: The long-lived `Access Token` carries the information necessary for API resources to fetch data.
+        /// 	- Service `LightspeedRetailXseries`: Your Lightspeed Retail X-Series access token.
         /// 	- Service `Medallia`: Your Medallia access token that contains all the information necessary for the API resources to fetch your data.
         /// 	- Service `PinterestOrganic`: Your Pinterest access token.
         /// 	- Service `Ramp`: Your Ramp access token.
@@ -45,6 +49,8 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `StripeTest`: The Stripe API Restricted Key
         /// 	- Service `SurveyMonkey`: The long-lived `Access token` carries the information necessary to access API resources.
         /// 	- Service `TiktokAds`: The long-lived `Access token` carries the information necessary to access API resources.
+        /// 	- Service `TiktokOrganicApp`: Your TikTok Organic access token.
+        /// 	- Service `Tremendous`: Your Tremendous access token.
         /// 	- Service `Typeform`: The Typeform API access token.
         /// 	- Service `YahooSearchAdsYahooJapan`: Your Yahoo Search Ads Access Token.
         /// 	- Service `Zendesk`: The long-lived `Access token` carries the information necessary to access API resources.
@@ -72,6 +78,20 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `AmazonSellingPartner`: `Application ID` of the public application registered in the Amazon Selling Partner Appstore that you want to use for authentication of your connection. Use this parameter along with `Client ID` and `Client Secret` only if you want to use your own public application for authorisation via Connect Card.
+        /// </summary>
+        [Input("applicationId")]
+        public Input<string>? ApplicationId { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GooglePlay`: Authentication Method
+        /// </summary>
+        [Input("authenticationMethod")]
+        public Input<string>? AuthenticationMethod { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `AmazonSellingPartner`: `AWS Access Key` of your AWS Account User.
         /// </summary>
         [Input("awsAccessKey")]
@@ -91,6 +111,8 @@ namespace Pulumi.Fivetran.Inputs
         /// Field usage depends on `Service` value: 
         /// 	- Service `AmazonSellingPartner`: `Client ID` of your Amazon Seller/Vendor Central client application.
         /// 	- Service `AppleSearchAds`: Apple Search Ads REST API Client ID. Must be populated if `IsAuth2Enabled` is set to `True`.
+        /// 	- Service `AzureBlobStorage`: `Client ID` of your Microsoft client application.
+        /// 	- Service `MicrosoftDynamics365Fno`: `Client ID` of your Microsoft client application.
         /// 	- Service `Workday`: Client ID
         /// 	- Service `WorkdayFinancialManagement`: ID of your Workday Client App
         /// 	- Service `WorkdayHcm`: ID of your Workday Client App
@@ -99,16 +121,28 @@ namespace Pulumi.Fivetran.Inputs
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
+        [Input("clientSecret")]
+        private Input<string>? _clientSecret;
+
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `AmazonSellingPartner`: `Client Secret` of your Amazon Seller/Vendor Central client application.
+        /// 	- Service `AzureBlobStorage`: `Client Secret` of your Microsoft client application.
+        /// 	- Service `MicrosoftDynamics365Fno`: `Client Secret` of your Microsoft client application.
         /// 	- Service `Workday`: Client Secret
         /// 	- Service `WorkdayFinancialManagement`: Secret of your Workday Client App
         /// 	- Service `WorkdayHcm`: Secret of your Workday Client App
         /// 	- Service `YahooDsp`: Your Yahoo DSP Client Secret.
         /// </summary>
-        [Input("clientSecret")]
-        public Input<string>? ClientSecret { get; set; }
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Field usage depends on `Service` value: 
@@ -118,13 +152,23 @@ namespace Pulumi.Fivetran.Inputs
         [Input("consumerKey")]
         public Input<string>? ConsumerKey { get; set; }
 
+        [Input("consumerSecret")]
+        private Input<string>? _consumerSecret;
+
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Twitter`: API Secret of your app
         /// 	- Service `TwitterAds`: The Twitter App consumer secret.
         /// </summary>
-        [Input("consumerSecret")]
-        public Input<string>? ConsumerSecret { get; set; }
+        public Input<string>? ConsumerSecret
+        {
+            get => _consumerSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _consumerSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Field usage depends on `Service` value: 
@@ -135,25 +179,71 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureSqlDb`: User Assigned Managed Identity Client ID.
+        /// 	- Service `AzureSqlManagedDb`: User Assigned Managed Identity Client ID.
+        /// </summary>
+        [Input("managedIdentityUserAssigned")]
+        public Input<string>? ManagedIdentityUserAssigned { get; set; }
+
+        [Input("oauthToken")]
+        private Input<string>? _oauthToken;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `Twitter`: The Twitter App access token.
         /// 	- Service `TwitterAds`: The Twitter App access token.
         /// </summary>
-        [Input("oauthToken")]
-        public Input<string>? OauthToken { get; set; }
+        public Input<string>? OauthToken
+        {
+            get => _oauthToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _oauthToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("oauthTokenSecret")]
+        private Input<string>? _oauthTokenSecret;
 
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Twitter`: The Twitter App access token secret.
         /// 	- Service `TwitterAds`: The Twitter App access token secret.
         /// </summary>
-        [Input("oauthTokenSecret")]
-        public Input<string>? OauthTokenSecret { get; set; }
+        public Input<string>? OauthTokenSecret
+        {
+            get => _oauthTokenSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _oauthTokenSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("ocapiAccessToken")]
-        public Input<string>? OcapiAccessToken { get; set; }
+        private Input<string>? _ocapiAccessToken;
+        public Input<string>? OcapiAccessToken
+        {
+            get => _ocapiAccessToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _ocapiAccessToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("ocapiRefreshToken")]
-        public Input<string>? OcapiRefreshToken { get; set; }
+        private Input<string>? _ocapiRefreshToken;
+        public Input<string>? OcapiRefreshToken
+        {
+            get => _ocapiRefreshToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _ocapiRefreshToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("previousRefreshToken")]
         private Input<string>? _previousRefreshToken;
@@ -187,6 +277,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Adroll`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `Airtable`: The long-lived refresh token along with the client ID and client secret carry the information necessary to get a new access token for API resources.
         /// 	- Service `AmazonAds`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `AmazonDsp`: Your Amazon DSP refresh token.
         /// 	- Service `AmazonSellingPartner`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `Asana`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `AutodeskBim360`: Your Autodesk BIM 360 Refresh Token.
@@ -208,6 +299,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Freshbooks`: Your FreshBooks Refresh Token.
         /// 	- Service `Front`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `Gitlab`: Your GitLab refresh token.
+        /// 	- Service `Gmail`: The long-lived `Refresh token` of your Gmail client application.
         /// 	- Service `GoogleAds`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `GoogleAnalytics`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `GoogleAnalytics4`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
@@ -219,9 +311,11 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `GooglePlay`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `GoogleSearchAds360`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `GoogleSheets`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `GoogleTagManager`: Your Google Tag Manager refresh token.
         /// 	- Service `GoogleTasks`: The long-lived refresh token of your Google Tasks client application.
         /// 	- Service `Helpscout`: The long-lived `refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `Hubspot`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `LightspeedRetailXseries`: Your Lightspeed Retail X-Series refresh token.
         /// 	- Service `LinkedinAds`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `LinkedinCompanyPages`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `MicrosoftLists`: The long-lived Refresh token carries the information necessary to get a new access token for API resources.
@@ -242,9 +336,12 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Slack`: Your Slack refresh token.
         /// 	- Service `SnapchatAds`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `SpotifyAds`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
+        /// 	- Service `TiktokOrganicApp`: Your TikTok Organic refresh token.
+        /// 	- Service `Tremendous`: Your Tremendous refresh token.
         /// 	- Service `Typeform`: The Typeform API refresh token.
         /// 	- Service `Workday`: OAuth Refresh Token
         /// 	- Service `YahooSearchAdsYahooJapan`: Your Yahoo Search Ads Refresh Token.
+        /// 	- Service `YoutubeAnalytics`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `ZohoCrm`: The long-lived `Refresh token`, along with the `ClientId` and `ClientSecret` parameters, carries the information necessary to get a new access token for API resources.
         /// 	- Service `Zoom`: Your Zoom Refresh token.
         /// </summary>
@@ -265,6 +362,97 @@ namespace Pulumi.Fivetran.Inputs
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 
+        [Input("servicePrincipalClientCertPvtKey")]
+        private Input<string>? _servicePrincipalClientCertPvtKey;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureSqlDb`: Contents of Service Principal Client Certificate Private Key.
+        /// 	- Service `AzureSqlManagedDb`: Contents of Service Principal Client Certificate Private Key.
+        /// </summary>
+        public Input<string>? ServicePrincipalClientCertPvtKey
+        {
+            get => _servicePrincipalClientCertPvtKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _servicePrincipalClientCertPvtKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("servicePrincipalClientCertificate")]
+        private Input<string>? _servicePrincipalClientCertificate;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureSqlDb`: Contents of Service Principal Client Certificate.
+        /// 	- Service `AzureSqlManagedDb`: Contents of Service Principal Client Certificate.
+        /// </summary>
+        public Input<string>? ServicePrincipalClientCertificate
+        {
+            get => _servicePrincipalClientCertificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _servicePrincipalClientCertificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("servicePrincipalClientSecret")]
+        private Input<string>? _servicePrincipalClientSecret;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureSqlDb`: Service Principal Client Secret.
+        /// 	- Service `AzureSqlManagedDb`: Service Principal Client Secret.
+        /// </summary>
+        public Input<string>? ServicePrincipalClientSecret
+        {
+            get => _servicePrincipalClientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _servicePrincipalClientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureSqlDb`: Service Principal Client ID.
+        /// 	- Service `AzureSqlManagedDb`: Service Principal Client ID.
+        /// </summary>
+        [Input("servicePrincipalId")]
+        public Input<string>? ServicePrincipalId { get; set; }
+
+        [Input("svcAccSecretKey")]
+        private Input<string>? _svcAccSecretKey;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `GooglePlay`: Service account secret key
+        /// </summary>
+        public Input<string>? SvcAccSecretKey
+        {
+            get => _svcAccSecretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _svcAccSecretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("systemUserAccessToken")]
+        private Input<string>? _systemUserAccessToken;
+        public Input<string>? SystemUserAccessToken
+        {
+            get => _systemUserAccessToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _systemUserAccessToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `AppleSearchAds`: Apple Search Ads REST API Team ID. Must be populated if `IsAuth2Enabled` is set to `True`.
@@ -272,12 +460,42 @@ namespace Pulumi.Fivetran.Inputs
         [Input("teamId")]
         public Input<string>? TeamId { get; set; }
 
+        [Input("tenantId")]
+        private Input<string>? _tenantId;
+
         /// <summary>
         /// Field usage depends on `Service` value: 
-        /// 	- Service `FacebookAds`: Access Token
+        /// 	- Service `AzureBlobStorage`: `Tenant ID` of your Microsoft client application.
+        /// 	- Service `MicrosoftDynamics365Fno`: `Tenant ID` of your Microsoft client application.
+        /// 	- Service `MicrosoftLists`: `Tenant ID` of your Microsoft client application.
+        /// 	- Service `SharePoint`: `Tenant ID` of your Microsoft client application.
         /// </summary>
+        public Input<string>? TenantId
+        {
+            get => _tenantId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tenantId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         [Input("userAccessToken")]
-        public Input<string>? UserAccessToken { get; set; }
+        private Input<string>? _userAccessToken;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FacebookAds`: System User Token. Use in combination with `ClientId` and `ClientSecret`. Use either `UserAccessToken` (for system token) or `AccessToken` (for user access token), not both at the same time.
+        /// </summary>
+        public Input<string>? UserAccessToken
+        {
+            get => _userAccessToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _userAccessToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ConnectorAuthArgs()
         {

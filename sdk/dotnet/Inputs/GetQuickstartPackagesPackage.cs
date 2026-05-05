@@ -12,6 +12,18 @@ namespace Pulumi.Fivetran.Inputs
 
     public sealed class GetQuickstartPackagesPackageArgs : global::Pulumi.InvokeArgs
     {
+        [Input("configurableVariables", required: true)]
+        private Dictionary<string, Inputs.GetQuickstartPackagesPackageConfigurableVariablesArgs>? _configurableVariables;
+
+        /// <summary>
+        /// Map of configurable variable definitions for the package, keyed by variable name.
+        /// </summary>
+        public Dictionary<string, Inputs.GetQuickstartPackagesPackageConfigurableVariablesArgs> ConfigurableVariables
+        {
+            get => _configurableVariables ?? (_configurableVariables = new Dictionary<string, Inputs.GetQuickstartPackagesPackageConfigurableVariablesArgs>());
+            set => _configurableVariables = value;
+        }
+
         [Input("connectorTypes", required: true)]
         private List<string>? _connectorTypes;
 

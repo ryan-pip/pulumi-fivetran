@@ -114,12 +114,12 @@ class TeamConnectorMembership(pulumi.CustomResource):
             connectors=[
                 {
                     "connector_id": "test_connector",
-                    "role": "Connector Administrator",
+                    "role": "Manage Connection",
                     "created_at": "2020-05-25T15:26:47.306509Z",
                 },
                 {
                     "connector_id": "test_connector",
-                    "role": "Connector Administrator",
+                    "role": "Manage Connection",
                     "created_at": "2020-05-25T15:26:47.306509Z",
                 },
             ])
@@ -177,12 +177,12 @@ class TeamConnectorMembership(pulumi.CustomResource):
             connectors=[
                 {
                     "connector_id": "test_connector",
-                    "role": "Connector Administrator",
+                    "role": "Manage Connection",
                     "created_at": "2020-05-25T15:26:47.306509Z",
                 },
                 {
                     "connector_id": "test_connector",
-                    "role": "Connector Administrator",
+                    "role": "Manage Connection",
                     "created_at": "2020-05-25T15:26:47.306509Z",
                 },
             ])

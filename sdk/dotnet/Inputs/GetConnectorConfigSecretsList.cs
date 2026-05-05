@@ -16,6 +16,7 @@ namespace Pulumi.Fivetran.Inputs
         /// Field usage depends on `Service` value: 
         /// 	- Service `AwsLambda`: Secret Key.
         /// 	- Service `AzureFunction`: Key
+        /// 	- Service `ConnectorSdk`: Key
         /// 	- Service `GoogleCloudFunction`: Key
         /// </summary>
         [Input("key", required: true)]
@@ -28,6 +29,7 @@ namespace Pulumi.Fivetran.Inputs
         /// Field usage depends on `Service` value: 
         /// 	- Service `AwsLambda`: Secret Value.
         /// 	- Service `AzureFunction`: Value
+        /// 	- Service `ConnectorSdk`: Value
         /// 	- Service `GoogleCloudFunction`: Value
         /// </summary>
         public string? Value

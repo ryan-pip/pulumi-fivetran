@@ -14,6 +14,10 @@ namespace Pulumi.Fivetran.Outputs
     public sealed class GetQuickstartPackagesPackageResult
     {
         /// <summary>
+        /// Map of configurable variable definitions for the package, keyed by variable name.
+        /// </summary>
+        public readonly ImmutableDictionary<string, Outputs.GetQuickstartPackagesPackageConfigurableVariablesResult> ConfigurableVariables;
+        /// <summary>
         /// The set of connector types
         /// </summary>
         public readonly ImmutableArray<string> ConnectorTypes;
@@ -36,6 +40,8 @@ namespace Pulumi.Fivetran.Outputs
 
         [OutputConstructor]
         private GetQuickstartPackagesPackageResult(
+            ImmutableDictionary<string, Outputs.GetQuickstartPackagesPackageConfigurableVariablesResult> configurableVariables,
+
             ImmutableArray<string> connectorTypes,
 
             string id,
@@ -46,6 +52,7 @@ namespace Pulumi.Fivetran.Outputs
 
             string version)
         {
+            ConfigurableVariables = configurableVariables;
             ConnectorTypes = connectorTypes;
             Id = id;
             Name = name;

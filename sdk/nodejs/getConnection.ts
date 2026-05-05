@@ -58,7 +58,7 @@ export interface GetConnectionResult {
      */
     readonly dailySyncTime: string;
     /**
-     * The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
+     * The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.
      */
     readonly dataDelaySensitivity: string;
     /**
@@ -87,7 +87,7 @@ export interface GetConnectionResult {
      */
     readonly name: string;
     /**
-     * Possible values: Directly, SshTunnel, ProxyAgent.
+     * The networking method for the connection. Possible values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`.
      */
     readonly networkingMethod: string;
     /**
@@ -99,11 +99,11 @@ export interface GetConnectionResult {
      */
     readonly paused: boolean;
     /**
-     * The private link ID.
+     * The private link ID. Required when `networkingMethod` is `PrivateLink`.
      */
     readonly privateLinkId: string;
     /**
-     * The proxy agent ID.
+     * The ID of the proxy agent to use. Required when `networkingMethod` is `ProxyAgent`.
      */
     readonly proxyAgentId: string;
     /**
@@ -111,11 +111,11 @@ export interface GetConnectionResult {
      */
     readonly scheduleType: string;
     /**
-     * The connector type id within the Fivetran system.
+     * The connection service type (e.g., `postgres`, `mysql`, `s3`, `snowflake`). See [Fivetran connection types documentation](https://fivetran.com/docs/connectors) for available services.
      */
     readonly service: string;
     /**
-     * The connector type version within the Fivetran system.
+     * The connection type version within the Fivetran system.
      */
     readonly serviceVersion: string;
     readonly status?: outputs.GetConnectionStatus;

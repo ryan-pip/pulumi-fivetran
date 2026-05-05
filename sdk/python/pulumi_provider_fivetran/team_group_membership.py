@@ -115,12 +115,12 @@ class TeamGroupMembership(pulumi.CustomResource):
                 {
                     "connector_id": "test_connector",
                     "group_id": "test_group",
-                    "role": "Destination Administrator",
+                    "role": "Manage Destination",
                 },
                 {
                     "connector_id": "test_connector",
                     "group_id": "test_group",
-                    "role": "Destination Administrator",
+                    "role": "Manage Destination",
                 },
             ])
         ```
@@ -178,12 +178,12 @@ class TeamGroupMembership(pulumi.CustomResource):
                 {
                     "connector_id": "test_connector",
                     "group_id": "test_group",
-                    "role": "Destination Administrator",
+                    "role": "Manage Destination",
                 },
                 {
                     "connector_id": "test_connector",
                     "group_id": "test_group",
-                    "role": "Destination Administrator",
+                    "role": "Manage Destination",
                 },
             ])
         ```

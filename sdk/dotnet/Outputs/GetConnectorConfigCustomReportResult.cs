@@ -40,6 +40,11 @@ namespace Pulumi.Fivetran.Outputs
         public readonly string Breakdown;
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `RedditAds`: Breakdowns are now used instead of level and segmentation. They provide a filter for report data.
+        /// </summary>
+        public readonly ImmutableArray<string> Breakdowns;
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `SnapchatAds`: [Sets Breakout on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#breakout).
         /// </summary>
         public readonly string Breakout;
@@ -60,6 +65,7 @@ namespace Pulumi.Fivetran.Outputs
         public readonly string Dimension;
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Criteo`: Dimensions to be synced
         /// 	- Service `TiktokAds`: Dimensions to synced
         /// </summary>
         public readonly ImmutableArray<string> Dimensions;
@@ -80,6 +86,7 @@ namespace Pulumi.Fivetran.Outputs
         public readonly string Level;
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Criteo`: Metrics to be synced
         /// 	- Service `TiktokAds`: Metrics to be synced
         /// </summary>
         public readonly ImmutableArray<string> Metrics;
@@ -96,6 +103,7 @@ namespace Pulumi.Fivetran.Outputs
         public readonly string ReportName;
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Criteo`: Type of report to be generated
         /// 	- Service `TiktokAds`: Type of report to be generated
         /// </summary>
         public readonly string ReportType;
@@ -111,9 +119,15 @@ namespace Pulumi.Fivetran.Outputs
         public readonly ImmutableArray<string> SkAdMetricsFields;
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Criteo`: Destination Table name of report
         /// 	- Service `TiktokAds`: Destination Table name of report
         /// </summary>
         public readonly string TableName;
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Criteo`: Time dimensions to be synced
+        /// </summary>
+        public readonly ImmutableArray<string> TimeDimensions;
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `RedditAds`: The specific time zone to sync report data if  `useAccountTimeZone` set to `False`.
@@ -136,6 +150,8 @@ namespace Pulumi.Fivetran.Outputs
             ImmutableArray<string> baseMetricsFields,
 
             string breakdown,
+
+            ImmutableArray<string> breakdowns,
 
             string breakout,
 
@@ -167,6 +183,8 @@ namespace Pulumi.Fivetran.Outputs
 
             string tableName,
 
+            ImmutableArray<string> timeDimensions,
+
             string timeZone,
 
             string timeZoneMode)
@@ -176,6 +194,7 @@ namespace Pulumi.Fivetran.Outputs
             Aggregate = aggregate;
             BaseMetricsFields = baseMetricsFields;
             Breakdown = breakdown;
+            Breakdowns = breakdowns;
             Breakout = breakout;
             ConversionsReportIncluded = conversionsReportIncluded;
             CustomEventsIncluded = customEventsIncluded;
@@ -191,6 +210,7 @@ namespace Pulumi.Fivetran.Outputs
             Segmentation = segmentation;
             SkAdMetricsFields = skAdMetricsFields;
             TableName = tableName;
+            TimeDimensions = timeDimensions;
             TimeZone = timeZone;
             TimeZoneMode = timeZoneMode;
         }

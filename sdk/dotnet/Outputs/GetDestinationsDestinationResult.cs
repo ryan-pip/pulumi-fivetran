@@ -30,13 +30,17 @@ namespace Pulumi.Fivetran.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Possible values: Directly, SshTunnel, ProxyAgent.
+        /// Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
         /// </summary>
         public readonly string NetworkingMethod;
         /// <summary>
         /// The private link ID.
         /// </summary>
         public readonly string PrivateLinkId;
+        /// <summary>
+        /// The proxy agent ID.
+        /// </summary>
+        public readonly string ProxyAgentId;
         /// <summary>
         /// Data processing location. This is where Fivetran will operate and run computation on data.
         /// </summary>
@@ -68,6 +72,8 @@ namespace Pulumi.Fivetran.Outputs
 
             string privateLinkId,
 
+            string proxyAgentId,
+
             string region,
 
             string service,
@@ -82,6 +88,7 @@ namespace Pulumi.Fivetran.Outputs
             Id = id;
             NetworkingMethod = networkingMethod;
             PrivateLinkId = privateLinkId;
+            ProxyAgentId = proxyAgentId;
             Region = region;
             Service = service;
             SetupStatus = setupStatus;

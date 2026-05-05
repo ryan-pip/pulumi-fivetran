@@ -231,6 +231,14 @@ export class ConnectorSchemaConfig extends pulumi.CustomResource {
      */
     declare public readonly connectorId: pulumi.Output<string>;
     /**
+     * The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+     */
+    declare public readonly connectorName: pulumi.Output<string | undefined>;
+    /**
+     * The unique identifier for the Group (Destination) within the Fivetran system.
+     */
+    declare public readonly groupId: pulumi.Output<string | undefined>;
+    /**
      * @deprecated Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
      */
     declare public readonly schema: pulumi.Output<outputs.ConnectorSchemaConfigSchema[] | undefined>;
@@ -262,13 +270,15 @@ export class ConnectorSchemaConfig extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ConnectorSchemaConfigArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: ConnectorSchemaConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConnectorSchemaConfigArgs | ConnectorSchemaConfigState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectorSchemaConfigState | undefined;
             resourceInputs["connectorId"] = state?.connectorId;
+            resourceInputs["connectorName"] = state?.connectorName;
+            resourceInputs["groupId"] = state?.groupId;
             resourceInputs["schema"] = state?.schema;
             resourceInputs["schemaChangeHandling"] = state?.schemaChangeHandling;
             resourceInputs["schemas"] = state?.schemas;
@@ -277,10 +287,9 @@ export class ConnectorSchemaConfig extends pulumi.CustomResource {
             resourceInputs["validationLevel"] = state?.validationLevel;
         } else {
             const args = argsOrState as ConnectorSchemaConfigArgs | undefined;
-            if (args?.connectorId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'connectorId'");
-            }
             resourceInputs["connectorId"] = args?.connectorId;
+            resourceInputs["connectorName"] = args?.connectorName;
+            resourceInputs["groupId"] = args?.groupId;
             resourceInputs["schema"] = args?.schema;
             resourceInputs["schemaChangeHandling"] = args?.schemaChangeHandling;
             resourceInputs["schemas"] = args?.schemas;
@@ -301,6 +310,14 @@ export interface ConnectorSchemaConfigState {
      * The unique identifier for the connector within the Fivetran system.
      */
     connectorId?: pulumi.Input<string | undefined>;
+    /**
+     * The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+     */
+    connectorName?: pulumi.Input<string | undefined>;
+    /**
+     * The unique identifier for the Group (Destination) within the Fivetran system.
+     */
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * @deprecated Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
      */
@@ -334,7 +351,15 @@ export interface ConnectorSchemaConfigArgs {
     /**
      * The unique identifier for the connector within the Fivetran system.
      */
-    connectorId: pulumi.Input<string>;
+    connectorId?: pulumi.Input<string | undefined>;
+    /**
+     * The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+     */
+    connectorName?: pulumi.Input<string | undefined>;
+    /**
+     * The unique identifier for the Group (Destination) within the Fivetran system.
+     */
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * @deprecated Configure `schemas` instead. This attribute will be removed in the next major version of the provider.
      */

@@ -34,12 +34,12 @@ import (
 //					&fivetran.TeamGroupMembershipGroupArgs{
 //						ConnectorId: "test_connector",
 //						GroupId:     pulumi.String("test_group"),
-//						Role:        pulumi.String("Destination Administrator"),
+//						Role:        pulumi.String("Manage Destination"),
 //					},
 //					&fivetran.TeamGroupMembershipGroupArgs{
 //						ConnectorId: "test_connector",
 //						GroupId:     pulumi.String("test_group"),
-//						Role:        pulumi.String("Destination Administrator"),
+//						Role:        pulumi.String("Manage Destination"),
 //					},
 //				},
 //			})
