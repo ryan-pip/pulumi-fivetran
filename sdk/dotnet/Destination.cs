@@ -26,7 +26,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dest = new Fivetran.Index.Destination("dest", new()
+    ///     var dest = new Fivetran.Destination("dest", new()
     ///     {
     ///         GroupId = @group.Id,
     ///         Service = "postgres_rds_warehouse",
@@ -72,7 +72,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myImportedDestination = new Fivetran.Index.Destination("my_imported_destination");
+    ///     var myImportedDestination = new Fivetran.Destination("my_imported_destination");
     /// 
     /// });
     /// ```

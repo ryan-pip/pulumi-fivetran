@@ -26,7 +26,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @group = new Fivetran.Index.Group("group", new()
+    ///     var @group = new Fivetran.Group("group", new()
     ///     {
     ///         Name = "MyGroup",
     ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myImportedFivetranGroup = new Fivetran.Index.Group("my_imported_fivetran_group");
+    ///     var myImportedFivetranGroup = new Fivetran.Group("my_imported_fivetran_group");
     /// 
     /// });
     /// ```

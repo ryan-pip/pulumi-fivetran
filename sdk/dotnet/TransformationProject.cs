@@ -22,7 +22,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var project = new Fivetran.Index.TransformationProject("project", new()
+    ///     var project = new Fivetran.TransformationProject("project", new()
     ///     {
     ///         GroupId = "group_id",
     ///         Type = "DBT_GIT",
@@ -60,12 +60,12 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myGroup = new Fivetran.Index.Group("my_group", new()
+    ///     var myGroup = new Fivetran.Group("my_group", new()
     ///     {
     ///         Name = "My_Group",
     ///     });
     /// 
-    ///     var project = new Fivetran.Index.TransformationProject("project", new()
+    ///     var project = new Fivetran.TransformationProject("project", new()
     ///     {
     ///         GroupId = "group_id",
     ///         Type = "DBT_GIT",
@@ -100,7 +100,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleRepositoryDeployKey = new Github.Index.RepositoryDeployKey("example_repository_deploy_key", new()
+    ///     var exampleRepositoryDeployKey = new Github.RepositoryDeployKey("example_repository_deploy_key", new()
     ///     {
     ///         Title = "Repository test key",
     ///         Repository = "repo-owner/repo-name",
@@ -122,7 +122,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test = new Bitbucket.Index.DeployKey("test", new()
+    ///     var test = new Bitbucket.DeployKey("test", new()
     ///     {
     ///         Workspace = "repo-owner",
     ///         Repository = "repo-name",
@@ -149,7 +149,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myImportedFivetranTransformationProject = new Fivetran.Index.TransformationProject("my_imported_fivetran_transformation_project");
+    ///     var myImportedFivetranTransformationProject = new Fivetran.TransformationProject("my_imported_fivetran_transformation_project");
     /// 
     /// });
     /// ```

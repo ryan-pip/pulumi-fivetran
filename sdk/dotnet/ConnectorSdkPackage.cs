@@ -28,7 +28,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myImportedSdkPackage = new Fivetran.Index.ConnectorSdkPackage("my_imported_sdk_package");
+    ///     var myImportedSdkPackage = new Fivetran.ConnectorSdkPackage("my_imported_sdk_package");
     /// 
     /// });
     /// ```

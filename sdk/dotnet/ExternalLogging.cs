@@ -22,7 +22,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var extlog = new Fivetran.Index.ExternalLogging("extlog", new()
+    ///     var extlog = new Fivetran.ExternalLogging("extlog", new()
     ///     {
     ///         GroupId = @group.Id,
     ///         Service = "azure_monitor_log",
@@ -60,7 +60,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myImportedExternalLogging = new Fivetran.Index.ExternalLogging("my_imported_external_logging");
+    ///     var myImportedExternalLogging = new Fivetran.ExternalLogging("my_imported_external_logging");
     /// 
     /// });
     /// ```

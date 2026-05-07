@@ -24,7 +24,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var users = Fivetran.Index.GetUsers.Invoke();
+        ///     var users = Fivetran.GetUsers.Invoke();
         /// 
         /// });
         /// ```
@@ -45,7 +45,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var users = Fivetran.Index.GetUsers.Invoke();
+        ///     var users = Fivetran.GetUsers.Invoke();
         /// 
         /// });
         /// ```
@@ -66,7 +66,7 @@ namespace Pulumi.Fivetran
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var users = Fivetran.Index.GetUsers.Invoke();
+        ///     var users = Fivetran.GetUsers.Invoke();
         /// 
         /// });
         /// ```

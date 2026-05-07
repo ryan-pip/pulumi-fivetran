@@ -24,7 +24,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var amplitude = new Fivetran.Index.Connector("amplitude", new()
+    ///     var amplitude = new Fivetran.Connector("amplitude", new()
     ///     {
     ///         GroupId = @group.Id,
     ///         Service = "amplitude",
@@ -69,7 +69,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myGithubConnector = new Fivetran.Index.Connector("my_github_connector", new()
+    ///     var myGithubConnector = new Fivetran.Connector("my_github_connector", new()
     ///     {
     ///         GroupId = "group_id",
     ///         Service = "github",
@@ -107,7 +107,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myImportedConnector = new Fivetran.Index.Connector("my_imported_connector");
+    ///     var myImportedConnector = new Fivetran.Connector("my_imported_connector");
     /// 
     /// });
     /// ```

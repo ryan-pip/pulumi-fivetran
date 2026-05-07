@@ -27,7 +27,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var postgres = new Fivetran.Index.Connection("postgres", new()
+    ///     var postgres = new Fivetran.Connection("postgres", new()
     ///     {
     ///         GroupId = example.Id,
     ///         Service = "postgres",
@@ -38,7 +38,7 @@ namespace Pulumi.Fivetran
     ///         RunSetupTests = false,
     ///     });
     /// 
-    ///     var postgresConnectionConfig = new Fivetran.Index.ConnectionConfig("postgres", new()
+    ///     var postgresConnectionConfig = new Fivetran.ConnectionConfig("postgres", new()
     ///     {
     ///         ConnectionId = postgres.Id,
     ///         Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
@@ -72,7 +72,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mysql = new Fivetran.Index.Connection("mysql", new()
+    ///     var mysql = new Fivetran.Connection("mysql", new()
     ///     {
     ///         GroupId = example.Id,
     ///         Service = "mysql",
@@ -82,7 +82,7 @@ namespace Pulumi.Fivetran
     ///         },
     ///     });
     /// 
-    ///     var mysqlConnectionConfig = new Fivetran.Index.ConnectionConfig("mysql", new()
+    ///     var mysqlConnectionConfig = new Fivetran.ConnectionConfig("mysql", new()
     ///     {
     ///         ConnectionId = mysql.Id,
     ///         Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
@@ -111,7 +111,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var s3 = new Fivetran.Index.Connection("s3", new()
+    ///     var s3 = new Fivetran.Connection("s3", new()
     ///     {
     ///         GroupId = example.Id,
     ///         Service = "s3",
@@ -121,7 +121,7 @@ namespace Pulumi.Fivetran
     ///         },
     ///     });
     /// 
-    ///     var s3ConnectionConfig = new Fivetran.Index.ConnectionConfig("s3", new()
+    ///     var s3ConnectionConfig = new Fivetran.ConnectionConfig("s3", new()
     ///     {
     ///         ConnectionId = s3.Id,
     ///         Auth = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
@@ -145,7 +145,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var postgresSecure = new Fivetran.Index.ConnectionConfig("postgres_secure", new()
+    ///     var postgresSecure = new Fivetran.ConnectionConfig("postgres_secure", new()
     ///     {
     ///         ConnectionId = postgresFivetranConnection.Id,
     ///         Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
