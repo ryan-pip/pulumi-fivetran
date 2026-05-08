@@ -22,7 +22,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myDestinationApprovedFingerprints = new Fivetran.Index.DestinationFingerprints("my_destination_approved_fingerprints", new()
+    ///     var myDestinationApprovedFingerprints = new Fivetran.DestinationFingerprints("my_destination_approved_fingerprints", new()
     ///     {
     ///         DestinationId = myDestination.Id,
     ///         Fingerprints = new[]
@@ -59,7 +59,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myImportedDestinationFingerprints = new Fivetran.Index.DestinationFingerprints("my_imported_destination_fingerprints");
+    ///     var myImportedDestinationFingerprints = new Fivetran.DestinationFingerprints("my_imported_destination_fingerprints");
     /// 
     /// });
     /// ```

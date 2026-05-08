@@ -51,7 +51,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var schema = new Fivetran.Index.ConnectorSchemaConfig("schema", new()
+    ///     var schema = new Fivetran.ConnectorSchemaConfig("schema", new()
     ///     {
     ///         ConnectorId = "connector_id",
     ///         SchemaChangeHandling = "ALLOW_ALL",
@@ -108,7 +108,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var schema = new Fivetran.Index.ConnectorSchemaConfig("schema", new()
+    ///     var schema = new Fivetran.ConnectorSchemaConfig("schema", new()
     ///     {
     ///         ConnectorId = "connector_id",
     ///         SchemaChangeHandling = "BLOCK_ALL",
@@ -165,7 +165,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var schema = new Fivetran.Index.ConnectorSchemaConfig("schema", new()
+    ///     var schema = new Fivetran.ConnectorSchemaConfig("schema", new()
     ///     {
     ///         ConnectorId = "connector_id",
     ///         SchemaChangeHandling = "ALLOW_COLUMNS",
@@ -229,7 +229,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var schema = new Fivetran.Index.ConnectorSchemaConfig("schema", new()
+    ///     var schema = new Fivetran.ConnectorSchemaConfig("schema", new()
     ///     {
     ///         ConnectorId = "connector_id",
     ///         SchemaChangeHandling = "ALLOW_COLUMNS",

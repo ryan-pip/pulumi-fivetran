@@ -22,7 +22,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myDestinationApprovedCertificates = new Fivetran.Index.DestinationCertificates("my_destination_approved_certificates", new()
+    ///     var myDestinationApprovedCertificates = new Fivetran.DestinationCertificates("my_destination_approved_certificates", new()
     ///     {
     ///         DestinationId = myDestination.Id,
     ///         Certificates = new[]
@@ -59,7 +59,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myImportedDestinationCertificates = new Fivetran.Index.DestinationCertificates("my_imported_destination_certificates");
+    ///     var myImportedDestinationCertificates = new Fivetran.DestinationCertificates("my_imported_destination_certificates");
     /// 
     /// });
     /// ```

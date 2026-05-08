@@ -22,7 +22,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testTeam = new Fivetran.Index.Team("test_team", new()
+    ///     var testTeam = new Fivetran.Team("test_team", new()
     ///     {
     ///         Name = "test_team",
     ///         Description = "test_description",
@@ -47,7 +47,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myImportedFivetranTeam = new Fivetran.Index.Team("my_imported_fivetran_team");
+    ///     var myImportedFivetranTeam = new Fivetran.Team("my_imported_fivetran_team");
     /// 
     /// });
     /// ```

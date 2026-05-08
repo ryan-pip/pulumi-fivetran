@@ -22,7 +22,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var user = new Fivetran.Index.User("user", new()
+    ///     var user = new Fivetran.User("user", new()
     ///     {
     ///         Email = "user@email.address.com",
     ///         GivenName = "John",
@@ -48,7 +48,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myImportedFivetranUser = new Fivetran.Index.User("my_imported_fivetran_user");
+    ///     var myImportedFivetranUser = new Fivetran.User("my_imported_fivetran_user");
     /// 
     /// });
     /// ```

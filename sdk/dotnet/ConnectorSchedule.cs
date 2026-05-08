@@ -22,7 +22,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myConnectorSchedule = new Fivetran.Index.ConnectorSchedule("my_connector_schedule", new()
+    ///     var myConnectorSchedule = new Fivetran.ConnectorSchedule("my_connector_schedule", new()
     ///     {
     ///         ConnectorId = myConnector.Id,
     ///         SyncFrequency = "1440",
@@ -48,7 +48,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myConnector = Fivetran.Index.GetConnector.Invoke(new()
+    ///     var myConnector = Fivetran.GetConnector.Invoke(new()
     ///     {
     ///         Id = "my_connector_id",
     ///     });
@@ -67,7 +67,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myConnectorSchedule = new Fivetran.Index.ConnectorSchedule("my_connector_schedule", new()
+    ///     var myConnectorSchedule = new Fivetran.ConnectorSchedule("my_connector_schedule", new()
     ///     {
     ///         ConnectorId = "my_connector_id",
     ///         SyncFrequency = "360",
