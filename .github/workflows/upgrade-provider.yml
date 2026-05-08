@@ -51,6 +51,34 @@ jobs:
         run: upgrade-provider "$GITHUB_REPOSITORY" --kind=all --allow-missing-docs=true --repo-path=.
         shell: bash
 
+      - name: Sync go.work go directive
+        # upgrade-provider bumps provider/go.mod's `go` directive when the new
+        # bridge requires it but doesn't know about the workspace. If go.work's
+        # `go` directive falls behind any module, every Go toolchain invocation
+        # against the workspace errors with "go.work lists go X.Y.Z" and breaks
+        # lint, go vet, build, and CodeQL autobuild on the bot's PR.
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: |
+          set -euo pipefail
+          BRANCH=$(git branch --show-current)
+          case "$BRANCH" in
+            upgrade-pulumi-terraform-bridge-*|upgrade-terraform-provider-*|upgrade-pulumi-version-*) ;;
+            *) echo "branch $BRANCH not an upgrade branch; skipping"; exit 0 ;;
+          esac
+          MAX=$(awk '/^go [0-9]/ {print $2}' provider/go.mod provider/shim/go.mod sdk/go.mod | sort -V | tail -1)
+          CURRENT=$(awk '/^go [0-9]/ {print $2; exit}' go.work)
+          echo "go.work directive: $CURRENT, max module directive: $MAX"
+          if [ "$MAX" != "$CURRENT" ]; then
+            go work edit -go="$MAX"
+            git add go.work
+            git commit -m "chore: sync go.work go directive to $MAX"
+            git push
+          else
+            echo "go.work already at $MAX; nothing to do"
+          fi
+        shell: bash
+
       - name: Enable auto-merge on upgrade PR
         # safety filter — both bot author + branch prefix required
         env:

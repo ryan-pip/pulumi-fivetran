@@ -20,7 +20,8 @@ _ := $(shell mkdir -p .make bin)
         build_nodejs build_python build_go build_dotnet \
         prepare_local_workspace test_python_smoke test_python \
         lint tidy fmt clean install_sdks install_nodejs_sdk \
-        install_python_sdk install_go_sdk install_dotnet_sdk
+        install_python_sdk install_go_sdk install_dotnet_sdk \
+        sync-go-work
 
 # ── top-level aliases ─────────────────────────────────────────────────────────
 
@@ -153,6 +154,20 @@ lint:
 
 tidy:
 	find ./provider -name go.mod -execdir go mod tidy \;
+
+# Aligns go.work's `go` directive with the highest `go` directive among the
+# workspace modules. Run after bumping pulumi-terraform-bridge (which can pull
+# a new minimum Go) so `go vet`, `golangci-lint`, and the provider build
+# don't fail with "go.work lists go X.Y.Z".
+sync-go-work:
+	@MAX=$$(awk '/^go [0-9]/ {print $$2}' provider/go.mod provider/shim/go.mod sdk/go.mod | sort -V | tail -1); \
+	 CURRENT=$$(awk '/^go [0-9]/ {print $$2; exit}' go.work); \
+	 if [ "$$MAX" != "$$CURRENT" ]; then \
+	   echo "Updating go.work go directive: $$CURRENT -> $$MAX"; \
+	   go work edit -go="$$MAX"; \
+	 else \
+	   echo "go.work already at $$MAX"; \
+	 fi
 
 fmt:
 	find . -name '*.go' | grep -v vendor | xargs gofmt -s -w

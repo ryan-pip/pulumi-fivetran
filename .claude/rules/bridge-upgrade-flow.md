@@ -22,9 +22,12 @@ Phased, **one PR per concern**. The git history shows the pattern (e.g. `phase 0
 
 ```bash
 cd provider && go mod tidy
+make sync-go-work    # bridge bumps may raise provider/go.mod's `go` directive
 make schema build_sdks
-git status        # confirm only the expected files changed
+git status           # confirm only the expected files changed
 ```
+
+`make sync-go-work` aligns `go.work`'s `go` directive with the highest among the workspace modules. Skipping it leaves the workspace inconsistent and breaks `go vet`, `golangci-lint`, the provider build, and CodeQL autobuild on any PR that touched a module's `go` directive. The `upgrade-provider.yml` workflow runs the same sync automatically.
 
 For regen commits, the diff should be **only** generated files. If you see hand-written changes too, split them into a separate commit on the same branch.
 
