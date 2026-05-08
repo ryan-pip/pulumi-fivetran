@@ -24,7 +24,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var transformation = new Fivetran.Index.Transformation("transformation", new()
+    ///     var transformation = new Fivetran.Transformation("transformation", new()
     ///     {
     ///         Type = "DBT_CORE",
     ///         Paused = true,
@@ -66,7 +66,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var transformation = new Fivetran.Index.Transformation("transformation", new()
+    ///     var transformation = new Fivetran.Transformation("transformation", new()
     ///     {
     ///         Type = "QUICKSTART",
     ///         Paused = true,
@@ -108,7 +108,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myImportedFivetranTransformation = new Fivetran.Index.Transformation("my_imported_fivetran_transformation");
+    ///     var myImportedFivetranTransformation = new Fivetran.Transformation("my_imported_fivetran_transformation");
     /// 
     /// });
     /// ```

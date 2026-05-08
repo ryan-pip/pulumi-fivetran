@@ -22,7 +22,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testTeamGroupMembership = new Fivetran.Index.TeamGroupMembership("test_team_group_membership", new()
+    ///     var testTeamGroupMembership = new Fivetran.TeamGroupMembership("test_team_group_membership", new()
     ///     {
     ///         TeamId = "test_team",
     ///         Groups = new[]
@@ -60,7 +60,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myImportedFivetranTeamGroupMembership = new Fivetran.Index.TeamGroupMembership("my_imported_fivetran_team_group_membership");
+    ///     var myImportedFivetranTeamGroupMembership = new Fivetran.TeamGroupMembership("my_imported_fivetran_team_group_membership");
     /// 
     /// });
     /// ```

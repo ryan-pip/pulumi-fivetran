@@ -22,7 +22,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testPl = new Fivetran.Index.PrivateLink("test_pl", new()
+    ///     var testPl = new Fivetran.PrivateLink("test_pl", new()
     ///     {
     ///         Name = "name",
     ///         Region = "region",

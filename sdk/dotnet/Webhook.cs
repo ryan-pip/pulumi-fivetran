@@ -27,7 +27,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myImportedFivetranWebhook = new Fivetran.Index.Webhook("my_imported_fivetran_webhook");
+    ///     var myImportedFivetranWebhook = new Fivetran.Webhook("my_imported_fivetran_webhook");
     /// 
     /// });
     /// ```
