@@ -27,12 +27,12 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Fivetran.Index.Group("example", new()
+    ///     var example = new Fivetran.Group("example", new()
     ///     {
     ///         Name = "My Destination",
     ///     });
     /// 
-    ///     var postgres = new Fivetran.Index.Connection("postgres", new()
+    ///     var postgres = new Fivetran.Connection("postgres", new()
     ///     {
     ///         GroupId = example.Id,
     ///         Service = "postgres",
@@ -63,7 +63,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var postgresFull = new Fivetran.Index.Connection("postgres_full", new()
+    ///     var postgresFull = new Fivetran.Connection("postgres_full", new()
     ///     {
     ///         GroupId = example.Id,
     ///         Service = "postgres",
@@ -95,13 +95,13 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Fivetran.Index.ProxyAgent("example", new()
+    ///     var example = new Fivetran.ProxyAgent("example", new()
     ///     {
     ///         DisplayName = "My Proxy Agent",
     ///         GroupRegion = "GCP_US_EAST4",
     ///     });
     /// 
-    ///     var mysql = new Fivetran.Index.Connection("mysql", new()
+    ///     var mysql = new Fivetran.Connection("mysql", new()
     ///     {
     ///         GroupId = exampleFivetranGroup.Id,
     ///         Service = "mysql",
@@ -127,7 +127,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var s3 = new Fivetran.Index.Connection("s3", new()
+    ///     var s3 = new Fivetran.Connection("s3", new()
     ///     {
     ///         GroupId = example.Id,
     ///         Service = "s3",
@@ -151,7 +151,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var snowflakeConnection = new Fivetran.Index.Connection("snowflake_connection", new()
+    ///     var snowflakeConnection = new Fivetran.Connection("snowflake_connection", new()
     ///     {
     ///         GroupId = example.Id,
     ///         Service = "snowflake",

@@ -22,7 +22,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var certificate = new Fivetran.Index.ConnectorCertificates("certificate", new()
+    ///     var certificate = new Fivetran.ConnectorCertificates("certificate", new()
     ///     {
     ///         Certificates = new[]
     ///         {
@@ -58,7 +58,7 @@ namespace Pulumi.Fivetran
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myImportedConnectorFingerprints = new Fivetran.Index.ConnectorCertificates("my_imported_connector_fingerprints");
+    ///     var myImportedConnectorFingerprints = new Fivetran.ConnectorCertificates("my_imported_connector_fingerprints");
     /// 
     /// });
     /// ```
