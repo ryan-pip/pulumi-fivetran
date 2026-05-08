@@ -77,36 +77,36 @@ checksum = "sha256:b6a8df3c8c6b9c80f290906387673bc4d272840f3789c5650e0e4e6e75522
 url = "https://github.com/cli/cli/releases/download/v2.92.0/gh_2.92.0_windows_amd64.zip"
 
 [[tools.go]]
-version = "1.25.9"
+version = "1.25.10"
 backend = "core:go"
 
 [tools.go."platforms.linux-arm64"]
-checksum = "sha256:ec342e7389b7f489564ed5463c63b16cf8040023dabc7861256677165a8c0e2b"
-url = "https://dl.google.com/go/go1.25.9.linux-arm64.tar.gz"
+checksum = "sha256:654da1f9b50a5d1c2a85ccf8ed405aa89c06e94d18384628bf186f7712677b08"
+url = "https://dl.google.com/go/go1.25.10.linux-arm64.tar.gz"
 
 [tools.go."platforms.linux-arm64-musl"]
-checksum = "sha256:ec342e7389b7f489564ed5463c63b16cf8040023dabc7861256677165a8c0e2b"
-url = "https://dl.google.com/go/go1.25.9.linux-arm64.tar.gz"
+checksum = "sha256:654da1f9b50a5d1c2a85ccf8ed405aa89c06e94d18384628bf186f7712677b08"
+url = "https://dl.google.com/go/go1.25.10.linux-arm64.tar.gz"
 
 [tools.go."platforms.linux-x64"]
-checksum = "sha256:00859d7bd6defe8bf84d9db9e57b9a4467b2887c18cd93ae7460e713db774bc1"
-url = "https://dl.google.com/go/go1.25.9.linux-amd64.tar.gz"
+checksum = "sha256:42d4f7a32316aa66591eca7e89867256057a4264451aca10570a715b3637ba70"
+url = "https://dl.google.com/go/go1.25.10.linux-amd64.tar.gz"
 
 [tools.go."platforms.linux-x64-musl"]
-checksum = "sha256:00859d7bd6defe8bf84d9db9e57b9a4467b2887c18cd93ae7460e713db774bc1"
-url = "https://dl.google.com/go/go1.25.9.linux-amd64.tar.gz"
+checksum = "sha256:42d4f7a32316aa66591eca7e89867256057a4264451aca10570a715b3637ba70"
+url = "https://dl.google.com/go/go1.25.10.linux-amd64.tar.gz"
 
 [tools.go."platforms.macos-arm64"]
-checksum = "sha256:9528be7329b9770631a6bd09ca2f3a73ed7332bec01d87435e75e92d8f130363"
-url = "https://dl.google.com/go/go1.25.9.darwin-arm64.tar.gz"
+checksum = "sha256:795691a425de7e7cdba3544f354dcd2cebcf52e87dc6898193878f34eb6d634f"
+url = "https://dl.google.com/go/go1.25.10.darwin-arm64.tar.gz"
 
 [tools.go."platforms.macos-x64"]
-checksum = "sha256:92cb78fba4796e218c1accb0ea0a214ef2094c382049a244ad6505505d015fbe"
-url = "https://dl.google.com/go/go1.25.9.darwin-amd64.tar.gz"
+checksum = "sha256:52321165a3146cd91865ef98371506a846ed4dc4f9f1c9323e5ad90d2a411e06"
+url = "https://dl.google.com/go/go1.25.10.darwin-amd64.tar.gz"
 
 [tools.go."platforms.windows-x64"]
-checksum = "sha256:a7a710e225467b34e9e09fb432b829c86c9b2da5821ee5418f7eb2e8ae1a22cc"
-url = "https://dl.google.com/go/go1.25.9.windows-amd64.zip"
+checksum = "sha256:ca37af2dadd8544464f1a9ca7c3886499d1cdfcb263855d0a1d71f194b2bd222"
+url = "https://dl.google.com/go/go1.25.10.windows-amd64.zip"
 
 [[tools."go:github.com/pulumi/pulumictl/cmd/pulumictl"]]
 version = "0.0.50"
@@ -121,65 +121,65 @@ version = "0.21.1"
 backend = "go:golang.org/x/tools/gopls"
 
 [[tools.golangci-lint]]
-version = "2.12.1"
+version = "2.12.2"
 backend = "aqua:golangci/golangci-lint"
 
 [tools.golangci-lint."platforms.linux-arm64"]
-checksum = "sha256:23c8e14f42b288d11d46ef52c622e2481d92901edfb263c2cf10875f38d386c4"
-url = "https://github.com/golangci/golangci-lint/releases/download/v2.12.1/golangci-lint-2.12.1-linux-arm64.tar.gz"
+checksum = "sha256:44cd40a8c76c86755375adfeea52cfd3533cb43d7bd647771e0ae065e166df3a"
+url = "https://github.com/golangci/golangci-lint/releases/download/v2.12.2/golangci-lint-2.12.2-linux-arm64.tar.gz"
 
 [tools.golangci-lint."platforms.linux-arm64-musl"]
-checksum = "sha256:23c8e14f42b288d11d46ef52c622e2481d92901edfb263c2cf10875f38d386c4"
-url = "https://github.com/golangci/golangci-lint/releases/download/v2.12.1/golangci-lint-2.12.1-linux-arm64.tar.gz"
+checksum = "sha256:44cd40a8c76c86755375adfeea52cfd3533cb43d7bd647771e0ae065e166df3a"
+url = "https://github.com/golangci/golangci-lint/releases/download/v2.12.2/golangci-lint-2.12.2-linux-arm64.tar.gz"
 
 [tools.golangci-lint."platforms.linux-x64"]
-checksum = "sha256:82c7932d9aa10c34e22ef56961ac5aad71d4a14806a1a31b06931add2688b368"
-url = "https://github.com/golangci/golangci-lint/releases/download/v2.12.1/golangci-lint-2.12.1-linux-amd64.tar.gz"
+checksum = "sha256:8df580d2670fed8fa984aac0507099af8df275e665215f5c7a2ae3943893a553"
+url = "https://github.com/golangci/golangci-lint/releases/download/v2.12.2/golangci-lint-2.12.2-linux-amd64.tar.gz"
 provenance = "github-attestations"
 
 [tools.golangci-lint."platforms.linux-x64-musl"]
-checksum = "sha256:82c7932d9aa10c34e22ef56961ac5aad71d4a14806a1a31b06931add2688b368"
-url = "https://github.com/golangci/golangci-lint/releases/download/v2.12.1/golangci-lint-2.12.1-linux-amd64.tar.gz"
+checksum = "sha256:8df580d2670fed8fa984aac0507099af8df275e665215f5c7a2ae3943893a553"
+url = "https://github.com/golangci/golangci-lint/releases/download/v2.12.2/golangci-lint-2.12.2-linux-amd64.tar.gz"
 
 [tools.golangci-lint."platforms.macos-arm64"]
-checksum = "sha256:393a64ef9b75a5b6c8c8bf8895b8d8208790e6690a43de19a12f3f8bc0e9ad52"
-url = "https://github.com/golangci/golangci-lint/releases/download/v2.12.1/golangci-lint-2.12.1-darwin-arm64.tar.gz"
+checksum = "sha256:a9c54498731b3128f79e090be6110f3e5fffccc617b08142ed244d4126c73f29"
+url = "https://github.com/golangci/golangci-lint/releases/download/v2.12.2/golangci-lint-2.12.2-darwin-arm64.tar.gz"
 
 [tools.golangci-lint."platforms.macos-x64"]
-checksum = "sha256:26a9508ee6d35e89201145b94261d7b55d779474c57677a7bba8b1f12f59309f"
-url = "https://github.com/golangci/golangci-lint/releases/download/v2.12.1/golangci-lint-2.12.1-darwin-amd64.tar.gz"
+checksum = "sha256:f6f06d94b6241521c53d15450c5209b028270bf966f842afb11c030c79f5bc16"
+url = "https://github.com/golangci/golangci-lint/releases/download/v2.12.2/golangci-lint-2.12.2-darwin-amd64.tar.gz"
 
 [tools.golangci-lint."platforms.windows-x64"]
-checksum = "sha256:2b2f837b2a7b91787ecb9b7493bdeae801e9f84e6588984b2c33c34dc2956478"
-url = "https://github.com/golangci/golangci-lint/releases/download/v2.12.1/golangci-lint-2.12.1-windows-amd64.zip"
+checksum = "sha256:bd42e3ebc8cb4ececb86941983baaf1dc221bbb04d838e94ce63b49cc91e02bb"
+url = "https://github.com/golangci/golangci-lint/releases/download/v2.12.2/golangci-lint-2.12.2-windows-amd64.zip"
 
 [[tools.hk]]
-version = "1.44.3"
+version = "1.45.0"
 backend = "aqua:jdx/hk"
 
 [tools.hk."platforms.linux-arm64"]
-checksum = "sha256:85e0f8b7c3107f5b7853390bf8201d3d9839021e3f2d7629f5457f7569218fcc"
-url = "https://github.com/jdx/hk/releases/download/v1.44.3/hk-aarch64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:22293f9c742f0def32299689022891ced7c5c9d5024c91afd33a83e6f714686c"
+url = "https://github.com/jdx/hk/releases/download/v1.45.0/hk-aarch64-unknown-linux-gnu.tar.gz"
 
 [tools.hk."platforms.linux-arm64-musl"]
-checksum = "sha256:85e0f8b7c3107f5b7853390bf8201d3d9839021e3f2d7629f5457f7569218fcc"
-url = "https://github.com/jdx/hk/releases/download/v1.44.3/hk-aarch64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:22293f9c742f0def32299689022891ced7c5c9d5024c91afd33a83e6f714686c"
+url = "https://github.com/jdx/hk/releases/download/v1.45.0/hk-aarch64-unknown-linux-gnu.tar.gz"
 
 [tools.hk."platforms.linux-x64"]
-checksum = "sha256:8ff22722b831acae2ac61eddbe349497f9538ac7ac28f4b1a2e3dd7c0e43ee8c"
-url = "https://github.com/jdx/hk/releases/download/v1.44.3/hk-x86_64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:47a3338403f689cc295d36213cfede4e1098c335d18064416ea9ac2b9739c148"
+url = "https://github.com/jdx/hk/releases/download/v1.45.0/hk-x86_64-unknown-linux-gnu.tar.gz"
 
 [tools.hk."platforms.linux-x64-musl"]
-checksum = "sha256:8ff22722b831acae2ac61eddbe349497f9538ac7ac28f4b1a2e3dd7c0e43ee8c"
-url = "https://github.com/jdx/hk/releases/download/v1.44.3/hk-x86_64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:47a3338403f689cc295d36213cfede4e1098c335d18064416ea9ac2b9739c148"
+url = "https://github.com/jdx/hk/releases/download/v1.45.0/hk-x86_64-unknown-linux-gnu.tar.gz"
 
 [tools.hk."platforms.macos-arm64"]
-checksum = "sha256:e9000438928e7c66fd7790f0b47ca9b1c0b971c834238c1fa5faffae7fd92625"
-url = "https://github.com/jdx/hk/releases/download/v1.44.3/hk-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:17bd1d9eccbfc894c4b0191871a964dc67df80c1bfbee072e5c12d4bb893a8a6"
+url = "https://github.com/jdx/hk/releases/download/v1.45.0/hk-aarch64-apple-darwin.tar.gz"
 
 [tools.hk."platforms.windows-x64"]
-checksum = "sha256:c59c6bf1c45157903ce58a5572257a959ca5e3895b6b9cbfb808a744d4858fb9"
-url = "https://github.com/jdx/hk/releases/download/v1.44.3/hk-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:94c7c460d05748524a96583b656e8dec31a11a30ce6a997b9a5b5d8ec4d1b7e7"
+url = "https://github.com/jdx/hk/releases/download/v1.45.0/hk-x86_64-pc-windows-msvc.zip"
 
 [[tools.java]]
 version = "corretto-11.0.31.11.1"
@@ -254,42 +254,42 @@ checksum = "sha256:a8834481667325b44c539dbb758d7365a16389070f343c04b639bbe525ede
 url = "https://github.com/apple/pkl/releases/download/0.31.1/pkl-windows-amd64.exe"
 
 [[tools.pulumi]]
-version = "3.234.0"
+version = "3.237.0"
 backend = "aqua:pulumi/pulumi"
 
 [tools.pulumi."platforms.linux-arm64"]
-checksum = "sha256:a840d56a3af45292eeceab36c1b2b2f5d06d8ab4ae9fb43cb4ba8e1dfcafbce1"
-url = "https://github.com/pulumi/pulumi/releases/download/v3.234.0/pulumi-v3.234.0-linux-arm64.tar.gz"
+checksum = "sha256:a3b586194f1022c856050a0aa3af7699c007640a2bc5a13a8b99aa9dd40b80fc"
+url = "https://github.com/pulumi/pulumi/releases/download/v3.237.0/pulumi-v3.237.0-linux-arm64.tar.gz"
 provenance = "cosign"
 
 [tools.pulumi."platforms.linux-arm64-musl"]
-checksum = "sha256:a840d56a3af45292eeceab36c1b2b2f5d06d8ab4ae9fb43cb4ba8e1dfcafbce1"
-url = "https://github.com/pulumi/pulumi/releases/download/v3.234.0/pulumi-v3.234.0-linux-arm64.tar.gz"
+checksum = "sha256:a3b586194f1022c856050a0aa3af7699c007640a2bc5a13a8b99aa9dd40b80fc"
+url = "https://github.com/pulumi/pulumi/releases/download/v3.237.0/pulumi-v3.237.0-linux-arm64.tar.gz"
 provenance = "cosign"
 
 [tools.pulumi."platforms.linux-x64"]
-checksum = "sha256:65787e72cb3eb383976f93f138e5941fed01d81549412d43bd0e00117e54ff81"
-url = "https://github.com/pulumi/pulumi/releases/download/v3.234.0/pulumi-v3.234.0-linux-x64.tar.gz"
+checksum = "sha256:7264e8140d27ec63ca7a0c2dbe1396bcb53bbb7850777337cf56ae0bccd3e840"
+url = "https://github.com/pulumi/pulumi/releases/download/v3.237.0/pulumi-v3.237.0-linux-x64.tar.gz"
 provenance = "cosign"
 
 [tools.pulumi."platforms.linux-x64-musl"]
-checksum = "sha256:65787e72cb3eb383976f93f138e5941fed01d81549412d43bd0e00117e54ff81"
-url = "https://github.com/pulumi/pulumi/releases/download/v3.234.0/pulumi-v3.234.0-linux-x64.tar.gz"
+checksum = "sha256:7264e8140d27ec63ca7a0c2dbe1396bcb53bbb7850777337cf56ae0bccd3e840"
+url = "https://github.com/pulumi/pulumi/releases/download/v3.237.0/pulumi-v3.237.0-linux-x64.tar.gz"
 provenance = "cosign"
 
 [tools.pulumi."platforms.macos-arm64"]
-checksum = "sha256:003f392f386c1ba02d38893dac8af6a194279ed30102877983c97cefa55ffaec"
-url = "https://github.com/pulumi/pulumi/releases/download/v3.234.0/pulumi-v3.234.0-darwin-arm64.tar.gz"
+checksum = "sha256:893bd5f7d513a930c7cd88ec28a84d274ce3bf9373f35de8e232e2085d6c0512"
+url = "https://github.com/pulumi/pulumi/releases/download/v3.237.0/pulumi-v3.237.0-darwin-arm64.tar.gz"
 provenance = "cosign"
 
 [tools.pulumi."platforms.macos-x64"]
-checksum = "sha256:7e50b93dde0818a4b0b5fbc051a3fc945c2de9501550230e44faad15aa23c7ee"
-url = "https://github.com/pulumi/pulumi/releases/download/v3.234.0/pulumi-v3.234.0-darwin-x64.tar.gz"
+checksum = "sha256:cee40c9a358d64a43920bd61c250fb4c37db6e77b78b4f939c594f7c0577f543"
+url = "https://github.com/pulumi/pulumi/releases/download/v3.237.0/pulumi-v3.237.0-darwin-x64.tar.gz"
 provenance = "cosign"
 
 [tools.pulumi."platforms.windows-x64"]
-checksum = "sha256:340f8ae01158f6bcfc8ce41149b0ddbae6eeba9025848877cc9205ffbb8324be"
-url = "https://github.com/pulumi/pulumi/releases/download/v3.234.0/pulumi-v3.234.0-windows-x64.zip"
+checksum = "sha256:e89da6a7002343f8781e42fd20708b934ba2d21d146f1be4ac1722e5d233a520"
+url = "https://github.com/pulumi/pulumi/releases/download/v3.237.0/pulumi-v3.237.0-windows-x64.zip"
 provenance = "cosign"
 
 [[tools.python]]
@@ -358,37 +358,37 @@ url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-darwin-x8
 url = "https://github.com/tamasfe/taplo/releases/download/0.10.0/taplo-windows-x86_64.zip"
 
 [[tools.uv]]
-version = "0.11.8"
+version = "0.11.12"
 backend = "aqua:astral-sh/uv"
 
 [tools.uv."platforms.linux-arm64"]
-checksum = "sha256:29418befb64f926a2dba3473e8e69acd00b36fb845d85344ef11321a993ad8f5"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.8/uv-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:b70e87f15f12d750d218042c4ed36e41de0757eab249d332ee2e242e4174b5d5"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.12/uv-aarch64-unknown-linux-musl.tar.gz"
 
 [tools.uv."platforms.linux-arm64-musl"]
-checksum = "sha256:29418befb64f926a2dba3473e8e69acd00b36fb845d85344ef11321a993ad8f5"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.8/uv-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:b70e87f15f12d750d218042c4ed36e41de0757eab249d332ee2e242e4174b5d5"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.12/uv-aarch64-unknown-linux-musl.tar.gz"
 
 [tools.uv."platforms.linux-x64"]
-checksum = "sha256:de82507d12e31cfc86c1c776238f7c248e48e40d996dedc812d64fdd31c6ed12"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.8/uv-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:591a7557f5ba7e51565f338dd4c50cebc12820ec2ebb8403a4304685f8d53ab9"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.12/uv-x86_64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-x64-musl"]
-checksum = "sha256:de82507d12e31cfc86c1c776238f7c248e48e40d996dedc812d64fdd31c6ed12"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.8/uv-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:591a7557f5ba7e51565f338dd4c50cebc12820ec2ebb8403a4304685f8d53ab9"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.12/uv-x86_64-unknown-linux-musl.tar.gz"
 
 [tools.uv."platforms.macos-arm64"]
-checksum = "sha256:c729adb365114e844dd7f9316313a7ed6443b89bb5681d409eebac78b0bd06c8"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.8/uv-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:bb7c6ef869ec00cd1452f4884acf23d00b153c356ba9197ae99a1bc1ceadb7f3"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.12/uv-aarch64-apple-darwin.tar.gz"
 
 [tools.uv."platforms.macos-x64"]
-checksum = "sha256:c59d73bf34b58bc8e33a11629f7a255c11789fd00f03cd3e68ab2d1603645de9"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.8/uv-x86_64-apple-darwin.tar.gz"
+checksum = "sha256:32fb217e6181384bf6534b31adcc66cd552eff98643c4bb35832be8552486912"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.12/uv-x86_64-apple-darwin.tar.gz"
 
 [tools.uv."platforms.windows-x64"]
-checksum = "sha256:c84629a56e0706b69a47ea35862208af827cb6fbfa1d0ca763c52c67594637e8"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.8/uv-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:e46956a6b088a0382101c797eef945c1b03826e629e968d434cf838d42d85b6b"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.12/uv-x86_64-pc-windows-msvc.zip"
 
 [[tools.yamllint]]
 version = "1.38.0"
