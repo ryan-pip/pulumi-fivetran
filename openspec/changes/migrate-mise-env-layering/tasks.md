@@ -6,6 +6,7 @@
 - [x] 1.3 Create `.miserc.toml` with `env = ["dev", "local"]`.
 - [x] 1.4 Delete `mise.ci.toml`.
 - [x] 1.5 Run `mise lock`; commit the regenerated `mise.lock` (base) and new `mise.dev.lock` (dev).
+- [x] 1.6 Pin `node` to an exact version (`24.17.0`, ≥24.1 per pulumi/ci-mgmt) so upgrade-provider's `mise upgrade --raw` finds nothing newer and never reinstalls node via its gpg-verify path (which fails on CI runners). `pulumi` intentionally left unpinned — exact-pinning it has caused issues and there's no automated mise-pin bump. Regenerate the lockfile.
 
 ## 2. Drop the composite wrapper
 - [x] 2.1 Delete `.github/actions/setup-mise/`.
@@ -21,6 +22,6 @@
 ## 4. Verify
 - [x] 4.1 `MISE_ENV=ci mise install` locally resolves only the base set; a plain `mise install` resolves base+dev.
 - [x] 4.2 `actionlint`/`yamllint` clean on all three workflows.
-- [ ] 4.3 Trigger `upgrade-provider.yml` via `workflow_dispatch` — `Setup mise` passes, `upgrade-provider` runs to completion (or opens its PR), and the `go.work` sync step still behaves. _(Deferred: requires the branch pushed to GitHub; run after merge/push.)_
-- [ ] 4.4 A pull-request run stays green (base set still covers golangci-lint, build, SDKs). _(Deferred: requires the branch pushed to GitHub.)_
+- [x] 4.3 Trigger `upgrade-provider.yml` via `workflow_dispatch` — verified on run 28069194277: all steps green (Setup mise, Run upgrade-provider, Sync go.work, Enable auto-merge). Bot opened PR #58 as `app/the-reef-release-bot` and enabled auto-merge — confirms the app-slug identity fix.
+- [x] 4.4 A pull-request run stays green — PR #57 run 28069195581: lint, go-test, prerequisites, build_sdk (all 4 langs incl. nodejs on node 24.17.0), schema-validation, python-tests all pass.
 - [x] 4.5 Confirm the pattern matches `pulumi-astronomer`'s equivalent change.
