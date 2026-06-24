@@ -120,11 +120,11 @@ type ConnectorSchedule struct {
 	PauseAfterTrial pulumi.StringOutput `pulumi:"pauseAfterTrial"`
 	// Specifies whether the connector is paused.
 	Paused pulumi.StringOutput `pulumi:"paused"`
-	// Flexible sync schedule configuration. When set, takes precedence over `syncFrequency`.
+	// Flexible sync schedule configuration. When set, takes precedence over `syncFrequency`. **Note:** This attribute is in **ALPHA** state.
 	Schedule ConnectorScheduleSchedulePtrOutput `pulumi:"schedule"`
 	// The connector schedule configuration type. Supported values: auto, manual.
 	ScheduleType pulumi.StringOutput `pulumi:"scheduleType"`
-	// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440. Deprecated: use `schedule` block instead.
+	// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
 	SyncFrequency pulumi.StringOutput `pulumi:"syncFrequency"`
 }
 
@@ -170,11 +170,11 @@ type connectorScheduleState struct {
 	PauseAfterTrial *string `pulumi:"pauseAfterTrial"`
 	// Specifies whether the connector is paused.
 	Paused *string `pulumi:"paused"`
-	// Flexible sync schedule configuration. When set, takes precedence over `syncFrequency`.
+	// Flexible sync schedule configuration. When set, takes precedence over `syncFrequency`. **Note:** This attribute is in **ALPHA** state.
 	Schedule *ConnectorScheduleSchedule `pulumi:"schedule"`
 	// The connector schedule configuration type. Supported values: auto, manual.
 	ScheduleType *string `pulumi:"scheduleType"`
-	// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440. Deprecated: use `schedule` block instead.
+	// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
 	SyncFrequency *string `pulumi:"syncFrequency"`
 }
 
@@ -191,11 +191,11 @@ type ConnectorScheduleState struct {
 	PauseAfterTrial pulumi.StringPtrInput
 	// Specifies whether the connector is paused.
 	Paused pulumi.StringPtrInput
-	// Flexible sync schedule configuration. When set, takes precedence over `syncFrequency`.
+	// Flexible sync schedule configuration. When set, takes precedence over `syncFrequency`. **Note:** This attribute is in **ALPHA** state.
 	Schedule ConnectorScheduleSchedulePtrInput
 	// The connector schedule configuration type. Supported values: auto, manual.
 	ScheduleType pulumi.StringPtrInput
-	// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440. Deprecated: use `schedule` block instead.
+	// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
 	SyncFrequency pulumi.StringPtrInput
 }
 
@@ -216,11 +216,11 @@ type connectorScheduleArgs struct {
 	PauseAfterTrial *string `pulumi:"pauseAfterTrial"`
 	// Specifies whether the connector is paused.
 	Paused *string `pulumi:"paused"`
-	// Flexible sync schedule configuration. When set, takes precedence over `syncFrequency`.
+	// Flexible sync schedule configuration. When set, takes precedence over `syncFrequency`. **Note:** This attribute is in **ALPHA** state.
 	Schedule *ConnectorScheduleSchedule `pulumi:"schedule"`
 	// The connector schedule configuration type. Supported values: auto, manual.
 	ScheduleType *string `pulumi:"scheduleType"`
-	// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440. Deprecated: use `schedule` block instead.
+	// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
 	SyncFrequency *string `pulumi:"syncFrequency"`
 }
 
@@ -238,11 +238,11 @@ type ConnectorScheduleArgs struct {
 	PauseAfterTrial pulumi.StringPtrInput
 	// Specifies whether the connector is paused.
 	Paused pulumi.StringPtrInput
-	// Flexible sync schedule configuration. When set, takes precedence over `syncFrequency`.
+	// Flexible sync schedule configuration. When set, takes precedence over `syncFrequency`. **Note:** This attribute is in **ALPHA** state.
 	Schedule ConnectorScheduleSchedulePtrInput
 	// The connector schedule configuration type. Supported values: auto, manual.
 	ScheduleType pulumi.StringPtrInput
-	// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440. Deprecated: use `schedule` block instead.
+	// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
 	SyncFrequency pulumi.StringPtrInput
 }
 
@@ -363,7 +363,7 @@ func (o ConnectorScheduleOutput) Paused() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectorSchedule) pulumi.StringOutput { return v.Paused }).(pulumi.StringOutput)
 }
 
-// Flexible sync schedule configuration. When set, takes precedence over `syncFrequency`.
+// Flexible sync schedule configuration. When set, takes precedence over `syncFrequency`. **Note:** This attribute is in **ALPHA** state.
 func (o ConnectorScheduleOutput) Schedule() ConnectorScheduleSchedulePtrOutput {
 	return o.ApplyT(func(v *ConnectorSchedule) ConnectorScheduleSchedulePtrOutput { return v.Schedule }).(ConnectorScheduleSchedulePtrOutput)
 }
@@ -373,7 +373,7 @@ func (o ConnectorScheduleOutput) ScheduleType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectorSchedule) pulumi.StringOutput { return v.ScheduleType }).(pulumi.StringOutput)
 }
 
-// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440. Deprecated: use `schedule` block instead.
+// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
 func (o ConnectorScheduleOutput) SyncFrequency() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectorSchedule) pulumi.StringOutput { return v.SyncFrequency }).(pulumi.StringOutput)
 }

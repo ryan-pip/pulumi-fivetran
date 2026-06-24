@@ -73,16 +73,6 @@ namespace Pulumi.Fivetran.Outputs
         /// 	- Service `GooglePlay`: Authentication Method
         /// </summary>
         public readonly string? AuthenticationMethod;
-        /// <summary>
-        /// Field usage depends on `Service` value: 
-        /// 	- Service `AmazonSellingPartner`: `AWS Access Key` of your AWS Account User.
-        /// </summary>
-        public readonly string? AwsAccessKey;
-        /// <summary>
-        /// Field usage depends on `Service` value: 
-        /// 	- Service `AmazonSellingPartner`: `AWS Secret Key` of your AWS Account User.
-        /// </summary>
-        public readonly string? AwsSecretKey;
         public readonly Outputs.ConnectorAuthClientAccess? ClientAccess;
         /// <summary>
         /// Field usage depends on `Service` value: 
@@ -110,20 +100,30 @@ namespace Pulumi.Fivetran.Outputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Twitter`: API Key of your app
-        /// 	- Service `TwitterAds`: The Twitter App consumer key.
+        /// 	- Service `TwitterAds`: The X App consumer key.
         /// </summary>
         public readonly string? ConsumerKey;
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Twitter`: API Secret of your app
-        /// 	- Service `TwitterAds`: The Twitter App consumer secret.
+        /// 	- Service `TwitterAds`: The X App consumer secret.
         /// </summary>
         public readonly string? ConsumerSecret;
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ConfluentCloud`: Optional Confluent Cloud identity pool ID. When omitted, Confluent auto-maps the token to a matching pool.
+        /// </summary>
+        public readonly string? IdentityPoolId;
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `AppleSearchAds`: Apple Search Ads REST API Key ID. Must be populated if `IsAuth2Enabled` is set to `True`.
         /// </summary>
         public readonly string? KeyId;
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ConfluentCloud`: Confluent Cloud logical cluster ID. Required for OAuth 2.0 authentication.
+        /// </summary>
+        public readonly string? LogicalClusterId;
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `AzureSqlDb`: User Assigned Managed Identity Client ID.
@@ -132,23 +132,38 @@ namespace Pulumi.Fivetran.Outputs
         public readonly string? ManagedIdentityUserAssigned;
         /// <summary>
         /// Field usage depends on `Service` value: 
-        /// 	- Service `Twitter`: The Twitter App access token.
-        /// 	- Service `TwitterAds`: The Twitter App access token.
+        /// 	- Service `ConfluentCloud`: OAuth 2.0 client ID issued by the identity provider.
+        /// </summary>
+        public readonly string? OauthClientId;
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ConfluentCloud`: OAuth 2.0 client secret issued by the identity provider.
+        /// </summary>
+        public readonly string? OauthClientSecret;
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ConfluentCloud`: Optional OAuth 2.0 scope to request with the access token.
+        /// </summary>
+        public readonly string? OauthScope;
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Twitter`: The X App access token.
+        /// 	- Service `TwitterAds`: The X App access token.
         /// </summary>
         public readonly string? OauthToken;
         /// <summary>
         /// Field usage depends on `Service` value: 
-        /// 	- Service `Twitter`: The Twitter App access token secret.
-        /// 	- Service `TwitterAds`: The Twitter App access token secret.
+        /// 	- Service `ConfluentCloud`: OAuth 2.0 token endpoint URL used to obtain access tokens.
+        /// </summary>
+        public readonly string? OauthTokenEndpointUrl;
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Twitter`: The X App access token secret.
+        /// 	- Service `TwitterAds`: The X App access token secret.
         /// </summary>
         public readonly string? OauthTokenSecret;
         public readonly string? OcapiAccessToken;
         public readonly string? OcapiRefreshToken;
-        /// <summary>
-        /// Field usage depends on `Service` value: 
-        /// 	- Service `Dynamics365`: Previous `Refresh token` of your application.
-        /// </summary>
-        public readonly string? PreviousRefreshToken;
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Quickbooks`: `Realm ID` of your QuickBooks application.
@@ -177,15 +192,12 @@ namespace Pulumi.Fivetran.Outputs
         /// 	- Service `Dropbox`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `Dynamics365`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `EmploymentHero`: Your Employment Hero refresh token.
-        /// 	- Service `FinancialForce`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `Freshbooks`: Your FreshBooks Refresh Token.
         /// 	- Service `Front`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `Gitlab`: Your GitLab refresh token.
         /// 	- Service `Gmail`: The long-lived `Refresh token` of your Gmail client application.
         /// 	- Service `GoogleAds`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `GoogleAnalytics`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `GoogleAnalytics4`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `GoogleAnalyticsMcf`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `GoogleBusinessProfile`: Your Google Business Profile Refresh token.
         /// 	- Service `GoogleCalendar`: Your Google Calendar refresh token.
         /// 	- Service `GoogleClassroom`: The long-lived `Refresh token` of your Google Calendar client application.
@@ -215,7 +227,6 @@ namespace Pulumi.Fivetran.Outputs
         /// 	- Service `SalesforceSandbox`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `Salesloft`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `SharePoint`: The long-lived Refresh token carries the information necessary to get a new access token for API resources.
-        /// 	- Service `Slack`: Your Slack refresh token.
         /// 	- Service `SnapchatAds`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `SpotifyAds`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `TiktokOrganicApp`: Your TikTok Organic refresh token.
@@ -228,11 +239,6 @@ namespace Pulumi.Fivetran.Outputs
         /// 	- Service `Zoom`: Your Zoom Refresh token.
         /// </summary>
         public readonly string? RefreshToken;
-        /// <summary>
-        /// Field usage depends on `Service` value: 
-        /// 	- Service `AmazonSellingPartner`: `IAM Role ARN` of your AWS Account.
-        /// </summary>
-        public readonly string? RoleArn;
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `AzureSqlDb`: Contents of Service Principal Client Certificate Private Key.
@@ -281,6 +287,11 @@ namespace Pulumi.Fivetran.Outputs
         /// 	- Service `FacebookAds`: System User Token. Use in combination with `ClientId` and `ClientSecret`. Use either `UserAccessToken` (for system token) or `AccessToken` (for user access token), not both at the same time.
         /// </summary>
         public readonly string? UserAccessToken;
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SqlServer`: Private key associated with the Fivetran client certificate.
+        /// </summary>
+        public readonly string? WindowsAuthClientPrivateKey;
 
         [OutputConstructor]
         private ConnectorAuth(
@@ -292,10 +303,6 @@ namespace Pulumi.Fivetran.Outputs
 
             string? authenticationMethod,
 
-            string? awsAccessKey,
-
-            string? awsSecretKey,
-
             Outputs.ConnectorAuthClientAccess? clientAccess,
 
             string? clientId,
@@ -306,11 +313,23 @@ namespace Pulumi.Fivetran.Outputs
 
             string? consumerSecret,
 
+            string? identityPoolId,
+
             string? keyId,
+
+            string? logicalClusterId,
 
             string? managedIdentityUserAssigned,
 
+            string? oauthClientId,
+
+            string? oauthClientSecret,
+
+            string? oauthScope,
+
             string? oauthToken,
+
+            string? oauthTokenEndpointUrl,
 
             string? oauthTokenSecret,
 
@@ -318,13 +337,9 @@ namespace Pulumi.Fivetran.Outputs
 
             string? ocapiRefreshToken,
 
-            string? previousRefreshToken,
-
             string? realmId,
 
             string? refreshToken,
-
-            string? roleArn,
 
             string? servicePrincipalClientCertPvtKey,
 
@@ -342,29 +357,33 @@ namespace Pulumi.Fivetran.Outputs
 
             string? tenantId,
 
-            string? userAccessToken)
+            string? userAccessToken,
+
+            string? windowsAuthClientPrivateKey)
         {
             AccessToken = accessToken;
             ApiKey = apiKey;
             ApplicationId = applicationId;
             AuthenticationMethod = authenticationMethod;
-            AwsAccessKey = awsAccessKey;
-            AwsSecretKey = awsSecretKey;
             ClientAccess = clientAccess;
             ClientId = clientId;
             ClientSecret = clientSecret;
             ConsumerKey = consumerKey;
             ConsumerSecret = consumerSecret;
+            IdentityPoolId = identityPoolId;
             KeyId = keyId;
+            LogicalClusterId = logicalClusterId;
             ManagedIdentityUserAssigned = managedIdentityUserAssigned;
+            OauthClientId = oauthClientId;
+            OauthClientSecret = oauthClientSecret;
+            OauthScope = oauthScope;
             OauthToken = oauthToken;
+            OauthTokenEndpointUrl = oauthTokenEndpointUrl;
             OauthTokenSecret = oauthTokenSecret;
             OcapiAccessToken = ocapiAccessToken;
             OcapiRefreshToken = ocapiRefreshToken;
-            PreviousRefreshToken = previousRefreshToken;
             RealmId = realmId;
             RefreshToken = refreshToken;
-            RoleArn = roleArn;
             ServicePrincipalClientCertPvtKey = servicePrincipalClientCertPvtKey;
             ServicePrincipalClientCertificate = servicePrincipalClientCertificate;
             ServicePrincipalClientSecret = servicePrincipalClientSecret;
@@ -374,6 +393,7 @@ namespace Pulumi.Fivetran.Outputs
             TeamId = teamId;
             TenantId = tenantId;
             UserAccessToken = userAccessToken;
+            WindowsAuthClientPrivateKey = windowsAuthClientPrivateKey;
         }
     }
 }

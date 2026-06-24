@@ -39,6 +39,19 @@ namespace Pulumi.Fivetran.Inputs
         [Input("aggregation")]
         public Input<string>? Aggregation { get; set; }
 
+        [Input("attributionWindows")]
+        private InputList<string>? _attributionWindows;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `FacebookAds`: List of attribution windows passed as Meta's `ActionAttributionWindows` query parameter. Default: `CLICK_7D`, `VIEW_1D`, `INCREMENTALITY`. Possible values: `CLICK_1D`, `CLICK_7D`, `CLICK_28D`, `VIEW_1D`, `ENGAGED_VIEW_1D`, `INCREMENTALITY`, `INCREMENTALITY_FIRST_CONVERSION`, `INCREMENTALITY_ALL_CONVERSIONS`.
+        /// </summary>
+        public InputList<string> AttributionWindows
+        {
+            get => _attributionWindows ?? (_attributionWindows = new InputList<string>());
+            set => _attributionWindows = value;
+        }
+
         [Input("breakdowns")]
         private InputList<string>? _breakdowns;
 
@@ -54,7 +67,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
-        /// 	- Service `FacebookAds`: Time period to attribute conversions based on clicks. [Possible ClickAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads#clickattributionwindow).
+        /// 	- Service `FacebookAds`: Deprecated. Read-only legacy field used only during migration to `AttributionWindows`.
         /// </summary>
         [Input("clickAttributionWindow")]
         public Input<string>? ClickAttributionWindow { get; set; }
@@ -68,7 +81,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
-        /// 	- Service `FacebookAds`: Time period to attribute conversions based on engaged views. [Possible ViewAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads#engagedviewattributionwindow).
+        /// 	- Service `FacebookAds`: Deprecated. Read-only legacy field used only during migration to `AttributionWindows`.
         /// </summary>
         [Input("engagedViewAttributionWindow")]
         public Input<string>? EngagedViewAttributionWindow { get; set; }
@@ -108,7 +121,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
-        /// 	- Service `FacebookAds`: Time period to attribute conversions based on views. [Possible ViewAttributionWindow values](https://fivetran.com/docs/connectors/applications/facebook-ads#viewattributionwindow).
+        /// 	- Service `FacebookAds`: Deprecated. Read-only legacy field used only during migration to `AttributionWindows`.
         /// </summary>
         [Input("viewAttributionWindow")]
         public Input<string>? ViewAttributionWindow { get; set; }

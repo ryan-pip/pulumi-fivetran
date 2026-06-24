@@ -38,7 +38,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
-        /// 	- Service `AzureBlobStorage`: All files in your search path matching this regular expression will be synced per table. We have discontinued this field, and will delete it by August 31, 2025.
+        /// 	- Service `AzureBlobStorage`: All files in your search path matching this regular expression will be synced per table.
         /// 	- Service `Box`: All files in your search path matching this regular expression will be synced per table.
         /// 	- Service `Dropbox`: All files in your search path matching this regular expression will be synced per table.
         /// 	- Service `Email`: All files in your search path matching this regular expression will be synced per table.

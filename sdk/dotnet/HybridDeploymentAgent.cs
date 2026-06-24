@@ -119,6 +119,12 @@ namespace Pulumi.Fivetran
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/ryan-pip",
+                AdditionalSecretOutputs =
+                {
+                    "authJson",
+                    "configJson",
+                    "token",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -180,11 +186,21 @@ namespace Pulumi.Fivetran
 
     public sealed class HybridDeploymentAgentState : global::Pulumi.ResourceArgs
     {
+        [Input("authJson")]
+        private Input<string>? _authJson;
+
         /// <summary>
         /// Base64-encoded content of the auth.json file.
         /// </summary>
-        [Input("authJson")]
-        public Input<string>? AuthJson { get; set; }
+        public Input<string>? AuthJson
+        {
+            get => _authJson;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authJson = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Type of authentification. Possible values `AUTO`,`MANUAL`
@@ -198,11 +214,21 @@ namespace Pulumi.Fivetran
         [Input("authenticationCounter")]
         public Input<int>? AuthenticationCounter { get; set; }
 
+        [Input("configJson")]
+        private Input<string>? _configJson;
+
         /// <summary>
         /// Base64-encoded content of the config.json file.
         /// </summary>
-        [Input("configJson")]
-        public Input<string>? ConfigJson { get; set; }
+        public Input<string>? ConfigJson
+        {
+            get => _configJson;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _configJson = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The unique name for the hybrid deployment agent.
@@ -234,11 +260,21 @@ namespace Pulumi.Fivetran
         [Input("registeredAt")]
         public Input<string>? RegisteredAt { get; set; }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// Base64 encoded content of token.
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public HybridDeploymentAgentState()
         {

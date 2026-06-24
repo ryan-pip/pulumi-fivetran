@@ -70,7 +70,7 @@ export class ProxyAgent extends pulumi.CustomResource {
      */
     declare public readonly groupRegion: pulumi.Output<string>;
     /**
-     * Determines whether regenerarion secrets needs to be performed.
+     * Determines whether regeneration secrets needs to be performed.
      */
     declare public readonly regenerationCounter: pulumi.Output<number>;
     /**
@@ -121,6 +121,8 @@ export class ProxyAgent extends pulumi.CustomResource {
             resourceInputs["token"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["clientPrivateKey", "token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ProxyAgent.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -150,7 +152,7 @@ export interface ProxyAgentState {
      */
     groupRegion?: pulumi.Input<string | undefined>;
     /**
-     * Determines whether regenerarion secrets needs to be performed.
+     * Determines whether regeneration secrets needs to be performed.
      */
     regenerationCounter?: pulumi.Input<number | undefined>;
     /**
@@ -176,7 +178,7 @@ export interface ProxyAgentArgs {
      */
     groupRegion: pulumi.Input<string>;
     /**
-     * Determines whether regenerarion secrets needs to be performed.
+     * Determines whether regeneration secrets needs to be performed.
      */
     regenerationCounter?: pulumi.Input<number | undefined>;
 }

@@ -85,6 +85,12 @@ func NewHybridDeploymentAgent(ctx *pulumi.Context,
 	if args.GroupId == nil {
 		return nil, errors.New("invalid value for required argument 'GroupId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"authJson",
+		"configJson",
+		"token",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HybridDeploymentAgent
 	err := ctx.RegisterResource("fivetran:index/hybridDeploymentAgent:HybridDeploymentAgent", name, args, &resource, opts...)

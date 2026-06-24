@@ -35,6 +35,11 @@ namespace Pulumi.Fivetran.Outputs
         public readonly ImmutableArray<string> BaseMetricsFields;
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `AppleSearchAds`: The base report type. It determines the set of available dimensions for the `groupBy` field and the metrics that will be included in the custom report. Only one value is supported: `CAMPAIGN`.
+        /// </summary>
+        public readonly string BaseReportType;
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `SnapchatAds`: [Sets Breakdown on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#breakdown).
         /// </summary>
         public readonly string Breakdown;
@@ -81,6 +86,11 @@ namespace Pulumi.Fivetran.Outputs
         public readonly string Granularity;
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `AppleSearchAds`: The list of dimensions to group the data by. The available dimensions depend on the selected `baseReportType`.
+        /// </summary>
+        public readonly ImmutableArray<string> GroupBies;
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `RedditAds`: Level of custom report.
         /// </summary>
         public readonly string Level;
@@ -119,6 +129,11 @@ namespace Pulumi.Fivetran.Outputs
         public readonly ImmutableArray<string> SkAdMetricsFields;
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `AppleSearchAds`: The name of the custom report table. It must be unique within this connection and must comply with Fivetran's naming conventions.
+        /// </summary>
+        public readonly string Table;
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `Criteo`: Destination Table name of report
         /// 	- Service `TiktokAds`: Destination Table name of report
         /// </summary>
@@ -149,6 +164,8 @@ namespace Pulumi.Fivetran.Outputs
 
             ImmutableArray<string> baseMetricsFields,
 
+            string baseReportType,
+
             string breakdown,
 
             ImmutableArray<string> breakdowns,
@@ -167,6 +184,8 @@ namespace Pulumi.Fivetran.Outputs
 
             string granularity,
 
+            ImmutableArray<string> groupBies,
+
             string level,
 
             ImmutableArray<string> metrics,
@@ -181,6 +200,8 @@ namespace Pulumi.Fivetran.Outputs
 
             ImmutableArray<string> skAdMetricsFields,
 
+            string table,
+
             string tableName,
 
             ImmutableArray<string> timeDimensions,
@@ -193,6 +214,7 @@ namespace Pulumi.Fivetran.Outputs
             AddMetricVariants = addMetricVariants;
             Aggregate = aggregate;
             BaseMetricsFields = baseMetricsFields;
+            BaseReportType = baseReportType;
             Breakdown = breakdown;
             Breakdowns = breakdowns;
             Breakout = breakout;
@@ -202,6 +224,7 @@ namespace Pulumi.Fivetran.Outputs
             Dimensions = dimensions;
             EventNames = eventNames;
             Granularity = granularity;
+            GroupBies = groupBies;
             Level = level;
             Metrics = metrics;
             ReportFields = reportFields;
@@ -209,6 +232,7 @@ namespace Pulumi.Fivetran.Outputs
             ReportType = reportType;
             Segmentation = segmentation;
             SkAdMetricsFields = skAdMetricsFields;
+            Table = table;
             TableName = tableName;
             TimeDimensions = timeDimensions;
             TimeZone = timeZone;

@@ -70,6 +70,7 @@ namespace Pulumi.Fivetran.Inputs
         /// Field usage depends on `Service` value: 
         /// 	- Service `Adls`: Authentication type
         /// 	- Service `Databricks`: Authentication type
+        /// 	- Service `DatabricksViaManagedDataLake`: Specifies the authentication types for Fivetran to connect to Databricks.
         /// 	- Service `ManagedDataLake`: Specifies the authentication types for Fivetran to connect to Databricks. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
         /// 	- Service `NewS3Datalake`: Authentication type
         /// 	- Service `Onelake`: Authentication type
@@ -152,6 +153,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `BigQuery`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
         /// 	- Service `BigQueryDts`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
         /// 	- Service `Databricks`: Your bucket
+        /// 	- Service `DatabricksViaManagedDataLake`: (Immutable) Name of the S3 or Google Cloud Storage (GCS) bucket you want to use to store your data. Use this parameter only if you want to deploy your data lake on Amazon Web Services (AWS) or GCS.
         /// 	- Service `ManagedBigQuery`: Customer bucket. If specified, your GCS bucket will be used to process the data instead of a Fivetran-managed bucket. The bucket must be present in the same location as the dataset location.
         /// 	- Service `ManagedDataLake`: (Immutable) Name of the S3 or Google Cloud Storage (GCS) bucket you want to use to store your data. Use this parameter only if you want to deploy your data lake on Amazon Web Services (AWS) or GCS.
         /// 	- Service `NewS3Datalake`: (Immutable) The name of the bucket to be used as destination
@@ -174,6 +176,7 @@ namespace Pulumi.Fivetran.Inputs
         /// Field usage depends on `Service` value: 
         /// 	- Service `Adls`: Catalog name
         /// 	- Service `Databricks`: Catalog name
+        /// 	- Service `DatabricksViaManagedDataLake`: Name of the specific catalog in Unity Catalog that you want to use to manage your Delta Lake tables.
         /// 	- Service `ManagedDataLake`: Name of the specific catalog in Unity Catalog that you want to use to manage your Delta Lake tables. Use this parameter only if you want to use Unity Catalog with your data lake.
         /// 	- Service `NewS3Datalake`: Catalog name
         /// 	- Service `Onelake`: Catalog name
@@ -184,6 +187,7 @@ namespace Pulumi.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Adls`: Client id of service principal
+        /// 	- Service `DatabricksViaManagedDataLake`: Client ID of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
         /// 	- Service `ManagedDataLake`: Client ID of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
         /// 	- Service `Onelake`: Client ID of service principal
         /// </summary>
@@ -228,6 +232,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `AzureSqlDatabase`: Connection method. Default value: `Directly`.
         /// 	- Service `AzureSqlManagedDbWarehouse`: Connection method. Default value: `Directly`.
         /// 	- Service `Databricks`: Connection method. Default value: `Directly`.
+        /// 	- Service `DatabricksViaManagedDataLake`: connection type
         /// 	- Service `ManagedDataLake`: connection type
         /// 	- Service `MariaRdsWarehouse`: Connection method. Default value: `Directly`.
         /// 	- Service `MariaWarehouse`: Connection method. Default value: `Directly`.
@@ -253,6 +258,7 @@ namespace Pulumi.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Adls`: (Immutable) Container to store delta table files
+        /// 	- Service `DatabricksViaManagedDataLake`: (Immutable) Name of the ADLS container you want to use to store your data. Use this parameter only if you want to deploy your data lake on ADLS.
         /// 	- Service `ManagedDataLake`: (Immutable) Name of the ADLS container you want to use to store your data. Use this parameter only if you want to deploy your data lake on ADLS.
         /// 	- Service `Onelake`: Workspace name to store delta table files
         /// </summary>
@@ -301,9 +307,9 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `MariaWarehouse`: Database name
         /// 	- Service `MysqlRdsWarehouse`: Database name
         /// 	- Service `MysqlWarehouse`: Database name
-        /// 	- Service `OracleRacWarehouse`: Service Name
-        /// 	- Service `OracleRdsWarehouse`: Database name
-        /// 	- Service `OracleWarehouse`: Database name
+        /// 	- Service `OracleRacWarehouse`: SID/Service name
+        /// 	- Service `OracleRdsWarehouse`: SID/Service name
+        /// 	- Service `OracleWarehouse`: SID/Service name
         /// 	- Service `Panoply`: Database name
         /// 	- Service `PeriscopeWarehouse`: Database name
         /// 	- Service `PostgresDatabricksWarehouse`: Database name
@@ -321,6 +327,7 @@ namespace Pulumi.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Adls`: Databricks Connection method. Default value: `Directly`.
+        /// 	- Service `DatabricksViaManagedDataLake`: Specifies how you want Fivetran to connect to the Databricks account associated with Unity Catalog. Default value: `Directly`.
         /// 	- Service `ManagedDataLake`: Specifies how you want Fivetran to connect to the Databricks account associated with Unity Catalog. Default value: `Directly`. Use this parameter only if you want to use Unity Catalog with your data lake.
         /// 	- Service `NewS3Datalake`: Databricks Connection method. Default value: `Directly`.
         /// 	- Service `Onelake`: Databricks Connection method. Default value: `Directly`.
@@ -436,6 +443,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `DatabricksViaManagedDataLake`: (Immutable) ARN of the IAM role you created for the IAM policy associated with your S3 bucket or Glue catalog. Use this parameter only if you want to deploy your data lake on AWS.
         /// 	- Service `ManagedDataLake`: (Immutable) ARN of the IAM role you created for the IAM policy associated with your S3 bucket or Glue catalog. Use this parameter only if you want to deploy your data lake on AWS.
         /// 	- Service `NewS3Datalake`: ARN of the role which you created with different required policy mentioned in our setup guide
         /// </summary>
@@ -444,6 +452,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `DatabricksViaManagedDataLake`: GCS Project ID of your Google Cloud Storage bucket. Use this parameter only if you want to deploy your data lake on GCS.
         /// 	- Service `ManagedDataLake`: GCS Project ID of your Google Cloud Storage bucket. Use this parameter only if you want to deploy your data lake on GCS.
         /// </summary>
         [Input("gcsProjectId", required: true)]
@@ -489,6 +498,7 @@ namespace Pulumi.Fivetran.Inputs
         /// Field usage depends on `Service` value: 
         /// 	- Service `Adls`: HTTP path
         /// 	- Service `Databricks`: HTTP path
+        /// 	- Service `DatabricksViaManagedDataLake`: HTTP path of the Databricks account associated with Unity Catalog.
         /// 	- Service `ManagedDataLake`: HTTP path of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
         /// 	- Service `NewS3Datalake`: HTTP path
         /// 	- Service `Onelake`: HTTP path
@@ -519,6 +529,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `DatabricksViaManagedDataLake`: (Immutable) OneLake lakehouse GUID.
         /// 	- Service `ManagedDataLake`: (Immutable) OneLake lakehouse GUID.
         /// 	- Service `Onelake`: (Immutable) OneLake lakehouse GUID
         /// </summary>
@@ -546,6 +557,7 @@ namespace Pulumi.Fivetran.Inputs
         /// Field usage depends on `Service` value: 
         /// 	- Service `Adls`: OAuth 2.0 client ID
         /// 	- Service `Databricks`: OAuth 2.0 client ID
+        /// 	- Service `DatabricksViaManagedDataLake`: The OAuth 2.0 client ID you created for authenticating Fivetran.
         /// 	- Service `ManagedDataLake`: The OAuth 2.0 client ID you created for authenticating Fivetran. Use this parameter only if you want to use OAuth 2.0 as the authentication type for Fivetran to connect to Databricks.
         /// 	- Service `NewS3Datalake`: OAuth 2.0 client ID
         /// 	- Service `Onelake`: OAuth 2.0 client ID
@@ -560,6 +572,7 @@ namespace Pulumi.Fivetran.Inputs
         /// Field usage depends on `Service` value: 
         /// 	- Service `Adls`: OAuth 2.0 secret
         /// 	- Service `Databricks`: OAuth 2.0 secret
+        /// 	- Service `DatabricksViaManagedDataLake`: OAuth 2.0 secret you created for authenticating Fivetran.
         /// 	- Service `ManagedDataLake`: OAuth 2.0 secret you created for authenticating Fivetran. Use this parameter only if you want to use OAuth 2.0 as the authentication type for Fivetran to connect to Databricks.
         /// 	- Service `NewS3Datalake`: OAuth 2.0 secret
         /// 	- Service `Onelake`: OAuth 2.0 secret
@@ -576,6 +589,15 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `DatabricksViaManagedDataLake`: (Immutable) Authentication type for OneLake. Default value: `ServicePrincipal`.
+        /// 	- Service `ManagedDataLake`: (Immutable) Authentication type for OneLake. Default value: `ServicePrincipal`.
+        /// </summary>
+        [Input("oneLakeAuthType", required: true)]
+        public Input<string> OneLakeAuthType { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `DatabricksViaManagedDataLake`: (Immutable) Client ID of OneLake service principal.
         /// 	- Service `ManagedDataLake`: (Immutable) Client ID of OneLake service principal.
         /// </summary>
         [Input("onelakeClientId", required: true)]
@@ -586,6 +608,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `DatabricksViaManagedDataLake`: Secret value for OneLake service principal.
         /// 	- Service `ManagedDataLake`: Secret value for OneLake service principal.
         /// </summary>
         public Input<string>? OnelakeClientSecret
@@ -600,6 +623,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `DatabricksViaManagedDataLake`: (Immutable) Tenant ID of OneLake service principal
         /// 	- Service `ManagedDataLake`: (Immutable) Tenant ID of OneLake service principal
         /// </summary>
         [Input("onelakeTenantId", required: true)]
@@ -668,6 +692,7 @@ namespace Pulumi.Fivetran.Inputs
         /// Field usage depends on `Service` value: 
         /// 	- Service `Adls`: Personal access token
         /// 	- Service `Databricks`: Personal access token
+        /// 	- Service `DatabricksViaManagedDataLake`: The personal access token you created for authenticating Fivetran.
         /// 	- Service `ManagedDataLake`: The personal access token you created for authenticating Fivetran. Use this parameter only if you want to use a personal access token as the authentication type for Fivetran to connect to Databricks.
         /// 	- Service `NewS3Datalake`: Personal access token
         /// 	- Service `Onelake`: Personal access token
@@ -692,6 +717,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `AzureSqlDatabase`: Server port number
         /// 	- Service `AzureSqlManagedDbWarehouse`: Server port number
         /// 	- Service `Databricks`: Server port number
+        /// 	- Service `DatabricksViaManagedDataLake`: Server port number of the Databricks account associated with Unity Catalog.
         /// 	- Service `ManagedDataLake`: Server port number of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
         /// 	- Service `MariaRdsWarehouse`: Server port number
         /// 	- Service `MariaWarehouse`: Server port number
@@ -719,6 +745,7 @@ namespace Pulumi.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Adls`: (Immutable) path/to/data within the container
+        /// 	- Service `DatabricksViaManagedDataLake`: (Immutable) Prefix path or virtual folder path within your bucket or container where you want Fivetran to store your data. Skip this parameter for AWS-based data lakes if the IAM policy configured for your S3 bucket grants access to the entire bucket.
         /// 	- Service `ManagedDataLake`: (Immutable) Prefix path or virtual folder path within your bucket or container where you want Fivetran to store your data. Skip this parameter for AWS-based data lakes if the IAM policy configured for your S3 bucket grants access to the entire bucket.
         /// 	- Service `NewS3Datalake`: (Immutable) Prefix path of the bucket for which you have configured access policy. It is not required if access has been granted to entire Bucket in the access policy
         /// 	- Service `Onelake`: (Immutable) path/to/data within your lakehouse inside the Files directory
@@ -776,6 +803,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `DatabricksViaManagedDataLake`: (Immutable) AWS Region of your S3 bucket. Use this parameter only if you want to deploy your data lake on AWS.
         /// 	- Service `ManagedDataLake`: (Immutable) AWS Region of your S3 bucket. Use this parameter only if you want to deploy your data lake on AWS.
         /// 	- Service `NewS3Datalake`: Region of your AWS S3 bucket
         /// </summary>
@@ -976,6 +1004,7 @@ namespace Pulumi.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Adls`: Secret value for service principal
+        /// 	- Service `DatabricksViaManagedDataLake`: Secret value of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
         /// 	- Service `ManagedDataLake`: Secret value of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
         /// 	- Service `Onelake`: Secret value for service principal
         /// </summary>
@@ -1000,6 +1029,7 @@ namespace Pulumi.Fivetran.Inputs
         /// Field usage depends on `Service` value: 
         /// 	- Service `Adls`: Server Host name
         /// 	- Service `Databricks`: Server name
+        /// 	- Service `DatabricksViaManagedDataLake`: Server host name of the Databricks account associated with Unity Catalog.
         /// 	- Service `ManagedDataLake`: Server host name of the Databricks account associated with Unity Catalog. Use this parameter only if you want to use Unity Catalog to manage your Delta Lake tables.
         /// 	- Service `NewS3Datalake`: Server host name
         /// 	- Service `Onelake`: Server Host name
@@ -1009,6 +1039,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `DatabricksViaManagedDataLake`: Specifies whether you want to manage your Iceberg tables in BQMS. Use this parameter only if you want to deploy your data lake on GCS.
         /// 	- Service `ManagedDataLake`: Specifies whether you want to manage your Iceberg tables in BQMS. Use this parameter only if you want to deploy your data lake on GCS.
         /// </summary>
         [Input("shouldMaintainTablesInBqms", required: true)]
@@ -1017,6 +1048,7 @@ namespace Pulumi.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Adls`: Should maintain tables in Databricks 
+        /// 	- Service `DatabricksViaManagedDataLake`: Specifies whether you want to manage your Delta Lake tables in Databricks Unity Catalog.
         /// 	- Service `ManagedDataLake`: Specifies whether you want to manage your Delta Lake tables in Databricks Unity Catalog.
         /// 	- Service `NewS3Datalake`: Should maintain tables in Databricks 
         /// 	- Service `Onelake`: Should maintain tables in Databricks
@@ -1026,6 +1058,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `DatabricksViaManagedDataLake`: Specifies whether you want to manage your Iceberg tables in AWS Glue. Use this parameter only if you want to deploy your data lake on AWS.
         /// 	- Service `ManagedDataLake`: Specifies whether you want to manage your Iceberg tables in AWS Glue. Use this parameter only if you want to deploy your data lake on AWS.
         /// </summary>
         [Input("shouldMaintainTablesInGlue", required: true)]
@@ -1033,6 +1066,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `DatabricksViaManagedDataLake`: Specifies whether you want to create shortcut for you table in OneLake. Use this parameter only if you want to deploy your data lake on ADLS.
         /// 	- Service `ManagedDataLake`: Specifies whether you want to create shortcut for you table in OneLake. Use this parameter only if you want to deploy your data lake on ADLS.
         /// </summary>
         [Input("shouldMaintainTablesInOneLake", required: true)]
@@ -1041,6 +1075,7 @@ namespace Pulumi.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
+        /// 	- Service `DatabricksViaManagedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
         /// 	- Service `ManagedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
         /// 	- Service `NewS3Datalake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
         /// 	- Service `Onelake`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
@@ -1072,6 +1107,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Adls`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
         /// 	- Service `AzureSqlDataWarehouse`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
         /// 	- Service `Databricks`: Your storage account name
+        /// 	- Service `DatabricksViaManagedDataLake`: (Immutable) Name of your Azure Data Lake Storage Gen2 (ADLS Gen2) storage account. Use this parameter only if you want to deploy your data lake on ADLS.
         /// 	- Service `ManagedDataLake`: (Immutable) Name of your Azure Data Lake Storage Gen2 (ADLS Gen2) storage account. Use this parameter only if you want to deploy your data lake on ADLS.
         /// 	- Service `Onelake`: (Immutable) Storage account for Azure Data Lake Storage Gen2 name
         /// 	- Service `Snowflake`: The name of the Azure storage account you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use an Azure Blob storage container to stage your data.
@@ -1081,6 +1117,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `DatabricksViaManagedDataLake`: The cloud storage provider you want to use for your data lake.
         /// 	- Service `ManagedDataLake`: The cloud storage provider you want to use for your data lake.
         /// </summary>
         [Input("storageProvider", required: true)]
@@ -1105,6 +1142,7 @@ namespace Pulumi.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Adls`: Tenant id of service principal
+        /// 	- Service `DatabricksViaManagedDataLake`: Tenant ID of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
         /// 	- Service `ManagedDataLake`: Tenant ID of the service principal you created for Fivetran. Use this parameter only if you want to deploy your data lake on ADLS.
         /// 	- Service `Onelake`: Tenant ID of service principal
         /// </summary>
@@ -1233,6 +1271,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `DatabricksViaManagedDataLake`: (Immutable) OneLake workspace GUID.
         /// 	- Service `ManagedDataLake`: (Immutable) OneLake workspace GUID.
         /// 	- Service `Onelake`: (Immutable) OneLake workspace GUID
         /// </summary>

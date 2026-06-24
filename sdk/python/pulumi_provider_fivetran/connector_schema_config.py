@@ -39,8 +39,8 @@ class ConnectorSchemaConfigArgs:
         :param pulumi.Input[_builtins.str] schema_change_handling: The value specifying how new source data is handled.
         :param pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]] schemas: Map of schema configurations.
         :param pulumi.Input[_builtins.str] schemas_json: Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
-        :param pulumi.Input[_builtins.str] validation_level: The value defines validation method. 
-               - NONE: no validation, any configuration accepted. 
+        :param pulumi.Input[_builtins.str] validation_level: The value defines validation method.
+               - NONE: no validation, any configuration accepted.
                - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
                - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
         """
@@ -161,8 +161,8 @@ class ConnectorSchemaConfigArgs:
     @pulumi.getter(name="validationLevel")
     def validation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The value defines validation method. 
-        - NONE: no validation, any configuration accepted. 
+        The value defines validation method.
+        - NONE: no validation, any configuration accepted.
         - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
         - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
         """
@@ -194,8 +194,8 @@ class _ConnectorSchemaConfigState:
         :param pulumi.Input[_builtins.str] schema_change_handling: The value specifying how new source data is handled.
         :param pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasArgs']]] schemas: Map of schema configurations.
         :param pulumi.Input[_builtins.str] schemas_json: Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
-        :param pulumi.Input[_builtins.str] validation_level: The value defines validation method. 
-               - NONE: no validation, any configuration accepted. 
+        :param pulumi.Input[_builtins.str] validation_level: The value defines validation method.
+               - NONE: no validation, any configuration accepted.
                - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
                - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
         """
@@ -316,8 +316,8 @@ class _ConnectorSchemaConfigState:
     @pulumi.getter(name="validationLevel")
     def validation_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The value defines validation method. 
-        - NONE: no validation, any configuration accepted. 
+        The value defines validation method.
+        - NONE: no validation, any configuration accepted.
         - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
         - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
         """
@@ -541,8 +541,8 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] schema_change_handling: The value specifying how new source data is handled.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['ConnectorSchemaConfigSchemasArgs', 'ConnectorSchemaConfigSchemasArgsDict']]]] schemas: Map of schema configurations.
         :param pulumi.Input[_builtins.str] schemas_json: Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
-        :param pulumi.Input[_builtins.str] validation_level: The value defines validation method. 
-               - NONE: no validation, any configuration accepted. 
+        :param pulumi.Input[_builtins.str] validation_level: The value defines validation method.
+               - NONE: no validation, any configuration accepted.
                - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
                - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
         """
@@ -815,8 +815,8 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] schema_change_handling: The value specifying how new source data is handled.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['ConnectorSchemaConfigSchemasArgs', 'ConnectorSchemaConfigSchemasArgsDict']]]] schemas: Map of schema configurations.
         :param pulumi.Input[_builtins.str] schemas_json: Schema settings in Json format, following Fivetran API endpoint contract for `schemas` field (a map of schemas).
-        :param pulumi.Input[_builtins.str] validation_level: The value defines validation method. 
-               - NONE: no validation, any configuration accepted. 
+        :param pulumi.Input[_builtins.str] validation_level: The value defines validation method.
+               - NONE: no validation, any configuration accepted.
                - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
                - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
         """
@@ -898,8 +898,8 @@ class ConnectorSchemaConfig(pulumi.CustomResource):
     @pulumi.getter(name="validationLevel")
     def validation_level(self) -> pulumi.Output[_builtins.str]:
         """
-        The value defines validation method. 
-        - NONE: no validation, any configuration accepted. 
+        The value defines validation method.
+        - NONE: no validation, any configuration accepted.
         - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
         - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
         """

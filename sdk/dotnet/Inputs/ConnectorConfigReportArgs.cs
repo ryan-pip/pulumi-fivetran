@@ -59,13 +59,20 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
-        /// 	- Service `GoogleSearchAds360`: The report attributes included to sync.
+        /// 	- Service `GoogleSearchAds360`: The report attributes included to sync. Labeled `Fields` in the Fivetran dashboard.
         /// </summary>
         public InputList<string> Attributes
         {
             get => _attributes ?? (_attributes = new InputList<string>());
             set => _attributes = value;
         }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Klaviyo`: Optional breakdown for Form Series reports. Select Form version ID to group data by individual form versions, or Form ID to group data by form only.
+        /// </summary>
+        [Input("breakdown")]
+        public Input<string>? Breakdown { get; set; }
 
         [Input("columns")]
         private InputList<string>? _columns;
@@ -411,7 +418,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `DoubleClickCampaignManager`: Type of reporting data to sync. Default value: `STANDARD`.
         /// 	- Service `GoogleAds`: The name of the Google Ads report from which the connector will sync the data. [Possible ReportType values](https://developers.google.com/adwords/api/docs/appendix/reports#report-types).
         /// 	- Service `GoogleDisplayAndVideo360`: The type of the report to create. This is a required parameter when `ConfigMethod` is set to `CREATE_NEW`.
-        /// 	- Service `GoogleSearchAds360`: The type of report
+        /// 	- Service `GoogleSearchAds360`: The type of report. Labeled `Resource type` in the Fivetran dashboard.
         /// 	- Service `GoogleSearchConsole`: The type of report
         /// </summary>
         [Input("reportType")]

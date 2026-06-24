@@ -268,8 +268,8 @@ namespace Pulumi.Fivetran
         /// <summary>
         /// Data processing location. This is where Fivetran will operate and run computation on data.
         /// </summary>
-        [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// Specifies whether the setup tests should be run automatically. The default value is TRUE.

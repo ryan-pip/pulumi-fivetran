@@ -48,6 +48,13 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `AppleSearchAds`: The base report type. It determines the set of available dimensions for the `groupBy` field and the metrics that will be included in the custom report. Only one value is supported: `CAMPAIGN`.
+        /// </summary>
+        [Input("baseReportType")]
+        public Input<string>? BaseReportType { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `SnapchatAds`: [Sets Breakdown on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#breakdown).
         /// </summary>
         [Input("breakdown")]
@@ -128,6 +135,19 @@ namespace Pulumi.Fivetran.Inputs
         [Input("granularity")]
         public Input<string>? Granularity { get; set; }
 
+        [Input("groupBies")]
+        private InputList<string>? _groupBies;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AppleSearchAds`: The list of dimensions to group the data by. The available dimensions depend on the selected `baseReportType`.
+        /// </summary>
+        public InputList<string> GroupBies
+        {
+            get => _groupBies ?? (_groupBies = new InputList<string>());
+            set => _groupBies = value;
+        }
+
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `RedditAds`: Level of custom report.
@@ -197,6 +217,13 @@ namespace Pulumi.Fivetran.Inputs
             get => _skAdMetricsFields ?? (_skAdMetricsFields = new InputList<string>());
             set => _skAdMetricsFields = value;
         }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AppleSearchAds`: The name of the custom report table. It must be unique within this connection and must comply with Fivetran's naming conventions.
+        /// </summary>
+        [Input("table")]
+        public Input<string>? Table { get; set; }
 
         /// <summary>
         /// Field usage depends on `Service` value: 

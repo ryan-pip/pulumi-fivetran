@@ -256,8 +256,8 @@ export class ConnectorSchemaConfig extends pulumi.CustomResource {
     declare public readonly schemasJson: pulumi.Output<string | undefined>;
     declare public readonly timeouts: pulumi.Output<outputs.ConnectorSchemaConfigTimeouts | undefined>;
     /**
-     * The value defines validation method. 
-     * - NONE: no validation, any configuration accepted. 
+     * The value defines validation method.
+     * - NONE: no validation, any configuration accepted.
      * - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
      * - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
      */
@@ -336,8 +336,8 @@ export interface ConnectorSchemaConfigState {
     schemasJson?: pulumi.Input<string | undefined>;
     timeouts?: pulumi.Input<inputs.ConnectorSchemaConfigTimeouts | undefined>;
     /**
-     * The value defines validation method. 
-     * - NONE: no validation, any configuration accepted. 
+     * The value defines validation method.
+     * - NONE: no validation, any configuration accepted.
      * - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
      * - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
      */
@@ -378,8 +378,8 @@ export interface ConnectorSchemaConfigArgs {
     schemasJson?: pulumi.Input<string | undefined>;
     timeouts?: pulumi.Input<inputs.ConnectorSchemaConfigTimeouts | undefined>;
     /**
-     * The value defines validation method. 
-     * - NONE: no validation, any configuration accepted. 
+     * The value defines validation method.
+     * - NONE: no validation, any configuration accepted.
      * - TABLES: validate table names, fail on attempt to configure non-existing schemas/tables.
      * - COLUMNS: validate the whole schema config including column names. The resource will try to fetch columns for every configured table and verify column names.
      */

@@ -121,7 +121,7 @@ namespace Pulumi.Fivetran
         public Output<string> Paused { get; private set; } = null!;
 
         /// <summary>
-        /// Flexible sync schedule configuration. When set, takes precedence over `SyncFrequency`.
+        /// Flexible sync schedule configuration. When set, takes precedence over `SyncFrequency`. **Note:** This attribute is in **ALPHA** state.
         /// </summary>
         [Output("schedule")]
         public Output<Outputs.ConnectorScheduleSchedule?> Schedule { get; private set; } = null!;
@@ -133,7 +133,7 @@ namespace Pulumi.Fivetran
         public Output<string> ScheduleType { get; private set; } = null!;
 
         /// <summary>
-        /// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440. Deprecated: use `Schedule` block instead.
+        /// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
         /// </summary>
         [Output("syncFrequency")]
         public Output<string> SyncFrequency { get; private set; } = null!;
@@ -222,7 +222,7 @@ namespace Pulumi.Fivetran
         public Input<string>? Paused { get; set; }
 
         /// <summary>
-        /// Flexible sync schedule configuration. When set, takes precedence over `SyncFrequency`.
+        /// Flexible sync schedule configuration. When set, takes precedence over `SyncFrequency`. **Note:** This attribute is in **ALPHA** state.
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.ConnectorScheduleScheduleArgs>? Schedule { get; set; }
@@ -234,7 +234,7 @@ namespace Pulumi.Fivetran
         public Input<string>? ScheduleType { get; set; }
 
         /// <summary>
-        /// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440. Deprecated: use `Schedule` block instead.
+        /// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
         /// </summary>
         [Input("syncFrequency")]
         public Input<string>? SyncFrequency { get; set; }
@@ -284,7 +284,7 @@ namespace Pulumi.Fivetran
         public Input<string>? Paused { get; set; }
 
         /// <summary>
-        /// Flexible sync schedule configuration. When set, takes precedence over `SyncFrequency`.
+        /// Flexible sync schedule configuration. When set, takes precedence over `SyncFrequency`. **Note:** This attribute is in **ALPHA** state.
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.ConnectorScheduleScheduleGetArgs>? Schedule { get; set; }
@@ -296,7 +296,7 @@ namespace Pulumi.Fivetran
         public Input<string>? ScheduleType { get; set; }
 
         /// <summary>
-        /// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440. Deprecated: use `Schedule` block instead.
+        /// The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
         /// </summary>
         [Input("syncFrequency")]
         public Input<string>? SyncFrequency { get; set; }

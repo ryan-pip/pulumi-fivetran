@@ -22,7 +22,6 @@ __all__ = ['DestinationArgs', 'Destination']
 class DestinationArgs:
     def __init__(__self__, *,
                  group_id: pulumi.Input[_builtins.str],
-                 region: pulumi.Input[_builtins.str],
                  service: pulumi.Input[_builtins.str],
                  time_zone_offset: pulumi.Input[_builtins.str],
                  config: pulumi.Input[Optional['DestinationConfigArgs']] = None,
@@ -31,6 +30,7 @@ class DestinationArgs:
                  networking_method: pulumi.Input[Optional[_builtins.str]] = None,
                  private_link_id: pulumi.Input[Optional[_builtins.str]] = None,
                  proxy_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  run_setup_tests: pulumi.Input[Optional[_builtins.bool]] = None,
                  timeouts: pulumi.Input[Optional['DestinationTimeoutsArgs']] = None,
                  trust_certificates: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -39,7 +39,6 @@ class DestinationArgs:
         The set of arguments for constructing a Destination resource.
 
         :param pulumi.Input[_builtins.str] group_id: The unique identifier for the Group within the Fivetran system.
-        :param pulumi.Input[_builtins.str] region: Data processing location. This is where Fivetran will operate and run computation on data.
         :param pulumi.Input[_builtins.str] service: The destination type id within the Fivetran system.
         :param pulumi.Input[_builtins.str] time_zone_offset: Determines the time zone for the Fivetran sync schedule.
         :param pulumi.Input[_builtins.bool] daylight_saving_time_enabled: Shift my UTC offset with daylight savings time (US Only)
@@ -47,12 +46,12 @@ class DestinationArgs:
         :param pulumi.Input[_builtins.str] networking_method: Possible values: Directly, SshTunnel, ProxyAgent, PrivateLink.
         :param pulumi.Input[_builtins.str] private_link_id: The private link ID.
         :param pulumi.Input[_builtins.str] proxy_agent_id: The proxy agent ID.
+        :param pulumi.Input[_builtins.str] region: Data processing location. This is where Fivetran will operate and run computation on data.
         :param pulumi.Input[_builtins.bool] run_setup_tests: Specifies whether the setup tests should be run automatically. The default value is TRUE.
         :param pulumi.Input[_builtins.bool] trust_certificates: Specifies whether we should trust the certificate automatically. The default value is FALSE. If a certificate is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination certificate](https://fivetran.com/docs/rest-api/certificates#approveadestinationcertificate).
         :param pulumi.Input[_builtins.bool] trust_fingerprints: Specifies whether we should trust the SSH fingerprint automatically. The default value is FALSE. If a fingerprint is not trusted automatically, it has to be approved with [Certificates Management API Approve a destination fingerprint](https://fivetran.com/docs/rest-api/certificates#approveadestinationfingerprint).
         """
         pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "service", service)
         pulumi.set(__self__, "time_zone_offset", time_zone_offset)
         if config is not None:
@@ -67,6 +66,8 @@ class DestinationArgs:
             pulumi.set(__self__, "private_link_id", private_link_id)
         if proxy_agent_id is not None:
             pulumi.set(__self__, "proxy_agent_id", proxy_agent_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if run_setup_tests is not None:
             pulumi.set(__self__, "run_setup_tests", run_setup_tests)
         if timeouts is not None:
@@ -87,18 +88,6 @@ class DestinationArgs:
     @group_id.setter
     def group_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "group_id", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def region(self) -> pulumi.Input[_builtins.str]:
-        """
-        Data processing location. This is where Fivetran will operate and run computation on data.
-        """
-        return pulumi.get(self, "region")
-
-    @region.setter
-    def region(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
@@ -192,6 +181,18 @@ class DestinationArgs:
     @proxy_agent_id.setter
     def proxy_agent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_agent_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Data processing location. This is where Fivetran will operate and run computation on data.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="runSetupTests")
@@ -707,8 +708,6 @@ class Destination(pulumi.CustomResource):
             __props__.__dict__["networking_method"] = networking_method
             __props__.__dict__["private_link_id"] = private_link_id
             __props__.__dict__["proxy_agent_id"] = proxy_agent_id
-            if region is None and not opts.urn:
-                raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["run_setup_tests"] = run_setup_tests
             if service is None and not opts.urn:
