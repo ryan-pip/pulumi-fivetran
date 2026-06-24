@@ -28,7 +28,7 @@
 
   [tools]
   go = "1.25"
-  node = "22"
+  node = "24.17.0"   # exact pin — see node decision below
   python = "3.11"
   dotnet = "8.0"
   pulumi = "3"
@@ -80,6 +80,8 @@
 - **`cache_save` placement.** Multi-job workflows (pull-request, release) keep `cache_save: true` on exactly the one prerequisites/build job that today sets it on the wrapper; all other jobs restore only. The single-job `upgrade-provider` sets `cache_save: true` (was `false` — the reason it never cached and re-ran the brittle fresh `node@22`/`gopls` installs every day).
 
 - **upgrade-provider on the base set.** Verified via the Makefile: `build_sdks = build_nodejs build_python build_go build_dotnet` (no Java SDK), and gopls/hk/linters are never invoked. So `upgrade-provider --kind=all` needs only the base toolchain; the `upgrade-provider` binary is installed in its own `go install ...@main` step. Loading the full set was the cause of the failure, not a requirement.
+
+- **Exact-pin `node`; leave `pulumi` unpinned.** `upgrade-provider`'s `runMiseUpgrade` runs `mise install` then `mise upgrade --raw`, which re-resolves each tool's `mise.toml` spec to the newest match and installs it *outside* the lockfile. Lockfile installs verify via sha256 (no gpg), but a fresh/upgraded `node` install goes through node's gpg-signature path, which fails on the runners (the original daily failure, resurfacing inside upgrade-provider once Setup mise was fixed). Exact-pinning `node` (`24.17.0`, ≥24.1, matching pulumi/ci-mgmt's exact-pin approach) means `mise upgrade` finds nothing newer → never reinstalls node → gpg never runs. Other tools (go/uv/golangci-lint) don't use gpg, so their churn is harmless. `pulumi` is intentionally **not** pinned: exact-pinning it has caused issues here and there's no automated way to bump our mise pins, so it stays fuzzy and the bot may bump it (pulumi installs are checksum-verified, not gpg).
 
 - **`Sync go.work go directive` step retained.** This repo's `upgrade-provider.yml` has an extra step that bumps `go.work`'s `go` directive after a bridge upgrade. It is independent of the mise change and is preserved unchanged (still gated on the upgrade-branch prefixes).
 
