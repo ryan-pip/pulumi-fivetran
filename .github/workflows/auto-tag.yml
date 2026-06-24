@@ -47,8 +47,15 @@ jobs:
         if: steps.decide.outputs.tag != ''
         env:
           TAG: ${{ steps.decide.outputs.tag }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
-          git config user.name 'pulumi-release-bot[bot]'
-          git config user.email 'pulumi-release-bot[bot]@users.noreply.github.com'
+          set -euo pipefail
+          # Use this repo's own release-bot app identity (the app that minted the
+          # token above), derived from its app-slug — not upstream's hardcoded
+          # pulumi-release-bot.
+          NAME="${{ steps.app-token.outputs.app-slug }}[bot]"
+          ID=$(gh api "/users/${NAME}" --jq .id)
+          git config user.name "$NAME"
+          git config user.email "${ID}+${NAME}@users.noreply.github.com"
           git tag -a "$TAG" -m "chore(release): $TAG (mirror upstream terraform-provider-fivetran)"
           git push origin "$TAG"
