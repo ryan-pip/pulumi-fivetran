@@ -3,6 +3,8 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '0 5 * * *'
+env:
+  MISE_ENV: ci # Load only the lean base toolchain (mise.toml); skip mise.dev.toml.
 jobs:
   upgrade_provider:
     name: upgrade-provider
@@ -31,18 +33,26 @@ jobs:
         env:
           MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
         with:
-          version: 2026.3.7
-          cache_save: false
-          cache_key: "mise-full-{{platform}}-{{file_hash}}"
+          cache_save: true # Single-job workflow — this run populates the shared mise cache.
+          cache_key: "mise-{{platform}}-{{file_hash}}"
 
       - name: Install upgrade-provider
         run: go install github.com/pulumi/upgrade-provider@main
         shell: bash
 
       - name: Set up git identity
+        # Use this repo's own release-bot app identity (the app that minted the
+        # token above), derived from its app-slug — not upstream's hardcoded
+        # pulumi-release-bot. git needs a committer identity to make the upgrade
+        # commit(s) and push the PR branch.
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
-          git config --global user.name 'pulumi-release-bot[bot]'
-          git config --global user.email 'pulumi-release-bot[bot]@users.noreply.github.com'
+          set -euo pipefail
+          NAME="${{ steps.app-token.outputs.app-slug }}[bot]"
+          ID=$(gh api "/users/${NAME}" --jq .id)
+          git config --global user.name "$NAME"
+          git config --global user.email "${ID}+${NAME}@users.noreply.github.com"
         shell: bash
 
       - name: Run upgrade-provider
@@ -91,8 +101,9 @@ jobs:
             *) echo "branch $BRANCH not an upgrade branch; skipping"; exit 0 ;;
           esac
           AUTHOR=$(gh pr view --json author --jq .author.login)
-          if [ "$AUTHOR" != "app/pulumi-release-bot" ]; then
-            echo "PR author is $AUTHOR (not app/pulumi-release-bot); skipping"
+          EXPECTED="app/${{ steps.app-token.outputs.app-slug }}"
+          if [ "$AUTHOR" != "$EXPECTED" ]; then
+            echo "PR author is $AUTHOR (not $EXPECTED); skipping"
             exit 0
           fi
           gh pr merge --auto --squash --delete-branch

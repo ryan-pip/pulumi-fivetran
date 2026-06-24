@@ -14,3 +14,7 @@ The repo SHALL use `mise.toml` (the lean base/CI toolchain), `mise.dev.toml` (de
 #### Scenario: tool versions are pinned by lockfiles
 - **WHEN** CI and a developer install the same config environment
 - **THEN** they resolve identical tool versions from the committed `mise.lock` / `mise.dev.lock`
+
+#### Scenario: base excludes tools the runner image already provides
+- **WHEN** deciding whether a tool belongs in base `mise.toml`
+- **THEN** tools already provided by the GitHub-hosted runner image (e.g. the GitHub CLI `gh`) are kept out of base and placed in `mise.dev.toml` for local parity, rather than duplicated in CI

@@ -12,6 +12,7 @@ permissions:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  MISE_ENV: ci # Load only the lean base toolchain (mise.toml); skip mise.dev.toml.
 
 jobs:
   # ── parallel, no dependencies ─────────────────────────────────────────────
@@ -35,8 +36,12 @@ jobs:
             sdk/go.sum
             examples/go.sum
 
-      - name: Setup mise (CI subset)
-        uses: ./.github/actions/setup-mise
+      - name: Setup mise
+        uses: jdx/mise-action@1648a7812b9aeae629881980618f079932869151 # v4.0.1
+        env:
+          MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
+        with:
+          cache_key: "mise-{{platform}}-{{file_hash}}"
 
       - name: Run golangci-lint
         # Lint library packages only; cmd/ depends on schema-embed.json which is generated.
@@ -87,8 +92,12 @@ jobs:
             sdk/go.sum
             examples/go.sum
 
-      - name: Setup mise (CI subset)
-        uses: ./.github/actions/setup-mise
+      - name: Setup mise
+        uses: jdx/mise-action@1648a7812b9aeae629881980618f079932869151 # v4.0.1
+        env:
+          MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
+        with:
+          cache_key: "mise-{{platform}}-{{file_hash}}"
 
       - name: go vet
         # Exclude cmd/: depends on schema-embed.json which is generated at build time.
@@ -121,10 +130,13 @@ jobs:
             sdk/go.sum
             examples/go.sum
 
-      - name: Setup mise (CI subset)
-        uses: ./.github/actions/setup-mise
+      - name: Setup mise
+        uses: jdx/mise-action@1648a7812b9aeae629881980618f079932869151 # v4.0.1
+        env:
+          MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
         with:
-          cache_save: "true" # This job populates the mise cache for the rest of the workflow.
+          cache_save: true # This job populates the mise cache for the rest of the workflow.
+          cache_key: "mise-{{platform}}-{{file_hash}}"
 
       - name: Set provider version
         run: echo "PROVIDER_VERSION=$(pulumictl get version -o)" >> "$GITHUB_ENV"
@@ -170,8 +182,12 @@ jobs:
             sdk/go.sum
             examples/go.sum
 
-      - name: Setup mise (CI subset)
-        uses: ./.github/actions/setup-mise
+      - name: Setup mise
+        uses: jdx/mise-action@1648a7812b9aeae629881980618f079932869151 # v4.0.1
+        env:
+          MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
+        with:
+          cache_key: "mise-{{platform}}-{{file_hash}}"
 
       - name: Set provider version
         run: echo "PROVIDER_VERSION=$(pulumictl get version -o)" >> "$GITHUB_ENV"
@@ -237,8 +253,12 @@ jobs:
       - name: Unshallow clone for tags
         run: git fetch --prune --unshallow --tags
 
-      - name: Setup mise (CI subset)
-        uses: ./.github/actions/setup-mise
+      - name: Setup mise
+        uses: jdx/mise-action@1648a7812b9aeae629881980618f079932869151 # v4.0.1
+        env:
+          MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
+        with:
+          cache_key: "mise-{{platform}}-{{file_hash}}"
 
       - name: Set provider version
         run: echo "PROVIDER_VERSION=$(pulumictl get version -o)" >> "$GITHUB_ENV"

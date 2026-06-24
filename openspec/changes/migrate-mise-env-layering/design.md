@@ -27,7 +27,6 @@
   lockfile = true
 
   [tools]
-  github-cli = "latest"
   go = "1.25"
   node = "22"
   python = "3.11"
@@ -40,6 +39,7 @@
   [env]
   GOTOOLCHAIN = "go1.25.9"
   ```
+  `github-cli` is intentionally **not** in base: `gh` is preinstalled on GitHub-hosted runners, and it's used only by `upgrade-provider.yml` (ubuntu-latest). It lives in `mise.dev.toml` for local parity.
 
 - **`mise.dev.toml`** (the delta vs. today's full `mise.toml`):
   ```toml
@@ -47,6 +47,7 @@
   experimental = true   # required for the go: backends below
 
   [tools]
+  github-cli = "latest"
   java = "corretto-11"
   "go:golang.org/x/tools/gopls" = "latest"
   "go:github.com/pulumi/upgrade-provider" = "main"
