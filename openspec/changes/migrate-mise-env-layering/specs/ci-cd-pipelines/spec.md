@@ -22,6 +22,13 @@ The scheduled `upgrade-provider` workflow SHALL run on the base set (`MISE_ENV: 
 - **WHEN** the single-job upgrade workflow installs mise
 - **THEN** `cache_save: true` writes the toolchain cache for subsequent runs
 
+### Requirement: node is exact-pinned for the upgrade flow
+`node` SHALL be pinned to an exact version in base `mise.toml` (≥ 24.1). `upgrade-provider` runs `mise upgrade --raw`, which re-resolves each tool's spec outside the lockfile; a fuzzy `node` spec causes a fresh node install via its gpg-signature path, which fails on GitHub-hosted runners. An exact pin makes `mise upgrade` a no-op for node so it is never reinstalled. `pulumi` SHALL NOT be exact-pinned (exact pins have caused issues and there is no automated mise-pin bump); non-gpg tools may stay fuzzy.
+
+#### Scenario: mise upgrade does not reinstall node
+- **WHEN** the upgrade workflow runs `upgrade-provider`, which invokes `mise upgrade --raw`
+- **THEN** node's exact pin matches the installed version, so node is not reinstalled and its gpg verification never runs
+
 #### Scenario: the go.work sync step is retained
 - **WHEN** the upgrade workflow rewrite lands
 - **THEN** the `Sync go.work go directive` step remains in `upgrade-provider.yml`, gated on the upgrade-branch prefixes
