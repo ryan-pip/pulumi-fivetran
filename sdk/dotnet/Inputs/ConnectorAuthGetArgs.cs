@@ -90,20 +90,6 @@ namespace Pulumi.Fivetran.Inputs
         [Input("authenticationMethod")]
         public Input<string>? AuthenticationMethod { get; set; }
 
-        /// <summary>
-        /// Field usage depends on `Service` value: 
-        /// 	- Service `AmazonSellingPartner`: `AWS Access Key` of your AWS Account User.
-        /// </summary>
-        [Input("awsAccessKey")]
-        public Input<string>? AwsAccessKey { get; set; }
-
-        /// <summary>
-        /// Field usage depends on `Service` value: 
-        /// 	- Service `AmazonSellingPartner`: `AWS Secret Key` of your AWS Account User.
-        /// </summary>
-        [Input("awsSecretKey")]
-        public Input<string>? AwsSecretKey { get; set; }
-
         [Input("clientAccess")]
         public Input<Inputs.ConnectorAuthClientAccessGetArgs>? ClientAccess { get; set; }
 
@@ -147,7 +133,7 @@ namespace Pulumi.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Twitter`: API Key of your app
-        /// 	- Service `TwitterAds`: The Twitter App consumer key.
+        /// 	- Service `TwitterAds`: The X App consumer key.
         /// </summary>
         [Input("consumerKey")]
         public Input<string>? ConsumerKey { get; set; }
@@ -158,7 +144,7 @@ namespace Pulumi.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Twitter`: API Secret of your app
-        /// 	- Service `TwitterAds`: The Twitter App consumer secret.
+        /// 	- Service `TwitterAds`: The X App consumer secret.
         /// </summary>
         public Input<string>? ConsumerSecret
         {
@@ -172,10 +158,24 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `ConfluentCloud`: Optional Confluent Cloud identity pool ID. When omitted, Confluent auto-maps the token to a matching pool.
+        /// </summary>
+        [Input("identityPoolId")]
+        public Input<string>? IdentityPoolId { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `AppleSearchAds`: Apple Search Ads REST API Key ID. Must be populated if `IsAuth2Enabled` is set to `True`.
         /// </summary>
         [Input("keyId")]
         public Input<string>? KeyId { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ConfluentCloud`: Confluent Cloud logical cluster ID. Required for OAuth 2.0 authentication.
+        /// </summary>
+        [Input("logicalClusterId")]
+        public Input<string>? LogicalClusterId { get; set; }
 
         /// <summary>
         /// Field usage depends on `Service` value: 
@@ -185,13 +185,44 @@ namespace Pulumi.Fivetran.Inputs
         [Input("managedIdentityUserAssigned")]
         public Input<string>? ManagedIdentityUserAssigned { get; set; }
 
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ConfluentCloud`: OAuth 2.0 client ID issued by the identity provider.
+        /// </summary>
+        [Input("oauthClientId")]
+        public Input<string>? OauthClientId { get; set; }
+
+        [Input("oauthClientSecret")]
+        private Input<string>? _oauthClientSecret;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ConfluentCloud`: OAuth 2.0 client secret issued by the identity provider.
+        /// </summary>
+        public Input<string>? OauthClientSecret
+        {
+            get => _oauthClientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _oauthClientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ConfluentCloud`: Optional OAuth 2.0 scope to request with the access token.
+        /// </summary>
+        [Input("oauthScope")]
+        public Input<string>? OauthScope { get; set; }
+
         [Input("oauthToken")]
         private Input<string>? _oauthToken;
 
         /// <summary>
         /// Field usage depends on `Service` value: 
-        /// 	- Service `Twitter`: The Twitter App access token.
-        /// 	- Service `TwitterAds`: The Twitter App access token.
+        /// 	- Service `Twitter`: The X App access token.
+        /// 	- Service `TwitterAds`: The X App access token.
         /// </summary>
         public Input<string>? OauthToken
         {
@@ -203,13 +234,30 @@ namespace Pulumi.Fivetran.Inputs
             }
         }
 
+        [Input("oauthTokenEndpointUrl")]
+        private Input<string>? _oauthTokenEndpointUrl;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `ConfluentCloud`: OAuth 2.0 token endpoint URL used to obtain access tokens.
+        /// </summary>
+        public Input<string>? OauthTokenEndpointUrl
+        {
+            get => _oauthTokenEndpointUrl;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _oauthTokenEndpointUrl = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         [Input("oauthTokenSecret")]
         private Input<string>? _oauthTokenSecret;
 
         /// <summary>
         /// Field usage depends on `Service` value: 
-        /// 	- Service `Twitter`: The Twitter App access token secret.
-        /// 	- Service `TwitterAds`: The Twitter App access token secret.
+        /// 	- Service `Twitter`: The X App access token secret.
+        /// 	- Service `TwitterAds`: The X App access token secret.
         /// </summary>
         public Input<string>? OauthTokenSecret
         {
@@ -242,23 +290,6 @@ namespace Pulumi.Fivetran.Inputs
             {
                 var emptySecret = Output.CreateSecret(0);
                 _ocapiRefreshToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
-
-        [Input("previousRefreshToken")]
-        private Input<string>? _previousRefreshToken;
-
-        /// <summary>
-        /// Field usage depends on `Service` value: 
-        /// 	- Service `Dynamics365`: Previous `Refresh token` of your application.
-        /// </summary>
-        public Input<string>? PreviousRefreshToken
-        {
-            get => _previousRefreshToken;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _previousRefreshToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
 
@@ -295,15 +326,12 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Dropbox`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `Dynamics365`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `EmploymentHero`: Your Employment Hero refresh token.
-        /// 	- Service `FinancialForce`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `Freshbooks`: Your FreshBooks Refresh Token.
         /// 	- Service `Front`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `Gitlab`: Your GitLab refresh token.
         /// 	- Service `Gmail`: The long-lived `Refresh token` of your Gmail client application.
         /// 	- Service `GoogleAds`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `GoogleAnalytics`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `GoogleAnalytics4`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
-        /// 	- Service `GoogleAnalyticsMcf`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `GoogleBusinessProfile`: Your Google Business Profile Refresh token.
         /// 	- Service `GoogleCalendar`: Your Google Calendar refresh token.
         /// 	- Service `GoogleClassroom`: The long-lived `Refresh token` of your Google Calendar client application.
@@ -333,7 +361,6 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `SalesforceSandbox`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `Salesloft`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `SharePoint`: The long-lived Refresh token carries the information necessary to get a new access token for API resources.
-        /// 	- Service `Slack`: Your Slack refresh token.
         /// 	- Service `SnapchatAds`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `SpotifyAds`: The long-lived `Refresh token` along with the `ClientId` and `ClientSecret` parameters carry the information necessary to get a new access token for API resources.
         /// 	- Service `TiktokOrganicApp`: Your TikTok Organic refresh token.
@@ -354,13 +381,6 @@ namespace Pulumi.Fivetran.Inputs
                 _refreshToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
-
-        /// <summary>
-        /// Field usage depends on `Service` value: 
-        /// 	- Service `AmazonSellingPartner`: `IAM Role ARN` of your AWS Account.
-        /// </summary>
-        [Input("roleArn")]
-        public Input<string>? RoleArn { get; set; }
 
         [Input("servicePrincipalClientCertPvtKey")]
         private Input<string>? _servicePrincipalClientCertPvtKey;
@@ -494,6 +514,23 @@ namespace Pulumi.Fivetran.Inputs
             {
                 var emptySecret = Output.CreateSecret(0);
                 _userAccessToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("windowsAuthClientPrivateKey")]
+        private Input<string>? _windowsAuthClientPrivateKey;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SqlServer`: Private key associated with the Fivetran client certificate.
+        /// </summary>
+        public Input<string>? WindowsAuthClientPrivateKey
+        {
+            get => _windowsAuthClientPrivateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _windowsAuthClientPrivateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
 

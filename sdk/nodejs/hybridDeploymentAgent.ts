@@ -138,6 +138,8 @@ export class HybridDeploymentAgent extends pulumi.CustomResource {
             resourceInputs["token"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["authJson", "configJson", "token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(HybridDeploymentAgent.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -375,6 +375,8 @@ class HybridDeploymentAgent(pulumi.CustomResource):
             __props__.__dict__["docker_compose_yaml"] = None
             __props__.__dict__["registered_at"] = None
             __props__.__dict__["token"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["authJson", "configJson", "token"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(HybridDeploymentAgent, __self__).__init__(
             'fivetran:index/hybridDeploymentAgent:HybridDeploymentAgent',
             resource_name,

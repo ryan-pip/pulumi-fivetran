@@ -55,7 +55,7 @@ type ProxyAgent struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Data processing location. This is where Fivetran will operate and run computation on data.
 	GroupRegion pulumi.StringOutput `pulumi:"groupRegion"`
-	// Determines whether regenerarion secrets needs to be performed.
+	// Determines whether regeneration secrets needs to be performed.
 	RegenerationCounter pulumi.IntOutput `pulumi:"regenerationCounter"`
 	// The timestamp of the time the proxy agent was created in your account.
 	RegistredAt pulumi.StringOutput `pulumi:"registredAt"`
@@ -76,6 +76,11 @@ func NewProxyAgent(ctx *pulumi.Context,
 	if args.GroupRegion == nil {
 		return nil, errors.New("invalid value for required argument 'GroupRegion'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"clientPrivateKey",
+		"token",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ProxyAgent
 	err := ctx.RegisterResource("fivetran:index/proxyAgent:ProxyAgent", name, args, &resource, opts...)
@@ -109,7 +114,7 @@ type proxyAgentState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Data processing location. This is where Fivetran will operate and run computation on data.
 	GroupRegion *string `pulumi:"groupRegion"`
-	// Determines whether regenerarion secrets needs to be performed.
+	// Determines whether regeneration secrets needs to be performed.
 	RegenerationCounter *int `pulumi:"regenerationCounter"`
 	// The timestamp of the time the proxy agent was created in your account.
 	RegistredAt *string `pulumi:"registredAt"`
@@ -128,7 +133,7 @@ type ProxyAgentState struct {
 	DisplayName pulumi.StringPtrInput
 	// Data processing location. This is where Fivetran will operate and run computation on data.
 	GroupRegion pulumi.StringPtrInput
-	// Determines whether regenerarion secrets needs to be performed.
+	// Determines whether regeneration secrets needs to be performed.
 	RegenerationCounter pulumi.IntPtrInput
 	// The timestamp of the time the proxy agent was created in your account.
 	RegistredAt pulumi.StringPtrInput
@@ -145,7 +150,7 @@ type proxyAgentArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// Data processing location. This is where Fivetran will operate and run computation on data.
 	GroupRegion string `pulumi:"groupRegion"`
-	// Determines whether regenerarion secrets needs to be performed.
+	// Determines whether regeneration secrets needs to be performed.
 	RegenerationCounter *int `pulumi:"regenerationCounter"`
 }
 
@@ -155,7 +160,7 @@ type ProxyAgentArgs struct {
 	DisplayName pulumi.StringInput
 	// Data processing location. This is where Fivetran will operate and run computation on data.
 	GroupRegion pulumi.StringInput
-	// Determines whether regenerarion secrets needs to be performed.
+	// Determines whether regeneration secrets needs to be performed.
 	RegenerationCounter pulumi.IntPtrInput
 }
 
@@ -271,7 +276,7 @@ func (o ProxyAgentOutput) GroupRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProxyAgent) pulumi.StringOutput { return v.GroupRegion }).(pulumi.StringOutput)
 }
 
-// Determines whether regenerarion secrets needs to be performed.
+// Determines whether regeneration secrets needs to be performed.
 func (o ProxyAgentOutput) RegenerationCounter() pulumi.IntOutput {
 	return o.ApplyT(func(v *ProxyAgent) pulumi.IntOutput { return v.RegenerationCounter }).(pulumi.IntOutput)
 }

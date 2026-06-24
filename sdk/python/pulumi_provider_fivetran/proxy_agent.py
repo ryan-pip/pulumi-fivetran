@@ -27,7 +27,7 @@ class ProxyAgentArgs:
 
         :param pulumi.Input[_builtins.str] display_name: Proxy agent name.
         :param pulumi.Input[_builtins.str] group_region: Data processing location. This is where Fivetran will operate and run computation on data.
-        :param pulumi.Input[_builtins.int] regeneration_counter: Determines whether regenerarion secrets needs to be performed.
+        :param pulumi.Input[_builtins.int] regeneration_counter: Determines whether regeneration secrets needs to be performed.
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "group_region", group_region)
@@ -62,7 +62,7 @@ class ProxyAgentArgs:
     @pulumi.getter(name="regenerationCounter")
     def regeneration_counter(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Determines whether regenerarion secrets needs to be performed.
+        Determines whether regeneration secrets needs to be performed.
         """
         return pulumi.get(self, "regeneration_counter")
 
@@ -90,7 +90,7 @@ class _ProxyAgentState:
         :param pulumi.Input[_builtins.str] created_by: The actor who created the proxy agent.
         :param pulumi.Input[_builtins.str] display_name: Proxy agent name.
         :param pulumi.Input[_builtins.str] group_region: Data processing location. This is where Fivetran will operate and run computation on data.
-        :param pulumi.Input[_builtins.int] regeneration_counter: Determines whether regenerarion secrets needs to be performed.
+        :param pulumi.Input[_builtins.int] regeneration_counter: Determines whether regeneration secrets needs to be performed.
         :param pulumi.Input[_builtins.str] registred_at: The timestamp of the time the proxy agent was created in your account.
         :param pulumi.Input[_builtins.str] token: The auth token.
         """
@@ -175,7 +175,7 @@ class _ProxyAgentState:
     @pulumi.getter(name="regenerationCounter")
     def regeneration_counter(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Determines whether regenerarion secrets needs to be performed.
+        Determines whether regeneration secrets needs to be performed.
         """
         return pulumi.get(self, "regeneration_counter")
 
@@ -239,7 +239,7 @@ class ProxyAgent(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: Proxy agent name.
         :param pulumi.Input[_builtins.str] group_region: Data processing location. This is where Fivetran will operate and run computation on data.
-        :param pulumi.Input[_builtins.int] regeneration_counter: Determines whether regenerarion secrets needs to be performed.
+        :param pulumi.Input[_builtins.int] regeneration_counter: Determines whether regeneration secrets needs to be performed.
         """
         ...
     @overload
@@ -303,6 +303,8 @@ class ProxyAgent(pulumi.CustomResource):
             __props__.__dict__["created_by"] = None
             __props__.__dict__["registred_at"] = None
             __props__.__dict__["token"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["clientPrivateKey", "token"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ProxyAgent, __self__).__init__(
             'fivetran:index/proxyAgent:ProxyAgent',
             resource_name,
@@ -333,7 +335,7 @@ class ProxyAgent(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created_by: The actor who created the proxy agent.
         :param pulumi.Input[_builtins.str] display_name: Proxy agent name.
         :param pulumi.Input[_builtins.str] group_region: Data processing location. This is where Fivetran will operate and run computation on data.
-        :param pulumi.Input[_builtins.int] regeneration_counter: Determines whether regenerarion secrets needs to be performed.
+        :param pulumi.Input[_builtins.int] regeneration_counter: Determines whether regeneration secrets needs to be performed.
         :param pulumi.Input[_builtins.str] registred_at: The timestamp of the time the proxy agent was created in your account.
         :param pulumi.Input[_builtins.str] token: The auth token.
         """
@@ -395,7 +397,7 @@ class ProxyAgent(pulumi.CustomResource):
     @pulumi.getter(name="regenerationCounter")
     def regeneration_counter(self) -> pulumi.Output[_builtins.int]:
         """
-        Determines whether regenerarion secrets needs to be performed.
+        Determines whether regeneration secrets needs to be performed.
         """
         return pulumi.get(self, "regeneration_counter")
 

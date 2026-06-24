@@ -53,7 +53,7 @@ import (
 //				DestinationSchema: &fivetran.ConnectionDestinationSchemaArgs{
 //					Prefix: pulumi.String("my_postgres"),
 //				},
-//				Config:            pulumi.String(pulumi.String(json0)),
+//				Config:            pulumi.String(json0),
 //				RunSetupTests:     pulumi.Bool(false),
 //				TrustCertificates: pulumi.Bool(false),
 //				TrustFingerprints: pulumi.Bool(false),
@@ -100,7 +100,7 @@ import (
 //				DestinationSchema: &fivetran.ConnectionDestinationSchemaArgs{
 //					Prefix: pulumi.String("my_postgres"),
 //				},
-//				Config:        pulumi.String(pulumi.String(json0)),
+//				Config:        pulumi.String(json0),
 //				RunSetupTests: pulumi.Bool(false),
 //			})
 //			if err != nil {

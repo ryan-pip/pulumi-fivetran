@@ -1,36 +1,19 @@
 [settings]
-experimental = true # Required for Go binaries (e.g. pulumictl).
-fetch_remote_versions_cache = "24h" # Reduce GitHub API calls to confirm pinned versions.
+experimental = true
+fetch_remote_versions_cache = "24h"
 http_retries = 3
-lockfile = true # Pin exact versions in mise.lock so CI and dev install identical tools; `mise up` to bump.
-
-# Full dev tool set. CI uses a trimmed subset via mise.ci.toml — keep both in
-# sync for tools that CI needs (go, node, python, pulumi, golangci-lint, etc.).
+lockfile = true
 
 [tools]
-github-cli = "latest"
-
 go = "1.25"
-node = "22"
+node = "24.17.0" # Exact pin: keeps upgrade-provider's `mise upgrade` from reinstalling node (gpg verify fails on CI runners).
 python = "3.11"
 dotnet = "8.0"
-java = "corretto-11"
 
 pulumi = "3"
 uv = "latest"
 golangci-lint = "2"
 "go:github.com/pulumi/pulumictl/cmd/pulumictl" = "latest"
-"go:github.com/pulumi/upgrade-provider" = "main"
-"go:golang.org/x/tools/gopls" = "latest"
-
-# Development tools for linting, formatting, and other code quality checks.
-hk = "latest"
-pkl = "latest"
-yamllint = "latest"
-taplo = "latest"
-actionlint = "latest"
 
 [env]
 GOTOOLCHAIN = "go1.25.9"
-
-HK_MISE = 1

@@ -119,6 +119,9 @@
                                         "event_names": {
                                             "maxItemsOne": false
                                         },
+                                        "group_by": {
+                                            "maxItemsOne": false
+                                        },
                                         "metrics": {
                                             "maxItemsOne": false
                                         },
@@ -139,6 +142,9 @@
                                 "elem": {
                                     "fields": {
                                         "action_breakdowns": {
+                                            "maxItemsOne": false
+                                        },
+                                        "attribution_windows": {
                                             "maxItemsOne": false
                                         },
                                         "breakdowns": {
@@ -787,6 +793,9 @@
                                         "event_names": {
                                             "maxItemsOne": false
                                         },
+                                        "group_by": {
+                                            "maxItemsOne": false
+                                        },
                                         "metrics": {
                                             "maxItemsOne": false
                                         },
@@ -807,6 +816,9 @@
                                 "elem": {
                                     "fields": {
                                         "action_breakdowns": {
+                                            "maxItemsOne": false
+                                        },
+                                        "attribution_windows": {
                                             "maxItemsOne": false
                                         },
                                         "breakdowns": {
@@ -1567,6 +1579,37 @@
         }
     },
     "auto-settings": {},
+    "default-resource-schema-fixups": {
+        "resources": {
+            "fivetran_connection": {},
+            "fivetran_connection_config": {},
+            "fivetran_connector": {},
+            "fivetran_connector_certificates": {},
+            "fivetran_connector_fingerprints": {},
+            "fivetran_connector_schedule": {},
+            "fivetran_connector_schema_config": {},
+            "fivetran_connector_sdk_package": {},
+            "fivetran_destination": {},
+            "fivetran_destination_certificates": {},
+            "fivetran_destination_fingerprints": {},
+            "fivetran_external_logging": {},
+            "fivetran_group": {},
+            "fivetran_group_users": {},
+            "fivetran_hybrid_deployment_agent": {},
+            "fivetran_private_link": {},
+            "fivetran_proxy_agent": {},
+            "fivetran_team": {},
+            "fivetran_team_connector_membership": {},
+            "fivetran_team_group_membership": {},
+            "fivetran_team_user_membership": {},
+            "fivetran_transformation": {},
+            "fivetran_transformation_project": {},
+            "fivetran_user": {},
+            "fivetran_user_connector_membership": {},
+            "fivetran_user_group_membership": {},
+            "fivetran_webhook": {}
+        }
+    },
     "renames": {
         "resources": {
             "fivetran:index/connector:Connector": "fivetran_connector",

@@ -110,7 +110,7 @@ export class ConnectorSchedule extends pulumi.CustomResource {
      */
     declare public readonly paused: pulumi.Output<string>;
     /**
-     * Flexible sync schedule configuration. When set, takes precedence over `syncFrequency`.
+     * Flexible sync schedule configuration. When set, takes precedence over `syncFrequency`. **Note:** This attribute is in **ALPHA** state.
      */
     declare public readonly schedule: pulumi.Output<outputs.ConnectorScheduleSchedule | undefined>;
     /**
@@ -118,7 +118,7 @@ export class ConnectorSchedule extends pulumi.CustomResource {
      */
     declare public readonly scheduleType: pulumi.Output<string>;
     /**
-     * The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440. Deprecated: use `schedule` block instead.
+     * The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
      */
     declare public readonly syncFrequency: pulumi.Output<string>;
 
@@ -190,7 +190,7 @@ export interface ConnectorScheduleState {
      */
     paused?: pulumi.Input<string | undefined>;
     /**
-     * Flexible sync schedule configuration. When set, takes precedence over `syncFrequency`.
+     * Flexible sync schedule configuration. When set, takes precedence over `syncFrequency`. **Note:** This attribute is in **ALPHA** state.
      */
     schedule?: pulumi.Input<inputs.ConnectorScheduleSchedule | undefined>;
     /**
@@ -198,7 +198,7 @@ export interface ConnectorScheduleState {
      */
     scheduleType?: pulumi.Input<string | undefined>;
     /**
-     * The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440. Deprecated: use `schedule` block instead.
+     * The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
      */
     syncFrequency?: pulumi.Input<string | undefined>;
 }
@@ -232,7 +232,7 @@ export interface ConnectorScheduleArgs {
      */
     paused?: pulumi.Input<string | undefined>;
     /**
-     * Flexible sync schedule configuration. When set, takes precedence over `syncFrequency`.
+     * Flexible sync schedule configuration. When set, takes precedence over `syncFrequency`. **Note:** This attribute is in **ALPHA** state.
      */
     schedule?: pulumi.Input<inputs.ConnectorScheduleSchedule | undefined>;
     /**
@@ -240,7 +240,7 @@ export interface ConnectorScheduleArgs {
      */
     scheduleType?: pulumi.Input<string | undefined>;
     /**
-     * The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440. Deprecated: use `schedule` block instead.
+     * The connector sync frequency in minutes. Supported values: 1, 5, 15, 30, 60, 120, 180, 360, 480, 720, 1440.
      */
     syncFrequency?: pulumi.Input<string | undefined>;
 }

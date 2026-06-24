@@ -65,8 +65,8 @@ import (
 //			json1 := string(tmpJSON1)
 //			_, err = fivetran.NewConnectionConfig(ctx, "postgres", &fivetran.ConnectionConfigArgs{
 //				ConnectionId:      postgres.ID(),
-//				Config:            pulumi.String(pulumi.String(json0)),
-//				Auth:              pulumi.String(pulumi.String(json1)),
+//				Config:            pulumi.String(json0),
+//				Auth:              pulumi.String(json1),
 //				RunSetupTests:     pulumi.Bool(true),
 //				TrustCertificates: pulumi.Bool(false),
 //				TrustFingerprints: pulumi.Bool(false),
@@ -120,7 +120,7 @@ import (
 //			json0 := string(tmpJSON0)
 //			_, err = fivetran.NewConnectionConfig(ctx, "mysql", &fivetran.ConnectionConfigArgs{
 //				ConnectionId:  mysql.ID(),
-//				Config:        pulumi.String(pulumi.String(json0)),
+//				Config:        pulumi.String(json0),
 //				RunSetupTests: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -167,7 +167,7 @@ import (
 //			json0 := string(tmpJSON0)
 //			_, err = fivetran.NewConnectionConfig(ctx, "s3", &fivetran.ConnectionConfigArgs{
 //				ConnectionId:  s3.ID(),
-//				Auth:          pulumi.String(pulumi.String(json0)),
+//				Auth:          pulumi.String(json0),
 //				RunSetupTests: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -215,8 +215,8 @@ import (
 //			json1 := string(tmpJSON1)
 //			_, err = fivetran.NewConnectionConfig(ctx, "postgres_secure", &fivetran.ConnectionConfigArgs{
 //				ConnectionId:      pulumi.Any(postgresFivetranConnection.Id),
-//				Config:            pulumi.String(pulumi.String(json0)),
-//				Auth:              pulumi.String(pulumi.String(json1)),
+//				Config:            pulumi.String(json0),
+//				Auth:              pulumi.String(json1),
 //				RunSetupTests:     pulumi.Bool(true),
 //				TrustCertificates: pulumi.Bool(true),
 //			})

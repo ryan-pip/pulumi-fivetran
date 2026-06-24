@@ -28,13 +28,10 @@ namespace Pulumi.Fivetran.Outputs
         /// 	- Service `Dynamics365`: Client ID of your Dynamics 365 client application, or service principal.
         /// 	- Service `FacebookAds`: `Client ID` of your Facebook client application.
         /// 	- Service `FacebookPages`: `Client ID` of your Facebook  client application.
-        /// 	- Service `FinancialForce`: `Client ID` of your Salesforce client application.
         /// 	- Service `Front`: `Client ID` of your Front client application.
         /// 	- Service `Gmail`: `Client ID` of your Gmail client application.
         /// 	- Service `GoogleAds`: `Client ID` of your Google Ads client application.
-        /// 	- Service `GoogleAnalytics`: `Client ID` of your Google Analytics client application.
         /// 	- Service `GoogleAnalytics4`: `Client ID` of your Google Analytics client application.
-        /// 	- Service `GoogleAnalyticsMcf`: `Client ID` of your Google Analytics client application.
         /// 	- Service `GoogleDisplayAndVideo360`: `Client ID` of your Google Display &amp; Video 360 client application.
         /// 	- Service `GooglePlay`: `Client ID` of your Google Play client application.
         /// 	- Service `GoogleSearchAds360`: `Client ID` of your Google Search Ads 360 client application.
@@ -64,8 +61,8 @@ namespace Pulumi.Fivetran.Outputs
         /// 	- Service `SpotifyAds`: `Client ID` of your Ad Studio application.
         /// 	- Service `SurveyMonkey`: `Client ID` of your SurveyMonkey client application.
         /// 	- Service `TiktokAds`: `Client ID` of your TikTok Ads client application.
-        /// 	- Service `Twitter`: `Client ID` of your Twitter client application.
-        /// 	- Service `TwitterAds`: `Client ID` of your Twitter Ads client application.
+        /// 	- Service `Twitter`: `Client ID` of your X client application.
+        /// 	- Service `TwitterAds`: `Client ID` of your X Ads client application.
         /// 	- Service `Typeform`: The Typeform client ID.
         /// 	- Service `YahooGemini`: `Client ID` of your Yahoo Gemini client application.
         /// 	- Service `YoutubeAnalytics`: `Client ID` of your Youtube client application.
@@ -88,13 +85,10 @@ namespace Pulumi.Fivetran.Outputs
         /// 	- Service `Dynamics365`: Client Secret of your Dynamics 365 client application, or service principal.
         /// 	- Service `FacebookAds`: `Client Secret` of your Facebook client application.
         /// 	- Service `FacebookPages`: `Client Secret` of your Facebook client application.
-        /// 	- Service `FinancialForce`: `Client Secret` of your Salesforce client application.
         /// 	- Service `Front`: `Client Secret` of your Front client application.
         /// 	- Service `Gmail`: `Client Secret` of your Gmail client application.
         /// 	- Service `GoogleAds`: `Client Secret` of your Google Ads client application.
-        /// 	- Service `GoogleAnalytics`: `Client Secret` of your Google Analytics client application.
         /// 	- Service `GoogleAnalytics4`: `Client Secret` of your Google Analytics client application.
-        /// 	- Service `GoogleAnalyticsMcf`: `Client Secret` of your Google Analytics client application.
         /// 	- Service `GoogleDisplayAndVideo360`: `Client Secret` of your Google Display &amp; Video 360 client application.
         /// 	- Service `GooglePlay`: `Client Secret` of your Google Play client application.
         /// 	- Service `GoogleSearchAds360`: `Client Secret` of your Google Search Ads 360 client application.
@@ -124,8 +118,8 @@ namespace Pulumi.Fivetran.Outputs
         /// 	- Service `SpotifyAds`: `Client Secret` of your Ad Studio application.
         /// 	- Service `SurveyMonkey`: `Client Secret` of your SurveyMonkey client application.
         /// 	- Service `TiktokAds`: `Client Secret` of your TikTok Ads client application.
-        /// 	- Service `Twitter`: `Client Secret` of your Twitter client application.
-        /// 	- Service `TwitterAds`: `Client Secret` of your Twitter Ads client application.
+        /// 	- Service `Twitter`: `Client Secret` of your X client application.
+        /// 	- Service `TwitterAds`: `Client Secret` of your X Ads client application.
         /// 	- Service `Typeform`: The Typeform client secret.
         /// 	- Service `YahooGemini`: `Client Secret` of your Yahoo Gemini client application.
         /// 	- Service `YoutubeAnalytics`: `Client Secret` of your Youtube client application.

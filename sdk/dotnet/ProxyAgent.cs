@@ -67,7 +67,7 @@ namespace Pulumi.Fivetran
         public Output<string> GroupRegion { get; private set; } = null!;
 
         /// <summary>
-        /// Determines whether regenerarion secrets needs to be performed.
+        /// Determines whether regeneration secrets needs to be performed.
         /// </summary>
         [Output("regenerationCounter")]
         public Output<int> RegenerationCounter { get; private set; } = null!;
@@ -108,6 +108,11 @@ namespace Pulumi.Fivetran
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/ryan-pip",
+                AdditionalSecretOutputs =
+                {
+                    "clientPrivateKey",
+                    "token",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -144,7 +149,7 @@ namespace Pulumi.Fivetran
         public Input<string> GroupRegion { get; set; } = null!;
 
         /// <summary>
-        /// Determines whether regenerarion secrets needs to be performed.
+        /// Determines whether regeneration secrets needs to be performed.
         /// </summary>
         [Input("regenerationCounter")]
         public Input<int>? RegenerationCounter { get; set; }
@@ -163,11 +168,21 @@ namespace Pulumi.Fivetran
         [Input("clientCert")]
         public Input<string>? ClientCert { get; set; }
 
+        [Input("clientPrivateKey")]
+        private Input<string>? _clientPrivateKey;
+
         /// <summary>
         /// Client private key.
         /// </summary>
-        [Input("clientPrivateKey")]
-        public Input<string>? ClientPrivateKey { get; set; }
+        public Input<string>? ClientPrivateKey
+        {
+            get => _clientPrivateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientPrivateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The actor who created the proxy agent.
@@ -188,7 +203,7 @@ namespace Pulumi.Fivetran
         public Input<string>? GroupRegion { get; set; }
 
         /// <summary>
-        /// Determines whether regenerarion secrets needs to be performed.
+        /// Determines whether regeneration secrets needs to be performed.
         /// </summary>
         [Input("regenerationCounter")]
         public Input<int>? RegenerationCounter { get; set; }
@@ -199,11 +214,21 @@ namespace Pulumi.Fivetran
         [Input("registredAt")]
         public Input<string>? RegistredAt { get; set; }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// The auth token.
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ProxyAgentState()
         {

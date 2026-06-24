@@ -1,0 +1,20 @@
+[settings]
+experimental = true
+
+[tools]
+# gh ships on GitHub-hosted runners, so CI doesn't need it; here for local parity.
+github-cli = "latest"
+
+java = "corretto-11"
+"go:golang.org/x/tools/gopls" = "latest"
+"go:github.com/pulumi/upgrade-provider" = "main"
+
+# Linting, formatting, and other code quality checks.
+hk = "latest"
+pkl = "latest"
+yamllint = "latest"
+taplo = "latest"
+actionlint = "latest"
+
+[env]
+HK_MISE = 1

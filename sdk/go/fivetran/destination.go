@@ -152,9 +152,6 @@ func NewDestination(ctx *pulumi.Context,
 	if args.GroupId == nil {
 		return nil, errors.New("invalid value for required argument 'GroupId'")
 	}
-	if args.Region == nil {
-		return nil, errors.New("invalid value for required argument 'Region'")
-	}
 	if args.Service == nil {
 		return nil, errors.New("invalid value for required argument 'Service'")
 	}
@@ -264,7 +261,7 @@ type destinationArgs struct {
 	// The proxy agent ID.
 	ProxyAgentId *string `pulumi:"proxyAgentId"`
 	// Data processing location. This is where Fivetran will operate and run computation on data.
-	Region string `pulumi:"region"`
+	Region *string `pulumi:"region"`
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
 	RunSetupTests *bool `pulumi:"runSetupTests"`
 	// The destination type id within the Fivetran system.
@@ -294,7 +291,7 @@ type DestinationArgs struct {
 	// The proxy agent ID.
 	ProxyAgentId pulumi.StringPtrInput
 	// Data processing location. This is where Fivetran will operate and run computation on data.
-	Region pulumi.StringInput
+	Region pulumi.StringPtrInput
 	// Specifies whether the setup tests should be run automatically. The default value is TRUE.
 	RunSetupTests pulumi.BoolPtrInput
 	// The destination type id within the Fivetran system.

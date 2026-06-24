@@ -191,9 +191,6 @@ export class Destination extends pulumi.CustomResource {
             if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if (args?.region === undefined && !opts.urn) {
-                throw new Error("Missing required property 'region'");
-            }
             if (args?.service === undefined && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
@@ -313,7 +310,7 @@ export interface DestinationArgs {
     /**
      * Data processing location. This is where Fivetran will operate and run computation on data.
      */
-    region: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the setup tests should be run automatically. The default value is TRUE.
      */
