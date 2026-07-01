@@ -82,6 +82,20 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `PinterestAds`: Overrides the connector-level click attribution window for this report.
+        /// </summary>
+        [Input("clickAttributionWindow")]
+        public Input<string>? ClickAttributionWindow { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `PinterestAds`: Overrides the connector-level conversion report time for this report.
+        /// </summary>
+        [Input("conversionReportTime")]
+        public Input<string>? ConversionReportTime { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `RedditAds`: The boolean value specifying whether to enable or disable event conversions data synchronisation. Default value: `False`
         /// </summary>
         [Input("conversionsReportIncluded")]
@@ -130,6 +144,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `PinterestAds`: Time granularity for the report: DAY, HOUR, WEEK, MONTH, or TOTAL.
         /// 	- Service `SnapchatAds`: [Sets Granularity on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#granularity).
         /// </summary>
         [Input("granularity")]
@@ -161,6 +176,7 @@ namespace Pulumi.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Criteo`: Metrics to be synced
+        /// 	- Service `PinterestAds`: List of metrics to include in the report.
         /// 	- Service `TiktokAds`: Metrics to be synced
         /// </summary>
         public InputList<string> Metrics
@@ -193,6 +209,7 @@ namespace Pulumi.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Criteo`: Type of report to be generated
+        /// 	- Service `PinterestAds`: The breakdown level for the report (e.g. ADVERTISER, CAMPAIGN, AD_GROUP, PIN_PROMOTION, KEYWORD, PRODUCT_GROUP, PRODUCT_ITEM).
         /// 	- Service `TiktokAds`: Type of report to be generated
         /// </summary>
         [Input("reportType")]
@@ -228,6 +245,7 @@ namespace Pulumi.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Criteo`: Destination Table name of report
+        /// 	- Service `PinterestAds`: Destination table name for this custom report.
         /// 	- Service `TiktokAds`: Destination Table name of report
         /// </summary>
         [Input("tableName")]
@@ -259,6 +277,13 @@ namespace Pulumi.Fivetran.Inputs
         /// </summary>
         [Input("timeZoneMode")]
         public Input<string>? TimeZoneMode { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `PinterestAds`: Overrides the connector-level view attribution window for this report.
+        /// </summary>
+        [Input("viewAttributionWindow")]
+        public Input<string>? ViewAttributionWindow { get; set; }
 
         public ConnectorConfigCustomReportArgs()
         {
