@@ -55,6 +55,16 @@ namespace Pulumi.Fivetran.Outputs
         public readonly string Breakout;
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `PinterestAds`: Overrides the connector-level click attribution window for this report.
+        /// </summary>
+        public readonly string ClickAttributionWindow;
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `PinterestAds`: Overrides the connector-level conversion report time for this report.
+        /// </summary>
+        public readonly string ConversionReportTime;
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `RedditAds`: The boolean value specifying whether to enable or disable event conversions data synchronisation. Default value: `False`
         /// </summary>
         public readonly bool ConversionsReportIncluded;
@@ -81,6 +91,7 @@ namespace Pulumi.Fivetran.Outputs
         public readonly ImmutableArray<string> EventNames;
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `PinterestAds`: Time granularity for the report: DAY, HOUR, WEEK, MONTH, or TOTAL.
         /// 	- Service `SnapchatAds`: [Sets Granularity on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#granularity).
         /// </summary>
         public readonly string Granularity;
@@ -97,6 +108,7 @@ namespace Pulumi.Fivetran.Outputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Criteo`: Metrics to be synced
+        /// 	- Service `PinterestAds`: List of metrics to include in the report.
         /// 	- Service `TiktokAds`: Metrics to be synced
         /// </summary>
         public readonly ImmutableArray<string> Metrics;
@@ -114,6 +126,7 @@ namespace Pulumi.Fivetran.Outputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Criteo`: Type of report to be generated
+        /// 	- Service `PinterestAds`: The breakdown level for the report (e.g. ADVERTISER, CAMPAIGN, AD_GROUP, PIN_PROMOTION, KEYWORD, PRODUCT_GROUP, PRODUCT_ITEM).
         /// 	- Service `TiktokAds`: Type of report to be generated
         /// </summary>
         public readonly string ReportType;
@@ -135,6 +148,7 @@ namespace Pulumi.Fivetran.Outputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Criteo`: Destination Table name of report
+        /// 	- Service `PinterestAds`: Destination table name for this custom report.
         /// 	- Service `TiktokAds`: Destination Table name of report
         /// </summary>
         public readonly string TableName;
@@ -153,6 +167,11 @@ namespace Pulumi.Fivetran.Outputs
         /// 	- Service `RedditAds`: When this parameter is set to `ACCOUNT`, connector will use account related time zone to sync report data. Default value: `ACCOUNT`. Possible values: `ACCOUNT`, `USER`
         /// </summary>
         public readonly string TimeZoneMode;
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `PinterestAds`: Overrides the connector-level view attribution window for this report.
+        /// </summary>
+        public readonly string ViewAttributionWindow;
 
         [OutputConstructor]
         private GetConnectorConfigCustomReportResult(
@@ -171,6 +190,10 @@ namespace Pulumi.Fivetran.Outputs
             ImmutableArray<string> breakdowns,
 
             string breakout,
+
+            string clickAttributionWindow,
+
+            string conversionReportTime,
 
             bool conversionsReportIncluded,
 
@@ -208,7 +231,9 @@ namespace Pulumi.Fivetran.Outputs
 
             string timeZone,
 
-            string timeZoneMode)
+            string timeZoneMode,
+
+            string viewAttributionWindow)
         {
             ActionReportTime = actionReportTime;
             AddMetricVariants = addMetricVariants;
@@ -218,6 +243,8 @@ namespace Pulumi.Fivetran.Outputs
             Breakdown = breakdown;
             Breakdowns = breakdowns;
             Breakout = breakout;
+            ClickAttributionWindow = clickAttributionWindow;
+            ConversionReportTime = conversionReportTime;
             ConversionsReportIncluded = conversionsReportIncluded;
             CustomEventsIncluded = customEventsIncluded;
             Dimension = dimension;
@@ -237,6 +264,7 @@ namespace Pulumi.Fivetran.Outputs
             TimeDimensions = timeDimensions;
             TimeZone = timeZone;
             TimeZoneMode = timeZoneMode;
+            ViewAttributionWindow = viewAttributionWindow;
         }
     }
 }

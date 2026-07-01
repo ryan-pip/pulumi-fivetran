@@ -560,6 +560,7 @@ export interface ConnectorConfig {
      * 	- Service `awsCostReport`: Access Key ID
      * 	- Service `checkout`: Your Checkout.com access key ID.
      * 	- Service `cloudtalk`: Your CloudTalk Access Key ID.
+     * 	- Service `guidewireCloudDataAccess`: Access Key ID for access key authentication.
      * 	- Service `nice`: Your NICE access key ID.
      * 	- Service `s3`: Access Key ID
      * 	- Service `s3CompatibleStorage`: Access Key ID
@@ -573,6 +574,7 @@ export interface ConnectorConfig {
      * 	- Service `checkout`: Your Checkout.com access key secret.
      * 	- Service `cloudtalk`: Your CloudTalk Access Key Secret.
      * 	- Service `gongio`: Your Gongio Access Key Secret.
+     * 	- Service `guidewireCloudDataAccess`: Access Key Secret for access key authentication.
      * 	- Service `nice`: Your NICE access key secret.
      * 	- Service `s3`: Access Key Secret
      * 	- Service `s3CompatibleStorage`: Access Key Secret
@@ -899,6 +901,11 @@ export interface ConnectorConfig {
     algorithm?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `email`: Restrict ingestion to emails from these senders only. Supports exact addresses (e.g. reports@vendor.com) or domains (e.g. @vendor.com). Applies to all tables.
+     */
+    allowedSendersLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `aurora`: Require TLS through Tunnel
      * 	- Service `auroraPostgres`: Require TLS through Tunnel
      * 	- Service `avevaPi`: Require TLS.
@@ -951,6 +958,11 @@ export interface ConnectorConfig {
     alwaysEncrypted?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `anthropicClaude`: Your Analytics API key for syncing Claude Enterprise organization-level analytics data.
+     */
+    analyticsApiKey?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `freshsuccess`: Set this parameter to `api`.
      */
     api?: pulumi.Input<string | undefined>;
@@ -964,9 +976,14 @@ export interface ConnectorConfig {
     apiAccessToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
-     * 	- Service `anthropicClaude`: Your Claude Platform Admin API key.
+     * 	- Service `anthropicClaude`: Your Claude Platform Admin API key for syncing organization-level management and reporting data.
      */
     apiAdminKey?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `gongio`: Your Gong API Base URL.
+     */
+    apiBaseUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
      * 	- Service `afterpay`: Your Afterpay API environment.
@@ -995,7 +1012,7 @@ export interface ConnectorConfig {
      * 	- Service `airtable`: API key of the Airtable account.
      * 	- Service `algolia`: Your Algolia API key.
      * 	- Service `alida`: Your Alida API key.
-     * 	- Service `anthropicClaude`: Your Claude Platform standard API key.
+     * 	- Service `anthropicClaude`: Your API key for syncing data from a specific Claude workspace.
      * 	- Service `anvyl`: Your Anvyl API key.
      * 	- Service `apollo`: Your Apollo API key.
      * 	- Service `appcues`: Your Appcues API key.
@@ -1236,9 +1253,14 @@ export interface ConnectorConfig {
     apiKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
-     * 	- Service `openai`: Your OpenAI API key.
+     * 	- Service `openai`: The project-specific API key for the OpenAI Platform project whose data you want to sync.
      */
     apiKey2?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `openai`: The API key scoped to `codex.enterprise.analytics.read` for syncing Codex Enterprise Analytics data from a specific ChatGPT workspace.
+     */
+    apiKey3?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
      * 	- Service `revel`: Your Revel Systems API Key and API Secret.
@@ -1317,6 +1339,7 @@ export interface ConnectorConfig {
      * 	- Service `buzzsprout`: Your Buzzsprout API token.
      * 	- Service `centra`: Your Centra API token.
      * 	- Service `chameleon`: Your Chameleon API token.
+     * 	- Service `circleCommunityPlatform`: Your Circle Community Platform API token.
      * 	- Service `clari`: Your Clari API token.
      * 	- Service `cloudflareAnalytics`: Your Cloudflare Analytics API token.
      * 	- Service `coda`: Your Coda API token.
@@ -1614,7 +1637,7 @@ export interface ConnectorConfig {
     audience?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
-     * 	- Service `databricksDb`: Token-based authentication type
+     * 	- Service `databricksDb`: Authentication type (TOKEN or OAUTH2)
      * 	- Service `gitlab`: Your GitLab auth type.
      * 	- Service `redshiftDb`: Password-based authentication type
      * 	- Service `snowflakeDb`: Password-based or key-based authentication type
@@ -1627,6 +1650,7 @@ export interface ConnectorConfig {
     authCode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management Auth base URL.
      * 	- Service `younium`: Your Younium auth environment. Use this parameter only if you want the connection to authenticate using OAuth 2.0.
      */
     authEnvironment?: pulumi.Input<string | undefined>;
@@ -1697,6 +1721,7 @@ export interface ConnectorConfig {
      * 	- Service `dynamics365`: Authentication mechanism. Either one of `OAUTH2`, or `SERVICE_PRINCIPAL`. Default value `OAUTH2`
      * 	- Service `gcs`: Authorization type. Required for storage bucket authentication.
      * 	- Service `googleSheets`: The `OAuth` value must be specified for this type of authorization.
+     * 	- Service `guidewireCloudDataAccess`: Access approach. Supported values: IAM_ROLE, ACCESS_KEY, PUBLIC_BUCKET.
      * 	- Service `jira`: Authorization type.
      * 	- Service `mixpanel`: Authentication Method
      * 	- Service `pardot`: Authenticate using OAuth or HTTP Basic
@@ -1705,6 +1730,7 @@ export interface ConnectorConfig {
      * 	- Service `s3`: Access approach
      * 	- Service `s3CompatibleStorage`: Access approach
      * 	- Service `samsara`: The authentication method you want to use for your connection.
+     * 	- Service `ukgProWorkforceManagement`: The authentication method you want to use for your connection.
      * 	- Service `upland`: Authentication method you want to use for your connection.
      * 	- Service `wasabiCloudStorage`: The Wasabi Cloud Storage Access approach. Required for connector creation. Default value: `ACCESS_KEY`.
      * 	- Service `younium`: The authentication method you want to use for your connection.
@@ -1823,7 +1849,7 @@ export interface ConnectorConfig {
      * 	- Service `financialForce`: (Optional) The custom Salesforce domain. Make sure that the `baseUrl` starts with `https://`.
      * 	- Service `freshsales`: Your Freshsales product.
      * 	- Service `gitlab`: Your GitLab base URL.
-     * 	- Service `gongio`: Your Gong API Base URL.
+     * 	- Service `gongio`: Your Gong Base URL.
      * 	- Service `higherLogicVanilla`: Your Higher Logic Vanilla base URL.
      * 	- Service `ironclad`: Your Ironclad base url.
      * 	- Service `jotform`: Your Jotform base URL.
@@ -1901,6 +1927,7 @@ export interface ConnectorConfig {
      * 	- Service `cloudfront`: The bucket name for CloudFront.
      * 	- Service `gcs`: The name of the GCS bucket.
      * 	- Service `googlePlay`: The Google Cloud Storage source bucket.
+     * 	- Service `guidewireCloudDataAccess`: The S3 bucket name containing the Guidewire CDA export. Required for connector creation.
      * 	- Service `heap`: The S3 bucket name.
      * 	- Service `kinesis`: The name of the Kinesis bucket.
      * 	- Service `s3`: The S3 bucket name. Required for connector creation.
@@ -2298,6 +2325,7 @@ export interface ConnectorConfig {
      * 	- Service `ironcladClickwrap`: Your Ironclad Clickwrap Client Secret.
      * 	- Service `jamaSoftware`: Your Jama Software client secret.
      * 	- Service `jibble`: Your Jibble client secret.
+     * 	- Service `khorosCommunities`: Your Khoros Communities client secret.
      * 	- Service `learnAmp`: Your Learn Amp client secret.
      * 	- Service `lookerSource`: Your Looker client secret.
      * 	- Service `marketo`: Marketo REST API Client Secret.
@@ -2549,6 +2577,7 @@ export interface ConnectorConfig {
      * 	- Service `googleCloudMysql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
      * 	- Service `googleCloudPostgresql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
      * 	- Service `googleCloudSqlserver`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+     * 	- Service `guidewireCloudDataAccess`: Connection method. Default value: `Directly`.
      * 	- Service `hanaSapHvaB1`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
      * 	- Service `hanaSapHvaEcc`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
      * 	- Service `hanaSapHvaEccNetweaver`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
@@ -2679,6 +2708,11 @@ export interface ConnectorConfig {
      * 	- Service `adjust`: CSV definition for the CSV export (https://help.adjust.com/en/article/csv-uploads#how-do-i-format-my-csv-definition).
      */
     csvDefinition?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `klarna`: The CSV delimiter used in your Klarna settlement report.
+     */
+    csvDelimiter?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
      * 	- Service `criteo`: Currency
@@ -2915,6 +2949,11 @@ export interface ConnectorConfig {
      * 	- Service `googleDisplayAndVideo360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
      */
     dimensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `criteoRetailMedia`: Your Criteo Retail Media report revenue dimensions.
+     */
+    dimensionsCriteoRetailMedia?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
      * 	- Service `oracleHva`: Possible values:`DIRECT`, `BFILE`, `ASM`, `ARCHIVE_ONLY`
@@ -3294,6 +3333,7 @@ export interface ConnectorConfig {
     /**
      * Field usage depends on `service` value:
      * 	- Service `azureBlobStorage`: Required when `fileMappingMethod` = `EXTRACT_TABLES`. A regular expression with a named capture group `(?table...)` to extract table names from file paths.
+     * 	- Service `ftp`: Required when `fileMappingMethod` = `EXTRACT_TABLES`. A regular expression with a named capture group `(?table...)` to extract table names from file paths.
      * 	- Service `gcs`: Required when `fileMappingMethod` = `EXTRACT_TABLES`. A regular expression with a named capture group `(?table...)` to extract table names from file paths.
      * 	- Service `s3`: Required when `fileMappingMethod` = `EXTRACT_TABLES`. A regular expression with a named capture group `(?table...)` to extract table names from file paths.
      * 	- Service `sftp`: Required when `fileMappingMethod` = `EXTRACT_TABLES`. A regular expression with a named capture group `(?table...)` to extract table names from file paths.
@@ -3320,6 +3360,7 @@ export interface ConnectorConfig {
     /**
      * Field usage depends on `service` value:
      * 	- Service `azureBlobStorage`: The method used to map files to destination tables. Use `DEFINE_PER_TABLE` to manually configure each table with its own file pattern, or `EXTRACT_TABLES` to automatically discover tables based on a single extraction pattern.
+     * 	- Service `ftp`: The method used to map files to destination tables. Use `DEFINE_PER_TABLE` to manually configure each table with its own file pattern, or `EXTRACT_TABLES` to automatically discover tables based on a single extraction pattern.
      * 	- Service `gcs`: The method used to map files to destination tables. Use `DEFINE_PER_TABLE` to manually configure each table with its own file pattern, or `EXTRACT_TABLES` to automatically discover tables based on a single extraction pattern.
      * 	- Service `s3`: The method used to map files to destination tables. Use `DEFINE_PER_TABLE` to manually configure each table with its own file pattern, or `EXTRACT_TABLES` to automatically discover tables based on a single extraction pattern.
      * 	- Service `sftp`: The method used to map files to destination tables. Use `DEFINE_PER_TABLE` to manually configure each table with its own file pattern, or `EXTRACT_TABLES` to automatically discover tables based on a single extraction pattern.
@@ -3725,6 +3766,11 @@ export interface ConnectorConfig {
     integrationKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `workdayHcm`: Integration System ID
+     */
+    integrationSystemId?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `avevaPi`: IP address of the AF Server
      */
     ipAddress?: pulumi.Input<string | undefined>;
@@ -3779,6 +3825,7 @@ export interface ConnectorConfig {
      * Field usage depends on `service` value:
      * 	- Service `awsLambda`: We use PrivateLink by default if your AWS Lambda is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to AWS lambda over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options/aws-private-link).
      * 	- Service `dynamodb`: We use PrivateLink by default if your DynamoDB instance is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to DynamoDB over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options/aws-private-link).
+     * 	- Service `guidewireCloudDataAccess`: Set to `true` if you want to connect to S3 bucket over PrivateLink. Default value: `false`.
      * 	- Service `s3`: Set to `true` if you want to connect to S3 bucket over PrivateLink. Default value: `false`.
      */
     isPrivateLinkRequired?: pulumi.Input<boolean | undefined>;
@@ -3832,7 +3879,7 @@ export interface ConnectorConfig {
     issuer?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
-     * 	- Service `itunesConnect`: Your Issuer ID
+     * 	- Service `itunesConnect`: Your Issuer ID. Must be populated if `keyType` is set to `Team`
      */
     issuerId?: pulumi.Input<string | undefined>;
     /**
@@ -3879,6 +3926,11 @@ export interface ConnectorConfig {
      * 	- Service `herokuKafka`: Key Store Type
      */
     keyStoreType?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `itunesConnect`: Key Type
+     */
+    keyType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
      * 	- Service `awsMsk`: If `securityProtocol` is set to `TLS`, add the `Keystore File` as Base64 encoded string.
@@ -3990,6 +4042,11 @@ export interface ConnectorConfig {
      * 	- Service `googleAds`: The list of the Manager Account IDs whose clients will be synced. Must be populated if `syncMode` is set to `ManagerAccounts`.
      */
     managerAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `guidewireCloudDataAccess`: The path to the Guidewire CDA manifest.json file in the S3 bucket.
+     */
+    manifestPath?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
      * 	- Service `reltio`: Maximum API requests per day
@@ -4163,6 +4220,7 @@ export interface ConnectorConfig {
      * Field usage depends on `service` value:
      * 	- Service `gladly`: Your Gladly Organization Name.
      * 	- Service `statuspage`: Your Statuspage Organization ID.
+     * 	- Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management Organization ID.
      */
     organization?: pulumi.Input<string | undefined>;
     /**
@@ -4313,7 +4371,7 @@ export interface ConnectorConfig {
      * 	- Service `jira`: The Jira user's password.
      * 	- Service `khorosCare`: Your Khoros Care password.
      * 	- Service `kissmetrics`: Your Kissmetrics API Password.
-     * 	- Service `klarna`: Your Klarna Password.
+     * 	- Service `klarna`: Your Klarna password.
      * 	- Service `lessonly`: Your Lessonly password.
      * 	- Service `magentoMysql`: The user's password.
      * 	- Service `magentoMysqlRds`: The user's password.
@@ -5082,6 +5140,7 @@ export interface ConnectorConfig {
      * 	- Service `awsMsk`: If `saslMechanism` is set to `IAM`, enter your Role ARN
      * 	- Service `cloudfront`: The Role ARN required for authentication.
      * 	- Service `dynamodb`: Role ARN
+     * 	- Service `guidewireCloudDataAccess`: The Role ARN required for IAM role authentication.
      * 	- Service `heap`: The Role ARN required for authentication.
      * 	- Service `kinesis`: The Role ARN required for authentication.
      * 	- Service `magentoMysqlRds`: The ARN of the IAM role with RDS permissions. Required if the authentication method is `AWS_IAM` in the SaaS Deployment model.
@@ -6798,7 +6857,7 @@ export interface ConnectorConfig {
      * 	- Service `jamf`: Your Jamf username.
      * 	- Service `khorosCare`: Your Khoros Care username.
      * 	- Service `kissmetrics`: Your Kissmetrics API Username.
-     * 	- Service `klarna`: Your Klarna Username.
+     * 	- Service `klarna`: Your Klarna username.
      * 	- Service `learnupon`: Your LearnUpon username.
      * 	- Service `lessonly`: Your Lessonly username.
      * 	- Service `mailgun`: Your Mailgun API username.
@@ -6954,6 +7013,7 @@ export interface ConnectorConfig {
     /**
      * Field usage depends on `service` value:
      * 	- Service `fulfil`: Your Fulfil workspace ID.
+     * 	- Service `openai`: Your ChatGPT Enterprise Workspace ID.
      * 	- Service `openaiCompliancePlatform`: Your OpenAI Compliance Platform workspace ID.
      */
     workspaceId?: pulumi.Input<string | undefined>;
@@ -7163,6 +7223,16 @@ export interface ConnectorConfigCustomReport {
     breakout?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `pinterestAds`: Overrides the connector-level click attribution window for this report.
+     */
+    clickAttributionWindow?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `pinterestAds`: Overrides the connector-level conversion report time for this report.
+     */
+    conversionReportTime?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `redditAds`: The boolean value specifying whether to enable or disable event conversions data synchronisation. Default value: `false`
      */
     conversionsReportIncluded?: pulumi.Input<boolean | undefined>;
@@ -7189,6 +7259,7 @@ export interface ConnectorConfigCustomReport {
     eventNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `pinterestAds`: Time granularity for the report: DAY, HOUR, WEEK, MONTH, or TOTAL.
      * 	- Service `snapchatAds`: [Sets Granularity on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#granularity).
      */
     granularity?: pulumi.Input<string | undefined>;
@@ -7205,6 +7276,7 @@ export interface ConnectorConfigCustomReport {
     /**
      * Field usage depends on `service` value:
      * 	- Service `criteo`: Metrics to be synced
+     * 	- Service `pinterestAds`: List of metrics to include in the report.
      * 	- Service `tiktokAds`: Metrics to be synced
      */
     metrics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -7222,6 +7294,7 @@ export interface ConnectorConfigCustomReport {
     /**
      * Field usage depends on `service` value:
      * 	- Service `criteo`: Type of report to be generated
+     * 	- Service `pinterestAds`: The breakdown level for the report (e.g. ADVERTISER, CAMPAIGN, AD_GROUP, PIN_PROMOTION, KEYWORD, PRODUCT_GROUP, PRODUCT_ITEM).
      * 	- Service `tiktokAds`: Type of report to be generated
      */
     reportType?: pulumi.Input<string | undefined>;
@@ -7243,6 +7316,7 @@ export interface ConnectorConfigCustomReport {
     /**
      * Field usage depends on `service` value:
      * 	- Service `criteo`: Destination Table name of report
+     * 	- Service `pinterestAds`: Destination table name for this custom report.
      * 	- Service `tiktokAds`: Destination Table name of report
      */
     tableName?: pulumi.Input<string | undefined>;
@@ -7261,6 +7335,11 @@ export interface ConnectorConfigCustomReport {
      * 	- Service `redditAds`: When this parameter is set to `ACCOUNT`, connector will use account related time zone to sync report data. Default value: `ACCOUNT`. Possible values: `ACCOUNT`, `USER`
      */
     timeZoneMode?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `pinterestAds`: Overrides the connector-level view attribution window for this report.
+     */
+    viewAttributionWindow?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectorConfigCustomTable {
@@ -7964,7 +8043,7 @@ export interface ConnectorConfigTenantConfig {
 export interface ConnectorDestinationSchema {
     /**
      * The connector schema name in destination. Has to be unique within the group (destination). Required for connector creation of services:<br>
-     * `15five`, `360learning`, `6sense`, `7shifts`, `absorbLms`, `acculynx`, `activecampaign`, `acumatica`, `ada`, `adform`, `adjust`, `adobeAnalyticsDataFeed`, `adobeAnalytics`, `adobeCommerce`, `adobeExperiencePlatform`, `adobeWorkfront`, `adpWorkforceNow`, `adroll`, `adyen`, `affinity`, `afterpay`, `aha`, `aircall`, `akamai`, `akeneo`, `alation`, `alchemer`, `algolia`, `alida`, `amazonAds`, `amazonAttribution`, `amazonDsp`, `amazonSellingPartner`, `amplitude`, `amqp`, `anaplan`, `anthropicClaude`, `anvyl`, `apacheKafka`, `apollo`, `appcues`, `appfigures`, `appleSearchAds`, `applovin`, `appsflyer`, `asana`, `ascendByPartnerize`, `ashby`, `assembled`, `assetPanda`, `atlassianCompass`, `atlassianJiraAlign`, `atlassianOpsGenie`, `attentive`, `attio`, `aumni`, `auraFromUnity`, `auth0`, `autodeskBim360`, `avantlink`, `avevaPi`, `awin`, `awsCloudtrail`, `awsCostReport`, `awsCost`, `awsInventory`, `awsLambda`, `awsMsk`, `azureBlobStorage`, `azureBoards`, `azureDevops`, `azureEventHub`, `azureFunction`, `azureServiceBus`, `backbonePlm`, `ballotready`, `bamboohr`, `bazaarvoice`, `betterworks`, `bigCommerce`, `biginByZohoCrm`, `bigmarker`, `billingPlatform`, `bingWebmasterTools`, `bingads`, `birdeye`, `bitly`, `bizzaboApp`, `bizzaboV2`, `bizzabo`, `boostr`, `box`, `braintreeSandbox`, `braintree`, `branch`, `braveAds`, `braze`, `breatheHr`, `brevo`, `brex`, `brightcove`, `brightflag`, `brightpearl`, `brivo`, `bubble`, `buildium`, `buildkite`, `businessCentral`, `buzzsprout`, `bynder`, `cabcharge`, `calabrio`, `calcom`, `calendly`, `callrail`, `campaignmonitor`, `campfire`, `canny`, `canvasByInstructure`, `canvasData2ByInstructure`, `captivateiq`, `careQualityCommission`, `castorEdc`, `centra`, `ceridianDayforce`, `chameleon`, `channelAdvisor`, `chargebeeProductCatalog1`, `chargebeeProductCatalog2`, `chargedesk`, `charthop`, `chartmogul`, `checkout`, `checkr`, `chorusai`, `churnkey`, `churnzero`, `cimis`, `cin7`, `cin7core`, `circleci`, `cjCommissionDetail`, `clari`, `classy`, `claudeCompliance`, `clazar`, `clickup`, `clockify`, `clockodo`, `close`, `cloudbeds`, `cloudflareAnalytics`, `cloudfront`, `cloudtalk`, `clubspeed`, `coalesce`, `coassemble`, `coda`, `codefresh`, `coheris`, `collibra`, `column`, `commercetools`, `complianceCheckpoint`, `concord`, `concur`, `confluence`, `confluentCloud`, `connectorSdk`, `consensusDemoAutomationPlatform`, `constantContact`, `contrastSecurity`, `convex`, `copper`, `cornerstone`, `coupa`, `credly`, `criteoRetailMedia`, `criteo`, `crossbeam`, `crowddev`, `crunchbase`, `cubeSoftware`, `cube`, `cultureAmp`, `customerio`, `cvent`, `d2lBrightspace`, `datadog`, `datastreamerSource`, `db2luw`, `dbtCloud`, `dclLogistics`, `dear`, `deel`, `delighted`, `deposco`, `deputy`, `destini`, `deviceMagic`, `dialpad`, `discourse`, `dixa`, `docebo`, `donus`, `doorloop`, `doubleClickCampaignManager`, `doubleClickPublishers`, `drata`, `drift`, `drip`, `dropboxSign`, `dropbox`, `dsv`, `duoplane`, `dutchie`, `dynamics365`, `dynamodb`, `easypost`, `ebay`, `economic`, `elasticCloud`, `electronicTenantSolutions`, `eloqua`, `email`, `employmentHero`, `esSelfHosted`, `eventbrite`, `eventsforce`, `everflow`, `everhour`, `exactOnline`, `expensein`, `expensify`, `ezofficeinventory`, `facebookAdAccount`, `facebookAds`, `facebookPages`, `facebook`, `factbird`, `factorial`, `fathom`, `fillout`, `financialForce`, `firebase`, `fireflies`, `firehydrant`, `fivetranLog`, `flexport`, `float`, `flywheelDigital`, `foneDynamics`, `forethought`, `forjCommunity`, `formstack`, `fortnox`, `fountain`, `fourkites`, `freightview`, `freshbooks`, `freshchat`, `freshdeskContactCenter`, `freshdesk`, `freshsales`, `freshservice`, `freshsuccess`, `freshteam`, `friendbuy`, `front`, `ftp`, `fulfil`, `fullstory`, `g2`, `gainsightCustomerSuccess`, `gainsightProductExperience`, `gcs`, `gem`, `genesys`, `getfeedback`, `github`, `gitlab`, `gladly`, `globalmeet`, `gmail`, `gocardless`, `gofundmePro`, `goldcast`, `gongio`, `googleAds`, `googleAnalytics360`, `googleAnalytics4Export`, `googleAnalytics4`, `googleAnalyticsMcf`, `googleAnalytics`, `googleBusinessProfile`, `googleCalendar`, `googleClassroom`, `googleCloudFunction`, `googleDisplayAndVideo360`, `googleDrive`, `googlePlay`, `googleSearchAds360`, `googleSearchConsole`, `googleSheets`, `googleTagManager`, `googleTasks`, `gorgias`, `greenPowerMonitor`, `greenhouse`, `grepsr`, `grin`, `guru`, `hLevel`, `hanaSapHvaEccNetweaver`, `hanaSapHvaS4Netweaver`, `happyfox`, `harvest`, `healthie`, `heap`, `heartlandRetailPos`, `height`, `helpdesk`, `helpjuice`, `helpscout`, `helpshift`, `herokuKafka`, `hex`, `hibob`, `higherLogicVanilla`, `hiltiOntrack`, `hopin`, `hubspot`, `ibacos`, `ilevel`, `impactPartner`, `impact`, `incidentio`, `infobip`, `insightly`, `instagramBusiness`, `instructure`, `integralAdScience`, `integrate`, `intercom`, `invoiced`, `ironcladClickwrap`, `ironclad`, `ironsource`, `iterable`, `itunesConnect`, `ivanti`, `jamaSoftware`, `jamf`, `jibble`, `jira`, `jobnimbus`, `jotform`, `justcall`, `kandji`, `katana`, `kevel`, `keypay`, `khorosCare`, `khorosCommunities`, `khorosMarketing`, `kinesis`, `kisi`, `kissmetrics`, `klarna`, `klaviyo`, `konnectInsights`, `kustomer`, `lattice`, `launchdarkly`, `leapCrm`, `leapsome`, `learnAmp`, `learnupon`, `leaveDates`, `lemlist`, `lessonly`, `lever`, `liftoff`, `lightSpeedRetail`, `lightspeedRetailXseries`, `lineAds`, `linear`, `linkedinAds`, `linkedinCompanyPages`, `linksquares`, `listen360`, `livechatPartner`, `livechat`, `livestorm`, `lob`, `lookerSource`, `loop`, `loopio`, `lucca`, `luma`, `mailchimp`, `maileon`, `mailgun`, `mailjet`, `maintainx`, `malomo`, `mambu`, `mandrill`, `marin`, `marketo`, `matomo`, `mavenlink`, `maxioChargify`, `maxioSaasoptics`, `medalliaAgileResearch`, `medallia`, `megaphone`, `meltwater`, `mention`, `messagebird`, `microsoftDynamics365Fno`, `microsoftDynamics365Fo`, `microsoftEntraId`, `microsoftLists`, `microsoftPowerBi`, `microsoftTeams`, `missive`, `mixmax`, `mixpanel`, `mode`, `mollie`, `moloco`, `monday`, `mountain`, `mux`, `myosh`, `namely`, `nationalHeavyVehicleRegulator`, `navan`, `netsuiteSuiteanalytics`, `nice`, `notion`, `nylas`, `odoo`, `okendo`, `okta`, `ometria`, `on24`, `oncehub`, `oneDrive`, `onetrust`, `openDataDc`, `openExchangeRates`, `openaiCompliancePlatform`, `openai`, `opendistro`, `opensearch`, `optimizely`, `oracleFusionFieldService`, `oracleMoatAnalytics`, `oracleNetsuiteOpenair`, `oracleSapHvaNetweaver`, `orbit`, `ordergroove`, `ordway`, `ortto`, `outbrain`, `outreach`, `packiyo`, `paddle`, `pagerduty`, `pandadoc`, `papershift`, `parcellab`, `pardotSandbox`, `pardot`, `partnerize`, `partnerstackVendor`, `paychex`, `paylocity`, `paypalSandbox`, `paypal`, `pendo`, `peopleforce`, `persona`, `personio`, `phoenixAds`, `picqer`, `pigment`, `pingdom`, `pinpoint`, `pinterestAds`, `pinterestOrganic`, `pipe17`, `pipedrive`, `pivotalTracker`, `piwikPro`, `placerai`, `planetscale`, `planful`, `planhat`, `playvoxWorkforceManagement`, `playvox`, `podio`, `poplar`, `posthog`, `postmark`, `powerReviewsEnterprise`, `prismaCloud`, `prive`, `procore`, `productboard`, `productive`, `profound`, `proofpointSecurityAwareness`, `prosperstack`, `purpleDot`, `pylonSupportPlatform`, `qmaticDataConnect`, `qualaroo`, `qualtrics`, `quickbooks`, `quoraAds`, `quorum`, `rakutenadvertising`, `ramp`, `rarible`, `reboundReturns`, `recharge`, `recurly`, `redditAds`, `referralhero`, `refiner`, `reltio`, `replyio`, `resourceManagementBySmartsheet`, `retailnext`, `retently`, `revel`, `revenuecat`, `reviewsai`, `reviewsio`, `revops`, `revx`, `ricochet360`, `ringcentral`, `ringover`, `rippling`, `rithum`, `rivo`, `rocketlane`, `rokt`, `rollbar`, `rootly`, `rtbHouse`, `ruddr`, `rundeck`, `s3CompatibleStorage`, `s3`, `safebase`, `safetyculture`, `sageHr`, `sageIntacct`, `sailthru`, `salesforceCommerceCloud`, `salesforceMarketingCloud`, `salesforceSandbox`, `salesforce`, `salesloft`, `salsify`, `samsara`, `sana`, `sapBusinessByDesign`, `sapHana`, `sapS4hana`, `sapSuccessFactors`, `scorm`, `securityJourney`, `segment`, `sendgrid`, `sendinblue`, `sensorTower`, `sentry`, `servicenow`, `servicetitan`, `servicetrade`, `sevdesk`, `sftp`, `sharePoint`, `shareasale`, `sharetribe`, `shiphero`, `shipmonk`, `shipnetwork`, `shipstation`, `shopify`, `shopware`, `shortcut`, `shortio`, `showpad`, `siemensBuildingXOpenness`, `sigmaComputingSource`, `simplecast`, `simplesat`, `singlestoreSource`, `sistrix`, `skilljar`, `skillstx`, `skimlinks`, `skuvault`, `slab`, `slackAdminData`, `slackApp`, `slack`, `smadex`, `smarthr`, `smartrecruiters`, `smartsheet`, `smartwaiver`, `snapchatAds`, `snowplow`, `snyk`, `solarwindsServiceDesk`, `sonarqube`, `sparkpost`, `splash`, `splitio`, `splunk`, `spotifyAds`, `sprout`, `square`, `squarespace`, `stackadaptGraphql`, `stackadapt`, `standardMetrics`, `starrez`, `statisticsNetherlandsCbs`, `statsig`, `statuspage`, `stickyio`, `stripeTest`, `stripe`, `stylight`, `subscript`, `sugarcrm`, `surveyMonkey`, `survicate`, `swoogo`, `tableauSource`, `taboola`, `talkdesk`, `talkwalker`, `teads`, `teamtailor`, `teamwork`, `tempo`, `testrail`, `textus`, `theMovieDatabase`, `theTradeDesk`, `thinkific`, `ticketTailor`, `tiktokAds`, `tiktokOrganicApp`, `tiktokOrganic`, `tive`, `toast`, `togglTrack`, `totango`, `tracksuitSource`, `transcend`, `trelica`, `trello`, `tremendous`, `tripleWhale`, `trisolute`, `trustpilot`, `twilio`, `twitterAds`, `twitter`, `tymeshift`, `typeform`, `udemyBusiness`, `ukgProWorkforceManagement`, `ukgPro`, `unicommerce`, `upland`, `uppromote`, `uptempo`, `uservoice`, `validio`, `veeqo`, `veevaVault`, `veevavault`, `venminder`, `vimeo`, `visitByGes`, `visma`, `vitally`, `vonageContactCenter`, `vonage`, `vts`, `vwo`, `walmartDsp`, `walmartMarketplace`, `wasabiCloudStorage`, `webScraper`, `webconnex`, `webhooks`, `whenIWork`, `wherefour`, `wickedReports`, `woocommerce`, `wordpress`, `workable`, `workdayAdaptive`, `workdayFinancialManagement`, `workdayHcm`, `workdayStrategicSourcing`, `workday`, `workflowmax`, `workleapOfficevibe`, `workramp`, `wrike`, `writesonic`, `xactly`, `xandr`, `xero`, `xray`, `xsolla`, `yahooDisplayAdsOnYahooJapan`, `yahooDsp`, `yahooGemini`, `yahooSearchAdsYahooJapan`, `yext`, `yotpoApp`, `yotpo`, `yougovBrandindex`, `yougovSport`, `younium`, `youtubeAnalytics`, `zendeskChat`, `zendeskSell`, `zendeskSunshine`, `zendeskWorkforceManagement`, `zendesk`, `zenefits`, `zingtree`, `zip`, `zohoBooks`, `zohoCampaigns`, `zohoCrm`, `zohoDesk`, `zohoInventory`, `zohoPeople`, `zohoRecruit`, `zonkaFeedback`, `zoom`, `zuoraSandbox`, `zuora`
+     * `15five`, `360learning`, `6sense`, `7shifts`, `absorbLms`, `acculynx`, `activecampaign`, `acumatica`, `ada`, `adform`, `adjust`, `adobeAnalyticsDataFeed`, `adobeAnalytics`, `adobeCommerce`, `adobeExperiencePlatform`, `adobeWorkfront`, `adpWorkforceNow`, `adroll`, `adyen`, `affinity`, `afterpay`, `aha`, `aircall`, `akamai`, `akeneo`, `alation`, `alchemer`, `algolia`, `alida`, `amazonAds`, `amazonAttribution`, `amazonDsp`, `amazonSellingPartner`, `amplitude`, `amqp`, `anaplan`, `anthropicClaude`, `anvyl`, `apacheKafka`, `apollo`, `appcues`, `appfigures`, `appleSearchAds`, `applovin`, `appsflyer`, `asana`, `ascendByPartnerize`, `ashby`, `assembled`, `assetPanda`, `atlassianCompass`, `atlassianJiraAlign`, `atlassianOpsGenie`, `attentive`, `attio`, `aumni`, `auraFromUnity`, `auth0`, `autodeskBim360`, `avantlink`, `avevaPi`, `awin`, `awsCloudtrail`, `awsCostReport`, `awsCost`, `awsInventory`, `awsLambda`, `awsMsk`, `azureBlobStorage`, `azureBoards`, `azureDevops`, `azureEventHub`, `azureFunction`, `azureServiceBus`, `backbonePlm`, `ballotready`, `bamboohr`, `bazaarvoice`, `betterworks`, `bigCommerce`, `biginByZohoCrm`, `bigmarker`, `billingPlatform`, `bingWebmasterTools`, `bingads`, `birdeye`, `bitly`, `bizzaboApp`, `bizzaboV2`, `bizzabo`, `boostr`, `box`, `braintreeSandbox`, `braintree`, `branch`, `braveAds`, `braze`, `breatheHr`, `brevo`, `brex`, `brightcove`, `brightflag`, `brightpearl`, `brivo`, `bubble`, `buildium`, `buildkite`, `businessCentral`, `buzzsprout`, `bynder`, `cabcharge`, `calabrio`, `calcom`, `calendly`, `callrail`, `campaignmonitor`, `campfire`, `canny`, `canvasByInstructure`, `canvasData2ByInstructure`, `captivateiq`, `careQualityCommission`, `castorEdc`, `centra`, `ceridianDayforce`, `chameleon`, `channelAdvisor`, `chargebeeProductCatalog1`, `chargebeeProductCatalog2`, `chargedesk`, `charthop`, `chartmogul`, `checkout`, `checkr`, `chorusai`, `churnkey`, `churnzero`, `cimis`, `cin7`, `cin7core`, `circleCommunityPlatform`, `circleci`, `cjCommissionDetail`, `clari`, `classy`, `claudeCompliance`, `clazar`, `clickup`, `clockify`, `clockodo`, `close`, `cloudbeds`, `cloudflareAnalytics`, `cloudfront`, `cloudtalk`, `clubspeed`, `coalesce`, `coassemble`, `coda`, `codefresh`, `coheris`, `collibra`, `column`, `commercetools`, `complianceCheckpoint`, `concord`, `concur`, `confluence`, `confluentCloud`, `connectorSdk`, `consensusDemoAutomationPlatform`, `constantContact`, `contrastSecurity`, `convex`, `copper`, `cornerstone`, `coupa`, `credly`, `criteoRetailMedia`, `criteo`, `crossbeam`, `crowddev`, `crunchbase`, `cubeSoftware`, `cube`, `cultureAmp`, `customerio`, `cvent`, `d2lBrightspace`, `datadog`, `datastreamerSource`, `db2luw`, `dbtCloud`, `dclLogistics`, `dear`, `deel`, `delighted`, `deposco`, `deputy`, `destini`, `deviceMagic`, `dialpad`, `discourse`, `dixa`, `docebo`, `donus`, `doorloop`, `doubleClickCampaignManager`, `doubleClickPublishers`, `drata`, `drift`, `drip`, `dropboxSign`, `dropbox`, `dsv`, `duoplane`, `dutchie`, `dynamics365`, `dynamodb`, `easypost`, `ebay`, `economic`, `elasticCloud`, `electronicTenantSolutions`, `eloqua`, `email`, `employmentHero`, `esSelfHosted`, `eventbrite`, `eventsforce`, `everflow`, `everhour`, `exactOnline`, `expensein`, `expensify`, `ezofficeinventory`, `facebookAdAccount`, `facebookAds`, `facebookPages`, `facebook`, `factbird`, `factorial`, `fathom`, `fillout`, `financialForce`, `firebase`, `fireflies`, `firehydrant`, `fivetranLog`, `flexport`, `float`, `flywheelDigital`, `foneDynamics`, `forethought`, `forjCommunity`, `formstack`, `fortnox`, `fountain`, `fourkites`, `freightview`, `freshbooks`, `freshchat`, `freshdeskContactCenter`, `freshdesk`, `freshsales`, `freshservice`, `freshsuccess`, `freshteam`, `friendbuy`, `front`, `ftp`, `fulfil`, `fullstory`, `g2`, `gainsightCustomerSuccess`, `gainsightProductExperience`, `gcs`, `gem`, `genesys`, `getfeedback`, `github`, `gitlab`, `gladly`, `globalmeet`, `gmail`, `gocardless`, `gofundmePro`, `goldcast`, `gongio`, `googleAds`, `googleAnalytics360`, `googleAnalytics4Export`, `googleAnalytics4`, `googleAnalyticsMcf`, `googleAnalytics`, `googleBusinessProfile`, `googleCalendar`, `googleClassroom`, `googleCloudFunction`, `googleDisplayAndVideo360`, `googleDrive`, `googlePlay`, `googleSearchAds360`, `googleSearchConsole`, `googleSheets`, `googleTagManager`, `googleTasks`, `gorgias`, `greenPowerMonitor`, `greenhouse`, `grepsr`, `grin`, `guidewireCloudDataAccess`, `guru`, `hLevel`, `hanaSapHvaEccNetweaver`, `hanaSapHvaS4Netweaver`, `happyfox`, `harvest`, `healthie`, `heap`, `heartlandRetailPos`, `height`, `helpdesk`, `helpjuice`, `helpscout`, `helpshift`, `herokuKafka`, `hex`, `hibob`, `higherLogicVanilla`, `hiltiOntrack`, `hopin`, `hubspot`, `ibacos`, `ilevel`, `impactPartner`, `impact`, `incidentio`, `infobip`, `insightly`, `instagramBusiness`, `instructure`, `integralAdScience`, `integrate`, `intercom`, `invoiced`, `ironcladClickwrap`, `ironclad`, `ironsource`, `iterable`, `itunesConnect`, `ivanti`, `jamaSoftware`, `jamf`, `jibble`, `jira`, `jobnimbus`, `jotform`, `justcall`, `kandji`, `katana`, `kevel`, `keypay`, `khorosCare`, `khorosCommunities`, `khorosMarketing`, `kinesis`, `kisi`, `kissmetrics`, `klarna`, `klaviyo`, `konnectInsights`, `kustomer`, `lattice`, `launchdarkly`, `leapCrm`, `leapsome`, `learnAmp`, `learnupon`, `leaveDates`, `lemlist`, `lessonly`, `lever`, `liftoff`, `lightSpeedRetail`, `lightspeedRetailXseries`, `lineAds`, `linear`, `linkedinAds`, `linkedinCompanyPages`, `linksquares`, `listen360`, `livechatPartner`, `livechat`, `livestorm`, `lob`, `lookerSource`, `loop`, `loopio`, `lucca`, `luma`, `mailchimp`, `maileon`, `mailgun`, `mailjet`, `maintainx`, `malomo`, `mambu`, `mandrill`, `marin`, `marketo`, `matomo`, `mavenlink`, `maxioChargify`, `maxioSaasoptics`, `medalliaAgileResearch`, `medallia`, `megaphone`, `meltwater`, `mention`, `messagebird`, `microsoftDynamics365Fno`, `microsoftDynamics365Fo`, `microsoftEntraId`, `microsoftLists`, `microsoftPowerBi`, `microsoftTeams`, `missive`, `mixmax`, `mixpanel`, `mode`, `mollie`, `moloco`, `monday`, `mountain`, `mux`, `myosh`, `namely`, `nationalHeavyVehicleRegulator`, `navan`, `netsuiteSuiteanalytics`, `nice`, `notion`, `nylas`, `odoo`, `okendo`, `okta`, `ometria`, `on24`, `oncehub`, `oneDrive`, `onetrust`, `openDataDc`, `openExchangeRates`, `openaiCompliancePlatform`, `openai`, `opendistro`, `opensearch`, `optimizely`, `oracleFusionFieldService`, `oracleMoatAnalytics`, `oracleNetsuiteOpenair`, `oracleSapHvaNetweaver`, `orbit`, `ordergroove`, `ordway`, `ortto`, `outbrain`, `outreach`, `packiyo`, `paddle`, `pagerduty`, `pandadoc`, `papershift`, `parcellab`, `pardotSandbox`, `pardot`, `partnerize`, `partnerstackVendor`, `paychex`, `paylocity`, `paypalSandbox`, `paypal`, `pendo`, `peopleforce`, `persona`, `personio`, `phoenixAds`, `picqer`, `pigment`, `pingdom`, `pinpoint`, `pinterestAds`, `pinterestOrganic`, `pipe17`, `pipedrive`, `pivotalTracker`, `piwikPro`, `placerai`, `planetscale`, `planful`, `planhat`, `playvoxWorkforceManagement`, `playvox`, `podio`, `poplar`, `posthog`, `postmark`, `powerReviewsEnterprise`, `prismaCloud`, `prive`, `procore`, `productboard`, `productive`, `profound`, `proofpointSecurityAwareness`, `prosperstack`, `purpleDot`, `pylonSupportPlatform`, `qmaticDataConnect`, `qualaroo`, `qualtrics`, `quickbooks`, `quoraAds`, `quorum`, `rakutenadvertising`, `ramp`, `rarible`, `reboundReturns`, `recharge`, `recurly`, `redditAds`, `referralhero`, `refiner`, `reltio`, `replyio`, `resourceManagementBySmartsheet`, `retailnext`, `retently`, `revel`, `revenuecat`, `reviewsai`, `reviewsio`, `revops`, `revx`, `ricochet360`, `ringcentral`, `ringover`, `rippling`, `rithum`, `rivo`, `rocketlane`, `rokt`, `rollbar`, `rootly`, `rtbHouse`, `ruddr`, `rundeck`, `s3CompatibleStorage`, `s3`, `safebase`, `safetyculture`, `sageHr`, `sageIntacct`, `sailthru`, `salesforceCommerceCloud`, `salesforceMarketingCloud`, `salesforceSandbox`, `salesforce`, `salesloft`, `salsify`, `samsara`, `sana`, `sapBusinessByDesign`, `sapHana`, `sapS4hana`, `sapSuccessFactors`, `scorm`, `securityJourney`, `segment`, `sendgrid`, `sendinblue`, `sensorTower`, `sentry`, `servicenow`, `servicetitan`, `servicetrade`, `sevdesk`, `sftp`, `sharePoint`, `shareasale`, `sharetribe`, `shiphero`, `shipmonk`, `shipnetwork`, `shipstation`, `shopify`, `shopware`, `shortcut`, `shortio`, `showpad`, `siemensBuildingXOpenness`, `sigmaComputingSource`, `simplecast`, `simplesat`, `singlestoreSource`, `sistrix`, `skilljar`, `skillstx`, `skimlinks`, `skuvault`, `slab`, `slackAdminData`, `slackApp`, `slack`, `smadex`, `smarthr`, `smartrecruiters`, `smartsheet`, `smartwaiver`, `snapchatAds`, `snowplow`, `snyk`, `solarwindsServiceDesk`, `sonarqube`, `sparkpost`, `splash`, `splitio`, `splunk`, `spotifyAds`, `sprout`, `square`, `squarespace`, `stackadaptGraphql`, `stackadapt`, `standardMetrics`, `starrez`, `statisticsNetherlandsCbs`, `statsig`, `statuspage`, `stickyio`, `stripeTest`, `stripe`, `stylight`, `subscript`, `sugarcrm`, `surveyMonkey`, `survicate`, `swoogo`, `tableauSource`, `taboola`, `talkdesk`, `talkwalker`, `teads`, `teamtailor`, `teamwork`, `tempo`, `testrail`, `textus`, `theMovieDatabase`, `theTradeDesk`, `thinkific`, `ticketTailor`, `tiktokAds`, `tiktokOrganicApp`, `tiktokOrganic`, `tive`, `toast`, `togglTrack`, `totango`, `tracksuitSource`, `transcend`, `trelica`, `trello`, `tremendous`, `tripleWhale`, `trisolute`, `trustpilot`, `twilio`, `twitterAds`, `twitter`, `tymeshift`, `typeform`, `udemyBusiness`, `ukgProWorkforceManagement`, `ukgPro`, `unicommerce`, `upland`, `uppromote`, `uptempo`, `uservoice`, `validio`, `veeqo`, `veevaVault`, `veevavault`, `venminder`, `vimeo`, `visitByGes`, `visma`, `vitally`, `vonageContactCenter`, `vonage`, `vts`, `vwo`, `walmartDsp`, `walmartMarketplace`, `wasabiCloudStorage`, `webScraper`, `webconnex`, `webhooks`, `whenIWork`, `wherefour`, `wickedReports`, `woocommerce`, `wordpress`, `workable`, `workdayAdaptive`, `workdayFinancialManagement`, `workdayHcm`, `workdayStrategicSourcing`, `workday`, `workflowmax`, `workleapOfficevibe`, `workramp`, `wrike`, `writesonic`, `xactly`, `xandr`, `xero`, `xray`, `xsolla`, `yahooDisplayAdsOnYahooJapan`, `yahooDsp`, `yahooGemini`, `yahooSearchAdsYahooJapan`, `yext`, `yotpoApp`, `yotpo`, `yougovBrandindex`, `yougovSport`, `younium`, `youtubeAnalytics`, `zendeskChat`, `zendeskSell`, `zendeskSunshine`, `zendeskWorkforceManagement`, `zendesk`, `zenefits`, `zingtree`, `zip`, `zohoBooks`, `zohoCampaigns`, `zohoCrm`, `zohoDesk`, `zohoInventory`, `zohoPeople`, `zohoRecruit`, `zonkaFeedback`, `zoom`, `zuoraSandbox`, `zuora`
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -7979,7 +8058,7 @@ export interface ConnectorDestinationSchema {
     table?: pulumi.Input<string | undefined>;
     /**
      * Table group name. Combined with the schema to form the Fivetran connection name '<schema>.<table_group_name>'. Required for connector creation of services:<br>
-     * `azureBlobStorage`, `box`, `dropbox`, `email`, `ftp`, `gcs`, `googleDrive`, `s3CompatibleStorage`, `s3`, `sftp`, `sharePoint`, `workday`
+     * `azureBlobStorage`, `box`, `dropbox`, `email`, `ftp`, `gcs`, `googleDrive`, `guidewireCloudDataAccess`, `s3CompatibleStorage`, `s3`, `sftp`, `sharePoint`, `workday`
      */
     tableGroupName?: pulumi.Input<string | undefined>;
 }
@@ -9712,6 +9791,7 @@ export interface GetConnectorConfig {
      * 	- Service `awsCostReport`: Access Key ID
      * 	- Service `checkout`: Your Checkout.com access key ID.
      * 	- Service `cloudtalk`: Your CloudTalk Access Key ID.
+     * 	- Service `guidewireCloudDataAccess`: Access Key ID for access key authentication.
      * 	- Service `nice`: Your NICE access key ID.
      * 	- Service `s3`: Access Key ID
      * 	- Service `s3CompatibleStorage`: Access Key ID
@@ -9725,6 +9805,7 @@ export interface GetConnectorConfig {
      * 	- Service `checkout`: Your Checkout.com access key secret.
      * 	- Service `cloudtalk`: Your CloudTalk Access Key Secret.
      * 	- Service `gongio`: Your Gongio Access Key Secret.
+     * 	- Service `guidewireCloudDataAccess`: Access Key Secret for access key authentication.
      * 	- Service `nice`: Your NICE access key secret.
      * 	- Service `s3`: Access Key Secret
      * 	- Service `s3CompatibleStorage`: Access Key Secret
@@ -10059,6 +10140,11 @@ export interface GetConnectorConfig {
     algorithm?: string;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `email`: Restrict ingestion to emails from these senders only. Supports exact addresses (e.g. reports@vendor.com) or domains (e.g. @vendor.com). Applies to all tables.
+     */
+    allowedSendersLists?: string[];
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `aurora`: Require TLS through Tunnel
      * 	- Service `auroraPostgres`: Require TLS through Tunnel
      * 	- Service `avevaPi`: Require TLS.
@@ -10111,6 +10197,11 @@ export interface GetConnectorConfig {
     alwaysEncrypted?: boolean;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `anthropicClaude`: Your Analytics API key for syncing Claude Enterprise organization-level analytics data.
+     */
+    analyticsApiKey?: string;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `freshsuccess`: Set this parameter to `api`.
      */
     api?: string;
@@ -10124,9 +10215,14 @@ export interface GetConnectorConfig {
     apiAccessToken?: string;
     /**
      * Field usage depends on `service` value:
-     * 	- Service `anthropicClaude`: Your Claude Platform Admin API key.
+     * 	- Service `anthropicClaude`: Your Claude Platform Admin API key for syncing organization-level management and reporting data.
      */
     apiAdminKey?: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `gongio`: Your Gong API Base URL.
+     */
+    apiBaseUrl?: string;
     /**
      * Field usage depends on `service` value:
      * 	- Service `afterpay`: Your Afterpay API environment.
@@ -10155,7 +10251,7 @@ export interface GetConnectorConfig {
      * 	- Service `airtable`: API key of the Airtable account.
      * 	- Service `algolia`: Your Algolia API key.
      * 	- Service `alida`: Your Alida API key.
-     * 	- Service `anthropicClaude`: Your Claude Platform standard API key.
+     * 	- Service `anthropicClaude`: Your API key for syncing data from a specific Claude workspace.
      * 	- Service `anvyl`: Your Anvyl API key.
      * 	- Service `apollo`: Your Apollo API key.
      * 	- Service `appcues`: Your Appcues API key.
@@ -10396,9 +10492,14 @@ export interface GetConnectorConfig {
     apiKey?: string;
     /**
      * Field usage depends on `service` value:
-     * 	- Service `openai`: Your OpenAI API key.
+     * 	- Service `openai`: The project-specific API key for the OpenAI Platform project whose data you want to sync.
      */
     apiKey2?: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `openai`: The API key scoped to `codex.enterprise.analytics.read` for syncing Codex Enterprise Analytics data from a specific ChatGPT workspace.
+     */
+    apiKey3?: string;
     /**
      * Field usage depends on `service` value:
      * 	- Service `revel`: Your Revel Systems API Key and API Secret.
@@ -10477,6 +10578,7 @@ export interface GetConnectorConfig {
      * 	- Service `buzzsprout`: Your Buzzsprout API token.
      * 	- Service `centra`: Your Centra API token.
      * 	- Service `chameleon`: Your Chameleon API token.
+     * 	- Service `circleCommunityPlatform`: Your Circle Community Platform API token.
      * 	- Service `clari`: Your Clari API token.
      * 	- Service `cloudflareAnalytics`: Your Cloudflare Analytics API token.
      * 	- Service `coda`: Your Coda API token.
@@ -10778,7 +10880,7 @@ export interface GetConnectorConfig {
     audience?: string;
     /**
      * Field usage depends on `service` value:
-     * 	- Service `databricksDb`: Token-based authentication type
+     * 	- Service `databricksDb`: Authentication type (TOKEN or OAUTH2)
      * 	- Service `gitlab`: Your GitLab auth type.
      * 	- Service `redshiftDb`: Password-based authentication type
      * 	- Service `snowflakeDb`: Password-based or key-based authentication type
@@ -10791,6 +10893,7 @@ export interface GetConnectorConfig {
     authCode?: string;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management Auth base URL.
      * 	- Service `younium`: Your Younium auth environment. Use this parameter only if you want the connection to authenticate using OAuth 2.0.
      */
     authEnvironment?: string;
@@ -10861,6 +10964,7 @@ export interface GetConnectorConfig {
      * 	- Service `dynamics365`: Authentication mechanism. Either one of `OAUTH2`, or `SERVICE_PRINCIPAL`. Default value `OAUTH2`
      * 	- Service `gcs`: Authorization type. Required for storage bucket authentication.
      * 	- Service `googleSheets`: The `OAuth` value must be specified for this type of authorization.
+     * 	- Service `guidewireCloudDataAccess`: Access approach. Supported values: IAM_ROLE, ACCESS_KEY, PUBLIC_BUCKET.
      * 	- Service `jira`: Authorization type.
      * 	- Service `mixpanel`: Authentication Method
      * 	- Service `pardot`: Authenticate using OAuth or HTTP Basic
@@ -10869,6 +10973,7 @@ export interface GetConnectorConfig {
      * 	- Service `s3`: Access approach
      * 	- Service `s3CompatibleStorage`: Access approach
      * 	- Service `samsara`: The authentication method you want to use for your connection.
+     * 	- Service `ukgProWorkforceManagement`: The authentication method you want to use for your connection.
      * 	- Service `upland`: Authentication method you want to use for your connection.
      * 	- Service `wasabiCloudStorage`: The Wasabi Cloud Storage Access approach. Required for connector creation. Default value: `ACCESS_KEY`.
      * 	- Service `younium`: The authentication method you want to use for your connection.
@@ -10996,7 +11101,7 @@ export interface GetConnectorConfig {
      * 	- Service `financialForce`: (Optional) The custom Salesforce domain. Make sure that the `baseUrl` starts with `https://`.
      * 	- Service `freshsales`: Your Freshsales product.
      * 	- Service `gitlab`: Your GitLab base URL.
-     * 	- Service `gongio`: Your Gong API Base URL.
+     * 	- Service `gongio`: Your Gong Base URL.
      * 	- Service `higherLogicVanilla`: Your Higher Logic Vanilla base URL.
      * 	- Service `ironclad`: Your Ironclad base url.
      * 	- Service `jotform`: Your Jotform base URL.
@@ -11074,6 +11179,7 @@ export interface GetConnectorConfig {
      * 	- Service `cloudfront`: The bucket name for CloudFront.
      * 	- Service `gcs`: The name of the GCS bucket.
      * 	- Service `googlePlay`: The Google Cloud Storage source bucket.
+     * 	- Service `guidewireCloudDataAccess`: The S3 bucket name containing the Guidewire CDA export. Required for connector creation.
      * 	- Service `heap`: The S3 bucket name.
      * 	- Service `kinesis`: The name of the Kinesis bucket.
      * 	- Service `s3`: The S3 bucket name. Required for connector creation.
@@ -11471,6 +11577,7 @@ export interface GetConnectorConfig {
      * 	- Service `ironcladClickwrap`: Your Ironclad Clickwrap Client Secret.
      * 	- Service `jamaSoftware`: Your Jama Software client secret.
      * 	- Service `jibble`: Your Jibble client secret.
+     * 	- Service `khorosCommunities`: Your Khoros Communities client secret.
      * 	- Service `learnAmp`: Your Learn Amp client secret.
      * 	- Service `lookerSource`: Your Looker client secret.
      * 	- Service `marketo`: Marketo REST API Client Secret.
@@ -11722,6 +11829,7 @@ export interface GetConnectorConfig {
      * 	- Service `googleCloudMysql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
      * 	- Service `googleCloudPostgresql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
      * 	- Service `googleCloudSqlserver`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+     * 	- Service `guidewireCloudDataAccess`: Connection method. Default value: `Directly`.
      * 	- Service `hanaSapHvaB1`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
      * 	- Service `hanaSapHvaEcc`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
      * 	- Service `hanaSapHvaEccNetweaver`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
@@ -11854,6 +11962,11 @@ export interface GetConnectorConfig {
     csvDefinition?: string;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `klarna`: The CSV delimiter used in your Klarna settlement report.
+     */
+    csvDelimiter?: string;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `criteo`: Currency
      * 	- Service `rokt`: Your Rokt currency.
      */
@@ -11917,6 +12030,7 @@ export interface GetConnectorConfig {
      * Field usage depends on `service` value:
      * 	- Service `appleSearchAds`: Allows users to define reports with custom groupBy dimensions.
      * 	- Service `criteo`: Title of Custom Report
+     * 	- Service `pinterestAds`: Custom reports to sync. Each entry creates a destination table with the specified metrics and breakdown level.
      * 	- Service `redditAds`: The list of custom report configurations. Each report corresponds to a table within the schema to which connector will sync the data.
      * 	- Service `snapchatAds`: [Custom reports for Snapchat Ads connector](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports).
      * 	- Service `tiktokAds`: Title of Custom Report
@@ -12110,6 +12224,11 @@ export interface GetConnectorConfig {
      * 	- Service `googleDisplayAndVideo360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
      */
     dimensions?: string[];
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `criteoRetailMedia`: Your Criteo Retail Media report revenue dimensions.
+     */
+    dimensionsCriteoRetailMedia?: string;
     /**
      * Field usage depends on `service` value:
      * 	- Service `oracleHva`: Possible values:`DIRECT`, `BFILE`, `ASM`, `ARCHIVE_ONLY`
@@ -12489,6 +12608,7 @@ export interface GetConnectorConfig {
     /**
      * Field usage depends on `service` value:
      * 	- Service `azureBlobStorage`: Required when `fileMappingMethod` = `EXTRACT_TABLES`. A regular expression with a named capture group `(?table...)` to extract table names from file paths.
+     * 	- Service `ftp`: Required when `fileMappingMethod` = `EXTRACT_TABLES`. A regular expression with a named capture group `(?table...)` to extract table names from file paths.
      * 	- Service `gcs`: Required when `fileMappingMethod` = `EXTRACT_TABLES`. A regular expression with a named capture group `(?table...)` to extract table names from file paths.
      * 	- Service `s3`: Required when `fileMappingMethod` = `EXTRACT_TABLES`. A regular expression with a named capture group `(?table...)` to extract table names from file paths.
      * 	- Service `sftp`: Required when `fileMappingMethod` = `EXTRACT_TABLES`. A regular expression with a named capture group `(?table...)` to extract table names from file paths.
@@ -12515,6 +12635,7 @@ export interface GetConnectorConfig {
     /**
      * Field usage depends on `service` value:
      * 	- Service `azureBlobStorage`: The method used to map files to destination tables. Use `DEFINE_PER_TABLE` to manually configure each table with its own file pattern, or `EXTRACT_TABLES` to automatically discover tables based on a single extraction pattern.
+     * 	- Service `ftp`: The method used to map files to destination tables. Use `DEFINE_PER_TABLE` to manually configure each table with its own file pattern, or `EXTRACT_TABLES` to automatically discover tables based on a single extraction pattern.
      * 	- Service `gcs`: The method used to map files to destination tables. Use `DEFINE_PER_TABLE` to manually configure each table with its own file pattern, or `EXTRACT_TABLES` to automatically discover tables based on a single extraction pattern.
      * 	- Service `s3`: The method used to map files to destination tables. Use `DEFINE_PER_TABLE` to manually configure each table with its own file pattern, or `EXTRACT_TABLES` to automatically discover tables based on a single extraction pattern.
      * 	- Service `sftp`: The method used to map files to destination tables. Use `DEFINE_PER_TABLE` to manually configure each table with its own file pattern, or `EXTRACT_TABLES` to automatically discover tables based on a single extraction pattern.
@@ -12544,7 +12665,7 @@ export interface GetConnectorConfig {
      * 	- Service `box`: Mapped file name patterns to a destination table.
      * 	- Service `dropbox`: Mapped file name patterns to a destination table.
      * 	- Service `email`: Mapped file name patterns to a destination table.
-     * 	- Service `ftp`: Mapped file name patterns to a destination table.
+     * 	- Service `ftp`: Required when `fileMappingMethod` = `DEFINE_PER_TABLE`. Mapped file name patterns to a destination table.
      * 	- Service `gcs`: Required when `fileMappingMethod` = `DEFINE_PER_TABLE`. Mapped file name patterns to a destination table.
      * 	- Service `googleDrive`: Mapped file name patterns to a destination table.
      * 	- Service `s3`: Required when `fileMappingMethod` = `DEFINE_PER_TABLE`. Mapped file name patterns to a destination table.
@@ -12939,6 +13060,11 @@ export interface GetConnectorConfig {
     integrationKey?: string;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `workdayHcm`: Integration System ID
+     */
+    integrationSystemId?: string;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `avevaPi`: IP address of the AF Server
      */
     ipAddress?: string;
@@ -12993,6 +13119,7 @@ export interface GetConnectorConfig {
      * Field usage depends on `service` value:
      * 	- Service `awsLambda`: We use PrivateLink by default if your AWS Lambda is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to AWS lambda over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options/aws-private-link).
      * 	- Service `dynamodb`: We use PrivateLink by default if your DynamoDB instance is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to DynamoDB over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options/aws-private-link).
+     * 	- Service `guidewireCloudDataAccess`: Set to `true` if you want to connect to S3 bucket over PrivateLink. Default value: `false`.
      * 	- Service `s3`: Set to `true` if you want to connect to S3 bucket over PrivateLink. Default value: `false`.
      */
     isPrivateLinkRequired?: boolean;
@@ -13046,7 +13173,7 @@ export interface GetConnectorConfig {
     issuer?: string;
     /**
      * Field usage depends on `service` value:
-     * 	- Service `itunesConnect`: Your Issuer ID
+     * 	- Service `itunesConnect`: Your Issuer ID. Must be populated if `keyType` is set to `Team`
      */
     issuerId?: string;
     /**
@@ -13093,6 +13220,11 @@ export interface GetConnectorConfig {
      * 	- Service `herokuKafka`: Key Store Type
      */
     keyStoreType?: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `itunesConnect`: Key Type
+     */
+    keyType?: string;
     /**
      * Field usage depends on `service` value:
      * 	- Service `awsMsk`: If `securityProtocol` is set to `TLS`, add the `Keystore File` as Base64 encoded string.
@@ -13204,6 +13336,11 @@ export interface GetConnectorConfig {
      * 	- Service `googleAds`: The list of the Manager Account IDs whose clients will be synced. Must be populated if `syncMode` is set to `ManagerAccounts`.
      */
     managerAccounts?: string[];
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `guidewireCloudDataAccess`: The path to the Guidewire CDA manifest.json file in the S3 bucket.
+     */
+    manifestPath?: string;
     /**
      * Field usage depends on `service` value:
      * 	- Service `reltio`: Maximum API requests per day
@@ -13377,6 +13514,7 @@ export interface GetConnectorConfig {
      * Field usage depends on `service` value:
      * 	- Service `gladly`: Your Gladly Organization Name.
      * 	- Service `statuspage`: Your Statuspage Organization ID.
+     * 	- Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management Organization ID.
      */
     organization?: string;
     /**
@@ -13527,7 +13665,7 @@ export interface GetConnectorConfig {
      * 	- Service `jira`: The Jira user's password.
      * 	- Service `khorosCare`: Your Khoros Care password.
      * 	- Service `kissmetrics`: Your Kissmetrics API Password.
-     * 	- Service `klarna`: Your Klarna Password.
+     * 	- Service `klarna`: Your Klarna password.
      * 	- Service `lessonly`: Your Lessonly password.
      * 	- Service `magentoMysql`: The user's password.
      * 	- Service `magentoMysqlRds`: The user's password.
@@ -14322,6 +14460,7 @@ export interface GetConnectorConfig {
      * 	- Service `awsMsk`: If `saslMechanism` is set to `IAM`, enter your Role ARN
      * 	- Service `cloudfront`: The Role ARN required for authentication.
      * 	- Service `dynamodb`: Role ARN
+     * 	- Service `guidewireCloudDataAccess`: The Role ARN required for IAM role authentication.
      * 	- Service `heap`: The Role ARN required for authentication.
      * 	- Service `kinesis`: The Role ARN required for authentication.
      * 	- Service `magentoMysqlRds`: The ARN of the IAM role with RDS permissions. Required if the authentication method is `AWS_IAM` in the SaaS Deployment model.
@@ -16049,7 +16188,7 @@ export interface GetConnectorConfig {
      * 	- Service `jamf`: Your Jamf username.
      * 	- Service `khorosCare`: Your Khoros Care username.
      * 	- Service `kissmetrics`: Your Kissmetrics API Username.
-     * 	- Service `klarna`: Your Klarna Username.
+     * 	- Service `klarna`: Your Klarna username.
      * 	- Service `learnupon`: Your LearnUpon username.
      * 	- Service `lessonly`: Your Lessonly username.
      * 	- Service `mailgun`: Your Mailgun API username.
@@ -16205,6 +16344,7 @@ export interface GetConnectorConfig {
     /**
      * Field usage depends on `service` value:
      * 	- Service `fulfil`: Your Fulfil workspace ID.
+     * 	- Service `openai`: Your ChatGPT Enterprise Workspace ID.
      * 	- Service `openaiCompliancePlatform`: Your OpenAI Compliance Platform workspace ID.
      */
     workspaceId?: string;
@@ -16349,6 +16489,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `awsCostReport`: Access Key ID
      * 	- Service `checkout`: Your Checkout.com access key ID.
      * 	- Service `cloudtalk`: Your CloudTalk Access Key ID.
+     * 	- Service `guidewireCloudDataAccess`: Access Key ID for access key authentication.
      * 	- Service `nice`: Your NICE access key ID.
      * 	- Service `s3`: Access Key ID
      * 	- Service `s3CompatibleStorage`: Access Key ID
@@ -16362,6 +16503,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `checkout`: Your Checkout.com access key secret.
      * 	- Service `cloudtalk`: Your CloudTalk Access Key Secret.
      * 	- Service `gongio`: Your Gongio Access Key Secret.
+     * 	- Service `guidewireCloudDataAccess`: Access Key Secret for access key authentication.
      * 	- Service `nice`: Your NICE access key secret.
      * 	- Service `s3`: Access Key Secret
      * 	- Service `s3CompatibleStorage`: Access Key Secret
@@ -16696,6 +16838,11 @@ export interface GetConnectorConfigArgs {
     algorithm?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `email`: Restrict ingestion to emails from these senders only. Supports exact addresses (e.g. reports@vendor.com) or domains (e.g. @vendor.com). Applies to all tables.
+     */
+    allowedSendersLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `aurora`: Require TLS through Tunnel
      * 	- Service `auroraPostgres`: Require TLS through Tunnel
      * 	- Service `avevaPi`: Require TLS.
@@ -16748,6 +16895,11 @@ export interface GetConnectorConfigArgs {
     alwaysEncrypted?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `anthropicClaude`: Your Analytics API key for syncing Claude Enterprise organization-level analytics data.
+     */
+    analyticsApiKey?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `freshsuccess`: Set this parameter to `api`.
      */
     api?: pulumi.Input<string | undefined>;
@@ -16761,9 +16913,14 @@ export interface GetConnectorConfigArgs {
     apiAccessToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
-     * 	- Service `anthropicClaude`: Your Claude Platform Admin API key.
+     * 	- Service `anthropicClaude`: Your Claude Platform Admin API key for syncing organization-level management and reporting data.
      */
     apiAdminKey?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `gongio`: Your Gong API Base URL.
+     */
+    apiBaseUrl?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
      * 	- Service `afterpay`: Your Afterpay API environment.
@@ -16792,7 +16949,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `airtable`: API key of the Airtable account.
      * 	- Service `algolia`: Your Algolia API key.
      * 	- Service `alida`: Your Alida API key.
-     * 	- Service `anthropicClaude`: Your Claude Platform standard API key.
+     * 	- Service `anthropicClaude`: Your API key for syncing data from a specific Claude workspace.
      * 	- Service `anvyl`: Your Anvyl API key.
      * 	- Service `apollo`: Your Apollo API key.
      * 	- Service `appcues`: Your Appcues API key.
@@ -17033,9 +17190,14 @@ export interface GetConnectorConfigArgs {
     apiKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
-     * 	- Service `openai`: Your OpenAI API key.
+     * 	- Service `openai`: The project-specific API key for the OpenAI Platform project whose data you want to sync.
      */
     apiKey2?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `openai`: The API key scoped to `codex.enterprise.analytics.read` for syncing Codex Enterprise Analytics data from a specific ChatGPT workspace.
+     */
+    apiKey3?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
      * 	- Service `revel`: Your Revel Systems API Key and API Secret.
@@ -17114,6 +17276,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `buzzsprout`: Your Buzzsprout API token.
      * 	- Service `centra`: Your Centra API token.
      * 	- Service `chameleon`: Your Chameleon API token.
+     * 	- Service `circleCommunityPlatform`: Your Circle Community Platform API token.
      * 	- Service `clari`: Your Clari API token.
      * 	- Service `cloudflareAnalytics`: Your Cloudflare Analytics API token.
      * 	- Service `coda`: Your Coda API token.
@@ -17415,7 +17578,7 @@ export interface GetConnectorConfigArgs {
     audience?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
-     * 	- Service `databricksDb`: Token-based authentication type
+     * 	- Service `databricksDb`: Authentication type (TOKEN or OAUTH2)
      * 	- Service `gitlab`: Your GitLab auth type.
      * 	- Service `redshiftDb`: Password-based authentication type
      * 	- Service `snowflakeDb`: Password-based or key-based authentication type
@@ -17428,6 +17591,7 @@ export interface GetConnectorConfigArgs {
     authCode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management Auth base URL.
      * 	- Service `younium`: Your Younium auth environment. Use this parameter only if you want the connection to authenticate using OAuth 2.0.
      */
     authEnvironment?: pulumi.Input<string | undefined>;
@@ -17498,6 +17662,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `dynamics365`: Authentication mechanism. Either one of `OAUTH2`, or `SERVICE_PRINCIPAL`. Default value `OAUTH2`
      * 	- Service `gcs`: Authorization type. Required for storage bucket authentication.
      * 	- Service `googleSheets`: The `OAuth` value must be specified for this type of authorization.
+     * 	- Service `guidewireCloudDataAccess`: Access approach. Supported values: IAM_ROLE, ACCESS_KEY, PUBLIC_BUCKET.
      * 	- Service `jira`: Authorization type.
      * 	- Service `mixpanel`: Authentication Method
      * 	- Service `pardot`: Authenticate using OAuth or HTTP Basic
@@ -17506,6 +17671,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `s3`: Access approach
      * 	- Service `s3CompatibleStorage`: Access approach
      * 	- Service `samsara`: The authentication method you want to use for your connection.
+     * 	- Service `ukgProWorkforceManagement`: The authentication method you want to use for your connection.
      * 	- Service `upland`: Authentication method you want to use for your connection.
      * 	- Service `wasabiCloudStorage`: The Wasabi Cloud Storage Access approach. Required for connector creation. Default value: `ACCESS_KEY`.
      * 	- Service `younium`: The authentication method you want to use for your connection.
@@ -17633,7 +17799,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `financialForce`: (Optional) The custom Salesforce domain. Make sure that the `baseUrl` starts with `https://`.
      * 	- Service `freshsales`: Your Freshsales product.
      * 	- Service `gitlab`: Your GitLab base URL.
-     * 	- Service `gongio`: Your Gong API Base URL.
+     * 	- Service `gongio`: Your Gong Base URL.
      * 	- Service `higherLogicVanilla`: Your Higher Logic Vanilla base URL.
      * 	- Service `ironclad`: Your Ironclad base url.
      * 	- Service `jotform`: Your Jotform base URL.
@@ -17711,6 +17877,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `cloudfront`: The bucket name for CloudFront.
      * 	- Service `gcs`: The name of the GCS bucket.
      * 	- Service `googlePlay`: The Google Cloud Storage source bucket.
+     * 	- Service `guidewireCloudDataAccess`: The S3 bucket name containing the Guidewire CDA export. Required for connector creation.
      * 	- Service `heap`: The S3 bucket name.
      * 	- Service `kinesis`: The name of the Kinesis bucket.
      * 	- Service `s3`: The S3 bucket name. Required for connector creation.
@@ -18108,6 +18275,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `ironcladClickwrap`: Your Ironclad Clickwrap Client Secret.
      * 	- Service `jamaSoftware`: Your Jama Software client secret.
      * 	- Service `jibble`: Your Jibble client secret.
+     * 	- Service `khorosCommunities`: Your Khoros Communities client secret.
      * 	- Service `learnAmp`: Your Learn Amp client secret.
      * 	- Service `lookerSource`: Your Looker client secret.
      * 	- Service `marketo`: Marketo REST API Client Secret.
@@ -18359,6 +18527,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `googleCloudMysql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
      * 	- Service `googleCloudPostgresql`: Possible values:`Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
      * 	- Service `googleCloudSqlserver`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
+     * 	- Service `guidewireCloudDataAccess`: Connection method. Default value: `Directly`.
      * 	- Service `hanaSapHvaB1`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
      * 	- Service `hanaSapHvaEcc`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
      * 	- Service `hanaSapHvaEccNetweaver`: Possible values: `Directly`, `PrivateLink`, `SshTunnel`. `SshTunnel` is used as a value if this parameter is omitted in the request and any of the following parameter's values is specified: `tunnelHost`, `tunnelPort`, `tunnelUser`. Otherwise, `Directly` is used as a value if the parameter is omitted.
@@ -18491,6 +18660,11 @@ export interface GetConnectorConfigArgs {
     csvDefinition?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `klarna`: The CSV delimiter used in your Klarna settlement report.
+     */
+    csvDelimiter?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `criteo`: Currency
      * 	- Service `rokt`: Your Rokt currency.
      */
@@ -18554,6 +18728,7 @@ export interface GetConnectorConfigArgs {
      * Field usage depends on `service` value:
      * 	- Service `appleSearchAds`: Allows users to define reports with custom groupBy dimensions.
      * 	- Service `criteo`: Title of Custom Report
+     * 	- Service `pinterestAds`: Custom reports to sync. Each entry creates a destination table with the specified metrics and breakdown level.
      * 	- Service `redditAds`: The list of custom report configurations. Each report corresponds to a table within the schema to which connector will sync the data.
      * 	- Service `snapchatAds`: [Custom reports for Snapchat Ads connector](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports).
      * 	- Service `tiktokAds`: Title of Custom Report
@@ -18747,6 +18922,11 @@ export interface GetConnectorConfigArgs {
      * 	- Service `googleDisplayAndVideo360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
      */
     dimensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `criteoRetailMedia`: Your Criteo Retail Media report revenue dimensions.
+     */
+    dimensionsCriteoRetailMedia?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
      * 	- Service `oracleHva`: Possible values:`DIRECT`, `BFILE`, `ASM`, `ARCHIVE_ONLY`
@@ -19126,6 +19306,7 @@ export interface GetConnectorConfigArgs {
     /**
      * Field usage depends on `service` value:
      * 	- Service `azureBlobStorage`: Required when `fileMappingMethod` = `EXTRACT_TABLES`. A regular expression with a named capture group `(?table...)` to extract table names from file paths.
+     * 	- Service `ftp`: Required when `fileMappingMethod` = `EXTRACT_TABLES`. A regular expression with a named capture group `(?table...)` to extract table names from file paths.
      * 	- Service `gcs`: Required when `fileMappingMethod` = `EXTRACT_TABLES`. A regular expression with a named capture group `(?table...)` to extract table names from file paths.
      * 	- Service `s3`: Required when `fileMappingMethod` = `EXTRACT_TABLES`. A regular expression with a named capture group `(?table...)` to extract table names from file paths.
      * 	- Service `sftp`: Required when `fileMappingMethod` = `EXTRACT_TABLES`. A regular expression with a named capture group `(?table...)` to extract table names from file paths.
@@ -19152,6 +19333,7 @@ export interface GetConnectorConfigArgs {
     /**
      * Field usage depends on `service` value:
      * 	- Service `azureBlobStorage`: The method used to map files to destination tables. Use `DEFINE_PER_TABLE` to manually configure each table with its own file pattern, or `EXTRACT_TABLES` to automatically discover tables based on a single extraction pattern.
+     * 	- Service `ftp`: The method used to map files to destination tables. Use `DEFINE_PER_TABLE` to manually configure each table with its own file pattern, or `EXTRACT_TABLES` to automatically discover tables based on a single extraction pattern.
      * 	- Service `gcs`: The method used to map files to destination tables. Use `DEFINE_PER_TABLE` to manually configure each table with its own file pattern, or `EXTRACT_TABLES` to automatically discover tables based on a single extraction pattern.
      * 	- Service `s3`: The method used to map files to destination tables. Use `DEFINE_PER_TABLE` to manually configure each table with its own file pattern, or `EXTRACT_TABLES` to automatically discover tables based on a single extraction pattern.
      * 	- Service `sftp`: The method used to map files to destination tables. Use `DEFINE_PER_TABLE` to manually configure each table with its own file pattern, or `EXTRACT_TABLES` to automatically discover tables based on a single extraction pattern.
@@ -19181,7 +19363,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `box`: Mapped file name patterns to a destination table.
      * 	- Service `dropbox`: Mapped file name patterns to a destination table.
      * 	- Service `email`: Mapped file name patterns to a destination table.
-     * 	- Service `ftp`: Mapped file name patterns to a destination table.
+     * 	- Service `ftp`: Required when `fileMappingMethod` = `DEFINE_PER_TABLE`. Mapped file name patterns to a destination table.
      * 	- Service `gcs`: Required when `fileMappingMethod` = `DEFINE_PER_TABLE`. Mapped file name patterns to a destination table.
      * 	- Service `googleDrive`: Mapped file name patterns to a destination table.
      * 	- Service `s3`: Required when `fileMappingMethod` = `DEFINE_PER_TABLE`. Mapped file name patterns to a destination table.
@@ -19576,6 +19758,11 @@ export interface GetConnectorConfigArgs {
     integrationKey?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `workdayHcm`: Integration System ID
+     */
+    integrationSystemId?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `avevaPi`: IP address of the AF Server
      */
     ipAddress?: pulumi.Input<string | undefined>;
@@ -19630,6 +19817,7 @@ export interface GetConnectorConfigArgs {
      * Field usage depends on `service` value:
      * 	- Service `awsLambda`: We use PrivateLink by default if your AWS Lambda is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to AWS lambda over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options/aws-private-link).
      * 	- Service `dynamodb`: We use PrivateLink by default if your DynamoDB instance is in the same region as Fivetran. Turning on this toggle ensures that Fivetran always connects to DynamoDB over PrivateLink. Learn more in our [PrivateLink documentation](https://fivetran.com/docs/connectors/databases/connection-options/aws-private-link).
+     * 	- Service `guidewireCloudDataAccess`: Set to `true` if you want to connect to S3 bucket over PrivateLink. Default value: `false`.
      * 	- Service `s3`: Set to `true` if you want to connect to S3 bucket over PrivateLink. Default value: `false`.
      */
     isPrivateLinkRequired?: pulumi.Input<boolean | undefined>;
@@ -19683,7 +19871,7 @@ export interface GetConnectorConfigArgs {
     issuer?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
-     * 	- Service `itunesConnect`: Your Issuer ID
+     * 	- Service `itunesConnect`: Your Issuer ID. Must be populated if `keyType` is set to `Team`
      */
     issuerId?: pulumi.Input<string | undefined>;
     /**
@@ -19730,6 +19918,11 @@ export interface GetConnectorConfigArgs {
      * 	- Service `herokuKafka`: Key Store Type
      */
     keyStoreType?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `itunesConnect`: Key Type
+     */
+    keyType?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
      * 	- Service `awsMsk`: If `securityProtocol` is set to `TLS`, add the `Keystore File` as Base64 encoded string.
@@ -19841,6 +20034,11 @@ export interface GetConnectorConfigArgs {
      * 	- Service `googleAds`: The list of the Manager Account IDs whose clients will be synced. Must be populated if `syncMode` is set to `ManagerAccounts`.
      */
     managerAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `guidewireCloudDataAccess`: The path to the Guidewire CDA manifest.json file in the S3 bucket.
+     */
+    manifestPath?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
      * 	- Service `reltio`: Maximum API requests per day
@@ -20014,6 +20212,7 @@ export interface GetConnectorConfigArgs {
      * Field usage depends on `service` value:
      * 	- Service `gladly`: Your Gladly Organization Name.
      * 	- Service `statuspage`: Your Statuspage Organization ID.
+     * 	- Service `ukgProWorkforceManagement`: Your UKG Pro Workforce Management Organization ID.
      */
     organization?: pulumi.Input<string | undefined>;
     /**
@@ -20164,7 +20363,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `jira`: The Jira user's password.
      * 	- Service `khorosCare`: Your Khoros Care password.
      * 	- Service `kissmetrics`: Your Kissmetrics API Password.
-     * 	- Service `klarna`: Your Klarna Password.
+     * 	- Service `klarna`: Your Klarna password.
      * 	- Service `lessonly`: Your Lessonly password.
      * 	- Service `magentoMysql`: The user's password.
      * 	- Service `magentoMysqlRds`: The user's password.
@@ -20959,6 +21158,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `awsMsk`: If `saslMechanism` is set to `IAM`, enter your Role ARN
      * 	- Service `cloudfront`: The Role ARN required for authentication.
      * 	- Service `dynamodb`: Role ARN
+     * 	- Service `guidewireCloudDataAccess`: The Role ARN required for IAM role authentication.
      * 	- Service `heap`: The Role ARN required for authentication.
      * 	- Service `kinesis`: The Role ARN required for authentication.
      * 	- Service `magentoMysqlRds`: The ARN of the IAM role with RDS permissions. Required if the authentication method is `AWS_IAM` in the SaaS Deployment model.
@@ -22686,7 +22886,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `jamf`: Your Jamf username.
      * 	- Service `khorosCare`: Your Khoros Care username.
      * 	- Service `kissmetrics`: Your Kissmetrics API Username.
-     * 	- Service `klarna`: Your Klarna Username.
+     * 	- Service `klarna`: Your Klarna username.
      * 	- Service `learnupon`: Your LearnUpon username.
      * 	- Service `lessonly`: Your Lessonly username.
      * 	- Service `mailgun`: Your Mailgun API username.
@@ -22842,6 +23042,7 @@ export interface GetConnectorConfigArgs {
     /**
      * Field usage depends on `service` value:
      * 	- Service `fulfil`: Your Fulfil workspace ID.
+     * 	- Service `openai`: Your ChatGPT Enterprise Workspace ID.
      * 	- Service `openaiCompliancePlatform`: Your OpenAI Compliance Platform workspace ID.
      */
     workspaceId?: pulumi.Input<string | undefined>;
@@ -23161,6 +23362,16 @@ export interface GetConnectorConfigCustomReport {
     breakout?: string;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `pinterestAds`: Overrides the connector-level click attribution window for this report.
+     */
+    clickAttributionWindow?: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `pinterestAds`: Overrides the connector-level conversion report time for this report.
+     */
+    conversionReportTime?: string;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `redditAds`: The boolean value specifying whether to enable or disable event conversions data synchronisation. Default value: `false`
      */
     conversionsReportIncluded?: boolean;
@@ -23187,6 +23398,7 @@ export interface GetConnectorConfigCustomReport {
     eventNames?: string[];
     /**
      * Field usage depends on `service` value:
+     * 	- Service `pinterestAds`: Time granularity for the report: DAY, HOUR, WEEK, MONTH, or TOTAL.
      * 	- Service `snapchatAds`: [Sets Granularity on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#granularity).
      */
     granularity?: string;
@@ -23203,6 +23415,7 @@ export interface GetConnectorConfigCustomReport {
     /**
      * Field usage depends on `service` value:
      * 	- Service `criteo`: Metrics to be synced
+     * 	- Service `pinterestAds`: List of metrics to include in the report.
      * 	- Service `tiktokAds`: Metrics to be synced
      */
     metrics?: string[];
@@ -23220,6 +23433,7 @@ export interface GetConnectorConfigCustomReport {
     /**
      * Field usage depends on `service` value:
      * 	- Service `criteo`: Type of report to be generated
+     * 	- Service `pinterestAds`: The breakdown level for the report (e.g. ADVERTISER, CAMPAIGN, AD_GROUP, PIN_PROMOTION, KEYWORD, PRODUCT_GROUP, PRODUCT_ITEM).
      * 	- Service `tiktokAds`: Type of report to be generated
      */
     reportType?: string;
@@ -23241,6 +23455,7 @@ export interface GetConnectorConfigCustomReport {
     /**
      * Field usage depends on `service` value:
      * 	- Service `criteo`: Destination Table name of report
+     * 	- Service `pinterestAds`: Destination table name for this custom report.
      * 	- Service `tiktokAds`: Destination Table name of report
      */
     tableName?: string;
@@ -23259,6 +23474,11 @@ export interface GetConnectorConfigCustomReport {
      * 	- Service `redditAds`: When this parameter is set to `ACCOUNT`, connector will use account related time zone to sync report data. Default value: `ACCOUNT`. Possible values: `ACCOUNT`, `USER`
      */
     timeZoneMode?: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `pinterestAds`: Overrides the connector-level view attribution window for this report.
+     */
+    viewAttributionWindow?: string;
 }
 
 export interface GetConnectorConfigCustomReportArgs {
@@ -23304,6 +23524,16 @@ export interface GetConnectorConfigCustomReportArgs {
     breakout?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `pinterestAds`: Overrides the connector-level click attribution window for this report.
+     */
+    clickAttributionWindow?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `pinterestAds`: Overrides the connector-level conversion report time for this report.
+     */
+    conversionReportTime?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `redditAds`: The boolean value specifying whether to enable or disable event conversions data synchronisation. Default value: `false`
      */
     conversionsReportIncluded?: pulumi.Input<boolean | undefined>;
@@ -23330,6 +23560,7 @@ export interface GetConnectorConfigCustomReportArgs {
     eventNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `pinterestAds`: Time granularity for the report: DAY, HOUR, WEEK, MONTH, or TOTAL.
      * 	- Service `snapchatAds`: [Sets Granularity on custom report](https://fivetran.com/docs/connectors/applications/snapchat-ads/custom-reports#granularity).
      */
     granularity?: pulumi.Input<string | undefined>;
@@ -23346,6 +23577,7 @@ export interface GetConnectorConfigCustomReportArgs {
     /**
      * Field usage depends on `service` value:
      * 	- Service `criteo`: Metrics to be synced
+     * 	- Service `pinterestAds`: List of metrics to include in the report.
      * 	- Service `tiktokAds`: Metrics to be synced
      */
     metrics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -23363,6 +23595,7 @@ export interface GetConnectorConfigCustomReportArgs {
     /**
      * Field usage depends on `service` value:
      * 	- Service `criteo`: Type of report to be generated
+     * 	- Service `pinterestAds`: The breakdown level for the report (e.g. ADVERTISER, CAMPAIGN, AD_GROUP, PIN_PROMOTION, KEYWORD, PRODUCT_GROUP, PRODUCT_ITEM).
      * 	- Service `tiktokAds`: Type of report to be generated
      */
     reportType?: pulumi.Input<string | undefined>;
@@ -23384,6 +23617,7 @@ export interface GetConnectorConfigCustomReportArgs {
     /**
      * Field usage depends on `service` value:
      * 	- Service `criteo`: Destination Table name of report
+     * 	- Service `pinterestAds`: Destination table name for this custom report.
      * 	- Service `tiktokAds`: Destination Table name of report
      */
     tableName?: pulumi.Input<string | undefined>;
@@ -23402,6 +23636,11 @@ export interface GetConnectorConfigCustomReportArgs {
      * 	- Service `redditAds`: When this parameter is set to `ACCOUNT`, connector will use account related time zone to sync report data. Default value: `ACCOUNT`. Possible values: `ACCOUNT`, `USER`
      */
     timeZoneMode?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `pinterestAds`: Overrides the connector-level view attribution window for this report.
+     */
+    viewAttributionWindow?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConnectorConfigCustomTable {
@@ -24829,7 +25068,7 @@ export interface GetConnectorConfigTenantConfigArgs {
 export interface GetConnectorDestinationSchema {
     /**
      * The connector schema name in destination. Has to be unique within the group (destination). Required for connector creation of services:<br>
-     * `15five`, `360learning`, `6sense`, `7shifts`, `absorbLms`, `acculynx`, `activecampaign`, `acumatica`, `ada`, `adform`, `adjust`, `adobeAnalyticsDataFeed`, `adobeAnalytics`, `adobeCommerce`, `adobeExperiencePlatform`, `adobeWorkfront`, `adpWorkforceNow`, `adroll`, `adyen`, `affinity`, `afterpay`, `aha`, `aircall`, `akamai`, `akeneo`, `alation`, `alchemer`, `algolia`, `alida`, `amazonAds`, `amazonAttribution`, `amazonDsp`, `amazonSellingPartner`, `amplitude`, `amqp`, `anaplan`, `anthropicClaude`, `anvyl`, `apacheKafka`, `apollo`, `appcues`, `appfigures`, `appleSearchAds`, `applovin`, `appsflyer`, `asana`, `ascendByPartnerize`, `ashby`, `assembled`, `assetPanda`, `atlassianCompass`, `atlassianJiraAlign`, `atlassianOpsGenie`, `attentive`, `attio`, `aumni`, `auraFromUnity`, `auth0`, `autodeskBim360`, `avantlink`, `avevaPi`, `awin`, `awsCloudtrail`, `awsCostReport`, `awsCost`, `awsInventory`, `awsLambda`, `awsMsk`, `azureBlobStorage`, `azureBoards`, `azureDevops`, `azureEventHub`, `azureFunction`, `azureServiceBus`, `backbonePlm`, `ballotready`, `bamboohr`, `bazaarvoice`, `betterworks`, `bigCommerce`, `biginByZohoCrm`, `bigmarker`, `billingPlatform`, `bingWebmasterTools`, `bingads`, `birdeye`, `bitly`, `bizzaboApp`, `bizzaboV2`, `bizzabo`, `boostr`, `box`, `braintreeSandbox`, `braintree`, `branch`, `braveAds`, `braze`, `breatheHr`, `brevo`, `brex`, `brightcove`, `brightflag`, `brightpearl`, `brivo`, `bubble`, `buildium`, `buildkite`, `businessCentral`, `buzzsprout`, `bynder`, `cabcharge`, `calabrio`, `calcom`, `calendly`, `callrail`, `campaignmonitor`, `campfire`, `canny`, `canvasByInstructure`, `canvasData2ByInstructure`, `captivateiq`, `careQualityCommission`, `castorEdc`, `centra`, `ceridianDayforce`, `chameleon`, `channelAdvisor`, `chargebeeProductCatalog1`, `chargebeeProductCatalog2`, `chargedesk`, `charthop`, `chartmogul`, `checkout`, `checkr`, `chorusai`, `churnkey`, `churnzero`, `cimis`, `cin7`, `cin7core`, `circleci`, `cjCommissionDetail`, `clari`, `classy`, `claudeCompliance`, `clazar`, `clickup`, `clockify`, `clockodo`, `close`, `cloudbeds`, `cloudflareAnalytics`, `cloudfront`, `cloudtalk`, `clubspeed`, `coalesce`, `coassemble`, `coda`, `codefresh`, `coheris`, `collibra`, `column`, `commercetools`, `complianceCheckpoint`, `concord`, `concur`, `confluence`, `confluentCloud`, `connectorSdk`, `consensusDemoAutomationPlatform`, `constantContact`, `contrastSecurity`, `convex`, `copper`, `cornerstone`, `coupa`, `credly`, `criteoRetailMedia`, `criteo`, `crossbeam`, `crowddev`, `crunchbase`, `cubeSoftware`, `cube`, `cultureAmp`, `customerio`, `cvent`, `d2lBrightspace`, `datadog`, `datastreamerSource`, `db2luw`, `dbtCloud`, `dclLogistics`, `dear`, `deel`, `delighted`, `deposco`, `deputy`, `destini`, `deviceMagic`, `dialpad`, `discourse`, `dixa`, `docebo`, `donus`, `doorloop`, `doubleClickCampaignManager`, `doubleClickPublishers`, `drata`, `drift`, `drip`, `dropboxSign`, `dropbox`, `dsv`, `duoplane`, `dutchie`, `dynamics365`, `dynamodb`, `easypost`, `ebay`, `economic`, `elasticCloud`, `electronicTenantSolutions`, `eloqua`, `email`, `employmentHero`, `esSelfHosted`, `eventbrite`, `eventsforce`, `everflow`, `everhour`, `exactOnline`, `expensein`, `expensify`, `ezofficeinventory`, `facebookAdAccount`, `facebookAds`, `facebookPages`, `facebook`, `factbird`, `factorial`, `fathom`, `fillout`, `financialForce`, `firebase`, `fireflies`, `firehydrant`, `fivetranLog`, `flexport`, `float`, `flywheelDigital`, `foneDynamics`, `forethought`, `forjCommunity`, `formstack`, `fortnox`, `fountain`, `fourkites`, `freightview`, `freshbooks`, `freshchat`, `freshdeskContactCenter`, `freshdesk`, `freshsales`, `freshservice`, `freshsuccess`, `freshteam`, `friendbuy`, `front`, `ftp`, `fulfil`, `fullstory`, `g2`, `gainsightCustomerSuccess`, `gainsightProductExperience`, `gcs`, `gem`, `genesys`, `getfeedback`, `github`, `gitlab`, `gladly`, `globalmeet`, `gmail`, `gocardless`, `gofundmePro`, `goldcast`, `gongio`, `googleAds`, `googleAnalytics360`, `googleAnalytics4Export`, `googleAnalytics4`, `googleAnalyticsMcf`, `googleAnalytics`, `googleBusinessProfile`, `googleCalendar`, `googleClassroom`, `googleCloudFunction`, `googleDisplayAndVideo360`, `googleDrive`, `googlePlay`, `googleSearchAds360`, `googleSearchConsole`, `googleSheets`, `googleTagManager`, `googleTasks`, `gorgias`, `greenPowerMonitor`, `greenhouse`, `grepsr`, `grin`, `guru`, `hLevel`, `hanaSapHvaEccNetweaver`, `hanaSapHvaS4Netweaver`, `happyfox`, `harvest`, `healthie`, `heap`, `heartlandRetailPos`, `height`, `helpdesk`, `helpjuice`, `helpscout`, `helpshift`, `herokuKafka`, `hex`, `hibob`, `higherLogicVanilla`, `hiltiOntrack`, `hopin`, `hubspot`, `ibacos`, `ilevel`, `impactPartner`, `impact`, `incidentio`, `infobip`, `insightly`, `instagramBusiness`, `instructure`, `integralAdScience`, `integrate`, `intercom`, `invoiced`, `ironcladClickwrap`, `ironclad`, `ironsource`, `iterable`, `itunesConnect`, `ivanti`, `jamaSoftware`, `jamf`, `jibble`, `jira`, `jobnimbus`, `jotform`, `justcall`, `kandji`, `katana`, `kevel`, `keypay`, `khorosCare`, `khorosCommunities`, `khorosMarketing`, `kinesis`, `kisi`, `kissmetrics`, `klarna`, `klaviyo`, `konnectInsights`, `kustomer`, `lattice`, `launchdarkly`, `leapCrm`, `leapsome`, `learnAmp`, `learnupon`, `leaveDates`, `lemlist`, `lessonly`, `lever`, `liftoff`, `lightSpeedRetail`, `lightspeedRetailXseries`, `lineAds`, `linear`, `linkedinAds`, `linkedinCompanyPages`, `linksquares`, `listen360`, `livechatPartner`, `livechat`, `livestorm`, `lob`, `lookerSource`, `loop`, `loopio`, `lucca`, `luma`, `mailchimp`, `maileon`, `mailgun`, `mailjet`, `maintainx`, `malomo`, `mambu`, `mandrill`, `marin`, `marketo`, `matomo`, `mavenlink`, `maxioChargify`, `maxioSaasoptics`, `medalliaAgileResearch`, `medallia`, `megaphone`, `meltwater`, `mention`, `messagebird`, `microsoftDynamics365Fno`, `microsoftDynamics365Fo`, `microsoftEntraId`, `microsoftLists`, `microsoftPowerBi`, `microsoftTeams`, `missive`, `mixmax`, `mixpanel`, `mode`, `mollie`, `moloco`, `monday`, `mountain`, `mux`, `myosh`, `namely`, `nationalHeavyVehicleRegulator`, `navan`, `netsuiteSuiteanalytics`, `nice`, `notion`, `nylas`, `odoo`, `okendo`, `okta`, `ometria`, `on24`, `oncehub`, `oneDrive`, `onetrust`, `openDataDc`, `openExchangeRates`, `openaiCompliancePlatform`, `openai`, `opendistro`, `opensearch`, `optimizely`, `oracleFusionFieldService`, `oracleMoatAnalytics`, `oracleNetsuiteOpenair`, `oracleSapHvaNetweaver`, `orbit`, `ordergroove`, `ordway`, `ortto`, `outbrain`, `outreach`, `packiyo`, `paddle`, `pagerduty`, `pandadoc`, `papershift`, `parcellab`, `pardotSandbox`, `pardot`, `partnerize`, `partnerstackVendor`, `paychex`, `paylocity`, `paypalSandbox`, `paypal`, `pendo`, `peopleforce`, `persona`, `personio`, `phoenixAds`, `picqer`, `pigment`, `pingdom`, `pinpoint`, `pinterestAds`, `pinterestOrganic`, `pipe17`, `pipedrive`, `pivotalTracker`, `piwikPro`, `placerai`, `planetscale`, `planful`, `planhat`, `playvoxWorkforceManagement`, `playvox`, `podio`, `poplar`, `posthog`, `postmark`, `powerReviewsEnterprise`, `prismaCloud`, `prive`, `procore`, `productboard`, `productive`, `profound`, `proofpointSecurityAwareness`, `prosperstack`, `purpleDot`, `pylonSupportPlatform`, `qmaticDataConnect`, `qualaroo`, `qualtrics`, `quickbooks`, `quoraAds`, `quorum`, `rakutenadvertising`, `ramp`, `rarible`, `reboundReturns`, `recharge`, `recurly`, `redditAds`, `referralhero`, `refiner`, `reltio`, `replyio`, `resourceManagementBySmartsheet`, `retailnext`, `retently`, `revel`, `revenuecat`, `reviewsai`, `reviewsio`, `revops`, `revx`, `ricochet360`, `ringcentral`, `ringover`, `rippling`, `rithum`, `rivo`, `rocketlane`, `rokt`, `rollbar`, `rootly`, `rtbHouse`, `ruddr`, `rundeck`, `s3CompatibleStorage`, `s3`, `safebase`, `safetyculture`, `sageHr`, `sageIntacct`, `sailthru`, `salesforceCommerceCloud`, `salesforceMarketingCloud`, `salesforceSandbox`, `salesforce`, `salesloft`, `salsify`, `samsara`, `sana`, `sapBusinessByDesign`, `sapHana`, `sapS4hana`, `sapSuccessFactors`, `scorm`, `securityJourney`, `segment`, `sendgrid`, `sendinblue`, `sensorTower`, `sentry`, `servicenow`, `servicetitan`, `servicetrade`, `sevdesk`, `sftp`, `sharePoint`, `shareasale`, `sharetribe`, `shiphero`, `shipmonk`, `shipnetwork`, `shipstation`, `shopify`, `shopware`, `shortcut`, `shortio`, `showpad`, `siemensBuildingXOpenness`, `sigmaComputingSource`, `simplecast`, `simplesat`, `singlestoreSource`, `sistrix`, `skilljar`, `skillstx`, `skimlinks`, `skuvault`, `slab`, `slackAdminData`, `slackApp`, `slack`, `smadex`, `smarthr`, `smartrecruiters`, `smartsheet`, `smartwaiver`, `snapchatAds`, `snowplow`, `snyk`, `solarwindsServiceDesk`, `sonarqube`, `sparkpost`, `splash`, `splitio`, `splunk`, `spotifyAds`, `sprout`, `square`, `squarespace`, `stackadaptGraphql`, `stackadapt`, `standardMetrics`, `starrez`, `statisticsNetherlandsCbs`, `statsig`, `statuspage`, `stickyio`, `stripeTest`, `stripe`, `stylight`, `subscript`, `sugarcrm`, `surveyMonkey`, `survicate`, `swoogo`, `tableauSource`, `taboola`, `talkdesk`, `talkwalker`, `teads`, `teamtailor`, `teamwork`, `tempo`, `testrail`, `textus`, `theMovieDatabase`, `theTradeDesk`, `thinkific`, `ticketTailor`, `tiktokAds`, `tiktokOrganicApp`, `tiktokOrganic`, `tive`, `toast`, `togglTrack`, `totango`, `tracksuitSource`, `transcend`, `trelica`, `trello`, `tremendous`, `tripleWhale`, `trisolute`, `trustpilot`, `twilio`, `twitterAds`, `twitter`, `tymeshift`, `typeform`, `udemyBusiness`, `ukgProWorkforceManagement`, `ukgPro`, `unicommerce`, `upland`, `uppromote`, `uptempo`, `uservoice`, `validio`, `veeqo`, `veevaVault`, `veevavault`, `venminder`, `vimeo`, `visitByGes`, `visma`, `vitally`, `vonageContactCenter`, `vonage`, `vts`, `vwo`, `walmartDsp`, `walmartMarketplace`, `wasabiCloudStorage`, `webScraper`, `webconnex`, `webhooks`, `whenIWork`, `wherefour`, `wickedReports`, `woocommerce`, `wordpress`, `workable`, `workdayAdaptive`, `workdayFinancialManagement`, `workdayHcm`, `workdayStrategicSourcing`, `workday`, `workflowmax`, `workleapOfficevibe`, `workramp`, `wrike`, `writesonic`, `xactly`, `xandr`, `xero`, `xray`, `xsolla`, `yahooDisplayAdsOnYahooJapan`, `yahooDsp`, `yahooGemini`, `yahooSearchAdsYahooJapan`, `yext`, `yotpoApp`, `yotpo`, `yougovBrandindex`, `yougovSport`, `younium`, `youtubeAnalytics`, `zendeskChat`, `zendeskSell`, `zendeskSunshine`, `zendeskWorkforceManagement`, `zendesk`, `zenefits`, `zingtree`, `zip`, `zohoBooks`, `zohoCampaigns`, `zohoCrm`, `zohoDesk`, `zohoInventory`, `zohoPeople`, `zohoRecruit`, `zonkaFeedback`, `zoom`, `zuoraSandbox`, `zuora`
+     * `15five`, `360learning`, `6sense`, `7shifts`, `absorbLms`, `acculynx`, `activecampaign`, `acumatica`, `ada`, `adform`, `adjust`, `adobeAnalyticsDataFeed`, `adobeAnalytics`, `adobeCommerce`, `adobeExperiencePlatform`, `adobeWorkfront`, `adpWorkforceNow`, `adroll`, `adyen`, `affinity`, `afterpay`, `aha`, `aircall`, `akamai`, `akeneo`, `alation`, `alchemer`, `algolia`, `alida`, `amazonAds`, `amazonAttribution`, `amazonDsp`, `amazonSellingPartner`, `amplitude`, `amqp`, `anaplan`, `anthropicClaude`, `anvyl`, `apacheKafka`, `apollo`, `appcues`, `appfigures`, `appleSearchAds`, `applovin`, `appsflyer`, `asana`, `ascendByPartnerize`, `ashby`, `assembled`, `assetPanda`, `atlassianCompass`, `atlassianJiraAlign`, `atlassianOpsGenie`, `attentive`, `attio`, `aumni`, `auraFromUnity`, `auth0`, `autodeskBim360`, `avantlink`, `avevaPi`, `awin`, `awsCloudtrail`, `awsCostReport`, `awsCost`, `awsInventory`, `awsLambda`, `awsMsk`, `azureBlobStorage`, `azureBoards`, `azureDevops`, `azureEventHub`, `azureFunction`, `azureServiceBus`, `backbonePlm`, `ballotready`, `bamboohr`, `bazaarvoice`, `betterworks`, `bigCommerce`, `biginByZohoCrm`, `bigmarker`, `billingPlatform`, `bingWebmasterTools`, `bingads`, `birdeye`, `bitly`, `bizzaboApp`, `bizzaboV2`, `bizzabo`, `boostr`, `box`, `braintreeSandbox`, `braintree`, `branch`, `braveAds`, `braze`, `breatheHr`, `brevo`, `brex`, `brightcove`, `brightflag`, `brightpearl`, `brivo`, `bubble`, `buildium`, `buildkite`, `businessCentral`, `buzzsprout`, `bynder`, `cabcharge`, `calabrio`, `calcom`, `calendly`, `callrail`, `campaignmonitor`, `campfire`, `canny`, `canvasByInstructure`, `canvasData2ByInstructure`, `captivateiq`, `careQualityCommission`, `castorEdc`, `centra`, `ceridianDayforce`, `chameleon`, `channelAdvisor`, `chargebeeProductCatalog1`, `chargebeeProductCatalog2`, `chargedesk`, `charthop`, `chartmogul`, `checkout`, `checkr`, `chorusai`, `churnkey`, `churnzero`, `cimis`, `cin7`, `cin7core`, `circleCommunityPlatform`, `circleci`, `cjCommissionDetail`, `clari`, `classy`, `claudeCompliance`, `clazar`, `clickup`, `clockify`, `clockodo`, `close`, `cloudbeds`, `cloudflareAnalytics`, `cloudfront`, `cloudtalk`, `clubspeed`, `coalesce`, `coassemble`, `coda`, `codefresh`, `coheris`, `collibra`, `column`, `commercetools`, `complianceCheckpoint`, `concord`, `concur`, `confluence`, `confluentCloud`, `connectorSdk`, `consensusDemoAutomationPlatform`, `constantContact`, `contrastSecurity`, `convex`, `copper`, `cornerstone`, `coupa`, `credly`, `criteoRetailMedia`, `criteo`, `crossbeam`, `crowddev`, `crunchbase`, `cubeSoftware`, `cube`, `cultureAmp`, `customerio`, `cvent`, `d2lBrightspace`, `datadog`, `datastreamerSource`, `db2luw`, `dbtCloud`, `dclLogistics`, `dear`, `deel`, `delighted`, `deposco`, `deputy`, `destini`, `deviceMagic`, `dialpad`, `discourse`, `dixa`, `docebo`, `donus`, `doorloop`, `doubleClickCampaignManager`, `doubleClickPublishers`, `drata`, `drift`, `drip`, `dropboxSign`, `dropbox`, `dsv`, `duoplane`, `dutchie`, `dynamics365`, `dynamodb`, `easypost`, `ebay`, `economic`, `elasticCloud`, `electronicTenantSolutions`, `eloqua`, `email`, `employmentHero`, `esSelfHosted`, `eventbrite`, `eventsforce`, `everflow`, `everhour`, `exactOnline`, `expensein`, `expensify`, `ezofficeinventory`, `facebookAdAccount`, `facebookAds`, `facebookPages`, `facebook`, `factbird`, `factorial`, `fathom`, `fillout`, `financialForce`, `firebase`, `fireflies`, `firehydrant`, `fivetranLog`, `flexport`, `float`, `flywheelDigital`, `foneDynamics`, `forethought`, `forjCommunity`, `formstack`, `fortnox`, `fountain`, `fourkites`, `freightview`, `freshbooks`, `freshchat`, `freshdeskContactCenter`, `freshdesk`, `freshsales`, `freshservice`, `freshsuccess`, `freshteam`, `friendbuy`, `front`, `ftp`, `fulfil`, `fullstory`, `g2`, `gainsightCustomerSuccess`, `gainsightProductExperience`, `gcs`, `gem`, `genesys`, `getfeedback`, `github`, `gitlab`, `gladly`, `globalmeet`, `gmail`, `gocardless`, `gofundmePro`, `goldcast`, `gongio`, `googleAds`, `googleAnalytics360`, `googleAnalytics4Export`, `googleAnalytics4`, `googleAnalyticsMcf`, `googleAnalytics`, `googleBusinessProfile`, `googleCalendar`, `googleClassroom`, `googleCloudFunction`, `googleDisplayAndVideo360`, `googleDrive`, `googlePlay`, `googleSearchAds360`, `googleSearchConsole`, `googleSheets`, `googleTagManager`, `googleTasks`, `gorgias`, `greenPowerMonitor`, `greenhouse`, `grepsr`, `grin`, `guidewireCloudDataAccess`, `guru`, `hLevel`, `hanaSapHvaEccNetweaver`, `hanaSapHvaS4Netweaver`, `happyfox`, `harvest`, `healthie`, `heap`, `heartlandRetailPos`, `height`, `helpdesk`, `helpjuice`, `helpscout`, `helpshift`, `herokuKafka`, `hex`, `hibob`, `higherLogicVanilla`, `hiltiOntrack`, `hopin`, `hubspot`, `ibacos`, `ilevel`, `impactPartner`, `impact`, `incidentio`, `infobip`, `insightly`, `instagramBusiness`, `instructure`, `integralAdScience`, `integrate`, `intercom`, `invoiced`, `ironcladClickwrap`, `ironclad`, `ironsource`, `iterable`, `itunesConnect`, `ivanti`, `jamaSoftware`, `jamf`, `jibble`, `jira`, `jobnimbus`, `jotform`, `justcall`, `kandji`, `katana`, `kevel`, `keypay`, `khorosCare`, `khorosCommunities`, `khorosMarketing`, `kinesis`, `kisi`, `kissmetrics`, `klarna`, `klaviyo`, `konnectInsights`, `kustomer`, `lattice`, `launchdarkly`, `leapCrm`, `leapsome`, `learnAmp`, `learnupon`, `leaveDates`, `lemlist`, `lessonly`, `lever`, `liftoff`, `lightSpeedRetail`, `lightspeedRetailXseries`, `lineAds`, `linear`, `linkedinAds`, `linkedinCompanyPages`, `linksquares`, `listen360`, `livechatPartner`, `livechat`, `livestorm`, `lob`, `lookerSource`, `loop`, `loopio`, `lucca`, `luma`, `mailchimp`, `maileon`, `mailgun`, `mailjet`, `maintainx`, `malomo`, `mambu`, `mandrill`, `marin`, `marketo`, `matomo`, `mavenlink`, `maxioChargify`, `maxioSaasoptics`, `medalliaAgileResearch`, `medallia`, `megaphone`, `meltwater`, `mention`, `messagebird`, `microsoftDynamics365Fno`, `microsoftDynamics365Fo`, `microsoftEntraId`, `microsoftLists`, `microsoftPowerBi`, `microsoftTeams`, `missive`, `mixmax`, `mixpanel`, `mode`, `mollie`, `moloco`, `monday`, `mountain`, `mux`, `myosh`, `namely`, `nationalHeavyVehicleRegulator`, `navan`, `netsuiteSuiteanalytics`, `nice`, `notion`, `nylas`, `odoo`, `okendo`, `okta`, `ometria`, `on24`, `oncehub`, `oneDrive`, `onetrust`, `openDataDc`, `openExchangeRates`, `openaiCompliancePlatform`, `openai`, `opendistro`, `opensearch`, `optimizely`, `oracleFusionFieldService`, `oracleMoatAnalytics`, `oracleNetsuiteOpenair`, `oracleSapHvaNetweaver`, `orbit`, `ordergroove`, `ordway`, `ortto`, `outbrain`, `outreach`, `packiyo`, `paddle`, `pagerduty`, `pandadoc`, `papershift`, `parcellab`, `pardotSandbox`, `pardot`, `partnerize`, `partnerstackVendor`, `paychex`, `paylocity`, `paypalSandbox`, `paypal`, `pendo`, `peopleforce`, `persona`, `personio`, `phoenixAds`, `picqer`, `pigment`, `pingdom`, `pinpoint`, `pinterestAds`, `pinterestOrganic`, `pipe17`, `pipedrive`, `pivotalTracker`, `piwikPro`, `placerai`, `planetscale`, `planful`, `planhat`, `playvoxWorkforceManagement`, `playvox`, `podio`, `poplar`, `posthog`, `postmark`, `powerReviewsEnterprise`, `prismaCloud`, `prive`, `procore`, `productboard`, `productive`, `profound`, `proofpointSecurityAwareness`, `prosperstack`, `purpleDot`, `pylonSupportPlatform`, `qmaticDataConnect`, `qualaroo`, `qualtrics`, `quickbooks`, `quoraAds`, `quorum`, `rakutenadvertising`, `ramp`, `rarible`, `reboundReturns`, `recharge`, `recurly`, `redditAds`, `referralhero`, `refiner`, `reltio`, `replyio`, `resourceManagementBySmartsheet`, `retailnext`, `retently`, `revel`, `revenuecat`, `reviewsai`, `reviewsio`, `revops`, `revx`, `ricochet360`, `ringcentral`, `ringover`, `rippling`, `rithum`, `rivo`, `rocketlane`, `rokt`, `rollbar`, `rootly`, `rtbHouse`, `ruddr`, `rundeck`, `s3CompatibleStorage`, `s3`, `safebase`, `safetyculture`, `sageHr`, `sageIntacct`, `sailthru`, `salesforceCommerceCloud`, `salesforceMarketingCloud`, `salesforceSandbox`, `salesforce`, `salesloft`, `salsify`, `samsara`, `sana`, `sapBusinessByDesign`, `sapHana`, `sapS4hana`, `sapSuccessFactors`, `scorm`, `securityJourney`, `segment`, `sendgrid`, `sendinblue`, `sensorTower`, `sentry`, `servicenow`, `servicetitan`, `servicetrade`, `sevdesk`, `sftp`, `sharePoint`, `shareasale`, `sharetribe`, `shiphero`, `shipmonk`, `shipnetwork`, `shipstation`, `shopify`, `shopware`, `shortcut`, `shortio`, `showpad`, `siemensBuildingXOpenness`, `sigmaComputingSource`, `simplecast`, `simplesat`, `singlestoreSource`, `sistrix`, `skilljar`, `skillstx`, `skimlinks`, `skuvault`, `slab`, `slackAdminData`, `slackApp`, `slack`, `smadex`, `smarthr`, `smartrecruiters`, `smartsheet`, `smartwaiver`, `snapchatAds`, `snowplow`, `snyk`, `solarwindsServiceDesk`, `sonarqube`, `sparkpost`, `splash`, `splitio`, `splunk`, `spotifyAds`, `sprout`, `square`, `squarespace`, `stackadaptGraphql`, `stackadapt`, `standardMetrics`, `starrez`, `statisticsNetherlandsCbs`, `statsig`, `statuspage`, `stickyio`, `stripeTest`, `stripe`, `stylight`, `subscript`, `sugarcrm`, `surveyMonkey`, `survicate`, `swoogo`, `tableauSource`, `taboola`, `talkdesk`, `talkwalker`, `teads`, `teamtailor`, `teamwork`, `tempo`, `testrail`, `textus`, `theMovieDatabase`, `theTradeDesk`, `thinkific`, `ticketTailor`, `tiktokAds`, `tiktokOrganicApp`, `tiktokOrganic`, `tive`, `toast`, `togglTrack`, `totango`, `tracksuitSource`, `transcend`, `trelica`, `trello`, `tremendous`, `tripleWhale`, `trisolute`, `trustpilot`, `twilio`, `twitterAds`, `twitter`, `tymeshift`, `typeform`, `udemyBusiness`, `ukgProWorkforceManagement`, `ukgPro`, `unicommerce`, `upland`, `uppromote`, `uptempo`, `uservoice`, `validio`, `veeqo`, `veevaVault`, `veevavault`, `venminder`, `vimeo`, `visitByGes`, `visma`, `vitally`, `vonageContactCenter`, `vonage`, `vts`, `vwo`, `walmartDsp`, `walmartMarketplace`, `wasabiCloudStorage`, `webScraper`, `webconnex`, `webhooks`, `whenIWork`, `wherefour`, `wickedReports`, `woocommerce`, `wordpress`, `workable`, `workdayAdaptive`, `workdayFinancialManagement`, `workdayHcm`, `workdayStrategicSourcing`, `workday`, `workflowmax`, `workleapOfficevibe`, `workramp`, `wrike`, `writesonic`, `xactly`, `xandr`, `xero`, `xray`, `xsolla`, `yahooDisplayAdsOnYahooJapan`, `yahooDsp`, `yahooGemini`, `yahooSearchAdsYahooJapan`, `yext`, `yotpoApp`, `yotpo`, `yougovBrandindex`, `yougovSport`, `younium`, `youtubeAnalytics`, `zendeskChat`, `zendeskSell`, `zendeskSunshine`, `zendeskWorkforceManagement`, `zendesk`, `zenefits`, `zingtree`, `zip`, `zohoBooks`, `zohoCampaigns`, `zohoCrm`, `zohoDesk`, `zohoInventory`, `zohoPeople`, `zohoRecruit`, `zonkaFeedback`, `zoom`, `zuoraSandbox`, `zuora`
      */
     name?: string;
     /**
@@ -24844,7 +25083,7 @@ export interface GetConnectorDestinationSchema {
     table?: string;
     /**
      * Table group name. Combined with the schema to form the Fivetran connection name '<schema>.<table_group_name>'. Required for connector creation of services:<br>
-     * `azureBlobStorage`, `box`, `dropbox`, `email`, `ftp`, `gcs`, `googleDrive`, `s3CompatibleStorage`, `s3`, `sftp`, `sharePoint`, `workday`
+     * `azureBlobStorage`, `box`, `dropbox`, `email`, `ftp`, `gcs`, `googleDrive`, `guidewireCloudDataAccess`, `s3CompatibleStorage`, `s3`, `sftp`, `sharePoint`, `workday`
      */
     tableGroupName?: string;
 }
@@ -24852,7 +25091,7 @@ export interface GetConnectorDestinationSchema {
 export interface GetConnectorDestinationSchemaArgs {
     /**
      * The connector schema name in destination. Has to be unique within the group (destination). Required for connector creation of services:<br>
-     * `15five`, `360learning`, `6sense`, `7shifts`, `absorbLms`, `acculynx`, `activecampaign`, `acumatica`, `ada`, `adform`, `adjust`, `adobeAnalyticsDataFeed`, `adobeAnalytics`, `adobeCommerce`, `adobeExperiencePlatform`, `adobeWorkfront`, `adpWorkforceNow`, `adroll`, `adyen`, `affinity`, `afterpay`, `aha`, `aircall`, `akamai`, `akeneo`, `alation`, `alchemer`, `algolia`, `alida`, `amazonAds`, `amazonAttribution`, `amazonDsp`, `amazonSellingPartner`, `amplitude`, `amqp`, `anaplan`, `anthropicClaude`, `anvyl`, `apacheKafka`, `apollo`, `appcues`, `appfigures`, `appleSearchAds`, `applovin`, `appsflyer`, `asana`, `ascendByPartnerize`, `ashby`, `assembled`, `assetPanda`, `atlassianCompass`, `atlassianJiraAlign`, `atlassianOpsGenie`, `attentive`, `attio`, `aumni`, `auraFromUnity`, `auth0`, `autodeskBim360`, `avantlink`, `avevaPi`, `awin`, `awsCloudtrail`, `awsCostReport`, `awsCost`, `awsInventory`, `awsLambda`, `awsMsk`, `azureBlobStorage`, `azureBoards`, `azureDevops`, `azureEventHub`, `azureFunction`, `azureServiceBus`, `backbonePlm`, `ballotready`, `bamboohr`, `bazaarvoice`, `betterworks`, `bigCommerce`, `biginByZohoCrm`, `bigmarker`, `billingPlatform`, `bingWebmasterTools`, `bingads`, `birdeye`, `bitly`, `bizzaboApp`, `bizzaboV2`, `bizzabo`, `boostr`, `box`, `braintreeSandbox`, `braintree`, `branch`, `braveAds`, `braze`, `breatheHr`, `brevo`, `brex`, `brightcove`, `brightflag`, `brightpearl`, `brivo`, `bubble`, `buildium`, `buildkite`, `businessCentral`, `buzzsprout`, `bynder`, `cabcharge`, `calabrio`, `calcom`, `calendly`, `callrail`, `campaignmonitor`, `campfire`, `canny`, `canvasByInstructure`, `canvasData2ByInstructure`, `captivateiq`, `careQualityCommission`, `castorEdc`, `centra`, `ceridianDayforce`, `chameleon`, `channelAdvisor`, `chargebeeProductCatalog1`, `chargebeeProductCatalog2`, `chargedesk`, `charthop`, `chartmogul`, `checkout`, `checkr`, `chorusai`, `churnkey`, `churnzero`, `cimis`, `cin7`, `cin7core`, `circleci`, `cjCommissionDetail`, `clari`, `classy`, `claudeCompliance`, `clazar`, `clickup`, `clockify`, `clockodo`, `close`, `cloudbeds`, `cloudflareAnalytics`, `cloudfront`, `cloudtalk`, `clubspeed`, `coalesce`, `coassemble`, `coda`, `codefresh`, `coheris`, `collibra`, `column`, `commercetools`, `complianceCheckpoint`, `concord`, `concur`, `confluence`, `confluentCloud`, `connectorSdk`, `consensusDemoAutomationPlatform`, `constantContact`, `contrastSecurity`, `convex`, `copper`, `cornerstone`, `coupa`, `credly`, `criteoRetailMedia`, `criteo`, `crossbeam`, `crowddev`, `crunchbase`, `cubeSoftware`, `cube`, `cultureAmp`, `customerio`, `cvent`, `d2lBrightspace`, `datadog`, `datastreamerSource`, `db2luw`, `dbtCloud`, `dclLogistics`, `dear`, `deel`, `delighted`, `deposco`, `deputy`, `destini`, `deviceMagic`, `dialpad`, `discourse`, `dixa`, `docebo`, `donus`, `doorloop`, `doubleClickCampaignManager`, `doubleClickPublishers`, `drata`, `drift`, `drip`, `dropboxSign`, `dropbox`, `dsv`, `duoplane`, `dutchie`, `dynamics365`, `dynamodb`, `easypost`, `ebay`, `economic`, `elasticCloud`, `electronicTenantSolutions`, `eloqua`, `email`, `employmentHero`, `esSelfHosted`, `eventbrite`, `eventsforce`, `everflow`, `everhour`, `exactOnline`, `expensein`, `expensify`, `ezofficeinventory`, `facebookAdAccount`, `facebookAds`, `facebookPages`, `facebook`, `factbird`, `factorial`, `fathom`, `fillout`, `financialForce`, `firebase`, `fireflies`, `firehydrant`, `fivetranLog`, `flexport`, `float`, `flywheelDigital`, `foneDynamics`, `forethought`, `forjCommunity`, `formstack`, `fortnox`, `fountain`, `fourkites`, `freightview`, `freshbooks`, `freshchat`, `freshdeskContactCenter`, `freshdesk`, `freshsales`, `freshservice`, `freshsuccess`, `freshteam`, `friendbuy`, `front`, `ftp`, `fulfil`, `fullstory`, `g2`, `gainsightCustomerSuccess`, `gainsightProductExperience`, `gcs`, `gem`, `genesys`, `getfeedback`, `github`, `gitlab`, `gladly`, `globalmeet`, `gmail`, `gocardless`, `gofundmePro`, `goldcast`, `gongio`, `googleAds`, `googleAnalytics360`, `googleAnalytics4Export`, `googleAnalytics4`, `googleAnalyticsMcf`, `googleAnalytics`, `googleBusinessProfile`, `googleCalendar`, `googleClassroom`, `googleCloudFunction`, `googleDisplayAndVideo360`, `googleDrive`, `googlePlay`, `googleSearchAds360`, `googleSearchConsole`, `googleSheets`, `googleTagManager`, `googleTasks`, `gorgias`, `greenPowerMonitor`, `greenhouse`, `grepsr`, `grin`, `guru`, `hLevel`, `hanaSapHvaEccNetweaver`, `hanaSapHvaS4Netweaver`, `happyfox`, `harvest`, `healthie`, `heap`, `heartlandRetailPos`, `height`, `helpdesk`, `helpjuice`, `helpscout`, `helpshift`, `herokuKafka`, `hex`, `hibob`, `higherLogicVanilla`, `hiltiOntrack`, `hopin`, `hubspot`, `ibacos`, `ilevel`, `impactPartner`, `impact`, `incidentio`, `infobip`, `insightly`, `instagramBusiness`, `instructure`, `integralAdScience`, `integrate`, `intercom`, `invoiced`, `ironcladClickwrap`, `ironclad`, `ironsource`, `iterable`, `itunesConnect`, `ivanti`, `jamaSoftware`, `jamf`, `jibble`, `jira`, `jobnimbus`, `jotform`, `justcall`, `kandji`, `katana`, `kevel`, `keypay`, `khorosCare`, `khorosCommunities`, `khorosMarketing`, `kinesis`, `kisi`, `kissmetrics`, `klarna`, `klaviyo`, `konnectInsights`, `kustomer`, `lattice`, `launchdarkly`, `leapCrm`, `leapsome`, `learnAmp`, `learnupon`, `leaveDates`, `lemlist`, `lessonly`, `lever`, `liftoff`, `lightSpeedRetail`, `lightspeedRetailXseries`, `lineAds`, `linear`, `linkedinAds`, `linkedinCompanyPages`, `linksquares`, `listen360`, `livechatPartner`, `livechat`, `livestorm`, `lob`, `lookerSource`, `loop`, `loopio`, `lucca`, `luma`, `mailchimp`, `maileon`, `mailgun`, `mailjet`, `maintainx`, `malomo`, `mambu`, `mandrill`, `marin`, `marketo`, `matomo`, `mavenlink`, `maxioChargify`, `maxioSaasoptics`, `medalliaAgileResearch`, `medallia`, `megaphone`, `meltwater`, `mention`, `messagebird`, `microsoftDynamics365Fno`, `microsoftDynamics365Fo`, `microsoftEntraId`, `microsoftLists`, `microsoftPowerBi`, `microsoftTeams`, `missive`, `mixmax`, `mixpanel`, `mode`, `mollie`, `moloco`, `monday`, `mountain`, `mux`, `myosh`, `namely`, `nationalHeavyVehicleRegulator`, `navan`, `netsuiteSuiteanalytics`, `nice`, `notion`, `nylas`, `odoo`, `okendo`, `okta`, `ometria`, `on24`, `oncehub`, `oneDrive`, `onetrust`, `openDataDc`, `openExchangeRates`, `openaiCompliancePlatform`, `openai`, `opendistro`, `opensearch`, `optimizely`, `oracleFusionFieldService`, `oracleMoatAnalytics`, `oracleNetsuiteOpenair`, `oracleSapHvaNetweaver`, `orbit`, `ordergroove`, `ordway`, `ortto`, `outbrain`, `outreach`, `packiyo`, `paddle`, `pagerduty`, `pandadoc`, `papershift`, `parcellab`, `pardotSandbox`, `pardot`, `partnerize`, `partnerstackVendor`, `paychex`, `paylocity`, `paypalSandbox`, `paypal`, `pendo`, `peopleforce`, `persona`, `personio`, `phoenixAds`, `picqer`, `pigment`, `pingdom`, `pinpoint`, `pinterestAds`, `pinterestOrganic`, `pipe17`, `pipedrive`, `pivotalTracker`, `piwikPro`, `placerai`, `planetscale`, `planful`, `planhat`, `playvoxWorkforceManagement`, `playvox`, `podio`, `poplar`, `posthog`, `postmark`, `powerReviewsEnterprise`, `prismaCloud`, `prive`, `procore`, `productboard`, `productive`, `profound`, `proofpointSecurityAwareness`, `prosperstack`, `purpleDot`, `pylonSupportPlatform`, `qmaticDataConnect`, `qualaroo`, `qualtrics`, `quickbooks`, `quoraAds`, `quorum`, `rakutenadvertising`, `ramp`, `rarible`, `reboundReturns`, `recharge`, `recurly`, `redditAds`, `referralhero`, `refiner`, `reltio`, `replyio`, `resourceManagementBySmartsheet`, `retailnext`, `retently`, `revel`, `revenuecat`, `reviewsai`, `reviewsio`, `revops`, `revx`, `ricochet360`, `ringcentral`, `ringover`, `rippling`, `rithum`, `rivo`, `rocketlane`, `rokt`, `rollbar`, `rootly`, `rtbHouse`, `ruddr`, `rundeck`, `s3CompatibleStorage`, `s3`, `safebase`, `safetyculture`, `sageHr`, `sageIntacct`, `sailthru`, `salesforceCommerceCloud`, `salesforceMarketingCloud`, `salesforceSandbox`, `salesforce`, `salesloft`, `salsify`, `samsara`, `sana`, `sapBusinessByDesign`, `sapHana`, `sapS4hana`, `sapSuccessFactors`, `scorm`, `securityJourney`, `segment`, `sendgrid`, `sendinblue`, `sensorTower`, `sentry`, `servicenow`, `servicetitan`, `servicetrade`, `sevdesk`, `sftp`, `sharePoint`, `shareasale`, `sharetribe`, `shiphero`, `shipmonk`, `shipnetwork`, `shipstation`, `shopify`, `shopware`, `shortcut`, `shortio`, `showpad`, `siemensBuildingXOpenness`, `sigmaComputingSource`, `simplecast`, `simplesat`, `singlestoreSource`, `sistrix`, `skilljar`, `skillstx`, `skimlinks`, `skuvault`, `slab`, `slackAdminData`, `slackApp`, `slack`, `smadex`, `smarthr`, `smartrecruiters`, `smartsheet`, `smartwaiver`, `snapchatAds`, `snowplow`, `snyk`, `solarwindsServiceDesk`, `sonarqube`, `sparkpost`, `splash`, `splitio`, `splunk`, `spotifyAds`, `sprout`, `square`, `squarespace`, `stackadaptGraphql`, `stackadapt`, `standardMetrics`, `starrez`, `statisticsNetherlandsCbs`, `statsig`, `statuspage`, `stickyio`, `stripeTest`, `stripe`, `stylight`, `subscript`, `sugarcrm`, `surveyMonkey`, `survicate`, `swoogo`, `tableauSource`, `taboola`, `talkdesk`, `talkwalker`, `teads`, `teamtailor`, `teamwork`, `tempo`, `testrail`, `textus`, `theMovieDatabase`, `theTradeDesk`, `thinkific`, `ticketTailor`, `tiktokAds`, `tiktokOrganicApp`, `tiktokOrganic`, `tive`, `toast`, `togglTrack`, `totango`, `tracksuitSource`, `transcend`, `trelica`, `trello`, `tremendous`, `tripleWhale`, `trisolute`, `trustpilot`, `twilio`, `twitterAds`, `twitter`, `tymeshift`, `typeform`, `udemyBusiness`, `ukgProWorkforceManagement`, `ukgPro`, `unicommerce`, `upland`, `uppromote`, `uptempo`, `uservoice`, `validio`, `veeqo`, `veevaVault`, `veevavault`, `venminder`, `vimeo`, `visitByGes`, `visma`, `vitally`, `vonageContactCenter`, `vonage`, `vts`, `vwo`, `walmartDsp`, `walmartMarketplace`, `wasabiCloudStorage`, `webScraper`, `webconnex`, `webhooks`, `whenIWork`, `wherefour`, `wickedReports`, `woocommerce`, `wordpress`, `workable`, `workdayAdaptive`, `workdayFinancialManagement`, `workdayHcm`, `workdayStrategicSourcing`, `workday`, `workflowmax`, `workleapOfficevibe`, `workramp`, `wrike`, `writesonic`, `xactly`, `xandr`, `xero`, `xray`, `xsolla`, `yahooDisplayAdsOnYahooJapan`, `yahooDsp`, `yahooGemini`, `yahooSearchAdsYahooJapan`, `yext`, `yotpoApp`, `yotpo`, `yougovBrandindex`, `yougovSport`, `younium`, `youtubeAnalytics`, `zendeskChat`, `zendeskSell`, `zendeskSunshine`, `zendeskWorkforceManagement`, `zendesk`, `zenefits`, `zingtree`, `zip`, `zohoBooks`, `zohoCampaigns`, `zohoCrm`, `zohoDesk`, `zohoInventory`, `zohoPeople`, `zohoRecruit`, `zonkaFeedback`, `zoom`, `zuoraSandbox`, `zuora`
+     * `15five`, `360learning`, `6sense`, `7shifts`, `absorbLms`, `acculynx`, `activecampaign`, `acumatica`, `ada`, `adform`, `adjust`, `adobeAnalyticsDataFeed`, `adobeAnalytics`, `adobeCommerce`, `adobeExperiencePlatform`, `adobeWorkfront`, `adpWorkforceNow`, `adroll`, `adyen`, `affinity`, `afterpay`, `aha`, `aircall`, `akamai`, `akeneo`, `alation`, `alchemer`, `algolia`, `alida`, `amazonAds`, `amazonAttribution`, `amazonDsp`, `amazonSellingPartner`, `amplitude`, `amqp`, `anaplan`, `anthropicClaude`, `anvyl`, `apacheKafka`, `apollo`, `appcues`, `appfigures`, `appleSearchAds`, `applovin`, `appsflyer`, `asana`, `ascendByPartnerize`, `ashby`, `assembled`, `assetPanda`, `atlassianCompass`, `atlassianJiraAlign`, `atlassianOpsGenie`, `attentive`, `attio`, `aumni`, `auraFromUnity`, `auth0`, `autodeskBim360`, `avantlink`, `avevaPi`, `awin`, `awsCloudtrail`, `awsCostReport`, `awsCost`, `awsInventory`, `awsLambda`, `awsMsk`, `azureBlobStorage`, `azureBoards`, `azureDevops`, `azureEventHub`, `azureFunction`, `azureServiceBus`, `backbonePlm`, `ballotready`, `bamboohr`, `bazaarvoice`, `betterworks`, `bigCommerce`, `biginByZohoCrm`, `bigmarker`, `billingPlatform`, `bingWebmasterTools`, `bingads`, `birdeye`, `bitly`, `bizzaboApp`, `bizzaboV2`, `bizzabo`, `boostr`, `box`, `braintreeSandbox`, `braintree`, `branch`, `braveAds`, `braze`, `breatheHr`, `brevo`, `brex`, `brightcove`, `brightflag`, `brightpearl`, `brivo`, `bubble`, `buildium`, `buildkite`, `businessCentral`, `buzzsprout`, `bynder`, `cabcharge`, `calabrio`, `calcom`, `calendly`, `callrail`, `campaignmonitor`, `campfire`, `canny`, `canvasByInstructure`, `canvasData2ByInstructure`, `captivateiq`, `careQualityCommission`, `castorEdc`, `centra`, `ceridianDayforce`, `chameleon`, `channelAdvisor`, `chargebeeProductCatalog1`, `chargebeeProductCatalog2`, `chargedesk`, `charthop`, `chartmogul`, `checkout`, `checkr`, `chorusai`, `churnkey`, `churnzero`, `cimis`, `cin7`, `cin7core`, `circleCommunityPlatform`, `circleci`, `cjCommissionDetail`, `clari`, `classy`, `claudeCompliance`, `clazar`, `clickup`, `clockify`, `clockodo`, `close`, `cloudbeds`, `cloudflareAnalytics`, `cloudfront`, `cloudtalk`, `clubspeed`, `coalesce`, `coassemble`, `coda`, `codefresh`, `coheris`, `collibra`, `column`, `commercetools`, `complianceCheckpoint`, `concord`, `concur`, `confluence`, `confluentCloud`, `connectorSdk`, `consensusDemoAutomationPlatform`, `constantContact`, `contrastSecurity`, `convex`, `copper`, `cornerstone`, `coupa`, `credly`, `criteoRetailMedia`, `criteo`, `crossbeam`, `crowddev`, `crunchbase`, `cubeSoftware`, `cube`, `cultureAmp`, `customerio`, `cvent`, `d2lBrightspace`, `datadog`, `datastreamerSource`, `db2luw`, `dbtCloud`, `dclLogistics`, `dear`, `deel`, `delighted`, `deposco`, `deputy`, `destini`, `deviceMagic`, `dialpad`, `discourse`, `dixa`, `docebo`, `donus`, `doorloop`, `doubleClickCampaignManager`, `doubleClickPublishers`, `drata`, `drift`, `drip`, `dropboxSign`, `dropbox`, `dsv`, `duoplane`, `dutchie`, `dynamics365`, `dynamodb`, `easypost`, `ebay`, `economic`, `elasticCloud`, `electronicTenantSolutions`, `eloqua`, `email`, `employmentHero`, `esSelfHosted`, `eventbrite`, `eventsforce`, `everflow`, `everhour`, `exactOnline`, `expensein`, `expensify`, `ezofficeinventory`, `facebookAdAccount`, `facebookAds`, `facebookPages`, `facebook`, `factbird`, `factorial`, `fathom`, `fillout`, `financialForce`, `firebase`, `fireflies`, `firehydrant`, `fivetranLog`, `flexport`, `float`, `flywheelDigital`, `foneDynamics`, `forethought`, `forjCommunity`, `formstack`, `fortnox`, `fountain`, `fourkites`, `freightview`, `freshbooks`, `freshchat`, `freshdeskContactCenter`, `freshdesk`, `freshsales`, `freshservice`, `freshsuccess`, `freshteam`, `friendbuy`, `front`, `ftp`, `fulfil`, `fullstory`, `g2`, `gainsightCustomerSuccess`, `gainsightProductExperience`, `gcs`, `gem`, `genesys`, `getfeedback`, `github`, `gitlab`, `gladly`, `globalmeet`, `gmail`, `gocardless`, `gofundmePro`, `goldcast`, `gongio`, `googleAds`, `googleAnalytics360`, `googleAnalytics4Export`, `googleAnalytics4`, `googleAnalyticsMcf`, `googleAnalytics`, `googleBusinessProfile`, `googleCalendar`, `googleClassroom`, `googleCloudFunction`, `googleDisplayAndVideo360`, `googleDrive`, `googlePlay`, `googleSearchAds360`, `googleSearchConsole`, `googleSheets`, `googleTagManager`, `googleTasks`, `gorgias`, `greenPowerMonitor`, `greenhouse`, `grepsr`, `grin`, `guidewireCloudDataAccess`, `guru`, `hLevel`, `hanaSapHvaEccNetweaver`, `hanaSapHvaS4Netweaver`, `happyfox`, `harvest`, `healthie`, `heap`, `heartlandRetailPos`, `height`, `helpdesk`, `helpjuice`, `helpscout`, `helpshift`, `herokuKafka`, `hex`, `hibob`, `higherLogicVanilla`, `hiltiOntrack`, `hopin`, `hubspot`, `ibacos`, `ilevel`, `impactPartner`, `impact`, `incidentio`, `infobip`, `insightly`, `instagramBusiness`, `instructure`, `integralAdScience`, `integrate`, `intercom`, `invoiced`, `ironcladClickwrap`, `ironclad`, `ironsource`, `iterable`, `itunesConnect`, `ivanti`, `jamaSoftware`, `jamf`, `jibble`, `jira`, `jobnimbus`, `jotform`, `justcall`, `kandji`, `katana`, `kevel`, `keypay`, `khorosCare`, `khorosCommunities`, `khorosMarketing`, `kinesis`, `kisi`, `kissmetrics`, `klarna`, `klaviyo`, `konnectInsights`, `kustomer`, `lattice`, `launchdarkly`, `leapCrm`, `leapsome`, `learnAmp`, `learnupon`, `leaveDates`, `lemlist`, `lessonly`, `lever`, `liftoff`, `lightSpeedRetail`, `lightspeedRetailXseries`, `lineAds`, `linear`, `linkedinAds`, `linkedinCompanyPages`, `linksquares`, `listen360`, `livechatPartner`, `livechat`, `livestorm`, `lob`, `lookerSource`, `loop`, `loopio`, `lucca`, `luma`, `mailchimp`, `maileon`, `mailgun`, `mailjet`, `maintainx`, `malomo`, `mambu`, `mandrill`, `marin`, `marketo`, `matomo`, `mavenlink`, `maxioChargify`, `maxioSaasoptics`, `medalliaAgileResearch`, `medallia`, `megaphone`, `meltwater`, `mention`, `messagebird`, `microsoftDynamics365Fno`, `microsoftDynamics365Fo`, `microsoftEntraId`, `microsoftLists`, `microsoftPowerBi`, `microsoftTeams`, `missive`, `mixmax`, `mixpanel`, `mode`, `mollie`, `moloco`, `monday`, `mountain`, `mux`, `myosh`, `namely`, `nationalHeavyVehicleRegulator`, `navan`, `netsuiteSuiteanalytics`, `nice`, `notion`, `nylas`, `odoo`, `okendo`, `okta`, `ometria`, `on24`, `oncehub`, `oneDrive`, `onetrust`, `openDataDc`, `openExchangeRates`, `openaiCompliancePlatform`, `openai`, `opendistro`, `opensearch`, `optimizely`, `oracleFusionFieldService`, `oracleMoatAnalytics`, `oracleNetsuiteOpenair`, `oracleSapHvaNetweaver`, `orbit`, `ordergroove`, `ordway`, `ortto`, `outbrain`, `outreach`, `packiyo`, `paddle`, `pagerduty`, `pandadoc`, `papershift`, `parcellab`, `pardotSandbox`, `pardot`, `partnerize`, `partnerstackVendor`, `paychex`, `paylocity`, `paypalSandbox`, `paypal`, `pendo`, `peopleforce`, `persona`, `personio`, `phoenixAds`, `picqer`, `pigment`, `pingdom`, `pinpoint`, `pinterestAds`, `pinterestOrganic`, `pipe17`, `pipedrive`, `pivotalTracker`, `piwikPro`, `placerai`, `planetscale`, `planful`, `planhat`, `playvoxWorkforceManagement`, `playvox`, `podio`, `poplar`, `posthog`, `postmark`, `powerReviewsEnterprise`, `prismaCloud`, `prive`, `procore`, `productboard`, `productive`, `profound`, `proofpointSecurityAwareness`, `prosperstack`, `purpleDot`, `pylonSupportPlatform`, `qmaticDataConnect`, `qualaroo`, `qualtrics`, `quickbooks`, `quoraAds`, `quorum`, `rakutenadvertising`, `ramp`, `rarible`, `reboundReturns`, `recharge`, `recurly`, `redditAds`, `referralhero`, `refiner`, `reltio`, `replyio`, `resourceManagementBySmartsheet`, `retailnext`, `retently`, `revel`, `revenuecat`, `reviewsai`, `reviewsio`, `revops`, `revx`, `ricochet360`, `ringcentral`, `ringover`, `rippling`, `rithum`, `rivo`, `rocketlane`, `rokt`, `rollbar`, `rootly`, `rtbHouse`, `ruddr`, `rundeck`, `s3CompatibleStorage`, `s3`, `safebase`, `safetyculture`, `sageHr`, `sageIntacct`, `sailthru`, `salesforceCommerceCloud`, `salesforceMarketingCloud`, `salesforceSandbox`, `salesforce`, `salesloft`, `salsify`, `samsara`, `sana`, `sapBusinessByDesign`, `sapHana`, `sapS4hana`, `sapSuccessFactors`, `scorm`, `securityJourney`, `segment`, `sendgrid`, `sendinblue`, `sensorTower`, `sentry`, `servicenow`, `servicetitan`, `servicetrade`, `sevdesk`, `sftp`, `sharePoint`, `shareasale`, `sharetribe`, `shiphero`, `shipmonk`, `shipnetwork`, `shipstation`, `shopify`, `shopware`, `shortcut`, `shortio`, `showpad`, `siemensBuildingXOpenness`, `sigmaComputingSource`, `simplecast`, `simplesat`, `singlestoreSource`, `sistrix`, `skilljar`, `skillstx`, `skimlinks`, `skuvault`, `slab`, `slackAdminData`, `slackApp`, `slack`, `smadex`, `smarthr`, `smartrecruiters`, `smartsheet`, `smartwaiver`, `snapchatAds`, `snowplow`, `snyk`, `solarwindsServiceDesk`, `sonarqube`, `sparkpost`, `splash`, `splitio`, `splunk`, `spotifyAds`, `sprout`, `square`, `squarespace`, `stackadaptGraphql`, `stackadapt`, `standardMetrics`, `starrez`, `statisticsNetherlandsCbs`, `statsig`, `statuspage`, `stickyio`, `stripeTest`, `stripe`, `stylight`, `subscript`, `sugarcrm`, `surveyMonkey`, `survicate`, `swoogo`, `tableauSource`, `taboola`, `talkdesk`, `talkwalker`, `teads`, `teamtailor`, `teamwork`, `tempo`, `testrail`, `textus`, `theMovieDatabase`, `theTradeDesk`, `thinkific`, `ticketTailor`, `tiktokAds`, `tiktokOrganicApp`, `tiktokOrganic`, `tive`, `toast`, `togglTrack`, `totango`, `tracksuitSource`, `transcend`, `trelica`, `trello`, `tremendous`, `tripleWhale`, `trisolute`, `trustpilot`, `twilio`, `twitterAds`, `twitter`, `tymeshift`, `typeform`, `udemyBusiness`, `ukgProWorkforceManagement`, `ukgPro`, `unicommerce`, `upland`, `uppromote`, `uptempo`, `uservoice`, `validio`, `veeqo`, `veevaVault`, `veevavault`, `venminder`, `vimeo`, `visitByGes`, `visma`, `vitally`, `vonageContactCenter`, `vonage`, `vts`, `vwo`, `walmartDsp`, `walmartMarketplace`, `wasabiCloudStorage`, `webScraper`, `webconnex`, `webhooks`, `whenIWork`, `wherefour`, `wickedReports`, `woocommerce`, `wordpress`, `workable`, `workdayAdaptive`, `workdayFinancialManagement`, `workdayHcm`, `workdayStrategicSourcing`, `workday`, `workflowmax`, `workleapOfficevibe`, `workramp`, `wrike`, `writesonic`, `xactly`, `xandr`, `xero`, `xray`, `xsolla`, `yahooDisplayAdsOnYahooJapan`, `yahooDsp`, `yahooGemini`, `yahooSearchAdsYahooJapan`, `yext`, `yotpoApp`, `yotpo`, `yougovBrandindex`, `yougovSport`, `younium`, `youtubeAnalytics`, `zendeskChat`, `zendeskSell`, `zendeskSunshine`, `zendeskWorkforceManagement`, `zendesk`, `zenefits`, `zingtree`, `zip`, `zohoBooks`, `zohoCampaigns`, `zohoCrm`, `zohoDesk`, `zohoInventory`, `zohoPeople`, `zohoRecruit`, `zonkaFeedback`, `zoom`, `zuoraSandbox`, `zuora`
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -24867,7 +25106,7 @@ export interface GetConnectorDestinationSchemaArgs {
     table?: pulumi.Input<string | undefined>;
     /**
      * Table group name. Combined with the schema to form the Fivetran connection name '<schema>.<table_group_name>'. Required for connector creation of services:<br>
-     * `azureBlobStorage`, `box`, `dropbox`, `email`, `ftp`, `gcs`, `googleDrive`, `s3CompatibleStorage`, `s3`, `sftp`, `sharePoint`, `workday`
+     * `azureBlobStorage`, `box`, `dropbox`, `email`, `ftp`, `gcs`, `googleDrive`, `guidewireCloudDataAccess`, `s3CompatibleStorage`, `s3`, `sftp`, `sharePoint`, `workday`
      */
     tableGroupName?: pulumi.Input<string | undefined>;
 }
