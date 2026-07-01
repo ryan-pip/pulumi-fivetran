@@ -61,6 +61,9 @@
                             "advertisers_with_seat": {
                                 "maxItemsOne": false
                             },
+                            "allowed_senders_list": {
+                                "maxItemsOne": false
+                            },
                             "api_keys": {
                                 "maxItemsOne": false
                             },
@@ -733,6 +736,9 @@
                                 "maxItemsOne": false
                             },
                             "advertisers_with_seat": {
+                                "maxItemsOne": false
+                            },
+                            "allowed_senders_list": {
                                 "maxItemsOne": false
                             },
                             "api_keys": {
