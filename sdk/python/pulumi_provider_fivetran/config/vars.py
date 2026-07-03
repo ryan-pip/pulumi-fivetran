@@ -32,3 +32,10 @@ class _ExportableConfig(types.ModuleType):
     def api_url(self) -> Optional[str]:
         return __config__.get('apiUrl')
 
+    @_builtins.property
+    def skip_plan_time_validation(self) -> Optional[bool]:
+        """
+        Skip metadata-backed plan-time validation for dynamic v2 resource fields. Use only as a temporary workaround when validation metadata is not available; invalid fields will fail later at apply time.
+        """
+        return __config__.get_bool('skipPlanTimeValidation')
+

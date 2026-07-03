@@ -43,6 +43,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["apiKey"] = (args?.apiKey) ?? utilities.getEnv("FIVETRAN_API_KEY");
             resourceInputs["apiSecret"] = (args?.apiSecret ? pulumi.secret(args.apiSecret) : undefined) ?? utilities.getEnv("FIVETRAN_API_SECRET");
             resourceInputs["apiUrl"] = args?.apiUrl;
+            resourceInputs["skipPlanTimeValidation"] = pulumi.output(args?.skipPlanTimeValidation).apply(JSON.stringify);
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["apiSecret"] };
@@ -67,6 +68,10 @@ export interface ProviderArgs {
     apiKey?: pulumi.Input<string | undefined>;
     apiSecret?: pulumi.Input<string | undefined>;
     apiUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Skip metadata-backed plan-time validation for dynamic v2 resource fields. Use only as a temporary workaround when validation metadata is not available; invalid fields will fail later at apply time.
+     */
+    skipPlanTimeValidation?: pulumi.Input<boolean | undefined>;
 }
 
 export namespace Provider {

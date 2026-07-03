@@ -84,6 +84,12 @@ namespace Pulumi.Fivetran
         [Input("apiUrl")]
         public Input<string>? ApiUrl { get; set; }
 
+        /// <summary>
+        /// Skip metadata-backed plan-time validation for dynamic v2 resource fields. Use only as a temporary workaround when validation metadata is not available; invalid fields will fail later at apply time.
+        /// </summary>
+        [Input("skipPlanTimeValidation", json: true)]
+        public Input<bool>? SkipPlanTimeValidation { get; set; }
+
         public ProviderArgs()
         {
             ApiKey = Utilities.GetEnv("FIVETRAN_API_KEY");

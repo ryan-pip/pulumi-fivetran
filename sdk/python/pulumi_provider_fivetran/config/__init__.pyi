@@ -20,3 +20,8 @@ apiSecret: Optional[str]
 
 apiUrl: Optional[str]
 
+skipPlanTimeValidation: Optional[bool]
+"""
+Skip metadata-backed plan-time validation for dynamic v2 resource fields. Use only as a temporary workaround when validation metadata is not available; invalid fields will fail later at apply time.
+"""
+

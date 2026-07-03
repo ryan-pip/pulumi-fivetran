@@ -31,3 +31,14 @@ Object.defineProperty(exports, "apiUrl", {
     enumerable: true,
 });
 
+/**
+ * Skip metadata-backed plan-time validation for dynamic v2 resource fields. Use only as a temporary workaround when validation metadata is not available; invalid fields will fail later at apply time.
+ */
+export declare const skipPlanTimeValidation: boolean | undefined;
+Object.defineProperty(exports, "skipPlanTimeValidation", {
+    get() {
+        return __config.getObject<boolean>("skipPlanTimeValidation");
+    },
+    enumerable: true,
+});
+
