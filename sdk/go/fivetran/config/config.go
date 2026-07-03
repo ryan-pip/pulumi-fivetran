@@ -36,3 +36,8 @@ func GetApiSecret(ctx *pulumi.Context) string {
 func GetApiUrl(ctx *pulumi.Context) string {
 	return config.Get(ctx, "fivetran:apiUrl")
 }
+
+// Skip metadata-backed plan-time validation for dynamic v2 resource fields. Use only as a temporary workaround when validation metadata is not available; invalid fields will fail later at apply time.
+func GetSkipPlanTimeValidation(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "fivetran:skipPlanTimeValidation")
+}

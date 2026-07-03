@@ -112,42 +112,42 @@ checksum = "sha256:f2aa33b35b75aca5f3f7b85675a6f6423201053e9381911e64961f3bda252
 url = "https://nodejs.org/dist/v24.17.0/node-v24.17.0-win-x64.zip"
 
 [[tools.pulumi]]
-version = "3.248.0"
+version = "3.250.0"
 backend = "aqua:pulumi/pulumi"
 
 [tools.pulumi."platforms.linux-arm64"]
-checksum = "sha256:c0287edf11cac0f0f77378b17b843ef6cb7f39252c9fcc1d2ba62145d6d96d58"
-url = "https://github.com/pulumi/pulumi/releases/download/v3.248.0/pulumi-v3.248.0-linux-arm64.tar.gz"
+checksum = "sha256:deb4bf0d05b4cbaf3adcf82ffa44039ad0ebf039e33338ead8136877a437b4e5"
+url = "https://github.com/pulumi/pulumi/releases/download/v3.250.0/pulumi-v3.250.0-linux-arm64.tar.gz"
 provenance = "cosign"
 
 [tools.pulumi."platforms.linux-arm64-musl"]
-checksum = "sha256:c0287edf11cac0f0f77378b17b843ef6cb7f39252c9fcc1d2ba62145d6d96d58"
-url = "https://github.com/pulumi/pulumi/releases/download/v3.248.0/pulumi-v3.248.0-linux-arm64.tar.gz"
+checksum = "sha256:deb4bf0d05b4cbaf3adcf82ffa44039ad0ebf039e33338ead8136877a437b4e5"
+url = "https://github.com/pulumi/pulumi/releases/download/v3.250.0/pulumi-v3.250.0-linux-arm64.tar.gz"
 provenance = "cosign"
 
 [tools.pulumi."platforms.linux-x64"]
-checksum = "sha512:e26a4dd1d95f3f4ae7169e23cc86c2604b5481e327c02aaee7b3dd7b348d0fb58c9b37a4ee145b09e5abb4117a5e083315d3193ed5b0cc1854cee8d4bda220a0"
-url = "https://github.com/pulumi/pulumi/releases/download/v3.248.0/pulumi-v3.248.0-linux-x64.tar.gz"
+checksum = "sha512:66a702c1783d63c2d1145ceb79a6cf40018a6b5503524a040d53af68c1a4fe30e663184647d652102c3c9c0216b847e48842423585d85ef45614c90e0a3d1990"
+url = "https://github.com/pulumi/pulumi/releases/download/v3.250.0/pulumi-v3.250.0-linux-x64.tar.gz"
 provenance = "cosign"
 
 [tools.pulumi."platforms.linux-x64-musl"]
-checksum = "sha256:a13732d8921f99d70b9ae270d79c3b575bb37707fce7486e64fef333afc11ae0"
-url = "https://github.com/pulumi/pulumi/releases/download/v3.248.0/pulumi-v3.248.0-linux-x64.tar.gz"
+checksum = "sha256:8916fd36ccc96adbd45ca679194b685e3b767d94502ae05610878a6d9870b8f3"
+url = "https://github.com/pulumi/pulumi/releases/download/v3.250.0/pulumi-v3.250.0-linux-x64.tar.gz"
 provenance = "cosign"
 
 [tools.pulumi."platforms.macos-arm64"]
-checksum = "sha256:1c42c8e4c504c12e8cdce42a638ff47a4786afbaebf2f381563bb01f2fadbe48"
-url = "https://github.com/pulumi/pulumi/releases/download/v3.248.0/pulumi-v3.248.0-darwin-arm64.tar.gz"
+checksum = "sha256:dbd289ce3069cf567683252082e226aef533775f546df7286f64f3f36f5fda28"
+url = "https://github.com/pulumi/pulumi/releases/download/v3.250.0/pulumi-v3.250.0-darwin-arm64.tar.gz"
 provenance = "cosign"
 
 [tools.pulumi."platforms.macos-x64"]
-checksum = "sha256:c0ddbbdf20dcee54b5c542106956fedb0c61b9b11f103a6e2a6d4df4bb64bc5a"
-url = "https://github.com/pulumi/pulumi/releases/download/v3.248.0/pulumi-v3.248.0-darwin-x64.tar.gz"
+checksum = "sha256:8aa1615ed737022949d4050bf183ab37bce1f9cecb88877bc6636db82604e348"
+url = "https://github.com/pulumi/pulumi/releases/download/v3.250.0/pulumi-v3.250.0-darwin-x64.tar.gz"
 provenance = "cosign"
 
 [tools.pulumi."platforms.windows-x64"]
-checksum = "sha256:d9d824dfd42194dc2231f9e3101484a2551b90af28c94e2f532555eadde1ec39"
-url = "https://github.com/pulumi/pulumi/releases/download/v3.248.0/pulumi-v3.248.0-windows-x64.zip"
+checksum = "sha256:66b15e1859278de39dc1b1ecfee280330743951765d58de5d4b248618acaba40"
+url = "https://github.com/pulumi/pulumi/releases/download/v3.250.0/pulumi-v3.250.0-windows-x64.zip"
 provenance = "cosign"
 
 [[tools.python]]
@@ -190,40 +190,40 @@ url = "https://github.com/astral-sh/python-build-standalone/releases/download/20
 provenance = "github-attestations"
 
 [[tools.uv]]
-version = "0.11.25"
+version = "0.11.26"
 backend = "aqua:astral-sh/uv"
 
 [tools.uv."platforms.linux-arm64"]
-checksum = "sha256:3d9c9a95f1868ff20ac880712f3a337d710ea4b65f135184b7a35635d1acbf84"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.25/uv-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:47418cfdb34b1ca42e503da72631ac8c475602e2411ac6c39aa84c2373fe6324"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.26/uv-aarch64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-arm64-musl"]
-checksum = "sha256:3d9c9a95f1868ff20ac880712f3a337d710ea4b65f135184b7a35635d1acbf84"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.25/uv-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:47418cfdb34b1ca42e503da72631ac8c475602e2411ac6c39aa84c2373fe6324"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.26/uv-aarch64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-x64"]
-checksum = "sha256:7195cfcc1785d0c559d4682ad9109f26664b8db4d828d42d66078ef454061891"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.25/uv-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:62bf1a53501adf4083224b69b33737450ac516935f5a5e483e9dfaf2665084de"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.26/uv-x86_64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.linux-x64-musl"]
-checksum = "sha256:7195cfcc1785d0c559d4682ad9109f26664b8db4d828d42d66078ef454061891"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.25/uv-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:62bf1a53501adf4083224b69b33737450ac516935f5a5e483e9dfaf2665084de"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.26/uv-x86_64-unknown-linux-musl.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.macos-arm64"]
-checksum = "sha256:5fc334bb25d19806262efd1f6e7d380155c7e817d89bf426df4ba7ae873c9471"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.25/uv-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:8f7fbf1708399b921857bce71e1d60f0d3ccf52a30caebc1c1a2f175dce13ab6"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.26/uv-aarch64-apple-darwin.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.macos-x64"]
-checksum = "sha256:65ff85b33212f75d34d7c0f0724aba9a742c74f62559f67dc0d6c543dc2fc52f"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.25/uv-x86_64-apple-darwin.tar.gz"
+checksum = "sha256:922b460202707dd5f4ccacbadbe7f6a546cc46e82a99bf50ca99a7977a78eddd"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.26/uv-x86_64-apple-darwin.tar.gz"
 provenance = "github-attestations"
 
 [tools.uv."platforms.windows-x64"]
-checksum = "sha256:15bfd1423b7eaa7aae949922d4712ebaac2bb44a81af64ab59bbe007090cb0d0"
-url = "https://github.com/astral-sh/uv/releases/download/0.11.25/uv-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:4e1278ede866be6c0bf32d2f466cc6de7a9fb399ecf20c9ce2d186e52424be47"
+url = "https://github.com/astral-sh/uv/releases/download/0.11.26/uv-x86_64-pc-windows-msvc.zip"
 provenance = "github-attestations"

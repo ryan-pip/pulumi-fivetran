@@ -53,5 +53,15 @@ namespace Pulumi.Fivetran
             set => _apiUrl.Set(value);
         }
 
+        private static readonly __Value<bool?> _skipPlanTimeValidation = new __Value<bool?>(() => __config.GetBoolean("skipPlanTimeValidation"));
+        /// <summary>
+        /// Skip metadata-backed plan-time validation for dynamic v2 resource fields. Use only as a temporary workaround when validation metadata is not available; invalid fields will fail later at apply time.
+        /// </summary>
+        public static bool? SkipPlanTimeValidation
+        {
+            get => _skipPlanTimeValidation.Get();
+            set => _skipPlanTimeValidation.Set(value);
+        }
+
     }
 }

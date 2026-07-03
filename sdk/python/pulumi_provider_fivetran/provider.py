@@ -21,9 +21,12 @@ class ProviderArgs:
     def __init__(__self__, *,
                  api_key: pulumi.Input[Optional[_builtins.str]] = None,
                  api_secret: pulumi.Input[Optional[_builtins.str]] = None,
-                 api_url: pulumi.Input[Optional[_builtins.str]] = None):
+                 api_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_plan_time_validation: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Provider resource.
+
+        :param pulumi.Input[_builtins.bool] skip_plan_time_validation: Skip metadata-backed plan-time validation for dynamic v2 resource fields. Use only as a temporary workaround when validation metadata is not available; invalid fields will fail later at apply time.
         """
         if api_key is None:
             api_key = _utilities.get_env('FIVETRAN_API_KEY')
@@ -35,6 +38,8 @@ class ProviderArgs:
             pulumi.set(__self__, "api_secret", api_secret)
         if api_url is not None:
             pulumi.set(__self__, "api_url", api_url)
+        if skip_plan_time_validation is not None:
+            pulumi.set(__self__, "skip_plan_time_validation", skip_plan_time_validation)
 
     @_builtins.property
     @pulumi.getter(name="apiKey")
@@ -63,6 +68,18 @@ class ProviderArgs:
     def api_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_url", value)
 
+    @_builtins.property
+    @pulumi.getter(name="skipPlanTimeValidation")
+    def skip_plan_time_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Skip metadata-backed plan-time validation for dynamic v2 resource fields. Use only as a temporary workaround when validation metadata is not available; invalid fields will fail later at apply time.
+        """
+        return pulumi.get(self, "skip_plan_time_validation")
+
+    @skip_plan_time_validation.setter
+    def skip_plan_time_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "skip_plan_time_validation", value)
+
 
 @pulumi.type_token("pulumi:providers:fivetran")
 class Provider(pulumi.ProviderResource):
@@ -73,6 +90,7 @@ class Provider(pulumi.ProviderResource):
                  api_key: pulumi.Input[Optional[_builtins.str]] = None,
                  api_secret: pulumi.Input[Optional[_builtins.str]] = None,
                  api_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_plan_time_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         The provider type for the fivetran package. By default, resources use package-wide configuration
@@ -83,6 +101,7 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] skip_plan_time_validation: Skip metadata-backed plan-time validation for dynamic v2 resource fields. Use only as a temporary workaround when validation metadata is not available; invalid fields will fail later at apply time.
         """
         ...
     @overload
@@ -115,6 +134,7 @@ class Provider(pulumi.ProviderResource):
                  api_key: pulumi.Input[Optional[_builtins.str]] = None,
                  api_secret: pulumi.Input[Optional[_builtins.str]] = None,
                  api_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_plan_time_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -131,6 +151,7 @@ class Provider(pulumi.ProviderResource):
                 api_secret = _utilities.get_env('FIVETRAN_API_SECRET')
             __props__.__dict__["api_secret"] = None if api_secret is None else pulumi.Output.secret(api_secret)
             __props__.__dict__["api_url"] = api_url
+            __props__.__dict__["skip_plan_time_validation"] = pulumi.Output.from_input(skip_plan_time_validation).apply(pulumi.runtime.to_json) if skip_plan_time_validation is not None else None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["apiSecret"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(

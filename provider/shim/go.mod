@@ -3,7 +3,7 @@ module github.com/fivetran/terraform-provider-fivetran/shim
 go 1.24.0
 
 require (
-	github.com/fivetran/terraform-provider-fivetran v1.9.36
+	github.com/fivetran/terraform-provider-fivetran v1.9.37
 	github.com/hashicorp/terraform-plugin-framework v1.18.0
 )
 

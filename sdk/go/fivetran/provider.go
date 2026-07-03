@@ -60,6 +60,8 @@ type providerArgs struct {
 	ApiKey    *string `pulumi:"apiKey"`
 	ApiSecret *string `pulumi:"apiSecret"`
 	ApiUrl    *string `pulumi:"apiUrl"`
+	// Skip metadata-backed plan-time validation for dynamic v2 resource fields. Use only as a temporary workaround when validation metadata is not available; invalid fields will fail later at apply time.
+	SkipPlanTimeValidation *bool `pulumi:"skipPlanTimeValidation"`
 }
 
 // The set of arguments for constructing a Provider resource.
@@ -67,6 +69,8 @@ type ProviderArgs struct {
 	ApiKey    pulumi.StringPtrInput
 	ApiSecret pulumi.StringPtrInput
 	ApiUrl    pulumi.StringPtrInput
+	// Skip metadata-backed plan-time validation for dynamic v2 resource fields. Use only as a temporary workaround when validation metadata is not available; invalid fields will fail later at apply time.
+	SkipPlanTimeValidation pulumi.BoolPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
