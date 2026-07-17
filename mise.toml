@@ -16,4 +16,4 @@ golangci-lint = "2"
 "go:github.com/pulumi/pulumictl/cmd/pulumictl" = "latest"
 
 [env]
-GOTOOLCHAIN = "go1.25.9"
+GOTOOLCHAIN = "auto" # Never exact-pin: drift vs mise.lock's go version has repeatedly broken the daily upgrade-provider workflow.
