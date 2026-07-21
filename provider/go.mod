@@ -81,8 +81,8 @@ require (
 	github.com/erikgeiser/coninput v0.0.0-20211004153227-1c3628e74d0f // indirect
 	github.com/fatih/color v1.18.0 // indirect
 	github.com/felixge/httpsnoop v1.0.4 // indirect
-	github.com/fivetran/go-fivetran v1.3.5 // indirect
-	github.com/fivetran/terraform-provider-fivetran v1.9.37 // indirect
+	github.com/fivetran/go-fivetran v1.3.6 // indirect
+	github.com/fivetran/terraform-provider-fivetran v1.9.38 // indirect
 	github.com/frankban/quicktest v1.14.4 // indirect
 	github.com/go-git/gcfg/v2 v2.0.2 // indirect
 	github.com/go-git/go-billy/v6 v6.0.0-alpha.1 // indirect

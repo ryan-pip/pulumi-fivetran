@@ -203,7 +203,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `DoubleClickPublishers`: Report dimensions to include in the sync. The `Date` dimension is mandatory for all the report types.
         /// 	- Service `GoogleAnalytics`: The report dimensions to include into a sync. The `Date` dimension is mandatory for all the report types.
         /// 	- Service `GoogleAnalytics4`: The report dimensions to include into a sync.
-        /// 	- Service `GoogleDisplayAndVideo360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `ConfigMethod` is set to `CREATE_NEW`.
+        /// 	- Service `GoogleDisplayAndVideo360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `ConfigMethod` is set to `CREATE_NEW`. NOTE: At least one of the following date dimensions must be included for report data aggregation: `FILTER_DATE` (daily), `FILTER_WEEK` (weekly), or `FILTER_MONTH` (monthly).
         /// 	- Service `GoogleSearchConsole`: The report dimensions included to sync.
         /// 	- Service `WorkdayAdaptive`: List of dimensions to sync for the table, if applicable.
         /// </summary>
