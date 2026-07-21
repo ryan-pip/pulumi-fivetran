@@ -179,6 +179,7 @@ export interface ConnectorAuth {
     /**
      * Field usage depends on `service` value:
      * 	- Service `quickbooks`: `Realm ID` of your QuickBooks application.
+     * 	- Service `tiktokOrganicApp`: The TikTok account Open ID (open_id) returned during OAuth authorization. Required when creating the connector via REST API.
      */
     realmId?: pulumi.Input<string | undefined>;
     /**
@@ -976,7 +977,7 @@ export interface ConnectorConfig {
     apiAccessToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
-     * 	- Service `anthropicClaude`: Your Claude Platform Admin API key for syncing organization-level management and reporting data.
+     * 	- Service `anthropicClaude`: Your Claude Admin API key for syncing organization-level management and reporting data.
      */
     apiAdminKey?: pulumi.Input<string | undefined>;
     /**
@@ -984,6 +985,11 @@ export interface ConnectorConfig {
      * 	- Service `gongio`: Your Gong API Base URL.
      */
     apiBaseUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `jira`: The number of hours to roll back the issue search cursor. Allows reprocessing of recently updated issues that may have been missed due to indexing delays. Valid range is 0-48 hours. A value of 0 disables the rollback.
+     */
+    apiCursorRollbackWindow?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value:
      * 	- Service `afterpay`: Your Afterpay API environment.
@@ -1327,6 +1333,11 @@ export interface ConnectorConfig {
     apiServer?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `genesys`: Choose the Genesys API you want to use to sync conversation analytics data. Export API retrieves conversation records via an asynchronous export job and is recommended for historical data. Aggregate Query API fetches data using the analytics aggregate query endpoint and produces a different set of tables and schemas. You cannot change this value after you set up the connection.
+     */
+    apiToSyncConversationAnalyticsData?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `aha`: Your Aha! API key.
      * 	- Service `aircall`: Your Aircall API token.
      * 	- Service `appsflyer`: API Token for AppsFlyer's PULL API.
@@ -1380,7 +1391,7 @@ export interface ConnectorConfig {
      * 	- Service `safetyculture`: Your SafetyCulture API token.
      * 	- Service `sensorTower`: Your Sensor Tower API token.
      * 	- Service `sentry`: Your Sentry auth token.
-     * 	- Service `sevdesk`: Your 32-character hexadecimal API token.
+     * 	- Service `sevdesk`: Your sevdesk API token.
      * 	- Service `simplecast`: Your Simplecast API token.
      * 	- Service `smartsheet`: API token generated from your Smartsheet account.
      * 	- Service `snyk`: Your Snyk API token.
@@ -1610,6 +1621,13 @@ export interface ConnectorConfig {
     asmPassword?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `oracle`: ASM staging directory path. Required when the ASM option is enabled.
+     * 	- Service `oracleEbs`: ASM staging directory path. Required when the ASM option is enabled.
+     * 	- Service `oracleRac`: ASM staging directory path. Required when the ASM option is enabled.
+     */
+    asmStagingDirectory?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `oracleHva`: ASM TNS.
      * 	- Service `oracleSapHva`: ASM TNS.
      */
@@ -1695,6 +1713,7 @@ export interface ConnectorConfig {
      * 	- Service `github`: Authorization type.
      * 	- Service `smartsheet`: Authorization type.
      * 	- Service `workday`: Authentication Mode
+     * 	- Service `workdayAdaptive`: Authentication mode: PASSWORD (username/password) or TOKEN (key-based authentication)
      * 	- Service `workdayFinancialManagement`: Authentication Mode
      * 	- Service `workdayHcm`: Authentication Mode
      */
@@ -2001,6 +2020,27 @@ export interface ConnectorConfig {
     catalog?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `oracle`: Optional: CDB database name for TDE-encrypted containerized databases.
+     * 	- Service `oracleEbs`: Optional: CDB database name for TDE-encrypted containerized databases.
+     * 	- Service `oracleRac`: Optional: CDB database name for TDE-encrypted containerized databases.
+     */
+    cdbDatabase?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `oracle`: Optional: Password for the CDB user.
+     * 	- Service `oracleEbs`: Optional: Password for the CDB user.
+     * 	- Service `oracleRac`: Optional: Password for the CDB user.
+     */
+    cdbPassword?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `oracle`: Optional: CDB user for TDE-encrypted containerized databases.
+     * 	- Service `oracleEbs`: Optional: CDB user for TDE-encrypted containerized databases.
+     * 	- Service `oracleRac`: Optional: CDB user for TDE-encrypted containerized databases.
+     */
+    cdbUser?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `anaplan`: The contents of your PEM certificate file. Must be populated if `authMode` is set to `Certificate`.
      * 	- Service `db2z`: Db2 for z/OS host certificate
      * 	- Service `qualtrics`: Your Client Certificate
@@ -2115,7 +2155,7 @@ export interface ConnectorConfig {
      * 	- Service `instructure`: Your Instructure client ID.
      * 	- Service `integralAdScience`: Your integralAdScience client id.
      * 	- Service `ironclad`: Your Ironclad client ID.
-     * 	- Service `ironcladClickwrap`: Your Ironclad Clickwrap Client ID.
+     * 	- Service `ironcladClickwrap`: Your Ironclad Clickwrap client ID.
      * 	- Service `jamaSoftware`: Your Jama Software client ID.
      * 	- Service `jibble`: Your Jibble client ID.
      * 	- Service `khorosCommunities`: Your Khoros Communities client ID.
@@ -2183,6 +2223,7 @@ export interface ConnectorConfig {
      * 	- Service `visma`: Your Visma client ID.
      * 	- Service `vonageContactCenter`: Your Vonage Contact Center client ID.
      * 	- Service `walmartMarketplace`: Your Walmart Marketplace client ID.
+     * 	- Service `workdayAdaptive`: Client ID for token authentication (required for TOKEN authentication)
      * 	- Service `xero`: your clientId
      * 	- Service `xray`: Your Xray Client ID.
      * 	- Service `yahooDisplayAdsOnYahooJapan`: Your Yahoo Display Ads on Yahoo Japan client ID.
@@ -2322,7 +2363,7 @@ export interface ConnectorConfig {
      * 	- Service `instructure`: Your Instructure client secret.
      * 	- Service `integralAdScience`: Your integralAdScience client secret.
      * 	- Service `ironclad`: Your Ironclad client secret.
-     * 	- Service `ironcladClickwrap`: Your Ironclad Clickwrap Client Secret.
+     * 	- Service `ironcladClickwrap`: Your Ironclad Clickwrap client secret.
      * 	- Service `jamaSoftware`: Your Jama Software client secret.
      * 	- Service `jibble`: Your Jibble client secret.
      * 	- Service `khorosCommunities`: Your Khoros Communities client secret.
@@ -3122,6 +3163,13 @@ export interface ConnectorConfig {
      * 	- Service `sqlServerSapEccHva`: Use archive log only mode
      */
     enableArchiveLogOnly?: pulumi.Input<boolean | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `oracle`: Default value: `false`. Set to `true` if you're using ASM.
+     * 	- Service `oracleEbs`: Default value: `false`. Set to `true` if you're using ASM.
+     * 	- Service `oracleRac`: Default value: `false`. Set to `true` if you're using ASM.
+     */
+    enableAsm?: pulumi.Input<boolean | undefined>;
     enableDataExtensionsSyncing?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value:
@@ -3146,6 +3194,13 @@ export interface ConnectorConfig {
     enableMtlsConnection?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `oracle`: Default value: `false`. Set to `true` if you're using symbolic links.
+     * 	- Service `oracleEbs`: Default value: `false`. Set to `true` if you're using symbolic links.
+     * 	- Service `oracleRac`: Default value: `false`. Set to `true` if you're using symbolic links.
+     */
+    enableSymbolicLinks?: pulumi.Input<boolean | undefined>;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `sqlServer`: Use transparent data encryption (TDE)
      * 	- Service `sqlServerHva`: Using Transparent Data Encryption (TDE)
      * 	- Service `sqlServerSapEccHva`: Using Transparent Data Encryption (TDE)
@@ -3153,7 +3208,10 @@ export interface ConnectorConfig {
     enableTde?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `oracle`: Default value: `false`. Set to `true` if you're using TDE encryption.
+     * 	- Service `oracleEbs`: Default value: `false`. Set to `true` if you're using TDE encryption.
      * 	- Service `oracleHva`: Default value: `false`. Set to `true` if you're using TDE encryption.
+     * 	- Service `oracleRac`: Default value: `false`. Set to `true` if you're using TDE encryption.
      * 	- Service `oracleSapHva`: Default value: `false`. Set to `true` if you're using TDE encryption.
      * 	- Service `oracleSapHvaNetweaver`: Default value: `false`. Set to `true` if you're using TDE encryption.
      */
@@ -3296,6 +3354,11 @@ export interface ConnectorConfig {
      * 	- Service `surveyMonkey`: The SurveyMonkey account region. Specify `true`, if your account is hosted in the EU region. Default value is `false`.
      */
     euRegion?: pulumi.Input<boolean | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `salesforceMarketingCloud`: Event sync method. This is how Fivetran gets data for the event objects,  can be selected only during the connector creation.  TRACKING_EXTRACT - Salesforce exports a file, which we download and extract event  data from. This is the faster for large volumes, and requires SFTP.  SOAP  - We sync data using the SOAP API event object endpoints. This syncs the  latest events faster, but is slow for large volumes.
+     */
+    eventExtractMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
      * 	- Service `iterable`: List of events to sync. Should be specified when `syncMode` is `SelectedEvents`
@@ -3597,7 +3660,7 @@ export interface ConnectorConfig {
     /**
      * Field usage depends on `service` value:
      * 	- Service `amqp`: AMQP broker host address.
-     * 	- Service `aurora`: DB instance host or IP address.
+     * 	- Service `aurora`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
      * 	- Service `auroraPostgres`: DB instance host or IP address.
      * 	- Service `avevaPi`: IP address of the AF Server
      * 	- Service `azurePostgres`: DB instance host or IP address.
@@ -3629,14 +3692,14 @@ export interface ConnectorConfig {
      * 	- Service `herokuPostgres`: DB instance host or IP address.
      * 	- Service `jira`: The Jira service host address.
      * 	- Service `magentoMysql`: DB instance host or IP address.
-     * 	- Service `magentoMysqlRds`: DB instance host or IP address.
+     * 	- Service `magentoMysqlRds`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
      * 	- Service `maria`: DB instance host or IP address.
      * 	- Service `mariaAzure`: DB instance host or IP address.
-     * 	- Service `mariaRds`: DB instance host or IP address.
+     * 	- Service `mariaRds`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
      * 	- Service `marin`: The Marin host address.
      * 	- Service `mysql`: DB instance host or IP address.
      * 	- Service `mysqlAzure`: DB instance host or IP address.
-     * 	- Service `mysqlRds`: DB instance host or IP address.
+     * 	- Service `mysqlRds`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
      * 	- Service `netsuiteSuiteanalytics`: The NetSuite service host address.
      * 	- Service `opendistro`: DB instance host or IP address.
      * 	- Service `opensearch`: DB instance host or IP address.
@@ -3659,6 +3722,7 @@ export interface ConnectorConfig {
      * 	- Service `sqlServerHva`: DB instance host or IP address.
      * 	- Service `sqlServerRds`: DB instance host or IP address.
      * 	- Service `sqlServerSapEccHva`: DB instance host or IP address.
+     * 	- Service `workdayAdaptive`: Workday Adaptive host URL, including the scheme, required for TOKEN authentication
      */
     host?: pulumi.Input<string | undefined>;
     /**
@@ -3884,6 +3948,11 @@ export interface ConnectorConfig {
     issuerId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `workdayAdaptive`: Integration System User (ISU) for token authentication (required for TOKEN authentication)
+     */
+    isu?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `amqp`: JSON delivery mode (Packed or Unpacked).
      * 	- Service `awsCostReport`: Control how your JSON data is delivered into your destination
      * 	- Service `azureBlobStorage`: Control how your JSON data is delivered into your destination
@@ -3997,6 +4066,20 @@ export interface ConnectorConfig {
     listSyncMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `oracle`: Optional: The host for the local Oracle Wallet.
+     * 	- Service `oracleEbs`: Optional: The host for the local Oracle Wallet.
+     * 	- Service `oracleRac`: Optional: The host for the local Oracle Wallet.
+     */
+    localWalletHost?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `oracle`: Optional: The user for the local Oracle Wallet.
+     * 	- Service `oracleEbs`: Optional: The user for the local Oracle Wallet.
+     * 	- Service `oracleRac`: Optional: The user for the local Oracle Wallet.
+     */
+    localWalletUser?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `hLevel`: Your HighLevel location ID.
      */
     locationIds?: pulumi.Input<string | undefined>;
@@ -4023,7 +4106,7 @@ export interface ConnectorConfig {
      * 	- Service `reboundReturns`: Your ReBound Returns login.
      * 	- Service `theTradeDesk`: The Trade Desk email. It is a part of the login credentials.
      * 	- Service `walmartDsp`: Walmart DSP email. It is a part of the login credentials.
-     * 	- Service `workdayAdaptive`: User email address
+     * 	- Service `workdayAdaptive`: User email address (required for PASSWORD authentication)
      */
     login?: pulumi.Input<string | undefined>;
     /**
@@ -4405,7 +4488,7 @@ export interface ConnectorConfig {
      * 	- Service `pardotSandbox`: The Pardot user's password.
      * 	- Service `partnerize`: Your Partnerize account's password.
      * 	- Service `podio`: Your Podio account password.
-     * 	- Service `postgres`: The user's password.
+     * 	- Service `postgres`: For password authentication, enter the user's password.For Entra ID authentication, enter the client secret value.
      * 	- Service `postgresRds`: The user's password.
      * 	- Service `qmaticDataConnect`: Your Qmatic Data Connect password.
      * 	- Service `redshiftDb`: The Redshift user's password.
@@ -4448,7 +4531,7 @@ export interface ConnectorConfig {
      * 	- Service `whenIWork`: Your When I Work password.
      * 	- Service `wherefour`: Your Wherefour password.
      * 	- Service `workday`: Workday password.
-     * 	- Service `workdayAdaptive`: User password
+     * 	- Service `workdayAdaptive`: User password (required for PASSWORD authentication)
      * 	- Service `workdayFinancialManagement`: Workday password.
      * 	- Service `workdayHcm`: Workday password.
      * 	- Service `xandr`: Your Xandr password.
@@ -4716,6 +4799,7 @@ export interface ConnectorConfig {
      * 	- Service `salesforce`: Provide content of the `.key` private key (only when authenticationMethod = `ADVANCED`).
      * 	- Service `salesforceSandbox`: Provide content of the `.key` private key (only when authenticationMethod = `ADVANCED`).
      * 	- Service `snowflakeDb`: Private access key.  The field should be specified if authentication type is `KEY_PAIR`.
+     * 	- Service `workdayAdaptive`: PEM-formatted PKCS#8 private key, including BEGIN/END PRIVATE KEY markers, for token authentication
      */
     privateKey?: pulumi.Input<string | undefined>;
     /**
@@ -5065,6 +5149,12 @@ export interface ConnectorConfig {
      */
     reportServiceApiKey?: pulumi.Input<string | undefined>;
     reportSuites?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `theTradeDesk`: Report templates to sync.
+     * 	- Service `walmartDsp`: Report templates to sync.
+     */
+    reportTemplates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value:
      * 	- Service `criteo`: Report Timezone
@@ -5924,6 +6014,11 @@ export interface ConnectorConfig {
     subdomain?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `workdayHcm`: WID of the Workday Integration Transaction Log Service subscriber. Used to scope the V2 optimised history transaction-log queries to a specific integration subscriber.
+     */
+    subscriberId?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `azureServiceBus`: The subscriber name. If the connection string does not have manage permission, you need to specify a subscriber name we can use to fetch data. If not specified, we default to `fivetranSubSchema`
      */
     subscriberName?: pulumi.Input<string | undefined>;
@@ -5972,6 +6067,11 @@ export interface ConnectorConfig {
     syncDataLocker?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `jira`: Specifies whether to sync files in JIRA for supported destinations (true) or not (false).
+     */
+    syncFiles?: pulumi.Input<boolean | undefined>;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `webhooks`: The webhooks sync format.  Default value: `Unpacked`. Unpacked messages must be valid JSON.
      */
     syncFormat?: pulumi.Input<string | undefined>;
@@ -5982,6 +6082,11 @@ export interface ConnectorConfig {
      * 	- Service `salesforceSandbox`: Enable this option to sync formula fields directly (default value = `false`)
      */
     syncFormulaFields?: pulumi.Input<boolean | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `hubspot`: Enable syncing of highly sensitive data fields from HubSpot. When enabled, sensitive data syncing is also automatically enabled.
+     */
+    syncHighlySensitiveData?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value:
      * 	- Service `facebookAds`: Parameter defining whether to enable or disable metadata synchronisation. Default value: `TRUE`.
@@ -6075,6 +6180,11 @@ export interface ConnectorConfig {
      * 	- Service `appsflyer`: These options are for Appsflyer's Pull API, and are only necessary for syncing events from Pull API.
      */
     syncPullApi?: pulumi.Input<boolean | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `hubspot`: Enable syncing of sensitive data fields from HubSpot.
+     */
+    syncSensitiveData?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value:
      * 	- Service `googleAnalytics4Export`: Sync Table
@@ -6182,7 +6292,10 @@ export interface ConnectorConfig {
     tdeSetting?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `oracle`: TDE wallet password. Required for password based wallet.
+     * 	- Service `oracleEbs`: TDE wallet password. Required for password based wallet.
      * 	- Service `oracleHva`: TDE wallet password. Required for password based wallet.
+     * 	- Service `oracleRac`: TDE wallet password. Required for password based wallet.
      * 	- Service `oracleSapHva`: TDE wallet password. Required for password based wallet.
      * 	- Service `oracleSapHvaNetweaver`: TDE wallet password. Required for password based wallet.
      */
@@ -6209,6 +6322,7 @@ export interface ConnectorConfig {
      * 	- Service `microsoftTeams`: Your Microsoft Teams Tenant.
      * 	- Service `unicommerce`: Your uniware tenant.
      * 	- Service `workday`: Workday tenant name
+     * 	- Service `workdayAdaptive`: Tenant identifier (required for TOKEN authentication)
      * 	- Service `workdayFinancialManagement`: Workday tenant name
      * 	- Service `workdayHcm`: Workday tenant name
      */
@@ -6617,11 +6731,11 @@ export interface ConnectorConfig {
      * 	- Service `mysql`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
      * 	- Service `mysqlAzure`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
      * 	- Service `mysqlRds`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-     * 	- Service `oracle`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-     * 	- Service `oracleEbs`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+     * 	- Service `oracle`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+     * 	- Service `oracleEbs`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
      * 	- Service `oracleHva`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-     * 	- Service `oracleRac`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-     * 	- Service `oracleRds`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+     * 	- Service `oracleRac`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+     * 	- Service `oracleRds`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes. - `XSTREAM_OUT` - Fivetran uses Oracle XStream Out to stream changes from the database.
      * 	- Service `oracleSapHva`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
      * 	- Service `postgres`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "postgresRds"`. Supported values:`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the  write-ahead log (WAL) using a logical slot.This is more efficient than the query-based method, but requires more setup and monitoring.`QUERY_BASED` - this method replicates new, changed and deleted rows via the `xmin` and `ctid` system columns
      * 	- Service `postgresRds`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "postgresRds"`. Supported values:`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot. This is more efficient than the query-based method, but requires more setup and monitoring.`QUERY_BASED` - this method replicates new, changed and deleted rows via the `xmin` and `ctid` system columns
@@ -6668,6 +6782,12 @@ export interface ConnectorConfig {
      * 	- Service `pendo`: Toggle field to determine whether connector is syncing from API or from Data Sync
      */
     useDataSync?: pulumi.Input<boolean | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `db2iHva`: Restricts schema discovery to libraries (schemas) within the configured database. When enabled, the database parameter must also be specified.
+     * 	- Service `db2iSapHva`: Restricts schema discovery to libraries (schemas) within the configured database. When enabled, the database parameter must also be specified. Has no effect on SAP ECC on Db2 for i connectors.
+     */
+    useDatabaseNameForTableFiltering?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value:
      * 	- Service `greenhouse`: The confirmation that you want to connect to Harvest V3 API. Possible values: `true`, `false`.
@@ -6780,7 +6900,7 @@ export interface ConnectorConfig {
      * 	- Service `oracleSapHva`: The username.
      * 	- Service `oracleSapHvaNetweaver`: The username.
      * 	- Service `outbrain`: The username or email of the Outbrain user.
-     * 	- Service `postgres`: The user name.
+     * 	- Service `postgres`: For password authentication, enter the user name.For Entra ID authentication, enter the registered app display name.
      * 	- Service `postgresRds`: The user name.
      * 	- Service `redshiftDb`: The Redshift username.
      * 	- Service `sapHana`: Your SAP HANA user name.
@@ -7620,7 +7740,7 @@ export interface ConnectorConfigReport {
      * 	- Service `doubleClickPublishers`: Report dimensions to include in the sync. The `date` dimension is mandatory for all the report types.
      * 	- Service `googleAnalytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
      * 	- Service `googleAnalytics4`: The report dimensions to include into a sync.
-     * 	- Service `googleDisplayAndVideo360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
+     * 	- Service `googleDisplayAndVideo360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`. NOTE: At least one of the following date dimensions must be included for report data aggregation: `FILTER_DATE` (daily), `FILTER_WEEK` (weekly), or `FILTER_MONTH` (monthly).
      * 	- Service `googleSearchConsole`: The report dimensions included to sync.
      * 	- Service `workdayAdaptive`: List of dimensions to sync for the table, if applicable.
      */
@@ -10215,7 +10335,7 @@ export interface GetConnectorConfig {
     apiAccessToken?: string;
     /**
      * Field usage depends on `service` value:
-     * 	- Service `anthropicClaude`: Your Claude Platform Admin API key for syncing organization-level management and reporting data.
+     * 	- Service `anthropicClaude`: Your Claude Admin API key for syncing organization-level management and reporting data.
      */
     apiAdminKey?: string;
     /**
@@ -10223,6 +10343,11 @@ export interface GetConnectorConfig {
      * 	- Service `gongio`: Your Gong API Base URL.
      */
     apiBaseUrl?: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `jira`: The number of hours to roll back the issue search cursor. Allows reprocessing of recently updated issues that may have been missed due to indexing delays. Valid range is 0-48 hours. A value of 0 disables the rollback.
+     */
+    apiCursorRollbackWindow?: number;
     /**
      * Field usage depends on `service` value:
      * 	- Service `afterpay`: Your Afterpay API environment.
@@ -10566,6 +10691,11 @@ export interface GetConnectorConfig {
     apiServer?: string;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `genesys`: Choose the Genesys API you want to use to sync conversation analytics data. Export API retrieves conversation records via an asynchronous export job and is recommended for historical data. Aggregate Query API fetches data using the analytics aggregate query endpoint and produces a different set of tables and schemas. You cannot change this value after you set up the connection.
+     */
+    apiToSyncConversationAnalyticsData?: string;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `aha`: Your Aha! API key.
      * 	- Service `aircall`: Your Aircall API token.
      * 	- Service `appsflyer`: API Token for AppsFlyer's PULL API.
@@ -10619,7 +10749,7 @@ export interface GetConnectorConfig {
      * 	- Service `safetyculture`: Your SafetyCulture API token.
      * 	- Service `sensorTower`: Your Sensor Tower API token.
      * 	- Service `sentry`: Your Sentry auth token.
-     * 	- Service `sevdesk`: Your 32-character hexadecimal API token.
+     * 	- Service `sevdesk`: Your sevdesk API token.
      * 	- Service `simplecast`: Your Simplecast API token.
      * 	- Service `smartsheet`: API token generated from your Smartsheet account.
      * 	- Service `snyk`: Your Snyk API token.
@@ -10853,6 +10983,13 @@ export interface GetConnectorConfig {
     asmPassword?: string;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `oracle`: ASM staging directory path. Required when the ASM option is enabled.
+     * 	- Service `oracleEbs`: ASM staging directory path. Required when the ASM option is enabled.
+     * 	- Service `oracleRac`: ASM staging directory path. Required when the ASM option is enabled.
+     */
+    asmStagingDirectory?: string;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `oracleHva`: ASM TNS.
      * 	- Service `oracleSapHva`: ASM TNS.
      */
@@ -10938,6 +11075,7 @@ export interface GetConnectorConfig {
      * 	- Service `github`: Authorization type.
      * 	- Service `smartsheet`: Authorization type.
      * 	- Service `workday`: Authentication Mode
+     * 	- Service `workdayAdaptive`: Authentication mode: PASSWORD (username/password) or TOKEN (key-based authentication)
      * 	- Service `workdayFinancialManagement`: Authentication Mode
      * 	- Service `workdayHcm`: Authentication Mode
      */
@@ -11253,6 +11391,27 @@ export interface GetConnectorConfig {
     catalog?: string;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `oracle`: Optional: CDB database name for TDE-encrypted containerized databases.
+     * 	- Service `oracleEbs`: Optional: CDB database name for TDE-encrypted containerized databases.
+     * 	- Service `oracleRac`: Optional: CDB database name for TDE-encrypted containerized databases.
+     */
+    cdbDatabase?: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `oracle`: Optional: Password for the CDB user.
+     * 	- Service `oracleEbs`: Optional: Password for the CDB user.
+     * 	- Service `oracleRac`: Optional: Password for the CDB user.
+     */
+    cdbPassword?: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `oracle`: Optional: CDB user for TDE-encrypted containerized databases.
+     * 	- Service `oracleEbs`: Optional: CDB user for TDE-encrypted containerized databases.
+     * 	- Service `oracleRac`: Optional: CDB user for TDE-encrypted containerized databases.
+     */
+    cdbUser?: string;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `anaplan`: The contents of your PEM certificate file. Must be populated if `authMode` is set to `Certificate`.
      * 	- Service `db2z`: Db2 for z/OS host certificate
      * 	- Service `qualtrics`: Your Client Certificate
@@ -11367,7 +11526,7 @@ export interface GetConnectorConfig {
      * 	- Service `instructure`: Your Instructure client ID.
      * 	- Service `integralAdScience`: Your integralAdScience client id.
      * 	- Service `ironclad`: Your Ironclad client ID.
-     * 	- Service `ironcladClickwrap`: Your Ironclad Clickwrap Client ID.
+     * 	- Service `ironcladClickwrap`: Your Ironclad Clickwrap client ID.
      * 	- Service `jamaSoftware`: Your Jama Software client ID.
      * 	- Service `jibble`: Your Jibble client ID.
      * 	- Service `khorosCommunities`: Your Khoros Communities client ID.
@@ -11435,6 +11594,7 @@ export interface GetConnectorConfig {
      * 	- Service `visma`: Your Visma client ID.
      * 	- Service `vonageContactCenter`: Your Vonage Contact Center client ID.
      * 	- Service `walmartMarketplace`: Your Walmart Marketplace client ID.
+     * 	- Service `workdayAdaptive`: Client ID for token authentication (required for TOKEN authentication)
      * 	- Service `xero`: your clientId
      * 	- Service `xray`: Your Xray Client ID.
      * 	- Service `yahooDisplayAdsOnYahooJapan`: Your Yahoo Display Ads on Yahoo Japan client ID.
@@ -11574,7 +11734,7 @@ export interface GetConnectorConfig {
      * 	- Service `instructure`: Your Instructure client secret.
      * 	- Service `integralAdScience`: Your integralAdScience client secret.
      * 	- Service `ironclad`: Your Ironclad client secret.
-     * 	- Service `ironcladClickwrap`: Your Ironclad Clickwrap Client Secret.
+     * 	- Service `ironcladClickwrap`: Your Ironclad Clickwrap client secret.
      * 	- Service `jamaSoftware`: Your Jama Software client secret.
      * 	- Service `jibble`: Your Jibble client secret.
      * 	- Service `khorosCommunities`: Your Khoros Communities client secret.
@@ -12397,6 +12557,13 @@ export interface GetConnectorConfig {
      * 	- Service `sqlServerSapEccHva`: Use archive log only mode
      */
     enableArchiveLogOnly?: boolean;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `oracle`: Default value: `false`. Set to `true` if you're using ASM.
+     * 	- Service `oracleEbs`: Default value: `false`. Set to `true` if you're using ASM.
+     * 	- Service `oracleRac`: Default value: `false`. Set to `true` if you're using ASM.
+     */
+    enableAsm?: boolean;
     enableDataExtensionsSyncing?: boolean;
     /**
      * Field usage depends on `service` value:
@@ -12421,6 +12588,13 @@ export interface GetConnectorConfig {
     enableMtlsConnection?: string;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `oracle`: Default value: `false`. Set to `true` if you're using symbolic links.
+     * 	- Service `oracleEbs`: Default value: `false`. Set to `true` if you're using symbolic links.
+     * 	- Service `oracleRac`: Default value: `false`. Set to `true` if you're using symbolic links.
+     */
+    enableSymbolicLinks?: boolean;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `sqlServer`: Use transparent data encryption (TDE)
      * 	- Service `sqlServerHva`: Using Transparent Data Encryption (TDE)
      * 	- Service `sqlServerSapEccHva`: Using Transparent Data Encryption (TDE)
@@ -12428,7 +12602,10 @@ export interface GetConnectorConfig {
     enableTde?: boolean;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `oracle`: Default value: `false`. Set to `true` if you're using TDE encryption.
+     * 	- Service `oracleEbs`: Default value: `false`. Set to `true` if you're using TDE encryption.
      * 	- Service `oracleHva`: Default value: `false`. Set to `true` if you're using TDE encryption.
+     * 	- Service `oracleRac`: Default value: `false`. Set to `true` if you're using TDE encryption.
      * 	- Service `oracleSapHva`: Default value: `false`. Set to `true` if you're using TDE encryption.
      * 	- Service `oracleSapHvaNetweaver`: Default value: `false`. Set to `true` if you're using TDE encryption.
      */
@@ -12571,6 +12748,11 @@ export interface GetConnectorConfig {
      * 	- Service `surveyMonkey`: The SurveyMonkey account region. Specify `true`, if your account is hosted in the EU region. Default value is `false`.
      */
     euRegion?: boolean;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `salesforceMarketingCloud`: Event sync method. This is how Fivetran gets data for the event objects,  can be selected only during the connector creation.  TRACKING_EXTRACT - Salesforce exports a file, which we download and extract event  data from. This is the faster for large volumes, and requires SFTP.  SOAP  - We sync data using the SOAP API event object endpoints. This syncs the  latest events faster, but is slow for large volumes.
+     */
+    eventExtractMode?: string;
     /**
      * Field usage depends on `service` value:
      * 	- Service `iterable`: List of events to sync. Should be specified when `syncMode` is `SelectedEvents`
@@ -12891,7 +13073,7 @@ export interface GetConnectorConfig {
     /**
      * Field usage depends on `service` value:
      * 	- Service `amqp`: AMQP broker host address.
-     * 	- Service `aurora`: DB instance host or IP address.
+     * 	- Service `aurora`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
      * 	- Service `auroraPostgres`: DB instance host or IP address.
      * 	- Service `avevaPi`: IP address of the AF Server
      * 	- Service `azurePostgres`: DB instance host or IP address.
@@ -12923,14 +13105,14 @@ export interface GetConnectorConfig {
      * 	- Service `herokuPostgres`: DB instance host or IP address.
      * 	- Service `jira`: The Jira service host address.
      * 	- Service `magentoMysql`: DB instance host or IP address.
-     * 	- Service `magentoMysqlRds`: DB instance host or IP address.
+     * 	- Service `magentoMysqlRds`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
      * 	- Service `maria`: DB instance host or IP address.
      * 	- Service `mariaAzure`: DB instance host or IP address.
-     * 	- Service `mariaRds`: DB instance host or IP address.
+     * 	- Service `mariaRds`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
      * 	- Service `marin`: The Marin host address.
      * 	- Service `mysql`: DB instance host or IP address.
      * 	- Service `mysqlAzure`: DB instance host or IP address.
-     * 	- Service `mysqlRds`: DB instance host or IP address.
+     * 	- Service `mysqlRds`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
      * 	- Service `netsuiteSuiteanalytics`: The NetSuite service host address.
      * 	- Service `opendistro`: DB instance host or IP address.
      * 	- Service `opensearch`: DB instance host or IP address.
@@ -12953,6 +13135,7 @@ export interface GetConnectorConfig {
      * 	- Service `sqlServerHva`: DB instance host or IP address.
      * 	- Service `sqlServerRds`: DB instance host or IP address.
      * 	- Service `sqlServerSapEccHva`: DB instance host or IP address.
+     * 	- Service `workdayAdaptive`: Workday Adaptive host URL, including the scheme, required for TOKEN authentication
      */
     host?: string;
     /**
@@ -13178,6 +13361,11 @@ export interface GetConnectorConfig {
     issuerId?: string;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `workdayAdaptive`: Integration System User (ISU) for token authentication (required for TOKEN authentication)
+     */
+    isu?: string;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `amqp`: JSON delivery mode (Packed or Unpacked).
      * 	- Service `awsCostReport`: Control how your JSON data is delivered into your destination
      * 	- Service `azureBlobStorage`: Control how your JSON data is delivered into your destination
@@ -13291,6 +13479,20 @@ export interface GetConnectorConfig {
     listSyncMode?: string;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `oracle`: Optional: The host for the local Oracle Wallet.
+     * 	- Service `oracleEbs`: Optional: The host for the local Oracle Wallet.
+     * 	- Service `oracleRac`: Optional: The host for the local Oracle Wallet.
+     */
+    localWalletHost?: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `oracle`: Optional: The user for the local Oracle Wallet.
+     * 	- Service `oracleEbs`: Optional: The user for the local Oracle Wallet.
+     * 	- Service `oracleRac`: Optional: The user for the local Oracle Wallet.
+     */
+    localWalletUser?: string;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `hLevel`: Your HighLevel location ID.
      */
     locationIds?: string;
@@ -13317,7 +13519,7 @@ export interface GetConnectorConfig {
      * 	- Service `reboundReturns`: Your ReBound Returns login.
      * 	- Service `theTradeDesk`: The Trade Desk email. It is a part of the login credentials.
      * 	- Service `walmartDsp`: Walmart DSP email. It is a part of the login credentials.
-     * 	- Service `workdayAdaptive`: User email address
+     * 	- Service `workdayAdaptive`: User email address (required for PASSWORD authentication)
      */
     login?: string;
     /**
@@ -13699,7 +13901,7 @@ export interface GetConnectorConfig {
      * 	- Service `pardotSandbox`: The Pardot user's password.
      * 	- Service `partnerize`: Your Partnerize account's password.
      * 	- Service `podio`: Your Podio account password.
-     * 	- Service `postgres`: The user's password.
+     * 	- Service `postgres`: For password authentication, enter the user's password.For Entra ID authentication, enter the client secret value.
      * 	- Service `postgresRds`: The user's password.
      * 	- Service `qmaticDataConnect`: Your Qmatic Data Connect password.
      * 	- Service `redshiftDb`: The Redshift user's password.
@@ -13742,7 +13944,7 @@ export interface GetConnectorConfig {
      * 	- Service `whenIWork`: Your When I Work password.
      * 	- Service `wherefour`: Your Wherefour password.
      * 	- Service `workday`: Workday password.
-     * 	- Service `workdayAdaptive`: User password
+     * 	- Service `workdayAdaptive`: User password (required for PASSWORD authentication)
      * 	- Service `workdayFinancialManagement`: Workday password.
      * 	- Service `workdayHcm`: Workday password.
      * 	- Service `xandr`: Your Xandr password.
@@ -14010,6 +14212,7 @@ export interface GetConnectorConfig {
      * 	- Service `salesforce`: Provide content of the `.key` private key (only when authenticationMethod = `ADVANCED`).
      * 	- Service `salesforceSandbox`: Provide content of the `.key` private key (only when authenticationMethod = `ADVANCED`).
      * 	- Service `snowflakeDb`: Private access key.  The field should be specified if authentication type is `KEY_PAIR`.
+     * 	- Service `workdayAdaptive`: PEM-formatted PKCS#8 private key, including BEGIN/END PRIVATE KEY markers, for token authentication
      */
     privateKey?: string;
     /**
@@ -14371,6 +14574,12 @@ export interface GetConnectorConfig {
      */
     reportServiceApiKey?: string;
     reportSuites?: string[];
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `theTradeDesk`: Report templates to sync.
+     * 	- Service `walmartDsp`: Report templates to sync.
+     */
+    reportTemplates?: string[];
     /**
      * Field usage depends on `service` value:
      * 	- Service `criteo`: Report Timezone
@@ -15251,6 +15460,11 @@ export interface GetConnectorConfig {
     subdomain?: string;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `workdayHcm`: WID of the Workday Integration Transaction Log Service subscriber. Used to scope the V2 optimised history transaction-log queries to a specific integration subscriber.
+     */
+    subscriberId?: string;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `azureServiceBus`: The subscriber name. If the connection string does not have manage permission, you need to specify a subscriber name we can use to fetch data. If not specified, we default to `fivetranSubSchema`
      */
     subscriberName?: string;
@@ -15299,6 +15513,11 @@ export interface GetConnectorConfig {
     syncDataLocker?: boolean;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `jira`: Specifies whether to sync files in JIRA for supported destinations (true) or not (false).
+     */
+    syncFiles?: boolean;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `webhooks`: The webhooks sync format.  Default value: `Unpacked`. Unpacked messages must be valid JSON.
      */
     syncFormat?: string;
@@ -15309,6 +15528,11 @@ export interface GetConnectorConfig {
      * 	- Service `salesforceSandbox`: Enable this option to sync formula fields directly (default value = `false`)
      */
     syncFormulaFields?: boolean;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `hubspot`: Enable syncing of highly sensitive data fields from HubSpot. When enabled, sensitive data syncing is also automatically enabled.
+     */
+    syncHighlySensitiveData?: boolean;
     /**
      * Field usage depends on `service` value:
      * 	- Service `facebookAds`: Parameter defining whether to enable or disable metadata synchronisation. Default value: `TRUE`.
@@ -15402,6 +15626,11 @@ export interface GetConnectorConfig {
      * 	- Service `appsflyer`: These options are for Appsflyer's Pull API, and are only necessary for syncing events from Pull API.
      */
     syncPullApi?: boolean;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `hubspot`: Enable syncing of sensitive data fields from HubSpot.
+     */
+    syncSensitiveData?: boolean;
     /**
      * Field usage depends on `service` value:
      * 	- Service `googleAnalytics4Export`: Sync Table
@@ -15509,7 +15738,10 @@ export interface GetConnectorConfig {
     tdeSetting?: string;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `oracle`: TDE wallet password. Required for password based wallet.
+     * 	- Service `oracleEbs`: TDE wallet password. Required for password based wallet.
      * 	- Service `oracleHva`: TDE wallet password. Required for password based wallet.
+     * 	- Service `oracleRac`: TDE wallet password. Required for password based wallet.
      * 	- Service `oracleSapHva`: TDE wallet password. Required for password based wallet.
      * 	- Service `oracleSapHvaNetweaver`: TDE wallet password. Required for password based wallet.
      */
@@ -15536,6 +15768,7 @@ export interface GetConnectorConfig {
      * 	- Service `microsoftTeams`: Your Microsoft Teams Tenant.
      * 	- Service `unicommerce`: Your uniware tenant.
      * 	- Service `workday`: Workday tenant name
+     * 	- Service `workdayAdaptive`: Tenant identifier (required for TOKEN authentication)
      * 	- Service `workdayFinancialManagement`: Workday tenant name
      * 	- Service `workdayHcm`: Workday tenant name
      */
@@ -15948,11 +16181,11 @@ export interface GetConnectorConfig {
      * 	- Service `mysql`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
      * 	- Service `mysqlAzure`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
      * 	- Service `mysqlRds`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-     * 	- Service `oracle`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-     * 	- Service `oracleEbs`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+     * 	- Service `oracle`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+     * 	- Service `oracleEbs`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
      * 	- Service `oracleHva`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-     * 	- Service `oracleRac`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-     * 	- Service `oracleRds`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+     * 	- Service `oracleRac`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+     * 	- Service `oracleRds`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes. - `XSTREAM_OUT` - Fivetran uses Oracle XStream Out to stream changes from the database.
      * 	- Service `oracleSapHva`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
      * 	- Service `postgres`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "postgresRds"`. Supported values:`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the  write-ahead log (WAL) using a logical slot.This is more efficient than the query-based method, but requires more setup and monitoring.`QUERY_BASED` - this method replicates new, changed and deleted rows via the `xmin` and `ctid` system columns
      * 	- Service `postgresRds`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "postgresRds"`. Supported values:`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot. This is more efficient than the query-based method, but requires more setup and monitoring.`QUERY_BASED` - this method replicates new, changed and deleted rows via the `xmin` and `ctid` system columns
@@ -15999,6 +16232,12 @@ export interface GetConnectorConfig {
      * 	- Service `pendo`: Toggle field to determine whether connector is syncing from API or from Data Sync
      */
     useDataSync?: boolean;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `db2iHva`: Restricts schema discovery to libraries (schemas) within the configured database. When enabled, the database parameter must also be specified.
+     * 	- Service `db2iSapHva`: Restricts schema discovery to libraries (schemas) within the configured database. When enabled, the database parameter must also be specified. Has no effect on SAP ECC on Db2 for i connectors.
+     */
+    useDatabaseNameForTableFiltering?: boolean;
     /**
      * Field usage depends on `service` value:
      * 	- Service `greenhouse`: The confirmation that you want to connect to Harvest V3 API. Possible values: `true`, `false`.
@@ -16111,7 +16350,7 @@ export interface GetConnectorConfig {
      * 	- Service `oracleSapHva`: The username.
      * 	- Service `oracleSapHvaNetweaver`: The username.
      * 	- Service `outbrain`: The username or email of the Outbrain user.
-     * 	- Service `postgres`: The user name.
+     * 	- Service `postgres`: For password authentication, enter the user name.For Entra ID authentication, enter the registered app display name.
      * 	- Service `postgresRds`: The user name.
      * 	- Service `redshiftDb`: The Redshift username.
      * 	- Service `sapHana`: Your SAP HANA user name.
@@ -16913,7 +17152,7 @@ export interface GetConnectorConfigArgs {
     apiAccessToken?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
-     * 	- Service `anthropicClaude`: Your Claude Platform Admin API key for syncing organization-level management and reporting data.
+     * 	- Service `anthropicClaude`: Your Claude Admin API key for syncing organization-level management and reporting data.
      */
     apiAdminKey?: pulumi.Input<string | undefined>;
     /**
@@ -16921,6 +17160,11 @@ export interface GetConnectorConfigArgs {
      * 	- Service `gongio`: Your Gong API Base URL.
      */
     apiBaseUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `jira`: The number of hours to roll back the issue search cursor. Allows reprocessing of recently updated issues that may have been missed due to indexing delays. Valid range is 0-48 hours. A value of 0 disables the rollback.
+     */
+    apiCursorRollbackWindow?: pulumi.Input<number | undefined>;
     /**
      * Field usage depends on `service` value:
      * 	- Service `afterpay`: Your Afterpay API environment.
@@ -17264,6 +17508,11 @@ export interface GetConnectorConfigArgs {
     apiServer?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `genesys`: Choose the Genesys API you want to use to sync conversation analytics data. Export API retrieves conversation records via an asynchronous export job and is recommended for historical data. Aggregate Query API fetches data using the analytics aggregate query endpoint and produces a different set of tables and schemas. You cannot change this value after you set up the connection.
+     */
+    apiToSyncConversationAnalyticsData?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `aha`: Your Aha! API key.
      * 	- Service `aircall`: Your Aircall API token.
      * 	- Service `appsflyer`: API Token for AppsFlyer's PULL API.
@@ -17317,7 +17566,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `safetyculture`: Your SafetyCulture API token.
      * 	- Service `sensorTower`: Your Sensor Tower API token.
      * 	- Service `sentry`: Your Sentry auth token.
-     * 	- Service `sevdesk`: Your 32-character hexadecimal API token.
+     * 	- Service `sevdesk`: Your sevdesk API token.
      * 	- Service `simplecast`: Your Simplecast API token.
      * 	- Service `smartsheet`: API token generated from your Smartsheet account.
      * 	- Service `snyk`: Your Snyk API token.
@@ -17551,6 +17800,13 @@ export interface GetConnectorConfigArgs {
     asmPassword?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `oracle`: ASM staging directory path. Required when the ASM option is enabled.
+     * 	- Service `oracleEbs`: ASM staging directory path. Required when the ASM option is enabled.
+     * 	- Service `oracleRac`: ASM staging directory path. Required when the ASM option is enabled.
+     */
+    asmStagingDirectory?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `oracleHva`: ASM TNS.
      * 	- Service `oracleSapHva`: ASM TNS.
      */
@@ -17636,6 +17892,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `github`: Authorization type.
      * 	- Service `smartsheet`: Authorization type.
      * 	- Service `workday`: Authentication Mode
+     * 	- Service `workdayAdaptive`: Authentication mode: PASSWORD (username/password) or TOKEN (key-based authentication)
      * 	- Service `workdayFinancialManagement`: Authentication Mode
      * 	- Service `workdayHcm`: Authentication Mode
      */
@@ -17951,6 +18208,27 @@ export interface GetConnectorConfigArgs {
     catalog?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `oracle`: Optional: CDB database name for TDE-encrypted containerized databases.
+     * 	- Service `oracleEbs`: Optional: CDB database name for TDE-encrypted containerized databases.
+     * 	- Service `oracleRac`: Optional: CDB database name for TDE-encrypted containerized databases.
+     */
+    cdbDatabase?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `oracle`: Optional: Password for the CDB user.
+     * 	- Service `oracleEbs`: Optional: Password for the CDB user.
+     * 	- Service `oracleRac`: Optional: Password for the CDB user.
+     */
+    cdbPassword?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `oracle`: Optional: CDB user for TDE-encrypted containerized databases.
+     * 	- Service `oracleEbs`: Optional: CDB user for TDE-encrypted containerized databases.
+     * 	- Service `oracleRac`: Optional: CDB user for TDE-encrypted containerized databases.
+     */
+    cdbUser?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `anaplan`: The contents of your PEM certificate file. Must be populated if `authMode` is set to `Certificate`.
      * 	- Service `db2z`: Db2 for z/OS host certificate
      * 	- Service `qualtrics`: Your Client Certificate
@@ -18065,7 +18343,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `instructure`: Your Instructure client ID.
      * 	- Service `integralAdScience`: Your integralAdScience client id.
      * 	- Service `ironclad`: Your Ironclad client ID.
-     * 	- Service `ironcladClickwrap`: Your Ironclad Clickwrap Client ID.
+     * 	- Service `ironcladClickwrap`: Your Ironclad Clickwrap client ID.
      * 	- Service `jamaSoftware`: Your Jama Software client ID.
      * 	- Service `jibble`: Your Jibble client ID.
      * 	- Service `khorosCommunities`: Your Khoros Communities client ID.
@@ -18133,6 +18411,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `visma`: Your Visma client ID.
      * 	- Service `vonageContactCenter`: Your Vonage Contact Center client ID.
      * 	- Service `walmartMarketplace`: Your Walmart Marketplace client ID.
+     * 	- Service `workdayAdaptive`: Client ID for token authentication (required for TOKEN authentication)
      * 	- Service `xero`: your clientId
      * 	- Service `xray`: Your Xray Client ID.
      * 	- Service `yahooDisplayAdsOnYahooJapan`: Your Yahoo Display Ads on Yahoo Japan client ID.
@@ -18272,7 +18551,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `instructure`: Your Instructure client secret.
      * 	- Service `integralAdScience`: Your integralAdScience client secret.
      * 	- Service `ironclad`: Your Ironclad client secret.
-     * 	- Service `ironcladClickwrap`: Your Ironclad Clickwrap Client Secret.
+     * 	- Service `ironcladClickwrap`: Your Ironclad Clickwrap client secret.
      * 	- Service `jamaSoftware`: Your Jama Software client secret.
      * 	- Service `jibble`: Your Jibble client secret.
      * 	- Service `khorosCommunities`: Your Khoros Communities client secret.
@@ -19095,6 +19374,13 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sqlServerSapEccHva`: Use archive log only mode
      */
     enableArchiveLogOnly?: pulumi.Input<boolean | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `oracle`: Default value: `false`. Set to `true` if you're using ASM.
+     * 	- Service `oracleEbs`: Default value: `false`. Set to `true` if you're using ASM.
+     * 	- Service `oracleRac`: Default value: `false`. Set to `true` if you're using ASM.
+     */
+    enableAsm?: pulumi.Input<boolean | undefined>;
     enableDataExtensionsSyncing?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value:
@@ -19119,6 +19405,13 @@ export interface GetConnectorConfigArgs {
     enableMtlsConnection?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `oracle`: Default value: `false`. Set to `true` if you're using symbolic links.
+     * 	- Service `oracleEbs`: Default value: `false`. Set to `true` if you're using symbolic links.
+     * 	- Service `oracleRac`: Default value: `false`. Set to `true` if you're using symbolic links.
+     */
+    enableSymbolicLinks?: pulumi.Input<boolean | undefined>;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `sqlServer`: Use transparent data encryption (TDE)
      * 	- Service `sqlServerHva`: Using Transparent Data Encryption (TDE)
      * 	- Service `sqlServerSapEccHva`: Using Transparent Data Encryption (TDE)
@@ -19126,7 +19419,10 @@ export interface GetConnectorConfigArgs {
     enableTde?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `oracle`: Default value: `false`. Set to `true` if you're using TDE encryption.
+     * 	- Service `oracleEbs`: Default value: `false`. Set to `true` if you're using TDE encryption.
      * 	- Service `oracleHva`: Default value: `false`. Set to `true` if you're using TDE encryption.
+     * 	- Service `oracleRac`: Default value: `false`. Set to `true` if you're using TDE encryption.
      * 	- Service `oracleSapHva`: Default value: `false`. Set to `true` if you're using TDE encryption.
      * 	- Service `oracleSapHvaNetweaver`: Default value: `false`. Set to `true` if you're using TDE encryption.
      */
@@ -19269,6 +19565,11 @@ export interface GetConnectorConfigArgs {
      * 	- Service `surveyMonkey`: The SurveyMonkey account region. Specify `true`, if your account is hosted in the EU region. Default value is `false`.
      */
     euRegion?: pulumi.Input<boolean | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `salesforceMarketingCloud`: Event sync method. This is how Fivetran gets data for the event objects,  can be selected only during the connector creation.  TRACKING_EXTRACT - Salesforce exports a file, which we download and extract event  data from. This is the faster for large volumes, and requires SFTP.  SOAP  - We sync data using the SOAP API event object endpoints. This syncs the  latest events faster, but is slow for large volumes.
+     */
+    eventExtractMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
      * 	- Service `iterable`: List of events to sync. Should be specified when `syncMode` is `SelectedEvents`
@@ -19589,7 +19890,7 @@ export interface GetConnectorConfigArgs {
     /**
      * Field usage depends on `service` value:
      * 	- Service `amqp`: AMQP broker host address.
-     * 	- Service `aurora`: DB instance host or IP address.
+     * 	- Service `aurora`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
      * 	- Service `auroraPostgres`: DB instance host or IP address.
      * 	- Service `avevaPi`: IP address of the AF Server
      * 	- Service `azurePostgres`: DB instance host or IP address.
@@ -19621,14 +19922,14 @@ export interface GetConnectorConfigArgs {
      * 	- Service `herokuPostgres`: DB instance host or IP address.
      * 	- Service `jira`: The Jira service host address.
      * 	- Service `magentoMysql`: DB instance host or IP address.
-     * 	- Service `magentoMysqlRds`: DB instance host or IP address.
+     * 	- Service `magentoMysqlRds`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
      * 	- Service `maria`: DB instance host or IP address.
      * 	- Service `mariaAzure`: DB instance host or IP address.
-     * 	- Service `mariaRds`: DB instance host or IP address.
+     * 	- Service `mariaRds`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
      * 	- Service `marin`: The Marin host address.
      * 	- Service `mysql`: DB instance host or IP address.
      * 	- Service `mysqlAzure`: DB instance host or IP address.
-     * 	- Service `mysqlRds`: DB instance host or IP address.
+     * 	- Service `mysqlRds`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
      * 	- Service `netsuiteSuiteanalytics`: The NetSuite service host address.
      * 	- Service `opendistro`: DB instance host or IP address.
      * 	- Service `opensearch`: DB instance host or IP address.
@@ -19651,6 +19952,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `sqlServerHva`: DB instance host or IP address.
      * 	- Service `sqlServerRds`: DB instance host or IP address.
      * 	- Service `sqlServerSapEccHva`: DB instance host or IP address.
+     * 	- Service `workdayAdaptive`: Workday Adaptive host URL, including the scheme, required for TOKEN authentication
      */
     host?: pulumi.Input<string | undefined>;
     /**
@@ -19876,6 +20178,11 @@ export interface GetConnectorConfigArgs {
     issuerId?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `workdayAdaptive`: Integration System User (ISU) for token authentication (required for TOKEN authentication)
+     */
+    isu?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `amqp`: JSON delivery mode (Packed or Unpacked).
      * 	- Service `awsCostReport`: Control how your JSON data is delivered into your destination
      * 	- Service `azureBlobStorage`: Control how your JSON data is delivered into your destination
@@ -19989,6 +20296,20 @@ export interface GetConnectorConfigArgs {
     listSyncMode?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `oracle`: Optional: The host for the local Oracle Wallet.
+     * 	- Service `oracleEbs`: Optional: The host for the local Oracle Wallet.
+     * 	- Service `oracleRac`: Optional: The host for the local Oracle Wallet.
+     */
+    localWalletHost?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `oracle`: Optional: The user for the local Oracle Wallet.
+     * 	- Service `oracleEbs`: Optional: The user for the local Oracle Wallet.
+     * 	- Service `oracleRac`: Optional: The user for the local Oracle Wallet.
+     */
+    localWalletUser?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `hLevel`: Your HighLevel location ID.
      */
     locationIds?: pulumi.Input<string | undefined>;
@@ -20015,7 +20336,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `reboundReturns`: Your ReBound Returns login.
      * 	- Service `theTradeDesk`: The Trade Desk email. It is a part of the login credentials.
      * 	- Service `walmartDsp`: Walmart DSP email. It is a part of the login credentials.
-     * 	- Service `workdayAdaptive`: User email address
+     * 	- Service `workdayAdaptive`: User email address (required for PASSWORD authentication)
      */
     login?: pulumi.Input<string | undefined>;
     /**
@@ -20397,7 +20718,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `pardotSandbox`: The Pardot user's password.
      * 	- Service `partnerize`: Your Partnerize account's password.
      * 	- Service `podio`: Your Podio account password.
-     * 	- Service `postgres`: The user's password.
+     * 	- Service `postgres`: For password authentication, enter the user's password.For Entra ID authentication, enter the client secret value.
      * 	- Service `postgresRds`: The user's password.
      * 	- Service `qmaticDataConnect`: Your Qmatic Data Connect password.
      * 	- Service `redshiftDb`: The Redshift user's password.
@@ -20440,7 +20761,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `whenIWork`: Your When I Work password.
      * 	- Service `wherefour`: Your Wherefour password.
      * 	- Service `workday`: Workday password.
-     * 	- Service `workdayAdaptive`: User password
+     * 	- Service `workdayAdaptive`: User password (required for PASSWORD authentication)
      * 	- Service `workdayFinancialManagement`: Workday password.
      * 	- Service `workdayHcm`: Workday password.
      * 	- Service `xandr`: Your Xandr password.
@@ -20708,6 +21029,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `salesforce`: Provide content of the `.key` private key (only when authenticationMethod = `ADVANCED`).
      * 	- Service `salesforceSandbox`: Provide content of the `.key` private key (only when authenticationMethod = `ADVANCED`).
      * 	- Service `snowflakeDb`: Private access key.  The field should be specified if authentication type is `KEY_PAIR`.
+     * 	- Service `workdayAdaptive`: PEM-formatted PKCS#8 private key, including BEGIN/END PRIVATE KEY markers, for token authentication
      */
     privateKey?: pulumi.Input<string | undefined>;
     /**
@@ -21069,6 +21391,12 @@ export interface GetConnectorConfigArgs {
      */
     reportServiceApiKey?: pulumi.Input<string | undefined>;
     reportSuites?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `theTradeDesk`: Report templates to sync.
+     * 	- Service `walmartDsp`: Report templates to sync.
+     */
+    reportTemplates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field usage depends on `service` value:
      * 	- Service `criteo`: Report Timezone
@@ -21949,6 +22277,11 @@ export interface GetConnectorConfigArgs {
     subdomain?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `workdayHcm`: WID of the Workday Integration Transaction Log Service subscriber. Used to scope the V2 optimised history transaction-log queries to a specific integration subscriber.
+     */
+    subscriberId?: pulumi.Input<string | undefined>;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `azureServiceBus`: The subscriber name. If the connection string does not have manage permission, you need to specify a subscriber name we can use to fetch data. If not specified, we default to `fivetranSubSchema`
      */
     subscriberName?: pulumi.Input<string | undefined>;
@@ -21997,6 +22330,11 @@ export interface GetConnectorConfigArgs {
     syncDataLocker?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `jira`: Specifies whether to sync files in JIRA for supported destinations (true) or not (false).
+     */
+    syncFiles?: pulumi.Input<boolean | undefined>;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `webhooks`: The webhooks sync format.  Default value: `Unpacked`. Unpacked messages must be valid JSON.
      */
     syncFormat?: pulumi.Input<string | undefined>;
@@ -22007,6 +22345,11 @@ export interface GetConnectorConfigArgs {
      * 	- Service `salesforceSandbox`: Enable this option to sync formula fields directly (default value = `false`)
      */
     syncFormulaFields?: pulumi.Input<boolean | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `hubspot`: Enable syncing of highly sensitive data fields from HubSpot. When enabled, sensitive data syncing is also automatically enabled.
+     */
+    syncHighlySensitiveData?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value:
      * 	- Service `facebookAds`: Parameter defining whether to enable or disable metadata synchronisation. Default value: `TRUE`.
@@ -22100,6 +22443,11 @@ export interface GetConnectorConfigArgs {
      * 	- Service `appsflyer`: These options are for Appsflyer's Pull API, and are only necessary for syncing events from Pull API.
      */
     syncPullApi?: pulumi.Input<boolean | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `hubspot`: Enable syncing of sensitive data fields from HubSpot.
+     */
+    syncSensitiveData?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value:
      * 	- Service `googleAnalytics4Export`: Sync Table
@@ -22207,7 +22555,10 @@ export interface GetConnectorConfigArgs {
     tdeSetting?: pulumi.Input<string | undefined>;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `oracle`: TDE wallet password. Required for password based wallet.
+     * 	- Service `oracleEbs`: TDE wallet password. Required for password based wallet.
      * 	- Service `oracleHva`: TDE wallet password. Required for password based wallet.
+     * 	- Service `oracleRac`: TDE wallet password. Required for password based wallet.
      * 	- Service `oracleSapHva`: TDE wallet password. Required for password based wallet.
      * 	- Service `oracleSapHvaNetweaver`: TDE wallet password. Required for password based wallet.
      */
@@ -22234,6 +22585,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `microsoftTeams`: Your Microsoft Teams Tenant.
      * 	- Service `unicommerce`: Your uniware tenant.
      * 	- Service `workday`: Workday tenant name
+     * 	- Service `workdayAdaptive`: Tenant identifier (required for TOKEN authentication)
      * 	- Service `workdayFinancialManagement`: Workday tenant name
      * 	- Service `workdayHcm`: Workday tenant name
      */
@@ -22646,11 +22998,11 @@ export interface GetConnectorConfigArgs {
      * 	- Service `mysql`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
      * 	- Service `mysqlAzure`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
      * 	- Service `mysqlRds`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-     * 	- Service `oracle`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-     * 	- Service `oracleEbs`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+     * 	- Service `oracle`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+     * 	- Service `oracleEbs`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
      * 	- Service `oracleHva`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-     * 	- Service `oracleRac`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-     * 	- Service `oracleRds`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+     * 	- Service `oracleRac`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+     * 	- Service `oracleRds`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes. - `XSTREAM_OUT` - Fivetran uses Oracle XStream Out to stream changes from the database.
      * 	- Service `oracleSapHva`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
      * 	- Service `postgres`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "postgresRds"`. Supported values:`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the  write-ahead log (WAL) using a logical slot.This is more efficient than the query-based method, but requires more setup and monitoring.`QUERY_BASED` - this method replicates new, changed and deleted rows via the `xmin` and `ctid` system columns
      * 	- Service `postgresRds`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "postgresRds"`. Supported values:`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot. This is more efficient than the query-based method, but requires more setup and monitoring.`QUERY_BASED` - this method replicates new, changed and deleted rows via the `xmin` and `ctid` system columns
@@ -22697,6 +23049,12 @@ export interface GetConnectorConfigArgs {
      * 	- Service `pendo`: Toggle field to determine whether connector is syncing from API or from Data Sync
      */
     useDataSync?: pulumi.Input<boolean | undefined>;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `db2iHva`: Restricts schema discovery to libraries (schemas) within the configured database. When enabled, the database parameter must also be specified.
+     * 	- Service `db2iSapHva`: Restricts schema discovery to libraries (schemas) within the configured database. When enabled, the database parameter must also be specified. Has no effect on SAP ECC on Db2 for i connectors.
+     */
+    useDatabaseNameForTableFiltering?: pulumi.Input<boolean | undefined>;
     /**
      * Field usage depends on `service` value:
      * 	- Service `greenhouse`: The confirmation that you want to connect to Harvest V3 API. Possible values: `true`, `false`.
@@ -22809,7 +23167,7 @@ export interface GetConnectorConfigArgs {
      * 	- Service `oracleSapHva`: The username.
      * 	- Service `oracleSapHvaNetweaver`: The username.
      * 	- Service `outbrain`: The username or email of the Outbrain user.
-     * 	- Service `postgres`: The user name.
+     * 	- Service `postgres`: For password authentication, enter the user name.For Entra ID authentication, enter the registered app display name.
      * 	- Service `postgresRds`: The user name.
      * 	- Service `redshiftDb`: The Redshift username.
      * 	- Service `sapHana`: Your SAP HANA user name.
@@ -24109,7 +24467,7 @@ export interface GetConnectorConfigReport {
      * 	- Service `doubleClickPublishers`: Report dimensions to include in the sync. The `date` dimension is mandatory for all the report types.
      * 	- Service `googleAnalytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
      * 	- Service `googleAnalytics4`: The report dimensions to include into a sync.
-     * 	- Service `googleDisplayAndVideo360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
+     * 	- Service `googleDisplayAndVideo360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`. NOTE: At least one of the following date dimensions must be included for report data aggregation: `FILTER_DATE` (daily), `FILTER_WEEK` (weekly), or `FILTER_MONTH` (monthly).
      * 	- Service `googleSearchConsole`: The report dimensions included to sync.
      * 	- Service `workdayAdaptive`: List of dimensions to sync for the table, if applicable.
      */
@@ -24472,7 +24830,7 @@ export interface GetConnectorConfigReportArgs {
      * 	- Service `doubleClickPublishers`: Report dimensions to include in the sync. The `date` dimension is mandatory for all the report types.
      * 	- Service `googleAnalytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
      * 	- Service `googleAnalytics4`: The report dimensions to include into a sync.
-     * 	- Service `googleDisplayAndVideo360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`.
+     * 	- Service `googleDisplayAndVideo360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `configMethod` is set to `CREATE_NEW`. NOTE: At least one of the following date dimensions must be included for report data aggregation: `FILTER_DATE` (daily), `FILTER_WEEK` (weekly), or `FILTER_MONTH` (monthly).
      * 	- Service `googleSearchConsole`: The report dimensions included to sync.
      * 	- Service `workdayAdaptive`: List of dimensions to sync for the table, if applicable.
      */

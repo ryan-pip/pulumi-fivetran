@@ -852,7 +852,7 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
-        /// 	- Service `AnthropicClaude`: Your Claude Platform Admin API key for syncing organization-level management and reporting data.
+        /// 	- Service `AnthropicClaude`: Your Claude Admin API key for syncing organization-level management and reporting data.
         /// </summary>
         public Input<string>? ApiAdminKey
         {
@@ -870,6 +870,13 @@ namespace Pulumi.Fivetran.Inputs
         /// </summary>
         [Input("apiBaseUrl", required: true)]
         public Input<string> ApiBaseUrl { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Jira`: The number of hours to roll back the issue search cursor. Allows reprocessing of recently updated issues that may have been missed due to indexing delays. Valid range is 0-48 hours. A value of 0 disables the rollback.
+        /// </summary>
+        [Input("apiCursorRollbackWindow", required: true)]
+        public Input<int> ApiCursorRollbackWindow { get; set; } = null!;
 
         /// <summary>
         /// Field usage depends on `Service` value: 
@@ -1330,6 +1337,13 @@ namespace Pulumi.Fivetran.Inputs
         [Input("apiServer", required: true)]
         public Input<string> ApiServer { get; set; } = null!;
 
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Genesys`: Choose the Genesys API you want to use to sync conversation analytics data. Export API retrieves conversation records via an asynchronous export job and is recommended for historical data. Aggregate Query API fetches data using the analytics aggregate query endpoint and produces a different set of tables and schemas. You cannot change this value after you set up the connection.
+        /// </summary>
+        [Input("apiToSyncConversationAnalyticsData", required: true)]
+        public Input<string> ApiToSyncConversationAnalyticsData { get; set; } = null!;
+
         [Input("apiToken", required: true)]
         private Input<string>? _apiToken;
 
@@ -1388,7 +1402,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Safetyculture`: Your SafetyCulture API token.
         /// 	- Service `SensorTower`: Your Sensor Tower API token.
         /// 	- Service `Sentry`: Your Sentry auth token.
-        /// 	- Service `Sevdesk`: Your 32-character hexadecimal API token.
+        /// 	- Service `Sevdesk`: Your sevdesk API token.
         /// 	- Service `Simplecast`: Your Simplecast API token.
         /// 	- Service `Smartsheet`: API token generated from your Smartsheet account.
         /// 	- Service `Snyk`: Your Snyk API token.
@@ -1817,6 +1831,15 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Oracle`: ASM staging directory path. Required when the ASM option is enabled.
+        /// 	- Service `OracleEbs`: ASM staging directory path. Required when the ASM option is enabled.
+        /// 	- Service `OracleRac`: ASM staging directory path. Required when the ASM option is enabled.
+        /// </summary>
+        [Input("asmStagingDirectory", required: true)]
+        public Input<string> AsmStagingDirectory { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `OracleHva`: ASM TNS.
         /// 	- Service `OracleSapHva`: ASM TNS.
         /// </summary>
@@ -1942,6 +1965,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Github`: Authorization type.
         /// 	- Service `Smartsheet`: Authorization type.
         /// 	- Service `Workday`: Authentication Mode
+        /// 	- Service `WorkdayAdaptive`: Authentication mode: PASSWORD (username/password) or TOKEN (key-based authentication)
         /// 	- Service `WorkdayFinancialManagement`: Authentication Mode
         /// 	- Service `WorkdayHcm`: Authentication Mode
         /// </summary>
@@ -2403,6 +2427,43 @@ namespace Pulumi.Fivetran.Inputs
         [Input("catalog", required: true)]
         public Input<string> Catalog { get; set; } = null!;
 
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Oracle`: Optional: CDB database name for TDE-encrypted containerized databases.
+        /// 	- Service `OracleEbs`: Optional: CDB database name for TDE-encrypted containerized databases.
+        /// 	- Service `OracleRac`: Optional: CDB database name for TDE-encrypted containerized databases.
+        /// </summary>
+        [Input("cdbDatabase", required: true)]
+        public Input<string> CdbDatabase { get; set; } = null!;
+
+        [Input("cdbPassword", required: true)]
+        private Input<string>? _cdbPassword;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Oracle`: Optional: Password for the CDB user.
+        /// 	- Service `OracleEbs`: Optional: Password for the CDB user.
+        /// 	- Service `OracleRac`: Optional: Password for the CDB user.
+        /// </summary>
+        public Input<string>? CdbPassword
+        {
+            get => _cdbPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _cdbPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Oracle`: Optional: CDB user for TDE-encrypted containerized databases.
+        /// 	- Service `OracleEbs`: Optional: CDB user for TDE-encrypted containerized databases.
+        /// 	- Service `OracleRac`: Optional: CDB user for TDE-encrypted containerized databases.
+        /// </summary>
+        [Input("cdbUser", required: true)]
+        public Input<string> CdbUser { get; set; } = null!;
+
         [Input("certificate", required: true)]
         private Input<string>? _certificate;
 
@@ -2600,7 +2661,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Instructure`: Your Instructure client ID.
         /// 	- Service `IntegralAdScience`: Your IntegralAdScience client id.
         /// 	- Service `Ironclad`: Your Ironclad client ID.
-        /// 	- Service `IroncladClickwrap`: Your Ironclad Clickwrap Client ID.
+        /// 	- Service `IroncladClickwrap`: Your Ironclad Clickwrap client ID.
         /// 	- Service `JamaSoftware`: Your Jama Software client ID.
         /// 	- Service `Jibble`: Your Jibble client ID.
         /// 	- Service `KhorosCommunities`: Your Khoros Communities client ID.
@@ -2668,6 +2729,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Visma`: Your Visma client ID.
         /// 	- Service `VonageContactCenter`: Your Vonage Contact Center client ID.
         /// 	- Service `WalmartMarketplace`: Your Walmart Marketplace client ID.
+        /// 	- Service `WorkdayAdaptive`: Client ID for token authentication (required for TOKEN authentication)
         /// 	- Service `Xero`: your clientId
         /// 	- Service `Xray`: Your Xray Client ID.
         /// 	- Service `YahooDisplayAdsOnYahooJapan`: Your Yahoo Display Ads on Yahoo Japan client ID.
@@ -2859,7 +2921,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Instructure`: Your Instructure client secret.
         /// 	- Service `IntegralAdScience`: Your IntegralAdScience client secret.
         /// 	- Service `Ironclad`: Your Ironclad client secret.
-        /// 	- Service `IroncladClickwrap`: Your Ironclad Clickwrap Client Secret.
+        /// 	- Service `IroncladClickwrap`: Your Ironclad Clickwrap client secret.
         /// 	- Service `JamaSoftware`: Your Jama Software client secret.
         /// 	- Service `Jibble`: Your Jibble client secret.
         /// 	- Service `KhorosCommunities`: Your Khoros Communities client secret.
@@ -4122,6 +4184,15 @@ namespace Pulumi.Fivetran.Inputs
         [Input("enableArchiveLogOnly", required: true)]
         public Input<bool> EnableArchiveLogOnly { get; set; } = null!;
 
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Oracle`: Default value: `False`. Set to `True` if you're using ASM.
+        /// 	- Service `OracleEbs`: Default value: `False`. Set to `True` if you're using ASM.
+        /// 	- Service `OracleRac`: Default value: `False`. Set to `True` if you're using ASM.
+        /// </summary>
+        [Input("enableAsm", required: true)]
+        public Input<bool> EnableAsm { get; set; } = null!;
+
         [Input("enableDataExtensionsSyncing", required: true)]
         public Input<bool> EnableDataExtensionsSyncing { get; set; } = null!;
 
@@ -4156,6 +4227,15 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Oracle`: Default value: `False`. Set to `True` if you're using symbolic links.
+        /// 	- Service `OracleEbs`: Default value: `False`. Set to `True` if you're using symbolic links.
+        /// 	- Service `OracleRac`: Default value: `False`. Set to `True` if you're using symbolic links.
+        /// </summary>
+        [Input("enableSymbolicLinks", required: true)]
+        public Input<bool> EnableSymbolicLinks { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `SqlServer`: Use transparent data encryption (TDE)
         /// 	- Service `SqlServerHva`: Using Transparent Data Encryption (TDE)
         /// 	- Service `SqlServerSapEccHva`: Using Transparent Data Encryption (TDE)
@@ -4165,7 +4245,10 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Oracle`: Default value: `False`. Set to `True` if you're using TDE encryption.
+        /// 	- Service `OracleEbs`: Default value: `False`. Set to `True` if you're using TDE encryption.
         /// 	- Service `OracleHva`: Default value: `False`. Set to `True` if you're using TDE encryption.
+        /// 	- Service `OracleRac`: Default value: `False`. Set to `True` if you're using TDE encryption.
         /// 	- Service `OracleSapHva`: Default value: `False`. Set to `True` if you're using TDE encryption.
         /// 	- Service `OracleSapHvaNetweaver`: Default value: `False`. Set to `True` if you're using TDE encryption.
         /// </summary>
@@ -4351,6 +4434,13 @@ namespace Pulumi.Fivetran.Inputs
         /// </summary>
         [Input("euRegion", required: true)]
         public Input<bool> EuRegion { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `SalesforceMarketingCloud`: Event sync method. This is how Fivetran gets data for the event objects,  can be selected only during the connector creation.  TRACKING_EXTRACT - Salesforce exports a file, which we download and extract event  data from. This is the faster for large volumes, and requires SFTP.  SOAP  - We sync data using the SOAP API event object endpoints. This syncs the  latest events faster, but is slow for large volumes.
+        /// </summary>
+        [Input("eventExtractMode", required: true)]
+        public Input<string> EventExtractMode { get; set; } = null!;
 
         [Input("events", required: true)]
         private InputList<string>? _events;
@@ -4827,7 +4917,7 @@ namespace Pulumi.Fivetran.Inputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Amqp`: AMQP broker host address.
-        /// 	- Service `Aurora`: DB instance host or IP address.
+        /// 	- Service `Aurora`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
         /// 	- Service `AuroraPostgres`: DB instance host or IP address.
         /// 	- Service `AvevaPi`: IP address of the AF Server
         /// 	- Service `AzurePostgres`: DB instance host or IP address.
@@ -4859,14 +4949,14 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `HerokuPostgres`: DB instance host or IP address.
         /// 	- Service `Jira`: The Jira service host address.
         /// 	- Service `MagentoMysql`: DB instance host or IP address.
-        /// 	- Service `MagentoMysqlRds`: DB instance host or IP address.
+        /// 	- Service `MagentoMysqlRds`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
         /// 	- Service `Maria`: DB instance host or IP address.
         /// 	- Service `MariaAzure`: DB instance host or IP address.
-        /// 	- Service `MariaRds`: DB instance host or IP address.
+        /// 	- Service `MariaRds`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
         /// 	- Service `Marin`: The Marin host address.
         /// 	- Service `Mysql`: DB instance host or IP address.
         /// 	- Service `MysqlAzure`: DB instance host or IP address.
-        /// 	- Service `MysqlRds`: DB instance host or IP address.
+        /// 	- Service `MysqlRds`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
         /// 	- Service `NetsuiteSuiteanalytics`: The NetSuite service host address.
         /// 	- Service `Opendistro`: DB instance host or IP address.
         /// 	- Service `Opensearch`: DB instance host or IP address.
@@ -4889,6 +4979,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `SqlServerHva`: DB instance host or IP address.
         /// 	- Service `SqlServerRds`: DB instance host or IP address.
         /// 	- Service `SqlServerSapEccHva`: DB instance host or IP address.
+        /// 	- Service `WorkdayAdaptive`: Workday Adaptive host URL, including the scheme, required for TOKEN authentication
         /// </summary>
         [Input("host", required: true)]
         public Input<string> Host { get; set; } = null!;
@@ -5216,6 +5307,13 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `WorkdayAdaptive`: Integration System User (ISU) for token authentication (required for TOKEN authentication)
+        /// </summary>
+        [Input("isu", required: true)]
+        public Input<string> Isu { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `Amqp`: JSON delivery mode (Packed or Unpacked).
         /// 	- Service `AwsCostReport`: Control how your JSON data is delivered into your destination
         /// 	- Service `AzureBlobStorage`: Control how your JSON data is delivered into your destination
@@ -5405,6 +5503,24 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Oracle`: Optional: The host for the local Oracle Wallet.
+        /// 	- Service `OracleEbs`: Optional: The host for the local Oracle Wallet.
+        /// 	- Service `OracleRac`: Optional: The host for the local Oracle Wallet.
+        /// </summary>
+        [Input("localWalletHost", required: true)]
+        public Input<string> LocalWalletHost { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Oracle`: Optional: The user for the local Oracle Wallet.
+        /// 	- Service `OracleEbs`: Optional: The user for the local Oracle Wallet.
+        /// 	- Service `OracleRac`: Optional: The user for the local Oracle Wallet.
+        /// </summary>
+        [Input("localWalletUser", required: true)]
+        public Input<string> LocalWalletUser { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `HLevel`: Your HighLevel location ID.
         /// </summary>
         [Input("locationIds", required: true)]
@@ -5439,7 +5555,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `ReboundReturns`: Your ReBound Returns login.
         /// 	- Service `TheTradeDesk`: The Trade Desk email. It is a part of the login credentials.
         /// 	- Service `WalmartDsp`: Walmart DSP email. It is a part of the login credentials.
-        /// 	- Service `WorkdayAdaptive`: User email address
+        /// 	- Service `WorkdayAdaptive`: User email address (required for PASSWORD authentication)
         /// </summary>
         [Input("login", required: true)]
         public Input<string> Login { get; set; } = null!;
@@ -6030,7 +6146,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `PardotSandbox`: The Pardot user's password.
         /// 	- Service `Partnerize`: Your Partnerize account's password.
         /// 	- Service `Podio`: Your Podio account password.
-        /// 	- Service `Postgres`: The user's password.
+        /// 	- Service `Postgres`: For password authentication, enter the user's password.For Entra ID authentication, enter the client secret value.
         /// 	- Service `PostgresRds`: The user's password.
         /// 	- Service `QmaticDataConnect`: Your Qmatic Data Connect password.
         /// 	- Service `RedshiftDb`: The Redshift user's password.
@@ -6073,7 +6189,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `WhenIWork`: Your When I Work password.
         /// 	- Service `Wherefour`: Your Wherefour password.
         /// 	- Service `Workday`: Workday password.
-        /// 	- Service `WorkdayAdaptive`: User password
+        /// 	- Service `WorkdayAdaptive`: User password (required for PASSWORD authentication)
         /// 	- Service `WorkdayFinancialManagement`: Workday password.
         /// 	- Service `WorkdayHcm`: Workday password.
         /// 	- Service `Xandr`: Your Xandr password.
@@ -6521,6 +6637,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Salesforce`: Provide content of the `.key` private key (only when AuthenticationMethod = `ADVANCED`).
         /// 	- Service `SalesforceSandbox`: Provide content of the `.key` private key (only when AuthenticationMethod = `ADVANCED`).
         /// 	- Service `SnowflakeDb`: Private access key.  The field should be specified if authentication type is `KEY_PAIR`.
+        /// 	- Service `WorkdayAdaptive`: PEM-formatted PKCS#8 private key, including BEGIN/END PRIVATE KEY markers, for token authentication
         /// </summary>
         public Input<string>? PrivateKey
         {
@@ -7092,6 +7209,20 @@ namespace Pulumi.Fivetran.Inputs
         {
             get => _reportSuites ?? (_reportSuites = new InputList<string>());
             set => _reportSuites = value;
+        }
+
+        [Input("reportTemplates", required: true)]
+        private InputList<string>? _reportTemplates;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `TheTradeDesk`: Report templates to sync.
+        /// 	- Service `WalmartDsp`: Report templates to sync.
+        /// </summary>
+        public InputList<string> ReportTemplates
+        {
+            get => _reportTemplates ?? (_reportTemplates = new InputList<string>());
+            set => _reportTemplates = value;
         }
 
         /// <summary>
@@ -8582,6 +8713,13 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `WorkdayHcm`: WID of the Workday Integration Transaction Log Service subscriber. Used to scope the V2 optimised history transaction-log queries to a specific integration subscriber.
+        /// </summary>
+        [Input("subscriberId", required: true)]
+        public Input<string> SubscriberId { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `AzureServiceBus`: The subscriber name. If the connection string does not have manage permission, you need to specify a subscriber name we can use to fetch data. If not specified, we default to `FivetranSubSchema`
         /// </summary>
         [Input("subscriberName", required: true)]
@@ -8658,6 +8796,13 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Jira`: Specifies whether to sync files in JIRA for supported destinations (true) or not (false).
+        /// </summary>
+        [Input("syncFiles", required: true)]
+        public Input<bool> SyncFiles { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `Webhooks`: The webhooks sync format.  Default value: `Unpacked`. Unpacked messages must be valid JSON.
         /// </summary>
         [Input("syncFormat", required: true)]
@@ -8671,6 +8816,13 @@ namespace Pulumi.Fivetran.Inputs
         /// </summary>
         [Input("syncFormulaFields", required: true)]
         public Input<bool> SyncFormulaFields { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Hubspot`: Enable syncing of highly sensitive data fields from HubSpot. When enabled, sensitive data syncing is also automatically enabled.
+        /// </summary>
+        [Input("syncHighlySensitiveData", required: true)]
+        public Input<bool> SyncHighlySensitiveData { get; set; } = null!;
 
         /// <summary>
         /// Field usage depends on `Service` value: 
@@ -8784,6 +8936,13 @@ namespace Pulumi.Fivetran.Inputs
         /// </summary>
         [Input("syncPullApi", required: true)]
         public Input<bool> SyncPullApi { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Hubspot`: Enable syncing of sensitive data fields from HubSpot.
+        /// </summary>
+        [Input("syncSensitiveData", required: true)]
+        public Input<bool> SyncSensitiveData { get; set; } = null!;
 
         /// <summary>
         /// Field usage depends on `Service` value: 
@@ -9003,7 +9162,10 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Oracle`: TDE wallet password. Required for password based wallet.
+        /// 	- Service `OracleEbs`: TDE wallet password. Required for password based wallet.
         /// 	- Service `OracleHva`: TDE wallet password. Required for password based wallet.
+        /// 	- Service `OracleRac`: TDE wallet password. Required for password based wallet.
         /// 	- Service `OracleSapHva`: TDE wallet password. Required for password based wallet.
         /// 	- Service `OracleSapHvaNetweaver`: TDE wallet password. Required for password based wallet.
         /// </summary>
@@ -9051,6 +9213,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `MicrosoftTeams`: Your Microsoft Teams Tenant.
         /// 	- Service `Unicommerce`: Your uniware tenant.
         /// 	- Service `Workday`: Workday tenant name
+        /// 	- Service `WorkdayAdaptive`: Tenant identifier (required for TOKEN authentication)
         /// 	- Service `WorkdayFinancialManagement`: Workday tenant name
         /// 	- Service `WorkdayHcm`: Workday tenant name
         /// </summary>
@@ -9633,11 +9796,11 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `Mysql`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
         /// 	- Service `MysqlAzure`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
         /// 	- Service `MysqlRds`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `Oracle`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `OracleEbs`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `Oracle`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `OracleEbs`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
         /// 	- Service `OracleHva`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `OracleRac`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        /// 	- Service `OracleRds`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `OracleRac`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        /// 	- Service `OracleRds`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes. - `XSTREAM_OUT` - Fivetran uses Oracle XStream Out to stream changes from the database.
         /// 	- Service `OracleSapHva`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
         /// 	- Service `Postgres`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "PostgresRds"`. Supported values:`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the  write-ahead log (WAL) using a logical slot.This is more efficient than the query-based method, but requires more setup and monitoring.`QUERY_BASED` - this method replicates new, changed and deleted rows via the `Xmin` and `Ctid` system columns
         /// 	- Service `PostgresRds`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "PostgresRds"`. Supported values:`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot. This is more efficient than the query-based method, but requires more setup and monitoring.`QUERY_BASED` - this method replicates new, changed and deleted rows via the `Xmin` and `Ctid` system columns
@@ -9699,6 +9862,14 @@ namespace Pulumi.Fivetran.Inputs
         /// </summary>
         [Input("useDataSync", required: true)]
         public Input<bool> UseDataSync { get; set; } = null!;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Db2iHva`: Restricts schema discovery to libraries (schemas) within the configured database. When enabled, the database parameter must also be specified.
+        /// 	- Service `Db2iSapHva`: Restricts schema discovery to libraries (schemas) within the configured database. When enabled, the database parameter must also be specified. Has no effect on SAP ECC on Db2 for i connectors.
+        /// </summary>
+        [Input("useDatabaseNameForTableFiltering", required: true)]
+        public Input<bool> UseDatabaseNameForTableFiltering { get; set; } = null!;
 
         /// <summary>
         /// Field usage depends on `Service` value: 
@@ -9832,7 +10003,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `OracleSapHva`: The username.
         /// 	- Service `OracleSapHvaNetweaver`: The username.
         /// 	- Service `Outbrain`: The username or email of the Outbrain user.
-        /// 	- Service `Postgres`: The user name.
+        /// 	- Service `Postgres`: For password authentication, enter the user name.For Entra ID authentication, enter the registered app display name.
         /// 	- Service `PostgresRds`: The user name.
         /// 	- Service `RedshiftDb`: The Redshift username.
         /// 	- Service `SapHana`: Your SAP HANA user name.

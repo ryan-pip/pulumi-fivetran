@@ -167,6 +167,7 @@ namespace Pulumi.Fivetran.Outputs
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Quickbooks`: `Realm ID` of your QuickBooks application.
+        /// 	- Service `TiktokOrganicApp`: The TikTok account Open ID (open_id) returned during OAuth authorization. Required when creating the connector via REST API.
         /// </summary>
         public readonly string? RealmId;
         /// <summary>

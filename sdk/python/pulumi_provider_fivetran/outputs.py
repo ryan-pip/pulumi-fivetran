@@ -433,6 +433,7 @@ class ConnectorAuth(dict):
                	- Service `twitter_ads`: The X App access token secret.
         :param _builtins.str realm_id: Field usage depends on `service` value:
                	- Service `quickbooks`: `Realm ID` of your QuickBooks application.
+               	- Service `tiktok_organic_app`: The TikTok account Open ID (open_id) returned during OAuth authorization. Required when creating the connector via REST API.
         :param _builtins.str refresh_token: Field usage depends on `service` value:
                	- Service `adroll`: The long-lived `Refresh token` along with the `client_id` and `client_secret` parameters carry the information necessary to get a new access token for API resources.
                	- Service `airtable`: The long-lived refresh token along with the client ID and client secret carry the information necessary to get a new access token for API resources.
@@ -834,6 +835,7 @@ class ConnectorAuth(dict):
         """
         Field usage depends on `service` value:
         	- Service `quickbooks`: `Realm ID` of your QuickBooks application.
+        	- Service `tiktok_organic_app`: The TikTok account Open ID (open_id) returned during OAuth authorization. Required when creating the connector via REST API.
         """
         return pulumi.get(self, "realm_id")
 
@@ -1556,6 +1558,8 @@ class ConnectorConfig(dict):
             suggest = "api_admin_key"
         elif key == "apiBaseUrl":
             suggest = "api_base_url"
+        elif key == "apiCursorRollbackWindow":
+            suggest = "api_cursor_rollback_window"
         elif key == "apiEnvironment":
             suggest = "api_environment"
         elif key == "apiId":
@@ -1588,6 +1592,8 @@ class ConnectorConfig(dict):
             suggest = "api_secret_key"
         elif key == "apiServer":
             suggest = "api_server"
+        elif key == "apiToSyncConversationAnalyticsData":
+            suggest = "api_to_sync_conversation_analytics_data"
         elif key == "apiToken":
             suggest = "api_token"
         elif key == "apiType":
@@ -1656,6 +1662,8 @@ class ConnectorConfig(dict):
             suggest = "asm_oracle_home"
         elif key == "asmPassword":
             suggest = "asm_password"
+        elif key == "asmStagingDirectory":
+            suggest = "asm_staging_directory"
         elif key == "asmTns":
             suggest = "asm_tns"
         elif key == "asmUser":
@@ -1750,6 +1758,12 @@ class ConnectorConfig(dict):
             suggest = "campaign_query_lookback_window_in_days"
         elif key == "captureDeletes":
             suggest = "capture_deletes"
+        elif key == "cdbDatabase":
+            suggest = "cdb_database"
+        elif key == "cdbPassword":
+            suggest = "cdb_password"
+        elif key == "cdbUser":
+            suggest = "cdb_user"
         elif key == "certificateId":
             suggest = "certificate_id"
         elif key == "clickAttributionWindow":
@@ -1958,6 +1972,8 @@ class ConnectorConfig(dict):
             suggest = "enable_all_dimension_combinations"
         elif key == "enableArchiveLogOnly":
             suggest = "enable_archive_log_only"
+        elif key == "enableAsm":
+            suggest = "enable_asm"
         elif key == "enableDataExtensionsSyncing":
             suggest = "enable_data_extensions_syncing"
         elif key == "enableDistributedConnectorMode":
@@ -1968,6 +1984,8 @@ class ConnectorConfig(dict):
             suggest = "enable_exports"
         elif key == "enableMtlsConnection":
             suggest = "enable_mtls_connection"
+        elif key == "enableSymbolicLinks":
+            suggest = "enable_symbolic_links"
         elif key == "enableTde":
             suggest = "enable_tde"
         elif key == "enableTdeEncryption":
@@ -2000,6 +2018,8 @@ class ConnectorConfig(dict):
             suggest = "escape_char_options"
         elif key == "euRegion":
             suggest = "eu_region"
+        elif key == "eventExtractMode":
+            suggest = "event_extract_mode"
         elif key == "exportNativeTypesAsPdf":
             suggest = "export_native_types_as_pdf"
         elif key == "exportStorageType":
@@ -2172,6 +2192,10 @@ class ConnectorConfig(dict):
             suggest = "list_strategy"
         elif key == "listSyncMode":
             suggest = "list_sync_mode"
+        elif key == "localWalletHost":
+            suggest = "local_wallet_host"
+        elif key == "localWalletUser":
+            suggest = "local_wallet_user"
         elif key == "locationIds":
             suggest = "location_ids"
         elif key == "logJournal":
@@ -2370,6 +2394,8 @@ class ConnectorConfig(dict):
             suggest = "report_service_api_key"
         elif key == "reportSuites":
             suggest = "report_suites"
+        elif key == "reportTemplates":
+            suggest = "report_templates"
         elif key == "reportTimezone":
             suggest = "report_timezone"
         elif key == "reportType":
@@ -2586,6 +2612,8 @@ class ConnectorConfig(dict):
             suggest = "sub_collections"
         elif key == "subDomain":
             suggest = "sub_domain"
+        elif key == "subscriberId":
+            suggest = "subscriber_id"
         elif key == "subscriberName":
             suggest = "subscriber_name"
         elif key == "subscriptionKey":
@@ -2602,10 +2630,14 @@ class ConnectorConfig(dict):
             suggest = "sync_all_versions"
         elif key == "syncDataLocker":
             suggest = "sync_data_locker"
+        elif key == "syncFiles":
+            suggest = "sync_files"
         elif key == "syncFormat":
             suggest = "sync_format"
         elif key == "syncFormulaFields":
             suggest = "sync_formula_fields"
+        elif key == "syncHighlySensitiveData":
+            suggest = "sync_highly_sensitive_data"
         elif key == "syncMetadata":
             suggest = "sync_metadata"
         elif key == "syncMethod":
@@ -2626,6 +2658,8 @@ class ConnectorConfig(dict):
             suggest = "sync_permissions"
         elif key == "syncPullApi":
             suggest = "sync_pull_api"
+        elif key == "syncSensitiveData":
+            suggest = "sync_sensitive_data"
         elif key == "syncTables":
             suggest = "sync_tables"
         elif key == "syncType":
@@ -2740,6 +2774,8 @@ class ConnectorConfig(dict):
             suggest = "use_customer_s3_bucket"
         elif key == "useDataSync":
             suggest = "use_data_sync"
+        elif key == "useDatabaseNameForTableFiltering":
+            suggest = "use_database_name_for_table_filtering"
         elif key == "useHarvestApiV3":
             suggest = "use_harvest_api_v3"
         elif key == "useMessageServer":
@@ -2906,6 +2942,7 @@ class ConnectorConfig(dict):
                  api_access_token: Optional[_builtins.str] = None,
                  api_admin_key: Optional[_builtins.str] = None,
                  api_base_url: Optional[_builtins.str] = None,
+                 api_cursor_rollback_window: Optional[_builtins.int] = None,
                  api_environment: Optional[_builtins.str] = None,
                  api_id: Optional[_builtins.str] = None,
                  api_integration_type: Optional[_builtins.str] = None,
@@ -2922,6 +2959,7 @@ class ConnectorConfig(dict):
                  api_secret: Optional[_builtins.str] = None,
                  api_secret_key: Optional[_builtins.str] = None,
                  api_server: Optional[_builtins.str] = None,
+                 api_to_sync_conversation_analytics_data: Optional[_builtins.str] = None,
                  api_token: Optional[_builtins.str] = None,
                  api_type: Optional[_builtins.str] = None,
                  api_url: Optional[_builtins.str] = None,
@@ -2957,6 +2995,7 @@ class ConnectorConfig(dict):
                  asm_option: Optional[_builtins.bool] = None,
                  asm_oracle_home: Optional[_builtins.str] = None,
                  asm_password: Optional[_builtins.str] = None,
+                 asm_staging_directory: Optional[_builtins.str] = None,
                  asm_tns: Optional[_builtins.str] = None,
                  asm_user: Optional[_builtins.str] = None,
                  attribution_window: Optional[_builtins.str] = None,
@@ -3010,6 +3049,9 @@ class ConnectorConfig(dict):
                  campaign_query_lookback_window_in_days: Optional[_builtins.int] = None,
                  capture_deletes: Optional[_builtins.bool] = None,
                  catalog: Optional[_builtins.str] = None,
+                 cdb_database: Optional[_builtins.str] = None,
+                 cdb_password: Optional[_builtins.str] = None,
+                 cdb_user: Optional[_builtins.str] = None,
                  certificate: Optional[_builtins.str] = None,
                  certificate_id: Optional[_builtins.str] = None,
                  click_attribution_window: Optional[_builtins.str] = None,
@@ -3132,11 +3174,13 @@ class ConnectorConfig(dict):
                  empty_header: Optional[_builtins.bool] = None,
                  enable_all_dimension_combinations: Optional[_builtins.bool] = None,
                  enable_archive_log_only: Optional[_builtins.bool] = None,
+                 enable_asm: Optional[_builtins.bool] = None,
                  enable_data_extensions_syncing: Optional[_builtins.bool] = None,
                  enable_distributed_connector_mode: Optional[_builtins.bool] = None,
                  enable_enrichments: Optional[_builtins.bool] = None,
                  enable_exports: Optional[_builtins.bool] = None,
                  enable_mtls_connection: Optional[_builtins.str] = None,
+                 enable_symbolic_links: Optional[_builtins.bool] = None,
                  enable_tde: Optional[_builtins.bool] = None,
                  enable_tde_encryption: Optional[_builtins.bool] = None,
                  encoded_public_key: Optional[_builtins.str] = None,
@@ -3155,6 +3199,7 @@ class ConnectorConfig(dict):
                  escape_char: Optional[_builtins.str] = None,
                  escape_char_options: Optional[_builtins.str] = None,
                  eu_region: Optional[_builtins.bool] = None,
+                 event_extract_mode: Optional[_builtins.str] = None,
                  events: Optional[Sequence[_builtins.str]] = None,
                  export_native_types_as_pdf: Optional[_builtins.bool] = None,
                  export_storage_type: Optional[_builtins.str] = None,
@@ -3239,6 +3284,7 @@ class ConnectorConfig(dict):
                  is_vendor: Optional[_builtins.bool] = None,
                  issuer: Optional[_builtins.str] = None,
                  issuer_id: Optional[_builtins.str] = None,
+                 isu: Optional[_builtins.str] = None,
                  json_delivery_mode: Optional[_builtins.str] = None,
                  jwt_environment: Optional[_builtins.str] = None,
                  key: Optional[_builtins.str] = None,
@@ -3257,6 +3303,8 @@ class ConnectorConfig(dict):
                  list_of_company_ids: Optional[_builtins.str] = None,
                  list_strategy: Optional[_builtins.str] = None,
                  list_sync_mode: Optional[_builtins.str] = None,
+                 local_wallet_host: Optional[_builtins.str] = None,
+                 local_wallet_user: Optional[_builtins.str] = None,
                  location_ids: Optional[_builtins.str] = None,
                  log_journal: Optional[_builtins.str] = None,
                  log_journal_schema: Optional[_builtins.str] = None,
@@ -3377,6 +3425,7 @@ class ConnectorConfig(dict):
                  report_lists: Optional[Sequence['outputs.ConnectorConfigReportList']] = None,
                  report_service_api_key: Optional[_builtins.str] = None,
                  report_suites: Optional[Sequence[_builtins.str]] = None,
+                 report_templates: Optional[Sequence[_builtins.str]] = None,
                  report_timezone: Optional[_builtins.str] = None,
                  report_type: Optional[_builtins.str] = None,
                  report_url: Optional[_builtins.str] = None,
@@ -3503,6 +3552,7 @@ class ConnectorConfig(dict):
                  sub_collections: Optional[Sequence[_builtins.str]] = None,
                  sub_domain: Optional[_builtins.str] = None,
                  subdomain: Optional[_builtins.str] = None,
+                 subscriber_id: Optional[_builtins.str] = None,
                  subscriber_name: Optional[_builtins.str] = None,
                  subscription: Optional[_builtins.str] = None,
                  subscription_key: Optional[_builtins.str] = None,
@@ -3512,8 +3562,10 @@ class ConnectorConfig(dict):
                  swipe_attribution_window: Optional[_builtins.str] = None,
                  sync_all_versions: Optional[_builtins.bool] = None,
                  sync_data_locker: Optional[_builtins.bool] = None,
+                 sync_files: Optional[_builtins.bool] = None,
                  sync_format: Optional[_builtins.str] = None,
                  sync_formula_fields: Optional[_builtins.bool] = None,
+                 sync_highly_sensitive_data: Optional[_builtins.bool] = None,
                  sync_metadata: Optional[_builtins.bool] = None,
                  sync_method: Optional[_builtins.str] = None,
                  sync_mode: Optional[_builtins.str] = None,
@@ -3524,6 +3576,7 @@ class ConnectorConfig(dict):
                  sync_pack_mode: Optional[_builtins.str] = None,
                  sync_permissions: Optional[_builtins.bool] = None,
                  sync_pull_api: Optional[_builtins.bool] = None,
+                 sync_sensitive_data: Optional[_builtins.bool] = None,
                  sync_tables: Optional[_builtins.str] = None,
                  sync_type: Optional[_builtins.str] = None,
                  sysnr: Optional[_builtins.str] = None,
@@ -3589,6 +3642,7 @@ class ConnectorConfig(dict):
                  use_customer_bucket: Optional[_builtins.bool] = None,
                  use_customer_s3_bucket: Optional[_builtins.bool] = None,
                  use_data_sync: Optional[_builtins.bool] = None,
+                 use_database_name_for_table_filtering: Optional[_builtins.bool] = None,
                  use_harvest_api_v3: Optional[_builtins.str] = None,
                  use_message_server: Optional[_builtins.bool] = None,
                  use_oracle_rac: Optional[_builtins.bool] = None,
@@ -3957,9 +4011,11 @@ class ConnectorConfig(dict):
                	- Service `shopify`: API access token of your custom or public app.
                	- Service `square`: The Square API access token of your application.
         :param _builtins.str api_admin_key: Field usage depends on `service` value:
-               	- Service `anthropic_claude`: Your Claude Platform Admin API key for syncing organization-level management and reporting data.
+               	- Service `anthropic_claude`: Your Claude Admin API key for syncing organization-level management and reporting data.
         :param _builtins.str api_base_url: Field usage depends on `service` value:
                	- Service `gongio`: Your Gong API Base URL.
+        :param _builtins.int api_cursor_rollback_window: Field usage depends on `service` value:
+               	- Service `jira`: The number of hours to roll back the issue search cursor. Allows reprocessing of recently updated issues that may have been missed due to indexing delays. Valid range is 0-48 hours. A value of 0 disables the rollback.
         :param _builtins.str api_environment: Field usage depends on `service` value:
                	- Service `afterpay`: Your Afterpay API environment.
                	- Service `tiktok_organic`: Your TikTok Organic API environment.
@@ -4253,6 +4309,8 @@ class ConnectorConfig(dict):
                	- Service `alchemer`: Your Alchemer API Secret key.
         :param _builtins.str api_server: Field usage depends on `service` value:
                	- Service `sigma_computing_source`: Your Sigma Computing api server.
+        :param _builtins.str api_to_sync_conversation_analytics_data: Field usage depends on `service` value:
+               	- Service `genesys`: Choose the Genesys API you want to use to sync conversation analytics data. Export API retrieves conversation records via an asynchronous export job and is recommended for historical data. Aggregate Query API fetches data using the analytics aggregate query endpoint and produces a different set of tables and schemas. You cannot change this value after you set up the connection.
         :param _builtins.str api_token: Field usage depends on `service` value:
                	- Service `aha`: Your Aha! API key.
                	- Service `aircall`: Your Aircall API token.
@@ -4307,7 +4365,7 @@ class ConnectorConfig(dict):
                	- Service `safetyculture`: Your SafetyCulture API token.
                	- Service `sensor_tower`: Your Sensor Tower API token.
                	- Service `sentry`: Your Sentry auth token.
-               	- Service `sevdesk`: Your 32-character hexadecimal API token.
+               	- Service `sevdesk`: Your sevdesk API token.
                	- Service `simplecast`: Your Simplecast API token.
                	- Service `smartsheet`: API token generated from your Smartsheet account.
                	- Service `snyk`: Your Snyk API token.
@@ -4435,6 +4493,10 @@ class ConnectorConfig(dict):
         :param _builtins.str asm_password: Field usage depends on `service` value:
                	- Service `oracle_hva`: ASM password. Mandatory if `use_oracle_rac` or `asm_option` is set to `true`.
                	- Service `oracle_sap_hva`: The ASM user's password. Mandatory if `use_oracle_rac` or `asm_option` is set to `true`.
+        :param _builtins.str asm_staging_directory: Field usage depends on `service` value:
+               	- Service `oracle`: ASM staging directory path. Required when the ASM option is enabled.
+               	- Service `oracle_ebs`: ASM staging directory path. Required when the ASM option is enabled.
+               	- Service `oracle_rac`: ASM staging directory path. Required when the ASM option is enabled.
         :param _builtins.str asm_tns: Field usage depends on `service` value:
                	- Service `oracle_hva`: ASM TNS.
                	- Service `oracle_sap_hva`: ASM TNS.
@@ -4491,6 +4553,7 @@ class ConnectorConfig(dict):
                	- Service `github`: Authorization type.
                	- Service `smartsheet`: Authorization type.
                	- Service `workday`: Authentication Mode
+               	- Service `workday_adaptive`: Authentication mode: PASSWORD (username/password) or TOKEN (key-based authentication)
                	- Service `workday_financial_management`: Authentication Mode
                	- Service `workday_hcm`: Authentication Mode
         :param _builtins.str auth_secret: Field usage depends on `service` value:
@@ -4677,6 +4740,18 @@ class ConnectorConfig(dict):
                	- Service `opensearch`: Whether to capture hard deletes, meaning source documents removed from the index. Set to false to skip hard-delete detection, which may improve connector performance for sources that do not hard-delete documents. This does not affect source-level soft-delete fields; those fields sync as ordinary document updates. If you re-enable delete capture later, resync the affected tables to rebuild an accurate delete baseline. Default value: true.
         :param _builtins.str catalog: Field usage depends on `service` value:
                	- Service `databricks_db`: catalog to sync
+        :param _builtins.str cdb_database: Field usage depends on `service` value:
+               	- Service `oracle`: Optional: CDB database name for TDE-encrypted containerized databases.
+               	- Service `oracle_ebs`: Optional: CDB database name for TDE-encrypted containerized databases.
+               	- Service `oracle_rac`: Optional: CDB database name for TDE-encrypted containerized databases.
+        :param _builtins.str cdb_password: Field usage depends on `service` value:
+               	- Service `oracle`: Optional: Password for the CDB user.
+               	- Service `oracle_ebs`: Optional: Password for the CDB user.
+               	- Service `oracle_rac`: Optional: Password for the CDB user.
+        :param _builtins.str cdb_user: Field usage depends on `service` value:
+               	- Service `oracle`: Optional: CDB user for TDE-encrypted containerized databases.
+               	- Service `oracle_ebs`: Optional: CDB user for TDE-encrypted containerized databases.
+               	- Service `oracle_rac`: Optional: CDB user for TDE-encrypted containerized databases.
         :param _builtins.str certificate: Field usage depends on `service` value:
                	- Service `anaplan`: The contents of your PEM certificate file. Must be populated if `auth_mode` is set to `Certificate`.
                	- Service `db2z`: Db2 for z/OS host certificate
@@ -4767,7 +4842,7 @@ class ConnectorConfig(dict):
                	- Service `instructure`: Your Instructure client ID.
                	- Service `integral_ad_science`: Your integral_ad_science client id.
                	- Service `ironclad`: Your Ironclad client ID.
-               	- Service `ironclad_clickwrap`: Your Ironclad Clickwrap Client ID.
+               	- Service `ironclad_clickwrap`: Your Ironclad Clickwrap client ID.
                	- Service `jama_software`: Your Jama Software client ID.
                	- Service `jibble`: Your Jibble client ID.
                	- Service `khoros_communities`: Your Khoros Communities client ID.
@@ -4835,6 +4910,7 @@ class ConnectorConfig(dict):
                	- Service `visma`: Your Visma client ID.
                	- Service `vonage_contact_center`: Your Vonage Contact Center client ID.
                	- Service `walmart_marketplace`: Your Walmart Marketplace client ID.
+               	- Service `workday_adaptive`: Client ID for token authentication (required for TOKEN authentication)
                	- Service `xero`: your clientId
                	- Service `xray`: Your Xray Client ID.
                	- Service `yahoo_display_ads_on_yahoo_japan`: Your Yahoo Display Ads on Yahoo Japan client ID.
@@ -4956,7 +5032,7 @@ class ConnectorConfig(dict):
                	- Service `instructure`: Your Instructure client secret.
                	- Service `integral_ad_science`: Your integral_ad_science client secret.
                	- Service `ironclad`: Your Ironclad client secret.
-               	- Service `ironclad_clickwrap`: Your Ironclad Clickwrap Client Secret.
+               	- Service `ironclad_clickwrap`: Your Ironclad Clickwrap client secret.
                	- Service `jama_software`: Your Jama Software client secret.
                	- Service `jibble`: Your Jibble client secret.
                	- Service `khoros_communities`: Your Khoros Communities client secret.
@@ -5460,6 +5536,10 @@ class ConnectorConfig(dict):
                	- Service `oracle_sap_hva_netweaver`: Default value: `false`. Set to `true` if you're using archive log only mode.
                	- Service `sql_server_hva`: Use archive log only mode
                	- Service `sql_server_sap_ecc_hva`: Use archive log only mode
+        :param _builtins.bool enable_asm: Field usage depends on `service` value:
+               	- Service `oracle`: Default value: `false`. Set to `true` if you're using ASM.
+               	- Service `oracle_ebs`: Default value: `false`. Set to `true` if you're using ASM.
+               	- Service `oracle_rac`: Default value: `false`. Set to `true` if you're using ASM.
         :param _builtins.bool enable_distributed_connector_mode: Field usage depends on `service` value:
                	- Service `cosmos`: Enable to allow the connector to join a cluster of connectors forming a Distributed Connector Cluster. This cluster allows parallel syncs from the same source to the same destination using multiple connectors.
                	- Service `dynamodb`: Enable to allow the connector to join a cluster of connectors forming a Distributed Connector Cluster. This cluster allows parallel syncs from the same source to the same destination using multiple connectors.
@@ -5469,12 +5549,19 @@ class ConnectorConfig(dict):
                	- Service `braze`: Enable User Profile Exports
         :param _builtins.str enable_mtls_connection: Field usage depends on `service` value:
                	- Service `gitlab`: The confirmation that you have allowed Fivetran to connect with your self-hosted instance. Possible values: `true`, `false`.
+        :param _builtins.bool enable_symbolic_links: Field usage depends on `service` value:
+               	- Service `oracle`: Default value: `false`. Set to `true` if you're using symbolic links.
+               	- Service `oracle_ebs`: Default value: `false`. Set to `true` if you're using symbolic links.
+               	- Service `oracle_rac`: Default value: `false`. Set to `true` if you're using symbolic links.
         :param _builtins.bool enable_tde: Field usage depends on `service` value:
                	- Service `sql_server`: Use transparent data encryption (TDE)
                	- Service `sql_server_hva`: Using Transparent Data Encryption (TDE)
                	- Service `sql_server_sap_ecc_hva`: Using Transparent Data Encryption (TDE)
         :param _builtins.bool enable_tde_encryption: Field usage depends on `service` value:
+               	- Service `oracle`: Default value: `false`. Set to `true` if you're using TDE encryption.
+               	- Service `oracle_ebs`: Default value: `false`. Set to `true` if you're using TDE encryption.
                	- Service `oracle_hva`: Default value: `false`. Set to `true` if you're using TDE encryption.
+               	- Service `oracle_rac`: Default value: `false`. Set to `true` if you're using TDE encryption.
                	- Service `oracle_sap_hva`: Default value: `false`. Set to `true` if you're using TDE encryption.
                	- Service `oracle_sap_hva_netweaver`: Default value: `false`. Set to `true` if you're using TDE encryption.
         :param _builtins.str encoded_public_key: Field usage depends on `service` value:
@@ -5567,6 +5654,8 @@ class ConnectorConfig(dict):
         :param _builtins.bool eu_region: Field usage depends on `service` value:
                	- Service `kustomer`: Turn it on if your app is on EU region
                	- Service `survey_monkey`: The SurveyMonkey account region. Specify `true`, if your account is hosted in the EU region. Default value is `false`.
+        :param _builtins.str event_extract_mode: Field usage depends on `service` value:
+               	- Service `salesforce_marketing_cloud`: Event sync method. This is how Fivetran gets data for the event objects,  can be selected only during the connector creation.  TRACKING_EXTRACT - Salesforce exports a file, which we download and extract event  data from. This is the faster for large volumes, and requires SFTP.  SOAP  - We sync data using the SOAP API event object endpoints. This syncs the  latest events faster, but is slow for large volumes.
         :param Sequence[_builtins.str] events: Field usage depends on `service` value:
                	- Service `iterable`: List of events to sync. Should be specified when `sync_mode` is `SelectedEvents`
         :param _builtins.bool export_native_types_as_pdf: Field usage depends on `service` value:
@@ -5735,7 +5824,7 @@ class ConnectorConfig(dict):
                	- Service `appsflyer`: Your S3 home folder path of the Data Locker.
         :param _builtins.str host: Field usage depends on `service` value:
                	- Service `amqp`: AMQP broker host address.
-               	- Service `aurora`: DB instance host or IP address.
+               	- Service `aurora`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
                	- Service `aurora_postgres`: DB instance host or IP address.
                	- Service `aveva_pi`: IP address of the AF Server
                	- Service `azure_postgres`: DB instance host or IP address.
@@ -5767,14 +5856,14 @@ class ConnectorConfig(dict):
                	- Service `heroku_postgres`: DB instance host or IP address.
                	- Service `jira`: The Jira service host address.
                	- Service `magento_mysql`: DB instance host or IP address.
-               	- Service `magento_mysql_rds`: DB instance host or IP address.
+               	- Service `magento_mysql_rds`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
                	- Service `maria`: DB instance host or IP address.
                	- Service `maria_azure`: DB instance host or IP address.
-               	- Service `maria_rds`: DB instance host or IP address.
+               	- Service `maria_rds`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
                	- Service `marin`: The Marin host address.
                	- Service `mysql`: DB instance host or IP address.
                	- Service `mysql_azure`: DB instance host or IP address.
-               	- Service `mysql_rds`: DB instance host or IP address.
+               	- Service `mysql_rds`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
                	- Service `netsuite_suiteanalytics`: The NetSuite service host address.
                	- Service `opendistro`: DB instance host or IP address.
                	- Service `opensearch`: DB instance host or IP address.
@@ -5797,6 +5886,7 @@ class ConnectorConfig(dict):
                	- Service `sql_server_hva`: DB instance host or IP address.
                	- Service `sql_server_rds`: DB instance host or IP address.
                	- Service `sql_server_sap_ecc_hva`: DB instance host or IP address.
+               	- Service `workday_adaptive`: Workday Adaptive host URL, including the scheme, required for TOKEN authentication
         :param _builtins.str host_ip: Field usage depends on `service` value:
                	- Service `azure_blob_storage`: IP address of host tunnel machine which is used to connect to the Storage container.
                	- Service `azure_service_bus`: The IP address of the host machine which we use to connect to ASB via ssh
@@ -5907,6 +5997,8 @@ class ConnectorConfig(dict):
                	- Service `oracle_fusion_cloud_apps_hcm`: The Oracle Fusion Cloud issuer name.
         :param _builtins.str issuer_id: Field usage depends on `service` value:
                	- Service `itunes_connect`: Your Issuer ID. Must be populated if `key_type` is set to `Team`
+        :param _builtins.str isu: Field usage depends on `service` value:
+               	- Service `workday_adaptive`: Integration System User (ISU) for token authentication (required for TOKEN authentication)
         :param _builtins.str json_delivery_mode: Field usage depends on `service` value:
                	- Service `amqp`: JSON delivery mode (Packed or Unpacked).
                	- Service `aws_cost_report`: Control how your JSON data is delivered into your destination
@@ -5970,6 +6062,14 @@ class ConnectorConfig(dict):
                	- Service `s3_compatible_storage`: The listing strategy you want to use. Default value: `complete_listing`.
         :param _builtins.str list_sync_mode: Field usage depends on `service` value:
                	- Service `google_analytics_4_export`: The Sync Mode
+        :param _builtins.str local_wallet_host: Field usage depends on `service` value:
+               	- Service `oracle`: Optional: The host for the local Oracle Wallet.
+               	- Service `oracle_ebs`: Optional: The host for the local Oracle Wallet.
+               	- Service `oracle_rac`: Optional: The host for the local Oracle Wallet.
+        :param _builtins.str local_wallet_user: Field usage depends on `service` value:
+               	- Service `oracle`: Optional: The user for the local Oracle Wallet.
+               	- Service `oracle_ebs`: Optional: The user for the local Oracle Wallet.
+               	- Service `oracle_rac`: Optional: The user for the local Oracle Wallet.
         :param _builtins.str location_ids: Field usage depends on `service` value:
                	- Service `h_level`: Your HighLevel location ID.
         :param _builtins.str log_journal: Field usage depends on `service` value:
@@ -5985,7 +6085,7 @@ class ConnectorConfig(dict):
                	- Service `rebound_returns`: Your ReBound Returns login.
                	- Service `the_trade_desk`: The Trade Desk email. It is a part of the login credentials.
                	- Service `walmart_dsp`: Walmart DSP email. It is a part of the login credentials.
-               	- Service `workday_adaptive`: User email address
+               	- Service `workday_adaptive`: User email address (required for PASSWORD authentication)
         :param _builtins.str login_password: Field usage depends on `service` value:
                	- Service `concur`: The SAP Concur password.
                	- Service `sage_intacct`: The login password. It is a part of the login credentials.
@@ -6235,7 +6335,7 @@ class ConnectorConfig(dict):
                	- Service `pardot_sandbox`: The Pardot user's password.
                	- Service `partnerize`: Your Partnerize account's password.
                	- Service `podio`: Your Podio account password.
-               	- Service `postgres`: The user's password.
+               	- Service `postgres`: For password authentication, enter the user's password.For Entra ID authentication, enter the client secret value.
                	- Service `postgres_rds`: The user's password.
                	- Service `qmatic_data_connect`: Your Qmatic Data Connect password.
                	- Service `redshift_db`: The Redshift user's password.
@@ -6278,7 +6378,7 @@ class ConnectorConfig(dict):
                	- Service `when_i_work`: Your When I Work password.
                	- Service `wherefour`: Your Wherefour password.
                	- Service `workday`: Workday password.
-               	- Service `workday_adaptive`: User password
+               	- Service `workday_adaptive`: User password (required for PASSWORD authentication)
                	- Service `workday_financial_management`: Workday password.
                	- Service `workday_hcm`: Workday password.
                	- Service `xandr`: Your Xandr password.
@@ -6468,6 +6568,7 @@ class ConnectorConfig(dict):
                	- Service `salesforce`: Provide content of the `.key` private key (only when authentication_method = `ADVANCED`).
                	- Service `salesforce_sandbox`: Provide content of the `.key` private key (only when authentication_method = `ADVANCED`).
                	- Service `snowflake_db`: Private access key.  The field should be specified if authentication type is `KEY_PAIR`.
+               	- Service `workday_adaptive`: PEM-formatted PKCS#8 private key, including BEGIN/END PRIVATE KEY markers, for token authentication
         :param _builtins.str private_token: Field usage depends on `service` value:
                	- Service `eventbrite`: Your Eventbrite private token.
         :param _builtins.str product: Field usage depends on `service` value:
@@ -6694,6 +6795,9 @@ class ConnectorConfig(dict):
                	- Service `rakutenadvertising`: Your Rakuten Advertising report keys.
         :param _builtins.str report_service_api_key: Field usage depends on `service` value:
                	- Service `adyen`: Your Report Service API key.
+        :param Sequence[_builtins.str] report_templates: Field usage depends on `service` value:
+               	- Service `the_trade_desk`: Report templates to sync.
+               	- Service `walmart_dsp`: Report templates to sync.
         :param _builtins.str report_timezone: Field usage depends on `service` value:
                	- Service `criteo`: Report Timezone
         :param _builtins.str report_type: Field usage depends on `service` value:
@@ -7191,6 +7295,8 @@ class ConnectorConfig(dict):
                	- Service `yext`: Your Yext subdomain.
                	- Service `zendesk_chat`: Your Zendesk domain.
                	- Service `zendesk_workforce_management`: Your Zendesk Workforce Management subdomain.
+        :param _builtins.str subscriber_id: Field usage depends on `service` value:
+               	- Service `workday_hcm`: WID of the Workday Integration Transaction Log Service subscriber. Used to scope the V2 optimised history transaction-log queries to a specific integration subscriber.
         :param _builtins.str subscriber_name: Field usage depends on `service` value:
                	- Service `azure_service_bus`: The subscriber name. If the connection string does not have manage permission, you need to specify a subscriber name we can use to fetch data. If not specified, we default to `fivetran_sub_schema`
         :param _builtins.str subscription: Field usage depends on `service` value:
@@ -7212,12 +7318,16 @@ class ConnectorConfig(dict):
                	- Service `microsoft_dynamics_365_fno`: Specify if all versions of the records should be synced. If set to `true`, all versions of the records will be synced. If set to `false`, only the latest version of the records will be synced.
         :param _builtins.bool sync_data_locker: Field usage depends on `service` value:
                	- Service `appsflyer`: Sync AppsFlyer Data Locker. Default value is `true`, set it to `false` to sync AppsFlyer data using only webhooks.
+        :param _builtins.bool sync_files: Field usage depends on `service` value:
+               	- Service `jira`: Specifies whether to sync files in JIRA for supported destinations (true) or not (false).
         :param _builtins.str sync_format: Field usage depends on `service` value:
                	- Service `webhooks`: The webhooks sync format.  Default value: `Unpacked`. Unpacked messages must be valid JSON.
         :param _builtins.bool sync_formula_fields: Field usage depends on `service` value:
                	- Service `financial_force`: Enable this option to sync formula fields directly (default value = `false`)
                	- Service `salesforce`: Enable this option to sync formula fields directly (default value = `false`)
                	- Service `salesforce_sandbox`: Enable this option to sync formula fields directly (default value = `false`)
+        :param _builtins.bool sync_highly_sensitive_data: Field usage depends on `service` value:
+               	- Service `hubspot`: Enable syncing of highly sensitive data fields from HubSpot. When enabled, sensitive data syncing is also automatically enabled.
         :param _builtins.bool sync_metadata: Field usage depends on `service` value:
                	- Service `facebook_ads`: Parameter defining whether to enable or disable metadata synchronisation. Default value: `TRUE`.
         :param _builtins.str sync_method: Field usage depends on `service` value:
@@ -7281,6 +7391,8 @@ class ConnectorConfig(dict):
                	- Service `share_point`: Optional. Set to true to sync per-user file access permissions to control visibility in downstream applications.
         :param _builtins.bool sync_pull_api: Field usage depends on `service` value:
                	- Service `appsflyer`: These options are for Appsflyer's Pull API, and are only necessary for syncing events from Pull API.
+        :param _builtins.bool sync_sensitive_data: Field usage depends on `service` value:
+               	- Service `hubspot`: Enable syncing of sensitive data fields from HubSpot.
         :param _builtins.str sync_tables: Field usage depends on `service` value:
                	- Service `google_analytics_4_export`: Sync Table
         :param _builtins.str sync_type: Field usage depends on `service` value:
@@ -7332,7 +7444,10 @@ class ConnectorConfig(dict):
         :param _builtins.str tde_setting: Field usage depends on `service` value:
                	- Service `sql_server`: Transparent Data Encryption (TDE) setting. Possible values: `"OFF"`, `"CERTIFICATE"`. Default value is `"OFF"`.
         :param _builtins.str tde_wallet_password: Field usage depends on `service` value:
+               	- Service `oracle`: TDE wallet password. Required for password based wallet.
+               	- Service `oracle_ebs`: TDE wallet password. Required for password based wallet.
                	- Service `oracle_hva`: TDE wallet password. Required for password based wallet.
+               	- Service `oracle_rac`: TDE wallet password. Required for password based wallet.
                	- Service `oracle_sap_hva`: TDE wallet password. Required for password based wallet.
                	- Service `oracle_sap_hva_netweaver`: TDE wallet password. Required for password based wallet.
         :param _builtins.str team_id: Field usage depends on `service` value:
@@ -7347,6 +7462,7 @@ class ConnectorConfig(dict):
                	- Service `microsoft_teams`: Your Microsoft Teams Tenant.
                	- Service `unicommerce`: Your uniware tenant.
                	- Service `workday`: Workday tenant name
+               	- Service `workday_adaptive`: Tenant identifier (required for TOKEN authentication)
                	- Service `workday_financial_management`: Workday tenant name
                	- Service `workday_hcm`: Workday tenant name
         :param _builtins.str tenant_app_url: Field usage depends on `service` value:
@@ -7657,11 +7773,11 @@ class ConnectorConfig(dict):
                	- Service `mysql`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
                	- Service `mysql_azure`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
                	- Service `mysql_rds`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-               	- Service `oracle`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-               	- Service `oracle_ebs`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+               	- Service `oracle`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+               	- Service `oracle_ebs`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
                	- Service `oracle_hva`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-               	- Service `oracle_rac`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-               	- Service `oracle_rds`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+               	- Service `oracle_rac`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+               	- Service `oracle_rds`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes. - `XSTREAM_OUT` - Fivetran uses Oracle XStream Out to stream changes from the database.
                	- Service `oracle_sap_hva`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
                	- Service `postgres`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "postgres_rds"`. Supported values:`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the  write-ahead log (WAL) using a logical slot.This is more efficient than the query-based method, but requires more setup and monitoring.`QUERY_BASED` - this method replicates new, changed and deleted rows via the `xmin` and `ctid` system columns
                	- Service `postgres_rds`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "postgres_rds"`. Supported values:`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot. This is more efficient than the query-based method, but requires more setup and monitoring.`QUERY_BASED` - this method replicates new, changed and deleted rows via the `xmin` and `ctid` system columns
@@ -7685,6 +7801,9 @@ class ConnectorConfig(dict):
                	- Service `sailthru`: Enable this if you want to sync Sailthru Connect using your own"  S3 bucket.
         :param _builtins.bool use_data_sync: Field usage depends on `service` value:
                	- Service `pendo`: Toggle field to determine whether connector is syncing from API or from Data Sync
+        :param _builtins.bool use_database_name_for_table_filtering: Field usage depends on `service` value:
+               	- Service `db2i_hva`: Restricts schema discovery to libraries (schemas) within the configured database. When enabled, the database parameter must also be specified.
+               	- Service `db2i_sap_hva`: Restricts schema discovery to libraries (schemas) within the configured database. When enabled, the database parameter must also be specified. Has no effect on SAP ECC on Db2 for i connectors.
         :param _builtins.str use_harvest_api_v3: Field usage depends on `service` value:
                	- Service `greenhouse`: The confirmation that you want to connect to Harvest V3 API. Possible values: `true`, `false`.
         :param _builtins.bool use_message_server: Field usage depends on `service` value:
@@ -7766,7 +7885,7 @@ class ConnectorConfig(dict):
                	- Service `oracle_sap_hva`: The username.
                	- Service `oracle_sap_hva_netweaver`: The username.
                	- Service `outbrain`: The username or email of the Outbrain user.
-               	- Service `postgres`: The user name.
+               	- Service `postgres`: For password authentication, enter the user name.For Entra ID authentication, enter the registered app display name.
                	- Service `postgres_rds`: The user name.
                	- Service `redshift_db`: The Redshift username.
                	- Service `sap_hana`: Your SAP HANA user name.
@@ -8074,6 +8193,8 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "api_admin_key", api_admin_key)
         if api_base_url is not None:
             pulumi.set(__self__, "api_base_url", api_base_url)
+        if api_cursor_rollback_window is not None:
+            pulumi.set(__self__, "api_cursor_rollback_window", api_cursor_rollback_window)
         if api_environment is not None:
             pulumi.set(__self__, "api_environment", api_environment)
         if api_id is not None:
@@ -8106,6 +8227,8 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "api_secret_key", api_secret_key)
         if api_server is not None:
             pulumi.set(__self__, "api_server", api_server)
+        if api_to_sync_conversation_analytics_data is not None:
+            pulumi.set(__self__, "api_to_sync_conversation_analytics_data", api_to_sync_conversation_analytics_data)
         if api_token is not None:
             pulumi.set(__self__, "api_token", api_token)
         if api_type is not None:
@@ -8176,6 +8299,8 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "asm_oracle_home", asm_oracle_home)
         if asm_password is not None:
             pulumi.set(__self__, "asm_password", asm_password)
+        if asm_staging_directory is not None:
+            pulumi.set(__self__, "asm_staging_directory", asm_staging_directory)
         if asm_tns is not None:
             pulumi.set(__self__, "asm_tns", asm_tns)
         if asm_user is not None:
@@ -8282,6 +8407,12 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "capture_deletes", capture_deletes)
         if catalog is not None:
             pulumi.set(__self__, "catalog", catalog)
+        if cdb_database is not None:
+            pulumi.set(__self__, "cdb_database", cdb_database)
+        if cdb_password is not None:
+            pulumi.set(__self__, "cdb_password", cdb_password)
+        if cdb_user is not None:
+            pulumi.set(__self__, "cdb_user", cdb_user)
         if certificate is not None:
             pulumi.set(__self__, "certificate", certificate)
         if certificate_id is not None:
@@ -8526,6 +8657,8 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "enable_all_dimension_combinations", enable_all_dimension_combinations)
         if enable_archive_log_only is not None:
             pulumi.set(__self__, "enable_archive_log_only", enable_archive_log_only)
+        if enable_asm is not None:
+            pulumi.set(__self__, "enable_asm", enable_asm)
         if enable_data_extensions_syncing is not None:
             pulumi.set(__self__, "enable_data_extensions_syncing", enable_data_extensions_syncing)
         if enable_distributed_connector_mode is not None:
@@ -8536,6 +8669,8 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "enable_exports", enable_exports)
         if enable_mtls_connection is not None:
             pulumi.set(__self__, "enable_mtls_connection", enable_mtls_connection)
+        if enable_symbolic_links is not None:
+            pulumi.set(__self__, "enable_symbolic_links", enable_symbolic_links)
         if enable_tde is not None:
             pulumi.set(__self__, "enable_tde", enable_tde)
         if enable_tde_encryption is not None:
@@ -8572,6 +8707,8 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "escape_char_options", escape_char_options)
         if eu_region is not None:
             pulumi.set(__self__, "eu_region", eu_region)
+        if event_extract_mode is not None:
+            pulumi.set(__self__, "event_extract_mode", event_extract_mode)
         if events is not None:
             pulumi.set(__self__, "events", events)
         if export_native_types_as_pdf is not None:
@@ -8740,6 +8877,8 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "issuer", issuer)
         if issuer_id is not None:
             pulumi.set(__self__, "issuer_id", issuer_id)
+        if isu is not None:
+            pulumi.set(__self__, "isu", isu)
         if json_delivery_mode is not None:
             pulumi.set(__self__, "json_delivery_mode", json_delivery_mode)
         if jwt_environment is not None:
@@ -8776,6 +8915,10 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "list_strategy", list_strategy)
         if list_sync_mode is not None:
             pulumi.set(__self__, "list_sync_mode", list_sync_mode)
+        if local_wallet_host is not None:
+            pulumi.set(__self__, "local_wallet_host", local_wallet_host)
+        if local_wallet_user is not None:
+            pulumi.set(__self__, "local_wallet_user", local_wallet_user)
         if location_ids is not None:
             pulumi.set(__self__, "location_ids", location_ids)
         if log_journal is not None:
@@ -9016,6 +9159,8 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "report_service_api_key", report_service_api_key)
         if report_suites is not None:
             pulumi.set(__self__, "report_suites", report_suites)
+        if report_templates is not None:
+            pulumi.set(__self__, "report_templates", report_templates)
         if report_timezone is not None:
             pulumi.set(__self__, "report_timezone", report_timezone)
         if report_type is not None:
@@ -9268,6 +9413,8 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "sub_domain", sub_domain)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
+        if subscriber_id is not None:
+            pulumi.set(__self__, "subscriber_id", subscriber_id)
         if subscriber_name is not None:
             pulumi.set(__self__, "subscriber_name", subscriber_name)
         if subscription is not None:
@@ -9286,10 +9433,14 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "sync_all_versions", sync_all_versions)
         if sync_data_locker is not None:
             pulumi.set(__self__, "sync_data_locker", sync_data_locker)
+        if sync_files is not None:
+            pulumi.set(__self__, "sync_files", sync_files)
         if sync_format is not None:
             pulumi.set(__self__, "sync_format", sync_format)
         if sync_formula_fields is not None:
             pulumi.set(__self__, "sync_formula_fields", sync_formula_fields)
+        if sync_highly_sensitive_data is not None:
+            pulumi.set(__self__, "sync_highly_sensitive_data", sync_highly_sensitive_data)
         if sync_metadata is not None:
             pulumi.set(__self__, "sync_metadata", sync_metadata)
         if sync_method is not None:
@@ -9310,6 +9461,8 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "sync_permissions", sync_permissions)
         if sync_pull_api is not None:
             pulumi.set(__self__, "sync_pull_api", sync_pull_api)
+        if sync_sensitive_data is not None:
+            pulumi.set(__self__, "sync_sensitive_data", sync_sensitive_data)
         if sync_tables is not None:
             pulumi.set(__self__, "sync_tables", sync_tables)
         if sync_type is not None:
@@ -9440,6 +9593,8 @@ class ConnectorConfig(dict):
             pulumi.set(__self__, "use_customer_s3_bucket", use_customer_s3_bucket)
         if use_data_sync is not None:
             pulumi.set(__self__, "use_data_sync", use_data_sync)
+        if use_database_name_for_table_filtering is not None:
+            pulumi.set(__self__, "use_database_name_for_table_filtering", use_database_name_for_table_filtering)
         if use_harvest_api_v3 is not None:
             pulumi.set(__self__, "use_harvest_api_v3", use_harvest_api_v3)
         if use_message_server is not None:
@@ -10295,7 +10450,7 @@ class ConnectorConfig(dict):
     def api_admin_key(self) -> Optional[_builtins.str]:
         """
         Field usage depends on `service` value:
-        	- Service `anthropic_claude`: Your Claude Platform Admin API key for syncing organization-level management and reporting data.
+        	- Service `anthropic_claude`: Your Claude Admin API key for syncing organization-level management and reporting data.
         """
         return pulumi.get(self, "api_admin_key")
 
@@ -10307,6 +10462,15 @@ class ConnectorConfig(dict):
         	- Service `gongio`: Your Gong API Base URL.
         """
         return pulumi.get(self, "api_base_url")
+
+    @_builtins.property
+    @pulumi.getter(name="apiCursorRollbackWindow")
+    def api_cursor_rollback_window(self) -> Optional[_builtins.int]:
+        """
+        Field usage depends on `service` value:
+        	- Service `jira`: The number of hours to roll back the issue search cursor. Allows reprocessing of recently updated issues that may have been missed due to indexing delays. Valid range is 0-48 hours. A value of 0 disables the rollback.
+        """
+        return pulumi.get(self, "api_cursor_rollback_window")
 
     @_builtins.property
     @pulumi.getter(name="apiEnvironment")
@@ -10714,6 +10878,15 @@ class ConnectorConfig(dict):
         return pulumi.get(self, "api_server")
 
     @_builtins.property
+    @pulumi.getter(name="apiToSyncConversationAnalyticsData")
+    def api_to_sync_conversation_analytics_data(self) -> Optional[_builtins.str]:
+        """
+        Field usage depends on `service` value:
+        	- Service `genesys`: Choose the Genesys API you want to use to sync conversation analytics data. Export API retrieves conversation records via an asynchronous export job and is recommended for historical data. Aggregate Query API fetches data using the analytics aggregate query endpoint and produces a different set of tables and schemas. You cannot change this value after you set up the connection.
+        """
+        return pulumi.get(self, "api_to_sync_conversation_analytics_data")
+
+    @_builtins.property
     @pulumi.getter(name="apiToken")
     def api_token(self) -> Optional[_builtins.str]:
         """
@@ -10771,7 +10944,7 @@ class ConnectorConfig(dict):
         	- Service `safetyculture`: Your SafetyCulture API token.
         	- Service `sensor_tower`: Your Sensor Tower API token.
         	- Service `sentry`: Your Sentry auth token.
-        	- Service `sevdesk`: Your 32-character hexadecimal API token.
+        	- Service `sevdesk`: Your sevdesk API token.
         	- Service `simplecast`: Your Simplecast API token.
         	- Service `smartsheet`: API token generated from your Smartsheet account.
         	- Service `snyk`: Your Snyk API token.
@@ -11137,6 +11310,17 @@ class ConnectorConfig(dict):
         return pulumi.get(self, "asm_password")
 
     @_builtins.property
+    @pulumi.getter(name="asmStagingDirectory")
+    def asm_staging_directory(self) -> Optional[_builtins.str]:
+        """
+        Field usage depends on `service` value:
+        	- Service `oracle`: ASM staging directory path. Required when the ASM option is enabled.
+        	- Service `oracle_ebs`: ASM staging directory path. Required when the ASM option is enabled.
+        	- Service `oracle_rac`: ASM staging directory path. Required when the ASM option is enabled.
+        """
+        return pulumi.get(self, "asm_staging_directory")
+
+    @_builtins.property
     @pulumi.getter(name="asmTns")
     def asm_tns(self) -> Optional[_builtins.str]:
         """
@@ -11266,6 +11450,7 @@ class ConnectorConfig(dict):
         	- Service `github`: Authorization type.
         	- Service `smartsheet`: Authorization type.
         	- Service `workday`: Authentication Mode
+        	- Service `workday_adaptive`: Authentication mode: PASSWORD (username/password) or TOKEN (key-based authentication)
         	- Service `workday_financial_management`: Authentication Mode
         	- Service `workday_hcm`: Authentication Mode
         """
@@ -11740,6 +11925,39 @@ class ConnectorConfig(dict):
         return pulumi.get(self, "catalog")
 
     @_builtins.property
+    @pulumi.getter(name="cdbDatabase")
+    def cdb_database(self) -> Optional[_builtins.str]:
+        """
+        Field usage depends on `service` value:
+        	- Service `oracle`: Optional: CDB database name for TDE-encrypted containerized databases.
+        	- Service `oracle_ebs`: Optional: CDB database name for TDE-encrypted containerized databases.
+        	- Service `oracle_rac`: Optional: CDB database name for TDE-encrypted containerized databases.
+        """
+        return pulumi.get(self, "cdb_database")
+
+    @_builtins.property
+    @pulumi.getter(name="cdbPassword")
+    def cdb_password(self) -> Optional[_builtins.str]:
+        """
+        Field usage depends on `service` value:
+        	- Service `oracle`: Optional: Password for the CDB user.
+        	- Service `oracle_ebs`: Optional: Password for the CDB user.
+        	- Service `oracle_rac`: Optional: Password for the CDB user.
+        """
+        return pulumi.get(self, "cdb_password")
+
+    @_builtins.property
+    @pulumi.getter(name="cdbUser")
+    def cdb_user(self) -> Optional[_builtins.str]:
+        """
+        Field usage depends on `service` value:
+        	- Service `oracle`: Optional: CDB user for TDE-encrypted containerized databases.
+        	- Service `oracle_ebs`: Optional: CDB user for TDE-encrypted containerized databases.
+        	- Service `oracle_rac`: Optional: CDB user for TDE-encrypted containerized databases.
+        """
+        return pulumi.get(self, "cdb_user")
+
+    @_builtins.property
     @pulumi.getter
     def certificate(self) -> Optional[_builtins.str]:
         """
@@ -11894,7 +12112,7 @@ class ConnectorConfig(dict):
         	- Service `instructure`: Your Instructure client ID.
         	- Service `integral_ad_science`: Your integral_ad_science client id.
         	- Service `ironclad`: Your Ironclad client ID.
-        	- Service `ironclad_clickwrap`: Your Ironclad Clickwrap Client ID.
+        	- Service `ironclad_clickwrap`: Your Ironclad Clickwrap client ID.
         	- Service `jama_software`: Your Jama Software client ID.
         	- Service `jibble`: Your Jibble client ID.
         	- Service `khoros_communities`: Your Khoros Communities client ID.
@@ -11962,6 +12180,7 @@ class ConnectorConfig(dict):
         	- Service `visma`: Your Visma client ID.
         	- Service `vonage_contact_center`: Your Vonage Contact Center client ID.
         	- Service `walmart_marketplace`: Your Walmart Marketplace client ID.
+        	- Service `workday_adaptive`: Client ID for token authentication (required for TOKEN authentication)
         	- Service `xero`: your clientId
         	- Service `xray`: Your Xray Client ID.
         	- Service `yahoo_display_ads_on_yahoo_japan`: Your Yahoo Display Ads on Yahoo Japan client ID.
@@ -12125,7 +12344,7 @@ class ConnectorConfig(dict):
         	- Service `instructure`: Your Instructure client secret.
         	- Service `integral_ad_science`: Your integral_ad_science client secret.
         	- Service `ironclad`: Your Ironclad client secret.
-        	- Service `ironclad_clickwrap`: Your Ironclad Clickwrap Client Secret.
+        	- Service `ironclad_clickwrap`: Your Ironclad Clickwrap client secret.
         	- Service `jama_software`: Your Jama Software client secret.
         	- Service `jibble`: Your Jibble client secret.
         	- Service `khoros_communities`: Your Khoros Communities client secret.
@@ -13351,6 +13570,17 @@ class ConnectorConfig(dict):
         return pulumi.get(self, "enable_archive_log_only")
 
     @_builtins.property
+    @pulumi.getter(name="enableAsm")
+    def enable_asm(self) -> Optional[_builtins.bool]:
+        """
+        Field usage depends on `service` value:
+        	- Service `oracle`: Default value: `false`. Set to `true` if you're using ASM.
+        	- Service `oracle_ebs`: Default value: `false`. Set to `true` if you're using ASM.
+        	- Service `oracle_rac`: Default value: `false`. Set to `true` if you're using ASM.
+        """
+        return pulumi.get(self, "enable_asm")
+
+    @_builtins.property
     @pulumi.getter(name="enableDataExtensionsSyncing")
     def enable_data_extensions_syncing(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "enable_data_extensions_syncing")
@@ -13393,6 +13623,17 @@ class ConnectorConfig(dict):
         return pulumi.get(self, "enable_mtls_connection")
 
     @_builtins.property
+    @pulumi.getter(name="enableSymbolicLinks")
+    def enable_symbolic_links(self) -> Optional[_builtins.bool]:
+        """
+        Field usage depends on `service` value:
+        	- Service `oracle`: Default value: `false`. Set to `true` if you're using symbolic links.
+        	- Service `oracle_ebs`: Default value: `false`. Set to `true` if you're using symbolic links.
+        	- Service `oracle_rac`: Default value: `false`. Set to `true` if you're using symbolic links.
+        """
+        return pulumi.get(self, "enable_symbolic_links")
+
+    @_builtins.property
     @pulumi.getter(name="enableTde")
     def enable_tde(self) -> Optional[_builtins.bool]:
         """
@@ -13408,7 +13649,10 @@ class ConnectorConfig(dict):
     def enable_tde_encryption(self) -> Optional[_builtins.bool]:
         """
         Field usage depends on `service` value:
+        	- Service `oracle`: Default value: `false`. Set to `true` if you're using TDE encryption.
+        	- Service `oracle_ebs`: Default value: `false`. Set to `true` if you're using TDE encryption.
         	- Service `oracle_hva`: Default value: `false`. Set to `true` if you're using TDE encryption.
+        	- Service `oracle_rac`: Default value: `false`. Set to `true` if you're using TDE encryption.
         	- Service `oracle_sap_hva`: Default value: `false`. Set to `true` if you're using TDE encryption.
         	- Service `oracle_sap_hva_netweaver`: Default value: `false`. Set to `true` if you're using TDE encryption.
         """
@@ -13615,6 +13859,15 @@ class ConnectorConfig(dict):
         	- Service `survey_monkey`: The SurveyMonkey account region. Specify `true`, if your account is hosted in the EU region. Default value is `false`.
         """
         return pulumi.get(self, "eu_region")
+
+    @_builtins.property
+    @pulumi.getter(name="eventExtractMode")
+    def event_extract_mode(self) -> Optional[_builtins.str]:
+        """
+        Field usage depends on `service` value:
+        	- Service `salesforce_marketing_cloud`: Event sync method. This is how Fivetran gets data for the event objects,  can be selected only during the connector creation.  TRACKING_EXTRACT - Salesforce exports a file, which we download and extract event  data from. This is the faster for large volumes, and requires SFTP.  SOAP  - We sync data using the SOAP API event object endpoints. This syncs the  latest events faster, but is slow for large volumes.
+        """
+        return pulumi.get(self, "event_extract_mode")
 
     @_builtins.property
     @pulumi.getter
@@ -14104,7 +14357,7 @@ class ConnectorConfig(dict):
         """
         Field usage depends on `service` value:
         	- Service `amqp`: AMQP broker host address.
-        	- Service `aurora`: DB instance host or IP address.
+        	- Service `aurora`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
         	- Service `aurora_postgres`: DB instance host or IP address.
         	- Service `aveva_pi`: IP address of the AF Server
         	- Service `azure_postgres`: DB instance host or IP address.
@@ -14136,14 +14389,14 @@ class ConnectorConfig(dict):
         	- Service `heroku_postgres`: DB instance host or IP address.
         	- Service `jira`: The Jira service host address.
         	- Service `magento_mysql`: DB instance host or IP address.
-        	- Service `magento_mysql_rds`: DB instance host or IP address.
+        	- Service `magento_mysql_rds`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
         	- Service `maria`: DB instance host or IP address.
         	- Service `maria_azure`: DB instance host or IP address.
-        	- Service `maria_rds`: DB instance host or IP address.
+        	- Service `maria_rds`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
         	- Service `marin`: The Marin host address.
         	- Service `mysql`: DB instance host or IP address.
         	- Service `mysql_azure`: DB instance host or IP address.
-        	- Service `mysql_rds`: DB instance host or IP address.
+        	- Service `mysql_rds`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
         	- Service `netsuite_suiteanalytics`: The NetSuite service host address.
         	- Service `opendistro`: DB instance host or IP address.
         	- Service `opensearch`: DB instance host or IP address.
@@ -14166,6 +14419,7 @@ class ConnectorConfig(dict):
         	- Service `sql_server_hva`: DB instance host or IP address.
         	- Service `sql_server_rds`: DB instance host or IP address.
         	- Service `sql_server_sap_ecc_hva`: DB instance host or IP address.
+        	- Service `workday_adaptive`: Workday Adaptive host URL, including the scheme, required for TOKEN authentication
         """
         return pulumi.get(self, "host")
 
@@ -14539,6 +14793,15 @@ class ConnectorConfig(dict):
         return pulumi.get(self, "issuer_id")
 
     @_builtins.property
+    @pulumi.getter
+    def isu(self) -> Optional[_builtins.str]:
+        """
+        Field usage depends on `service` value:
+        	- Service `workday_adaptive`: Integration System User (ISU) for token authentication (required for TOKEN authentication)
+        """
+        return pulumi.get(self, "isu")
+
+    @_builtins.property
     @pulumi.getter(name="jsonDeliveryMode")
     def json_delivery_mode(self) -> Optional[_builtins.str]:
         """
@@ -14724,6 +14987,28 @@ class ConnectorConfig(dict):
         return pulumi.get(self, "list_sync_mode")
 
     @_builtins.property
+    @pulumi.getter(name="localWalletHost")
+    def local_wallet_host(self) -> Optional[_builtins.str]:
+        """
+        Field usage depends on `service` value:
+        	- Service `oracle`: Optional: The host for the local Oracle Wallet.
+        	- Service `oracle_ebs`: Optional: The host for the local Oracle Wallet.
+        	- Service `oracle_rac`: Optional: The host for the local Oracle Wallet.
+        """
+        return pulumi.get(self, "local_wallet_host")
+
+    @_builtins.property
+    @pulumi.getter(name="localWalletUser")
+    def local_wallet_user(self) -> Optional[_builtins.str]:
+        """
+        Field usage depends on `service` value:
+        	- Service `oracle`: Optional: The user for the local Oracle Wallet.
+        	- Service `oracle_ebs`: Optional: The user for the local Oracle Wallet.
+        	- Service `oracle_rac`: Optional: The user for the local Oracle Wallet.
+        """
+        return pulumi.get(self, "local_wallet_user")
+
+    @_builtins.property
     @pulumi.getter(name="locationIds")
     def location_ids(self) -> Optional[_builtins.str]:
         """
@@ -14770,7 +15055,7 @@ class ConnectorConfig(dict):
         	- Service `rebound_returns`: Your ReBound Returns login.
         	- Service `the_trade_desk`: The Trade Desk email. It is a part of the login credentials.
         	- Service `walmart_dsp`: Walmart DSP email. It is a part of the login credentials.
-        	- Service `workday_adaptive`: User email address
+        	- Service `workday_adaptive`: User email address (required for PASSWORD authentication)
         """
         return pulumi.get(self, "login")
 
@@ -15336,7 +15621,7 @@ class ConnectorConfig(dict):
         	- Service `pardot_sandbox`: The Pardot user's password.
         	- Service `partnerize`: Your Partnerize account's password.
         	- Service `podio`: Your Podio account password.
-        	- Service `postgres`: The user's password.
+        	- Service `postgres`: For password authentication, enter the user's password.For Entra ID authentication, enter the client secret value.
         	- Service `postgres_rds`: The user's password.
         	- Service `qmatic_data_connect`: Your Qmatic Data Connect password.
         	- Service `redshift_db`: The Redshift user's password.
@@ -15379,7 +15664,7 @@ class ConnectorConfig(dict):
         	- Service `when_i_work`: Your When I Work password.
         	- Service `wherefour`: Your Wherefour password.
         	- Service `workday`: Workday password.
-        	- Service `workday_adaptive`: User password
+        	- Service `workday_adaptive`: User password (required for PASSWORD authentication)
         	- Service `workday_financial_management`: Workday password.
         	- Service `workday_hcm`: Workday password.
         	- Service `xandr`: Your Xandr password.
@@ -15751,6 +16036,7 @@ class ConnectorConfig(dict):
         	- Service `salesforce`: Provide content of the `.key` private key (only when authentication_method = `ADVANCED`).
         	- Service `salesforce_sandbox`: Provide content of the `.key` private key (only when authentication_method = `ADVANCED`).
         	- Service `snowflake_db`: Private access key.  The field should be specified if authentication type is `KEY_PAIR`.
+        	- Service `workday_adaptive`: PEM-formatted PKCS#8 private key, including BEGIN/END PRIVATE KEY markers, for token authentication
         """
         return pulumi.get(self, "private_key")
 
@@ -16272,6 +16558,16 @@ class ConnectorConfig(dict):
     @pulumi.getter(name="reportSuites")
     def report_suites(self) -> Optional[Sequence[_builtins.str]]:
         return pulumi.get(self, "report_suites")
+
+    @_builtins.property
+    @pulumi.getter(name="reportTemplates")
+    def report_templates(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Field usage depends on `service` value:
+        	- Service `the_trade_desk`: Report templates to sync.
+        	- Service `walmart_dsp`: Report templates to sync.
+        """
+        return pulumi.get(self, "report_templates")
 
     @_builtins.property
     @pulumi.getter(name="reportTimezone")
@@ -17635,6 +17931,15 @@ class ConnectorConfig(dict):
         return pulumi.get(self, "subdomain")
 
     @_builtins.property
+    @pulumi.getter(name="subscriberId")
+    def subscriber_id(self) -> Optional[_builtins.str]:
+        """
+        Field usage depends on `service` value:
+        	- Service `workday_hcm`: WID of the Workday Integration Transaction Log Service subscriber. Used to scope the V2 optimised history transaction-log queries to a specific integration subscriber.
+        """
+        return pulumi.get(self, "subscriber_id")
+
+    @_builtins.property
     @pulumi.getter(name="subscriberName")
     def subscriber_name(self) -> Optional[_builtins.str]:
         """
@@ -17719,6 +18024,15 @@ class ConnectorConfig(dict):
         return pulumi.get(self, "sync_data_locker")
 
     @_builtins.property
+    @pulumi.getter(name="syncFiles")
+    def sync_files(self) -> Optional[_builtins.bool]:
+        """
+        Field usage depends on `service` value:
+        	- Service `jira`: Specifies whether to sync files in JIRA for supported destinations (true) or not (false).
+        """
+        return pulumi.get(self, "sync_files")
+
+    @_builtins.property
     @pulumi.getter(name="syncFormat")
     def sync_format(self) -> Optional[_builtins.str]:
         """
@@ -17737,6 +18051,15 @@ class ConnectorConfig(dict):
         	- Service `salesforce_sandbox`: Enable this option to sync formula fields directly (default value = `false`)
         """
         return pulumi.get(self, "sync_formula_fields")
+
+    @_builtins.property
+    @pulumi.getter(name="syncHighlySensitiveData")
+    def sync_highly_sensitive_data(self) -> Optional[_builtins.bool]:
+        """
+        Field usage depends on `service` value:
+        	- Service `hubspot`: Enable syncing of highly sensitive data fields from HubSpot. When enabled, sensitive data syncing is also automatically enabled.
+        """
+        return pulumi.get(self, "sync_highly_sensitive_data")
 
     @_builtins.property
     @pulumi.getter(name="syncMetadata")
@@ -17870,6 +18193,15 @@ class ConnectorConfig(dict):
         	- Service `appsflyer`: These options are for Appsflyer's Pull API, and are only necessary for syncing events from Pull API.
         """
         return pulumi.get(self, "sync_pull_api")
+
+    @_builtins.property
+    @pulumi.getter(name="syncSensitiveData")
+    def sync_sensitive_data(self) -> Optional[_builtins.bool]:
+        """
+        Field usage depends on `service` value:
+        	- Service `hubspot`: Enable syncing of sensitive data fields from HubSpot.
+        """
+        return pulumi.get(self, "sync_sensitive_data")
 
     @_builtins.property
     @pulumi.getter(name="syncTables")
@@ -18057,7 +18389,10 @@ class ConnectorConfig(dict):
     def tde_wallet_password(self) -> Optional[_builtins.str]:
         """
         Field usage depends on `service` value:
+        	- Service `oracle`: TDE wallet password. Required for password based wallet.
+        	- Service `oracle_ebs`: TDE wallet password. Required for password based wallet.
         	- Service `oracle_hva`: TDE wallet password. Required for password based wallet.
+        	- Service `oracle_rac`: TDE wallet password. Required for password based wallet.
         	- Service `oracle_sap_hva`: TDE wallet password. Required for password based wallet.
         	- Service `oracle_sap_hva_netweaver`: TDE wallet password. Required for password based wallet.
         """
@@ -18100,6 +18435,7 @@ class ConnectorConfig(dict):
         	- Service `microsoft_teams`: Your Microsoft Teams Tenant.
         	- Service `unicommerce`: Your uniware tenant.
         	- Service `workday`: Workday tenant name
+        	- Service `workday_adaptive`: Tenant identifier (required for TOKEN authentication)
         	- Service `workday_financial_management`: Workday tenant name
         	- Service `workday_hcm`: Workday tenant name
         """
@@ -18644,11 +18980,11 @@ class ConnectorConfig(dict):
         	- Service `mysql`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
         	- Service `mysql_azure`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
         	- Service `mysql_rds`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        	- Service `oracle`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        	- Service `oracle_ebs`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        	- Service `oracle`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        	- Service `oracle_ebs`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
         	- Service `oracle_hva`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        	- Service `oracle_rac`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        	- Service `oracle_rds`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        	- Service `oracle_rac`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        	- Service `oracle_rds`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes. - `XSTREAM_OUT` - Fivetran uses Oracle XStream Out to stream changes from the database.
         	- Service `oracle_sap_hva`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
         	- Service `postgres`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "postgres_rds"`. Supported values:`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the  write-ahead log (WAL) using a logical slot.This is more efficient than the query-based method, but requires more setup and monitoring.`QUERY_BASED` - this method replicates new, changed and deleted rows via the `xmin` and `ctid` system columns
         	- Service `postgres_rds`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "postgres_rds"`. Supported values:`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot. This is more efficient than the query-based method, but requires more setup and monitoring.`QUERY_BASED` - this method replicates new, changed and deleted rows via the `xmin` and `ctid` system columns
@@ -18723,6 +19059,16 @@ class ConnectorConfig(dict):
         	- Service `pendo`: Toggle field to determine whether connector is syncing from API or from Data Sync
         """
         return pulumi.get(self, "use_data_sync")
+
+    @_builtins.property
+    @pulumi.getter(name="useDatabaseNameForTableFiltering")
+    def use_database_name_for_table_filtering(self) -> Optional[_builtins.bool]:
+        """
+        Field usage depends on `service` value:
+        	- Service `db2i_hva`: Restricts schema discovery to libraries (schemas) within the configured database. When enabled, the database parameter must also be specified.
+        	- Service `db2i_sap_hva`: Restricts schema discovery to libraries (schemas) within the configured database. When enabled, the database parameter must also be specified. Has no effect on SAP ECC on Db2 for i connectors.
+        """
+        return pulumi.get(self, "use_database_name_for_table_filtering")
 
     @_builtins.property
     @pulumi.getter(name="useHarvestApiV3")
@@ -18879,7 +19225,7 @@ class ConnectorConfig(dict):
         	- Service `oracle_sap_hva`: The username.
         	- Service `oracle_sap_hva_netweaver`: The username.
         	- Service `outbrain`: The username or email of the Outbrain user.
-        	- Service `postgres`: The user name.
+        	- Service `postgres`: For password authentication, enter the user name.For Entra ID authentication, enter the registered app display name.
         	- Service `postgres_rds`: The user name.
         	- Service `redshift_db`: The Redshift username.
         	- Service `sap_hana`: Your SAP HANA user name.
@@ -20995,7 +21341,7 @@ class ConnectorConfigReport(dict):
                	- Service `double_click_publishers`: Report dimensions to include in the sync. The `date` dimension is mandatory for all the report types.
                	- Service `google_analytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
                	- Service `google_analytics_4`: The report dimensions to include into a sync.
-               	- Service `google_display_and_video_360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `config_method` is set to `CREATE_NEW`.
+               	- Service `google_display_and_video_360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `config_method` is set to `CREATE_NEW`. NOTE: At least one of the following date dimensions must be included for report data aggregation: `FILTER_DATE` (daily), `FILTER_WEEK` (weekly), or `FILTER_MONTH` (monthly).
                	- Service `google_search_console`: The report dimensions included to sync.
                	- Service `workday_adaptive`: List of dimensions to sync for the table, if applicable.
         :param _builtins.str dynamic_parameter_field: Field usage depends on `service` value:
@@ -21414,7 +21760,7 @@ class ConnectorConfigReport(dict):
         	- Service `double_click_publishers`: Report dimensions to include in the sync. The `date` dimension is mandatory for all the report types.
         	- Service `google_analytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
         	- Service `google_analytics_4`: The report dimensions to include into a sync.
-        	- Service `google_display_and_video_360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `config_method` is set to `CREATE_NEW`.
+        	- Service `google_display_and_video_360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `config_method` is set to `CREATE_NEW`. NOTE: At least one of the following date dimensions must be included for report data aggregation: `FILTER_DATE` (daily), `FILTER_WEEK` (weekly), or `FILTER_MONTH` (monthly).
         	- Service `google_search_console`: The report dimensions included to sync.
         	- Service `workday_adaptive`: List of dimensions to sync for the table, if applicable.
         """
@@ -27413,6 +27759,7 @@ class GetConnectorConfigResult(dict):
                  api_access_token: _builtins.str,
                  api_admin_key: _builtins.str,
                  api_base_url: _builtins.str,
+                 api_cursor_rollback_window: _builtins.int,
                  api_environment: _builtins.str,
                  api_id: _builtins.str,
                  api_integration_type: _builtins.str,
@@ -27429,6 +27776,7 @@ class GetConnectorConfigResult(dict):
                  api_secret: _builtins.str,
                  api_secret_key: _builtins.str,
                  api_server: _builtins.str,
+                 api_to_sync_conversation_analytics_data: _builtins.str,
                  api_token: _builtins.str,
                  api_type: _builtins.str,
                  api_url: _builtins.str,
@@ -27464,6 +27812,7 @@ class GetConnectorConfigResult(dict):
                  asm_option: _builtins.bool,
                  asm_oracle_home: _builtins.str,
                  asm_password: _builtins.str,
+                 asm_staging_directory: _builtins.str,
                  asm_tns: _builtins.str,
                  asm_user: _builtins.str,
                  attribution_window: _builtins.str,
@@ -27517,6 +27866,9 @@ class GetConnectorConfigResult(dict):
                  campaign_query_lookback_window_in_days: _builtins.int,
                  capture_deletes: _builtins.bool,
                  catalog: _builtins.str,
+                 cdb_database: _builtins.str,
+                 cdb_password: _builtins.str,
+                 cdb_user: _builtins.str,
                  certificate: _builtins.str,
                  certificate_id: _builtins.str,
                  click_attribution_window: _builtins.str,
@@ -27639,11 +27991,13 @@ class GetConnectorConfigResult(dict):
                  empty_header: _builtins.bool,
                  enable_all_dimension_combinations: _builtins.bool,
                  enable_archive_log_only: _builtins.bool,
+                 enable_asm: _builtins.bool,
                  enable_data_extensions_syncing: _builtins.bool,
                  enable_distributed_connector_mode: _builtins.bool,
                  enable_enrichments: _builtins.bool,
                  enable_exports: _builtins.bool,
                  enable_mtls_connection: _builtins.str,
+                 enable_symbolic_links: _builtins.bool,
                  enable_tde: _builtins.bool,
                  enable_tde_encryption: _builtins.bool,
                  encoded_public_key: _builtins.str,
@@ -27662,6 +28016,7 @@ class GetConnectorConfigResult(dict):
                  escape_char: _builtins.str,
                  escape_char_options: _builtins.str,
                  eu_region: _builtins.bool,
+                 event_extract_mode: _builtins.str,
                  events: Sequence[_builtins.str],
                  export_native_types_as_pdf: _builtins.bool,
                  export_storage_type: _builtins.str,
@@ -27746,6 +28101,7 @@ class GetConnectorConfigResult(dict):
                  is_vendor: _builtins.bool,
                  issuer: _builtins.str,
                  issuer_id: _builtins.str,
+                 isu: _builtins.str,
                  json_delivery_mode: _builtins.str,
                  jwt_environment: _builtins.str,
                  key: _builtins.str,
@@ -27764,6 +28120,8 @@ class GetConnectorConfigResult(dict):
                  list_of_company_ids: _builtins.str,
                  list_strategy: _builtins.str,
                  list_sync_mode: _builtins.str,
+                 local_wallet_host: _builtins.str,
+                 local_wallet_user: _builtins.str,
                  location_ids: _builtins.str,
                  log_journal: _builtins.str,
                  log_journal_schema: _builtins.str,
@@ -27884,6 +28242,7 @@ class GetConnectorConfigResult(dict):
                  report_lists: Sequence['outputs.GetConnectorConfigReportListResult'],
                  report_service_api_key: _builtins.str,
                  report_suites: Sequence[_builtins.str],
+                 report_templates: Sequence[_builtins.str],
                  report_timezone: _builtins.str,
                  report_type: _builtins.str,
                  report_url: _builtins.str,
@@ -28010,6 +28369,7 @@ class GetConnectorConfigResult(dict):
                  sub_collections: Sequence[_builtins.str],
                  sub_domain: _builtins.str,
                  subdomain: _builtins.str,
+                 subscriber_id: _builtins.str,
                  subscriber_name: _builtins.str,
                  subscription: _builtins.str,
                  subscription_key: _builtins.str,
@@ -28019,8 +28379,10 @@ class GetConnectorConfigResult(dict):
                  swipe_attribution_window: _builtins.str,
                  sync_all_versions: _builtins.bool,
                  sync_data_locker: _builtins.bool,
+                 sync_files: _builtins.bool,
                  sync_format: _builtins.str,
                  sync_formula_fields: _builtins.bool,
+                 sync_highly_sensitive_data: _builtins.bool,
                  sync_metadata: _builtins.bool,
                  sync_method: _builtins.str,
                  sync_mode: _builtins.str,
@@ -28031,6 +28393,7 @@ class GetConnectorConfigResult(dict):
                  sync_pack_mode: _builtins.str,
                  sync_permissions: _builtins.bool,
                  sync_pull_api: _builtins.bool,
+                 sync_sensitive_data: _builtins.bool,
                  sync_tables: _builtins.str,
                  sync_type: _builtins.str,
                  sysnr: _builtins.str,
@@ -28096,6 +28459,7 @@ class GetConnectorConfigResult(dict):
                  use_customer_bucket: _builtins.bool,
                  use_customer_s3_bucket: _builtins.bool,
                  use_data_sync: _builtins.bool,
+                 use_database_name_for_table_filtering: _builtins.bool,
                  use_harvest_api_v3: _builtins.str,
                  use_message_server: _builtins.bool,
                  use_oracle_rac: _builtins.bool,
@@ -28468,9 +28832,11 @@ class GetConnectorConfigResult(dict):
                	- Service `shopify`: API access token of your custom or public app.
                	- Service `square`: The Square API access token of your application.
         :param _builtins.str api_admin_key: Field usage depends on `service` value:
-               	- Service `anthropic_claude`: Your Claude Platform Admin API key for syncing organization-level management and reporting data.
+               	- Service `anthropic_claude`: Your Claude Admin API key for syncing organization-level management and reporting data.
         :param _builtins.str api_base_url: Field usage depends on `service` value:
                	- Service `gongio`: Your Gong API Base URL.
+        :param _builtins.int api_cursor_rollback_window: Field usage depends on `service` value:
+               	- Service `jira`: The number of hours to roll back the issue search cursor. Allows reprocessing of recently updated issues that may have been missed due to indexing delays. Valid range is 0-48 hours. A value of 0 disables the rollback.
         :param _builtins.str api_environment: Field usage depends on `service` value:
                	- Service `afterpay`: Your Afterpay API environment.
                	- Service `tiktok_organic`: Your TikTok Organic API environment.
@@ -28764,6 +29130,8 @@ class GetConnectorConfigResult(dict):
                	- Service `alchemer`: Your Alchemer API Secret key.
         :param _builtins.str api_server: Field usage depends on `service` value:
                	- Service `sigma_computing_source`: Your Sigma Computing api server.
+        :param _builtins.str api_to_sync_conversation_analytics_data: Field usage depends on `service` value:
+               	- Service `genesys`: Choose the Genesys API you want to use to sync conversation analytics data. Export API retrieves conversation records via an asynchronous export job and is recommended for historical data. Aggregate Query API fetches data using the analytics aggregate query endpoint and produces a different set of tables and schemas. You cannot change this value after you set up the connection.
         :param _builtins.str api_token: Field usage depends on `service` value:
                	- Service `aha`: Your Aha! API key.
                	- Service `aircall`: Your Aircall API token.
@@ -28818,7 +29186,7 @@ class GetConnectorConfigResult(dict):
                	- Service `safetyculture`: Your SafetyCulture API token.
                	- Service `sensor_tower`: Your Sensor Tower API token.
                	- Service `sentry`: Your Sentry auth token.
-               	- Service `sevdesk`: Your 32-character hexadecimal API token.
+               	- Service `sevdesk`: Your sevdesk API token.
                	- Service `simplecast`: Your Simplecast API token.
                	- Service `smartsheet`: API token generated from your Smartsheet account.
                	- Service `snyk`: Your Snyk API token.
@@ -28948,6 +29316,10 @@ class GetConnectorConfigResult(dict):
         :param _builtins.str asm_password: Field usage depends on `service` value:
                	- Service `oracle_hva`: ASM password. Mandatory if `use_oracle_rac` or `asm_option` is set to `true`.
                	- Service `oracle_sap_hva`: The ASM user's password. Mandatory if `use_oracle_rac` or `asm_option` is set to `true`.
+        :param _builtins.str asm_staging_directory: Field usage depends on `service` value:
+               	- Service `oracle`: ASM staging directory path. Required when the ASM option is enabled.
+               	- Service `oracle_ebs`: ASM staging directory path. Required when the ASM option is enabled.
+               	- Service `oracle_rac`: ASM staging directory path. Required when the ASM option is enabled.
         :param _builtins.str asm_tns: Field usage depends on `service` value:
                	- Service `oracle_hva`: ASM TNS.
                	- Service `oracle_sap_hva`: ASM TNS.
@@ -29004,6 +29376,7 @@ class GetConnectorConfigResult(dict):
                	- Service `github`: Authorization type.
                	- Service `smartsheet`: Authorization type.
                	- Service `workday`: Authentication Mode
+               	- Service `workday_adaptive`: Authentication mode: PASSWORD (username/password) or TOKEN (key-based authentication)
                	- Service `workday_financial_management`: Authentication Mode
                	- Service `workday_hcm`: Authentication Mode
         :param _builtins.str auth_secret: Field usage depends on `service` value:
@@ -29195,6 +29568,18 @@ class GetConnectorConfigResult(dict):
                	- Service `opensearch`: Whether to capture hard deletes, meaning source documents removed from the index. Set to false to skip hard-delete detection, which may improve connector performance for sources that do not hard-delete documents. This does not affect source-level soft-delete fields; those fields sync as ordinary document updates. If you re-enable delete capture later, resync the affected tables to rebuild an accurate delete baseline. Default value: true.
         :param _builtins.str catalog: Field usage depends on `service` value:
                	- Service `databricks_db`: catalog to sync
+        :param _builtins.str cdb_database: Field usage depends on `service` value:
+               	- Service `oracle`: Optional: CDB database name for TDE-encrypted containerized databases.
+               	- Service `oracle_ebs`: Optional: CDB database name for TDE-encrypted containerized databases.
+               	- Service `oracle_rac`: Optional: CDB database name for TDE-encrypted containerized databases.
+        :param _builtins.str cdb_password: Field usage depends on `service` value:
+               	- Service `oracle`: Optional: Password for the CDB user.
+               	- Service `oracle_ebs`: Optional: Password for the CDB user.
+               	- Service `oracle_rac`: Optional: Password for the CDB user.
+        :param _builtins.str cdb_user: Field usage depends on `service` value:
+               	- Service `oracle`: Optional: CDB user for TDE-encrypted containerized databases.
+               	- Service `oracle_ebs`: Optional: CDB user for TDE-encrypted containerized databases.
+               	- Service `oracle_rac`: Optional: CDB user for TDE-encrypted containerized databases.
         :param _builtins.str certificate: Field usage depends on `service` value:
                	- Service `anaplan`: The contents of your PEM certificate file. Must be populated if `auth_mode` is set to `Certificate`.
                	- Service `db2z`: Db2 for z/OS host certificate
@@ -29285,7 +29670,7 @@ class GetConnectorConfigResult(dict):
                	- Service `instructure`: Your Instructure client ID.
                	- Service `integral_ad_science`: Your integral_ad_science client id.
                	- Service `ironclad`: Your Ironclad client ID.
-               	- Service `ironclad_clickwrap`: Your Ironclad Clickwrap Client ID.
+               	- Service `ironclad_clickwrap`: Your Ironclad Clickwrap client ID.
                	- Service `jama_software`: Your Jama Software client ID.
                	- Service `jibble`: Your Jibble client ID.
                	- Service `khoros_communities`: Your Khoros Communities client ID.
@@ -29353,6 +29738,7 @@ class GetConnectorConfigResult(dict):
                	- Service `visma`: Your Visma client ID.
                	- Service `vonage_contact_center`: Your Vonage Contact Center client ID.
                	- Service `walmart_marketplace`: Your Walmart Marketplace client ID.
+               	- Service `workday_adaptive`: Client ID for token authentication (required for TOKEN authentication)
                	- Service `xero`: your clientId
                	- Service `xray`: Your Xray Client ID.
                	- Service `yahoo_display_ads_on_yahoo_japan`: Your Yahoo Display Ads on Yahoo Japan client ID.
@@ -29474,7 +29860,7 @@ class GetConnectorConfigResult(dict):
                	- Service `instructure`: Your Instructure client secret.
                	- Service `integral_ad_science`: Your integral_ad_science client secret.
                	- Service `ironclad`: Your Ironclad client secret.
-               	- Service `ironclad_clickwrap`: Your Ironclad Clickwrap Client Secret.
+               	- Service `ironclad_clickwrap`: Your Ironclad Clickwrap client secret.
                	- Service `jama_software`: Your Jama Software client secret.
                	- Service `jibble`: Your Jibble client secret.
                	- Service `khoros_communities`: Your Khoros Communities client secret.
@@ -29993,6 +30379,10 @@ class GetConnectorConfigResult(dict):
                	- Service `oracle_sap_hva_netweaver`: Default value: `false`. Set to `true` if you're using archive log only mode.
                	- Service `sql_server_hva`: Use archive log only mode
                	- Service `sql_server_sap_ecc_hva`: Use archive log only mode
+        :param _builtins.bool enable_asm: Field usage depends on `service` value:
+               	- Service `oracle`: Default value: `false`. Set to `true` if you're using ASM.
+               	- Service `oracle_ebs`: Default value: `false`. Set to `true` if you're using ASM.
+               	- Service `oracle_rac`: Default value: `false`. Set to `true` if you're using ASM.
         :param _builtins.bool enable_distributed_connector_mode: Field usage depends on `service` value:
                	- Service `cosmos`: Enable to allow the connector to join a cluster of connectors forming a Distributed Connector Cluster. This cluster allows parallel syncs from the same source to the same destination using multiple connectors.
                	- Service `dynamodb`: Enable to allow the connector to join a cluster of connectors forming a Distributed Connector Cluster. This cluster allows parallel syncs from the same source to the same destination using multiple connectors.
@@ -30002,12 +30392,19 @@ class GetConnectorConfigResult(dict):
                	- Service `braze`: Enable User Profile Exports
         :param _builtins.str enable_mtls_connection: Field usage depends on `service` value:
                	- Service `gitlab`: The confirmation that you have allowed Fivetran to connect with your self-hosted instance. Possible values: `true`, `false`.
+        :param _builtins.bool enable_symbolic_links: Field usage depends on `service` value:
+               	- Service `oracle`: Default value: `false`. Set to `true` if you're using symbolic links.
+               	- Service `oracle_ebs`: Default value: `false`. Set to `true` if you're using symbolic links.
+               	- Service `oracle_rac`: Default value: `false`. Set to `true` if you're using symbolic links.
         :param _builtins.bool enable_tde: Field usage depends on `service` value:
                	- Service `sql_server`: Use transparent data encryption (TDE)
                	- Service `sql_server_hva`: Using Transparent Data Encryption (TDE)
                	- Service `sql_server_sap_ecc_hva`: Using Transparent Data Encryption (TDE)
         :param _builtins.bool enable_tde_encryption: Field usage depends on `service` value:
+               	- Service `oracle`: Default value: `false`. Set to `true` if you're using TDE encryption.
+               	- Service `oracle_ebs`: Default value: `false`. Set to `true` if you're using TDE encryption.
                	- Service `oracle_hva`: Default value: `false`. Set to `true` if you're using TDE encryption.
+               	- Service `oracle_rac`: Default value: `false`. Set to `true` if you're using TDE encryption.
                	- Service `oracle_sap_hva`: Default value: `false`. Set to `true` if you're using TDE encryption.
                	- Service `oracle_sap_hva_netweaver`: Default value: `false`. Set to `true` if you're using TDE encryption.
         :param _builtins.str encoded_public_key: Field usage depends on `service` value:
@@ -30100,6 +30497,8 @@ class GetConnectorConfigResult(dict):
         :param _builtins.bool eu_region: Field usage depends on `service` value:
                	- Service `kustomer`: Turn it on if your app is on EU region
                	- Service `survey_monkey`: The SurveyMonkey account region. Specify `true`, if your account is hosted in the EU region. Default value is `false`.
+        :param _builtins.str event_extract_mode: Field usage depends on `service` value:
+               	- Service `salesforce_marketing_cloud`: Event sync method. This is how Fivetran gets data for the event objects,  can be selected only during the connector creation.  TRACKING_EXTRACT - Salesforce exports a file, which we download and extract event  data from. This is the faster for large volumes, and requires SFTP.  SOAP  - We sync data using the SOAP API event object endpoints. This syncs the  latest events faster, but is slow for large volumes.
         :param Sequence[_builtins.str] events: Field usage depends on `service` value:
                	- Service `iterable`: List of events to sync. Should be specified when `sync_mode` is `SelectedEvents`
         :param _builtins.bool export_native_types_as_pdf: Field usage depends on `service` value:
@@ -30283,7 +30682,7 @@ class GetConnectorConfigResult(dict):
                	- Service `appsflyer`: Your S3 home folder path of the Data Locker.
         :param _builtins.str host: Field usage depends on `service` value:
                	- Service `amqp`: AMQP broker host address.
-               	- Service `aurora`: DB instance host or IP address.
+               	- Service `aurora`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
                	- Service `aurora_postgres`: DB instance host or IP address.
                	- Service `aveva_pi`: IP address of the AF Server
                	- Service `azure_postgres`: DB instance host or IP address.
@@ -30315,14 +30714,14 @@ class GetConnectorConfigResult(dict):
                	- Service `heroku_postgres`: DB instance host or IP address.
                	- Service `jira`: The Jira service host address.
                	- Service `magento_mysql`: DB instance host or IP address.
-               	- Service `magento_mysql_rds`: DB instance host or IP address.
+               	- Service `magento_mysql_rds`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
                	- Service `maria`: DB instance host or IP address.
                	- Service `maria_azure`: DB instance host or IP address.
-               	- Service `maria_rds`: DB instance host or IP address.
+               	- Service `maria_rds`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
                	- Service `marin`: The Marin host address.
                	- Service `mysql`: DB instance host or IP address.
                	- Service `mysql_azure`: DB instance host or IP address.
-               	- Service `mysql_rds`: DB instance host or IP address.
+               	- Service `mysql_rds`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
                	- Service `netsuite_suiteanalytics`: The NetSuite service host address.
                	- Service `opendistro`: DB instance host or IP address.
                	- Service `opensearch`: DB instance host or IP address.
@@ -30345,6 +30744,7 @@ class GetConnectorConfigResult(dict):
                	- Service `sql_server_hva`: DB instance host or IP address.
                	- Service `sql_server_rds`: DB instance host or IP address.
                	- Service `sql_server_sap_ecc_hva`: DB instance host or IP address.
+               	- Service `workday_adaptive`: Workday Adaptive host URL, including the scheme, required for TOKEN authentication
         :param _builtins.str host_ip: Field usage depends on `service` value:
                	- Service `azure_blob_storage`: IP address of host tunnel machine which is used to connect to the Storage container.
                	- Service `azure_service_bus`: The IP address of the host machine which we use to connect to ASB via ssh
@@ -30455,6 +30855,8 @@ class GetConnectorConfigResult(dict):
                	- Service `oracle_fusion_cloud_apps_hcm`: The Oracle Fusion Cloud issuer name.
         :param _builtins.str issuer_id: Field usage depends on `service` value:
                	- Service `itunes_connect`: Your Issuer ID. Must be populated if `key_type` is set to `Team`
+        :param _builtins.str isu: Field usage depends on `service` value:
+               	- Service `workday_adaptive`: Integration System User (ISU) for token authentication (required for TOKEN authentication)
         :param _builtins.str json_delivery_mode: Field usage depends on `service` value:
                	- Service `amqp`: JSON delivery mode (Packed or Unpacked).
                	- Service `aws_cost_report`: Control how your JSON data is delivered into your destination
@@ -30518,6 +30920,14 @@ class GetConnectorConfigResult(dict):
                	- Service `s3_compatible_storage`: The listing strategy you want to use. Default value: `complete_listing`.
         :param _builtins.str list_sync_mode: Field usage depends on `service` value:
                	- Service `google_analytics_4_export`: The Sync Mode
+        :param _builtins.str local_wallet_host: Field usage depends on `service` value:
+               	- Service `oracle`: Optional: The host for the local Oracle Wallet.
+               	- Service `oracle_ebs`: Optional: The host for the local Oracle Wallet.
+               	- Service `oracle_rac`: Optional: The host for the local Oracle Wallet.
+        :param _builtins.str local_wallet_user: Field usage depends on `service` value:
+               	- Service `oracle`: Optional: The user for the local Oracle Wallet.
+               	- Service `oracle_ebs`: Optional: The user for the local Oracle Wallet.
+               	- Service `oracle_rac`: Optional: The user for the local Oracle Wallet.
         :param _builtins.str location_ids: Field usage depends on `service` value:
                	- Service `h_level`: Your HighLevel location ID.
         :param _builtins.str log_journal: Field usage depends on `service` value:
@@ -30533,7 +30943,7 @@ class GetConnectorConfigResult(dict):
                	- Service `rebound_returns`: Your ReBound Returns login.
                	- Service `the_trade_desk`: The Trade Desk email. It is a part of the login credentials.
                	- Service `walmart_dsp`: Walmart DSP email. It is a part of the login credentials.
-               	- Service `workday_adaptive`: User email address
+               	- Service `workday_adaptive`: User email address (required for PASSWORD authentication)
         :param _builtins.str login_password: Field usage depends on `service` value:
                	- Service `concur`: The SAP Concur password.
                	- Service `sage_intacct`: The login password. It is a part of the login credentials.
@@ -30783,7 +31193,7 @@ class GetConnectorConfigResult(dict):
                	- Service `pardot_sandbox`: The Pardot user's password.
                	- Service `partnerize`: Your Partnerize account's password.
                	- Service `podio`: Your Podio account password.
-               	- Service `postgres`: The user's password.
+               	- Service `postgres`: For password authentication, enter the user's password.For Entra ID authentication, enter the client secret value.
                	- Service `postgres_rds`: The user's password.
                	- Service `qmatic_data_connect`: Your Qmatic Data Connect password.
                	- Service `redshift_db`: The Redshift user's password.
@@ -30826,7 +31236,7 @@ class GetConnectorConfigResult(dict):
                	- Service `when_i_work`: Your When I Work password.
                	- Service `wherefour`: Your Wherefour password.
                	- Service `workday`: Workday password.
-               	- Service `workday_adaptive`: User password
+               	- Service `workday_adaptive`: User password (required for PASSWORD authentication)
                	- Service `workday_financial_management`: Workday password.
                	- Service `workday_hcm`: Workday password.
                	- Service `xandr`: Your Xandr password.
@@ -31016,6 +31426,7 @@ class GetConnectorConfigResult(dict):
                	- Service `salesforce`: Provide content of the `.key` private key (only when authentication_method = `ADVANCED`).
                	- Service `salesforce_sandbox`: Provide content of the `.key` private key (only when authentication_method = `ADVANCED`).
                	- Service `snowflake_db`: Private access key.  The field should be specified if authentication type is `KEY_PAIR`.
+               	- Service `workday_adaptive`: PEM-formatted PKCS#8 private key, including BEGIN/END PRIVATE KEY markers, for token authentication
         :param _builtins.str private_token: Field usage depends on `service` value:
                	- Service `eventbrite`: Your Eventbrite private token.
         :param _builtins.str product: Field usage depends on `service` value:
@@ -31248,6 +31659,9 @@ class GetConnectorConfigResult(dict):
                	- Service `spotify_ads`: The list of reports. Each report corresponds to a table within the schema to which connector will sync the data.
         :param _builtins.str report_service_api_key: Field usage depends on `service` value:
                	- Service `adyen`: Your Report Service API key.
+        :param Sequence[_builtins.str] report_templates: Field usage depends on `service` value:
+               	- Service `the_trade_desk`: Report templates to sync.
+               	- Service `walmart_dsp`: Report templates to sync.
         :param _builtins.str report_timezone: Field usage depends on `service` value:
                	- Service `criteo`: Report Timezone
         :param _builtins.str report_type: Field usage depends on `service` value:
@@ -31762,6 +32176,8 @@ class GetConnectorConfigResult(dict):
                	- Service `yext`: Your Yext subdomain.
                	- Service `zendesk_chat`: Your Zendesk domain.
                	- Service `zendesk_workforce_management`: Your Zendesk Workforce Management subdomain.
+        :param _builtins.str subscriber_id: Field usage depends on `service` value:
+               	- Service `workday_hcm`: WID of the Workday Integration Transaction Log Service subscriber. Used to scope the V2 optimised history transaction-log queries to a specific integration subscriber.
         :param _builtins.str subscriber_name: Field usage depends on `service` value:
                	- Service `azure_service_bus`: The subscriber name. If the connection string does not have manage permission, you need to specify a subscriber name we can use to fetch data. If not specified, we default to `fivetran_sub_schema`
         :param _builtins.str subscription: Field usage depends on `service` value:
@@ -31783,12 +32199,16 @@ class GetConnectorConfigResult(dict):
                	- Service `microsoft_dynamics_365_fno`: Specify if all versions of the records should be synced. If set to `true`, all versions of the records will be synced. If set to `false`, only the latest version of the records will be synced.
         :param _builtins.bool sync_data_locker: Field usage depends on `service` value:
                	- Service `appsflyer`: Sync AppsFlyer Data Locker. Default value is `true`, set it to `false` to sync AppsFlyer data using only webhooks.
+        :param _builtins.bool sync_files: Field usage depends on `service` value:
+               	- Service `jira`: Specifies whether to sync files in JIRA for supported destinations (true) or not (false).
         :param _builtins.str sync_format: Field usage depends on `service` value:
                	- Service `webhooks`: The webhooks sync format.  Default value: `Unpacked`. Unpacked messages must be valid JSON.
         :param _builtins.bool sync_formula_fields: Field usage depends on `service` value:
                	- Service `financial_force`: Enable this option to sync formula fields directly (default value = `false`)
                	- Service `salesforce`: Enable this option to sync formula fields directly (default value = `false`)
                	- Service `salesforce_sandbox`: Enable this option to sync formula fields directly (default value = `false`)
+        :param _builtins.bool sync_highly_sensitive_data: Field usage depends on `service` value:
+               	- Service `hubspot`: Enable syncing of highly sensitive data fields from HubSpot. When enabled, sensitive data syncing is also automatically enabled.
         :param _builtins.bool sync_metadata: Field usage depends on `service` value:
                	- Service `facebook_ads`: Parameter defining whether to enable or disable metadata synchronisation. Default value: `TRUE`.
         :param _builtins.str sync_method: Field usage depends on `service` value:
@@ -31852,6 +32272,8 @@ class GetConnectorConfigResult(dict):
                	- Service `share_point`: Optional. Set to true to sync per-user file access permissions to control visibility in downstream applications.
         :param _builtins.bool sync_pull_api: Field usage depends on `service` value:
                	- Service `appsflyer`: These options are for Appsflyer's Pull API, and are only necessary for syncing events from Pull API.
+        :param _builtins.bool sync_sensitive_data: Field usage depends on `service` value:
+               	- Service `hubspot`: Enable syncing of sensitive data fields from HubSpot.
         :param _builtins.str sync_tables: Field usage depends on `service` value:
                	- Service `google_analytics_4_export`: Sync Table
         :param _builtins.str sync_type: Field usage depends on `service` value:
@@ -31903,7 +32325,10 @@ class GetConnectorConfigResult(dict):
         :param _builtins.str tde_setting: Field usage depends on `service` value:
                	- Service `sql_server`: Transparent Data Encryption (TDE) setting. Possible values: `"OFF"`, `"CERTIFICATE"`. Default value is `"OFF"`.
         :param _builtins.str tde_wallet_password: Field usage depends on `service` value:
+               	- Service `oracle`: TDE wallet password. Required for password based wallet.
+               	- Service `oracle_ebs`: TDE wallet password. Required for password based wallet.
                	- Service `oracle_hva`: TDE wallet password. Required for password based wallet.
+               	- Service `oracle_rac`: TDE wallet password. Required for password based wallet.
                	- Service `oracle_sap_hva`: TDE wallet password. Required for password based wallet.
                	- Service `oracle_sap_hva_netweaver`: TDE wallet password. Required for password based wallet.
         :param _builtins.str team_id: Field usage depends on `service` value:
@@ -31918,6 +32343,7 @@ class GetConnectorConfigResult(dict):
                	- Service `microsoft_teams`: Your Microsoft Teams Tenant.
                	- Service `unicommerce`: Your uniware tenant.
                	- Service `workday`: Workday tenant name
+               	- Service `workday_adaptive`: Tenant identifier (required for TOKEN authentication)
                	- Service `workday_financial_management`: Workday tenant name
                	- Service `workday_hcm`: Workday tenant name
         :param _builtins.str tenant_app_url: Field usage depends on `service` value:
@@ -32230,11 +32656,11 @@ class GetConnectorConfigResult(dict):
                	- Service `mysql`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
                	- Service `mysql_azure`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
                	- Service `mysql_rds`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-               	- Service `oracle`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-               	- Service `oracle_ebs`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+               	- Service `oracle`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+               	- Service `oracle_ebs`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
                	- Service `oracle_hva`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-               	- Service `oracle_rac`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-               	- Service `oracle_rds`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+               	- Service `oracle_rac`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+               	- Service `oracle_rds`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes. - `XSTREAM_OUT` - Fivetran uses Oracle XStream Out to stream changes from the database.
                	- Service `oracle_sap_hva`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
                	- Service `postgres`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "postgres_rds"`. Supported values:`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the  write-ahead log (WAL) using a logical slot.This is more efficient than the query-based method, but requires more setup and monitoring.`QUERY_BASED` - this method replicates new, changed and deleted rows via the `xmin` and `ctid` system columns
                	- Service `postgres_rds`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "postgres_rds"`. Supported values:`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot. This is more efficient than the query-based method, but requires more setup and monitoring.`QUERY_BASED` - this method replicates new, changed and deleted rows via the `xmin` and `ctid` system columns
@@ -32258,6 +32684,9 @@ class GetConnectorConfigResult(dict):
                	- Service `sailthru`: Enable this if you want to sync Sailthru Connect using your own"  S3 bucket.
         :param _builtins.bool use_data_sync: Field usage depends on `service` value:
                	- Service `pendo`: Toggle field to determine whether connector is syncing from API or from Data Sync
+        :param _builtins.bool use_database_name_for_table_filtering: Field usage depends on `service` value:
+               	- Service `db2i_hva`: Restricts schema discovery to libraries (schemas) within the configured database. When enabled, the database parameter must also be specified.
+               	- Service `db2i_sap_hva`: Restricts schema discovery to libraries (schemas) within the configured database. When enabled, the database parameter must also be specified. Has no effect on SAP ECC on Db2 for i connectors.
         :param _builtins.str use_harvest_api_v3: Field usage depends on `service` value:
                	- Service `greenhouse`: The confirmation that you want to connect to Harvest V3 API. Possible values: `true`, `false`.
         :param _builtins.bool use_message_server: Field usage depends on `service` value:
@@ -32339,7 +32768,7 @@ class GetConnectorConfigResult(dict):
                	- Service `oracle_sap_hva`: The username.
                	- Service `oracle_sap_hva_netweaver`: The username.
                	- Service `outbrain`: The username or email of the Outbrain user.
-               	- Service `postgres`: The user name.
+               	- Service `postgres`: For password authentication, enter the user name.For Entra ID authentication, enter the registered app display name.
                	- Service `postgres_rds`: The user name.
                	- Service `redshift_db`: The Redshift username.
                	- Service `sap_hana`: Your SAP HANA user name.
@@ -32582,6 +33011,7 @@ class GetConnectorConfigResult(dict):
         pulumi.set(__self__, "api_access_token", api_access_token)
         pulumi.set(__self__, "api_admin_key", api_admin_key)
         pulumi.set(__self__, "api_base_url", api_base_url)
+        pulumi.set(__self__, "api_cursor_rollback_window", api_cursor_rollback_window)
         pulumi.set(__self__, "api_environment", api_environment)
         pulumi.set(__self__, "api_id", api_id)
         pulumi.set(__self__, "api_integration_type", api_integration_type)
@@ -32598,6 +33028,7 @@ class GetConnectorConfigResult(dict):
         pulumi.set(__self__, "api_secret", api_secret)
         pulumi.set(__self__, "api_secret_key", api_secret_key)
         pulumi.set(__self__, "api_server", api_server)
+        pulumi.set(__self__, "api_to_sync_conversation_analytics_data", api_to_sync_conversation_analytics_data)
         pulumi.set(__self__, "api_token", api_token)
         pulumi.set(__self__, "api_type", api_type)
         pulumi.set(__self__, "api_url", api_url)
@@ -32633,6 +33064,7 @@ class GetConnectorConfigResult(dict):
         pulumi.set(__self__, "asm_option", asm_option)
         pulumi.set(__self__, "asm_oracle_home", asm_oracle_home)
         pulumi.set(__self__, "asm_password", asm_password)
+        pulumi.set(__self__, "asm_staging_directory", asm_staging_directory)
         pulumi.set(__self__, "asm_tns", asm_tns)
         pulumi.set(__self__, "asm_user", asm_user)
         pulumi.set(__self__, "attribution_window", attribution_window)
@@ -32686,6 +33118,9 @@ class GetConnectorConfigResult(dict):
         pulumi.set(__self__, "campaign_query_lookback_window_in_days", campaign_query_lookback_window_in_days)
         pulumi.set(__self__, "capture_deletes", capture_deletes)
         pulumi.set(__self__, "catalog", catalog)
+        pulumi.set(__self__, "cdb_database", cdb_database)
+        pulumi.set(__self__, "cdb_password", cdb_password)
+        pulumi.set(__self__, "cdb_user", cdb_user)
         pulumi.set(__self__, "certificate", certificate)
         pulumi.set(__self__, "certificate_id", certificate_id)
         pulumi.set(__self__, "click_attribution_window", click_attribution_window)
@@ -32808,11 +33243,13 @@ class GetConnectorConfigResult(dict):
         pulumi.set(__self__, "empty_header", empty_header)
         pulumi.set(__self__, "enable_all_dimension_combinations", enable_all_dimension_combinations)
         pulumi.set(__self__, "enable_archive_log_only", enable_archive_log_only)
+        pulumi.set(__self__, "enable_asm", enable_asm)
         pulumi.set(__self__, "enable_data_extensions_syncing", enable_data_extensions_syncing)
         pulumi.set(__self__, "enable_distributed_connector_mode", enable_distributed_connector_mode)
         pulumi.set(__self__, "enable_enrichments", enable_enrichments)
         pulumi.set(__self__, "enable_exports", enable_exports)
         pulumi.set(__self__, "enable_mtls_connection", enable_mtls_connection)
+        pulumi.set(__self__, "enable_symbolic_links", enable_symbolic_links)
         pulumi.set(__self__, "enable_tde", enable_tde)
         pulumi.set(__self__, "enable_tde_encryption", enable_tde_encryption)
         pulumi.set(__self__, "encoded_public_key", encoded_public_key)
@@ -32831,6 +33268,7 @@ class GetConnectorConfigResult(dict):
         pulumi.set(__self__, "escape_char", escape_char)
         pulumi.set(__self__, "escape_char_options", escape_char_options)
         pulumi.set(__self__, "eu_region", eu_region)
+        pulumi.set(__self__, "event_extract_mode", event_extract_mode)
         pulumi.set(__self__, "events", events)
         pulumi.set(__self__, "export_native_types_as_pdf", export_native_types_as_pdf)
         pulumi.set(__self__, "export_storage_type", export_storage_type)
@@ -32915,6 +33353,7 @@ class GetConnectorConfigResult(dict):
         pulumi.set(__self__, "is_vendor", is_vendor)
         pulumi.set(__self__, "issuer", issuer)
         pulumi.set(__self__, "issuer_id", issuer_id)
+        pulumi.set(__self__, "isu", isu)
         pulumi.set(__self__, "json_delivery_mode", json_delivery_mode)
         pulumi.set(__self__, "jwt_environment", jwt_environment)
         pulumi.set(__self__, "key", key)
@@ -32933,6 +33372,8 @@ class GetConnectorConfigResult(dict):
         pulumi.set(__self__, "list_of_company_ids", list_of_company_ids)
         pulumi.set(__self__, "list_strategy", list_strategy)
         pulumi.set(__self__, "list_sync_mode", list_sync_mode)
+        pulumi.set(__self__, "local_wallet_host", local_wallet_host)
+        pulumi.set(__self__, "local_wallet_user", local_wallet_user)
         pulumi.set(__self__, "location_ids", location_ids)
         pulumi.set(__self__, "log_journal", log_journal)
         pulumi.set(__self__, "log_journal_schema", log_journal_schema)
@@ -33053,6 +33494,7 @@ class GetConnectorConfigResult(dict):
         pulumi.set(__self__, "report_lists", report_lists)
         pulumi.set(__self__, "report_service_api_key", report_service_api_key)
         pulumi.set(__self__, "report_suites", report_suites)
+        pulumi.set(__self__, "report_templates", report_templates)
         pulumi.set(__self__, "report_timezone", report_timezone)
         pulumi.set(__self__, "report_type", report_type)
         pulumi.set(__self__, "report_url", report_url)
@@ -33179,6 +33621,7 @@ class GetConnectorConfigResult(dict):
         pulumi.set(__self__, "sub_collections", sub_collections)
         pulumi.set(__self__, "sub_domain", sub_domain)
         pulumi.set(__self__, "subdomain", subdomain)
+        pulumi.set(__self__, "subscriber_id", subscriber_id)
         pulumi.set(__self__, "subscriber_name", subscriber_name)
         pulumi.set(__self__, "subscription", subscription)
         pulumi.set(__self__, "subscription_key", subscription_key)
@@ -33188,8 +33631,10 @@ class GetConnectorConfigResult(dict):
         pulumi.set(__self__, "swipe_attribution_window", swipe_attribution_window)
         pulumi.set(__self__, "sync_all_versions", sync_all_versions)
         pulumi.set(__self__, "sync_data_locker", sync_data_locker)
+        pulumi.set(__self__, "sync_files", sync_files)
         pulumi.set(__self__, "sync_format", sync_format)
         pulumi.set(__self__, "sync_formula_fields", sync_formula_fields)
+        pulumi.set(__self__, "sync_highly_sensitive_data", sync_highly_sensitive_data)
         pulumi.set(__self__, "sync_metadata", sync_metadata)
         pulumi.set(__self__, "sync_method", sync_method)
         pulumi.set(__self__, "sync_mode", sync_mode)
@@ -33200,6 +33645,7 @@ class GetConnectorConfigResult(dict):
         pulumi.set(__self__, "sync_pack_mode", sync_pack_mode)
         pulumi.set(__self__, "sync_permissions", sync_permissions)
         pulumi.set(__self__, "sync_pull_api", sync_pull_api)
+        pulumi.set(__self__, "sync_sensitive_data", sync_sensitive_data)
         pulumi.set(__self__, "sync_tables", sync_tables)
         pulumi.set(__self__, "sync_type", sync_type)
         pulumi.set(__self__, "sysnr", sysnr)
@@ -33265,6 +33711,7 @@ class GetConnectorConfigResult(dict):
         pulumi.set(__self__, "use_customer_bucket", use_customer_bucket)
         pulumi.set(__self__, "use_customer_s3_bucket", use_customer_s3_bucket)
         pulumi.set(__self__, "use_data_sync", use_data_sync)
+        pulumi.set(__self__, "use_database_name_for_table_filtering", use_database_name_for_table_filtering)
         pulumi.set(__self__, "use_harvest_api_v3", use_harvest_api_v3)
         pulumi.set(__self__, "use_message_server", use_message_server)
         pulumi.set(__self__, "use_oracle_rac", use_oracle_rac)
@@ -34080,7 +34527,7 @@ class GetConnectorConfigResult(dict):
     def api_admin_key(self) -> _builtins.str:
         """
         Field usage depends on `service` value:
-        	- Service `anthropic_claude`: Your Claude Platform Admin API key for syncing organization-level management and reporting data.
+        	- Service `anthropic_claude`: Your Claude Admin API key for syncing organization-level management and reporting data.
         """
         return pulumi.get(self, "api_admin_key")
 
@@ -34092,6 +34539,15 @@ class GetConnectorConfigResult(dict):
         	- Service `gongio`: Your Gong API Base URL.
         """
         return pulumi.get(self, "api_base_url")
+
+    @_builtins.property
+    @pulumi.getter(name="apiCursorRollbackWindow")
+    def api_cursor_rollback_window(self) -> _builtins.int:
+        """
+        Field usage depends on `service` value:
+        	- Service `jira`: The number of hours to roll back the issue search cursor. Allows reprocessing of recently updated issues that may have been missed due to indexing delays. Valid range is 0-48 hours. A value of 0 disables the rollback.
+        """
+        return pulumi.get(self, "api_cursor_rollback_window")
 
     @_builtins.property
     @pulumi.getter(name="apiEnvironment")
@@ -34499,6 +34955,15 @@ class GetConnectorConfigResult(dict):
         return pulumi.get(self, "api_server")
 
     @_builtins.property
+    @pulumi.getter(name="apiToSyncConversationAnalyticsData")
+    def api_to_sync_conversation_analytics_data(self) -> _builtins.str:
+        """
+        Field usage depends on `service` value:
+        	- Service `genesys`: Choose the Genesys API you want to use to sync conversation analytics data. Export API retrieves conversation records via an asynchronous export job and is recommended for historical data. Aggregate Query API fetches data using the analytics aggregate query endpoint and produces a different set of tables and schemas. You cannot change this value after you set up the connection.
+        """
+        return pulumi.get(self, "api_to_sync_conversation_analytics_data")
+
+    @_builtins.property
     @pulumi.getter(name="apiToken")
     def api_token(self) -> _builtins.str:
         """
@@ -34556,7 +35021,7 @@ class GetConnectorConfigResult(dict):
         	- Service `safetyculture`: Your SafetyCulture API token.
         	- Service `sensor_tower`: Your Sensor Tower API token.
         	- Service `sentry`: Your Sentry auth token.
-        	- Service `sevdesk`: Your 32-character hexadecimal API token.
+        	- Service `sevdesk`: Your sevdesk API token.
         	- Service `simplecast`: Your Simplecast API token.
         	- Service `smartsheet`: API token generated from your Smartsheet account.
         	- Service `snyk`: Your Snyk API token.
@@ -34926,6 +35391,17 @@ class GetConnectorConfigResult(dict):
         return pulumi.get(self, "asm_password")
 
     @_builtins.property
+    @pulumi.getter(name="asmStagingDirectory")
+    def asm_staging_directory(self) -> _builtins.str:
+        """
+        Field usage depends on `service` value:
+        	- Service `oracle`: ASM staging directory path. Required when the ASM option is enabled.
+        	- Service `oracle_ebs`: ASM staging directory path. Required when the ASM option is enabled.
+        	- Service `oracle_rac`: ASM staging directory path. Required when the ASM option is enabled.
+        """
+        return pulumi.get(self, "asm_staging_directory")
+
+    @_builtins.property
     @pulumi.getter(name="asmTns")
     def asm_tns(self) -> _builtins.str:
         """
@@ -35055,6 +35531,7 @@ class GetConnectorConfigResult(dict):
         	- Service `github`: Authorization type.
         	- Service `smartsheet`: Authorization type.
         	- Service `workday`: Authentication Mode
+        	- Service `workday_adaptive`: Authentication mode: PASSWORD (username/password) or TOKEN (key-based authentication)
         	- Service `workday_financial_management`: Authentication Mode
         	- Service `workday_hcm`: Authentication Mode
         """
@@ -35538,6 +36015,39 @@ class GetConnectorConfigResult(dict):
         return pulumi.get(self, "catalog")
 
     @_builtins.property
+    @pulumi.getter(name="cdbDatabase")
+    def cdb_database(self) -> _builtins.str:
+        """
+        Field usage depends on `service` value:
+        	- Service `oracle`: Optional: CDB database name for TDE-encrypted containerized databases.
+        	- Service `oracle_ebs`: Optional: CDB database name for TDE-encrypted containerized databases.
+        	- Service `oracle_rac`: Optional: CDB database name for TDE-encrypted containerized databases.
+        """
+        return pulumi.get(self, "cdb_database")
+
+    @_builtins.property
+    @pulumi.getter(name="cdbPassword")
+    def cdb_password(self) -> _builtins.str:
+        """
+        Field usage depends on `service` value:
+        	- Service `oracle`: Optional: Password for the CDB user.
+        	- Service `oracle_ebs`: Optional: Password for the CDB user.
+        	- Service `oracle_rac`: Optional: Password for the CDB user.
+        """
+        return pulumi.get(self, "cdb_password")
+
+    @_builtins.property
+    @pulumi.getter(name="cdbUser")
+    def cdb_user(self) -> _builtins.str:
+        """
+        Field usage depends on `service` value:
+        	- Service `oracle`: Optional: CDB user for TDE-encrypted containerized databases.
+        	- Service `oracle_ebs`: Optional: CDB user for TDE-encrypted containerized databases.
+        	- Service `oracle_rac`: Optional: CDB user for TDE-encrypted containerized databases.
+        """
+        return pulumi.get(self, "cdb_user")
+
+    @_builtins.property
     @pulumi.getter
     def certificate(self) -> _builtins.str:
         """
@@ -35692,7 +36202,7 @@ class GetConnectorConfigResult(dict):
         	- Service `instructure`: Your Instructure client ID.
         	- Service `integral_ad_science`: Your integral_ad_science client id.
         	- Service `ironclad`: Your Ironclad client ID.
-        	- Service `ironclad_clickwrap`: Your Ironclad Clickwrap Client ID.
+        	- Service `ironclad_clickwrap`: Your Ironclad Clickwrap client ID.
         	- Service `jama_software`: Your Jama Software client ID.
         	- Service `jibble`: Your Jibble client ID.
         	- Service `khoros_communities`: Your Khoros Communities client ID.
@@ -35760,6 +36270,7 @@ class GetConnectorConfigResult(dict):
         	- Service `visma`: Your Visma client ID.
         	- Service `vonage_contact_center`: Your Vonage Contact Center client ID.
         	- Service `walmart_marketplace`: Your Walmart Marketplace client ID.
+        	- Service `workday_adaptive`: Client ID for token authentication (required for TOKEN authentication)
         	- Service `xero`: your clientId
         	- Service `xray`: Your Xray Client ID.
         	- Service `yahoo_display_ads_on_yahoo_japan`: Your Yahoo Display Ads on Yahoo Japan client ID.
@@ -35923,7 +36434,7 @@ class GetConnectorConfigResult(dict):
         	- Service `instructure`: Your Instructure client secret.
         	- Service `integral_ad_science`: Your integral_ad_science client secret.
         	- Service `ironclad`: Your Ironclad client secret.
-        	- Service `ironclad_clickwrap`: Your Ironclad Clickwrap Client Secret.
+        	- Service `ironclad_clickwrap`: Your Ironclad Clickwrap client secret.
         	- Service `jama_software`: Your Jama Software client secret.
         	- Service `jibble`: Your Jibble client secret.
         	- Service `khoros_communities`: Your Khoros Communities client secret.
@@ -37172,6 +37683,17 @@ class GetConnectorConfigResult(dict):
         return pulumi.get(self, "enable_archive_log_only")
 
     @_builtins.property
+    @pulumi.getter(name="enableAsm")
+    def enable_asm(self) -> _builtins.bool:
+        """
+        Field usage depends on `service` value:
+        	- Service `oracle`: Default value: `false`. Set to `true` if you're using ASM.
+        	- Service `oracle_ebs`: Default value: `false`. Set to `true` if you're using ASM.
+        	- Service `oracle_rac`: Default value: `false`. Set to `true` if you're using ASM.
+        """
+        return pulumi.get(self, "enable_asm")
+
+    @_builtins.property
     @pulumi.getter(name="enableDataExtensionsSyncing")
     def enable_data_extensions_syncing(self) -> _builtins.bool:
         return pulumi.get(self, "enable_data_extensions_syncing")
@@ -37214,6 +37736,17 @@ class GetConnectorConfigResult(dict):
         return pulumi.get(self, "enable_mtls_connection")
 
     @_builtins.property
+    @pulumi.getter(name="enableSymbolicLinks")
+    def enable_symbolic_links(self) -> _builtins.bool:
+        """
+        Field usage depends on `service` value:
+        	- Service `oracle`: Default value: `false`. Set to `true` if you're using symbolic links.
+        	- Service `oracle_ebs`: Default value: `false`. Set to `true` if you're using symbolic links.
+        	- Service `oracle_rac`: Default value: `false`. Set to `true` if you're using symbolic links.
+        """
+        return pulumi.get(self, "enable_symbolic_links")
+
+    @_builtins.property
     @pulumi.getter(name="enableTde")
     def enable_tde(self) -> _builtins.bool:
         """
@@ -37229,7 +37762,10 @@ class GetConnectorConfigResult(dict):
     def enable_tde_encryption(self) -> _builtins.bool:
         """
         Field usage depends on `service` value:
+        	- Service `oracle`: Default value: `false`. Set to `true` if you're using TDE encryption.
+        	- Service `oracle_ebs`: Default value: `false`. Set to `true` if you're using TDE encryption.
         	- Service `oracle_hva`: Default value: `false`. Set to `true` if you're using TDE encryption.
+        	- Service `oracle_rac`: Default value: `false`. Set to `true` if you're using TDE encryption.
         	- Service `oracle_sap_hva`: Default value: `false`. Set to `true` if you're using TDE encryption.
         	- Service `oracle_sap_hva_netweaver`: Default value: `false`. Set to `true` if you're using TDE encryption.
         """
@@ -37436,6 +37972,15 @@ class GetConnectorConfigResult(dict):
         	- Service `survey_monkey`: The SurveyMonkey account region. Specify `true`, if your account is hosted in the EU region. Default value is `false`.
         """
         return pulumi.get(self, "eu_region")
+
+    @_builtins.property
+    @pulumi.getter(name="eventExtractMode")
+    def event_extract_mode(self) -> _builtins.str:
+        """
+        Field usage depends on `service` value:
+        	- Service `salesforce_marketing_cloud`: Event sync method. This is how Fivetran gets data for the event objects,  can be selected only during the connector creation.  TRACKING_EXTRACT - Salesforce exports a file, which we download and extract event  data from. This is the faster for large volumes, and requires SFTP.  SOAP  - We sync data using the SOAP API event object endpoints. This syncs the  latest events faster, but is slow for large volumes.
+        """
+        return pulumi.get(self, "event_extract_mode")
 
     @_builtins.property
     @pulumi.getter
@@ -37944,7 +38489,7 @@ class GetConnectorConfigResult(dict):
         """
         Field usage depends on `service` value:
         	- Service `amqp`: AMQP broker host address.
-        	- Service `aurora`: DB instance host or IP address.
+        	- Service `aurora`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
         	- Service `aurora_postgres`: DB instance host or IP address.
         	- Service `aveva_pi`: IP address of the AF Server
         	- Service `azure_postgres`: DB instance host or IP address.
@@ -37976,14 +38521,14 @@ class GetConnectorConfigResult(dict):
         	- Service `heroku_postgres`: DB instance host or IP address.
         	- Service `jira`: The Jira service host address.
         	- Service `magento_mysql`: DB instance host or IP address.
-        	- Service `magento_mysql_rds`: DB instance host or IP address.
+        	- Service `magento_mysql_rds`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
         	- Service `maria`: DB instance host or IP address.
         	- Service `maria_azure`: DB instance host or IP address.
-        	- Service `maria_rds`: DB instance host or IP address.
+        	- Service `maria_rds`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
         	- Service `marin`: The Marin host address.
         	- Service `mysql`: DB instance host or IP address.
         	- Service `mysql_azure`: DB instance host or IP address.
-        	- Service `mysql_rds`: DB instance host or IP address.
+        	- Service `mysql_rds`: DB instance host or IP address. When the connection type is `PrivateLink` and the authentication method is `AWS_IAM`, set this to the PrivateLink DNS address and use `databaseEndpoint` for the actual RDS endpoint.
         	- Service `netsuite_suiteanalytics`: The NetSuite service host address.
         	- Service `opendistro`: DB instance host or IP address.
         	- Service `opensearch`: DB instance host or IP address.
@@ -38006,6 +38551,7 @@ class GetConnectorConfigResult(dict):
         	- Service `sql_server_hva`: DB instance host or IP address.
         	- Service `sql_server_rds`: DB instance host or IP address.
         	- Service `sql_server_sap_ecc_hva`: DB instance host or IP address.
+        	- Service `workday_adaptive`: Workday Adaptive host URL, including the scheme, required for TOKEN authentication
         """
         return pulumi.get(self, "host")
 
@@ -38379,6 +38925,15 @@ class GetConnectorConfigResult(dict):
         return pulumi.get(self, "issuer_id")
 
     @_builtins.property
+    @pulumi.getter
+    def isu(self) -> _builtins.str:
+        """
+        Field usage depends on `service` value:
+        	- Service `workday_adaptive`: Integration System User (ISU) for token authentication (required for TOKEN authentication)
+        """
+        return pulumi.get(self, "isu")
+
+    @_builtins.property
     @pulumi.getter(name="jsonDeliveryMode")
     def json_delivery_mode(self) -> _builtins.str:
         """
@@ -38564,6 +39119,28 @@ class GetConnectorConfigResult(dict):
         return pulumi.get(self, "list_sync_mode")
 
     @_builtins.property
+    @pulumi.getter(name="localWalletHost")
+    def local_wallet_host(self) -> _builtins.str:
+        """
+        Field usage depends on `service` value:
+        	- Service `oracle`: Optional: The host for the local Oracle Wallet.
+        	- Service `oracle_ebs`: Optional: The host for the local Oracle Wallet.
+        	- Service `oracle_rac`: Optional: The host for the local Oracle Wallet.
+        """
+        return pulumi.get(self, "local_wallet_host")
+
+    @_builtins.property
+    @pulumi.getter(name="localWalletUser")
+    def local_wallet_user(self) -> _builtins.str:
+        """
+        Field usage depends on `service` value:
+        	- Service `oracle`: Optional: The user for the local Oracle Wallet.
+        	- Service `oracle_ebs`: Optional: The user for the local Oracle Wallet.
+        	- Service `oracle_rac`: Optional: The user for the local Oracle Wallet.
+        """
+        return pulumi.get(self, "local_wallet_user")
+
+    @_builtins.property
     @pulumi.getter(name="locationIds")
     def location_ids(self) -> _builtins.str:
         """
@@ -38610,7 +39187,7 @@ class GetConnectorConfigResult(dict):
         	- Service `rebound_returns`: Your ReBound Returns login.
         	- Service `the_trade_desk`: The Trade Desk email. It is a part of the login credentials.
         	- Service `walmart_dsp`: Walmart DSP email. It is a part of the login credentials.
-        	- Service `workday_adaptive`: User email address
+        	- Service `workday_adaptive`: User email address (required for PASSWORD authentication)
         """
         return pulumi.get(self, "login")
 
@@ -39176,7 +39753,7 @@ class GetConnectorConfigResult(dict):
         	- Service `pardot_sandbox`: The Pardot user's password.
         	- Service `partnerize`: Your Partnerize account's password.
         	- Service `podio`: Your Podio account password.
-        	- Service `postgres`: The user's password.
+        	- Service `postgres`: For password authentication, enter the user's password.For Entra ID authentication, enter the client secret value.
         	- Service `postgres_rds`: The user's password.
         	- Service `qmatic_data_connect`: Your Qmatic Data Connect password.
         	- Service `redshift_db`: The Redshift user's password.
@@ -39219,7 +39796,7 @@ class GetConnectorConfigResult(dict):
         	- Service `when_i_work`: Your When I Work password.
         	- Service `wherefour`: Your Wherefour password.
         	- Service `workday`: Workday password.
-        	- Service `workday_adaptive`: User password
+        	- Service `workday_adaptive`: User password (required for PASSWORD authentication)
         	- Service `workday_financial_management`: Workday password.
         	- Service `workday_hcm`: Workday password.
         	- Service `xandr`: Your Xandr password.
@@ -39591,6 +40168,7 @@ class GetConnectorConfigResult(dict):
         	- Service `salesforce`: Provide content of the `.key` private key (only when authentication_method = `ADVANCED`).
         	- Service `salesforce_sandbox`: Provide content of the `.key` private key (only when authentication_method = `ADVANCED`).
         	- Service `snowflake_db`: Private access key.  The field should be specified if authentication type is `KEY_PAIR`.
+        	- Service `workday_adaptive`: PEM-formatted PKCS#8 private key, including BEGIN/END PRIVATE KEY markers, for token authentication
         """
         return pulumi.get(self, "private_key")
 
@@ -40124,6 +40702,16 @@ class GetConnectorConfigResult(dict):
     @pulumi.getter(name="reportSuites")
     def report_suites(self) -> Sequence[_builtins.str]:
         return pulumi.get(self, "report_suites")
+
+    @_builtins.property
+    @pulumi.getter(name="reportTemplates")
+    def report_templates(self) -> Sequence[_builtins.str]:
+        """
+        Field usage depends on `service` value:
+        	- Service `the_trade_desk`: Report templates to sync.
+        	- Service `walmart_dsp`: Report templates to sync.
+        """
+        return pulumi.get(self, "report_templates")
 
     @_builtins.property
     @pulumi.getter(name="reportTimezone")
@@ -41508,6 +42096,15 @@ class GetConnectorConfigResult(dict):
         return pulumi.get(self, "subdomain")
 
     @_builtins.property
+    @pulumi.getter(name="subscriberId")
+    def subscriber_id(self) -> _builtins.str:
+        """
+        Field usage depends on `service` value:
+        	- Service `workday_hcm`: WID of the Workday Integration Transaction Log Service subscriber. Used to scope the V2 optimised history transaction-log queries to a specific integration subscriber.
+        """
+        return pulumi.get(self, "subscriber_id")
+
+    @_builtins.property
     @pulumi.getter(name="subscriberName")
     def subscriber_name(self) -> _builtins.str:
         """
@@ -41592,6 +42189,15 @@ class GetConnectorConfigResult(dict):
         return pulumi.get(self, "sync_data_locker")
 
     @_builtins.property
+    @pulumi.getter(name="syncFiles")
+    def sync_files(self) -> _builtins.bool:
+        """
+        Field usage depends on `service` value:
+        	- Service `jira`: Specifies whether to sync files in JIRA for supported destinations (true) or not (false).
+        """
+        return pulumi.get(self, "sync_files")
+
+    @_builtins.property
     @pulumi.getter(name="syncFormat")
     def sync_format(self) -> _builtins.str:
         """
@@ -41610,6 +42216,15 @@ class GetConnectorConfigResult(dict):
         	- Service `salesforce_sandbox`: Enable this option to sync formula fields directly (default value = `false`)
         """
         return pulumi.get(self, "sync_formula_fields")
+
+    @_builtins.property
+    @pulumi.getter(name="syncHighlySensitiveData")
+    def sync_highly_sensitive_data(self) -> _builtins.bool:
+        """
+        Field usage depends on `service` value:
+        	- Service `hubspot`: Enable syncing of highly sensitive data fields from HubSpot. When enabled, sensitive data syncing is also automatically enabled.
+        """
+        return pulumi.get(self, "sync_highly_sensitive_data")
 
     @_builtins.property
     @pulumi.getter(name="syncMetadata")
@@ -41743,6 +42358,15 @@ class GetConnectorConfigResult(dict):
         	- Service `appsflyer`: These options are for Appsflyer's Pull API, and are only necessary for syncing events from Pull API.
         """
         return pulumi.get(self, "sync_pull_api")
+
+    @_builtins.property
+    @pulumi.getter(name="syncSensitiveData")
+    def sync_sensitive_data(self) -> _builtins.bool:
+        """
+        Field usage depends on `service` value:
+        	- Service `hubspot`: Enable syncing of sensitive data fields from HubSpot.
+        """
+        return pulumi.get(self, "sync_sensitive_data")
 
     @_builtins.property
     @pulumi.getter(name="syncTables")
@@ -41930,7 +42554,10 @@ class GetConnectorConfigResult(dict):
     def tde_wallet_password(self) -> _builtins.str:
         """
         Field usage depends on `service` value:
+        	- Service `oracle`: TDE wallet password. Required for password based wallet.
+        	- Service `oracle_ebs`: TDE wallet password. Required for password based wallet.
         	- Service `oracle_hva`: TDE wallet password. Required for password based wallet.
+        	- Service `oracle_rac`: TDE wallet password. Required for password based wallet.
         	- Service `oracle_sap_hva`: TDE wallet password. Required for password based wallet.
         	- Service `oracle_sap_hva_netweaver`: TDE wallet password. Required for password based wallet.
         """
@@ -41973,6 +42600,7 @@ class GetConnectorConfigResult(dict):
         	- Service `microsoft_teams`: Your Microsoft Teams Tenant.
         	- Service `unicommerce`: Your uniware tenant.
         	- Service `workday`: Workday tenant name
+        	- Service `workday_adaptive`: Tenant identifier (required for TOKEN authentication)
         	- Service `workday_financial_management`: Workday tenant name
         	- Service `workday_hcm`: Workday tenant name
         """
@@ -42521,11 +43149,11 @@ class GetConnectorConfigResult(dict):
         	- Service `mysql`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
         	- Service `mysql_azure`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
         	- Service `mysql_rds`: The method to detect new or changed rows. Supported values:`BINLOG` - Fivetran uses your binary logs (also called binlogs) to request only the data that has changed since our last sync. This is the default value if no value is specified. `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        	- Service `oracle`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        	- Service `oracle_ebs`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        	- Service `oracle`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        	- Service `oracle_ebs`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
         	- Service `oracle_hva`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        	- Service `oracle_rac`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
-        	- Service `oracle_rds`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables.  - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        	- Service `oracle_rac`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
+        	- Service `oracle_rds`: The method used to detect new or changed rows. Supported values: - `BINARY_LOG_READER` - Fivetran reads Oracle redo logs to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes. - `XSTREAM_OUT` - Fivetran uses Oracle XStream Out to stream changes from the database.
         	- Service `oracle_sap_hva`: The method used to detect new or changed rows. Supported values: - `LOGMINER` - Fivetran uses LogMiner, a utility that is part of Oracle Database, to detect modified rows in the source tables. - `TELEPORT` - Fivetran's proprietary replication method that uses compressed snapshots to detect and apply changes.
         	- Service `postgres`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "postgres_rds"`. Supported values:`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the  write-ahead log (WAL) using a logical slot.This is more efficient than the query-based method, but requires more setup and monitoring.`QUERY_BASED` - this method replicates new, changed and deleted rows via the `xmin` and `ctid` system columns
         	- Service `postgres_rds`: The method to detect new or changed rows. Specify only for `"service": "postgres"` or `"service": "postgres_rds"`. Supported values:`WAL_PGOUTPUT` -  logical replication of the WAL using the pgoutput plugin. This method replicates new, changed, and deleted rows by tailing the write-ahead log (WAL) using a logical slot. This is more efficient than the query-based method, but requires more setup and monitoring.`QUERY_BASED` - this method replicates new, changed and deleted rows via the `xmin` and `ctid` system columns
@@ -42600,6 +43228,16 @@ class GetConnectorConfigResult(dict):
         	- Service `pendo`: Toggle field to determine whether connector is syncing from API or from Data Sync
         """
         return pulumi.get(self, "use_data_sync")
+
+    @_builtins.property
+    @pulumi.getter(name="useDatabaseNameForTableFiltering")
+    def use_database_name_for_table_filtering(self) -> _builtins.bool:
+        """
+        Field usage depends on `service` value:
+        	- Service `db2i_hva`: Restricts schema discovery to libraries (schemas) within the configured database. When enabled, the database parameter must also be specified.
+        	- Service `db2i_sap_hva`: Restricts schema discovery to libraries (schemas) within the configured database. When enabled, the database parameter must also be specified. Has no effect on SAP ECC on Db2 for i connectors.
+        """
+        return pulumi.get(self, "use_database_name_for_table_filtering")
 
     @_builtins.property
     @pulumi.getter(name="useHarvestApiV3")
@@ -42756,7 +43394,7 @@ class GetConnectorConfigResult(dict):
         	- Service `oracle_sap_hva`: The username.
         	- Service `oracle_sap_hva_netweaver`: The username.
         	- Service `outbrain`: The username or email of the Outbrain user.
-        	- Service `postgres`: The user name.
+        	- Service `postgres`: For password authentication, enter the user name.For Entra ID authentication, enter the registered app display name.
         	- Service `postgres_rds`: The user name.
         	- Service `redshift_db`: The Redshift username.
         	- Service `sap_hana`: Your SAP HANA user name.
@@ -44458,7 +45096,7 @@ class GetConnectorConfigReportResult(dict):
                	- Service `double_click_publishers`: Report dimensions to include in the sync. The `date` dimension is mandatory for all the report types.
                	- Service `google_analytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
                	- Service `google_analytics_4`: The report dimensions to include into a sync.
-               	- Service `google_display_and_video_360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `config_method` is set to `CREATE_NEW`.
+               	- Service `google_display_and_video_360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `config_method` is set to `CREATE_NEW`. NOTE: At least one of the following date dimensions must be included for report data aggregation: `FILTER_DATE` (daily), `FILTER_WEEK` (weekly), or `FILTER_MONTH` (monthly).
                	- Service `google_search_console`: The report dimensions included to sync.
                	- Service `workday_adaptive`: List of dimensions to sync for the table, if applicable.
         :param _builtins.str dynamic_parameter_field: Field usage depends on `service` value:
@@ -44818,7 +45456,7 @@ class GetConnectorConfigReportResult(dict):
         	- Service `double_click_publishers`: Report dimensions to include in the sync. The `date` dimension is mandatory for all the report types.
         	- Service `google_analytics`: The report dimensions to include into a sync. The `date` dimension is mandatory for all the report types.
         	- Service `google_analytics_4`: The report dimensions to include into a sync.
-        	- Service `google_display_and_video_360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `config_method` is set to `CREATE_NEW`.
+        	- Service `google_display_and_video_360`: The report dimensions (filters) to include into a sync. The dimension names are provided in the API format. This is a required parameter when `config_method` is set to `CREATE_NEW`. NOTE: At least one of the following date dimensions must be included for report data aggregation: `FILTER_DATE` (daily), `FILTER_WEEK` (weekly), or `FILTER_MONTH` (monthly).
         	- Service `google_search_console`: The report dimensions included to sync.
         	- Service `workday_adaptive`: List of dimensions to sync for the table, if applicable.
         """
