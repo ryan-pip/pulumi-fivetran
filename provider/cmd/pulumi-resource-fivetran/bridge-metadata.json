@@ -263,6 +263,9 @@
                             "report_suites": {
                                 "maxItemsOne": false
                             },
+                            "report_templates": {
+                                "maxItemsOne": false
+                            },
                             "reports": {
                                 "maxItemsOne": false,
                                 "elem": {
@@ -938,6 +941,9 @@
                                 }
                             },
                             "report_suites": {
+                                "maxItemsOne": false
+                            },
+                            "report_templates": {
                                 "maxItemsOne": false
                             },
                             "reports": {
