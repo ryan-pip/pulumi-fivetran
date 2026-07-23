@@ -28,21 +28,10 @@ class GetPrivateLinksResult:
     """
     A collection of values returned by getPrivateLinks.
     """
-    def __init__(__self__, id=None, items=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, items=None):
         if items and not isinstance(items, list):
             raise TypeError("Expected argument 'items' to be a list")
         pulumi.set(__self__, "items", items)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -56,7 +45,6 @@ class AwaitableGetPrivateLinksResult(GetPrivateLinksResult):
         if False:
             yield self
         return GetPrivateLinksResult(
-            id=self.id,
             items=self.items)
 
 
@@ -71,7 +59,6 @@ def get_private_links(items: Optional[Sequence[Union['GetPrivateLinksItemArgs', 
     __ret__ = pulumi.runtime.invoke('fivetran:index/getPrivateLinks:getPrivateLinks', __args__, opts=opts, typ=GetPrivateLinksResult).value
 
     return AwaitableGetPrivateLinksResult(
-        id=pulumi.get(__ret__, 'id'),
         items=pulumi.get(__ret__, 'items'))
 def get_private_links_output(items: pulumi.Input[Optional[Optional[Sequence[Union['GetPrivateLinksItemArgs', 'GetPrivateLinksItemArgsDict']]]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPrivateLinksResult]:
@@ -83,5 +70,4 @@ def get_private_links_output(items: pulumi.Input[Optional[Optional[Sequence[Unio
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getPrivateLinks:getPrivateLinks', __args__, opts=opts, typ=GetPrivateLinksResult)
     return __ret__.apply(lambda __response__: GetPrivateLinksResult(
-        id=pulumi.get(__response__, 'id'),
         items=pulumi.get(__response__, 'items')))

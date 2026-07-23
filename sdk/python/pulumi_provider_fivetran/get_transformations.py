@@ -28,21 +28,10 @@ class GetTransformationsResult:
     """
     A collection of values returned by getTransformations.
     """
-    def __init__(__self__, id=None, transformations=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, transformations=None):
         if transformations and not isinstance(transformations, list):
             raise TypeError("Expected argument 'transformations' to be a list")
         pulumi.set(__self__, "transformations", transformations)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -56,7 +45,6 @@ class AwaitableGetTransformationsResult(GetTransformationsResult):
         if False:
             yield self
         return GetTransformationsResult(
-            id=self.id,
             transformations=self.transformations)
 
 
@@ -80,7 +68,6 @@ def get_transformations(transformations: Optional[Sequence[Union['GetTransformat
     __ret__ = pulumi.runtime.invoke('fivetran:index/getTransformations:getTransformations', __args__, opts=opts, typ=GetTransformationsResult).value
 
     return AwaitableGetTransformationsResult(
-        id=pulumi.get(__ret__, 'id'),
         transformations=pulumi.get(__ret__, 'transformations'))
 def get_transformations_output(transformations: pulumi.Input[Optional[Optional[Sequence[Union['GetTransformationsTransformationArgs', 'GetTransformationsTransformationArgsDict']]]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransformationsResult]:
@@ -101,5 +88,4 @@ def get_transformations_output(transformations: pulumi.Input[Optional[Optional[S
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getTransformations:getTransformations', __args__, opts=opts, typ=GetTransformationsResult)
     return __ret__.apply(lambda __response__: GetTransformationsResult(
-        id=pulumi.get(__response__, 'id'),
         transformations=pulumi.get(__response__, 'transformations')))

@@ -48,8 +48,6 @@ func GetHybridDeploymentAgents(ctx *pulumi.Context, opts ...pulumi.InvokeOption)
 
 // A collection of values returned by getHybridDeploymentAgents.
 type GetHybridDeploymentAgentsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id    string                          `pulumi:"id"`
 	Items []GetHybridDeploymentAgentsItem `pulumi:"items"`
 }
 
@@ -73,11 +71,6 @@ func (o GetHybridDeploymentAgentsResultOutput) ToGetHybridDeploymentAgentsResult
 
 func (o GetHybridDeploymentAgentsResultOutput) ToGetHybridDeploymentAgentsResultOutputWithContext(ctx context.Context) GetHybridDeploymentAgentsResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetHybridDeploymentAgentsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHybridDeploymentAgentsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetHybridDeploymentAgentsResultOutput) Items() GetHybridDeploymentAgentsItemArrayOutput {

@@ -53,8 +53,6 @@ type GetProxyAgentsArgs struct {
 
 // A collection of values returned by getProxyAgents.
 type GetProxyAgentsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id    string               `pulumi:"id"`
 	Items []GetProxyAgentsItem `pulumi:"items"`
 }
 
@@ -89,11 +87,6 @@ func (o GetProxyAgentsResultOutput) ToGetProxyAgentsResultOutput() GetProxyAgent
 
 func (o GetProxyAgentsResultOutput) ToGetProxyAgentsResultOutputWithContext(ctx context.Context) GetProxyAgentsResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetProxyAgentsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProxyAgentsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetProxyAgentsResultOutput) Items() GetProxyAgentsItemArrayOutput {

@@ -28,8 +28,6 @@ type GetPrivateLinksArgs struct {
 
 // A collection of values returned by getPrivateLinks.
 type GetPrivateLinksResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id    string                `pulumi:"id"`
 	Items []GetPrivateLinksItem `pulumi:"items"`
 }
 
@@ -64,11 +62,6 @@ func (o GetPrivateLinksResultOutput) ToGetPrivateLinksResultOutput() GetPrivateL
 
 func (o GetPrivateLinksResultOutput) ToGetPrivateLinksResultOutputWithContext(ctx context.Context) GetPrivateLinksResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetPrivateLinksResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPrivateLinksResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetPrivateLinksResultOutput) Items() GetPrivateLinksItemArrayOutput {

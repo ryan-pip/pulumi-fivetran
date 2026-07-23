@@ -112,19 +112,11 @@ namespace Pulumi.Fivetran
     [OutputType]
     public sealed class GetQuickstartPackagesResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly ImmutableArray<Outputs.GetQuickstartPackagesPackageResult> Packages;
 
         [OutputConstructor]
-        private GetQuickstartPackagesResult(
-            string id,
-
-            ImmutableArray<Outputs.GetQuickstartPackagesPackageResult> packages)
+        private GetQuickstartPackagesResult(ImmutableArray<Outputs.GetQuickstartPackagesPackageResult> packages)
         {
-            Id = id;
             Packages = packages;
         }
     }

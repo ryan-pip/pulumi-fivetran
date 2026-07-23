@@ -48,8 +48,6 @@ func GetWebhooks(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetWebhooks
 
 // A collection of values returned by getWebhooks.
 type GetWebhooksResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id       string               `pulumi:"id"`
 	Webhooks []GetWebhooksWebhook `pulumi:"webhooks"`
 }
 
@@ -73,11 +71,6 @@ func (o GetWebhooksResultOutput) ToGetWebhooksResultOutput() GetWebhooksResultOu
 
 func (o GetWebhooksResultOutput) ToGetWebhooksResultOutputWithContext(ctx context.Context) GetWebhooksResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetWebhooksResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWebhooksResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetWebhooksResultOutput) Webhooks() GetWebhooksWebhookArrayOutput {

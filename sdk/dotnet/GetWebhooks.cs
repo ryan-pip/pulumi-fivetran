@@ -79,19 +79,11 @@ namespace Pulumi.Fivetran
     [OutputType]
     public sealed class GetWebhooksResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly ImmutableArray<Outputs.GetWebhooksWebhookResult> Webhooks;
 
         [OutputConstructor]
-        private GetWebhooksResult(
-            string id,
-
-            ImmutableArray<Outputs.GetWebhooksWebhookResult> webhooks)
+        private GetWebhooksResult(ImmutableArray<Outputs.GetWebhooksWebhookResult> webhooks)
         {
-            Id = id;
             Webhooks = webhooks;
         }
     }

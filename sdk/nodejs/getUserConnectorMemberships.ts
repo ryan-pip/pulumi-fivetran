@@ -45,10 +45,6 @@ export interface GetUserConnectorMembershipsArgs {
 export interface GetUserConnectorMembershipsResult {
     readonly connectors?: outputs.GetUserConnectorMembershipsConnector[];
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * The unique identifier for the user within your account.
      */
     readonly userId: string;

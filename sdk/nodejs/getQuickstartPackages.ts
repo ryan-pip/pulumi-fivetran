@@ -37,10 +37,6 @@ export interface GetQuickstartPackagesArgs {
  * A collection of values returned by getQuickstartPackages.
  */
 export interface GetQuickstartPackagesResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly packages?: outputs.GetQuickstartPackagesPackage[];
 }
 /**

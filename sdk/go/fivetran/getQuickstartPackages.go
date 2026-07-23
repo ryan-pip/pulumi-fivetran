@@ -53,8 +53,6 @@ type GetQuickstartPackagesArgs struct {
 
 // A collection of values returned by getQuickstartPackages.
 type GetQuickstartPackagesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id       string                         `pulumi:"id"`
 	Packages []GetQuickstartPackagesPackage `pulumi:"packages"`
 }
 
@@ -89,11 +87,6 @@ func (o GetQuickstartPackagesResultOutput) ToGetQuickstartPackagesResultOutput()
 
 func (o GetQuickstartPackagesResultOutput) ToGetQuickstartPackagesResultOutputWithContext(ctx context.Context) GetQuickstartPackagesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetQuickstartPackagesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetQuickstartPackagesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetQuickstartPackagesResultOutput) Packages() GetQuickstartPackagesPackageArrayOutput {

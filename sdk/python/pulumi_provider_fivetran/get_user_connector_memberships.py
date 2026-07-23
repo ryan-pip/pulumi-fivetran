@@ -28,13 +28,10 @@ class GetUserConnectorMembershipsResult:
     """
     A collection of values returned by getUserConnectorMemberships.
     """
-    def __init__(__self__, connectors=None, id=None, user_id=None):
+    def __init__(__self__, connectors=None, user_id=None):
         if connectors and not isinstance(connectors, list):
             raise TypeError("Expected argument 'connectors' to be a list")
         pulumi.set(__self__, "connectors", connectors)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if user_id and not isinstance(user_id, str):
             raise TypeError("Expected argument 'user_id' to be a str")
         pulumi.set(__self__, "user_id", user_id)
@@ -43,14 +40,6 @@ class GetUserConnectorMembershipsResult:
     @pulumi.getter
     def connectors(self) -> Optional[Sequence['outputs.GetUserConnectorMembershipsConnectorResult']]:
         return pulumi.get(self, "connectors")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="userId")
@@ -68,7 +57,6 @@ class AwaitableGetUserConnectorMembershipsResult(GetUserConnectorMembershipsResu
             yield self
         return GetUserConnectorMembershipsResult(
             connectors=self.connectors,
-            id=self.id,
             user_id=self.user_id)
 
 
@@ -98,7 +86,6 @@ def get_user_connector_memberships(connectors: Optional[Sequence[Union['GetUserC
 
     return AwaitableGetUserConnectorMembershipsResult(
         connectors=pulumi.get(__ret__, 'connectors'),
-        id=pulumi.get(__ret__, 'id'),
         user_id=pulumi.get(__ret__, 'user_id'))
 def get_user_connector_memberships_output(connectors: pulumi.Input[Optional[Optional[Sequence[Union['GetUserConnectorMembershipsConnectorArgs', 'GetUserConnectorMembershipsConnectorArgsDict']]]]] = None,
                                           user_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -125,5 +112,4 @@ def get_user_connector_memberships_output(connectors: pulumi.Input[Optional[Opti
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getUserConnectorMemberships:getUserConnectorMemberships', __args__, opts=opts, typ=GetUserConnectorMembershipsResult)
     return __ret__.apply(lambda __response__: GetUserConnectorMembershipsResult(
         connectors=pulumi.get(__response__, 'connectors'),
-        id=pulumi.get(__response__, 'id'),
         user_id=pulumi.get(__response__, 'user_id')))

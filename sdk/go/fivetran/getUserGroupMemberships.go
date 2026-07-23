@@ -58,8 +58,6 @@ type GetUserGroupMembershipsArgs struct {
 // A collection of values returned by getUserGroupMemberships.
 type GetUserGroupMembershipsResult struct {
 	Groups []GetUserGroupMembershipsGroup `pulumi:"groups"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// The unique identifier for the user within your account.
 	UserId string `pulumi:"userId"`
 }
@@ -101,11 +99,6 @@ func (o GetUserGroupMembershipsResultOutput) ToGetUserGroupMembershipsResultOutp
 
 func (o GetUserGroupMembershipsResultOutput) Groups() GetUserGroupMembershipsGroupArrayOutput {
 	return o.ApplyT(func(v GetUserGroupMembershipsResult) []GetUserGroupMembershipsGroup { return v.Groups }).(GetUserGroupMembershipsGroupArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetUserGroupMembershipsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUserGroupMembershipsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The unique identifier for the user within your account.
