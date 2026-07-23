@@ -45,10 +45,6 @@ export interface GetUserGroupMembershipsArgs {
 export interface GetUserGroupMembershipsResult {
     readonly groups?: outputs.GetUserGroupMembershipsGroup[];
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * The unique identifier for the user within your account.
      */
     readonly userId: string;

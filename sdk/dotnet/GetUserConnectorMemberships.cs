@@ -135,10 +135,6 @@ namespace Pulumi.Fivetran
     {
         public readonly ImmutableArray<Outputs.GetUserConnectorMembershipsConnectorResult> Connectors;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// The unique identifier for the user within your account.
         /// </summary>
         public readonly string UserId;
@@ -147,12 +143,9 @@ namespace Pulumi.Fivetran
         private GetUserConnectorMembershipsResult(
             ImmutableArray<Outputs.GetUserConnectorMembershipsConnectorResult> connectors,
 
-            string id,
-
             string userId)
         {
             Connectors = connectors;
-            Id = id;
             UserId = userId;
         }
     }

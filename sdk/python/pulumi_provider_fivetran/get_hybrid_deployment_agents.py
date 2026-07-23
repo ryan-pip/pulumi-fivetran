@@ -27,21 +27,10 @@ class GetHybridDeploymentAgentsResult:
     """
     A collection of values returned by getHybridDeploymentAgents.
     """
-    def __init__(__self__, id=None, items=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, items=None):
         if items and not isinstance(items, list):
             raise TypeError("Expected argument 'items' to be a list")
         pulumi.set(__self__, "items", items)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -55,7 +44,6 @@ class AwaitableGetHybridDeploymentAgentsResult(GetHybridDeploymentAgentsResult):
         if False:
             yield self
         return GetHybridDeploymentAgentsResult(
-            id=self.id,
             items=self.items)
 
 
@@ -77,7 +65,6 @@ def get_hybrid_deployment_agents(opts: Optional[pulumi.InvokeOptions] = None) ->
     __ret__ = pulumi.runtime.invoke('fivetran:index/getHybridDeploymentAgents:getHybridDeploymentAgents', __args__, opts=opts, typ=GetHybridDeploymentAgentsResult).value
 
     return AwaitableGetHybridDeploymentAgentsResult(
-        id=pulumi.get(__ret__, 'id'),
         items=pulumi.get(__ret__, 'items'))
 def get_hybrid_deployment_agents_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHybridDeploymentAgentsResult]:
     """
@@ -96,5 +83,4 @@ def get_hybrid_deployment_agents_output(opts: Optional[Union[pulumi.InvokeOption
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getHybridDeploymentAgents:getHybridDeploymentAgents', __args__, opts=opts, typ=GetHybridDeploymentAgentsResult)
     return __ret__.apply(lambda __response__: GetHybridDeploymentAgentsResult(
-        id=pulumi.get(__response__, 'id'),
         items=pulumi.get(__response__, 'items')))

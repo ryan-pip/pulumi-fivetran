@@ -112,19 +112,11 @@ namespace Pulumi.Fivetran
     [OutputType]
     public sealed class GetProxyAgentsResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly ImmutableArray<Outputs.GetProxyAgentsItemResult> Items;
 
         [OutputConstructor]
-        private GetProxyAgentsResult(
-            string id,
-
-            ImmutableArray<Outputs.GetProxyAgentsItemResult> items)
+        private GetProxyAgentsResult(ImmutableArray<Outputs.GetProxyAgentsItemResult> items)
         {
-            Id = id;
             Items = items;
         }
     }

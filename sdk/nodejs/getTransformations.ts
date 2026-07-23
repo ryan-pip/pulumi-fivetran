@@ -37,10 +37,6 @@ export interface GetTransformationsArgs {
  * A collection of values returned by getTransformations.
  */
 export interface GetTransformationsResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly transformations?: outputs.GetTransformationsTransformation[];
 }
 /**

@@ -58,19 +58,11 @@ namespace Pulumi.Fivetran
     [OutputType]
     public sealed class GetPrivateLinksResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly ImmutableArray<Outputs.GetPrivateLinksItemResult> Items;
 
         [OutputConstructor]
-        private GetPrivateLinksResult(
-            string id,
-
-            ImmutableArray<Outputs.GetPrivateLinksItemResult> items)
+        private GetPrivateLinksResult(ImmutableArray<Outputs.GetPrivateLinksItemResult> items)
         {
-            Id = id;
             Items = items;
         }
     }

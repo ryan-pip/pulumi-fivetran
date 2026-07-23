@@ -28,10 +28,6 @@ export function getHybridDeploymentAgents(opts?: pulumi.InvokeOptions): Promise<
  * A collection of values returned by getHybridDeploymentAgents.
  */
 export interface GetHybridDeploymentAgentsResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly items: outputs.GetHybridDeploymentAgentsItem[];
 }
 /**

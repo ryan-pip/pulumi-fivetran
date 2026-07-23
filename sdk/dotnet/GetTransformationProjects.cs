@@ -79,19 +79,11 @@ namespace Pulumi.Fivetran
     [OutputType]
     public sealed class GetTransformationProjectsResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly ImmutableArray<Outputs.GetTransformationProjectsProjectResult> Projects;
 
         [OutputConstructor]
-        private GetTransformationProjectsResult(
-            string id,
-
-            ImmutableArray<Outputs.GetTransformationProjectsProjectResult> projects)
+        private GetTransformationProjectsResult(ImmutableArray<Outputs.GetTransformationProjectsProjectResult> projects)
         {
-            Id = id;
             Projects = projects;
         }
     }

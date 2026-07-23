@@ -28,13 +28,10 @@ class GetUserGroupMembershipsResult:
     """
     A collection of values returned by getUserGroupMemberships.
     """
-    def __init__(__self__, groups=None, id=None, user_id=None):
+    def __init__(__self__, groups=None, user_id=None):
         if groups and not isinstance(groups, list):
             raise TypeError("Expected argument 'groups' to be a list")
         pulumi.set(__self__, "groups", groups)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if user_id and not isinstance(user_id, str):
             raise TypeError("Expected argument 'user_id' to be a str")
         pulumi.set(__self__, "user_id", user_id)
@@ -43,14 +40,6 @@ class GetUserGroupMembershipsResult:
     @pulumi.getter
     def groups(self) -> Optional[Sequence['outputs.GetUserGroupMembershipsGroupResult']]:
         return pulumi.get(self, "groups")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="userId")
@@ -68,7 +57,6 @@ class AwaitableGetUserGroupMembershipsResult(GetUserGroupMembershipsResult):
             yield self
         return GetUserGroupMembershipsResult(
             groups=self.groups,
-            id=self.id,
             user_id=self.user_id)
 
 
@@ -98,7 +86,6 @@ def get_user_group_memberships(groups: Optional[Sequence[Union['GetUserGroupMemb
 
     return AwaitableGetUserGroupMembershipsResult(
         groups=pulumi.get(__ret__, 'groups'),
-        id=pulumi.get(__ret__, 'id'),
         user_id=pulumi.get(__ret__, 'user_id'))
 def get_user_group_memberships_output(groups: pulumi.Input[Optional[Optional[Sequence[Union['GetUserGroupMembershipsGroupArgs', 'GetUserGroupMembershipsGroupArgsDict']]]]] = None,
                                       user_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -125,5 +112,4 @@ def get_user_group_memberships_output(groups: pulumi.Input[Optional[Optional[Seq
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getUserGroupMemberships:getUserGroupMemberships', __args__, opts=opts, typ=GetUserGroupMembershipsResult)
     return __ret__.apply(lambda __response__: GetUserGroupMembershipsResult(
         groups=pulumi.get(__response__, 'groups'),
-        id=pulumi.get(__response__, 'id'),
         user_id=pulumi.get(__response__, 'user_id')))

@@ -58,8 +58,6 @@ type GetUserConnectorMembershipsArgs struct {
 // A collection of values returned by getUserConnectorMemberships.
 type GetUserConnectorMembershipsResult struct {
 	Connectors []GetUserConnectorMembershipsConnector `pulumi:"connectors"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// The unique identifier for the user within your account.
 	UserId string `pulumi:"userId"`
 }
@@ -101,11 +99,6 @@ func (o GetUserConnectorMembershipsResultOutput) ToGetUserConnectorMembershipsRe
 
 func (o GetUserConnectorMembershipsResultOutput) Connectors() GetUserConnectorMembershipsConnectorArrayOutput {
 	return o.ApplyT(func(v GetUserConnectorMembershipsResult) []GetUserConnectorMembershipsConnector { return v.Connectors }).(GetUserConnectorMembershipsConnectorArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetUserConnectorMembershipsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUserConnectorMembershipsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The unique identifier for the user within your account.

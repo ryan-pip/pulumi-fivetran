@@ -53,8 +53,6 @@ type GetTransformationsArgs struct {
 
 // A collection of values returned by getTransformations.
 type GetTransformationsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id              string                             `pulumi:"id"`
 	Transformations []GetTransformationsTransformation `pulumi:"transformations"`
 }
 
@@ -89,11 +87,6 @@ func (o GetTransformationsResultOutput) ToGetTransformationsResultOutput() GetTr
 
 func (o GetTransformationsResultOutput) ToGetTransformationsResultOutputWithContext(ctx context.Context) GetTransformationsResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetTransformationsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTransformationsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetTransformationsResultOutput) Transformations() GetTransformationsTransformationArrayOutput {

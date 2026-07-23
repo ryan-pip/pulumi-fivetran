@@ -27,21 +27,10 @@ class GetWebhooksResult:
     """
     A collection of values returned by getWebhooks.
     """
-    def __init__(__self__, id=None, webhooks=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, webhooks=None):
         if webhooks and not isinstance(webhooks, list):
             raise TypeError("Expected argument 'webhooks' to be a list")
         pulumi.set(__self__, "webhooks", webhooks)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -55,7 +44,6 @@ class AwaitableGetWebhooksResult(GetWebhooksResult):
         if False:
             yield self
         return GetWebhooksResult(
-            id=self.id,
             webhooks=self.webhooks)
 
 
@@ -77,7 +65,6 @@ def get_webhooks(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWeb
     __ret__ = pulumi.runtime.invoke('fivetran:index/getWebhooks:getWebhooks', __args__, opts=opts, typ=GetWebhooksResult).value
 
     return AwaitableGetWebhooksResult(
-        id=pulumi.get(__ret__, 'id'),
         webhooks=pulumi.get(__ret__, 'webhooks'))
 def get_webhooks_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWebhooksResult]:
     """
@@ -96,5 +83,4 @@ def get_webhooks_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.Invoke
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getWebhooks:getWebhooks', __args__, opts=opts, typ=GetWebhooksResult)
     return __ret__.apply(lambda __response__: GetWebhooksResult(
-        id=pulumi.get(__response__, 'id'),
         webhooks=pulumi.get(__response__, 'webhooks')))

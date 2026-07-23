@@ -28,10 +28,6 @@ export function getTransformationProjects(opts?: pulumi.InvokeOptions): Promise<
  * A collection of values returned by getTransformationProjects.
  */
 export interface GetTransformationProjectsResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly projects: outputs.GetTransformationProjectsProject[];
 }
 /**

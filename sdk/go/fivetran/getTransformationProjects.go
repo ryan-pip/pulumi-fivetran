@@ -48,8 +48,6 @@ func GetTransformationProjects(ctx *pulumi.Context, opts ...pulumi.InvokeOption)
 
 // A collection of values returned by getTransformationProjects.
 type GetTransformationProjectsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id       string                             `pulumi:"id"`
 	Projects []GetTransformationProjectsProject `pulumi:"projects"`
 }
 
@@ -73,11 +71,6 @@ func (o GetTransformationProjectsResultOutput) ToGetTransformationProjectsResult
 
 func (o GetTransformationProjectsResultOutput) ToGetTransformationProjectsResultOutputWithContext(ctx context.Context) GetTransformationProjectsResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetTransformationProjectsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTransformationProjectsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func (o GetTransformationProjectsResultOutput) Projects() GetTransformationProjectsProjectArrayOutput {

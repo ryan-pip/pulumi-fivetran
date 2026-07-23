@@ -25,10 +25,6 @@ export interface GetPrivateLinksArgs {
  * A collection of values returned by getPrivateLinks.
  */
 export interface GetPrivateLinksResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly items?: outputs.GetPrivateLinksItem[];
 }
 export function getPrivateLinksOutput(args?: GetPrivateLinksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrivateLinksResult> {

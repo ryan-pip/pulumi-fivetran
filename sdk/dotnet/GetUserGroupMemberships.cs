@@ -135,10 +135,6 @@ namespace Pulumi.Fivetran
     {
         public readonly ImmutableArray<Outputs.GetUserGroupMembershipsGroupResult> Groups;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// The unique identifier for the user within your account.
         /// </summary>
         public readonly string UserId;
@@ -147,12 +143,9 @@ namespace Pulumi.Fivetran
         private GetUserGroupMembershipsResult(
             ImmutableArray<Outputs.GetUserGroupMembershipsGroupResult> groups,
 
-            string id,
-
             string userId)
         {
             Groups = groups;
-            Id = id;
             UserId = userId;
         }
     }

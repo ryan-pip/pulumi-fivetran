@@ -28,21 +28,10 @@ class GetQuickstartPackagesResult:
     """
     A collection of values returned by getQuickstartPackages.
     """
-    def __init__(__self__, id=None, packages=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, packages=None):
         if packages and not isinstance(packages, list):
             raise TypeError("Expected argument 'packages' to be a list")
         pulumi.set(__self__, "packages", packages)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -56,7 +45,6 @@ class AwaitableGetQuickstartPackagesResult(GetQuickstartPackagesResult):
         if False:
             yield self
         return GetQuickstartPackagesResult(
-            id=self.id,
             packages=self.packages)
 
 
@@ -80,7 +68,6 @@ def get_quickstart_packages(packages: Optional[Sequence[Union['GetQuickstartPack
     __ret__ = pulumi.runtime.invoke('fivetran:index/getQuickstartPackages:getQuickstartPackages', __args__, opts=opts, typ=GetQuickstartPackagesResult).value
 
     return AwaitableGetQuickstartPackagesResult(
-        id=pulumi.get(__ret__, 'id'),
         packages=pulumi.get(__ret__, 'packages'))
 def get_quickstart_packages_output(packages: pulumi.Input[Optional[Optional[Sequence[Union['GetQuickstartPackagesPackageArgs', 'GetQuickstartPackagesPackageArgsDict']]]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQuickstartPackagesResult]:
@@ -101,5 +88,4 @@ def get_quickstart_packages_output(packages: pulumi.Input[Optional[Optional[Sequ
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getQuickstartPackages:getQuickstartPackages', __args__, opts=opts, typ=GetQuickstartPackagesResult)
     return __ret__.apply(lambda __response__: GetQuickstartPackagesResult(
-        id=pulumi.get(__response__, 'id'),
         packages=pulumi.get(__response__, 'packages')))

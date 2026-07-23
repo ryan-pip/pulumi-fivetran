@@ -27,21 +27,10 @@ class GetTransformationProjectsResult:
     """
     A collection of values returned by getTransformationProjects.
     """
-    def __init__(__self__, id=None, projects=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, projects=None):
         if projects and not isinstance(projects, list):
             raise TypeError("Expected argument 'projects' to be a list")
         pulumi.set(__self__, "projects", projects)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -55,7 +44,6 @@ class AwaitableGetTransformationProjectsResult(GetTransformationProjectsResult):
         if False:
             yield self
         return GetTransformationProjectsResult(
-            id=self.id,
             projects=self.projects)
 
 
@@ -77,7 +65,6 @@ def get_transformation_projects(opts: Optional[pulumi.InvokeOptions] = None) -> 
     __ret__ = pulumi.runtime.invoke('fivetran:index/getTransformationProjects:getTransformationProjects', __args__, opts=opts, typ=GetTransformationProjectsResult).value
 
     return AwaitableGetTransformationProjectsResult(
-        id=pulumi.get(__ret__, 'id'),
         projects=pulumi.get(__ret__, 'projects'))
 def get_transformation_projects_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransformationProjectsResult]:
     """
@@ -96,5 +83,4 @@ def get_transformation_projects_output(opts: Optional[Union[pulumi.InvokeOptions
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('fivetran:index/getTransformationProjects:getTransformationProjects', __args__, opts=opts, typ=GetTransformationProjectsResult)
     return __ret__.apply(lambda __response__: GetTransformationProjectsResult(
-        id=pulumi.get(__response__, 'id'),
         projects=pulumi.get(__response__, 'projects')))

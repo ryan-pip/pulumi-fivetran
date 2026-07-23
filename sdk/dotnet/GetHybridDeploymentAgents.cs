@@ -79,19 +79,11 @@ namespace Pulumi.Fivetran
     [OutputType]
     public sealed class GetHybridDeploymentAgentsResult
     {
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
         public readonly ImmutableArray<Outputs.GetHybridDeploymentAgentsItemResult> Items;
 
         [OutputConstructor]
-        private GetHybridDeploymentAgentsResult(
-            string id,
-
-            ImmutableArray<Outputs.GetHybridDeploymentAgentsItemResult> items)
+        private GetHybridDeploymentAgentsResult(ImmutableArray<Outputs.GetHybridDeploymentAgentsItemResult> items)
         {
-            Id = id;
             Items = items;
         }
     }

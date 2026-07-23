@@ -28,10 +28,6 @@ export function getWebhooks(opts?: pulumi.InvokeOptions): Promise<GetWebhooksRes
  * A collection of values returned by getWebhooks.
  */
 export interface GetWebhooksResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
     readonly webhooks: outputs.GetWebhooksWebhook[];
 }
 /**
