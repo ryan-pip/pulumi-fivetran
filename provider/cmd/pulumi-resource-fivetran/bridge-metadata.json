@@ -9,6 +9,26 @@
                 "current": "fivetran:index/connectionConfig:ConnectionConfig",
                 "majorVersion": 1
             },
+            "fivetran_connection_v2": {
+                "current": "fivetran:index/connectionV2:ConnectionV2",
+                "majorVersion": 1,
+                "fields": {
+                    "status": {
+                        "fields": {
+                            "tasks": {
+                                "maxItemsOne": false
+                            },
+                            "warnings": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "fivetran_connection_v2_pause_state": {
+                "current": "fivetran:index/connectionV2PauseState:ConnectionV2PauseState",
+                "majorVersion": 1
+            },
             "fivetran_connector": {
                 "current": "fivetran:index/connector:Connector",
                 "majorVersion": 1,
@@ -1595,6 +1615,8 @@
         "resources": {
             "fivetran_connection": {},
             "fivetran_connection_config": {},
+            "fivetran_connection_v2": {},
+            "fivetran_connection_v2_pause_state": {},
             "fivetran_connector": {},
             "fivetran_connector_certificates": {},
             "fivetran_connector_fingerprints": {},

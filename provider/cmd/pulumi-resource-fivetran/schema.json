@@ -107,6 +107,129 @@
             },
             "type": "object"
         },
+        "fivetran:index/ConnectionV2ConnectCardConfig:ConnectionV2ConnectCardConfig": {
+            "properties": {
+                "allFields": {
+                    "type": "boolean",
+                    "description": "Whether Connect Card should show all setup fields.\n"
+                },
+                "hideSetupGuide": {
+                    "type": "boolean",
+                    "description": "Whether to hide the setup guide in the Connect Card flow.\n"
+                },
+                "redirectUri": {
+                    "type": "string",
+                    "description": "URI where the Connect Card flow redirects after setup.\n",
+                    "secret": true
+                }
+            },
+            "type": "object"
+        },
+        "fivetran:index/ConnectionV2DestinationConfiguration:ConnectionV2DestinationConfiguration": {
+            "properties": {
+                "virtualWarehouse": {
+                    "type": "string",
+                    "description": "Destination virtual warehouse used by the connection.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "virtualWarehouse"
+                    ]
+                }
+            }
+        },
+        "fivetran:index/ConnectionV2Status:ConnectionV2Status": {
+            "properties": {
+                "isHistoricalSync": {
+                    "type": "boolean",
+                    "description": "Whether the connection should be triggered to re-sync all historical data on the next scheduled sync.\n"
+                },
+                "setupState": {
+                    "type": "string",
+                    "description": "The current setup state of the connection.\n"
+                },
+                "syncState": {
+                    "type": "string",
+                    "description": "The current sync state of the connection.\n"
+                },
+                "tasks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/fivetran:index/ConnectionV2StatusTask:ConnectionV2StatusTask"
+                    },
+                    "description": "The collection of tasks for the connection.\n"
+                },
+                "updateState": {
+                    "type": "string",
+                    "description": "The current data update state of the connection.\n"
+                },
+                "warnings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/fivetran:index/ConnectionV2StatusWarning:ConnectionV2StatusWarning"
+                    },
+                    "description": "The collection of warnings for the connection.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "isHistoricalSync",
+                        "setupState",
+                        "syncState",
+                        "tasks",
+                        "updateState",
+                        "warnings"
+                    ]
+                }
+            }
+        },
+        "fivetran:index/ConnectionV2StatusTask:ConnectionV2StatusTask": {
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "Code.\n"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "code",
+                        "message"
+                    ]
+                }
+            }
+        },
+        "fivetran:index/ConnectionV2StatusWarning:ConnectionV2StatusWarning": {
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "Code.\n"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "code",
+                        "message"
+                    ]
+                }
+            }
+        },
         "fivetran:index/ConnectorAuth:ConnectorAuth": {
             "properties": {
                 "accessToken": {
@@ -15711,6 +15834,393 @@
                     "trustFingerprints": {
                         "type": "boolean",
                         "description": "Whether to automatically trust SSH fingerprints. Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e. **Note:** This is a plan-only attribute and will not be stored in state.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "fivetran:index/connectionV2:ConnectionV2": {
+            "description": "\u003e **Alpha:** This resource is in alpha and its schema and behavior may change without notice. Not recommended for production use.\n\nManages a Fivetran connection. Unlike \u003cspan pulumi-lang-nodejs=\"`fivetran.Connector`\" pulumi-lang-dotnet=\"`fivetran.Connector`\" pulumi-lang-go=\"`Connector`\" pulumi-lang-python=\"`Connector`\" pulumi-lang-yaml=\"`fivetran.Connector`\" pulumi-lang-java=\"`fivetran.Connector`\" pulumi-lang-hcl=\"`fivetran_connector`\"\u003e`fivetran.Connector`\u003c/span\u003e/\u003cspan pulumi-lang-nodejs=\"`fivetran.Connection`\" pulumi-lang-dotnet=\"`fivetran.Connection`\" pulumi-lang-go=\"`Connection`\" pulumi-lang-python=\"`Connection`\" pulumi-lang-yaml=\"`fivetran.Connection`\" pulumi-lang-java=\"`fivetran.Connection`\" pulumi-lang-hcl=\"`fivetran_connection`\"\u003e`fivetran.Connection`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`config`\" pulumi-lang-dotnet=\"`Config`\" pulumi-lang-go=\"`config`\" pulumi-lang-python=\"`config`\" pulumi-lang-yaml=\"`config`\" pulumi-lang-java=\"`config`\" pulumi-lang-hcl=\"`config`\"\u003e`config`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`auth`\" pulumi-lang-dotnet=\"`Auth`\" pulumi-lang-go=\"`auth`\" pulumi-lang-python=\"`auth`\" pulumi-lang-yaml=\"`auth`\" pulumi-lang-java=\"`auth`\" pulumi-lang-hcl=\"`auth`\"\u003e`auth`\u003c/span\u003e are provided as dynamic, service-specific objects: their accepted fields, types, and required/readonly/immutable rules are resolved from connector metadata at plan time rather than from a fixed schema. This means the same resource works across services (e.g. \u003cspan pulumi-lang-nodejs=\"`s3`\" pulumi-lang-dotnet=\"`S3`\" pulumi-lang-go=\"`s3`\" pulumi-lang-python=\"`s3`\" pulumi-lang-yaml=\"`s3`\" pulumi-lang-java=\"`s3`\" pulumi-lang-hcl=\"`s3`\"\u003e`s3`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`postgres`\" pulumi-lang-dotnet=\"`Postgres`\" pulumi-lang-go=\"`postgres`\" pulumi-lang-python=\"`postgres`\" pulumi-lang-yaml=\"`postgres`\" pulumi-lang-java=\"`postgres`\" pulumi-lang-hcl=\"`postgres`\"\u003e`postgres`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`fivetranLog`\" pulumi-lang-dotnet=\"`FivetranLog`\" pulumi-lang-go=\"`fivetranLog`\" pulumi-lang-python=\"`fivetran_log`\" pulumi-lang-yaml=\"`fivetranLog`\" pulumi-lang-java=\"`fivetranLog`\" pulumi-lang-hcl=\"`fivetran_log`\"\u003e`fivetranLog`\u003c/span\u003e) without a per-service Terraform schema.\n\nPause state is managed separately via \u003cspan pulumi-lang-nodejs=\"`fivetran.ConnectionV2PauseState`\" pulumi-lang-dotnet=\"`fivetran.ConnectionV2PauseState`\" pulumi-lang-go=\"`ConnectionV2PauseState`\" pulumi-lang-python=\"`ConnectionV2PauseState`\" pulumi-lang-yaml=\"`fivetran.ConnectionV2PauseState`\" pulumi-lang-java=\"`fivetran.ConnectionV2PauseState`\" pulumi-lang-hcl=\"`fivetran_connection_v2_pause_state`\"\u003e`fivetran.ConnectionV2PauseState`\u003c/span\u003e; this resource does not expose a \u003cspan pulumi-lang-nodejs=\"`paused`\" pulumi-lang-dotnet=\"`Paused`\" pulumi-lang-go=\"`paused`\" pulumi-lang-python=\"`paused`\" pulumi-lang-yaml=\"`paused`\" pulumi-lang-java=\"`paused`\" pulumi-lang-hcl=\"`paused`\"\u003e`paused`\u003c/span\u003e attribute. **New connections are always created paused.** To start syncing, add a linked \u003cspan pulumi-lang-nodejs=\"`fivetran.ConnectionV2PauseState`\" pulumi-lang-dotnet=\"`fivetran.ConnectionV2PauseState`\" pulumi-lang-go=\"`ConnectionV2PauseState`\" pulumi-lang-python=\"`ConnectionV2PauseState`\" pulumi-lang-yaml=\"`fivetran.ConnectionV2PauseState`\" pulumi-lang-java=\"`fivetran.ConnectionV2PauseState`\" pulumi-lang-hcl=\"`fivetran_connection_v2_pause_state`\"\u003e`fivetran.ConnectionV2PauseState`\u003c/span\u003e resource with `paused = false`.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@ryan-pip/pulumi-fivetran\";\n\nconst connection = new fivetran.ConnectionV2(\"connection\", {\n    service: \"fivetran_log\",\n    groupId: \"group_id\",\n    config: {\n        schema: \"my_schema\",\n    },\n});\n// The connection above is created paused. Unpause it to start syncing:\nconst pauseState = new fivetran.ConnectionV2PauseState(\"pause_state\", {\n    connectionId: connection.id,\n    paused: false,\n});\n```\n```python\nimport pulumi\nimport pulumi_provider_fivetran as fivetran\n\nconnection = fivetran.ConnectionV2(\"connection\",\n    service=\"fivetran_log\",\n    group_id=\"group_id\",\n    config={\n        \"schema\": \"my_schema\",\n    })\n# The connection above is created paused. Unpause it to start syncing:\npause_state = fivetran.ConnectionV2PauseState(\"pause_state\",\n    connection_id=connection.id,\n    paused=False)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var connection = new Fivetran.ConnectionV2(\"connection\", new()\n    {\n        Service = \"fivetran_log\",\n        GroupId = \"group_id\",\n        Config = new Dictionary\u003cstring, object?\u003e\n        {\n            [\"schema\"] = \"my_schema\",\n        },\n    });\n\n    // The connection above is created paused. Unpause it to start syncing:\n    var pauseState = new Fivetran.ConnectionV2PauseState(\"pause_state\", new()\n    {\n        ConnectionId = connection.Id,\n        Paused = false,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tconnection, err := fivetran.NewConnectionV2(ctx, \"connection\", \u0026fivetran.ConnectionV2Args{\n\t\t\tService: pulumi.String(\"fivetran_log\"),\n\t\t\tGroupId: pulumi.String(\"group_id\"),\n\t\t\tConfig: pulumi.Any(map[string]interface{}{\n\t\t\t\t\"schema\": \"my_schema\",\n\t\t\t}),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// The connection above is created paused. Unpause it to start syncing:\n\t\t_, err = fivetran.NewConnectionV2PauseState(ctx, \"pause_state\", \u0026fivetran.ConnectionV2PauseStateArgs{\n\t\t\tConnectionId: connection.ID(),\n\t\t\tPaused:       pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    fivetran = {\n      source = \"pulumi/fivetran\"\n    }\n  }\n}\n\nresource \"fivetran_connectionv2\" \"connection\" {\n  service  = \"fivetran_log\"\n  group_id = \"group_id\"\n  config = {\n    \"schema\" = \"my_schema\"\n  }\n}\n# The connection above is created paused. Unpause it to start syncing:\nresource \"fivetran_connectionv2pausestate\" \"pause_state\" {\n  connection_id = fivetran_connectionv2.connection.id\n  paused        = false\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.ConnectionV2;\nimport com.pulumi.fivetran.ConnectionV2Args;\nimport com.pulumi.fivetran.ConnectionV2PauseState;\nimport com.pulumi.fivetran.ConnectionV2PauseStateArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var connection = new ConnectionV2(\"connection\", ConnectionV2Args.builder()\n            .service(\"fivetran_log\")\n            .groupId(\"group_id\")\n            .config(Map.of(\"schema\", \"my_schema\"))\n            .build());\n\n        // The connection above is created paused. Unpause it to start syncing:\n        var pauseState = new ConnectionV2PauseState(\"pauseState\", ConnectionV2PauseStateArgs.builder()\n            .connectionId(connection.id())\n            .paused(false)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  connection:\n    type: fivetran:ConnectionV2\n    properties:\n      service: fivetran_log\n      groupId: group_id\n      config:\n        schema: my_schema\n  # The connection above is created paused. Unpause it to start syncing:\n  pauseState:\n    type: fivetran:ConnectionV2PauseState\n    name: pause_state\n    properties:\n      connectionId: ${connection.id}\n      paused: false\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "auth": {
+                    "$ref": "pulumi.json#/Any",
+                    "description": "Service-specific authorization configuration. The accepted fields are defined by connector metadata at runtime.\n",
+                    "secret": true
+                },
+                "config": {
+                    "$ref": "pulumi.json#/Any",
+                    "description": "Service-specific connection configuration. The accepted fields are defined by connector metadata at runtime.\n"
+                },
+                "connectCardConfig": {
+                    "$ref": "#/types/fivetran:index/ConnectionV2ConnectCardConfig:ConnectionV2ConnectCardConfig",
+                    "description": "Configuration for the interactive Connect Card setup flow.\n"
+                },
+                "connectedBy": {
+                    "type": "string",
+                    "description": "The unique identifier of the user who created the connection in your account."
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The timestamp of the time the connection was created in your account."
+                },
+                "dailySyncTime": {
+                    "type": "string",
+                    "description": "Sync start time. Only used when \u003cspan pulumi-lang-nodejs=\"`syncFrequency`\" pulumi-lang-dotnet=\"`SyncFrequency`\" pulumi-lang-go=\"`syncFrequency`\" pulumi-lang-python=\"`sync_frequency`\" pulumi-lang-yaml=\"`syncFrequency`\" pulumi-lang-java=\"`syncFrequency`\" pulumi-lang-hcl=\"`sync_frequency`\"\u003e`syncFrequency`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`1440`\" pulumi-lang-dotnet=\"`1440`\" pulumi-lang-go=\"`1440`\" pulumi-lang-python=\"`1440`\" pulumi-lang-yaml=\"`1440`\" pulumi-lang-java=\"`1440`\" pulumi-lang-hcl=\"`1440`\"\u003e`1440`\u003c/span\u003e.\n"
+                },
+                "dataDelaySensitivity": {
+                    "type": "string",
+                    "description": "The level of data delay notification threshold. Possible values: `LOW`, `NORMAL`, `HIGH`, `CUSTOM`, `SYNC_FREQUENCY`.\n"
+                },
+                "dataDelayThreshold": {
+                    "type": "integer",
+                    "description": "Custom sync delay notification threshold in minutes. Only used when \u003cspan pulumi-lang-nodejs=\"`dataDelaySensitivity`\" pulumi-lang-dotnet=\"`DataDelaySensitivity`\" pulumi-lang-go=\"`dataDelaySensitivity`\" pulumi-lang-python=\"`data_delay_sensitivity`\" pulumi-lang-yaml=\"`dataDelaySensitivity`\" pulumi-lang-java=\"`dataDelaySensitivity`\" pulumi-lang-hcl=\"`data_delay_sensitivity`\"\u003e`dataDelaySensitivity`\u003c/span\u003e is `CUSTOM`.\n"
+                },
+                "destinationConfiguration": {
+                    "$ref": "#/types/fivetran:index/ConnectionV2DestinationConfiguration:ConnectionV2DestinationConfiguration",
+                    "description": "Destination-specific configuration for the connection.\n"
+                },
+                "destinationSchemaNames": {
+                    "type": "string",
+                    "description": "Defines how schema names appear in the destination. Supported values: `FIVETRAN_NAMING`, `SOURCE_NAMING`. Changing this forces the connection to be replaced.\n"
+                },
+                "failedAt": {
+                    "type": "string",
+                    "description": "The timestamp of the time the connection sync failed last time."
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The unique identifier for the Group (Destination) within the Fivetran system. Changing this forces the connection to be replaced.\n"
+                },
+                "hybridDeploymentAgentId": {
+                    "type": "string",
+                    "description": "The hybrid deployment agent ID for the group the connection belongs to.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination."
+                },
+                "networkingMethod": {
+                    "type": "string",
+                    "description": "The networking method for the connection. Possible values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`.\n"
+                },
+                "pauseAfterTrial": {
+                    "type": "boolean",
+                    "description": "Whether the connection should be paused after the free trial period has ended.\n"
+                },
+                "privateLinkId": {
+                    "type": "string",
+                    "description": "The private link ID. Required when \u003cspan pulumi-lang-nodejs=\"`networkingMethod`\" pulumi-lang-dotnet=\"`NetworkingMethod`\" pulumi-lang-go=\"`networkingMethod`\" pulumi-lang-python=\"`networking_method`\" pulumi-lang-yaml=\"`networkingMethod`\" pulumi-lang-java=\"`networkingMethod`\" pulumi-lang-hcl=\"`networking_method`\"\u003e`networkingMethod`\u003c/span\u003e is `PrivateLink`.\n"
+                },
+                "proxyAgentId": {
+                    "type": "string",
+                    "description": "The ID of the proxy agent to use. Required when \u003cspan pulumi-lang-nodejs=\"`networkingMethod`\" pulumi-lang-dotnet=\"`NetworkingMethod`\" pulumi-lang-go=\"`networkingMethod`\" pulumi-lang-python=\"`networking_method`\" pulumi-lang-yaml=\"`networkingMethod`\" pulumi-lang-java=\"`networkingMethod`\" pulumi-lang-hcl=\"`networking_method`\"\u003e`networkingMethod`\u003c/span\u003e is `ProxyAgent`.\n"
+                },
+                "runSetupTests": {
+                    "type": "boolean",
+                    "description": "Whether to run setup tests when creating or updating the connection.\n"
+                },
+                "scheduleType": {
+                    "type": "string",
+                    "description": "The connection schedule configuration type. Supported values: \u003cspan pulumi-lang-nodejs=\"`auto`\" pulumi-lang-dotnet=\"`Auto`\" pulumi-lang-go=\"`auto`\" pulumi-lang-python=\"`auto`\" pulumi-lang-yaml=\"`auto`\" pulumi-lang-java=\"`auto`\" pulumi-lang-hcl=\"`auto`\"\u003e`auto`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`manual`\" pulumi-lang-dotnet=\"`Manual`\" pulumi-lang-go=\"`manual`\" pulumi-lang-python=\"`manual`\" pulumi-lang-yaml=\"`manual`\" pulumi-lang-java=\"`manual`\" pulumi-lang-hcl=\"`manual`\"\u003e`manual`\u003c/span\u003e.\n"
+                },
+                "service": {
+                    "type": "string",
+                    "description": "The connection service type (e.g., \u003cspan pulumi-lang-nodejs=\"`postgres`\" pulumi-lang-dotnet=\"`Postgres`\" pulumi-lang-go=\"`postgres`\" pulumi-lang-python=\"`postgres`\" pulumi-lang-yaml=\"`postgres`\" pulumi-lang-java=\"`postgres`\" pulumi-lang-hcl=\"`postgres`\"\u003e`postgres`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`mysql`\" pulumi-lang-dotnet=\"`Mysql`\" pulumi-lang-go=\"`mysql`\" pulumi-lang-python=\"`mysql`\" pulumi-lang-yaml=\"`mysql`\" pulumi-lang-java=\"`mysql`\" pulumi-lang-hcl=\"`mysql`\"\u003e`mysql`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`s3`\" pulumi-lang-dotnet=\"`S3`\" pulumi-lang-go=\"`s3`\" pulumi-lang-python=\"`s3`\" pulumi-lang-yaml=\"`s3`\" pulumi-lang-java=\"`s3`\" pulumi-lang-hcl=\"`s3`\"\u003e`s3`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`snowflake`\" pulumi-lang-dotnet=\"`Snowflake`\" pulumi-lang-go=\"`snowflake`\" pulumi-lang-python=\"`snowflake`\" pulumi-lang-yaml=\"`snowflake`\" pulumi-lang-java=\"`snowflake`\" pulumi-lang-hcl=\"`snowflake`\"\u003e`snowflake`\u003c/span\u003e). Changing this forces the connection to be replaced.\n"
+                },
+                "serviceVersion": {
+                    "type": "string",
+                    "description": "The connection type version within the Fivetran system."
+                },
+                "status": {
+                    "$ref": "#/types/fivetran:index/ConnectionV2Status:ConnectionV2Status",
+                    "description": "The current connection status."
+                },
+                "succeededAt": {
+                    "type": "string",
+                    "description": "The timestamp of the time the connection sync succeeded last time."
+                },
+                "syncFrequency": {
+                    "type": "integer",
+                    "description": "The connection sync frequency in minutes.\n"
+                },
+                "trustCertificates": {
+                    "type": "boolean",
+                    "description": "Whether Fivetran should trust certificates automatically.\n"
+                },
+                "trustFingerprints": {
+                    "type": "boolean",
+                    "description": "Whether Fivetran should trust SSH fingerprints automatically.\n"
+                }
+            },
+            "required": [
+                "config",
+                "connectedBy",
+                "createdAt",
+                "dailySyncTime",
+                "dataDelaySensitivity",
+                "dataDelayThreshold",
+                "destinationConfiguration",
+                "failedAt",
+                "groupId",
+                "hybridDeploymentAgentId",
+                "name",
+                "networkingMethod",
+                "pauseAfterTrial",
+                "privateLinkId",
+                "proxyAgentId",
+                "runSetupTests",
+                "scheduleType",
+                "service",
+                "serviceVersion",
+                "status",
+                "succeededAt",
+                "syncFrequency",
+                "trustCertificates",
+                "trustFingerprints"
+            ],
+            "inputProperties": {
+                "auth": {
+                    "$ref": "pulumi.json#/Any",
+                    "description": "Service-specific authorization configuration. The accepted fields are defined by connector metadata at runtime.\n",
+                    "secret": true
+                },
+                "config": {
+                    "$ref": "pulumi.json#/Any",
+                    "description": "Service-specific connection configuration. The accepted fields are defined by connector metadata at runtime.\n"
+                },
+                "connectCardConfig": {
+                    "$ref": "#/types/fivetran:index/ConnectionV2ConnectCardConfig:ConnectionV2ConnectCardConfig",
+                    "description": "Configuration for the interactive Connect Card setup flow.\n"
+                },
+                "dailySyncTime": {
+                    "type": "string",
+                    "description": "Sync start time. Only used when \u003cspan pulumi-lang-nodejs=\"`syncFrequency`\" pulumi-lang-dotnet=\"`SyncFrequency`\" pulumi-lang-go=\"`syncFrequency`\" pulumi-lang-python=\"`sync_frequency`\" pulumi-lang-yaml=\"`syncFrequency`\" pulumi-lang-java=\"`syncFrequency`\" pulumi-lang-hcl=\"`sync_frequency`\"\u003e`syncFrequency`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`1440`\" pulumi-lang-dotnet=\"`1440`\" pulumi-lang-go=\"`1440`\" pulumi-lang-python=\"`1440`\" pulumi-lang-yaml=\"`1440`\" pulumi-lang-java=\"`1440`\" pulumi-lang-hcl=\"`1440`\"\u003e`1440`\u003c/span\u003e.\n"
+                },
+                "dataDelaySensitivity": {
+                    "type": "string",
+                    "description": "The level of data delay notification threshold. Possible values: `LOW`, `NORMAL`, `HIGH`, `CUSTOM`, `SYNC_FREQUENCY`.\n"
+                },
+                "dataDelayThreshold": {
+                    "type": "integer",
+                    "description": "Custom sync delay notification threshold in minutes. Only used when \u003cspan pulumi-lang-nodejs=\"`dataDelaySensitivity`\" pulumi-lang-dotnet=\"`DataDelaySensitivity`\" pulumi-lang-go=\"`dataDelaySensitivity`\" pulumi-lang-python=\"`data_delay_sensitivity`\" pulumi-lang-yaml=\"`dataDelaySensitivity`\" pulumi-lang-java=\"`dataDelaySensitivity`\" pulumi-lang-hcl=\"`data_delay_sensitivity`\"\u003e`dataDelaySensitivity`\u003c/span\u003e is `CUSTOM`.\n"
+                },
+                "destinationConfiguration": {
+                    "$ref": "#/types/fivetran:index/ConnectionV2DestinationConfiguration:ConnectionV2DestinationConfiguration",
+                    "description": "Destination-specific configuration for the connection.\n"
+                },
+                "destinationSchemaNames": {
+                    "type": "string",
+                    "description": "Defines how schema names appear in the destination. Supported values: `FIVETRAN_NAMING`, `SOURCE_NAMING`. Changing this forces the connection to be replaced.\n"
+                },
+                "groupId": {
+                    "type": "string",
+                    "description": "The unique identifier for the Group (Destination) within the Fivetran system. Changing this forces the connection to be replaced.\n"
+                },
+                "hybridDeploymentAgentId": {
+                    "type": "string",
+                    "description": "The hybrid deployment agent ID for the group the connection belongs to.\n"
+                },
+                "networkingMethod": {
+                    "type": "string",
+                    "description": "The networking method for the connection. Possible values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`.\n"
+                },
+                "pauseAfterTrial": {
+                    "type": "boolean",
+                    "description": "Whether the connection should be paused after the free trial period has ended.\n"
+                },
+                "privateLinkId": {
+                    "type": "string",
+                    "description": "The private link ID. Required when \u003cspan pulumi-lang-nodejs=\"`networkingMethod`\" pulumi-lang-dotnet=\"`NetworkingMethod`\" pulumi-lang-go=\"`networkingMethod`\" pulumi-lang-python=\"`networking_method`\" pulumi-lang-yaml=\"`networkingMethod`\" pulumi-lang-java=\"`networkingMethod`\" pulumi-lang-hcl=\"`networking_method`\"\u003e`networkingMethod`\u003c/span\u003e is `PrivateLink`.\n"
+                },
+                "proxyAgentId": {
+                    "type": "string",
+                    "description": "The ID of the proxy agent to use. Required when \u003cspan pulumi-lang-nodejs=\"`networkingMethod`\" pulumi-lang-dotnet=\"`NetworkingMethod`\" pulumi-lang-go=\"`networkingMethod`\" pulumi-lang-python=\"`networking_method`\" pulumi-lang-yaml=\"`networkingMethod`\" pulumi-lang-java=\"`networkingMethod`\" pulumi-lang-hcl=\"`networking_method`\"\u003e`networkingMethod`\u003c/span\u003e is `ProxyAgent`.\n"
+                },
+                "runSetupTests": {
+                    "type": "boolean",
+                    "description": "Whether to run setup tests when creating or updating the connection.\n"
+                },
+                "scheduleType": {
+                    "type": "string",
+                    "description": "The connection schedule configuration type. Supported values: \u003cspan pulumi-lang-nodejs=\"`auto`\" pulumi-lang-dotnet=\"`Auto`\" pulumi-lang-go=\"`auto`\" pulumi-lang-python=\"`auto`\" pulumi-lang-yaml=\"`auto`\" pulumi-lang-java=\"`auto`\" pulumi-lang-hcl=\"`auto`\"\u003e`auto`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`manual`\" pulumi-lang-dotnet=\"`Manual`\" pulumi-lang-go=\"`manual`\" pulumi-lang-python=\"`manual`\" pulumi-lang-yaml=\"`manual`\" pulumi-lang-java=\"`manual`\" pulumi-lang-hcl=\"`manual`\"\u003e`manual`\u003c/span\u003e.\n"
+                },
+                "service": {
+                    "type": "string",
+                    "description": "The connection service type (e.g., \u003cspan pulumi-lang-nodejs=\"`postgres`\" pulumi-lang-dotnet=\"`Postgres`\" pulumi-lang-go=\"`postgres`\" pulumi-lang-python=\"`postgres`\" pulumi-lang-yaml=\"`postgres`\" pulumi-lang-java=\"`postgres`\" pulumi-lang-hcl=\"`postgres`\"\u003e`postgres`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`mysql`\" pulumi-lang-dotnet=\"`Mysql`\" pulumi-lang-go=\"`mysql`\" pulumi-lang-python=\"`mysql`\" pulumi-lang-yaml=\"`mysql`\" pulumi-lang-java=\"`mysql`\" pulumi-lang-hcl=\"`mysql`\"\u003e`mysql`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`s3`\" pulumi-lang-dotnet=\"`S3`\" pulumi-lang-go=\"`s3`\" pulumi-lang-python=\"`s3`\" pulumi-lang-yaml=\"`s3`\" pulumi-lang-java=\"`s3`\" pulumi-lang-hcl=\"`s3`\"\u003e`s3`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`snowflake`\" pulumi-lang-dotnet=\"`Snowflake`\" pulumi-lang-go=\"`snowflake`\" pulumi-lang-python=\"`snowflake`\" pulumi-lang-yaml=\"`snowflake`\" pulumi-lang-java=\"`snowflake`\" pulumi-lang-hcl=\"`snowflake`\"\u003e`snowflake`\u003c/span\u003e). Changing this forces the connection to be replaced.\n"
+                },
+                "syncFrequency": {
+                    "type": "integer",
+                    "description": "The connection sync frequency in minutes.\n"
+                },
+                "trustCertificates": {
+                    "type": "boolean",
+                    "description": "Whether Fivetran should trust certificates automatically.\n"
+                },
+                "trustFingerprints": {
+                    "type": "boolean",
+                    "description": "Whether Fivetran should trust SSH fingerprints automatically.\n"
+                }
+            },
+            "requiredInputs": [
+                "groupId",
+                "service"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ConnectionV2 resources.\n",
+                "properties": {
+                    "auth": {
+                        "$ref": "pulumi.json#/Any",
+                        "description": "Service-specific authorization configuration. The accepted fields are defined by connector metadata at runtime.\n",
+                        "secret": true
+                    },
+                    "config": {
+                        "$ref": "pulumi.json#/Any",
+                        "description": "Service-specific connection configuration. The accepted fields are defined by connector metadata at runtime.\n"
+                    },
+                    "connectCardConfig": {
+                        "$ref": "#/types/fivetran:index/ConnectionV2ConnectCardConfig:ConnectionV2ConnectCardConfig",
+                        "description": "Configuration for the interactive Connect Card setup flow.\n"
+                    },
+                    "connectedBy": {
+                        "type": "string",
+                        "description": "The unique identifier of the user who created the connection in your account."
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The timestamp of the time the connection was created in your account."
+                    },
+                    "dailySyncTime": {
+                        "type": "string",
+                        "description": "Sync start time. Only used when \u003cspan pulumi-lang-nodejs=\"`syncFrequency`\" pulumi-lang-dotnet=\"`SyncFrequency`\" pulumi-lang-go=\"`syncFrequency`\" pulumi-lang-python=\"`sync_frequency`\" pulumi-lang-yaml=\"`syncFrequency`\" pulumi-lang-java=\"`syncFrequency`\" pulumi-lang-hcl=\"`sync_frequency`\"\u003e`syncFrequency`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`1440`\" pulumi-lang-dotnet=\"`1440`\" pulumi-lang-go=\"`1440`\" pulumi-lang-python=\"`1440`\" pulumi-lang-yaml=\"`1440`\" pulumi-lang-java=\"`1440`\" pulumi-lang-hcl=\"`1440`\"\u003e`1440`\u003c/span\u003e.\n"
+                    },
+                    "dataDelaySensitivity": {
+                        "type": "string",
+                        "description": "The level of data delay notification threshold. Possible values: `LOW`, `NORMAL`, `HIGH`, `CUSTOM`, `SYNC_FREQUENCY`.\n"
+                    },
+                    "dataDelayThreshold": {
+                        "type": "integer",
+                        "description": "Custom sync delay notification threshold in minutes. Only used when \u003cspan pulumi-lang-nodejs=\"`dataDelaySensitivity`\" pulumi-lang-dotnet=\"`DataDelaySensitivity`\" pulumi-lang-go=\"`dataDelaySensitivity`\" pulumi-lang-python=\"`data_delay_sensitivity`\" pulumi-lang-yaml=\"`dataDelaySensitivity`\" pulumi-lang-java=\"`dataDelaySensitivity`\" pulumi-lang-hcl=\"`data_delay_sensitivity`\"\u003e`dataDelaySensitivity`\u003c/span\u003e is `CUSTOM`.\n"
+                    },
+                    "destinationConfiguration": {
+                        "$ref": "#/types/fivetran:index/ConnectionV2DestinationConfiguration:ConnectionV2DestinationConfiguration",
+                        "description": "Destination-specific configuration for the connection.\n"
+                    },
+                    "destinationSchemaNames": {
+                        "type": "string",
+                        "description": "Defines how schema names appear in the destination. Supported values: `FIVETRAN_NAMING`, `SOURCE_NAMING`. Changing this forces the connection to be replaced.\n"
+                    },
+                    "failedAt": {
+                        "type": "string",
+                        "description": "The timestamp of the time the connection sync failed last time."
+                    },
+                    "groupId": {
+                        "type": "string",
+                        "description": "The unique identifier for the Group (Destination) within the Fivetran system. Changing this forces the connection to be replaced.\n"
+                    },
+                    "hybridDeploymentAgentId": {
+                        "type": "string",
+                        "description": "The hybrid deployment agent ID for the group the connection belongs to.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination."
+                    },
+                    "networkingMethod": {
+                        "type": "string",
+                        "description": "The networking method for the connection. Possible values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`.\n"
+                    },
+                    "pauseAfterTrial": {
+                        "type": "boolean",
+                        "description": "Whether the connection should be paused after the free trial period has ended.\n"
+                    },
+                    "privateLinkId": {
+                        "type": "string",
+                        "description": "The private link ID. Required when \u003cspan pulumi-lang-nodejs=\"`networkingMethod`\" pulumi-lang-dotnet=\"`NetworkingMethod`\" pulumi-lang-go=\"`networkingMethod`\" pulumi-lang-python=\"`networking_method`\" pulumi-lang-yaml=\"`networkingMethod`\" pulumi-lang-java=\"`networkingMethod`\" pulumi-lang-hcl=\"`networking_method`\"\u003e`networkingMethod`\u003c/span\u003e is `PrivateLink`.\n"
+                    },
+                    "proxyAgentId": {
+                        "type": "string",
+                        "description": "The ID of the proxy agent to use. Required when \u003cspan pulumi-lang-nodejs=\"`networkingMethod`\" pulumi-lang-dotnet=\"`NetworkingMethod`\" pulumi-lang-go=\"`networkingMethod`\" pulumi-lang-python=\"`networking_method`\" pulumi-lang-yaml=\"`networkingMethod`\" pulumi-lang-java=\"`networkingMethod`\" pulumi-lang-hcl=\"`networking_method`\"\u003e`networkingMethod`\u003c/span\u003e is `ProxyAgent`.\n"
+                    },
+                    "runSetupTests": {
+                        "type": "boolean",
+                        "description": "Whether to run setup tests when creating or updating the connection.\n"
+                    },
+                    "scheduleType": {
+                        "type": "string",
+                        "description": "The connection schedule configuration type. Supported values: \u003cspan pulumi-lang-nodejs=\"`auto`\" pulumi-lang-dotnet=\"`Auto`\" pulumi-lang-go=\"`auto`\" pulumi-lang-python=\"`auto`\" pulumi-lang-yaml=\"`auto`\" pulumi-lang-java=\"`auto`\" pulumi-lang-hcl=\"`auto`\"\u003e`auto`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`manual`\" pulumi-lang-dotnet=\"`Manual`\" pulumi-lang-go=\"`manual`\" pulumi-lang-python=\"`manual`\" pulumi-lang-yaml=\"`manual`\" pulumi-lang-java=\"`manual`\" pulumi-lang-hcl=\"`manual`\"\u003e`manual`\u003c/span\u003e.\n"
+                    },
+                    "service": {
+                        "type": "string",
+                        "description": "The connection service type (e.g., \u003cspan pulumi-lang-nodejs=\"`postgres`\" pulumi-lang-dotnet=\"`Postgres`\" pulumi-lang-go=\"`postgres`\" pulumi-lang-python=\"`postgres`\" pulumi-lang-yaml=\"`postgres`\" pulumi-lang-java=\"`postgres`\" pulumi-lang-hcl=\"`postgres`\"\u003e`postgres`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`mysql`\" pulumi-lang-dotnet=\"`Mysql`\" pulumi-lang-go=\"`mysql`\" pulumi-lang-python=\"`mysql`\" pulumi-lang-yaml=\"`mysql`\" pulumi-lang-java=\"`mysql`\" pulumi-lang-hcl=\"`mysql`\"\u003e`mysql`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`s3`\" pulumi-lang-dotnet=\"`S3`\" pulumi-lang-go=\"`s3`\" pulumi-lang-python=\"`s3`\" pulumi-lang-yaml=\"`s3`\" pulumi-lang-java=\"`s3`\" pulumi-lang-hcl=\"`s3`\"\u003e`s3`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`snowflake`\" pulumi-lang-dotnet=\"`Snowflake`\" pulumi-lang-go=\"`snowflake`\" pulumi-lang-python=\"`snowflake`\" pulumi-lang-yaml=\"`snowflake`\" pulumi-lang-java=\"`snowflake`\" pulumi-lang-hcl=\"`snowflake`\"\u003e`snowflake`\u003c/span\u003e). Changing this forces the connection to be replaced.\n"
+                    },
+                    "serviceVersion": {
+                        "type": "string",
+                        "description": "The connection type version within the Fivetran system."
+                    },
+                    "status": {
+                        "$ref": "#/types/fivetran:index/ConnectionV2Status:ConnectionV2Status",
+                        "description": "The current connection status."
+                    },
+                    "succeededAt": {
+                        "type": "string",
+                        "description": "The timestamp of the time the connection sync succeeded last time."
+                    },
+                    "syncFrequency": {
+                        "type": "integer",
+                        "description": "The connection sync frequency in minutes.\n"
+                    },
+                    "trustCertificates": {
+                        "type": "boolean",
+                        "description": "Whether Fivetran should trust certificates automatically.\n"
+                    },
+                    "trustFingerprints": {
+                        "type": "boolean",
+                        "description": "Whether Fivetran should trust SSH fingerprints automatically.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "fivetran:index/connectionV2PauseState:ConnectionV2PauseState": {
+            "description": "\u003e **Alpha:** This resource is in alpha and its schema and behavior may change without notice. Not recommended for production use.\n\nManages the paused state of a \u003cspan pulumi-lang-nodejs=\"`fivetran.ConnectionV2`\" pulumi-lang-dotnet=\"`fivetran.ConnectionV2`\" pulumi-lang-go=\"`ConnectionV2`\" pulumi-lang-python=\"`ConnectionV2`\" pulumi-lang-yaml=\"`fivetran.ConnectionV2`\" pulumi-lang-java=\"`fivetran.ConnectionV2`\" pulumi-lang-hcl=\"`fivetran_connection_v2`\"\u003e`fivetran.ConnectionV2`\u003c/span\u003e connection, separately from the connection resource itself. This lets you pause and resume a connection without triggering changes to (or replacement of) the connection's own configuration.\n\n**\u003cspan pulumi-lang-nodejs=\"`fivetran.ConnectionV2`\" pulumi-lang-dotnet=\"`fivetran.ConnectionV2`\" pulumi-lang-go=\"`ConnectionV2`\" pulumi-lang-python=\"`ConnectionV2`\" pulumi-lang-yaml=\"`fivetran.ConnectionV2`\" pulumi-lang-java=\"`fivetran.ConnectionV2`\" pulumi-lang-hcl=\"`fivetran_connection_v2`\"\u003e`fivetran.ConnectionV2`\u003c/span\u003e always creates connections paused.** Add this resource with `paused = false` to start syncing.\n\nIf you are importing both resources, import \u003cspan pulumi-lang-nodejs=\"`fivetran.ConnectionV2`\" pulumi-lang-dotnet=\"`fivetran.ConnectionV2`\" pulumi-lang-go=\"`ConnectionV2`\" pulumi-lang-python=\"`ConnectionV2`\" pulumi-lang-yaml=\"`fivetran.ConnectionV2`\" pulumi-lang-java=\"`fivetran.ConnectionV2`\" pulumi-lang-hcl=\"`fivetran_connection_v2`\"\u003e`fivetran.ConnectionV2`\u003c/span\u003e first, then \u003cspan pulumi-lang-nodejs=\"`fivetran.ConnectionV2PauseState`\" pulumi-lang-dotnet=\"`fivetran.ConnectionV2PauseState`\" pulumi-lang-go=\"`ConnectionV2PauseState`\" pulumi-lang-python=\"`ConnectionV2PauseState`\" pulumi-lang-yaml=\"`fivetran.ConnectionV2PauseState`\" pulumi-lang-java=\"`fivetran.ConnectionV2PauseState`\" pulumi-lang-hcl=\"`fivetran_connection_v2_pause_state`\"\u003e`fivetran.ConnectionV2PauseState`\u003c/span\u003e — importing the pause state before the connection exists in state forces a replacement plan.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fivetran from \"@ryan-pip/pulumi-fivetran\";\n\nconst pauseState = new fivetran.ConnectionV2PauseState(\"pause_state\", {\n    connectionId: connection.id,\n    paused: false,\n});\n```\n```python\nimport pulumi\nimport pulumi_provider_fivetran as fivetran\n\npause_state = fivetran.ConnectionV2PauseState(\"pause_state\",\n    connection_id=connection[\"id\"],\n    paused=False)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Fivetran = Pulumi.Fivetran;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var pauseState = new Fivetran.ConnectionV2PauseState(\"pause_state\", new()\n    {\n        ConnectionId = connection.Id,\n        Paused = false,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := fivetran.NewConnectionV2PauseState(ctx, \"pause_state\", \u0026fivetran.ConnectionV2PauseStateArgs{\n\t\t\tConnectionId: pulumi.Any(connection.Id),\n\t\t\tPaused:       pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    fivetran = {\n      source = \"pulumi/fivetran\"\n    }\n  }\n}\n\nresource \"fivetran_connectionv2pausestate\" \"pause_state\" {\n  connection_id = connection.id\n  paused        = false\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.fivetran.ConnectionV2PauseState;\nimport com.pulumi.fivetran.ConnectionV2PauseStateArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var pauseState = new ConnectionV2PauseState(\"pauseState\", ConnectionV2PauseStateArgs.builder()\n            .connectionId(connection.id())\n            .paused(false)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  pauseState:\n    type: fivetran:ConnectionV2PauseState\n    name: pause_state\n    properties:\n      connectionId: ${connection.id}\n      paused: false\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "connectionId": {
+                    "type": "string",
+                    "description": "The unique identifier for the connection whose pause state is managed. Changing this forces the resource to be replaced.\n"
+                },
+                "paused": {
+                    "type": "boolean",
+                    "description": "Whether the connection should be paused.\n"
+                }
+            },
+            "required": [
+                "connectionId",
+                "paused"
+            ],
+            "inputProperties": {
+                "connectionId": {
+                    "type": "string",
+                    "description": "The unique identifier for the connection whose pause state is managed. Changing this forces the resource to be replaced.\n"
+                },
+                "paused": {
+                    "type": "boolean",
+                    "description": "Whether the connection should be paused.\n"
+                }
+            },
+            "requiredInputs": [
+                "connectionId",
+                "paused"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ConnectionV2PauseState resources.\n",
+                "properties": {
+                    "connectionId": {
+                        "type": "string",
+                        "description": "The unique identifier for the connection whose pause state is managed. Changing this forces the resource to be replaced.\n"
+                    },
+                    "paused": {
+                        "type": "boolean",
+                        "description": "Whether the connection should be paused.\n"
                     }
                 },
                 "type": "object"

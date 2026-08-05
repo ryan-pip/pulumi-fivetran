@@ -8,6 +8,8 @@ import typing
 # Export this package's modules as members:
 from .connection import *
 from .connection_config import *
+from .connection_v2 import *
+from .connection_v2_pause_state import *
 from .connector import *
 from .connector_certificates import *
 from .connector_fingerprints import *
@@ -109,6 +111,22 @@ _utilities.register(
   "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/connectionConfig:ConnectionConfig": "ConnectionConfig"
+  }
+ },
+ {
+  "pkg": "fivetran",
+  "mod": "index/connectionV2",
+  "fqn": "pulumi_provider_fivetran",
+  "classes": {
+   "fivetran:index/connectionV2:ConnectionV2": "ConnectionV2"
+  }
+ },
+ {
+  "pkg": "fivetran",
+  "mod": "index/connectionV2PauseState",
+  "fqn": "pulumi_provider_fivetran",
+  "classes": {
+   "fivetran:index/connectionV2PauseState:ConnectionV2PauseState": "ConnectionV2PauseState"
   }
  },
  {
