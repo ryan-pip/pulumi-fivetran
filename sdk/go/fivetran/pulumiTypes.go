@@ -207,6 +207,762 @@ func (o ConnectionDestinationSchemaPtrOutput) TableGroupName() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+type ConnectionV2ConnectCardConfig struct {
+	// Whether Connect Card should show all setup fields.
+	AllFields *bool `pulumi:"allFields"`
+	// Whether to hide the setup guide in the Connect Card flow.
+	HideSetupGuide *bool `pulumi:"hideSetupGuide"`
+	// URI where the Connect Card flow redirects after setup.
+	RedirectUri *string `pulumi:"redirectUri"`
+}
+
+// ConnectionV2ConnectCardConfigInput is an input type that accepts ConnectionV2ConnectCardConfigArgs and ConnectionV2ConnectCardConfigOutput values.
+// You can construct a concrete instance of `ConnectionV2ConnectCardConfigInput` via:
+//
+//	ConnectionV2ConnectCardConfigArgs{...}
+type ConnectionV2ConnectCardConfigInput interface {
+	pulumi.Input
+
+	ToConnectionV2ConnectCardConfigOutput() ConnectionV2ConnectCardConfigOutput
+	ToConnectionV2ConnectCardConfigOutputWithContext(context.Context) ConnectionV2ConnectCardConfigOutput
+}
+
+type ConnectionV2ConnectCardConfigArgs struct {
+	// Whether Connect Card should show all setup fields.
+	AllFields pulumi.BoolPtrInput `pulumi:"allFields"`
+	// Whether to hide the setup guide in the Connect Card flow.
+	HideSetupGuide pulumi.BoolPtrInput `pulumi:"hideSetupGuide"`
+	// URI where the Connect Card flow redirects after setup.
+	RedirectUri pulumi.StringPtrInput `pulumi:"redirectUri"`
+}
+
+func (ConnectionV2ConnectCardConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionV2ConnectCardConfig)(nil)).Elem()
+}
+
+func (i ConnectionV2ConnectCardConfigArgs) ToConnectionV2ConnectCardConfigOutput() ConnectionV2ConnectCardConfigOutput {
+	return i.ToConnectionV2ConnectCardConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectionV2ConnectCardConfigArgs) ToConnectionV2ConnectCardConfigOutputWithContext(ctx context.Context) ConnectionV2ConnectCardConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionV2ConnectCardConfigOutput)
+}
+
+func (i ConnectionV2ConnectCardConfigArgs) ToConnectionV2ConnectCardConfigPtrOutput() ConnectionV2ConnectCardConfigPtrOutput {
+	return i.ToConnectionV2ConnectCardConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionV2ConnectCardConfigArgs) ToConnectionV2ConnectCardConfigPtrOutputWithContext(ctx context.Context) ConnectionV2ConnectCardConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionV2ConnectCardConfigOutput).ToConnectionV2ConnectCardConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectionV2ConnectCardConfigPtrInput is an input type that accepts ConnectionV2ConnectCardConfigArgs, ConnectionV2ConnectCardConfigPtr and ConnectionV2ConnectCardConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectionV2ConnectCardConfigPtrInput` via:
+//
+//	        ConnectionV2ConnectCardConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionV2ConnectCardConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectionV2ConnectCardConfigPtrOutput() ConnectionV2ConnectCardConfigPtrOutput
+	ToConnectionV2ConnectCardConfigPtrOutputWithContext(context.Context) ConnectionV2ConnectCardConfigPtrOutput
+}
+
+type connectionV2ConnectCardConfigPtrType ConnectionV2ConnectCardConfigArgs
+
+func ConnectionV2ConnectCardConfigPtr(v *ConnectionV2ConnectCardConfigArgs) ConnectionV2ConnectCardConfigPtrInput {
+	return (*connectionV2ConnectCardConfigPtrType)(v)
+}
+
+func (*connectionV2ConnectCardConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionV2ConnectCardConfig)(nil)).Elem()
+}
+
+func (i *connectionV2ConnectCardConfigPtrType) ToConnectionV2ConnectCardConfigPtrOutput() ConnectionV2ConnectCardConfigPtrOutput {
+	return i.ToConnectionV2ConnectCardConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionV2ConnectCardConfigPtrType) ToConnectionV2ConnectCardConfigPtrOutputWithContext(ctx context.Context) ConnectionV2ConnectCardConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionV2ConnectCardConfigPtrOutput)
+}
+
+type ConnectionV2ConnectCardConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectionV2ConnectCardConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionV2ConnectCardConfig)(nil)).Elem()
+}
+
+func (o ConnectionV2ConnectCardConfigOutput) ToConnectionV2ConnectCardConfigOutput() ConnectionV2ConnectCardConfigOutput {
+	return o
+}
+
+func (o ConnectionV2ConnectCardConfigOutput) ToConnectionV2ConnectCardConfigOutputWithContext(ctx context.Context) ConnectionV2ConnectCardConfigOutput {
+	return o
+}
+
+func (o ConnectionV2ConnectCardConfigOutput) ToConnectionV2ConnectCardConfigPtrOutput() ConnectionV2ConnectCardConfigPtrOutput {
+	return o.ToConnectionV2ConnectCardConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionV2ConnectCardConfigOutput) ToConnectionV2ConnectCardConfigPtrOutputWithContext(ctx context.Context) ConnectionV2ConnectCardConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionV2ConnectCardConfig) *ConnectionV2ConnectCardConfig {
+		return &v
+	}).(ConnectionV2ConnectCardConfigPtrOutput)
+}
+
+// Whether Connect Card should show all setup fields.
+func (o ConnectionV2ConnectCardConfigOutput) AllFields() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionV2ConnectCardConfig) *bool { return v.AllFields }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to hide the setup guide in the Connect Card flow.
+func (o ConnectionV2ConnectCardConfigOutput) HideSetupGuide() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionV2ConnectCardConfig) *bool { return v.HideSetupGuide }).(pulumi.BoolPtrOutput)
+}
+
+// URI where the Connect Card flow redirects after setup.
+func (o ConnectionV2ConnectCardConfigOutput) RedirectUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionV2ConnectCardConfig) *string { return v.RedirectUri }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionV2ConnectCardConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionV2ConnectCardConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionV2ConnectCardConfig)(nil)).Elem()
+}
+
+func (o ConnectionV2ConnectCardConfigPtrOutput) ToConnectionV2ConnectCardConfigPtrOutput() ConnectionV2ConnectCardConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionV2ConnectCardConfigPtrOutput) ToConnectionV2ConnectCardConfigPtrOutputWithContext(ctx context.Context) ConnectionV2ConnectCardConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionV2ConnectCardConfigPtrOutput) Elem() ConnectionV2ConnectCardConfigOutput {
+	return o.ApplyT(func(v *ConnectionV2ConnectCardConfig) ConnectionV2ConnectCardConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionV2ConnectCardConfig
+		return ret
+	}).(ConnectionV2ConnectCardConfigOutput)
+}
+
+// Whether Connect Card should show all setup fields.
+func (o ConnectionV2ConnectCardConfigPtrOutput) AllFields() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionV2ConnectCardConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllFields
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to hide the setup guide in the Connect Card flow.
+func (o ConnectionV2ConnectCardConfigPtrOutput) HideSetupGuide() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionV2ConnectCardConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HideSetupGuide
+	}).(pulumi.BoolPtrOutput)
+}
+
+// URI where the Connect Card flow redirects after setup.
+func (o ConnectionV2ConnectCardConfigPtrOutput) RedirectUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionV2ConnectCardConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionV2DestinationConfiguration struct {
+	// Destination virtual warehouse used by the connection.
+	VirtualWarehouse *string `pulumi:"virtualWarehouse"`
+}
+
+// ConnectionV2DestinationConfigurationInput is an input type that accepts ConnectionV2DestinationConfigurationArgs and ConnectionV2DestinationConfigurationOutput values.
+// You can construct a concrete instance of `ConnectionV2DestinationConfigurationInput` via:
+//
+//	ConnectionV2DestinationConfigurationArgs{...}
+type ConnectionV2DestinationConfigurationInput interface {
+	pulumi.Input
+
+	ToConnectionV2DestinationConfigurationOutput() ConnectionV2DestinationConfigurationOutput
+	ToConnectionV2DestinationConfigurationOutputWithContext(context.Context) ConnectionV2DestinationConfigurationOutput
+}
+
+type ConnectionV2DestinationConfigurationArgs struct {
+	// Destination virtual warehouse used by the connection.
+	VirtualWarehouse pulumi.StringPtrInput `pulumi:"virtualWarehouse"`
+}
+
+func (ConnectionV2DestinationConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionV2DestinationConfiguration)(nil)).Elem()
+}
+
+func (i ConnectionV2DestinationConfigurationArgs) ToConnectionV2DestinationConfigurationOutput() ConnectionV2DestinationConfigurationOutput {
+	return i.ToConnectionV2DestinationConfigurationOutputWithContext(context.Background())
+}
+
+func (i ConnectionV2DestinationConfigurationArgs) ToConnectionV2DestinationConfigurationOutputWithContext(ctx context.Context) ConnectionV2DestinationConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionV2DestinationConfigurationOutput)
+}
+
+func (i ConnectionV2DestinationConfigurationArgs) ToConnectionV2DestinationConfigurationPtrOutput() ConnectionV2DestinationConfigurationPtrOutput {
+	return i.ToConnectionV2DestinationConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionV2DestinationConfigurationArgs) ToConnectionV2DestinationConfigurationPtrOutputWithContext(ctx context.Context) ConnectionV2DestinationConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionV2DestinationConfigurationOutput).ToConnectionV2DestinationConfigurationPtrOutputWithContext(ctx)
+}
+
+// ConnectionV2DestinationConfigurationPtrInput is an input type that accepts ConnectionV2DestinationConfigurationArgs, ConnectionV2DestinationConfigurationPtr and ConnectionV2DestinationConfigurationPtrOutput values.
+// You can construct a concrete instance of `ConnectionV2DestinationConfigurationPtrInput` via:
+//
+//	        ConnectionV2DestinationConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionV2DestinationConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToConnectionV2DestinationConfigurationPtrOutput() ConnectionV2DestinationConfigurationPtrOutput
+	ToConnectionV2DestinationConfigurationPtrOutputWithContext(context.Context) ConnectionV2DestinationConfigurationPtrOutput
+}
+
+type connectionV2DestinationConfigurationPtrType ConnectionV2DestinationConfigurationArgs
+
+func ConnectionV2DestinationConfigurationPtr(v *ConnectionV2DestinationConfigurationArgs) ConnectionV2DestinationConfigurationPtrInput {
+	return (*connectionV2DestinationConfigurationPtrType)(v)
+}
+
+func (*connectionV2DestinationConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionV2DestinationConfiguration)(nil)).Elem()
+}
+
+func (i *connectionV2DestinationConfigurationPtrType) ToConnectionV2DestinationConfigurationPtrOutput() ConnectionV2DestinationConfigurationPtrOutput {
+	return i.ToConnectionV2DestinationConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionV2DestinationConfigurationPtrType) ToConnectionV2DestinationConfigurationPtrOutputWithContext(ctx context.Context) ConnectionV2DestinationConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionV2DestinationConfigurationPtrOutput)
+}
+
+type ConnectionV2DestinationConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ConnectionV2DestinationConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionV2DestinationConfiguration)(nil)).Elem()
+}
+
+func (o ConnectionV2DestinationConfigurationOutput) ToConnectionV2DestinationConfigurationOutput() ConnectionV2DestinationConfigurationOutput {
+	return o
+}
+
+func (o ConnectionV2DestinationConfigurationOutput) ToConnectionV2DestinationConfigurationOutputWithContext(ctx context.Context) ConnectionV2DestinationConfigurationOutput {
+	return o
+}
+
+func (o ConnectionV2DestinationConfigurationOutput) ToConnectionV2DestinationConfigurationPtrOutput() ConnectionV2DestinationConfigurationPtrOutput {
+	return o.ToConnectionV2DestinationConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionV2DestinationConfigurationOutput) ToConnectionV2DestinationConfigurationPtrOutputWithContext(ctx context.Context) ConnectionV2DestinationConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionV2DestinationConfiguration) *ConnectionV2DestinationConfiguration {
+		return &v
+	}).(ConnectionV2DestinationConfigurationPtrOutput)
+}
+
+// Destination virtual warehouse used by the connection.
+func (o ConnectionV2DestinationConfigurationOutput) VirtualWarehouse() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionV2DestinationConfiguration) *string { return v.VirtualWarehouse }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionV2DestinationConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionV2DestinationConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionV2DestinationConfiguration)(nil)).Elem()
+}
+
+func (o ConnectionV2DestinationConfigurationPtrOutput) ToConnectionV2DestinationConfigurationPtrOutput() ConnectionV2DestinationConfigurationPtrOutput {
+	return o
+}
+
+func (o ConnectionV2DestinationConfigurationPtrOutput) ToConnectionV2DestinationConfigurationPtrOutputWithContext(ctx context.Context) ConnectionV2DestinationConfigurationPtrOutput {
+	return o
+}
+
+func (o ConnectionV2DestinationConfigurationPtrOutput) Elem() ConnectionV2DestinationConfigurationOutput {
+	return o.ApplyT(func(v *ConnectionV2DestinationConfiguration) ConnectionV2DestinationConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionV2DestinationConfiguration
+		return ret
+	}).(ConnectionV2DestinationConfigurationOutput)
+}
+
+// Destination virtual warehouse used by the connection.
+func (o ConnectionV2DestinationConfigurationPtrOutput) VirtualWarehouse() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionV2DestinationConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VirtualWarehouse
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionV2Status struct {
+	// Whether the connection should be triggered to re-sync all historical data on the next scheduled sync.
+	IsHistoricalSync *bool `pulumi:"isHistoricalSync"`
+	// The current setup state of the connection.
+	SetupState *string `pulumi:"setupState"`
+	// The current sync state of the connection.
+	SyncState *string `pulumi:"syncState"`
+	// The collection of tasks for the connection.
+	Tasks []ConnectionV2StatusTask `pulumi:"tasks"`
+	// The current data update state of the connection.
+	UpdateState *string `pulumi:"updateState"`
+	// The collection of warnings for the connection.
+	Warnings []ConnectionV2StatusWarning `pulumi:"warnings"`
+}
+
+// ConnectionV2StatusInput is an input type that accepts ConnectionV2StatusArgs and ConnectionV2StatusOutput values.
+// You can construct a concrete instance of `ConnectionV2StatusInput` via:
+//
+//	ConnectionV2StatusArgs{...}
+type ConnectionV2StatusInput interface {
+	pulumi.Input
+
+	ToConnectionV2StatusOutput() ConnectionV2StatusOutput
+	ToConnectionV2StatusOutputWithContext(context.Context) ConnectionV2StatusOutput
+}
+
+type ConnectionV2StatusArgs struct {
+	// Whether the connection should be triggered to re-sync all historical data on the next scheduled sync.
+	IsHistoricalSync pulumi.BoolPtrInput `pulumi:"isHistoricalSync"`
+	// The current setup state of the connection.
+	SetupState pulumi.StringPtrInput `pulumi:"setupState"`
+	// The current sync state of the connection.
+	SyncState pulumi.StringPtrInput `pulumi:"syncState"`
+	// The collection of tasks for the connection.
+	Tasks ConnectionV2StatusTaskArrayInput `pulumi:"tasks"`
+	// The current data update state of the connection.
+	UpdateState pulumi.StringPtrInput `pulumi:"updateState"`
+	// The collection of warnings for the connection.
+	Warnings ConnectionV2StatusWarningArrayInput `pulumi:"warnings"`
+}
+
+func (ConnectionV2StatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionV2Status)(nil)).Elem()
+}
+
+func (i ConnectionV2StatusArgs) ToConnectionV2StatusOutput() ConnectionV2StatusOutput {
+	return i.ToConnectionV2StatusOutputWithContext(context.Background())
+}
+
+func (i ConnectionV2StatusArgs) ToConnectionV2StatusOutputWithContext(ctx context.Context) ConnectionV2StatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionV2StatusOutput)
+}
+
+func (i ConnectionV2StatusArgs) ToConnectionV2StatusPtrOutput() ConnectionV2StatusPtrOutput {
+	return i.ToConnectionV2StatusPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionV2StatusArgs) ToConnectionV2StatusPtrOutputWithContext(ctx context.Context) ConnectionV2StatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionV2StatusOutput).ToConnectionV2StatusPtrOutputWithContext(ctx)
+}
+
+// ConnectionV2StatusPtrInput is an input type that accepts ConnectionV2StatusArgs, ConnectionV2StatusPtr and ConnectionV2StatusPtrOutput values.
+// You can construct a concrete instance of `ConnectionV2StatusPtrInput` via:
+//
+//	        ConnectionV2StatusArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionV2StatusPtrInput interface {
+	pulumi.Input
+
+	ToConnectionV2StatusPtrOutput() ConnectionV2StatusPtrOutput
+	ToConnectionV2StatusPtrOutputWithContext(context.Context) ConnectionV2StatusPtrOutput
+}
+
+type connectionV2StatusPtrType ConnectionV2StatusArgs
+
+func ConnectionV2StatusPtr(v *ConnectionV2StatusArgs) ConnectionV2StatusPtrInput {
+	return (*connectionV2StatusPtrType)(v)
+}
+
+func (*connectionV2StatusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionV2Status)(nil)).Elem()
+}
+
+func (i *connectionV2StatusPtrType) ToConnectionV2StatusPtrOutput() ConnectionV2StatusPtrOutput {
+	return i.ToConnectionV2StatusPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionV2StatusPtrType) ToConnectionV2StatusPtrOutputWithContext(ctx context.Context) ConnectionV2StatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionV2StatusPtrOutput)
+}
+
+type ConnectionV2StatusOutput struct{ *pulumi.OutputState }
+
+func (ConnectionV2StatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionV2Status)(nil)).Elem()
+}
+
+func (o ConnectionV2StatusOutput) ToConnectionV2StatusOutput() ConnectionV2StatusOutput {
+	return o
+}
+
+func (o ConnectionV2StatusOutput) ToConnectionV2StatusOutputWithContext(ctx context.Context) ConnectionV2StatusOutput {
+	return o
+}
+
+func (o ConnectionV2StatusOutput) ToConnectionV2StatusPtrOutput() ConnectionV2StatusPtrOutput {
+	return o.ToConnectionV2StatusPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionV2StatusOutput) ToConnectionV2StatusPtrOutputWithContext(ctx context.Context) ConnectionV2StatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionV2Status) *ConnectionV2Status {
+		return &v
+	}).(ConnectionV2StatusPtrOutput)
+}
+
+// Whether the connection should be triggered to re-sync all historical data on the next scheduled sync.
+func (o ConnectionV2StatusOutput) IsHistoricalSync() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConnectionV2Status) *bool { return v.IsHistoricalSync }).(pulumi.BoolPtrOutput)
+}
+
+// The current setup state of the connection.
+func (o ConnectionV2StatusOutput) SetupState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionV2Status) *string { return v.SetupState }).(pulumi.StringPtrOutput)
+}
+
+// The current sync state of the connection.
+func (o ConnectionV2StatusOutput) SyncState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionV2Status) *string { return v.SyncState }).(pulumi.StringPtrOutput)
+}
+
+// The collection of tasks for the connection.
+func (o ConnectionV2StatusOutput) Tasks() ConnectionV2StatusTaskArrayOutput {
+	return o.ApplyT(func(v ConnectionV2Status) []ConnectionV2StatusTask { return v.Tasks }).(ConnectionV2StatusTaskArrayOutput)
+}
+
+// The current data update state of the connection.
+func (o ConnectionV2StatusOutput) UpdateState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionV2Status) *string { return v.UpdateState }).(pulumi.StringPtrOutput)
+}
+
+// The collection of warnings for the connection.
+func (o ConnectionV2StatusOutput) Warnings() ConnectionV2StatusWarningArrayOutput {
+	return o.ApplyT(func(v ConnectionV2Status) []ConnectionV2StatusWarning { return v.Warnings }).(ConnectionV2StatusWarningArrayOutput)
+}
+
+type ConnectionV2StatusPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionV2StatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionV2Status)(nil)).Elem()
+}
+
+func (o ConnectionV2StatusPtrOutput) ToConnectionV2StatusPtrOutput() ConnectionV2StatusPtrOutput {
+	return o
+}
+
+func (o ConnectionV2StatusPtrOutput) ToConnectionV2StatusPtrOutputWithContext(ctx context.Context) ConnectionV2StatusPtrOutput {
+	return o
+}
+
+func (o ConnectionV2StatusPtrOutput) Elem() ConnectionV2StatusOutput {
+	return o.ApplyT(func(v *ConnectionV2Status) ConnectionV2Status {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionV2Status
+		return ret
+	}).(ConnectionV2StatusOutput)
+}
+
+// Whether the connection should be triggered to re-sync all historical data on the next scheduled sync.
+func (o ConnectionV2StatusPtrOutput) IsHistoricalSync() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionV2Status) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsHistoricalSync
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The current setup state of the connection.
+func (o ConnectionV2StatusPtrOutput) SetupState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionV2Status) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SetupState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The current sync state of the connection.
+func (o ConnectionV2StatusPtrOutput) SyncState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionV2Status) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SyncState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The collection of tasks for the connection.
+func (o ConnectionV2StatusPtrOutput) Tasks() ConnectionV2StatusTaskArrayOutput {
+	return o.ApplyT(func(v *ConnectionV2Status) []ConnectionV2StatusTask {
+		if v == nil {
+			return nil
+		}
+		return v.Tasks
+	}).(ConnectionV2StatusTaskArrayOutput)
+}
+
+// The current data update state of the connection.
+func (o ConnectionV2StatusPtrOutput) UpdateState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionV2Status) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The collection of warnings for the connection.
+func (o ConnectionV2StatusPtrOutput) Warnings() ConnectionV2StatusWarningArrayOutput {
+	return o.ApplyT(func(v *ConnectionV2Status) []ConnectionV2StatusWarning {
+		if v == nil {
+			return nil
+		}
+		return v.Warnings
+	}).(ConnectionV2StatusWarningArrayOutput)
+}
+
+type ConnectionV2StatusTask struct {
+	// Code.
+	Code *string `pulumi:"code"`
+	// Message.
+	Message *string `pulumi:"message"`
+}
+
+// ConnectionV2StatusTaskInput is an input type that accepts ConnectionV2StatusTaskArgs and ConnectionV2StatusTaskOutput values.
+// You can construct a concrete instance of `ConnectionV2StatusTaskInput` via:
+//
+//	ConnectionV2StatusTaskArgs{...}
+type ConnectionV2StatusTaskInput interface {
+	pulumi.Input
+
+	ToConnectionV2StatusTaskOutput() ConnectionV2StatusTaskOutput
+	ToConnectionV2StatusTaskOutputWithContext(context.Context) ConnectionV2StatusTaskOutput
+}
+
+type ConnectionV2StatusTaskArgs struct {
+	// Code.
+	Code pulumi.StringPtrInput `pulumi:"code"`
+	// Message.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (ConnectionV2StatusTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionV2StatusTask)(nil)).Elem()
+}
+
+func (i ConnectionV2StatusTaskArgs) ToConnectionV2StatusTaskOutput() ConnectionV2StatusTaskOutput {
+	return i.ToConnectionV2StatusTaskOutputWithContext(context.Background())
+}
+
+func (i ConnectionV2StatusTaskArgs) ToConnectionV2StatusTaskOutputWithContext(ctx context.Context) ConnectionV2StatusTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionV2StatusTaskOutput)
+}
+
+// ConnectionV2StatusTaskArrayInput is an input type that accepts ConnectionV2StatusTaskArray and ConnectionV2StatusTaskArrayOutput values.
+// You can construct a concrete instance of `ConnectionV2StatusTaskArrayInput` via:
+//
+//	ConnectionV2StatusTaskArray{ ConnectionV2StatusTaskArgs{...} }
+type ConnectionV2StatusTaskArrayInput interface {
+	pulumi.Input
+
+	ToConnectionV2StatusTaskArrayOutput() ConnectionV2StatusTaskArrayOutput
+	ToConnectionV2StatusTaskArrayOutputWithContext(context.Context) ConnectionV2StatusTaskArrayOutput
+}
+
+type ConnectionV2StatusTaskArray []ConnectionV2StatusTaskInput
+
+func (ConnectionV2StatusTaskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionV2StatusTask)(nil)).Elem()
+}
+
+func (i ConnectionV2StatusTaskArray) ToConnectionV2StatusTaskArrayOutput() ConnectionV2StatusTaskArrayOutput {
+	return i.ToConnectionV2StatusTaskArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectionV2StatusTaskArray) ToConnectionV2StatusTaskArrayOutputWithContext(ctx context.Context) ConnectionV2StatusTaskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionV2StatusTaskArrayOutput)
+}
+
+type ConnectionV2StatusTaskOutput struct{ *pulumi.OutputState }
+
+func (ConnectionV2StatusTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionV2StatusTask)(nil)).Elem()
+}
+
+func (o ConnectionV2StatusTaskOutput) ToConnectionV2StatusTaskOutput() ConnectionV2StatusTaskOutput {
+	return o
+}
+
+func (o ConnectionV2StatusTaskOutput) ToConnectionV2StatusTaskOutputWithContext(ctx context.Context) ConnectionV2StatusTaskOutput {
+	return o
+}
+
+// Code.
+func (o ConnectionV2StatusTaskOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionV2StatusTask) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// Message.
+func (o ConnectionV2StatusTaskOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionV2StatusTask) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionV2StatusTaskArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectionV2StatusTaskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionV2StatusTask)(nil)).Elem()
+}
+
+func (o ConnectionV2StatusTaskArrayOutput) ToConnectionV2StatusTaskArrayOutput() ConnectionV2StatusTaskArrayOutput {
+	return o
+}
+
+func (o ConnectionV2StatusTaskArrayOutput) ToConnectionV2StatusTaskArrayOutputWithContext(ctx context.Context) ConnectionV2StatusTaskArrayOutput {
+	return o
+}
+
+func (o ConnectionV2StatusTaskArrayOutput) Index(i pulumi.IntInput) ConnectionV2StatusTaskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionV2StatusTask {
+		return vs[0].([]ConnectionV2StatusTask)[vs[1].(int)]
+	}).(ConnectionV2StatusTaskOutput)
+}
+
+type ConnectionV2StatusWarning struct {
+	// Code.
+	Code *string `pulumi:"code"`
+	// Message.
+	Message *string `pulumi:"message"`
+}
+
+// ConnectionV2StatusWarningInput is an input type that accepts ConnectionV2StatusWarningArgs and ConnectionV2StatusWarningOutput values.
+// You can construct a concrete instance of `ConnectionV2StatusWarningInput` via:
+//
+//	ConnectionV2StatusWarningArgs{...}
+type ConnectionV2StatusWarningInput interface {
+	pulumi.Input
+
+	ToConnectionV2StatusWarningOutput() ConnectionV2StatusWarningOutput
+	ToConnectionV2StatusWarningOutputWithContext(context.Context) ConnectionV2StatusWarningOutput
+}
+
+type ConnectionV2StatusWarningArgs struct {
+	// Code.
+	Code pulumi.StringPtrInput `pulumi:"code"`
+	// Message.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (ConnectionV2StatusWarningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionV2StatusWarning)(nil)).Elem()
+}
+
+func (i ConnectionV2StatusWarningArgs) ToConnectionV2StatusWarningOutput() ConnectionV2StatusWarningOutput {
+	return i.ToConnectionV2StatusWarningOutputWithContext(context.Background())
+}
+
+func (i ConnectionV2StatusWarningArgs) ToConnectionV2StatusWarningOutputWithContext(ctx context.Context) ConnectionV2StatusWarningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionV2StatusWarningOutput)
+}
+
+// ConnectionV2StatusWarningArrayInput is an input type that accepts ConnectionV2StatusWarningArray and ConnectionV2StatusWarningArrayOutput values.
+// You can construct a concrete instance of `ConnectionV2StatusWarningArrayInput` via:
+//
+//	ConnectionV2StatusWarningArray{ ConnectionV2StatusWarningArgs{...} }
+type ConnectionV2StatusWarningArrayInput interface {
+	pulumi.Input
+
+	ToConnectionV2StatusWarningArrayOutput() ConnectionV2StatusWarningArrayOutput
+	ToConnectionV2StatusWarningArrayOutputWithContext(context.Context) ConnectionV2StatusWarningArrayOutput
+}
+
+type ConnectionV2StatusWarningArray []ConnectionV2StatusWarningInput
+
+func (ConnectionV2StatusWarningArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionV2StatusWarning)(nil)).Elem()
+}
+
+func (i ConnectionV2StatusWarningArray) ToConnectionV2StatusWarningArrayOutput() ConnectionV2StatusWarningArrayOutput {
+	return i.ToConnectionV2StatusWarningArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectionV2StatusWarningArray) ToConnectionV2StatusWarningArrayOutputWithContext(ctx context.Context) ConnectionV2StatusWarningArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionV2StatusWarningArrayOutput)
+}
+
+type ConnectionV2StatusWarningOutput struct{ *pulumi.OutputState }
+
+func (ConnectionV2StatusWarningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionV2StatusWarning)(nil)).Elem()
+}
+
+func (o ConnectionV2StatusWarningOutput) ToConnectionV2StatusWarningOutput() ConnectionV2StatusWarningOutput {
+	return o
+}
+
+func (o ConnectionV2StatusWarningOutput) ToConnectionV2StatusWarningOutputWithContext(ctx context.Context) ConnectionV2StatusWarningOutput {
+	return o
+}
+
+// Code.
+func (o ConnectionV2StatusWarningOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionV2StatusWarning) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// Message.
+func (o ConnectionV2StatusWarningOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionV2StatusWarning) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionV2StatusWarningArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectionV2StatusWarningArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectionV2StatusWarning)(nil)).Elem()
+}
+
+func (o ConnectionV2StatusWarningArrayOutput) ToConnectionV2StatusWarningArrayOutput() ConnectionV2StatusWarningArrayOutput {
+	return o
+}
+
+func (o ConnectionV2StatusWarningArrayOutput) ToConnectionV2StatusWarningArrayOutputWithContext(ctx context.Context) ConnectionV2StatusWarningArrayOutput {
+	return o
+}
+
+func (o ConnectionV2StatusWarningArrayOutput) Index(i pulumi.IntInput) ConnectionV2StatusWarningOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectionV2StatusWarning {
+		return vs[0].([]ConnectionV2StatusWarning)[vs[1].(int)]
+	}).(ConnectionV2StatusWarningOutput)
+}
+
 type ConnectorAuth struct {
 	// Field usage depends on `service` value:
 	// 	- Service `amazonDsp`: Your Amazon DSP access token.
@@ -92138,6 +92894,16 @@ func (o GetWebhooksWebhookArrayOutput) Index(i pulumi.IntInput) GetWebhooksWebho
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionDestinationSchemaInput)(nil)).Elem(), ConnectionDestinationSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionDestinationSchemaPtrInput)(nil)).Elem(), ConnectionDestinationSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionV2ConnectCardConfigInput)(nil)).Elem(), ConnectionV2ConnectCardConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionV2ConnectCardConfigPtrInput)(nil)).Elem(), ConnectionV2ConnectCardConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionV2DestinationConfigurationInput)(nil)).Elem(), ConnectionV2DestinationConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionV2DestinationConfigurationPtrInput)(nil)).Elem(), ConnectionV2DestinationConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionV2StatusInput)(nil)).Elem(), ConnectionV2StatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionV2StatusPtrInput)(nil)).Elem(), ConnectionV2StatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionV2StatusTaskInput)(nil)).Elem(), ConnectionV2StatusTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionV2StatusTaskArrayInput)(nil)).Elem(), ConnectionV2StatusTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionV2StatusWarningInput)(nil)).Elem(), ConnectionV2StatusWarningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionV2StatusWarningArrayInput)(nil)).Elem(), ConnectionV2StatusWarningArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAuthInput)(nil)).Elem(), ConnectorAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAuthPtrInput)(nil)).Elem(), ConnectorAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAuthClientAccessInput)(nil)).Elem(), ConnectorAuthClientAccessArgs{})
@@ -92396,6 +93162,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWebhooksWebhookArrayInput)(nil)).Elem(), GetWebhooksWebhookArray{})
 	pulumi.RegisterOutputType(ConnectionDestinationSchemaOutput{})
 	pulumi.RegisterOutputType(ConnectionDestinationSchemaPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionV2ConnectCardConfigOutput{})
+	pulumi.RegisterOutputType(ConnectionV2ConnectCardConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionV2DestinationConfigurationOutput{})
+	pulumi.RegisterOutputType(ConnectionV2DestinationConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionV2StatusOutput{})
+	pulumi.RegisterOutputType(ConnectionV2StatusPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionV2StatusTaskOutput{})
+	pulumi.RegisterOutputType(ConnectionV2StatusTaskArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionV2StatusWarningOutput{})
+	pulumi.RegisterOutputType(ConnectionV2StatusWarningArrayOutput{})
 	pulumi.RegisterOutputType(ConnectorAuthOutput{})
 	pulumi.RegisterOutputType(ConnectorAuthPtrOutput{})
 	pulumi.RegisterOutputType(ConnectorAuthClientAccessOutput{})

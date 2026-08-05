@@ -23,6 +23,8 @@
         "config/vars.ts",
         "connection.ts",
         "connectionConfig.ts",
+        "connectionV2.ts",
+        "connectionV2PauseState.ts",
         "connector.ts",
         "connectorCertificates.ts",
         "connectorFingerprints.ts",

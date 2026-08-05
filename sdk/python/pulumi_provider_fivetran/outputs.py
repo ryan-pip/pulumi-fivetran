@@ -17,6 +17,11 @@ from . import outputs
 
 __all__ = [
     'ConnectionDestinationSchema',
+    'ConnectionV2ConnectCardConfig',
+    'ConnectionV2DestinationConfiguration',
+    'ConnectionV2Status',
+    'ConnectionV2StatusTask',
+    'ConnectionV2StatusWarning',
     'ConnectorAuth',
     'ConnectorAuthClientAccess',
     'ConnectorCertificatesCertificate',
@@ -217,6 +222,270 @@ class ConnectionDestinationSchema(dict):
         Table group name.
         """
         return pulumi.get(self, "table_group_name")
+
+
+@pulumi.output_type
+class ConnectionV2ConnectCardConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allFields":
+            suggest = "all_fields"
+        elif key == "hideSetupGuide":
+            suggest = "hide_setup_guide"
+        elif key == "redirectUri":
+            suggest = "redirect_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionV2ConnectCardConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionV2ConnectCardConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionV2ConnectCardConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 all_fields: Optional[_builtins.bool] = None,
+                 hide_setup_guide: Optional[_builtins.bool] = None,
+                 redirect_uri: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool all_fields: Whether Connect Card should show all setup fields.
+        :param _builtins.bool hide_setup_guide: Whether to hide the setup guide in the Connect Card flow.
+        :param _builtins.str redirect_uri: URI where the Connect Card flow redirects after setup.
+        """
+        if all_fields is not None:
+            pulumi.set(__self__, "all_fields", all_fields)
+        if hide_setup_guide is not None:
+            pulumi.set(__self__, "hide_setup_guide", hide_setup_guide)
+        if redirect_uri is not None:
+            pulumi.set(__self__, "redirect_uri", redirect_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="allFields")
+    def all_fields(self) -> Optional[_builtins.bool]:
+        """
+        Whether Connect Card should show all setup fields.
+        """
+        return pulumi.get(self, "all_fields")
+
+    @_builtins.property
+    @pulumi.getter(name="hideSetupGuide")
+    def hide_setup_guide(self) -> Optional[_builtins.bool]:
+        """
+        Whether to hide the setup guide in the Connect Card flow.
+        """
+        return pulumi.get(self, "hide_setup_guide")
+
+    @_builtins.property
+    @pulumi.getter(name="redirectUri")
+    def redirect_uri(self) -> Optional[_builtins.str]:
+        """
+        URI where the Connect Card flow redirects after setup.
+        """
+        return pulumi.get(self, "redirect_uri")
+
+
+@pulumi.output_type
+class ConnectionV2DestinationConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "virtualWarehouse":
+            suggest = "virtual_warehouse"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionV2DestinationConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionV2DestinationConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionV2DestinationConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 virtual_warehouse: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str virtual_warehouse: Destination virtual warehouse used by the connection.
+        """
+        if virtual_warehouse is not None:
+            pulumi.set(__self__, "virtual_warehouse", virtual_warehouse)
+
+    @_builtins.property
+    @pulumi.getter(name="virtualWarehouse")
+    def virtual_warehouse(self) -> Optional[_builtins.str]:
+        """
+        Destination virtual warehouse used by the connection.
+        """
+        return pulumi.get(self, "virtual_warehouse")
+
+
+@pulumi.output_type
+class ConnectionV2Status(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isHistoricalSync":
+            suggest = "is_historical_sync"
+        elif key == "setupState":
+            suggest = "setup_state"
+        elif key == "syncState":
+            suggest = "sync_state"
+        elif key == "updateState":
+            suggest = "update_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionV2Status. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionV2Status.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionV2Status.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 is_historical_sync: Optional[_builtins.bool] = None,
+                 setup_state: Optional[_builtins.str] = None,
+                 sync_state: Optional[_builtins.str] = None,
+                 tasks: Optional[Sequence['outputs.ConnectionV2StatusTask']] = None,
+                 update_state: Optional[_builtins.str] = None,
+                 warnings: Optional[Sequence['outputs.ConnectionV2StatusWarning']] = None):
+        """
+        :param _builtins.bool is_historical_sync: Whether the connection should be triggered to re-sync all historical data on the next scheduled sync.
+        :param _builtins.str setup_state: The current setup state of the connection.
+        :param _builtins.str sync_state: The current sync state of the connection.
+        :param Sequence['ConnectionV2StatusTaskArgs'] tasks: The collection of tasks for the connection.
+        :param _builtins.str update_state: The current data update state of the connection.
+        :param Sequence['ConnectionV2StatusWarningArgs'] warnings: The collection of warnings for the connection.
+        """
+        if is_historical_sync is not None:
+            pulumi.set(__self__, "is_historical_sync", is_historical_sync)
+        if setup_state is not None:
+            pulumi.set(__self__, "setup_state", setup_state)
+        if sync_state is not None:
+            pulumi.set(__self__, "sync_state", sync_state)
+        if tasks is not None:
+            pulumi.set(__self__, "tasks", tasks)
+        if update_state is not None:
+            pulumi.set(__self__, "update_state", update_state)
+        if warnings is not None:
+            pulumi.set(__self__, "warnings", warnings)
+
+    @_builtins.property
+    @pulumi.getter(name="isHistoricalSync")
+    def is_historical_sync(self) -> Optional[_builtins.bool]:
+        """
+        Whether the connection should be triggered to re-sync all historical data on the next scheduled sync.
+        """
+        return pulumi.get(self, "is_historical_sync")
+
+    @_builtins.property
+    @pulumi.getter(name="setupState")
+    def setup_state(self) -> Optional[_builtins.str]:
+        """
+        The current setup state of the connection.
+        """
+        return pulumi.get(self, "setup_state")
+
+    @_builtins.property
+    @pulumi.getter(name="syncState")
+    def sync_state(self) -> Optional[_builtins.str]:
+        """
+        The current sync state of the connection.
+        """
+        return pulumi.get(self, "sync_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def tasks(self) -> Optional[Sequence['outputs.ConnectionV2StatusTask']]:
+        """
+        The collection of tasks for the connection.
+        """
+        return pulumi.get(self, "tasks")
+
+    @_builtins.property
+    @pulumi.getter(name="updateState")
+    def update_state(self) -> Optional[_builtins.str]:
+        """
+        The current data update state of the connection.
+        """
+        return pulumi.get(self, "update_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def warnings(self) -> Optional[Sequence['outputs.ConnectionV2StatusWarning']]:
+        """
+        The collection of warnings for the connection.
+        """
+        return pulumi.get(self, "warnings")
+
+
+@pulumi.output_type
+class ConnectionV2StatusTask(dict):
+    def __init__(__self__, *,
+                 code: Optional[_builtins.str] = None,
+                 message: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str code: Code.
+        :param _builtins.str message: Message.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> Optional[_builtins.str]:
+        """
+        Code.
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[_builtins.str]:
+        """
+        Message.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class ConnectionV2StatusWarning(dict):
+    def __init__(__self__, *,
+                 code: Optional[_builtins.str] = None,
+                 message: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str code: Code.
+        :param _builtins.str message: Message.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> Optional[_builtins.str]:
+        """
+        Code.
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[_builtins.str]:
+        """
+        Message.
+        """
+        return pulumi.get(self, "message")
 
 
 @pulumi.output_type

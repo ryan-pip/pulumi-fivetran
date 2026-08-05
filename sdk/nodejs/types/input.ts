@@ -24,6 +24,77 @@ export interface ConnectionDestinationSchema {
     tableGroupName?: pulumi.Input<string | undefined>;
 }
 
+export interface ConnectionV2ConnectCardConfig {
+    /**
+     * Whether Connect Card should show all setup fields.
+     */
+    allFields?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to hide the setup guide in the Connect Card flow.
+     */
+    hideSetupGuide?: pulumi.Input<boolean | undefined>;
+    /**
+     * URI where the Connect Card flow redirects after setup.
+     */
+    redirectUri?: pulumi.Input<string | undefined>;
+}
+
+export interface ConnectionV2DestinationConfiguration {
+    /**
+     * Destination virtual warehouse used by the connection.
+     */
+    virtualWarehouse?: pulumi.Input<string | undefined>;
+}
+
+export interface ConnectionV2Status {
+    /**
+     * Whether the connection should be triggered to re-sync all historical data on the next scheduled sync.
+     */
+    isHistoricalSync?: pulumi.Input<boolean | undefined>;
+    /**
+     * The current setup state of the connection.
+     */
+    setupState?: pulumi.Input<string | undefined>;
+    /**
+     * The current sync state of the connection.
+     */
+    syncState?: pulumi.Input<string | undefined>;
+    /**
+     * The collection of tasks for the connection.
+     */
+    tasks?: pulumi.Input<pulumi.Input<inputs.ConnectionV2StatusTask>[] | undefined>;
+    /**
+     * The current data update state of the connection.
+     */
+    updateState?: pulumi.Input<string | undefined>;
+    /**
+     * The collection of warnings for the connection.
+     */
+    warnings?: pulumi.Input<pulumi.Input<inputs.ConnectionV2StatusWarning>[] | undefined>;
+}
+
+export interface ConnectionV2StatusTask {
+    /**
+     * Code.
+     */
+    code?: pulumi.Input<string | undefined>;
+    /**
+     * Message.
+     */
+    message?: pulumi.Input<string | undefined>;
+}
+
+export interface ConnectionV2StatusWarning {
+    /**
+     * Code.
+     */
+    code?: pulumi.Input<string | undefined>;
+    /**
+     * Message.
+     */
+    message?: pulumi.Input<string | undefined>;
+}
+
 export interface ConnectorAuth {
     /**
      * Field usage depends on `service` value:

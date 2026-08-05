@@ -25,6 +25,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Connection{}
 	case "fivetran:index/connectionConfig:ConnectionConfig":
 		r = &ConnectionConfig{}
+	case "fivetran:index/connectionV2:ConnectionV2":
+		r = &ConnectionV2{}
+	case "fivetran:index/connectionV2PauseState:ConnectionV2PauseState":
+		r = &ConnectionV2PauseState{}
 	case "fivetran:index/connector:Connector":
 		r = &Connector{}
 	case "fivetran:index/connectorCertificates:ConnectorCertificates":
@@ -114,6 +118,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"fivetran",
 		"index/connectionConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"fivetran",
+		"index/connectionV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"fivetran",
+		"index/connectionV2PauseState",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

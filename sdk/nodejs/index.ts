@@ -15,6 +15,16 @@ export type ConnectionConfig = import("./connectionConfig").ConnectionConfig;
 export const ConnectionConfig: typeof import("./connectionConfig").ConnectionConfig = null as any;
 utilities.lazyLoad(exports, ["ConnectionConfig"], () => require("./connectionConfig"));
 
+export { ConnectionV2Args, ConnectionV2State } from "./connectionV2";
+export type ConnectionV2 = import("./connectionV2").ConnectionV2;
+export const ConnectionV2: typeof import("./connectionV2").ConnectionV2 = null as any;
+utilities.lazyLoad(exports, ["ConnectionV2"], () => require("./connectionV2"));
+
+export { ConnectionV2PauseStateArgs, ConnectionV2PauseStateState } from "./connectionV2PauseState";
+export type ConnectionV2PauseState = import("./connectionV2PauseState").ConnectionV2PauseState;
+export const ConnectionV2PauseState: typeof import("./connectionV2PauseState").ConnectionV2PauseState = null as any;
+utilities.lazyLoad(exports, ["ConnectionV2PauseState"], () => require("./connectionV2PauseState"));
+
 export { ConnectorArgs, ConnectorState } from "./connector";
 export type Connector = import("./connector").Connector;
 export const Connector: typeof import("./connector").Connector = null as any;
@@ -401,6 +411,10 @@ const _module = {
                 return new Connection(name, <any>undefined, { urn })
             case "fivetran:index/connectionConfig:ConnectionConfig":
                 return new ConnectionConfig(name, <any>undefined, { urn })
+            case "fivetran:index/connectionV2:ConnectionV2":
+                return new ConnectionV2(name, <any>undefined, { urn })
+            case "fivetran:index/connectionV2PauseState:ConnectionV2PauseState":
+                return new ConnectionV2PauseState(name, <any>undefined, { urn })
             case "fivetran:index/connector:Connector":
                 return new Connector(name, <any>undefined, { urn })
             case "fivetran:index/connectorCertificates:ConnectorCertificates":
@@ -458,6 +472,8 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("fivetran", "index/connection", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/connectionConfig", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/connectionV2", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/connectionV2PauseState", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/connector", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/connectorCertificates", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/connectorFingerprints", _module)
