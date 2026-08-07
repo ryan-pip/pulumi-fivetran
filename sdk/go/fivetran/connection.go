@@ -40,7 +40,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]string{
 //				"update_method": "XMIN",
 //			})
 //			if err != nil {
@@ -48,7 +48,7 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = fivetran.NewConnection(ctx, "postgres", &fivetran.ConnectionArgs{
-//				GroupId: example.ID(),
+//				GroupId: example.ID().ToIDOutput().ToStringOutput(),
 //				Service: pulumi.String("postgres"),
 //				DestinationSchema: &fivetran.ConnectionDestinationSchemaArgs{
 //					Prefix: pulumi.String("my_postgres"),
@@ -140,7 +140,7 @@ import (
 //					Prefix: pulumi.String("my_mysql"),
 //				},
 //				NetworkingMethod: pulumi.String("ProxyAgent"),
-//				ProxyAgentId:     example.ID(),
+//				ProxyAgentId:     example.ID().ToIDOutput().ToStringOutput(),
 //				RunSetupTests:    pulumi.Bool(false),
 //			})
 //			if err != nil {

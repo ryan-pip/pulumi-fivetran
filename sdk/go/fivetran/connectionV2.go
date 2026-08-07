@@ -44,7 +44,7 @@ import (
 //			}
 //			// The connection above is created paused. Unpause it to start syncing:
 //			_, err = fivetran.NewConnectionV2PauseState(ctx, "pause_state", &fivetran.ConnectionV2PauseStateArgs{
-//				ConnectionId: connection.ID(),
+//				ConnectionId: connection.ID().ToIDOutput().ToStringOutput(),
 //				Paused:       pulumi.Bool(false),
 //			})
 //			if err != nil {
