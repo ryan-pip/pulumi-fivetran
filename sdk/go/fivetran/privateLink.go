@@ -32,8 +32,8 @@ import (
 //				Name:    pulumi.String("name"),
 //				Region:  pulumi.String("region"),
 //				Service: pulumi.String("service"),
-//				Config: []map[string]interface{}{
-//					map[string]interface{}{
+//				Config: []map[string]string{
+//					{
 //						"connectionServiceName": "connection_service_name",
 //					},
 //				},
