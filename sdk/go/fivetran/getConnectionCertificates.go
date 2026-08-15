@@ -63,12 +63,8 @@ type GetConnectionCertificatesResult struct {
 }
 
 func GetConnectionCertificatesOutput(ctx *pulumi.Context, args GetConnectionCertificatesOutputArgs, opts ...pulumi.InvokeOption) GetConnectionCertificatesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetConnectionCertificatesResultOutput, error) {
-			args := v.(GetConnectionCertificatesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("fivetran:index/getConnectionCertificates:getConnectionCertificates", args, GetConnectionCertificatesResultOutput{}, options).(GetConnectionCertificatesResultOutput), nil
-		}).(GetConnectionCertificatesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("fivetran:index/getConnectionCertificates:getConnectionCertificates", args, GetConnectionCertificatesResultOutput{}, options).(GetConnectionCertificatesResultOutput)
 }
 
 // A collection of arguments for invoking getConnectionCertificates.

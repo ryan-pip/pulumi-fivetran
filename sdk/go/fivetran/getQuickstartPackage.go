@@ -71,12 +71,8 @@ type GetQuickstartPackageResult struct {
 }
 
 func GetQuickstartPackageOutput(ctx *pulumi.Context, args GetQuickstartPackageOutputArgs, opts ...pulumi.InvokeOption) GetQuickstartPackageResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetQuickstartPackageResultOutput, error) {
-			args := v.(GetQuickstartPackageArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("fivetran:index/getQuickstartPackage:getQuickstartPackage", args, GetQuickstartPackageResultOutput{}, options).(GetQuickstartPackageResultOutput), nil
-		}).(GetQuickstartPackageResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("fivetran:index/getQuickstartPackage:getQuickstartPackage", args, GetQuickstartPackageResultOutput{}, options).(GetQuickstartPackageResultOutput)
 }
 
 // A collection of arguments for invoking getQuickstartPackage.

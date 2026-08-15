@@ -52,10 +52,8 @@ type GetTransformationProjectsResult struct {
 }
 
 func GetTransformationProjectsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetTransformationProjectsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetTransformationProjectsResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("fivetran:index/getTransformationProjects:getTransformationProjects", nil, GetTransformationProjectsResultOutput{}, options).(GetTransformationProjectsResultOutput), nil
-	}).(GetTransformationProjectsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("fivetran:index/getTransformationProjects:getTransformationProjects", nil, GetTransformationProjectsResultOutput{}, options).(GetTransformationProjectsResultOutput)
 }
 
 // A collection of values returned by getTransformationProjects.

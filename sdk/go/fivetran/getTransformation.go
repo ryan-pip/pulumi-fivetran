@@ -77,12 +77,8 @@ type LookupTransformationResult struct {
 }
 
 func LookupTransformationOutput(ctx *pulumi.Context, args LookupTransformationOutputArgs, opts ...pulumi.InvokeOption) LookupTransformationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTransformationResultOutput, error) {
-			args := v.(LookupTransformationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("fivetran:index/getTransformation:getTransformation", args, LookupTransformationResultOutput{}, options).(LookupTransformationResultOutput), nil
-		}).(LookupTransformationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("fivetran:index/getTransformation:getTransformation", args, LookupTransformationResultOutput{}, options).(LookupTransformationResultOutput)
 }
 
 // A collection of arguments for invoking getTransformation.

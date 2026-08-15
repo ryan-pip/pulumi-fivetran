@@ -63,12 +63,8 @@ type GetGroupServiceAccountResult struct {
 }
 
 func GetGroupServiceAccountOutput(ctx *pulumi.Context, args GetGroupServiceAccountOutputArgs, opts ...pulumi.InvokeOption) GetGroupServiceAccountResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGroupServiceAccountResultOutput, error) {
-			args := v.(GetGroupServiceAccountArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("fivetran:index/getGroupServiceAccount:getGroupServiceAccount", args, GetGroupServiceAccountResultOutput{}, options).(GetGroupServiceAccountResultOutput), nil
-		}).(GetGroupServiceAccountResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("fivetran:index/getGroupServiceAccount:getGroupServiceAccount", args, GetGroupServiceAccountResultOutput{}, options).(GetGroupServiceAccountResultOutput)
 }
 
 // A collection of arguments for invoking getGroupServiceAccount.

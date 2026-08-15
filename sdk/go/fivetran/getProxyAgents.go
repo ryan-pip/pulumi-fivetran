@@ -57,12 +57,8 @@ type GetProxyAgentsResult struct {
 }
 
 func GetProxyAgentsOutput(ctx *pulumi.Context, args GetProxyAgentsOutputArgs, opts ...pulumi.InvokeOption) GetProxyAgentsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetProxyAgentsResultOutput, error) {
-			args := v.(GetProxyAgentsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("fivetran:index/getProxyAgents:getProxyAgents", args, GetProxyAgentsResultOutput{}, options).(GetProxyAgentsResultOutput), nil
-		}).(GetProxyAgentsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("fivetran:index/getProxyAgents:getProxyAgents", args, GetProxyAgentsResultOutput{}, options).(GetProxyAgentsResultOutput)
 }
 
 // A collection of arguments for invoking getProxyAgents.

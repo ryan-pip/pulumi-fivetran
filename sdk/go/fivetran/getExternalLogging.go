@@ -73,12 +73,8 @@ type LookupExternalLoggingResult struct {
 }
 
 func LookupExternalLoggingOutput(ctx *pulumi.Context, args LookupExternalLoggingOutputArgs, opts ...pulumi.InvokeOption) LookupExternalLoggingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupExternalLoggingResultOutput, error) {
-			args := v.(LookupExternalLoggingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("fivetran:index/getExternalLogging:getExternalLogging", args, LookupExternalLoggingResultOutput{}, options).(LookupExternalLoggingResultOutput), nil
-		}).(LookupExternalLoggingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("fivetran:index/getExternalLogging:getExternalLogging", args, LookupExternalLoggingResultOutput{}, options).(LookupExternalLoggingResultOutput)
 }
 
 // A collection of arguments for invoking getExternalLogging.

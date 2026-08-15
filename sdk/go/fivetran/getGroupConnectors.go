@@ -68,12 +68,8 @@ type GetGroupConnectorsResult struct {
 }
 
 func GetGroupConnectorsOutput(ctx *pulumi.Context, args GetGroupConnectorsOutputArgs, opts ...pulumi.InvokeOption) GetGroupConnectorsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGroupConnectorsResultOutput, error) {
-			args := v.(GetGroupConnectorsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("fivetran:index/getGroupConnectors:getGroupConnectors", args, GetGroupConnectorsResultOutput{}, options).(GetGroupConnectorsResultOutput), nil
-		}).(GetGroupConnectorsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("fivetran:index/getGroupConnectors:getGroupConnectors", args, GetGroupConnectorsResultOutput{}, options).(GetGroupConnectorsResultOutput)
 }
 
 // A collection of arguments for invoking getGroupConnectors.

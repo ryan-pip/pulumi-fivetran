@@ -63,12 +63,8 @@ type LookupGroupUsersResult struct {
 }
 
 func LookupGroupUsersOutput(ctx *pulumi.Context, args LookupGroupUsersOutputArgs, opts ...pulumi.InvokeOption) LookupGroupUsersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGroupUsersResultOutput, error) {
-			args := v.(LookupGroupUsersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("fivetran:index/getGroupUsers:getGroupUsers", args, LookupGroupUsersResultOutput{}, options).(LookupGroupUsersResultOutput), nil
-		}).(LookupGroupUsersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("fivetran:index/getGroupUsers:getGroupUsers", args, LookupGroupUsersResultOutput{}, options).(LookupGroupUsersResultOutput)
 }
 
 // A collection of arguments for invoking getGroupUsers.

@@ -59,12 +59,8 @@ type GetConnectorsMetadataResult struct {
 }
 
 func GetConnectorsMetadataOutput(ctx *pulumi.Context, args GetConnectorsMetadataOutputArgs, opts ...pulumi.InvokeOption) GetConnectorsMetadataResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetConnectorsMetadataResultOutput, error) {
-			args := v.(GetConnectorsMetadataArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("fivetran:index/getConnectorsMetadata:getConnectorsMetadata", args, GetConnectorsMetadataResultOutput{}, options).(GetConnectorsMetadataResultOutput), nil
-		}).(GetConnectorsMetadataResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("fivetran:index/getConnectorsMetadata:getConnectorsMetadata", args, GetConnectorsMetadataResultOutput{}, options).(GetConnectorsMetadataResultOutput)
 }
 
 // A collection of arguments for invoking getConnectorsMetadata.

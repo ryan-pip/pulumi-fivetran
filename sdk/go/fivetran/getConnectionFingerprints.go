@@ -63,12 +63,8 @@ type GetConnectionFingerprintsResult struct {
 }
 
 func GetConnectionFingerprintsOutput(ctx *pulumi.Context, args GetConnectionFingerprintsOutputArgs, opts ...pulumi.InvokeOption) GetConnectionFingerprintsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetConnectionFingerprintsResultOutput, error) {
-			args := v.(GetConnectionFingerprintsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("fivetran:index/getConnectionFingerprints:getConnectionFingerprints", args, GetConnectionFingerprintsResultOutput{}, options).(GetConnectionFingerprintsResultOutput), nil
-		}).(GetConnectionFingerprintsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("fivetran:index/getConnectionFingerprints:getConnectionFingerprints", args, GetConnectionFingerprintsResultOutput{}, options).(GetConnectionFingerprintsResultOutput)
 }
 
 // A collection of arguments for invoking getConnectionFingerprints.

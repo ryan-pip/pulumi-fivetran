@@ -37,12 +37,8 @@ type GetDestinationsResult struct {
 }
 
 func GetDestinationsOutput(ctx *pulumi.Context, args GetDestinationsOutputArgs, opts ...pulumi.InvokeOption) GetDestinationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDestinationsResultOutput, error) {
-			args := v.(GetDestinationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("fivetran:index/getDestinations:getDestinations", args, GetDestinationsResultOutput{}, options).(GetDestinationsResultOutput), nil
-		}).(GetDestinationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("fivetran:index/getDestinations:getDestinations", args, GetDestinationsResultOutput{}, options).(GetDestinationsResultOutput)
 }
 
 // A collection of arguments for invoking getDestinations.

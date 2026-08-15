@@ -57,12 +57,8 @@ type GetTransformationsResult struct {
 }
 
 func GetTransformationsOutput(ctx *pulumi.Context, args GetTransformationsOutputArgs, opts ...pulumi.InvokeOption) GetTransformationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTransformationsResultOutput, error) {
-			args := v.(GetTransformationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("fivetran:index/getTransformations:getTransformations", args, GetTransformationsResultOutput{}, options).(GetTransformationsResultOutput), nil
-		}).(GetTransformationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("fivetran:index/getTransformations:getTransformations", args, GetTransformationsResultOutput{}, options).(GetTransformationsResultOutput)
 }
 
 // A collection of arguments for invoking getTransformations.

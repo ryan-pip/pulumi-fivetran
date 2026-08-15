@@ -37,12 +37,8 @@ type GetExternalLogsResult struct {
 }
 
 func GetExternalLogsOutput(ctx *pulumi.Context, args GetExternalLogsOutputArgs, opts ...pulumi.InvokeOption) GetExternalLogsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetExternalLogsResultOutput, error) {
-			args := v.(GetExternalLogsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("fivetran:index/getExternalLogs:getExternalLogs", args, GetExternalLogsResultOutput{}, options).(GetExternalLogsResultOutput), nil
-		}).(GetExternalLogsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("fivetran:index/getExternalLogs:getExternalLogs", args, GetExternalLogsResultOutput{}, options).(GetExternalLogsResultOutput)
 }
 
 // A collection of arguments for invoking getExternalLogs.
