@@ -63,12 +63,8 @@ type GetGroupSshKeyResult struct {
 }
 
 func GetGroupSshKeyOutput(ctx *pulumi.Context, args GetGroupSshKeyOutputArgs, opts ...pulumi.InvokeOption) GetGroupSshKeyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGroupSshKeyResultOutput, error) {
-			args := v.(GetGroupSshKeyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("fivetran:index/getGroupSshKey:getGroupSshKey", args, GetGroupSshKeyResultOutput{}, options).(GetGroupSshKeyResultOutput), nil
-		}).(GetGroupSshKeyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("fivetran:index/getGroupSshKey:getGroupSshKey", args, GetGroupSshKeyResultOutput{}, options).(GetGroupSshKeyResultOutput)
 }
 
 // A collection of arguments for invoking getGroupSshKey.

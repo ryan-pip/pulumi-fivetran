@@ -63,12 +63,8 @@ type GetUserConnectionMembershipsResult struct {
 }
 
 func GetUserConnectionMembershipsOutput(ctx *pulumi.Context, args GetUserConnectionMembershipsOutputArgs, opts ...pulumi.InvokeOption) GetUserConnectionMembershipsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetUserConnectionMembershipsResultOutput, error) {
-			args := v.(GetUserConnectionMembershipsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("fivetran:index/getUserConnectionMemberships:getUserConnectionMemberships", args, GetUserConnectionMembershipsResultOutput{}, options).(GetUserConnectionMembershipsResultOutput), nil
-		}).(GetUserConnectionMembershipsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("fivetran:index/getUserConnectionMemberships:getUserConnectionMemberships", args, GetUserConnectionMembershipsResultOutput{}, options).(GetUserConnectionMembershipsResultOutput)
 }
 
 // A collection of arguments for invoking getUserConnectionMemberships.

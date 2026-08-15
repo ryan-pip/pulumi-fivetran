@@ -43,12 +43,8 @@ type LookupHybridDeploymentAgentResult struct {
 }
 
 func LookupHybridDeploymentAgentOutput(ctx *pulumi.Context, args LookupHybridDeploymentAgentOutputArgs, opts ...pulumi.InvokeOption) LookupHybridDeploymentAgentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupHybridDeploymentAgentResultOutput, error) {
-			args := v.(LookupHybridDeploymentAgentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("fivetran:index/getHybridDeploymentAgent:getHybridDeploymentAgent", args, LookupHybridDeploymentAgentResultOutput{}, options).(LookupHybridDeploymentAgentResultOutput), nil
-		}).(LookupHybridDeploymentAgentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("fivetran:index/getHybridDeploymentAgent:getHybridDeploymentAgent", args, LookupHybridDeploymentAgentResultOutput{}, options).(LookupHybridDeploymentAgentResultOutput)
 }
 
 // A collection of arguments for invoking getHybridDeploymentAgent.

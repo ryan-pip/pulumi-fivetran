@@ -52,10 +52,8 @@ type GetWebhooksResult struct {
 }
 
 func GetWebhooksOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetWebhooksResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetWebhooksResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("fivetran:index/getWebhooks:getWebhooks", nil, GetWebhooksResultOutput{}, options).(GetWebhooksResultOutput), nil
-	}).(GetWebhooksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("fivetran:index/getWebhooks:getWebhooks", nil, GetWebhooksResultOutput{}, options).(GetWebhooksResultOutput)
 }
 
 // A collection of values returned by getWebhooks.

@@ -37,12 +37,8 @@ type GetConnectorsResult struct {
 }
 
 func GetConnectorsOutput(ctx *pulumi.Context, args GetConnectorsOutputArgs, opts ...pulumi.InvokeOption) GetConnectorsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetConnectorsResultOutput, error) {
-			args := v.(GetConnectorsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("fivetran:index/getConnectors:getConnectors", args, GetConnectorsResultOutput{}, options).(GetConnectorsResultOutput), nil
-		}).(GetConnectorsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("fivetran:index/getConnectors:getConnectors", args, GetConnectorsResultOutput{}, options).(GetConnectorsResultOutput)
 }
 
 // A collection of arguments for invoking getConnectors.

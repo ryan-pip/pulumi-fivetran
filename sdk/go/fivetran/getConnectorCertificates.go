@@ -65,12 +65,8 @@ type LookupConnectorCertificatesResult struct {
 }
 
 func LookupConnectorCertificatesOutput(ctx *pulumi.Context, args LookupConnectorCertificatesOutputArgs, opts ...pulumi.InvokeOption) LookupConnectorCertificatesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConnectorCertificatesResultOutput, error) {
-			args := v.(LookupConnectorCertificatesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("fivetran:index/getConnectorCertificates:getConnectorCertificates", args, LookupConnectorCertificatesResultOutput{}, options).(LookupConnectorCertificatesResultOutput), nil
-		}).(LookupConnectorCertificatesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("fivetran:index/getConnectorCertificates:getConnectorCertificates", args, LookupConnectorCertificatesResultOutput{}, options).(LookupConnectorCertificatesResultOutput)
 }
 
 // A collection of arguments for invoking getConnectorCertificates.

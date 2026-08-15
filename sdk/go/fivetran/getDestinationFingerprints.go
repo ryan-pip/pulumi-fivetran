@@ -65,12 +65,8 @@ type LookupDestinationFingerprintsResult struct {
 }
 
 func LookupDestinationFingerprintsOutput(ctx *pulumi.Context, args LookupDestinationFingerprintsOutputArgs, opts ...pulumi.InvokeOption) LookupDestinationFingerprintsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDestinationFingerprintsResultOutput, error) {
-			args := v.(LookupDestinationFingerprintsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("fivetran:index/getDestinationFingerprints:getDestinationFingerprints", args, LookupDestinationFingerprintsResultOutput{}, options).(LookupDestinationFingerprintsResultOutput), nil
-		}).(LookupDestinationFingerprintsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("fivetran:index/getDestinationFingerprints:getDestinationFingerprints", args, LookupDestinationFingerprintsResultOutput{}, options).(LookupDestinationFingerprintsResultOutput)
 }
 
 // A collection of arguments for invoking getDestinationFingerprints.
