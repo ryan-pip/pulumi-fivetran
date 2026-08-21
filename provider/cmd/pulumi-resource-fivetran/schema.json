@@ -5615,6 +5615,10 @@
                     "type": "string",
                     "description": "The table name within your destination in accordance with Fivetran conventional rules.\n"
                 },
+                "parentTable": {
+                    "type": "string",
+                    "description": "The name of the table that this table is grouped under, if any. This field is read-only and computed by the API.\n"
+                },
                 "syncMode": {
                     "type": "string",
                     "description": "This field appears in the response if the connector supports switching sync modes for tables.\n"
@@ -5629,6 +5633,7 @@
                     "requiredOutputs": [
                         "enabled",
                         "name",
+                        "parentTable",
                         "syncMode"
                     ]
                 }
@@ -5704,6 +5709,10 @@
                     "type": "boolean",
                     "description": "The boolean value specifying whether the sync for the table into the destination is enabled.\n"
                 },
+                "parentTable": {
+                    "type": "string",
+                    "description": "The name of the table that this table is grouped under, if any. This field is read-only and computed by the API.\n"
+                },
                 "syncMode": {
                     "type": "string",
                     "description": "This field appears in the response if the connector supports switching sync modes for tables.\n"
@@ -5714,6 +5723,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "enabled",
+                        "parentTable",
                         "syncMode"
                     ]
                 }
@@ -15960,6 +15970,7 @@
                 "dataDelaySensitivity",
                 "dataDelayThreshold",
                 "destinationConfiguration",
+                "destinationSchemaNames",
                 "failedAt",
                 "groupId",
                 "hybridDeploymentAgentId",
@@ -16062,6 +16073,7 @@
                 }
             },
             "requiredInputs": [
+                "destinationSchemaNames",
                 "groupId",
                 "service"
             ],

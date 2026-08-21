@@ -37816,6 +37816,8 @@ type ConnectorSchemaConfigSchemaTable struct {
 	Enabled *bool `pulumi:"enabled"`
 	// The table name within your destination in accordance with Fivetran conventional rules.
 	Name string `pulumi:"name"`
+	// The name of the table that this table is grouped under, if any. This field is read-only and computed by the API.
+	ParentTable *string `pulumi:"parentTable"`
 	// This field appears in the response if the connector supports switching sync modes for tables.
 	SyncMode *string `pulumi:"syncMode"`
 }
@@ -37837,6 +37839,8 @@ type ConnectorSchemaConfigSchemaTableArgs struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// The table name within your destination in accordance with Fivetran conventional rules.
 	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the table that this table is grouped under, if any. This field is read-only and computed by the API.
+	ParentTable pulumi.StringPtrInput `pulumi:"parentTable"`
 	// This field appears in the response if the connector supports switching sync modes for tables.
 	SyncMode pulumi.StringPtrInput `pulumi:"syncMode"`
 }
@@ -37904,6 +37908,11 @@ func (o ConnectorSchemaConfigSchemaTableOutput) Enabled() pulumi.BoolPtrOutput {
 // The table name within your destination in accordance with Fivetran conventional rules.
 func (o ConnectorSchemaConfigSchemaTableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTable) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the table that this table is grouped under, if any. This field is read-only and computed by the API.
+func (o ConnectorSchemaConfigSchemaTableOutput) ParentTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTable) *string { return v.ParentTable }).(pulumi.StringPtrOutput)
 }
 
 // This field appears in the response if the connector supports switching sync modes for tables.
@@ -38166,6 +38175,8 @@ type ConnectorSchemaConfigSchemasTables struct {
 	Columns map[string]ConnectorSchemaConfigSchemasTablesColumns `pulumi:"columns"`
 	// The boolean value specifying whether the sync for the table into the destination is enabled.
 	Enabled *bool `pulumi:"enabled"`
+	// The name of the table that this table is grouped under, if any. This field is read-only and computed by the API.
+	ParentTable *string `pulumi:"parentTable"`
 	// This field appears in the response if the connector supports switching sync modes for tables.
 	SyncMode *string `pulumi:"syncMode"`
 }
@@ -38186,6 +38197,8 @@ type ConnectorSchemaConfigSchemasTablesArgs struct {
 	Columns ConnectorSchemaConfigSchemasTablesColumnsMapInput `pulumi:"columns"`
 	// The boolean value specifying whether the sync for the table into the destination is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The name of the table that this table is grouped under, if any. This field is read-only and computed by the API.
+	ParentTable pulumi.StringPtrInput `pulumi:"parentTable"`
 	// This field appears in the response if the connector supports switching sync modes for tables.
 	SyncMode pulumi.StringPtrInput `pulumi:"syncMode"`
 }
@@ -38251,6 +38264,11 @@ func (o ConnectorSchemaConfigSchemasTablesOutput) Columns() ConnectorSchemaConfi
 // The boolean value specifying whether the sync for the table into the destination is enabled.
 func (o ConnectorSchemaConfigSchemasTablesOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemasTables) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the table that this table is grouped under, if any. This field is read-only and computed by the API.
+func (o ConnectorSchemaConfigSchemasTablesOutput) ParentTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorSchemaConfigSchemasTables) *string { return v.ParentTable }).(pulumi.StringPtrOutput)
 }
 
 // This field appears in the response if the connector supports switching sync modes for tables.

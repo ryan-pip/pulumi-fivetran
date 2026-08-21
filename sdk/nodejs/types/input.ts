@@ -8319,6 +8319,10 @@ export interface ConnectorSchemaConfigSchemaTable {
      */
     name: pulumi.Input<string>;
     /**
+     * The name of the table that this table is grouped under, if any. This field is read-only and computed by the API.
+     */
+    parentTable?: pulumi.Input<string | undefined>;
+    /**
      * This field appears in the response if the connector supports switching sync modes for tables.
      */
     syncMode?: pulumi.Input<string | undefined>;
@@ -8363,6 +8367,10 @@ export interface ConnectorSchemaConfigSchemasTables {
      * The boolean value specifying whether the sync for the table into the destination is enabled.
      */
     enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * The name of the table that this table is grouped under, if any. This field is read-only and computed by the API.
+     */
+    parentTable?: pulumi.Input<string | undefined>;
     /**
      * This field appears in the response if the connector supports switching sync modes for tables.
      */

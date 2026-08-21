@@ -31,6 +31,12 @@ namespace Pulumi.Fivetran.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
+        /// The name of the table that this table is grouped under, if any. This field is read-only and computed by the API.
+        /// </summary>
+        [Input("parentTable")]
+        public Input<string>? ParentTable { get; set; }
+
+        /// <summary>
         /// This field appears in the response if the connector supports switching sync modes for tables.
         /// </summary>
         [Input("syncMode")]
