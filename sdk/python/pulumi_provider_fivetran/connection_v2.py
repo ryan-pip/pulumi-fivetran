@@ -21,6 +21,7 @@ __all__ = ['ConnectionV2Args', 'ConnectionV2']
 @pulumi.input_type
 class ConnectionV2Args:
     def __init__(__self__, *,
+                 destination_schema_names: pulumi.Input[_builtins.str],
                  group_id: pulumi.Input[_builtins.str],
                  service: pulumi.Input[_builtins.str],
                  auth: Optional[Any] = None,
@@ -30,7 +31,6 @@ class ConnectionV2Args:
                  data_delay_sensitivity: pulumi.Input[Optional[_builtins.str]] = None,
                  data_delay_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  destination_configuration: pulumi.Input[Optional['ConnectionV2DestinationConfigurationArgs']] = None,
-                 destination_schema_names: pulumi.Input[Optional[_builtins.str]] = None,
                  hybrid_deployment_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  networking_method: pulumi.Input[Optional[_builtins.str]] = None,
                  pause_after_trial: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -44,6 +44,7 @@ class ConnectionV2Args:
         """
         The set of arguments for constructing a ConnectionV2 resource.
 
+        :param pulumi.Input[_builtins.str] destination_schema_names: Defines how schema names appear in the destination. Supported values: `FIVETRAN_NAMING`, `SOURCE_NAMING`. Changing this forces the connection to be replaced.
         :param pulumi.Input[_builtins.str] group_id: The unique identifier for the Group (Destination) within the Fivetran system. Changing this forces the connection to be replaced.
         :param pulumi.Input[_builtins.str] service: The connection service type (e.g., `postgres`, `mysql`, `s3`, `snowflake`). Changing this forces the connection to be replaced.
         :param Any auth: Service-specific authorization configuration. The accepted fields are defined by connector metadata at runtime.
@@ -53,7 +54,6 @@ class ConnectionV2Args:
         :param pulumi.Input[_builtins.str] data_delay_sensitivity: The level of data delay notification threshold. Possible values: `LOW`, `NORMAL`, `HIGH`, `CUSTOM`, `SYNC_FREQUENCY`.
         :param pulumi.Input[_builtins.int] data_delay_threshold: Custom sync delay notification threshold in minutes. Only used when `data_delay_sensitivity` is `CUSTOM`.
         :param pulumi.Input['ConnectionV2DestinationConfigurationArgs'] destination_configuration: Destination-specific configuration for the connection.
-        :param pulumi.Input[_builtins.str] destination_schema_names: Defines how schema names appear in the destination. Supported values: `FIVETRAN_NAMING`, `SOURCE_NAMING`. Changing this forces the connection to be replaced.
         :param pulumi.Input[_builtins.str] hybrid_deployment_agent_id: The hybrid deployment agent ID for the group the connection belongs to.
         :param pulumi.Input[_builtins.str] networking_method: The networking method for the connection. Possible values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`.
         :param pulumi.Input[_builtins.bool] pause_after_trial: Whether the connection should be paused after the free trial period has ended.
@@ -65,6 +65,7 @@ class ConnectionV2Args:
         :param pulumi.Input[_builtins.bool] trust_certificates: Whether Fivetran should trust certificates automatically.
         :param pulumi.Input[_builtins.bool] trust_fingerprints: Whether Fivetran should trust SSH fingerprints automatically.
         """
+        pulumi.set(__self__, "destination_schema_names", destination_schema_names)
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "service", service)
         if auth is not None:
@@ -81,8 +82,6 @@ class ConnectionV2Args:
             pulumi.set(__self__, "data_delay_threshold", data_delay_threshold)
         if destination_configuration is not None:
             pulumi.set(__self__, "destination_configuration", destination_configuration)
-        if destination_schema_names is not None:
-            pulumi.set(__self__, "destination_schema_names", destination_schema_names)
         if hybrid_deployment_agent_id is not None:
             pulumi.set(__self__, "hybrid_deployment_agent_id", hybrid_deployment_agent_id)
         if networking_method is not None:
@@ -103,6 +102,18 @@ class ConnectionV2Args:
             pulumi.set(__self__, "trust_certificates", trust_certificates)
         if trust_fingerprints is not None:
             pulumi.set(__self__, "trust_fingerprints", trust_fingerprints)
+
+    @_builtins.property
+    @pulumi.getter(name="destinationSchemaNames")
+    def destination_schema_names(self) -> pulumi.Input[_builtins.str]:
+        """
+        Defines how schema names appear in the destination. Supported values: `FIVETRAN_NAMING`, `SOURCE_NAMING`. Changing this forces the connection to be replaced.
+        """
+        return pulumi.get(self, "destination_schema_names")
+
+    @destination_schema_names.setter
+    def destination_schema_names(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "destination_schema_names", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
@@ -211,18 +222,6 @@ class ConnectionV2Args:
     @destination_configuration.setter
     def destination_configuration(self, value: pulumi.Input[Optional['ConnectionV2DestinationConfigurationArgs']]):
         pulumi.set(self, "destination_configuration", value)
-
-    @_builtins.property
-    @pulumi.getter(name="destinationSchemaNames")
-    def destination_schema_names(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Defines how schema names appear in the destination. Supported values: `FIVETRAN_NAMING`, `SOURCE_NAMING`. Changing this forces the connection to be replaced.
-        """
-        return pulumi.get(self, "destination_schema_names")
-
-    @destination_schema_names.setter
-    def destination_schema_names(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "destination_schema_names", value)
 
     @_builtins.property
     @pulumi.getter(name="hybridDeploymentAgentId")
@@ -945,6 +944,8 @@ class ConnectionV2(pulumi.CustomResource):
             __props__.__dict__["data_delay_sensitivity"] = data_delay_sensitivity
             __props__.__dict__["data_delay_threshold"] = data_delay_threshold
             __props__.__dict__["destination_configuration"] = destination_configuration
+            if destination_schema_names is None and not opts.urn:
+                raise TypeError("Missing required property 'destination_schema_names'")
             __props__.__dict__["destination_schema_names"] = destination_schema_names
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
@@ -1150,7 +1151,7 @@ class ConnectionV2(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="destinationSchemaNames")
-    def destination_schema_names(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def destination_schema_names(self) -> pulumi.Output[_builtins.str]:
         """
         Defines how schema names appear in the destination. Supported values: `FIVETRAN_NAMING`, `SOURCE_NAMING`. Changing this forces the connection to be replaced.
         """

@@ -23,6 +23,10 @@ namespace Pulumi.Fivetran.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// The name of the table that this table is grouped under, if any. This field is read-only and computed by the API.
+        /// </summary>
+        public readonly string? ParentTable;
+        /// <summary>
         /// This field appears in the response if the connector supports switching sync modes for tables.
         /// </summary>
         public readonly string? SyncMode;
@@ -35,11 +39,14 @@ namespace Pulumi.Fivetran.Outputs
 
             string name,
 
+            string? parentTable,
+
             string? syncMode)
         {
             Columns = columns;
             Enabled = enabled;
             Name = name;
+            ParentTable = parentTable;
             SyncMode = syncMode;
         }
     }

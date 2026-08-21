@@ -33837,6 +33837,10 @@ class ConnectorSchemaConfigSchemaTableArgsDict(TypedDict):
     """
     The boolean value specifying whether the sync of table into the destination is enabled.
     """
+    parent_table: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the table that this table is grouped under, if any. This field is read-only and computed by the API.
+    """
     sync_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     This field appears in the response if the connector supports switching sync modes for tables.
@@ -33848,10 +33852,12 @@ class ConnectorSchemaConfigSchemaTableArgs:
                  name: pulumi.Input[_builtins.str],
                  columns: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectorSchemaConfigSchemaTableColumnArgs']]]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 parent_table: pulumi.Input[Optional[_builtins.str]] = None,
                  sync_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The table name within your destination in accordance with Fivetran conventional rules.
         :param pulumi.Input[_builtins.bool] enabled: The boolean value specifying whether the sync of table into the destination is enabled.
+        :param pulumi.Input[_builtins.str] parent_table: The name of the table that this table is grouped under, if any. This field is read-only and computed by the API.
         :param pulumi.Input[_builtins.str] sync_mode: This field appears in the response if the connector supports switching sync modes for tables.
         """
         pulumi.set(__self__, "name", name)
@@ -33859,6 +33865,8 @@ class ConnectorSchemaConfigSchemaTableArgs:
             pulumi.set(__self__, "columns", columns)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if parent_table is not None:
+            pulumi.set(__self__, "parent_table", parent_table)
         if sync_mode is not None:
             pulumi.set(__self__, "sync_mode", sync_mode)
 
@@ -33894,6 +33902,18 @@ class ConnectorSchemaConfigSchemaTableArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="parentTable")
+    def parent_table(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the table that this table is grouped under, if any. This field is read-only and computed by the API.
+        """
+        return pulumi.get(self, "parent_table")
+
+    @parent_table.setter
+    def parent_table(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parent_table", value)
 
     @_builtins.property
     @pulumi.getter(name="syncMode")
@@ -34054,6 +34074,10 @@ class ConnectorSchemaConfigSchemasTablesArgsDict(TypedDict):
     """
     The boolean value specifying whether the sync for the table into the destination is enabled.
     """
+    parent_table: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the table that this table is grouped under, if any. This field is read-only and computed by the API.
+    """
     sync_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     This field appears in the response if the connector supports switching sync modes for tables.
@@ -34064,16 +34088,20 @@ class ConnectorSchemaConfigSchemasTablesArgs:
     def __init__(__self__, *,
                  columns: pulumi.Input[Optional[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasTablesColumnsArgs']]]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 parent_table: pulumi.Input[Optional[_builtins.str]] = None,
                  sync_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasTablesColumnsArgs']]] columns: Map of table configurations.
         :param pulumi.Input[_builtins.bool] enabled: The boolean value specifying whether the sync for the table into the destination is enabled.
+        :param pulumi.Input[_builtins.str] parent_table: The name of the table that this table is grouped under, if any. This field is read-only and computed by the API.
         :param pulumi.Input[_builtins.str] sync_mode: This field appears in the response if the connector supports switching sync modes for tables.
         """
         if columns is not None:
             pulumi.set(__self__, "columns", columns)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if parent_table is not None:
+            pulumi.set(__self__, "parent_table", parent_table)
         if sync_mode is not None:
             pulumi.set(__self__, "sync_mode", sync_mode)
 
@@ -34100,6 +34128,18 @@ class ConnectorSchemaConfigSchemasTablesArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="parentTable")
+    def parent_table(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the table that this table is grouped under, if any. This field is read-only and computed by the API.
+        """
+        return pulumi.get(self, "parent_table")
+
+    @parent_table.setter
+    def parent_table(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "parent_table", value)
 
     @_builtins.property
     @pulumi.getter(name="syncMode")

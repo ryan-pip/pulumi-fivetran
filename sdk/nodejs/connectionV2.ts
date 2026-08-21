@@ -100,7 +100,7 @@ export class ConnectionV2 extends pulumi.CustomResource {
     /**
      * Defines how schema names appear in the destination. Supported values: `FIVETRAN_NAMING`, `SOURCE_NAMING`. Changing this forces the connection to be replaced.
      */
-    declare public readonly destinationSchemaNames: pulumi.Output<string | undefined>;
+    declare public readonly destinationSchemaNames: pulumi.Output<string>;
     /**
      * The timestamp of the time the connection sync failed last time.
      */
@@ -212,6 +212,9 @@ export class ConnectionV2 extends pulumi.CustomResource {
             resourceInputs["trustFingerprints"] = state?.trustFingerprints;
         } else {
             const args = argsOrState as ConnectionV2Args | undefined;
+            if (args?.destinationSchemaNames === undefined && !opts.urn) {
+                throw new Error("Missing required property 'destinationSchemaNames'");
+            }
             if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
@@ -402,7 +405,7 @@ export interface ConnectionV2Args {
     /**
      * Defines how schema names appear in the destination. Supported values: `FIVETRAN_NAMING`, `SOURCE_NAMING`. Changing this forces the connection to be replaced.
      */
-    destinationSchemaNames?: pulumi.Input<string | undefined>;
+    destinationSchemaNames: pulumi.Input<string>;
     /**
      * The unique identifier for the Group (Destination) within the Fivetran system. Changing this forces the connection to be replaced.
      */

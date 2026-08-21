@@ -107,7 +107,7 @@ namespace Pulumi.Fivetran
         /// Defines how schema names appear in the destination. Supported values: `FIVETRAN_NAMING`, `SOURCE_NAMING`. Changing this forces the connection to be replaced.
         /// </summary>
         [Output("destinationSchemaNames")]
-        public Output<string?> DestinationSchemaNames { get; private set; } = null!;
+        public Output<string> DestinationSchemaNames { get; private set; } = null!;
 
         /// <summary>
         /// The timestamp of the time the connection sync failed last time.
@@ -317,8 +317,8 @@ namespace Pulumi.Fivetran
         /// <summary>
         /// Defines how schema names appear in the destination. Supported values: `FIVETRAN_NAMING`, `SOURCE_NAMING`. Changing this forces the connection to be replaced.
         /// </summary>
-        [Input("destinationSchemaNames")]
-        public Input<string>? DestinationSchemaNames { get; set; }
+        [Input("destinationSchemaNames", required: true)]
+        public Input<string> DestinationSchemaNames { get; set; } = null!;
 
         /// <summary>
         /// The unique identifier for the Group (Destination) within the Fivetran system. Changing this forces the connection to be replaced.

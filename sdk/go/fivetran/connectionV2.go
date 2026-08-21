@@ -77,7 +77,7 @@ type ConnectionV2 struct {
 	// Destination-specific configuration for the connection.
 	DestinationConfiguration ConnectionV2DestinationConfigurationOutput `pulumi:"destinationConfiguration"`
 	// Defines how schema names appear in the destination. Supported values: `FIVETRAN_NAMING`, `SOURCE_NAMING`. Changing this forces the connection to be replaced.
-	DestinationSchemaNames pulumi.StringPtrOutput `pulumi:"destinationSchemaNames"`
+	DestinationSchemaNames pulumi.StringOutput `pulumi:"destinationSchemaNames"`
 	// The timestamp of the time the connection sync failed last time.
 	FailedAt pulumi.StringOutput `pulumi:"failedAt"`
 	// The unique identifier for the Group (Destination) within the Fivetran system. Changing this forces the connection to be replaced.
@@ -121,6 +121,9 @@ func NewConnectionV2(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DestinationSchemaNames == nil {
+		return nil, errors.New("invalid value for required argument 'DestinationSchemaNames'")
+	}
 	if args.GroupId == nil {
 		return nil, errors.New("invalid value for required argument 'GroupId'")
 	}
@@ -290,7 +293,7 @@ type connectionV2Args struct {
 	// Destination-specific configuration for the connection.
 	DestinationConfiguration *ConnectionV2DestinationConfiguration `pulumi:"destinationConfiguration"`
 	// Defines how schema names appear in the destination. Supported values: `FIVETRAN_NAMING`, `SOURCE_NAMING`. Changing this forces the connection to be replaced.
-	DestinationSchemaNames *string `pulumi:"destinationSchemaNames"`
+	DestinationSchemaNames string `pulumi:"destinationSchemaNames"`
 	// The unique identifier for the Group (Destination) within the Fivetran system. Changing this forces the connection to be replaced.
 	GroupId string `pulumi:"groupId"`
 	// The hybrid deployment agent ID for the group the connection belongs to.
@@ -334,7 +337,7 @@ type ConnectionV2Args struct {
 	// Destination-specific configuration for the connection.
 	DestinationConfiguration ConnectionV2DestinationConfigurationPtrInput
 	// Defines how schema names appear in the destination. Supported values: `FIVETRAN_NAMING`, `SOURCE_NAMING`. Changing this forces the connection to be replaced.
-	DestinationSchemaNames pulumi.StringPtrInput
+	DestinationSchemaNames pulumi.StringInput
 	// The unique identifier for the Group (Destination) within the Fivetran system. Changing this forces the connection to be replaced.
 	GroupId pulumi.StringInput
 	// The hybrid deployment agent ID for the group the connection belongs to.
@@ -494,8 +497,8 @@ func (o ConnectionV2Output) DestinationConfiguration() ConnectionV2DestinationCo
 }
 
 // Defines how schema names appear in the destination. Supported values: `FIVETRAN_NAMING`, `SOURCE_NAMING`. Changing this forces the connection to be replaced.
-func (o ConnectionV2Output) DestinationSchemaNames() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionV2) pulumi.StringPtrOutput { return v.DestinationSchemaNames }).(pulumi.StringPtrOutput)
+func (o ConnectionV2Output) DestinationSchemaNames() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionV2) pulumi.StringOutput { return v.DestinationSchemaNames }).(pulumi.StringOutput)
 }
 
 // The timestamp of the time the connection sync failed last time.
