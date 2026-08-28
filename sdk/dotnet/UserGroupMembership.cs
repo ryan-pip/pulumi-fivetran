@@ -24,7 +24,6 @@ namespace Pulumi.Fivetran
     /// {
     ///     var testUserGroupMembership = new Fivetran.UserGroupMembership("test_user_group_membership", new()
     ///     {
-    ///         UserId = "test_user",
     ///         Groups = new[]
     ///         {
     ///             new Fivetran.Inputs.UserGroupMembershipGroupArgs
@@ -40,6 +39,7 @@ namespace Pulumi.Fivetran
     ///                 Role = "Manage Destination",
     ///             },
     ///         },
+    ///         UserId = "test_user",
     ///     });
     /// 
     /// });

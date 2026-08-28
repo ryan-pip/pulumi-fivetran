@@ -29,7 +29,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := fivetran.NewDestinationCertificates(ctx, "my_destination_approved_certificates", &fivetran.DestinationCertificatesArgs{
-//				DestinationId: pulumi.Any(myDestination.Id),
 //				Certificates: fivetran.DestinationCertificatesCertificateArray{
 //					&fivetran.DestinationCertificatesCertificateArgs{
 //						Hash:        pulumi.String("jhgfJfgrI6yy..."),
@@ -40,6 +39,7 @@ import (
 //						EncodedCert: pulumi.String("encoded_cert"),
 //					},
 //				},
+//				DestinationId: pulumi.Any(myDestination.Id),
 //			})
 //			if err != nil {
 //				return err

@@ -29,7 +29,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := fivetran.NewGroupUsers(ctx, "group_users", &fivetran.GroupUsersArgs{
-//				GroupId: pulumi.Any(group.Id),
 //				Users: fivetran.GroupUsersUserArray{
 //					&fivetran.GroupUsersUserArgs{
 //						Email: pulumi.String("mail@example.com"),
@@ -40,6 +39,7 @@ import (
 //						Role:  pulumi.String("Edit Destination"),
 //					},
 //				},
+//				GroupId: pulumi.Any(group.Id),
 //			})
 //			if err != nil {
 //				return err

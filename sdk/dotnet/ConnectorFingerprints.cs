@@ -24,7 +24,6 @@ namespace Pulumi.Fivetran
     /// {
     ///     var myConnectorApprovedFingerprints = new Fivetran.ConnectorFingerprints("my_connector_approved_fingerprints", new()
     ///     {
-    ///         ConnectorId = myConnector.Id,
     ///         Fingerprints = new[]
     ///         {
     ///             new Fivetran.Inputs.ConnectorFingerprintsFingerprintArgs
@@ -38,6 +37,7 @@ namespace Pulumi.Fivetran
     ///                 PublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key",
     ///             },
     ///         },
+    ///         ConnectorId = myConnector.Id,
     ///     });
     /// 
     /// });

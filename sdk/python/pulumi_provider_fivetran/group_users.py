@@ -122,7 +122,6 @@ class GroupUsers(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         group_users = fivetran.GroupUsers("group_users",
-            group_id=group["id"],
             users=[
                 {
                     "email": "mail@example.com",
@@ -132,7 +131,8 @@ class GroupUsers(pulumi.CustomResource):
                     "email": "another_mail@example.com",
                     "role": "Edit Destination",
                 },
-            ])
+            ],
+            group_id=group["id"])
         ```
 
         ## Import
@@ -182,7 +182,6 @@ class GroupUsers(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         group_users = fivetran.GroupUsers("group_users",
-            group_id=group["id"],
             users=[
                 {
                     "email": "mail@example.com",
@@ -192,7 +191,8 @@ class GroupUsers(pulumi.CustomResource):
                     "email": "another_mail@example.com",
                     "role": "Edit Destination",
                 },
-            ])
+            ],
+            group_id=group["id"])
         ```
 
         ## Import

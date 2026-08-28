@@ -26,8 +26,6 @@ namespace Pulumi.Fivetran
     /// {
     ///     var transformation = new Fivetran.Transformation("transformation", new()
     ///     {
-    ///         Type = "DBT_CORE",
-    ///         Paused = true,
     ///         Schedule = new Fivetran.Inputs.TransformationScheduleArgs
     ///         {
     ///             ScheduleType = "TIME_OF_DAY",
@@ -51,6 +49,8 @@ namespace Pulumi.Fivetran
     ///                 },
     ///             },
     ///         },
+    ///         Type = "DBT_CORE",
+    ///         Paused = true,
     ///     });
     /// 
     /// });
@@ -68,8 +68,6 @@ namespace Pulumi.Fivetran
     /// {
     ///     var transformation = new Fivetran.Transformation("transformation", new()
     ///     {
-    ///         Type = "QUICKSTART",
-    ///         Paused = true,
     ///         Schedule = new Fivetran.Inputs.TransformationScheduleArgs
     ///         {
     ///             ScheduleType = "TIME_OF_DAY",
@@ -89,6 +87,8 @@ namespace Pulumi.Fivetran
     ///                 "excluded_model2",
     ///             },
     ///         },
+    ///         Type = "QUICKSTART",
+    ///         Paused = true,
     ///     });
     /// 
     /// });

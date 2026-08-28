@@ -16,7 +16,6 @@ import * as utilities from "./utilities";
  * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
  * const groupUsers = new fivetran.GroupUsers("group_users", {
- *     groupId: group.id,
  *     users: [
  *         {
  *             email: "mail@example.com",
@@ -27,6 +26,7 @@ import * as utilities from "./utilities";
  *             role: "Edit Destination",
  *         },
  *     ],
+ *     groupId: group.id,
  * });
  * ```
  *

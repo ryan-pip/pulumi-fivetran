@@ -110,7 +110,6 @@ class DestinationFingerprints(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         my_destination_approved_fingerprints = fivetran.DestinationFingerprints("my_destination_approved_fingerprints",
-            destination_id=my_destination["id"],
             fingerprints=[
                 {
                     "hash": "jhgfJfgrI6yy...",
@@ -120,7 +119,8 @@ class DestinationFingerprints(pulumi.CustomResource):
                     "hash": "eUtPirI6yytWe...",
                     "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key",
                 },
-            ])
+            ],
+            destination_id=my_destination["id"])
         ```
 
         ## Import
@@ -173,7 +173,6 @@ class DestinationFingerprints(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         my_destination_approved_fingerprints = fivetran.DestinationFingerprints("my_destination_approved_fingerprints",
-            destination_id=my_destination["id"],
             fingerprints=[
                 {
                     "hash": "jhgfJfgrI6yy...",
@@ -183,7 +182,8 @@ class DestinationFingerprints(pulumi.CustomResource):
                     "hash": "eUtPirI6yytWe...",
                     "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key",
                 },
-            ])
+            ],
+            destination_id=my_destination["id"])
         ```
 
         ## Import

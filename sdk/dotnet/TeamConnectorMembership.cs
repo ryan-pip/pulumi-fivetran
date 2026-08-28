@@ -24,7 +24,6 @@ namespace Pulumi.Fivetran
     /// {
     ///     var testTeamConnectorMembership = new Fivetran.TeamConnectorMembership("test_team_connector_membership", new()
     ///     {
-    ///         TeamId = "test_team",
     ///         Connectors = new[]
     ///         {
     ///             new Fivetran.Inputs.TeamConnectorMembershipConnectorArgs
@@ -40,6 +39,7 @@ namespace Pulumi.Fivetran
     ///                 CreatedAt = "2020-05-25T15:26:47.306509Z",
     ///             },
     ///         },
+    ///         TeamId = "test_team",
     ///     });
     /// 
     /// });

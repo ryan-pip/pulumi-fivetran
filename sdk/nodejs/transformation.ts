@@ -18,8 +18,6 @@ import * as utilities from "./utilities";
  * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
  * const transformation = new fivetran.Transformation("transformation", {
- *     type: "DBT_CORE",
- *     paused: true,
  *     schedule: {
  *         scheduleType: "TIME_OF_DAY",
  *         timeOfDay: "11:00",
@@ -38,6 +36,8 @@ import * as utilities from "./utilities";
  *             },
  *         ],
  *     },
+ *     type: "DBT_CORE",
+ *     paused: true,
  * });
  * ```
  *
@@ -48,8 +48,6 @@ import * as utilities from "./utilities";
  * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
  * const transformation = new fivetran.Transformation("transformation", {
- *     type: "QUICKSTART",
- *     paused: true,
  *     schedule: {
  *         scheduleType: "TIME_OF_DAY",
  *         timeOfDay: "11:00",
@@ -65,6 +63,8 @@ import * as utilities from "./utilities";
  *             "excluded_model2",
  *         ],
  *     },
+ *     type: "QUICKSTART",
+ *     paused: true,
  * });
  * ```
  *

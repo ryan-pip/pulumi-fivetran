@@ -29,9 +29,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := fivetran.NewTransformationProject(ctx, "project", &fivetran.TransformationProjectArgs{
-//				GroupId:  pulumi.String("group_id"),
-//				Type:     pulumi.String("DBT_GIT"),
-//				RunTests: pulumi.Bool(true),
 //				ProjectConfig: &fivetran.TransformationProjectProjectConfigArgs{
 //					GitRemoteUrl:  pulumi.String("git_remote_url"),
 //					GitBranch:     pulumi.String("git_branch"),
@@ -44,6 +41,9 @@ import (
 //						pulumi.String("DBT_VARIABLE=variable_value"),
 //					},
 //				},
+//				GroupId:  pulumi.String("group_id"),
+//				Type:     pulumi.String("DBT_GIT"),
+//				RunTests: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -79,9 +79,6 @@ import (
 //				return err
 //			}
 //			_, err = fivetran.NewTransformationProject(ctx, "project", &fivetran.TransformationProjectArgs{
-//				GroupId:  pulumi.String("group_id"),
-//				Type:     pulumi.String("DBT_GIT"),
-//				RunTests: pulumi.Bool(true),
 //				ProjectConfig: &fivetran.TransformationProjectProjectConfigArgs{
 //					GitRemoteUrl:  pulumi.String("git_remote_url"),
 //					GitBranch:     pulumi.String("git_branch"),
@@ -94,6 +91,9 @@ import (
 //						pulumi.String("DBT_VARIABLE=variable_value"),
 //					},
 //				},
+//				GroupId:  pulumi.String("group_id"),
+//				Type:     pulumi.String("DBT_GIT"),
+//				RunTests: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

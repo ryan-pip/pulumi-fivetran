@@ -16,7 +16,6 @@ import * as utilities from "./utilities";
  * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
  * const myConnectorApprovedFingerprints = new fivetran.ConnectorFingerprints("my_connector_approved_fingerprints", {
- *     connectorId: myConnector.id,
  *     fingerprints: [
  *         {
  *             hash: "jhgfJfgrI6yy...",
@@ -27,6 +26,7 @@ import * as utilities from "./utilities";
  *             publicKey: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key",
  *         },
  *     ],
+ *     connectorId: myConnector.id,
  * });
  * ```
  *

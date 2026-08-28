@@ -16,14 +16,14 @@ import * as utilities from "./utilities";
  * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
  * const extlog = new fivetran.ExternalLogging("extlog", {
- *     groupId: group.id,
- *     service: "azure_monitor_log",
- *     enabled: true,
- *     runSetupTests: true,
  *     config: {
  *         workspaceId: "workspace_id",
  *         primaryKey: "PASSWORD",
  *     },
+ *     groupId: group.id,
+ *     service: "azure_monitor_log",
+ *     enabled: true,
+ *     runSetupTests: true,
  * });
  * ```
  *

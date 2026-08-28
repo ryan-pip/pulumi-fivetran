@@ -48,11 +48,11 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = fivetran.NewConnection(ctx, "postgres", &fivetran.ConnectionArgs{
-//				GroupId: example.ID().ToIDOutput().ToStringOutput(),
-//				Service: pulumi.String("postgres"),
 //				DestinationSchema: &fivetran.ConnectionDestinationSchemaArgs{
 //					Prefix: pulumi.String("my_postgres"),
 //				},
+//				GroupId:           example.ID().ToIDOutput().ToStringOutput(),
+//				Service:           pulumi.String("postgres"),
 //				Config:            pulumi.String(json0),
 //				RunSetupTests:     pulumi.Bool(false),
 //				TrustCertificates: pulumi.Bool(false),
@@ -95,11 +95,11 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = fivetran.NewConnection(ctx, "postgres_full", &fivetran.ConnectionArgs{
-//				GroupId: pulumi.Any(example.Id),
-//				Service: pulumi.String("postgres"),
 //				DestinationSchema: &fivetran.ConnectionDestinationSchemaArgs{
 //					Prefix: pulumi.String("my_postgres"),
 //				},
+//				GroupId:       pulumi.Any(example.Id),
+//				Service:       pulumi.String("postgres"),
 //				Config:        pulumi.String(json0),
 //				RunSetupTests: pulumi.Bool(false),
 //			})
@@ -134,11 +134,11 @@ import (
 //				return err
 //			}
 //			_, err = fivetran.NewConnection(ctx, "mysql", &fivetran.ConnectionArgs{
-//				GroupId: pulumi.Any(exampleFivetranGroup.Id),
-//				Service: pulumi.String("mysql"),
 //				DestinationSchema: &fivetran.ConnectionDestinationSchemaArgs{
 //					Prefix: pulumi.String("my_mysql"),
 //				},
+//				GroupId:          pulumi.Any(exampleFivetranGroup.Id),
+//				Service:          pulumi.String("mysql"),
 //				NetworkingMethod: pulumi.String("ProxyAgent"),
 //				ProxyAgentId:     example.ID().ToIDOutput().ToStringOutput(),
 //				RunSetupTests:    pulumi.Bool(false),
@@ -167,11 +167,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := fivetran.NewConnection(ctx, "s3", &fivetran.ConnectionArgs{
-//				GroupId: pulumi.Any(example.Id),
-//				Service: pulumi.String("s3"),
 //				DestinationSchema: &fivetran.ConnectionDestinationSchemaArgs{
 //					Name: pulumi.String("s3_data_schema"),
 //				},
+//				GroupId:       pulumi.Any(example.Id),
+//				Service:       pulumi.String("s3"),
 //				RunSetupTests: pulumi.Bool(false),
 //			})
 //			if err != nil {
@@ -198,11 +198,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := fivetran.NewConnection(ctx, "snowflake_connection", &fivetran.ConnectionArgs{
-//				GroupId: pulumi.Any(example.Id),
-//				Service: pulumi.String("snowflake"),
 //				DestinationSchema: &fivetran.ConnectionDestinationSchemaArgs{
 //					Prefix: pulumi.String("snowflake_data"),
 //				},
+//				GroupId:              pulumi.Any(example.Id),
+//				Service:              pulumi.String("snowflake"),
 //				DataDelaySensitivity: pulumi.String("HIGH"),
 //				DataDelayThreshold:   pulumi.Int(30),
 //				RunSetupTests:        pulumi.Bool(false),

@@ -21,11 +21,11 @@ import * as utilities from "./utilities";
  *
  * const example = new fivetran.Group("example", {name: "My Destination"});
  * const postgres = new fivetran.Connection("postgres", {
- *     groupId: example.id,
- *     service: "postgres",
  *     destinationSchema: {
  *         prefix: "my_postgres",
  *     },
+ *     groupId: example.id,
+ *     service: "postgres",
  *     config: JSON.stringify({
  *         update_method: "XMIN",
  *     }),
@@ -42,11 +42,11 @@ import * as utilities from "./utilities";
  * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
  * const postgresFull = new fivetran.Connection("postgres_full", {
- *     groupId: example.id,
- *     service: "postgres",
  *     destinationSchema: {
  *         prefix: "my_postgres",
  *     },
+ *     groupId: example.id,
+ *     service: "postgres",
  *     config: JSON.stringify({
  *         update_method: "XMIN",
  *         host: databaseConfig.host,
@@ -69,11 +69,11 @@ import * as utilities from "./utilities";
  *     groupRegion: "GCP_US_EAST4",
  * });
  * const mysql = new fivetran.Connection("mysql", {
- *     groupId: exampleFivetranGroup.id,
- *     service: "mysql",
  *     destinationSchema: {
  *         prefix: "my_mysql",
  *     },
+ *     groupId: exampleFivetranGroup.id,
+ *     service: "mysql",
  *     networkingMethod: "ProxyAgent",
  *     proxyAgentId: example.id,
  *     runSetupTests: false,
@@ -87,11 +87,11 @@ import * as utilities from "./utilities";
  * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
  * const s3 = new fivetran.Connection("s3", {
- *     groupId: example.id,
- *     service: "s3",
  *     destinationSchema: {
  *         name: "s3_data_schema",
  *     },
+ *     groupId: example.id,
+ *     service: "s3",
  *     runSetupTests: false,
  * });
  * ```
@@ -103,11 +103,11 @@ import * as utilities from "./utilities";
  * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
  * const snowflakeConnection = new fivetran.Connection("snowflake_connection", {
- *     groupId: example.id,
- *     service: "snowflake",
  *     destinationSchema: {
  *         prefix: "snowflake_data",
  *     },
+ *     groupId: example.id,
+ *     service: "snowflake",
  *     dataDelaySensitivity: "HIGH",
  *     dataDelayThreshold: 30,
  *     runSetupTests: false,

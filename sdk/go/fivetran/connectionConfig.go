@@ -35,11 +35,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			postgres, err := fivetran.NewConnection(ctx, "postgres", &fivetran.ConnectionArgs{
-//				GroupId: pulumi.Any(example.Id),
-//				Service: pulumi.String("postgres"),
 //				DestinationSchema: &fivetran.ConnectionDestinationSchemaArgs{
 //					Prefix: pulumi.String("my_postgres"),
 //				},
+//				GroupId:       pulumi.Any(example.Id),
+//				Service:       pulumi.String("postgres"),
 //				RunSetupTests: pulumi.Bool(false),
 //			})
 //			if err != nil {
@@ -97,11 +97,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			mysql, err := fivetran.NewConnection(ctx, "mysql", &fivetran.ConnectionArgs{
-//				GroupId: pulumi.Any(example.Id),
-//				Service: pulumi.String("mysql"),
 //				DestinationSchema: &fivetran.ConnectionDestinationSchemaArgs{
 //					Prefix: pulumi.String("my_mysql"),
 //				},
+//				GroupId: pulumi.Any(example.Id),
+//				Service: pulumi.String("mysql"),
 //			})
 //			if err != nil {
 //				return err
@@ -149,11 +149,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			s3, err := fivetran.NewConnection(ctx, "s3", &fivetran.ConnectionArgs{
-//				GroupId: pulumi.Any(example.Id),
-//				Service: pulumi.String("s3"),
 //				DestinationSchema: &fivetran.ConnectionDestinationSchemaArgs{
 //					Name: pulumi.String("s3_data"),
 //				},
+//				GroupId: pulumi.Any(example.Id),
+//				Service: pulumi.String("s3"),
 //			})
 //			if err != nil {
 //				return err
@@ -197,9 +197,9 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tmpJSON0, err := json.Marshal(map[string]interface{}{
 //				"update_method": "XMIN",
-//				"host":          postgres.Address,
-//				"port":          postgres.Port,
-//				"database":      postgres.DbName,
+//				"host":          postgresAwsDbInstance.Address,
+//				"port":          postgresAwsDbInstance.Port,
+//				"database":      postgresAwsDbInstance.DbName,
 //			})
 //			if err != nil {
 //				return err
@@ -214,7 +214,7 @@ import (
 //			}
 //			json1 := string(tmpJSON1)
 //			_, err = fivetran.NewConnectionConfig(ctx, "postgres_secure", &fivetran.ConnectionConfigArgs{
-//				ConnectionId:      pulumi.Any(postgresFivetranConnection.Id),
+//				ConnectionId:      pulumi.Any(postgres.Id),
 //				Config:            pulumi.String(json0),
 //				Auth:              pulumi.String(json1),
 //				RunSetupTests:     pulumi.Bool(true),

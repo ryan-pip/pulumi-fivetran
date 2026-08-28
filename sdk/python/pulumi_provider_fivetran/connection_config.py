@@ -253,11 +253,11 @@ class ConnectionConfig(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         postgres = fivetran.Connection("postgres",
-            group_id=example["id"],
-            service="postgres",
             destination_schema={
                 "prefix": "my_postgres",
             },
+            group_id=example["id"],
+            service="postgres",
             run_setup_tests=False)
         postgres_connection_config = fivetran.ConnectionConfig("postgres",
             connection_id=postgres.id,
@@ -284,11 +284,11 @@ class ConnectionConfig(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         mysql = fivetran.Connection("mysql",
-            group_id=example["id"],
-            service="mysql",
             destination_schema={
                 "prefix": "my_mysql",
-            })
+            },
+            group_id=example["id"],
+            service="mysql")
         mysql_connection_config = fivetran.ConnectionConfig("mysql",
             connection_id=mysql.id,
             config=json.dumps({
@@ -310,11 +310,11 @@ class ConnectionConfig(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         s3 = fivetran.Connection("s3",
-            group_id=example["id"],
-            service="s3",
             destination_schema={
                 "name": "s3_data",
-            })
+            },
+            group_id=example["id"],
+            service="s3")
         s3_connection_config = fivetran.ConnectionConfig("s3",
             connection_id=s3.id,
             auth=json.dumps({
@@ -331,12 +331,12 @@ class ConnectionConfig(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         postgres_secure = fivetran.ConnectionConfig("postgres_secure",
-            connection_id=postgres_fivetran_connection["id"],
+            connection_id=postgres["id"],
             config=json.dumps({
                 "update_method": "XMIN",
-                "host": postgres["address"],
-                "port": postgres["port"],
-                "database": postgres["dbName"],
+                "host": postgres_aws_db_instance["address"],
+                "port": postgres_aws_db_instance["port"],
+                "database": postgres_aws_db_instance["dbName"],
             }),
             auth=json.dumps({
                 "user": db_creds["secretString"]["username"],
@@ -400,11 +400,11 @@ class ConnectionConfig(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         postgres = fivetran.Connection("postgres",
-            group_id=example["id"],
-            service="postgres",
             destination_schema={
                 "prefix": "my_postgres",
             },
+            group_id=example["id"],
+            service="postgres",
             run_setup_tests=False)
         postgres_connection_config = fivetran.ConnectionConfig("postgres",
             connection_id=postgres.id,
@@ -431,11 +431,11 @@ class ConnectionConfig(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         mysql = fivetran.Connection("mysql",
-            group_id=example["id"],
-            service="mysql",
             destination_schema={
                 "prefix": "my_mysql",
-            })
+            },
+            group_id=example["id"],
+            service="mysql")
         mysql_connection_config = fivetran.ConnectionConfig("mysql",
             connection_id=mysql.id,
             config=json.dumps({
@@ -457,11 +457,11 @@ class ConnectionConfig(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         s3 = fivetran.Connection("s3",
-            group_id=example["id"],
-            service="s3",
             destination_schema={
                 "name": "s3_data",
-            })
+            },
+            group_id=example["id"],
+            service="s3")
         s3_connection_config = fivetran.ConnectionConfig("s3",
             connection_id=s3.id,
             auth=json.dumps({
@@ -478,12 +478,12 @@ class ConnectionConfig(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         postgres_secure = fivetran.ConnectionConfig("postgres_secure",
-            connection_id=postgres_fivetran_connection["id"],
+            connection_id=postgres["id"],
             config=json.dumps({
                 "update_method": "XMIN",
-                "host": postgres["address"],
-                "port": postgres["port"],
-                "database": postgres["dbName"],
+                "host": postgres_aws_db_instance["address"],
+                "port": postgres_aws_db_instance["port"],
+                "database": postgres_aws_db_instance["dbName"],
             }),
             auth=json.dumps({
                 "user": db_creds["secretString"]["username"],

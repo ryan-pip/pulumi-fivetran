@@ -29,7 +29,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := fivetran.NewUserConnectorMembership(ctx, "test_user_connector_membership", &fivetran.UserConnectorMembershipArgs{
-//				UserId: pulumi.String("test_user"),
 //				Connectors: fivetran.UserConnectorMembershipConnectorArray{
 //					&fivetran.UserConnectorMembershipConnectorArgs{
 //						ConnectorId: pulumi.String("test_connector"),
@@ -42,6 +41,7 @@ import (
 //						CreatedAt:   pulumi.String("2020-05-25T15:26:47.306509Z"),
 //					},
 //				},
+//				UserId: pulumi.String("test_user"),
 //			})
 //			if err != nil {
 //				return err

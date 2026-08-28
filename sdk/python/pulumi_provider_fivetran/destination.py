@@ -516,14 +516,6 @@ class Destination(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         dest = fivetran.Destination("dest",
-            group_id=group["id"],
-            service="postgres_rds_warehouse",
-            time_zone_offset="0",
-            region="GCP_US_EAST4",
-            trust_certificates=True,
-            trust_fingerprints=True,
-            daylight_saving_time_enabled=True,
-            run_setup_tests=True,
             config={
                 "host": "destination.fqdn",
                 "port": 5432,
@@ -531,7 +523,15 @@ class Destination(pulumi.CustomResource):
                 "password": "myPass",
                 "database": "fivetran",
                 "connection_type": "Directly",
-            })
+            },
+            group_id=group["id"],
+            service="postgres_rds_warehouse",
+            time_zone_offset="0",
+            region="GCP_US_EAST4",
+            trust_certificates=True,
+            trust_fingerprints=True,
+            daylight_saving_time_enabled=True,
+            run_setup_tests=True)
         ```
 
         ## Setup tests
@@ -606,14 +606,6 @@ class Destination(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         dest = fivetran.Destination("dest",
-            group_id=group["id"],
-            service="postgres_rds_warehouse",
-            time_zone_offset="0",
-            region="GCP_US_EAST4",
-            trust_certificates=True,
-            trust_fingerprints=True,
-            daylight_saving_time_enabled=True,
-            run_setup_tests=True,
             config={
                 "host": "destination.fqdn",
                 "port": 5432,
@@ -621,7 +613,15 @@ class Destination(pulumi.CustomResource):
                 "password": "myPass",
                 "database": "fivetran",
                 "connection_type": "Directly",
-            })
+            },
+            group_id=group["id"],
+            service="postgres_rds_warehouse",
+            time_zone_offset="0",
+            region="GCP_US_EAST4",
+            trust_certificates=True,
+            trust_fingerprints=True,
+            daylight_saving_time_enabled=True,
+            run_setup_tests=True)
         ```
 
         ## Setup tests

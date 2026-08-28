@@ -29,14 +29,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := fivetran.NewPrivateLink(ctx, "test_pl", &fivetran.PrivateLinkArgs{
-//				Name:    pulumi.String("name"),
-//				Region:  pulumi.String("region"),
-//				Service: pulumi.String("service"),
 //				Config: []map[string]string{
 //					{
 //						"connectionServiceName": "connection_service_name",
 //					},
 //				},
+//				Name:    pulumi.String("name"),
+//				Region:  pulumi.String("region"),
+//				Service: pulumi.String("service"),
 //			})
 //			if err != nil {
 //				return err

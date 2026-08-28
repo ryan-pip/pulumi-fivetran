@@ -24,7 +24,6 @@ namespace Pulumi.Fivetran
     /// {
     ///     var myDestinationApprovedFingerprints = new Fivetran.DestinationFingerprints("my_destination_approved_fingerprints", new()
     ///     {
-    ///         DestinationId = myDestination.Id,
     ///         Fingerprints = new[]
     ///         {
     ///             new Fivetran.Inputs.DestinationFingerprintsFingerprintArgs
@@ -38,6 +37,7 @@ namespace Pulumi.Fivetran
     ///                 PublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key",
     ///             },
     ///         },
+    ///         DestinationId = myDestination.Id,
     ///     });
     /// 
     /// });

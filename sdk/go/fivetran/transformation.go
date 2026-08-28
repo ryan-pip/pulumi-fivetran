@@ -30,8 +30,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := fivetran.NewTransformation(ctx, "transformation", &fivetran.TransformationArgs{
-//				Type:   pulumi.String("DBT_CORE"),
-//				Paused: pulumi.Bool(true),
 //				Schedule: &fivetran.TransformationScheduleArgs{
 //					ScheduleType: pulumi.String("TIME_OF_DAY"),
 //					TimeOfDay:    pulumi.String("11:00"),
@@ -50,6 +48,8 @@ import (
 //						},
 //					},
 //				},
+//				Type:   pulumi.String("DBT_CORE"),
+//				Paused: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -75,8 +75,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := fivetran.NewTransformation(ctx, "transformation", &fivetran.TransformationArgs{
-//				Type:   pulumi.String("QUICKSTART"),
-//				Paused: pulumi.Bool(true),
 //				Schedule: &fivetran.TransformationScheduleArgs{
 //					ScheduleType: pulumi.String("TIME_OF_DAY"),
 //					TimeOfDay:    pulumi.String("11:00"),
@@ -92,6 +90,8 @@ import (
 //						pulumi.String("excluded_model2"),
 //					},
 //				},
+//				Type:   pulumi.String("QUICKSTART"),
+//				Paused: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

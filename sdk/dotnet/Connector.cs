@@ -26,8 +26,6 @@ namespace Pulumi.Fivetran
     /// {
     ///     var amplitude = new Fivetran.Connector("amplitude", new()
     ///     {
-    ///         GroupId = @group.Id,
-    ///         Service = "amplitude",
     ///         DestinationSchema = new Fivetran.Inputs.ConnectorDestinationSchemaArgs
     ///         {
     ///             Name = "amplitude_connector",
@@ -50,6 +48,8 @@ namespace Pulumi.Fivetran
     ///                 },
     ///             },
     ///         },
+    ///         GroupId = @group.Id,
+    ///         Service = "amplitude",
     ///     });
     /// 
     /// });
@@ -71,9 +71,6 @@ namespace Pulumi.Fivetran
     /// {
     ///     var myGithubConnector = new Fivetran.Connector("my_github_connector", new()
     ///     {
-    ///         GroupId = "group_id",
-    ///         Service = "github",
-    ///         RunSetupTests = true,
     ///         DestinationSchema = new Fivetran.Inputs.ConnectorDestinationSchemaArgs
     ///         {
     ///             Name = "github_connector",
@@ -86,6 +83,9 @@ namespace Pulumi.Fivetran
     ///             Username = "git-hub-user-name",
     ///             Pat = "ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     ///         },
+    ///         GroupId = "group_id",
+    ///         Service = "github",
+    ///         RunSetupTests = true,
     ///     });
     /// 
     /// });

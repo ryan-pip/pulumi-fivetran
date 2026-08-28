@@ -24,9 +24,6 @@ namespace Pulumi.Fivetran
     /// {
     ///     var project = new Fivetran.TransformationProject("project", new()
     ///     {
-    ///         GroupId = "group_id",
-    ///         Type = "DBT_GIT",
-    ///         RunTests = true,
     ///         ProjectConfig = new Fivetran.Inputs.TransformationProjectProjectConfigArgs
     ///         {
     ///             GitRemoteUrl = "git_remote_url",
@@ -41,6 +38,9 @@ namespace Pulumi.Fivetran
     ///                 "DBT_VARIABLE=variable_value",
     ///             },
     ///         },
+    ///         GroupId = "group_id",
+    ///         Type = "DBT_GIT",
+    ///         RunTests = true,
     ///     });
     /// 
     /// });
@@ -67,9 +67,6 @@ namespace Pulumi.Fivetran
     /// 
     ///     var project = new Fivetran.TransformationProject("project", new()
     ///     {
-    ///         GroupId = "group_id",
-    ///         Type = "DBT_GIT",
-    ///         RunTests = true,
     ///         ProjectConfig = new Fivetran.Inputs.TransformationProjectProjectConfigArgs
     ///         {
     ///             GitRemoteUrl = "git_remote_url",
@@ -84,6 +81,9 @@ namespace Pulumi.Fivetran
     ///                 "DBT_VARIABLE=variable_value",
     ///             },
     ///         },
+    ///         GroupId = "group_id",
+    ///         Type = "DBT_GIT",
+    ///         RunTests = true,
     ///     });
     /// 
     /// });

@@ -564,8 +564,6 @@ class Connector(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         amplitude = fivetran.Connector("amplitude",
-            group_id=group["id"],
-            service="amplitude",
             destination_schema={
                 "name": "amplitude_connector",
             },
@@ -582,7 +580,9 @@ class Connector(pulumi.CustomResource):
                         "secret_key": "my_secret_key",
                     },
                 ],
-            })
+            },
+            group_id=group["id"],
+            service="amplitude")
         ```
 
         > Use `destination_schema` to define connector schema configuration. Field `destination_schema.name` will be mapped into `config.schema` in REST API payload. Field `destination_schema.table` will be mapped into `config.table` in REST API payload. Field `destination_schema.prefix` will be mapped into `config.schema_prefix` in REST API payload. Field `destination_schema.table_group_name` will be mapped into `config.table_group_name` in REST API payload. Specify values according to [public documentation](https://fivetran.com/docs/rest-api/connectors/config) for particular connector type.
@@ -596,9 +596,6 @@ class Connector(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         my_github_connector = fivetran.Connector("my_github_connector",
-            group_id="group_id",
-            service="github",
-            run_setup_tests=True,
             destination_schema={
                 "name": "github_connector",
             },
@@ -608,7 +605,10 @@ class Connector(pulumi.CustomResource):
                 "auth_mode": "PersonalAccessToken",
                 "username": "git-hub-user-name",
                 "pat": "ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            })
+            },
+            group_id="group_id",
+            service="github",
+            run_setup_tests=True)
         ```
 
         ## Import
@@ -676,8 +676,6 @@ class Connector(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         amplitude = fivetran.Connector("amplitude",
-            group_id=group["id"],
-            service="amplitude",
             destination_schema={
                 "name": "amplitude_connector",
             },
@@ -694,7 +692,9 @@ class Connector(pulumi.CustomResource):
                         "secret_key": "my_secret_key",
                     },
                 ],
-            })
+            },
+            group_id=group["id"],
+            service="amplitude")
         ```
 
         > Use `destination_schema` to define connector schema configuration. Field `destination_schema.name` will be mapped into `config.schema` in REST API payload. Field `destination_schema.table` will be mapped into `config.table` in REST API payload. Field `destination_schema.prefix` will be mapped into `config.schema_prefix` in REST API payload. Field `destination_schema.table_group_name` will be mapped into `config.table_group_name` in REST API payload. Specify values according to [public documentation](https://fivetran.com/docs/rest-api/connectors/config) for particular connector type.
@@ -708,9 +708,6 @@ class Connector(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         my_github_connector = fivetran.Connector("my_github_connector",
-            group_id="group_id",
-            service="github",
-            run_setup_tests=True,
             destination_schema={
                 "name": "github_connector",
             },
@@ -720,7 +717,10 @@ class Connector(pulumi.CustomResource):
                 "auth_mode": "PersonalAccessToken",
                 "username": "git-hub-user-name",
                 "pat": "ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            })
+            },
+            group_id="group_id",
+            service="github",
+            run_setup_tests=True)
         ```
 
         ## Import

@@ -28,14 +28,6 @@ namespace Pulumi.Fivetran
     /// {
     ///     var dest = new Fivetran.Destination("dest", new()
     ///     {
-    ///         GroupId = @group.Id,
-    ///         Service = "postgres_rds_warehouse",
-    ///         TimeZoneOffset = "0",
-    ///         Region = "GCP_US_EAST4",
-    ///         TrustCertificates = true,
-    ///         TrustFingerprints = true,
-    ///         DaylightSavingTimeEnabled = true,
-    ///         RunSetupTests = true,
     ///         Config = new Fivetran.Inputs.DestinationConfigArgs
     ///         {
     ///             Host = "destination.fqdn",
@@ -45,6 +37,14 @@ namespace Pulumi.Fivetran
     ///             Database = "fivetran",
     ///             ConnectionType = "Directly",
     ///         },
+    ///         GroupId = @group.Id,
+    ///         Service = "postgres_rds_warehouse",
+    ///         TimeZoneOffset = "0",
+    ///         Region = "GCP_US_EAST4",
+    ///         TrustCertificates = true,
+    ///         TrustFingerprints = true,
+    ///         DaylightSavingTimeEnabled = true,
+    ///         RunSetupTests = true,
     ///     });
     /// 
     /// });

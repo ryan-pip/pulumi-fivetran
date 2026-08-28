@@ -20,14 +20,6 @@ import * as utilities from "./utilities";
  * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
  * const dest = new fivetran.Destination("dest", {
- *     groupId: group.id,
- *     service: "postgres_rds_warehouse",
- *     timeZoneOffset: "0",
- *     region: "GCP_US_EAST4",
- *     trustCertificates: true,
- *     trustFingerprints: true,
- *     daylightSavingTimeEnabled: true,
- *     runSetupTests: true,
  *     config: {
  *         host: "destination.fqdn",
  *         port: 5432,
@@ -36,6 +28,14 @@ import * as utilities from "./utilities";
  *         database: "fivetran",
  *         connectionType: "Directly",
  *     },
+ *     groupId: group.id,
+ *     service: "postgres_rds_warehouse",
+ *     timeZoneOffset: "0",
+ *     region: "GCP_US_EAST4",
+ *     trustCertificates: true,
+ *     trustFingerprints: true,
+ *     daylightSavingTimeEnabled: true,
+ *     runSetupTests: true,
  * });
  * ```
  *
