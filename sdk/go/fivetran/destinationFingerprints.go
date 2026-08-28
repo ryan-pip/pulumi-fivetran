@@ -29,7 +29,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := fivetran.NewDestinationFingerprints(ctx, "my_destination_approved_fingerprints", &fivetran.DestinationFingerprintsArgs{
-//				DestinationId: pulumi.Any(myDestination.Id),
 //				Fingerprints: fivetran.DestinationFingerprintsFingerprintArray{
 //					&fivetran.DestinationFingerprintsFingerprintArgs{
 //						Hash:      pulumi.String("jhgfJfgrI6yy..."),
@@ -40,6 +39,7 @@ import (
 //						PublicKey: pulumi.String("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key"),
 //					},
 //				},
+//				DestinationId: pulumi.Any(myDestination.Id),
 //			})
 //			if err != nil {
 //				return err

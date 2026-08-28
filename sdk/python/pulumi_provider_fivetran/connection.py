@@ -526,11 +526,11 @@ class Connection(pulumi.CustomResource):
 
         example = fivetran.Group("example", name="My Destination")
         postgres = fivetran.Connection("postgres",
-            group_id=example.id,
-            service="postgres",
             destination_schema={
                 "prefix": "my_postgres",
             },
+            group_id=example.id,
+            service="postgres",
             config=json.dumps({
                 "update_method": "XMIN",
             }),
@@ -547,11 +547,11 @@ class Connection(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         postgres_full = fivetran.Connection("postgres_full",
-            group_id=example["id"],
-            service="postgres",
             destination_schema={
                 "prefix": "my_postgres",
             },
+            group_id=example["id"],
+            service="postgres",
             config=json.dumps({
                 "update_method": "XMIN",
                 "host": database_config["host"],
@@ -572,11 +572,11 @@ class Connection(pulumi.CustomResource):
             display_name="My Proxy Agent",
             group_region="GCP_US_EAST4")
         mysql = fivetran.Connection("mysql",
-            group_id=example_fivetran_group["id"],
-            service="mysql",
             destination_schema={
                 "prefix": "my_mysql",
             },
+            group_id=example_fivetran_group["id"],
+            service="mysql",
             networking_method="ProxyAgent",
             proxy_agent_id=example.id,
             run_setup_tests=False)
@@ -589,11 +589,11 @@ class Connection(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         s3 = fivetran.Connection("s3",
-            group_id=example["id"],
-            service="s3",
             destination_schema={
                 "name": "s3_data_schema",
             },
+            group_id=example["id"],
+            service="s3",
             run_setup_tests=False)
         ```
 
@@ -604,11 +604,11 @@ class Connection(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         snowflake_connection = fivetran.Connection("snowflake_connection",
-            group_id=example["id"],
-            service="snowflake",
             destination_schema={
                 "prefix": "snowflake_data",
             },
+            group_id=example["id"],
+            service="snowflake",
             data_delay_sensitivity="HIGH",
             data_delay_threshold=30,
             run_setup_tests=False)
@@ -675,11 +675,11 @@ class Connection(pulumi.CustomResource):
 
         example = fivetran.Group("example", name="My Destination")
         postgres = fivetran.Connection("postgres",
-            group_id=example.id,
-            service="postgres",
             destination_schema={
                 "prefix": "my_postgres",
             },
+            group_id=example.id,
+            service="postgres",
             config=json.dumps({
                 "update_method": "XMIN",
             }),
@@ -696,11 +696,11 @@ class Connection(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         postgres_full = fivetran.Connection("postgres_full",
-            group_id=example["id"],
-            service="postgres",
             destination_schema={
                 "prefix": "my_postgres",
             },
+            group_id=example["id"],
+            service="postgres",
             config=json.dumps({
                 "update_method": "XMIN",
                 "host": database_config["host"],
@@ -721,11 +721,11 @@ class Connection(pulumi.CustomResource):
             display_name="My Proxy Agent",
             group_region="GCP_US_EAST4")
         mysql = fivetran.Connection("mysql",
-            group_id=example_fivetran_group["id"],
-            service="mysql",
             destination_schema={
                 "prefix": "my_mysql",
             },
+            group_id=example_fivetran_group["id"],
+            service="mysql",
             networking_method="ProxyAgent",
             proxy_agent_id=example.id,
             run_setup_tests=False)
@@ -738,11 +738,11 @@ class Connection(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         s3 = fivetran.Connection("s3",
-            group_id=example["id"],
-            service="s3",
             destination_schema={
                 "name": "s3_data_schema",
             },
+            group_id=example["id"],
+            service="s3",
             run_setup_tests=False)
         ```
 
@@ -753,11 +753,11 @@ class Connection(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         snowflake_connection = fivetran.Connection("snowflake_connection",
-            group_id=example["id"],
-            service="snowflake",
             destination_schema={
                 "prefix": "snowflake_data",
             },
+            group_id=example["id"],
+            service="snowflake",
             data_delay_sensitivity="HIGH",
             data_delay_threshold=30,
             run_setup_tests=False)

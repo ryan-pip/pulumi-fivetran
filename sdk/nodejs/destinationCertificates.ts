@@ -16,7 +16,6 @@ import * as utilities from "./utilities";
  * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
  * const myDestinationApprovedCertificates = new fivetran.DestinationCertificates("my_destination_approved_certificates", {
- *     destinationId: myDestination.id,
  *     certificates: [
  *         {
  *             hash: "jhgfJfgrI6yy...",
@@ -27,6 +26,7 @@ import * as utilities from "./utilities";
  *             encodedCert: "encoded_cert",
  *         },
  *     ],
+ *     destinationId: myDestination.id,
  * });
  * ```
  *

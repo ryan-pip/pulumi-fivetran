@@ -31,8 +31,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := fivetran.NewConnector(ctx, "amplitude", &fivetran.ConnectorArgs{
-//				GroupId: pulumi.Any(group.Id),
-//				Service: pulumi.String("amplitude"),
 //				DestinationSchema: &fivetran.ConnectorDestinationSchemaArgs{
 //					Name: pulumi.String("amplitude_connector"),
 //				},
@@ -50,6 +48,8 @@ import (
 //						},
 //					},
 //				},
+//				GroupId: pulumi.Any(group.Id),
+//				Service: pulumi.String("amplitude"),
 //			})
 //			if err != nil {
 //				return err
@@ -79,9 +79,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := fivetran.NewConnector(ctx, "my_github_connector", &fivetran.ConnectorArgs{
-//				GroupId:       pulumi.String("group_id"),
-//				Service:       pulumi.String("github"),
-//				RunSetupTests: pulumi.Bool(true),
 //				DestinationSchema: &fivetran.ConnectorDestinationSchemaArgs{
 //					Name: pulumi.String("github_connector"),
 //				},
@@ -92,6 +89,9 @@ import (
 //					Username:    pulumi.String("git-hub-user-name"),
 //					Pat:         pulumi.String("ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //				},
+//				GroupId:       pulumi.String("group_id"),
+//				Service:       pulumi.String("github"),
+//				RunSetupTests: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

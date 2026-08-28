@@ -29,12 +29,12 @@ namespace Pulumi.Fivetran
     /// {
     ///     var postgres = new Fivetran.Connection("postgres", new()
     ///     {
-    ///         GroupId = example.Id,
-    ///         Service = "postgres",
     ///         DestinationSchema = new Fivetran.Inputs.ConnectionDestinationSchemaArgs
     ///         {
     ///             Prefix = "my_postgres",
     ///         },
+    ///         GroupId = example.Id,
+    ///         Service = "postgres",
     ///         RunSetupTests = false,
     ///     });
     /// 
@@ -74,12 +74,12 @@ namespace Pulumi.Fivetran
     /// {
     ///     var mysql = new Fivetran.Connection("mysql", new()
     ///     {
-    ///         GroupId = example.Id,
-    ///         Service = "mysql",
     ///         DestinationSchema = new Fivetran.Inputs.ConnectionDestinationSchemaArgs
     ///         {
     ///             Prefix = "my_mysql",
     ///         },
+    ///         GroupId = example.Id,
+    ///         Service = "mysql",
     ///     });
     /// 
     ///     var mysqlConnectionConfig = new Fivetran.ConnectionConfig("mysql", new()
@@ -113,12 +113,12 @@ namespace Pulumi.Fivetran
     /// {
     ///     var s3 = new Fivetran.Connection("s3", new()
     ///     {
-    ///         GroupId = example.Id,
-    ///         Service = "s3",
     ///         DestinationSchema = new Fivetran.Inputs.ConnectionDestinationSchemaArgs
     ///         {
     ///             Name = "s3_data",
     ///         },
+    ///         GroupId = example.Id,
+    ///         Service = "s3",
     ///     });
     /// 
     ///     var s3ConnectionConfig = new Fivetran.ConnectionConfig("s3", new()
@@ -147,13 +147,13 @@ namespace Pulumi.Fivetran
     /// {
     ///     var postgresSecure = new Fivetran.ConnectionConfig("postgres_secure", new()
     ///     {
-    ///         ConnectionId = postgresFivetranConnection.Id,
+    ///         ConnectionId = postgres.Id,
     ///         Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
     ///             ["update_method"] = "XMIN",
-    ///             ["host"] = postgres.Address,
-    ///             ["port"] = postgres.Port,
-    ///             ["database"] = postgres.DbName,
+    ///             ["host"] = postgresAwsDbInstance.Address,
+    ///             ["port"] = postgresAwsDbInstance.Port,
+    ///             ["database"] = postgresAwsDbInstance.DbName,
     ///         }),
     ///         Auth = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {

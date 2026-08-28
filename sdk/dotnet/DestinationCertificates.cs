@@ -24,7 +24,6 @@ namespace Pulumi.Fivetran
     /// {
     ///     var myDestinationApprovedCertificates = new Fivetran.DestinationCertificates("my_destination_approved_certificates", new()
     ///     {
-    ///         DestinationId = myDestination.Id,
     ///         Certificates = new[]
     ///         {
     ///             new Fivetran.Inputs.DestinationCertificatesCertificateArgs
@@ -38,6 +37,7 @@ namespace Pulumi.Fivetran
     ///                 EncodedCert = "encoded_cert",
     ///             },
     ///         },
+    ///         DestinationId = myDestination.Id,
     ///     });
     /// 
     /// });

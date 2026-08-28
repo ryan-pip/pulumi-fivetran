@@ -110,7 +110,6 @@ class UserGroupMembership(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         test_user_group_membership = fivetran.UserGroupMembership("test_user_group_membership",
-            user_id="test_user",
             groups=[
                 {
                     "connector_id": "test_connector",
@@ -122,7 +121,8 @@ class UserGroupMembership(pulumi.CustomResource):
                     "group_id": "test_group",
                     "role": "Manage Destination",
                 },
-            ])
+            ],
+            user_id="test_user")
         ```
 
         ## Import
@@ -173,7 +173,6 @@ class UserGroupMembership(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         test_user_group_membership = fivetran.UserGroupMembership("test_user_group_membership",
-            user_id="test_user",
             groups=[
                 {
                     "connector_id": "test_connector",
@@ -185,7 +184,8 @@ class UserGroupMembership(pulumi.CustomResource):
                     "group_id": "test_group",
                     "role": "Manage Destination",
                 },
-            ])
+            ],
+            user_id="test_user")
         ```
 
         ## Import

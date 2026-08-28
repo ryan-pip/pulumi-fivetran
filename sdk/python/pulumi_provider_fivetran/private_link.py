@@ -276,12 +276,12 @@ class PrivateLink(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         test_pl = fivetran.PrivateLink("test_pl",
-            name="name",
-            region="region",
-            service="service",
             config=[{
                 "connectionServiceName": "connection_service_name",
-            }])
+            }],
+            name="name",
+            region="region",
+            service="service")
         ```
 
 
@@ -308,12 +308,12 @@ class PrivateLink(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         test_pl = fivetran.PrivateLink("test_pl",
-            name="name",
-            region="region",
-            service="service",
             config=[{
                 "connectionServiceName": "connection_service_name",
-            }])
+            }],
+            name="name",
+            region="region",
+            service="service")
         ```
 
 

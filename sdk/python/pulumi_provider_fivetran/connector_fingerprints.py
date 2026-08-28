@@ -110,7 +110,6 @@ class ConnectorFingerprints(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         my_connector_approved_fingerprints = fivetran.ConnectorFingerprints("my_connector_approved_fingerprints",
-            connector_id=my_connector["id"],
             fingerprints=[
                 {
                     "hash": "jhgfJfgrI6yy...",
@@ -120,7 +119,8 @@ class ConnectorFingerprints(pulumi.CustomResource):
                     "hash": "eUtPirI6yytWe...",
                     "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key",
                 },
-            ])
+            ],
+            connector_id=my_connector["id"])
         ```
 
         ## Import
@@ -173,7 +173,6 @@ class ConnectorFingerprints(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         my_connector_approved_fingerprints = fivetran.ConnectorFingerprints("my_connector_approved_fingerprints",
-            connector_id=my_connector["id"],
             fingerprints=[
                 {
                     "hash": "jhgfJfgrI6yy...",
@@ -183,7 +182,8 @@ class ConnectorFingerprints(pulumi.CustomResource):
                     "hash": "eUtPirI6yytWe...",
                     "public_key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6 ... fivetran user key",
                 },
-            ])
+            ],
+            connector_id=my_connector["id"])
         ```
 
         ## Import

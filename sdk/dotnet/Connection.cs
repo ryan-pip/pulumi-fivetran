@@ -34,12 +34,12 @@ namespace Pulumi.Fivetran
     /// 
     ///     var postgres = new Fivetran.Connection("postgres", new()
     ///     {
-    ///         GroupId = example.Id,
-    ///         Service = "postgres",
     ///         DestinationSchema = new Fivetran.Inputs.ConnectionDestinationSchemaArgs
     ///         {
     ///             Prefix = "my_postgres",
     ///         },
+    ///         GroupId = example.Id,
+    ///         Service = "postgres",
     ///         Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
     ///             ["update_method"] = "XMIN",
@@ -65,12 +65,12 @@ namespace Pulumi.Fivetran
     /// {
     ///     var postgresFull = new Fivetran.Connection("postgres_full", new()
     ///     {
-    ///         GroupId = example.Id,
-    ///         Service = "postgres",
     ///         DestinationSchema = new Fivetran.Inputs.ConnectionDestinationSchemaArgs
     ///         {
     ///             Prefix = "my_postgres",
     ///         },
+    ///         GroupId = example.Id,
+    ///         Service = "postgres",
     ///         Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
     ///             ["update_method"] = "XMIN",
@@ -103,12 +103,12 @@ namespace Pulumi.Fivetran
     /// 
     ///     var mysql = new Fivetran.Connection("mysql", new()
     ///     {
-    ///         GroupId = exampleFivetranGroup.Id,
-    ///         Service = "mysql",
     ///         DestinationSchema = new Fivetran.Inputs.ConnectionDestinationSchemaArgs
     ///         {
     ///             Prefix = "my_mysql",
     ///         },
+    ///         GroupId = exampleFivetranGroup.Id,
+    ///         Service = "mysql",
     ///         NetworkingMethod = "ProxyAgent",
     ///         ProxyAgentId = example.Id,
     ///         RunSetupTests = false,
@@ -129,12 +129,12 @@ namespace Pulumi.Fivetran
     /// {
     ///     var s3 = new Fivetran.Connection("s3", new()
     ///     {
-    ///         GroupId = example.Id,
-    ///         Service = "s3",
     ///         DestinationSchema = new Fivetran.Inputs.ConnectionDestinationSchemaArgs
     ///         {
     ///             Name = "s3_data_schema",
     ///         },
+    ///         GroupId = example.Id,
+    ///         Service = "s3",
     ///         RunSetupTests = false,
     ///     });
     /// 
@@ -153,12 +153,12 @@ namespace Pulumi.Fivetran
     /// {
     ///     var snowflakeConnection = new Fivetran.Connection("snowflake_connection", new()
     ///     {
-    ///         GroupId = example.Id,
-    ///         Service = "snowflake",
     ///         DestinationSchema = new Fivetran.Inputs.ConnectionDestinationSchemaArgs
     ///         {
     ///             Prefix = "snowflake_data",
     ///         },
+    ///         GroupId = example.Id,
+    ///         Service = "snowflake",
     ///         DataDelaySensitivity = "HIGH",
     ///         DataDelayThreshold = 30,
     ///         RunSetupTests = false,

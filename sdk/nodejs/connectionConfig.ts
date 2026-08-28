@@ -18,11 +18,11 @@ import * as utilities from "./utilities";
  * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
  * const postgres = new fivetran.Connection("postgres", {
- *     groupId: example.id,
- *     service: "postgres",
  *     destinationSchema: {
  *         prefix: "my_postgres",
  *     },
+ *     groupId: example.id,
+ *     service: "postgres",
  *     runSetupTests: false,
  * });
  * const postgresConnectionConfig = new fivetran.ConnectionConfig("postgres", {
@@ -50,11 +50,11 @@ import * as utilities from "./utilities";
  * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
  * const mysql = new fivetran.Connection("mysql", {
- *     groupId: example.id,
- *     service: "mysql",
  *     destinationSchema: {
  *         prefix: "my_mysql",
  *     },
+ *     groupId: example.id,
+ *     service: "mysql",
  * });
  * const mysqlConnectionConfig = new fivetran.ConnectionConfig("mysql", {
  *     connectionId: mysql.id,
@@ -77,11 +77,11 @@ import * as utilities from "./utilities";
  * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
  * const s3 = new fivetran.Connection("s3", {
- *     groupId: example.id,
- *     service: "s3",
  *     destinationSchema: {
  *         name: "s3_data",
  *     },
+ *     groupId: example.id,
+ *     service: "s3",
  * });
  * const s3ConnectionConfig = new fivetran.ConnectionConfig("s3", {
  *     connectionId: s3.id,
@@ -99,12 +99,12 @@ import * as utilities from "./utilities";
  * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
  * const postgresSecure = new fivetran.ConnectionConfig("postgres_secure", {
- *     connectionId: postgresFivetranConnection.id,
+ *     connectionId: postgres.id,
  *     config: JSON.stringify({
  *         update_method: "XMIN",
- *         host: postgres.address,
- *         port: postgres.port,
- *         database: postgres.dbName,
+ *         host: postgresAwsDbInstance.address,
+ *         port: postgresAwsDbInstance.port,
+ *         database: postgresAwsDbInstance.dbName,
  *     }),
  *     auth: JSON.stringify({
  *         user: dbCreds.secretString.username,

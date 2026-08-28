@@ -14,12 +14,12 @@ import * as utilities from "./utilities";
  * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
  * const testPl = new fivetran.PrivateLink("test_pl", {
- *     name: "name",
- *     region: "region",
- *     service: "service",
  *     config: [{
  *         connectionServiceName: "connection_service_name",
  *     }],
+ *     name: "name",
+ *     region: "region",
+ *     service: "service",
  * });
  * ```
  */

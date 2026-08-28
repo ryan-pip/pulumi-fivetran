@@ -16,7 +16,6 @@ import * as utilities from "./utilities";
  * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
  * const testUserConnectorMembership = new fivetran.UserConnectorMembership("test_user_connector_membership", {
- *     userId: "test_user",
  *     connectors: [
  *         {
  *             connectorId: "test_connector",
@@ -29,6 +28,7 @@ import * as utilities from "./utilities";
  *             createdAt: "2020-05-25T15:26:47.306509Z",
  *         },
  *     ],
+ *     userId: "test_user",
  * });
  * ```
  *

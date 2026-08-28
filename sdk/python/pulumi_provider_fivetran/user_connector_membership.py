@@ -110,7 +110,6 @@ class UserConnectorMembership(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         test_user_connector_membership = fivetran.UserConnectorMembership("test_user_connector_membership",
-            user_id="test_user",
             connectors=[
                 {
                     "connector_id": "test_connector",
@@ -122,7 +121,8 @@ class UserConnectorMembership(pulumi.CustomResource):
                     "role": "Manage Connection",
                     "created_at": "2020-05-25T15:26:47.306509Z",
                 },
-            ])
+            ],
+            user_id="test_user")
         ```
 
         ## Import
@@ -173,7 +173,6 @@ class UserConnectorMembership(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         test_user_connector_membership = fivetran.UserConnectorMembership("test_user_connector_membership",
-            user_id="test_user",
             connectors=[
                 {
                     "connector_id": "test_connector",
@@ -185,7 +184,8 @@ class UserConnectorMembership(pulumi.CustomResource):
                     "role": "Manage Connection",
                     "created_at": "2020-05-25T15:26:47.306509Z",
                 },
-            ])
+            ],
+            user_id="test_user")
         ```
 
         ## Import

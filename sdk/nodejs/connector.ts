@@ -18,8 +18,6 @@ import * as utilities from "./utilities";
  * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
  * const amplitude = new fivetran.Connector("amplitude", {
- *     groupId: group.id,
- *     service: "amplitude",
  *     destinationSchema: {
  *         name: "amplitude_connector",
  *     },
@@ -37,6 +35,8 @@ import * as utilities from "./utilities";
  *             },
  *         ],
  *     },
+ *     groupId: group.id,
+ *     service: "amplitude",
  * });
  * ```
  *
@@ -51,9 +51,6 @@ import * as utilities from "./utilities";
  * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
  * const myGithubConnector = new fivetran.Connector("my_github_connector", {
- *     groupId: "group_id",
- *     service: "github",
- *     runSetupTests: true,
  *     destinationSchema: {
  *         name: "github_connector",
  *     },
@@ -64,6 +61,9 @@ import * as utilities from "./utilities";
  *         username: "git-hub-user-name",
  *         pat: "ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
  *     },
+ *     groupId: "group_id",
+ *     service: "github",
+ *     runSetupTests: true,
  * });
  * ```
  *

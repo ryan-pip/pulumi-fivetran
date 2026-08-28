@@ -29,14 +29,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := fivetran.NewExternalLogging(ctx, "extlog", &fivetran.ExternalLoggingArgs{
-//				GroupId:       pulumi.Any(group.Id),
-//				Service:       pulumi.String("azure_monitor_log"),
-//				Enabled:       pulumi.Bool(true),
-//				RunSetupTests: pulumi.Bool(true),
 //				Config: &fivetran.ExternalLoggingConfigArgs{
 //					WorkspaceId: pulumi.String("workspace_id"),
 //					PrimaryKey:  pulumi.String("PASSWORD"),
 //				},
+//				GroupId:       pulumi.Any(group.Id),
+//				Service:       pulumi.String("azure_monitor_log"),
+//				Enabled:       pulumi.Bool(true),
+//				RunSetupTests: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

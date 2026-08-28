@@ -24,15 +24,15 @@ namespace Pulumi.Fivetran
     /// {
     ///     var extlog = new Fivetran.ExternalLogging("extlog", new()
     ///     {
-    ///         GroupId = @group.Id,
-    ///         Service = "azure_monitor_log",
-    ///         Enabled = true,
-    ///         RunSetupTests = true,
     ///         Config = new Fivetran.Inputs.ExternalLoggingConfigArgs
     ///         {
     ///             WorkspaceId = "workspace_id",
     ///             PrimaryKey = "PASSWORD",
     ///         },
+    ///         GroupId = @group.Id,
+    ///         Service = "azure_monitor_log",
+    ///         Enabled = true,
+    ///         RunSetupTests = true,
     ///     });
     /// 
     /// });

@@ -239,9 +239,6 @@ class TransformationProject(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         project = fivetran.TransformationProject("project",
-            group_id="group_id",
-            type="DBT_GIT",
-            run_tests=True,
             project_config={
                 "git_remote_url": "git_remote_url",
                 "git_branch": "git_branch",
@@ -251,7 +248,10 @@ class TransformationProject(pulumi.CustomResource):
                 "threads": 1,
                 "target_name": "target_name",
                 "environment_vars": ["DBT_VARIABLE=variable_value"],
-            })
+            },
+            group_id="group_id",
+            type="DBT_GIT",
+            run_tests=True)
         ```
 
         ## How to set up a Transformation Project with private Git Repo.
@@ -266,9 +266,6 @@ class TransformationProject(pulumi.CustomResource):
 
         my_group = fivetran.Group("my_group", name="My_Group")
         project = fivetran.TransformationProject("project",
-            group_id="group_id",
-            type="DBT_GIT",
-            run_tests=True,
             project_config={
                 "git_remote_url": "git_remote_url",
                 "git_branch": "git_branch",
@@ -278,7 +275,10 @@ class TransformationProject(pulumi.CustomResource):
                 "threads": 1,
                 "target_name": "target_name",
                 "environment_vars": ["DBT_VARIABLE=variable_value"],
-            })
+            },
+            group_id="group_id",
+            type="DBT_GIT",
+            run_tests=True)
         ```
 
         Then you need to set up the Transformation Project public key (field `public_key` in created resource) as a deploy key into your repo using:
@@ -361,9 +361,6 @@ class TransformationProject(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         project = fivetran.TransformationProject("project",
-            group_id="group_id",
-            type="DBT_GIT",
-            run_tests=True,
             project_config={
                 "git_remote_url": "git_remote_url",
                 "git_branch": "git_branch",
@@ -373,7 +370,10 @@ class TransformationProject(pulumi.CustomResource):
                 "threads": 1,
                 "target_name": "target_name",
                 "environment_vars": ["DBT_VARIABLE=variable_value"],
-            })
+            },
+            group_id="group_id",
+            type="DBT_GIT",
+            run_tests=True)
         ```
 
         ## How to set up a Transformation Project with private Git Repo.
@@ -388,9 +388,6 @@ class TransformationProject(pulumi.CustomResource):
 
         my_group = fivetran.Group("my_group", name="My_Group")
         project = fivetran.TransformationProject("project",
-            group_id="group_id",
-            type="DBT_GIT",
-            run_tests=True,
             project_config={
                 "git_remote_url": "git_remote_url",
                 "git_branch": "git_branch",
@@ -400,7 +397,10 @@ class TransformationProject(pulumi.CustomResource):
                 "threads": 1,
                 "target_name": "target_name",
                 "environment_vars": ["DBT_VARIABLE=variable_value"],
-            })
+            },
+            group_id="group_id",
+            type="DBT_GIT",
+            run_tests=True)
         ```
 
         Then you need to set up the Transformation Project public key (field `public_key` in created resource) as a deploy key into your repo using:

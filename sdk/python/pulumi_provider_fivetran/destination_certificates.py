@@ -110,7 +110,6 @@ class DestinationCertificates(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         my_destination_approved_certificates = fivetran.DestinationCertificates("my_destination_approved_certificates",
-            destination_id=my_destination["id"],
             certificates=[
                 {
                     "hash": "jhgfJfgrI6yy...",
@@ -120,7 +119,8 @@ class DestinationCertificates(pulumi.CustomResource):
                     "hash": "eUtPirI6yytWe...",
                     "encoded_cert": "encoded_cert",
                 },
-            ])
+            ],
+            destination_id=my_destination["id"])
         ```
 
         ## Import
@@ -173,7 +173,6 @@ class DestinationCertificates(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         my_destination_approved_certificates = fivetran.DestinationCertificates("my_destination_approved_certificates",
-            destination_id=my_destination["id"],
             certificates=[
                 {
                     "hash": "jhgfJfgrI6yy...",
@@ -183,7 +182,8 @@ class DestinationCertificates(pulumi.CustomResource):
                     "hash": "eUtPirI6yytWe...",
                     "encoded_cert": "encoded_cert",
                 },
-            ])
+            ],
+            destination_id=my_destination["id"])
         ```
 
         ## Import

@@ -29,7 +29,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := fivetran.NewUserGroupMembership(ctx, "test_user_group_membership", &fivetran.UserGroupMembershipArgs{
-//				UserId: pulumi.String("test_user"),
 //				Groups: fivetran.UserGroupMembershipGroupArray{
 //					&fivetran.UserGroupMembershipGroupArgs{
 //						ConnectorId: "test_connector",
@@ -42,6 +41,7 @@ import (
 //						Role:        pulumi.String("Manage Destination"),
 //					},
 //				},
+//				UserId: pulumi.String("test_user"),
 //			})
 //			if err != nil {
 //				return err

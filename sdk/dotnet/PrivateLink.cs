@@ -24,9 +24,6 @@ namespace Pulumi.Fivetran
     /// {
     ///     var testPl = new Fivetran.PrivateLink("test_pl", new()
     ///     {
-    ///         Name = "name",
-    ///         Region = "region",
-    ///         Service = "service",
     ///         Config = new[]
     ///         {
     ///             
@@ -34,6 +31,9 @@ namespace Pulumi.Fivetran
     ///                 { "connectionServiceName", "connection_service_name" },
     ///             },
     ///         },
+    ///         Name = "name",
+    ///         Region = "region",
+    ///         Service = "service",
     ///     });
     /// 
     /// });

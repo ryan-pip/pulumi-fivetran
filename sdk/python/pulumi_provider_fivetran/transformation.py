@@ -235,8 +235,6 @@ class Transformation(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         transformation = fivetran.Transformation("transformation",
-            type="DBT_CORE",
-            paused=True,
             schedule={
                 "schedule_type": "TIME_OF_DAY",
                 "time_of_day": "11:00",
@@ -254,7 +252,9 @@ class Transformation(pulumi.CustomResource):
                         "command": "command2",
                     },
                 ],
-            })
+            },
+            type="DBT_CORE",
+            paused=True)
         ```
 
         ### Quickstart Transformation
@@ -264,8 +264,6 @@ class Transformation(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         transformation = fivetran.Transformation("transformation",
-            type="QUICKSTART",
-            paused=True,
             schedule={
                 "schedule_type": "TIME_OF_DAY",
                 "time_of_day": "11:00",
@@ -280,7 +278,9 @@ class Transformation(pulumi.CustomResource):
                     "excluded_model1",
                     "excluded_model2",
                 ],
-            })
+            },
+            type="QUICKSTART",
+            paused=True)
         ```
 
         ## Import
@@ -334,8 +334,6 @@ class Transformation(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         transformation = fivetran.Transformation("transformation",
-            type="DBT_CORE",
-            paused=True,
             schedule={
                 "schedule_type": "TIME_OF_DAY",
                 "time_of_day": "11:00",
@@ -353,7 +351,9 @@ class Transformation(pulumi.CustomResource):
                         "command": "command2",
                     },
                 ],
-            })
+            },
+            type="DBT_CORE",
+            paused=True)
         ```
 
         ### Quickstart Transformation
@@ -363,8 +363,6 @@ class Transformation(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         transformation = fivetran.Transformation("transformation",
-            type="QUICKSTART",
-            paused=True,
             schedule={
                 "schedule_type": "TIME_OF_DAY",
                 "time_of_day": "11:00",
@@ -379,7 +377,9 @@ class Transformation(pulumi.CustomResource):
                     "excluded_model1",
                     "excluded_model2",
                 ],
-            })
+            },
+            type="QUICKSTART",
+            paused=True)
         ```
 
         ## Import

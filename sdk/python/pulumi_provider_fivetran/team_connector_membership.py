@@ -110,7 +110,6 @@ class TeamConnectorMembership(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         test_team_connector_membership = fivetran.TeamConnectorMembership("test_team_connector_membership",
-            team_id="test_team",
             connectors=[
                 {
                     "connector_id": "test_connector",
@@ -122,7 +121,8 @@ class TeamConnectorMembership(pulumi.CustomResource):
                     "role": "Manage Connection",
                     "created_at": "2020-05-25T15:26:47.306509Z",
                 },
-            ])
+            ],
+            team_id="test_team")
         ```
 
         ## Import
@@ -173,7 +173,6 @@ class TeamConnectorMembership(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         test_team_connector_membership = fivetran.TeamConnectorMembership("test_team_connector_membership",
-            team_id="test_team",
             connectors=[
                 {
                     "connector_id": "test_connector",
@@ -185,7 +184,8 @@ class TeamConnectorMembership(pulumi.CustomResource):
                     "role": "Manage Connection",
                     "created_at": "2020-05-25T15:26:47.306509Z",
                 },
-            ])
+            ],
+            team_id="test_team")
         ```
 
         ## Import

@@ -16,7 +16,6 @@ import * as utilities from "./utilities";
  * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
  * const testTeamGroupMembership = new fivetran.TeamGroupMembership("test_team_group_membership", {
- *     teamId: "test_team",
  *     groups: [
  *         {
  *             connectorId: "test_connector",
@@ -29,6 +28,7 @@ import * as utilities from "./utilities";
  *             role: "Manage Destination",
  *         },
  *     ],
+ *     teamId: "test_team",
  * });
  * ```
  *

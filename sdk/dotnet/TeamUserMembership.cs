@@ -24,7 +24,6 @@ namespace Pulumi.Fivetran
     /// {
     ///     var testTeamUserMembership = new Fivetran.TeamUserMembership("test_team_user_membership", new()
     ///     {
-    ///         TeamId = "test_team",
     ///         Users = new[]
     ///         {
     ///             new Fivetran.Inputs.TeamUserMembershipUserArgs
@@ -38,6 +37,7 @@ namespace Pulumi.Fivetran
     ///                 Role = "Manage Connection",
     ///             },
     ///         },
+    ///         TeamId = "test_team",
     ///     });
     /// 
     /// });

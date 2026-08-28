@@ -16,9 +16,6 @@ import * as utilities from "./utilities";
  * import * as fivetran from "@ryan-pip/pulumi-fivetran";
  *
  * const project = new fivetran.TransformationProject("project", {
- *     groupId: "group_id",
- *     type: "DBT_GIT",
- *     runTests: true,
  *     projectConfig: {
  *         gitRemoteUrl: "git_remote_url",
  *         gitBranch: "git_branch",
@@ -29,6 +26,9 @@ import * as utilities from "./utilities";
  *         targetName: "target_name",
  *         environmentVars: ["DBT_VARIABLE=variable_value"],
  *     },
+ *     groupId: "group_id",
+ *     type: "DBT_GIT",
+ *     runTests: true,
  * });
  * ```
  *
@@ -44,9 +44,6 @@ import * as utilities from "./utilities";
  *
  * const myGroup = new fivetran.Group("my_group", {name: "My_Group"});
  * const project = new fivetran.TransformationProject("project", {
- *     groupId: "group_id",
- *     type: "DBT_GIT",
- *     runTests: true,
  *     projectConfig: {
  *         gitRemoteUrl: "git_remote_url",
  *         gitBranch: "git_branch",
@@ -57,6 +54,9 @@ import * as utilities from "./utilities";
  *         targetName: "target_name",
  *         environmentVars: ["DBT_VARIABLE=variable_value"],
  *     },
+ *     groupId: "group_id",
+ *     type: "DBT_GIT",
+ *     runTests: true,
  * });
  * ```
  *

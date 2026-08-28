@@ -33,14 +33,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := fivetran.NewDestination(ctx, "dest", &fivetran.DestinationArgs{
-//				GroupId:                   pulumi.Any(group.Id),
-//				Service:                   pulumi.String("postgres_rds_warehouse"),
-//				TimeZoneOffset:            pulumi.String("0"),
-//				Region:                    pulumi.String("GCP_US_EAST4"),
-//				TrustCertificates:         pulumi.Bool(true),
-//				TrustFingerprints:         pulumi.Bool(true),
-//				DaylightSavingTimeEnabled: pulumi.Bool(true),
-//				RunSetupTests:             pulumi.Bool(true),
 //				Config: &fivetran.DestinationConfigArgs{
 //					Host:           pulumi.String("destination.fqdn"),
 //					Port:           pulumi.Int(5432),
@@ -49,6 +41,14 @@ import (
 //					Database:       pulumi.String("fivetran"),
 //					ConnectionType: pulumi.String("Directly"),
 //				},
+//				GroupId:                   pulumi.Any(group.Id),
+//				Service:                   pulumi.String("postgres_rds_warehouse"),
+//				TimeZoneOffset:            pulumi.String("0"),
+//				Region:                    pulumi.String("GCP_US_EAST4"),
+//				TrustCertificates:         pulumi.Bool(true),
+//				TrustFingerprints:         pulumi.Bool(true),
+//				DaylightSavingTimeEnabled: pulumi.Bool(true),
+//				RunSetupTests:             pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

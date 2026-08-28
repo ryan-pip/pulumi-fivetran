@@ -208,14 +208,14 @@ class ExternalLogging(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         extlog = fivetran.ExternalLogging("extlog",
-            group_id=group["id"],
-            service="azure_monitor_log",
-            enabled=True,
-            run_setup_tests=True,
             config={
                 "workspace_id": "workspace_id",
                 "primary_key": "PASSWORD",
-            })
+            },
+            group_id=group["id"],
+            service="azure_monitor_log",
+            enabled=True,
+            run_setup_tests=True)
         ```
 
         ## Setup tests
@@ -279,14 +279,14 @@ class ExternalLogging(pulumi.CustomResource):
         import pulumi_provider_fivetran as fivetran
 
         extlog = fivetran.ExternalLogging("extlog",
-            group_id=group["id"],
-            service="azure_monitor_log",
-            enabled=True,
-            run_setup_tests=True,
             config={
                 "workspace_id": "workspace_id",
                 "primary_key": "PASSWORD",
-            })
+            },
+            group_id=group["id"],
+            service="azure_monitor_log",
+            enabled=True,
+            run_setup_tests=True)
         ```
 
         ## Setup tests
