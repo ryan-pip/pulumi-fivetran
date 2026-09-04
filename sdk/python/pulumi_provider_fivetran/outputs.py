@@ -23411,7 +23411,7 @@ class ConnectorSchemaConfigSchemaTableColumn(dict):
         :param _builtins.str name: The column name within your destination in accordance with Fivetran conventional rules.
         :param _builtins.bool enabled: The boolean value specifying whether the sync of the column into the destination is enabled.
         :param _builtins.bool hashed: The boolean value specifying whether a column should be hashed.
-        :param _builtins.bool is_primary_key: Boolean value indicating if the column is a primary key. This field is read-only and computed by the API.
+        :param _builtins.bool is_primary_key: Boolean value indicating if the column is a primary key.
         """
         pulumi.set(__self__, "name", name)
         if enabled is not None:
@@ -23449,7 +23449,7 @@ class ConnectorSchemaConfigSchemaTableColumn(dict):
     @pulumi.getter(name="isPrimaryKey")
     def is_primary_key(self) -> Optional[_builtins.bool]:
         """
-        Boolean value indicating if the column is a primary key. This field is read-only and computed by the API.
+        Boolean value indicating if the column is a primary key.
         """
         return pulumi.get(self, "is_primary_key")
 
@@ -23585,7 +23585,7 @@ class ConnectorSchemaConfigSchemasTablesColumns(dict):
         """
         :param _builtins.bool enabled: The boolean value specifying whether the sync of the column into the destination is enabled.
         :param _builtins.bool hashed: The boolean value specifying whether a column should be hashed.
-        :param _builtins.bool is_primary_key: Boolean value indicating if the column is a primary key. This field is read-only and computed by the API.
+        :param _builtins.bool is_primary_key: Boolean value indicating if the column is a primary key.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -23614,7 +23614,7 @@ class ConnectorSchemaConfigSchemasTablesColumns(dict):
     @pulumi.getter(name="isPrimaryKey")
     def is_primary_key(self) -> Optional[_builtins.bool]:
         """
-        Boolean value indicating if the column is a primary key. This field is read-only and computed by the API.
+        Boolean value indicating if the column is a primary key.
         """
         return pulumi.get(self, "is_primary_key")
 
