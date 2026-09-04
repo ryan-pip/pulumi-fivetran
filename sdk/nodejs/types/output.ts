@@ -8338,7 +8338,7 @@ export interface ConnectorSchemaConfigSchemaTableColumn {
      */
     hashed: boolean;
     /**
-     * Boolean value indicating if the column is a primary key. This field is read-only and computed by the API.
+     * Boolean value indicating if the column is a primary key.
      */
     isPrimaryKey: boolean;
     /**
@@ -8387,7 +8387,7 @@ export interface ConnectorSchemaConfigSchemasTablesColumns {
      */
     hashed: boolean;
     /**
-     * Boolean value indicating if the column is a primary key. This field is read-only and computed by the API.
+     * Boolean value indicating if the column is a primary key.
      */
     isPrimaryKey: boolean;
 }

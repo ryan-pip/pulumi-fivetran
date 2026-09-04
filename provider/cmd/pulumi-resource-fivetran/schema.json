@@ -5651,7 +5651,7 @@
                 },
                 "isPrimaryKey": {
                     "type": "boolean",
-                    "description": "Boolean value indicating if the column is a primary key. This field is read-only and computed by the API.\n"
+                    "description": "Boolean value indicating if the column is a primary key.\n"
                 },
                 "name": {
                     "type": "string",
@@ -5741,7 +5741,7 @@
                 },
                 "isPrimaryKey": {
                     "type": "boolean",
-                    "description": "Boolean value indicating if the column is a primary key. This field is read-only and computed by the API.\n"
+                    "description": "Boolean value indicating if the column is a primary key.\n"
                 }
             },
             "type": "object",

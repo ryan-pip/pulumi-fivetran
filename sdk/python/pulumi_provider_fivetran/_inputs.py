@@ -33943,7 +33943,7 @@ class ConnectorSchemaConfigSchemaTableColumnArgsDict(TypedDict):
     """
     is_primary_key: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Boolean value indicating if the column is a primary key. This field is read-only and computed by the API.
+    Boolean value indicating if the column is a primary key.
     """
 
 @pulumi.input_type
@@ -33957,7 +33957,7 @@ class ConnectorSchemaConfigSchemaTableColumnArgs:
         :param pulumi.Input[_builtins.str] name: The column name within your destination in accordance with Fivetran conventional rules.
         :param pulumi.Input[_builtins.bool] enabled: The boolean value specifying whether the sync of the column into the destination is enabled.
         :param pulumi.Input[_builtins.bool] hashed: The boolean value specifying whether a column should be hashed.
-        :param pulumi.Input[_builtins.bool] is_primary_key: Boolean value indicating if the column is a primary key. This field is read-only and computed by the API.
+        :param pulumi.Input[_builtins.bool] is_primary_key: Boolean value indicating if the column is a primary key.
         """
         pulumi.set(__self__, "name", name)
         if enabled is not None:
@@ -34007,7 +34007,7 @@ class ConnectorSchemaConfigSchemaTableColumnArgs:
     @pulumi.getter(name="isPrimaryKey")
     def is_primary_key(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Boolean value indicating if the column is a primary key. This field is read-only and computed by the API.
+        Boolean value indicating if the column is a primary key.
         """
         return pulumi.get(self, "is_primary_key")
 
@@ -34165,7 +34165,7 @@ class ConnectorSchemaConfigSchemasTablesColumnsArgsDict(TypedDict):
     """
     is_primary_key: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Boolean value indicating if the column is a primary key. This field is read-only and computed by the API.
+    Boolean value indicating if the column is a primary key.
     """
 
 @pulumi.input_type
@@ -34177,7 +34177,7 @@ class ConnectorSchemaConfigSchemasTablesColumnsArgs:
         """
         :param pulumi.Input[_builtins.bool] enabled: The boolean value specifying whether the sync of the column into the destination is enabled.
         :param pulumi.Input[_builtins.bool] hashed: The boolean value specifying whether a column should be hashed.
-        :param pulumi.Input[_builtins.bool] is_primary_key: Boolean value indicating if the column is a primary key. This field is read-only and computed by the API.
+        :param pulumi.Input[_builtins.bool] is_primary_key: Boolean value indicating if the column is a primary key.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -34214,7 +34214,7 @@ class ConnectorSchemaConfigSchemasTablesColumnsArgs:
     @pulumi.getter(name="isPrimaryKey")
     def is_primary_key(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Boolean value indicating if the column is a primary key. This field is read-only and computed by the API.
+        Boolean value indicating if the column is a primary key.
         """
         return pulumi.get(self, "is_primary_key")
 

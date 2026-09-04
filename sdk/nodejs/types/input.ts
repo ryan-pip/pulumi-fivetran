@@ -8338,7 +8338,7 @@ export interface ConnectorSchemaConfigSchemaTableColumn {
      */
     hashed?: pulumi.Input<boolean | undefined>;
     /**
-     * Boolean value indicating if the column is a primary key. This field is read-only and computed by the API.
+     * Boolean value indicating if the column is a primary key.
      */
     isPrimaryKey?: pulumi.Input<boolean | undefined>;
     /**
@@ -8387,7 +8387,7 @@ export interface ConnectorSchemaConfigSchemasTablesColumns {
      */
     hashed?: pulumi.Input<boolean | undefined>;
     /**
-     * Boolean value indicating if the column is a primary key. This field is read-only and computed by the API.
+     * Boolean value indicating if the column is a primary key.
      */
     isPrimaryKey?: pulumi.Input<boolean | undefined>;
 }

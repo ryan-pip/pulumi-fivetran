@@ -37945,7 +37945,7 @@ type ConnectorSchemaConfigSchemaTableColumn struct {
 	Enabled *bool `pulumi:"enabled"`
 	// The boolean value specifying whether a column should be hashed.
 	Hashed *bool `pulumi:"hashed"`
-	// Boolean value indicating if the column is a primary key. This field is read-only and computed by the API.
+	// Boolean value indicating if the column is a primary key.
 	IsPrimaryKey *bool `pulumi:"isPrimaryKey"`
 	// The column name within your destination in accordance with Fivetran conventional rules.
 	Name string `pulumi:"name"`
@@ -37967,7 +37967,7 @@ type ConnectorSchemaConfigSchemaTableColumnArgs struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// The boolean value specifying whether a column should be hashed.
 	Hashed pulumi.BoolPtrInput `pulumi:"hashed"`
-	// Boolean value indicating if the column is a primary key. This field is read-only and computed by the API.
+	// Boolean value indicating if the column is a primary key.
 	IsPrimaryKey pulumi.BoolPtrInput `pulumi:"isPrimaryKey"`
 	// The column name within your destination in accordance with Fivetran conventional rules.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -38034,7 +38034,7 @@ func (o ConnectorSchemaConfigSchemaTableColumnOutput) Hashed() pulumi.BoolPtrOut
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTableColumn) *bool { return v.Hashed }).(pulumi.BoolPtrOutput)
 }
 
-// Boolean value indicating if the column is a primary key. This field is read-only and computed by the API.
+// Boolean value indicating if the column is a primary key.
 func (o ConnectorSchemaConfigSchemaTableColumnOutput) IsPrimaryKey() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTableColumn) *bool { return v.IsPrimaryKey }).(pulumi.BoolPtrOutput)
 }
@@ -38301,7 +38301,7 @@ type ConnectorSchemaConfigSchemasTablesColumns struct {
 	Enabled *bool `pulumi:"enabled"`
 	// The boolean value specifying whether a column should be hashed.
 	Hashed *bool `pulumi:"hashed"`
-	// Boolean value indicating if the column is a primary key. This field is read-only and computed by the API.
+	// Boolean value indicating if the column is a primary key.
 	IsPrimaryKey *bool `pulumi:"isPrimaryKey"`
 }
 
@@ -38321,7 +38321,7 @@ type ConnectorSchemaConfigSchemasTablesColumnsArgs struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// The boolean value specifying whether a column should be hashed.
 	Hashed pulumi.BoolPtrInput `pulumi:"hashed"`
-	// Boolean value indicating if the column is a primary key. This field is read-only and computed by the API.
+	// Boolean value indicating if the column is a primary key.
 	IsPrimaryKey pulumi.BoolPtrInput `pulumi:"isPrimaryKey"`
 }
 
@@ -38386,7 +38386,7 @@ func (o ConnectorSchemaConfigSchemasTablesColumnsOutput) Hashed() pulumi.BoolPtr
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemasTablesColumns) *bool { return v.Hashed }).(pulumi.BoolPtrOutput)
 }
 
-// Boolean value indicating if the column is a primary key. This field is read-only and computed by the API.
+// Boolean value indicating if the column is a primary key.
 func (o ConnectorSchemaConfigSchemasTablesColumnsOutput) IsPrimaryKey() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemasTablesColumns) *bool { return v.IsPrimaryKey }).(pulumi.BoolPtrOutput)
 }

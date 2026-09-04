@@ -25,7 +25,7 @@ namespace Pulumi.Fivetran.Inputs
         public Input<bool>? Hashed { get; set; }
 
         /// <summary>
-        /// Boolean value indicating if the column is a primary key. This field is read-only and computed by the API.
+        /// Boolean value indicating if the column is a primary key.
         /// </summary>
         [Input("isPrimaryKey")]
         public Input<bool>? IsPrimaryKey { get; set; }

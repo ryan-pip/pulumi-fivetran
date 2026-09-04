@@ -22,7 +22,7 @@ namespace Pulumi.Fivetran.Outputs
         /// </summary>
         public readonly bool? Hashed;
         /// <summary>
-        /// Boolean value indicating if the column is a primary key. This field is read-only and computed by the API.
+        /// Boolean value indicating if the column is a primary key.
         /// </summary>
         public readonly bool? IsPrimaryKey;
         /// <summary>
