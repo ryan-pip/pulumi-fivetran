@@ -82,7 +82,7 @@ require (
 	github.com/fatih/color v1.18.0 // indirect
 	github.com/felixge/httpsnoop v1.1.0 // indirect
 	github.com/fivetran/go-fivetran v1.3.9 // indirect
-	github.com/fivetran/terraform-provider-fivetran v1.9.42 // indirect
+	github.com/fivetran/terraform-provider-fivetran v1.9.43 // indirect
 	github.com/frankban/quicktest v1.14.4 // indirect
 	github.com/go-git/gcfg/v2 v2.0.2 // indirect
 	github.com/go-git/go-billy/v6 v6.0.0-alpha.2 // indirect
