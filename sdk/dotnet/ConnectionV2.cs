@@ -14,6 +14,8 @@ namespace Pulumi.Fivetran
     /// 
     /// Manages a Fivetran connection. Unlike `fivetran.Connector`/`fivetran.Connection`, `Config` and `Auth` are provided as dynamic, service-specific objects: their accepted fields, types, and required/readonly/immutable rules are resolved from connector metadata at plan time rather than from a fixed schema. This means the same resource works across services (e.g. `S3`, `Postgres`, `FivetranLog`) without a per-service Terraform schema.
     /// 
+    /// For detailed information about the required `Config` and `Auth` fields for each service type, see the Fivetran API documentation.
+    /// 
     /// Pause state is managed separately via `fivetran.ConnectionV2PauseState`; this resource does not expose a `Paused` attribute. **New connections are always created paused.** To start syncing, add a linked `fivetran.ConnectionV2PauseState` resource with `paused = false`.
     /// 
     /// ## Example Usage

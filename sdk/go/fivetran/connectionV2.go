@@ -16,6 +16,8 @@ import (
 //
 // Manages a Fivetran connection. Unlike `Connector`/`Connection`, `config` and `auth` are provided as dynamic, service-specific objects: their accepted fields, types, and required/readonly/immutable rules are resolved from connector metadata at plan time rather than from a fixed schema. This means the same resource works across services (e.g. `s3`, `postgres`, `fivetranLog`) without a per-service Terraform schema.
 //
+// For detailed information about the required `config` and `auth` fields for each service type, see the Fivetran API documentation.
+//
 // Pause state is managed separately via `ConnectionV2PauseState`; this resource does not expose a `paused` attribute. **New connections are always created paused.** To start syncing, add a linked `ConnectionV2PauseState` resource with `paused = false`.
 //
 // ## Example Usage

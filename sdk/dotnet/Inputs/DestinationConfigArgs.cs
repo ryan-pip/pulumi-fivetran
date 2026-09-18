@@ -33,6 +33,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `PostgresGcpWarehouse`: Specifies whether TLS is required. Must be populated if `ConnectionType` is set to `SshTunnel`.
         /// 	- Service `PostgresRdsWarehouse`: Specifies whether TLS is required. Must be populated if `ConnectionType` is set to `SshTunnel`.
         /// 	- Service `PostgresWarehouse`: Specifies whether TLS is required. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `PostgresWh`: Specifies whether TLS is required. Must be set when using `SshTunnel` connection
         /// 	- Service `Redshift`: Require TLS through Tunnel
         /// 	- Service `SqlServerRdsWarehouse`: Specifies whether TLS is required. Must be populated if `ConnectionType` is set to `SshTunnel`.
         /// 	- Service `SqlServerWarehouse`: Specifies whether TLS is required. Must be populated if `ConnectionType` is set to `SshTunnel`.
@@ -62,6 +63,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `PostgresGcpWarehouse`: Authentication method. Default value: `PASSWORD`.
         /// 	- Service `PostgresRdsWarehouse`: Authentication method. Default value: `PASSWORD`.
         /// 	- Service `PostgresWarehouse`: Authentication method. Default value: `PASSWORD`.
+        /// 	- Service `PostgresWh`: Authentication method. Supported values: `PASSWORD`, `AWS_IAM`. Default: `PASSWORD`.
         /// </summary>
         [Input("authMethod")]
         public Input<string>? AuthMethod { get; set; }
@@ -104,6 +106,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `PostgresGcpWarehouse`: AWS region code. Required when `AuthMethod` is set to `AWS_IAM`.
         /// 	- Service `PostgresRdsWarehouse`: AWS region where the RDS instance is located. Required when `AuthMethod` is set to `AWS_IAM`.
         /// 	- Service `PostgresWarehouse`: AWS region code. Required when `AuthMethod` is set to `AWS_IAM`.
+        /// 	- Service `PostgresWh`: AWS region code. Required when `AuthMethod` is set to `AWS_IAM`
         /// </summary>
         [Input("awsRegionCode")]
         public Input<string>? AwsRegionCode { get; set; }
@@ -130,10 +133,41 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `Databricks`: Your Azure AD application (client) ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+        /// </summary>
+        [Input("azureClientId")]
+        public Input<string>? AzureClientId { get; set; }
+
+        [Input("azureClientSecret")]
+        private Input<string>? _azureClientSecret;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Databricks`: Your Azure AD application client secret for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+        /// </summary>
+        public Input<string>? AzureClientSecret
+        {
+            get => _azureClientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _azureClientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `Databricks`: Authentication method for the Azure container you want to use as the external staging for Hybrid Deployment.
         /// </summary>
         [Input("azureStorageAccountAuthType")]
         public Input<string>? AzureStorageAccountAuthType { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `Databricks`: Your Azure AD tenant ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+        /// </summary>
+        [Input("azureTenantId")]
+        public Input<string>? AzureTenantId { get; set; }
 
         [Input("bootstrapServers")]
         private InputList<string>? _bootstrapServers;
@@ -247,6 +281,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `PostgresGcpWarehouse`: Connection method. Default value: `Directly`.
         /// 	- Service `PostgresRdsWarehouse`: Connection method. Default value: `Directly`.
         /// 	- Service `PostgresWarehouse`: Connection method. Default value: `Directly`.
+        /// 	- Service `PostgresWh`: Connection method. Supported values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`. Default: `Directly`. Note: PrivateLink is only supported for cloud-hosted PostgreSQL (RDS, Aurora, Azure, GCP).
         /// 	- Service `Redshift`: Connection method. Default value: `Directly`.
         /// 	- Service `Snowflake`: Connection method. Default value: `Directly`.
         /// 	- Service `SqlServerRdsWarehouse`: Connection method. Default value: `Directly`.
@@ -316,6 +351,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `PostgresGcpWarehouse`: Database name
         /// 	- Service `PostgresRdsWarehouse`: Database name
         /// 	- Service `PostgresWarehouse`: Database name
+        /// 	- Service `PostgresWh`: Database name
         /// 	- Service `Redshift`: Database name
         /// 	- Service `Snowflake`: Database name
         /// 	- Service `SqlServerRdsWarehouse`: Database name
@@ -388,6 +424,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `PostgresGcpWarehouse`: AWS external ID for authentication. Required when `AuthMethod` is set to `AWS_IAM`.
         /// 	- Service `PostgresRdsWarehouse`: AWS external ID for authentication. Required when `AuthMethod` is set to `AWS_IAM`.
         /// 	- Service `PostgresWarehouse`: AWS external ID for authentication. Required when `AuthMethod` is set to `AWS_IAM`.
+        /// 	- Service `PostgresWh`: AWS external ID for authentication. Auto-generated from group ID when `AuthMethod` is set to `AWS_IAM`
         /// 	- Service `Redshift`: Fivetran generated External ID
         /// </summary>
         [Input("externalId")]
@@ -458,6 +495,9 @@ namespace Pulumi.Fivetran.Inputs
         [Input("gcsProjectId")]
         public Input<string>? GcsProjectId { get; set; }
 
+        [Input("gcsServiceAccountCredentials")]
+        public Input<Inputs.DestinationConfigGcsServiceAccountCredentialsArgs>? GcsServiceAccountCredentials { get; set; }
+
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Snowflake`: The path to the JSON file that contains the service account credentials for the GCS bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use a GCS bucket to stage your data.
@@ -486,6 +526,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `PostgresGcpWarehouse`: Server name
         /// 	- Service `PostgresRdsWarehouse`: Server name
         /// 	- Service `PostgresWarehouse`: Server name
+        /// 	- Service `PostgresWh`: Server hostname or IP address
         /// 	- Service `Redshift`: Server name
         /// 	- Service `Snowflake`: Server name
         /// 	- Service `SqlServerRdsWarehouse`: Server name
@@ -670,6 +711,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `PostgresGcpWarehouse`: Database user password
         /// 	- Service `PostgresRdsWarehouse`: Database user password
         /// 	- Service `PostgresWarehouse`: Database user password
+        /// 	- Service `PostgresWh`: Database user password. Required for PASSWORD authentication
         /// 	- Service `Redshift`: Database user password. Required if authentication type is `PASSWORD`.
         /// 	- Service `Snowflake`: Database user password. The field should be specified if authentication type is `PASSWORD`.
         /// 	- Service `SqlServerRdsWarehouse`: Database user password
@@ -707,6 +749,9 @@ namespace Pulumi.Fivetran.Inputs
             }
         }
 
+        [Input("polarisCatalogConfiguration")]
+        public Input<Inputs.DestinationConfigPolarisCatalogConfigurationArgs>? PolarisCatalogConfiguration { get; set; }
+
         /// <summary>
         /// Field usage depends on `Service` value: 
         /// 	- Service `Adls`: Server port number
@@ -734,6 +779,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `PostgresGcpWarehouse`: Server port number
         /// 	- Service `PostgresRdsWarehouse`: Server port number
         /// 	- Service `PostgresWarehouse`: Server port number
+        /// 	- Service `PostgresWh`: Server port number (default: 5432)
         /// 	- Service `Redshift`: Server port number
         /// 	- Service `Snowflake`: Server port number
         /// 	- Service `SqlServerRdsWarehouse`: Server port number
@@ -867,6 +913,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `PostgresGcpWarehouse`: AWS IAM role ARN for authentication. Required when `AuthMethod` is set to `AWS_IAM`.
         /// 	- Service `PostgresRdsWarehouse`: AWS IAM role ARN for authentication. Required when `AuthMethod` is set to `AWS_IAM`.
         /// 	- Service `PostgresWarehouse`: AWS IAM role ARN for authentication. Required when `AuthMethod` is set to `AWS_IAM`.
+        /// 	- Service `PostgresWh`: AWS IAM role ARN for authentication. Required when `AuthMethod` is set to `AWS_IAM`
         /// 	- Service `Redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
         /// </summary>
         public Input<string>? RoleArn
@@ -1074,6 +1121,14 @@ namespace Pulumi.Fivetran.Inputs
 
         /// <summary>
         /// Field usage depends on `Service` value: 
+        /// 	- Service `DatabricksViaManagedDataLake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Databricks via Managed Data Lake requires Delta Lake metadata, so Fivetran always uses `True` for this destination.
+        /// 	- Service `ManagedDataLake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Default value: `False` for new destinations and `True` for existing destinations. Destinations with Unity Catalog or OneLake catalog enabled always write Delta Lake metadata.
+        /// </summary>
+        [Input("shouldWriteDelta")]
+        public Input<bool>? ShouldWriteDelta { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
         /// 	- Service `Adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
         /// 	- Service `DatabricksViaManagedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
         /// 	- Service `ManagedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
@@ -1170,6 +1225,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `PostgresGcpWarehouse`: SSH server name. Must be populated if `ConnectionType` is set to `SshTunnel`.
         /// 	- Service `PostgresRdsWarehouse`: SSH server name. Must be populated if `ConnectionType` is set to `SshTunnel`.
         /// 	- Service `PostgresWarehouse`: SSH server name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `PostgresWh`: SSH server hostname. Required when `ConnectionType` is set to `SshTunnel`
         /// 	- Service `Redshift`: SSH server name. Must be populated if `ConnectionType` is set to `SshTunnel`.
         /// 	- Service `SqlServerRdsWarehouse`: SSH server name. Must be populated if `ConnectionType` is set to `SshTunnel`.
         /// 	- Service `SqlServerWarehouse`: SSH server name. Must be populated if `ConnectionType` is set to `SshTunnel`.
@@ -1198,6 +1254,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `PostgresGcpWarehouse`: SSH server port name. Must be populated if `ConnectionType` is set to `SshTunnel`.
         /// 	- Service `PostgresRdsWarehouse`: SSH server port name. Must be populated if `ConnectionType` is set to `SshTunnel`.
         /// 	- Service `PostgresWarehouse`: SSH server port name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `PostgresWh`: SSH server port. Required when `ConnectionType` is set to `SshTunnel`
         /// 	- Service `Redshift`: SSH server port name. Must be populated if `ConnectionType` is set to `SshTunnel`.
         /// 	- Service `SqlServerRdsWarehouse`: SSH server port name. Must be populated if `ConnectionType` is set to `SshTunnel`.
         /// 	- Service `SqlServerWarehouse`: SSH server port name. Must be populated if `ConnectionType` is set to `SshTunnel`.
@@ -1226,6 +1283,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `PostgresGcpWarehouse`: SSH user name. Must be populated if `ConnectionType` is set to `SshTunnel`.
         /// 	- Service `PostgresRdsWarehouse`: SSH user name. Must be populated if `ConnectionType` is set to `SshTunnel`.
         /// 	- Service `PostgresWarehouse`: SSH user name. Must be populated if `ConnectionType` is set to `SshTunnel`.
+        /// 	- Service `PostgresWh`: SSH user name. Required when `ConnectionType` is set to `SshTunnel`
         /// 	- Service `Redshift`: SSH user name. Must be populated if `ConnectionType` is set to `SshTunnel`.
         /// 	- Service `SqlServerRdsWarehouse`: SSH user name. Must be populated if `ConnectionType` is set to `SshTunnel`.
         /// 	- Service `SqlServerWarehouse`: SSH user name. Must be populated if `ConnectionType` is set to `SshTunnel`.
@@ -1261,6 +1319,7 @@ namespace Pulumi.Fivetran.Inputs
         /// 	- Service `PostgresGcpWarehouse`: Database user name
         /// 	- Service `PostgresRdsWarehouse`: Database user name
         /// 	- Service `PostgresWarehouse`: Database user name
+        /// 	- Service `PostgresWh`: Database user name. Required for PASSWORD authentication
         /// 	- Service `Redshift`: Database user name
         /// 	- Service `Snowflake`: Database user name
         /// 	- Service `SqlServerRdsWarehouse`: Database user name

@@ -27,6 +27,18 @@ namespace Pulumi.Fivetran.Inputs
             }
         }
 
+        [Input("accessToken")]
+        private Input<string>? _accessToken;
+        public Input<string>? AccessToken
+        {
+            get => _accessToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         [Input("apiKey")]
         private Input<string>? _apiKey;
         public Input<string>? ApiKey
@@ -43,10 +55,58 @@ namespace Pulumi.Fivetran.Inputs
         public Input<string>? Channel { get; set; }
 
         /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureMonitorLog`: For Logs Ingestion API authentication. Your application (client) ID.
+        /// </summary>
+        [Input("clientId")]
+        public Input<string>? ClientId { get; set; }
+
+        [Input("clientSecret")]
+        private Input<string>? _clientSecret;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureMonitorLog`: For Logs Ingestion API authentication. Your application client secret.
+        /// </summary>
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureMonitorLog`: For Logs Ingestion API authentication. The endpoint URL for your Data Collection Endpoint.
+        /// </summary>
+        [Input("dataCollectionEndpoint")]
+        public Input<string>? DataCollectionEndpoint { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureMonitorLog`: For Logs Ingestion API authentication. The immutable ID of your Data Collection Rule.
+        /// </summary>
+        [Input("dcrImmutableId")]
+        public Input<string>? DcrImmutableId { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureMonitorLog`: For Logs Ingestion API authentication. The stream name of your Data Collection Rule.
+        /// </summary>
+        [Input("dcrStreamName")]
+        public Input<string>? DcrStreamName { get; set; }
+
+        /// <summary>
         /// Enable SSL
         /// </summary>
         [Input("enableSsl")]
         public Input<bool>? EnableSsl { get; set; }
+
+        [Input("environmentId")]
+        public Input<string>? EnvironmentId { get; set; }
 
         [Input("externalId")]
         public Input<string>? ExternalId { get; set; }
@@ -60,6 +120,9 @@ namespace Pulumi.Fivetran.Inputs
         [Input("logGroupName")]
         public Input<string>? LogGroupName { get; set; }
 
+        [Input("lokiUrl")]
+        public Input<string>? LokiUrl { get; set; }
+
         /// <summary>
         /// Port
         /// </summary>
@@ -68,6 +131,11 @@ namespace Pulumi.Fivetran.Inputs
 
         [Input("primaryKey")]
         private Input<string>? _primaryKey;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureMonitorLog`: For HTTP Data Collector API authentication. Your Log Analytics primary key.
+        /// </summary>
         public Input<string>? PrimaryKey
         {
             get => _primaryKey;
@@ -88,10 +156,36 @@ namespace Pulumi.Fivetran.Inputs
         public Input<string>? RoleArn { get; set; }
 
         [Input("serviceAccountKey")]
-        public Input<string>? ServiceAccountKey { get; set; }
+        private Input<string>? _serviceAccountKey;
+        public Input<string>? ServiceAccountKey
+        {
+            get => _serviceAccountKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _serviceAccountKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("subDomain")]
         public Input<string>? SubDomain { get; set; }
+
+        [Input("tenantId")]
+        private Input<string>? _tenantId;
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureMonitorLog`: For Logs Ingestion API authentication. Your Microsoft Entra directory (tenant) ID.
+        /// </summary>
+        public Input<string>? TenantId
+        {
+            get => _tenantId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tenantId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("token")]
         private Input<string>? _token;
@@ -105,6 +199,13 @@ namespace Pulumi.Fivetran.Inputs
             }
         }
 
+        [Input("username")]
+        public Input<string>? Username { get; set; }
+
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureMonitorLog`: For HTTP Data Collector API authentication. Your Log Analytics workspace ID.
+        /// </summary>
         [Input("workspaceId")]
         public Input<string>? WorkspaceId { get; set; }
 

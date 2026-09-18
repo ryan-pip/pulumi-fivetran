@@ -38932,6 +38932,7 @@ type DestinationConfig struct {
 	// 	- Service `postgresGcpWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresWh`: Specifies whether TLS is required. Must be set when using `SshTunnel` connection
 	// 	- Service `redshift`: Require TLS through Tunnel
 	// 	- Service `sqlServerRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `sqlServerWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -38949,6 +38950,7 @@ type DestinationConfig struct {
 	// 	- Service `postgresGcpWarehouse`: Authentication method. Default value: `PASSWORD`.
 	// 	- Service `postgresRdsWarehouse`: Authentication method. Default value: `PASSWORD`.
 	// 	- Service `postgresWarehouse`: Authentication method. Default value: `PASSWORD`.
+	// 	- Service `postgresWh`: Authentication method. Supported values: `PASSWORD`, `AWS_IAM`. Default: `PASSWORD`.
 	AuthMethod *string `pulumi:"authMethod"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Authentication type
@@ -38975,6 +38977,7 @@ type DestinationConfig struct {
 	// 	- Service `postgresGcpWarehouse`: AWS region code. Required when `authMethod` is set to `AWS_IAM`.
 	// 	- Service `postgresRdsWarehouse`: AWS region where the RDS instance is located. Required when `authMethod` is set to `AWS_IAM`.
 	// 	- Service `postgresWarehouse`: AWS region code. Required when `authMethod` is set to `AWS_IAM`.
+	// 	- Service `postgresWh`: AWS region code. Required when `authMethod` is set to `AWS_IAM`
 	AwsRegionCode *string `pulumi:"awsRegionCode"`
 	// Field usage depends on `service` value:
 	// 	- Service `databricks`: Your user's secret access key
@@ -38983,8 +38986,17 @@ type DestinationConfig struct {
 	// 	- Service `snowflake`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment , want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
 	AwsSecretAccessKey *string `pulumi:"awsSecretAccessKey"`
 	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Your Azure AD application (client) ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+	AzureClientId *string `pulumi:"azureClientId"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Your Azure AD application client secret for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+	AzureClientSecret *string `pulumi:"azureClientSecret"`
+	// Field usage depends on `service` value:
 	// 	- Service `databricks`: Authentication method for the Azure container you want to use as the external staging for Hybrid Deployment.
 	AzureStorageAccountAuthType *string `pulumi:"azureStorageAccountAuthType"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Your Azure AD tenant ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+	AzureTenantId *string `pulumi:"azureTenantId"`
 	// Field usage depends on `service` value:
 	// 	- Service `confluentCloudWh`: Comma-separated list of Confluent Cloud servers in the `server:port` format.
 	BootstrapServers []string `pulumi:"bootstrapServers"`
@@ -39056,6 +39068,7 @@ type DestinationConfig struct {
 	// 	- Service `postgresGcpWarehouse`: Connection method. Default value: `Directly`.
 	// 	- Service `postgresRdsWarehouse`: Connection method. Default value: `Directly`.
 	// 	- Service `postgresWarehouse`: Connection method. Default value: `Directly`.
+	// 	- Service `postgresWh`: Connection method. Supported values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`. Default: `Directly`. Note: PrivateLink is only supported for cloud-hosted PostgreSQL (RDS, Aurora, Azure, GCP).
 	// 	- Service `redshift`: Connection method. Default value: `Directly`.
 	// 	- Service `snowflake`: Connection method. Default value: `Directly`.
 	// 	- Service `sqlServerRdsWarehouse`: Connection method. Default value: `Directly`.
@@ -39101,6 +39114,7 @@ type DestinationConfig struct {
 	// 	- Service `postgresGcpWarehouse`: Database name
 	// 	- Service `postgresRdsWarehouse`: Database name
 	// 	- Service `postgresWarehouse`: Database name
+	// 	- Service `postgresWh`: Database name
 	// 	- Service `redshift`: Database name
 	// 	- Service `snowflake`: Database name
 	// 	- Service `sqlServerRdsWarehouse`: Database name
@@ -39141,6 +39155,7 @@ type DestinationConfig struct {
 	// 	- Service `postgresGcpWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
 	// 	- Service `postgresRdsWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
 	// 	- Service `postgresWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
+	// 	- Service `postgresWh`: AWS external ID for authentication. Auto-generated from group ID when `authMethod` is set to `AWS_IAM`
 	// 	- Service `redshift`: Fivetran generated External ID
 	ExternalId *string `pulumi:"externalId"`
 	// Field usage depends on `service` value:
@@ -39171,7 +39186,8 @@ type DestinationConfig struct {
 	// Field usage depends on `service` value:
 	// 	- Service `databricksViaManagedDataLake`: GCS Project ID of your Google Cloud Storage bucket. Use this parameter only if you want to deploy your data lake on GCS.
 	// 	- Service `managedDataLake`: GCS Project ID of your Google Cloud Storage bucket. Use this parameter only if you want to deploy your data lake on GCS.
-	GcsProjectId *string `pulumi:"gcsProjectId"`
+	GcsProjectId                 *string                                        `pulumi:"gcsProjectId"`
+	GcsServiceAccountCredentials *DestinationConfigGcsServiceAccountCredentials `pulumi:"gcsServiceAccountCredentials"`
 	// Field usage depends on `service` value:
 	// 	- Service `snowflake`: The path to the JSON file that contains the service account credentials for the GCS bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use a GCS bucket to stage your data.
 	GcsServiceAccountCredentialsPath *string `pulumi:"gcsServiceAccountCredentialsPath"`
@@ -39195,6 +39211,7 @@ type DestinationConfig struct {
 	// 	- Service `postgresGcpWarehouse`: Server name
 	// 	- Service `postgresRdsWarehouse`: Server name
 	// 	- Service `postgresWarehouse`: Server name
+	// 	- Service `postgresWh`: Server hostname or IP address
 	// 	- Service `redshift`: Server name
 	// 	- Service `snowflake`: Server name
 	// 	- Service `sqlServerRdsWarehouse`: Server name
@@ -39284,6 +39301,7 @@ type DestinationConfig struct {
 	// 	- Service `postgresGcpWarehouse`: Database user password
 	// 	- Service `postgresRdsWarehouse`: Database user password
 	// 	- Service `postgresWarehouse`: Database user password
+	// 	- Service `postgresWh`: Database user password. Required for PASSWORD authentication
 	// 	- Service `redshift`: Database user password. Required if authentication type is `PASSWORD`.
 	// 	- Service `snowflake`: Database user password. The field should be specified if authentication type is `PASSWORD`.
 	// 	- Service `sqlServerRdsWarehouse`: Database user password
@@ -39296,7 +39314,8 @@ type DestinationConfig struct {
 	// 	- Service `managedDataLake`: The personal access token you created for authenticating Fivetran. Use this parameter only if you want to use a personal access token as the authentication type for Fivetran to connect to Databricks.
 	// 	- Service `newS3Datalake`: Personal access token
 	// 	- Service `onelake`: Personal access token
-	PersonalAccessToken *string `pulumi:"personalAccessToken"`
+	PersonalAccessToken         *string                                       `pulumi:"personalAccessToken"`
+	PolarisCatalogConfiguration *DestinationConfigPolarisCatalogConfiguration `pulumi:"polarisCatalogConfiguration"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Server port number
 	// 	- Service `auroraPostgresWarehouse`: Server port number
@@ -39323,6 +39342,7 @@ type DestinationConfig struct {
 	// 	- Service `postgresGcpWarehouse`: Server port number
 	// 	- Service `postgresRdsWarehouse`: Server port number
 	// 	- Service `postgresWarehouse`: Server port number
+	// 	- Service `postgresWh`: Server port number (default: 5432)
 	// 	- Service `redshift`: Server port number
 	// 	- Service `snowflake`: Server port number
 	// 	- Service `sqlServerRdsWarehouse`: Server port number
@@ -39403,6 +39423,7 @@ type DestinationConfig struct {
 	// 	- Service `postgresGcpWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
 	// 	- Service `postgresRdsWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
 	// 	- Service `postgresWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
+	// 	- Service `postgresWh`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`
 	// 	- Service `redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
 	RoleArn *string `pulumi:"roleArn"`
 	// Field usage depends on `service` value:
@@ -39473,6 +39494,10 @@ type DestinationConfig struct {
 	// 	- Service `managedDataLake`: Specifies whether you want to create shortcut for you table in OneLake. Use this parameter only if you want to deploy your data lake on ADLS.
 	ShouldMaintainTablesInOneLake *bool `pulumi:"shouldMaintainTablesInOneLake"`
 	// Field usage depends on `service` value:
+	// 	- Service `databricksViaManagedDataLake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Databricks via Managed Data Lake requires Delta Lake metadata, so Fivetran always uses `true` for this destination.
+	// 	- Service `managedDataLake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Default value: `false` for new destinations and `true` for existing destinations. Destinations with Unity Catalog or OneLake catalog enabled always write Delta Lake metadata.
+	ShouldWriteDelta *bool `pulumi:"shouldWriteDelta"`
+	// Field usage depends on `service` value:
 	// 	- Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
 	// 	- Service `databricksViaManagedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
 	// 	- Service `managedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
@@ -39531,6 +39556,7 @@ type DestinationConfig struct {
 	// 	- Service `postgresGcpWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresWh`: SSH server hostname. Required when `connectionType` is set to `SshTunnel`
 	// 	- Service `redshift`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `sqlServerRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `sqlServerWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -39555,6 +39581,7 @@ type DestinationConfig struct {
 	// 	- Service `postgresGcpWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresWh`: SSH server port. Required when `connectionType` is set to `SshTunnel`
 	// 	- Service `redshift`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `sqlServerRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `sqlServerWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -39579,6 +39606,7 @@ type DestinationConfig struct {
 	// 	- Service `postgresGcpWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresWh`: SSH user name. Required when `connectionType` is set to `SshTunnel`
 	// 	- Service `redshift`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `sqlServerRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `sqlServerWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -39606,6 +39634,7 @@ type DestinationConfig struct {
 	// 	- Service `postgresGcpWarehouse`: Database user name
 	// 	- Service `postgresRdsWarehouse`: Database user name
 	// 	- Service `postgresWarehouse`: Database user name
+	// 	- Service `postgresWh`: Database user name. Required for PASSWORD authentication
 	// 	- Service `redshift`: Database user name
 	// 	- Service `snowflake`: Database user name
 	// 	- Service `sqlServerRdsWarehouse`: Database user name
@@ -39653,6 +39682,7 @@ type DestinationConfigArgs struct {
 	// 	- Service `postgresGcpWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresWh`: Specifies whether TLS is required. Must be set when using `SshTunnel` connection
 	// 	- Service `redshift`: Require TLS through Tunnel
 	// 	- Service `sqlServerRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `sqlServerWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -39670,6 +39700,7 @@ type DestinationConfigArgs struct {
 	// 	- Service `postgresGcpWarehouse`: Authentication method. Default value: `PASSWORD`.
 	// 	- Service `postgresRdsWarehouse`: Authentication method. Default value: `PASSWORD`.
 	// 	- Service `postgresWarehouse`: Authentication method. Default value: `PASSWORD`.
+	// 	- Service `postgresWh`: Authentication method. Supported values: `PASSWORD`, `AWS_IAM`. Default: `PASSWORD`.
 	AuthMethod pulumi.StringPtrInput `pulumi:"authMethod"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Authentication type
@@ -39696,6 +39727,7 @@ type DestinationConfigArgs struct {
 	// 	- Service `postgresGcpWarehouse`: AWS region code. Required when `authMethod` is set to `AWS_IAM`.
 	// 	- Service `postgresRdsWarehouse`: AWS region where the RDS instance is located. Required when `authMethod` is set to `AWS_IAM`.
 	// 	- Service `postgresWarehouse`: AWS region code. Required when `authMethod` is set to `AWS_IAM`.
+	// 	- Service `postgresWh`: AWS region code. Required when `authMethod` is set to `AWS_IAM`
 	AwsRegionCode pulumi.StringPtrInput `pulumi:"awsRegionCode"`
 	// Field usage depends on `service` value:
 	// 	- Service `databricks`: Your user's secret access key
@@ -39704,8 +39736,17 @@ type DestinationConfigArgs struct {
 	// 	- Service `snowflake`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment , want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
 	AwsSecretAccessKey pulumi.StringPtrInput `pulumi:"awsSecretAccessKey"`
 	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Your Azure AD application (client) ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+	AzureClientId pulumi.StringPtrInput `pulumi:"azureClientId"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Your Azure AD application client secret for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+	AzureClientSecret pulumi.StringPtrInput `pulumi:"azureClientSecret"`
+	// Field usage depends on `service` value:
 	// 	- Service `databricks`: Authentication method for the Azure container you want to use as the external staging for Hybrid Deployment.
 	AzureStorageAccountAuthType pulumi.StringPtrInput `pulumi:"azureStorageAccountAuthType"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Your Azure AD tenant ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+	AzureTenantId pulumi.StringPtrInput `pulumi:"azureTenantId"`
 	// Field usage depends on `service` value:
 	// 	- Service `confluentCloudWh`: Comma-separated list of Confluent Cloud servers in the `server:port` format.
 	BootstrapServers pulumi.StringArrayInput `pulumi:"bootstrapServers"`
@@ -39777,6 +39818,7 @@ type DestinationConfigArgs struct {
 	// 	- Service `postgresGcpWarehouse`: Connection method. Default value: `Directly`.
 	// 	- Service `postgresRdsWarehouse`: Connection method. Default value: `Directly`.
 	// 	- Service `postgresWarehouse`: Connection method. Default value: `Directly`.
+	// 	- Service `postgresWh`: Connection method. Supported values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`. Default: `Directly`. Note: PrivateLink is only supported for cloud-hosted PostgreSQL (RDS, Aurora, Azure, GCP).
 	// 	- Service `redshift`: Connection method. Default value: `Directly`.
 	// 	- Service `snowflake`: Connection method. Default value: `Directly`.
 	// 	- Service `sqlServerRdsWarehouse`: Connection method. Default value: `Directly`.
@@ -39822,6 +39864,7 @@ type DestinationConfigArgs struct {
 	// 	- Service `postgresGcpWarehouse`: Database name
 	// 	- Service `postgresRdsWarehouse`: Database name
 	// 	- Service `postgresWarehouse`: Database name
+	// 	- Service `postgresWh`: Database name
 	// 	- Service `redshift`: Database name
 	// 	- Service `snowflake`: Database name
 	// 	- Service `sqlServerRdsWarehouse`: Database name
@@ -39862,6 +39905,7 @@ type DestinationConfigArgs struct {
 	// 	- Service `postgresGcpWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
 	// 	- Service `postgresRdsWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
 	// 	- Service `postgresWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
+	// 	- Service `postgresWh`: AWS external ID for authentication. Auto-generated from group ID when `authMethod` is set to `AWS_IAM`
 	// 	- Service `redshift`: Fivetran generated External ID
 	ExternalId pulumi.StringPtrInput `pulumi:"externalId"`
 	// Field usage depends on `service` value:
@@ -39892,7 +39936,8 @@ type DestinationConfigArgs struct {
 	// Field usage depends on `service` value:
 	// 	- Service `databricksViaManagedDataLake`: GCS Project ID of your Google Cloud Storage bucket. Use this parameter only if you want to deploy your data lake on GCS.
 	// 	- Service `managedDataLake`: GCS Project ID of your Google Cloud Storage bucket. Use this parameter only if you want to deploy your data lake on GCS.
-	GcsProjectId pulumi.StringPtrInput `pulumi:"gcsProjectId"`
+	GcsProjectId                 pulumi.StringPtrInput                                 `pulumi:"gcsProjectId"`
+	GcsServiceAccountCredentials DestinationConfigGcsServiceAccountCredentialsPtrInput `pulumi:"gcsServiceAccountCredentials"`
 	// Field usage depends on `service` value:
 	// 	- Service `snowflake`: The path to the JSON file that contains the service account credentials for the GCS bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use a GCS bucket to stage your data.
 	GcsServiceAccountCredentialsPath pulumi.StringPtrInput `pulumi:"gcsServiceAccountCredentialsPath"`
@@ -39916,6 +39961,7 @@ type DestinationConfigArgs struct {
 	// 	- Service `postgresGcpWarehouse`: Server name
 	// 	- Service `postgresRdsWarehouse`: Server name
 	// 	- Service `postgresWarehouse`: Server name
+	// 	- Service `postgresWh`: Server hostname or IP address
 	// 	- Service `redshift`: Server name
 	// 	- Service `snowflake`: Server name
 	// 	- Service `sqlServerRdsWarehouse`: Server name
@@ -40005,6 +40051,7 @@ type DestinationConfigArgs struct {
 	// 	- Service `postgresGcpWarehouse`: Database user password
 	// 	- Service `postgresRdsWarehouse`: Database user password
 	// 	- Service `postgresWarehouse`: Database user password
+	// 	- Service `postgresWh`: Database user password. Required for PASSWORD authentication
 	// 	- Service `redshift`: Database user password. Required if authentication type is `PASSWORD`.
 	// 	- Service `snowflake`: Database user password. The field should be specified if authentication type is `PASSWORD`.
 	// 	- Service `sqlServerRdsWarehouse`: Database user password
@@ -40017,7 +40064,8 @@ type DestinationConfigArgs struct {
 	// 	- Service `managedDataLake`: The personal access token you created for authenticating Fivetran. Use this parameter only if you want to use a personal access token as the authentication type for Fivetran to connect to Databricks.
 	// 	- Service `newS3Datalake`: Personal access token
 	// 	- Service `onelake`: Personal access token
-	PersonalAccessToken pulumi.StringPtrInput `pulumi:"personalAccessToken"`
+	PersonalAccessToken         pulumi.StringPtrInput                                `pulumi:"personalAccessToken"`
+	PolarisCatalogConfiguration DestinationConfigPolarisCatalogConfigurationPtrInput `pulumi:"polarisCatalogConfiguration"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Server port number
 	// 	- Service `auroraPostgresWarehouse`: Server port number
@@ -40044,6 +40092,7 @@ type DestinationConfigArgs struct {
 	// 	- Service `postgresGcpWarehouse`: Server port number
 	// 	- Service `postgresRdsWarehouse`: Server port number
 	// 	- Service `postgresWarehouse`: Server port number
+	// 	- Service `postgresWh`: Server port number (default: 5432)
 	// 	- Service `redshift`: Server port number
 	// 	- Service `snowflake`: Server port number
 	// 	- Service `sqlServerRdsWarehouse`: Server port number
@@ -40124,6 +40173,7 @@ type DestinationConfigArgs struct {
 	// 	- Service `postgresGcpWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
 	// 	- Service `postgresRdsWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
 	// 	- Service `postgresWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
+	// 	- Service `postgresWh`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`
 	// 	- Service `redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// Field usage depends on `service` value:
@@ -40194,6 +40244,10 @@ type DestinationConfigArgs struct {
 	// 	- Service `managedDataLake`: Specifies whether you want to create shortcut for you table in OneLake. Use this parameter only if you want to deploy your data lake on ADLS.
 	ShouldMaintainTablesInOneLake pulumi.BoolPtrInput `pulumi:"shouldMaintainTablesInOneLake"`
 	// Field usage depends on `service` value:
+	// 	- Service `databricksViaManagedDataLake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Databricks via Managed Data Lake requires Delta Lake metadata, so Fivetran always uses `true` for this destination.
+	// 	- Service `managedDataLake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Default value: `false` for new destinations and `true` for existing destinations. Destinations with Unity Catalog or OneLake catalog enabled always write Delta Lake metadata.
+	ShouldWriteDelta pulumi.BoolPtrInput `pulumi:"shouldWriteDelta"`
+	// Field usage depends on `service` value:
 	// 	- Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
 	// 	- Service `databricksViaManagedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
 	// 	- Service `managedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
@@ -40252,6 +40306,7 @@ type DestinationConfigArgs struct {
 	// 	- Service `postgresGcpWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresWh`: SSH server hostname. Required when `connectionType` is set to `SshTunnel`
 	// 	- Service `redshift`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `sqlServerRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `sqlServerWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -40276,6 +40331,7 @@ type DestinationConfigArgs struct {
 	// 	- Service `postgresGcpWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresWh`: SSH server port. Required when `connectionType` is set to `SshTunnel`
 	// 	- Service `redshift`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `sqlServerRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `sqlServerWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -40300,6 +40356,7 @@ type DestinationConfigArgs struct {
 	// 	- Service `postgresGcpWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresWh`: SSH user name. Required when `connectionType` is set to `SshTunnel`
 	// 	- Service `redshift`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `sqlServerRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `sqlServerWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -40327,6 +40384,7 @@ type DestinationConfigArgs struct {
 	// 	- Service `postgresGcpWarehouse`: Database user name
 	// 	- Service `postgresRdsWarehouse`: Database user name
 	// 	- Service `postgresWarehouse`: Database user name
+	// 	- Service `postgresWh`: Database user name. Required for PASSWORD authentication
 	// 	- Service `redshift`: Database user name
 	// 	- Service `snowflake`: Database user name
 	// 	- Service `sqlServerRdsWarehouse`: Database user name
@@ -40439,6 +40497,7 @@ func (o DestinationConfigOutput) ToDestinationConfigPtrOutputWithContext(ctx con
 //   - Service `postgresGcpWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresWh`: Specifies whether TLS is required. Must be set when using `SshTunnel` connection
 //   - Service `redshift`: Require TLS through Tunnel
 //   - Service `sqlServerRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `sqlServerWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -40465,6 +40524,7 @@ func (o DestinationConfigOutput) Auth() pulumi.StringPtrOutput {
 //   - Service `postgresGcpWarehouse`: Authentication method. Default value: `PASSWORD`.
 //   - Service `postgresRdsWarehouse`: Authentication method. Default value: `PASSWORD`.
 //   - Service `postgresWarehouse`: Authentication method. Default value: `PASSWORD`.
+//   - Service `postgresWh`: Authentication method. Supported values: `PASSWORD`, `AWS_IAM`. Default: `PASSWORD`.
 func (o DestinationConfigOutput) AuthMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *string { return v.AuthMethod }).(pulumi.StringPtrOutput)
 }
@@ -40503,6 +40563,7 @@ func (o DestinationConfigOutput) AwsBucketAuthType() pulumi.StringPtrOutput {
 //   - Service `postgresGcpWarehouse`: AWS region code. Required when `authMethod` is set to `AWS_IAM`.
 //   - Service `postgresRdsWarehouse`: AWS region where the RDS instance is located. Required when `authMethod` is set to `AWS_IAM`.
 //   - Service `postgresWarehouse`: AWS region code. Required when `authMethod` is set to `AWS_IAM`.
+//   - Service `postgresWh`: AWS region code. Required when `authMethod` is set to `AWS_IAM`
 func (o DestinationConfigOutput) AwsRegionCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *string { return v.AwsRegionCode }).(pulumi.StringPtrOutput)
 }
@@ -40517,9 +40578,27 @@ func (o DestinationConfigOutput) AwsSecretAccessKey() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `databricks`: Your Azure AD application (client) ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+func (o DestinationConfigOutput) AzureClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.AzureClientId }).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricks`: Your Azure AD application client secret for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+func (o DestinationConfigOutput) AzureClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.AzureClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `databricks`: Authentication method for the Azure container you want to use as the external staging for Hybrid Deployment.
 func (o DestinationConfigOutput) AzureStorageAccountAuthType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *string { return v.AzureStorageAccountAuthType }).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricks`: Your Azure AD tenant ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+func (o DestinationConfigOutput) AzureTenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.AzureTenantId }).(pulumi.StringPtrOutput)
 }
 
 // Field usage depends on `service` value:
@@ -40620,6 +40699,7 @@ func (o DestinationConfigOutput) ConnectionMethod() pulumi.StringPtrOutput {
 //   - Service `postgresGcpWarehouse`: Connection method. Default value: `Directly`.
 //   - Service `postgresRdsWarehouse`: Connection method. Default value: `Directly`.
 //   - Service `postgresWarehouse`: Connection method. Default value: `Directly`.
+//   - Service `postgresWh`: Connection method. Supported values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`. Default: `Directly`. Note: PrivateLink is only supported for cloud-hosted PostgreSQL (RDS, Aurora, Azure, GCP).
 //   - Service `redshift`: Connection method. Default value: `Directly`.
 //   - Service `snowflake`: Connection method. Default value: `Directly`.
 //   - Service `sqlServerRdsWarehouse`: Connection method. Default value: `Directly`.
@@ -40683,6 +40763,7 @@ func (o DestinationConfigOutput) DataSetLocation() pulumi.StringPtrOutput {
 //   - Service `postgresGcpWarehouse`: Database name
 //   - Service `postgresRdsWarehouse`: Database name
 //   - Service `postgresWarehouse`: Database name
+//   - Service `postgresWh`: Database name
 //   - Service `redshift`: Database name
 //   - Service `snowflake`: Database name
 //   - Service `sqlServerRdsWarehouse`: Database name
@@ -40747,6 +40828,7 @@ func (o DestinationConfigOutput) EnableSuperType() pulumi.BoolPtrOutput {
 //   - Service `postgresGcpWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
 //   - Service `postgresRdsWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
 //   - Service `postgresWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
+//   - Service `postgresWh`: AWS external ID for authentication. Auto-generated from group ID when `authMethod` is set to `AWS_IAM`
 //   - Service `redshift`: Fivetran generated External ID
 func (o DestinationConfigOutput) ExternalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *string { return v.ExternalId }).(pulumi.StringPtrOutput)
@@ -40811,6 +40893,12 @@ func (o DestinationConfigOutput) GcsProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *string { return v.GcsProjectId }).(pulumi.StringPtrOutput)
 }
 
+func (o DestinationConfigOutput) GcsServiceAccountCredentials() DestinationConfigGcsServiceAccountCredentialsPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *DestinationConfigGcsServiceAccountCredentials {
+		return v.GcsServiceAccountCredentials
+	}).(DestinationConfigGcsServiceAccountCredentialsPtrOutput)
+}
+
 // Field usage depends on `service` value:
 //   - Service `snowflake`: The path to the JSON file that contains the service account credentials for the GCS bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use a GCS bucket to stage your data.
 func (o DestinationConfigOutput) GcsServiceAccountCredentialsPath() pulumi.StringPtrOutput {
@@ -40837,6 +40925,7 @@ func (o DestinationConfigOutput) GcsServiceAccountCredentialsPath() pulumi.Strin
 //   - Service `postgresGcpWarehouse`: Server name
 //   - Service `postgresRdsWarehouse`: Server name
 //   - Service `postgresWarehouse`: Server name
+//   - Service `postgresWh`: Server hostname or IP address
 //   - Service `redshift`: Server name
 //   - Service `snowflake`: Server name
 //   - Service `sqlServerRdsWarehouse`: Server name
@@ -40974,6 +41063,7 @@ func (o DestinationConfigOutput) Passphrase() pulumi.StringPtrOutput {
 //   - Service `postgresGcpWarehouse`: Database user password
 //   - Service `postgresRdsWarehouse`: Database user password
 //   - Service `postgresWarehouse`: Database user password
+//   - Service `postgresWh`: Database user password. Required for PASSWORD authentication
 //   - Service `redshift`: Database user password. Required if authentication type is `PASSWORD`.
 //   - Service `snowflake`: Database user password. The field should be specified if authentication type is `PASSWORD`.
 //   - Service `sqlServerRdsWarehouse`: Database user password
@@ -40991,6 +41081,12 @@ func (o DestinationConfigOutput) Password() pulumi.StringPtrOutput {
 //   - Service `onelake`: Personal access token
 func (o DestinationConfigOutput) PersonalAccessToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *string { return v.PersonalAccessToken }).(pulumi.StringPtrOutput)
+}
+
+func (o DestinationConfigOutput) PolarisCatalogConfiguration() DestinationConfigPolarisCatalogConfigurationPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *DestinationConfigPolarisCatalogConfiguration {
+		return v.PolarisCatalogConfiguration
+	}).(DestinationConfigPolarisCatalogConfigurationPtrOutput)
 }
 
 // Field usage depends on `service` value:
@@ -41019,6 +41115,7 @@ func (o DestinationConfigOutput) PersonalAccessToken() pulumi.StringPtrOutput {
 //   - Service `postgresGcpWarehouse`: Server port number
 //   - Service `postgresRdsWarehouse`: Server port number
 //   - Service `postgresWarehouse`: Server port number
+//   - Service `postgresWh`: Server port number (default: 5432)
 //   - Service `redshift`: Server port number
 //   - Service `snowflake`: Server port number
 //   - Service `sqlServerRdsWarehouse`: Server port number
@@ -41132,6 +41229,7 @@ func (o DestinationConfigOutput) Role() pulumi.StringPtrOutput {
 //   - Service `postgresGcpWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
 //   - Service `postgresRdsWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
 //   - Service `postgresWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
+//   - Service `postgresWh`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`
 //   - Service `redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
 func (o DestinationConfigOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationConfig) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
@@ -41256,6 +41354,13 @@ func (o DestinationConfigOutput) ShouldMaintainTablesInOneLake() pulumi.BoolPtrO
 }
 
 // Field usage depends on `service` value:
+//   - Service `databricksViaManagedDataLake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Databricks via Managed Data Lake requires Delta Lake metadata, so Fivetran always uses `true` for this destination.
+//   - Service `managedDataLake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Default value: `false` for new destinations and `true` for existing destinations. Destinations with Unity Catalog or OneLake catalog enabled always write Delta Lake metadata.
+func (o DestinationConfigOutput) ShouldWriteDelta() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *bool { return v.ShouldWriteDelta }).(pulumi.BoolPtrOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
 //   - Service `databricksViaManagedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
 //   - Service `managedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
@@ -41335,6 +41440,7 @@ func (o DestinationConfigOutput) TenantId() pulumi.StringPtrOutput {
 //   - Service `postgresGcpWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresWh`: SSH server hostname. Required when `connectionType` is set to `SshTunnel`
 //   - Service `redshift`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `sqlServerRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `sqlServerWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -41362,6 +41468,7 @@ func (o DestinationConfigOutput) TunnelHost() pulumi.StringPtrOutput {
 //   - Service `postgresGcpWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresWh`: SSH server port. Required when `connectionType` is set to `SshTunnel`
 //   - Service `redshift`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `sqlServerRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `sqlServerWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -41389,6 +41496,7 @@ func (o DestinationConfigOutput) TunnelPort() pulumi.IntPtrOutput {
 //   - Service `postgresGcpWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresWh`: SSH user name. Required when `connectionType` is set to `SshTunnel`
 //   - Service `redshift`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `sqlServerRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `sqlServerWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -41422,6 +41530,7 @@ func (o DestinationConfigOutput) UseCustomerStaging() pulumi.BoolPtrOutput {
 //   - Service `postgresGcpWarehouse`: Database user name
 //   - Service `postgresRdsWarehouse`: Database user name
 //   - Service `postgresWarehouse`: Database user name
+//   - Service `postgresWh`: Database user name. Required for PASSWORD authentication
 //   - Service `redshift`: Database user name
 //   - Service `snowflake`: Database user name
 //   - Service `sqlServerRdsWarehouse`: Database user name
@@ -41488,6 +41597,7 @@ func (o DestinationConfigPtrOutput) Elem() DestinationConfigOutput {
 //   - Service `postgresGcpWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresWh`: Specifies whether TLS is required. Must be set when using `SshTunnel` connection
 //   - Service `redshift`: Require TLS through Tunnel
 //   - Service `sqlServerRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `sqlServerWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -41529,6 +41639,7 @@ func (o DestinationConfigPtrOutput) Auth() pulumi.StringPtrOutput {
 //   - Service `postgresGcpWarehouse`: Authentication method. Default value: `PASSWORD`.
 //   - Service `postgresRdsWarehouse`: Authentication method. Default value: `PASSWORD`.
 //   - Service `postgresWarehouse`: Authentication method. Default value: `PASSWORD`.
+//   - Service `postgresWh`: Authentication method. Supported values: `PASSWORD`, `AWS_IAM`. Default: `PASSWORD`.
 func (o DestinationConfigPtrOutput) AuthMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
@@ -41587,6 +41698,7 @@ func (o DestinationConfigPtrOutput) AwsBucketAuthType() pulumi.StringPtrOutput {
 //   - Service `postgresGcpWarehouse`: AWS region code. Required when `authMethod` is set to `AWS_IAM`.
 //   - Service `postgresRdsWarehouse`: AWS region where the RDS instance is located. Required when `authMethod` is set to `AWS_IAM`.
 //   - Service `postgresWarehouse`: AWS region code. Required when `authMethod` is set to `AWS_IAM`.
+//   - Service `postgresWh`: AWS region code. Required when `authMethod` is set to `AWS_IAM`
 func (o DestinationConfigPtrOutput) AwsRegionCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DestinationConfig) *string {
 		if v == nil {
@@ -41611,6 +41723,28 @@ func (o DestinationConfigPtrOutput) AwsSecretAccessKey() pulumi.StringPtrOutput 
 }
 
 // Field usage depends on `service` value:
+//   - Service `databricks`: Your Azure AD application (client) ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+func (o DestinationConfigPtrOutput) AzureClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricks`: Your Azure AD application client secret for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+func (o DestinationConfigPtrOutput) AzureClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `databricks`: Authentication method for the Azure container you want to use as the external staging for Hybrid Deployment.
 func (o DestinationConfigPtrOutput) AzureStorageAccountAuthType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DestinationConfig) *string {
@@ -41618,6 +41752,17 @@ func (o DestinationConfigPtrOutput) AzureStorageAccountAuthType() pulumi.StringP
 			return nil
 		}
 		return v.AzureStorageAccountAuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricks`: Your Azure AD tenant ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+func (o DestinationConfigPtrOutput) AzureTenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureTenantId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -41764,6 +41909,7 @@ func (o DestinationConfigPtrOutput) ConnectionMethod() pulumi.StringPtrOutput {
 //   - Service `postgresGcpWarehouse`: Connection method. Default value: `Directly`.
 //   - Service `postgresRdsWarehouse`: Connection method. Default value: `Directly`.
 //   - Service `postgresWarehouse`: Connection method. Default value: `Directly`.
+//   - Service `postgresWh`: Connection method. Supported values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`. Default: `Directly`. Note: PrivateLink is only supported for cloud-hosted PostgreSQL (RDS, Aurora, Azure, GCP).
 //   - Service `redshift`: Connection method. Default value: `Directly`.
 //   - Service `snowflake`: Connection method. Default value: `Directly`.
 //   - Service `sqlServerRdsWarehouse`: Connection method. Default value: `Directly`.
@@ -41857,6 +42003,7 @@ func (o DestinationConfigPtrOutput) DataSetLocation() pulumi.StringPtrOutput {
 //   - Service `postgresGcpWarehouse`: Database name
 //   - Service `postgresRdsWarehouse`: Database name
 //   - Service `postgresWarehouse`: Database name
+//   - Service `postgresWh`: Database name
 //   - Service `redshift`: Database name
 //   - Service `snowflake`: Database name
 //   - Service `sqlServerRdsWarehouse`: Database name
@@ -41961,6 +42108,7 @@ func (o DestinationConfigPtrOutput) EnableSuperType() pulumi.BoolPtrOutput {
 //   - Service `postgresGcpWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
 //   - Service `postgresRdsWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
 //   - Service `postgresWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
+//   - Service `postgresWh`: AWS external ID for authentication. Auto-generated from group ID when `authMethod` is set to `AWS_IAM`
 //   - Service `redshift`: Fivetran generated External ID
 func (o DestinationConfigPtrOutput) ExternalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DestinationConfig) *string {
@@ -42080,6 +42228,15 @@ func (o DestinationConfigPtrOutput) GcsProjectId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o DestinationConfigPtrOutput) GcsServiceAccountCredentials() DestinationConfigGcsServiceAccountCredentialsPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *DestinationConfigGcsServiceAccountCredentials {
+		if v == nil {
+			return nil
+		}
+		return v.GcsServiceAccountCredentials
+	}).(DestinationConfigGcsServiceAccountCredentialsPtrOutput)
+}
+
 // Field usage depends on `service` value:
 //   - Service `snowflake`: The path to the JSON file that contains the service account credentials for the GCS bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use a GCS bucket to stage your data.
 func (o DestinationConfigPtrOutput) GcsServiceAccountCredentialsPath() pulumi.StringPtrOutput {
@@ -42111,6 +42268,7 @@ func (o DestinationConfigPtrOutput) GcsServiceAccountCredentialsPath() pulumi.St
 //   - Service `postgresGcpWarehouse`: Server name
 //   - Service `postgresRdsWarehouse`: Server name
 //   - Service `postgresWarehouse`: Server name
+//   - Service `postgresWh`: Server hostname or IP address
 //   - Service `redshift`: Server name
 //   - Service `snowflake`: Server name
 //   - Service `sqlServerRdsWarehouse`: Server name
@@ -42328,6 +42486,7 @@ func (o DestinationConfigPtrOutput) Passphrase() pulumi.StringPtrOutput {
 //   - Service `postgresGcpWarehouse`: Database user password
 //   - Service `postgresRdsWarehouse`: Database user password
 //   - Service `postgresWarehouse`: Database user password
+//   - Service `postgresWh`: Database user password. Required for PASSWORD authentication
 //   - Service `redshift`: Database user password. Required if authentication type is `PASSWORD`.
 //   - Service `snowflake`: Database user password. The field should be specified if authentication type is `PASSWORD`.
 //   - Service `sqlServerRdsWarehouse`: Database user password
@@ -42357,6 +42516,15 @@ func (o DestinationConfigPtrOutput) PersonalAccessToken() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o DestinationConfigPtrOutput) PolarisCatalogConfiguration() DestinationConfigPolarisCatalogConfigurationPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *DestinationConfigPolarisCatalogConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.PolarisCatalogConfiguration
+	}).(DestinationConfigPolarisCatalogConfigurationPtrOutput)
+}
+
 // Field usage depends on `service` value:
 //   - Service `adls`: Server port number
 //   - Service `auroraPostgresWarehouse`: Server port number
@@ -42383,6 +42551,7 @@ func (o DestinationConfigPtrOutput) PersonalAccessToken() pulumi.StringPtrOutput
 //   - Service `postgresGcpWarehouse`: Server port number
 //   - Service `postgresRdsWarehouse`: Server port number
 //   - Service `postgresWarehouse`: Server port number
+//   - Service `postgresWh`: Server port number (default: 5432)
 //   - Service `redshift`: Server port number
 //   - Service `snowflake`: Server port number
 //   - Service `sqlServerRdsWarehouse`: Server port number
@@ -42551,6 +42720,7 @@ func (o DestinationConfigPtrOutput) Role() pulumi.StringPtrOutput {
 //   - Service `postgresGcpWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
 //   - Service `postgresRdsWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
 //   - Service `postgresWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
+//   - Service `postgresWh`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`
 //   - Service `redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
 func (o DestinationConfigPtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DestinationConfig) *string {
@@ -42765,6 +42935,18 @@ func (o DestinationConfigPtrOutput) ShouldMaintainTablesInOneLake() pulumi.BoolP
 }
 
 // Field usage depends on `service` value:
+//   - Service `databricksViaManagedDataLake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Databricks via Managed Data Lake requires Delta Lake metadata, so Fivetran always uses `true` for this destination.
+//   - Service `managedDataLake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Default value: `false` for new destinations and `true` for existing destinations. Destinations with Unity Catalog or OneLake catalog enabled always write Delta Lake metadata.
+func (o DestinationConfigPtrOutput) ShouldWriteDelta() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DestinationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ShouldWriteDelta
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
 //   - Service `databricksViaManagedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
 //   - Service `managedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
@@ -42879,6 +43061,7 @@ func (o DestinationConfigPtrOutput) TenantId() pulumi.StringPtrOutput {
 //   - Service `postgresGcpWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresWh`: SSH server hostname. Required when `connectionType` is set to `SshTunnel`
 //   - Service `redshift`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `sqlServerRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `sqlServerWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -42911,6 +43094,7 @@ func (o DestinationConfigPtrOutput) TunnelHost() pulumi.StringPtrOutput {
 //   - Service `postgresGcpWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresWh`: SSH server port. Required when `connectionType` is set to `SshTunnel`
 //   - Service `redshift`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `sqlServerRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `sqlServerWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -42943,6 +43127,7 @@ func (o DestinationConfigPtrOutput) TunnelPort() pulumi.IntPtrOutput {
 //   - Service `postgresGcpWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresWh`: SSH user name. Required when `connectionType` is set to `SshTunnel`
 //   - Service `redshift`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `sqlServerRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `sqlServerWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -42986,6 +43171,7 @@ func (o DestinationConfigPtrOutput) UseCustomerStaging() pulumi.BoolPtrOutput {
 //   - Service `postgresGcpWarehouse`: Database user name
 //   - Service `postgresRdsWarehouse`: Database user name
 //   - Service `postgresWarehouse`: Database user name
+//   - Service `postgresWh`: Database user name. Required for PASSWORD authentication
 //   - Service `redshift`: Database user name
 //   - Service `snowflake`: Database user name
 //   - Service `sqlServerRdsWarehouse`: Database user name
@@ -43020,6 +43206,350 @@ func (o DestinationConfigPtrOutput) WorkspaceName() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.WorkspaceName
+	}).(pulumi.StringPtrOutput)
+}
+
+type DestinationConfigGcsServiceAccountCredentials struct {
+}
+
+// DestinationConfigGcsServiceAccountCredentialsInput is an input type that accepts DestinationConfigGcsServiceAccountCredentialsArgs and DestinationConfigGcsServiceAccountCredentialsOutput values.
+// You can construct a concrete instance of `DestinationConfigGcsServiceAccountCredentialsInput` via:
+//
+//	DestinationConfigGcsServiceAccountCredentialsArgs{...}
+type DestinationConfigGcsServiceAccountCredentialsInput interface {
+	pulumi.Input
+
+	ToDestinationConfigGcsServiceAccountCredentialsOutput() DestinationConfigGcsServiceAccountCredentialsOutput
+	ToDestinationConfigGcsServiceAccountCredentialsOutputWithContext(context.Context) DestinationConfigGcsServiceAccountCredentialsOutput
+}
+
+type DestinationConfigGcsServiceAccountCredentialsArgs struct {
+}
+
+func (DestinationConfigGcsServiceAccountCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DestinationConfigGcsServiceAccountCredentials)(nil)).Elem()
+}
+
+func (i DestinationConfigGcsServiceAccountCredentialsArgs) ToDestinationConfigGcsServiceAccountCredentialsOutput() DestinationConfigGcsServiceAccountCredentialsOutput {
+	return i.ToDestinationConfigGcsServiceAccountCredentialsOutputWithContext(context.Background())
+}
+
+func (i DestinationConfigGcsServiceAccountCredentialsArgs) ToDestinationConfigGcsServiceAccountCredentialsOutputWithContext(ctx context.Context) DestinationConfigGcsServiceAccountCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DestinationConfigGcsServiceAccountCredentialsOutput)
+}
+
+func (i DestinationConfigGcsServiceAccountCredentialsArgs) ToDestinationConfigGcsServiceAccountCredentialsPtrOutput() DestinationConfigGcsServiceAccountCredentialsPtrOutput {
+	return i.ToDestinationConfigGcsServiceAccountCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i DestinationConfigGcsServiceAccountCredentialsArgs) ToDestinationConfigGcsServiceAccountCredentialsPtrOutputWithContext(ctx context.Context) DestinationConfigGcsServiceAccountCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DestinationConfigGcsServiceAccountCredentialsOutput).ToDestinationConfigGcsServiceAccountCredentialsPtrOutputWithContext(ctx)
+}
+
+// DestinationConfigGcsServiceAccountCredentialsPtrInput is an input type that accepts DestinationConfigGcsServiceAccountCredentialsArgs, DestinationConfigGcsServiceAccountCredentialsPtr and DestinationConfigGcsServiceAccountCredentialsPtrOutput values.
+// You can construct a concrete instance of `DestinationConfigGcsServiceAccountCredentialsPtrInput` via:
+//
+//	        DestinationConfigGcsServiceAccountCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DestinationConfigGcsServiceAccountCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToDestinationConfigGcsServiceAccountCredentialsPtrOutput() DestinationConfigGcsServiceAccountCredentialsPtrOutput
+	ToDestinationConfigGcsServiceAccountCredentialsPtrOutputWithContext(context.Context) DestinationConfigGcsServiceAccountCredentialsPtrOutput
+}
+
+type destinationConfigGcsServiceAccountCredentialsPtrType DestinationConfigGcsServiceAccountCredentialsArgs
+
+func DestinationConfigGcsServiceAccountCredentialsPtr(v *DestinationConfigGcsServiceAccountCredentialsArgs) DestinationConfigGcsServiceAccountCredentialsPtrInput {
+	return (*destinationConfigGcsServiceAccountCredentialsPtrType)(v)
+}
+
+func (*destinationConfigGcsServiceAccountCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DestinationConfigGcsServiceAccountCredentials)(nil)).Elem()
+}
+
+func (i *destinationConfigGcsServiceAccountCredentialsPtrType) ToDestinationConfigGcsServiceAccountCredentialsPtrOutput() DestinationConfigGcsServiceAccountCredentialsPtrOutput {
+	return i.ToDestinationConfigGcsServiceAccountCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *destinationConfigGcsServiceAccountCredentialsPtrType) ToDestinationConfigGcsServiceAccountCredentialsPtrOutputWithContext(ctx context.Context) DestinationConfigGcsServiceAccountCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DestinationConfigGcsServiceAccountCredentialsPtrOutput)
+}
+
+type DestinationConfigGcsServiceAccountCredentialsOutput struct{ *pulumi.OutputState }
+
+func (DestinationConfigGcsServiceAccountCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DestinationConfigGcsServiceAccountCredentials)(nil)).Elem()
+}
+
+func (o DestinationConfigGcsServiceAccountCredentialsOutput) ToDestinationConfigGcsServiceAccountCredentialsOutput() DestinationConfigGcsServiceAccountCredentialsOutput {
+	return o
+}
+
+func (o DestinationConfigGcsServiceAccountCredentialsOutput) ToDestinationConfigGcsServiceAccountCredentialsOutputWithContext(ctx context.Context) DestinationConfigGcsServiceAccountCredentialsOutput {
+	return o
+}
+
+func (o DestinationConfigGcsServiceAccountCredentialsOutput) ToDestinationConfigGcsServiceAccountCredentialsPtrOutput() DestinationConfigGcsServiceAccountCredentialsPtrOutput {
+	return o.ToDestinationConfigGcsServiceAccountCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o DestinationConfigGcsServiceAccountCredentialsOutput) ToDestinationConfigGcsServiceAccountCredentialsPtrOutputWithContext(ctx context.Context) DestinationConfigGcsServiceAccountCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DestinationConfigGcsServiceAccountCredentials) *DestinationConfigGcsServiceAccountCredentials {
+		return &v
+	}).(DestinationConfigGcsServiceAccountCredentialsPtrOutput)
+}
+
+type DestinationConfigGcsServiceAccountCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (DestinationConfigGcsServiceAccountCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DestinationConfigGcsServiceAccountCredentials)(nil)).Elem()
+}
+
+func (o DestinationConfigGcsServiceAccountCredentialsPtrOutput) ToDestinationConfigGcsServiceAccountCredentialsPtrOutput() DestinationConfigGcsServiceAccountCredentialsPtrOutput {
+	return o
+}
+
+func (o DestinationConfigGcsServiceAccountCredentialsPtrOutput) ToDestinationConfigGcsServiceAccountCredentialsPtrOutputWithContext(ctx context.Context) DestinationConfigGcsServiceAccountCredentialsPtrOutput {
+	return o
+}
+
+func (o DestinationConfigGcsServiceAccountCredentialsPtrOutput) Elem() DestinationConfigGcsServiceAccountCredentialsOutput {
+	return o.ApplyT(func(v *DestinationConfigGcsServiceAccountCredentials) DestinationConfigGcsServiceAccountCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret DestinationConfigGcsServiceAccountCredentials
+		return ret
+	}).(DestinationConfigGcsServiceAccountCredentialsOutput)
+}
+
+type DestinationConfigPolarisCatalogConfiguration struct {
+	// Field usage depends on `service` value:
+	// 	- Service `databricksViaManagedDataLake`: Client ID
+	// 	- Service `managedDataLake`: Client ID
+	ClientId *string `pulumi:"clientId"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricksViaManagedDataLake`: Client Secret
+	// 	- Service `managedDataLake`: Client Secret
+	ClientSecret *string `pulumi:"clientSecret"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricksViaManagedDataLake`: Polaris Catalog
+	// 	- Service `managedDataLake`: Polaris Catalog
+	PolarisCatalog *string `pulumi:"polarisCatalog"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricksViaManagedDataLake`: Polaris Server Endpoint
+	// 	- Service `managedDataLake`: Polaris Server Endpoint
+	PolarisServerEndpoint *string `pulumi:"polarisServerEndpoint"`
+}
+
+// DestinationConfigPolarisCatalogConfigurationInput is an input type that accepts DestinationConfigPolarisCatalogConfigurationArgs and DestinationConfigPolarisCatalogConfigurationOutput values.
+// You can construct a concrete instance of `DestinationConfigPolarisCatalogConfigurationInput` via:
+//
+//	DestinationConfigPolarisCatalogConfigurationArgs{...}
+type DestinationConfigPolarisCatalogConfigurationInput interface {
+	pulumi.Input
+
+	ToDestinationConfigPolarisCatalogConfigurationOutput() DestinationConfigPolarisCatalogConfigurationOutput
+	ToDestinationConfigPolarisCatalogConfigurationOutputWithContext(context.Context) DestinationConfigPolarisCatalogConfigurationOutput
+}
+
+type DestinationConfigPolarisCatalogConfigurationArgs struct {
+	// Field usage depends on `service` value:
+	// 	- Service `databricksViaManagedDataLake`: Client ID
+	// 	- Service `managedDataLake`: Client ID
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricksViaManagedDataLake`: Client Secret
+	// 	- Service `managedDataLake`: Client Secret
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricksViaManagedDataLake`: Polaris Catalog
+	// 	- Service `managedDataLake`: Polaris Catalog
+	PolarisCatalog pulumi.StringPtrInput `pulumi:"polarisCatalog"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricksViaManagedDataLake`: Polaris Server Endpoint
+	// 	- Service `managedDataLake`: Polaris Server Endpoint
+	PolarisServerEndpoint pulumi.StringPtrInput `pulumi:"polarisServerEndpoint"`
+}
+
+func (DestinationConfigPolarisCatalogConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DestinationConfigPolarisCatalogConfiguration)(nil)).Elem()
+}
+
+func (i DestinationConfigPolarisCatalogConfigurationArgs) ToDestinationConfigPolarisCatalogConfigurationOutput() DestinationConfigPolarisCatalogConfigurationOutput {
+	return i.ToDestinationConfigPolarisCatalogConfigurationOutputWithContext(context.Background())
+}
+
+func (i DestinationConfigPolarisCatalogConfigurationArgs) ToDestinationConfigPolarisCatalogConfigurationOutputWithContext(ctx context.Context) DestinationConfigPolarisCatalogConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DestinationConfigPolarisCatalogConfigurationOutput)
+}
+
+func (i DestinationConfigPolarisCatalogConfigurationArgs) ToDestinationConfigPolarisCatalogConfigurationPtrOutput() DestinationConfigPolarisCatalogConfigurationPtrOutput {
+	return i.ToDestinationConfigPolarisCatalogConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i DestinationConfigPolarisCatalogConfigurationArgs) ToDestinationConfigPolarisCatalogConfigurationPtrOutputWithContext(ctx context.Context) DestinationConfigPolarisCatalogConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DestinationConfigPolarisCatalogConfigurationOutput).ToDestinationConfigPolarisCatalogConfigurationPtrOutputWithContext(ctx)
+}
+
+// DestinationConfigPolarisCatalogConfigurationPtrInput is an input type that accepts DestinationConfigPolarisCatalogConfigurationArgs, DestinationConfigPolarisCatalogConfigurationPtr and DestinationConfigPolarisCatalogConfigurationPtrOutput values.
+// You can construct a concrete instance of `DestinationConfigPolarisCatalogConfigurationPtrInput` via:
+//
+//	        DestinationConfigPolarisCatalogConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DestinationConfigPolarisCatalogConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToDestinationConfigPolarisCatalogConfigurationPtrOutput() DestinationConfigPolarisCatalogConfigurationPtrOutput
+	ToDestinationConfigPolarisCatalogConfigurationPtrOutputWithContext(context.Context) DestinationConfigPolarisCatalogConfigurationPtrOutput
+}
+
+type destinationConfigPolarisCatalogConfigurationPtrType DestinationConfigPolarisCatalogConfigurationArgs
+
+func DestinationConfigPolarisCatalogConfigurationPtr(v *DestinationConfigPolarisCatalogConfigurationArgs) DestinationConfigPolarisCatalogConfigurationPtrInput {
+	return (*destinationConfigPolarisCatalogConfigurationPtrType)(v)
+}
+
+func (*destinationConfigPolarisCatalogConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DestinationConfigPolarisCatalogConfiguration)(nil)).Elem()
+}
+
+func (i *destinationConfigPolarisCatalogConfigurationPtrType) ToDestinationConfigPolarisCatalogConfigurationPtrOutput() DestinationConfigPolarisCatalogConfigurationPtrOutput {
+	return i.ToDestinationConfigPolarisCatalogConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *destinationConfigPolarisCatalogConfigurationPtrType) ToDestinationConfigPolarisCatalogConfigurationPtrOutputWithContext(ctx context.Context) DestinationConfigPolarisCatalogConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DestinationConfigPolarisCatalogConfigurationPtrOutput)
+}
+
+type DestinationConfigPolarisCatalogConfigurationOutput struct{ *pulumi.OutputState }
+
+func (DestinationConfigPolarisCatalogConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DestinationConfigPolarisCatalogConfiguration)(nil)).Elem()
+}
+
+func (o DestinationConfigPolarisCatalogConfigurationOutput) ToDestinationConfigPolarisCatalogConfigurationOutput() DestinationConfigPolarisCatalogConfigurationOutput {
+	return o
+}
+
+func (o DestinationConfigPolarisCatalogConfigurationOutput) ToDestinationConfigPolarisCatalogConfigurationOutputWithContext(ctx context.Context) DestinationConfigPolarisCatalogConfigurationOutput {
+	return o
+}
+
+func (o DestinationConfigPolarisCatalogConfigurationOutput) ToDestinationConfigPolarisCatalogConfigurationPtrOutput() DestinationConfigPolarisCatalogConfigurationPtrOutput {
+	return o.ToDestinationConfigPolarisCatalogConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o DestinationConfigPolarisCatalogConfigurationOutput) ToDestinationConfigPolarisCatalogConfigurationPtrOutputWithContext(ctx context.Context) DestinationConfigPolarisCatalogConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DestinationConfigPolarisCatalogConfiguration) *DestinationConfigPolarisCatalogConfiguration {
+		return &v
+	}).(DestinationConfigPolarisCatalogConfigurationPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricksViaManagedDataLake`: Client ID
+//   - Service `managedDataLake`: Client ID
+func (o DestinationConfigPolarisCatalogConfigurationOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfigPolarisCatalogConfiguration) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricksViaManagedDataLake`: Client Secret
+//   - Service `managedDataLake`: Client Secret
+func (o DestinationConfigPolarisCatalogConfigurationOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfigPolarisCatalogConfiguration) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricksViaManagedDataLake`: Polaris Catalog
+//   - Service `managedDataLake`: Polaris Catalog
+func (o DestinationConfigPolarisCatalogConfigurationOutput) PolarisCatalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfigPolarisCatalogConfiguration) *string { return v.PolarisCatalog }).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricksViaManagedDataLake`: Polaris Server Endpoint
+//   - Service `managedDataLake`: Polaris Server Endpoint
+func (o DestinationConfigPolarisCatalogConfigurationOutput) PolarisServerEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfigPolarisCatalogConfiguration) *string { return v.PolarisServerEndpoint }).(pulumi.StringPtrOutput)
+}
+
+type DestinationConfigPolarisCatalogConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (DestinationConfigPolarisCatalogConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DestinationConfigPolarisCatalogConfiguration)(nil)).Elem()
+}
+
+func (o DestinationConfigPolarisCatalogConfigurationPtrOutput) ToDestinationConfigPolarisCatalogConfigurationPtrOutput() DestinationConfigPolarisCatalogConfigurationPtrOutput {
+	return o
+}
+
+func (o DestinationConfigPolarisCatalogConfigurationPtrOutput) ToDestinationConfigPolarisCatalogConfigurationPtrOutputWithContext(ctx context.Context) DestinationConfigPolarisCatalogConfigurationPtrOutput {
+	return o
+}
+
+func (o DestinationConfigPolarisCatalogConfigurationPtrOutput) Elem() DestinationConfigPolarisCatalogConfigurationOutput {
+	return o.ApplyT(func(v *DestinationConfigPolarisCatalogConfiguration) DestinationConfigPolarisCatalogConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret DestinationConfigPolarisCatalogConfiguration
+		return ret
+	}).(DestinationConfigPolarisCatalogConfigurationOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricksViaManagedDataLake`: Client ID
+//   - Service `managedDataLake`: Client ID
+func (o DestinationConfigPolarisCatalogConfigurationPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfigPolarisCatalogConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricksViaManagedDataLake`: Client Secret
+//   - Service `managedDataLake`: Client Secret
+func (o DestinationConfigPolarisCatalogConfigurationPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfigPolarisCatalogConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricksViaManagedDataLake`: Polaris Catalog
+//   - Service `managedDataLake`: Polaris Catalog
+func (o DestinationConfigPolarisCatalogConfigurationPtrOutput) PolarisCatalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfigPolarisCatalogConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PolarisCatalog
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricksViaManagedDataLake`: Polaris Server Endpoint
+//   - Service `managedDataLake`: Polaris Server Endpoint
+func (o DestinationConfigPolarisCatalogConfigurationPtrOutput) PolarisServerEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DestinationConfigPolarisCatalogConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PolarisServerEndpoint
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -43306,24 +43836,50 @@ func (o DestinationTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 type ExternalLoggingConfig struct {
 	AccessKeyId     *string `pulumi:"accessKeyId"`
 	AccessKeySecret *string `pulumi:"accessKeySecret"`
+	AccessToken     *string `pulumi:"accessToken"`
 	ApiKey          *string `pulumi:"apiKey"`
 	Channel         *string `pulumi:"channel"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. Your application (client) ID.
+	ClientId *string `pulumi:"clientId"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. Your application client secret.
+	ClientSecret *string `pulumi:"clientSecret"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. The endpoint URL for your Data Collection Endpoint.
+	DataCollectionEndpoint *string `pulumi:"dataCollectionEndpoint"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. The immutable ID of your Data Collection Rule.
+	DcrImmutableId *string `pulumi:"dcrImmutableId"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. The stream name of your Data Collection Rule.
+	DcrStreamName *string `pulumi:"dcrStreamName"`
 	// Enable SSL
-	EnableSsl    *bool   `pulumi:"enableSsl"`
-	ExternalId   *string `pulumi:"externalId"`
-	Host         *string `pulumi:"host"`
-	Hostname     *string `pulumi:"hostname"`
-	LogGroupName *string `pulumi:"logGroupName"`
+	EnableSsl     *bool   `pulumi:"enableSsl"`
+	EnvironmentId *string `pulumi:"environmentId"`
+	ExternalId    *string `pulumi:"externalId"`
+	Host          *string `pulumi:"host"`
+	Hostname      *string `pulumi:"hostname"`
+	LogGroupName  *string `pulumi:"logGroupName"`
+	LokiUrl       *string `pulumi:"lokiUrl"`
 	// Port
-	Port              *int    `pulumi:"port"`
+	Port *int `pulumi:"port"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For HTTP Data Collector API authentication. Your Log Analytics primary key.
 	PrimaryKey        *string `pulumi:"primaryKey"`
 	ProjectId         *string `pulumi:"projectId"`
 	Region            *string `pulumi:"region"`
 	RoleArn           *string `pulumi:"roleArn"`
 	ServiceAccountKey *string `pulumi:"serviceAccountKey"`
 	SubDomain         *string `pulumi:"subDomain"`
-	Token             *string `pulumi:"token"`
-	WorkspaceId       *string `pulumi:"workspaceId"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. Your Microsoft Entra directory (tenant) ID.
+	TenantId *string `pulumi:"tenantId"`
+	Token    *string `pulumi:"token"`
+	Username *string `pulumi:"username"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For HTTP Data Collector API authentication. Your Log Analytics workspace ID.
+	WorkspaceId *string `pulumi:"workspaceId"`
 }
 
 // ExternalLoggingConfigInput is an input type that accepts ExternalLoggingConfigArgs and ExternalLoggingConfigOutput values.
@@ -43340,24 +43896,50 @@ type ExternalLoggingConfigInput interface {
 type ExternalLoggingConfigArgs struct {
 	AccessKeyId     pulumi.StringPtrInput `pulumi:"accessKeyId"`
 	AccessKeySecret pulumi.StringPtrInput `pulumi:"accessKeySecret"`
+	AccessToken     pulumi.StringPtrInput `pulumi:"accessToken"`
 	ApiKey          pulumi.StringPtrInput `pulumi:"apiKey"`
 	Channel         pulumi.StringPtrInput `pulumi:"channel"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. Your application (client) ID.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. Your application client secret.
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. The endpoint URL for your Data Collection Endpoint.
+	DataCollectionEndpoint pulumi.StringPtrInput `pulumi:"dataCollectionEndpoint"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. The immutable ID of your Data Collection Rule.
+	DcrImmutableId pulumi.StringPtrInput `pulumi:"dcrImmutableId"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. The stream name of your Data Collection Rule.
+	DcrStreamName pulumi.StringPtrInput `pulumi:"dcrStreamName"`
 	// Enable SSL
-	EnableSsl    pulumi.BoolPtrInput   `pulumi:"enableSsl"`
-	ExternalId   pulumi.StringPtrInput `pulumi:"externalId"`
-	Host         pulumi.StringPtrInput `pulumi:"host"`
-	Hostname     pulumi.StringPtrInput `pulumi:"hostname"`
-	LogGroupName pulumi.StringPtrInput `pulumi:"logGroupName"`
+	EnableSsl     pulumi.BoolPtrInput   `pulumi:"enableSsl"`
+	EnvironmentId pulumi.StringPtrInput `pulumi:"environmentId"`
+	ExternalId    pulumi.StringPtrInput `pulumi:"externalId"`
+	Host          pulumi.StringPtrInput `pulumi:"host"`
+	Hostname      pulumi.StringPtrInput `pulumi:"hostname"`
+	LogGroupName  pulumi.StringPtrInput `pulumi:"logGroupName"`
+	LokiUrl       pulumi.StringPtrInput `pulumi:"lokiUrl"`
 	// Port
-	Port              pulumi.IntPtrInput    `pulumi:"port"`
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For HTTP Data Collector API authentication. Your Log Analytics primary key.
 	PrimaryKey        pulumi.StringPtrInput `pulumi:"primaryKey"`
 	ProjectId         pulumi.StringPtrInput `pulumi:"projectId"`
 	Region            pulumi.StringPtrInput `pulumi:"region"`
 	RoleArn           pulumi.StringPtrInput `pulumi:"roleArn"`
 	ServiceAccountKey pulumi.StringPtrInput `pulumi:"serviceAccountKey"`
 	SubDomain         pulumi.StringPtrInput `pulumi:"subDomain"`
-	Token             pulumi.StringPtrInput `pulumi:"token"`
-	WorkspaceId       pulumi.StringPtrInput `pulumi:"workspaceId"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. Your Microsoft Entra directory (tenant) ID.
+	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
+	Token    pulumi.StringPtrInput `pulumi:"token"`
+	Username pulumi.StringPtrInput `pulumi:"username"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For HTTP Data Collector API authentication. Your Log Analytics workspace ID.
+	WorkspaceId pulumi.StringPtrInput `pulumi:"workspaceId"`
 }
 
 func (ExternalLoggingConfigArgs) ElementType() reflect.Type {
@@ -43445,6 +44027,10 @@ func (o ExternalLoggingConfigOutput) AccessKeySecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.AccessKeySecret }).(pulumi.StringPtrOutput)
 }
 
+func (o ExternalLoggingConfigOutput) AccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.AccessToken }).(pulumi.StringPtrOutput)
+}
+
 func (o ExternalLoggingConfigOutput) ApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
 }
@@ -43453,9 +44039,43 @@ func (o ExternalLoggingConfigOutput) Channel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.Channel }).(pulumi.StringPtrOutput)
 }
 
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For Logs Ingestion API authentication. Your application (client) ID.
+func (o ExternalLoggingConfigOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For Logs Ingestion API authentication. Your application client secret.
+func (o ExternalLoggingConfigOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For Logs Ingestion API authentication. The endpoint URL for your Data Collection Endpoint.
+func (o ExternalLoggingConfigOutput) DataCollectionEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.DataCollectionEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For Logs Ingestion API authentication. The immutable ID of your Data Collection Rule.
+func (o ExternalLoggingConfigOutput) DcrImmutableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.DcrImmutableId }).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For Logs Ingestion API authentication. The stream name of your Data Collection Rule.
+func (o ExternalLoggingConfigOutput) DcrStreamName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.DcrStreamName }).(pulumi.StringPtrOutput)
+}
+
 // Enable SSL
 func (o ExternalLoggingConfigOutput) EnableSsl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ExternalLoggingConfig) *bool { return v.EnableSsl }).(pulumi.BoolPtrOutput)
+}
+
+func (o ExternalLoggingConfigOutput) EnvironmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.EnvironmentId }).(pulumi.StringPtrOutput)
 }
 
 func (o ExternalLoggingConfigOutput) ExternalId() pulumi.StringPtrOutput {
@@ -43474,11 +44094,17 @@ func (o ExternalLoggingConfigOutput) LogGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.LogGroupName }).(pulumi.StringPtrOutput)
 }
 
+func (o ExternalLoggingConfigOutput) LokiUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.LokiUrl }).(pulumi.StringPtrOutput)
+}
+
 // Port
 func (o ExternalLoggingConfigOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ExternalLoggingConfig) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For HTTP Data Collector API authentication. Your Log Analytics primary key.
 func (o ExternalLoggingConfigOutput) PrimaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.PrimaryKey }).(pulumi.StringPtrOutput)
 }
@@ -43503,10 +44129,22 @@ func (o ExternalLoggingConfigOutput) SubDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.SubDomain }).(pulumi.StringPtrOutput)
 }
 
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For Logs Ingestion API authentication. Your Microsoft Entra directory (tenant) ID.
+func (o ExternalLoggingConfigOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
 func (o ExternalLoggingConfigOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
 
+func (o ExternalLoggingConfigOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For HTTP Data Collector API authentication. Your Log Analytics workspace ID.
 func (o ExternalLoggingConfigOutput) WorkspaceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExternalLoggingConfig) *string { return v.WorkspaceId }).(pulumi.StringPtrOutput)
 }
@@ -43553,6 +44191,15 @@ func (o ExternalLoggingConfigPtrOutput) AccessKeySecret() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ExternalLoggingConfigPtrOutput) AccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessToken
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ExternalLoggingConfigPtrOutput) ApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExternalLoggingConfig) *string {
 		if v == nil {
@@ -43571,6 +44218,61 @@ func (o ExternalLoggingConfigPtrOutput) Channel() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For Logs Ingestion API authentication. Your application (client) ID.
+func (o ExternalLoggingConfigPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For Logs Ingestion API authentication. Your application client secret.
+func (o ExternalLoggingConfigPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For Logs Ingestion API authentication. The endpoint URL for your Data Collection Endpoint.
+func (o ExternalLoggingConfigPtrOutput) DataCollectionEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataCollectionEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For Logs Ingestion API authentication. The immutable ID of your Data Collection Rule.
+func (o ExternalLoggingConfigPtrOutput) DcrImmutableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DcrImmutableId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For Logs Ingestion API authentication. The stream name of your Data Collection Rule.
+func (o ExternalLoggingConfigPtrOutput) DcrStreamName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DcrStreamName
+	}).(pulumi.StringPtrOutput)
+}
+
 // Enable SSL
 func (o ExternalLoggingConfigPtrOutput) EnableSsl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ExternalLoggingConfig) *bool {
@@ -43579,6 +44281,15 @@ func (o ExternalLoggingConfigPtrOutput) EnableSsl() pulumi.BoolPtrOutput {
 		}
 		return v.EnableSsl
 	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ExternalLoggingConfigPtrOutput) EnvironmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentId
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ExternalLoggingConfigPtrOutput) ExternalId() pulumi.StringPtrOutput {
@@ -43617,6 +44328,15 @@ func (o ExternalLoggingConfigPtrOutput) LogGroupName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ExternalLoggingConfigPtrOutput) LokiUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LokiUrl
+	}).(pulumi.StringPtrOutput)
+}
+
 // Port
 func (o ExternalLoggingConfigPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ExternalLoggingConfig) *int {
@@ -43627,6 +44347,8 @@ func (o ExternalLoggingConfigPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For HTTP Data Collector API authentication. Your Log Analytics primary key.
 func (o ExternalLoggingConfigPtrOutput) PrimaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExternalLoggingConfig) *string {
 		if v == nil {
@@ -43681,6 +44403,17 @@ func (o ExternalLoggingConfigPtrOutput) SubDomain() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For Logs Ingestion API authentication. Your Microsoft Entra directory (tenant) ID.
+func (o ExternalLoggingConfigPtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ExternalLoggingConfigPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExternalLoggingConfig) *string {
 		if v == nil {
@@ -43690,6 +44423,17 @@ func (o ExternalLoggingConfigPtrOutput) Token() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ExternalLoggingConfigPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For HTTP Data Collector API authentication. Your Log Analytics workspace ID.
 func (o ExternalLoggingConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExternalLoggingConfig) *string {
 		if v == nil {
@@ -82331,6 +83075,7 @@ type GetDestinationConfig struct {
 	// 	- Service `postgresGcpWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresWh`: Specifies whether TLS is required. Must be set when using `SshTunnel` connection
 	// 	- Service `redshift`: Require TLS through Tunnel
 	// 	- Service `sqlServerRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `sqlServerWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -82348,6 +83093,7 @@ type GetDestinationConfig struct {
 	// 	- Service `postgresGcpWarehouse`: Authentication method. Default value: `PASSWORD`.
 	// 	- Service `postgresRdsWarehouse`: Authentication method. Default value: `PASSWORD`.
 	// 	- Service `postgresWarehouse`: Authentication method. Default value: `PASSWORD`.
+	// 	- Service `postgresWh`: Authentication method. Supported values: `PASSWORD`, `AWS_IAM`. Default: `PASSWORD`.
 	AuthMethod string `pulumi:"authMethod"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Authentication type
@@ -82374,6 +83120,7 @@ type GetDestinationConfig struct {
 	// 	- Service `postgresGcpWarehouse`: AWS region code. Required when `authMethod` is set to `AWS_IAM`.
 	// 	- Service `postgresRdsWarehouse`: AWS region where the RDS instance is located. Required when `authMethod` is set to `AWS_IAM`.
 	// 	- Service `postgresWarehouse`: AWS region code. Required when `authMethod` is set to `AWS_IAM`.
+	// 	- Service `postgresWh`: AWS region code. Required when `authMethod` is set to `AWS_IAM`
 	AwsRegionCode string `pulumi:"awsRegionCode"`
 	// Field usage depends on `service` value:
 	// 	- Service `databricks`: Your user's secret access key
@@ -82382,8 +83129,17 @@ type GetDestinationConfig struct {
 	// 	- Service `snowflake`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment , want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
 	AwsSecretAccessKey string `pulumi:"awsSecretAccessKey"`
 	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Your Azure AD application (client) ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+	AzureClientId string `pulumi:"azureClientId"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Your Azure AD application client secret for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+	AzureClientSecret string `pulumi:"azureClientSecret"`
+	// Field usage depends on `service` value:
 	// 	- Service `databricks`: Authentication method for the Azure container you want to use as the external staging for Hybrid Deployment.
 	AzureStorageAccountAuthType string `pulumi:"azureStorageAccountAuthType"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Your Azure AD tenant ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+	AzureTenantId string `pulumi:"azureTenantId"`
 	// Field usage depends on `service` value:
 	// 	- Service `confluentCloudWh`: Comma-separated list of Confluent Cloud servers in the `server:port` format.
 	BootstrapServers []string `pulumi:"bootstrapServers"`
@@ -82455,6 +83211,7 @@ type GetDestinationConfig struct {
 	// 	- Service `postgresGcpWarehouse`: Connection method. Default value: `Directly`.
 	// 	- Service `postgresRdsWarehouse`: Connection method. Default value: `Directly`.
 	// 	- Service `postgresWarehouse`: Connection method. Default value: `Directly`.
+	// 	- Service `postgresWh`: Connection method. Supported values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`. Default: `Directly`. Note: PrivateLink is only supported for cloud-hosted PostgreSQL (RDS, Aurora, Azure, GCP).
 	// 	- Service `redshift`: Connection method. Default value: `Directly`.
 	// 	- Service `snowflake`: Connection method. Default value: `Directly`.
 	// 	- Service `sqlServerRdsWarehouse`: Connection method. Default value: `Directly`.
@@ -82500,6 +83257,7 @@ type GetDestinationConfig struct {
 	// 	- Service `postgresGcpWarehouse`: Database name
 	// 	- Service `postgresRdsWarehouse`: Database name
 	// 	- Service `postgresWarehouse`: Database name
+	// 	- Service `postgresWh`: Database name
 	// 	- Service `redshift`: Database name
 	// 	- Service `snowflake`: Database name
 	// 	- Service `sqlServerRdsWarehouse`: Database name
@@ -82540,6 +83298,7 @@ type GetDestinationConfig struct {
 	// 	- Service `postgresGcpWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
 	// 	- Service `postgresRdsWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
 	// 	- Service `postgresWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
+	// 	- Service `postgresWh`: AWS external ID for authentication. Auto-generated from group ID when `authMethod` is set to `AWS_IAM`
 	// 	- Service `redshift`: Fivetran generated External ID
 	ExternalId string `pulumi:"externalId"`
 	// Field usage depends on `service` value:
@@ -82572,6 +83331,9 @@ type GetDestinationConfig struct {
 	// 	- Service `managedDataLake`: GCS Project ID of your Google Cloud Storage bucket. Use this parameter only if you want to deploy your data lake on GCS.
 	GcsProjectId string `pulumi:"gcsProjectId"`
 	// Field usage depends on `service` value:
+	// 	- Service `snowflake`: The service account credentials for the Google Cloud Storage (GCS) bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use a GCS bucket to stage your data.
+	GcsServiceAccountCredentials GetDestinationConfigGcsServiceAccountCredentials `pulumi:"gcsServiceAccountCredentials"`
+	// Field usage depends on `service` value:
 	// 	- Service `snowflake`: The path to the JSON file that contains the service account credentials for the GCS bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use a GCS bucket to stage your data.
 	GcsServiceAccountCredentialsPath string `pulumi:"gcsServiceAccountCredentialsPath"`
 	// Field usage depends on `service` value:
@@ -82594,6 +83356,7 @@ type GetDestinationConfig struct {
 	// 	- Service `postgresGcpWarehouse`: Server name
 	// 	- Service `postgresRdsWarehouse`: Server name
 	// 	- Service `postgresWarehouse`: Server name
+	// 	- Service `postgresWh`: Server hostname or IP address
 	// 	- Service `redshift`: Server name
 	// 	- Service `snowflake`: Server name
 	// 	- Service `sqlServerRdsWarehouse`: Server name
@@ -82683,6 +83446,7 @@ type GetDestinationConfig struct {
 	// 	- Service `postgresGcpWarehouse`: Database user password
 	// 	- Service `postgresRdsWarehouse`: Database user password
 	// 	- Service `postgresWarehouse`: Database user password
+	// 	- Service `postgresWh`: Database user password. Required for PASSWORD authentication
 	// 	- Service `redshift`: Database user password. Required if authentication type is `PASSWORD`.
 	// 	- Service `snowflake`: Database user password. The field should be specified if authentication type is `PASSWORD`.
 	// 	- Service `sqlServerRdsWarehouse`: Database user password
@@ -82696,6 +83460,10 @@ type GetDestinationConfig struct {
 	// 	- Service `newS3Datalake`: Personal access token
 	// 	- Service `onelake`: Personal access token
 	PersonalAccessToken string `pulumi:"personalAccessToken"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricksViaManagedDataLake`: Polaris Catalog Base Configuration. Universal connection settings for any query engine or analytics tool.
+	// 	- Service `managedDataLake`: Polaris Catalog Base Configuration. Universal connection settings for any query engine or analytics tool.
+	PolarisCatalogConfiguration GetDestinationConfigPolarisCatalogConfiguration `pulumi:"polarisCatalogConfiguration"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Server port number
 	// 	- Service `auroraPostgresWarehouse`: Server port number
@@ -82722,6 +83490,7 @@ type GetDestinationConfig struct {
 	// 	- Service `postgresGcpWarehouse`: Server port number
 	// 	- Service `postgresRdsWarehouse`: Server port number
 	// 	- Service `postgresWarehouse`: Server port number
+	// 	- Service `postgresWh`: Server port number (default: 5432)
 	// 	- Service `redshift`: Server port number
 	// 	- Service `snowflake`: Server port number
 	// 	- Service `sqlServerRdsWarehouse`: Server port number
@@ -82802,6 +83571,7 @@ type GetDestinationConfig struct {
 	// 	- Service `postgresGcpWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
 	// 	- Service `postgresRdsWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
 	// 	- Service `postgresWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
+	// 	- Service `postgresWh`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`
 	// 	- Service `redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
 	RoleArn string `pulumi:"roleArn"`
 	// Field usage depends on `service` value:
@@ -82872,6 +83642,10 @@ type GetDestinationConfig struct {
 	// 	- Service `managedDataLake`: Specifies whether you want to create shortcut for you table in OneLake. Use this parameter only if you want to deploy your data lake on ADLS.
 	ShouldMaintainTablesInOneLake bool `pulumi:"shouldMaintainTablesInOneLake"`
 	// Field usage depends on `service` value:
+	// 	- Service `databricksViaManagedDataLake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Databricks via Managed Data Lake requires Delta Lake metadata, so Fivetran always uses `true` for this destination.
+	// 	- Service `managedDataLake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Default value: `false` for new destinations and `true` for existing destinations. Destinations with Unity Catalog or OneLake catalog enabled always write Delta Lake metadata.
+	ShouldWriteDelta bool `pulumi:"shouldWriteDelta"`
+	// Field usage depends on `service` value:
 	// 	- Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
 	// 	- Service `databricksViaManagedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
 	// 	- Service `managedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
@@ -82930,6 +83704,7 @@ type GetDestinationConfig struct {
 	// 	- Service `postgresGcpWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresWh`: SSH server hostname. Required when `connectionType` is set to `SshTunnel`
 	// 	- Service `redshift`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `sqlServerRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `sqlServerWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -82954,6 +83729,7 @@ type GetDestinationConfig struct {
 	// 	- Service `postgresGcpWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresWh`: SSH server port. Required when `connectionType` is set to `SshTunnel`
 	// 	- Service `redshift`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `sqlServerRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `sqlServerWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -82978,6 +83754,7 @@ type GetDestinationConfig struct {
 	// 	- Service `postgresGcpWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresWh`: SSH user name. Required when `connectionType` is set to `SshTunnel`
 	// 	- Service `redshift`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `sqlServerRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `sqlServerWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -83005,6 +83782,7 @@ type GetDestinationConfig struct {
 	// 	- Service `postgresGcpWarehouse`: Database user name
 	// 	- Service `postgresRdsWarehouse`: Database user name
 	// 	- Service `postgresWarehouse`: Database user name
+	// 	- Service `postgresWh`: Database user name. Required for PASSWORD authentication
 	// 	- Service `redshift`: Database user name
 	// 	- Service `snowflake`: Database user name
 	// 	- Service `sqlServerRdsWarehouse`: Database user name
@@ -83052,6 +83830,7 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `postgresGcpWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresWh`: Specifies whether TLS is required. Must be set when using `SshTunnel` connection
 	// 	- Service `redshift`: Require TLS through Tunnel
 	// 	- Service `sqlServerRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `sqlServerWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -83069,6 +83848,7 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `postgresGcpWarehouse`: Authentication method. Default value: `PASSWORD`.
 	// 	- Service `postgresRdsWarehouse`: Authentication method. Default value: `PASSWORD`.
 	// 	- Service `postgresWarehouse`: Authentication method. Default value: `PASSWORD`.
+	// 	- Service `postgresWh`: Authentication method. Supported values: `PASSWORD`, `AWS_IAM`. Default: `PASSWORD`.
 	AuthMethod pulumi.StringInput `pulumi:"authMethod"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Authentication type
@@ -83095,6 +83875,7 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `postgresGcpWarehouse`: AWS region code. Required when `authMethod` is set to `AWS_IAM`.
 	// 	- Service `postgresRdsWarehouse`: AWS region where the RDS instance is located. Required when `authMethod` is set to `AWS_IAM`.
 	// 	- Service `postgresWarehouse`: AWS region code. Required when `authMethod` is set to `AWS_IAM`.
+	// 	- Service `postgresWh`: AWS region code. Required when `authMethod` is set to `AWS_IAM`
 	AwsRegionCode pulumi.StringInput `pulumi:"awsRegionCode"`
 	// Field usage depends on `service` value:
 	// 	- Service `databricks`: Your user's secret access key
@@ -83103,8 +83884,17 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `snowflake`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment , want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
 	AwsSecretAccessKey pulumi.StringInput `pulumi:"awsSecretAccessKey"`
 	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Your Azure AD application (client) ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+	AzureClientId pulumi.StringInput `pulumi:"azureClientId"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Your Azure AD application client secret for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+	AzureClientSecret pulumi.StringInput `pulumi:"azureClientSecret"`
+	// Field usage depends on `service` value:
 	// 	- Service `databricks`: Authentication method for the Azure container you want to use as the external staging for Hybrid Deployment.
 	AzureStorageAccountAuthType pulumi.StringInput `pulumi:"azureStorageAccountAuthType"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricks`: Your Azure AD tenant ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+	AzureTenantId pulumi.StringInput `pulumi:"azureTenantId"`
 	// Field usage depends on `service` value:
 	// 	- Service `confluentCloudWh`: Comma-separated list of Confluent Cloud servers in the `server:port` format.
 	BootstrapServers pulumi.StringArrayInput `pulumi:"bootstrapServers"`
@@ -83176,6 +83966,7 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `postgresGcpWarehouse`: Connection method. Default value: `Directly`.
 	// 	- Service `postgresRdsWarehouse`: Connection method. Default value: `Directly`.
 	// 	- Service `postgresWarehouse`: Connection method. Default value: `Directly`.
+	// 	- Service `postgresWh`: Connection method. Supported values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`. Default: `Directly`. Note: PrivateLink is only supported for cloud-hosted PostgreSQL (RDS, Aurora, Azure, GCP).
 	// 	- Service `redshift`: Connection method. Default value: `Directly`.
 	// 	- Service `snowflake`: Connection method. Default value: `Directly`.
 	// 	- Service `sqlServerRdsWarehouse`: Connection method. Default value: `Directly`.
@@ -83221,6 +84012,7 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `postgresGcpWarehouse`: Database name
 	// 	- Service `postgresRdsWarehouse`: Database name
 	// 	- Service `postgresWarehouse`: Database name
+	// 	- Service `postgresWh`: Database name
 	// 	- Service `redshift`: Database name
 	// 	- Service `snowflake`: Database name
 	// 	- Service `sqlServerRdsWarehouse`: Database name
@@ -83261,6 +84053,7 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `postgresGcpWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
 	// 	- Service `postgresRdsWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
 	// 	- Service `postgresWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
+	// 	- Service `postgresWh`: AWS external ID for authentication. Auto-generated from group ID when `authMethod` is set to `AWS_IAM`
 	// 	- Service `redshift`: Fivetran generated External ID
 	ExternalId pulumi.StringInput `pulumi:"externalId"`
 	// Field usage depends on `service` value:
@@ -83293,6 +84086,9 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `managedDataLake`: GCS Project ID of your Google Cloud Storage bucket. Use this parameter only if you want to deploy your data lake on GCS.
 	GcsProjectId pulumi.StringInput `pulumi:"gcsProjectId"`
 	// Field usage depends on `service` value:
+	// 	- Service `snowflake`: The service account credentials for the Google Cloud Storage (GCS) bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use a GCS bucket to stage your data.
+	GcsServiceAccountCredentials GetDestinationConfigGcsServiceAccountCredentialsInput `pulumi:"gcsServiceAccountCredentials"`
+	// Field usage depends on `service` value:
 	// 	- Service `snowflake`: The path to the JSON file that contains the service account credentials for the GCS bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use a GCS bucket to stage your data.
 	GcsServiceAccountCredentialsPath pulumi.StringInput `pulumi:"gcsServiceAccountCredentialsPath"`
 	// Field usage depends on `service` value:
@@ -83315,6 +84111,7 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `postgresGcpWarehouse`: Server name
 	// 	- Service `postgresRdsWarehouse`: Server name
 	// 	- Service `postgresWarehouse`: Server name
+	// 	- Service `postgresWh`: Server hostname or IP address
 	// 	- Service `redshift`: Server name
 	// 	- Service `snowflake`: Server name
 	// 	- Service `sqlServerRdsWarehouse`: Server name
@@ -83404,6 +84201,7 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `postgresGcpWarehouse`: Database user password
 	// 	- Service `postgresRdsWarehouse`: Database user password
 	// 	- Service `postgresWarehouse`: Database user password
+	// 	- Service `postgresWh`: Database user password. Required for PASSWORD authentication
 	// 	- Service `redshift`: Database user password. Required if authentication type is `PASSWORD`.
 	// 	- Service `snowflake`: Database user password. The field should be specified if authentication type is `PASSWORD`.
 	// 	- Service `sqlServerRdsWarehouse`: Database user password
@@ -83417,6 +84215,10 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `newS3Datalake`: Personal access token
 	// 	- Service `onelake`: Personal access token
 	PersonalAccessToken pulumi.StringInput `pulumi:"personalAccessToken"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricksViaManagedDataLake`: Polaris Catalog Base Configuration. Universal connection settings for any query engine or analytics tool.
+	// 	- Service `managedDataLake`: Polaris Catalog Base Configuration. Universal connection settings for any query engine or analytics tool.
+	PolarisCatalogConfiguration GetDestinationConfigPolarisCatalogConfigurationInput `pulumi:"polarisCatalogConfiguration"`
 	// Field usage depends on `service` value:
 	// 	- Service `adls`: Server port number
 	// 	- Service `auroraPostgresWarehouse`: Server port number
@@ -83443,6 +84245,7 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `postgresGcpWarehouse`: Server port number
 	// 	- Service `postgresRdsWarehouse`: Server port number
 	// 	- Service `postgresWarehouse`: Server port number
+	// 	- Service `postgresWh`: Server port number (default: 5432)
 	// 	- Service `redshift`: Server port number
 	// 	- Service `snowflake`: Server port number
 	// 	- Service `sqlServerRdsWarehouse`: Server port number
@@ -83523,6 +84326,7 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `postgresGcpWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
 	// 	- Service `postgresRdsWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
 	// 	- Service `postgresWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
+	// 	- Service `postgresWh`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`
 	// 	- Service `redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
 	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 	// Field usage depends on `service` value:
@@ -83593,6 +84397,10 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `managedDataLake`: Specifies whether you want to create shortcut for you table in OneLake. Use this parameter only if you want to deploy your data lake on ADLS.
 	ShouldMaintainTablesInOneLake pulumi.BoolInput `pulumi:"shouldMaintainTablesInOneLake"`
 	// Field usage depends on `service` value:
+	// 	- Service `databricksViaManagedDataLake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Databricks via Managed Data Lake requires Delta Lake metadata, so Fivetran always uses `true` for this destination.
+	// 	- Service `managedDataLake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Default value: `false` for new destinations and `true` for existing destinations. Destinations with Unity Catalog or OneLake catalog enabled always write Delta Lake metadata.
+	ShouldWriteDelta pulumi.BoolInput `pulumi:"shouldWriteDelta"`
+	// Field usage depends on `service` value:
 	// 	- Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
 	// 	- Service `databricksViaManagedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
 	// 	- Service `managedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
@@ -83651,6 +84459,7 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `postgresGcpWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresWh`: SSH server hostname. Required when `connectionType` is set to `SshTunnel`
 	// 	- Service `redshift`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `sqlServerRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `sqlServerWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -83675,6 +84484,7 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `postgresGcpWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresWh`: SSH server port. Required when `connectionType` is set to `SshTunnel`
 	// 	- Service `redshift`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `sqlServerRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `sqlServerWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -83699,6 +84509,7 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `postgresGcpWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `postgresWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
+	// 	- Service `postgresWh`: SSH user name. Required when `connectionType` is set to `SshTunnel`
 	// 	- Service `redshift`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `sqlServerRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 	// 	- Service `sqlServerWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -83726,6 +84537,7 @@ type GetDestinationConfigArgs struct {
 	// 	- Service `postgresGcpWarehouse`: Database user name
 	// 	- Service `postgresRdsWarehouse`: Database user name
 	// 	- Service `postgresWarehouse`: Database user name
+	// 	- Service `postgresWh`: Database user name. Required for PASSWORD authentication
 	// 	- Service `redshift`: Database user name
 	// 	- Service `snowflake`: Database user name
 	// 	- Service `sqlServerRdsWarehouse`: Database user name
@@ -83838,6 +84650,7 @@ func (o GetDestinationConfigOutput) ToGetDestinationConfigPtrOutputWithContext(c
 //   - Service `postgresGcpWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresWh`: Specifies whether TLS is required. Must be set when using `SshTunnel` connection
 //   - Service `redshift`: Require TLS through Tunnel
 //   - Service `sqlServerRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `sqlServerWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -83864,6 +84677,7 @@ func (o GetDestinationConfigOutput) Auth() pulumi.StringOutput {
 //   - Service `postgresGcpWarehouse`: Authentication method. Default value: `PASSWORD`.
 //   - Service `postgresRdsWarehouse`: Authentication method. Default value: `PASSWORD`.
 //   - Service `postgresWarehouse`: Authentication method. Default value: `PASSWORD`.
+//   - Service `postgresWh`: Authentication method. Supported values: `PASSWORD`, `AWS_IAM`. Default: `PASSWORD`.
 func (o GetDestinationConfigOutput) AuthMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDestinationConfig) string { return v.AuthMethod }).(pulumi.StringOutput)
 }
@@ -83902,6 +84716,7 @@ func (o GetDestinationConfigOutput) AwsBucketAuthType() pulumi.StringOutput {
 //   - Service `postgresGcpWarehouse`: AWS region code. Required when `authMethod` is set to `AWS_IAM`.
 //   - Service `postgresRdsWarehouse`: AWS region where the RDS instance is located. Required when `authMethod` is set to `AWS_IAM`.
 //   - Service `postgresWarehouse`: AWS region code. Required when `authMethod` is set to `AWS_IAM`.
+//   - Service `postgresWh`: AWS region code. Required when `authMethod` is set to `AWS_IAM`
 func (o GetDestinationConfigOutput) AwsRegionCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDestinationConfig) string { return v.AwsRegionCode }).(pulumi.StringOutput)
 }
@@ -83916,9 +84731,27 @@ func (o GetDestinationConfigOutput) AwsSecretAccessKey() pulumi.StringOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `databricks`: Your Azure AD application (client) ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+func (o GetDestinationConfigOutput) AzureClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDestinationConfig) string { return v.AzureClientId }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricks`: Your Azure AD application client secret for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+func (o GetDestinationConfigOutput) AzureClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDestinationConfig) string { return v.AzureClientSecret }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `databricks`: Authentication method for the Azure container you want to use as the external staging for Hybrid Deployment.
 func (o GetDestinationConfigOutput) AzureStorageAccountAuthType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDestinationConfig) string { return v.AzureStorageAccountAuthType }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricks`: Your Azure AD tenant ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+func (o GetDestinationConfigOutput) AzureTenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDestinationConfig) string { return v.AzureTenantId }).(pulumi.StringOutput)
 }
 
 // Field usage depends on `service` value:
@@ -84019,6 +84852,7 @@ func (o GetDestinationConfigOutput) ConnectionMethod() pulumi.StringOutput {
 //   - Service `postgresGcpWarehouse`: Connection method. Default value: `Directly`.
 //   - Service `postgresRdsWarehouse`: Connection method. Default value: `Directly`.
 //   - Service `postgresWarehouse`: Connection method. Default value: `Directly`.
+//   - Service `postgresWh`: Connection method. Supported values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`. Default: `Directly`. Note: PrivateLink is only supported for cloud-hosted PostgreSQL (RDS, Aurora, Azure, GCP).
 //   - Service `redshift`: Connection method. Default value: `Directly`.
 //   - Service `snowflake`: Connection method. Default value: `Directly`.
 //   - Service `sqlServerRdsWarehouse`: Connection method. Default value: `Directly`.
@@ -84082,6 +84916,7 @@ func (o GetDestinationConfigOutput) DataSetLocation() pulumi.StringOutput {
 //   - Service `postgresGcpWarehouse`: Database name
 //   - Service `postgresRdsWarehouse`: Database name
 //   - Service `postgresWarehouse`: Database name
+//   - Service `postgresWh`: Database name
 //   - Service `redshift`: Database name
 //   - Service `snowflake`: Database name
 //   - Service `sqlServerRdsWarehouse`: Database name
@@ -84146,6 +84981,7 @@ func (o GetDestinationConfigOutput) EnableSuperType() pulumi.BoolOutput {
 //   - Service `postgresGcpWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
 //   - Service `postgresRdsWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
 //   - Service `postgresWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
+//   - Service `postgresWh`: AWS external ID for authentication. Auto-generated from group ID when `authMethod` is set to `AWS_IAM`
 //   - Service `redshift`: Fivetran generated External ID
 func (o GetDestinationConfigOutput) ExternalId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDestinationConfig) string { return v.ExternalId }).(pulumi.StringOutput)
@@ -84211,6 +85047,14 @@ func (o GetDestinationConfigOutput) GcsProjectId() pulumi.StringOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `snowflake`: The service account credentials for the Google Cloud Storage (GCS) bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use a GCS bucket to stage your data.
+func (o GetDestinationConfigOutput) GcsServiceAccountCredentials() GetDestinationConfigGcsServiceAccountCredentialsOutput {
+	return o.ApplyT(func(v GetDestinationConfig) GetDestinationConfigGcsServiceAccountCredentials {
+		return v.GcsServiceAccountCredentials
+	}).(GetDestinationConfigGcsServiceAccountCredentialsOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `snowflake`: The path to the JSON file that contains the service account credentials for the GCS bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use a GCS bucket to stage your data.
 func (o GetDestinationConfigOutput) GcsServiceAccountCredentialsPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDestinationConfig) string { return v.GcsServiceAccountCredentialsPath }).(pulumi.StringOutput)
@@ -84236,6 +85080,7 @@ func (o GetDestinationConfigOutput) GcsServiceAccountCredentialsPath() pulumi.St
 //   - Service `postgresGcpWarehouse`: Server name
 //   - Service `postgresRdsWarehouse`: Server name
 //   - Service `postgresWarehouse`: Server name
+//   - Service `postgresWh`: Server hostname or IP address
 //   - Service `redshift`: Server name
 //   - Service `snowflake`: Server name
 //   - Service `sqlServerRdsWarehouse`: Server name
@@ -84373,6 +85218,7 @@ func (o GetDestinationConfigOutput) Passphrase() pulumi.StringOutput {
 //   - Service `postgresGcpWarehouse`: Database user password
 //   - Service `postgresRdsWarehouse`: Database user password
 //   - Service `postgresWarehouse`: Database user password
+//   - Service `postgresWh`: Database user password. Required for PASSWORD authentication
 //   - Service `redshift`: Database user password. Required if authentication type is `PASSWORD`.
 //   - Service `snowflake`: Database user password. The field should be specified if authentication type is `PASSWORD`.
 //   - Service `sqlServerRdsWarehouse`: Database user password
@@ -84390,6 +85236,15 @@ func (o GetDestinationConfigOutput) Password() pulumi.StringOutput {
 //   - Service `onelake`: Personal access token
 func (o GetDestinationConfigOutput) PersonalAccessToken() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDestinationConfig) string { return v.PersonalAccessToken }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricksViaManagedDataLake`: Polaris Catalog Base Configuration. Universal connection settings for any query engine or analytics tool.
+//   - Service `managedDataLake`: Polaris Catalog Base Configuration. Universal connection settings for any query engine or analytics tool.
+func (o GetDestinationConfigOutput) PolarisCatalogConfiguration() GetDestinationConfigPolarisCatalogConfigurationOutput {
+	return o.ApplyT(func(v GetDestinationConfig) GetDestinationConfigPolarisCatalogConfiguration {
+		return v.PolarisCatalogConfiguration
+	}).(GetDestinationConfigPolarisCatalogConfigurationOutput)
 }
 
 // Field usage depends on `service` value:
@@ -84418,6 +85273,7 @@ func (o GetDestinationConfigOutput) PersonalAccessToken() pulumi.StringOutput {
 //   - Service `postgresGcpWarehouse`: Server port number
 //   - Service `postgresRdsWarehouse`: Server port number
 //   - Service `postgresWarehouse`: Server port number
+//   - Service `postgresWh`: Server port number (default: 5432)
 //   - Service `redshift`: Server port number
 //   - Service `snowflake`: Server port number
 //   - Service `sqlServerRdsWarehouse`: Server port number
@@ -84531,6 +85387,7 @@ func (o GetDestinationConfigOutput) Role() pulumi.StringOutput {
 //   - Service `postgresGcpWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
 //   - Service `postgresRdsWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
 //   - Service `postgresWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
+//   - Service `postgresWh`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`
 //   - Service `redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
 func (o GetDestinationConfigOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDestinationConfig) string { return v.RoleArn }).(pulumi.StringOutput)
@@ -84655,6 +85512,13 @@ func (o GetDestinationConfigOutput) ShouldMaintainTablesInOneLake() pulumi.BoolO
 }
 
 // Field usage depends on `service` value:
+//   - Service `databricksViaManagedDataLake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Databricks via Managed Data Lake requires Delta Lake metadata, so Fivetran always uses `true` for this destination.
+//   - Service `managedDataLake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Default value: `false` for new destinations and `true` for existing destinations. Destinations with Unity Catalog or OneLake catalog enabled always write Delta Lake metadata.
+func (o GetDestinationConfigOutput) ShouldWriteDelta() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDestinationConfig) bool { return v.ShouldWriteDelta }).(pulumi.BoolOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
 //   - Service `databricksViaManagedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
 //   - Service `managedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
@@ -84734,6 +85598,7 @@ func (o GetDestinationConfigOutput) TenantId() pulumi.StringOutput {
 //   - Service `postgresGcpWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresWh`: SSH server hostname. Required when `connectionType` is set to `SshTunnel`
 //   - Service `redshift`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `sqlServerRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `sqlServerWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -84761,6 +85626,7 @@ func (o GetDestinationConfigOutput) TunnelHost() pulumi.StringOutput {
 //   - Service `postgresGcpWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresWh`: SSH server port. Required when `connectionType` is set to `SshTunnel`
 //   - Service `redshift`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `sqlServerRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `sqlServerWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -84788,6 +85654,7 @@ func (o GetDestinationConfigOutput) TunnelPort() pulumi.IntOutput {
 //   - Service `postgresGcpWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresWh`: SSH user name. Required when `connectionType` is set to `SshTunnel`
 //   - Service `redshift`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `sqlServerRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `sqlServerWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -84821,6 +85688,7 @@ func (o GetDestinationConfigOutput) UseCustomerStaging() pulumi.BoolOutput {
 //   - Service `postgresGcpWarehouse`: Database user name
 //   - Service `postgresRdsWarehouse`: Database user name
 //   - Service `postgresWarehouse`: Database user name
+//   - Service `postgresWh`: Database user name. Required for PASSWORD authentication
 //   - Service `redshift`: Database user name
 //   - Service `snowflake`: Database user name
 //   - Service `sqlServerRdsWarehouse`: Database user name
@@ -84887,6 +85755,7 @@ func (o GetDestinationConfigPtrOutput) Elem() GetDestinationConfigOutput {
 //   - Service `postgresGcpWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresWh`: Specifies whether TLS is required. Must be set when using `SshTunnel` connection
 //   - Service `redshift`: Require TLS through Tunnel
 //   - Service `sqlServerRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `sqlServerWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -84928,6 +85797,7 @@ func (o GetDestinationConfigPtrOutput) Auth() pulumi.StringPtrOutput {
 //   - Service `postgresGcpWarehouse`: Authentication method. Default value: `PASSWORD`.
 //   - Service `postgresRdsWarehouse`: Authentication method. Default value: `PASSWORD`.
 //   - Service `postgresWarehouse`: Authentication method. Default value: `PASSWORD`.
+//   - Service `postgresWh`: Authentication method. Supported values: `PASSWORD`, `AWS_IAM`. Default: `PASSWORD`.
 func (o GetDestinationConfigPtrOutput) AuthMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetDestinationConfig) *string {
 		if v == nil {
@@ -84986,6 +85856,7 @@ func (o GetDestinationConfigPtrOutput) AwsBucketAuthType() pulumi.StringPtrOutpu
 //   - Service `postgresGcpWarehouse`: AWS region code. Required when `authMethod` is set to `AWS_IAM`.
 //   - Service `postgresRdsWarehouse`: AWS region where the RDS instance is located. Required when `authMethod` is set to `AWS_IAM`.
 //   - Service `postgresWarehouse`: AWS region code. Required when `authMethod` is set to `AWS_IAM`.
+//   - Service `postgresWh`: AWS region code. Required when `authMethod` is set to `AWS_IAM`
 func (o GetDestinationConfigPtrOutput) AwsRegionCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetDestinationConfig) *string {
 		if v == nil {
@@ -85010,6 +85881,28 @@ func (o GetDestinationConfigPtrOutput) AwsSecretAccessKey() pulumi.StringPtrOutp
 }
 
 // Field usage depends on `service` value:
+//   - Service `databricks`: Your Azure AD application (client) ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+func (o GetDestinationConfigPtrOutput) AzureClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetDestinationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AzureClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricks`: Your Azure AD application client secret for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+func (o GetDestinationConfigPtrOutput) AzureClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetDestinationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AzureClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `databricks`: Authentication method for the Azure container you want to use as the external staging for Hybrid Deployment.
 func (o GetDestinationConfigPtrOutput) AzureStorageAccountAuthType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetDestinationConfig) *string {
@@ -85017,6 +85910,17 @@ func (o GetDestinationConfigPtrOutput) AzureStorageAccountAuthType() pulumi.Stri
 			return nil
 		}
 		return &v.AzureStorageAccountAuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricks`: Your Azure AD tenant ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+func (o GetDestinationConfigPtrOutput) AzureTenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetDestinationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AzureTenantId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -85163,6 +86067,7 @@ func (o GetDestinationConfigPtrOutput) ConnectionMethod() pulumi.StringPtrOutput
 //   - Service `postgresGcpWarehouse`: Connection method. Default value: `Directly`.
 //   - Service `postgresRdsWarehouse`: Connection method. Default value: `Directly`.
 //   - Service `postgresWarehouse`: Connection method. Default value: `Directly`.
+//   - Service `postgresWh`: Connection method. Supported values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`. Default: `Directly`. Note: PrivateLink is only supported for cloud-hosted PostgreSQL (RDS, Aurora, Azure, GCP).
 //   - Service `redshift`: Connection method. Default value: `Directly`.
 //   - Service `snowflake`: Connection method. Default value: `Directly`.
 //   - Service `sqlServerRdsWarehouse`: Connection method. Default value: `Directly`.
@@ -85256,6 +86161,7 @@ func (o GetDestinationConfigPtrOutput) DataSetLocation() pulumi.StringPtrOutput 
 //   - Service `postgresGcpWarehouse`: Database name
 //   - Service `postgresRdsWarehouse`: Database name
 //   - Service `postgresWarehouse`: Database name
+//   - Service `postgresWh`: Database name
 //   - Service `redshift`: Database name
 //   - Service `snowflake`: Database name
 //   - Service `sqlServerRdsWarehouse`: Database name
@@ -85360,6 +86266,7 @@ func (o GetDestinationConfigPtrOutput) EnableSuperType() pulumi.BoolPtrOutput {
 //   - Service `postgresGcpWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
 //   - Service `postgresRdsWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
 //   - Service `postgresWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
+//   - Service `postgresWh`: AWS external ID for authentication. Auto-generated from group ID when `authMethod` is set to `AWS_IAM`
 //   - Service `redshift`: Fivetran generated External ID
 func (o GetDestinationConfigPtrOutput) ExternalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetDestinationConfig) *string {
@@ -85480,6 +86387,17 @@ func (o GetDestinationConfigPtrOutput) GcsProjectId() pulumi.StringPtrOutput {
 }
 
 // Field usage depends on `service` value:
+//   - Service `snowflake`: The service account credentials for the Google Cloud Storage (GCS) bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use a GCS bucket to stage your data.
+func (o GetDestinationConfigPtrOutput) GcsServiceAccountCredentials() GetDestinationConfigGcsServiceAccountCredentialsPtrOutput {
+	return o.ApplyT(func(v *GetDestinationConfig) *GetDestinationConfigGcsServiceAccountCredentials {
+		if v == nil {
+			return nil
+		}
+		return &v.GcsServiceAccountCredentials
+	}).(GetDestinationConfigGcsServiceAccountCredentialsPtrOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `snowflake`: The path to the JSON file that contains the service account credentials for the GCS bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use a GCS bucket to stage your data.
 func (o GetDestinationConfigPtrOutput) GcsServiceAccountCredentialsPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetDestinationConfig) *string {
@@ -85510,6 +86428,7 @@ func (o GetDestinationConfigPtrOutput) GcsServiceAccountCredentialsPath() pulumi
 //   - Service `postgresGcpWarehouse`: Server name
 //   - Service `postgresRdsWarehouse`: Server name
 //   - Service `postgresWarehouse`: Server name
+//   - Service `postgresWh`: Server hostname or IP address
 //   - Service `redshift`: Server name
 //   - Service `snowflake`: Server name
 //   - Service `sqlServerRdsWarehouse`: Server name
@@ -85727,6 +86646,7 @@ func (o GetDestinationConfigPtrOutput) Passphrase() pulumi.StringPtrOutput {
 //   - Service `postgresGcpWarehouse`: Database user password
 //   - Service `postgresRdsWarehouse`: Database user password
 //   - Service `postgresWarehouse`: Database user password
+//   - Service `postgresWh`: Database user password. Required for PASSWORD authentication
 //   - Service `redshift`: Database user password. Required if authentication type is `PASSWORD`.
 //   - Service `snowflake`: Database user password. The field should be specified if authentication type is `PASSWORD`.
 //   - Service `sqlServerRdsWarehouse`: Database user password
@@ -85757,6 +86677,18 @@ func (o GetDestinationConfigPtrOutput) PersonalAccessToken() pulumi.StringPtrOut
 }
 
 // Field usage depends on `service` value:
+//   - Service `databricksViaManagedDataLake`: Polaris Catalog Base Configuration. Universal connection settings for any query engine or analytics tool.
+//   - Service `managedDataLake`: Polaris Catalog Base Configuration. Universal connection settings for any query engine or analytics tool.
+func (o GetDestinationConfigPtrOutput) PolarisCatalogConfiguration() GetDestinationConfigPolarisCatalogConfigurationPtrOutput {
+	return o.ApplyT(func(v *GetDestinationConfig) *GetDestinationConfigPolarisCatalogConfiguration {
+		if v == nil {
+			return nil
+		}
+		return &v.PolarisCatalogConfiguration
+	}).(GetDestinationConfigPolarisCatalogConfigurationPtrOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `adls`: Server port number
 //   - Service `auroraPostgresWarehouse`: Server port number
 //   - Service `auroraWarehouse`: Server port number
@@ -85782,6 +86714,7 @@ func (o GetDestinationConfigPtrOutput) PersonalAccessToken() pulumi.StringPtrOut
 //   - Service `postgresGcpWarehouse`: Server port number
 //   - Service `postgresRdsWarehouse`: Server port number
 //   - Service `postgresWarehouse`: Server port number
+//   - Service `postgresWh`: Server port number (default: 5432)
 //   - Service `redshift`: Server port number
 //   - Service `snowflake`: Server port number
 //   - Service `sqlServerRdsWarehouse`: Server port number
@@ -85950,6 +86883,7 @@ func (o GetDestinationConfigPtrOutput) Role() pulumi.StringPtrOutput {
 //   - Service `postgresGcpWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
 //   - Service `postgresRdsWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
 //   - Service `postgresWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
+//   - Service `postgresWh`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`
 //   - Service `redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
 func (o GetDestinationConfigPtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetDestinationConfig) *string {
@@ -86164,6 +87098,18 @@ func (o GetDestinationConfigPtrOutput) ShouldMaintainTablesInOneLake() pulumi.Bo
 }
 
 // Field usage depends on `service` value:
+//   - Service `databricksViaManagedDataLake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Databricks via Managed Data Lake requires Delta Lake metadata, so Fivetran always uses `true` for this destination.
+//   - Service `managedDataLake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Default value: `false` for new destinations and `true` for existing destinations. Destinations with Unity Catalog or OneLake catalog enabled always write Delta Lake metadata.
+func (o GetDestinationConfigPtrOutput) ShouldWriteDelta() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetDestinationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ShouldWriteDelta
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Field usage depends on `service` value:
 //   - Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
 //   - Service `databricksViaManagedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
 //   - Service `managedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
@@ -86278,6 +87224,7 @@ func (o GetDestinationConfigPtrOutput) TenantId() pulumi.StringPtrOutput {
 //   - Service `postgresGcpWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresWh`: SSH server hostname. Required when `connectionType` is set to `SshTunnel`
 //   - Service `redshift`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `sqlServerRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `sqlServerWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -86310,6 +87257,7 @@ func (o GetDestinationConfigPtrOutput) TunnelHost() pulumi.StringPtrOutput {
 //   - Service `postgresGcpWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresWh`: SSH server port. Required when `connectionType` is set to `SshTunnel`
 //   - Service `redshift`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `sqlServerRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `sqlServerWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -86342,6 +87290,7 @@ func (o GetDestinationConfigPtrOutput) TunnelPort() pulumi.IntPtrOutput {
 //   - Service `postgresGcpWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `postgresWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
+//   - Service `postgresWh`: SSH user name. Required when `connectionType` is set to `SshTunnel`
 //   - Service `redshift`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `sqlServerRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
 //   - Service `sqlServerWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -86385,6 +87334,7 @@ func (o GetDestinationConfigPtrOutput) UseCustomerStaging() pulumi.BoolPtrOutput
 //   - Service `postgresGcpWarehouse`: Database user name
 //   - Service `postgresRdsWarehouse`: Database user name
 //   - Service `postgresWarehouse`: Database user name
+//   - Service `postgresWh`: Database user name. Required for PASSWORD authentication
 //   - Service `redshift`: Database user name
 //   - Service `snowflake`: Database user name
 //   - Service `sqlServerRdsWarehouse`: Database user name
@@ -86419,6 +87369,350 @@ func (o GetDestinationConfigPtrOutput) WorkspaceName() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.WorkspaceName
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetDestinationConfigGcsServiceAccountCredentials struct {
+}
+
+// GetDestinationConfigGcsServiceAccountCredentialsInput is an input type that accepts GetDestinationConfigGcsServiceAccountCredentialsArgs and GetDestinationConfigGcsServiceAccountCredentialsOutput values.
+// You can construct a concrete instance of `GetDestinationConfigGcsServiceAccountCredentialsInput` via:
+//
+//	GetDestinationConfigGcsServiceAccountCredentialsArgs{...}
+type GetDestinationConfigGcsServiceAccountCredentialsInput interface {
+	pulumi.Input
+
+	ToGetDestinationConfigGcsServiceAccountCredentialsOutput() GetDestinationConfigGcsServiceAccountCredentialsOutput
+	ToGetDestinationConfigGcsServiceAccountCredentialsOutputWithContext(context.Context) GetDestinationConfigGcsServiceAccountCredentialsOutput
+}
+
+type GetDestinationConfigGcsServiceAccountCredentialsArgs struct {
+}
+
+func (GetDestinationConfigGcsServiceAccountCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDestinationConfigGcsServiceAccountCredentials)(nil)).Elem()
+}
+
+func (i GetDestinationConfigGcsServiceAccountCredentialsArgs) ToGetDestinationConfigGcsServiceAccountCredentialsOutput() GetDestinationConfigGcsServiceAccountCredentialsOutput {
+	return i.ToGetDestinationConfigGcsServiceAccountCredentialsOutputWithContext(context.Background())
+}
+
+func (i GetDestinationConfigGcsServiceAccountCredentialsArgs) ToGetDestinationConfigGcsServiceAccountCredentialsOutputWithContext(ctx context.Context) GetDestinationConfigGcsServiceAccountCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDestinationConfigGcsServiceAccountCredentialsOutput)
+}
+
+func (i GetDestinationConfigGcsServiceAccountCredentialsArgs) ToGetDestinationConfigGcsServiceAccountCredentialsPtrOutput() GetDestinationConfigGcsServiceAccountCredentialsPtrOutput {
+	return i.ToGetDestinationConfigGcsServiceAccountCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i GetDestinationConfigGcsServiceAccountCredentialsArgs) ToGetDestinationConfigGcsServiceAccountCredentialsPtrOutputWithContext(ctx context.Context) GetDestinationConfigGcsServiceAccountCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDestinationConfigGcsServiceAccountCredentialsOutput).ToGetDestinationConfigGcsServiceAccountCredentialsPtrOutputWithContext(ctx)
+}
+
+// GetDestinationConfigGcsServiceAccountCredentialsPtrInput is an input type that accepts GetDestinationConfigGcsServiceAccountCredentialsArgs, GetDestinationConfigGcsServiceAccountCredentialsPtr and GetDestinationConfigGcsServiceAccountCredentialsPtrOutput values.
+// You can construct a concrete instance of `GetDestinationConfigGcsServiceAccountCredentialsPtrInput` via:
+//
+//	        GetDestinationConfigGcsServiceAccountCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetDestinationConfigGcsServiceAccountCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToGetDestinationConfigGcsServiceAccountCredentialsPtrOutput() GetDestinationConfigGcsServiceAccountCredentialsPtrOutput
+	ToGetDestinationConfigGcsServiceAccountCredentialsPtrOutputWithContext(context.Context) GetDestinationConfigGcsServiceAccountCredentialsPtrOutput
+}
+
+type getDestinationConfigGcsServiceAccountCredentialsPtrType GetDestinationConfigGcsServiceAccountCredentialsArgs
+
+func GetDestinationConfigGcsServiceAccountCredentialsPtr(v *GetDestinationConfigGcsServiceAccountCredentialsArgs) GetDestinationConfigGcsServiceAccountCredentialsPtrInput {
+	return (*getDestinationConfigGcsServiceAccountCredentialsPtrType)(v)
+}
+
+func (*getDestinationConfigGcsServiceAccountCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetDestinationConfigGcsServiceAccountCredentials)(nil)).Elem()
+}
+
+func (i *getDestinationConfigGcsServiceAccountCredentialsPtrType) ToGetDestinationConfigGcsServiceAccountCredentialsPtrOutput() GetDestinationConfigGcsServiceAccountCredentialsPtrOutput {
+	return i.ToGetDestinationConfigGcsServiceAccountCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *getDestinationConfigGcsServiceAccountCredentialsPtrType) ToGetDestinationConfigGcsServiceAccountCredentialsPtrOutputWithContext(ctx context.Context) GetDestinationConfigGcsServiceAccountCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDestinationConfigGcsServiceAccountCredentialsPtrOutput)
+}
+
+type GetDestinationConfigGcsServiceAccountCredentialsOutput struct{ *pulumi.OutputState }
+
+func (GetDestinationConfigGcsServiceAccountCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDestinationConfigGcsServiceAccountCredentials)(nil)).Elem()
+}
+
+func (o GetDestinationConfigGcsServiceAccountCredentialsOutput) ToGetDestinationConfigGcsServiceAccountCredentialsOutput() GetDestinationConfigGcsServiceAccountCredentialsOutput {
+	return o
+}
+
+func (o GetDestinationConfigGcsServiceAccountCredentialsOutput) ToGetDestinationConfigGcsServiceAccountCredentialsOutputWithContext(ctx context.Context) GetDestinationConfigGcsServiceAccountCredentialsOutput {
+	return o
+}
+
+func (o GetDestinationConfigGcsServiceAccountCredentialsOutput) ToGetDestinationConfigGcsServiceAccountCredentialsPtrOutput() GetDestinationConfigGcsServiceAccountCredentialsPtrOutput {
+	return o.ToGetDestinationConfigGcsServiceAccountCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o GetDestinationConfigGcsServiceAccountCredentialsOutput) ToGetDestinationConfigGcsServiceAccountCredentialsPtrOutputWithContext(ctx context.Context) GetDestinationConfigGcsServiceAccountCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetDestinationConfigGcsServiceAccountCredentials) *GetDestinationConfigGcsServiceAccountCredentials {
+		return &v
+	}).(GetDestinationConfigGcsServiceAccountCredentialsPtrOutput)
+}
+
+type GetDestinationConfigGcsServiceAccountCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetDestinationConfigGcsServiceAccountCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetDestinationConfigGcsServiceAccountCredentials)(nil)).Elem()
+}
+
+func (o GetDestinationConfigGcsServiceAccountCredentialsPtrOutput) ToGetDestinationConfigGcsServiceAccountCredentialsPtrOutput() GetDestinationConfigGcsServiceAccountCredentialsPtrOutput {
+	return o
+}
+
+func (o GetDestinationConfigGcsServiceAccountCredentialsPtrOutput) ToGetDestinationConfigGcsServiceAccountCredentialsPtrOutputWithContext(ctx context.Context) GetDestinationConfigGcsServiceAccountCredentialsPtrOutput {
+	return o
+}
+
+func (o GetDestinationConfigGcsServiceAccountCredentialsPtrOutput) Elem() GetDestinationConfigGcsServiceAccountCredentialsOutput {
+	return o.ApplyT(func(v *GetDestinationConfigGcsServiceAccountCredentials) GetDestinationConfigGcsServiceAccountCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret GetDestinationConfigGcsServiceAccountCredentials
+		return ret
+	}).(GetDestinationConfigGcsServiceAccountCredentialsOutput)
+}
+
+type GetDestinationConfigPolarisCatalogConfiguration struct {
+	// Field usage depends on `service` value:
+	// 	- Service `databricksViaManagedDataLake`: Client ID
+	// 	- Service `managedDataLake`: Client ID
+	ClientId string `pulumi:"clientId"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricksViaManagedDataLake`: Client Secret
+	// 	- Service `managedDataLake`: Client Secret
+	ClientSecret string `pulumi:"clientSecret"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricksViaManagedDataLake`: Polaris Catalog
+	// 	- Service `managedDataLake`: Polaris Catalog
+	PolarisCatalog string `pulumi:"polarisCatalog"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricksViaManagedDataLake`: Polaris Server Endpoint
+	// 	- Service `managedDataLake`: Polaris Server Endpoint
+	PolarisServerEndpoint string `pulumi:"polarisServerEndpoint"`
+}
+
+// GetDestinationConfigPolarisCatalogConfigurationInput is an input type that accepts GetDestinationConfigPolarisCatalogConfigurationArgs and GetDestinationConfigPolarisCatalogConfigurationOutput values.
+// You can construct a concrete instance of `GetDestinationConfigPolarisCatalogConfigurationInput` via:
+//
+//	GetDestinationConfigPolarisCatalogConfigurationArgs{...}
+type GetDestinationConfigPolarisCatalogConfigurationInput interface {
+	pulumi.Input
+
+	ToGetDestinationConfigPolarisCatalogConfigurationOutput() GetDestinationConfigPolarisCatalogConfigurationOutput
+	ToGetDestinationConfigPolarisCatalogConfigurationOutputWithContext(context.Context) GetDestinationConfigPolarisCatalogConfigurationOutput
+}
+
+type GetDestinationConfigPolarisCatalogConfigurationArgs struct {
+	// Field usage depends on `service` value:
+	// 	- Service `databricksViaManagedDataLake`: Client ID
+	// 	- Service `managedDataLake`: Client ID
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricksViaManagedDataLake`: Client Secret
+	// 	- Service `managedDataLake`: Client Secret
+	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricksViaManagedDataLake`: Polaris Catalog
+	// 	- Service `managedDataLake`: Polaris Catalog
+	PolarisCatalog pulumi.StringInput `pulumi:"polarisCatalog"`
+	// Field usage depends on `service` value:
+	// 	- Service `databricksViaManagedDataLake`: Polaris Server Endpoint
+	// 	- Service `managedDataLake`: Polaris Server Endpoint
+	PolarisServerEndpoint pulumi.StringInput `pulumi:"polarisServerEndpoint"`
+}
+
+func (GetDestinationConfigPolarisCatalogConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDestinationConfigPolarisCatalogConfiguration)(nil)).Elem()
+}
+
+func (i GetDestinationConfigPolarisCatalogConfigurationArgs) ToGetDestinationConfigPolarisCatalogConfigurationOutput() GetDestinationConfigPolarisCatalogConfigurationOutput {
+	return i.ToGetDestinationConfigPolarisCatalogConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetDestinationConfigPolarisCatalogConfigurationArgs) ToGetDestinationConfigPolarisCatalogConfigurationOutputWithContext(ctx context.Context) GetDestinationConfigPolarisCatalogConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDestinationConfigPolarisCatalogConfigurationOutput)
+}
+
+func (i GetDestinationConfigPolarisCatalogConfigurationArgs) ToGetDestinationConfigPolarisCatalogConfigurationPtrOutput() GetDestinationConfigPolarisCatalogConfigurationPtrOutput {
+	return i.ToGetDestinationConfigPolarisCatalogConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i GetDestinationConfigPolarisCatalogConfigurationArgs) ToGetDestinationConfigPolarisCatalogConfigurationPtrOutputWithContext(ctx context.Context) GetDestinationConfigPolarisCatalogConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDestinationConfigPolarisCatalogConfigurationOutput).ToGetDestinationConfigPolarisCatalogConfigurationPtrOutputWithContext(ctx)
+}
+
+// GetDestinationConfigPolarisCatalogConfigurationPtrInput is an input type that accepts GetDestinationConfigPolarisCatalogConfigurationArgs, GetDestinationConfigPolarisCatalogConfigurationPtr and GetDestinationConfigPolarisCatalogConfigurationPtrOutput values.
+// You can construct a concrete instance of `GetDestinationConfigPolarisCatalogConfigurationPtrInput` via:
+//
+//	        GetDestinationConfigPolarisCatalogConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetDestinationConfigPolarisCatalogConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToGetDestinationConfigPolarisCatalogConfigurationPtrOutput() GetDestinationConfigPolarisCatalogConfigurationPtrOutput
+	ToGetDestinationConfigPolarisCatalogConfigurationPtrOutputWithContext(context.Context) GetDestinationConfigPolarisCatalogConfigurationPtrOutput
+}
+
+type getDestinationConfigPolarisCatalogConfigurationPtrType GetDestinationConfigPolarisCatalogConfigurationArgs
+
+func GetDestinationConfigPolarisCatalogConfigurationPtr(v *GetDestinationConfigPolarisCatalogConfigurationArgs) GetDestinationConfigPolarisCatalogConfigurationPtrInput {
+	return (*getDestinationConfigPolarisCatalogConfigurationPtrType)(v)
+}
+
+func (*getDestinationConfigPolarisCatalogConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetDestinationConfigPolarisCatalogConfiguration)(nil)).Elem()
+}
+
+func (i *getDestinationConfigPolarisCatalogConfigurationPtrType) ToGetDestinationConfigPolarisCatalogConfigurationPtrOutput() GetDestinationConfigPolarisCatalogConfigurationPtrOutput {
+	return i.ToGetDestinationConfigPolarisCatalogConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *getDestinationConfigPolarisCatalogConfigurationPtrType) ToGetDestinationConfigPolarisCatalogConfigurationPtrOutputWithContext(ctx context.Context) GetDestinationConfigPolarisCatalogConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDestinationConfigPolarisCatalogConfigurationPtrOutput)
+}
+
+type GetDestinationConfigPolarisCatalogConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetDestinationConfigPolarisCatalogConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDestinationConfigPolarisCatalogConfiguration)(nil)).Elem()
+}
+
+func (o GetDestinationConfigPolarisCatalogConfigurationOutput) ToGetDestinationConfigPolarisCatalogConfigurationOutput() GetDestinationConfigPolarisCatalogConfigurationOutput {
+	return o
+}
+
+func (o GetDestinationConfigPolarisCatalogConfigurationOutput) ToGetDestinationConfigPolarisCatalogConfigurationOutputWithContext(ctx context.Context) GetDestinationConfigPolarisCatalogConfigurationOutput {
+	return o
+}
+
+func (o GetDestinationConfigPolarisCatalogConfigurationOutput) ToGetDestinationConfigPolarisCatalogConfigurationPtrOutput() GetDestinationConfigPolarisCatalogConfigurationPtrOutput {
+	return o.ToGetDestinationConfigPolarisCatalogConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o GetDestinationConfigPolarisCatalogConfigurationOutput) ToGetDestinationConfigPolarisCatalogConfigurationPtrOutputWithContext(ctx context.Context) GetDestinationConfigPolarisCatalogConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetDestinationConfigPolarisCatalogConfiguration) *GetDestinationConfigPolarisCatalogConfiguration {
+		return &v
+	}).(GetDestinationConfigPolarisCatalogConfigurationPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricksViaManagedDataLake`: Client ID
+//   - Service `managedDataLake`: Client ID
+func (o GetDestinationConfigPolarisCatalogConfigurationOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDestinationConfigPolarisCatalogConfiguration) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricksViaManagedDataLake`: Client Secret
+//   - Service `managedDataLake`: Client Secret
+func (o GetDestinationConfigPolarisCatalogConfigurationOutput) ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDestinationConfigPolarisCatalogConfiguration) string { return v.ClientSecret }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricksViaManagedDataLake`: Polaris Catalog
+//   - Service `managedDataLake`: Polaris Catalog
+func (o GetDestinationConfigPolarisCatalogConfigurationOutput) PolarisCatalog() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDestinationConfigPolarisCatalogConfiguration) string { return v.PolarisCatalog }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricksViaManagedDataLake`: Polaris Server Endpoint
+//   - Service `managedDataLake`: Polaris Server Endpoint
+func (o GetDestinationConfigPolarisCatalogConfigurationOutput) PolarisServerEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDestinationConfigPolarisCatalogConfiguration) string { return v.PolarisServerEndpoint }).(pulumi.StringOutput)
+}
+
+type GetDestinationConfigPolarisCatalogConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetDestinationConfigPolarisCatalogConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetDestinationConfigPolarisCatalogConfiguration)(nil)).Elem()
+}
+
+func (o GetDestinationConfigPolarisCatalogConfigurationPtrOutput) ToGetDestinationConfigPolarisCatalogConfigurationPtrOutput() GetDestinationConfigPolarisCatalogConfigurationPtrOutput {
+	return o
+}
+
+func (o GetDestinationConfigPolarisCatalogConfigurationPtrOutput) ToGetDestinationConfigPolarisCatalogConfigurationPtrOutputWithContext(ctx context.Context) GetDestinationConfigPolarisCatalogConfigurationPtrOutput {
+	return o
+}
+
+func (o GetDestinationConfigPolarisCatalogConfigurationPtrOutput) Elem() GetDestinationConfigPolarisCatalogConfigurationOutput {
+	return o.ApplyT(func(v *GetDestinationConfigPolarisCatalogConfiguration) GetDestinationConfigPolarisCatalogConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret GetDestinationConfigPolarisCatalogConfiguration
+		return ret
+	}).(GetDestinationConfigPolarisCatalogConfigurationOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricksViaManagedDataLake`: Client ID
+//   - Service `managedDataLake`: Client ID
+func (o GetDestinationConfigPolarisCatalogConfigurationPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetDestinationConfigPolarisCatalogConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricksViaManagedDataLake`: Client Secret
+//   - Service `managedDataLake`: Client Secret
+func (o GetDestinationConfigPolarisCatalogConfigurationPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetDestinationConfigPolarisCatalogConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricksViaManagedDataLake`: Polaris Catalog
+//   - Service `managedDataLake`: Polaris Catalog
+func (o GetDestinationConfigPolarisCatalogConfigurationPtrOutput) PolarisCatalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetDestinationConfigPolarisCatalogConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PolarisCatalog
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `databricksViaManagedDataLake`: Polaris Server Endpoint
+//   - Service `managedDataLake`: Polaris Server Endpoint
+func (o GetDestinationConfigPolarisCatalogConfigurationPtrOutput) PolarisServerEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetDestinationConfigPolarisCatalogConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PolarisServerEndpoint
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -86734,24 +88028,50 @@ func (o GetDestinationsDestinationArrayOutput) Index(i pulumi.IntInput) GetDesti
 }
 
 type GetExternalLoggingConfig struct {
-	AccessKeyId       string `pulumi:"accessKeyId"`
-	AccessKeySecret   string `pulumi:"accessKeySecret"`
-	ApiKey            string `pulumi:"apiKey"`
-	Channel           string `pulumi:"channel"`
-	EnableSsl         bool   `pulumi:"enableSsl"`
-	ExternalId        string `pulumi:"externalId"`
-	Host              string `pulumi:"host"`
-	Hostname          string `pulumi:"hostname"`
-	LogGroupName      string `pulumi:"logGroupName"`
-	Port              int    `pulumi:"port"`
+	AccessKeyId     string `pulumi:"accessKeyId"`
+	AccessKeySecret string `pulumi:"accessKeySecret"`
+	AccessToken     string `pulumi:"accessToken"`
+	ApiKey          string `pulumi:"apiKey"`
+	Channel         string `pulumi:"channel"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. Your application (client) ID.
+	ClientId string `pulumi:"clientId"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. Your application client secret.
+	ClientSecret string `pulumi:"clientSecret"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. The endpoint URL for your Data Collection Endpoint.
+	DataCollectionEndpoint string `pulumi:"dataCollectionEndpoint"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. The immutable ID of your Data Collection Rule.
+	DcrImmutableId string `pulumi:"dcrImmutableId"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. The stream name of your Data Collection Rule.
+	DcrStreamName string `pulumi:"dcrStreamName"`
+	EnableSsl     bool   `pulumi:"enableSsl"`
+	EnvironmentId string `pulumi:"environmentId"`
+	ExternalId    string `pulumi:"externalId"`
+	Host          string `pulumi:"host"`
+	Hostname      string `pulumi:"hostname"`
+	LogGroupName  string `pulumi:"logGroupName"`
+	LokiUrl       string `pulumi:"lokiUrl"`
+	Port          int    `pulumi:"port"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For HTTP Data Collector API authentication. Your Log Analytics primary key.
 	PrimaryKey        string `pulumi:"primaryKey"`
 	ProjectId         string `pulumi:"projectId"`
 	Region            string `pulumi:"region"`
 	RoleArn           string `pulumi:"roleArn"`
 	ServiceAccountKey string `pulumi:"serviceAccountKey"`
 	SubDomain         string `pulumi:"subDomain"`
-	Token             string `pulumi:"token"`
-	WorkspaceId       string `pulumi:"workspaceId"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. Your Microsoft Entra directory (tenant) ID.
+	TenantId string `pulumi:"tenantId"`
+	Token    string `pulumi:"token"`
+	Username string `pulumi:"username"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For HTTP Data Collector API authentication. Your Log Analytics workspace ID.
+	WorkspaceId string `pulumi:"workspaceId"`
 }
 
 // GetExternalLoggingConfigInput is an input type that accepts GetExternalLoggingConfigArgs and GetExternalLoggingConfigOutput values.
@@ -86766,24 +88086,50 @@ type GetExternalLoggingConfigInput interface {
 }
 
 type GetExternalLoggingConfigArgs struct {
-	AccessKeyId       pulumi.StringInput `pulumi:"accessKeyId"`
-	AccessKeySecret   pulumi.StringInput `pulumi:"accessKeySecret"`
-	ApiKey            pulumi.StringInput `pulumi:"apiKey"`
-	Channel           pulumi.StringInput `pulumi:"channel"`
-	EnableSsl         pulumi.BoolInput   `pulumi:"enableSsl"`
-	ExternalId        pulumi.StringInput `pulumi:"externalId"`
-	Host              pulumi.StringInput `pulumi:"host"`
-	Hostname          pulumi.StringInput `pulumi:"hostname"`
-	LogGroupName      pulumi.StringInput `pulumi:"logGroupName"`
-	Port              pulumi.IntInput    `pulumi:"port"`
+	AccessKeyId     pulumi.StringInput `pulumi:"accessKeyId"`
+	AccessKeySecret pulumi.StringInput `pulumi:"accessKeySecret"`
+	AccessToken     pulumi.StringInput `pulumi:"accessToken"`
+	ApiKey          pulumi.StringInput `pulumi:"apiKey"`
+	Channel         pulumi.StringInput `pulumi:"channel"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. Your application (client) ID.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. Your application client secret.
+	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. The endpoint URL for your Data Collection Endpoint.
+	DataCollectionEndpoint pulumi.StringInput `pulumi:"dataCollectionEndpoint"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. The immutable ID of your Data Collection Rule.
+	DcrImmutableId pulumi.StringInput `pulumi:"dcrImmutableId"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. The stream name of your Data Collection Rule.
+	DcrStreamName pulumi.StringInput `pulumi:"dcrStreamName"`
+	EnableSsl     pulumi.BoolInput   `pulumi:"enableSsl"`
+	EnvironmentId pulumi.StringInput `pulumi:"environmentId"`
+	ExternalId    pulumi.StringInput `pulumi:"externalId"`
+	Host          pulumi.StringInput `pulumi:"host"`
+	Hostname      pulumi.StringInput `pulumi:"hostname"`
+	LogGroupName  pulumi.StringInput `pulumi:"logGroupName"`
+	LokiUrl       pulumi.StringInput `pulumi:"lokiUrl"`
+	Port          pulumi.IntInput    `pulumi:"port"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For HTTP Data Collector API authentication. Your Log Analytics primary key.
 	PrimaryKey        pulumi.StringInput `pulumi:"primaryKey"`
 	ProjectId         pulumi.StringInput `pulumi:"projectId"`
 	Region            pulumi.StringInput `pulumi:"region"`
 	RoleArn           pulumi.StringInput `pulumi:"roleArn"`
 	ServiceAccountKey pulumi.StringInput `pulumi:"serviceAccountKey"`
 	SubDomain         pulumi.StringInput `pulumi:"subDomain"`
-	Token             pulumi.StringInput `pulumi:"token"`
-	WorkspaceId       pulumi.StringInput `pulumi:"workspaceId"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. Your Microsoft Entra directory (tenant) ID.
+	TenantId pulumi.StringInput `pulumi:"tenantId"`
+	Token    pulumi.StringInput `pulumi:"token"`
+	Username pulumi.StringInput `pulumi:"username"`
+	// Field usage depends on `service` value:
+	// 	- Service `azureMonitorLog`: For HTTP Data Collector API authentication. Your Log Analytics workspace ID.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
 }
 
 func (GetExternalLoggingConfigArgs) ElementType() reflect.Type {
@@ -86871,6 +88217,10 @@ func (o GetExternalLoggingConfigOutput) AccessKeySecret() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExternalLoggingConfig) string { return v.AccessKeySecret }).(pulumi.StringOutput)
 }
 
+func (o GetExternalLoggingConfigOutput) AccessToken() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExternalLoggingConfig) string { return v.AccessToken }).(pulumi.StringOutput)
+}
+
 func (o GetExternalLoggingConfigOutput) ApiKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExternalLoggingConfig) string { return v.ApiKey }).(pulumi.StringOutput)
 }
@@ -86879,8 +88229,42 @@ func (o GetExternalLoggingConfigOutput) Channel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExternalLoggingConfig) string { return v.Channel }).(pulumi.StringOutput)
 }
 
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For Logs Ingestion API authentication. Your application (client) ID.
+func (o GetExternalLoggingConfigOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExternalLoggingConfig) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For Logs Ingestion API authentication. Your application client secret.
+func (o GetExternalLoggingConfigOutput) ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExternalLoggingConfig) string { return v.ClientSecret }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For Logs Ingestion API authentication. The endpoint URL for your Data Collection Endpoint.
+func (o GetExternalLoggingConfigOutput) DataCollectionEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExternalLoggingConfig) string { return v.DataCollectionEndpoint }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For Logs Ingestion API authentication. The immutable ID of your Data Collection Rule.
+func (o GetExternalLoggingConfigOutput) DcrImmutableId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExternalLoggingConfig) string { return v.DcrImmutableId }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For Logs Ingestion API authentication. The stream name of your Data Collection Rule.
+func (o GetExternalLoggingConfigOutput) DcrStreamName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExternalLoggingConfig) string { return v.DcrStreamName }).(pulumi.StringOutput)
+}
+
 func (o GetExternalLoggingConfigOutput) EnableSsl() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetExternalLoggingConfig) bool { return v.EnableSsl }).(pulumi.BoolOutput)
+}
+
+func (o GetExternalLoggingConfigOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExternalLoggingConfig) string { return v.EnvironmentId }).(pulumi.StringOutput)
 }
 
 func (o GetExternalLoggingConfigOutput) ExternalId() pulumi.StringOutput {
@@ -86899,10 +88283,16 @@ func (o GetExternalLoggingConfigOutput) LogGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExternalLoggingConfig) string { return v.LogGroupName }).(pulumi.StringOutput)
 }
 
+func (o GetExternalLoggingConfigOutput) LokiUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExternalLoggingConfig) string { return v.LokiUrl }).(pulumi.StringOutput)
+}
+
 func (o GetExternalLoggingConfigOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetExternalLoggingConfig) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For HTTP Data Collector API authentication. Your Log Analytics primary key.
 func (o GetExternalLoggingConfigOutput) PrimaryKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExternalLoggingConfig) string { return v.PrimaryKey }).(pulumi.StringOutput)
 }
@@ -86927,10 +88317,22 @@ func (o GetExternalLoggingConfigOutput) SubDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExternalLoggingConfig) string { return v.SubDomain }).(pulumi.StringOutput)
 }
 
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For Logs Ingestion API authentication. Your Microsoft Entra directory (tenant) ID.
+func (o GetExternalLoggingConfigOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExternalLoggingConfig) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
 func (o GetExternalLoggingConfigOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExternalLoggingConfig) string { return v.Token }).(pulumi.StringOutput)
 }
 
+func (o GetExternalLoggingConfigOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExternalLoggingConfig) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For HTTP Data Collector API authentication. Your Log Analytics workspace ID.
 func (o GetExternalLoggingConfigOutput) WorkspaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExternalLoggingConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
 }
@@ -86977,6 +88379,15 @@ func (o GetExternalLoggingConfigPtrOutput) AccessKeySecret() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o GetExternalLoggingConfigPtrOutput) AccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AccessToken
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o GetExternalLoggingConfigPtrOutput) ApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetExternalLoggingConfig) *string {
 		if v == nil {
@@ -86995,6 +88406,61 @@ func (o GetExternalLoggingConfigPtrOutput) Channel() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For Logs Ingestion API authentication. Your application (client) ID.
+func (o GetExternalLoggingConfigPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For Logs Ingestion API authentication. Your application client secret.
+func (o GetExternalLoggingConfigPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For Logs Ingestion API authentication. The endpoint URL for your Data Collection Endpoint.
+func (o GetExternalLoggingConfigPtrOutput) DataCollectionEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DataCollectionEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For Logs Ingestion API authentication. The immutable ID of your Data Collection Rule.
+func (o GetExternalLoggingConfigPtrOutput) DcrImmutableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DcrImmutableId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For Logs Ingestion API authentication. The stream name of your Data Collection Rule.
+func (o GetExternalLoggingConfigPtrOutput) DcrStreamName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DcrStreamName
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o GetExternalLoggingConfigPtrOutput) EnableSsl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetExternalLoggingConfig) *bool {
 		if v == nil {
@@ -87002,6 +88468,15 @@ func (o GetExternalLoggingConfigPtrOutput) EnableSsl() pulumi.BoolPtrOutput {
 		}
 		return &v.EnableSsl
 	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GetExternalLoggingConfigPtrOutput) EnvironmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EnvironmentId
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetExternalLoggingConfigPtrOutput) ExternalId() pulumi.StringPtrOutput {
@@ -87040,6 +88515,15 @@ func (o GetExternalLoggingConfigPtrOutput) LogGroupName() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o GetExternalLoggingConfigPtrOutput) LokiUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LokiUrl
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o GetExternalLoggingConfigPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetExternalLoggingConfig) *int {
 		if v == nil {
@@ -87049,6 +88533,8 @@ func (o GetExternalLoggingConfigPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For HTTP Data Collector API authentication. Your Log Analytics primary key.
 func (o GetExternalLoggingConfigPtrOutput) PrimaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetExternalLoggingConfig) *string {
 		if v == nil {
@@ -87103,6 +88589,17 @@ func (o GetExternalLoggingConfigPtrOutput) SubDomain() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For Logs Ingestion API authentication. Your Microsoft Entra directory (tenant) ID.
+func (o GetExternalLoggingConfigPtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o GetExternalLoggingConfigPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetExternalLoggingConfig) *string {
 		if v == nil {
@@ -87112,6 +88609,17 @@ func (o GetExternalLoggingConfigPtrOutput) Token() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o GetExternalLoggingConfigPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetExternalLoggingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// Field usage depends on `service` value:
+//   - Service `azureMonitorLog`: For HTTP Data Collector API authentication. Your Log Analytics workspace ID.
 func (o GetExternalLoggingConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetExternalLoggingConfig) *string {
 		if v == nil {
@@ -92996,6 +94504,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationCertificatesCertificateArrayInput)(nil)).Elem(), DestinationCertificatesCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationConfigInput)(nil)).Elem(), DestinationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationConfigPtrInput)(nil)).Elem(), DestinationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DestinationConfigGcsServiceAccountCredentialsInput)(nil)).Elem(), DestinationConfigGcsServiceAccountCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DestinationConfigGcsServiceAccountCredentialsPtrInput)(nil)).Elem(), DestinationConfigGcsServiceAccountCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DestinationConfigPolarisCatalogConfigurationInput)(nil)).Elem(), DestinationConfigPolarisCatalogConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DestinationConfigPolarisCatalogConfigurationPtrInput)(nil)).Elem(), DestinationConfigPolarisCatalogConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationFingerprintsFingerprintInput)(nil)).Elem(), DestinationFingerprintsFingerprintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationFingerprintsFingerprintArrayInput)(nil)).Elem(), DestinationFingerprintsFingerprintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationTimeoutsInput)(nil)).Elem(), DestinationTimeoutsArgs{})
@@ -93098,6 +94610,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDestinationCertificatesCertificateArrayInput)(nil)).Elem(), GetDestinationCertificatesCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDestinationConfigInput)(nil)).Elem(), GetDestinationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDestinationConfigPtrInput)(nil)).Elem(), GetDestinationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDestinationConfigGcsServiceAccountCredentialsInput)(nil)).Elem(), GetDestinationConfigGcsServiceAccountCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDestinationConfigGcsServiceAccountCredentialsPtrInput)(nil)).Elem(), GetDestinationConfigGcsServiceAccountCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDestinationConfigPolarisCatalogConfigurationInput)(nil)).Elem(), GetDestinationConfigPolarisCatalogConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDestinationConfigPolarisCatalogConfigurationPtrInput)(nil)).Elem(), GetDestinationConfigPolarisCatalogConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDestinationFingerprintsFingerprintInput)(nil)).Elem(), GetDestinationFingerprintsFingerprintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDestinationFingerprintsFingerprintArrayInput)(nil)).Elem(), GetDestinationFingerprintsFingerprintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDestinationsDestinationInput)(nil)).Elem(), GetDestinationsDestinationArgs{})
@@ -93264,6 +94780,10 @@ func init() {
 	pulumi.RegisterOutputType(DestinationCertificatesCertificateArrayOutput{})
 	pulumi.RegisterOutputType(DestinationConfigOutput{})
 	pulumi.RegisterOutputType(DestinationConfigPtrOutput{})
+	pulumi.RegisterOutputType(DestinationConfigGcsServiceAccountCredentialsOutput{})
+	pulumi.RegisterOutputType(DestinationConfigGcsServiceAccountCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(DestinationConfigPolarisCatalogConfigurationOutput{})
+	pulumi.RegisterOutputType(DestinationConfigPolarisCatalogConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DestinationFingerprintsFingerprintOutput{})
 	pulumi.RegisterOutputType(DestinationFingerprintsFingerprintArrayOutput{})
 	pulumi.RegisterOutputType(DestinationTimeoutsOutput{})
@@ -93366,6 +94886,10 @@ func init() {
 	pulumi.RegisterOutputType(GetDestinationCertificatesCertificateArrayOutput{})
 	pulumi.RegisterOutputType(GetDestinationConfigOutput{})
 	pulumi.RegisterOutputType(GetDestinationConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetDestinationConfigGcsServiceAccountCredentialsOutput{})
+	pulumi.RegisterOutputType(GetDestinationConfigGcsServiceAccountCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(GetDestinationConfigPolarisCatalogConfigurationOutput{})
+	pulumi.RegisterOutputType(GetDestinationConfigPolarisCatalogConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(GetDestinationFingerprintsFingerprintOutput{})
 	pulumi.RegisterOutputType(GetDestinationFingerprintsFingerprintArrayOutput{})
 	pulumi.RegisterOutputType(GetDestinationsDestinationOutput{})

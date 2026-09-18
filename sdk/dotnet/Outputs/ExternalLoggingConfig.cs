@@ -15,27 +15,69 @@ namespace Pulumi.Fivetran.Outputs
     {
         public readonly string? AccessKeyId;
         public readonly string? AccessKeySecret;
+        public readonly string? AccessToken;
         public readonly string? ApiKey;
         public readonly string? Channel;
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureMonitorLog`: For Logs Ingestion API authentication. Your application (client) ID.
+        /// </summary>
+        public readonly string? ClientId;
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureMonitorLog`: For Logs Ingestion API authentication. Your application client secret.
+        /// </summary>
+        public readonly string? ClientSecret;
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureMonitorLog`: For Logs Ingestion API authentication. The endpoint URL for your Data Collection Endpoint.
+        /// </summary>
+        public readonly string? DataCollectionEndpoint;
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureMonitorLog`: For Logs Ingestion API authentication. The immutable ID of your Data Collection Rule.
+        /// </summary>
+        public readonly string? DcrImmutableId;
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureMonitorLog`: For Logs Ingestion API authentication. The stream name of your Data Collection Rule.
+        /// </summary>
+        public readonly string? DcrStreamName;
         /// <summary>
         /// Enable SSL
         /// </summary>
         public readonly bool? EnableSsl;
+        public readonly string? EnvironmentId;
         public readonly string? ExternalId;
         public readonly string? Host;
         public readonly string? Hostname;
         public readonly string? LogGroupName;
+        public readonly string? LokiUrl;
         /// <summary>
         /// Port
         /// </summary>
         public readonly int? Port;
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureMonitorLog`: For HTTP Data Collector API authentication. Your Log Analytics primary key.
+        /// </summary>
         public readonly string? PrimaryKey;
         public readonly string? ProjectId;
         public readonly string? Region;
         public readonly string? RoleArn;
         public readonly string? ServiceAccountKey;
         public readonly string? SubDomain;
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureMonitorLog`: For Logs Ingestion API authentication. Your Microsoft Entra directory (tenant) ID.
+        /// </summary>
+        public readonly string? TenantId;
         public readonly string? Token;
+        public readonly string? Username;
+        /// <summary>
+        /// Field usage depends on `Service` value: 
+        /// 	- Service `AzureMonitorLog`: For HTTP Data Collector API authentication. Your Log Analytics workspace ID.
+        /// </summary>
         public readonly string? WorkspaceId;
 
         [OutputConstructor]
@@ -44,11 +86,25 @@ namespace Pulumi.Fivetran.Outputs
 
             string? accessKeySecret,
 
+            string? accessToken,
+
             string? apiKey,
 
             string? channel,
 
+            string? clientId,
+
+            string? clientSecret,
+
+            string? dataCollectionEndpoint,
+
+            string? dcrImmutableId,
+
+            string? dcrStreamName,
+
             bool? enableSsl,
+
+            string? environmentId,
 
             string? externalId,
 
@@ -57,6 +113,8 @@ namespace Pulumi.Fivetran.Outputs
             string? hostname,
 
             string? logGroupName,
+
+            string? lokiUrl,
 
             int? port,
 
@@ -72,19 +130,31 @@ namespace Pulumi.Fivetran.Outputs
 
             string? subDomain,
 
+            string? tenantId,
+
             string? token,
+
+            string? username,
 
             string? workspaceId)
         {
             AccessKeyId = accessKeyId;
             AccessKeySecret = accessKeySecret;
+            AccessToken = accessToken;
             ApiKey = apiKey;
             Channel = channel;
+            ClientId = clientId;
+            ClientSecret = clientSecret;
+            DataCollectionEndpoint = dataCollectionEndpoint;
+            DcrImmutableId = dcrImmutableId;
+            DcrStreamName = dcrStreamName;
             EnableSsl = enableSsl;
+            EnvironmentId = environmentId;
             ExternalId = externalId;
             Host = host;
             Hostname = hostname;
             LogGroupName = logGroupName;
+            LokiUrl = lokiUrl;
             Port = port;
             PrimaryKey = primaryKey;
             ProjectId = projectId;
@@ -92,7 +162,9 @@ namespace Pulumi.Fivetran.Outputs
             RoleArn = roleArn;
             ServiceAccountKey = serviceAccountKey;
             SubDomain = subDomain;
+            TenantId = tenantId;
             Token = token;
+            Username = username;
             WorkspaceId = workspaceId;
         }
     }
