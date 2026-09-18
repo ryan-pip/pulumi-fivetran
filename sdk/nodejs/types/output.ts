@@ -8479,6 +8479,7 @@ export interface DestinationConfig {
      * 	- Service `postgresGcpWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `postgresRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `postgresWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `postgresWh`: Specifies whether TLS is required. Must be set when using `SshTunnel` connection
      * 	- Service `redshift`: Require TLS through Tunnel
      * 	- Service `sqlServerRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `sqlServerWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -8502,6 +8503,7 @@ export interface DestinationConfig {
      * 	- Service `postgresGcpWarehouse`: Authentication method. Default value: `PASSWORD`.
      * 	- Service `postgresRdsWarehouse`: Authentication method. Default value: `PASSWORD`.
      * 	- Service `postgresWarehouse`: Authentication method. Default value: `PASSWORD`.
+     * 	- Service `postgresWh`: Authentication method. Supported values: `PASSWORD`, `AWS_IAM`. Default: `PASSWORD`.
      */
     authMethod: string;
     /**
@@ -8536,6 +8538,7 @@ export interface DestinationConfig {
      * 	- Service `postgresGcpWarehouse`: AWS region code. Required when `authMethod` is set to `AWS_IAM`.
      * 	- Service `postgresRdsWarehouse`: AWS region where the RDS instance is located. Required when `authMethod` is set to `AWS_IAM`.
      * 	- Service `postgresWarehouse`: AWS region code. Required when `authMethod` is set to `AWS_IAM`.
+     * 	- Service `postgresWh`: AWS region code. Required when `authMethod` is set to `AWS_IAM`
      */
     awsRegionCode: string;
     /**
@@ -8548,9 +8551,24 @@ export interface DestinationConfig {
     awsSecretAccessKey?: string;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `databricks`: Your Azure AD application (client) ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+     */
+    azureClientId?: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `databricks`: Your Azure AD application client secret for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+     */
+    azureClientSecret?: string;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `databricks`: Authentication method for the Azure container you want to use as the external staging for Hybrid Deployment.
      */
     azureStorageAccountAuthType?: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `databricks`: Your Azure AD tenant ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+     */
+    azureTenantId?: string;
     /**
      * Field usage depends on `service` value:
      * 	- Service `confluentCloudWh`: Comma-separated list of Confluent Cloud servers in the `server:port` format.
@@ -8639,6 +8657,7 @@ export interface DestinationConfig {
      * 	- Service `postgresGcpWarehouse`: Connection method. Default value: `Directly`.
      * 	- Service `postgresRdsWarehouse`: Connection method. Default value: `Directly`.
      * 	- Service `postgresWarehouse`: Connection method. Default value: `Directly`.
+     * 	- Service `postgresWh`: Connection method. Supported values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`. Default: `Directly`. Note: PrivateLink is only supported for cloud-hosted PostgreSQL (RDS, Aurora, Azure, GCP).
      * 	- Service `redshift`: Connection method. Default value: `Directly`.
      * 	- Service `snowflake`: Connection method. Default value: `Directly`.
      * 	- Service `sqlServerRdsWarehouse`: Connection method. Default value: `Directly`.
@@ -8696,6 +8715,7 @@ export interface DestinationConfig {
      * 	- Service `postgresGcpWarehouse`: Database name
      * 	- Service `postgresRdsWarehouse`: Database name
      * 	- Service `postgresWarehouse`: Database name
+     * 	- Service `postgresWh`: Database name
      * 	- Service `redshift`: Database name
      * 	- Service `snowflake`: Database name
      * 	- Service `sqlServerRdsWarehouse`: Database name
@@ -8752,6 +8772,7 @@ export interface DestinationConfig {
      * 	- Service `postgresGcpWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
      * 	- Service `postgresRdsWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
      * 	- Service `postgresWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
+     * 	- Service `postgresWh`: AWS external ID for authentication. Auto-generated from group ID when `authMethod` is set to `AWS_IAM`
      * 	- Service `redshift`: Fivetran generated External ID
      */
     externalId: string;
@@ -8800,6 +8821,7 @@ export interface DestinationConfig {
      * 	- Service `managedDataLake`: GCS Project ID of your Google Cloud Storage bucket. Use this parameter only if you want to deploy your data lake on GCS.
      */
     gcsProjectId?: string;
+    gcsServiceAccountCredentials?: outputs.DestinationConfigGcsServiceAccountCredentials;
     /**
      * Field usage depends on `service` value:
      * 	- Service `snowflake`: The path to the JSON file that contains the service account credentials for the GCS bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use a GCS bucket to stage your data.
@@ -8826,6 +8848,7 @@ export interface DestinationConfig {
      * 	- Service `postgresGcpWarehouse`: Server name
      * 	- Service `postgresRdsWarehouse`: Server name
      * 	- Service `postgresWarehouse`: Server name
+     * 	- Service `postgresWh`: Server hostname or IP address
      * 	- Service `redshift`: Server name
      * 	- Service `snowflake`: Server name
      * 	- Service `sqlServerRdsWarehouse`: Server name
@@ -8945,6 +8968,7 @@ export interface DestinationConfig {
      * 	- Service `postgresGcpWarehouse`: Database user password
      * 	- Service `postgresRdsWarehouse`: Database user password
      * 	- Service `postgresWarehouse`: Database user password
+     * 	- Service `postgresWh`: Database user password. Required for PASSWORD authentication
      * 	- Service `redshift`: Database user password. Required if authentication type is `PASSWORD`.
      * 	- Service `snowflake`: Database user password. The field should be specified if authentication type is `PASSWORD`.
      * 	- Service `sqlServerRdsWarehouse`: Database user password
@@ -8961,6 +8985,7 @@ export interface DestinationConfig {
      * 	- Service `onelake`: Personal access token
      */
     personalAccessToken?: string;
+    polarisCatalogConfiguration?: outputs.DestinationConfigPolarisCatalogConfiguration;
     /**
      * Field usage depends on `service` value:
      * 	- Service `adls`: Server port number
@@ -8988,6 +9013,7 @@ export interface DestinationConfig {
      * 	- Service `postgresGcpWarehouse`: Server port number
      * 	- Service `postgresRdsWarehouse`: Server port number
      * 	- Service `postgresWarehouse`: Server port number
+     * 	- Service `postgresWh`: Server port number (default: 5432)
      * 	- Service `redshift`: Server port number
      * 	- Service `snowflake`: Server port number
      * 	- Service `sqlServerRdsWarehouse`: Server port number
@@ -9086,6 +9112,7 @@ export interface DestinationConfig {
      * 	- Service `postgresGcpWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
      * 	- Service `postgresRdsWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
      * 	- Service `postgresWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
+     * 	- Service `postgresWh`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`
      * 	- Service `redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
      */
     roleArn?: string;
@@ -9190,6 +9217,12 @@ export interface DestinationConfig {
     shouldMaintainTablesInOneLake: boolean;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `databricksViaManagedDataLake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Databricks via Managed Data Lake requires Delta Lake metadata, so Fivetran always uses `true` for this destination.
+     * 	- Service `managedDataLake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Default value: `false` for new destinations and `true` for existing destinations. Destinations with Unity Catalog or OneLake catalog enabled always write Delta Lake metadata.
+     */
+    shouldWriteDelta: boolean;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
      * 	- Service `databricksViaManagedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
      * 	- Service `managedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
@@ -9262,6 +9295,7 @@ export interface DestinationConfig {
      * 	- Service `postgresGcpWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `postgresRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `postgresWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `postgresWh`: SSH server hostname. Required when `connectionType` is set to `SshTunnel`
      * 	- Service `redshift`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `sqlServerRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `sqlServerWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -9288,6 +9322,7 @@ export interface DestinationConfig {
      * 	- Service `postgresGcpWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `postgresRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `postgresWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `postgresWh`: SSH server port. Required when `connectionType` is set to `SshTunnel`
      * 	- Service `redshift`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `sqlServerRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `sqlServerWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -9314,6 +9349,7 @@ export interface DestinationConfig {
      * 	- Service `postgresGcpWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `postgresRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `postgresWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `postgresWh`: SSH user name. Required when `connectionType` is set to `SshTunnel`
      * 	- Service `redshift`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `sqlServerRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `sqlServerWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -9345,6 +9381,7 @@ export interface DestinationConfig {
      * 	- Service `postgresGcpWarehouse`: Database user name
      * 	- Service `postgresRdsWarehouse`: Database user name
      * 	- Service `postgresWarehouse`: Database user name
+     * 	- Service `postgresWh`: Database user name. Required for PASSWORD authentication
      * 	- Service `redshift`: Database user name
      * 	- Service `snowflake`: Database user name
      * 	- Service `sqlServerRdsWarehouse`: Database user name
@@ -9363,6 +9400,36 @@ export interface DestinationConfig {
      * 	- Service `onelake`: OneLake workspace name
      */
     workspaceName?: string;
+}
+
+export interface DestinationConfigGcsServiceAccountCredentials {
+}
+
+export interface DestinationConfigPolarisCatalogConfiguration {
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `databricksViaManagedDataLake`: Client ID
+     * 	- Service `managedDataLake`: Client ID
+     */
+    clientId?: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `databricksViaManagedDataLake`: Client Secret
+     * 	- Service `managedDataLake`: Client Secret
+     */
+    clientSecret?: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `databricksViaManagedDataLake`: Polaris Catalog
+     * 	- Service `managedDataLake`: Polaris Catalog
+     */
+    polarisCatalog?: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `databricksViaManagedDataLake`: Polaris Server Endpoint
+     * 	- Service `managedDataLake`: Polaris Server Endpoint
+     */
+    polarisServerEndpoint?: string;
 }
 
 export interface DestinationFingerprintsFingerprint {
@@ -9398,27 +9465,69 @@ export interface DestinationTimeouts {
 export interface ExternalLoggingConfig {
     accessKeyId?: string;
     accessKeySecret?: string;
+    accessToken?: string;
     apiKey?: string;
     channel?: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. Your application (client) ID.
+     */
+    clientId?: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. Your application client secret.
+     */
+    clientSecret?: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. The endpoint URL for your Data Collection Endpoint.
+     */
+    dataCollectionEndpoint?: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. The immutable ID of your Data Collection Rule.
+     */
+    dcrImmutableId?: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. The stream name of your Data Collection Rule.
+     */
+    dcrStreamName?: string;
     /**
      * Enable SSL
      */
     enableSsl: boolean;
+    environmentId?: string;
     externalId?: string;
     host?: string;
     hostname?: string;
     logGroupName?: string;
+    lokiUrl?: string;
     /**
      * Port
      */
     port: number;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `azureMonitorLog`: For HTTP Data Collector API authentication. Your Log Analytics primary key.
+     */
     primaryKey?: string;
     projectId?: string;
     region?: string;
     roleArn?: string;
     serviceAccountKey?: string;
     subDomain: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. Your Microsoft Entra directory (tenant) ID.
+     */
+    tenantId?: string;
     token?: string;
+    username?: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `azureMonitorLog`: For HTTP Data Collector API authentication. Your Log Analytics workspace ID.
+     */
     workspaceId?: string;
 }
 
@@ -17724,6 +17833,7 @@ export interface GetDestinationConfig {
      * 	- Service `postgresGcpWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `postgresRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `postgresWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `postgresWh`: Specifies whether TLS is required. Must be set when using `SshTunnel` connection
      * 	- Service `redshift`: Require TLS through Tunnel
      * 	- Service `sqlServerRdsWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `sqlServerWarehouse`: Specifies whether TLS is required. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -17747,6 +17857,7 @@ export interface GetDestinationConfig {
      * 	- Service `postgresGcpWarehouse`: Authentication method. Default value: `PASSWORD`.
      * 	- Service `postgresRdsWarehouse`: Authentication method. Default value: `PASSWORD`.
      * 	- Service `postgresWarehouse`: Authentication method. Default value: `PASSWORD`.
+     * 	- Service `postgresWh`: Authentication method. Supported values: `PASSWORD`, `AWS_IAM`. Default: `PASSWORD`.
      */
     authMethod: string;
     /**
@@ -17781,6 +17892,7 @@ export interface GetDestinationConfig {
      * 	- Service `postgresGcpWarehouse`: AWS region code. Required when `authMethod` is set to `AWS_IAM`.
      * 	- Service `postgresRdsWarehouse`: AWS region where the RDS instance is located. Required when `authMethod` is set to `AWS_IAM`.
      * 	- Service `postgresWarehouse`: AWS region code. Required when `authMethod` is set to `AWS_IAM`.
+     * 	- Service `postgresWh`: AWS region code. Required when `authMethod` is set to `AWS_IAM`
      */
     awsRegionCode: string;
     /**
@@ -17793,9 +17905,24 @@ export interface GetDestinationConfig {
     awsSecretAccessKey: string;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `databricks`: Your Azure AD application (client) ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+     */
+    azureClientId: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `databricks`: Your Azure AD application client secret for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+     */
+    azureClientSecret: string;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `databricks`: Authentication method for the Azure container you want to use as the external staging for Hybrid Deployment.
      */
     azureStorageAccountAuthType: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `databricks`: Your Azure AD tenant ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+     */
+    azureTenantId: string;
     /**
      * Field usage depends on `service` value:
      * 	- Service `confluentCloudWh`: Comma-separated list of Confluent Cloud servers in the `server:port` format.
@@ -17884,6 +18011,7 @@ export interface GetDestinationConfig {
      * 	- Service `postgresGcpWarehouse`: Connection method. Default value: `Directly`.
      * 	- Service `postgresRdsWarehouse`: Connection method. Default value: `Directly`.
      * 	- Service `postgresWarehouse`: Connection method. Default value: `Directly`.
+     * 	- Service `postgresWh`: Connection method. Supported values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`. Default: `Directly`. Note: PrivateLink is only supported for cloud-hosted PostgreSQL (RDS, Aurora, Azure, GCP).
      * 	- Service `redshift`: Connection method. Default value: `Directly`.
      * 	- Service `snowflake`: Connection method. Default value: `Directly`.
      * 	- Service `sqlServerRdsWarehouse`: Connection method. Default value: `Directly`.
@@ -17941,6 +18069,7 @@ export interface GetDestinationConfig {
      * 	- Service `postgresGcpWarehouse`: Database name
      * 	- Service `postgresRdsWarehouse`: Database name
      * 	- Service `postgresWarehouse`: Database name
+     * 	- Service `postgresWh`: Database name
      * 	- Service `redshift`: Database name
      * 	- Service `snowflake`: Database name
      * 	- Service `sqlServerRdsWarehouse`: Database name
@@ -17997,6 +18126,7 @@ export interface GetDestinationConfig {
      * 	- Service `postgresGcpWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
      * 	- Service `postgresRdsWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
      * 	- Service `postgresWarehouse`: AWS external ID for authentication. Required when `authMethod` is set to `AWS_IAM`.
+     * 	- Service `postgresWh`: AWS external ID for authentication. Auto-generated from group ID when `authMethod` is set to `AWS_IAM`
      * 	- Service `redshift`: Fivetran generated External ID
      */
     externalId: string;
@@ -18047,6 +18177,11 @@ export interface GetDestinationConfig {
     gcsProjectId: string;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `snowflake`: The service account credentials for the Google Cloud Storage (GCS) bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use a GCS bucket to stage your data.
+     */
+    gcsServiceAccountCredentials: outputs.GetDestinationConfigGcsServiceAccountCredentials;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `snowflake`: The path to the JSON file that contains the service account credentials for the GCS bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use a GCS bucket to stage your data.
      */
     gcsServiceAccountCredentialsPath: string;
@@ -18071,6 +18206,7 @@ export interface GetDestinationConfig {
      * 	- Service `postgresGcpWarehouse`: Server name
      * 	- Service `postgresRdsWarehouse`: Server name
      * 	- Service `postgresWarehouse`: Server name
+     * 	- Service `postgresWh`: Server hostname or IP address
      * 	- Service `redshift`: Server name
      * 	- Service `snowflake`: Server name
      * 	- Service `sqlServerRdsWarehouse`: Server name
@@ -18190,6 +18326,7 @@ export interface GetDestinationConfig {
      * 	- Service `postgresGcpWarehouse`: Database user password
      * 	- Service `postgresRdsWarehouse`: Database user password
      * 	- Service `postgresWarehouse`: Database user password
+     * 	- Service `postgresWh`: Database user password. Required for PASSWORD authentication
      * 	- Service `redshift`: Database user password. Required if authentication type is `PASSWORD`.
      * 	- Service `snowflake`: Database user password. The field should be specified if authentication type is `PASSWORD`.
      * 	- Service `sqlServerRdsWarehouse`: Database user password
@@ -18206,6 +18343,12 @@ export interface GetDestinationConfig {
      * 	- Service `onelake`: Personal access token
      */
     personalAccessToken: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `databricksViaManagedDataLake`: Polaris Catalog Base Configuration. Universal connection settings for any query engine or analytics tool.
+     * 	- Service `managedDataLake`: Polaris Catalog Base Configuration. Universal connection settings for any query engine or analytics tool.
+     */
+    polarisCatalogConfiguration: outputs.GetDestinationConfigPolarisCatalogConfiguration;
     /**
      * Field usage depends on `service` value:
      * 	- Service `adls`: Server port number
@@ -18233,6 +18376,7 @@ export interface GetDestinationConfig {
      * 	- Service `postgresGcpWarehouse`: Server port number
      * 	- Service `postgresRdsWarehouse`: Server port number
      * 	- Service `postgresWarehouse`: Server port number
+     * 	- Service `postgresWh`: Server port number (default: 5432)
      * 	- Service `redshift`: Server port number
      * 	- Service `snowflake`: Server port number
      * 	- Service `sqlServerRdsWarehouse`: Server port number
@@ -18331,6 +18475,7 @@ export interface GetDestinationConfig {
      * 	- Service `postgresGcpWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
      * 	- Service `postgresRdsWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
      * 	- Service `postgresWarehouse`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`.
+     * 	- Service `postgresWh`: AWS IAM role ARN for authentication. Required when `authMethod` is set to `AWS_IAM`
      * 	- Service `redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
      */
     roleArn: string;
@@ -18435,6 +18580,12 @@ export interface GetDestinationConfig {
     shouldMaintainTablesInOneLake: boolean;
     /**
      * Field usage depends on `service` value:
+     * 	- Service `databricksViaManagedDataLake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Databricks via Managed Data Lake requires Delta Lake metadata, so Fivetran always uses `true` for this destination.
+     * 	- Service `managedDataLake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Default value: `false` for new destinations and `true` for existing destinations. Destinations with Unity Catalog or OneLake catalog enabled always write Delta Lake metadata.
+     */
+    shouldWriteDelta: boolean;
+    /**
+     * Field usage depends on `service` value:
      * 	- Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
      * 	- Service `databricksViaManagedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
      * 	- Service `managedDataLake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
@@ -18507,6 +18658,7 @@ export interface GetDestinationConfig {
      * 	- Service `postgresGcpWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `postgresRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `postgresWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `postgresWh`: SSH server hostname. Required when `connectionType` is set to `SshTunnel`
      * 	- Service `redshift`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `sqlServerRdsWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `sqlServerWarehouse`: SSH server name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -18533,6 +18685,7 @@ export interface GetDestinationConfig {
      * 	- Service `postgresGcpWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `postgresRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `postgresWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `postgresWh`: SSH server port. Required when `connectionType` is set to `SshTunnel`
      * 	- Service `redshift`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `sqlServerRdsWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `sqlServerWarehouse`: SSH server port name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -18559,6 +18712,7 @@ export interface GetDestinationConfig {
      * 	- Service `postgresGcpWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `postgresRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `postgresWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
+     * 	- Service `postgresWh`: SSH user name. Required when `connectionType` is set to `SshTunnel`
      * 	- Service `redshift`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `sqlServerRdsWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
      * 	- Service `sqlServerWarehouse`: SSH user name. Must be populated if `connectionType` is set to `SshTunnel`.
@@ -18590,6 +18744,7 @@ export interface GetDestinationConfig {
      * 	- Service `postgresGcpWarehouse`: Database user name
      * 	- Service `postgresRdsWarehouse`: Database user name
      * 	- Service `postgresWarehouse`: Database user name
+     * 	- Service `postgresWh`: Database user name. Required for PASSWORD authentication
      * 	- Service `redshift`: Database user name
      * 	- Service `snowflake`: Database user name
      * 	- Service `sqlServerRdsWarehouse`: Database user name
@@ -18608,6 +18763,36 @@ export interface GetDestinationConfig {
      * 	- Service `onelake`: OneLake workspace name
      */
     workspaceName: string;
+}
+
+export interface GetDestinationConfigGcsServiceAccountCredentials {
+}
+
+export interface GetDestinationConfigPolarisCatalogConfiguration {
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `databricksViaManagedDataLake`: Client ID
+     * 	- Service `managedDataLake`: Client ID
+     */
+    clientId: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `databricksViaManagedDataLake`: Client Secret
+     * 	- Service `managedDataLake`: Client Secret
+     */
+    clientSecret: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `databricksViaManagedDataLake`: Polaris Catalog
+     * 	- Service `managedDataLake`: Polaris Catalog
+     */
+    polarisCatalog: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `databricksViaManagedDataLake`: Polaris Server Endpoint
+     * 	- Service `managedDataLake`: Polaris Server Endpoint
+     */
+    polarisServerEndpoint: string;
 }
 
 export interface GetDestinationFingerprintsFingerprint {
@@ -18679,21 +18864,63 @@ export interface GetDestinationsDestination {
 export interface GetExternalLoggingConfig {
     accessKeyId: string;
     accessKeySecret: string;
+    accessToken: string;
     apiKey: string;
     channel: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. Your application (client) ID.
+     */
+    clientId: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. Your application client secret.
+     */
+    clientSecret: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. The endpoint URL for your Data Collection Endpoint.
+     */
+    dataCollectionEndpoint: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. The immutable ID of your Data Collection Rule.
+     */
+    dcrImmutableId: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. The stream name of your Data Collection Rule.
+     */
+    dcrStreamName: string;
     enableSsl: boolean;
+    environmentId: string;
     externalId: string;
     host: string;
     hostname: string;
     logGroupName: string;
+    lokiUrl: string;
     port: number;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `azureMonitorLog`: For HTTP Data Collector API authentication. Your Log Analytics primary key.
+     */
     primaryKey: string;
     projectId: string;
     region: string;
     roleArn: string;
     serviceAccountKey: string;
     subDomain: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `azureMonitorLog`: For Logs Ingestion API authentication. Your Microsoft Entra directory (tenant) ID.
+     */
+    tenantId: string;
     token: string;
+    username: string;
+    /**
+     * Field usage depends on `service` value:
+     * 	- Service `azureMonitorLog`: For HTTP Data Collector API authentication. Your Log Analytics workspace ID.
+     */
     workspaceId: string;
 }
 

@@ -101,6 +101,10 @@ __all__ = [
     'DestinationCertificatesCertificateArgsDict',
     'DestinationConfigArgs',
     'DestinationConfigArgsDict',
+    'DestinationConfigGcsServiceAccountCredentialsArgs',
+    'DestinationConfigGcsServiceAccountCredentialsArgsDict',
+    'DestinationConfigPolarisCatalogConfigurationArgs',
+    'DestinationConfigPolarisCatalogConfigurationArgsDict',
     'DestinationFingerprintsFingerprintArgs',
     'DestinationFingerprintsFingerprintArgsDict',
     'DestinationTimeoutsArgs',
@@ -203,6 +207,10 @@ __all__ = [
     'GetDestinationCertificatesCertificateArgsDict',
     'GetDestinationConfigArgs',
     'GetDestinationConfigArgsDict',
+    'GetDestinationConfigGcsServiceAccountCredentialsArgs',
+    'GetDestinationConfigGcsServiceAccountCredentialsArgsDict',
+    'GetDestinationConfigPolarisCatalogConfigurationArgs',
+    'GetDestinationConfigPolarisCatalogConfigurationArgsDict',
     'GetDestinationFingerprintsFingerprintArgs',
     'GetDestinationFingerprintsFingerprintArgsDict',
     'GetDestinationsDestinationArgs',
@@ -34551,6 +34559,7 @@ class DestinationConfigArgsDict(TypedDict):
     	- Service `postgres_gcp_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `postgres_rds_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `postgres_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
+    	- Service `postgres_wh`: Specifies whether TLS is required. Must be set when using `SshTunnel` connection
     	- Service `redshift`: Require TLS through Tunnel
     	- Service `sql_server_rds_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `sql_server_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -34574,6 +34583,7 @@ class DestinationConfigArgsDict(TypedDict):
     	- Service `postgres_gcp_warehouse`: Authentication method. Default value: `PASSWORD`.
     	- Service `postgres_rds_warehouse`: Authentication method. Default value: `PASSWORD`.
     	- Service `postgres_warehouse`: Authentication method. Default value: `PASSWORD`.
+    	- Service `postgres_wh`: Authentication method. Supported values: `PASSWORD`, `AWS_IAM`. Default: `PASSWORD`.
     """
     auth_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -34608,6 +34618,7 @@ class DestinationConfigArgsDict(TypedDict):
     	- Service `postgres_gcp_warehouse`: AWS region code. Required when `auth_method` is set to `AWS_IAM`.
     	- Service `postgres_rds_warehouse`: AWS region where the RDS instance is located. Required when `auth_method` is set to `AWS_IAM`.
     	- Service `postgres_warehouse`: AWS region code. Required when `auth_method` is set to `AWS_IAM`.
+    	- Service `postgres_wh`: AWS region code. Required when `auth_method` is set to `AWS_IAM`
     """
     aws_secret_access_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -34617,10 +34628,25 @@ class DestinationConfigArgsDict(TypedDict):
     	- Service `redshift`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
     	- Service `snowflake`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment , want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
     """
+    azure_client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Field usage depends on `service` value:
+    	- Service `databricks`: Your Azure AD application (client) ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+    """
+    azure_client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Field usage depends on `service` value:
+    	- Service `databricks`: Your Azure AD application client secret for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+    """
     azure_storage_account_auth_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Field usage depends on `service` value:
     	- Service `databricks`: Authentication method for the Azure container you want to use as the external staging for Hybrid Deployment.
+    """
+    azure_tenant_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Field usage depends on `service` value:
+    	- Service `databricks`: Your Azure AD tenant ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
     """
     bootstrap_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
@@ -34711,6 +34737,7 @@ class DestinationConfigArgsDict(TypedDict):
     	- Service `postgres_gcp_warehouse`: Connection method. Default value: `Directly`.
     	- Service `postgres_rds_warehouse`: Connection method. Default value: `Directly`.
     	- Service `postgres_warehouse`: Connection method. Default value: `Directly`.
+    	- Service `postgres_wh`: Connection method. Supported values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`. Default: `Directly`. Note: PrivateLink is only supported for cloud-hosted PostgreSQL (RDS, Aurora, Azure, GCP).
     	- Service `redshift`: Connection method. Default value: `Directly`.
     	- Service `snowflake`: Connection method. Default value: `Directly`.
     	- Service `sql_server_rds_warehouse`: Connection method. Default value: `Directly`.
@@ -34768,6 +34795,7 @@ class DestinationConfigArgsDict(TypedDict):
     	- Service `postgres_gcp_warehouse`: Database name
     	- Service `postgres_rds_warehouse`: Database name
     	- Service `postgres_warehouse`: Database name
+    	- Service `postgres_wh`: Database name
     	- Service `redshift`: Database name
     	- Service `snowflake`: Database name
     	- Service `sql_server_rds_warehouse`: Database name
@@ -34824,6 +34852,7 @@ class DestinationConfigArgsDict(TypedDict):
     	- Service `postgres_gcp_warehouse`: AWS external ID for authentication. Required when `auth_method` is set to `AWS_IAM`.
     	- Service `postgres_rds_warehouse`: AWS external ID for authentication. Required when `auth_method` is set to `AWS_IAM`.
     	- Service `postgres_warehouse`: AWS external ID for authentication. Required when `auth_method` is set to `AWS_IAM`.
+    	- Service `postgres_wh`: AWS external ID for authentication. Auto-generated from group ID when `auth_method` is set to `AWS_IAM`
     	- Service `redshift`: Fivetran generated External ID
     """
     external_location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -34871,6 +34900,7 @@ class DestinationConfigArgsDict(TypedDict):
     	- Service `databricks_via_managed_data_lake`: GCS Project ID of your Google Cloud Storage bucket. Use this parameter only if you want to deploy your data lake on GCS.
     	- Service `managed_data_lake`: GCS Project ID of your Google Cloud Storage bucket. Use this parameter only if you want to deploy your data lake on GCS.
     """
+    gcs_service_account_credentials: NotRequired[pulumi.Input[Optional['DestinationConfigGcsServiceAccountCredentialsArgsDict']]]
     gcs_service_account_credentials_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Field usage depends on `service` value:
@@ -34898,6 +34928,7 @@ class DestinationConfigArgsDict(TypedDict):
     	- Service `postgres_gcp_warehouse`: Server name
     	- Service `postgres_rds_warehouse`: Server name
     	- Service `postgres_warehouse`: Server name
+    	- Service `postgres_wh`: Server hostname or IP address
     	- Service `redshift`: Server name
     	- Service `snowflake`: Server name
     	- Service `sql_server_rds_warehouse`: Server name
@@ -35017,6 +35048,7 @@ class DestinationConfigArgsDict(TypedDict):
     	- Service `postgres_gcp_warehouse`: Database user password
     	- Service `postgres_rds_warehouse`: Database user password
     	- Service `postgres_warehouse`: Database user password
+    	- Service `postgres_wh`: Database user password. Required for PASSWORD authentication
     	- Service `redshift`: Database user password. Required if authentication type is `PASSWORD`.
     	- Service `snowflake`: Database user password. The field should be specified if authentication type is `PASSWORD`.
     	- Service `sql_server_rds_warehouse`: Database user password
@@ -35032,6 +35064,7 @@ class DestinationConfigArgsDict(TypedDict):
     	- Service `new_s3_datalake`: Personal access token
     	- Service `onelake`: Personal access token
     """
+    polaris_catalog_configuration: NotRequired[pulumi.Input[Optional['DestinationConfigPolarisCatalogConfigurationArgsDict']]]
     port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Field usage depends on `service` value:
@@ -35060,6 +35093,7 @@ class DestinationConfigArgsDict(TypedDict):
     	- Service `postgres_gcp_warehouse`: Server port number
     	- Service `postgres_rds_warehouse`: Server port number
     	- Service `postgres_warehouse`: Server port number
+    	- Service `postgres_wh`: Server port number (default: 5432)
     	- Service `redshift`: Server port number
     	- Service `snowflake`: Server port number
     	- Service `sql_server_rds_warehouse`: Server port number
@@ -35158,6 +35192,7 @@ class DestinationConfigArgsDict(TypedDict):
     	- Service `postgres_gcp_warehouse`: AWS IAM role ARN for authentication. Required when `auth_method` is set to `AWS_IAM`.
     	- Service `postgres_rds_warehouse`: AWS IAM role ARN for authentication. Required when `auth_method` is set to `AWS_IAM`.
     	- Service `postgres_warehouse`: AWS IAM role ARN for authentication. Required when `auth_method` is set to `AWS_IAM`.
+    	- Service `postgres_wh`: AWS IAM role ARN for authentication. Required when `auth_method` is set to `AWS_IAM`
     	- Service `redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
     """
     s3_bucket_auth_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -35259,6 +35294,12 @@ class DestinationConfigArgsDict(TypedDict):
     	- Service `databricks_via_managed_data_lake`: Specifies whether you want to create shortcut for you table in OneLake. Use this parameter only if you want to deploy your data lake on ADLS.
     	- Service `managed_data_lake`: Specifies whether you want to create shortcut for you table in OneLake. Use this parameter only if you want to deploy your data lake on ADLS.
     """
+    should_write_delta: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Field usage depends on `service` value:
+    	- Service `databricks_via_managed_data_lake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Databricks via Managed Data Lake requires Delta Lake metadata, so Fivetran always uses `true` for this destination.
+    	- Service `managed_data_lake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Default value: `false` for new destinations and `true` for existing destinations. Destinations with Unity Catalog or OneLake catalog enabled always write Delta Lake metadata.
+    """
     snapshot_retention_period: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Field usage depends on `service` value:
@@ -35334,6 +35375,7 @@ class DestinationConfigArgsDict(TypedDict):
     	- Service `postgres_gcp_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `postgres_rds_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `postgres_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
+    	- Service `postgres_wh`: SSH server hostname. Required when `connection_type` is set to `SshTunnel`
     	- Service `redshift`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `sql_server_rds_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `sql_server_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -35360,6 +35402,7 @@ class DestinationConfigArgsDict(TypedDict):
     	- Service `postgres_gcp_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `postgres_rds_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `postgres_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
+    	- Service `postgres_wh`: SSH server port. Required when `connection_type` is set to `SshTunnel`
     	- Service `redshift`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `sql_server_rds_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `sql_server_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -35386,6 +35429,7 @@ class DestinationConfigArgsDict(TypedDict):
     	- Service `postgres_gcp_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `postgres_rds_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `postgres_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
+    	- Service `postgres_wh`: SSH user name. Required when `connection_type` is set to `SshTunnel`
     	- Service `redshift`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `sql_server_rds_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `sql_server_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -35417,6 +35461,7 @@ class DestinationConfigArgsDict(TypedDict):
     	- Service `postgres_gcp_warehouse`: Database user name
     	- Service `postgres_rds_warehouse`: Database user name
     	- Service `postgres_warehouse`: Database user name
+    	- Service `postgres_wh`: Database user name. Required for PASSWORD authentication
     	- Service `redshift`: Database user name
     	- Service `snowflake`: Database user name
     	- Service `sql_server_rds_warehouse`: Database user name
@@ -35447,7 +35492,10 @@ class DestinationConfigArgs:
                  aws_bucket_auth_type: pulumi.Input[Optional[_builtins.str]] = None,
                  aws_region_code: pulumi.Input[Optional[_builtins.str]] = None,
                  aws_secret_access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
                  azure_storage_account_auth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  bootstrap_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  bucket: pulumi.Input[Optional[_builtins.str]] = None,
                  bucket_region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -35482,6 +35530,7 @@ class DestinationConfigArgs:
                  fivetran_msk_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  fivetran_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  gcs_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcs_service_account_credentials: pulumi.Input[Optional['DestinationConfigGcsServiceAccountCredentialsArgs']] = None,
                  gcs_service_account_credentials_path: pulumi.Input[Optional[_builtins.str]] = None,
                  host: pulumi.Input[Optional[_builtins.str]] = None,
                  http_path: pulumi.Input[Optional[_builtins.str]] = None,
@@ -35501,6 +35550,7 @@ class DestinationConfigArgs:
                  passphrase: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  personal_access_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 polaris_catalog_configuration: pulumi.Input[Optional['DestinationConfigPolarisCatalogConfigurationArgs']] = None,
                  port: pulumi.Input[Optional[_builtins.int]] = None,
                  prefix_path: pulumi.Input[Optional[_builtins.str]] = None,
                  private_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -35530,6 +35580,7 @@ class DestinationConfigArgs:
                  should_maintain_tables_in_databricks: pulumi.Input[Optional[_builtins.bool]] = None,
                  should_maintain_tables_in_glue: pulumi.Input[Optional[_builtins.bool]] = None,
                  should_maintain_tables_in_one_lake: pulumi.Input[Optional[_builtins.bool]] = None,
+                 should_write_delta: pulumi.Input[Optional[_builtins.bool]] = None,
                  snapshot_retention_period: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_account_key: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_account_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -35565,6 +35616,7 @@ class DestinationConfigArgs:
                	- Service `postgres_gcp_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `postgres_rds_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `postgres_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
+               	- Service `postgres_wh`: Specifies whether TLS is required. Must be set when using `SshTunnel` connection
                	- Service `redshift`: Require TLS through Tunnel
                	- Service `sql_server_rds_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `sql_server_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -35579,6 +35631,7 @@ class DestinationConfigArgs:
                	- Service `postgres_gcp_warehouse`: Authentication method. Default value: `PASSWORD`.
                	- Service `postgres_rds_warehouse`: Authentication method. Default value: `PASSWORD`.
                	- Service `postgres_warehouse`: Authentication method. Default value: `PASSWORD`.
+               	- Service `postgres_wh`: Authentication method. Supported values: `PASSWORD`, `AWS_IAM`. Default: `PASSWORD`.
         :param pulumi.Input[_builtins.str] auth_type: Field usage depends on `service` value:
                	- Service `adls`: Authentication type
                	- Service `databricks`: Authentication type
@@ -35601,13 +35654,20 @@ class DestinationConfigArgs:
                	- Service `postgres_gcp_warehouse`: AWS region code. Required when `auth_method` is set to `AWS_IAM`.
                	- Service `postgres_rds_warehouse`: AWS region where the RDS instance is located. Required when `auth_method` is set to `AWS_IAM`.
                	- Service `postgres_warehouse`: AWS region code. Required when `auth_method` is set to `AWS_IAM`.
+               	- Service `postgres_wh`: AWS region code. Required when `auth_method` is set to `AWS_IAM`
         :param pulumi.Input[_builtins.str] aws_secret_access_key: Field usage depends on `service` value:
                	- Service `databricks`: Your user's secret access key
                	- Service `new_s3_datalake`: AWS secret access key to access the S3 bucket and AWS Glue
                	- Service `redshift`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
                	- Service `snowflake`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment , want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
+        :param pulumi.Input[_builtins.str] azure_client_id: Field usage depends on `service` value:
+               	- Service `databricks`: Your Azure AD application (client) ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+        :param pulumi.Input[_builtins.str] azure_client_secret: Field usage depends on `service` value:
+               	- Service `databricks`: Your Azure AD application client secret for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
         :param pulumi.Input[_builtins.str] azure_storage_account_auth_type: Field usage depends on `service` value:
                	- Service `databricks`: Authentication method for the Azure container you want to use as the external staging for Hybrid Deployment.
+        :param pulumi.Input[_builtins.str] azure_tenant_id: Field usage depends on `service` value:
+               	- Service `databricks`: Your Azure AD tenant ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] bootstrap_servers: Field usage depends on `service` value:
                	- Service `confluent_cloud_wh`: Comma-separated list of Confluent Cloud servers in the `server:port` format.
         :param pulumi.Input[_builtins.str] bucket: Field usage depends on `service` value:
@@ -35670,6 +35730,7 @@ class DestinationConfigArgs:
                	- Service `postgres_gcp_warehouse`: Connection method. Default value: `Directly`.
                	- Service `postgres_rds_warehouse`: Connection method. Default value: `Directly`.
                	- Service `postgres_warehouse`: Connection method. Default value: `Directly`.
+               	- Service `postgres_wh`: Connection method. Supported values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`. Default: `Directly`. Note: PrivateLink is only supported for cloud-hosted PostgreSQL (RDS, Aurora, Azure, GCP).
                	- Service `redshift`: Connection method. Default value: `Directly`.
                	- Service `snowflake`: Connection method. Default value: `Directly`.
                	- Service `sql_server_rds_warehouse`: Connection method. Default value: `Directly`.
@@ -35709,6 +35770,7 @@ class DestinationConfigArgs:
                	- Service `postgres_gcp_warehouse`: Database name
                	- Service `postgres_rds_warehouse`: Database name
                	- Service `postgres_warehouse`: Database name
+               	- Service `postgres_wh`: Database name
                	- Service `redshift`: Database name
                	- Service `snowflake`: Database name
                	- Service `sql_server_rds_warehouse`: Database name
@@ -35741,6 +35803,7 @@ class DestinationConfigArgs:
                	- Service `postgres_gcp_warehouse`: AWS external ID for authentication. Required when `auth_method` is set to `AWS_IAM`.
                	- Service `postgres_rds_warehouse`: AWS external ID for authentication. Required when `auth_method` is set to `AWS_IAM`.
                	- Service `postgres_warehouse`: AWS external ID for authentication. Required when `auth_method` is set to `AWS_IAM`.
+               	- Service `postgres_wh`: AWS external ID for authentication. Auto-generated from group ID when `auth_method` is set to `AWS_IAM`
                	- Service `redshift`: Fivetran generated External ID
         :param pulumi.Input[_builtins.str] external_location: Field usage depends on `service` value:
                	- Service `databricks`: External location to store Delta tables. Default value: `""`  (null). By default, the external tables will reside in the `/{schema}/{table}` path, and if you specify an external location in the `{externalLocation}/{schema}/{table}` path.
@@ -35783,6 +35846,7 @@ class DestinationConfigArgs:
                	- Service `postgres_gcp_warehouse`: Server name
                	- Service `postgres_rds_warehouse`: Server name
                	- Service `postgres_warehouse`: Server name
+               	- Service `postgres_wh`: Server hostname or IP address
                	- Service `redshift`: Server name
                	- Service `snowflake`: Server name
                	- Service `sql_server_rds_warehouse`: Server name
@@ -35856,6 +35920,7 @@ class DestinationConfigArgs:
                	- Service `postgres_gcp_warehouse`: Database user password
                	- Service `postgres_rds_warehouse`: Database user password
                	- Service `postgres_warehouse`: Database user password
+               	- Service `postgres_wh`: Database user password. Required for PASSWORD authentication
                	- Service `redshift`: Database user password. Required if authentication type is `PASSWORD`.
                	- Service `snowflake`: Database user password. The field should be specified if authentication type is `PASSWORD`.
                	- Service `sql_server_rds_warehouse`: Database user password
@@ -35893,6 +35958,7 @@ class DestinationConfigArgs:
                	- Service `postgres_gcp_warehouse`: Server port number
                	- Service `postgres_rds_warehouse`: Server port number
                	- Service `postgres_warehouse`: Server port number
+               	- Service `postgres_wh`: Server port number (default: 5432)
                	- Service `redshift`: Server port number
                	- Service `snowflake`: Server port number
                	- Service `sql_server_rds_warehouse`: Server port number
@@ -35962,6 +36028,7 @@ class DestinationConfigArgs:
                	- Service `postgres_gcp_warehouse`: AWS IAM role ARN for authentication. Required when `auth_method` is set to `AWS_IAM`.
                	- Service `postgres_rds_warehouse`: AWS IAM role ARN for authentication. Required when `auth_method` is set to `AWS_IAM`.
                	- Service `postgres_warehouse`: AWS IAM role ARN for authentication. Required when `auth_method` is set to `AWS_IAM`.
+               	- Service `postgres_wh`: AWS IAM role ARN for authentication. Required when `auth_method` is set to `AWS_IAM`
                	- Service `redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
         :param pulumi.Input[_builtins.str] s3_bucket_auth_type: Field usage depends on `service` value:
                	- Service `databricks`: Authentication method for the S3 bucket you want to use as the external staging for Hybrid Deployment.
@@ -36013,6 +36080,9 @@ class DestinationConfigArgs:
         :param pulumi.Input[_builtins.bool] should_maintain_tables_in_one_lake: Field usage depends on `service` value:
                	- Service `databricks_via_managed_data_lake`: Specifies whether you want to create shortcut for you table in OneLake. Use this parameter only if you want to deploy your data lake on ADLS.
                	- Service `managed_data_lake`: Specifies whether you want to create shortcut for you table in OneLake. Use this parameter only if you want to deploy your data lake on ADLS.
+        :param pulumi.Input[_builtins.bool] should_write_delta: Field usage depends on `service` value:
+               	- Service `databricks_via_managed_data_lake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Databricks via Managed Data Lake requires Delta Lake metadata, so Fivetran always uses `true` for this destination.
+               	- Service `managed_data_lake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Default value: `false` for new destinations and `true` for existing destinations. Destinations with Unity Catalog or OneLake catalog enabled always write Delta Lake metadata.
         :param pulumi.Input[_builtins.str] snapshot_retention_period: Field usage depends on `service` value:
                	- Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
                	- Service `databricks_via_managed_data_lake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
@@ -36065,6 +36135,7 @@ class DestinationConfigArgs:
                	- Service `postgres_gcp_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `postgres_rds_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `postgres_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
+               	- Service `postgres_wh`: SSH server hostname. Required when `connection_type` is set to `SshTunnel`
                	- Service `redshift`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `sql_server_rds_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `sql_server_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -36088,6 +36159,7 @@ class DestinationConfigArgs:
                	- Service `postgres_gcp_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `postgres_rds_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `postgres_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
+               	- Service `postgres_wh`: SSH server port. Required when `connection_type` is set to `SshTunnel`
                	- Service `redshift`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `sql_server_rds_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `sql_server_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -36111,6 +36183,7 @@ class DestinationConfigArgs:
                	- Service `postgres_gcp_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `postgres_rds_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `postgres_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
+               	- Service `postgres_wh`: SSH user name. Required when `connection_type` is set to `SshTunnel`
                	- Service `redshift`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `sql_server_rds_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `sql_server_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -36136,6 +36209,7 @@ class DestinationConfigArgs:
                	- Service `postgres_gcp_warehouse`: Database user name
                	- Service `postgres_rds_warehouse`: Database user name
                	- Service `postgres_warehouse`: Database user name
+               	- Service `postgres_wh`: Database user name. Required for PASSWORD authentication
                	- Service `redshift`: Database user name
                	- Service `snowflake`: Database user name
                	- Service `sql_server_rds_warehouse`: Database user name
@@ -36165,8 +36239,14 @@ class DestinationConfigArgs:
             pulumi.set(__self__, "aws_region_code", aws_region_code)
         if aws_secret_access_key is not None:
             pulumi.set(__self__, "aws_secret_access_key", aws_secret_access_key)
+        if azure_client_id is not None:
+            pulumi.set(__self__, "azure_client_id", azure_client_id)
+        if azure_client_secret is not None:
+            pulumi.set(__self__, "azure_client_secret", azure_client_secret)
         if azure_storage_account_auth_type is not None:
             pulumi.set(__self__, "azure_storage_account_auth_type", azure_storage_account_auth_type)
+        if azure_tenant_id is not None:
+            pulumi.set(__self__, "azure_tenant_id", azure_tenant_id)
         if bootstrap_servers is not None:
             pulumi.set(__self__, "bootstrap_servers", bootstrap_servers)
         if bucket is not None:
@@ -36235,6 +36315,8 @@ class DestinationConfigArgs:
             pulumi.set(__self__, "fivetran_role_arn", fivetran_role_arn)
         if gcs_project_id is not None:
             pulumi.set(__self__, "gcs_project_id", gcs_project_id)
+        if gcs_service_account_credentials is not None:
+            pulumi.set(__self__, "gcs_service_account_credentials", gcs_service_account_credentials)
         if gcs_service_account_credentials_path is not None:
             pulumi.set(__self__, "gcs_service_account_credentials_path", gcs_service_account_credentials_path)
         if host is not None:
@@ -36273,6 +36355,8 @@ class DestinationConfigArgs:
             pulumi.set(__self__, "password", password)
         if personal_access_token is not None:
             pulumi.set(__self__, "personal_access_token", personal_access_token)
+        if polaris_catalog_configuration is not None:
+            pulumi.set(__self__, "polaris_catalog_configuration", polaris_catalog_configuration)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if prefix_path is not None:
@@ -36331,6 +36415,8 @@ class DestinationConfigArgs:
             pulumi.set(__self__, "should_maintain_tables_in_glue", should_maintain_tables_in_glue)
         if should_maintain_tables_in_one_lake is not None:
             pulumi.set(__self__, "should_maintain_tables_in_one_lake", should_maintain_tables_in_one_lake)
+        if should_write_delta is not None:
+            pulumi.set(__self__, "should_write_delta", should_write_delta)
         if snapshot_retention_period is not None:
             pulumi.set(__self__, "snapshot_retention_period", snapshot_retention_period)
         if storage_account_key is not None:
@@ -36384,6 +36470,7 @@ class DestinationConfigArgs:
         	- Service `postgres_gcp_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `postgres_rds_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `postgres_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
+        	- Service `postgres_wh`: Specifies whether TLS is required. Must be set when using `SshTunnel` connection
         	- Service `redshift`: Require TLS through Tunnel
         	- Service `sql_server_rds_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `sql_server_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -36431,6 +36518,7 @@ class DestinationConfigArgs:
         	- Service `postgres_gcp_warehouse`: Authentication method. Default value: `PASSWORD`.
         	- Service `postgres_rds_warehouse`: Authentication method. Default value: `PASSWORD`.
         	- Service `postgres_warehouse`: Authentication method. Default value: `PASSWORD`.
+        	- Service `postgres_wh`: Authentication method. Supported values: `PASSWORD`, `AWS_IAM`. Default: `PASSWORD`.
         """
         return pulumi.get(self, "auth_method")
 
@@ -36497,6 +36585,7 @@ class DestinationConfigArgs:
         	- Service `postgres_gcp_warehouse`: AWS region code. Required when `auth_method` is set to `AWS_IAM`.
         	- Service `postgres_rds_warehouse`: AWS region where the RDS instance is located. Required when `auth_method` is set to `AWS_IAM`.
         	- Service `postgres_warehouse`: AWS region code. Required when `auth_method` is set to `AWS_IAM`.
+        	- Service `postgres_wh`: AWS region code. Required when `auth_method` is set to `AWS_IAM`
         """
         return pulumi.get(self, "aws_region_code")
 
@@ -36521,6 +36610,32 @@ class DestinationConfigArgs:
         pulumi.set(self, "aws_secret_access_key", value)
 
     @_builtins.property
+    @pulumi.getter(name="azureClientId")
+    def azure_client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Field usage depends on `service` value:
+        	- Service `databricks`: Your Azure AD application (client) ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+        """
+        return pulumi.get(self, "azure_client_id")
+
+    @azure_client_id.setter
+    def azure_client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "azure_client_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="azureClientSecret")
+    def azure_client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Field usage depends on `service` value:
+        	- Service `databricks`: Your Azure AD application client secret for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+        """
+        return pulumi.get(self, "azure_client_secret")
+
+    @azure_client_secret.setter
+    def azure_client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "azure_client_secret", value)
+
+    @_builtins.property
     @pulumi.getter(name="azureStorageAccountAuthType")
     def azure_storage_account_auth_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -36532,6 +36647,19 @@ class DestinationConfigArgs:
     @azure_storage_account_auth_type.setter
     def azure_storage_account_auth_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "azure_storage_account_auth_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="azureTenantId")
+    def azure_tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Field usage depends on `service` value:
+        	- Service `databricks`: Your Azure AD tenant ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+        """
+        return pulumi.get(self, "azure_tenant_id")
+
+    @azure_tenant_id.setter
+    def azure_tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "azure_tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="bootstrapServers")
@@ -36696,6 +36824,7 @@ class DestinationConfigArgs:
         	- Service `postgres_gcp_warehouse`: Connection method. Default value: `Directly`.
         	- Service `postgres_rds_warehouse`: Connection method. Default value: `Directly`.
         	- Service `postgres_warehouse`: Connection method. Default value: `Directly`.
+        	- Service `postgres_wh`: Connection method. Supported values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`. Default: `Directly`. Note: PrivateLink is only supported for cloud-hosted PostgreSQL (RDS, Aurora, Azure, GCP).
         	- Service `redshift`: Connection method. Default value: `Directly`.
         	- Service `snowflake`: Connection method. Default value: `Directly`.
         	- Service `sql_server_rds_warehouse`: Connection method. Default value: `Directly`.
@@ -36801,6 +36930,7 @@ class DestinationConfigArgs:
         	- Service `postgres_gcp_warehouse`: Database name
         	- Service `postgres_rds_warehouse`: Database name
         	- Service `postgres_warehouse`: Database name
+        	- Service `postgres_wh`: Database name
         	- Service `redshift`: Database name
         	- Service `snowflake`: Database name
         	- Service `sql_server_rds_warehouse`: Database name
@@ -36921,6 +37051,7 @@ class DestinationConfigArgs:
         	- Service `postgres_gcp_warehouse`: AWS external ID for authentication. Required when `auth_method` is set to `AWS_IAM`.
         	- Service `postgres_rds_warehouse`: AWS external ID for authentication. Required when `auth_method` is set to `AWS_IAM`.
         	- Service `postgres_warehouse`: AWS external ID for authentication. Required when `auth_method` is set to `AWS_IAM`.
+        	- Service `postgres_wh`: AWS external ID for authentication. Auto-generated from group ID when `auth_method` is set to `AWS_IAM`
         	- Service `redshift`: Fivetran generated External ID
         """
         return pulumi.get(self, "external_id")
@@ -37055,6 +37186,15 @@ class DestinationConfigArgs:
         pulumi.set(self, "gcs_project_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="gcsServiceAccountCredentials")
+    def gcs_service_account_credentials(self) -> pulumi.Input[Optional['DestinationConfigGcsServiceAccountCredentialsArgs']]:
+        return pulumi.get(self, "gcs_service_account_credentials")
+
+    @gcs_service_account_credentials.setter
+    def gcs_service_account_credentials(self, value: pulumi.Input[Optional['DestinationConfigGcsServiceAccountCredentialsArgs']]):
+        pulumi.set(self, "gcs_service_account_credentials", value)
+
+    @_builtins.property
     @pulumi.getter(name="gcsServiceAccountCredentialsPath")
     def gcs_service_account_credentials_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -37091,6 +37231,7 @@ class DestinationConfigArgs:
         	- Service `postgres_gcp_warehouse`: Server name
         	- Service `postgres_rds_warehouse`: Server name
         	- Service `postgres_warehouse`: Server name
+        	- Service `postgres_wh`: Server hostname or IP address
         	- Service `redshift`: Server name
         	- Service `snowflake`: Server name
         	- Service `sql_server_rds_warehouse`: Server name
@@ -37338,6 +37479,7 @@ class DestinationConfigArgs:
         	- Service `postgres_gcp_warehouse`: Database user password
         	- Service `postgres_rds_warehouse`: Database user password
         	- Service `postgres_warehouse`: Database user password
+        	- Service `postgres_wh`: Database user password. Required for PASSWORD authentication
         	- Service `redshift`: Database user password. Required if authentication type is `PASSWORD`.
         	- Service `snowflake`: Database user password. The field should be specified if authentication type is `PASSWORD`.
         	- Service `sql_server_rds_warehouse`: Database user password
@@ -37366,6 +37508,15 @@ class DestinationConfigArgs:
     @personal_access_token.setter
     def personal_access_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "personal_access_token", value)
+
+    @_builtins.property
+    @pulumi.getter(name="polarisCatalogConfiguration")
+    def polaris_catalog_configuration(self) -> pulumi.Input[Optional['DestinationConfigPolarisCatalogConfigurationArgs']]:
+        return pulumi.get(self, "polaris_catalog_configuration")
+
+    @polaris_catalog_configuration.setter
+    def polaris_catalog_configuration(self, value: pulumi.Input[Optional['DestinationConfigPolarisCatalogConfigurationArgs']]):
+        pulumi.set(self, "polaris_catalog_configuration", value)
 
     @_builtins.property
     @pulumi.getter
@@ -37397,6 +37548,7 @@ class DestinationConfigArgs:
         	- Service `postgres_gcp_warehouse`: Server port number
         	- Service `postgres_rds_warehouse`: Server port number
         	- Service `postgres_warehouse`: Server port number
+        	- Service `postgres_wh`: Server port number (default: 5432)
         	- Service `redshift`: Server port number
         	- Service `snowflake`: Server port number
         	- Service `sql_server_rds_warehouse`: Server port number
@@ -37583,6 +37735,7 @@ class DestinationConfigArgs:
         	- Service `postgres_gcp_warehouse`: AWS IAM role ARN for authentication. Required when `auth_method` is set to `AWS_IAM`.
         	- Service `postgres_rds_warehouse`: AWS IAM role ARN for authentication. Required when `auth_method` is set to `AWS_IAM`.
         	- Service `postgres_warehouse`: AWS IAM role ARN for authentication. Required when `auth_method` is set to `AWS_IAM`.
+        	- Service `postgres_wh`: AWS IAM role ARN for authentication. Required when `auth_method` is set to `AWS_IAM`
         	- Service `redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
         """
         return pulumi.get(self, "role_arn")
@@ -37827,6 +37980,20 @@ class DestinationConfigArgs:
         pulumi.set(self, "should_maintain_tables_in_one_lake", value)
 
     @_builtins.property
+    @pulumi.getter(name="shouldWriteDelta")
+    def should_write_delta(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Field usage depends on `service` value:
+        	- Service `databricks_via_managed_data_lake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Databricks via Managed Data Lake requires Delta Lake metadata, so Fivetran always uses `true` for this destination.
+        	- Service `managed_data_lake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Default value: `false` for new destinations and `true` for existing destinations. Destinations with Unity Catalog or OneLake catalog enabled always write Delta Lake metadata.
+        """
+        return pulumi.get(self, "should_write_delta")
+
+    @should_write_delta.setter
+    def should_write_delta(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "should_write_delta", value)
+
+    @_builtins.property
     @pulumi.getter(name="snapshotRetentionPeriod")
     def snapshot_retention_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -37959,6 +38126,7 @@ class DestinationConfigArgs:
         	- Service `postgres_gcp_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `postgres_rds_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `postgres_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
+        	- Service `postgres_wh`: SSH server hostname. Required when `connection_type` is set to `SshTunnel`
         	- Service `redshift`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `sql_server_rds_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `sql_server_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -37993,6 +38161,7 @@ class DestinationConfigArgs:
         	- Service `postgres_gcp_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `postgres_rds_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `postgres_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
+        	- Service `postgres_wh`: SSH server port. Required when `connection_type` is set to `SshTunnel`
         	- Service `redshift`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `sql_server_rds_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `sql_server_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -38027,6 +38196,7 @@ class DestinationConfigArgs:
         	- Service `postgres_gcp_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `postgres_rds_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `postgres_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
+        	- Service `postgres_wh`: SSH user name. Required when `connection_type` is set to `SshTunnel`
         	- Service `redshift`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `sql_server_rds_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `sql_server_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -38074,6 +38244,7 @@ class DestinationConfigArgs:
         	- Service `postgres_gcp_warehouse`: Database user name
         	- Service `postgres_rds_warehouse`: Database user name
         	- Service `postgres_warehouse`: Database user name
+        	- Service `postgres_wh`: Database user name. Required for PASSWORD authentication
         	- Service `redshift`: Database user name
         	- Service `snowflake`: Database user name
         	- Service `sql_server_rds_warehouse`: Database user name
@@ -38112,6 +38283,128 @@ class DestinationConfigArgs:
     @workspace_name.setter
     def workspace_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_name", value)
+
+
+class DestinationConfigGcsServiceAccountCredentialsArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class DestinationConfigGcsServiceAccountCredentialsArgs:
+    def __init__(__self__):
+        pass
+
+
+class DestinationConfigPolarisCatalogConfigurationArgsDict(TypedDict):
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Field usage depends on `service` value:
+    	- Service `databricks_via_managed_data_lake`: Client ID
+    	- Service `managed_data_lake`: Client ID
+    """
+    client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Field usage depends on `service` value:
+    	- Service `databricks_via_managed_data_lake`: Client Secret
+    	- Service `managed_data_lake`: Client Secret
+    """
+    polaris_catalog: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Field usage depends on `service` value:
+    	- Service `databricks_via_managed_data_lake`: Polaris Catalog
+    	- Service `managed_data_lake`: Polaris Catalog
+    """
+    polaris_server_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Field usage depends on `service` value:
+    	- Service `databricks_via_managed_data_lake`: Polaris Server Endpoint
+    	- Service `managed_data_lake`: Polaris Server Endpoint
+    """
+
+@pulumi.input_type
+class DestinationConfigPolarisCatalogConfigurationArgs:
+    def __init__(__self__, *,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 polaris_catalog: pulumi.Input[Optional[_builtins.str]] = None,
+                 polaris_server_endpoint: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] client_id: Field usage depends on `service` value:
+               	- Service `databricks_via_managed_data_lake`: Client ID
+               	- Service `managed_data_lake`: Client ID
+        :param pulumi.Input[_builtins.str] client_secret: Field usage depends on `service` value:
+               	- Service `databricks_via_managed_data_lake`: Client Secret
+               	- Service `managed_data_lake`: Client Secret
+        :param pulumi.Input[_builtins.str] polaris_catalog: Field usage depends on `service` value:
+               	- Service `databricks_via_managed_data_lake`: Polaris Catalog
+               	- Service `managed_data_lake`: Polaris Catalog
+        :param pulumi.Input[_builtins.str] polaris_server_endpoint: Field usage depends on `service` value:
+               	- Service `databricks_via_managed_data_lake`: Polaris Server Endpoint
+               	- Service `managed_data_lake`: Polaris Server Endpoint
+        """
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if polaris_catalog is not None:
+            pulumi.set(__self__, "polaris_catalog", polaris_catalog)
+        if polaris_server_endpoint is not None:
+            pulumi.set(__self__, "polaris_server_endpoint", polaris_server_endpoint)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Field usage depends on `service` value:
+        	- Service `databricks_via_managed_data_lake`: Client ID
+        	- Service `managed_data_lake`: Client ID
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "client_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Field usage depends on `service` value:
+        	- Service `databricks_via_managed_data_lake`: Client Secret
+        	- Service `managed_data_lake`: Client Secret
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "client_secret", value)
+
+    @_builtins.property
+    @pulumi.getter(name="polarisCatalog")
+    def polaris_catalog(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Field usage depends on `service` value:
+        	- Service `databricks_via_managed_data_lake`: Polaris Catalog
+        	- Service `managed_data_lake`: Polaris Catalog
+        """
+        return pulumi.get(self, "polaris_catalog")
+
+    @polaris_catalog.setter
+    def polaris_catalog(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "polaris_catalog", value)
+
+    @_builtins.property
+    @pulumi.getter(name="polarisServerEndpoint")
+    def polaris_server_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Field usage depends on `service` value:
+        	- Service `databricks_via_managed_data_lake`: Polaris Server Endpoint
+        	- Service `managed_data_lake`: Polaris Server Endpoint
+        """
+        return pulumi.get(self, "polaris_server_endpoint")
+
+    @polaris_server_endpoint.setter
+    def polaris_server_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "polaris_server_endpoint", value)
 
 
 class DestinationFingerprintsFingerprintArgsDict(TypedDict):
@@ -38253,41 +38546,91 @@ class DestinationTimeoutsArgs:
 class ExternalLoggingConfigArgsDict(TypedDict):
     access_key_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     access_key_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    access_token: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     api_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     channel: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Field usage depends on `service` value:
+    	- Service `azure_monitor_log`: For Logs Ingestion API authentication. Your application (client) ID.
+    """
+    client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Field usage depends on `service` value:
+    	- Service `azure_monitor_log`: For Logs Ingestion API authentication. Your application client secret.
+    """
+    data_collection_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Field usage depends on `service` value:
+    	- Service `azure_monitor_log`: For Logs Ingestion API authentication. The endpoint URL for your Data Collection Endpoint.
+    """
+    dcr_immutable_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Field usage depends on `service` value:
+    	- Service `azure_monitor_log`: For Logs Ingestion API authentication. The immutable ID of your Data Collection Rule.
+    """
+    dcr_stream_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Field usage depends on `service` value:
+    	- Service `azure_monitor_log`: For Logs Ingestion API authentication. The stream name of your Data Collection Rule.
+    """
     enable_ssl: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable SSL
     """
+    environment_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     external_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     host: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     log_group_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    loki_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Port
     """
     primary_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Field usage depends on `service` value:
+    	- Service `azure_monitor_log`: For HTTP Data Collector API authentication. Your Log Analytics primary key.
+    """
     project_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     role_arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     service_account_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     sub_domain: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    tenant_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Field usage depends on `service` value:
+    	- Service `azure_monitor_log`: For Logs Ingestion API authentication. Your Microsoft Entra directory (tenant) ID.
+    """
     token: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     workspace_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Field usage depends on `service` value:
+    	- Service `azure_monitor_log`: For HTTP Data Collector API authentication. Your Log Analytics workspace ID.
+    """
 
 @pulumi.input_type
 class ExternalLoggingConfigArgs:
     def __init__(__self__, *,
                  access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  access_key_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_token: pulumi.Input[Optional[_builtins.str]] = None,
                  api_key: pulumi.Input[Optional[_builtins.str]] = None,
                  channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_collection_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dcr_immutable_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dcr_stream_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 environment_id: pulumi.Input[Optional[_builtins.str]] = None,
                  external_id: pulumi.Input[Optional[_builtins.str]] = None,
                  host: pulumi.Input[Optional[_builtins.str]] = None,
                  hostname: pulumi.Input[Optional[_builtins.str]] = None,
                  log_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 loki_url: pulumi.Input[Optional[_builtins.str]] = None,
                  port: pulumi.Input[Optional[_builtins.int]] = None,
                  primary_key: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -38295,22 +38638,54 @@ class ExternalLoggingConfigArgs:
                  role_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  service_account_key: pulumi.Input[Optional[_builtins.str]] = None,
                  sub_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  token: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  workspace_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
+        :param pulumi.Input[_builtins.str] client_id: Field usage depends on `service` value:
+               	- Service `azure_monitor_log`: For Logs Ingestion API authentication. Your application (client) ID.
+        :param pulumi.Input[_builtins.str] client_secret: Field usage depends on `service` value:
+               	- Service `azure_monitor_log`: For Logs Ingestion API authentication. Your application client secret.
+        :param pulumi.Input[_builtins.str] data_collection_endpoint: Field usage depends on `service` value:
+               	- Service `azure_monitor_log`: For Logs Ingestion API authentication. The endpoint URL for your Data Collection Endpoint.
+        :param pulumi.Input[_builtins.str] dcr_immutable_id: Field usage depends on `service` value:
+               	- Service `azure_monitor_log`: For Logs Ingestion API authentication. The immutable ID of your Data Collection Rule.
+        :param pulumi.Input[_builtins.str] dcr_stream_name: Field usage depends on `service` value:
+               	- Service `azure_monitor_log`: For Logs Ingestion API authentication. The stream name of your Data Collection Rule.
         :param pulumi.Input[_builtins.bool] enable_ssl: Enable SSL
         :param pulumi.Input[_builtins.int] port: Port
+        :param pulumi.Input[_builtins.str] primary_key: Field usage depends on `service` value:
+               	- Service `azure_monitor_log`: For HTTP Data Collector API authentication. Your Log Analytics primary key.
+        :param pulumi.Input[_builtins.str] tenant_id: Field usage depends on `service` value:
+               	- Service `azure_monitor_log`: For Logs Ingestion API authentication. Your Microsoft Entra directory (tenant) ID.
+        :param pulumi.Input[_builtins.str] workspace_id: Field usage depends on `service` value:
+               	- Service `azure_monitor_log`: For HTTP Data Collector API authentication. Your Log Analytics workspace ID.
         """
         if access_key_id is not None:
             pulumi.set(__self__, "access_key_id", access_key_id)
         if access_key_secret is not None:
             pulumi.set(__self__, "access_key_secret", access_key_secret)
+        if access_token is not None:
+            pulumi.set(__self__, "access_token", access_token)
         if api_key is not None:
             pulumi.set(__self__, "api_key", api_key)
         if channel is not None:
             pulumi.set(__self__, "channel", channel)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if data_collection_endpoint is not None:
+            pulumi.set(__self__, "data_collection_endpoint", data_collection_endpoint)
+        if dcr_immutable_id is not None:
+            pulumi.set(__self__, "dcr_immutable_id", dcr_immutable_id)
+        if dcr_stream_name is not None:
+            pulumi.set(__self__, "dcr_stream_name", dcr_stream_name)
         if enable_ssl is not None:
             pulumi.set(__self__, "enable_ssl", enable_ssl)
+        if environment_id is not None:
+            pulumi.set(__self__, "environment_id", environment_id)
         if external_id is not None:
             pulumi.set(__self__, "external_id", external_id)
         if host is not None:
@@ -38319,6 +38694,8 @@ class ExternalLoggingConfigArgs:
             pulumi.set(__self__, "hostname", hostname)
         if log_group_name is not None:
             pulumi.set(__self__, "log_group_name", log_group_name)
+        if loki_url is not None:
+            pulumi.set(__self__, "loki_url", loki_url)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if primary_key is not None:
@@ -38333,8 +38710,12 @@ class ExternalLoggingConfigArgs:
             pulumi.set(__self__, "service_account_key", service_account_key)
         if sub_domain is not None:
             pulumi.set(__self__, "sub_domain", sub_domain)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if token is not None:
             pulumi.set(__self__, "token", token)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
         if workspace_id is not None:
             pulumi.set(__self__, "workspace_id", workspace_id)
 
@@ -38357,6 +38738,15 @@ class ExternalLoggingConfigArgs:
         pulumi.set(self, "access_key_secret", value)
 
     @_builtins.property
+    @pulumi.getter(name="accessToken")
+    def access_token(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "access_token")
+
+    @access_token.setter
+    def access_token(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "access_token", value)
+
+    @_builtins.property
     @pulumi.getter(name="apiKey")
     def api_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "api_key")
@@ -38375,6 +38765,71 @@ class ExternalLoggingConfigArgs:
         pulumi.set(self, "channel", value)
 
     @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Field usage depends on `service` value:
+        	- Service `azure_monitor_log`: For Logs Ingestion API authentication. Your application (client) ID.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "client_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Field usage depends on `service` value:
+        	- Service `azure_monitor_log`: For Logs Ingestion API authentication. Your application client secret.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "client_secret", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataCollectionEndpoint")
+    def data_collection_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Field usage depends on `service` value:
+        	- Service `azure_monitor_log`: For Logs Ingestion API authentication. The endpoint URL for your Data Collection Endpoint.
+        """
+        return pulumi.get(self, "data_collection_endpoint")
+
+    @data_collection_endpoint.setter
+    def data_collection_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "data_collection_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dcrImmutableId")
+    def dcr_immutable_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Field usage depends on `service` value:
+        	- Service `azure_monitor_log`: For Logs Ingestion API authentication. The immutable ID of your Data Collection Rule.
+        """
+        return pulumi.get(self, "dcr_immutable_id")
+
+    @dcr_immutable_id.setter
+    def dcr_immutable_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dcr_immutable_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dcrStreamName")
+    def dcr_stream_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Field usage depends on `service` value:
+        	- Service `azure_monitor_log`: For Logs Ingestion API authentication. The stream name of your Data Collection Rule.
+        """
+        return pulumi.get(self, "dcr_stream_name")
+
+    @dcr_stream_name.setter
+    def dcr_stream_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dcr_stream_name", value)
+
+    @_builtins.property
     @pulumi.getter(name="enableSsl")
     def enable_ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -38385,6 +38840,15 @@ class ExternalLoggingConfigArgs:
     @enable_ssl.setter
     def enable_ssl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ssl", value)
+
+    @_builtins.property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "environment_id")
+
+    @environment_id.setter
+    def environment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "environment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="externalId")
@@ -38423,6 +38887,15 @@ class ExternalLoggingConfigArgs:
         pulumi.set(self, "log_group_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="lokiUrl")
+    def loki_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "loki_url")
+
+    @loki_url.setter
+    def loki_url(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "loki_url", value)
+
+    @_builtins.property
     @pulumi.getter
     def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -38437,6 +38910,10 @@ class ExternalLoggingConfigArgs:
     @_builtins.property
     @pulumi.getter(name="primaryKey")
     def primary_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Field usage depends on `service` value:
+        	- Service `azure_monitor_log`: For HTTP Data Collector API authentication. Your Log Analytics primary key.
+        """
         return pulumi.get(self, "primary_key")
 
     @primary_key.setter
@@ -38489,6 +38966,19 @@ class ExternalLoggingConfigArgs:
         pulumi.set(self, "sub_domain", value)
 
     @_builtins.property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Field usage depends on `service` value:
+        	- Service `azure_monitor_log`: For Logs Ingestion API authentication. Your Microsoft Entra directory (tenant) ID.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tenant_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "token")
@@ -38498,8 +38988,21 @@ class ExternalLoggingConfigArgs:
         pulumi.set(self, "token", value)
 
     @_builtins.property
+    @pulumi.getter
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "username", value)
+
+    @_builtins.property
     @pulumi.getter(name="workspaceId")
     def workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Field usage depends on `service` value:
+        	- Service `azure_monitor_log`: For HTTP Data Collector API authentication. Your Log Analytics workspace ID.
+        """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
@@ -72021,6 +72524,7 @@ class GetDestinationConfigArgsDict(TypedDict):
     	- Service `postgres_gcp_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `postgres_rds_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `postgres_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
+    	- Service `postgres_wh`: Specifies whether TLS is required. Must be set when using `SshTunnel` connection
     	- Service `redshift`: Require TLS through Tunnel
     	- Service `sql_server_rds_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `sql_server_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -72044,6 +72548,7 @@ class GetDestinationConfigArgsDict(TypedDict):
     	- Service `postgres_gcp_warehouse`: Authentication method. Default value: `PASSWORD`.
     	- Service `postgres_rds_warehouse`: Authentication method. Default value: `PASSWORD`.
     	- Service `postgres_warehouse`: Authentication method. Default value: `PASSWORD`.
+    	- Service `postgres_wh`: Authentication method. Supported values: `PASSWORD`, `AWS_IAM`. Default: `PASSWORD`.
     """
     auth_type: _builtins.str
     """
@@ -72078,6 +72583,7 @@ class GetDestinationConfigArgsDict(TypedDict):
     	- Service `postgres_gcp_warehouse`: AWS region code. Required when `auth_method` is set to `AWS_IAM`.
     	- Service `postgres_rds_warehouse`: AWS region where the RDS instance is located. Required when `auth_method` is set to `AWS_IAM`.
     	- Service `postgres_warehouse`: AWS region code. Required when `auth_method` is set to `AWS_IAM`.
+    	- Service `postgres_wh`: AWS region code. Required when `auth_method` is set to `AWS_IAM`
     """
     aws_secret_access_key: _builtins.str
     """
@@ -72087,10 +72593,25 @@ class GetDestinationConfigArgsDict(TypedDict):
     	- Service `redshift`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
     	- Service `snowflake`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment , want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
     """
+    azure_client_id: _builtins.str
+    """
+    Field usage depends on `service` value:
+    	- Service `databricks`: Your Azure AD application (client) ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+    """
+    azure_client_secret: _builtins.str
+    """
+    Field usage depends on `service` value:
+    	- Service `databricks`: Your Azure AD application client secret for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+    """
     azure_storage_account_auth_type: _builtins.str
     """
     Field usage depends on `service` value:
     	- Service `databricks`: Authentication method for the Azure container you want to use as the external staging for Hybrid Deployment.
+    """
+    azure_tenant_id: _builtins.str
+    """
+    Field usage depends on `service` value:
+    	- Service `databricks`: Your Azure AD tenant ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
     """
     bootstrap_servers: Sequence[_builtins.str]
     """
@@ -72181,6 +72702,7 @@ class GetDestinationConfigArgsDict(TypedDict):
     	- Service `postgres_gcp_warehouse`: Connection method. Default value: `Directly`.
     	- Service `postgres_rds_warehouse`: Connection method. Default value: `Directly`.
     	- Service `postgres_warehouse`: Connection method. Default value: `Directly`.
+    	- Service `postgres_wh`: Connection method. Supported values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`. Default: `Directly`. Note: PrivateLink is only supported for cloud-hosted PostgreSQL (RDS, Aurora, Azure, GCP).
     	- Service `redshift`: Connection method. Default value: `Directly`.
     	- Service `snowflake`: Connection method. Default value: `Directly`.
     	- Service `sql_server_rds_warehouse`: Connection method. Default value: `Directly`.
@@ -72238,6 +72760,7 @@ class GetDestinationConfigArgsDict(TypedDict):
     	- Service `postgres_gcp_warehouse`: Database name
     	- Service `postgres_rds_warehouse`: Database name
     	- Service `postgres_warehouse`: Database name
+    	- Service `postgres_wh`: Database name
     	- Service `redshift`: Database name
     	- Service `snowflake`: Database name
     	- Service `sql_server_rds_warehouse`: Database name
@@ -72294,6 +72817,7 @@ class GetDestinationConfigArgsDict(TypedDict):
     	- Service `postgres_gcp_warehouse`: AWS external ID for authentication. Required when `auth_method` is set to `AWS_IAM`.
     	- Service `postgres_rds_warehouse`: AWS external ID for authentication. Required when `auth_method` is set to `AWS_IAM`.
     	- Service `postgres_warehouse`: AWS external ID for authentication. Required when `auth_method` is set to `AWS_IAM`.
+    	- Service `postgres_wh`: AWS external ID for authentication. Auto-generated from group ID when `auth_method` is set to `AWS_IAM`
     	- Service `redshift`: Fivetran generated External ID
     """
     external_location: _builtins.str
@@ -72341,6 +72865,11 @@ class GetDestinationConfigArgsDict(TypedDict):
     	- Service `databricks_via_managed_data_lake`: GCS Project ID of your Google Cloud Storage bucket. Use this parameter only if you want to deploy your data lake on GCS.
     	- Service `managed_data_lake`: GCS Project ID of your Google Cloud Storage bucket. Use this parameter only if you want to deploy your data lake on GCS.
     """
+    gcs_service_account_credentials: 'GetDestinationConfigGcsServiceAccountCredentialsArgsDict'
+    """
+    Field usage depends on `service` value:
+    	- Service `snowflake`: The service account credentials for the Google Cloud Storage (GCS) bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use a GCS bucket to stage your data.
+    """
     gcs_service_account_credentials_path: _builtins.str
     """
     Field usage depends on `service` value:
@@ -72368,6 +72897,7 @@ class GetDestinationConfigArgsDict(TypedDict):
     	- Service `postgres_gcp_warehouse`: Server name
     	- Service `postgres_rds_warehouse`: Server name
     	- Service `postgres_warehouse`: Server name
+    	- Service `postgres_wh`: Server hostname or IP address
     	- Service `redshift`: Server name
     	- Service `snowflake`: Server name
     	- Service `sql_server_rds_warehouse`: Server name
@@ -72487,6 +73017,7 @@ class GetDestinationConfigArgsDict(TypedDict):
     	- Service `postgres_gcp_warehouse`: Database user password
     	- Service `postgres_rds_warehouse`: Database user password
     	- Service `postgres_warehouse`: Database user password
+    	- Service `postgres_wh`: Database user password. Required for PASSWORD authentication
     	- Service `redshift`: Database user password. Required if authentication type is `PASSWORD`.
     	- Service `snowflake`: Database user password. The field should be specified if authentication type is `PASSWORD`.
     	- Service `sql_server_rds_warehouse`: Database user password
@@ -72501,6 +73032,12 @@ class GetDestinationConfigArgsDict(TypedDict):
     	- Service `managed_data_lake`: The personal access token you created for authenticating Fivetran. Use this parameter only if you want to use a personal access token as the authentication type for Fivetran to connect to Databricks.
     	- Service `new_s3_datalake`: Personal access token
     	- Service `onelake`: Personal access token
+    """
+    polaris_catalog_configuration: 'GetDestinationConfigPolarisCatalogConfigurationArgsDict'
+    """
+    Field usage depends on `service` value:
+    	- Service `databricks_via_managed_data_lake`: Polaris Catalog Base Configuration. Universal connection settings for any query engine or analytics tool.
+    	- Service `managed_data_lake`: Polaris Catalog Base Configuration. Universal connection settings for any query engine or analytics tool.
     """
     port: _builtins.int
     """
@@ -72530,6 +73067,7 @@ class GetDestinationConfigArgsDict(TypedDict):
     	- Service `postgres_gcp_warehouse`: Server port number
     	- Service `postgres_rds_warehouse`: Server port number
     	- Service `postgres_warehouse`: Server port number
+    	- Service `postgres_wh`: Server port number (default: 5432)
     	- Service `redshift`: Server port number
     	- Service `snowflake`: Server port number
     	- Service `sql_server_rds_warehouse`: Server port number
@@ -72628,6 +73166,7 @@ class GetDestinationConfigArgsDict(TypedDict):
     	- Service `postgres_gcp_warehouse`: AWS IAM role ARN for authentication. Required when `auth_method` is set to `AWS_IAM`.
     	- Service `postgres_rds_warehouse`: AWS IAM role ARN for authentication. Required when `auth_method` is set to `AWS_IAM`.
     	- Service `postgres_warehouse`: AWS IAM role ARN for authentication. Required when `auth_method` is set to `AWS_IAM`.
+    	- Service `postgres_wh`: AWS IAM role ARN for authentication. Required when `auth_method` is set to `AWS_IAM`
     	- Service `redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
     """
     s3_bucket_auth_type: _builtins.str
@@ -72729,6 +73268,12 @@ class GetDestinationConfigArgsDict(TypedDict):
     	- Service `databricks_via_managed_data_lake`: Specifies whether you want to create shortcut for you table in OneLake. Use this parameter only if you want to deploy your data lake on ADLS.
     	- Service `managed_data_lake`: Specifies whether you want to create shortcut for you table in OneLake. Use this parameter only if you want to deploy your data lake on ADLS.
     """
+    should_write_delta: _builtins.bool
+    """
+    Field usage depends on `service` value:
+    	- Service `databricks_via_managed_data_lake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Databricks via Managed Data Lake requires Delta Lake metadata, so Fivetran always uses `true` for this destination.
+    	- Service `managed_data_lake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Default value: `false` for new destinations and `true` for existing destinations. Destinations with Unity Catalog or OneLake catalog enabled always write Delta Lake metadata.
+    """
     snapshot_retention_period: _builtins.str
     """
     Field usage depends on `service` value:
@@ -72804,6 +73349,7 @@ class GetDestinationConfigArgsDict(TypedDict):
     	- Service `postgres_gcp_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `postgres_rds_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `postgres_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
+    	- Service `postgres_wh`: SSH server hostname. Required when `connection_type` is set to `SshTunnel`
     	- Service `redshift`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `sql_server_rds_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `sql_server_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -72830,6 +73376,7 @@ class GetDestinationConfigArgsDict(TypedDict):
     	- Service `postgres_gcp_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `postgres_rds_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `postgres_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
+    	- Service `postgres_wh`: SSH server port. Required when `connection_type` is set to `SshTunnel`
     	- Service `redshift`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `sql_server_rds_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `sql_server_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -72856,6 +73403,7 @@ class GetDestinationConfigArgsDict(TypedDict):
     	- Service `postgres_gcp_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `postgres_rds_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `postgres_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
+    	- Service `postgres_wh`: SSH user name. Required when `connection_type` is set to `SshTunnel`
     	- Service `redshift`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `sql_server_rds_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
     	- Service `sql_server_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -72887,6 +73435,7 @@ class GetDestinationConfigArgsDict(TypedDict):
     	- Service `postgres_gcp_warehouse`: Database user name
     	- Service `postgres_rds_warehouse`: Database user name
     	- Service `postgres_warehouse`: Database user name
+    	- Service `postgres_wh`: Database user name. Required for PASSWORD authentication
     	- Service `redshift`: Database user name
     	- Service `snowflake`: Database user name
     	- Service `sql_server_rds_warehouse`: Database user name
@@ -72917,7 +73466,10 @@ class GetDestinationConfigArgs:
                  aws_bucket_auth_type: _builtins.str,
                  aws_region_code: _builtins.str,
                  aws_secret_access_key: _builtins.str,
+                 azure_client_id: _builtins.str,
+                 azure_client_secret: _builtins.str,
                  azure_storage_account_auth_type: _builtins.str,
+                 azure_tenant_id: _builtins.str,
                  bootstrap_servers: Sequence[_builtins.str],
                  bucket: _builtins.str,
                  bucket_region: _builtins.str,
@@ -72952,6 +73504,7 @@ class GetDestinationConfigArgs:
                  fivetran_msk_role_arn: _builtins.str,
                  fivetran_role_arn: _builtins.str,
                  gcs_project_id: _builtins.str,
+                 gcs_service_account_credentials: 'GetDestinationConfigGcsServiceAccountCredentialsArgs',
                  gcs_service_account_credentials_path: _builtins.str,
                  host: _builtins.str,
                  http_path: _builtins.str,
@@ -72971,6 +73524,7 @@ class GetDestinationConfigArgs:
                  passphrase: _builtins.str,
                  password: _builtins.str,
                  personal_access_token: _builtins.str,
+                 polaris_catalog_configuration: 'GetDestinationConfigPolarisCatalogConfigurationArgs',
                  port: _builtins.int,
                  prefix_path: _builtins.str,
                  private_key: _builtins.str,
@@ -73000,6 +73554,7 @@ class GetDestinationConfigArgs:
                  should_maintain_tables_in_databricks: _builtins.bool,
                  should_maintain_tables_in_glue: _builtins.bool,
                  should_maintain_tables_in_one_lake: _builtins.bool,
+                 should_write_delta: _builtins.bool,
                  snapshot_retention_period: _builtins.str,
                  storage_account_key: _builtins.str,
                  storage_account_name: _builtins.str,
@@ -73035,6 +73590,7 @@ class GetDestinationConfigArgs:
                	- Service `postgres_gcp_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `postgres_rds_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `postgres_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
+               	- Service `postgres_wh`: Specifies whether TLS is required. Must be set when using `SshTunnel` connection
                	- Service `redshift`: Require TLS through Tunnel
                	- Service `sql_server_rds_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `sql_server_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -73049,6 +73605,7 @@ class GetDestinationConfigArgs:
                	- Service `postgres_gcp_warehouse`: Authentication method. Default value: `PASSWORD`.
                	- Service `postgres_rds_warehouse`: Authentication method. Default value: `PASSWORD`.
                	- Service `postgres_warehouse`: Authentication method. Default value: `PASSWORD`.
+               	- Service `postgres_wh`: Authentication method. Supported values: `PASSWORD`, `AWS_IAM`. Default: `PASSWORD`.
         :param _builtins.str auth_type: Field usage depends on `service` value:
                	- Service `adls`: Authentication type
                	- Service `databricks`: Authentication type
@@ -73071,13 +73628,20 @@ class GetDestinationConfigArgs:
                	- Service `postgres_gcp_warehouse`: AWS region code. Required when `auth_method` is set to `AWS_IAM`.
                	- Service `postgres_rds_warehouse`: AWS region where the RDS instance is located. Required when `auth_method` is set to `AWS_IAM`.
                	- Service `postgres_warehouse`: AWS region code. Required when `auth_method` is set to `AWS_IAM`.
+               	- Service `postgres_wh`: AWS region code. Required when `auth_method` is set to `AWS_IAM`
         :param _builtins.str aws_secret_access_key: Field usage depends on `service` value:
                	- Service `databricks`: Your user's secret access key
                	- Service `new_s3_datalake`: AWS secret access key to access the S3 bucket and AWS Glue
                	- Service `redshift`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment.
                	- Service `snowflake`: The secret access key of the S3 bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment , want to use an S3 bucket to stage your data, and `awsBucketAuthType` is set to `IAM_USER`.
+        :param _builtins.str azure_client_id: Field usage depends on `service` value:
+               	- Service `databricks`: Your Azure AD application (client) ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+        :param _builtins.str azure_client_secret: Field usage depends on `service` value:
+               	- Service `databricks`: Your Azure AD application client secret for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
         :param _builtins.str azure_storage_account_auth_type: Field usage depends on `service` value:
                	- Service `databricks`: Authentication method for the Azure container you want to use as the external staging for Hybrid Deployment.
+        :param _builtins.str azure_tenant_id: Field usage depends on `service` value:
+               	- Service `databricks`: Your Azure AD tenant ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
         :param Sequence[_builtins.str] bootstrap_servers: Field usage depends on `service` value:
                	- Service `confluent_cloud_wh`: Comma-separated list of Confluent Cloud servers in the `server:port` format.
         :param _builtins.str bucket: Field usage depends on `service` value:
@@ -73140,6 +73704,7 @@ class GetDestinationConfigArgs:
                	- Service `postgres_gcp_warehouse`: Connection method. Default value: `Directly`.
                	- Service `postgres_rds_warehouse`: Connection method. Default value: `Directly`.
                	- Service `postgres_warehouse`: Connection method. Default value: `Directly`.
+               	- Service `postgres_wh`: Connection method. Supported values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`. Default: `Directly`. Note: PrivateLink is only supported for cloud-hosted PostgreSQL (RDS, Aurora, Azure, GCP).
                	- Service `redshift`: Connection method. Default value: `Directly`.
                	- Service `snowflake`: Connection method. Default value: `Directly`.
                	- Service `sql_server_rds_warehouse`: Connection method. Default value: `Directly`.
@@ -73179,6 +73744,7 @@ class GetDestinationConfigArgs:
                	- Service `postgres_gcp_warehouse`: Database name
                	- Service `postgres_rds_warehouse`: Database name
                	- Service `postgres_warehouse`: Database name
+               	- Service `postgres_wh`: Database name
                	- Service `redshift`: Database name
                	- Service `snowflake`: Database name
                	- Service `sql_server_rds_warehouse`: Database name
@@ -73211,6 +73777,7 @@ class GetDestinationConfigArgs:
                	- Service `postgres_gcp_warehouse`: AWS external ID for authentication. Required when `auth_method` is set to `AWS_IAM`.
                	- Service `postgres_rds_warehouse`: AWS external ID for authentication. Required when `auth_method` is set to `AWS_IAM`.
                	- Service `postgres_warehouse`: AWS external ID for authentication. Required when `auth_method` is set to `AWS_IAM`.
+               	- Service `postgres_wh`: AWS external ID for authentication. Auto-generated from group ID when `auth_method` is set to `AWS_IAM`
                	- Service `redshift`: Fivetran generated External ID
         :param _builtins.str external_location: Field usage depends on `service` value:
                	- Service `databricks`: External location to store Delta tables. Default value: `""`  (null). By default, the external tables will reside in the `/{schema}/{table}` path, and if you specify an external location in the `{externalLocation}/{schema}/{table}` path.
@@ -73231,6 +73798,8 @@ class GetDestinationConfigArgs:
         :param _builtins.str gcs_project_id: Field usage depends on `service` value:
                	- Service `databricks_via_managed_data_lake`: GCS Project ID of your Google Cloud Storage bucket. Use this parameter only if you want to deploy your data lake on GCS.
                	- Service `managed_data_lake`: GCS Project ID of your Google Cloud Storage bucket. Use this parameter only if you want to deploy your data lake on GCS.
+        :param 'GetDestinationConfigGcsServiceAccountCredentialsArgs' gcs_service_account_credentials: Field usage depends on `service` value:
+               	- Service `snowflake`: The service account credentials for the Google Cloud Storage (GCS) bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use a GCS bucket to stage your data.
         :param _builtins.str gcs_service_account_credentials_path: Field usage depends on `service` value:
                	- Service `snowflake`: The path to the JSON file that contains the service account credentials for the GCS bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use a GCS bucket to stage your data.
         :param _builtins.str host: Field usage depends on `service` value:
@@ -73253,6 +73822,7 @@ class GetDestinationConfigArgs:
                	- Service `postgres_gcp_warehouse`: Server name
                	- Service `postgres_rds_warehouse`: Server name
                	- Service `postgres_warehouse`: Server name
+               	- Service `postgres_wh`: Server hostname or IP address
                	- Service `redshift`: Server name
                	- Service `snowflake`: Server name
                	- Service `sql_server_rds_warehouse`: Server name
@@ -73326,6 +73896,7 @@ class GetDestinationConfigArgs:
                	- Service `postgres_gcp_warehouse`: Database user password
                	- Service `postgres_rds_warehouse`: Database user password
                	- Service `postgres_warehouse`: Database user password
+               	- Service `postgres_wh`: Database user password. Required for PASSWORD authentication
                	- Service `redshift`: Database user password. Required if authentication type is `PASSWORD`.
                	- Service `snowflake`: Database user password. The field should be specified if authentication type is `PASSWORD`.
                	- Service `sql_server_rds_warehouse`: Database user password
@@ -73337,6 +73908,9 @@ class GetDestinationConfigArgs:
                	- Service `managed_data_lake`: The personal access token you created for authenticating Fivetran. Use this parameter only if you want to use a personal access token as the authentication type for Fivetran to connect to Databricks.
                	- Service `new_s3_datalake`: Personal access token
                	- Service `onelake`: Personal access token
+        :param 'GetDestinationConfigPolarisCatalogConfigurationArgs' polaris_catalog_configuration: Field usage depends on `service` value:
+               	- Service `databricks_via_managed_data_lake`: Polaris Catalog Base Configuration. Universal connection settings for any query engine or analytics tool.
+               	- Service `managed_data_lake`: Polaris Catalog Base Configuration. Universal connection settings for any query engine or analytics tool.
         :param _builtins.int port: Field usage depends on `service` value:
                	- Service `adls`: Server port number
                	- Service `aurora_postgres_warehouse`: Server port number
@@ -73363,6 +73937,7 @@ class GetDestinationConfigArgs:
                	- Service `postgres_gcp_warehouse`: Server port number
                	- Service `postgres_rds_warehouse`: Server port number
                	- Service `postgres_warehouse`: Server port number
+               	- Service `postgres_wh`: Server port number (default: 5432)
                	- Service `redshift`: Server port number
                	- Service `snowflake`: Server port number
                	- Service `sql_server_rds_warehouse`: Server port number
@@ -73432,6 +74007,7 @@ class GetDestinationConfigArgs:
                	- Service `postgres_gcp_warehouse`: AWS IAM role ARN for authentication. Required when `auth_method` is set to `AWS_IAM`.
                	- Service `postgres_rds_warehouse`: AWS IAM role ARN for authentication. Required when `auth_method` is set to `AWS_IAM`.
                	- Service `postgres_warehouse`: AWS IAM role ARN for authentication. Required when `auth_method` is set to `AWS_IAM`.
+               	- Service `postgres_wh`: AWS IAM role ARN for authentication. Required when `auth_method` is set to `AWS_IAM`
                	- Service `redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
         :param _builtins.str s3_bucket_auth_type: Field usage depends on `service` value:
                	- Service `databricks`: Authentication method for the S3 bucket you want to use as the external staging for Hybrid Deployment.
@@ -73483,6 +74059,9 @@ class GetDestinationConfigArgs:
         :param _builtins.bool should_maintain_tables_in_one_lake: Field usage depends on `service` value:
                	- Service `databricks_via_managed_data_lake`: Specifies whether you want to create shortcut for you table in OneLake. Use this parameter only if you want to deploy your data lake on ADLS.
                	- Service `managed_data_lake`: Specifies whether you want to create shortcut for you table in OneLake. Use this parameter only if you want to deploy your data lake on ADLS.
+        :param _builtins.bool should_write_delta: Field usage depends on `service` value:
+               	- Service `databricks_via_managed_data_lake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Databricks via Managed Data Lake requires Delta Lake metadata, so Fivetran always uses `true` for this destination.
+               	- Service `managed_data_lake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Default value: `false` for new destinations and `true` for existing destinations. Destinations with Unity Catalog or OneLake catalog enabled always write Delta Lake metadata.
         :param _builtins.str snapshot_retention_period: Field usage depends on `service` value:
                	- Service `adls`: Snapshots older than the retention period are deleted every week. Default value: `ONE_WEEK`.
                	- Service `databricks_via_managed_data_lake`: Specifies how long you want us to retain your table snapshots. We delete the snapshots that are older than the retention period during our table maintenance operations. Default value: `ONE_WEEK`.
@@ -73535,6 +74114,7 @@ class GetDestinationConfigArgs:
                	- Service `postgres_gcp_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `postgres_rds_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `postgres_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
+               	- Service `postgres_wh`: SSH server hostname. Required when `connection_type` is set to `SshTunnel`
                	- Service `redshift`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `sql_server_rds_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `sql_server_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -73558,6 +74138,7 @@ class GetDestinationConfigArgs:
                	- Service `postgres_gcp_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `postgres_rds_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `postgres_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
+               	- Service `postgres_wh`: SSH server port. Required when `connection_type` is set to `SshTunnel`
                	- Service `redshift`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `sql_server_rds_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `sql_server_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -73581,6 +74162,7 @@ class GetDestinationConfigArgs:
                	- Service `postgres_gcp_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `postgres_rds_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `postgres_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
+               	- Service `postgres_wh`: SSH user name. Required when `connection_type` is set to `SshTunnel`
                	- Service `redshift`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `sql_server_rds_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
                	- Service `sql_server_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -73606,6 +74188,7 @@ class GetDestinationConfigArgs:
                	- Service `postgres_gcp_warehouse`: Database user name
                	- Service `postgres_rds_warehouse`: Database user name
                	- Service `postgres_warehouse`: Database user name
+               	- Service `postgres_wh`: Database user name. Required for PASSWORD authentication
                	- Service `redshift`: Database user name
                	- Service `snowflake`: Database user name
                	- Service `sql_server_rds_warehouse`: Database user name
@@ -73626,7 +74209,10 @@ class GetDestinationConfigArgs:
         pulumi.set(__self__, "aws_bucket_auth_type", aws_bucket_auth_type)
         pulumi.set(__self__, "aws_region_code", aws_region_code)
         pulumi.set(__self__, "aws_secret_access_key", aws_secret_access_key)
+        pulumi.set(__self__, "azure_client_id", azure_client_id)
+        pulumi.set(__self__, "azure_client_secret", azure_client_secret)
         pulumi.set(__self__, "azure_storage_account_auth_type", azure_storage_account_auth_type)
+        pulumi.set(__self__, "azure_tenant_id", azure_tenant_id)
         pulumi.set(__self__, "bootstrap_servers", bootstrap_servers)
         pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "bucket_region", bucket_region)
@@ -73661,6 +74247,7 @@ class GetDestinationConfigArgs:
         pulumi.set(__self__, "fivetran_msk_role_arn", fivetran_msk_role_arn)
         pulumi.set(__self__, "fivetran_role_arn", fivetran_role_arn)
         pulumi.set(__self__, "gcs_project_id", gcs_project_id)
+        pulumi.set(__self__, "gcs_service_account_credentials", gcs_service_account_credentials)
         pulumi.set(__self__, "gcs_service_account_credentials_path", gcs_service_account_credentials_path)
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "http_path", http_path)
@@ -73680,6 +74267,7 @@ class GetDestinationConfigArgs:
         pulumi.set(__self__, "passphrase", passphrase)
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "personal_access_token", personal_access_token)
+        pulumi.set(__self__, "polaris_catalog_configuration", polaris_catalog_configuration)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "prefix_path", prefix_path)
         pulumi.set(__self__, "private_key", private_key)
@@ -73709,6 +74297,7 @@ class GetDestinationConfigArgs:
         pulumi.set(__self__, "should_maintain_tables_in_databricks", should_maintain_tables_in_databricks)
         pulumi.set(__self__, "should_maintain_tables_in_glue", should_maintain_tables_in_glue)
         pulumi.set(__self__, "should_maintain_tables_in_one_lake", should_maintain_tables_in_one_lake)
+        pulumi.set(__self__, "should_write_delta", should_write_delta)
         pulumi.set(__self__, "snapshot_retention_period", snapshot_retention_period)
         pulumi.set(__self__, "storage_account_key", storage_account_key)
         pulumi.set(__self__, "storage_account_name", storage_account_name)
@@ -73748,6 +74337,7 @@ class GetDestinationConfigArgs:
         	- Service `postgres_gcp_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `postgres_rds_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `postgres_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
+        	- Service `postgres_wh`: Specifies whether TLS is required. Must be set when using `SshTunnel` connection
         	- Service `redshift`: Require TLS through Tunnel
         	- Service `sql_server_rds_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `sql_server_warehouse`: Specifies whether TLS is required. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -73795,6 +74385,7 @@ class GetDestinationConfigArgs:
         	- Service `postgres_gcp_warehouse`: Authentication method. Default value: `PASSWORD`.
         	- Service `postgres_rds_warehouse`: Authentication method. Default value: `PASSWORD`.
         	- Service `postgres_warehouse`: Authentication method. Default value: `PASSWORD`.
+        	- Service `postgres_wh`: Authentication method. Supported values: `PASSWORD`, `AWS_IAM`. Default: `PASSWORD`.
         """
         return pulumi.get(self, "auth_method")
 
@@ -73861,6 +74452,7 @@ class GetDestinationConfigArgs:
         	- Service `postgres_gcp_warehouse`: AWS region code. Required when `auth_method` is set to `AWS_IAM`.
         	- Service `postgres_rds_warehouse`: AWS region where the RDS instance is located. Required when `auth_method` is set to `AWS_IAM`.
         	- Service `postgres_warehouse`: AWS region code. Required when `auth_method` is set to `AWS_IAM`.
+        	- Service `postgres_wh`: AWS region code. Required when `auth_method` is set to `AWS_IAM`
         """
         return pulumi.get(self, "aws_region_code")
 
@@ -73885,6 +74477,32 @@ class GetDestinationConfigArgs:
         pulumi.set(self, "aws_secret_access_key", value)
 
     @_builtins.property
+    @pulumi.getter(name="azureClientId")
+    def azure_client_id(self) -> _builtins.str:
+        """
+        Field usage depends on `service` value:
+        	- Service `databricks`: Your Azure AD application (client) ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+        """
+        return pulumi.get(self, "azure_client_id")
+
+    @azure_client_id.setter
+    def azure_client_id(self, value: _builtins.str):
+        pulumi.set(self, "azure_client_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="azureClientSecret")
+    def azure_client_secret(self) -> _builtins.str:
+        """
+        Field usage depends on `service` value:
+        	- Service `databricks`: Your Azure AD application client secret for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+        """
+        return pulumi.get(self, "azure_client_secret")
+
+    @azure_client_secret.setter
+    def azure_client_secret(self, value: _builtins.str):
+        pulumi.set(self, "azure_client_secret", value)
+
+    @_builtins.property
     @pulumi.getter(name="azureStorageAccountAuthType")
     def azure_storage_account_auth_type(self) -> _builtins.str:
         """
@@ -73896,6 +74514,19 @@ class GetDestinationConfigArgs:
     @azure_storage_account_auth_type.setter
     def azure_storage_account_auth_type(self, value: _builtins.str):
         pulumi.set(self, "azure_storage_account_auth_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="azureTenantId")
+    def azure_tenant_id(self) -> _builtins.str:
+        """
+        Field usage depends on `service` value:
+        	- Service `databricks`: Your Azure AD tenant ID for Client Credentials authentication to the Azure container used as external staging for Hybrid Deployment.
+        """
+        return pulumi.get(self, "azure_tenant_id")
+
+    @azure_tenant_id.setter
+    def azure_tenant_id(self, value: _builtins.str):
+        pulumi.set(self, "azure_tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="bootstrapServers")
@@ -74060,6 +74691,7 @@ class GetDestinationConfigArgs:
         	- Service `postgres_gcp_warehouse`: Connection method. Default value: `Directly`.
         	- Service `postgres_rds_warehouse`: Connection method. Default value: `Directly`.
         	- Service `postgres_warehouse`: Connection method. Default value: `Directly`.
+        	- Service `postgres_wh`: Connection method. Supported values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`. Default: `Directly`. Note: PrivateLink is only supported for cloud-hosted PostgreSQL (RDS, Aurora, Azure, GCP).
         	- Service `redshift`: Connection method. Default value: `Directly`.
         	- Service `snowflake`: Connection method. Default value: `Directly`.
         	- Service `sql_server_rds_warehouse`: Connection method. Default value: `Directly`.
@@ -74165,6 +74797,7 @@ class GetDestinationConfigArgs:
         	- Service `postgres_gcp_warehouse`: Database name
         	- Service `postgres_rds_warehouse`: Database name
         	- Service `postgres_warehouse`: Database name
+        	- Service `postgres_wh`: Database name
         	- Service `redshift`: Database name
         	- Service `snowflake`: Database name
         	- Service `sql_server_rds_warehouse`: Database name
@@ -74285,6 +74918,7 @@ class GetDestinationConfigArgs:
         	- Service `postgres_gcp_warehouse`: AWS external ID for authentication. Required when `auth_method` is set to `AWS_IAM`.
         	- Service `postgres_rds_warehouse`: AWS external ID for authentication. Required when `auth_method` is set to `AWS_IAM`.
         	- Service `postgres_warehouse`: AWS external ID for authentication. Required when `auth_method` is set to `AWS_IAM`.
+        	- Service `postgres_wh`: AWS external ID for authentication. Auto-generated from group ID when `auth_method` is set to `AWS_IAM`
         	- Service `redshift`: Fivetran generated External ID
         """
         return pulumi.get(self, "external_id")
@@ -74419,6 +75053,19 @@ class GetDestinationConfigArgs:
         pulumi.set(self, "gcs_project_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="gcsServiceAccountCredentials")
+    def gcs_service_account_credentials(self) -> 'GetDestinationConfigGcsServiceAccountCredentialsArgs':
+        """
+        Field usage depends on `service` value:
+        	- Service `snowflake`: The service account credentials for the Google Cloud Storage (GCS) bucket you want to use to stage your data. Use this parameter only if you are using Hybrid Deployment and want to use a GCS bucket to stage your data.
+        """
+        return pulumi.get(self, "gcs_service_account_credentials")
+
+    @gcs_service_account_credentials.setter
+    def gcs_service_account_credentials(self, value: 'GetDestinationConfigGcsServiceAccountCredentialsArgs'):
+        pulumi.set(self, "gcs_service_account_credentials", value)
+
+    @_builtins.property
     @pulumi.getter(name="gcsServiceAccountCredentialsPath")
     def gcs_service_account_credentials_path(self) -> _builtins.str:
         """
@@ -74455,6 +75102,7 @@ class GetDestinationConfigArgs:
         	- Service `postgres_gcp_warehouse`: Server name
         	- Service `postgres_rds_warehouse`: Server name
         	- Service `postgres_warehouse`: Server name
+        	- Service `postgres_wh`: Server hostname or IP address
         	- Service `redshift`: Server name
         	- Service `snowflake`: Server name
         	- Service `sql_server_rds_warehouse`: Server name
@@ -74702,6 +75350,7 @@ class GetDestinationConfigArgs:
         	- Service `postgres_gcp_warehouse`: Database user password
         	- Service `postgres_rds_warehouse`: Database user password
         	- Service `postgres_warehouse`: Database user password
+        	- Service `postgres_wh`: Database user password. Required for PASSWORD authentication
         	- Service `redshift`: Database user password. Required if authentication type is `PASSWORD`.
         	- Service `snowflake`: Database user password. The field should be specified if authentication type is `PASSWORD`.
         	- Service `sql_server_rds_warehouse`: Database user password
@@ -74730,6 +75379,20 @@ class GetDestinationConfigArgs:
     @personal_access_token.setter
     def personal_access_token(self, value: _builtins.str):
         pulumi.set(self, "personal_access_token", value)
+
+    @_builtins.property
+    @pulumi.getter(name="polarisCatalogConfiguration")
+    def polaris_catalog_configuration(self) -> 'GetDestinationConfigPolarisCatalogConfigurationArgs':
+        """
+        Field usage depends on `service` value:
+        	- Service `databricks_via_managed_data_lake`: Polaris Catalog Base Configuration. Universal connection settings for any query engine or analytics tool.
+        	- Service `managed_data_lake`: Polaris Catalog Base Configuration. Universal connection settings for any query engine or analytics tool.
+        """
+        return pulumi.get(self, "polaris_catalog_configuration")
+
+    @polaris_catalog_configuration.setter
+    def polaris_catalog_configuration(self, value: 'GetDestinationConfigPolarisCatalogConfigurationArgs'):
+        pulumi.set(self, "polaris_catalog_configuration", value)
 
     @_builtins.property
     @pulumi.getter
@@ -74761,6 +75424,7 @@ class GetDestinationConfigArgs:
         	- Service `postgres_gcp_warehouse`: Server port number
         	- Service `postgres_rds_warehouse`: Server port number
         	- Service `postgres_warehouse`: Server port number
+        	- Service `postgres_wh`: Server port number (default: 5432)
         	- Service `redshift`: Server port number
         	- Service `snowflake`: Server port number
         	- Service `sql_server_rds_warehouse`: Server port number
@@ -74947,6 +75611,7 @@ class GetDestinationConfigArgs:
         	- Service `postgres_gcp_warehouse`: AWS IAM role ARN for authentication. Required when `auth_method` is set to `AWS_IAM`.
         	- Service `postgres_rds_warehouse`: AWS IAM role ARN for authentication. Required when `auth_method` is set to `AWS_IAM`.
         	- Service `postgres_warehouse`: AWS IAM role ARN for authentication. Required when `auth_method` is set to `AWS_IAM`.
+        	- Service `postgres_wh`: AWS IAM role ARN for authentication. Required when `auth_method` is set to `AWS_IAM`
         	- Service `redshift`: Role ARN with Redshift permissions. Required if authentication type is `IAM`.
         """
         return pulumi.get(self, "role_arn")
@@ -75191,6 +75856,20 @@ class GetDestinationConfigArgs:
         pulumi.set(self, "should_maintain_tables_in_one_lake", value)
 
     @_builtins.property
+    @pulumi.getter(name="shouldWriteDelta")
+    def should_write_delta(self) -> _builtins.bool:
+        """
+        Field usage depends on `service` value:
+        	- Service `databricks_via_managed_data_lake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Databricks via Managed Data Lake requires Delta Lake metadata, so Fivetran always uses `true` for this destination.
+        	- Service `managed_data_lake`: Specifies whether Fivetran writes Delta Lake metadata in addition to Iceberg tables. Default value: `false` for new destinations and `true` for existing destinations. Destinations with Unity Catalog or OneLake catalog enabled always write Delta Lake metadata.
+        """
+        return pulumi.get(self, "should_write_delta")
+
+    @should_write_delta.setter
+    def should_write_delta(self, value: _builtins.bool):
+        pulumi.set(self, "should_write_delta", value)
+
+    @_builtins.property
     @pulumi.getter(name="snapshotRetentionPeriod")
     def snapshot_retention_period(self) -> _builtins.str:
         """
@@ -75323,6 +76002,7 @@ class GetDestinationConfigArgs:
         	- Service `postgres_gcp_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `postgres_rds_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `postgres_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
+        	- Service `postgres_wh`: SSH server hostname. Required when `connection_type` is set to `SshTunnel`
         	- Service `redshift`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `sql_server_rds_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `sql_server_warehouse`: SSH server name. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -75357,6 +76037,7 @@ class GetDestinationConfigArgs:
         	- Service `postgres_gcp_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `postgres_rds_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `postgres_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
+        	- Service `postgres_wh`: SSH server port. Required when `connection_type` is set to `SshTunnel`
         	- Service `redshift`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `sql_server_rds_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `sql_server_warehouse`: SSH server port name. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -75391,6 +76072,7 @@ class GetDestinationConfigArgs:
         	- Service `postgres_gcp_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `postgres_rds_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `postgres_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
+        	- Service `postgres_wh`: SSH user name. Required when `connection_type` is set to `SshTunnel`
         	- Service `redshift`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `sql_server_rds_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
         	- Service `sql_server_warehouse`: SSH user name. Must be populated if `connection_type` is set to `SshTunnel`.
@@ -75438,6 +76120,7 @@ class GetDestinationConfigArgs:
         	- Service `postgres_gcp_warehouse`: Database user name
         	- Service `postgres_rds_warehouse`: Database user name
         	- Service `postgres_warehouse`: Database user name
+        	- Service `postgres_wh`: Database user name. Required for PASSWORD authentication
         	- Service `redshift`: Database user name
         	- Service `snowflake`: Database user name
         	- Service `sql_server_rds_warehouse`: Database user name
@@ -75476,6 +76159,124 @@ class GetDestinationConfigArgs:
     @workspace_name.setter
     def workspace_name(self, value: _builtins.str):
         pulumi.set(self, "workspace_name", value)
+
+
+class GetDestinationConfigGcsServiceAccountCredentialsArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class GetDestinationConfigGcsServiceAccountCredentialsArgs:
+    def __init__(__self__):
+        pass
+
+
+class GetDestinationConfigPolarisCatalogConfigurationArgsDict(TypedDict):
+    client_id: _builtins.str
+    """
+    Field usage depends on `service` value:
+    	- Service `databricks_via_managed_data_lake`: Client ID
+    	- Service `managed_data_lake`: Client ID
+    """
+    client_secret: _builtins.str
+    """
+    Field usage depends on `service` value:
+    	- Service `databricks_via_managed_data_lake`: Client Secret
+    	- Service `managed_data_lake`: Client Secret
+    """
+    polaris_catalog: _builtins.str
+    """
+    Field usage depends on `service` value:
+    	- Service `databricks_via_managed_data_lake`: Polaris Catalog
+    	- Service `managed_data_lake`: Polaris Catalog
+    """
+    polaris_server_endpoint: _builtins.str
+    """
+    Field usage depends on `service` value:
+    	- Service `databricks_via_managed_data_lake`: Polaris Server Endpoint
+    	- Service `managed_data_lake`: Polaris Server Endpoint
+    """
+
+@pulumi.input_type
+class GetDestinationConfigPolarisCatalogConfigurationArgs:
+    def __init__(__self__, *,
+                 client_id: _builtins.str,
+                 client_secret: _builtins.str,
+                 polaris_catalog: _builtins.str,
+                 polaris_server_endpoint: _builtins.str):
+        """
+        :param _builtins.str client_id: Field usage depends on `service` value:
+               	- Service `databricks_via_managed_data_lake`: Client ID
+               	- Service `managed_data_lake`: Client ID
+        :param _builtins.str client_secret: Field usage depends on `service` value:
+               	- Service `databricks_via_managed_data_lake`: Client Secret
+               	- Service `managed_data_lake`: Client Secret
+        :param _builtins.str polaris_catalog: Field usage depends on `service` value:
+               	- Service `databricks_via_managed_data_lake`: Polaris Catalog
+               	- Service `managed_data_lake`: Polaris Catalog
+        :param _builtins.str polaris_server_endpoint: Field usage depends on `service` value:
+               	- Service `databricks_via_managed_data_lake`: Polaris Server Endpoint
+               	- Service `managed_data_lake`: Polaris Server Endpoint
+        """
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
+        pulumi.set(__self__, "polaris_catalog", polaris_catalog)
+        pulumi.set(__self__, "polaris_server_endpoint", polaris_server_endpoint)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> _builtins.str:
+        """
+        Field usage depends on `service` value:
+        	- Service `databricks_via_managed_data_lake`: Client ID
+        	- Service `managed_data_lake`: Client ID
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: _builtins.str):
+        pulumi.set(self, "client_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> _builtins.str:
+        """
+        Field usage depends on `service` value:
+        	- Service `databricks_via_managed_data_lake`: Client Secret
+        	- Service `managed_data_lake`: Client Secret
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: _builtins.str):
+        pulumi.set(self, "client_secret", value)
+
+    @_builtins.property
+    @pulumi.getter(name="polarisCatalog")
+    def polaris_catalog(self) -> _builtins.str:
+        """
+        Field usage depends on `service` value:
+        	- Service `databricks_via_managed_data_lake`: Polaris Catalog
+        	- Service `managed_data_lake`: Polaris Catalog
+        """
+        return pulumi.get(self, "polaris_catalog")
+
+    @polaris_catalog.setter
+    def polaris_catalog(self, value: _builtins.str):
+        pulumi.set(self, "polaris_catalog", value)
+
+    @_builtins.property
+    @pulumi.getter(name="polarisServerEndpoint")
+    def polaris_server_endpoint(self) -> _builtins.str:
+        """
+        Field usage depends on `service` value:
+        	- Service `databricks_via_managed_data_lake`: Polaris Server Endpoint
+        	- Service `managed_data_lake`: Polaris Server Endpoint
+        """
+        return pulumi.get(self, "polaris_server_endpoint")
+
+    @polaris_server_endpoint.setter
+    def polaris_server_endpoint(self, value: _builtins.str):
+        pulumi.set(self, "polaris_server_endpoint", value)
 
 
 class GetDestinationFingerprintsFingerprintArgsDict(TypedDict):
@@ -75784,35 +76585,85 @@ class GetDestinationsDestinationArgs:
 class GetExternalLoggingConfigArgsDict(TypedDict):
     access_key_id: _builtins.str
     access_key_secret: _builtins.str
+    access_token: _builtins.str
     api_key: _builtins.str
     channel: _builtins.str
+    client_id: _builtins.str
+    """
+    Field usage depends on `service` value:
+    	- Service `azure_monitor_log`: For Logs Ingestion API authentication. Your application (client) ID.
+    """
+    client_secret: _builtins.str
+    """
+    Field usage depends on `service` value:
+    	- Service `azure_monitor_log`: For Logs Ingestion API authentication. Your application client secret.
+    """
+    data_collection_endpoint: _builtins.str
+    """
+    Field usage depends on `service` value:
+    	- Service `azure_monitor_log`: For Logs Ingestion API authentication. The endpoint URL for your Data Collection Endpoint.
+    """
+    dcr_immutable_id: _builtins.str
+    """
+    Field usage depends on `service` value:
+    	- Service `azure_monitor_log`: For Logs Ingestion API authentication. The immutable ID of your Data Collection Rule.
+    """
+    dcr_stream_name: _builtins.str
+    """
+    Field usage depends on `service` value:
+    	- Service `azure_monitor_log`: For Logs Ingestion API authentication. The stream name of your Data Collection Rule.
+    """
     enable_ssl: _builtins.bool
+    environment_id: _builtins.str
     external_id: _builtins.str
     host: _builtins.str
     hostname: _builtins.str
     log_group_name: _builtins.str
+    loki_url: _builtins.str
     port: _builtins.int
     primary_key: _builtins.str
+    """
+    Field usage depends on `service` value:
+    	- Service `azure_monitor_log`: For HTTP Data Collector API authentication. Your Log Analytics primary key.
+    """
     project_id: _builtins.str
     region: _builtins.str
     role_arn: _builtins.str
     service_account_key: _builtins.str
     sub_domain: _builtins.str
+    tenant_id: _builtins.str
+    """
+    Field usage depends on `service` value:
+    	- Service `azure_monitor_log`: For Logs Ingestion API authentication. Your Microsoft Entra directory (tenant) ID.
+    """
     token: _builtins.str
+    username: _builtins.str
     workspace_id: _builtins.str
+    """
+    Field usage depends on `service` value:
+    	- Service `azure_monitor_log`: For HTTP Data Collector API authentication. Your Log Analytics workspace ID.
+    """
 
 @pulumi.input_type
 class GetExternalLoggingConfigArgs:
     def __init__(__self__, *,
                  access_key_id: _builtins.str,
                  access_key_secret: _builtins.str,
+                 access_token: _builtins.str,
                  api_key: _builtins.str,
                  channel: _builtins.str,
+                 client_id: _builtins.str,
+                 client_secret: _builtins.str,
+                 data_collection_endpoint: _builtins.str,
+                 dcr_immutable_id: _builtins.str,
+                 dcr_stream_name: _builtins.str,
                  enable_ssl: _builtins.bool,
+                 environment_id: _builtins.str,
                  external_id: _builtins.str,
                  host: _builtins.str,
                  hostname: _builtins.str,
                  log_group_name: _builtins.str,
+                 loki_url: _builtins.str,
                  port: _builtins.int,
                  primary_key: _builtins.str,
                  project_id: _builtins.str,
@@ -75820,17 +76671,45 @@ class GetExternalLoggingConfigArgs:
                  role_arn: _builtins.str,
                  service_account_key: _builtins.str,
                  sub_domain: _builtins.str,
+                 tenant_id: _builtins.str,
                  token: _builtins.str,
+                 username: _builtins.str,
                  workspace_id: _builtins.str):
+        """
+        :param _builtins.str client_id: Field usage depends on `service` value:
+               	- Service `azure_monitor_log`: For Logs Ingestion API authentication. Your application (client) ID.
+        :param _builtins.str client_secret: Field usage depends on `service` value:
+               	- Service `azure_monitor_log`: For Logs Ingestion API authentication. Your application client secret.
+        :param _builtins.str data_collection_endpoint: Field usage depends on `service` value:
+               	- Service `azure_monitor_log`: For Logs Ingestion API authentication. The endpoint URL for your Data Collection Endpoint.
+        :param _builtins.str dcr_immutable_id: Field usage depends on `service` value:
+               	- Service `azure_monitor_log`: For Logs Ingestion API authentication. The immutable ID of your Data Collection Rule.
+        :param _builtins.str dcr_stream_name: Field usage depends on `service` value:
+               	- Service `azure_monitor_log`: For Logs Ingestion API authentication. The stream name of your Data Collection Rule.
+        :param _builtins.str primary_key: Field usage depends on `service` value:
+               	- Service `azure_monitor_log`: For HTTP Data Collector API authentication. Your Log Analytics primary key.
+        :param _builtins.str tenant_id: Field usage depends on `service` value:
+               	- Service `azure_monitor_log`: For Logs Ingestion API authentication. Your Microsoft Entra directory (tenant) ID.
+        :param _builtins.str workspace_id: Field usage depends on `service` value:
+               	- Service `azure_monitor_log`: For HTTP Data Collector API authentication. Your Log Analytics workspace ID.
+        """
         pulumi.set(__self__, "access_key_id", access_key_id)
         pulumi.set(__self__, "access_key_secret", access_key_secret)
+        pulumi.set(__self__, "access_token", access_token)
         pulumi.set(__self__, "api_key", api_key)
         pulumi.set(__self__, "channel", channel)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
+        pulumi.set(__self__, "data_collection_endpoint", data_collection_endpoint)
+        pulumi.set(__self__, "dcr_immutable_id", dcr_immutable_id)
+        pulumi.set(__self__, "dcr_stream_name", dcr_stream_name)
         pulumi.set(__self__, "enable_ssl", enable_ssl)
+        pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "external_id", external_id)
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "log_group_name", log_group_name)
+        pulumi.set(__self__, "loki_url", loki_url)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "primary_key", primary_key)
         pulumi.set(__self__, "project_id", project_id)
@@ -75838,7 +76717,9 @@ class GetExternalLoggingConfigArgs:
         pulumi.set(__self__, "role_arn", role_arn)
         pulumi.set(__self__, "service_account_key", service_account_key)
         pulumi.set(__self__, "sub_domain", sub_domain)
+        pulumi.set(__self__, "tenant_id", tenant_id)
         pulumi.set(__self__, "token", token)
+        pulumi.set(__self__, "username", username)
         pulumi.set(__self__, "workspace_id", workspace_id)
 
     @_builtins.property
@@ -75860,6 +76741,15 @@ class GetExternalLoggingConfigArgs:
         pulumi.set(self, "access_key_secret", value)
 
     @_builtins.property
+    @pulumi.getter(name="accessToken")
+    def access_token(self) -> _builtins.str:
+        return pulumi.get(self, "access_token")
+
+    @access_token.setter
+    def access_token(self, value: _builtins.str):
+        pulumi.set(self, "access_token", value)
+
+    @_builtins.property
     @pulumi.getter(name="apiKey")
     def api_key(self) -> _builtins.str:
         return pulumi.get(self, "api_key")
@@ -75878,6 +76768,71 @@ class GetExternalLoggingConfigArgs:
         pulumi.set(self, "channel", value)
 
     @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> _builtins.str:
+        """
+        Field usage depends on `service` value:
+        	- Service `azure_monitor_log`: For Logs Ingestion API authentication. Your application (client) ID.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: _builtins.str):
+        pulumi.set(self, "client_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> _builtins.str:
+        """
+        Field usage depends on `service` value:
+        	- Service `azure_monitor_log`: For Logs Ingestion API authentication. Your application client secret.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: _builtins.str):
+        pulumi.set(self, "client_secret", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataCollectionEndpoint")
+    def data_collection_endpoint(self) -> _builtins.str:
+        """
+        Field usage depends on `service` value:
+        	- Service `azure_monitor_log`: For Logs Ingestion API authentication. The endpoint URL for your Data Collection Endpoint.
+        """
+        return pulumi.get(self, "data_collection_endpoint")
+
+    @data_collection_endpoint.setter
+    def data_collection_endpoint(self, value: _builtins.str):
+        pulumi.set(self, "data_collection_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dcrImmutableId")
+    def dcr_immutable_id(self) -> _builtins.str:
+        """
+        Field usage depends on `service` value:
+        	- Service `azure_monitor_log`: For Logs Ingestion API authentication. The immutable ID of your Data Collection Rule.
+        """
+        return pulumi.get(self, "dcr_immutable_id")
+
+    @dcr_immutable_id.setter
+    def dcr_immutable_id(self, value: _builtins.str):
+        pulumi.set(self, "dcr_immutable_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dcrStreamName")
+    def dcr_stream_name(self) -> _builtins.str:
+        """
+        Field usage depends on `service` value:
+        	- Service `azure_monitor_log`: For Logs Ingestion API authentication. The stream name of your Data Collection Rule.
+        """
+        return pulumi.get(self, "dcr_stream_name")
+
+    @dcr_stream_name.setter
+    def dcr_stream_name(self, value: _builtins.str):
+        pulumi.set(self, "dcr_stream_name", value)
+
+    @_builtins.property
     @pulumi.getter(name="enableSsl")
     def enable_ssl(self) -> _builtins.bool:
         return pulumi.get(self, "enable_ssl")
@@ -75885,6 +76840,15 @@ class GetExternalLoggingConfigArgs:
     @enable_ssl.setter
     def enable_ssl(self, value: _builtins.bool):
         pulumi.set(self, "enable_ssl", value)
+
+    @_builtins.property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> _builtins.str:
+        return pulumi.get(self, "environment_id")
+
+    @environment_id.setter
+    def environment_id(self, value: _builtins.str):
+        pulumi.set(self, "environment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="externalId")
@@ -75923,6 +76887,15 @@ class GetExternalLoggingConfigArgs:
         pulumi.set(self, "log_group_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="lokiUrl")
+    def loki_url(self) -> _builtins.str:
+        return pulumi.get(self, "loki_url")
+
+    @loki_url.setter
+    def loki_url(self, value: _builtins.str):
+        pulumi.set(self, "loki_url", value)
+
+    @_builtins.property
     @pulumi.getter
     def port(self) -> _builtins.int:
         return pulumi.get(self, "port")
@@ -75934,6 +76907,10 @@ class GetExternalLoggingConfigArgs:
     @_builtins.property
     @pulumi.getter(name="primaryKey")
     def primary_key(self) -> _builtins.str:
+        """
+        Field usage depends on `service` value:
+        	- Service `azure_monitor_log`: For HTTP Data Collector API authentication. Your Log Analytics primary key.
+        """
         return pulumi.get(self, "primary_key")
 
     @primary_key.setter
@@ -75986,6 +76963,19 @@ class GetExternalLoggingConfigArgs:
         pulumi.set(self, "sub_domain", value)
 
     @_builtins.property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> _builtins.str:
+        """
+        Field usage depends on `service` value:
+        	- Service `azure_monitor_log`: For Logs Ingestion API authentication. Your Microsoft Entra directory (tenant) ID.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: _builtins.str):
+        pulumi.set(self, "tenant_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def token(self) -> _builtins.str:
         return pulumi.get(self, "token")
@@ -75995,8 +76985,21 @@ class GetExternalLoggingConfigArgs:
         pulumi.set(self, "token", value)
 
     @_builtins.property
+    @pulumi.getter
+    def username(self) -> _builtins.str:
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: _builtins.str):
+        pulumi.set(self, "username", value)
+
+    @_builtins.property
     @pulumi.getter(name="workspaceId")
     def workspace_id(self) -> _builtins.str:
+        """
+        Field usage depends on `service` value:
+        	- Service `azure_monitor_log`: For HTTP Data Collector API authentication. Your Log Analytics workspace ID.
+        """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
