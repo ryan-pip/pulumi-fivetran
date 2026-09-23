@@ -46,6 +46,29 @@ export interface ConnectionV2DestinationConfiguration {
     virtualWarehouse: string;
 }
 
+export interface ConnectionV2Schedule {
+    /**
+     * The cron expression for scheduled syncs (used when scheduleType is CRON).
+     */
+    cron: string;
+    /**
+     * The days of the week for scheduled syncs (used when scheduleType is WEEKLY).
+     */
+    daysOfWeeks: string[];
+    /**
+     * The interval in minutes between syncs (used when scheduleType is INTERVAL).
+     */
+    interval: number;
+    /**
+     * The connection schedule configuration type. Supported values: `auto`, `manual`.
+     */
+    scheduleType: string;
+    /**
+     * The time of day for scheduled syncs (format: HH:MM).
+     */
+    timeOfDay: string;
+}
+
 export interface ConnectionV2Status {
     /**
      * Whether the connection should be triggered to re-sync all historical data on the next scheduled sync.

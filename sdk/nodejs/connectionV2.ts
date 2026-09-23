@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * > **Alpha:** This resource is in alpha and its schema and behavior may change without notice. Not recommended for production use.
+ * > **Public Preview:** This resource is in public preview. Features and behavior may change based on feedback.
  *
  * Manages a Fivetran connection. Unlike `fivetran.Connector`/`fivetran.Connection`, `config` and `auth` are provided as dynamic, service-specific objects: their accepted fields, types, and required/readonly/immutable rules are resolved from connector metadata at plan time rather than from a fixed schema. This means the same resource works across services (e.g. `s3`, `postgres`, `fivetranLog`) without a per-service Terraform schema.
  *
@@ -140,6 +140,10 @@ export class ConnectionV2 extends pulumi.CustomResource {
      */
     declare public readonly runSetupTests: pulumi.Output<boolean>;
     /**
+     * The connection schedule configuration.
+     */
+    declare public readonly schedule: pulumi.Output<outputs.ConnectionV2Schedule>;
+    /**
      * The connection schedule configuration type. Supported values: `auto`, `manual`.
      */
     declare public readonly scheduleType: pulumi.Output<string>;
@@ -204,6 +208,7 @@ export class ConnectionV2 extends pulumi.CustomResource {
             resourceInputs["privateLinkId"] = state?.privateLinkId;
             resourceInputs["proxyAgentId"] = state?.proxyAgentId;
             resourceInputs["runSetupTests"] = state?.runSetupTests;
+            resourceInputs["schedule"] = state?.schedule;
             resourceInputs["scheduleType"] = state?.scheduleType;
             resourceInputs["service"] = state?.service;
             resourceInputs["serviceVersion"] = state?.serviceVersion;
@@ -238,6 +243,7 @@ export class ConnectionV2 extends pulumi.CustomResource {
             resourceInputs["privateLinkId"] = args?.privateLinkId;
             resourceInputs["proxyAgentId"] = args?.proxyAgentId;
             resourceInputs["runSetupTests"] = args?.runSetupTests;
+            resourceInputs["schedule"] = args?.schedule;
             resourceInputs["scheduleType"] = args?.scheduleType;
             resourceInputs["service"] = args?.service;
             resourceInputs["syncFrequency"] = args?.syncFrequency;
@@ -339,6 +345,10 @@ export interface ConnectionV2State {
      */
     runSetupTests?: pulumi.Input<boolean | undefined>;
     /**
+     * The connection schedule configuration.
+     */
+    schedule?: pulumi.Input<inputs.ConnectionV2Schedule | undefined>;
+    /**
      * The connection schedule configuration type. Supported values: `auto`, `manual`.
      */
     scheduleType?: pulumi.Input<string | undefined>;
@@ -436,6 +446,10 @@ export interface ConnectionV2Args {
      * Whether to run setup tests when creating or updating the connection.
      */
     runSetupTests?: pulumi.Input<boolean | undefined>;
+    /**
+     * The connection schedule configuration.
+     */
+    schedule?: pulumi.Input<inputs.ConnectionV2Schedule | undefined>;
     /**
      * The connection schedule configuration type. Supported values: `auto`, `manual`.
      */

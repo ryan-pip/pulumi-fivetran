@@ -19,6 +19,7 @@ __all__ = [
     'ConnectionDestinationSchema',
     'ConnectionV2ConnectCardConfig',
     'ConnectionV2DestinationConfiguration',
+    'ConnectionV2Schedule',
     'ConnectionV2Status',
     'ConnectionV2StatusTask',
     'ConnectionV2StatusWarning',
@@ -326,6 +327,94 @@ class ConnectionV2DestinationConfiguration(dict):
         Destination virtual warehouse used by the connection.
         """
         return pulumi.get(self, "virtual_warehouse")
+
+
+@pulumi.output_type
+class ConnectionV2Schedule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "daysOfWeeks":
+            suggest = "days_of_weeks"
+        elif key == "scheduleType":
+            suggest = "schedule_type"
+        elif key == "timeOfDay":
+            suggest = "time_of_day"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionV2Schedule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionV2Schedule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionV2Schedule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cron: Optional[_builtins.str] = None,
+                 days_of_weeks: Optional[Sequence[_builtins.str]] = None,
+                 interval: Optional[_builtins.int] = None,
+                 schedule_type: Optional[_builtins.str] = None,
+                 time_of_day: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str cron: The cron expression for scheduled syncs (used when schedule_type is CRON).
+        :param Sequence[_builtins.str] days_of_weeks: The days of the week for scheduled syncs (used when schedule_type is WEEKLY).
+        :param _builtins.int interval: The interval in minutes between syncs (used when schedule_type is INTERVAL).
+        :param _builtins.str schedule_type: The connection schedule configuration type. Supported values: `auto`, `manual`.
+        :param _builtins.str time_of_day: The time of day for scheduled syncs (format: HH:MM).
+        """
+        if cron is not None:
+            pulumi.set(__self__, "cron", cron)
+        if days_of_weeks is not None:
+            pulumi.set(__self__, "days_of_weeks", days_of_weeks)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if schedule_type is not None:
+            pulumi.set(__self__, "schedule_type", schedule_type)
+        if time_of_day is not None:
+            pulumi.set(__self__, "time_of_day", time_of_day)
+
+    @_builtins.property
+    @pulumi.getter
+    def cron(self) -> Optional[_builtins.str]:
+        """
+        The cron expression for scheduled syncs (used when schedule_type is CRON).
+        """
+        return pulumi.get(self, "cron")
+
+    @_builtins.property
+    @pulumi.getter(name="daysOfWeeks")
+    def days_of_weeks(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The days of the week for scheduled syncs (used when schedule_type is WEEKLY).
+        """
+        return pulumi.get(self, "days_of_weeks")
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> Optional[_builtins.int]:
+        """
+        The interval in minutes between syncs (used when schedule_type is INTERVAL).
+        """
+        return pulumi.get(self, "interval")
+
+    @_builtins.property
+    @pulumi.getter(name="scheduleType")
+    def schedule_type(self) -> Optional[_builtins.str]:
+        """
+        The connection schedule configuration type. Supported values: `auto`, `manual`.
+        """
+        return pulumi.get(self, "schedule_type")
+
+    @_builtins.property
+    @pulumi.getter(name="timeOfDay")
+    def time_of_day(self) -> Optional[_builtins.str]:
+        """
+        The time of day for scheduled syncs (format: HH:MM).
+        """
+        return pulumi.get(self, "time_of_day")
 
 
 @pulumi.output_type

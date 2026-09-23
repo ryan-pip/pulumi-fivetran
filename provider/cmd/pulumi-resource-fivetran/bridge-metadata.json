@@ -13,6 +13,13 @@
                 "current": "fivetran:index/connectionV2:ConnectionV2",
                 "majorVersion": 1,
                 "fields": {
+                    "schedule": {
+                        "fields": {
+                            "days_of_week": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
                     "status": {
                         "fields": {
                             "tasks": {

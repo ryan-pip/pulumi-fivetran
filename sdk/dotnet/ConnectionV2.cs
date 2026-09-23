@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Fivetran
 {
     /// <summary>
-    /// &gt; **Alpha:** This resource is in alpha and its schema and behavior may change without notice. Not recommended for production use.
+    /// &gt; **Public Preview:** This resource is in public preview. Features and behavior may change based on feedback.
     /// 
     /// Manages a Fivetran connection. Unlike `fivetran.Connector`/`fivetran.Connection`, `Config` and `Auth` are provided as dynamic, service-specific objects: their accepted fields, types, and required/readonly/immutable rules are resolved from connector metadata at plan time rather than from a fixed schema. This means the same resource works across services (e.g. `S3`, `Postgres`, `FivetranLog`) without a per-service Terraform schema.
     /// 
@@ -164,6 +164,12 @@ namespace Pulumi.Fivetran
         /// </summary>
         [Output("runSetupTests")]
         public Output<bool> RunSetupTests { get; private set; } = null!;
+
+        /// <summary>
+        /// The connection schedule configuration.
+        /// </summary>
+        [Output("schedule")]
+        public Output<Outputs.ConnectionV2Schedule> Schedule { get; private set; } = null!;
 
         /// <summary>
         /// The connection schedule configuration type. Supported values: `Auto`, `Manual`.
@@ -365,6 +371,12 @@ namespace Pulumi.Fivetran
         public Input<bool>? RunSetupTests { get; set; }
 
         /// <summary>
+        /// The connection schedule configuration.
+        /// </summary>
+        [Input("schedule")]
+        public Input<Inputs.ConnectionV2ScheduleArgs>? Schedule { get; set; }
+
+        /// <summary>
         /// The connection schedule configuration type. Supported values: `Auto`, `Manual`.
         /// </summary>
         [Input("scheduleType")]
@@ -525,6 +537,12 @@ namespace Pulumi.Fivetran
         /// </summary>
         [Input("runSetupTests")]
         public Input<bool>? RunSetupTests { get; set; }
+
+        /// <summary>
+        /// The connection schedule configuration.
+        /// </summary>
+        [Input("schedule")]
+        public Input<Inputs.ConnectionV2ScheduleGetArgs>? Schedule { get; set; }
 
         /// <summary>
         /// The connection schedule configuration type. Supported values: `Auto`, `Manual`.

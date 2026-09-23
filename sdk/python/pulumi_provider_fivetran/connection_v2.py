@@ -37,6 +37,7 @@ class ConnectionV2Args:
                  private_link_id: pulumi.Input[Optional[_builtins.str]] = None,
                  proxy_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  run_setup_tests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 schedule: pulumi.Input[Optional['ConnectionV2ScheduleArgs']] = None,
                  schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
                  sync_frequency: pulumi.Input[Optional[_builtins.int]] = None,
                  trust_certificates: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -60,6 +61,7 @@ class ConnectionV2Args:
         :param pulumi.Input[_builtins.str] private_link_id: The private link ID. Required when `networking_method` is `PrivateLink`.
         :param pulumi.Input[_builtins.str] proxy_agent_id: The ID of the proxy agent to use. Required when `networking_method` is `ProxyAgent`.
         :param pulumi.Input[_builtins.bool] run_setup_tests: Whether to run setup tests when creating or updating the connection.
+        :param pulumi.Input['ConnectionV2ScheduleArgs'] schedule: The connection schedule configuration.
         :param pulumi.Input[_builtins.str] schedule_type: The connection schedule configuration type. Supported values: `auto`, `manual`.
         :param pulumi.Input[_builtins.int] sync_frequency: The connection sync frequency in minutes.
         :param pulumi.Input[_builtins.bool] trust_certificates: Whether Fivetran should trust certificates automatically.
@@ -94,6 +96,8 @@ class ConnectionV2Args:
             pulumi.set(__self__, "proxy_agent_id", proxy_agent_id)
         if run_setup_tests is not None:
             pulumi.set(__self__, "run_setup_tests", run_setup_tests)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
         if schedule_type is not None:
             pulumi.set(__self__, "schedule_type", schedule_type)
         if sync_frequency is not None:
@@ -296,6 +300,18 @@ class ConnectionV2Args:
         pulumi.set(self, "run_setup_tests", value)
 
     @_builtins.property
+    @pulumi.getter
+    def schedule(self) -> pulumi.Input[Optional['ConnectionV2ScheduleArgs']]:
+        """
+        The connection schedule configuration.
+        """
+        return pulumi.get(self, "schedule")
+
+    @schedule.setter
+    def schedule(self, value: pulumi.Input[Optional['ConnectionV2ScheduleArgs']]):
+        pulumi.set(self, "schedule", value)
+
+    @_builtins.property
     @pulumi.getter(name="scheduleType")
     def schedule_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -366,6 +382,7 @@ class _ConnectionV2State:
                  private_link_id: pulumi.Input[Optional[_builtins.str]] = None,
                  proxy_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  run_setup_tests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 schedule: pulumi.Input[Optional['ConnectionV2ScheduleArgs']] = None,
                  schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
                  service: pulumi.Input[Optional[_builtins.str]] = None,
                  service_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -396,6 +413,7 @@ class _ConnectionV2State:
         :param pulumi.Input[_builtins.str] private_link_id: The private link ID. Required when `networking_method` is `PrivateLink`.
         :param pulumi.Input[_builtins.str] proxy_agent_id: The ID of the proxy agent to use. Required when `networking_method` is `ProxyAgent`.
         :param pulumi.Input[_builtins.bool] run_setup_tests: Whether to run setup tests when creating or updating the connection.
+        :param pulumi.Input['ConnectionV2ScheduleArgs'] schedule: The connection schedule configuration.
         :param pulumi.Input[_builtins.str] schedule_type: The connection schedule configuration type. Supported values: `auto`, `manual`.
         :param pulumi.Input[_builtins.str] service: The connection service type (e.g., `postgres`, `mysql`, `s3`, `snowflake`). Changing this forces the connection to be replaced.
         :param pulumi.Input[_builtins.str] service_version: The connection type version within the Fivetran system.
@@ -443,6 +461,8 @@ class _ConnectionV2State:
             pulumi.set(__self__, "proxy_agent_id", proxy_agent_id)
         if run_setup_tests is not None:
             pulumi.set(__self__, "run_setup_tests", run_setup_tests)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
         if schedule_type is not None:
             pulumi.set(__self__, "schedule_type", schedule_type)
         if service is not None:
@@ -689,6 +709,18 @@ class _ConnectionV2State:
         pulumi.set(self, "run_setup_tests", value)
 
     @_builtins.property
+    @pulumi.getter
+    def schedule(self) -> pulumi.Input[Optional['ConnectionV2ScheduleArgs']]:
+        """
+        The connection schedule configuration.
+        """
+        return pulumi.get(self, "schedule")
+
+    @schedule.setter
+    def schedule(self, value: pulumi.Input[Optional['ConnectionV2ScheduleArgs']]):
+        pulumi.set(self, "schedule", value)
+
+    @_builtins.property
     @pulumi.getter(name="scheduleType")
     def schedule_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -806,6 +838,7 @@ class ConnectionV2(pulumi.CustomResource):
                  private_link_id: pulumi.Input[Optional[_builtins.str]] = None,
                  proxy_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  run_setup_tests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 schedule: pulumi.Input[Optional[Union['ConnectionV2ScheduleArgs', 'ConnectionV2ScheduleArgsDict']]] = None,
                  schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
                  service: pulumi.Input[Optional[_builtins.str]] = None,
                  sync_frequency: pulumi.Input[Optional[_builtins.int]] = None,
@@ -813,7 +846,7 @@ class ConnectionV2(pulumi.CustomResource):
                  trust_fingerprints: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
-        > **Alpha:** This resource is in alpha and its schema and behavior may change without notice. Not recommended for production use.
+        > **Public Preview:** This resource is in public preview. Features and behavior may change based on feedback.
 
         Manages a Fivetran connection. Unlike `Connector`/`Connection`, `config` and `auth` are provided as dynamic, service-specific objects: their accepted fields, types, and required/readonly/immutable rules are resolved from connector metadata at plan time rather than from a fixed schema. This means the same resource works across services (e.g. `s3`, `postgres`, `fivetran_log`) without a per-service Terraform schema.
 
@@ -857,6 +890,7 @@ class ConnectionV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] private_link_id: The private link ID. Required when `networking_method` is `PrivateLink`.
         :param pulumi.Input[_builtins.str] proxy_agent_id: The ID of the proxy agent to use. Required when `networking_method` is `ProxyAgent`.
         :param pulumi.Input[_builtins.bool] run_setup_tests: Whether to run setup tests when creating or updating the connection.
+        :param pulumi.Input[Union['ConnectionV2ScheduleArgs', 'ConnectionV2ScheduleArgsDict']] schedule: The connection schedule configuration.
         :param pulumi.Input[_builtins.str] schedule_type: The connection schedule configuration type. Supported values: `auto`, `manual`.
         :param pulumi.Input[_builtins.str] service: The connection service type (e.g., `postgres`, `mysql`, `s3`, `snowflake`). Changing this forces the connection to be replaced.
         :param pulumi.Input[_builtins.int] sync_frequency: The connection sync frequency in minutes.
@@ -870,7 +904,7 @@ class ConnectionV2(pulumi.CustomResource):
                  args: ConnectionV2Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Alpha:** This resource is in alpha and its schema and behavior may change without notice. Not recommended for production use.
+        > **Public Preview:** This resource is in public preview. Features and behavior may change based on feedback.
 
         Manages a Fivetran connection. Unlike `Connector`/`Connection`, `config` and `auth` are provided as dynamic, service-specific objects: their accepted fields, types, and required/readonly/immutable rules are resolved from connector metadata at plan time rather than from a fixed schema. This means the same resource works across services (e.g. `s3`, `postgres`, `fivetran_log`) without a per-service Terraform schema.
 
@@ -927,6 +961,7 @@ class ConnectionV2(pulumi.CustomResource):
                  private_link_id: pulumi.Input[Optional[_builtins.str]] = None,
                  proxy_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  run_setup_tests: pulumi.Input[Optional[_builtins.bool]] = None,
+                 schedule: pulumi.Input[Optional[Union['ConnectionV2ScheduleArgs', 'ConnectionV2ScheduleArgsDict']]] = None,
                  schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
                  service: pulumi.Input[Optional[_builtins.str]] = None,
                  sync_frequency: pulumi.Input[Optional[_builtins.int]] = None,
@@ -960,6 +995,7 @@ class ConnectionV2(pulumi.CustomResource):
             __props__.__dict__["private_link_id"] = private_link_id
             __props__.__dict__["proxy_agent_id"] = proxy_agent_id
             __props__.__dict__["run_setup_tests"] = run_setup_tests
+            __props__.__dict__["schedule"] = schedule
             __props__.__dict__["schedule_type"] = schedule_type
             if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
@@ -1005,6 +1041,7 @@ class ConnectionV2(pulumi.CustomResource):
             private_link_id: pulumi.Input[Optional[_builtins.str]] = None,
             proxy_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
             run_setup_tests: pulumi.Input[Optional[_builtins.bool]] = None,
+            schedule: pulumi.Input[Optional[Union['ConnectionV2ScheduleArgs', 'ConnectionV2ScheduleArgsDict']]] = None,
             schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
             service: pulumi.Input[Optional[_builtins.str]] = None,
             service_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1039,6 +1076,7 @@ class ConnectionV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] private_link_id: The private link ID. Required when `networking_method` is `PrivateLink`.
         :param pulumi.Input[_builtins.str] proxy_agent_id: The ID of the proxy agent to use. Required when `networking_method` is `ProxyAgent`.
         :param pulumi.Input[_builtins.bool] run_setup_tests: Whether to run setup tests when creating or updating the connection.
+        :param pulumi.Input[Union['ConnectionV2ScheduleArgs', 'ConnectionV2ScheduleArgsDict']] schedule: The connection schedule configuration.
         :param pulumi.Input[_builtins.str] schedule_type: The connection schedule configuration type. Supported values: `auto`, `manual`.
         :param pulumi.Input[_builtins.str] service: The connection service type (e.g., `postgres`, `mysql`, `s3`, `snowflake`). Changing this forces the connection to be replaced.
         :param pulumi.Input[_builtins.str] service_version: The connection type version within the Fivetran system.
@@ -1071,6 +1109,7 @@ class ConnectionV2(pulumi.CustomResource):
         __props__.__dict__["private_link_id"] = private_link_id
         __props__.__dict__["proxy_agent_id"] = proxy_agent_id
         __props__.__dict__["run_setup_tests"] = run_setup_tests
+        __props__.__dict__["schedule"] = schedule
         __props__.__dict__["schedule_type"] = schedule_type
         __props__.__dict__["service"] = service
         __props__.__dict__["service_version"] = service_version
@@ -1232,6 +1271,14 @@ class ConnectionV2(pulumi.CustomResource):
         Whether to run setup tests when creating or updating the connection.
         """
         return pulumi.get(self, "run_setup_tests")
+
+    @_builtins.property
+    @pulumi.getter
+    def schedule(self) -> pulumi.Output['outputs.ConnectionV2Schedule']:
+        """
+        The connection schedule configuration.
+        """
+        return pulumi.get(self, "schedule")
 
     @_builtins.property
     @pulumi.getter(name="scheduleType")

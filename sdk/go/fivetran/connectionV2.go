@@ -12,7 +12,7 @@ import (
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
-// > **Alpha:** This resource is in alpha and its schema and behavior may change without notice. Not recommended for production use.
+// > **Public Preview:** This resource is in public preview. Features and behavior may change based on feedback.
 //
 // Manages a Fivetran connection. Unlike `Connector`/`Connection`, `config` and `auth` are provided as dynamic, service-specific objects: their accepted fields, types, and required/readonly/immutable rules are resolved from connector metadata at plan time rather than from a fixed schema. This means the same resource works across services (e.g. `s3`, `postgres`, `fivetranLog`) without a per-service Terraform schema.
 //
@@ -98,6 +98,8 @@ type ConnectionV2 struct {
 	ProxyAgentId pulumi.StringOutput `pulumi:"proxyAgentId"`
 	// Whether to run setup tests when creating or updating the connection.
 	RunSetupTests pulumi.BoolOutput `pulumi:"runSetupTests"`
+	// The connection schedule configuration.
+	Schedule ConnectionV2ScheduleOutput `pulumi:"schedule"`
 	// The connection schedule configuration type. Supported values: `auto`, `manual`.
 	ScheduleType pulumi.StringOutput `pulumi:"scheduleType"`
 	// The connection service type (e.g., `postgres`, `mysql`, `s3`, `snowflake`). Changing this forces the connection to be replaced.
@@ -200,6 +202,8 @@ type connectionV2State struct {
 	ProxyAgentId *string `pulumi:"proxyAgentId"`
 	// Whether to run setup tests when creating or updating the connection.
 	RunSetupTests *bool `pulumi:"runSetupTests"`
+	// The connection schedule configuration.
+	Schedule *ConnectionV2Schedule `pulumi:"schedule"`
 	// The connection schedule configuration type. Supported values: `auto`, `manual`.
 	ScheduleType *string `pulumi:"scheduleType"`
 	// The connection service type (e.g., `postgres`, `mysql`, `s3`, `snowflake`). Changing this forces the connection to be replaced.
@@ -257,6 +261,8 @@ type ConnectionV2State struct {
 	ProxyAgentId pulumi.StringPtrInput
 	// Whether to run setup tests when creating or updating the connection.
 	RunSetupTests pulumi.BoolPtrInput
+	// The connection schedule configuration.
+	Schedule ConnectionV2SchedulePtrInput
 	// The connection schedule configuration type. Supported values: `auto`, `manual`.
 	ScheduleType pulumi.StringPtrInput
 	// The connection service type (e.g., `postgres`, `mysql`, `s3`, `snowflake`). Changing this forces the connection to be replaced.
@@ -310,6 +316,8 @@ type connectionV2Args struct {
 	ProxyAgentId *string `pulumi:"proxyAgentId"`
 	// Whether to run setup tests when creating or updating the connection.
 	RunSetupTests *bool `pulumi:"runSetupTests"`
+	// The connection schedule configuration.
+	Schedule *ConnectionV2Schedule `pulumi:"schedule"`
 	// The connection schedule configuration type. Supported values: `auto`, `manual`.
 	ScheduleType *string `pulumi:"scheduleType"`
 	// The connection service type (e.g., `postgres`, `mysql`, `s3`, `snowflake`). Changing this forces the connection to be replaced.
@@ -354,6 +362,8 @@ type ConnectionV2Args struct {
 	ProxyAgentId pulumi.StringPtrInput
 	// Whether to run setup tests when creating or updating the connection.
 	RunSetupTests pulumi.BoolPtrInput
+	// The connection schedule configuration.
+	Schedule ConnectionV2SchedulePtrInput
 	// The connection schedule configuration type. Supported values: `auto`, `manual`.
 	ScheduleType pulumi.StringPtrInput
 	// The connection service type (e.g., `postgres`, `mysql`, `s3`, `snowflake`). Changing this forces the connection to be replaced.
@@ -546,6 +556,11 @@ func (o ConnectionV2Output) ProxyAgentId() pulumi.StringOutput {
 // Whether to run setup tests when creating or updating the connection.
 func (o ConnectionV2Output) RunSetupTests() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ConnectionV2) pulumi.BoolOutput { return v.RunSetupTests }).(pulumi.BoolOutput)
+}
+
+// The connection schedule configuration.
+func (o ConnectionV2Output) Schedule() ConnectionV2ScheduleOutput {
+	return o.ApplyT(func(v *ConnectionV2) ConnectionV2ScheduleOutput { return v.Schedule }).(ConnectionV2ScheduleOutput)
 }
 
 // The connection schedule configuration type. Supported values: `auto`, `manual`.

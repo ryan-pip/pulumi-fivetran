@@ -46,6 +46,29 @@ export interface ConnectionV2DestinationConfiguration {
     virtualWarehouse?: pulumi.Input<string | undefined>;
 }
 
+export interface ConnectionV2Schedule {
+    /**
+     * The cron expression for scheduled syncs (used when scheduleType is CRON).
+     */
+    cron?: pulumi.Input<string | undefined>;
+    /**
+     * The days of the week for scheduled syncs (used when scheduleType is WEEKLY).
+     */
+    daysOfWeeks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The interval in minutes between syncs (used when scheduleType is INTERVAL).
+     */
+    interval?: pulumi.Input<number | undefined>;
+    /**
+     * The connection schedule configuration type. Supported values: `auto`, `manual`.
+     */
+    scheduleType?: pulumi.Input<string | undefined>;
+    /**
+     * The time of day for scheduled syncs (format: HH:MM).
+     */
+    timeOfDay?: pulumi.Input<string | undefined>;
+}
+
 export interface ConnectionV2Status {
     /**
      * Whether the connection should be triggered to re-sync all historical data on the next scheduled sync.
