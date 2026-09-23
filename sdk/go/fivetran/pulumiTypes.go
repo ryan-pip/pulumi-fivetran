@@ -519,6 +519,219 @@ func (o ConnectionV2DestinationConfigurationPtrOutput) VirtualWarehouse() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+type ConnectionV2Schedule struct {
+	// The cron expression for scheduled syncs (used when scheduleType is CRON).
+	Cron *string `pulumi:"cron"`
+	// The days of the week for scheduled syncs (used when scheduleType is WEEKLY).
+	DaysOfWeeks []string `pulumi:"daysOfWeeks"`
+	// The interval in minutes between syncs (used when scheduleType is INTERVAL).
+	Interval *int `pulumi:"interval"`
+	// The connection schedule configuration type. Supported values: `auto`, `manual`.
+	ScheduleType *string `pulumi:"scheduleType"`
+	// The time of day for scheduled syncs (format: HH:MM).
+	TimeOfDay *string `pulumi:"timeOfDay"`
+}
+
+// ConnectionV2ScheduleInput is an input type that accepts ConnectionV2ScheduleArgs and ConnectionV2ScheduleOutput values.
+// You can construct a concrete instance of `ConnectionV2ScheduleInput` via:
+//
+//	ConnectionV2ScheduleArgs{...}
+type ConnectionV2ScheduleInput interface {
+	pulumi.Input
+
+	ToConnectionV2ScheduleOutput() ConnectionV2ScheduleOutput
+	ToConnectionV2ScheduleOutputWithContext(context.Context) ConnectionV2ScheduleOutput
+}
+
+type ConnectionV2ScheduleArgs struct {
+	// The cron expression for scheduled syncs (used when scheduleType is CRON).
+	Cron pulumi.StringPtrInput `pulumi:"cron"`
+	// The days of the week for scheduled syncs (used when scheduleType is WEEKLY).
+	DaysOfWeeks pulumi.StringArrayInput `pulumi:"daysOfWeeks"`
+	// The interval in minutes between syncs (used when scheduleType is INTERVAL).
+	Interval pulumi.IntPtrInput `pulumi:"interval"`
+	// The connection schedule configuration type. Supported values: `auto`, `manual`.
+	ScheduleType pulumi.StringPtrInput `pulumi:"scheduleType"`
+	// The time of day for scheduled syncs (format: HH:MM).
+	TimeOfDay pulumi.StringPtrInput `pulumi:"timeOfDay"`
+}
+
+func (ConnectionV2ScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionV2Schedule)(nil)).Elem()
+}
+
+func (i ConnectionV2ScheduleArgs) ToConnectionV2ScheduleOutput() ConnectionV2ScheduleOutput {
+	return i.ToConnectionV2ScheduleOutputWithContext(context.Background())
+}
+
+func (i ConnectionV2ScheduleArgs) ToConnectionV2ScheduleOutputWithContext(ctx context.Context) ConnectionV2ScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionV2ScheduleOutput)
+}
+
+func (i ConnectionV2ScheduleArgs) ToConnectionV2SchedulePtrOutput() ConnectionV2SchedulePtrOutput {
+	return i.ToConnectionV2SchedulePtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionV2ScheduleArgs) ToConnectionV2SchedulePtrOutputWithContext(ctx context.Context) ConnectionV2SchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionV2ScheduleOutput).ToConnectionV2SchedulePtrOutputWithContext(ctx)
+}
+
+// ConnectionV2SchedulePtrInput is an input type that accepts ConnectionV2ScheduleArgs, ConnectionV2SchedulePtr and ConnectionV2SchedulePtrOutput values.
+// You can construct a concrete instance of `ConnectionV2SchedulePtrInput` via:
+//
+//	        ConnectionV2ScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionV2SchedulePtrInput interface {
+	pulumi.Input
+
+	ToConnectionV2SchedulePtrOutput() ConnectionV2SchedulePtrOutput
+	ToConnectionV2SchedulePtrOutputWithContext(context.Context) ConnectionV2SchedulePtrOutput
+}
+
+type connectionV2SchedulePtrType ConnectionV2ScheduleArgs
+
+func ConnectionV2SchedulePtr(v *ConnectionV2ScheduleArgs) ConnectionV2SchedulePtrInput {
+	return (*connectionV2SchedulePtrType)(v)
+}
+
+func (*connectionV2SchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionV2Schedule)(nil)).Elem()
+}
+
+func (i *connectionV2SchedulePtrType) ToConnectionV2SchedulePtrOutput() ConnectionV2SchedulePtrOutput {
+	return i.ToConnectionV2SchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *connectionV2SchedulePtrType) ToConnectionV2SchedulePtrOutputWithContext(ctx context.Context) ConnectionV2SchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionV2SchedulePtrOutput)
+}
+
+type ConnectionV2ScheduleOutput struct{ *pulumi.OutputState }
+
+func (ConnectionV2ScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionV2Schedule)(nil)).Elem()
+}
+
+func (o ConnectionV2ScheduleOutput) ToConnectionV2ScheduleOutput() ConnectionV2ScheduleOutput {
+	return o
+}
+
+func (o ConnectionV2ScheduleOutput) ToConnectionV2ScheduleOutputWithContext(ctx context.Context) ConnectionV2ScheduleOutput {
+	return o
+}
+
+func (o ConnectionV2ScheduleOutput) ToConnectionV2SchedulePtrOutput() ConnectionV2SchedulePtrOutput {
+	return o.ToConnectionV2SchedulePtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionV2ScheduleOutput) ToConnectionV2SchedulePtrOutputWithContext(ctx context.Context) ConnectionV2SchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionV2Schedule) *ConnectionV2Schedule {
+		return &v
+	}).(ConnectionV2SchedulePtrOutput)
+}
+
+// The cron expression for scheduled syncs (used when scheduleType is CRON).
+func (o ConnectionV2ScheduleOutput) Cron() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionV2Schedule) *string { return v.Cron }).(pulumi.StringPtrOutput)
+}
+
+// The days of the week for scheduled syncs (used when scheduleType is WEEKLY).
+func (o ConnectionV2ScheduleOutput) DaysOfWeeks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectionV2Schedule) []string { return v.DaysOfWeeks }).(pulumi.StringArrayOutput)
+}
+
+// The interval in minutes between syncs (used when scheduleType is INTERVAL).
+func (o ConnectionV2ScheduleOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConnectionV2Schedule) *int { return v.Interval }).(pulumi.IntPtrOutput)
+}
+
+// The connection schedule configuration type. Supported values: `auto`, `manual`.
+func (o ConnectionV2ScheduleOutput) ScheduleType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionV2Schedule) *string { return v.ScheduleType }).(pulumi.StringPtrOutput)
+}
+
+// The time of day for scheduled syncs (format: HH:MM).
+func (o ConnectionV2ScheduleOutput) TimeOfDay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionV2Schedule) *string { return v.TimeOfDay }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionV2SchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionV2SchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionV2Schedule)(nil)).Elem()
+}
+
+func (o ConnectionV2SchedulePtrOutput) ToConnectionV2SchedulePtrOutput() ConnectionV2SchedulePtrOutput {
+	return o
+}
+
+func (o ConnectionV2SchedulePtrOutput) ToConnectionV2SchedulePtrOutputWithContext(ctx context.Context) ConnectionV2SchedulePtrOutput {
+	return o
+}
+
+func (o ConnectionV2SchedulePtrOutput) Elem() ConnectionV2ScheduleOutput {
+	return o.ApplyT(func(v *ConnectionV2Schedule) ConnectionV2Schedule {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionV2Schedule
+		return ret
+	}).(ConnectionV2ScheduleOutput)
+}
+
+// The cron expression for scheduled syncs (used when scheduleType is CRON).
+func (o ConnectionV2SchedulePtrOutput) Cron() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionV2Schedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cron
+	}).(pulumi.StringPtrOutput)
+}
+
+// The days of the week for scheduled syncs (used when scheduleType is WEEKLY).
+func (o ConnectionV2SchedulePtrOutput) DaysOfWeeks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectionV2Schedule) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DaysOfWeeks
+	}).(pulumi.StringArrayOutput)
+}
+
+// The interval in minutes between syncs (used when scheduleType is INTERVAL).
+func (o ConnectionV2SchedulePtrOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectionV2Schedule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Interval
+	}).(pulumi.IntPtrOutput)
+}
+
+// The connection schedule configuration type. Supported values: `auto`, `manual`.
+func (o ConnectionV2SchedulePtrOutput) ScheduleType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionV2Schedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScheduleType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time of day for scheduled syncs (format: HH:MM).
+func (o ConnectionV2SchedulePtrOutput) TimeOfDay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionV2Schedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeOfDay
+	}).(pulumi.StringPtrOutput)
+}
+
 type ConnectionV2Status struct {
 	// Whether the connection should be triggered to re-sync all historical data on the next scheduled sync.
 	IsHistoricalSync *bool `pulumi:"isHistoricalSync"`
@@ -94424,6 +94637,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionV2ConnectCardConfigPtrInput)(nil)).Elem(), ConnectionV2ConnectCardConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionV2DestinationConfigurationInput)(nil)).Elem(), ConnectionV2DestinationConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionV2DestinationConfigurationPtrInput)(nil)).Elem(), ConnectionV2DestinationConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionV2ScheduleInput)(nil)).Elem(), ConnectionV2ScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionV2SchedulePtrInput)(nil)).Elem(), ConnectionV2ScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionV2StatusInput)(nil)).Elem(), ConnectionV2StatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionV2StatusPtrInput)(nil)).Elem(), ConnectionV2StatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionV2StatusTaskInput)(nil)).Elem(), ConnectionV2StatusTaskArgs{})
@@ -94700,6 +94915,8 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionV2ConnectCardConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionV2DestinationConfigurationOutput{})
 	pulumi.RegisterOutputType(ConnectionV2DestinationConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionV2ScheduleOutput{})
+	pulumi.RegisterOutputType(ConnectionV2SchedulePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionV2StatusOutput{})
 	pulumi.RegisterOutputType(ConnectionV2StatusPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionV2StatusTaskOutput{})
