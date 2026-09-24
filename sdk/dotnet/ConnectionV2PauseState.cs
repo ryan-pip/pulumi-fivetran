@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Fivetran
 {
     /// <summary>
-    /// &gt; **Alpha:** This resource is in alpha and its schema and behavior may change without notice. Not recommended for production use.
+    /// &gt; **Public Preview:** This resource is in public preview. Features and behavior may change based on feedback.
     /// 
     /// Manages the paused state of a `fivetran.ConnectionV2` connection, separately from the connection resource itself. This lets you pause and resume a connection without triggering changes to (or replacement of) the connection's own configuration.
     /// 
