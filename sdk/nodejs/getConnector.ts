@@ -48,6 +48,7 @@ export interface GetConnectorResult {
     readonly connectedBy: string;
     readonly createdAt: string;
     readonly dailySyncTime: string;
+    readonly dataChecks: boolean;
     readonly dataDelaySensitivity: string;
     readonly dataDelayThreshold: number;
     readonly destinationSchema?: outputs.GetConnectorDestinationSchema;

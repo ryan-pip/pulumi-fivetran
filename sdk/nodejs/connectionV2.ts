@@ -88,6 +88,10 @@ export class ConnectionV2 extends pulumi.CustomResource {
      */
     declare public readonly dailySyncTime: pulumi.Output<string>;
     /**
+     * Specifies whether data validation is enabled for the connection.
+     */
+    declare public readonly dataChecks: pulumi.Output<boolean>;
+    /**
      * The level of data delay notification threshold. Possible values: `LOW`, `NORMAL`, `HIGH`, `CUSTOM`, `SYNC_FREQUENCY`.
      */
     declare public readonly dataDelaySensitivity: pulumi.Output<string>;
@@ -195,6 +199,7 @@ export class ConnectionV2 extends pulumi.CustomResource {
             resourceInputs["connectedBy"] = state?.connectedBy;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["dailySyncTime"] = state?.dailySyncTime;
+            resourceInputs["dataChecks"] = state?.dataChecks;
             resourceInputs["dataDelaySensitivity"] = state?.dataDelaySensitivity;
             resourceInputs["dataDelayThreshold"] = state?.dataDelayThreshold;
             resourceInputs["destinationConfiguration"] = state?.destinationConfiguration;
@@ -232,6 +237,7 @@ export class ConnectionV2 extends pulumi.CustomResource {
             resourceInputs["config"] = args?.config;
             resourceInputs["connectCardConfig"] = args?.connectCardConfig;
             resourceInputs["dailySyncTime"] = args?.dailySyncTime;
+            resourceInputs["dataChecks"] = args?.dataChecks;
             resourceInputs["dataDelaySensitivity"] = args?.dataDelaySensitivity;
             resourceInputs["dataDelayThreshold"] = args?.dataDelayThreshold;
             resourceInputs["destinationConfiguration"] = args?.destinationConfiguration;
@@ -292,6 +298,10 @@ export interface ConnectionV2State {
      * Sync start time. Only used when `syncFrequency` is `1440`.
      */
     dailySyncTime?: pulumi.Input<string | undefined>;
+    /**
+     * Specifies whether data validation is enabled for the connection.
+     */
+    dataChecks?: pulumi.Input<boolean | undefined>;
     /**
      * The level of data delay notification threshold. Possible values: `LOW`, `NORMAL`, `HIGH`, `CUSTOM`, `SYNC_FREQUENCY`.
      */
@@ -402,6 +412,10 @@ export interface ConnectionV2Args {
      * Sync start time. Only used when `syncFrequency` is `1440`.
      */
     dailySyncTime?: pulumi.Input<string | undefined>;
+    /**
+     * Specifies whether data validation is enabled for the connection.
+     */
+    dataChecks?: pulumi.Input<boolean | undefined>;
     /**
      * The level of data delay notification threshold. Possible values: `LOW`, `NORMAL`, `HIGH`, `CUSTOM`, `SYNC_FREQUENCY`.
      */

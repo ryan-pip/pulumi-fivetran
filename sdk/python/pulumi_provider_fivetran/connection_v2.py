@@ -28,6 +28,7 @@ class ConnectionV2Args:
                  config: Optional[Any] = None,
                  connect_card_config: pulumi.Input[Optional['ConnectionV2ConnectCardConfigArgs']] = None,
                  daily_sync_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_checks: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_delay_sensitivity: pulumi.Input[Optional[_builtins.str]] = None,
                  data_delay_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  destination_configuration: pulumi.Input[Optional['ConnectionV2DestinationConfigurationArgs']] = None,
@@ -52,6 +53,7 @@ class ConnectionV2Args:
         :param Any config: Service-specific connection configuration. The accepted fields are defined by connector metadata at runtime.
         :param pulumi.Input['ConnectionV2ConnectCardConfigArgs'] connect_card_config: Configuration for the interactive Connect Card setup flow.
         :param pulumi.Input[_builtins.str] daily_sync_time: Sync start time. Only used when `sync_frequency` is `1440`.
+        :param pulumi.Input[_builtins.bool] data_checks: Specifies whether data validation is enabled for the connection.
         :param pulumi.Input[_builtins.str] data_delay_sensitivity: The level of data delay notification threshold. Possible values: `LOW`, `NORMAL`, `HIGH`, `CUSTOM`, `SYNC_FREQUENCY`.
         :param pulumi.Input[_builtins.int] data_delay_threshold: Custom sync delay notification threshold in minutes. Only used when `data_delay_sensitivity` is `CUSTOM`.
         :param pulumi.Input['ConnectionV2DestinationConfigurationArgs'] destination_configuration: Destination-specific configuration for the connection.
@@ -78,6 +80,8 @@ class ConnectionV2Args:
             pulumi.set(__self__, "connect_card_config", connect_card_config)
         if daily_sync_time is not None:
             pulumi.set(__self__, "daily_sync_time", daily_sync_time)
+        if data_checks is not None:
+            pulumi.set(__self__, "data_checks", data_checks)
         if data_delay_sensitivity is not None:
             pulumi.set(__self__, "data_delay_sensitivity", data_delay_sensitivity)
         if data_delay_threshold is not None:
@@ -190,6 +194,18 @@ class ConnectionV2Args:
     @daily_sync_time.setter
     def daily_sync_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "daily_sync_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataChecks")
+    def data_checks(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether data validation is enabled for the connection.
+        """
+        return pulumi.get(self, "data_checks")
+
+    @data_checks.setter
+    def data_checks(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "data_checks", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDelaySensitivity")
@@ -369,6 +385,7 @@ class _ConnectionV2State:
                  connected_by: pulumi.Input[Optional[_builtins.str]] = None,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
                  daily_sync_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_checks: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_delay_sensitivity: pulumi.Input[Optional[_builtins.str]] = None,
                  data_delay_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  destination_configuration: pulumi.Input[Optional['ConnectionV2DestinationConfigurationArgs']] = None,
@@ -400,6 +417,7 @@ class _ConnectionV2State:
         :param pulumi.Input[_builtins.str] connected_by: The unique identifier of the user who created the connection in your account.
         :param pulumi.Input[_builtins.str] created_at: The timestamp of the time the connection was created in your account.
         :param pulumi.Input[_builtins.str] daily_sync_time: Sync start time. Only used when `sync_frequency` is `1440`.
+        :param pulumi.Input[_builtins.bool] data_checks: Specifies whether data validation is enabled for the connection.
         :param pulumi.Input[_builtins.str] data_delay_sensitivity: The level of data delay notification threshold. Possible values: `LOW`, `NORMAL`, `HIGH`, `CUSTOM`, `SYNC_FREQUENCY`.
         :param pulumi.Input[_builtins.int] data_delay_threshold: Custom sync delay notification threshold in minutes. Only used when `data_delay_sensitivity` is `CUSTOM`.
         :param pulumi.Input['ConnectionV2DestinationConfigurationArgs'] destination_configuration: Destination-specific configuration for the connection.
@@ -435,6 +453,8 @@ class _ConnectionV2State:
             pulumi.set(__self__, "created_at", created_at)
         if daily_sync_time is not None:
             pulumi.set(__self__, "daily_sync_time", daily_sync_time)
+        if data_checks is not None:
+            pulumi.set(__self__, "data_checks", data_checks)
         if data_delay_sensitivity is not None:
             pulumi.set(__self__, "data_delay_sensitivity", data_delay_sensitivity)
         if data_delay_threshold is not None:
@@ -551,6 +571,18 @@ class _ConnectionV2State:
     @daily_sync_time.setter
     def daily_sync_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "daily_sync_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataChecks")
+    def data_checks(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether data validation is enabled for the connection.
+        """
+        return pulumi.get(self, "data_checks")
+
+    @data_checks.setter
+    def data_checks(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "data_checks", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDelaySensitivity")
@@ -827,6 +859,7 @@ class ConnectionV2(pulumi.CustomResource):
                  config: Optional[Any] = None,
                  connect_card_config: pulumi.Input[Optional[Union['ConnectionV2ConnectCardConfigArgs', 'ConnectionV2ConnectCardConfigArgsDict']]] = None,
                  daily_sync_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_checks: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_delay_sensitivity: pulumi.Input[Optional[_builtins.str]] = None,
                  data_delay_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  destination_configuration: pulumi.Input[Optional[Union['ConnectionV2DestinationConfigurationArgs', 'ConnectionV2DestinationConfigurationArgsDict']]] = None,
@@ -879,6 +912,7 @@ class ConnectionV2(pulumi.CustomResource):
         :param Any config: Service-specific connection configuration. The accepted fields are defined by connector metadata at runtime.
         :param pulumi.Input[Union['ConnectionV2ConnectCardConfigArgs', 'ConnectionV2ConnectCardConfigArgsDict']] connect_card_config: Configuration for the interactive Connect Card setup flow.
         :param pulumi.Input[_builtins.str] daily_sync_time: Sync start time. Only used when `sync_frequency` is `1440`.
+        :param pulumi.Input[_builtins.bool] data_checks: Specifies whether data validation is enabled for the connection.
         :param pulumi.Input[_builtins.str] data_delay_sensitivity: The level of data delay notification threshold. Possible values: `LOW`, `NORMAL`, `HIGH`, `CUSTOM`, `SYNC_FREQUENCY`.
         :param pulumi.Input[_builtins.int] data_delay_threshold: Custom sync delay notification threshold in minutes. Only used when `data_delay_sensitivity` is `CUSTOM`.
         :param pulumi.Input[Union['ConnectionV2DestinationConfigurationArgs', 'ConnectionV2DestinationConfigurationArgsDict']] destination_configuration: Destination-specific configuration for the connection.
@@ -950,6 +984,7 @@ class ConnectionV2(pulumi.CustomResource):
                  config: Optional[Any] = None,
                  connect_card_config: pulumi.Input[Optional[Union['ConnectionV2ConnectCardConfigArgs', 'ConnectionV2ConnectCardConfigArgsDict']]] = None,
                  daily_sync_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_checks: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_delay_sensitivity: pulumi.Input[Optional[_builtins.str]] = None,
                  data_delay_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  destination_configuration: pulumi.Input[Optional[Union['ConnectionV2DestinationConfigurationArgs', 'ConnectionV2DestinationConfigurationArgsDict']]] = None,
@@ -980,6 +1015,7 @@ class ConnectionV2(pulumi.CustomResource):
             __props__.__dict__["config"] = config
             __props__.__dict__["connect_card_config"] = connect_card_config
             __props__.__dict__["daily_sync_time"] = daily_sync_time
+            __props__.__dict__["data_checks"] = data_checks
             __props__.__dict__["data_delay_sensitivity"] = data_delay_sensitivity
             __props__.__dict__["data_delay_threshold"] = data_delay_threshold
             __props__.__dict__["destination_configuration"] = destination_configuration
@@ -1028,6 +1064,7 @@ class ConnectionV2(pulumi.CustomResource):
             connected_by: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             daily_sync_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_checks: pulumi.Input[Optional[_builtins.bool]] = None,
             data_delay_sensitivity: pulumi.Input[Optional[_builtins.str]] = None,
             data_delay_threshold: pulumi.Input[Optional[_builtins.int]] = None,
             destination_configuration: pulumi.Input[Optional[Union['ConnectionV2DestinationConfigurationArgs', 'ConnectionV2DestinationConfigurationArgsDict']]] = None,
@@ -1063,6 +1100,7 @@ class ConnectionV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] connected_by: The unique identifier of the user who created the connection in your account.
         :param pulumi.Input[_builtins.str] created_at: The timestamp of the time the connection was created in your account.
         :param pulumi.Input[_builtins.str] daily_sync_time: Sync start time. Only used when `sync_frequency` is `1440`.
+        :param pulumi.Input[_builtins.bool] data_checks: Specifies whether data validation is enabled for the connection.
         :param pulumi.Input[_builtins.str] data_delay_sensitivity: The level of data delay notification threshold. Possible values: `LOW`, `NORMAL`, `HIGH`, `CUSTOM`, `SYNC_FREQUENCY`.
         :param pulumi.Input[_builtins.int] data_delay_threshold: Custom sync delay notification threshold in minutes. Only used when `data_delay_sensitivity` is `CUSTOM`.
         :param pulumi.Input[Union['ConnectionV2DestinationConfigurationArgs', 'ConnectionV2DestinationConfigurationArgsDict']] destination_configuration: Destination-specific configuration for the connection.
@@ -1096,6 +1134,7 @@ class ConnectionV2(pulumi.CustomResource):
         __props__.__dict__["connected_by"] = connected_by
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["daily_sync_time"] = daily_sync_time
+        __props__.__dict__["data_checks"] = data_checks
         __props__.__dict__["data_delay_sensitivity"] = data_delay_sensitivity
         __props__.__dict__["data_delay_threshold"] = data_delay_threshold
         __props__.__dict__["destination_configuration"] = destination_configuration
@@ -1167,6 +1206,14 @@ class ConnectionV2(pulumi.CustomResource):
         Sync start time. Only used when `sync_frequency` is `1440`.
         """
         return pulumi.get(self, "daily_sync_time")
+
+    @_builtins.property
+    @pulumi.getter(name="dataChecks")
+    def data_checks(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Specifies whether data validation is enabled for the connection.
+        """
+        return pulumi.get(self, "data_checks")
 
     @_builtins.property
     @pulumi.getter(name="dataDelaySensitivity")

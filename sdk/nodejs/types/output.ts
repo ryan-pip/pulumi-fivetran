@@ -8361,7 +8361,7 @@ export interface ConnectorSchemaConfigSchemaTableColumn {
      */
     hashed: boolean;
     /**
-     * Boolean value indicating if the column is a primary key.
+     * Boolean value indicating if the column is a primary key. For file connectors (for example S3, Google Cloud Storage, SFTP, Google Sheets), this can be set before the first sync. Changing this value after the connector has synced requires recreating the connector.
      */
     isPrimaryKey: boolean;
     /**
@@ -8410,7 +8410,7 @@ export interface ConnectorSchemaConfigSchemasTablesColumns {
      */
     hashed: boolean;
     /**
-     * Boolean value indicating if the column is a primary key.
+     * Boolean value indicating if the column is a primary key. For file connectors (for example S3, Google Cloud Storage, SFTP, Google Sheets), this can be set before the first sync. Changing this value after the connector has synced requires recreating the connector.
      */
     isPrimaryKey: boolean;
 }
@@ -9689,6 +9689,10 @@ export interface GetConnectionsConnection {
      * The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
      */
     dailySyncTime: string;
+    /**
+     * Specifies whether data validation is enabled for the connection.
+     */
+    dataChecks: boolean;
     /**
      * The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.
      */
@@ -17698,6 +17702,10 @@ export interface GetConnectorsConnector {
      * The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
      */
     dailySyncTime: string;
+    /**
+     * Specifies whether data validation is enabled for the connector.
+     */
+    dataChecks: boolean;
     /**
      * The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
      */

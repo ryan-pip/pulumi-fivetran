@@ -133,6 +133,7 @@ namespace Pulumi.Fivetran
         public readonly string ConnectedBy;
         public readonly string CreatedAt;
         public readonly string DailySyncTime;
+        public readonly bool DataChecks;
         public readonly string DataDelaySensitivity;
         public readonly int DataDelayThreshold;
         public readonly Outputs.GetConnectorDestinationSchemaResult? DestinationSchema;
@@ -162,6 +163,8 @@ namespace Pulumi.Fivetran
             string createdAt,
 
             string dailySyncTime,
+
+            bool dataChecks,
 
             string dataDelaySensitivity,
 
@@ -205,6 +208,7 @@ namespace Pulumi.Fivetran
             ConnectedBy = connectedBy;
             CreatedAt = createdAt;
             DailySyncTime = dailySyncTime;
+            DataChecks = dataChecks;
             DataDelaySensitivity = dataDelaySensitivity;
             DataDelayThreshold = dataDelayThreshold;
             DestinationSchema = destinationSchema;

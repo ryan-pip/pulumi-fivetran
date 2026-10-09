@@ -157,6 +157,8 @@ type Connector struct {
 	ConnectedBy pulumi.StringOutput `pulumi:"connectedBy"`
 	// The timestamp of the time the connector was created in your account.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Specifies whether data validation is enabled for the connector.
+	DataChecks pulumi.BoolOutput `pulumi:"dataChecks"`
 	// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
 	DataDelaySensitivity pulumi.StringPtrOutput `pulumi:"dataDelaySensitivity"`
 	// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when dataDelaySensitivity set to CUSTOM.
@@ -227,6 +229,8 @@ type connectorState struct {
 	ConnectedBy *string `pulumi:"connectedBy"`
 	// The timestamp of the time the connector was created in your account.
 	CreatedAt *string `pulumi:"createdAt"`
+	// Specifies whether data validation is enabled for the connector.
+	DataChecks *bool `pulumi:"dataChecks"`
 	// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
 	DataDelaySensitivity *string `pulumi:"dataDelaySensitivity"`
 	// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when dataDelaySensitivity set to CUSTOM.
@@ -262,6 +266,8 @@ type ConnectorState struct {
 	ConnectedBy pulumi.StringPtrInput
 	// The timestamp of the time the connector was created in your account.
 	CreatedAt pulumi.StringPtrInput
+	// Specifies whether data validation is enabled for the connector.
+	DataChecks pulumi.BoolPtrInput
 	// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
 	DataDelaySensitivity pulumi.StringPtrInput
 	// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when dataDelaySensitivity set to CUSTOM.
@@ -297,6 +303,8 @@ func (ConnectorState) ElementType() reflect.Type {
 type connectorArgs struct {
 	Auth   *ConnectorAuth   `pulumi:"auth"`
 	Config *ConnectorConfig `pulumi:"config"`
+	// Specifies whether data validation is enabled for the connector.
+	DataChecks *bool `pulumi:"dataChecks"`
 	// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
 	DataDelaySensitivity *string `pulumi:"dataDelaySensitivity"`
 	// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when dataDelaySensitivity set to CUSTOM.
@@ -327,6 +335,8 @@ type connectorArgs struct {
 type ConnectorArgs struct {
 	Auth   ConnectorAuthPtrInput
 	Config ConnectorConfigPtrInput
+	// Specifies whether data validation is enabled for the connector.
+	DataChecks pulumi.BoolPtrInput
 	// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
 	DataDelaySensitivity pulumi.StringPtrInput
 	// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when dataDelaySensitivity set to CUSTOM.
@@ -456,6 +466,11 @@ func (o ConnectorOutput) ConnectedBy() pulumi.StringOutput {
 // The timestamp of the time the connector was created in your account.
 func (o ConnectorOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Specifies whether data validation is enabled for the connector.
+func (o ConnectorOutput) DataChecks() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Connector) pulumi.BoolOutput { return v.DataChecks }).(pulumi.BoolOutput)
 }
 
 // The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.

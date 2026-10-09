@@ -38158,7 +38158,7 @@ type ConnectorSchemaConfigSchemaTableColumn struct {
 	Enabled *bool `pulumi:"enabled"`
 	// The boolean value specifying whether a column should be hashed.
 	Hashed *bool `pulumi:"hashed"`
-	// Boolean value indicating if the column is a primary key.
+	// Boolean value indicating if the column is a primary key. For file connectors (for example S3, Google Cloud Storage, SFTP, Google Sheets), this can be set before the first sync. Changing this value after the connector has synced requires recreating the connector.
 	IsPrimaryKey *bool `pulumi:"isPrimaryKey"`
 	// The column name within your destination in accordance with Fivetran conventional rules.
 	Name string `pulumi:"name"`
@@ -38180,7 +38180,7 @@ type ConnectorSchemaConfigSchemaTableColumnArgs struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// The boolean value specifying whether a column should be hashed.
 	Hashed pulumi.BoolPtrInput `pulumi:"hashed"`
-	// Boolean value indicating if the column is a primary key.
+	// Boolean value indicating if the column is a primary key. For file connectors (for example S3, Google Cloud Storage, SFTP, Google Sheets), this can be set before the first sync. Changing this value after the connector has synced requires recreating the connector.
 	IsPrimaryKey pulumi.BoolPtrInput `pulumi:"isPrimaryKey"`
 	// The column name within your destination in accordance with Fivetran conventional rules.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -38247,7 +38247,7 @@ func (o ConnectorSchemaConfigSchemaTableColumnOutput) Hashed() pulumi.BoolPtrOut
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTableColumn) *bool { return v.Hashed }).(pulumi.BoolPtrOutput)
 }
 
-// Boolean value indicating if the column is a primary key.
+// Boolean value indicating if the column is a primary key. For file connectors (for example S3, Google Cloud Storage, SFTP, Google Sheets), this can be set before the first sync. Changing this value after the connector has synced requires recreating the connector.
 func (o ConnectorSchemaConfigSchemaTableColumnOutput) IsPrimaryKey() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemaTableColumn) *bool { return v.IsPrimaryKey }).(pulumi.BoolPtrOutput)
 }
@@ -38514,7 +38514,7 @@ type ConnectorSchemaConfigSchemasTablesColumns struct {
 	Enabled *bool `pulumi:"enabled"`
 	// The boolean value specifying whether a column should be hashed.
 	Hashed *bool `pulumi:"hashed"`
-	// Boolean value indicating if the column is a primary key.
+	// Boolean value indicating if the column is a primary key. For file connectors (for example S3, Google Cloud Storage, SFTP, Google Sheets), this can be set before the first sync. Changing this value after the connector has synced requires recreating the connector.
 	IsPrimaryKey *bool `pulumi:"isPrimaryKey"`
 }
 
@@ -38534,7 +38534,7 @@ type ConnectorSchemaConfigSchemasTablesColumnsArgs struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// The boolean value specifying whether a column should be hashed.
 	Hashed pulumi.BoolPtrInput `pulumi:"hashed"`
-	// Boolean value indicating if the column is a primary key.
+	// Boolean value indicating if the column is a primary key. For file connectors (for example S3, Google Cloud Storage, SFTP, Google Sheets), this can be set before the first sync. Changing this value after the connector has synced requires recreating the connector.
 	IsPrimaryKey pulumi.BoolPtrInput `pulumi:"isPrimaryKey"`
 }
 
@@ -38599,7 +38599,7 @@ func (o ConnectorSchemaConfigSchemasTablesColumnsOutput) Hashed() pulumi.BoolPtr
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemasTablesColumns) *bool { return v.Hashed }).(pulumi.BoolPtrOutput)
 }
 
-// Boolean value indicating if the column is a primary key.
+// Boolean value indicating if the column is a primary key. For file connectors (for example S3, Google Cloud Storage, SFTP, Google Sheets), this can be set before the first sync. Changing this value after the connector has synced requires recreating the connector.
 func (o ConnectorSchemaConfigSchemasTablesColumnsOutput) IsPrimaryKey() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemasTablesColumns) *bool { return v.IsPrimaryKey }).(pulumi.BoolPtrOutput)
 }
@@ -47178,6 +47178,8 @@ type GetConnectionsConnection struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
 	DailySyncTime string `pulumi:"dailySyncTime"`
+	// Specifies whether data validation is enabled for the connection.
+	DataChecks bool `pulumi:"dataChecks"`
 	// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.
 	DataDelaySensitivity string `pulumi:"dataDelaySensitivity"`
 	// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data*delay*sensitivity set to CUSTOM.
@@ -47232,6 +47234,8 @@ type GetConnectionsConnectionArgs struct {
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
 	DailySyncTime pulumi.StringInput `pulumi:"dailySyncTime"`
+	// Specifies whether data validation is enabled for the connection.
+	DataChecks pulumi.BoolInput `pulumi:"dataChecks"`
 	// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.
 	DataDelaySensitivity pulumi.StringInput `pulumi:"dataDelaySensitivity"`
 	// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data*delay*sensitivity set to CUSTOM.
@@ -47332,6 +47336,11 @@ func (o GetConnectionsConnectionOutput) CreatedAt() pulumi.StringOutput {
 // The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
 func (o GetConnectionsConnectionOutput) DailySyncTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsConnection) string { return v.DailySyncTime }).(pulumi.StringOutput)
+}
+
+// Specifies whether data validation is enabled for the connection.
+func (o GetConnectionsConnectionOutput) DataChecks() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionsConnection) bool { return v.DataChecks }).(pulumi.BoolOutput)
 }
 
 // The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.
@@ -82695,6 +82704,8 @@ type GetConnectorsConnector struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
 	DailySyncTime string `pulumi:"dailySyncTime"`
+	// Specifies whether data validation is enabled for the connector.
+	DataChecks bool `pulumi:"dataChecks"`
 	// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
 	DataDelaySensitivity string `pulumi:"dataDelaySensitivity"`
 	// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data*delay*sensitivity set to CUSTOM.
@@ -82749,6 +82760,8 @@ type GetConnectorsConnectorArgs struct {
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
 	DailySyncTime pulumi.StringInput `pulumi:"dailySyncTime"`
+	// Specifies whether data validation is enabled for the connector.
+	DataChecks pulumi.BoolInput `pulumi:"dataChecks"`
 	// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
 	DataDelaySensitivity pulumi.StringInput `pulumi:"dataDelaySensitivity"`
 	// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data*delay*sensitivity set to CUSTOM.
@@ -82849,6 +82862,11 @@ func (o GetConnectorsConnectorOutput) CreatedAt() pulumi.StringOutput {
 // The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
 func (o GetConnectorsConnectorOutput) DailySyncTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorsConnector) string { return v.DailySyncTime }).(pulumi.StringOutput)
+}
+
+// Specifies whether data validation is enabled for the connector.
+func (o GetConnectorsConnectorOutput) DataChecks() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectorsConnector) bool { return v.DataChecks }).(pulumi.BoolOutput)
 }
 
 // The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.

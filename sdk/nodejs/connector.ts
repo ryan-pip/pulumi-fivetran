@@ -138,6 +138,10 @@ export class Connector extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
+     * Specifies whether data validation is enabled for the connector.
+     */
+    declare public readonly dataChecks: pulumi.Output<boolean>;
+    /**
      * The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
      */
     declare public readonly dataDelaySensitivity: pulumi.Output<string | undefined>;
@@ -205,6 +209,7 @@ export class Connector extends pulumi.CustomResource {
             resourceInputs["config"] = state?.config;
             resourceInputs["connectedBy"] = state?.connectedBy;
             resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["dataChecks"] = state?.dataChecks;
             resourceInputs["dataDelaySensitivity"] = state?.dataDelaySensitivity;
             resourceInputs["dataDelayThreshold"] = state?.dataDelayThreshold;
             resourceInputs["destinationSchema"] = state?.destinationSchema;
@@ -229,6 +234,7 @@ export class Connector extends pulumi.CustomResource {
             }
             resourceInputs["auth"] = args?.auth;
             resourceInputs["config"] = args?.config;
+            resourceInputs["dataChecks"] = args?.dataChecks;
             resourceInputs["dataDelaySensitivity"] = args?.dataDelaySensitivity;
             resourceInputs["dataDelayThreshold"] = args?.dataDelayThreshold;
             resourceInputs["destinationSchema"] = args?.destinationSchema;
@@ -265,6 +271,10 @@ export interface ConnectorState {
      * The timestamp of the time the connector was created in your account.
      */
     createdAt?: pulumi.Input<string | undefined>;
+    /**
+     * Specifies whether data validation is enabled for the connector.
+     */
+    dataChecks?: pulumi.Input<boolean | undefined>;
     /**
      * The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
      */
@@ -323,6 +333,10 @@ export interface ConnectorState {
 export interface ConnectorArgs {
     auth?: pulumi.Input<inputs.ConnectorAuth | undefined>;
     config?: pulumi.Input<inputs.ConnectorConfig | undefined>;
+    /**
+     * Specifies whether data validation is enabled for the connector.
+     */
+    dataChecks?: pulumi.Input<boolean | undefined>;
     /**
      * The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
      */

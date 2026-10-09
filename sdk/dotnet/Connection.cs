@@ -212,6 +212,12 @@ namespace Pulumi.Fivetran
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether data validation is enabled for the connection.
+        /// </summary>
+        [Output("dataChecks")]
+        public Output<bool> DataChecks { get; private set; } = null!;
+
+        /// <summary>
         /// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.
         /// </summary>
         [Output("dataDelaySensitivity")]
@@ -340,6 +346,12 @@ namespace Pulumi.Fivetran
         public Input<string>? Config { get; set; }
 
         /// <summary>
+        /// Specifies whether data validation is enabled for the connection.
+        /// </summary>
+        [Input("dataChecks")]
+        public Input<bool>? DataChecks { get; set; }
+
+        /// <summary>
         /// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.
         /// </summary>
         [Input("dataDelaySensitivity")]
@@ -433,6 +445,12 @@ namespace Pulumi.Fivetran
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Specifies whether data validation is enabled for the connection.
+        /// </summary>
+        [Input("dataChecks")]
+        public Input<bool>? DataChecks { get; set; }
 
         /// <summary>
         /// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.
