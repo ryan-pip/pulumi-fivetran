@@ -31,6 +31,12 @@ namespace Pulumi.Fivetran.Inputs
         public Input<string> DailySyncTime { get; set; } = null!;
 
         /// <summary>
+        /// Specifies whether data validation is enabled for the connector.
+        /// </summary>
+        [Input("dataChecks", required: true)]
+        public Input<bool> DataChecks { get; set; } = null!;
+
+        /// <summary>
         /// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
         /// </summary>
         [Input("dataDelaySensitivity", required: true)]

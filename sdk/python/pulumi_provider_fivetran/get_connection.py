@@ -28,7 +28,7 @@ class GetConnectionResult:
     """
     A collection of values returned by getConnection.
     """
-    def __init__(__self__, connected_by=None, created_at=None, daily_sync_time=None, data_delay_sensitivity=None, data_delay_threshold=None, destination_schema=None, failed_at=None, group_id=None, hybrid_deployment_agent_id=None, id=None, name=None, networking_method=None, pause_after_trial=None, paused=None, private_link_id=None, proxy_agent_id=None, schedule_type=None, service=None, service_version=None, status=None, succeeded_at=None, sync_frequency=None):
+    def __init__(__self__, connected_by=None, created_at=None, daily_sync_time=None, data_checks=None, data_delay_sensitivity=None, data_delay_threshold=None, destination_schema=None, failed_at=None, group_id=None, hybrid_deployment_agent_id=None, id=None, name=None, networking_method=None, pause_after_trial=None, paused=None, private_link_id=None, proxy_agent_id=None, schedule_type=None, service=None, service_version=None, status=None, succeeded_at=None, sync_frequency=None):
         if connected_by and not isinstance(connected_by, str):
             raise TypeError("Expected argument 'connected_by' to be a str")
         pulumi.set(__self__, "connected_by", connected_by)
@@ -38,6 +38,9 @@ class GetConnectionResult:
         if daily_sync_time and not isinstance(daily_sync_time, str):
             raise TypeError("Expected argument 'daily_sync_time' to be a str")
         pulumi.set(__self__, "daily_sync_time", daily_sync_time)
+        if data_checks and not isinstance(data_checks, bool):
+            raise TypeError("Expected argument 'data_checks' to be a bool")
+        pulumi.set(__self__, "data_checks", data_checks)
         if data_delay_sensitivity and not isinstance(data_delay_sensitivity, str):
             raise TypeError("Expected argument 'data_delay_sensitivity' to be a str")
         pulumi.set(__self__, "data_delay_sensitivity", data_delay_sensitivity)
@@ -119,6 +122,11 @@ class GetConnectionResult:
         The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
         """
         return pulumi.get(self, "daily_sync_time")
+
+    @_builtins.property
+    @pulumi.getter(name="dataChecks")
+    def data_checks(self) -> _builtins.bool:
+        return pulumi.get(self, "data_checks")
 
     @_builtins.property
     @pulumi.getter(name="dataDelaySensitivity")
@@ -276,6 +284,7 @@ class AwaitableGetConnectionResult(GetConnectionResult):
             connected_by=self.connected_by,
             created_at=self.created_at,
             daily_sync_time=self.daily_sync_time,
+            data_checks=self.data_checks,
             data_delay_sensitivity=self.data_delay_sensitivity,
             data_delay_threshold=self.data_delay_threshold,
             destination_schema=self.destination_schema,
@@ -327,6 +336,7 @@ def get_connection(destination_schema: Optional[Union['GetConnectionDestinationS
         connected_by=pulumi.get(__ret__, 'connected_by'),
         created_at=pulumi.get(__ret__, 'created_at'),
         daily_sync_time=pulumi.get(__ret__, 'daily_sync_time'),
+        data_checks=pulumi.get(__ret__, 'data_checks'),
         data_delay_sensitivity=pulumi.get(__ret__, 'data_delay_sensitivity'),
         data_delay_threshold=pulumi.get(__ret__, 'data_delay_threshold'),
         destination_schema=pulumi.get(__ret__, 'destination_schema'),
@@ -375,6 +385,7 @@ def get_connection_output(destination_schema: pulumi.Input[Optional[Optional[Uni
         connected_by=pulumi.get(__response__, 'connected_by'),
         created_at=pulumi.get(__response__, 'created_at'),
         daily_sync_time=pulumi.get(__response__, 'daily_sync_time'),
+        data_checks=pulumi.get(__response__, 'data_checks'),
         data_delay_sensitivity=pulumi.get(__response__, 'data_delay_sensitivity'),
         data_delay_threshold=pulumi.get(__response__, 'data_delay_threshold'),
         destination_schema=pulumi.get(__response__, 'destination_schema'),

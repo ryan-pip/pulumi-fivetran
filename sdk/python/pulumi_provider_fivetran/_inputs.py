@@ -34062,7 +34062,7 @@ class ConnectorSchemaConfigSchemaTableColumnArgsDict(TypedDict):
     """
     is_primary_key: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Boolean value indicating if the column is a primary key.
+    Boolean value indicating if the column is a primary key. For file connectors (for example S3, Google Cloud Storage, SFTP, Google Sheets), this can be set before the first sync. Changing this value after the connector has synced requires recreating the connector.
     """
 
 @pulumi.input_type
@@ -34076,7 +34076,7 @@ class ConnectorSchemaConfigSchemaTableColumnArgs:
         :param pulumi.Input[_builtins.str] name: The column name within your destination in accordance with Fivetran conventional rules.
         :param pulumi.Input[_builtins.bool] enabled: The boolean value specifying whether the sync of the column into the destination is enabled.
         :param pulumi.Input[_builtins.bool] hashed: The boolean value specifying whether a column should be hashed.
-        :param pulumi.Input[_builtins.bool] is_primary_key: Boolean value indicating if the column is a primary key.
+        :param pulumi.Input[_builtins.bool] is_primary_key: Boolean value indicating if the column is a primary key. For file connectors (for example S3, Google Cloud Storage, SFTP, Google Sheets), this can be set before the first sync. Changing this value after the connector has synced requires recreating the connector.
         """
         pulumi.set(__self__, "name", name)
         if enabled is not None:
@@ -34126,7 +34126,7 @@ class ConnectorSchemaConfigSchemaTableColumnArgs:
     @pulumi.getter(name="isPrimaryKey")
     def is_primary_key(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Boolean value indicating if the column is a primary key.
+        Boolean value indicating if the column is a primary key. For file connectors (for example S3, Google Cloud Storage, SFTP, Google Sheets), this can be set before the first sync. Changing this value after the connector has synced requires recreating the connector.
         """
         return pulumi.get(self, "is_primary_key")
 
@@ -34284,7 +34284,7 @@ class ConnectorSchemaConfigSchemasTablesColumnsArgsDict(TypedDict):
     """
     is_primary_key: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Boolean value indicating if the column is a primary key.
+    Boolean value indicating if the column is a primary key. For file connectors (for example S3, Google Cloud Storage, SFTP, Google Sheets), this can be set before the first sync. Changing this value after the connector has synced requires recreating the connector.
     """
 
 @pulumi.input_type
@@ -34296,7 +34296,7 @@ class ConnectorSchemaConfigSchemasTablesColumnsArgs:
         """
         :param pulumi.Input[_builtins.bool] enabled: The boolean value specifying whether the sync of the column into the destination is enabled.
         :param pulumi.Input[_builtins.bool] hashed: The boolean value specifying whether a column should be hashed.
-        :param pulumi.Input[_builtins.bool] is_primary_key: Boolean value indicating if the column is a primary key.
+        :param pulumi.Input[_builtins.bool] is_primary_key: Boolean value indicating if the column is a primary key. For file connectors (for example S3, Google Cloud Storage, SFTP, Google Sheets), this can be set before the first sync. Changing this value after the connector has synced requires recreating the connector.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -34333,7 +34333,7 @@ class ConnectorSchemaConfigSchemasTablesColumnsArgs:
     @pulumi.getter(name="isPrimaryKey")
     def is_primary_key(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Boolean value indicating if the column is a primary key.
+        Boolean value indicating if the column is a primary key. For file connectors (for example S3, Google Cloud Storage, SFTP, Google Sheets), this can be set before the first sync. Changing this value after the connector has synced requires recreating the connector.
         """
         return pulumi.get(self, "is_primary_key")
 
@@ -40613,6 +40613,10 @@ class GetConnectionsConnectionArgsDict(TypedDict):
     """
     The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
     """
+    data_checks: _builtins.bool
+    """
+    Specifies whether data validation is enabled for the connection.
+    """
     data_delay_sensitivity: _builtins.str
     """
     The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.
@@ -40688,6 +40692,7 @@ class GetConnectionsConnectionArgs:
                  connected_by: _builtins.str,
                  created_at: _builtins.str,
                  daily_sync_time: _builtins.str,
+                 data_checks: _builtins.bool,
                  data_delay_sensitivity: _builtins.str,
                  data_delay_threshold: _builtins.int,
                  failed_at: _builtins.str,
@@ -40709,6 +40714,7 @@ class GetConnectionsConnectionArgs:
         :param _builtins.str connected_by: The unique identifier of the user who has created the connection in your account.
         :param _builtins.str created_at: The timestamp of the time the connection was created in your account.
         :param _builtins.str daily_sync_time: The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
+        :param _builtins.bool data_checks: Specifies whether data validation is enabled for the connection.
         :param _builtins.str data_delay_sensitivity: The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.
         :param _builtins.int data_delay_threshold: Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data*delay*sensitivity set to CUSTOM.
         :param _builtins.str failed_at: The timestamp of the time the connection sync failed last time.
@@ -40730,6 +40736,7 @@ class GetConnectionsConnectionArgs:
         pulumi.set(__self__, "connected_by", connected_by)
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "daily_sync_time", daily_sync_time)
+        pulumi.set(__self__, "data_checks", data_checks)
         pulumi.set(__self__, "data_delay_sensitivity", data_delay_sensitivity)
         pulumi.set(__self__, "data_delay_threshold", data_delay_threshold)
         pulumi.set(__self__, "failed_at", failed_at)
@@ -40783,6 +40790,18 @@ class GetConnectionsConnectionArgs:
     @daily_sync_time.setter
     def daily_sync_time(self, value: _builtins.str):
         pulumi.set(self, "daily_sync_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataChecks")
+    def data_checks(self) -> _builtins.bool:
+        """
+        Specifies whether data validation is enabled for the connection.
+        """
+        return pulumi.get(self, "data_checks")
+
+    @data_checks.setter
+    def data_checks(self, value: _builtins.bool):
+        pulumi.set(self, "data_checks", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDelaySensitivity")
@@ -71933,6 +71952,10 @@ class GetConnectorsConnectorArgsDict(TypedDict):
     """
     The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
     """
+    data_checks: _builtins.bool
+    """
+    Specifies whether data validation is enabled for the connector.
+    """
     data_delay_sensitivity: _builtins.str
     """
     The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
@@ -72008,6 +72031,7 @@ class GetConnectorsConnectorArgs:
                  connected_by: _builtins.str,
                  created_at: _builtins.str,
                  daily_sync_time: _builtins.str,
+                 data_checks: _builtins.bool,
                  data_delay_sensitivity: _builtins.str,
                  data_delay_threshold: _builtins.int,
                  failed_at: _builtins.str,
@@ -72029,6 +72053,7 @@ class GetConnectorsConnectorArgs:
         :param _builtins.str connected_by: The unique identifier of the user who has created the connector in your account.
         :param _builtins.str created_at: The timestamp of the time the connector was created in your account.
         :param _builtins.str daily_sync_time: The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
+        :param _builtins.bool data_checks: Specifies whether data validation is enabled for the connector.
         :param _builtins.str data_delay_sensitivity: The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
         :param _builtins.int data_delay_threshold: Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data*delay*sensitivity set to CUSTOM.
         :param _builtins.str failed_at: The timestamp of the time the connector sync failed last time.
@@ -72050,6 +72075,7 @@ class GetConnectorsConnectorArgs:
         pulumi.set(__self__, "connected_by", connected_by)
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "daily_sync_time", daily_sync_time)
+        pulumi.set(__self__, "data_checks", data_checks)
         pulumi.set(__self__, "data_delay_sensitivity", data_delay_sensitivity)
         pulumi.set(__self__, "data_delay_threshold", data_delay_threshold)
         pulumi.set(__self__, "failed_at", failed_at)
@@ -72103,6 +72129,18 @@ class GetConnectorsConnectorArgs:
     @daily_sync_time.setter
     def daily_sync_time(self, value: _builtins.str):
         pulumi.set(self, "daily_sync_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataChecks")
+    def data_checks(self) -> _builtins.bool:
+        """
+        Specifies whether data validation is enabled for the connector.
+        """
+        return pulumi.get(self, "data_checks")
+
+    @data_checks.setter
+    def data_checks(self, value: _builtins.bool):
+        pulumi.set(self, "data_checks", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDelaySensitivity")

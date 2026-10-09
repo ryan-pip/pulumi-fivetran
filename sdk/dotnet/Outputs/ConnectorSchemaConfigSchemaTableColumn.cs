@@ -22,7 +22,7 @@ namespace Pulumi.Fivetran.Outputs
         /// </summary>
         public readonly bool? Hashed;
         /// <summary>
-        /// Boolean value indicating if the column is a primary key.
+        /// Boolean value indicating if the column is a primary key. For file connectors (for example S3, Google Cloud Storage, SFTP, Google Sheets), this can be set before the first sync. Changing this value after the connector has synced requires recreating the connector.
         /// </summary>
         public readonly bool? IsPrimaryKey;
         /// <summary>

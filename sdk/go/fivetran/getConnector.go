@@ -62,6 +62,7 @@ type LookupConnectorResult struct {
 	ConnectedBy             string                         `pulumi:"connectedBy"`
 	CreatedAt               string                         `pulumi:"createdAt"`
 	DailySyncTime           string                         `pulumi:"dailySyncTime"`
+	DataChecks              bool                           `pulumi:"dataChecks"`
 	DataDelaySensitivity    string                         `pulumi:"dataDelaySensitivity"`
 	DataDelayThreshold      int                            `pulumi:"dataDelayThreshold"`
 	DestinationSchema       *GetConnectorDestinationSchema `pulumi:"destinationSchema"`
@@ -129,6 +130,10 @@ func (o LookupConnectorResultOutput) CreatedAt() pulumi.StringOutput {
 
 func (o LookupConnectorResultOutput) DailySyncTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectorResult) string { return v.DailySyncTime }).(pulumi.StringOutput)
+}
+
+func (o LookupConnectorResultOutput) DataChecks() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupConnectorResult) bool { return v.DataChecks }).(pulumi.BoolOutput)
 }
 
 func (o LookupConnectorResultOutput) DataDelaySensitivity() pulumi.StringOutput {

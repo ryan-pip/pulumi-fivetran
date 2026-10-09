@@ -28,7 +28,7 @@ class GetConnectorResult:
     """
     A collection of values returned by getConnector.
     """
-    def __init__(__self__, config=None, connected_by=None, created_at=None, daily_sync_time=None, data_delay_sensitivity=None, data_delay_threshold=None, destination_schema=None, failed_at=None, group_id=None, hybrid_deployment_agent_id=None, id=None, name=None, networking_method=None, pause_after_trial=None, paused=None, private_link_id=None, proxy_agent_id=None, schedule_type=None, service=None, service_version=None, status=None, succeeded_at=None, sync_frequency=None):
+    def __init__(__self__, config=None, connected_by=None, created_at=None, daily_sync_time=None, data_checks=None, data_delay_sensitivity=None, data_delay_threshold=None, destination_schema=None, failed_at=None, group_id=None, hybrid_deployment_agent_id=None, id=None, name=None, networking_method=None, pause_after_trial=None, paused=None, private_link_id=None, proxy_agent_id=None, schedule_type=None, service=None, service_version=None, status=None, succeeded_at=None, sync_frequency=None):
         if config and not isinstance(config, dict):
             raise TypeError("Expected argument 'config' to be a dict")
         pulumi.set(__self__, "config", config)
@@ -41,6 +41,9 @@ class GetConnectorResult:
         if daily_sync_time and not isinstance(daily_sync_time, str):
             raise TypeError("Expected argument 'daily_sync_time' to be a str")
         pulumi.set(__self__, "daily_sync_time", daily_sync_time)
+        if data_checks and not isinstance(data_checks, bool):
+            raise TypeError("Expected argument 'data_checks' to be a bool")
+        pulumi.set(__self__, "data_checks", data_checks)
         if data_delay_sensitivity and not isinstance(data_delay_sensitivity, str):
             raise TypeError("Expected argument 'data_delay_sensitivity' to be a str")
         pulumi.set(__self__, "data_delay_sensitivity", data_delay_sensitivity)
@@ -118,6 +121,11 @@ class GetConnectorResult:
     @pulumi.getter(name="dailySyncTime")
     def daily_sync_time(self) -> _builtins.str:
         return pulumi.get(self, "daily_sync_time")
+
+    @_builtins.property
+    @pulumi.getter(name="dataChecks")
+    def data_checks(self) -> _builtins.bool:
+        return pulumi.get(self, "data_checks")
 
     @_builtins.property
     @pulumi.getter(name="dataDelaySensitivity")
@@ -225,6 +233,7 @@ class AwaitableGetConnectorResult(GetConnectorResult):
             connected_by=self.connected_by,
             created_at=self.created_at,
             daily_sync_time=self.daily_sync_time,
+            data_checks=self.data_checks,
             data_delay_sensitivity=self.data_delay_sensitivity,
             data_delay_threshold=self.data_delay_threshold,
             destination_schema=self.destination_schema,
@@ -276,6 +285,7 @@ def get_connector(config: Optional[Union['GetConnectorConfigArgs', 'GetConnector
         connected_by=pulumi.get(__ret__, 'connected_by'),
         created_at=pulumi.get(__ret__, 'created_at'),
         daily_sync_time=pulumi.get(__ret__, 'daily_sync_time'),
+        data_checks=pulumi.get(__ret__, 'data_checks'),
         data_delay_sensitivity=pulumi.get(__ret__, 'data_delay_sensitivity'),
         data_delay_threshold=pulumi.get(__ret__, 'data_delay_threshold'),
         destination_schema=pulumi.get(__ret__, 'destination_schema'),
@@ -324,6 +334,7 @@ def get_connector_output(config: pulumi.Input[Optional[Optional[Union['GetConnec
         connected_by=pulumi.get(__response__, 'connected_by'),
         created_at=pulumi.get(__response__, 'created_at'),
         daily_sync_time=pulumi.get(__response__, 'daily_sync_time'),
+        data_checks=pulumi.get(__response__, 'data_checks'),
         data_delay_sensitivity=pulumi.get(__response__, 'data_delay_sensitivity'),
         data_delay_threshold=pulumi.get(__response__, 'data_delay_threshold'),
         destination_schema=pulumi.get(__response__, 'destination_schema'),

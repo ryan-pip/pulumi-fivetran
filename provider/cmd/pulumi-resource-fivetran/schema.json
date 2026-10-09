@@ -5690,7 +5690,7 @@
                 },
                 "isPrimaryKey": {
                     "type": "boolean",
-                    "description": "Boolean value indicating if the column is a primary key.\n"
+                    "description": "Boolean value indicating if the column is a primary key. For file connectors (for example S3, Google Cloud Storage, SFTP, Google Sheets), this can be set before the first sync. Changing this value after the connector has synced requires recreating the connector.\n"
                 },
                 "name": {
                     "type": "string",
@@ -5780,7 +5780,7 @@
                 },
                 "isPrimaryKey": {
                     "type": "boolean",
-                    "description": "Boolean value indicating if the column is a primary key.\n"
+                    "description": "Boolean value indicating if the column is a primary key. For file connectors (for example S3, Google Cloud Storage, SFTP, Google Sheets), this can be set before the first sync. Changing this value after the connector has synced requires recreating the connector.\n"
                 }
             },
             "type": "object",
@@ -7151,6 +7151,10 @@
                     "type": "string",
                     "description": "The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.\n"
                 },
+                "dataChecks": {
+                    "type": "boolean",
+                    "description": "Specifies whether data validation is enabled for the connection.\n"
+                },
                 "dataDelaySensitivity": {
                     "type": "string",
                     "description": "The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.\n"
@@ -7225,6 +7229,7 @@
                 "connectedBy",
                 "createdAt",
                 "dailySyncTime",
+                "dataChecks",
                 "dataDelaySensitivity",
                 "dataDelayThreshold",
                 "failedAt",
@@ -13147,6 +13152,10 @@
                     "type": "string",
                     "description": "The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.\n"
                 },
+                "dataChecks": {
+                    "type": "boolean",
+                    "description": "Specifies whether data validation is enabled for the connector.\n"
+                },
                 "dataDelaySensitivity": {
                     "type": "string",
                     "description": "The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.\n"
@@ -13221,6 +13230,7 @@
                 "connectedBy",
                 "createdAt",
                 "dailySyncTime",
+                "dataChecks",
                 "dataDelaySensitivity",
                 "dataDelayThreshold",
                 "failedAt",
@@ -15811,6 +15821,10 @@
                     "type": "string",
                     "description": "The timestamp of the time the connection was created in your account.\n"
                 },
+                "dataChecks": {
+                    "type": "boolean",
+                    "description": "Specifies whether data validation is enabled for the connection."
+                },
                 "dataDelaySensitivity": {
                     "type": "string",
                     "description": "The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.\n"
@@ -15866,6 +15880,7 @@
             "required": [
                 "connectedBy",
                 "createdAt",
+                "dataChecks",
                 "dataDelayThreshold",
                 "groupId",
                 "name",
@@ -15879,6 +15894,10 @@
                 "config": {
                     "type": "string",
                     "description": "Optional connection configuration as a JSON-encoded string. This config is merged with\u003cspan pulumi-lang-nodejs=\" destinationSchema \" pulumi-lang-dotnet=\" DestinationSchema \" pulumi-lang-go=\" destinationSchema \" pulumi-lang-python=\" destination_schema \" pulumi-lang-yaml=\" destinationSchema \" pulumi-lang-java=\" destinationSchema \" pulumi-lang-hcl=\" destination_schema \"\u003e destinationSchema \u003c/span\u003efields and sent to the API during creation. The connection resource does not read this field back, allowing it to be managed separately by the \u003cspan pulumi-lang-nodejs=\"`fivetran.ConnectionConfig`\" pulumi-lang-dotnet=\"`fivetran.ConnectionConfig`\" pulumi-lang-go=\"`ConnectionConfig`\" pulumi-lang-python=\"`ConnectionConfig`\" pulumi-lang-yaml=\"`fivetran.ConnectionConfig`\" pulumi-lang-java=\"`fivetran.ConnectionConfig`\" pulumi-lang-hcl=\"`fivetran_connection_config`\"\u003e`fivetran.ConnectionConfig`\u003c/span\u003e resource. Use this to provide service-specific required fields (e.g., \u003cspan pulumi-lang-nodejs=\"`updateMethod`\" pulumi-lang-dotnet=\"`UpdateMethod`\" pulumi-lang-go=\"`updateMethod`\" pulumi-lang-python=\"`update_method`\" pulumi-lang-yaml=\"`updateMethod`\" pulumi-lang-java=\"`updateMethod`\" pulumi-lang-hcl=\"`update_method`\"\u003e`updateMethod`\u003c/span\u003e for Postgres/MySQL) or full connection configuration.\n"
+                },
+                "dataChecks": {
+                    "type": "boolean",
+                    "description": "Specifies whether data validation is enabled for the connection."
                 },
                 "dataDelaySensitivity": {
                     "type": "string",
@@ -15946,6 +15965,10 @@
                     "createdAt": {
                         "type": "string",
                         "description": "The timestamp of the time the connection was created in your account.\n"
+                    },
+                    "dataChecks": {
+                        "type": "boolean",
+                        "description": "Specifies whether data validation is enabled for the connection."
                     },
                     "dataDelaySensitivity": {
                         "type": "string",
@@ -16124,6 +16147,10 @@
                     "type": "string",
                     "description": "Sync start time. Only used when \u003cspan pulumi-lang-nodejs=\"`syncFrequency`\" pulumi-lang-dotnet=\"`SyncFrequency`\" pulumi-lang-go=\"`syncFrequency`\" pulumi-lang-python=\"`sync_frequency`\" pulumi-lang-yaml=\"`syncFrequency`\" pulumi-lang-java=\"`syncFrequency`\" pulumi-lang-hcl=\"`sync_frequency`\"\u003e`syncFrequency`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`1440`\" pulumi-lang-dotnet=\"`1440`\" pulumi-lang-go=\"`1440`\" pulumi-lang-python=\"`1440`\" pulumi-lang-yaml=\"`1440`\" pulumi-lang-java=\"`1440`\" pulumi-lang-hcl=\"`1440`\"\u003e`1440`\u003c/span\u003e.\n"
                 },
+                "dataChecks": {
+                    "type": "boolean",
+                    "description": "Specifies whether data validation is enabled for the connection."
+                },
                 "dataDelaySensitivity": {
                     "type": "string",
                     "description": "The level of data delay notification threshold. Possible values: `LOW`, `NORMAL`, `HIGH`, `CUSTOM`, `SYNC_FREQUENCY`.\n"
@@ -16218,6 +16245,7 @@
                 "connectedBy",
                 "createdAt",
                 "dailySyncTime",
+                "dataChecks",
                 "dataDelaySensitivity",
                 "dataDelayThreshold",
                 "destinationConfiguration",
@@ -16258,6 +16286,10 @@
                 "dailySyncTime": {
                     "type": "string",
                     "description": "Sync start time. Only used when \u003cspan pulumi-lang-nodejs=\"`syncFrequency`\" pulumi-lang-dotnet=\"`SyncFrequency`\" pulumi-lang-go=\"`syncFrequency`\" pulumi-lang-python=\"`sync_frequency`\" pulumi-lang-yaml=\"`syncFrequency`\" pulumi-lang-java=\"`syncFrequency`\" pulumi-lang-hcl=\"`sync_frequency`\"\u003e`syncFrequency`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`1440`\" pulumi-lang-dotnet=\"`1440`\" pulumi-lang-go=\"`1440`\" pulumi-lang-python=\"`1440`\" pulumi-lang-yaml=\"`1440`\" pulumi-lang-java=\"`1440`\" pulumi-lang-hcl=\"`1440`\"\u003e`1440`\u003c/span\u003e.\n"
+                },
+                "dataChecks": {
+                    "type": "boolean",
+                    "description": "Specifies whether data validation is enabled for the connection."
                 },
                 "dataDelaySensitivity": {
                     "type": "string",
@@ -16360,6 +16392,10 @@
                     "dailySyncTime": {
                         "type": "string",
                         "description": "Sync start time. Only used when \u003cspan pulumi-lang-nodejs=\"`syncFrequency`\" pulumi-lang-dotnet=\"`SyncFrequency`\" pulumi-lang-go=\"`syncFrequency`\" pulumi-lang-python=\"`sync_frequency`\" pulumi-lang-yaml=\"`syncFrequency`\" pulumi-lang-java=\"`syncFrequency`\" pulumi-lang-hcl=\"`sync_frequency`\"\u003e`syncFrequency`\u003c/span\u003e is \u003cspan pulumi-lang-nodejs=\"`1440`\" pulumi-lang-dotnet=\"`1440`\" pulumi-lang-go=\"`1440`\" pulumi-lang-python=\"`1440`\" pulumi-lang-yaml=\"`1440`\" pulumi-lang-java=\"`1440`\" pulumi-lang-hcl=\"`1440`\"\u003e`1440`\u003c/span\u003e.\n"
+                    },
+                    "dataChecks": {
+                        "type": "boolean",
+                        "description": "Specifies whether data validation is enabled for the connection."
                     },
                     "dataDelaySensitivity": {
                         "type": "string",
@@ -16515,6 +16551,10 @@
                     "type": "string",
                     "description": "The timestamp of the time the connector was created in your account."
                 },
+                "dataChecks": {
+                    "type": "boolean",
+                    "description": "Specifies whether data validation is enabled for the connector."
+                },
                 "dataDelaySensitivity": {
                     "type": "string",
                     "description": "The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above."
@@ -16573,6 +16613,7 @@
             "required": [
                 "connectedBy",
                 "createdAt",
+                "dataChecks",
                 "dataDelayThreshold",
                 "groupId",
                 "name",
@@ -16588,6 +16629,10 @@
                 },
                 "config": {
                     "$ref": "#/types/fivetran:index/ConnectorConfig:ConnectorConfig"
+                },
+                "dataChecks": {
+                    "type": "boolean",
+                    "description": "Specifies whether data validation is enabled for the connector."
                 },
                 "dataDelaySensitivity": {
                     "type": "string",
@@ -16660,6 +16705,10 @@
                     "createdAt": {
                         "type": "string",
                         "description": "The timestamp of the time the connector was created in your account."
+                    },
+                    "dataChecks": {
+                        "type": "boolean",
+                        "description": "Specifies whether data validation is enabled for the connector."
                     },
                     "dataDelaySensitivity": {
                         "type": "string",
@@ -18830,6 +18879,9 @@
                         "description": "The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.\n",
                         "type": "string"
                     },
+                    "dataChecks": {
+                        "type": "boolean"
+                    },
                     "dataDelaySensitivity": {
                         "description": "The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.\n",
                         "type": "string"
@@ -18909,6 +18961,7 @@
                     "connectedBy",
                     "createdAt",
                     "dailySyncTime",
+                    "dataChecks",
                     "dataDelaySensitivity",
                     "dataDelayThreshold",
                     "failedAt",
@@ -19100,6 +19153,9 @@
                     "dailySyncTime": {
                         "type": "string"
                     },
+                    "dataChecks": {
+                        "type": "boolean"
+                    },
                     "dataDelaySensitivity": {
                         "type": "string"
                     },
@@ -19162,6 +19218,7 @@
                     "connectedBy",
                     "createdAt",
                     "dailySyncTime",
+                    "dataChecks",
                     "dataDelaySensitivity",
                     "dataDelayThreshold",
                     "failedAt",

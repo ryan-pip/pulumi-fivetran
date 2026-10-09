@@ -247,6 +247,8 @@ type Connection struct {
 	ConnectedBy pulumi.StringOutput `pulumi:"connectedBy"`
 	// The timestamp of the time the connection was created in your account.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Specifies whether data validation is enabled for the connection.
+	DataChecks pulumi.BoolOutput `pulumi:"dataChecks"`
 	// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.
 	DataDelaySensitivity pulumi.StringPtrOutput `pulumi:"dataDelaySensitivity"`
 	// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data*delay*sensitivity set to CUSTOM.
@@ -316,6 +318,8 @@ type connectionState struct {
 	ConnectedBy *string `pulumi:"connectedBy"`
 	// The timestamp of the time the connection was created in your account.
 	CreatedAt *string `pulumi:"createdAt"`
+	// Specifies whether data validation is enabled for the connection.
+	DataChecks *bool `pulumi:"dataChecks"`
 	// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.
 	DataDelaySensitivity *string `pulumi:"dataDelaySensitivity"`
 	// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data*delay*sensitivity set to CUSTOM.
@@ -350,6 +354,8 @@ type ConnectionState struct {
 	ConnectedBy pulumi.StringPtrInput
 	// The timestamp of the time the connection was created in your account.
 	CreatedAt pulumi.StringPtrInput
+	// Specifies whether data validation is enabled for the connection.
+	DataChecks pulumi.BoolPtrInput
 	// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.
 	DataDelaySensitivity pulumi.StringPtrInput
 	// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data*delay*sensitivity set to CUSTOM.
@@ -384,6 +390,8 @@ func (ConnectionState) ElementType() reflect.Type {
 type connectionArgs struct {
 	// Optional connection configuration as a JSON-encoded string. This config is merged with destinationSchema fields and sent to the API during creation. The connection resource does not read this field back, allowing it to be managed separately by the `ConnectionConfig` resource. Use this to provide service-specific required fields (e.g., `updateMethod` for Postgres/MySQL) or full connection configuration.
 	Config *string `pulumi:"config"`
+	// Specifies whether data validation is enabled for the connection.
+	DataChecks *bool `pulumi:"dataChecks"`
 	// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.
 	DataDelaySensitivity *string `pulumi:"dataDelaySensitivity"`
 	// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data*delay*sensitivity set to CUSTOM.
@@ -413,6 +421,8 @@ type connectionArgs struct {
 type ConnectionArgs struct {
 	// Optional connection configuration as a JSON-encoded string. This config is merged with destinationSchema fields and sent to the API during creation. The connection resource does not read this field back, allowing it to be managed separately by the `ConnectionConfig` resource. Use this to provide service-specific required fields (e.g., `updateMethod` for Postgres/MySQL) or full connection configuration.
 	Config pulumi.StringPtrInput
+	// Specifies whether data validation is enabled for the connection.
+	DataChecks pulumi.BoolPtrInput
 	// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.
 	DataDelaySensitivity pulumi.StringPtrInput
 	// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data*delay*sensitivity set to CUSTOM.
@@ -538,6 +548,11 @@ func (o ConnectionOutput) ConnectedBy() pulumi.StringOutput {
 // The timestamp of the time the connection was created in your account.
 func (o ConnectionOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Specifies whether data validation is enabled for the connection.
+func (o ConnectionOutput) DataChecks() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Connection) pulumi.BoolOutput { return v.DataChecks }).(pulumi.BoolOutput)
 }
 
 // The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.

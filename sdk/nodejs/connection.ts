@@ -178,6 +178,10 @@ export class Connection extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
+     * Specifies whether data validation is enabled for the connection.
+     */
+    declare public readonly dataChecks: pulumi.Output<boolean>;
+    /**
      * The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.
      */
     declare public readonly dataDelaySensitivity: pulumi.Output<string | undefined>;
@@ -243,6 +247,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["config"] = state?.config;
             resourceInputs["connectedBy"] = state?.connectedBy;
             resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["dataChecks"] = state?.dataChecks;
             resourceInputs["dataDelaySensitivity"] = state?.dataDelaySensitivity;
             resourceInputs["dataDelayThreshold"] = state?.dataDelayThreshold;
             resourceInputs["destinationSchema"] = state?.destinationSchema;
@@ -265,6 +270,7 @@ export class Connection extends pulumi.CustomResource {
                 throw new Error("Missing required property 'service'");
             }
             resourceInputs["config"] = args?.config;
+            resourceInputs["dataChecks"] = args?.dataChecks;
             resourceInputs["dataDelaySensitivity"] = args?.dataDelaySensitivity;
             resourceInputs["dataDelayThreshold"] = args?.dataDelayThreshold;
             resourceInputs["destinationSchema"] = args?.destinationSchema;
@@ -302,6 +308,10 @@ export interface ConnectionState {
      * The timestamp of the time the connection was created in your account.
      */
     createdAt?: pulumi.Input<string | undefined>;
+    /**
+     * Specifies whether data validation is enabled for the connection.
+     */
+    dataChecks?: pulumi.Input<boolean | undefined>;
     /**
      * The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.
      */
@@ -361,6 +371,10 @@ export interface ConnectionArgs {
      * Optional connection configuration as a JSON-encoded string. This config is merged with destinationSchema fields and sent to the API during creation. The connection resource does not read this field back, allowing it to be managed separately by the `fivetran.ConnectionConfig` resource. Use this to provide service-specific required fields (e.g., `updateMethod` for Postgres/MySQL) or full connection configuration.
      */
     config?: pulumi.Input<string | undefined>;
+    /**
+     * Specifies whether data validation is enabled for the connection.
+     */
+    dataChecks?: pulumi.Input<boolean | undefined>;
     /**
      * The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.
      */

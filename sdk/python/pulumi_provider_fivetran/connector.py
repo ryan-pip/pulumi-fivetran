@@ -25,6 +25,7 @@ class ConnectorArgs:
                  service: pulumi.Input[_builtins.str],
                  auth: pulumi.Input[Optional['ConnectorAuthArgs']] = None,
                  config: pulumi.Input[Optional['ConnectorConfigArgs']] = None,
+                 data_checks: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_delay_sensitivity: pulumi.Input[Optional[_builtins.str]] = None,
                  data_delay_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  destination_schema: pulumi.Input[Optional['ConnectorDestinationSchemaArgs']] = None,
@@ -41,6 +42,7 @@ class ConnectorArgs:
 
         :param pulumi.Input[_builtins.str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
         :param pulumi.Input[_builtins.str] service: The connector type id within the Fivetran system.
+        :param pulumi.Input[_builtins.bool] data_checks: Specifies whether data validation is enabled for the connector.
         :param pulumi.Input[_builtins.str] data_delay_sensitivity: The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
         :param pulumi.Input[_builtins.int] data_delay_threshold: Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data_delay_sensitivity set to CUSTOM.
         :param pulumi.Input[_builtins.str] hybrid_deployment_agent_id: The hybrid deployment agent ID that refers to the controller created for the group the connection belongs to. If the value is specified, the system will try to associate the connection with an existing agent.
@@ -57,6 +59,8 @@ class ConnectorArgs:
             pulumi.set(__self__, "auth", auth)
         if config is not None:
             pulumi.set(__self__, "config", config)
+        if data_checks is not None:
+            pulumi.set(__self__, "data_checks", data_checks)
         if data_delay_sensitivity is not None:
             pulumi.set(__self__, "data_delay_sensitivity", data_delay_sensitivity)
         if data_delay_threshold is not None:
@@ -121,6 +125,18 @@ class ConnectorArgs:
     @config.setter
     def config(self, value: pulumi.Input[Optional['ConnectorConfigArgs']]):
         pulumi.set(self, "config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataChecks")
+    def data_checks(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether data validation is enabled for the connector.
+        """
+        return pulumi.get(self, "data_checks")
+
+    @data_checks.setter
+    def data_checks(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "data_checks", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDelaySensitivity")
@@ -256,6 +272,7 @@ class _ConnectorState:
                  config: pulumi.Input[Optional['ConnectorConfigArgs']] = None,
                  connected_by: pulumi.Input[Optional[_builtins.str]] = None,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_checks: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_delay_sensitivity: pulumi.Input[Optional[_builtins.str]] = None,
                  data_delay_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  destination_schema: pulumi.Input[Optional['ConnectorDestinationSchemaArgs']] = None,
@@ -275,6 +292,7 @@ class _ConnectorState:
 
         :param pulumi.Input[_builtins.str] connected_by: The unique identifier of the user who has created the connector in your account.
         :param pulumi.Input[_builtins.str] created_at: The timestamp of the time the connector was created in your account.
+        :param pulumi.Input[_builtins.bool] data_checks: Specifies whether data validation is enabled for the connector.
         :param pulumi.Input[_builtins.str] data_delay_sensitivity: The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
         :param pulumi.Input[_builtins.int] data_delay_threshold: Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data_delay_sensitivity set to CUSTOM.
         :param pulumi.Input[_builtins.str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
@@ -296,6 +314,8 @@ class _ConnectorState:
             pulumi.set(__self__, "connected_by", connected_by)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if data_checks is not None:
+            pulumi.set(__self__, "data_checks", data_checks)
         if data_delay_sensitivity is not None:
             pulumi.set(__self__, "data_delay_sensitivity", data_delay_sensitivity)
         if data_delay_threshold is not None:
@@ -366,6 +386,18 @@ class _ConnectorState:
     @created_at.setter
     def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataChecks")
+    def data_checks(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether data validation is enabled for the connector.
+        """
+        return pulumi.get(self, "data_checks")
+
+    @data_checks.setter
+    def data_checks(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "data_checks", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDelaySensitivity")
@@ -538,6 +570,7 @@ class Connector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth: pulumi.Input[Optional[Union['ConnectorAuthArgs', 'ConnectorAuthArgsDict']]] = None,
                  config: pulumi.Input[Optional[Union['ConnectorConfigArgs', 'ConnectorConfigArgsDict']]] = None,
+                 data_checks: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_delay_sensitivity: pulumi.Input[Optional[_builtins.str]] = None,
                  data_delay_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  destination_schema: pulumi.Input[Optional[Union['ConnectorDestinationSchemaArgs', 'ConnectorDestinationSchemaArgsDict']]] = None,
@@ -646,6 +679,7 @@ class Connector(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] data_checks: Specifies whether data validation is enabled for the connector.
         :param pulumi.Input[_builtins.str] data_delay_sensitivity: The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
         :param pulumi.Input[_builtins.int] data_delay_threshold: Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data_delay_sensitivity set to CUSTOM.
         :param pulumi.Input[_builtins.str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
@@ -773,6 +807,7 @@ class Connector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth: pulumi.Input[Optional[Union['ConnectorAuthArgs', 'ConnectorAuthArgsDict']]] = None,
                  config: pulumi.Input[Optional[Union['ConnectorConfigArgs', 'ConnectorConfigArgsDict']]] = None,
+                 data_checks: pulumi.Input[Optional[_builtins.bool]] = None,
                  data_delay_sensitivity: pulumi.Input[Optional[_builtins.str]] = None,
                  data_delay_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  destination_schema: pulumi.Input[Optional[Union['ConnectorDestinationSchemaArgs', 'ConnectorDestinationSchemaArgsDict']]] = None,
@@ -797,6 +832,7 @@ class Connector(pulumi.CustomResource):
 
             __props__.__dict__["auth"] = auth
             __props__.__dict__["config"] = config
+            __props__.__dict__["data_checks"] = data_checks
             __props__.__dict__["data_delay_sensitivity"] = data_delay_sensitivity
             __props__.__dict__["data_delay_threshold"] = data_delay_threshold
             __props__.__dict__["destination_schema"] = destination_schema
@@ -831,6 +867,7 @@ class Connector(pulumi.CustomResource):
             config: pulumi.Input[Optional[Union['ConnectorConfigArgs', 'ConnectorConfigArgsDict']]] = None,
             connected_by: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            data_checks: pulumi.Input[Optional[_builtins.bool]] = None,
             data_delay_sensitivity: pulumi.Input[Optional[_builtins.str]] = None,
             data_delay_threshold: pulumi.Input[Optional[_builtins.int]] = None,
             destination_schema: pulumi.Input[Optional[Union['ConnectorDestinationSchemaArgs', 'ConnectorDestinationSchemaArgsDict']]] = None,
@@ -854,6 +891,7 @@ class Connector(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connected_by: The unique identifier of the user who has created the connector in your account.
         :param pulumi.Input[_builtins.str] created_at: The timestamp of the time the connector was created in your account.
+        :param pulumi.Input[_builtins.bool] data_checks: Specifies whether data validation is enabled for the connector.
         :param pulumi.Input[_builtins.str] data_delay_sensitivity: The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM. The default value NORMAL. CUSTOM is only available for customers using the Enterprise plan or above.
         :param pulumi.Input[_builtins.int] data_delay_threshold: Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data_delay_sensitivity set to CUSTOM.
         :param pulumi.Input[_builtins.str] group_id: The unique identifier for the Group (Destination) within the Fivetran system.
@@ -875,6 +913,7 @@ class Connector(pulumi.CustomResource):
         __props__.__dict__["config"] = config
         __props__.__dict__["connected_by"] = connected_by
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["data_checks"] = data_checks
         __props__.__dict__["data_delay_sensitivity"] = data_delay_sensitivity
         __props__.__dict__["data_delay_threshold"] = data_delay_threshold
         __props__.__dict__["destination_schema"] = destination_schema
@@ -916,6 +955,14 @@ class Connector(pulumi.CustomResource):
         The timestamp of the time the connector was created in your account.
         """
         return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="dataChecks")
+    def data_checks(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Specifies whether data validation is enabled for the connector.
+        """
+        return pulumi.get(self, "data_checks")
 
     @_builtins.property
     @pulumi.getter(name="dataDelaySensitivity")

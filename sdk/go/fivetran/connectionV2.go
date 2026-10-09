@@ -72,6 +72,8 @@ type ConnectionV2 struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Sync start time. Only used when `syncFrequency` is `1440`.
 	DailySyncTime pulumi.StringOutput `pulumi:"dailySyncTime"`
+	// Specifies whether data validation is enabled for the connection.
+	DataChecks pulumi.BoolOutput `pulumi:"dataChecks"`
 	// The level of data delay notification threshold. Possible values: `LOW`, `NORMAL`, `HIGH`, `CUSTOM`, `SYNC_FREQUENCY`.
 	DataDelaySensitivity pulumi.StringOutput `pulumi:"dataDelaySensitivity"`
 	// Custom sync delay notification threshold in minutes. Only used when `dataDelaySensitivity` is `CUSTOM`.
@@ -176,6 +178,8 @@ type connectionV2State struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// Sync start time. Only used when `syncFrequency` is `1440`.
 	DailySyncTime *string `pulumi:"dailySyncTime"`
+	// Specifies whether data validation is enabled for the connection.
+	DataChecks *bool `pulumi:"dataChecks"`
 	// The level of data delay notification threshold. Possible values: `LOW`, `NORMAL`, `HIGH`, `CUSTOM`, `SYNC_FREQUENCY`.
 	DataDelaySensitivity *string `pulumi:"dataDelaySensitivity"`
 	// Custom sync delay notification threshold in minutes. Only used when `dataDelaySensitivity` is `CUSTOM`.
@@ -235,6 +239,8 @@ type ConnectionV2State struct {
 	CreatedAt pulumi.StringPtrInput
 	// Sync start time. Only used when `syncFrequency` is `1440`.
 	DailySyncTime pulumi.StringPtrInput
+	// Specifies whether data validation is enabled for the connection.
+	DataChecks pulumi.BoolPtrInput
 	// The level of data delay notification threshold. Possible values: `LOW`, `NORMAL`, `HIGH`, `CUSTOM`, `SYNC_FREQUENCY`.
 	DataDelaySensitivity pulumi.StringPtrInput
 	// Custom sync delay notification threshold in minutes. Only used when `dataDelaySensitivity` is `CUSTOM`.
@@ -294,6 +300,8 @@ type connectionV2Args struct {
 	ConnectCardConfig *ConnectionV2ConnectCardConfig `pulumi:"connectCardConfig"`
 	// Sync start time. Only used when `syncFrequency` is `1440`.
 	DailySyncTime *string `pulumi:"dailySyncTime"`
+	// Specifies whether data validation is enabled for the connection.
+	DataChecks *bool `pulumi:"dataChecks"`
 	// The level of data delay notification threshold. Possible values: `LOW`, `NORMAL`, `HIGH`, `CUSTOM`, `SYNC_FREQUENCY`.
 	DataDelaySensitivity *string `pulumi:"dataDelaySensitivity"`
 	// Custom sync delay notification threshold in minutes. Only used when `dataDelaySensitivity` is `CUSTOM`.
@@ -340,6 +348,8 @@ type ConnectionV2Args struct {
 	ConnectCardConfig ConnectionV2ConnectCardConfigPtrInput
 	// Sync start time. Only used when `syncFrequency` is `1440`.
 	DailySyncTime pulumi.StringPtrInput
+	// Specifies whether data validation is enabled for the connection.
+	DataChecks pulumi.BoolPtrInput
 	// The level of data delay notification threshold. Possible values: `LOW`, `NORMAL`, `HIGH`, `CUSTOM`, `SYNC_FREQUENCY`.
 	DataDelaySensitivity pulumi.StringPtrInput
 	// Custom sync delay notification threshold in minutes. Only used when `dataDelaySensitivity` is `CUSTOM`.
@@ -491,6 +501,11 @@ func (o ConnectionV2Output) CreatedAt() pulumi.StringOutput {
 // Sync start time. Only used when `syncFrequency` is `1440`.
 func (o ConnectionV2Output) DailySyncTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionV2) pulumi.StringOutput { return v.DailySyncTime }).(pulumi.StringOutput)
+}
+
+// Specifies whether data validation is enabled for the connection.
+func (o ConnectionV2Output) DataChecks() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ConnectionV2) pulumi.BoolOutput { return v.DataChecks }).(pulumi.BoolOutput)
 }
 
 // The level of data delay notification threshold. Possible values: `LOW`, `NORMAL`, `HIGH`, `CUSTOM`, `SYNC_FREQUENCY`.

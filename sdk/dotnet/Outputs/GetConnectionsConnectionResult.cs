@@ -26,6 +26,10 @@ namespace Pulumi.Fivetran.Outputs
         /// </summary>
         public readonly string DailySyncTime;
         /// <summary>
+        /// Specifies whether data validation is enabled for the connection.
+        /// </summary>
+        public readonly bool DataChecks;
+        /// <summary>
         /// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.
         /// </summary>
         public readonly string DataDelaySensitivity;
@@ -102,6 +106,8 @@ namespace Pulumi.Fivetran.Outputs
 
             string dailySyncTime,
 
+            bool dataChecks,
+
             string dataDelaySensitivity,
 
             int dataDelayThreshold,
@@ -139,6 +145,7 @@ namespace Pulumi.Fivetran.Outputs
             ConnectedBy = connectedBy;
             CreatedAt = createdAt;
             DailySyncTime = dailySyncTime;
+            DataChecks = dataChecks;
             DataDelaySensitivity = dataDelaySensitivity;
             DataDelayThreshold = dataDelayThreshold;
             FailedAt = failedAt;

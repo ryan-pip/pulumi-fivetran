@@ -88,6 +88,12 @@ namespace Pulumi.Fivetran
         public Output<string> DailySyncTime { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether data validation is enabled for the connection.
+        /// </summary>
+        [Output("dataChecks")]
+        public Output<bool> DataChecks { get; private set; } = null!;
+
+        /// <summary>
         /// The level of data delay notification threshold. Possible values: `LOW`, `NORMAL`, `HIGH`, `CUSTOM`, `SYNC_FREQUENCY`.
         /// </summary>
         [Output("dataDelaySensitivity")]
@@ -305,6 +311,12 @@ namespace Pulumi.Fivetran
         public Input<string>? DailySyncTime { get; set; }
 
         /// <summary>
+        /// Specifies whether data validation is enabled for the connection.
+        /// </summary>
+        [Input("dataChecks")]
+        public Input<bool>? DataChecks { get; set; }
+
+        /// <summary>
         /// The level of data delay notification threshold. Possible values: `LOW`, `NORMAL`, `HIGH`, `CUSTOM`, `SYNC_FREQUENCY`.
         /// </summary>
         [Input("dataDelaySensitivity")]
@@ -459,6 +471,12 @@ namespace Pulumi.Fivetran
         /// </summary>
         [Input("dailySyncTime")]
         public Input<string>? DailySyncTime { get; set; }
+
+        /// <summary>
+        /// Specifies whether data validation is enabled for the connection.
+        /// </summary>
+        [Input("dataChecks")]
+        public Input<bool>? DataChecks { get; set; }
 
         /// <summary>
         /// The level of data delay notification threshold. Possible values: `LOW`, `NORMAL`, `HIGH`, `CUSTOM`, `SYNC_FREQUENCY`.

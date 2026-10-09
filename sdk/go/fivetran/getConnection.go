@@ -64,6 +64,7 @@ type LookupConnectionResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
 	DailySyncTime string `pulumi:"dailySyncTime"`
+	DataChecks    bool   `pulumi:"dataChecks"`
 	// The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.
 	DataDelaySensitivity string `pulumi:"dataDelaySensitivity"`
 	// Custom sync delay notification threshold in minutes. The default value is 0. This parameter is only used when data*delay*sensitivity set to CUSTOM.
@@ -147,6 +148,10 @@ func (o LookupConnectionResultOutput) CreatedAt() pulumi.StringOutput {
 // The optional parameter that defines the sync start time when the sync frequency is already set or being set by the current request to 1440. It can be specified in one hour increments starting from 00:00 to 23:00. If not specified, we will use [the baseline sync start time](https://fivetran.com/docs/getting-started/syncoverview#syncfrequencyandscheduling). This parameter has no effect on the [0 to 60 minutes offset](https://fivetran.com/docs/getting-started/syncoverview#syncstarttimesandoffsets) used to determine the actual sync start time.
 func (o LookupConnectionResultOutput) DailySyncTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionResult) string { return v.DailySyncTime }).(pulumi.StringOutput)
+}
+
+func (o LookupConnectionResultOutput) DataChecks() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupConnectionResult) bool { return v.DataChecks }).(pulumi.BoolOutput)
 }
 
 // The level of data delay notification threshold. Possible values: LOW, NORMAL, HIGH, CUSTOM, SYNC_FREQUENCY. The default value NORMAL. CUSTOM is only available for customers using the [Enterprise plan](https://fivetran.com/docs/getting-started/pricing#fivetranplans) or above.
