@@ -257,9 +257,58 @@ namespace Pulumi.Fivetran
     /// });
     /// ```
     /// 
-    /// ## Import
+    /// &lt;a id="nestedblock--rowfilter"&gt;&lt;/a&gt;
+    /// ### Row filters
     /// 
-    /// You don't need to import this resource as it is synthetic (doesn't create new instances in upstream).
+    /// Use `RowFilter` to restrict the rows of a table synced to your destination. Row filtering must be available for the connection (`RowFilteringSupported` in the [schema config](https://fivetran.com/docs/rest-api/api-reference/connection-schema/connection-schema-config) response).
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Fivetran = Pulumi.Fivetran;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var schema = new Fivetran.ConnectorSchemaConfig("schema", new()
+    ///     {
+    ///         ConnectorId = "connector_id",
+    ///         SchemaChangeHandling = "ALLOW_ALL",
+    ///         Schemas = 
+    ///         {
+    ///             { "salesforce", new Fivetran.Inputs.ConnectorSchemaConfigSchemasArgs
+    ///             {
+    ///                 Tables = 
+    ///                 {
+    ///                     { "Account", new Fivetran.Inputs.ConnectorSchemaConfigSchemasTablesArgs
+    ///                     {
+    ///                         RowFilter = new Fivetran.Inputs.ConnectorSchemaConfigSchemasTablesRowFilterArgs
+    ///                         {
+    ///                             Name = "account_record_type_filter",
+    ///                             Description = "Filter Account rows by RecordTypeId",
+    ///                             ColumnClauses = new[]
+    ///                             {
+    ///                                 new Fivetran.Inputs.ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArgs
+    ///                                 {
+    ///                                     Column = "RecordTypeId",
+    ///                                     Operator = "IN",
+    ///                                     Values = new[]
+    ///                                     {
+    ///                                         "record_type_id",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     } },
+    ///                 },
+    ///             } },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// The same filter can be defined in `SchemasJson`, following the API contract:
     /// </summary>
     [FivetranResourceType("fivetran:index/connectorSchemaConfig:ConnectorSchemaConfig")]
     public partial class ConnectorSchemaConfig : global::Pulumi.CustomResource

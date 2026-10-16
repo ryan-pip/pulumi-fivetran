@@ -37,6 +37,12 @@ namespace Pulumi.Fivetran.Inputs
         public Input<string>? ParentTable { get; set; }
 
         /// <summary>
+        /// The row filter for the table. A row filter restricts the rows synced to your destination to those that satisfy its clauses. Row filtering must be available for the connection. Tables without a configured `RowFilter` keep their existing filter, removing a previously configured `RowFilter` deletes the filter.
+        /// </summary>
+        [Input("rowFilter")]
+        public Input<Inputs.ConnectorSchemaConfigSchemasTablesRowFilterGetArgs>? RowFilter { get; set; }
+
+        /// <summary>
         /// This field appears in the response if the connector supports switching sync modes for tables.
         /// </summary>
         [Input("syncMode")]

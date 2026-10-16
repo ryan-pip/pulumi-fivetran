@@ -258,9 +258,58 @@ import (
 //
 // ```
 //
-// ## Import
+// <a id="nestedblock--rowfilter"></a>
+// ### Row filters
 //
-// You don't need to import this resource as it is synthetic (doesn't create new instances in upstream).
+// Use `rowFilter` to restrict the rows of a table synced to your destination. Row filtering must be available for the connection (`rowFilteringSupported` in the [schema config](https://fivetran.com/docs/rest-api/api-reference/connection-schema/connection-schema-config) response).
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.NewConnectorSchemaConfig(ctx, "schema", &fivetran.ConnectorSchemaConfigArgs{
+//				ConnectorId:          pulumi.String("connector_id"),
+//				SchemaChangeHandling: pulumi.String("ALLOW_ALL"),
+//				Schemas: fivetran.ConnectorSchemaConfigSchemasMap{
+//					"salesforce": &fivetran.ConnectorSchemaConfigSchemasArgs{
+//						Tables: fivetran.ConnectorSchemaConfigSchemasTablesMap{
+//							"Account": &fivetran.ConnectorSchemaConfigSchemasTablesArgs{
+//								RowFilter: &fivetran.ConnectorSchemaConfigSchemasTablesRowFilterArgs{
+//									Name:        pulumi.String("account_record_type_filter"),
+//									Description: pulumi.String("Filter Account rows by RecordTypeId"),
+//									ColumnClauses: fivetran.ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArray{
+//										&fivetran.ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArgs{
+//											Column:   pulumi.String("RecordTypeId"),
+//											Operator: pulumi.String("IN"),
+//											Values: pulumi.StringArray{
+//												pulumi.String("record_type_id"),
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// The same filter can be defined in `schemasJson`, following the API contract:
 type ConnectorSchemaConfig struct {
 	pulumi.CustomResourceState
 

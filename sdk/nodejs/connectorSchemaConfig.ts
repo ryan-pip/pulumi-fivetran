@@ -194,9 +194,39 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * ## Import
+ * <a id="nestedblock--rowfilter"></a>
+ * ### Row filters
  *
- * You don't need to import this resource as it is synthetic (doesn't create new instances in upstream).
+ * Use `rowFilter` to restrict the rows of a table synced to your destination. Row filtering must be available for the connection (`rowFilteringSupported` in the [schema config](https://fivetran.com/docs/rest-api/api-reference/connection-schema/connection-schema-config) response).
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
+ *
+ * const schema = new fivetran.ConnectorSchemaConfig("schema", {
+ *     connectorId: "connector_id",
+ *     schemaChangeHandling: "ALLOW_ALL",
+ *     schemas: {
+ *         salesforce: {
+ *             tables: {
+ *                 Account: {
+ *                     rowFilter: {
+ *                         name: "account_record_type_filter",
+ *                         description: "Filter Account rows by RecordTypeId",
+ *                         columnClauses: [{
+ *                             column: "RecordTypeId",
+ *                             operator: "IN",
+ *                             values: ["record_type_id"],
+ *                         }],
+ *                     },
+ *                 },
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * The same filter can be defined in `schemasJson`, following the API contract:
  */
 export class ConnectorSchemaConfig extends pulumi.CustomResource {
     /**
