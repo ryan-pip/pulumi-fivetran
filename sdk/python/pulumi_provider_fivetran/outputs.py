@@ -56,6 +56,8 @@ __all__ = [
     'ConnectorSchemaConfigSchemas',
     'ConnectorSchemaConfigSchemasTables',
     'ConnectorSchemaConfigSchemasTablesColumns',
+    'ConnectorSchemaConfigSchemasTablesRowFilter',
+    'ConnectorSchemaConfigSchemasTablesRowFilterColumnClause',
     'ConnectorSchemaConfigTimeouts',
     'ConnectorTimeouts',
     'DestinationCertificatesCertificate',
@@ -23585,6 +23587,8 @@ class ConnectorSchemaConfigSchemasTables(dict):
         suggest = None
         if key == "parentTable":
             suggest = "parent_table"
+        elif key == "rowFilter":
+            suggest = "row_filter"
         elif key == "syncMode":
             suggest = "sync_mode"
 
@@ -23603,11 +23607,13 @@ class ConnectorSchemaConfigSchemasTables(dict):
                  columns: Optional[Mapping[str, 'outputs.ConnectorSchemaConfigSchemasTablesColumns']] = None,
                  enabled: Optional[_builtins.bool] = None,
                  parent_table: Optional[_builtins.str] = None,
+                 row_filter: Optional['outputs.ConnectorSchemaConfigSchemasTablesRowFilter'] = None,
                  sync_mode: Optional[_builtins.str] = None):
         """
         :param Mapping[str, 'ConnectorSchemaConfigSchemasTablesColumnsArgs'] columns: Map of table configurations.
         :param _builtins.bool enabled: The boolean value specifying whether the sync for the table into the destination is enabled.
         :param _builtins.str parent_table: The name of the table that this table is grouped under, if any. This field is read-only and computed by the API.
+        :param 'ConnectorSchemaConfigSchemasTablesRowFilterArgs' row_filter: The row filter for the table. A row filter restricts the rows synced to your destination to those that satisfy its clauses. Row filtering must be available for the connection. Tables without a configured `row_filter` keep their existing filter, removing a previously configured `row_filter` deletes the filter.
         :param _builtins.str sync_mode: This field appears in the response if the connector supports switching sync modes for tables.
         """
         if columns is not None:
@@ -23616,6 +23622,8 @@ class ConnectorSchemaConfigSchemasTables(dict):
             pulumi.set(__self__, "enabled", enabled)
         if parent_table is not None:
             pulumi.set(__self__, "parent_table", parent_table)
+        if row_filter is not None:
+            pulumi.set(__self__, "row_filter", row_filter)
         if sync_mode is not None:
             pulumi.set(__self__, "sync_mode", sync_mode)
 
@@ -23642,6 +23650,14 @@ class ConnectorSchemaConfigSchemasTables(dict):
         The name of the table that this table is grouped under, if any. This field is read-only and computed by the API.
         """
         return pulumi.get(self, "parent_table")
+
+    @_builtins.property
+    @pulumi.getter(name="rowFilter")
+    def row_filter(self) -> Optional['outputs.ConnectorSchemaConfigSchemasTablesRowFilter']:
+        """
+        The row filter for the table. A row filter restricts the rows synced to your destination to those that satisfy its clauses. Row filtering must be available for the connection. Tables without a configured `row_filter` keep their existing filter, removing a previously configured `row_filter` deletes the filter.
+        """
+        return pulumi.get(self, "row_filter")
 
     @_builtins.property
     @pulumi.getter(name="syncMode")
@@ -23710,6 +23726,145 @@ class ConnectorSchemaConfigSchemasTablesColumns(dict):
         Boolean value indicating if the column is a primary key. For file connectors (for example S3, Google Cloud Storage, SFTP, Google Sheets), this can be set before the first sync. Changing this value after the connector has synced requires recreating the connector.
         """
         return pulumi.get(self, "is_primary_key")
+
+
+@pulumi.output_type
+class ConnectorSchemaConfigSchemasTablesRowFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "columnClauses":
+            suggest = "column_clauses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorSchemaConfigSchemasTablesRowFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorSchemaConfigSchemasTablesRowFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorSchemaConfigSchemasTablesRowFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 column_clauses: Sequence['outputs.ConnectorSchemaConfigSchemasTablesRowFilterColumnClause'],
+                 description: _builtins.str,
+                 name: _builtins.str,
+                 operator: Optional[_builtins.str] = None):
+        """
+        :param Sequence['ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArgs'] column_clauses: The column clauses of the row filter.
+        :param _builtins.str description: The row filter description.
+        :param _builtins.str name: The row filter name.
+        :param _builtins.str operator: The logical operator combining the column clauses. Defaults to `AND`. Valid only with two or more clauses.
+        """
+        pulumi.set(__self__, "column_clauses", column_clauses)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "name", name)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+
+    @_builtins.property
+    @pulumi.getter(name="columnClauses")
+    def column_clauses(self) -> Sequence['outputs.ConnectorSchemaConfigSchemasTablesRowFilterColumnClause']:
+        """
+        The column clauses of the row filter.
+        """
+        return pulumi.get(self, "column_clauses")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The row filter description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The row filter name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> Optional[_builtins.str]:
+        """
+        The logical operator combining the column clauses. Defaults to `AND`. Valid only with two or more clauses.
+        """
+        return pulumi.get(self, "operator")
+
+
+@pulumi.output_type
+class ConnectorSchemaConfigSchemasTablesRowFilterColumnClause(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "columnType":
+            suggest = "column_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorSchemaConfigSchemasTablesRowFilterColumnClause. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorSchemaConfigSchemasTablesRowFilterColumnClause.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorSchemaConfigSchemasTablesRowFilterColumnClause.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 column: _builtins.str,
+                 operator: _builtins.str,
+                 column_type: Optional[_builtins.str] = None,
+                 values: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str column: The column name.
+        :param _builtins.str operator: The clause operator.
+        :param _builtins.str column_type: The column type.
+        :param Sequence[_builtins.str] values: The clause values. Not used with `IS_NULL` and `IS_NOT_NULL` operators.
+        """
+        pulumi.set(__self__, "column", column)
+        pulumi.set(__self__, "operator", operator)
+        if column_type is not None:
+            pulumi.set(__self__, "column_type", column_type)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def column(self) -> _builtins.str:
+        """
+        The column name.
+        """
+        return pulumi.get(self, "column")
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        The clause operator.
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter(name="columnType")
+    def column_type(self) -> Optional[_builtins.str]:
+        """
+        The column type.
+        """
+        return pulumi.get(self, "column_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The clause values. Not used with `IS_NULL` and `IS_NOT_NULL` operators.
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type

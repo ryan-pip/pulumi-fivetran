@@ -8395,6 +8395,10 @@ export interface ConnectorSchemaConfigSchemasTables {
      */
     parentTable: string;
     /**
+     * The row filter for the table. A row filter restricts the rows synced to your destination to those that satisfy its clauses. Row filtering must be available for the connection. Tables without a configured `rowFilter` keep their existing filter, removing a previously configured `rowFilter` deletes the filter.
+     */
+    rowFilter?: outputs.ConnectorSchemaConfigSchemasTablesRowFilter;
+    /**
      * This field appears in the response if the connector supports switching sync modes for tables.
      */
     syncMode: string;
@@ -8413,6 +8417,44 @@ export interface ConnectorSchemaConfigSchemasTablesColumns {
      * Boolean value indicating if the column is a primary key. For file connectors (for example S3, Google Cloud Storage, SFTP, Google Sheets), this can be set before the first sync. Changing this value after the connector has synced requires recreating the connector.
      */
     isPrimaryKey: boolean;
+}
+
+export interface ConnectorSchemaConfigSchemasTablesRowFilter {
+    /**
+     * The column clauses of the row filter.
+     */
+    columnClauses: outputs.ConnectorSchemaConfigSchemasTablesRowFilterColumnClause[];
+    /**
+     * The row filter description.
+     */
+    description: string;
+    /**
+     * The row filter name.
+     */
+    name: string;
+    /**
+     * The logical operator combining the column clauses. Defaults to `AND`. Valid only with two or more clauses.
+     */
+    operator?: string;
+}
+
+export interface ConnectorSchemaConfigSchemasTablesRowFilterColumnClause {
+    /**
+     * The column name.
+     */
+    column: string;
+    /**
+     * The column type.
+     */
+    columnType?: string;
+    /**
+     * The clause operator.
+     */
+    operator: string;
+    /**
+     * The clause values. Not used with `IS_NULL` and `IS_NOT_NULL` operators.
+     */
+    values?: string[];
 }
 
 export interface ConnectorSchemaConfigTimeouts {
@@ -9434,25 +9476,25 @@ export interface DestinationConfigPolarisCatalogConfiguration {
      * 	- Service `databricksViaManagedDataLake`: Client ID
      * 	- Service `managedDataLake`: Client ID
      */
-    clientId?: string;
+    clientId: string;
     /**
      * Field usage depends on `service` value:
      * 	- Service `databricksViaManagedDataLake`: Client Secret
      * 	- Service `managedDataLake`: Client Secret
      */
-    clientSecret?: string;
+    clientSecret: string;
     /**
      * Field usage depends on `service` value:
      * 	- Service `databricksViaManagedDataLake`: Polaris Catalog
      * 	- Service `managedDataLake`: Polaris Catalog
      */
-    polarisCatalog?: string;
+    polarisCatalog: string;
     /**
      * Field usage depends on `service` value:
      * 	- Service `databricksViaManagedDataLake`: Polaris Server Endpoint
      * 	- Service `managedDataLake`: Polaris Server Endpoint
      */
-    polarisServerEndpoint?: string;
+    polarisServerEndpoint: string;
 }
 
 export interface DestinationFingerprintsFingerprint {

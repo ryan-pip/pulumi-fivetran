@@ -38390,6 +38390,8 @@ type ConnectorSchemaConfigSchemasTables struct {
 	Enabled *bool `pulumi:"enabled"`
 	// The name of the table that this table is grouped under, if any. This field is read-only and computed by the API.
 	ParentTable *string `pulumi:"parentTable"`
+	// The row filter for the table. A row filter restricts the rows synced to your destination to those that satisfy its clauses. Row filtering must be available for the connection. Tables without a configured `rowFilter` keep their existing filter, removing a previously configured `rowFilter` deletes the filter.
+	RowFilter *ConnectorSchemaConfigSchemasTablesRowFilter `pulumi:"rowFilter"`
 	// This field appears in the response if the connector supports switching sync modes for tables.
 	SyncMode *string `pulumi:"syncMode"`
 }
@@ -38412,6 +38414,8 @@ type ConnectorSchemaConfigSchemasTablesArgs struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// The name of the table that this table is grouped under, if any. This field is read-only and computed by the API.
 	ParentTable pulumi.StringPtrInput `pulumi:"parentTable"`
+	// The row filter for the table. A row filter restricts the rows synced to your destination to those that satisfy its clauses. Row filtering must be available for the connection. Tables without a configured `rowFilter` keep their existing filter, removing a previously configured `rowFilter` deletes the filter.
+	RowFilter ConnectorSchemaConfigSchemasTablesRowFilterPtrInput `pulumi:"rowFilter"`
 	// This field appears in the response if the connector supports switching sync modes for tables.
 	SyncMode pulumi.StringPtrInput `pulumi:"syncMode"`
 }
@@ -38482,6 +38486,13 @@ func (o ConnectorSchemaConfigSchemasTablesOutput) Enabled() pulumi.BoolPtrOutput
 // The name of the table that this table is grouped under, if any. This field is read-only and computed by the API.
 func (o ConnectorSchemaConfigSchemasTablesOutput) ParentTable() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectorSchemaConfigSchemasTables) *string { return v.ParentTable }).(pulumi.StringPtrOutput)
+}
+
+// The row filter for the table. A row filter restricts the rows synced to your destination to those that satisfy its clauses. Row filtering must be available for the connection. Tables without a configured `rowFilter` keep their existing filter, removing a previously configured `rowFilter` deletes the filter.
+func (o ConnectorSchemaConfigSchemasTablesOutput) RowFilter() ConnectorSchemaConfigSchemasTablesRowFilterPtrOutput {
+	return o.ApplyT(func(v ConnectorSchemaConfigSchemasTables) *ConnectorSchemaConfigSchemasTablesRowFilter {
+		return v.RowFilter
+	}).(ConnectorSchemaConfigSchemasTablesRowFilterPtrOutput)
 }
 
 // This field appears in the response if the connector supports switching sync modes for tables.
@@ -38622,6 +38633,326 @@ func (o ConnectorSchemaConfigSchemasTablesColumnsMapOutput) MapIndex(k pulumi.St
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ConnectorSchemaConfigSchemasTablesColumns {
 		return vs[0].(map[string]ConnectorSchemaConfigSchemasTablesColumns)[vs[1].(string)]
 	}).(ConnectorSchemaConfigSchemasTablesColumnsOutput)
+}
+
+type ConnectorSchemaConfigSchemasTablesRowFilter struct {
+	// The column clauses of the row filter.
+	ColumnClauses []ConnectorSchemaConfigSchemasTablesRowFilterColumnClause `pulumi:"columnClauses"`
+	// The row filter description.
+	Description string `pulumi:"description"`
+	// The row filter name.
+	Name string `pulumi:"name"`
+	// The logical operator combining the column clauses. Defaults to `AND`. Valid only with two or more clauses.
+	Operator *string `pulumi:"operator"`
+}
+
+// ConnectorSchemaConfigSchemasTablesRowFilterInput is an input type that accepts ConnectorSchemaConfigSchemasTablesRowFilterArgs and ConnectorSchemaConfigSchemasTablesRowFilterOutput values.
+// You can construct a concrete instance of `ConnectorSchemaConfigSchemasTablesRowFilterInput` via:
+//
+//	ConnectorSchemaConfigSchemasTablesRowFilterArgs{...}
+type ConnectorSchemaConfigSchemasTablesRowFilterInput interface {
+	pulumi.Input
+
+	ToConnectorSchemaConfigSchemasTablesRowFilterOutput() ConnectorSchemaConfigSchemasTablesRowFilterOutput
+	ToConnectorSchemaConfigSchemasTablesRowFilterOutputWithContext(context.Context) ConnectorSchemaConfigSchemasTablesRowFilterOutput
+}
+
+type ConnectorSchemaConfigSchemasTablesRowFilterArgs struct {
+	// The column clauses of the row filter.
+	ColumnClauses ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayInput `pulumi:"columnClauses"`
+	// The row filter description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The row filter name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The logical operator combining the column clauses. Defaults to `AND`. Valid only with two or more clauses.
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+}
+
+func (ConnectorSchemaConfigSchemasTablesRowFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorSchemaConfigSchemasTablesRowFilter)(nil)).Elem()
+}
+
+func (i ConnectorSchemaConfigSchemasTablesRowFilterArgs) ToConnectorSchemaConfigSchemasTablesRowFilterOutput() ConnectorSchemaConfigSchemasTablesRowFilterOutput {
+	return i.ToConnectorSchemaConfigSchemasTablesRowFilterOutputWithContext(context.Background())
+}
+
+func (i ConnectorSchemaConfigSchemasTablesRowFilterArgs) ToConnectorSchemaConfigSchemasTablesRowFilterOutputWithContext(ctx context.Context) ConnectorSchemaConfigSchemasTablesRowFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorSchemaConfigSchemasTablesRowFilterOutput)
+}
+
+func (i ConnectorSchemaConfigSchemasTablesRowFilterArgs) ToConnectorSchemaConfigSchemasTablesRowFilterPtrOutput() ConnectorSchemaConfigSchemasTablesRowFilterPtrOutput {
+	return i.ToConnectorSchemaConfigSchemasTablesRowFilterPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectorSchemaConfigSchemasTablesRowFilterArgs) ToConnectorSchemaConfigSchemasTablesRowFilterPtrOutputWithContext(ctx context.Context) ConnectorSchemaConfigSchemasTablesRowFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorSchemaConfigSchemasTablesRowFilterOutput).ToConnectorSchemaConfigSchemasTablesRowFilterPtrOutputWithContext(ctx)
+}
+
+// ConnectorSchemaConfigSchemasTablesRowFilterPtrInput is an input type that accepts ConnectorSchemaConfigSchemasTablesRowFilterArgs, ConnectorSchemaConfigSchemasTablesRowFilterPtr and ConnectorSchemaConfigSchemasTablesRowFilterPtrOutput values.
+// You can construct a concrete instance of `ConnectorSchemaConfigSchemasTablesRowFilterPtrInput` via:
+//
+//	        ConnectorSchemaConfigSchemasTablesRowFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectorSchemaConfigSchemasTablesRowFilterPtrInput interface {
+	pulumi.Input
+
+	ToConnectorSchemaConfigSchemasTablesRowFilterPtrOutput() ConnectorSchemaConfigSchemasTablesRowFilterPtrOutput
+	ToConnectorSchemaConfigSchemasTablesRowFilterPtrOutputWithContext(context.Context) ConnectorSchemaConfigSchemasTablesRowFilterPtrOutput
+}
+
+type connectorSchemaConfigSchemasTablesRowFilterPtrType ConnectorSchemaConfigSchemasTablesRowFilterArgs
+
+func ConnectorSchemaConfigSchemasTablesRowFilterPtr(v *ConnectorSchemaConfigSchemasTablesRowFilterArgs) ConnectorSchemaConfigSchemasTablesRowFilterPtrInput {
+	return (*connectorSchemaConfigSchemasTablesRowFilterPtrType)(v)
+}
+
+func (*connectorSchemaConfigSchemasTablesRowFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorSchemaConfigSchemasTablesRowFilter)(nil)).Elem()
+}
+
+func (i *connectorSchemaConfigSchemasTablesRowFilterPtrType) ToConnectorSchemaConfigSchemasTablesRowFilterPtrOutput() ConnectorSchemaConfigSchemasTablesRowFilterPtrOutput {
+	return i.ToConnectorSchemaConfigSchemasTablesRowFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *connectorSchemaConfigSchemasTablesRowFilterPtrType) ToConnectorSchemaConfigSchemasTablesRowFilterPtrOutputWithContext(ctx context.Context) ConnectorSchemaConfigSchemasTablesRowFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorSchemaConfigSchemasTablesRowFilterPtrOutput)
+}
+
+type ConnectorSchemaConfigSchemasTablesRowFilterOutput struct{ *pulumi.OutputState }
+
+func (ConnectorSchemaConfigSchemasTablesRowFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorSchemaConfigSchemasTablesRowFilter)(nil)).Elem()
+}
+
+func (o ConnectorSchemaConfigSchemasTablesRowFilterOutput) ToConnectorSchemaConfigSchemasTablesRowFilterOutput() ConnectorSchemaConfigSchemasTablesRowFilterOutput {
+	return o
+}
+
+func (o ConnectorSchemaConfigSchemasTablesRowFilterOutput) ToConnectorSchemaConfigSchemasTablesRowFilterOutputWithContext(ctx context.Context) ConnectorSchemaConfigSchemasTablesRowFilterOutput {
+	return o
+}
+
+func (o ConnectorSchemaConfigSchemasTablesRowFilterOutput) ToConnectorSchemaConfigSchemasTablesRowFilterPtrOutput() ConnectorSchemaConfigSchemasTablesRowFilterPtrOutput {
+	return o.ToConnectorSchemaConfigSchemasTablesRowFilterPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectorSchemaConfigSchemasTablesRowFilterOutput) ToConnectorSchemaConfigSchemasTablesRowFilterPtrOutputWithContext(ctx context.Context) ConnectorSchemaConfigSchemasTablesRowFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorSchemaConfigSchemasTablesRowFilter) *ConnectorSchemaConfigSchemasTablesRowFilter {
+		return &v
+	}).(ConnectorSchemaConfigSchemasTablesRowFilterPtrOutput)
+}
+
+// The column clauses of the row filter.
+func (o ConnectorSchemaConfigSchemasTablesRowFilterOutput) ColumnClauses() ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayOutput {
+	return o.ApplyT(func(v ConnectorSchemaConfigSchemasTablesRowFilter) []ConnectorSchemaConfigSchemasTablesRowFilterColumnClause {
+		return v.ColumnClauses
+	}).(ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayOutput)
+}
+
+// The row filter description.
+func (o ConnectorSchemaConfigSchemasTablesRowFilterOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorSchemaConfigSchemasTablesRowFilter) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The row filter name.
+func (o ConnectorSchemaConfigSchemasTablesRowFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorSchemaConfigSchemasTablesRowFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The logical operator combining the column clauses. Defaults to `AND`. Valid only with two or more clauses.
+func (o ConnectorSchemaConfigSchemasTablesRowFilterOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorSchemaConfigSchemasTablesRowFilter) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+type ConnectorSchemaConfigSchemasTablesRowFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectorSchemaConfigSchemasTablesRowFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorSchemaConfigSchemasTablesRowFilter)(nil)).Elem()
+}
+
+func (o ConnectorSchemaConfigSchemasTablesRowFilterPtrOutput) ToConnectorSchemaConfigSchemasTablesRowFilterPtrOutput() ConnectorSchemaConfigSchemasTablesRowFilterPtrOutput {
+	return o
+}
+
+func (o ConnectorSchemaConfigSchemasTablesRowFilterPtrOutput) ToConnectorSchemaConfigSchemasTablesRowFilterPtrOutputWithContext(ctx context.Context) ConnectorSchemaConfigSchemasTablesRowFilterPtrOutput {
+	return o
+}
+
+func (o ConnectorSchemaConfigSchemasTablesRowFilterPtrOutput) Elem() ConnectorSchemaConfigSchemasTablesRowFilterOutput {
+	return o.ApplyT(func(v *ConnectorSchemaConfigSchemasTablesRowFilter) ConnectorSchemaConfigSchemasTablesRowFilter {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorSchemaConfigSchemasTablesRowFilter
+		return ret
+	}).(ConnectorSchemaConfigSchemasTablesRowFilterOutput)
+}
+
+// The column clauses of the row filter.
+func (o ConnectorSchemaConfigSchemasTablesRowFilterPtrOutput) ColumnClauses() ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayOutput {
+	return o.ApplyT(func(v *ConnectorSchemaConfigSchemasTablesRowFilter) []ConnectorSchemaConfigSchemasTablesRowFilterColumnClause {
+		if v == nil {
+			return nil
+		}
+		return v.ColumnClauses
+	}).(ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayOutput)
+}
+
+// The row filter description.
+func (o ConnectorSchemaConfigSchemasTablesRowFilterPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorSchemaConfigSchemasTablesRowFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// The row filter name.
+func (o ConnectorSchemaConfigSchemasTablesRowFilterPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorSchemaConfigSchemasTablesRowFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The logical operator combining the column clauses. Defaults to `AND`. Valid only with two or more clauses.
+func (o ConnectorSchemaConfigSchemasTablesRowFilterPtrOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorSchemaConfigSchemasTablesRowFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectorSchemaConfigSchemasTablesRowFilterColumnClause struct {
+	// The column name.
+	Column string `pulumi:"column"`
+	// The column type.
+	ColumnType *string `pulumi:"columnType"`
+	// The clause operator.
+	Operator string `pulumi:"operator"`
+	// The clause values. Not used with `IS_NULL` and `IS_NOT_NULL` operators.
+	Values []string `pulumi:"values"`
+}
+
+// ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseInput is an input type that accepts ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArgs and ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseOutput values.
+// You can construct a concrete instance of `ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseInput` via:
+//
+//	ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArgs{...}
+type ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseInput interface {
+	pulumi.Input
+
+	ToConnectorSchemaConfigSchemasTablesRowFilterColumnClauseOutput() ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseOutput
+	ToConnectorSchemaConfigSchemasTablesRowFilterColumnClauseOutputWithContext(context.Context) ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseOutput
+}
+
+type ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArgs struct {
+	// The column name.
+	Column pulumi.StringInput `pulumi:"column"`
+	// The column type.
+	ColumnType pulumi.StringPtrInput `pulumi:"columnType"`
+	// The clause operator.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The clause values. Not used with `IS_NULL` and `IS_NOT_NULL` operators.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorSchemaConfigSchemasTablesRowFilterColumnClause)(nil)).Elem()
+}
+
+func (i ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArgs) ToConnectorSchemaConfigSchemasTablesRowFilterColumnClauseOutput() ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseOutput {
+	return i.ToConnectorSchemaConfigSchemasTablesRowFilterColumnClauseOutputWithContext(context.Background())
+}
+
+func (i ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArgs) ToConnectorSchemaConfigSchemasTablesRowFilterColumnClauseOutputWithContext(ctx context.Context) ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseOutput)
+}
+
+// ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayInput is an input type that accepts ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArray and ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayOutput values.
+// You can construct a concrete instance of `ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayInput` via:
+//
+//	ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArray{ ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArgs{...} }
+type ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayInput interface {
+	pulumi.Input
+
+	ToConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayOutput() ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayOutput
+	ToConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayOutputWithContext(context.Context) ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayOutput
+}
+
+type ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArray []ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseInput
+
+func (ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorSchemaConfigSchemasTablesRowFilterColumnClause)(nil)).Elem()
+}
+
+func (i ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArray) ToConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayOutput() ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayOutput {
+	return i.ToConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArray) ToConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayOutputWithContext(ctx context.Context) ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayOutput)
+}
+
+type ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseOutput struct{ *pulumi.OutputState }
+
+func (ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorSchemaConfigSchemasTablesRowFilterColumnClause)(nil)).Elem()
+}
+
+func (o ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseOutput) ToConnectorSchemaConfigSchemasTablesRowFilterColumnClauseOutput() ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseOutput {
+	return o
+}
+
+func (o ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseOutput) ToConnectorSchemaConfigSchemasTablesRowFilterColumnClauseOutputWithContext(ctx context.Context) ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseOutput {
+	return o
+}
+
+// The column name.
+func (o ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseOutput) Column() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorSchemaConfigSchemasTablesRowFilterColumnClause) string { return v.Column }).(pulumi.StringOutput)
+}
+
+// The column type.
+func (o ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseOutput) ColumnType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorSchemaConfigSchemasTablesRowFilterColumnClause) *string { return v.ColumnType }).(pulumi.StringPtrOutput)
+}
+
+// The clause operator.
+func (o ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorSchemaConfigSchemasTablesRowFilterColumnClause) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// The clause values. Not used with `IS_NULL` and `IS_NOT_NULL` operators.
+func (o ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConnectorSchemaConfigSchemasTablesRowFilterColumnClause) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectorSchemaConfigSchemasTablesRowFilterColumnClause)(nil)).Elem()
+}
+
+func (o ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayOutput) ToConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayOutput() ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayOutput {
+	return o
+}
+
+func (o ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayOutput) ToConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayOutputWithContext(ctx context.Context) ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayOutput {
+	return o
+}
+
+func (o ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayOutput) Index(i pulumi.IntInput) ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectorSchemaConfigSchemasTablesRowFilterColumnClause {
+		return vs[0].([]ConnectorSchemaConfigSchemasTablesRowFilterColumnClause)[vs[1].(int)]
+	}).(ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseOutput)
 }
 
 type ConnectorSchemaConfigTimeouts struct {
@@ -94729,6 +95060,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorSchemaConfigSchemasTablesMapInput)(nil)).Elem(), ConnectorSchemaConfigSchemasTablesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorSchemaConfigSchemasTablesColumnsInput)(nil)).Elem(), ConnectorSchemaConfigSchemasTablesColumnsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorSchemaConfigSchemasTablesColumnsMapInput)(nil)).Elem(), ConnectorSchemaConfigSchemasTablesColumnsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorSchemaConfigSchemasTablesRowFilterInput)(nil)).Elem(), ConnectorSchemaConfigSchemasTablesRowFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorSchemaConfigSchemasTablesRowFilterPtrInput)(nil)).Elem(), ConnectorSchemaConfigSchemasTablesRowFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseInput)(nil)).Elem(), ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayInput)(nil)).Elem(), ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorSchemaConfigTimeoutsInput)(nil)).Elem(), ConnectorSchemaConfigTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorSchemaConfigTimeoutsPtrInput)(nil)).Elem(), ConnectorSchemaConfigTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorTimeoutsInput)(nil)).Elem(), ConnectorTimeoutsArgs{})
@@ -95007,6 +95342,10 @@ func init() {
 	pulumi.RegisterOutputType(ConnectorSchemaConfigSchemasTablesMapOutput{})
 	pulumi.RegisterOutputType(ConnectorSchemaConfigSchemasTablesColumnsOutput{})
 	pulumi.RegisterOutputType(ConnectorSchemaConfigSchemasTablesColumnsMapOutput{})
+	pulumi.RegisterOutputType(ConnectorSchemaConfigSchemasTablesRowFilterOutput{})
+	pulumi.RegisterOutputType(ConnectorSchemaConfigSchemasTablesRowFilterPtrOutput{})
+	pulumi.RegisterOutputType(ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseOutput{})
+	pulumi.RegisterOutputType(ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArrayOutput{})
 	pulumi.RegisterOutputType(ConnectorSchemaConfigTimeoutsOutput{})
 	pulumi.RegisterOutputType(ConnectorSchemaConfigTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(ConnectorTimeoutsOutput{})

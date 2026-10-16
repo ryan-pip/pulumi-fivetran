@@ -491,6 +491,32 @@
                                 }
                             }
                         }
+                    },
+                    "schemas": {
+                        "elem": {
+                            "fields": {
+                                "tables": {
+                                    "elem": {
+                                        "fields": {
+                                            "row_filter": {
+                                                "fields": {
+                                                    "column_clauses": {
+                                                        "maxItemsOne": false,
+                                                        "elem": {
+                                                            "fields": {
+                                                                "values": {
+                                                                    "maxItemsOne": false
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },

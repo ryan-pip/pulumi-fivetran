@@ -26,6 +26,10 @@ namespace Pulumi.Fivetran.Outputs
         /// </summary>
         public readonly string? ParentTable;
         /// <summary>
+        /// The row filter for the table. A row filter restricts the rows synced to your destination to those that satisfy its clauses. Row filtering must be available for the connection. Tables without a configured `RowFilter` keep their existing filter, removing a previously configured `RowFilter` deletes the filter.
+        /// </summary>
+        public readonly Outputs.ConnectorSchemaConfigSchemasTablesRowFilter? RowFilter;
+        /// <summary>
         /// This field appears in the response if the connector supports switching sync modes for tables.
         /// </summary>
         public readonly string? SyncMode;
@@ -38,11 +42,14 @@ namespace Pulumi.Fivetran.Outputs
 
             string? parentTable,
 
+            Outputs.ConnectorSchemaConfigSchemasTablesRowFilter? rowFilter,
+
             string? syncMode)
         {
             Columns = columns;
             Enabled = enabled;
             ParentTable = parentTable;
+            RowFilter = rowFilter;
             SyncMode = syncMode;
         }
     }

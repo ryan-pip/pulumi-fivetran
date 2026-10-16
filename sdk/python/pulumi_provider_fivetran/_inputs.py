@@ -95,6 +95,10 @@ __all__ = [
     'ConnectorSchemaConfigSchemasTablesArgsDict',
     'ConnectorSchemaConfigSchemasTablesColumnsArgs',
     'ConnectorSchemaConfigSchemasTablesColumnsArgsDict',
+    'ConnectorSchemaConfigSchemasTablesRowFilterArgs',
+    'ConnectorSchemaConfigSchemasTablesRowFilterArgsDict',
+    'ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArgs',
+    'ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArgsDict',
     'ConnectorSchemaConfigTimeoutsArgs',
     'ConnectorSchemaConfigTimeoutsArgsDict',
     'ConnectorTimeoutsArgs',
@@ -34197,6 +34201,10 @@ class ConnectorSchemaConfigSchemasTablesArgsDict(TypedDict):
     """
     The name of the table that this table is grouped under, if any. This field is read-only and computed by the API.
     """
+    row_filter: NotRequired[pulumi.Input[Optional['ConnectorSchemaConfigSchemasTablesRowFilterArgsDict']]]
+    """
+    The row filter for the table. A row filter restricts the rows synced to your destination to those that satisfy its clauses. Row filtering must be available for the connection. Tables without a configured `row_filter` keep their existing filter, removing a previously configured `row_filter` deletes the filter.
+    """
     sync_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     This field appears in the response if the connector supports switching sync modes for tables.
@@ -34208,11 +34216,13 @@ class ConnectorSchemaConfigSchemasTablesArgs:
                  columns: pulumi.Input[Optional[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasTablesColumnsArgs']]]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  parent_table: pulumi.Input[Optional[_builtins.str]] = None,
+                 row_filter: pulumi.Input[Optional['ConnectorSchemaConfigSchemasTablesRowFilterArgs']] = None,
                  sync_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input['ConnectorSchemaConfigSchemasTablesColumnsArgs']]] columns: Map of table configurations.
         :param pulumi.Input[_builtins.bool] enabled: The boolean value specifying whether the sync for the table into the destination is enabled.
         :param pulumi.Input[_builtins.str] parent_table: The name of the table that this table is grouped under, if any. This field is read-only and computed by the API.
+        :param pulumi.Input['ConnectorSchemaConfigSchemasTablesRowFilterArgs'] row_filter: The row filter for the table. A row filter restricts the rows synced to your destination to those that satisfy its clauses. Row filtering must be available for the connection. Tables without a configured `row_filter` keep their existing filter, removing a previously configured `row_filter` deletes the filter.
         :param pulumi.Input[_builtins.str] sync_mode: This field appears in the response if the connector supports switching sync modes for tables.
         """
         if columns is not None:
@@ -34221,6 +34231,8 @@ class ConnectorSchemaConfigSchemasTablesArgs:
             pulumi.set(__self__, "enabled", enabled)
         if parent_table is not None:
             pulumi.set(__self__, "parent_table", parent_table)
+        if row_filter is not None:
+            pulumi.set(__self__, "row_filter", row_filter)
         if sync_mode is not None:
             pulumi.set(__self__, "sync_mode", sync_mode)
 
@@ -34259,6 +34271,18 @@ class ConnectorSchemaConfigSchemasTablesArgs:
     @parent_table.setter
     def parent_table(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_table", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rowFilter")
+    def row_filter(self) -> pulumi.Input[Optional['ConnectorSchemaConfigSchemasTablesRowFilterArgs']]:
+        """
+        The row filter for the table. A row filter restricts the rows synced to your destination to those that satisfy its clauses. Row filtering must be available for the connection. Tables without a configured `row_filter` keep their existing filter, removing a previously configured `row_filter` deletes the filter.
+        """
+        return pulumi.get(self, "row_filter")
+
+    @row_filter.setter
+    def row_filter(self, value: pulumi.Input[Optional['ConnectorSchemaConfigSchemasTablesRowFilterArgs']]):
+        pulumi.set(self, "row_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="syncMode")
@@ -34340,6 +34364,179 @@ class ConnectorSchemaConfigSchemasTablesColumnsArgs:
     @is_primary_key.setter
     def is_primary_key(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_primary_key", value)
+
+
+class ConnectorSchemaConfigSchemasTablesRowFilterArgsDict(TypedDict):
+    column_clauses: pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArgsDict']]]
+    """
+    The column clauses of the row filter.
+    """
+    description: pulumi.Input[_builtins.str]
+    """
+    The row filter description.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The row filter name.
+    """
+    operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The logical operator combining the column clauses. Defaults to `AND`. Valid only with two or more clauses.
+    """
+
+@pulumi.input_type
+class ConnectorSchemaConfigSchemasTablesRowFilterArgs:
+    def __init__(__self__, *,
+                 column_clauses: pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArgs']]],
+                 description: pulumi.Input[_builtins.str],
+                 name: pulumi.Input[_builtins.str],
+                 operator: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArgs']]] column_clauses: The column clauses of the row filter.
+        :param pulumi.Input[_builtins.str] description: The row filter description.
+        :param pulumi.Input[_builtins.str] name: The row filter name.
+        :param pulumi.Input[_builtins.str] operator: The logical operator combining the column clauses. Defaults to `AND`. Valid only with two or more clauses.
+        """
+        pulumi.set(__self__, "column_clauses", column_clauses)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "name", name)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+
+    @_builtins.property
+    @pulumi.getter(name="columnClauses")
+    def column_clauses(self) -> pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArgs']]]:
+        """
+        The column clauses of the row filter.
+        """
+        return pulumi.get(self, "column_clauses")
+
+    @column_clauses.setter
+    def column_clauses(self, value: pulumi.Input[Sequence[pulumi.Input['ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArgs']]]):
+        pulumi.set(self, "column_clauses", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[_builtins.str]:
+        """
+        The row filter description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The row filter name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The logical operator combining the column clauses. Defaults to `AND`. Valid only with two or more clauses.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "operator", value)
+
+
+class ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArgsDict(TypedDict):
+    column: pulumi.Input[_builtins.str]
+    """
+    The column name.
+    """
+    operator: pulumi.Input[_builtins.str]
+    """
+    The clause operator.
+    """
+    column_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The column type.
+    """
+    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The clause values. Not used with `IS_NULL` and `IS_NOT_NULL` operators.
+    """
+
+@pulumi.input_type
+class ConnectorSchemaConfigSchemasTablesRowFilterColumnClauseArgs:
+    def __init__(__self__, *,
+                 column: pulumi.Input[_builtins.str],
+                 operator: pulumi.Input[_builtins.str],
+                 column_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] column: The column name.
+        :param pulumi.Input[_builtins.str] operator: The clause operator.
+        :param pulumi.Input[_builtins.str] column_type: The column type.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: The clause values. Not used with `IS_NULL` and `IS_NOT_NULL` operators.
+        """
+        pulumi.set(__self__, "column", column)
+        pulumi.set(__self__, "operator", operator)
+        if column_type is not None:
+            pulumi.set(__self__, "column_type", column_type)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def column(self) -> pulumi.Input[_builtins.str]:
+        """
+        The column name.
+        """
+        return pulumi.get(self, "column")
+
+    @column.setter
+    def column(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "column", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[_builtins.str]:
+        """
+        The clause operator.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "operator", value)
+
+    @_builtins.property
+    @pulumi.getter(name="columnType")
+    def column_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The column type.
+        """
+        return pulumi.get(self, "column_type")
+
+    @column_type.setter
+    def column_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "column_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The clause values. Not used with `IS_NULL` and `IS_NOT_NULL` operators.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "values", value)
 
 
 class ConnectorSchemaConfigTimeoutsArgsDict(TypedDict):
