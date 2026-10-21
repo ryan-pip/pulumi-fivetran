@@ -34,15 +34,15 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := fivetran.NewDestination(ctx, "dest", &fivetran.DestinationArgs{
 //				Config: &fivetran.DestinationConfigArgs{
-//					Host:           pulumi.String("destination.fqdn"),
-//					Port:           pulumi.Int(5432),
-//					User:           pulumi.String("postgres"),
+//					Host:           pulumi.String("your_account.snowflakecomputing.com"),
+//					Port:           pulumi.Int(443),
+//					User:           pulumi.String("myUser"),
 //					Password:       pulumi.String("myPass"),
 //					Database:       pulumi.String("fivetran"),
 //					ConnectionType: pulumi.String("Directly"),
 //				},
 //				GroupId:                   pulumi.Any(group.Id),
-//				Service:                   pulumi.String("postgres_rds_warehouse"),
+//				Service:                   pulumi.String("snowflake"),
 //				TimeZoneOffset:            pulumi.String("0"),
 //				Region:                    pulumi.String("GCP_US_EAST4"),
 //				TrustCertificates:         pulumi.Bool(true),
