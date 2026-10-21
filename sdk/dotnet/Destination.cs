@@ -30,15 +30,15 @@ namespace Pulumi.Fivetran
     ///     {
     ///         Config = new Fivetran.Inputs.DestinationConfigArgs
     ///         {
-    ///             Host = "destination.fqdn",
-    ///             Port = 5432,
-    ///             User = "postgres",
+    ///             Host = "your_account.snowflakecomputing.com",
+    ///             Port = 443,
+    ///             User = "myUser",
     ///             Password = "myPass",
     ///             Database = "fivetran",
     ///             ConnectionType = "Directly",
     ///         },
     ///         GroupId = @group.Id,
-    ///         Service = "postgres_rds_warehouse",
+    ///         Service = "snowflake",
     ///         TimeZoneOffset = "0",
     ///         Region = "GCP_US_EAST4",
     ///         TrustCertificates = true,

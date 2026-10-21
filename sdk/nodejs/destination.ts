@@ -21,15 +21,15 @@ import * as utilities from "./utilities";
  *
  * const dest = new fivetran.Destination("dest", {
  *     config: {
- *         host: "destination.fqdn",
- *         port: 5432,
- *         user: "postgres",
+ *         host: "your_account.snowflakecomputing.com",
+ *         port: 443,
+ *         user: "myUser",
  *         password: "myPass",
  *         database: "fivetran",
  *         connectionType: "Directly",
  *     },
  *     groupId: group.id,
- *     service: "postgres_rds_warehouse",
+ *     service: "snowflake",
  *     timeZoneOffset: "0",
  *     region: "GCP_US_EAST4",
  *     trustCertificates: true,
