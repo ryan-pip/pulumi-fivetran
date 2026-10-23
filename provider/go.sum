@@ -196,8 +196,8 @@ github.com/felixge/httpsnoop v1.1.0 h1:3YtUj32ZZkqZtt3sZZsClsymw/QDuVfpNhoA31zeO
 github.com/felixge/httpsnoop v1.1.0/go.mod h1:Zqxgdd+1Rkcz8euOqdr7lqgCRJztwr5hp9vDSi5UZCE=
 github.com/fivetran/go-fivetran v1.3.13 h1:H5jtMzj3vwYnY09flgu5joRZxJq/m4lbhjeFjbaBQNg=
 github.com/fivetran/go-fivetran v1.3.13/go.mod h1:EIy5Uwn1zylQCr/7O+8rrwvmjvhW3PPpzHkQj26ON7Y=
-github.com/fivetran/terraform-provider-fivetran v1.9.52 h1:vQWd1oUDgh1hZtWkfAtScwky+y8UkUOV5Q8Fv9n7kVI=
-github.com/fivetran/terraform-provider-fivetran v1.9.52/go.mod h1:9QirCupObH9xLurW8MLoBX6KMB2oA5ltU693O/cfxHQ=
+github.com/fivetran/terraform-provider-fivetran v1.9.53 h1:yMOUqYlIGzcbMRw1Vq21vz2CBTC7jeaglx4/KecD+2Y=
+github.com/fivetran/terraform-provider-fivetran v1.9.53/go.mod h1:9QirCupObH9xLurW8MLoBX6KMB2oA5ltU693O/cfxHQ=
 github.com/frankban/quicktest v1.14.4 h1:g2rn0vABPOOXmZUj+vbmUp0lPoXEMuhTpIluN0XL9UY=
 github.com/frankban/quicktest v1.14.4/go.mod h1:4ptaffx2x8+WTWXmUCuVU6aPUX1/Mz7zb5vbUoiM6w0=
 github.com/git-pkgs/manifests v0.4.1 h1:CWml+TrRXVzrfNJ2pTNKLqyi+9y/BFiQP/BX3pL4pPQ=
