@@ -15,6 +15,22 @@ namespace Pulumi.Fivetran
         /// This data source returns list of connector objects.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var connector = Fivetran.GetConnectors.Invoke(new()
+        ///     {
+        ///         Id = "anonymous_mystery",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetConnectorsResult> InvokeAsync(GetConnectorsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectorsResult>("fivetran:index/getConnectors:getConnectors", args ?? new GetConnectorsArgs(), options.WithDefaults());
@@ -23,6 +39,22 @@ namespace Pulumi.Fivetran
         /// This data source returns list of connector objects.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var connector = Fivetran.GetConnectors.Invoke(new()
+        ///     {
+        ///         Id = "anonymous_mystery",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetConnectorsResult> Invoke(GetConnectorsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectorsResult>("fivetran:index/getConnectors:getConnectors", args ?? new GetConnectorsInvokeArgs(), options.WithDefaults());
@@ -31,6 +63,22 @@ namespace Pulumi.Fivetran
         /// This data source returns list of connector objects.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var connector = Fivetran.GetConnectors.Invoke(new()
+        ///     {
+        ///         Id = "anonymous_mystery",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetConnectorsResult> Invoke(GetConnectorsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectorsResult>("fivetran:index/getConnectors:getConnectors", args ?? new GetConnectorsInvokeArgs(), options.WithDefaults());

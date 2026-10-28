@@ -10,6 +10,15 @@ import * as utilities from "./utilities";
  * This data source returns list of connection objects.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
+ *
+ * const connection = fivetran.getConnections({
+ *     id: "anonymous_mystery",
+ * });
+ * ```
  */
 export function getConnections(args?: GetConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionsResult> {
     args = args || {};
@@ -58,6 +67,15 @@ export interface GetConnectionsResult {
  * This data source returns list of connection objects.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
+ *
+ * const connection = fivetran.getConnections({
+ *     id: "anonymous_mystery",
+ * });
+ * ```
  */
 export function getConnectionsOutput(args?: GetConnectionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectionsResult> {
     args = args || {};

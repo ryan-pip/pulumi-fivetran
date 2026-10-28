@@ -10,6 +10,15 @@ import * as utilities from "./utilities";
  * This data source returns list of destination objects.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
+ *
+ * const dest = fivetran.getDestinations({
+ *     id: "anonymous_mystery",
+ * });
+ * ```
  */
 export function getDestinations(args?: GetDestinationsArgs, opts?: pulumi.InvokeOptions): Promise<GetDestinationsResult> {
     args = args || {};
@@ -40,6 +49,15 @@ export interface GetDestinationsResult {
  * This data source returns list of destination objects.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
+ *
+ * const dest = fivetran.getDestinations({
+ *     id: "anonymous_mystery",
+ * });
+ * ```
  */
 export function getDestinationsOutput(args?: GetDestinationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDestinationsResult> {
     args = args || {};

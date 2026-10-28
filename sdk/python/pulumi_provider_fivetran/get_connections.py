@@ -93,6 +93,13 @@ def get_connections(connections: Optional[Sequence[Union['GetConnectionsConnecti
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_fivetran as fivetran
+
+    connection = fivetran.get_connections(id="anonymous_mystery")
+    ```
+
 
     :param _builtins.str group_id: The ID of the group (destination) to filter connections by.
     :param _builtins.str schema_name: The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
@@ -117,6 +124,13 @@ def get_connections_output(connections: pulumi.Input[Optional[Optional[Sequence[
     This data source returns list of connection objects.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_fivetran as fivetran
+
+    connection = fivetran.get_connections(id="anonymous_mystery")
+    ```
 
 
     :param _builtins.str group_id: The ID of the group (destination) to filter connections by.

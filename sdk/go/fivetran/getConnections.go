@@ -14,6 +14,30 @@ import (
 // This data source returns list of connection objects.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.GetConnections(ctx, &fivetran.GetConnectionsArgs{
+//				Id: "anonymous_mystery",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetConnections(ctx *pulumi.Context, args *GetConnectionsArgs, opts ...pulumi.InvokeOption) (*GetConnectionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetConnectionsResult

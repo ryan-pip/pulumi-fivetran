@@ -66,6 +66,13 @@ def get_external_logs(logs: Optional[Sequence[Union['GetExternalLogsLogArgs', 'G
     This data source returns list of logging service objects.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_fivetran as fivetran
+
+    extlog = fivetran.get_external_logs(id="anonymous_mystery")
+    ```
     """
     __args__ = dict()
     __args__['logs'] = logs
@@ -81,6 +88,13 @@ def get_external_logs_output(logs: pulumi.Input[Optional[Optional[Sequence[Union
     This data source returns list of logging service objects.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_fivetran as fivetran
+
+    extlog = fivetran.get_external_logs(id="anonymous_mystery")
+    ```
     """
     __args__ = dict()
     __args__['logs'] = logs

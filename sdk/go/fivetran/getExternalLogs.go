@@ -14,6 +14,30 @@ import (
 // This data source returns list of logging service objects.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.GetExternalLogs(ctx, &fivetran.GetExternalLogsArgs{
+//				Id: "anonymous_mystery",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetExternalLogs(ctx *pulumi.Context, args *GetExternalLogsArgs, opts ...pulumi.InvokeOption) (*GetExternalLogsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetExternalLogsResult

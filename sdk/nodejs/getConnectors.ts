@@ -10,6 +10,15 @@ import * as utilities from "./utilities";
  * This data source returns list of connector objects.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
+ *
+ * const connector = fivetran.getConnectors({
+ *     id: "anonymous_mystery",
+ * });
+ * ```
  */
 export function getConnectors(args?: GetConnectorsArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorsResult> {
     args = args || {};
@@ -40,6 +49,15 @@ export interface GetConnectorsResult {
  * This data source returns list of connector objects.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fivetran from "@ryan-pip/pulumi-fivetran";
+ *
+ * const connector = fivetran.getConnectors({
+ *     id: "anonymous_mystery",
+ * });
+ * ```
  */
 export function getConnectorsOutput(args?: GetConnectorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectorsResult> {
     args = args || {};

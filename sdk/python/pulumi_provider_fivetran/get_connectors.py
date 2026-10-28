@@ -66,6 +66,13 @@ def get_connectors(connectors: Optional[Sequence[Union['GetConnectorsConnectorAr
     This data source returns list of connector objects.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_fivetran as fivetran
+
+    connector = fivetran.get_connectors(id="anonymous_mystery")
+    ```
     """
     __args__ = dict()
     __args__['connectors'] = connectors
@@ -81,6 +88,13 @@ def get_connectors_output(connectors: pulumi.Input[Optional[Optional[Sequence[Un
     This data source returns list of connector objects.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_fivetran as fivetran
+
+    connector = fivetran.get_connectors(id="anonymous_mystery")
+    ```
     """
     __args__ = dict()
     __args__['connectors'] = connectors

@@ -15,6 +15,22 @@ namespace Pulumi.Fivetran
         /// This data source returns list of destination objects.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var dest = Fivetran.GetDestinations.Invoke(new()
+        ///     {
+        ///         Id = "anonymous_mystery",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetDestinationsResult> InvokeAsync(GetDestinationsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDestinationsResult>("fivetran:index/getDestinations:getDestinations", args ?? new GetDestinationsArgs(), options.WithDefaults());
@@ -23,6 +39,22 @@ namespace Pulumi.Fivetran
         /// This data source returns list of destination objects.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var dest = Fivetran.GetDestinations.Invoke(new()
+        ///     {
+        ///         Id = "anonymous_mystery",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetDestinationsResult> Invoke(GetDestinationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDestinationsResult>("fivetran:index/getDestinations:getDestinations", args ?? new GetDestinationsInvokeArgs(), options.WithDefaults());
@@ -31,6 +63,22 @@ namespace Pulumi.Fivetran
         /// This data source returns list of destination objects.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var dest = Fivetran.GetDestinations.Invoke(new()
+        ///     {
+        ///         Id = "anonymous_mystery",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetDestinationsResult> Invoke(GetDestinationsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDestinationsResult>("fivetran:index/getDestinations:getDestinations", args ?? new GetDestinationsInvokeArgs(), options.WithDefaults());
