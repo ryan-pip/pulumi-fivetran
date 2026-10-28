@@ -15,6 +15,22 @@ namespace Pulumi.Fivetran
         /// This data source returns list of logging service objects.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var extlog = Fivetran.GetExternalLogs.Invoke(new()
+        ///     {
+        ///         Id = "anonymous_mystery",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetExternalLogsResult> InvokeAsync(GetExternalLogsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetExternalLogsResult>("fivetran:index/getExternalLogs:getExternalLogs", args ?? new GetExternalLogsArgs(), options.WithDefaults());
@@ -23,6 +39,22 @@ namespace Pulumi.Fivetran
         /// This data source returns list of logging service objects.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var extlog = Fivetran.GetExternalLogs.Invoke(new()
+        ///     {
+        ///         Id = "anonymous_mystery",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetExternalLogsResult> Invoke(GetExternalLogsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetExternalLogsResult>("fivetran:index/getExternalLogs:getExternalLogs", args ?? new GetExternalLogsInvokeArgs(), options.WithDefaults());
@@ -31,6 +63,22 @@ namespace Pulumi.Fivetran
         /// This data source returns list of logging service objects.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var extlog = Fivetran.GetExternalLogs.Invoke(new()
+        ///     {
+        ///         Id = "anonymous_mystery",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetExternalLogsResult> Invoke(GetExternalLogsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetExternalLogsResult>("fivetran:index/getExternalLogs:getExternalLogs", args ?? new GetExternalLogsInvokeArgs(), options.WithDefaults());

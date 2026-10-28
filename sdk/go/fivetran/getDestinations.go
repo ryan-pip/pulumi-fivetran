@@ -14,6 +14,30 @@ import (
 // This data source returns list of destination objects.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := fivetran.GetDestinations(ctx, &fivetran.GetDestinationsArgs{
+//				Id: "anonymous_mystery",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDestinations(ctx *pulumi.Context, args *GetDestinationsArgs, opts ...pulumi.InvokeOption) (*GetDestinationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDestinationsResult

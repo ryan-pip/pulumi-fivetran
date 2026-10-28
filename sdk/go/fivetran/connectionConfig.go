@@ -64,7 +64,7 @@ import (
 //			}
 //			json1 := string(tmpJSON1)
 //			_, err = fivetran.NewConnectionConfig(ctx, "postgres", &fivetran.ConnectionConfigArgs{
-//				ConnectionId:      postgres.ID().ToIDOutput().ToStringOutput(),
+//				ConnectionId:      postgres.ID(),
 //				Config:            pulumi.String(json0),
 //				Auth:              pulumi.String(json1),
 //				RunSetupTests:     pulumi.Bool(true),
@@ -119,7 +119,7 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = fivetran.NewConnectionConfig(ctx, "mysql", &fivetran.ConnectionConfigArgs{
-//				ConnectionId:  mysql.ID().ToIDOutput().ToStringOutput(),
+//				ConnectionId:  mysql.ID(),
 //				Config:        pulumi.String(json0),
 //				RunSetupTests: pulumi.Bool(true),
 //			})
@@ -166,7 +166,7 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = fivetran.NewConnectionConfig(ctx, "s3", &fivetran.ConnectionConfigArgs{
-//				ConnectionId:  s3.ID().ToIDOutput().ToStringOutput(),
+//				ConnectionId:  s3.ID(),
 //				Auth:          pulumi.String(json0),
 //				RunSetupTests: pulumi.Bool(true),
 //			})

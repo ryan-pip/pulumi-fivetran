@@ -51,7 +51,7 @@ import (
 //				DestinationSchema: &fivetran.ConnectionDestinationSchemaArgs{
 //					Prefix: pulumi.String("my_postgres"),
 //				},
-//				GroupId:           example.ID().ToIDOutput().ToStringOutput(),
+//				GroupId:           example.ID(),
 //				Service:           pulumi.String("postgres"),
 //				Config:            pulumi.String(json0),
 //				RunSetupTests:     pulumi.Bool(false),
@@ -140,7 +140,7 @@ import (
 //				GroupId:          pulumi.Any(exampleFivetranGroup.Id),
 //				Service:          pulumi.String("mysql"),
 //				NetworkingMethod: pulumi.String("ProxyAgent"),
-//				ProxyAgentId:     example.ID().ToIDOutput().ToStringOutput(),
+//				ProxyAgentId:     example.ID(),
 //				RunSetupTests:    pulumi.Bool(false),
 //			})
 //			if err != nil {

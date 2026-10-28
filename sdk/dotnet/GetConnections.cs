@@ -15,6 +15,22 @@ namespace Pulumi.Fivetran
         /// This data source returns list of connection objects.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var connection = Fivetran.GetConnections.Invoke(new()
+        ///     {
+        ///         Id = "anonymous_mystery",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetConnectionsResult> InvokeAsync(GetConnectionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectionsResult>("fivetran:index/getConnections:getConnections", args ?? new GetConnectionsArgs(), options.WithDefaults());
@@ -23,6 +39,22 @@ namespace Pulumi.Fivetran
         /// This data source returns list of connection objects.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var connection = Fivetran.GetConnections.Invoke(new()
+        ///     {
+        ///         Id = "anonymous_mystery",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetConnectionsResult> Invoke(GetConnectionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectionsResult>("fivetran:index/getConnections:getConnections", args ?? new GetConnectionsInvokeArgs(), options.WithDefaults());
@@ -31,6 +63,22 @@ namespace Pulumi.Fivetran
         /// This data source returns list of connection objects.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Fivetran = Pulumi.Fivetran;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var connection = Fivetran.GetConnections.Invoke(new()
+        ///     {
+        ///         Id = "anonymous_mystery",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetConnectionsResult> Invoke(GetConnectionsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectionsResult>("fivetran:index/getConnections:getConnections", args ?? new GetConnectionsInvokeArgs(), options.WithDefaults());

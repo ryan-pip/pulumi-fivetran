@@ -66,6 +66,13 @@ def get_destinations(destinations: Optional[Sequence[Union['GetDestinationsDesti
     This data source returns list of destination objects.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_fivetran as fivetran
+
+    dest = fivetran.get_destinations(id="anonymous_mystery")
+    ```
     """
     __args__ = dict()
     __args__['destinations'] = destinations
@@ -81,6 +88,13 @@ def get_destinations_output(destinations: pulumi.Input[Optional[Optional[Sequenc
     This data source returns list of destination objects.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_fivetran as fivetran
+
+    dest = fivetran.get_destinations(id="anonymous_mystery")
+    ```
     """
     __args__ = dict()
     __args__['destinations'] = destinations
