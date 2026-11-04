@@ -68,6 +68,8 @@ type ConnectionV2 struct {
 	ConnectCardConfig ConnectionV2ConnectCardConfigPtrOutput `pulumi:"connectCardConfig"`
 	// The unique identifier of the user who created the connection in your account.
 	ConnectedBy pulumi.StringOutput `pulumi:"connectedBy"`
+	// The unique identifier of the package deployed to a Connector SDK connection. Not set for other connection types or when no package is deployed.
+	ConnectorSdkPackageId pulumi.StringOutput `pulumi:"connectorSdkPackageId"`
 	// The timestamp of the time the connection was created in your account.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Sync start time. Only used when `syncFrequency` is `1440`.
@@ -174,6 +176,8 @@ type connectionV2State struct {
 	ConnectCardConfig *ConnectionV2ConnectCardConfig `pulumi:"connectCardConfig"`
 	// The unique identifier of the user who created the connection in your account.
 	ConnectedBy *string `pulumi:"connectedBy"`
+	// The unique identifier of the package deployed to a Connector SDK connection. Not set for other connection types or when no package is deployed.
+	ConnectorSdkPackageId *string `pulumi:"connectorSdkPackageId"`
 	// The timestamp of the time the connection was created in your account.
 	CreatedAt *string `pulumi:"createdAt"`
 	// Sync start time. Only used when `syncFrequency` is `1440`.
@@ -235,6 +239,8 @@ type ConnectionV2State struct {
 	ConnectCardConfig ConnectionV2ConnectCardConfigPtrInput
 	// The unique identifier of the user who created the connection in your account.
 	ConnectedBy pulumi.StringPtrInput
+	// The unique identifier of the package deployed to a Connector SDK connection. Not set for other connection types or when no package is deployed.
+	ConnectorSdkPackageId pulumi.StringPtrInput
 	// The timestamp of the time the connection was created in your account.
 	CreatedAt pulumi.StringPtrInput
 	// Sync start time. Only used when `syncFrequency` is `1440`.
@@ -491,6 +497,11 @@ func (o ConnectionV2Output) ConnectCardConfig() ConnectionV2ConnectCardConfigPtr
 // The unique identifier of the user who created the connection in your account.
 func (o ConnectionV2Output) ConnectedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionV2) pulumi.StringOutput { return v.ConnectedBy }).(pulumi.StringOutput)
+}
+
+// The unique identifier of the package deployed to a Connector SDK connection. Not set for other connection types or when no package is deployed.
+func (o ConnectionV2Output) ConnectorSdkPackageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionV2) pulumi.StringOutput { return v.ConnectorSdkPackageId }).(pulumi.StringOutput)
 }
 
 // The timestamp of the time the connection was created in your account.

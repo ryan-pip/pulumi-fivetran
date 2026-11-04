@@ -6,6 +6,7 @@ import builtins as _builtins
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .account_external_logging_v2 import *
 from .connection import *
 from .connection_config import *
 from .connection_v2 import *
@@ -19,6 +20,7 @@ from .connector_sdk_package import *
 from .destination import *
 from .destination_certificates import *
 from .destination_fingerprints import *
+from .destination_v2 import *
 from .external_logging import *
 from .get_connection import *
 from .get_connection_certificates import *
@@ -97,6 +99,14 @@ else:
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "fivetran",
+  "mod": "index/accountExternalLoggingV2",
+  "fqn": "pulumi_provider_fivetran",
+  "classes": {
+   "fivetran:index/accountExternalLoggingV2:AccountExternalLoggingV2": "AccountExternalLoggingV2"
+  }
+ },
  {
   "pkg": "fivetran",
   "mod": "index/connection",
@@ -199,6 +209,14 @@ _utilities.register(
   "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/destinationFingerprints:DestinationFingerprints": "DestinationFingerprints"
+  }
+ },
+ {
+  "pkg": "fivetran",
+  "mod": "index/destinationV2",
+  "fqn": "pulumi_provider_fivetran",
+  "classes": {
+   "fivetran:index/destinationV2:DestinationV2": "DestinationV2"
   }
  },
  {

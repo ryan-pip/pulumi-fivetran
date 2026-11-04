@@ -1,15 +1,15 @@
 module github.com/fivetran/terraform-provider-fivetran/shim
 
-go 1.24.0
+go 1.26.10
 
 require (
-	github.com/fivetran/terraform-provider-fivetran v1.9.54
+	github.com/fivetran/terraform-provider-fivetran v1.9.55
 	github.com/hashicorp/terraform-plugin-framework v1.18.0
 )
 
 require (
 	github.com/fatih/color v1.18.0 // indirect
-	github.com/fivetran/go-fivetran v1.3.14 // indirect
+	github.com/fivetran/go-fivetran v1.3.16 // indirect
 	github.com/hashicorp/go-hclog v1.6.3 // indirect
 	github.com/hashicorp/go-uuid v1.0.3 // indirect
 	github.com/hashicorp/terraform-plugin-framework-timeouts v0.7.0 // indirect
