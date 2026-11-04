@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "fivetran:index/accountExternalLoggingV2:AccountExternalLoggingV2":
+		r = &AccountExternalLoggingV2{}
 	case "fivetran:index/connection:Connection":
 		r = &Connection{}
 	case "fivetran:index/connectionConfig:ConnectionConfig":
@@ -47,6 +49,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DestinationCertificates{}
 	case "fivetran:index/destinationFingerprints:DestinationFingerprints":
 		r = &DestinationFingerprints{}
+	case "fivetran:index/destinationV2:DestinationV2":
+		r = &DestinationV2{}
 	case "fivetran:index/externalLogging:ExternalLogging":
 		r = &ExternalLogging{}
 	case "fivetran:index/group:Group":
@@ -112,6 +116,11 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"fivetran",
+		"index/accountExternalLoggingV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"fivetran",
 		"index/connection",
 		&module{version},
 	)
@@ -173,6 +182,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"fivetran",
 		"index/destinationFingerprints",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"fivetran",
+		"index/destinationV2",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

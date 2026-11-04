@@ -383,6 +383,7 @@ class _ConnectionV2State:
                  config: Optional[Any] = None,
                  connect_card_config: pulumi.Input[Optional['ConnectionV2ConnectCardConfigArgs']] = None,
                  connected_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 connector_sdk_package_id: pulumi.Input[Optional[_builtins.str]] = None,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
                  daily_sync_time: pulumi.Input[Optional[_builtins.str]] = None,
                  data_checks: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -415,6 +416,7 @@ class _ConnectionV2State:
         :param Any config: Service-specific connection configuration. The accepted fields are defined by connector metadata at runtime.
         :param pulumi.Input['ConnectionV2ConnectCardConfigArgs'] connect_card_config: Configuration for the interactive Connect Card setup flow.
         :param pulumi.Input[_builtins.str] connected_by: The unique identifier of the user who created the connection in your account.
+        :param pulumi.Input[_builtins.str] connector_sdk_package_id: The unique identifier of the package deployed to a Connector SDK connection. Not set for other connection types or when no package is deployed.
         :param pulumi.Input[_builtins.str] created_at: The timestamp of the time the connection was created in your account.
         :param pulumi.Input[_builtins.str] daily_sync_time: Sync start time. Only used when `sync_frequency` is `1440`.
         :param pulumi.Input[_builtins.bool] data_checks: Specifies whether data validation is enabled for the connection.
@@ -449,6 +451,8 @@ class _ConnectionV2State:
             pulumi.set(__self__, "connect_card_config", connect_card_config)
         if connected_by is not None:
             pulumi.set(__self__, "connected_by", connected_by)
+        if connector_sdk_package_id is not None:
+            pulumi.set(__self__, "connector_sdk_package_id", connector_sdk_package_id)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
         if daily_sync_time is not None:
@@ -547,6 +551,18 @@ class _ConnectionV2State:
     @connected_by.setter
     def connected_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connected_by", value)
+
+    @_builtins.property
+    @pulumi.getter(name="connectorSdkPackageId")
+    def connector_sdk_package_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The unique identifier of the package deployed to a Connector SDK connection. Not set for other connection types or when no package is deployed.
+        """
+        return pulumi.get(self, "connector_sdk_package_id")
+
+    @connector_sdk_package_id.setter
+    def connector_sdk_package_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "connector_sdk_package_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
@@ -1040,6 +1056,7 @@ class ConnectionV2(pulumi.CustomResource):
             __props__.__dict__["trust_certificates"] = trust_certificates
             __props__.__dict__["trust_fingerprints"] = trust_fingerprints
             __props__.__dict__["connected_by"] = None
+            __props__.__dict__["connector_sdk_package_id"] = None
             __props__.__dict__["created_at"] = None
             __props__.__dict__["failed_at"] = None
             __props__.__dict__["name"] = None
@@ -1062,6 +1079,7 @@ class ConnectionV2(pulumi.CustomResource):
             config: Optional[Any] = None,
             connect_card_config: pulumi.Input[Optional[Union['ConnectionV2ConnectCardConfigArgs', 'ConnectionV2ConnectCardConfigArgsDict']]] = None,
             connected_by: pulumi.Input[Optional[_builtins.str]] = None,
+            connector_sdk_package_id: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             daily_sync_time: pulumi.Input[Optional[_builtins.str]] = None,
             data_checks: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1098,6 +1116,7 @@ class ConnectionV2(pulumi.CustomResource):
         :param Any config: Service-specific connection configuration. The accepted fields are defined by connector metadata at runtime.
         :param pulumi.Input[Union['ConnectionV2ConnectCardConfigArgs', 'ConnectionV2ConnectCardConfigArgsDict']] connect_card_config: Configuration for the interactive Connect Card setup flow.
         :param pulumi.Input[_builtins.str] connected_by: The unique identifier of the user who created the connection in your account.
+        :param pulumi.Input[_builtins.str] connector_sdk_package_id: The unique identifier of the package deployed to a Connector SDK connection. Not set for other connection types or when no package is deployed.
         :param pulumi.Input[_builtins.str] created_at: The timestamp of the time the connection was created in your account.
         :param pulumi.Input[_builtins.str] daily_sync_time: Sync start time. Only used when `sync_frequency` is `1440`.
         :param pulumi.Input[_builtins.bool] data_checks: Specifies whether data validation is enabled for the connection.
@@ -1132,6 +1151,7 @@ class ConnectionV2(pulumi.CustomResource):
         __props__.__dict__["config"] = config
         __props__.__dict__["connect_card_config"] = connect_card_config
         __props__.__dict__["connected_by"] = connected_by
+        __props__.__dict__["connector_sdk_package_id"] = connector_sdk_package_id
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["daily_sync_time"] = daily_sync_time
         __props__.__dict__["data_checks"] = data_checks
@@ -1190,6 +1210,14 @@ class ConnectionV2(pulumi.CustomResource):
         The unique identifier of the user who created the connection in your account.
         """
         return pulumi.get(self, "connected_by")
+
+    @_builtins.property
+    @pulumi.getter(name="connectorSdkPackageId")
+    def connector_sdk_package_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The unique identifier of the package deployed to a Connector SDK connection. Not set for other connection types or when no package is deployed.
+        """
+        return pulumi.get(self, "connector_sdk_package_id")
 
     @_builtins.property
     @pulumi.getter(name="createdAt")

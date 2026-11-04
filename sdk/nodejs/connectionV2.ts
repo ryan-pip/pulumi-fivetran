@@ -80,6 +80,10 @@ export class ConnectionV2 extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly connectedBy: pulumi.Output<string>;
     /**
+     * The unique identifier of the package deployed to a Connector SDK connection. Not set for other connection types or when no package is deployed.
+     */
+    declare public /*out*/ readonly connectorSdkPackageId: pulumi.Output<string>;
+    /**
      * The timestamp of the time the connection was created in your account.
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
@@ -197,6 +201,7 @@ export class ConnectionV2 extends pulumi.CustomResource {
             resourceInputs["config"] = state?.config;
             resourceInputs["connectCardConfig"] = state?.connectCardConfig;
             resourceInputs["connectedBy"] = state?.connectedBy;
+            resourceInputs["connectorSdkPackageId"] = state?.connectorSdkPackageId;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["dailySyncTime"] = state?.dailySyncTime;
             resourceInputs["dataChecks"] = state?.dataChecks;
@@ -256,6 +261,7 @@ export class ConnectionV2 extends pulumi.CustomResource {
             resourceInputs["trustCertificates"] = args?.trustCertificates;
             resourceInputs["trustFingerprints"] = args?.trustFingerprints;
             resourceInputs["connectedBy"] = undefined /*out*/;
+            resourceInputs["connectorSdkPackageId"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["failedAt"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -290,6 +296,10 @@ export interface ConnectionV2State {
      * The unique identifier of the user who created the connection in your account.
      */
     connectedBy?: pulumi.Input<string | undefined>;
+    /**
+     * The unique identifier of the package deployed to a Connector SDK connection. Not set for other connection types or when no package is deployed.
+     */
+    connectorSdkPackageId?: pulumi.Input<string | undefined>;
     /**
      * The timestamp of the time the connection was created in your account.
      */

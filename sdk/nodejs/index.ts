@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { AccountExternalLoggingV2Args, AccountExternalLoggingV2State } from "./accountExternalLoggingV2";
+export type AccountExternalLoggingV2 = import("./accountExternalLoggingV2").AccountExternalLoggingV2;
+export const AccountExternalLoggingV2: typeof import("./accountExternalLoggingV2").AccountExternalLoggingV2 = null as any;
+utilities.lazyLoad(exports, ["AccountExternalLoggingV2"], () => require("./accountExternalLoggingV2"));
+
 export { ConnectionArgs, ConnectionState } from "./connection";
 export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
@@ -69,6 +74,11 @@ export { DestinationFingerprintsArgs, DestinationFingerprintsState } from "./des
 export type DestinationFingerprints = import("./destinationFingerprints").DestinationFingerprints;
 export const DestinationFingerprints: typeof import("./destinationFingerprints").DestinationFingerprints = null as any;
 utilities.lazyLoad(exports, ["DestinationFingerprints"], () => require("./destinationFingerprints"));
+
+export { DestinationV2Args, DestinationV2State } from "./destinationV2";
+export type DestinationV2 = import("./destinationV2").DestinationV2;
+export const DestinationV2: typeof import("./destinationV2").DestinationV2 = null as any;
+utilities.lazyLoad(exports, ["DestinationV2"], () => require("./destinationV2"));
 
 export { ExternalLoggingArgs, ExternalLoggingState } from "./externalLogging";
 export type ExternalLogging = import("./externalLogging").ExternalLogging;
@@ -407,6 +417,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "fivetran:index/accountExternalLoggingV2:AccountExternalLoggingV2":
+                return new AccountExternalLoggingV2(name, <any>undefined, { urn })
             case "fivetran:index/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
             case "fivetran:index/connectionConfig:ConnectionConfig":
@@ -433,6 +445,8 @@ const _module = {
                 return new DestinationCertificates(name, <any>undefined, { urn })
             case "fivetran:index/destinationFingerprints:DestinationFingerprints":
                 return new DestinationFingerprints(name, <any>undefined, { urn })
+            case "fivetran:index/destinationV2:DestinationV2":
+                return new DestinationV2(name, <any>undefined, { urn })
             case "fivetran:index/externalLogging:ExternalLogging":
                 return new ExternalLogging(name, <any>undefined, { urn })
             case "fivetran:index/group:Group":
@@ -470,6 +484,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("fivetran", "index/accountExternalLoggingV2", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/connection", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/connectionConfig", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/connectionV2", _module)
@@ -483,6 +498,7 @@ pulumi.runtime.registerResourceModule("fivetran", "index/connectorSdkPackage", _
 pulumi.runtime.registerResourceModule("fivetran", "index/destination", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/destinationCertificates", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/destinationFingerprints", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/destinationV2", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/externalLogging", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/group", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/groupUsers", _module)

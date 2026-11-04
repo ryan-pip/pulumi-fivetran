@@ -76,6 +76,12 @@ namespace Pulumi.Fivetran
         public Output<string> ConnectedBy { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier of the package deployed to a Connector SDK connection. Not set for other connection types or when no package is deployed.
+        /// </summary>
+        [Output("connectorSdkPackageId")]
+        public Output<string> ConnectorSdkPackageId { get; private set; } = null!;
+
+        /// <summary>
         /// The timestamp of the time the connection was created in your account.
         /// </summary>
         [Output("createdAt")]
@@ -459,6 +465,12 @@ namespace Pulumi.Fivetran
         /// </summary>
         [Input("connectedBy")]
         public Input<string>? ConnectedBy { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the package deployed to a Connector SDK connection. Not set for other connection types or when no package is deployed.
+        /// </summary>
+        [Input("connectorSdkPackageId")]
+        public Input<string>? ConnectorSdkPackageId { get; set; }
 
         /// <summary>
         /// The timestamp of the time the connection was created in your account.
