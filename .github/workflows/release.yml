@@ -184,7 +184,7 @@ jobs:
 
       - name: Generate checksums.txt
         working-directory: release-assets
-        run: sha256sum * > checksums.txt
+        run: sha256sum -- * > checksums.txt
 
       - name: Publish GitHub release
         uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda # v3.0.0

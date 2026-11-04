@@ -10,6 +10,12 @@ on:
 permissions:
   contents: read
 
+# upgrade-provider opens its PR before our go.work sync commit lands, so the
+# first run on a Go-bumping upgrade fails on a stale go.work. Supersede it.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
   MISE_ENV: ci # Load only the lean base toolchain (mise.toml); skip mise.dev.toml.
