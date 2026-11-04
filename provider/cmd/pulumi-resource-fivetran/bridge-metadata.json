@@ -1,6 +1,10 @@
 {
     "auto-aliasing": {
         "resources": {
+            "fivetran_account_external_logging_v2": {
+                "current": "fivetran:index/accountExternalLoggingV2:AccountExternalLoggingV2",
+                "majorVersion": 1
+            },
             "fivetran_connection": {
                 "current": "fivetran:index/connection:Connection",
                 "majorVersion": 1
@@ -554,6 +558,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "fivetran_destination_v2": {
+                "current": "fivetran:index/destinationV2:DestinationV2",
+                "majorVersion": 1
             },
             "fivetran_external_logging": {
                 "current": "fivetran:index/externalLogging:ExternalLogging",
@@ -1646,6 +1654,7 @@
     "auto-settings": {},
     "default-resource-schema-fixups": {
         "resources": {
+            "fivetran_account_external_logging_v2": {},
             "fivetran_connection": {},
             "fivetran_connection_config": {},
             "fivetran_connection_v2": {},
@@ -1659,6 +1668,7 @@
             "fivetran_destination": {},
             "fivetran_destination_certificates": {},
             "fivetran_destination_fingerprints": {},
+            "fivetran_destination_v2": {},
             "fivetran_external_logging": {},
             "fivetran_group": {},
             "fivetran_group_users": {},
