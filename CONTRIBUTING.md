@@ -33,4 +33,3 @@ cloud resources while running. Before running these tests, make sure that you ha
 configured access to your cloud provider with Pulumi.
 
 _TODO: Add any steps you need to take to run integration tests here_
-

@@ -62,4 +62,3 @@ The scheduled `upgrade-provider` workflow SHALL run on the base set (`MISE_ENV: 
 
 - **WHEN** the `Push tag` step resolves the bot user's id via `gh api`
 - **THEN** the step has `GH_TOKEN` set to the minted app token so the lookup succeeds
-

@@ -15,6 +15,7 @@ pkl = "latest"
 yamllint = "latest"
 taplo = "latest"
 actionlint = "latest"
+shellcheck = "latest" # actionlint shells out to it to lint `run:` scripts.
 
 [env]
 HK_MISE = 1
