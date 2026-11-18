@@ -493,7 +493,7 @@ class ConnectionV2ScheduleArgsDict(TypedDict):
     """
     schedule_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The connection schedule configuration type. Supported values: `auto`, `manual`.
+    The schedule type. Supported values: INTERVAL, DAILY, WEEKLY, MONTHLY, CRON.
     """
     time_of_day: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -512,7 +512,7 @@ class ConnectionV2ScheduleArgs:
         :param pulumi.Input[_builtins.str] cron: The cron expression for scheduled syncs (used when schedule_type is CRON).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] days_of_weeks: The days of the week for scheduled syncs (used when schedule_type is WEEKLY).
         :param pulumi.Input[_builtins.int] interval: The interval in minutes between syncs (used when schedule_type is INTERVAL).
-        :param pulumi.Input[_builtins.str] schedule_type: The connection schedule configuration type. Supported values: `auto`, `manual`.
+        :param pulumi.Input[_builtins.str] schedule_type: The schedule type. Supported values: INTERVAL, DAILY, WEEKLY, MONTHLY, CRON.
         :param pulumi.Input[_builtins.str] time_of_day: The time of day for scheduled syncs (format: HH:MM).
         """
         if cron is not None:
@@ -566,7 +566,7 @@ class ConnectionV2ScheduleArgs:
     @pulumi.getter(name="scheduleType")
     def schedule_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The connection schedule configuration type. Supported values: `auto`, `manual`.
+        The schedule type. Supported values: INTERVAL, DAILY, WEEKLY, MONTHLY, CRON.
         """
         return pulumi.get(self, "schedule_type")
 

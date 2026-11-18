@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > **Public Preview:** This resource is in public preview. Features and behavior may change based on feedback.
+ * > This resource is in [Beta](https://fivetran.com/docs/core-concepts#releasephases).
  *
  * Manages the paused state of a `fivetran.ConnectionV2` connection, separately from the connection resource itself. This lets you pause and resume a connection without triggering changes to (or replacement of) the connection's own configuration.
  *

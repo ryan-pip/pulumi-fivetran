@@ -26,7 +26,7 @@ namespace Pulumi.Fivetran.Outputs
         /// </summary>
         public readonly int? Interval;
         /// <summary>
-        /// The connection schedule configuration type. Supported values: `Auto`, `Manual`.
+        /// The schedule type. Supported values: INTERVAL, DAILY, WEEKLY, MONTHLY, CRON.
         /// </summary>
         public readonly string? ScheduleType;
         /// <summary>

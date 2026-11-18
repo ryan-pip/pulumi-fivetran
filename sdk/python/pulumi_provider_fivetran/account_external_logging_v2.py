@@ -172,7 +172,7 @@ class AccountExternalLoggingV2(pulumi.CustomResource):
                  service: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        > **Alpha:** This resource is in alpha and its schema and behavior may change without notice. Not recommended for production use.
+        > This resource is in [Public Preview](https://fivetran.com/docs/core-concepts#releasephases).
 
         Manages the account-level external logging service. An account can have at most one account-level log service. For log services attached to a destination, use `ExternalLogging`.
 
@@ -239,7 +239,7 @@ class AccountExternalLoggingV2(pulumi.CustomResource):
                  args: AccountExternalLoggingV2Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Alpha:** This resource is in alpha and its schema and behavior may change without notice. Not recommended for production use.
+        > This resource is in [Public Preview](https://fivetran.com/docs/core-concepts#releasephases).
 
         Manages the account-level external logging service. An account can have at most one account-level log service. For log services attached to a destination, use `ExternalLogging`.
 

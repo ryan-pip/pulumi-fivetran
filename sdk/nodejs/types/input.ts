@@ -60,7 +60,7 @@ export interface ConnectionV2Schedule {
      */
     interval?: pulumi.Input<number | undefined>;
     /**
-     * The connection schedule configuration type. Supported values: `auto`, `manual`.
+     * The schedule type. Supported values: INTERVAL, DAILY, WEEKLY, MONTHLY, CRON.
      */
     scheduleType?: pulumi.Input<string | undefined>;
     /**

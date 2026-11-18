@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * > **Public Preview:** This resource is in public preview. Features and behavior may change based on feedback.
+ * > This resource is in [Beta](https://fivetran.com/docs/core-concepts#releasephases).
  *
  * Manages a Fivetran connection. Unlike `fivetran.Connector`/`fivetran.Connection`, `config` and `auth` are provided as dynamic, service-specific objects: their accepted fields, types, and required/readonly/immutable rules are resolved from connector metadata at plan time rather than from a fixed schema. This means the same resource works across services (e.g. `s3`, `postgres`, `fivetranLog`) without a per-service Terraform schema.
  *
@@ -72,6 +72,15 @@ export class ConnectionV2 extends pulumi.CustomResource {
      */
     declare public readonly config: pulumi.Output<any>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only service-specific connection configuration fields, merged with `config` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `config` and `configSecrets`. Mutable fields are sent on migration from `config` or when `configSecretsVersion` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in config.
+     */
+    declare public readonly configSecrets: pulumi.Output<any | undefined>;
+    /**
+     * Version of `configSecrets`. Change it to send the current mutable `configSecrets` values to the API.
+     */
+    declare public readonly configSecretsVersion: pulumi.Output<number | undefined>;
+    /**
      * Configuration for the interactive Connect Card setup flow.
      */
     declare public readonly connectCardConfig: pulumi.Output<outputs.ConnectionV2ConnectCardConfig | undefined>;
@@ -79,10 +88,6 @@ export class ConnectionV2 extends pulumi.CustomResource {
      * The unique identifier of the user who created the connection in your account.
      */
     declare public /*out*/ readonly connectedBy: pulumi.Output<string>;
-    /**
-     * The unique identifier of the package deployed to a Connector SDK connection. Not set for other connection types or when no package is deployed.
-     */
-    declare public /*out*/ readonly connectorSdkPackageId: pulumi.Output<string>;
     /**
      * The timestamp of the time the connection was created in your account.
      */
@@ -124,7 +129,7 @@ export class ConnectionV2 extends pulumi.CustomResource {
      */
     declare public readonly hybridDeploymentAgentId: pulumi.Output<string>;
     /**
-     * The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+     * The connection's name.
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -164,7 +169,7 @@ export class ConnectionV2 extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly serviceVersion: pulumi.Output<string>;
     /**
-     * The current connection status.
+     * The current connection status (setup state, sync state, tasks, and warnings).
      */
     declare public /*out*/ readonly status: pulumi.Output<outputs.ConnectionV2Status>;
     /**
@@ -199,9 +204,10 @@ export class ConnectionV2 extends pulumi.CustomResource {
             const state = argsOrState as ConnectionV2State | undefined;
             resourceInputs["auth"] = state?.auth;
             resourceInputs["config"] = state?.config;
+            resourceInputs["configSecrets"] = state?.configSecrets;
+            resourceInputs["configSecretsVersion"] = state?.configSecretsVersion;
             resourceInputs["connectCardConfig"] = state?.connectCardConfig;
             resourceInputs["connectedBy"] = state?.connectedBy;
-            resourceInputs["connectorSdkPackageId"] = state?.connectorSdkPackageId;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["dailySyncTime"] = state?.dailySyncTime;
             resourceInputs["dataChecks"] = state?.dataChecks;
@@ -240,6 +246,8 @@ export class ConnectionV2 extends pulumi.CustomResource {
             }
             resourceInputs["auth"] = args?.auth ? pulumi.secret(args.auth) : undefined;
             resourceInputs["config"] = args?.config;
+            resourceInputs["configSecrets"] = args?.configSecrets ? pulumi.secret(args.configSecrets) : undefined;
+            resourceInputs["configSecretsVersion"] = args?.configSecretsVersion;
             resourceInputs["connectCardConfig"] = args?.connectCardConfig;
             resourceInputs["dailySyncTime"] = args?.dailySyncTime;
             resourceInputs["dataChecks"] = args?.dataChecks;
@@ -261,7 +269,6 @@ export class ConnectionV2 extends pulumi.CustomResource {
             resourceInputs["trustCertificates"] = args?.trustCertificates;
             resourceInputs["trustFingerprints"] = args?.trustFingerprints;
             resourceInputs["connectedBy"] = undefined /*out*/;
-            resourceInputs["connectorSdkPackageId"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["failedAt"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -270,7 +277,7 @@ export class ConnectionV2 extends pulumi.CustomResource {
             resourceInputs["succeededAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["auth"] };
+        const secretOpts = { additionalSecretOutputs: ["auth", "configSecrets"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(ConnectionV2.__pulumiType, name, resourceInputs, opts);
     }
@@ -289,6 +296,15 @@ export interface ConnectionV2State {
      */
     config?: any | undefined;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only service-specific connection configuration fields, merged with `config` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `config` and `configSecrets`. Mutable fields are sent on migration from `config` or when `configSecretsVersion` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in config.
+     */
+    configSecrets?: any | undefined;
+    /**
+     * Version of `configSecrets`. Change it to send the current mutable `configSecrets` values to the API.
+     */
+    configSecretsVersion?: pulumi.Input<number | undefined>;
+    /**
      * Configuration for the interactive Connect Card setup flow.
      */
     connectCardConfig?: pulumi.Input<inputs.ConnectionV2ConnectCardConfig | undefined>;
@@ -296,10 +312,6 @@ export interface ConnectionV2State {
      * The unique identifier of the user who created the connection in your account.
      */
     connectedBy?: pulumi.Input<string | undefined>;
-    /**
-     * The unique identifier of the package deployed to a Connector SDK connection. Not set for other connection types or when no package is deployed.
-     */
-    connectorSdkPackageId?: pulumi.Input<string | undefined>;
     /**
      * The timestamp of the time the connection was created in your account.
      */
@@ -341,7 +353,7 @@ export interface ConnectionV2State {
      */
     hybridDeploymentAgentId?: pulumi.Input<string | undefined>;
     /**
-     * The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+     * The connection's name.
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -381,7 +393,7 @@ export interface ConnectionV2State {
      */
     serviceVersion?: pulumi.Input<string | undefined>;
     /**
-     * The current connection status.
+     * The current connection status (setup state, sync state, tasks, and warnings).
      */
     status?: pulumi.Input<inputs.ConnectionV2Status | undefined>;
     /**
@@ -414,6 +426,15 @@ export interface ConnectionV2Args {
      * Service-specific connection configuration. The accepted fields are defined by connector metadata at runtime.
      */
     config?: any | undefined;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only service-specific connection configuration fields, merged with `config` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `config` and `configSecrets`. Mutable fields are sent on migration from `config` or when `configSecretsVersion` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in config.
+     */
+    configSecrets?: any | undefined;
+    /**
+     * Version of `configSecrets`. Change it to send the current mutable `configSecrets` values to the API.
+     */
+    configSecretsVersion?: pulumi.Input<number | undefined>;
     /**
      * Configuration for the interactive Connect Card setup flow.
      */
