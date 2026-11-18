@@ -12,7 +12,7 @@ import (
 	"github.com/ryan-pip/pulumi-fivetran/sdk/go/fivetran/internal"
 )
 
-// > **Public Preview:** This resource is in public preview. Features and behavior may change based on feedback.
+// > This resource is in [Beta](https://fivetran.com/docs/core-concepts#releasephases).
 //
 // Manages a Fivetran connection. Unlike `Connector`/`Connection`, `config` and `auth` are provided as dynamic, service-specific objects: their accepted fields, types, and required/readonly/immutable rules are resolved from connector metadata at plan time rather than from a fixed schema. This means the same resource works across services (e.g. `s3`, `postgres`, `fivetranLog`) without a per-service Terraform schema.
 //
@@ -64,12 +64,15 @@ type ConnectionV2 struct {
 	Auth pulumi.AnyOutput `pulumi:"auth"`
 	// Service-specific connection configuration. The accepted fields are defined by connector metadata at runtime.
 	Config pulumi.AnyOutput `pulumi:"config"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only service-specific connection configuration fields, merged with `config` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `config` and `configSecrets`. Mutable fields are sent on migration from `config` or when `configSecretsVersion` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in config.
+	ConfigSecrets pulumi.AnyOutput `pulumi:"configSecrets"`
+	// Version of `configSecrets`. Change it to send the current mutable `configSecrets` values to the API.
+	ConfigSecretsVersion pulumi.IntPtrOutput `pulumi:"configSecretsVersion"`
 	// Configuration for the interactive Connect Card setup flow.
 	ConnectCardConfig ConnectionV2ConnectCardConfigPtrOutput `pulumi:"connectCardConfig"`
 	// The unique identifier of the user who created the connection in your account.
 	ConnectedBy pulumi.StringOutput `pulumi:"connectedBy"`
-	// The unique identifier of the package deployed to a Connector SDK connection. Not set for other connection types or when no package is deployed.
-	ConnectorSdkPackageId pulumi.StringOutput `pulumi:"connectorSdkPackageId"`
 	// The timestamp of the time the connection was created in your account.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Sync start time. Only used when `syncFrequency` is `1440`.
@@ -90,7 +93,7 @@ type ConnectionV2 struct {
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
 	// The hybrid deployment agent ID for the group the connection belongs to.
 	HybridDeploymentAgentId pulumi.StringOutput `pulumi:"hybridDeploymentAgentId"`
-	// The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+	// The connection's name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The networking method for the connection. Possible values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`.
 	NetworkingMethod pulumi.StringOutput `pulumi:"networkingMethod"`
@@ -110,7 +113,7 @@ type ConnectionV2 struct {
 	Service pulumi.StringOutput `pulumi:"service"`
 	// The connection type version within the Fivetran system.
 	ServiceVersion pulumi.StringOutput `pulumi:"serviceVersion"`
-	// The current connection status.
+	// The current connection status (setup state, sync state, tasks, and warnings).
 	Status ConnectionV2StatusOutput `pulumi:"status"`
 	// The timestamp of the time the connection sync succeeded last time.
 	SucceededAt pulumi.StringOutput `pulumi:"succeededAt"`
@@ -141,8 +144,12 @@ func NewConnectionV2(ctx *pulumi.Context,
 	if args.Auth != nil {
 		args.Auth = pulumi.ToSecret(args.Auth).(pulumi.Input)
 	}
+	if args.ConfigSecrets != nil {
+		args.ConfigSecrets = pulumi.ToSecret(args.ConfigSecrets).(pulumi.Input)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"auth",
+		"configSecrets",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -172,12 +179,15 @@ type connectionV2State struct {
 	Auth interface{} `pulumi:"auth"`
 	// Service-specific connection configuration. The accepted fields are defined by connector metadata at runtime.
 	Config interface{} `pulumi:"config"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only service-specific connection configuration fields, merged with `config` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `config` and `configSecrets`. Mutable fields are sent on migration from `config` or when `configSecretsVersion` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in config.
+	ConfigSecrets interface{} `pulumi:"configSecrets"`
+	// Version of `configSecrets`. Change it to send the current mutable `configSecrets` values to the API.
+	ConfigSecretsVersion *int `pulumi:"configSecretsVersion"`
 	// Configuration for the interactive Connect Card setup flow.
 	ConnectCardConfig *ConnectionV2ConnectCardConfig `pulumi:"connectCardConfig"`
 	// The unique identifier of the user who created the connection in your account.
 	ConnectedBy *string `pulumi:"connectedBy"`
-	// The unique identifier of the package deployed to a Connector SDK connection. Not set for other connection types or when no package is deployed.
-	ConnectorSdkPackageId *string `pulumi:"connectorSdkPackageId"`
 	// The timestamp of the time the connection was created in your account.
 	CreatedAt *string `pulumi:"createdAt"`
 	// Sync start time. Only used when `syncFrequency` is `1440`.
@@ -198,7 +208,7 @@ type connectionV2State struct {
 	GroupId *string `pulumi:"groupId"`
 	// The hybrid deployment agent ID for the group the connection belongs to.
 	HybridDeploymentAgentId *string `pulumi:"hybridDeploymentAgentId"`
-	// The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+	// The connection's name.
 	Name *string `pulumi:"name"`
 	// The networking method for the connection. Possible values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`.
 	NetworkingMethod *string `pulumi:"networkingMethod"`
@@ -218,7 +228,7 @@ type connectionV2State struct {
 	Service *string `pulumi:"service"`
 	// The connection type version within the Fivetran system.
 	ServiceVersion *string `pulumi:"serviceVersion"`
-	// The current connection status.
+	// The current connection status (setup state, sync state, tasks, and warnings).
 	Status *ConnectionV2Status `pulumi:"status"`
 	// The timestamp of the time the connection sync succeeded last time.
 	SucceededAt *string `pulumi:"succeededAt"`
@@ -235,12 +245,15 @@ type ConnectionV2State struct {
 	Auth pulumi.Input
 	// Service-specific connection configuration. The accepted fields are defined by connector metadata at runtime.
 	Config pulumi.Input
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only service-specific connection configuration fields, merged with `config` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `config` and `configSecrets`. Mutable fields are sent on migration from `config` or when `configSecretsVersion` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in config.
+	ConfigSecrets pulumi.Input
+	// Version of `configSecrets`. Change it to send the current mutable `configSecrets` values to the API.
+	ConfigSecretsVersion pulumi.IntPtrInput
 	// Configuration for the interactive Connect Card setup flow.
 	ConnectCardConfig ConnectionV2ConnectCardConfigPtrInput
 	// The unique identifier of the user who created the connection in your account.
 	ConnectedBy pulumi.StringPtrInput
-	// The unique identifier of the package deployed to a Connector SDK connection. Not set for other connection types or when no package is deployed.
-	ConnectorSdkPackageId pulumi.StringPtrInput
 	// The timestamp of the time the connection was created in your account.
 	CreatedAt pulumi.StringPtrInput
 	// Sync start time. Only used when `syncFrequency` is `1440`.
@@ -261,7 +274,7 @@ type ConnectionV2State struct {
 	GroupId pulumi.StringPtrInput
 	// The hybrid deployment agent ID for the group the connection belongs to.
 	HybridDeploymentAgentId pulumi.StringPtrInput
-	// The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+	// The connection's name.
 	Name pulumi.StringPtrInput
 	// The networking method for the connection. Possible values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`.
 	NetworkingMethod pulumi.StringPtrInput
@@ -281,7 +294,7 @@ type ConnectionV2State struct {
 	Service pulumi.StringPtrInput
 	// The connection type version within the Fivetran system.
 	ServiceVersion pulumi.StringPtrInput
-	// The current connection status.
+	// The current connection status (setup state, sync state, tasks, and warnings).
 	Status ConnectionV2StatusPtrInput
 	// The timestamp of the time the connection sync succeeded last time.
 	SucceededAt pulumi.StringPtrInput
@@ -302,6 +315,11 @@ type connectionV2Args struct {
 	Auth interface{} `pulumi:"auth"`
 	// Service-specific connection configuration. The accepted fields are defined by connector metadata at runtime.
 	Config interface{} `pulumi:"config"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only service-specific connection configuration fields, merged with `config` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `config` and `configSecrets`. Mutable fields are sent on migration from `config` or when `configSecretsVersion` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in config.
+	ConfigSecrets interface{} `pulumi:"configSecrets"`
+	// Version of `configSecrets`. Change it to send the current mutable `configSecrets` values to the API.
+	ConfigSecretsVersion *int `pulumi:"configSecretsVersion"`
 	// Configuration for the interactive Connect Card setup flow.
 	ConnectCardConfig *ConnectionV2ConnectCardConfig `pulumi:"connectCardConfig"`
 	// Sync start time. Only used when `syncFrequency` is `1440`.
@@ -350,6 +368,11 @@ type ConnectionV2Args struct {
 	Auth pulumi.Input
 	// Service-specific connection configuration. The accepted fields are defined by connector metadata at runtime.
 	Config pulumi.Input
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only service-specific connection configuration fields, merged with `config` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `config` and `configSecrets`. Mutable fields are sent on migration from `config` or when `configSecretsVersion` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in config.
+	ConfigSecrets pulumi.Input
+	// Version of `configSecrets`. Change it to send the current mutable `configSecrets` values to the API.
+	ConfigSecretsVersion pulumi.IntPtrInput
 	// Configuration for the interactive Connect Card setup flow.
 	ConnectCardConfig ConnectionV2ConnectCardConfigPtrInput
 	// Sync start time. Only used when `syncFrequency` is `1440`.
@@ -489,6 +512,17 @@ func (o ConnectionV2Output) Config() pulumi.AnyOutput {
 	return o.ApplyT(func(v *ConnectionV2) pulumi.AnyOutput { return v.Config }).(pulumi.AnyOutput)
 }
 
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// Write-only service-specific connection configuration fields, merged with `config` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `config` and `configSecrets`. Mutable fields are sent on migration from `config` or when `configSecretsVersion` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in config.
+func (o ConnectionV2Output) ConfigSecrets() pulumi.AnyOutput {
+	return o.ApplyT(func(v *ConnectionV2) pulumi.AnyOutput { return v.ConfigSecrets }).(pulumi.AnyOutput)
+}
+
+// Version of `configSecrets`. Change it to send the current mutable `configSecrets` values to the API.
+func (o ConnectionV2Output) ConfigSecretsVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConnectionV2) pulumi.IntPtrOutput { return v.ConfigSecretsVersion }).(pulumi.IntPtrOutput)
+}
+
 // Configuration for the interactive Connect Card setup flow.
 func (o ConnectionV2Output) ConnectCardConfig() ConnectionV2ConnectCardConfigPtrOutput {
 	return o.ApplyT(func(v *ConnectionV2) ConnectionV2ConnectCardConfigPtrOutput { return v.ConnectCardConfig }).(ConnectionV2ConnectCardConfigPtrOutput)
@@ -497,11 +531,6 @@ func (o ConnectionV2Output) ConnectCardConfig() ConnectionV2ConnectCardConfigPtr
 // The unique identifier of the user who created the connection in your account.
 func (o ConnectionV2Output) ConnectedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionV2) pulumi.StringOutput { return v.ConnectedBy }).(pulumi.StringOutput)
-}
-
-// The unique identifier of the package deployed to a Connector SDK connection. Not set for other connection types or when no package is deployed.
-func (o ConnectionV2Output) ConnectorSdkPackageId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ConnectionV2) pulumi.StringOutput { return v.ConnectorSdkPackageId }).(pulumi.StringOutput)
 }
 
 // The timestamp of the time the connection was created in your account.
@@ -554,7 +583,7 @@ func (o ConnectionV2Output) HybridDeploymentAgentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionV2) pulumi.StringOutput { return v.HybridDeploymentAgentId }).(pulumi.StringOutput)
 }
 
-// The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+// The connection's name.
 func (o ConnectionV2Output) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -604,7 +633,7 @@ func (o ConnectionV2Output) ServiceVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionV2) pulumi.StringOutput { return v.ServiceVersion }).(pulumi.StringOutput)
 }
 
-// The current connection status.
+// The current connection status (setup state, sync state, tasks, and warnings).
 func (o ConnectionV2Output) Status() ConnectionV2StatusOutput {
 	return o.ApplyT(func(v *ConnectionV2) ConnectionV2StatusOutput { return v.Status }).(ConnectionV2StatusOutput)
 }

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > **Alpha:** This resource is in alpha and its schema and behavior may change without notice. Not recommended for production use.
+ * > This resource is in [Public Preview](https://fivetran.com/docs/core-concepts#releasephases).
  *
  * Manages a Fivetran destination. Unlike `fivetran.Destination`, `config` is provided as a dynamic, service-specific object: its accepted fields, types, enum values, and readonly/immutable rules are resolved from destination metadata (`GET /v1/metadata/destination-types/{service}`) at plan time rather than from a fixed schema. Field names inside `config` are the same as in the Fivetran REST API.
  *
@@ -47,7 +47,7 @@ import * as utilities from "./utilities";
  * $ pulumi import fivetran:index/destinationV2:DestinationV2 destination <destination_id>
  * ```
  *
- * The API doesn't return secrets, so after import add the sensitive fields to `config` or `configSecrets` in the resource block. Readonly fields are not tracked in state after import.
+ * The API doesn't return secrets, so after import add the sensitive fields to `config` or `configSecrets` in the resource block. Readonly fields are not tracked in state after import. Import also stores defaults that Fivetran added and you may never have set. If a field like that isn't in your configuration, the next apply stops tracking it but leaves its value on the destination unchanged, and the plan warns about it. To clear an imported field, set it to `null` in `config`.
  */
 export class DestinationV2 extends pulumi.CustomResource {
     /**

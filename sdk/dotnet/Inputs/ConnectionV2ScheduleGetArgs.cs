@@ -37,7 +37,7 @@ namespace Pulumi.Fivetran.Inputs
         public Input<int>? Interval { get; set; }
 
         /// <summary>
-        /// The connection schedule configuration type. Supported values: `Auto`, `Manual`.
+        /// The schedule type. Supported values: INTERVAL, DAILY, WEEKLY, MONTHLY, CRON.
         /// </summary>
         [Input("scheduleType")]
         public Input<string>? ScheduleType { get; set; }

@@ -26,6 +26,8 @@ class ConnectionV2Args:
                  service: pulumi.Input[_builtins.str],
                  auth: Optional[Any] = None,
                  config: Optional[Any] = None,
+                 config_secrets: Optional[Any] = None,
+                 config_secrets_version: pulumi.Input[Optional[_builtins.int]] = None,
                  connect_card_config: pulumi.Input[Optional['ConnectionV2ConnectCardConfigArgs']] = None,
                  daily_sync_time: pulumi.Input[Optional[_builtins.str]] = None,
                  data_checks: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -51,6 +53,9 @@ class ConnectionV2Args:
         :param pulumi.Input[_builtins.str] service: The connection service type (e.g., `postgres`, `mysql`, `s3`, `snowflake`). Changing this forces the connection to be replaced.
         :param Any auth: Service-specific authorization configuration. The accepted fields are defined by connector metadata at runtime.
         :param Any config: Service-specific connection configuration. The accepted fields are defined by connector metadata at runtime.
+        :param Any config_secrets: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only service-specific connection configuration fields, merged with `config` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `config` and `config_secrets`. Mutable fields are sent on migration from `config` or when `config_secrets_version` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in config.
+        :param pulumi.Input[_builtins.int] config_secrets_version: Version of `config_secrets`. Change it to send the current mutable `config_secrets` values to the API.
         :param pulumi.Input['ConnectionV2ConnectCardConfigArgs'] connect_card_config: Configuration for the interactive Connect Card setup flow.
         :param pulumi.Input[_builtins.str] daily_sync_time: Sync start time. Only used when `sync_frequency` is `1440`.
         :param pulumi.Input[_builtins.bool] data_checks: Specifies whether data validation is enabled for the connection.
@@ -76,6 +81,10 @@ class ConnectionV2Args:
             pulumi.set(__self__, "auth", auth)
         if config is not None:
             pulumi.set(__self__, "config", config)
+        if config_secrets is not None:
+            pulumi.set(__self__, "config_secrets", config_secrets)
+        if config_secrets_version is not None:
+            pulumi.set(__self__, "config_secrets_version", config_secrets_version)
         if connect_card_config is not None:
             pulumi.set(__self__, "connect_card_config", connect_card_config)
         if daily_sync_time is not None:
@@ -170,6 +179,31 @@ class ConnectionV2Args:
     @config.setter
     def config(self, value: Optional[Any]):
         pulumi.set(self, "config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="configSecrets")
+    def config_secrets(self) -> Optional[Any]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only service-specific connection configuration fields, merged with `config` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `config` and `config_secrets`. Mutable fields are sent on migration from `config` or when `config_secrets_version` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in config.
+        """
+        return pulumi.get(self, "config_secrets")
+
+    @config_secrets.setter
+    def config_secrets(self, value: Optional[Any]):
+        pulumi.set(self, "config_secrets", value)
+
+    @_builtins.property
+    @pulumi.getter(name="configSecretsVersion")
+    def config_secrets_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Version of `config_secrets`. Change it to send the current mutable `config_secrets` values to the API.
+        """
+        return pulumi.get(self, "config_secrets_version")
+
+    @config_secrets_version.setter
+    def config_secrets_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "config_secrets_version", value)
 
     @_builtins.property
     @pulumi.getter(name="connectCardConfig")
@@ -381,9 +415,10 @@ class _ConnectionV2State:
     def __init__(__self__, *,
                  auth: Optional[Any] = None,
                  config: Optional[Any] = None,
+                 config_secrets: Optional[Any] = None,
+                 config_secrets_version: pulumi.Input[Optional[_builtins.int]] = None,
                  connect_card_config: pulumi.Input[Optional['ConnectionV2ConnectCardConfigArgs']] = None,
                  connected_by: pulumi.Input[Optional[_builtins.str]] = None,
-                 connector_sdk_package_id: pulumi.Input[Optional[_builtins.str]] = None,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
                  daily_sync_time: pulumi.Input[Optional[_builtins.str]] = None,
                  data_checks: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -414,9 +449,11 @@ class _ConnectionV2State:
 
         :param Any auth: Service-specific authorization configuration. The accepted fields are defined by connector metadata at runtime.
         :param Any config: Service-specific connection configuration. The accepted fields are defined by connector metadata at runtime.
+        :param Any config_secrets: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only service-specific connection configuration fields, merged with `config` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `config` and `config_secrets`. Mutable fields are sent on migration from `config` or when `config_secrets_version` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in config.
+        :param pulumi.Input[_builtins.int] config_secrets_version: Version of `config_secrets`. Change it to send the current mutable `config_secrets` values to the API.
         :param pulumi.Input['ConnectionV2ConnectCardConfigArgs'] connect_card_config: Configuration for the interactive Connect Card setup flow.
         :param pulumi.Input[_builtins.str] connected_by: The unique identifier of the user who created the connection in your account.
-        :param pulumi.Input[_builtins.str] connector_sdk_package_id: The unique identifier of the package deployed to a Connector SDK connection. Not set for other connection types or when no package is deployed.
         :param pulumi.Input[_builtins.str] created_at: The timestamp of the time the connection was created in your account.
         :param pulumi.Input[_builtins.str] daily_sync_time: Sync start time. Only used when `sync_frequency` is `1440`.
         :param pulumi.Input[_builtins.bool] data_checks: Specifies whether data validation is enabled for the connection.
@@ -427,7 +464,7 @@ class _ConnectionV2State:
         :param pulumi.Input[_builtins.str] failed_at: The timestamp of the time the connection sync failed last time.
         :param pulumi.Input[_builtins.str] group_id: The unique identifier for the Group (Destination) within the Fivetran system. Changing this forces the connection to be replaced.
         :param pulumi.Input[_builtins.str] hybrid_deployment_agent_id: The hybrid deployment agent ID for the group the connection belongs to.
-        :param pulumi.Input[_builtins.str] name: The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+        :param pulumi.Input[_builtins.str] name: The connection's name.
         :param pulumi.Input[_builtins.str] networking_method: The networking method for the connection. Possible values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`.
         :param pulumi.Input[_builtins.bool] pause_after_trial: Whether the connection should be paused after the free trial period has ended.
         :param pulumi.Input[_builtins.str] private_link_id: The private link ID. Required when `networking_method` is `PrivateLink`.
@@ -437,7 +474,7 @@ class _ConnectionV2State:
         :param pulumi.Input[_builtins.str] schedule_type: The connection schedule configuration type. Supported values: `auto`, `manual`.
         :param pulumi.Input[_builtins.str] service: The connection service type (e.g., `postgres`, `mysql`, `s3`, `snowflake`). Changing this forces the connection to be replaced.
         :param pulumi.Input[_builtins.str] service_version: The connection type version within the Fivetran system.
-        :param pulumi.Input['ConnectionV2StatusArgs'] status: The current connection status.
+        :param pulumi.Input['ConnectionV2StatusArgs'] status: The current connection status (setup state, sync state, tasks, and warnings).
         :param pulumi.Input[_builtins.str] succeeded_at: The timestamp of the time the connection sync succeeded last time.
         :param pulumi.Input[_builtins.int] sync_frequency: The connection sync frequency in minutes.
         :param pulumi.Input[_builtins.bool] trust_certificates: Whether Fivetran should trust certificates automatically.
@@ -447,12 +484,14 @@ class _ConnectionV2State:
             pulumi.set(__self__, "auth", auth)
         if config is not None:
             pulumi.set(__self__, "config", config)
+        if config_secrets is not None:
+            pulumi.set(__self__, "config_secrets", config_secrets)
+        if config_secrets_version is not None:
+            pulumi.set(__self__, "config_secrets_version", config_secrets_version)
         if connect_card_config is not None:
             pulumi.set(__self__, "connect_card_config", connect_card_config)
         if connected_by is not None:
             pulumi.set(__self__, "connected_by", connected_by)
-        if connector_sdk_package_id is not None:
-            pulumi.set(__self__, "connector_sdk_package_id", connector_sdk_package_id)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
         if daily_sync_time is not None:
@@ -529,6 +568,31 @@ class _ConnectionV2State:
         pulumi.set(self, "config", value)
 
     @_builtins.property
+    @pulumi.getter(name="configSecrets")
+    def config_secrets(self) -> Optional[Any]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only service-specific connection configuration fields, merged with `config` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `config` and `config_secrets`. Mutable fields are sent on migration from `config` or when `config_secrets_version` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in config.
+        """
+        return pulumi.get(self, "config_secrets")
+
+    @config_secrets.setter
+    def config_secrets(self, value: Optional[Any]):
+        pulumi.set(self, "config_secrets", value)
+
+    @_builtins.property
+    @pulumi.getter(name="configSecretsVersion")
+    def config_secrets_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Version of `config_secrets`. Change it to send the current mutable `config_secrets` values to the API.
+        """
+        return pulumi.get(self, "config_secrets_version")
+
+    @config_secrets_version.setter
+    def config_secrets_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "config_secrets_version", value)
+
+    @_builtins.property
     @pulumi.getter(name="connectCardConfig")
     def connect_card_config(self) -> pulumi.Input[Optional['ConnectionV2ConnectCardConfigArgs']]:
         """
@@ -551,18 +615,6 @@ class _ConnectionV2State:
     @connected_by.setter
     def connected_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connected_by", value)
-
-    @_builtins.property
-    @pulumi.getter(name="connectorSdkPackageId")
-    def connector_sdk_package_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The unique identifier of the package deployed to a Connector SDK connection. Not set for other connection types or when no package is deployed.
-        """
-        return pulumi.get(self, "connector_sdk_package_id")
-
-    @connector_sdk_package_id.setter
-    def connector_sdk_package_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "connector_sdk_package_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
@@ -688,7 +740,7 @@ class _ConnectionV2State:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+        The connection's name.
         """
         return pulumi.get(self, "name")
 
@@ -808,7 +860,7 @@ class _ConnectionV2State:
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional['ConnectionV2StatusArgs']]:
         """
-        The current connection status.
+        The current connection status (setup state, sync state, tasks, and warnings).
         """
         return pulumi.get(self, "status")
 
@@ -873,6 +925,8 @@ class ConnectionV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth: Optional[Any] = None,
                  config: Optional[Any] = None,
+                 config_secrets: Optional[Any] = None,
+                 config_secrets_version: pulumi.Input[Optional[_builtins.int]] = None,
                  connect_card_config: pulumi.Input[Optional[Union['ConnectionV2ConnectCardConfigArgs', 'ConnectionV2ConnectCardConfigArgsDict']]] = None,
                  daily_sync_time: pulumi.Input[Optional[_builtins.str]] = None,
                  data_checks: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -895,7 +949,7 @@ class ConnectionV2(pulumi.CustomResource):
                  trust_fingerprints: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
-        > **Public Preview:** This resource is in public preview. Features and behavior may change based on feedback.
+        > This resource is in [Beta](https://fivetran.com/docs/core-concepts#releasephases).
 
         Manages a Fivetran connection. Unlike `Connector`/`Connection`, `config` and `auth` are provided as dynamic, service-specific objects: their accepted fields, types, and required/readonly/immutable rules are resolved from connector metadata at plan time rather than from a fixed schema. This means the same resource works across services (e.g. `s3`, `postgres`, `fivetran_log`) without a per-service Terraform schema.
 
@@ -926,6 +980,9 @@ class ConnectionV2(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param Any auth: Service-specific authorization configuration. The accepted fields are defined by connector metadata at runtime.
         :param Any config: Service-specific connection configuration. The accepted fields are defined by connector metadata at runtime.
+        :param Any config_secrets: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only service-specific connection configuration fields, merged with `config` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `config` and `config_secrets`. Mutable fields are sent on migration from `config` or when `config_secrets_version` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in config.
+        :param pulumi.Input[_builtins.int] config_secrets_version: Version of `config_secrets`. Change it to send the current mutable `config_secrets` values to the API.
         :param pulumi.Input[Union['ConnectionV2ConnectCardConfigArgs', 'ConnectionV2ConnectCardConfigArgsDict']] connect_card_config: Configuration for the interactive Connect Card setup flow.
         :param pulumi.Input[_builtins.str] daily_sync_time: Sync start time. Only used when `sync_frequency` is `1440`.
         :param pulumi.Input[_builtins.bool] data_checks: Specifies whether data validation is enabled for the connection.
@@ -954,7 +1011,7 @@ class ConnectionV2(pulumi.CustomResource):
                  args: ConnectionV2Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Public Preview:** This resource is in public preview. Features and behavior may change based on feedback.
+        > This resource is in [Beta](https://fivetran.com/docs/core-concepts#releasephases).
 
         Manages a Fivetran connection. Unlike `Connector`/`Connection`, `config` and `auth` are provided as dynamic, service-specific objects: their accepted fields, types, and required/readonly/immutable rules are resolved from connector metadata at plan time rather than from a fixed schema. This means the same resource works across services (e.g. `s3`, `postgres`, `fivetran_log`) without a per-service Terraform schema.
 
@@ -998,6 +1055,8 @@ class ConnectionV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth: Optional[Any] = None,
                  config: Optional[Any] = None,
+                 config_secrets: Optional[Any] = None,
+                 config_secrets_version: pulumi.Input[Optional[_builtins.int]] = None,
                  connect_card_config: pulumi.Input[Optional[Union['ConnectionV2ConnectCardConfigArgs', 'ConnectionV2ConnectCardConfigArgsDict']]] = None,
                  daily_sync_time: pulumi.Input[Optional[_builtins.str]] = None,
                  data_checks: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1029,6 +1088,8 @@ class ConnectionV2(pulumi.CustomResource):
 
             __props__.__dict__["auth"] = None if auth is None else pulumi.Output.secret(auth)
             __props__.__dict__["config"] = config
+            __props__.__dict__["config_secrets"] = None if config_secrets is None else pulumi.Output.secret(config_secrets)
+            __props__.__dict__["config_secrets_version"] = config_secrets_version
             __props__.__dict__["connect_card_config"] = connect_card_config
             __props__.__dict__["daily_sync_time"] = daily_sync_time
             __props__.__dict__["data_checks"] = data_checks
@@ -1056,14 +1117,13 @@ class ConnectionV2(pulumi.CustomResource):
             __props__.__dict__["trust_certificates"] = trust_certificates
             __props__.__dict__["trust_fingerprints"] = trust_fingerprints
             __props__.__dict__["connected_by"] = None
-            __props__.__dict__["connector_sdk_package_id"] = None
             __props__.__dict__["created_at"] = None
             __props__.__dict__["failed_at"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["service_version"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["succeeded_at"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["auth"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["auth", "configSecrets"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ConnectionV2, __self__).__init__(
             'fivetran:index/connectionV2:ConnectionV2',
@@ -1077,9 +1137,10 @@ class ConnectionV2(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             auth: Optional[Any] = None,
             config: Optional[Any] = None,
+            config_secrets: Optional[Any] = None,
+            config_secrets_version: pulumi.Input[Optional[_builtins.int]] = None,
             connect_card_config: pulumi.Input[Optional[Union['ConnectionV2ConnectCardConfigArgs', 'ConnectionV2ConnectCardConfigArgsDict']]] = None,
             connected_by: pulumi.Input[Optional[_builtins.str]] = None,
-            connector_sdk_package_id: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             daily_sync_time: pulumi.Input[Optional[_builtins.str]] = None,
             data_checks: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1114,9 +1175,11 @@ class ConnectionV2(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param Any auth: Service-specific authorization configuration. The accepted fields are defined by connector metadata at runtime.
         :param Any config: Service-specific connection configuration. The accepted fields are defined by connector metadata at runtime.
+        :param Any config_secrets: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only service-specific connection configuration fields, merged with `config` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `config` and `config_secrets`. Mutable fields are sent on migration from `config` or when `config_secrets_version` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in config.
+        :param pulumi.Input[_builtins.int] config_secrets_version: Version of `config_secrets`. Change it to send the current mutable `config_secrets` values to the API.
         :param pulumi.Input[Union['ConnectionV2ConnectCardConfigArgs', 'ConnectionV2ConnectCardConfigArgsDict']] connect_card_config: Configuration for the interactive Connect Card setup flow.
         :param pulumi.Input[_builtins.str] connected_by: The unique identifier of the user who created the connection in your account.
-        :param pulumi.Input[_builtins.str] connector_sdk_package_id: The unique identifier of the package deployed to a Connector SDK connection. Not set for other connection types or when no package is deployed.
         :param pulumi.Input[_builtins.str] created_at: The timestamp of the time the connection was created in your account.
         :param pulumi.Input[_builtins.str] daily_sync_time: Sync start time. Only used when `sync_frequency` is `1440`.
         :param pulumi.Input[_builtins.bool] data_checks: Specifies whether data validation is enabled for the connection.
@@ -1127,7 +1190,7 @@ class ConnectionV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] failed_at: The timestamp of the time the connection sync failed last time.
         :param pulumi.Input[_builtins.str] group_id: The unique identifier for the Group (Destination) within the Fivetran system. Changing this forces the connection to be replaced.
         :param pulumi.Input[_builtins.str] hybrid_deployment_agent_id: The hybrid deployment agent ID for the group the connection belongs to.
-        :param pulumi.Input[_builtins.str] name: The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+        :param pulumi.Input[_builtins.str] name: The connection's name.
         :param pulumi.Input[_builtins.str] networking_method: The networking method for the connection. Possible values: `Directly`, `SshTunnel`, `ProxyAgent`, `PrivateLink`.
         :param pulumi.Input[_builtins.bool] pause_after_trial: Whether the connection should be paused after the free trial period has ended.
         :param pulumi.Input[_builtins.str] private_link_id: The private link ID. Required when `networking_method` is `PrivateLink`.
@@ -1137,7 +1200,7 @@ class ConnectionV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] schedule_type: The connection schedule configuration type. Supported values: `auto`, `manual`.
         :param pulumi.Input[_builtins.str] service: The connection service type (e.g., `postgres`, `mysql`, `s3`, `snowflake`). Changing this forces the connection to be replaced.
         :param pulumi.Input[_builtins.str] service_version: The connection type version within the Fivetran system.
-        :param pulumi.Input[Union['ConnectionV2StatusArgs', 'ConnectionV2StatusArgsDict']] status: The current connection status.
+        :param pulumi.Input[Union['ConnectionV2StatusArgs', 'ConnectionV2StatusArgsDict']] status: The current connection status (setup state, sync state, tasks, and warnings).
         :param pulumi.Input[_builtins.str] succeeded_at: The timestamp of the time the connection sync succeeded last time.
         :param pulumi.Input[_builtins.int] sync_frequency: The connection sync frequency in minutes.
         :param pulumi.Input[_builtins.bool] trust_certificates: Whether Fivetran should trust certificates automatically.
@@ -1149,9 +1212,10 @@ class ConnectionV2(pulumi.CustomResource):
 
         __props__.__dict__["auth"] = auth
         __props__.__dict__["config"] = config
+        __props__.__dict__["config_secrets"] = config_secrets
+        __props__.__dict__["config_secrets_version"] = config_secrets_version
         __props__.__dict__["connect_card_config"] = connect_card_config
         __props__.__dict__["connected_by"] = connected_by
-        __props__.__dict__["connector_sdk_package_id"] = connector_sdk_package_id
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["daily_sync_time"] = daily_sync_time
         __props__.__dict__["data_checks"] = data_checks
@@ -1196,6 +1260,23 @@ class ConnectionV2(pulumi.CustomResource):
         return pulumi.get(self, "config")
 
     @_builtins.property
+    @pulumi.getter(name="configSecrets")
+    def config_secrets(self) -> pulumi.Output[Optional[Any]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only service-specific connection configuration fields, merged with `config` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `config` and `config_secrets`. Mutable fields are sent on migration from `config` or when `config_secrets_version` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in config.
+        """
+        return pulumi.get(self, "config_secrets")
+
+    @_builtins.property
+    @pulumi.getter(name="configSecretsVersion")
+    def config_secrets_version(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Version of `config_secrets`. Change it to send the current mutable `config_secrets` values to the API.
+        """
+        return pulumi.get(self, "config_secrets_version")
+
+    @_builtins.property
     @pulumi.getter(name="connectCardConfig")
     def connect_card_config(self) -> pulumi.Output[Optional['outputs.ConnectionV2ConnectCardConfig']]:
         """
@@ -1210,14 +1291,6 @@ class ConnectionV2(pulumi.CustomResource):
         The unique identifier of the user who created the connection in your account.
         """
         return pulumi.get(self, "connected_by")
-
-    @_builtins.property
-    @pulumi.getter(name="connectorSdkPackageId")
-    def connector_sdk_package_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The unique identifier of the package deployed to a Connector SDK connection. Not set for other connection types or when no package is deployed.
-        """
-        return pulumi.get(self, "connector_sdk_package_id")
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
@@ -1303,7 +1376,7 @@ class ConnectionV2(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+        The connection's name.
         """
         return pulumi.get(self, "name")
 
@@ -1383,7 +1456,7 @@ class ConnectionV2(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output['outputs.ConnectionV2Status']:
         """
-        The current connection status.
+        The current connection status (setup state, sync state, tasks, and warnings).
         """
         return pulumi.get(self, "status")
 

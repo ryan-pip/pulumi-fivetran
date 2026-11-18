@@ -364,7 +364,7 @@ class ConnectionV2Schedule(dict):
         :param _builtins.str cron: The cron expression for scheduled syncs (used when schedule_type is CRON).
         :param Sequence[_builtins.str] days_of_weeks: The days of the week for scheduled syncs (used when schedule_type is WEEKLY).
         :param _builtins.int interval: The interval in minutes between syncs (used when schedule_type is INTERVAL).
-        :param _builtins.str schedule_type: The connection schedule configuration type. Supported values: `auto`, `manual`.
+        :param _builtins.str schedule_type: The schedule type. Supported values: INTERVAL, DAILY, WEEKLY, MONTHLY, CRON.
         :param _builtins.str time_of_day: The time of day for scheduled syncs (format: HH:MM).
         """
         if cron is not None:
@@ -406,7 +406,7 @@ class ConnectionV2Schedule(dict):
     @pulumi.getter(name="scheduleType")
     def schedule_type(self) -> Optional[_builtins.str]:
         """
-        The connection schedule configuration type. Supported values: `auto`, `manual`.
+        The schedule type. Supported values: INTERVAL, DAILY, WEEKLY, MONTHLY, CRON.
         """
         return pulumi.get(self, "schedule_type")
 

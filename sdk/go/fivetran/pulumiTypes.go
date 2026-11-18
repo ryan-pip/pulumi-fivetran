@@ -526,7 +526,7 @@ type ConnectionV2Schedule struct {
 	DaysOfWeeks []string `pulumi:"daysOfWeeks"`
 	// The interval in minutes between syncs (used when scheduleType is INTERVAL).
 	Interval *int `pulumi:"interval"`
-	// The connection schedule configuration type. Supported values: `auto`, `manual`.
+	// The schedule type. Supported values: INTERVAL, DAILY, WEEKLY, MONTHLY, CRON.
 	ScheduleType *string `pulumi:"scheduleType"`
 	// The time of day for scheduled syncs (format: HH:MM).
 	TimeOfDay *string `pulumi:"timeOfDay"`
@@ -550,7 +550,7 @@ type ConnectionV2ScheduleArgs struct {
 	DaysOfWeeks pulumi.StringArrayInput `pulumi:"daysOfWeeks"`
 	// The interval in minutes between syncs (used when scheduleType is INTERVAL).
 	Interval pulumi.IntPtrInput `pulumi:"interval"`
-	// The connection schedule configuration type. Supported values: `auto`, `manual`.
+	// The schedule type. Supported values: INTERVAL, DAILY, WEEKLY, MONTHLY, CRON.
 	ScheduleType pulumi.StringPtrInput `pulumi:"scheduleType"`
 	// The time of day for scheduled syncs (format: HH:MM).
 	TimeOfDay pulumi.StringPtrInput `pulumi:"timeOfDay"`
@@ -648,7 +648,7 @@ func (o ConnectionV2ScheduleOutput) Interval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionV2Schedule) *int { return v.Interval }).(pulumi.IntPtrOutput)
 }
 
-// The connection schedule configuration type. Supported values: `auto`, `manual`.
+// The schedule type. Supported values: INTERVAL, DAILY, WEEKLY, MONTHLY, CRON.
 func (o ConnectionV2ScheduleOutput) ScheduleType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionV2Schedule) *string { return v.ScheduleType }).(pulumi.StringPtrOutput)
 }
@@ -712,7 +712,7 @@ func (o ConnectionV2SchedulePtrOutput) Interval() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The connection schedule configuration type. Supported values: `auto`, `manual`.
+// The schedule type. Supported values: INTERVAL, DAILY, WEEKLY, MONTHLY, CRON.
 func (o ConnectionV2SchedulePtrOutput) ScheduleType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionV2Schedule) *string {
 		if v == nil {

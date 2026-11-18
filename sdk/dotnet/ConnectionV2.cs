@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Fivetran
 {
     /// <summary>
-    /// &gt; **Public Preview:** This resource is in public preview. Features and behavior may change based on feedback.
+    /// &gt; This resource is in [Beta](https://fivetran.com/docs/core-concepts#releasephases).
     /// 
     /// Manages a Fivetran connection. Unlike `fivetran.Connector`/`fivetran.Connection`, `Config` and `Auth` are provided as dynamic, service-specific objects: their accepted fields, types, and required/readonly/immutable rules are resolved from connector metadata at plan time rather than from a fixed schema. This means the same resource works across services (e.g. `S3`, `Postgres`, `FivetranLog`) without a per-service Terraform schema.
     /// 
@@ -64,6 +64,19 @@ namespace Pulumi.Fivetran
         public Output<object> Config { get; private set; } = null!;
 
         /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Write-only service-specific connection configuration fields, merged with `Config` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `Config` and `ConfigSecrets`. Mutable fields are sent on migration from `Config` or when `ConfigSecretsVersion` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in config.
+        /// </summary>
+        [Output("configSecrets")]
+        public Output<object?> ConfigSecrets { get; private set; } = null!;
+
+        /// <summary>
+        /// Version of `ConfigSecrets`. Change it to send the current mutable `ConfigSecrets` values to the API.
+        /// </summary>
+        [Output("configSecretsVersion")]
+        public Output<int?> ConfigSecretsVersion { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration for the interactive Connect Card setup flow.
         /// </summary>
         [Output("connectCardConfig")]
@@ -74,12 +87,6 @@ namespace Pulumi.Fivetran
         /// </summary>
         [Output("connectedBy")]
         public Output<string> ConnectedBy { get; private set; } = null!;
-
-        /// <summary>
-        /// The unique identifier of the package deployed to a Connector SDK connection. Not set for other connection types or when no package is deployed.
-        /// </summary>
-        [Output("connectorSdkPackageId")]
-        public Output<string> ConnectorSdkPackageId { get; private set; } = null!;
 
         /// <summary>
         /// The timestamp of the time the connection was created in your account.
@@ -142,7 +149,7 @@ namespace Pulumi.Fivetran
         public Output<string> HybridDeploymentAgentId { get; private set; } = null!;
 
         /// <summary>
-        /// The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+        /// The connection's name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -202,7 +209,7 @@ namespace Pulumi.Fivetran
         public Output<string> ServiceVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The current connection status.
+        /// The current connection status (setup state, sync state, tasks, and warnings).
         /// </summary>
         [Output("status")]
         public Output<Outputs.ConnectionV2Status> Status { get; private set; } = null!;
@@ -258,6 +265,7 @@ namespace Pulumi.Fivetran
                 AdditionalSecretOutputs =
                 {
                     "auth",
+                    "configSecrets",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -303,6 +311,29 @@ namespace Pulumi.Fivetran
         /// </summary>
         [Input("config")]
         public Input<object>? Config { get; set; }
+
+        [Input("configSecrets")]
+        private Input<object>? _configSecrets;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Write-only service-specific connection configuration fields, merged with `Config` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `Config` and `ConfigSecrets`. Mutable fields are sent on migration from `Config` or when `ConfigSecretsVersion` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in config.
+        /// </summary>
+        public Input<object>? ConfigSecrets
+        {
+            get => _configSecrets;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _configSecrets = Output.Tuple<Input<object>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Version of `ConfigSecrets`. Change it to send the current mutable `ConfigSecrets` values to the API.
+        /// </summary>
+        [Input("configSecretsVersion")]
+        public Input<int>? ConfigSecretsVersion { get; set; }
 
         /// <summary>
         /// Configuration for the interactive Connect Card setup flow.
@@ -454,6 +485,29 @@ namespace Pulumi.Fivetran
         [Input("config")]
         public Input<object>? Config { get; set; }
 
+        [Input("configSecrets")]
+        private Input<object>? _configSecrets;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Write-only service-specific connection configuration fields, merged with `Config` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `Config` and `ConfigSecrets`. Mutable fields are sent on migration from `Config` or when `ConfigSecretsVersion` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in config.
+        /// </summary>
+        public Input<object>? ConfigSecrets
+        {
+            get => _configSecrets;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _configSecrets = Output.Tuple<Input<object>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Version of `ConfigSecrets`. Change it to send the current mutable `ConfigSecrets` values to the API.
+        /// </summary>
+        [Input("configSecretsVersion")]
+        public Input<int>? ConfigSecretsVersion { get; set; }
+
         /// <summary>
         /// Configuration for the interactive Connect Card setup flow.
         /// </summary>
@@ -465,12 +519,6 @@ namespace Pulumi.Fivetran
         /// </summary>
         [Input("connectedBy")]
         public Input<string>? ConnectedBy { get; set; }
-
-        /// <summary>
-        /// The unique identifier of the package deployed to a Connector SDK connection. Not set for other connection types or when no package is deployed.
-        /// </summary>
-        [Input("connectorSdkPackageId")]
-        public Input<string>? ConnectorSdkPackageId { get; set; }
 
         /// <summary>
         /// The timestamp of the time the connection was created in your account.
@@ -533,7 +581,7 @@ namespace Pulumi.Fivetran
         public Input<string>? HybridDeploymentAgentId { get; set; }
 
         /// <summary>
-        /// The name used both as the connection's name within the Fivetran system and as the source schema's name within your destination.
+        /// The connection's name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -593,7 +641,7 @@ namespace Pulumi.Fivetran
         public Input<string>? ServiceVersion { get; set; }
 
         /// <summary>
-        /// The current connection status.
+        /// The current connection status (setup state, sync state, tasks, and warnings).
         /// </summary>
         [Input("status")]
         public Input<Inputs.ConnectionV2StatusGetArgs>? Status { get; set; }

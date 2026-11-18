@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Fivetran
 {
     /// <summary>
-    /// &gt; **Alpha:** This resource is in alpha and its schema and behavior may change without notice. Not recommended for production use.
+    /// &gt; This resource is in [Public Preview](https://fivetran.com/docs/core-concepts#releasephases).
     /// 
     /// Manages a Fivetran destination. Unlike `fivetran.Destination`, `Config` is provided as a dynamic, service-specific object: its accepted fields, types, enum values, and readonly/immutable rules are resolved from destination metadata (`GET /v1/metadata/destination-types/{service}`) at plan time rather than from a fixed schema. Field names inside `Config` are the same as in the Fivetran REST API.
     /// 
@@ -60,7 +60,7 @@ namespace Pulumi.Fivetran
     /// $ pulumi import fivetran:index/destinationV2:DestinationV2 destination &lt;destination_id&gt;
     /// ```
     /// 
-    /// The API doesn't return secrets, so after import add the sensitive fields to `Config` or `ConfigSecrets` in the resource block. Readonly fields are not tracked in state after import.
+    /// The API doesn't return secrets, so after import add the sensitive fields to `Config` or `ConfigSecrets` in the resource block. Readonly fields are not tracked in state after import. Import also stores defaults that Fivetran added and you may never have set. If a field like that isn't in your configuration, the next apply stops tracking it but leaves its value on the destination unchanged, and the plan warns about it. To clear an imported field, set it to `Null` in `Config`.
     /// </summary>
     [FivetranResourceType("fivetran:index/destinationV2:DestinationV2")]
     public partial class DestinationV2 : global::Pulumi.CustomResource

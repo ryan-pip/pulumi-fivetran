@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > **Alpha:** This resource is in alpha and its schema and behavior may change without notice. Not recommended for production use.
+ * > This resource is in [Public Preview](https://fivetran.com/docs/core-concepts#releasephases).
  *
  * Manages the account-level external logging service. An account can have at most one account-level log service. For log services attached to a destination, use `fivetran.ExternalLogging`.
  *
