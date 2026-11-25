@@ -27426,8 +27426,12 @@ class TransformationProjectProjectConfig(dict):
             suggest = "git_remote_url"
         elif key == "publicKey":
             suggest = "public_key"
+        elif key == "shouldRunDbtDeps":
+            suggest = "should_run_dbt_deps"
         elif key == "targetName":
             suggest = "target_name"
+        elif key == "useLatestPatchVersion":
+            suggest = "use_latest_patch_version"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in TransformationProjectProjectConfig. Access the value via the '{suggest}' property getter instead.")
@@ -27448,8 +27452,10 @@ class TransformationProjectProjectConfig(dict):
                  git_branch: Optional[_builtins.str] = None,
                  git_remote_url: Optional[_builtins.str] = None,
                  public_key: Optional[_builtins.str] = None,
+                 should_run_dbt_deps: Optional[_builtins.bool] = None,
                  target_name: Optional[_builtins.str] = None,
-                 threads: Optional[_builtins.int] = None):
+                 threads: Optional[_builtins.int] = None,
+                 use_latest_patch_version: Optional[_builtins.bool] = None):
         """
         :param _builtins.str dbt_version: The version of transformation that should run the project
         :param _builtins.str default_schema: Default schema in destination. This production schema will contain your transformed data.
@@ -27458,8 +27464,10 @@ class TransformationProjectProjectConfig(dict):
         :param _builtins.str git_branch: Git branch
         :param _builtins.str git_remote_url: Git remote URL with your transformation project
         :param _builtins.str public_key: Public key to grant Fivetran SSH access to git repository.
+        :param _builtins.bool should_run_dbt_deps: Specifies whether `dbt deps` installs the dbt packages before each transformation run. The default value is TRUE.
         :param _builtins.str target_name: Target name to set or override the value from the deployment.yaml
         :param _builtins.int threads: The number of threads transformation will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
+        :param _builtins.bool use_latest_patch_version: Specifies whether the project runs on the latest patch version of its dbt minor version. The default value is TRUE. This field is in Private Preview: only the accounts enabled for it can set it to FALSE, which requires a full `dbt_version`, such as `1.11.7`.
         """
         if dbt_version is not None:
             pulumi.set(__self__, "dbt_version", dbt_version)
@@ -27475,10 +27483,14 @@ class TransformationProjectProjectConfig(dict):
             pulumi.set(__self__, "git_remote_url", git_remote_url)
         if public_key is not None:
             pulumi.set(__self__, "public_key", public_key)
+        if should_run_dbt_deps is not None:
+            pulumi.set(__self__, "should_run_dbt_deps", should_run_dbt_deps)
         if target_name is not None:
             pulumi.set(__self__, "target_name", target_name)
         if threads is not None:
             pulumi.set(__self__, "threads", threads)
+        if use_latest_patch_version is not None:
+            pulumi.set(__self__, "use_latest_patch_version", use_latest_patch_version)
 
     @_builtins.property
     @pulumi.getter(name="dbtVersion")
@@ -27537,6 +27549,14 @@ class TransformationProjectProjectConfig(dict):
         return pulumi.get(self, "public_key")
 
     @_builtins.property
+    @pulumi.getter(name="shouldRunDbtDeps")
+    def should_run_dbt_deps(self) -> Optional[_builtins.bool]:
+        """
+        Specifies whether `dbt deps` installs the dbt packages before each transformation run. The default value is TRUE.
+        """
+        return pulumi.get(self, "should_run_dbt_deps")
+
+    @_builtins.property
     @pulumi.getter(name="targetName")
     def target_name(self) -> Optional[_builtins.str]:
         """
@@ -27551,6 +27571,14 @@ class TransformationProjectProjectConfig(dict):
         The number of threads transformation will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
         """
         return pulumi.get(self, "threads")
+
+    @_builtins.property
+    @pulumi.getter(name="useLatestPatchVersion")
+    def use_latest_patch_version(self) -> Optional[_builtins.bool]:
+        """
+        Specifies whether the project runs on the latest patch version of its dbt minor version. The default value is TRUE. This field is in Private Preview: only the accounts enabled for it can set it to FALSE, which requires a full `dbt_version`, such as `1.11.7`.
+        """
+        return pulumi.get(self, "use_latest_patch_version")
 
 
 @pulumi.output_type
@@ -52124,8 +52152,10 @@ class GetTransformationProjectProjectConfigResult(dict):
                  git_branch: _builtins.str,
                  git_remote_url: _builtins.str,
                  public_key: _builtins.str,
+                 should_run_dbt_deps: _builtins.bool,
                  target_name: _builtins.str,
-                 threads: _builtins.int):
+                 threads: _builtins.int,
+                 use_latest_patch_version: _builtins.bool):
         """
         :param _builtins.str dbt_version: The version of transformation that should run the project
         :param _builtins.str default_schema: Default schema in destination. This production schema will contain your transformed data.
@@ -52134,8 +52164,10 @@ class GetTransformationProjectProjectConfigResult(dict):
         :param _builtins.str git_branch: Git branch
         :param _builtins.str git_remote_url: Git remote URL with your transformation project
         :param _builtins.str public_key: Public key to grant Fivetran SSH access to git repository.
+        :param _builtins.bool should_run_dbt_deps: Specifies whether `dbt deps` installs the dbt packages before each transformation run. The default value is TRUE.
         :param _builtins.str target_name: Target name to set or override the value from the deployment.yaml
         :param _builtins.int threads: The number of threads transformation will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
+        :param _builtins.bool use_latest_patch_version: Specifies whether the project runs on the latest patch version of its dbt minor version. The default value is TRUE. This field is in Private Preview: only the accounts enabled for it can set it to FALSE, which requires a full `dbt_version`, such as `1.11.7`.
         """
         pulumi.set(__self__, "dbt_version", dbt_version)
         pulumi.set(__self__, "default_schema", default_schema)
@@ -52144,8 +52176,10 @@ class GetTransformationProjectProjectConfigResult(dict):
         pulumi.set(__self__, "git_branch", git_branch)
         pulumi.set(__self__, "git_remote_url", git_remote_url)
         pulumi.set(__self__, "public_key", public_key)
+        pulumi.set(__self__, "should_run_dbt_deps", should_run_dbt_deps)
         pulumi.set(__self__, "target_name", target_name)
         pulumi.set(__self__, "threads", threads)
+        pulumi.set(__self__, "use_latest_patch_version", use_latest_patch_version)
 
     @_builtins.property
     @pulumi.getter(name="dbtVersion")
@@ -52204,6 +52238,14 @@ class GetTransformationProjectProjectConfigResult(dict):
         return pulumi.get(self, "public_key")
 
     @_builtins.property
+    @pulumi.getter(name="shouldRunDbtDeps")
+    def should_run_dbt_deps(self) -> _builtins.bool:
+        """
+        Specifies whether `dbt deps` installs the dbt packages before each transformation run. The default value is TRUE.
+        """
+        return pulumi.get(self, "should_run_dbt_deps")
+
+    @_builtins.property
     @pulumi.getter(name="targetName")
     def target_name(self) -> _builtins.str:
         """
@@ -52218,6 +52260,14 @@ class GetTransformationProjectProjectConfigResult(dict):
         The number of threads transformation will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
         """
         return pulumi.get(self, "threads")
+
+    @_builtins.property
+    @pulumi.getter(name="useLatestPatchVersion")
+    def use_latest_patch_version(self) -> _builtins.bool:
+        """
+        Specifies whether the project runs on the latest patch version of its dbt minor version. The default value is TRUE. This field is in Private Preview: only the accounts enabled for it can set it to FALSE, which requires a full `dbt_version`, such as `1.11.7`.
+        """
+        return pulumi.get(self, "use_latest_patch_version")
 
 
 @pulumi.output_type

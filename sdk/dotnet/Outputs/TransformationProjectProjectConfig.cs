@@ -42,6 +42,10 @@ namespace Pulumi.Fivetran.Outputs
         /// </summary>
         public readonly string? PublicKey;
         /// <summary>
+        /// Specifies whether `dbt deps` installs the dbt packages before each transformation run. The default value is TRUE.
+        /// </summary>
+        public readonly bool? ShouldRunDbtDeps;
+        /// <summary>
         /// Target name to set or override the value from the deployment.yaml
         /// </summary>
         public readonly string? TargetName;
@@ -49,6 +53,10 @@ namespace Pulumi.Fivetran.Outputs
         /// The number of threads transformation will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
         /// </summary>
         public readonly int? Threads;
+        /// <summary>
+        /// Specifies whether the project runs on the latest patch version of its dbt minor version. The default value is TRUE. This field is in Private Preview: only the accounts enabled for it can set it to FALSE, which requires a full `DbtVersion`, such as `1.11.7`.
+        /// </summary>
+        public readonly bool? UseLatestPatchVersion;
 
         [OutputConstructor]
         private TransformationProjectProjectConfig(
@@ -66,9 +74,13 @@ namespace Pulumi.Fivetran.Outputs
 
             string? publicKey,
 
+            bool? shouldRunDbtDeps,
+
             string? targetName,
 
-            int? threads)
+            int? threads,
+
+            bool? useLatestPatchVersion)
         {
             DbtVersion = dbtVersion;
             DefaultSchema = defaultSchema;
@@ -77,8 +89,10 @@ namespace Pulumi.Fivetran.Outputs
             GitBranch = gitBranch;
             GitRemoteUrl = gitRemoteUrl;
             PublicKey = publicKey;
+            ShouldRunDbtDeps = shouldRunDbtDeps;
             TargetName = targetName;
             Threads = threads;
+            UseLatestPatchVersion = useLatestPatchVersion;
         }
     }
 }

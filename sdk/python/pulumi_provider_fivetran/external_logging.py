@@ -201,6 +201,8 @@ class ExternalLogging(pulumi.CustomResource):
         """
         This resource allows you to create, update, and delete logging service.
 
+        > `ExternalLoggingV2` manages the same log service with a dynamic `config` that is validated against log service metadata. To switch to it without recreating the log service, see the migration guide.
+
         ## Example Usage
 
         ```python
@@ -271,6 +273,8 @@ class ExternalLogging(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource allows you to create, update, and delete logging service.
+
+        > `ExternalLoggingV2` manages the same log service with a dynamic `config` that is validated against log service metadata. To switch to it without recreating the log service, see the migration guide.
 
         ## Example Usage
 

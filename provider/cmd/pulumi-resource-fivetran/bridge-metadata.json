@@ -567,6 +567,10 @@
                 "current": "fivetran:index/externalLogging:ExternalLogging",
                 "majorVersion": 1
             },
+            "fivetran_external_logging_v2": {
+                "current": "fivetran:index/externalLoggingV2:ExternalLoggingV2",
+                "majorVersion": 1
+            },
             "fivetran_group": {
                 "current": "fivetran:index/group:Group",
                 "majorVersion": 1
@@ -1670,6 +1674,7 @@
             "fivetran_destination_fingerprints": {},
             "fivetran_destination_v2": {},
             "fivetran_external_logging": {},
+            "fivetran_external_logging_v2": {},
             "fivetran_group": {},
             "fivetran_group_users": {},
             "fivetran_hybrid_deployment_agent": {},

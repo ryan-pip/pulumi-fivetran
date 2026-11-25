@@ -172,7 +172,7 @@ class AccountExternalLoggingV2(pulumi.CustomResource):
                  service: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        > This resource is in [Public Preview](https://fivetran.com/docs/core-concepts#releasephases).
+        > **Deprecated:** Use `ExternalLoggingV2` without `group_id` instead. It manages the same account-level log service, and you can migrate to it without recreating the log service. See the migration guide.
 
         Manages the account-level external logging service. An account can have at most one account-level log service. For log services attached to a destination, use `ExternalLogging`.
 
@@ -239,7 +239,7 @@ class AccountExternalLoggingV2(pulumi.CustomResource):
                  args: AccountExternalLoggingV2Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > This resource is in [Public Preview](https://fivetran.com/docs/core-concepts#releasephases).
+        > **Deprecated:** Use `ExternalLoggingV2` without `group_id` instead. It manages the same account-level log service, and you can migrate to it without recreating the log service. See the migration guide.
 
         Manages the account-level external logging service. An account can have at most one account-level log service. For log services attached to a destination, use `ExternalLogging`.
 

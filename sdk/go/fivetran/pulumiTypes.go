@@ -45453,10 +45453,14 @@ type TransformationProjectProjectConfig struct {
 	GitRemoteUrl *string `pulumi:"gitRemoteUrl"`
 	// Public key to grant Fivetran SSH access to git repository.
 	PublicKey *string `pulumi:"publicKey"`
+	// Specifies whether `dbt deps` installs the dbt packages before each transformation run. The default value is TRUE.
+	ShouldRunDbtDeps *bool `pulumi:"shouldRunDbtDeps"`
 	// Target name to set or override the value from the deployment.yaml
 	TargetName *string `pulumi:"targetName"`
 	// The number of threads transformation will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
 	Threads *int `pulumi:"threads"`
+	// Specifies whether the project runs on the latest patch version of its dbt minor version. The default value is TRUE. This field is in Private Preview: only the accounts enabled for it can set it to FALSE, which requires a full `dbtVersion`, such as `1.11.7`.
+	UseLatestPatchVersion *bool `pulumi:"useLatestPatchVersion"`
 }
 
 // TransformationProjectProjectConfigInput is an input type that accepts TransformationProjectProjectConfigArgs and TransformationProjectProjectConfigOutput values.
@@ -45485,10 +45489,14 @@ type TransformationProjectProjectConfigArgs struct {
 	GitRemoteUrl pulumi.StringPtrInput `pulumi:"gitRemoteUrl"`
 	// Public key to grant Fivetran SSH access to git repository.
 	PublicKey pulumi.StringPtrInput `pulumi:"publicKey"`
+	// Specifies whether `dbt deps` installs the dbt packages before each transformation run. The default value is TRUE.
+	ShouldRunDbtDeps pulumi.BoolPtrInput `pulumi:"shouldRunDbtDeps"`
 	// Target name to set or override the value from the deployment.yaml
 	TargetName pulumi.StringPtrInput `pulumi:"targetName"`
 	// The number of threads transformation will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
 	Threads pulumi.IntPtrInput `pulumi:"threads"`
+	// Specifies whether the project runs on the latest patch version of its dbt minor version. The default value is TRUE. This field is in Private Preview: only the accounts enabled for it can set it to FALSE, which requires a full `dbtVersion`, such as `1.11.7`.
+	UseLatestPatchVersion pulumi.BoolPtrInput `pulumi:"useLatestPatchVersion"`
 }
 
 func (TransformationProjectProjectConfigArgs) ElementType() reflect.Type {
@@ -45603,6 +45611,11 @@ func (o TransformationProjectProjectConfigOutput) PublicKey() pulumi.StringPtrOu
 	return o.ApplyT(func(v TransformationProjectProjectConfig) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether `dbt deps` installs the dbt packages before each transformation run. The default value is TRUE.
+func (o TransformationProjectProjectConfigOutput) ShouldRunDbtDeps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TransformationProjectProjectConfig) *bool { return v.ShouldRunDbtDeps }).(pulumi.BoolPtrOutput)
+}
+
 // Target name to set or override the value from the deployment.yaml
 func (o TransformationProjectProjectConfigOutput) TargetName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TransformationProjectProjectConfig) *string { return v.TargetName }).(pulumi.StringPtrOutput)
@@ -45611,6 +45624,11 @@ func (o TransformationProjectProjectConfigOutput) TargetName() pulumi.StringPtrO
 // The number of threads transformation will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
 func (o TransformationProjectProjectConfigOutput) Threads() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TransformationProjectProjectConfig) *int { return v.Threads }).(pulumi.IntPtrOutput)
+}
+
+// Specifies whether the project runs on the latest patch version of its dbt minor version. The default value is TRUE. This field is in Private Preview: only the accounts enabled for it can set it to FALSE, which requires a full `dbtVersion`, such as `1.11.7`.
+func (o TransformationProjectProjectConfigOutput) UseLatestPatchVersion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TransformationProjectProjectConfig) *bool { return v.UseLatestPatchVersion }).(pulumi.BoolPtrOutput)
 }
 
 type TransformationProjectProjectConfigPtrOutput struct{ *pulumi.OutputState }
@@ -45707,6 +45725,16 @@ func (o TransformationProjectProjectConfigPtrOutput) PublicKey() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether `dbt deps` installs the dbt packages before each transformation run. The default value is TRUE.
+func (o TransformationProjectProjectConfigPtrOutput) ShouldRunDbtDeps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransformationProjectProjectConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ShouldRunDbtDeps
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Target name to set or override the value from the deployment.yaml
 func (o TransformationProjectProjectConfigPtrOutput) TargetName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransformationProjectProjectConfig) *string {
@@ -45725,6 +45753,16 @@ func (o TransformationProjectProjectConfigPtrOutput) Threads() pulumi.IntPtrOutp
 		}
 		return v.Threads
 	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies whether the project runs on the latest patch version of its dbt minor version. The default value is TRUE. This field is in Private Preview: only the accounts enabled for it can set it to FALSE, which requires a full `dbtVersion`, such as `1.11.7`.
+func (o TransformationProjectProjectConfigPtrOutput) UseLatestPatchVersion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransformationProjectProjectConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseLatestPatchVersion
+	}).(pulumi.BoolPtrOutput)
 }
 
 type TransformationSchedule struct {
@@ -92454,10 +92492,14 @@ type GetTransformationProjectProjectConfig struct {
 	GitRemoteUrl string `pulumi:"gitRemoteUrl"`
 	// Public key to grant Fivetran SSH access to git repository.
 	PublicKey string `pulumi:"publicKey"`
+	// Specifies whether `dbt deps` installs the dbt packages before each transformation run. The default value is TRUE.
+	ShouldRunDbtDeps bool `pulumi:"shouldRunDbtDeps"`
 	// Target name to set or override the value from the deployment.yaml
 	TargetName string `pulumi:"targetName"`
 	// The number of threads transformation will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
 	Threads int `pulumi:"threads"`
+	// Specifies whether the project runs on the latest patch version of its dbt minor version. The default value is TRUE. This field is in Private Preview: only the accounts enabled for it can set it to FALSE, which requires a full `dbtVersion`, such as `1.11.7`.
+	UseLatestPatchVersion bool `pulumi:"useLatestPatchVersion"`
 }
 
 // GetTransformationProjectProjectConfigInput is an input type that accepts GetTransformationProjectProjectConfigArgs and GetTransformationProjectProjectConfigOutput values.
@@ -92486,10 +92528,14 @@ type GetTransformationProjectProjectConfigArgs struct {
 	GitRemoteUrl pulumi.StringInput `pulumi:"gitRemoteUrl"`
 	// Public key to grant Fivetran SSH access to git repository.
 	PublicKey pulumi.StringInput `pulumi:"publicKey"`
+	// Specifies whether `dbt deps` installs the dbt packages before each transformation run. The default value is TRUE.
+	ShouldRunDbtDeps pulumi.BoolInput `pulumi:"shouldRunDbtDeps"`
 	// Target name to set or override the value from the deployment.yaml
 	TargetName pulumi.StringInput `pulumi:"targetName"`
 	// The number of threads transformation will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
 	Threads pulumi.IntInput `pulumi:"threads"`
+	// Specifies whether the project runs on the latest patch version of its dbt minor version. The default value is TRUE. This field is in Private Preview: only the accounts enabled for it can set it to FALSE, which requires a full `dbtVersion`, such as `1.11.7`.
+	UseLatestPatchVersion pulumi.BoolInput `pulumi:"useLatestPatchVersion"`
 }
 
 func (GetTransformationProjectProjectConfigArgs) ElementType() reflect.Type {
@@ -92604,6 +92650,11 @@ func (o GetTransformationProjectProjectConfigOutput) PublicKey() pulumi.StringOu
 	return o.ApplyT(func(v GetTransformationProjectProjectConfig) string { return v.PublicKey }).(pulumi.StringOutput)
 }
 
+// Specifies whether `dbt deps` installs the dbt packages before each transformation run. The default value is TRUE.
+func (o GetTransformationProjectProjectConfigOutput) ShouldRunDbtDeps() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTransformationProjectProjectConfig) bool { return v.ShouldRunDbtDeps }).(pulumi.BoolOutput)
+}
+
 // Target name to set or override the value from the deployment.yaml
 func (o GetTransformationProjectProjectConfigOutput) TargetName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransformationProjectProjectConfig) string { return v.TargetName }).(pulumi.StringOutput)
@@ -92612,6 +92663,11 @@ func (o GetTransformationProjectProjectConfigOutput) TargetName() pulumi.StringO
 // The number of threads transformation will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
 func (o GetTransformationProjectProjectConfigOutput) Threads() pulumi.IntOutput {
 	return o.ApplyT(func(v GetTransformationProjectProjectConfig) int { return v.Threads }).(pulumi.IntOutput)
+}
+
+// Specifies whether the project runs on the latest patch version of its dbt minor version. The default value is TRUE. This field is in Private Preview: only the accounts enabled for it can set it to FALSE, which requires a full `dbtVersion`, such as `1.11.7`.
+func (o GetTransformationProjectProjectConfigOutput) UseLatestPatchVersion() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTransformationProjectProjectConfig) bool { return v.UseLatestPatchVersion }).(pulumi.BoolOutput)
 }
 
 type GetTransformationProjectProjectConfigPtrOutput struct{ *pulumi.OutputState }
@@ -92708,6 +92764,16 @@ func (o GetTransformationProjectProjectConfigPtrOutput) PublicKey() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether `dbt deps` installs the dbt packages before each transformation run. The default value is TRUE.
+func (o GetTransformationProjectProjectConfigPtrOutput) ShouldRunDbtDeps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetTransformationProjectProjectConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ShouldRunDbtDeps
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Target name to set or override the value from the deployment.yaml
 func (o GetTransformationProjectProjectConfigPtrOutput) TargetName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetTransformationProjectProjectConfig) *string {
@@ -92726,6 +92792,16 @@ func (o GetTransformationProjectProjectConfigPtrOutput) Threads() pulumi.IntPtrO
 		}
 		return &v.Threads
 	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies whether the project runs on the latest patch version of its dbt minor version. The default value is TRUE. This field is in Private Preview: only the accounts enabled for it can set it to FALSE, which requires a full `dbtVersion`, such as `1.11.7`.
+func (o GetTransformationProjectProjectConfigPtrOutput) UseLatestPatchVersion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetTransformationProjectProjectConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.UseLatestPatchVersion
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GetTransformationProjectsProject struct {

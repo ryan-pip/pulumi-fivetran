@@ -85,6 +85,11 @@ export type ExternalLogging = import("./externalLogging").ExternalLogging;
 export const ExternalLogging: typeof import("./externalLogging").ExternalLogging = null as any;
 utilities.lazyLoad(exports, ["ExternalLogging"], () => require("./externalLogging"));
 
+export { ExternalLoggingV2Args, ExternalLoggingV2State } from "./externalLoggingV2";
+export type ExternalLoggingV2 = import("./externalLoggingV2").ExternalLoggingV2;
+export const ExternalLoggingV2: typeof import("./externalLoggingV2").ExternalLoggingV2 = null as any;
+utilities.lazyLoad(exports, ["ExternalLoggingV2"], () => require("./externalLoggingV2"));
+
 export { GetConnectionArgs, GetConnectionResult, GetConnectionOutputArgs } from "./getConnection";
 export const getConnection: typeof import("./getConnection").getConnection = null as any;
 export const getConnectionOutput: typeof import("./getConnection").getConnectionOutput = null as any;
@@ -449,6 +454,8 @@ const _module = {
                 return new DestinationV2(name, <any>undefined, { urn })
             case "fivetran:index/externalLogging:ExternalLogging":
                 return new ExternalLogging(name, <any>undefined, { urn })
+            case "fivetran:index/externalLoggingV2:ExternalLoggingV2":
+                return new ExternalLoggingV2(name, <any>undefined, { urn })
             case "fivetran:index/group:Group":
                 return new Group(name, <any>undefined, { urn })
             case "fivetran:index/groupUsers:GroupUsers":
@@ -500,6 +507,7 @@ pulumi.runtime.registerResourceModule("fivetran", "index/destinationCertificates
 pulumi.runtime.registerResourceModule("fivetran", "index/destinationFingerprints", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/destinationV2", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/externalLogging", _module)
+pulumi.runtime.registerResourceModule("fivetran", "index/externalLoggingV2", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/group", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/groupUsers", _module)
 pulumi.runtime.registerResourceModule("fivetran", "index/hybridDeploymentAgent", _module)

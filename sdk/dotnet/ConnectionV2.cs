@@ -58,6 +58,19 @@ namespace Pulumi.Fivetran
         public Output<object?> Auth { get; private set; } = null!;
 
         /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Write-only service-specific authorization fields, merged with `Auth` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `Auth` and `AuthSecrets`. Mutable fields are sent on migration from `Auth` or when `AuthSecretsVersion` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in auth.
+        /// </summary>
+        [Output("authSecrets")]
+        public Output<object?> AuthSecrets { get; private set; } = null!;
+
+        /// <summary>
+        /// Version of `AuthSecrets`. Change it to send the current mutable `AuthSecrets` values to the API.
+        /// </summary>
+        [Output("authSecretsVersion")]
+        public Output<int?> AuthSecretsVersion { get; private set; } = null!;
+
+        /// <summary>
         /// Service-specific connection configuration. The accepted fields are defined by connector metadata at runtime.
         /// </summary>
         [Output("config")]
@@ -265,6 +278,7 @@ namespace Pulumi.Fivetran
                 AdditionalSecretOutputs =
                 {
                     "auth",
+                    "authSecrets",
                     "configSecrets",
                 },
             };
@@ -305,6 +319,29 @@ namespace Pulumi.Fivetran
                 _auth = Output.Tuple<Input<object>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("authSecrets")]
+        private Input<object>? _authSecrets;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Write-only service-specific authorization fields, merged with `Auth` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `Auth` and `AuthSecrets`. Mutable fields are sent on migration from `Auth` or when `AuthSecretsVersion` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in auth.
+        /// </summary>
+        public Input<object>? AuthSecrets
+        {
+            get => _authSecrets;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authSecrets = Output.Tuple<Input<object>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Version of `AuthSecrets`. Change it to send the current mutable `AuthSecrets` values to the API.
+        /// </summary>
+        [Input("authSecretsVersion")]
+        public Input<int>? AuthSecretsVersion { get; set; }
 
         /// <summary>
         /// Service-specific connection configuration. The accepted fields are defined by connector metadata at runtime.
@@ -478,6 +515,29 @@ namespace Pulumi.Fivetran
                 _auth = Output.Tuple<Input<object>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("authSecrets")]
+        private Input<object>? _authSecrets;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Write-only service-specific authorization fields, merged with `Auth` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `Auth` and `AuthSecrets`. Mutable fields are sent on migration from `Auth` or when `AuthSecretsVersion` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in auth.
+        /// </summary>
+        public Input<object>? AuthSecrets
+        {
+            get => _authSecrets;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authSecrets = Output.Tuple<Input<object>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Version of `AuthSecrets`. Change it to send the current mutable `AuthSecrets` values to the API.
+        /// </summary>
+        [Input("authSecretsVersion")]
+        public Input<int>? AuthSecretsVersion { get; set; }
 
         /// <summary>
         /// Service-specific connection configuration. The accepted fields are defined by connector metadata at runtime.

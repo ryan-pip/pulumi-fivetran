@@ -22,6 +22,7 @@ from .destination_certificates import *
 from .destination_fingerprints import *
 from .destination_v2 import *
 from .external_logging import *
+from .external_logging_v2 import *
 from .get_connection import *
 from .get_connection_certificates import *
 from .get_connection_fingerprints import *
@@ -225,6 +226,14 @@ _utilities.register(
   "fqn": "pulumi_provider_fivetran",
   "classes": {
    "fivetran:index/externalLogging:ExternalLogging": "ExternalLogging"
+  }
+ },
+ {
+  "pkg": "fivetran",
+  "mod": "index/externalLoggingV2",
+  "fqn": "pulumi_provider_fivetran",
+  "classes": {
+   "fivetran:index/externalLoggingV2:ExternalLoggingV2": "ExternalLoggingV2"
   }
  },
  {

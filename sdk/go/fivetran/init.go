@@ -53,6 +53,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DestinationV2{}
 	case "fivetran:index/externalLogging:ExternalLogging":
 		r = &ExternalLogging{}
+	case "fivetran:index/externalLoggingV2:ExternalLoggingV2":
+		r = &ExternalLoggingV2{}
 	case "fivetran:index/group:Group":
 		r = &Group{}
 	case "fivetran:index/groupUsers:GroupUsers":
@@ -192,6 +194,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"fivetran",
 		"index/externalLogging",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"fivetran",
+		"index/externalLoggingV2",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
