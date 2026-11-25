@@ -25,6 +25,8 @@ class ConnectionV2Args:
                  group_id: pulumi.Input[_builtins.str],
                  service: pulumi.Input[_builtins.str],
                  auth: Optional[Any] = None,
+                 auth_secrets: Optional[Any] = None,
+                 auth_secrets_version: pulumi.Input[Optional[_builtins.int]] = None,
                  config: Optional[Any] = None,
                  config_secrets: Optional[Any] = None,
                  config_secrets_version: pulumi.Input[Optional[_builtins.int]] = None,
@@ -52,6 +54,9 @@ class ConnectionV2Args:
         :param pulumi.Input[_builtins.str] group_id: The unique identifier for the Group (Destination) within the Fivetran system. Changing this forces the connection to be replaced.
         :param pulumi.Input[_builtins.str] service: The connection service type (e.g., `postgres`, `mysql`, `s3`, `snowflake`). Changing this forces the connection to be replaced.
         :param Any auth: Service-specific authorization configuration. The accepted fields are defined by connector metadata at runtime.
+        :param Any auth_secrets: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only service-specific authorization fields, merged with `auth` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `auth` and `auth_secrets`. Mutable fields are sent on migration from `auth` or when `auth_secrets_version` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in auth.
+        :param pulumi.Input[_builtins.int] auth_secrets_version: Version of `auth_secrets`. Change it to send the current mutable `auth_secrets` values to the API.
         :param Any config: Service-specific connection configuration. The accepted fields are defined by connector metadata at runtime.
         :param Any config_secrets: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                Write-only service-specific connection configuration fields, merged with `config` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `config` and `config_secrets`. Mutable fields are sent on migration from `config` or when `config_secrets_version` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in config.
@@ -79,6 +84,10 @@ class ConnectionV2Args:
         pulumi.set(__self__, "service", service)
         if auth is not None:
             pulumi.set(__self__, "auth", auth)
+        if auth_secrets is not None:
+            pulumi.set(__self__, "auth_secrets", auth_secrets)
+        if auth_secrets_version is not None:
+            pulumi.set(__self__, "auth_secrets_version", auth_secrets_version)
         if config is not None:
             pulumi.set(__self__, "config", config)
         if config_secrets is not None:
@@ -167,6 +176,31 @@ class ConnectionV2Args:
     @auth.setter
     def auth(self, value: Optional[Any]):
         pulumi.set(self, "auth", value)
+
+    @_builtins.property
+    @pulumi.getter(name="authSecrets")
+    def auth_secrets(self) -> Optional[Any]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only service-specific authorization fields, merged with `auth` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `auth` and `auth_secrets`. Mutable fields are sent on migration from `auth` or when `auth_secrets_version` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in auth.
+        """
+        return pulumi.get(self, "auth_secrets")
+
+    @auth_secrets.setter
+    def auth_secrets(self, value: Optional[Any]):
+        pulumi.set(self, "auth_secrets", value)
+
+    @_builtins.property
+    @pulumi.getter(name="authSecretsVersion")
+    def auth_secrets_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Version of `auth_secrets`. Change it to send the current mutable `auth_secrets` values to the API.
+        """
+        return pulumi.get(self, "auth_secrets_version")
+
+    @auth_secrets_version.setter
+    def auth_secrets_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "auth_secrets_version", value)
 
     @_builtins.property
     @pulumi.getter
@@ -414,6 +448,8 @@ class ConnectionV2Args:
 class _ConnectionV2State:
     def __init__(__self__, *,
                  auth: Optional[Any] = None,
+                 auth_secrets: Optional[Any] = None,
+                 auth_secrets_version: pulumi.Input[Optional[_builtins.int]] = None,
                  config: Optional[Any] = None,
                  config_secrets: Optional[Any] = None,
                  config_secrets_version: pulumi.Input[Optional[_builtins.int]] = None,
@@ -448,6 +484,9 @@ class _ConnectionV2State:
         Input properties used for looking up and filtering ConnectionV2 resources.
 
         :param Any auth: Service-specific authorization configuration. The accepted fields are defined by connector metadata at runtime.
+        :param Any auth_secrets: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only service-specific authorization fields, merged with `auth` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `auth` and `auth_secrets`. Mutable fields are sent on migration from `auth` or when `auth_secrets_version` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in auth.
+        :param pulumi.Input[_builtins.int] auth_secrets_version: Version of `auth_secrets`. Change it to send the current mutable `auth_secrets` values to the API.
         :param Any config: Service-specific connection configuration. The accepted fields are defined by connector metadata at runtime.
         :param Any config_secrets: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                Write-only service-specific connection configuration fields, merged with `config` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `config` and `config_secrets`. Mutable fields are sent on migration from `config` or when `config_secrets_version` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in config.
@@ -482,6 +521,10 @@ class _ConnectionV2State:
         """
         if auth is not None:
             pulumi.set(__self__, "auth", auth)
+        if auth_secrets is not None:
+            pulumi.set(__self__, "auth_secrets", auth_secrets)
+        if auth_secrets_version is not None:
+            pulumi.set(__self__, "auth_secrets_version", auth_secrets_version)
         if config is not None:
             pulumi.set(__self__, "config", config)
         if config_secrets is not None:
@@ -554,6 +597,31 @@ class _ConnectionV2State:
     @auth.setter
     def auth(self, value: Optional[Any]):
         pulumi.set(self, "auth", value)
+
+    @_builtins.property
+    @pulumi.getter(name="authSecrets")
+    def auth_secrets(self) -> Optional[Any]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only service-specific authorization fields, merged with `auth` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `auth` and `auth_secrets`. Mutable fields are sent on migration from `auth` or when `auth_secrets_version` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in auth.
+        """
+        return pulumi.get(self, "auth_secrets")
+
+    @auth_secrets.setter
+    def auth_secrets(self, value: Optional[Any]):
+        pulumi.set(self, "auth_secrets", value)
+
+    @_builtins.property
+    @pulumi.getter(name="authSecretsVersion")
+    def auth_secrets_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Version of `auth_secrets`. Change it to send the current mutable `auth_secrets` values to the API.
+        """
+        return pulumi.get(self, "auth_secrets_version")
+
+    @auth_secrets_version.setter
+    def auth_secrets_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "auth_secrets_version", value)
 
     @_builtins.property
     @pulumi.getter
@@ -924,6 +992,8 @@ class ConnectionV2(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth: Optional[Any] = None,
+                 auth_secrets: Optional[Any] = None,
+                 auth_secrets_version: pulumi.Input[Optional[_builtins.int]] = None,
                  config: Optional[Any] = None,
                  config_secrets: Optional[Any] = None,
                  config_secrets_version: pulumi.Input[Optional[_builtins.int]] = None,
@@ -979,6 +1049,9 @@ class ConnectionV2(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param Any auth: Service-specific authorization configuration. The accepted fields are defined by connector metadata at runtime.
+        :param Any auth_secrets: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only service-specific authorization fields, merged with `auth` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `auth` and `auth_secrets`. Mutable fields are sent on migration from `auth` or when `auth_secrets_version` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in auth.
+        :param pulumi.Input[_builtins.int] auth_secrets_version: Version of `auth_secrets`. Change it to send the current mutable `auth_secrets` values to the API.
         :param Any config: Service-specific connection configuration. The accepted fields are defined by connector metadata at runtime.
         :param Any config_secrets: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                Write-only service-specific connection configuration fields, merged with `config` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `config` and `config_secrets`. Mutable fields are sent on migration from `config` or when `config_secrets_version` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in config.
@@ -1054,6 +1127,8 @@ class ConnectionV2(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth: Optional[Any] = None,
+                 auth_secrets: Optional[Any] = None,
+                 auth_secrets_version: pulumi.Input[Optional[_builtins.int]] = None,
                  config: Optional[Any] = None,
                  config_secrets: Optional[Any] = None,
                  config_secrets_version: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1087,6 +1162,8 @@ class ConnectionV2(pulumi.CustomResource):
             __props__ = ConnectionV2Args.__new__(ConnectionV2Args)
 
             __props__.__dict__["auth"] = None if auth is None else pulumi.Output.secret(auth)
+            __props__.__dict__["auth_secrets"] = None if auth_secrets is None else pulumi.Output.secret(auth_secrets)
+            __props__.__dict__["auth_secrets_version"] = auth_secrets_version
             __props__.__dict__["config"] = config
             __props__.__dict__["config_secrets"] = None if config_secrets is None else pulumi.Output.secret(config_secrets)
             __props__.__dict__["config_secrets_version"] = config_secrets_version
@@ -1123,7 +1200,7 @@ class ConnectionV2(pulumi.CustomResource):
             __props__.__dict__["service_version"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["succeeded_at"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["auth", "configSecrets"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["auth", "authSecrets", "configSecrets"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ConnectionV2, __self__).__init__(
             'fivetran:index/connectionV2:ConnectionV2',
@@ -1136,6 +1213,8 @@ class ConnectionV2(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auth: Optional[Any] = None,
+            auth_secrets: Optional[Any] = None,
+            auth_secrets_version: pulumi.Input[Optional[_builtins.int]] = None,
             config: Optional[Any] = None,
             config_secrets: Optional[Any] = None,
             config_secrets_version: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1174,6 +1253,9 @@ class ConnectionV2(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param Any auth: Service-specific authorization configuration. The accepted fields are defined by connector metadata at runtime.
+        :param Any auth_secrets: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only service-specific authorization fields, merged with `auth` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `auth` and `auth_secrets`. Mutable fields are sent on migration from `auth` or when `auth_secrets_version` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in auth.
+        :param pulumi.Input[_builtins.int] auth_secrets_version: Version of `auth_secrets`. Change it to send the current mutable `auth_secrets` values to the API.
         :param Any config: Service-specific connection configuration. The accepted fields are defined by connector metadata at runtime.
         :param Any config_secrets: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                Write-only service-specific connection configuration fields, merged with `config` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `config` and `config_secrets`. Mutable fields are sent on migration from `config` or when `config_secrets_version` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in config.
@@ -1211,6 +1293,8 @@ class ConnectionV2(pulumi.CustomResource):
         __props__ = _ConnectionV2State.__new__(_ConnectionV2State)
 
         __props__.__dict__["auth"] = auth
+        __props__.__dict__["auth_secrets"] = auth_secrets
+        __props__.__dict__["auth_secrets_version"] = auth_secrets_version
         __props__.__dict__["config"] = config
         __props__.__dict__["config_secrets"] = config_secrets
         __props__.__dict__["config_secrets_version"] = config_secrets_version
@@ -1250,6 +1334,23 @@ class ConnectionV2(pulumi.CustomResource):
         Service-specific authorization configuration. The accepted fields are defined by connector metadata at runtime.
         """
         return pulumi.get(self, "auth")
+
+    @_builtins.property
+    @pulumi.getter(name="authSecrets")
+    def auth_secrets(self) -> pulumi.Output[Optional[Any]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only service-specific authorization fields, merged with `auth` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `auth` and `auth_secrets`. Mutable fields are sent on migration from `auth` or when `auth_secrets_version` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in auth.
+        """
+        return pulumi.get(self, "auth_secrets")
+
+    @_builtins.property
+    @pulumi.getter(name="authSecretsVersion")
+    def auth_secrets_version(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Version of `auth_secrets`. Change it to send the current mutable `auth_secrets` values to the API.
+        """
+        return pulumi.get(self, "auth_secrets_version")
 
     @_builtins.property
     @pulumi.getter

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Fivetran
 {
     /// <summary>
-    /// &gt; This resource is in [Public Preview](https://fivetran.com/docs/core-concepts#releasephases).
+    /// &gt; **Deprecated:** Use `fivetran.ExternalLoggingV2` without `GroupId` instead. It manages the same account-level log service, and you can migrate to it without recreating the log service. See the migration guide.
     /// 
     /// Manages the account-level external logging service. An account can have at most one account-level log service. For log services attached to a destination, use `fivetran.ExternalLogging`.
     /// 

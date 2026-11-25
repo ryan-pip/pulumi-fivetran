@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * This resource allows you to create, update, and delete logging service.
  *
+ * > `fivetran.ExternalLoggingV2` manages the same log service with a dynamic `config` that is validated against log service metadata. To switch to it without recreating the log service, see the migration guide.
+ *
  * ## Example Usage
  *
  * ```typescript

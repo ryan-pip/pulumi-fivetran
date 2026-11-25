@@ -37,6 +37,7 @@
         "destinationFingerprints.ts",
         "destinationV2.ts",
         "externalLogging.ts",
+        "externalLoggingV2.ts",
         "getConnection.ts",
         "getConnectionCertificates.ts",
         "getConnectionFingerprints.ts",

@@ -61,6 +61,12 @@ namespace Pulumi.Fivetran.Inputs
         public Input<string>? PublicKey { get; set; }
 
         /// <summary>
+        /// Specifies whether `dbt deps` installs the dbt packages before each transformation run. The default value is TRUE.
+        /// </summary>
+        [Input("shouldRunDbtDeps")]
+        public Input<bool>? ShouldRunDbtDeps { get; set; }
+
+        /// <summary>
         /// Target name to set or override the value from the deployment.yaml
         /// </summary>
         [Input("targetName")]
@@ -71,6 +77,12 @@ namespace Pulumi.Fivetran.Inputs
         /// </summary>
         [Input("threads")]
         public Input<int>? Threads { get; set; }
+
+        /// <summary>
+        /// Specifies whether the project runs on the latest patch version of its dbt minor version. The default value is TRUE. This field is in Private Preview: only the accounts enabled for it can set it to FALSE, which requires a full `DbtVersion`, such as `1.11.7`.
+        /// </summary>
+        [Input("useLatestPatchVersion")]
+        public Input<bool>? UseLatestPatchVersion { get; set; }
 
         public TransformationProjectProjectConfigArgs()
         {

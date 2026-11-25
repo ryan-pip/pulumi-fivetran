@@ -68,6 +68,15 @@ export class ConnectionV2 extends pulumi.CustomResource {
      */
     declare public readonly auth: pulumi.Output<any | undefined>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only service-specific authorization fields, merged with `auth` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `auth` and `authSecrets`. Mutable fields are sent on migration from `auth` or when `authSecretsVersion` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in auth.
+     */
+    declare public readonly authSecrets: pulumi.Output<any | undefined>;
+    /**
+     * Version of `authSecrets`. Change it to send the current mutable `authSecrets` values to the API.
+     */
+    declare public readonly authSecretsVersion: pulumi.Output<number | undefined>;
+    /**
      * Service-specific connection configuration. The accepted fields are defined by connector metadata at runtime.
      */
     declare public readonly config: pulumi.Output<any>;
@@ -203,6 +212,8 @@ export class ConnectionV2 extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ConnectionV2State | undefined;
             resourceInputs["auth"] = state?.auth;
+            resourceInputs["authSecrets"] = state?.authSecrets;
+            resourceInputs["authSecretsVersion"] = state?.authSecretsVersion;
             resourceInputs["config"] = state?.config;
             resourceInputs["configSecrets"] = state?.configSecrets;
             resourceInputs["configSecretsVersion"] = state?.configSecretsVersion;
@@ -245,6 +256,8 @@ export class ConnectionV2 extends pulumi.CustomResource {
                 throw new Error("Missing required property 'service'");
             }
             resourceInputs["auth"] = args?.auth ? pulumi.secret(args.auth) : undefined;
+            resourceInputs["authSecrets"] = args?.authSecrets ? pulumi.secret(args.authSecrets) : undefined;
+            resourceInputs["authSecretsVersion"] = args?.authSecretsVersion;
             resourceInputs["config"] = args?.config;
             resourceInputs["configSecrets"] = args?.configSecrets ? pulumi.secret(args.configSecrets) : undefined;
             resourceInputs["configSecretsVersion"] = args?.configSecretsVersion;
@@ -277,7 +290,7 @@ export class ConnectionV2 extends pulumi.CustomResource {
             resourceInputs["succeededAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["auth", "configSecrets"] };
+        const secretOpts = { additionalSecretOutputs: ["auth", "authSecrets", "configSecrets"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(ConnectionV2.__pulumiType, name, resourceInputs, opts);
     }
@@ -291,6 +304,15 @@ export interface ConnectionV2State {
      * Service-specific authorization configuration. The accepted fields are defined by connector metadata at runtime.
      */
     auth?: any | undefined;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only service-specific authorization fields, merged with `auth` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `auth` and `authSecrets`. Mutable fields are sent on migration from `auth` or when `authSecretsVersion` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in auth.
+     */
+    authSecrets?: any | undefined;
+    /**
+     * Version of `authSecrets`. Change it to send the current mutable `authSecrets` values to the API.
+     */
+    authSecretsVersion?: pulumi.Input<number | undefined>;
     /**
      * Service-specific connection configuration. The accepted fields are defined by connector metadata at runtime.
      */
@@ -422,6 +444,15 @@ export interface ConnectionV2Args {
      * Service-specific authorization configuration. The accepted fields are defined by connector metadata at runtime.
      */
     auth?: any | undefined;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only service-specific authorization fields, merged with `auth` when sent to the API. Accepts ephemeral values and is never stored in the plan or state. A field must not be set in both `auth` and `authSecrets`. Mutable fields are sent on migration from `auth` or when `authSecretsVersion` changes. Immutable and read-only fields are excluded from updates. Requires Terraform 1.11 or later. See Secrets in auth.
+     */
+    authSecrets?: any | undefined;
+    /**
+     * Version of `authSecrets`. Change it to send the current mutable `authSecrets` values to the API.
+     */
+    authSecretsVersion?: pulumi.Input<number | undefined>;
     /**
      * Service-specific connection configuration. The accepted fields are defined by connector metadata at runtime.
      */

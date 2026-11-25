@@ -29414,6 +29414,10 @@ export interface GetTransformationProjectProjectConfig {
      */
     publicKey?: string;
     /**
+     * Specifies whether `dbt deps` installs the dbt packages before each transformation run. The default value is TRUE.
+     */
+    shouldRunDbtDeps?: boolean;
+    /**
      * Target name to set or override the value from the deployment.yaml
      */
     targetName?: string;
@@ -29421,6 +29425,10 @@ export interface GetTransformationProjectProjectConfig {
      * The number of threads transformation will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
      */
     threads?: number;
+    /**
+     * Specifies whether the project runs on the latest patch version of its dbt minor version. The default value is TRUE. This field is in Private Preview: only the accounts enabled for it can set it to FALSE, which requires a full `dbtVersion`, such as `1.11.7`.
+     */
+    useLatestPatchVersion?: boolean;
 }
 
 export interface GetTransformationProjectProjectConfigArgs {
@@ -29453,6 +29461,10 @@ export interface GetTransformationProjectProjectConfigArgs {
      */
     publicKey?: pulumi.Input<string | undefined>;
     /**
+     * Specifies whether `dbt deps` installs the dbt packages before each transformation run. The default value is TRUE.
+     */
+    shouldRunDbtDeps?: pulumi.Input<boolean | undefined>;
+    /**
      * Target name to set or override the value from the deployment.yaml
      */
     targetName?: pulumi.Input<string | undefined>;
@@ -29460,6 +29472,10 @@ export interface GetTransformationProjectProjectConfigArgs {
      * The number of threads transformation will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
      */
     threads?: pulumi.Input<number | undefined>;
+    /**
+     * Specifies whether the project runs on the latest patch version of its dbt minor version. The default value is TRUE. This field is in Private Preview: only the accounts enabled for it can set it to FALSE, which requires a full `dbtVersion`, such as `1.11.7`.
+     */
+    useLatestPatchVersion?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetTransformationSchedule {
@@ -30086,6 +30102,10 @@ export interface TransformationProjectProjectConfig {
      */
     publicKey?: pulumi.Input<string | undefined>;
     /**
+     * Specifies whether `dbt deps` installs the dbt packages before each transformation run. The default value is TRUE.
+     */
+    shouldRunDbtDeps?: pulumi.Input<boolean | undefined>;
+    /**
      * Target name to set or override the value from the deployment.yaml
      */
     targetName?: pulumi.Input<string | undefined>;
@@ -30093,6 +30113,10 @@ export interface TransformationProjectProjectConfig {
      * The number of threads transformation will use (from 1 to 32). Make sure this value is compatible with your destination type. For example, Snowflake supports only 8 concurrent queries on an X-Small warehouse.
      */
     threads?: pulumi.Input<number | undefined>;
+    /**
+     * Specifies whether the project runs on the latest patch version of its dbt minor version. The default value is TRUE. This field is in Private Preview: only the accounts enabled for it can set it to FALSE, which requires a full `dbtVersion`, such as `1.11.7`.
+     */
+    useLatestPatchVersion?: pulumi.Input<boolean | undefined>;
 }
 
 export interface TransformationSchedule {
